@@ -25,5 +25,5 @@ deploy:
     secure: PLEASE_REPLACE_ME
   on:
     tags: true
-    repo: nazrulworld/fhir_model
+    repo: nazrulworld/fhir.resources
     python: 3.6

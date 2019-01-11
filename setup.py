@@ -11,7 +11,7 @@ with open('README.rst') as readme_file:
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-requirements = [ ]
+requirements = ['isodate']
 
 setup_requirements = ['pytest-runner', ]
 
@@ -38,14 +38,17 @@ setup(
     license="BSD license",
     long_description=readme + '\n\n' + history,
     include_package_data=True,
-    keywords='fhir_model',
-    name='fhir-model',
+    keywords='fhir.resources',
+    name='fhir-resources',
     namespace_packages=['fhir'],
     packages=find_packages(include=['fhir']),
     setup_requires=setup_requirements,
     test_suite='tests',
     tests_require=test_requirements,
-    url='https://github.com/nazrulworld/fhir.model',
-    version='0.1.0',
+    extras_require={
+        'test': test_requirements + setup_requirements
+    },
+    url='https://github.com/nazrulworld/fhir.resources',
+    version='3.0.1',
     zip_safe=False,
 )

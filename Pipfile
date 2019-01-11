@@ -1,0 +1,19 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+fhir-resources = {path = ".",extras = ["test"],editable = true}
+Jinja2 = {version = ">=2.9.5"}
+MarkupSafe = {version = "==0.23"}
+requests = {version = ">=2.13.0"}
+colorlog = {version = "==2.10.0"}
+certifi = "*"
+zest-releaser = {extras = ["recommended"],version = "*"}
+
+[packages]
+isodate = "*"
+
+[requires]
+python_version = "3.6"

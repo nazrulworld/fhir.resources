@@ -1,4 +1,4 @@
-* fhir_model version:
+* fhir.resources version:
 * Python version:
 * Operating System:
 

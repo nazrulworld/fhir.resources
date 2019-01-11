@@ -15,13 +15,13 @@ requirements = ['isodate']
 
 setup_requirements = ['pytest-runner', ]
 
-test_requirements = ['pytest', ]
+test_requirements = ['coverage','pytest', 'pytest-cov']
 
 setup(
     author="Md Nazrul Islam",
     author_email='email2nazrul@gmail.com',
     classifiers=[
-        'Development Status :: 2 - Pre-Alpha',
+        'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',
         'Natural Language :: English',

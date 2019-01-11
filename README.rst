@@ -22,6 +22,12 @@ initial validation, exporter as json value.
 * Free software: BSD license
 * FHIR ResourceList: https://www.hl7.org/fhir/R4/resourcelist.html
 
+Installation
+------------
+
+Just a simple ``pip install fhir.resources`` or ``easy_install fhir.resources`` is enough. But if you want development
+version, just clone from https://github.com/nazrulworld/fhir.resources and ``python setup.py install``.
+
 
 **Example: 1**: Resource object created from json string::
 

@@ -1,29 +1,36 @@
 # Config file for automatic testing at travis-ci.org
-
+dist: xenial
 language: python
-python:
-  - 3.6
-  - 3.5
-  - 3.4
-  - 2.7
+sudo: required
+matrix:
+  include:
+    - name: Python 2.7
+      python: 2.7
+      env: python_version=2.7
 
-# Command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
-install: pip install -U tox-travis
+    - name: Python 3.5
+      python: 3.5
+      env: python_version=3.5
 
-# Command to run tests, e.g. python setup.py test
-script: tox
+    - name: Python 3.6
+      python: 3.6
+      env: python_version=3.6
 
-# Assuming you have installed the travis-ci CLI tool, after you
-# create the Github repo and add it to Travis, run the
-# following command to finish PyPI deployment setup:
-# $ travis encrypt --add deploy.password
-deploy:
-  provider: pypi
-  distributions: sdist bdist_wheel
-  user: nazrulworld
-  password:
-    secure: PLEASE_REPLACE_ME
-  on:
-    tags: true
-    repo: nazrulworld/fhir.resources
-    python: 3.6
+    - name: Python 3.7
+      python: 3.7
+      env: python_version=3.7
+
+cache:
+  directories:
+    - eggs
+install:
+  - pip install -U pipenv
+  - pipenv install --dev
+  - sleep 5
+script:
+  - git submodule update --init --recursive
+  - python script/generate.py -f
+  - make clean
+  - pytest -s --cov=fhir/resources/ -s --tb=native -v --cov-report term-missing --cov-append fhir/resources
+after_success:
+  - codecov

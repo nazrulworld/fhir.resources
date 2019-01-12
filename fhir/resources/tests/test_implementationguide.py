@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-11.
+#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
 #  2019, SMART Health IT.
 
 import os
@@ -9,8 +9,11 @@ import pytest
 import io
 import unittest
 import json
+import six
 from fhir.resources import implementationguide
 from fhir.resources.fhirdate import FHIRDate
+
+from .fixtures import force_bytes
 
 
 @pytest.mark.usefixtures("base_settings")
@@ -33,44 +36,44 @@ class ImplementationGuideTests(unittest.TestCase):
         self.implImplementationGuide1(inst2)
     
     def implImplementationGuide1(self, inst):
-        self.assertEqual(inst.binary[0], "http://h7.org/fhir/fhir.css")
-        self.assertEqual(inst.contact[0].name, "ONC")
-        self.assertEqual(inst.contact[0].telecom[0].system, "url")
-        self.assertEqual(inst.contact[0].telecom[0].value, "http://www.healthit.gov")
-        self.assertEqual(inst.contact[1].name, "HL7")
-        self.assertEqual(inst.contact[1].telecom[0].system, "url")
-        self.assertEqual(inst.contact[1].telecom[0].value, "http://hl7.org/fhir")
-        self.assertEqual(inst.copyright, "Published by ONC under the standard FHIR license (CC0)")
+        self.assertEqual(force_bytes(inst.binary[0]), force_bytes("http://h7.org/fhir/fhir.css"))
+        self.assertEqual(force_bytes(inst.contact[0].name), force_bytes("ONC"))
+        self.assertEqual(force_bytes(inst.contact[0].telecom[0].system), force_bytes("url"))
+        self.assertEqual(force_bytes(inst.contact[0].telecom[0].value), force_bytes("http://www.healthit.gov"))
+        self.assertEqual(force_bytes(inst.contact[1].name), force_bytes("HL7"))
+        self.assertEqual(force_bytes(inst.contact[1].telecom[0].system), force_bytes("url"))
+        self.assertEqual(force_bytes(inst.contact[1].telecom[0].value), force_bytes("http://hl7.org/fhir"))
+        self.assertEqual(force_bytes(inst.copyright), force_bytes("Published by ONC under the standard FHIR license (CC0)"))
         self.assertEqual(inst.date.date, FHIRDate("2015-01-01").date)
         self.assertEqual(inst.date.as_json(), "2015-01-01")
-        self.assertEqual(inst.dependency[0].type, "reference")
-        self.assertEqual(inst.dependency[0].uri, "http://hl7.org/fhir/ImplementationGuide/uscore")
+        self.assertEqual(force_bytes(inst.dependency[0].type), force_bytes("reference"))
+        self.assertEqual(force_bytes(inst.dependency[0].uri), force_bytes("http://hl7.org/fhir/ImplementationGuide/uscore"))
         self.assertFalse(inst.experimental)
-        self.assertEqual(inst.fhirVersion, "1.0.0")
-        self.assertEqual(inst.global_fhir[0].type, "Patient")
-        self.assertEqual(inst.id, "example")
-        self.assertEqual(inst.jurisdiction[0].coding[0].code, "US")
-        self.assertEqual(inst.jurisdiction[0].coding[0].system, "urn:iso:std:iso:3166")
-        self.assertEqual(inst.name, "Data Access Framework (DAF)")
-        self.assertEqual(inst.package[0].description, "Base package (not broken up into multiple packages)")
-        self.assertEqual(inst.package[0].name, "test")
-        self.assertEqual(inst.package[0].resource[0].acronym, "daf-tst")
-        self.assertEqual(inst.package[0].resource[0].description, "A test example to show how a package works")
+        self.assertEqual(force_bytes(inst.fhirVersion), force_bytes("1.0.0"))
+        self.assertEqual(force_bytes(inst.global_fhir[0].type), force_bytes("Patient"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
+        self.assertEqual(force_bytes(inst.jurisdiction[0].coding[0].code), force_bytes("US"))
+        self.assertEqual(force_bytes(inst.jurisdiction[0].coding[0].system), force_bytes("urn:iso:std:iso:3166"))
+        self.assertEqual(force_bytes(inst.name), force_bytes("Data Access Framework (DAF)"))
+        self.assertEqual(force_bytes(inst.package[0].description), force_bytes("Base package (not broken up into multiple packages)"))
+        self.assertEqual(force_bytes(inst.package[0].name), force_bytes("test"))
+        self.assertEqual(force_bytes(inst.package[0].resource[0].acronym), force_bytes("daf-tst"))
+        self.assertEqual(force_bytes(inst.package[0].resource[0].description), force_bytes("A test example to show how a package works"))
         self.assertTrue(inst.package[0].resource[0].example)
-        self.assertEqual(inst.package[0].resource[0].name, "Test Example")
-        self.assertEqual(inst.package[0].resource[0].sourceUri, "test.html")
-        self.assertEqual(inst.page.kind, "page")
-        self.assertEqual(inst.page.page[0].format, "text/html")
-        self.assertEqual(inst.page.page[0].kind, "list")
-        self.assertEqual(inst.page.page[0].package[0], "test")
-        self.assertEqual(inst.page.page[0].source, "list.html")
-        self.assertEqual(inst.page.page[0].title, "Value Set Page")
-        self.assertEqual(inst.page.page[0].type[0], "ValueSet")
-        self.assertEqual(inst.page.source, "patient-example.html")
-        self.assertEqual(inst.page.title, "Example Patient Page")
-        self.assertEqual(inst.publisher, "ONC / HL7 Joint project")
-        self.assertEqual(inst.status, "draft")
-        self.assertEqual(inst.text.status, "generated")
-        self.assertEqual(inst.url, "http://hl7.org/fhir/us/daf")
-        self.assertEqual(inst.version, "0")
+        self.assertEqual(force_bytes(inst.package[0].resource[0].name), force_bytes("Test Example"))
+        self.assertEqual(force_bytes(inst.package[0].resource[0].sourceUri), force_bytes("test.html"))
+        self.assertEqual(force_bytes(inst.page.kind), force_bytes("page"))
+        self.assertEqual(force_bytes(inst.page.page[0].format), force_bytes("text/html"))
+        self.assertEqual(force_bytes(inst.page.page[0].kind), force_bytes("list"))
+        self.assertEqual(force_bytes(inst.page.page[0].package[0]), force_bytes("test"))
+        self.assertEqual(force_bytes(inst.page.page[0].source), force_bytes("list.html"))
+        self.assertEqual(force_bytes(inst.page.page[0].title), force_bytes("Value Set Page"))
+        self.assertEqual(force_bytes(inst.page.page[0].type[0]), force_bytes("ValueSet"))
+        self.assertEqual(force_bytes(inst.page.source), force_bytes("patient-example.html"))
+        self.assertEqual(force_bytes(inst.page.title), force_bytes("Example Patient Page"))
+        self.assertEqual(force_bytes(inst.publisher), force_bytes("ONC / HL7 Joint project"))
+        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+        self.assertEqual(force_bytes(inst.url), force_bytes("http://hl7.org/fhir/us/daf"))
+        self.assertEqual(force_bytes(inst.version), force_bytes("0"))
 

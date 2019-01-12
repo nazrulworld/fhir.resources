@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-11.
+#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
 #  2019, SMART Health IT.
 
 import os
@@ -9,8 +9,11 @@ import pytest
 import io
 import unittest
 import json
+import six
 from fhir.resources import parameters
 from fhir.resources.fhirdate import FHIRDate
+
+from .fixtures import force_bytes
 
 
 @pytest.mark.usefixtures("base_settings")
@@ -33,9 +36,9 @@ class ParametersTests(unittest.TestCase):
         self.implParameters1(inst2)
     
     def implParameters1(self, inst):
-        self.assertEqual(inst.id, "example")
-        self.assertEqual(inst.parameter[0].name, "start")
+        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
+        self.assertEqual(force_bytes(inst.parameter[0].name), force_bytes("start"))
         self.assertEqual(inst.parameter[0].valueDate.date, FHIRDate("2010-01-01").date)
         self.assertEqual(inst.parameter[0].valueDate.as_json(), "2010-01-01")
-        self.assertEqual(inst.parameter[1].name, "end")
+        self.assertEqual(force_bytes(inst.parameter[1].name), force_bytes("end"))
 

@@ -1,16 +1,32 @@
 import hashlib
 import io
 import os
-import pytest
-import tempfile
 import shutil
 import sys
+import tempfile
 import zipfile
+
+import pytest
+import six
 
 ROOT_PATH = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 PARSER_PATH = os.path.join(ROOT_PATH, 'fhir-parser')
 SCRIPT_PATH = os.path.join(ROOT_PATH, 'script')
 CACHE_PATH = os.path.join(ROOT_PATH, '.cache')
+
+
+def force_bytes(string, encoding='utf8', errors='strict'):
+
+    if isinstance(string, bytes):
+        if encoding == 'utf8':
+            return string
+        else:
+            return string.decode('utf8', errors).encode(encoding, errors)
+
+    if not isinstance(string, six.string_types):
+        return string
+
+    return string.encode(encoding, errors)
 
 
 def download_and_store(url, path):

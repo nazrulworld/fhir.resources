@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-11.
+#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
 #  2019, SMART Health IT.
 
 import os
@@ -9,8 +9,11 @@ import pytest
 import io
 import unittest
 import json
+import six
 from fhir.resources import visionprescription
 from fhir.resources.fhirdate import FHIRDate
+
+from .fixtures import force_bytes
 
 
 @pytest.mark.usefixtures("base_settings")
@@ -38,43 +41,43 @@ class VisionPrescriptionTests(unittest.TestCase):
         self.assertEqual(inst.dispense[0].add, 1.75)
         self.assertEqual(inst.dispense[0].axis, 160)
         self.assertEqual(inst.dispense[0].backCurve, 8.7)
-        self.assertEqual(inst.dispense[0].brand, "OphthaGuard")
-        self.assertEqual(inst.dispense[0].color, "green")
+        self.assertEqual(force_bytes(inst.dispense[0].brand), force_bytes("OphthaGuard"))
+        self.assertEqual(force_bytes(inst.dispense[0].color), force_bytes("green"))
         self.assertEqual(inst.dispense[0].cylinder, -2.25)
         self.assertEqual(inst.dispense[0].diameter, 14.0)
-        self.assertEqual(inst.dispense[0].duration.code, "month")
-        self.assertEqual(inst.dispense[0].duration.system, "http://unitsofmeasure.org")
-        self.assertEqual(inst.dispense[0].duration.unit, "month")
+        self.assertEqual(force_bytes(inst.dispense[0].duration.code), force_bytes("month"))
+        self.assertEqual(force_bytes(inst.dispense[0].duration.system), force_bytes("http://unitsofmeasure.org"))
+        self.assertEqual(force_bytes(inst.dispense[0].duration.unit), force_bytes("month"))
         self.assertEqual(inst.dispense[0].duration.value, 1)
-        self.assertEqual(inst.dispense[0].eye, "right")
-        self.assertEqual(inst.dispense[0].note[0].text, "Shade treatment for extreme light sensitivity")
+        self.assertEqual(force_bytes(inst.dispense[0].eye), force_bytes("right"))
+        self.assertEqual(force_bytes(inst.dispense[0].note[0].text), force_bytes("Shade treatment for extreme light sensitivity"))
         self.assertEqual(inst.dispense[0].power, -2.75)
-        self.assertEqual(inst.dispense[0].product.coding[0].code, "contact")
-        self.assertEqual(inst.dispense[0].product.coding[0].system, "http://hl7.org/fhir/ex-visionprescriptionproduct")
+        self.assertEqual(force_bytes(inst.dispense[0].product.coding[0].code), force_bytes("contact"))
+        self.assertEqual(force_bytes(inst.dispense[0].product.coding[0].system), force_bytes("http://hl7.org/fhir/ex-visionprescriptionproduct"))
         self.assertEqual(inst.dispense[1].add, 1.75)
         self.assertEqual(inst.dispense[1].axis, 160)
         self.assertEqual(inst.dispense[1].backCurve, 8.7)
-        self.assertEqual(inst.dispense[1].brand, "OphthaGuard")
-        self.assertEqual(inst.dispense[1].color, "green")
+        self.assertEqual(force_bytes(inst.dispense[1].brand), force_bytes("OphthaGuard"))
+        self.assertEqual(force_bytes(inst.dispense[1].color), force_bytes("green"))
         self.assertEqual(inst.dispense[1].cylinder, -3.5)
         self.assertEqual(inst.dispense[1].diameter, 14.0)
-        self.assertEqual(inst.dispense[1].duration.code, "month")
-        self.assertEqual(inst.dispense[1].duration.system, "http://unitsofmeasure.org")
-        self.assertEqual(inst.dispense[1].duration.unit, "month")
+        self.assertEqual(force_bytes(inst.dispense[1].duration.code), force_bytes("month"))
+        self.assertEqual(force_bytes(inst.dispense[1].duration.system), force_bytes("http://unitsofmeasure.org"))
+        self.assertEqual(force_bytes(inst.dispense[1].duration.unit), force_bytes("month"))
         self.assertEqual(inst.dispense[1].duration.value, 1)
-        self.assertEqual(inst.dispense[1].eye, "left")
-        self.assertEqual(inst.dispense[1].note[0].text, "Shade treatment for extreme light sensitivity")
+        self.assertEqual(force_bytes(inst.dispense[1].eye), force_bytes("left"))
+        self.assertEqual(force_bytes(inst.dispense[1].note[0].text), force_bytes("Shade treatment for extreme light sensitivity"))
         self.assertEqual(inst.dispense[1].power, -2.75)
-        self.assertEqual(inst.dispense[1].product.coding[0].code, "contact")
-        self.assertEqual(inst.dispense[1].product.coding[0].system, "http://hl7.org/fhir/ex-visionprescriptionproduct")
-        self.assertEqual(inst.id, "33124")
-        self.assertEqual(inst.identifier[0].system, "http://www.happysight.com/prescription")
-        self.assertEqual(inst.identifier[0].value, "15014")
-        self.assertEqual(inst.reasonCodeableConcept.coding[0].code, "myopia")
-        self.assertEqual(inst.reasonCodeableConcept.coding[0].system, "http://samplevisionreasoncodes.com")
-        self.assertEqual(inst.status, "active")
-        self.assertEqual(inst.text.div, "<div xmlns=\"http://www.w3.org/1999/xhtml\">Sample Contract Lens prescription</div>")
-        self.assertEqual(inst.text.status, "generated")
+        self.assertEqual(force_bytes(inst.dispense[1].product.coding[0].code), force_bytes("contact"))
+        self.assertEqual(force_bytes(inst.dispense[1].product.coding[0].system), force_bytes("http://hl7.org/fhir/ex-visionprescriptionproduct"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("33124"))
+        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://www.happysight.com/prescription"))
+        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("15014"))
+        self.assertEqual(force_bytes(inst.reasonCodeableConcept.coding[0].code), force_bytes("myopia"))
+        self.assertEqual(force_bytes(inst.reasonCodeableConcept.coding[0].system), force_bytes("http://samplevisionreasoncodes.com"))
+        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
+        self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">Sample Contract Lens prescription</div>"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
     
     def testVisionPrescription2(self):
         inst = self.instantiate_from("visionprescription-example.json")
@@ -90,24 +93,24 @@ class VisionPrescriptionTests(unittest.TestCase):
         self.assertEqual(inst.dateWritten.date, FHIRDate("2014-06-15").date)
         self.assertEqual(inst.dateWritten.as_json(), "2014-06-15")
         self.assertEqual(inst.dispense[0].add, 2.0)
-        self.assertEqual(inst.dispense[0].base, "down")
-        self.assertEqual(inst.dispense[0].eye, "right")
+        self.assertEqual(force_bytes(inst.dispense[0].base), force_bytes("down"))
+        self.assertEqual(force_bytes(inst.dispense[0].eye), force_bytes("right"))
         self.assertEqual(inst.dispense[0].prism, 0.5)
-        self.assertEqual(inst.dispense[0].product.coding[0].code, "lens")
-        self.assertEqual(inst.dispense[0].product.coding[0].system, "http://hl7.org/fhir/ex-visionprescriptionproduct")
+        self.assertEqual(force_bytes(inst.dispense[0].product.coding[0].code), force_bytes("lens"))
+        self.assertEqual(force_bytes(inst.dispense[0].product.coding[0].system), force_bytes("http://hl7.org/fhir/ex-visionprescriptionproduct"))
         self.assertEqual(inst.dispense[0].sphere, -2.0)
         self.assertEqual(inst.dispense[1].add, 2.0)
         self.assertEqual(inst.dispense[1].axis, 180)
-        self.assertEqual(inst.dispense[1].base, "up")
+        self.assertEqual(force_bytes(inst.dispense[1].base), force_bytes("up"))
         self.assertEqual(inst.dispense[1].cylinder, -0.5)
-        self.assertEqual(inst.dispense[1].eye, "left")
+        self.assertEqual(force_bytes(inst.dispense[1].eye), force_bytes("left"))
         self.assertEqual(inst.dispense[1].prism, 0.5)
-        self.assertEqual(inst.dispense[1].product.coding[0].code, "lens")
-        self.assertEqual(inst.dispense[1].product.coding[0].system, "http://hl7.org/fhir/ex-visionprescriptionproduct")
+        self.assertEqual(force_bytes(inst.dispense[1].product.coding[0].code), force_bytes("lens"))
+        self.assertEqual(force_bytes(inst.dispense[1].product.coding[0].system), force_bytes("http://hl7.org/fhir/ex-visionprescriptionproduct"))
         self.assertEqual(inst.dispense[1].sphere, -1.0)
-        self.assertEqual(inst.id, "33123")
-        self.assertEqual(inst.identifier[0].system, "http://www.happysight.com/prescription")
-        self.assertEqual(inst.identifier[0].value, "15013")
-        self.assertEqual(inst.status, "active")
-        self.assertEqual(inst.text.status, "generated")
+        self.assertEqual(force_bytes(inst.id), force_bytes("33123"))
+        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://www.happysight.com/prescription"))
+        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("15013"))
+        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 

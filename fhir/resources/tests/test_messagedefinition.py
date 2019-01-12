@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-11.
+#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
 #  2019, SMART Health IT.
 
 import os
@@ -9,8 +9,11 @@ import pytest
 import io
 import unittest
 import json
+import six
 from fhir.resources import messagedefinition
 from fhir.resources.fhirdate import FHIRDate
+
+from .fixtures import force_bytes
 
 
 @pytest.mark.usefixtures("base_settings")
@@ -33,22 +36,22 @@ class MessageDefinitionTests(unittest.TestCase):
         self.implMessageDefinition1(inst2)
     
     def implMessageDefinition1(self, inst):
-        self.assertEqual(inst.category, "Notification")
-        self.assertEqual(inst.contact[0].telecom[0].system, "url")
-        self.assertEqual(inst.contact[0].telecom[0].value, "http://hl7.org")
+        self.assertEqual(force_bytes(inst.category), force_bytes("Notification"))
+        self.assertEqual(force_bytes(inst.contact[0].telecom[0].system), force_bytes("url"))
+        self.assertEqual(force_bytes(inst.contact[0].telecom[0].value), force_bytes("http://hl7.org"))
         self.assertEqual(inst.date.date, FHIRDate("2016-11-09").date)
         self.assertEqual(inst.date.as_json(), "2016-11-09")
-        self.assertEqual(inst.event.code, "communication-request")
-        self.assertEqual(inst.event.system, "http://hl7.org/fhir/message-events")
+        self.assertEqual(force_bytes(inst.event.code), force_bytes("communication-request"))
+        self.assertEqual(force_bytes(inst.event.system), force_bytes("http://hl7.org/fhir/message-events"))
         self.assertTrue(inst.experimental)
-        self.assertEqual(inst.id, "example")
-        self.assertEqual(inst.name, "EXAMPLE")
-        self.assertEqual(inst.publisher, "Health Level Seven, Int'l")
-        self.assertEqual(inst.purpose, "Defines a base example for other MessageDefintion instances.")
+        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
+        self.assertEqual(force_bytes(inst.name), force_bytes("EXAMPLE"))
+        self.assertEqual(force_bytes(inst.publisher), force_bytes("Health Level Seven, Int'l"))
+        self.assertEqual(force_bytes(inst.purpose), force_bytes("Defines a base example for other MessageDefintion instances."))
         self.assertFalse(inst.responseRequired)
-        self.assertEqual(inst.status, "draft")
-        self.assertEqual(inst.text.div, "<div xmlns=\"http://www.w3.org/1999/xhtml\">Message definition base example</div>")
-        self.assertEqual(inst.text.status, "generated")
-        self.assertEqual(inst.title, "Message definition base example")
-        self.assertEqual(inst.url, "http://hl7.org/fhir/MessageDefinition/example")
+        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
+        self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">Message definition base example</div>"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+        self.assertEqual(force_bytes(inst.title), force_bytes("Message definition base example"))
+        self.assertEqual(force_bytes(inst.url), force_bytes("http://hl7.org/fhir/MessageDefinition/example"))
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-11.
+#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
 #  2019, SMART Health IT.
 
 import os
@@ -9,8 +9,11 @@ import pytest
 import io
 import unittest
 import json
+import six
 from fhir.resources import communicationrequest
 from fhir.resources.fhirdate import FHIRDate
+
+from .fixtures import force_bytes
 
 
 @pytest.mark.usefixtures("base_settings")
@@ -35,26 +38,26 @@ class CommunicationRequestTests(unittest.TestCase):
     def implCommunicationRequest1(self, inst):
         self.assertEqual(inst.authoredOn.date, FHIRDate("2016-06-10T11:01:10-08:00").date)
         self.assertEqual(inst.authoredOn.as_json(), "2016-06-10T11:01:10-08:00")
-        self.assertEqual(inst.category[0].coding[0].code, "SolicitedAttachmentRequest")
-        self.assertEqual(inst.category[0].coding[0].system, "http://acme.org/messagetypes")
-        self.assertEqual(inst.contained[0].id, "provider")
-        self.assertEqual(inst.contained[1].id, "payor")
-        self.assertEqual(inst.contained[2].id, "requester")
-        self.assertEqual(inst.groupIdentifier.value, "12345")
-        self.assertEqual(inst.id, "fm-solicit")
-        self.assertEqual(inst.identifier[0].system, "http://www.jurisdiction.com/insurer/123456")
-        self.assertEqual(inst.identifier[0].value, "ABC123")
-        self.assertEqual(inst.medium[0].coding[0].code, "WRITTEN")
-        self.assertEqual(inst.medium[0].coding[0].display, "written")
-        self.assertEqual(inst.medium[0].coding[0].system, "http://hl7.org/fhir/v3/ParticipationMode")
-        self.assertEqual(inst.medium[0].text, "written")
+        self.assertEqual(force_bytes(inst.category[0].coding[0].code), force_bytes("SolicitedAttachmentRequest"))
+        self.assertEqual(force_bytes(inst.category[0].coding[0].system), force_bytes("http://acme.org/messagetypes"))
+        self.assertEqual(force_bytes(inst.contained[0].id), force_bytes("provider"))
+        self.assertEqual(force_bytes(inst.contained[1].id), force_bytes("payor"))
+        self.assertEqual(force_bytes(inst.contained[2].id), force_bytes("requester"))
+        self.assertEqual(force_bytes(inst.groupIdentifier.value), force_bytes("12345"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("fm-solicit"))
+        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://www.jurisdiction.com/insurer/123456"))
+        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("ABC123"))
+        self.assertEqual(force_bytes(inst.medium[0].coding[0].code), force_bytes("WRITTEN"))
+        self.assertEqual(force_bytes(inst.medium[0].coding[0].display), force_bytes("written"))
+        self.assertEqual(force_bytes(inst.medium[0].coding[0].system), force_bytes("http://hl7.org/fhir/v3/ParticipationMode"))
+        self.assertEqual(force_bytes(inst.medium[0].text), force_bytes("written"))
         self.assertEqual(inst.occurrenceDateTime.date, FHIRDate("2016-06-10T11:01:10-08:00").date)
         self.assertEqual(inst.occurrenceDateTime.as_json(), "2016-06-10T11:01:10-08:00")
-        self.assertEqual(inst.payload[0].contentString, "Please provide the accident report and any associated pictures to support your Claim# DEF5647.")
-        self.assertEqual(inst.priority, "routine")
-        self.assertEqual(inst.status, "active")
-        self.assertEqual(inst.text.div, "<div xmlns=\"http://www.w3.org/1999/xhtml\">Request for Accident Report</div>")
-        self.assertEqual(inst.text.status, "generated")
+        self.assertEqual(force_bytes(inst.payload[0].contentString), force_bytes("Please provide the accident report and any associated pictures to support your Claim# DEF5647."))
+        self.assertEqual(force_bytes(inst.priority), force_bytes("routine"))
+        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
+        self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">Request for Accident Report</div>"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
     
     def testCommunicationRequest2(self):
         inst = self.instantiate_from("communicationrequest-example.json")
@@ -67,8 +70,8 @@ class CommunicationRequestTests(unittest.TestCase):
         self.implCommunicationRequest2(inst2)
     
     def implCommunicationRequest2(self, inst):
-        self.assertEqual(inst.id, "example")
-        self.assertEqual(inst.status, "active")
-        self.assertEqual(inst.text.div, "<div xmlns=\"http://www.w3.org/1999/xhtml\">To be filled out at a later time</div>")
-        self.assertEqual(inst.text.status, "generated")
+        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
+        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
+        self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">To be filled out at a later time</div>"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 

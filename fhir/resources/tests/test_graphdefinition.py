@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-11.
+#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
 #  2019, SMART Health IT.
 
 import os
@@ -9,8 +9,11 @@ import pytest
 import io
 import unittest
 import json
+import six
 from fhir.resources import graphdefinition
 from fhir.resources.fhirdate import FHIRDate
+
+from .fixtures import force_bytes
 
 
 @pytest.mark.usefixtures("base_settings")
@@ -33,26 +36,26 @@ class GraphDefinitionTests(unittest.TestCase):
         self.implGraphDefinition1(inst2)
     
     def implGraphDefinition1(self, inst):
-        self.assertEqual(inst.contact[0].telecom[0].system, "url")
-        self.assertEqual(inst.contact[0].telecom[0].value, "http://hl7.org/fhir")
+        self.assertEqual(force_bytes(inst.contact[0].telecom[0].system), force_bytes("url"))
+        self.assertEqual(force_bytes(inst.contact[0].telecom[0].value), force_bytes("http://hl7.org/fhir"))
         self.assertEqual(inst.date.date, FHIRDate("2015-08-04").date)
         self.assertEqual(inst.date.as_json(), "2015-08-04")
-        self.assertEqual(inst.description, "Specify to include list references when generating a document using the $document operation")
-        self.assertEqual(inst.id, "example")
-        self.assertEqual(inst.link[0].description, "Link to List")
-        self.assertEqual(inst.link[0].path, "Composition.section.entry")
-        self.assertEqual(inst.link[0].target[0].compartment[0].code, "Patient")
-        self.assertEqual(inst.link[0].target[0].compartment[0].rule, "identical")
-        self.assertEqual(inst.link[0].target[0].link[0].description, "Include any list entries")
-        self.assertEqual(inst.link[0].target[0].link[0].path, "List.entry.item")
-        self.assertEqual(inst.link[0].target[0].link[0].target[0].compartment[0].code, "Patient")
-        self.assertEqual(inst.link[0].target[0].link[0].target[0].compartment[0].rule, "identical")
-        self.assertEqual(inst.link[0].target[0].link[0].target[0].type, "Resource")
-        self.assertEqual(inst.link[0].target[0].type, "List")
-        self.assertEqual(inst.name, "Document Generation Template")
-        self.assertEqual(inst.publisher, "FHIR Project")
-        self.assertEqual(inst.start, "Composition")
-        self.assertEqual(inst.status, "draft")
-        self.assertEqual(inst.text.status, "generated")
-        self.assertEqual(inst.url, "http://h7.org/fhir/GraphDefinition/example")
+        self.assertEqual(force_bytes(inst.description), force_bytes("Specify to include list references when generating a document using the $document operation"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
+        self.assertEqual(force_bytes(inst.link[0].description), force_bytes("Link to List"))
+        self.assertEqual(force_bytes(inst.link[0].path), force_bytes("Composition.section.entry"))
+        self.assertEqual(force_bytes(inst.link[0].target[0].compartment[0].code), force_bytes("Patient"))
+        self.assertEqual(force_bytes(inst.link[0].target[0].compartment[0].rule), force_bytes("identical"))
+        self.assertEqual(force_bytes(inst.link[0].target[0].link[0].description), force_bytes("Include any list entries"))
+        self.assertEqual(force_bytes(inst.link[0].target[0].link[0].path), force_bytes("List.entry.item"))
+        self.assertEqual(force_bytes(inst.link[0].target[0].link[0].target[0].compartment[0].code), force_bytes("Patient"))
+        self.assertEqual(force_bytes(inst.link[0].target[0].link[0].target[0].compartment[0].rule), force_bytes("identical"))
+        self.assertEqual(force_bytes(inst.link[0].target[0].link[0].target[0].type), force_bytes("Resource"))
+        self.assertEqual(force_bytes(inst.link[0].target[0].type), force_bytes("List"))
+        self.assertEqual(force_bytes(inst.name), force_bytes("Document Generation Template"))
+        self.assertEqual(force_bytes(inst.publisher), force_bytes("FHIR Project"))
+        self.assertEqual(force_bytes(inst.start), force_bytes("Composition"))
+        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+        self.assertEqual(force_bytes(inst.url), force_bytes("http://h7.org/fhir/GraphDefinition/example"))
 

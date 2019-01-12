@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-11.
+#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
 #  2019, SMART Health IT.
 
 import os
@@ -9,8 +9,11 @@ import pytest
 import io
 import unittest
 import json
+import six
 from fhir.resources import endpoint
 from fhir.resources.fhirdate import FHIRDate
+
+from .fixtures import force_bytes
 
 
 @pytest.mark.usefixtures("base_settings")
@@ -33,14 +36,14 @@ class EndpointTests(unittest.TestCase):
         self.implEndpoint1(inst2)
     
     def implEndpoint1(self, inst):
-        self.assertEqual(inst.address, "https://pacs.hospital.org/IHEInvokeImageDisplay")
-        self.assertEqual(inst.connectionType.code, "ihe-iid")
-        self.assertEqual(inst.connectionType.system, "http://hl7.org/fhir/endpoint-connection-type")
-        self.assertEqual(inst.id, "example-iid")
-        self.assertEqual(inst.name, "PACS Hospital Invoke Image Display endpoint")
-        self.assertEqual(inst.payloadType[0].text, "DICOM IID")
-        self.assertEqual(inst.status, "active")
-        self.assertEqual(inst.text.status, "generated")
+        self.assertEqual(force_bytes(inst.address), force_bytes("https://pacs.hospital.org/IHEInvokeImageDisplay"))
+        self.assertEqual(force_bytes(inst.connectionType.code), force_bytes("ihe-iid"))
+        self.assertEqual(force_bytes(inst.connectionType.system), force_bytes("http://hl7.org/fhir/endpoint-connection-type"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("example-iid"))
+        self.assertEqual(force_bytes(inst.name), force_bytes("PACS Hospital Invoke Image Display endpoint"))
+        self.assertEqual(force_bytes(inst.payloadType[0].text), force_bytes("DICOM IID"))
+        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
     
     def testEndpoint2(self):
         inst = self.instantiate_from("endpoint-example-wadors.json")
@@ -53,15 +56,15 @@ class EndpointTests(unittest.TestCase):
         self.implEndpoint2(inst2)
     
     def implEndpoint2(self, inst):
-        self.assertEqual(inst.address, "https://pacs.hospital.org/wado-rs")
-        self.assertEqual(inst.connectionType.code, "dicom-wado-rs")
-        self.assertEqual(inst.connectionType.system, "http://hl7.org/fhir/endpoint-connection-type")
-        self.assertEqual(inst.id, "example-wadors")
-        self.assertEqual(inst.name, "PACS Hospital DICOM WADO-RS endpoint")
-        self.assertEqual(inst.payloadMimeType[0], "application/dicom")
-        self.assertEqual(inst.payloadType[0].text, "DICOM WADO-RS")
-        self.assertEqual(inst.status, "active")
-        self.assertEqual(inst.text.status, "generated")
+        self.assertEqual(force_bytes(inst.address), force_bytes("https://pacs.hospital.org/wado-rs"))
+        self.assertEqual(force_bytes(inst.connectionType.code), force_bytes("dicom-wado-rs"))
+        self.assertEqual(force_bytes(inst.connectionType.system), force_bytes("http://hl7.org/fhir/endpoint-connection-type"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("example-wadors"))
+        self.assertEqual(force_bytes(inst.name), force_bytes("PACS Hospital DICOM WADO-RS endpoint"))
+        self.assertEqual(force_bytes(inst.payloadMimeType[0]), force_bytes("application/dicom"))
+        self.assertEqual(force_bytes(inst.payloadType[0].text), force_bytes("DICOM WADO-RS"))
+        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
     
     def testEndpoint3(self):
         inst = self.instantiate_from("endpoint-example.json")
@@ -74,22 +77,22 @@ class EndpointTests(unittest.TestCase):
         self.implEndpoint3(inst2)
     
     def implEndpoint3(self, inst):
-        self.assertEqual(inst.address, "http://fhir3.healthintersections.com.au/open/CarePlan")
-        self.assertEqual(inst.connectionType.code, "hl7-fhir-rest")
-        self.assertEqual(inst.connectionType.system, "http://hl7.org/fhir/endpoint-connection-type")
-        self.assertEqual(inst.contact[0].system, "email")
-        self.assertEqual(inst.contact[0].use, "work")
-        self.assertEqual(inst.contact[0].value, "endpointmanager@example.org")
-        self.assertEqual(inst.header[0], "bearer-code BASGS534s4")
-        self.assertEqual(inst.id, "example")
-        self.assertEqual(inst.identifier[0].system, "http://example.org/enpoint-identifier")
-        self.assertEqual(inst.identifier[0].value, "epcp12")
-        self.assertEqual(inst.name, "Health Intersections CarePlan Hub")
-        self.assertEqual(inst.payloadMimeType[0], "application/fhir+xml")
-        self.assertEqual(inst.payloadType[0].coding[0].code, "CarePlan")
-        self.assertEqual(inst.payloadType[0].coding[0].system, "http://hl7.org/fhir/resource-types")
+        self.assertEqual(force_bytes(inst.address), force_bytes("http://fhir3.healthintersections.com.au/open/CarePlan"))
+        self.assertEqual(force_bytes(inst.connectionType.code), force_bytes("hl7-fhir-rest"))
+        self.assertEqual(force_bytes(inst.connectionType.system), force_bytes("http://hl7.org/fhir/endpoint-connection-type"))
+        self.assertEqual(force_bytes(inst.contact[0].system), force_bytes("email"))
+        self.assertEqual(force_bytes(inst.contact[0].use), force_bytes("work"))
+        self.assertEqual(force_bytes(inst.contact[0].value), force_bytes("endpointmanager@example.org"))
+        self.assertEqual(force_bytes(inst.header[0]), force_bytes("bearer-code BASGS534s4"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
+        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://example.org/enpoint-identifier"))
+        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("epcp12"))
+        self.assertEqual(force_bytes(inst.name), force_bytes("Health Intersections CarePlan Hub"))
+        self.assertEqual(force_bytes(inst.payloadMimeType[0]), force_bytes("application/fhir+xml"))
+        self.assertEqual(force_bytes(inst.payloadType[0].coding[0].code), force_bytes("CarePlan"))
+        self.assertEqual(force_bytes(inst.payloadType[0].coding[0].system), force_bytes("http://hl7.org/fhir/resource-types"))
         self.assertEqual(inst.period.start.date, FHIRDate("2014-09-01").date)
         self.assertEqual(inst.period.start.as_json(), "2014-09-01")
-        self.assertEqual(inst.status, "active")
-        self.assertEqual(inst.text.status, "generated")
+        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 

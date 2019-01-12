@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-11.
+#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
 #  2019, SMART Health IT.
 
 import os
@@ -9,8 +9,11 @@ import pytest
 import io
 import unittest
 import json
+import six
 from fhir.resources import immunizationrecommendation
 from fhir.resources.fhirdate import FHIRDate
+
+from .fixtures import force_bytes
 
 
 @pytest.mark.usefixtures("base_settings")
@@ -33,35 +36,35 @@ class ImmunizationRecommendationTests(unittest.TestCase):
         self.implImmunizationRecommendation1(inst2)
     
     def implImmunizationRecommendation1(self, inst):
-        self.assertEqual(inst.id, "example")
-        self.assertEqual(inst.identifier[0].system, "urn:ietf:rfc:3986")
-        self.assertEqual(inst.identifier[0].value, "urn:oid:1.3.6.1.4.1.21367.2005.3.7.1235")
+        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
+        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("urn:ietf:rfc:3986"))
+        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("urn:oid:1.3.6.1.4.1.21367.2005.3.7.1235"))
         self.assertEqual(inst.recommendation[0].date.date, FHIRDate("2015-02-09T11:04:15.817-05:00").date)
         self.assertEqual(inst.recommendation[0].date.as_json(), "2015-02-09T11:04:15.817-05:00")
-        self.assertEqual(inst.recommendation[0].dateCriterion[0].code.coding[0].code, "earliest")
-        self.assertEqual(inst.recommendation[0].dateCriterion[0].code.coding[0].display, "Earliest Date")
-        self.assertEqual(inst.recommendation[0].dateCriterion[0].code.coding[0].system, "http://hl7.org/fhir/immunization-recommendation-date-criterion")
+        self.assertEqual(force_bytes(inst.recommendation[0].dateCriterion[0].code.coding[0].code), force_bytes("earliest"))
+        self.assertEqual(force_bytes(inst.recommendation[0].dateCriterion[0].code.coding[0].display), force_bytes("Earliest Date"))
+        self.assertEqual(force_bytes(inst.recommendation[0].dateCriterion[0].code.coding[0].system), force_bytes("http://hl7.org/fhir/immunization-recommendation-date-criterion"))
         self.assertEqual(inst.recommendation[0].dateCriterion[0].value.date, FHIRDate("2015-12-01T00:00:00-05:00").date)
         self.assertEqual(inst.recommendation[0].dateCriterion[0].value.as_json(), "2015-12-01T00:00:00-05:00")
-        self.assertEqual(inst.recommendation[0].dateCriterion[1].code.coding[0].code, "recommended")
-        self.assertEqual(inst.recommendation[0].dateCriterion[1].code.coding[0].display, "Recommended")
-        self.assertEqual(inst.recommendation[0].dateCriterion[1].code.coding[0].system, "http://hl7.org/fhir/immunization-recommendation-date-criterion")
+        self.assertEqual(force_bytes(inst.recommendation[0].dateCriterion[1].code.coding[0].code), force_bytes("recommended"))
+        self.assertEqual(force_bytes(inst.recommendation[0].dateCriterion[1].code.coding[0].display), force_bytes("Recommended"))
+        self.assertEqual(force_bytes(inst.recommendation[0].dateCriterion[1].code.coding[0].system), force_bytes("http://hl7.org/fhir/immunization-recommendation-date-criterion"))
         self.assertEqual(inst.recommendation[0].dateCriterion[1].value.date, FHIRDate("2015-12-01T00:00:00-05:00").date)
         self.assertEqual(inst.recommendation[0].dateCriterion[1].value.as_json(), "2015-12-01T00:00:00-05:00")
-        self.assertEqual(inst.recommendation[0].dateCriterion[2].code.coding[0].code, "overdue")
-        self.assertEqual(inst.recommendation[0].dateCriterion[2].code.coding[0].display, "Past Due Date")
-        self.assertEqual(inst.recommendation[0].dateCriterion[2].code.coding[0].system, "http://hl7.org/fhir/immunization-recommendation-date-criterion")
+        self.assertEqual(force_bytes(inst.recommendation[0].dateCriterion[2].code.coding[0].code), force_bytes("overdue"))
+        self.assertEqual(force_bytes(inst.recommendation[0].dateCriterion[2].code.coding[0].display), force_bytes("Past Due Date"))
+        self.assertEqual(force_bytes(inst.recommendation[0].dateCriterion[2].code.coding[0].system), force_bytes("http://hl7.org/fhir/immunization-recommendation-date-criterion"))
         self.assertEqual(inst.recommendation[0].dateCriterion[2].value.date, FHIRDate("2016-12-28T00:00:00-05:00").date)
         self.assertEqual(inst.recommendation[0].dateCriterion[2].value.as_json(), "2016-12-28T00:00:00-05:00")
         self.assertEqual(inst.recommendation[0].doseNumber, 1)
-        self.assertEqual(inst.recommendation[0].forecastStatus.text, "Not Complete")
-        self.assertEqual(inst.recommendation[0].protocol.description, "First sequence in protocol")
+        self.assertEqual(force_bytes(inst.recommendation[0].forecastStatus.text), force_bytes("Not Complete"))
+        self.assertEqual(force_bytes(inst.recommendation[0].protocol.description), force_bytes("First sequence in protocol"))
         self.assertEqual(inst.recommendation[0].protocol.doseSequence, 1)
-        self.assertEqual(inst.recommendation[0].protocol.series, "Vaccination Series 1")
-        self.assertEqual(inst.recommendation[0].targetDisease.coding[0].code, "40468003")
-        self.assertEqual(inst.recommendation[0].targetDisease.coding[0].system, "http://snomed.info/sct")
-        self.assertEqual(inst.text.div, "<div xmlns=\"http://www.w3.org/1999/xhtml\">Authored by Joginder Madra</div>")
-        self.assertEqual(inst.text.status, "generated")
+        self.assertEqual(force_bytes(inst.recommendation[0].protocol.series), force_bytes("Vaccination Series 1"))
+        self.assertEqual(force_bytes(inst.recommendation[0].targetDisease.coding[0].code), force_bytes("40468003"))
+        self.assertEqual(force_bytes(inst.recommendation[0].targetDisease.coding[0].system), force_bytes("http://snomed.info/sct"))
+        self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">Authored by Joginder Madra</div>"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
     
     def testImmunizationRecommendation2(self):
         inst = self.instantiate_from("immunizationrecommendation-example.json")
@@ -74,34 +77,34 @@ class ImmunizationRecommendationTests(unittest.TestCase):
         self.implImmunizationRecommendation2(inst2)
     
     def implImmunizationRecommendation2(self, inst):
-        self.assertEqual(inst.id, "example")
-        self.assertEqual(inst.identifier[0].system, "urn:ietf:rfc:3986")
-        self.assertEqual(inst.identifier[0].value, "urn:oid:1.3.6.1.4.1.21367.2005.3.7.1235")
+        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
+        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("urn:ietf:rfc:3986"))
+        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("urn:oid:1.3.6.1.4.1.21367.2005.3.7.1235"))
         self.assertEqual(inst.recommendation[0].date.date, FHIRDate("2015-02-09T11:04:15.817-05:00").date)
         self.assertEqual(inst.recommendation[0].date.as_json(), "2015-02-09T11:04:15.817-05:00")
-        self.assertEqual(inst.recommendation[0].dateCriterion[0].code.coding[0].code, "earliest")
-        self.assertEqual(inst.recommendation[0].dateCriterion[0].code.coding[0].display, "Earliest Date")
-        self.assertEqual(inst.recommendation[0].dateCriterion[0].code.coding[0].system, "http://hl7.org/fhir/immunization-recommendation-date-criterion")
+        self.assertEqual(force_bytes(inst.recommendation[0].dateCriterion[0].code.coding[0].code), force_bytes("earliest"))
+        self.assertEqual(force_bytes(inst.recommendation[0].dateCriterion[0].code.coding[0].display), force_bytes("Earliest Date"))
+        self.assertEqual(force_bytes(inst.recommendation[0].dateCriterion[0].code.coding[0].system), force_bytes("http://hl7.org/fhir/immunization-recommendation-date-criterion"))
         self.assertEqual(inst.recommendation[0].dateCriterion[0].value.date, FHIRDate("2015-12-01T00:00:00-05:00").date)
         self.assertEqual(inst.recommendation[0].dateCriterion[0].value.as_json(), "2015-12-01T00:00:00-05:00")
-        self.assertEqual(inst.recommendation[0].dateCriterion[1].code.coding[0].code, "recommended")
-        self.assertEqual(inst.recommendation[0].dateCriterion[1].code.coding[0].display, "Recommended")
-        self.assertEqual(inst.recommendation[0].dateCriterion[1].code.coding[0].system, "http://hl7.org/fhir/immunization-recommendation-date-criterion")
+        self.assertEqual(force_bytes(inst.recommendation[0].dateCriterion[1].code.coding[0].code), force_bytes("recommended"))
+        self.assertEqual(force_bytes(inst.recommendation[0].dateCriterion[1].code.coding[0].display), force_bytes("Recommended"))
+        self.assertEqual(force_bytes(inst.recommendation[0].dateCriterion[1].code.coding[0].system), force_bytes("http://hl7.org/fhir/immunization-recommendation-date-criterion"))
         self.assertEqual(inst.recommendation[0].dateCriterion[1].value.date, FHIRDate("2015-12-01T00:00:00-05:00").date)
         self.assertEqual(inst.recommendation[0].dateCriterion[1].value.as_json(), "2015-12-01T00:00:00-05:00")
-        self.assertEqual(inst.recommendation[0].dateCriterion[2].code.coding[0].code, "overdue")
-        self.assertEqual(inst.recommendation[0].dateCriterion[2].code.coding[0].display, "Past Due Date")
-        self.assertEqual(inst.recommendation[0].dateCriterion[2].code.coding[0].system, "http://hl7.org/fhir/immunization-recommendation-date-criterion")
+        self.assertEqual(force_bytes(inst.recommendation[0].dateCriterion[2].code.coding[0].code), force_bytes("overdue"))
+        self.assertEqual(force_bytes(inst.recommendation[0].dateCriterion[2].code.coding[0].display), force_bytes("Past Due Date"))
+        self.assertEqual(force_bytes(inst.recommendation[0].dateCriterion[2].code.coding[0].system), force_bytes("http://hl7.org/fhir/immunization-recommendation-date-criterion"))
         self.assertEqual(inst.recommendation[0].dateCriterion[2].value.date, FHIRDate("2016-12-28T00:00:00-05:00").date)
         self.assertEqual(inst.recommendation[0].dateCriterion[2].value.as_json(), "2016-12-28T00:00:00-05:00")
         self.assertEqual(inst.recommendation[0].doseNumber, 1)
-        self.assertEqual(inst.recommendation[0].forecastStatus.text, "Not Complete")
-        self.assertEqual(inst.recommendation[0].protocol.description, "First sequence in protocol")
+        self.assertEqual(force_bytes(inst.recommendation[0].forecastStatus.text), force_bytes("Not Complete"))
+        self.assertEqual(force_bytes(inst.recommendation[0].protocol.description), force_bytes("First sequence in protocol"))
         self.assertEqual(inst.recommendation[0].protocol.doseSequence, 1)
-        self.assertEqual(inst.recommendation[0].protocol.series, "Vaccination Series 1")
-        self.assertEqual(inst.recommendation[0].vaccineCode.coding[0].code, "14745005")
-        self.assertEqual(inst.recommendation[0].vaccineCode.coding[0].display, "Hepatitis A vaccine")
-        self.assertEqual(inst.recommendation[0].vaccineCode.coding[0].system, "http://snomed.info/sct")
-        self.assertEqual(inst.text.div, "<div xmlns=\"http://www.w3.org/1999/xhtml\">Authored by Joginder Madra</div>")
-        self.assertEqual(inst.text.status, "generated")
+        self.assertEqual(force_bytes(inst.recommendation[0].protocol.series), force_bytes("Vaccination Series 1"))
+        self.assertEqual(force_bytes(inst.recommendation[0].vaccineCode.coding[0].code), force_bytes("14745005"))
+        self.assertEqual(force_bytes(inst.recommendation[0].vaccineCode.coding[0].display), force_bytes("Hepatitis A vaccine"))
+        self.assertEqual(force_bytes(inst.recommendation[0].vaccineCode.coding[0].system), force_bytes("http://snomed.info/sct"))
+        self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">Authored by Joginder Madra</div>"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 

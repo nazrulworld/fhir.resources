@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-11.
+#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
 #  2019, SMART Health IT.
 
 import os
@@ -9,8 +9,11 @@ import pytest
 import io
 import unittest
 import json
+import six
 from fhir.resources import person
 from fhir.resources.fhirdate import FHIRDate
+
+from .fixtures import force_bytes
 
 
 @pytest.mark.usefixtures("base_settings")
@@ -36,15 +39,15 @@ class PersonTests(unittest.TestCase):
         self.assertTrue(inst.active)
         self.assertEqual(inst.birthDate.date, FHIRDate("1963").date)
         self.assertEqual(inst.birthDate.as_json(), "1963")
-        self.assertEqual(inst.gender, "female")
-        self.assertEqual(inst.id, "f002")
-        self.assertEqual(inst.name[0].text, "Ariadne Bor-Jansma")
-        self.assertEqual(inst.name[0].use, "usual")
-        self.assertEqual(inst.photo.contentType, "image/jpeg")
-        self.assertEqual(inst.telecom[0].system, "phone")
-        self.assertEqual(inst.telecom[0].use, "home")
-        self.assertEqual(inst.telecom[0].value, "+31201234567")
-        self.assertEqual(inst.text.status, "generated")
+        self.assertEqual(force_bytes(inst.gender), force_bytes("female"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("f002"))
+        self.assertEqual(force_bytes(inst.name[0].text), force_bytes("Ariadne Bor-Jansma"))
+        self.assertEqual(force_bytes(inst.name[0].use), force_bytes("usual"))
+        self.assertEqual(force_bytes(inst.photo.contentType), force_bytes("image/jpeg"))
+        self.assertEqual(force_bytes(inst.telecom[0].system), force_bytes("phone"))
+        self.assertEqual(force_bytes(inst.telecom[0].use), force_bytes("home"))
+        self.assertEqual(force_bytes(inst.telecom[0].value), force_bytes("+31201234567"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
     
     def testPerson2(self):
         inst = self.instantiate_from("person-example.json")
@@ -58,34 +61,34 @@ class PersonTests(unittest.TestCase):
     
     def implPerson2(self, inst):
         self.assertTrue(inst.active)
-        self.assertEqual(inst.address[0].city, "PleasantVille")
-        self.assertEqual(inst.address[0].line[0], "534 Erewhon St")
-        self.assertEqual(inst.address[0].postalCode, "3999")
-        self.assertEqual(inst.address[0].state, "Vic")
-        self.assertEqual(inst.address[0].use, "home")
+        self.assertEqual(force_bytes(inst.address[0].city), force_bytes("PleasantVille"))
+        self.assertEqual(force_bytes(inst.address[0].line[0]), force_bytes("534 Erewhon St"))
+        self.assertEqual(force_bytes(inst.address[0].postalCode), force_bytes("3999"))
+        self.assertEqual(force_bytes(inst.address[0].state), force_bytes("Vic"))
+        self.assertEqual(force_bytes(inst.address[0].use), force_bytes("home"))
         self.assertEqual(inst.birthDate.date, FHIRDate("1974-12-25").date)
         self.assertEqual(inst.birthDate.as_json(), "1974-12-25")
-        self.assertEqual(inst.gender, "male")
-        self.assertEqual(inst.id, "example")
+        self.assertEqual(force_bytes(inst.gender), force_bytes("male"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
         self.assertEqual(inst.identifier[0].period.start.date, FHIRDate("2001-05-06").date)
         self.assertEqual(inst.identifier[0].period.start.as_json(), "2001-05-06")
-        self.assertEqual(inst.identifier[0].system, "urn:oid:1.2.36.146.595.217.0.1")
-        self.assertEqual(inst.identifier[0].type.coding[0].code, "MR")
-        self.assertEqual(inst.identifier[0].type.coding[0].system, "http://hl7.org/fhir/v2/0203")
-        self.assertEqual(inst.identifier[0].use, "usual")
-        self.assertEqual(inst.identifier[0].value, "12345")
-        self.assertEqual(inst.name[0].family, "Chalmers")
-        self.assertEqual(inst.name[0].given[0], "Peter")
-        self.assertEqual(inst.name[0].given[1], "James")
-        self.assertEqual(inst.name[0].use, "official")
-        self.assertEqual(inst.name[1].given[0], "Jim")
-        self.assertEqual(inst.name[1].use, "usual")
-        self.assertEqual(inst.telecom[0].use, "home")
-        self.assertEqual(inst.telecom[1].system, "phone")
-        self.assertEqual(inst.telecom[1].use, "work")
-        self.assertEqual(inst.telecom[1].value, "(03) 5555 6473")
-        self.assertEqual(inst.telecom[2].system, "email")
-        self.assertEqual(inst.telecom[2].use, "home")
-        self.assertEqual(inst.telecom[2].value, "Jim@example.org")
-        self.assertEqual(inst.text.status, "generated")
+        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("urn:oid:1.2.36.146.595.217.0.1"))
+        self.assertEqual(force_bytes(inst.identifier[0].type.coding[0].code), force_bytes("MR"))
+        self.assertEqual(force_bytes(inst.identifier[0].type.coding[0].system), force_bytes("http://hl7.org/fhir/v2/0203"))
+        self.assertEqual(force_bytes(inst.identifier[0].use), force_bytes("usual"))
+        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("12345"))
+        self.assertEqual(force_bytes(inst.name[0].family), force_bytes("Chalmers"))
+        self.assertEqual(force_bytes(inst.name[0].given[0]), force_bytes("Peter"))
+        self.assertEqual(force_bytes(inst.name[0].given[1]), force_bytes("James"))
+        self.assertEqual(force_bytes(inst.name[0].use), force_bytes("official"))
+        self.assertEqual(force_bytes(inst.name[1].given[0]), force_bytes("Jim"))
+        self.assertEqual(force_bytes(inst.name[1].use), force_bytes("usual"))
+        self.assertEqual(force_bytes(inst.telecom[0].use), force_bytes("home"))
+        self.assertEqual(force_bytes(inst.telecom[1].system), force_bytes("phone"))
+        self.assertEqual(force_bytes(inst.telecom[1].use), force_bytes("work"))
+        self.assertEqual(force_bytes(inst.telecom[1].value), force_bytes("(03) 5555 6473"))
+        self.assertEqual(force_bytes(inst.telecom[2].system), force_bytes("email"))
+        self.assertEqual(force_bytes(inst.telecom[2].use), force_bytes("home"))
+        self.assertEqual(force_bytes(inst.telecom[2].value), force_bytes("Jim@example.org"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 

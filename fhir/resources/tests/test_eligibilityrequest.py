@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-11.
+#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
 #  2019, SMART Health IT.
 
 import os
@@ -9,8 +9,11 @@ import pytest
 import io
 import unittest
 import json
+import six
 from fhir.resources import eligibilityrequest
 from fhir.resources.fhirdate import FHIRDate
+
+from .fixtures import force_bytes
 
 
 @pytest.mark.usefixtures("base_settings")
@@ -33,23 +36,23 @@ class EligibilityRequestTests(unittest.TestCase):
         self.implEligibilityRequest1(inst2)
     
     def implEligibilityRequest1(self, inst):
-        self.assertEqual(inst.benefitCategory.coding[0].code, "medical")
-        self.assertEqual(inst.benefitCategory.coding[0].system, "http://hl7.org/fhir/benefit-category")
-        self.assertEqual(inst.benefitSubCategory.coding[0].code, "69")
-        self.assertEqual(inst.benefitSubCategory.coding[0].display, "Maternity")
-        self.assertEqual(inst.benefitSubCategory.coding[0].system, "http://hl7.org/fhir/benefit-subcategory")
-        self.assertEqual(inst.businessArrangement, "NB8742")
+        self.assertEqual(force_bytes(inst.benefitCategory.coding[0].code), force_bytes("medical"))
+        self.assertEqual(force_bytes(inst.benefitCategory.coding[0].system), force_bytes("http://hl7.org/fhir/benefit-category"))
+        self.assertEqual(force_bytes(inst.benefitSubCategory.coding[0].code), force_bytes("69"))
+        self.assertEqual(force_bytes(inst.benefitSubCategory.coding[0].display), force_bytes("Maternity"))
+        self.assertEqual(force_bytes(inst.benefitSubCategory.coding[0].system), force_bytes("http://hl7.org/fhir/benefit-subcategory"))
+        self.assertEqual(force_bytes(inst.businessArrangement), force_bytes("NB8742"))
         self.assertEqual(inst.created.date, FHIRDate("2014-08-16").date)
         self.assertEqual(inst.created.as_json(), "2014-08-16")
-        self.assertEqual(inst.id, "52346")
-        self.assertEqual(inst.identifier[0].system, "http://happyvalley.com/elegibilityrequest")
-        self.assertEqual(inst.identifier[0].value, "52346")
-        self.assertEqual(inst.priority.coding[0].code, "normal")
+        self.assertEqual(force_bytes(inst.id), force_bytes("52346"))
+        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://happyvalley.com/elegibilityrequest"))
+        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("52346"))
+        self.assertEqual(force_bytes(inst.priority.coding[0].code), force_bytes("normal"))
         self.assertEqual(inst.servicedDate.date, FHIRDate("2014-09-17").date)
         self.assertEqual(inst.servicedDate.as_json(), "2014-09-17")
-        self.assertEqual(inst.status, "active")
-        self.assertEqual(inst.text.div, "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the EligibilityRequest</div>")
-        self.assertEqual(inst.text.status, "generated")
+        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
+        self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the EligibilityRequest</div>"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
     
     def testEligibilityRequest2(self):
         inst = self.instantiate_from("eligibilityrequest-example.json")
@@ -64,11 +67,11 @@ class EligibilityRequestTests(unittest.TestCase):
     def implEligibilityRequest2(self, inst):
         self.assertEqual(inst.created.date, FHIRDate("2014-08-16").date)
         self.assertEqual(inst.created.as_json(), "2014-08-16")
-        self.assertEqual(inst.id, "52345")
-        self.assertEqual(inst.identifier[0].system, "http://happyvalley.com/elegibilityrequest")
-        self.assertEqual(inst.identifier[0].value, "52345")
-        self.assertEqual(inst.priority.coding[0].code, "normal")
-        self.assertEqual(inst.status, "active")
-        self.assertEqual(inst.text.div, "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the EligibilityRequest</div>")
-        self.assertEqual(inst.text.status, "generated")
+        self.assertEqual(force_bytes(inst.id), force_bytes("52345"))
+        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://happyvalley.com/elegibilityrequest"))
+        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("52345"))
+        self.assertEqual(force_bytes(inst.priority.coding[0].code), force_bytes("normal"))
+        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
+        self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the EligibilityRequest</div>"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 

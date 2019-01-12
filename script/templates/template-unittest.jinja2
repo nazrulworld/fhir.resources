@@ -9,8 +9,11 @@ import pytest
 import io
 import unittest
 import json
+import six
 from fhir.resources import {{ class.module }}
 from fhir.resources.fhirdate import FHIRDate
+
+from .fixtures import force_bytes
 
 
 @pytest.mark.usefixtures("base_settings")
@@ -37,7 +40,7 @@ class {{ class.name }}Tests(unittest.TestCase):
     def impl{{ class.name }}{{ loop.index }}(self, inst):
     {%- for onetest in tcase.tests %}
     {%- if "str" == onetest.klass.name %}
-        self.assertEqual(inst.{{ onetest.path }}, "{{ onetest.value|replace('"', '\\"') }}")
+        self.assertEqual(force_bytes(inst.{{ onetest.path }}), force_bytes("{{ onetest.value|replace('"', '\\"') }}"))
     {%- else %}{% if "int" == onetest.klass.name or "float" == onetest.klass.name or "NSDecimalNumber" == onetest.klass.name %}
         self.assertEqual(inst.{{ onetest.path }}, {{ onetest.value }})
     {%- else %}{% if "bool" == onetest.klass.name %}

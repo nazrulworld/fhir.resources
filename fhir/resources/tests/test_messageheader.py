@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-11.
+#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
 #  2019, SMART Health IT.
 
 import os
@@ -9,8 +9,11 @@ import pytest
 import io
 import unittest
 import json
+import six
 from fhir.resources import messageheader
 from fhir.resources.fhirdate import FHIRDate
+
+from .fixtures import force_bytes
 
 
 @pytest.mark.usefixtures("base_settings")
@@ -33,22 +36,22 @@ class MessageHeaderTests(unittest.TestCase):
         self.implMessageHeader1(inst2)
     
     def implMessageHeader1(self, inst):
-        self.assertEqual(inst.destination[0].endpoint, "llp:10.11.12.14:5432")
-        self.assertEqual(inst.destination[0].name, "Acme Message Gateway")
-        self.assertEqual(inst.event.code, "admin-notify")
-        self.assertEqual(inst.event.system, "http://hl7.org/fhir/message-events")
-        self.assertEqual(inst.id, "1cbdfb97-5859-48a4-8301-d54eab818d68")
-        self.assertEqual(inst.reason.coding[0].code, "admit")
-        self.assertEqual(inst.reason.coding[0].system, "http://hl7.org/fhir/message-reasons-encounter")
-        self.assertEqual(inst.response.code, "ok")
-        self.assertEqual(inst.response.identifier, "5015fe84-8e76-4526-89d8-44b322e8d4fb")
-        self.assertEqual(inst.source.contact.system, "phone")
-        self.assertEqual(inst.source.contact.value, "+1 (555) 123 4567")
-        self.assertEqual(inst.source.endpoint, "llp:10.11.12.13:5432")
-        self.assertEqual(inst.source.name, "Acme Central Patient Registry")
-        self.assertEqual(inst.source.software, "FooBar Patient Manager")
-        self.assertEqual(inst.source.version, "3.1.45.AABB")
-        self.assertEqual(inst.text.status, "generated")
+        self.assertEqual(force_bytes(inst.destination[0].endpoint), force_bytes("llp:10.11.12.14:5432"))
+        self.assertEqual(force_bytes(inst.destination[0].name), force_bytes("Acme Message Gateway"))
+        self.assertEqual(force_bytes(inst.event.code), force_bytes("admin-notify"))
+        self.assertEqual(force_bytes(inst.event.system), force_bytes("http://hl7.org/fhir/message-events"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("1cbdfb97-5859-48a4-8301-d54eab818d68"))
+        self.assertEqual(force_bytes(inst.reason.coding[0].code), force_bytes("admit"))
+        self.assertEqual(force_bytes(inst.reason.coding[0].system), force_bytes("http://hl7.org/fhir/message-reasons-encounter"))
+        self.assertEqual(force_bytes(inst.response.code), force_bytes("ok"))
+        self.assertEqual(force_bytes(inst.response.identifier), force_bytes("5015fe84-8e76-4526-89d8-44b322e8d4fb"))
+        self.assertEqual(force_bytes(inst.source.contact.system), force_bytes("phone"))
+        self.assertEqual(force_bytes(inst.source.contact.value), force_bytes("+1 (555) 123 4567"))
+        self.assertEqual(force_bytes(inst.source.endpoint), force_bytes("llp:10.11.12.13:5432"))
+        self.assertEqual(force_bytes(inst.source.name), force_bytes("Acme Central Patient Registry"))
+        self.assertEqual(force_bytes(inst.source.software), force_bytes("FooBar Patient Manager"))
+        self.assertEqual(force_bytes(inst.source.version), force_bytes("3.1.45.AABB"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
         self.assertEqual(inst.timestamp.date, FHIRDate("2012-01-04T09:10:14Z").date)
         self.assertEqual(inst.timestamp.as_json(), "2012-01-04T09:10:14Z")
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-11.
+#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
 #  2019, SMART Health IT.
 
 import os
@@ -9,8 +9,11 @@ import pytest
 import io
 import unittest
 import json
+import six
 from fhir.resources import subscription
 from fhir.resources.fhirdate import FHIRDate
+
+from .fixtures import force_bytes
 
 
 @pytest.mark.usefixtures("base_settings")
@@ -33,23 +36,23 @@ class SubscriptionTests(unittest.TestCase):
         self.implSubscription1(inst2)
     
     def implSubscription1(self, inst):
-        self.assertEqual(inst.channel.endpoint, "https://biliwatch.com/customers/mount-auburn-miu/on-result")
-        self.assertEqual(inst.channel.header[0], "Authorization: Bearer secret-token-abc-123")
-        self.assertEqual(inst.channel.payload, "application/fhir+json")
-        self.assertEqual(inst.channel.type, "rest-hook")
-        self.assertEqual(inst.contact[0].system, "phone")
-        self.assertEqual(inst.contact[0].value, "ext 4123")
-        self.assertEqual(inst.criteria, "Observation?code=http://loinc.org|1975-2")
+        self.assertEqual(force_bytes(inst.channel.endpoint), force_bytes("https://biliwatch.com/customers/mount-auburn-miu/on-result"))
+        self.assertEqual(force_bytes(inst.channel.header[0]), force_bytes("Authorization: Bearer secret-token-abc-123"))
+        self.assertEqual(force_bytes(inst.channel.payload), force_bytes("application/fhir+json"))
+        self.assertEqual(force_bytes(inst.channel.type), force_bytes("rest-hook"))
+        self.assertEqual(force_bytes(inst.contact[0].system), force_bytes("phone"))
+        self.assertEqual(force_bytes(inst.contact[0].value), force_bytes("ext 4123"))
+        self.assertEqual(force_bytes(inst.criteria), force_bytes("Observation?code=http://loinc.org|1975-2"))
         self.assertEqual(inst.end.date, FHIRDate("2021-01-01T00:00:00Z").date)
         self.assertEqual(inst.end.as_json(), "2021-01-01T00:00:00Z")
-        self.assertEqual(inst.error, "Socket Error 10060 - can't connect to host")
-        self.assertEqual(inst.id, "example-error")
-        self.assertEqual(inst.reason, "Monitor new neonatal function")
-        self.assertEqual(inst.status, "error")
-        self.assertEqual(inst.tag[0].code, "bili-done")
-        self.assertEqual(inst.tag[0].system, "http://example.org/fhir/cs/internal")
-        self.assertEqual(inst.text.div, "<div xmlns=\"http://www.w3.org/1999/xhtml\">[Put rendering here]</div>")
-        self.assertEqual(inst.text.status, "generated")
+        self.assertEqual(force_bytes(inst.error), force_bytes("Socket Error 10060 - can't connect to host"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("example-error"))
+        self.assertEqual(force_bytes(inst.reason), force_bytes("Monitor new neonatal function"))
+        self.assertEqual(force_bytes(inst.status), force_bytes("error"))
+        self.assertEqual(force_bytes(inst.tag[0].code), force_bytes("bili-done"))
+        self.assertEqual(force_bytes(inst.tag[0].system), force_bytes("http://example.org/fhir/cs/internal"))
+        self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">[Put rendering here]</div>"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
     
     def testSubscription2(self):
         inst = self.instantiate_from("subscription-example.json")
@@ -62,20 +65,20 @@ class SubscriptionTests(unittest.TestCase):
         self.implSubscription2(inst2)
     
     def implSubscription2(self, inst):
-        self.assertEqual(inst.channel.endpoint, "https://biliwatch.com/customers/mount-auburn-miu/on-result")
-        self.assertEqual(inst.channel.header[0], "Authorization: Bearer secret-token-abc-123")
-        self.assertEqual(inst.channel.payload, "application/fhir+json")
-        self.assertEqual(inst.channel.type, "rest-hook")
-        self.assertEqual(inst.contact[0].system, "phone")
-        self.assertEqual(inst.contact[0].value, "ext 4123")
-        self.assertEqual(inst.criteria, "Observation?code=http://loinc.org|1975-2")
+        self.assertEqual(force_bytes(inst.channel.endpoint), force_bytes("https://biliwatch.com/customers/mount-auburn-miu/on-result"))
+        self.assertEqual(force_bytes(inst.channel.header[0]), force_bytes("Authorization: Bearer secret-token-abc-123"))
+        self.assertEqual(force_bytes(inst.channel.payload), force_bytes("application/fhir+json"))
+        self.assertEqual(force_bytes(inst.channel.type), force_bytes("rest-hook"))
+        self.assertEqual(force_bytes(inst.contact[0].system), force_bytes("phone"))
+        self.assertEqual(force_bytes(inst.contact[0].value), force_bytes("ext 4123"))
+        self.assertEqual(force_bytes(inst.criteria), force_bytes("Observation?code=http://loinc.org|1975-2"))
         self.assertEqual(inst.end.date, FHIRDate("2021-01-01T00:00:00Z").date)
         self.assertEqual(inst.end.as_json(), "2021-01-01T00:00:00Z")
-        self.assertEqual(inst.id, "example")
-        self.assertEqual(inst.reason, "Monitor new neonatal function")
-        self.assertEqual(inst.status, "requested")
-        self.assertEqual(inst.tag[0].code, "bili-done")
-        self.assertEqual(inst.tag[0].system, "http://example.org/fhir/cs/internal")
-        self.assertEqual(inst.text.div, "<div xmlns=\"http://www.w3.org/1999/xhtml\">[Put rendering here]</div>")
-        self.assertEqual(inst.text.status, "generated")
+        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
+        self.assertEqual(force_bytes(inst.reason), force_bytes("Monitor new neonatal function"))
+        self.assertEqual(force_bytes(inst.status), force_bytes("requested"))
+        self.assertEqual(force_bytes(inst.tag[0].code), force_bytes("bili-done"))
+        self.assertEqual(force_bytes(inst.tag[0].system), force_bytes("http://example.org/fhir/cs/internal"))
+        self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">[Put rendering here]</div>"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-11.
+#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
 #  2019, SMART Health IT.
 
 import os
@@ -9,8 +9,11 @@ import pytest
 import io
 import unittest
 import json
+import six
 from fhir.resources import binary
 from fhir.resources.fhirdate import FHIRDate
+
+from .fixtures import force_bytes
 
 
 @pytest.mark.usefixtures("base_settings")
@@ -33,6 +36,6 @@ class BinaryTests(unittest.TestCase):
         self.implBinary1(inst2)
     
     def implBinary1(self, inst):
-        self.assertEqual(inst.contentType, "application/pdf")
-        self.assertEqual(inst.id, "example")
+        self.assertEqual(force_bytes(inst.contentType), force_bytes("application/pdf"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-11.
+#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
 #  2019, SMART Health IT.
 
 import os
@@ -9,8 +9,11 @@ import pytest
 import io
 import unittest
 import json
+import six
 from fhir.resources import schedule
 from fhir.resources.fhirdate import FHIRDate
+
+from .fixtures import force_bytes
 
 
 @pytest.mark.usefixtures("base_settings")
@@ -34,22 +37,22 @@ class ScheduleTests(unittest.TestCase):
     
     def implSchedule1(self, inst):
         self.assertTrue(inst.active)
-        self.assertEqual(inst.comment, "The slots attached to this schedule are for genetic counselling in the USS Enterprise-D Sickbay.")
-        self.assertEqual(inst.id, "exampleloc1")
-        self.assertEqual(inst.identifier[0].system, "http://example.org/scheduleid")
-        self.assertEqual(inst.identifier[0].use, "usual")
-        self.assertEqual(inst.identifier[0].value, "46")
+        self.assertEqual(force_bytes(inst.comment), force_bytes("The slots attached to this schedule are for genetic counselling in the USS Enterprise-D Sickbay."))
+        self.assertEqual(force_bytes(inst.id), force_bytes("exampleloc1"))
+        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://example.org/scheduleid"))
+        self.assertEqual(force_bytes(inst.identifier[0].use), force_bytes("usual"))
+        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("46"))
         self.assertEqual(inst.planningHorizon.end.date, FHIRDate("2017-12-25T09:30:00Z").date)
         self.assertEqual(inst.planningHorizon.end.as_json(), "2017-12-25T09:30:00Z")
         self.assertEqual(inst.planningHorizon.start.date, FHIRDate("2017-12-25T09:15:00Z").date)
         self.assertEqual(inst.planningHorizon.start.as_json(), "2017-12-25T09:15:00Z")
-        self.assertEqual(inst.serviceCategory.coding[0].code, "17")
-        self.assertEqual(inst.serviceCategory.coding[0].display, "General Practice")
-        self.assertEqual(inst.serviceType[0].coding[0].code, "75")
-        self.assertEqual(inst.serviceType[0].coding[0].display, "Genetic Counselling")
-        self.assertEqual(inst.specialty[0].coding[0].code, "394580004")
-        self.assertEqual(inst.specialty[0].coding[0].display, "Clinical genetics")
-        self.assertEqual(inst.text.status, "generated")
+        self.assertEqual(force_bytes(inst.serviceCategory.coding[0].code), force_bytes("17"))
+        self.assertEqual(force_bytes(inst.serviceCategory.coding[0].display), force_bytes("General Practice"))
+        self.assertEqual(force_bytes(inst.serviceType[0].coding[0].code), force_bytes("75"))
+        self.assertEqual(force_bytes(inst.serviceType[0].coding[0].display), force_bytes("Genetic Counselling"))
+        self.assertEqual(force_bytes(inst.specialty[0].coding[0].code), force_bytes("394580004"))
+        self.assertEqual(force_bytes(inst.specialty[0].coding[0].display), force_bytes("Clinical genetics"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
     
     def testSchedule2(self):
         inst = self.instantiate_from("schedule-provider-location2-example.json")
@@ -63,22 +66,22 @@ class ScheduleTests(unittest.TestCase):
     
     def implSchedule2(self, inst):
         self.assertTrue(inst.active)
-        self.assertEqual(inst.comment, "The slots attached to this schedule are for neurosurgery operations at Starfleet HQ only.")
-        self.assertEqual(inst.id, "exampleloc2")
-        self.assertEqual(inst.identifier[0].system, "http://example.org/scheduleid")
-        self.assertEqual(inst.identifier[0].use, "usual")
-        self.assertEqual(inst.identifier[0].value, "47")
+        self.assertEqual(force_bytes(inst.comment), force_bytes("The slots attached to this schedule are for neurosurgery operations at Starfleet HQ only."))
+        self.assertEqual(force_bytes(inst.id), force_bytes("exampleloc2"))
+        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://example.org/scheduleid"))
+        self.assertEqual(force_bytes(inst.identifier[0].use), force_bytes("usual"))
+        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("47"))
         self.assertEqual(inst.planningHorizon.end.date, FHIRDate("2017-12-25T09:30:00Z").date)
         self.assertEqual(inst.planningHorizon.end.as_json(), "2017-12-25T09:30:00Z")
         self.assertEqual(inst.planningHorizon.start.date, FHIRDate("2017-12-25T09:15:00Z").date)
         self.assertEqual(inst.planningHorizon.start.as_json(), "2017-12-25T09:15:00Z")
-        self.assertEqual(inst.serviceCategory.coding[0].code, "31")
-        self.assertEqual(inst.serviceCategory.coding[0].display, "Specialist Surgical")
-        self.assertEqual(inst.serviceType[0].coding[0].code, "221")
-        self.assertEqual(inst.serviceType[0].coding[0].display, "Surgery - General")
-        self.assertEqual(inst.specialty[0].coding[0].code, "394610002")
-        self.assertEqual(inst.specialty[0].coding[0].display, "Surgery-Neurosurgery")
-        self.assertEqual(inst.text.status, "generated")
+        self.assertEqual(force_bytes(inst.serviceCategory.coding[0].code), force_bytes("31"))
+        self.assertEqual(force_bytes(inst.serviceCategory.coding[0].display), force_bytes("Specialist Surgical"))
+        self.assertEqual(force_bytes(inst.serviceType[0].coding[0].code), force_bytes("221"))
+        self.assertEqual(force_bytes(inst.serviceType[0].coding[0].display), force_bytes("Surgery - General"))
+        self.assertEqual(force_bytes(inst.specialty[0].coding[0].code), force_bytes("394610002"))
+        self.assertEqual(force_bytes(inst.specialty[0].coding[0].display), force_bytes("Surgery-Neurosurgery"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
     
     def testSchedule3(self):
         inst = self.instantiate_from("schedule-example.json")
@@ -92,20 +95,20 @@ class ScheduleTests(unittest.TestCase):
     
     def implSchedule3(self, inst):
         self.assertTrue(inst.active)
-        self.assertEqual(inst.comment, "The slots attached to this schedule should be specialized to cover immunizations within the clinic")
-        self.assertEqual(inst.id, "example")
-        self.assertEqual(inst.identifier[0].system, "http://example.org/scheduleid")
-        self.assertEqual(inst.identifier[0].use, "usual")
-        self.assertEqual(inst.identifier[0].value, "45")
+        self.assertEqual(force_bytes(inst.comment), force_bytes("The slots attached to this schedule should be specialized to cover immunizations within the clinic"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
+        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://example.org/scheduleid"))
+        self.assertEqual(force_bytes(inst.identifier[0].use), force_bytes("usual"))
+        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("45"))
         self.assertEqual(inst.planningHorizon.end.date, FHIRDate("2013-12-25T09:30:00Z").date)
         self.assertEqual(inst.planningHorizon.end.as_json(), "2013-12-25T09:30:00Z")
         self.assertEqual(inst.planningHorizon.start.date, FHIRDate("2013-12-25T09:15:00Z").date)
         self.assertEqual(inst.planningHorizon.start.as_json(), "2013-12-25T09:15:00Z")
-        self.assertEqual(inst.serviceCategory.coding[0].code, "17")
-        self.assertEqual(inst.serviceCategory.coding[0].display, "General Practice")
-        self.assertEqual(inst.serviceType[0].coding[0].code, "57")
-        self.assertEqual(inst.serviceType[0].coding[0].display, "Immunization")
-        self.assertEqual(inst.specialty[0].coding[0].code, "408480009")
-        self.assertEqual(inst.specialty[0].coding[0].display, "Clinical immunology")
-        self.assertEqual(inst.text.status, "generated")
+        self.assertEqual(force_bytes(inst.serviceCategory.coding[0].code), force_bytes("17"))
+        self.assertEqual(force_bytes(inst.serviceCategory.coding[0].display), force_bytes("General Practice"))
+        self.assertEqual(force_bytes(inst.serviceType[0].coding[0].code), force_bytes("57"))
+        self.assertEqual(force_bytes(inst.serviceType[0].coding[0].display), force_bytes("Immunization"))
+        self.assertEqual(force_bytes(inst.specialty[0].coding[0].code), force_bytes("408480009"))
+        self.assertEqual(force_bytes(inst.specialty[0].coding[0].display), force_bytes("Clinical immunology"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 

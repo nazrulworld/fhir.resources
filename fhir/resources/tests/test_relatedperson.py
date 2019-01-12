@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-11.
+#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
 #  2019, SMART Health IT.
 
 import os
@@ -9,8 +9,11 @@ import pytest
 import io
 import unittest
 import json
+import six
 from fhir.resources import relatedperson
 from fhir.resources.fhirdate import FHIRDate
+
+from .fixtures import force_bytes
 
 
 @pytest.mark.usefixtures("base_settings")
@@ -34,27 +37,27 @@ class RelatedPersonTests(unittest.TestCase):
     
     def implRelatedPerson1(self, inst):
         self.assertTrue(inst.active)
-        self.assertEqual(inst.address[0].city, "Paris")
-        self.assertEqual(inst.address[0].country, "FRA")
-        self.assertEqual(inst.address[0].line[0], "43, Place du Marché Sainte Catherine")
-        self.assertEqual(inst.address[0].postalCode, "75004")
-        self.assertEqual(inst.gender, "female")
-        self.assertEqual(inst.id, "benedicte")
-        self.assertEqual(inst.identifier[0].system, "urn:oid:1.2.250.1.61")
-        self.assertEqual(inst.identifier[0].type.text, "INSEE")
-        self.assertEqual(inst.identifier[0].use, "usual")
-        self.assertEqual(inst.identifier[0].value, "272117510400399")
-        self.assertEqual(inst.name[0].family, "du Marché")
-        self.assertEqual(inst.name[0].given[0], "Bénédicte")
-        self.assertEqual(inst.photo[0].contentType, "image/jpeg")
-        self.assertEqual(inst.photo[0].url, "Binary/f016")
-        self.assertEqual(inst.relationship.coding[0].code, "N")
-        self.assertEqual(inst.relationship.coding[0].system, "http://hl7.org/fhir/v2/0131")
-        self.assertEqual(inst.relationship.coding[1].code, "WIFE")
-        self.assertEqual(inst.relationship.coding[1].system, "http://hl7.org/fhir/v3/RoleCode")
-        self.assertEqual(inst.telecom[0].system, "phone")
-        self.assertEqual(inst.telecom[0].value, "+33 (237) 998327")
-        self.assertEqual(inst.text.status, "generated")
+        self.assertEqual(force_bytes(inst.address[0].city), force_bytes("Paris"))
+        self.assertEqual(force_bytes(inst.address[0].country), force_bytes("FRA"))
+        self.assertEqual(force_bytes(inst.address[0].line[0]), force_bytes("43, Place du Marché Sainte Catherine"))
+        self.assertEqual(force_bytes(inst.address[0].postalCode), force_bytes("75004"))
+        self.assertEqual(force_bytes(inst.gender), force_bytes("female"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("benedicte"))
+        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("urn:oid:1.2.250.1.61"))
+        self.assertEqual(force_bytes(inst.identifier[0].type.text), force_bytes("INSEE"))
+        self.assertEqual(force_bytes(inst.identifier[0].use), force_bytes("usual"))
+        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("272117510400399"))
+        self.assertEqual(force_bytes(inst.name[0].family), force_bytes("du Marché"))
+        self.assertEqual(force_bytes(inst.name[0].given[0]), force_bytes("Bénédicte"))
+        self.assertEqual(force_bytes(inst.photo[0].contentType), force_bytes("image/jpeg"))
+        self.assertEqual(force_bytes(inst.photo[0].url), force_bytes("Binary/f016"))
+        self.assertEqual(force_bytes(inst.relationship.coding[0].code), force_bytes("N"))
+        self.assertEqual(force_bytes(inst.relationship.coding[0].system), force_bytes("http://hl7.org/fhir/v2/0131"))
+        self.assertEqual(force_bytes(inst.relationship.coding[1].code), force_bytes("WIFE"))
+        self.assertEqual(force_bytes(inst.relationship.coding[1].system), force_bytes("http://hl7.org/fhir/v3/RoleCode"))
+        self.assertEqual(force_bytes(inst.telecom[0].system), force_bytes("phone"))
+        self.assertEqual(force_bytes(inst.telecom[0].value), force_bytes("+33 (237) 998327"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
     
     def testRelatedPerson2(self):
         inst = self.instantiate_from("relatedperson-example-f001-sarah.json")
@@ -67,23 +70,23 @@ class RelatedPersonTests(unittest.TestCase):
         self.implRelatedPerson2(inst2)
     
     def implRelatedPerson2(self, inst):
-        self.assertEqual(inst.gender, "female")
-        self.assertEqual(inst.id, "f001")
-        self.assertEqual(inst.identifier[0].system, "urn:oid:2.16.840.1.113883.2.4.6.3")
-        self.assertEqual(inst.identifier[0].type.text, "BSN")
-        self.assertEqual(inst.identifier[0].use, "official")
-        self.assertEqual(inst.name[0].family, "Abels")
-        self.assertEqual(inst.name[0].given[0], "Sarah")
-        self.assertEqual(inst.name[0].use, "usual")
-        self.assertEqual(inst.relationship.coding[0].code, "SIGOTHR")
-        self.assertEqual(inst.relationship.coding[0].system, "http://hl7.org/fhir/v3/RoleCode")
-        self.assertEqual(inst.telecom[0].system, "phone")
-        self.assertEqual(inst.telecom[0].use, "mobile")
-        self.assertEqual(inst.telecom[0].value, "0690383372")
-        self.assertEqual(inst.telecom[1].system, "email")
-        self.assertEqual(inst.telecom[1].use, "home")
-        self.assertEqual(inst.telecom[1].value, "s.abels@kpn.nl")
-        self.assertEqual(inst.text.status, "generated")
+        self.assertEqual(force_bytes(inst.gender), force_bytes("female"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("f001"))
+        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("urn:oid:2.16.840.1.113883.2.4.6.3"))
+        self.assertEqual(force_bytes(inst.identifier[0].type.text), force_bytes("BSN"))
+        self.assertEqual(force_bytes(inst.identifier[0].use), force_bytes("official"))
+        self.assertEqual(force_bytes(inst.name[0].family), force_bytes("Abels"))
+        self.assertEqual(force_bytes(inst.name[0].given[0]), force_bytes("Sarah"))
+        self.assertEqual(force_bytes(inst.name[0].use), force_bytes("usual"))
+        self.assertEqual(force_bytes(inst.relationship.coding[0].code), force_bytes("SIGOTHR"))
+        self.assertEqual(force_bytes(inst.relationship.coding[0].system), force_bytes("http://hl7.org/fhir/v3/RoleCode"))
+        self.assertEqual(force_bytes(inst.telecom[0].system), force_bytes("phone"))
+        self.assertEqual(force_bytes(inst.telecom[0].use), force_bytes("mobile"))
+        self.assertEqual(force_bytes(inst.telecom[0].value), force_bytes("0690383372"))
+        self.assertEqual(force_bytes(inst.telecom[1].system), force_bytes("email"))
+        self.assertEqual(force_bytes(inst.telecom[1].use), force_bytes("home"))
+        self.assertEqual(force_bytes(inst.telecom[1].value), force_bytes("s.abels@kpn.nl"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
     
     def testRelatedPerson3(self):
         inst = self.instantiate_from("relatedperson-example-peter.json")
@@ -96,27 +99,27 @@ class RelatedPersonTests(unittest.TestCase):
         self.implRelatedPerson3(inst2)
     
     def implRelatedPerson3(self, inst):
-        self.assertEqual(inst.address[0].city, "PleasantVille")
-        self.assertEqual(inst.address[0].line[0], "534 Erewhon St")
-        self.assertEqual(inst.address[0].postalCode, "3999")
-        self.assertEqual(inst.address[0].state, "Vic")
-        self.assertEqual(inst.address[0].use, "home")
-        self.assertEqual(inst.gender, "male")
-        self.assertEqual(inst.id, "peter")
-        self.assertEqual(inst.name[0].family, "Chalmers")
-        self.assertEqual(inst.name[0].given[0], "Peter")
-        self.assertEqual(inst.name[0].given[1], "James")
-        self.assertEqual(inst.name[0].use, "official")
+        self.assertEqual(force_bytes(inst.address[0].city), force_bytes("PleasantVille"))
+        self.assertEqual(force_bytes(inst.address[0].line[0]), force_bytes("534 Erewhon St"))
+        self.assertEqual(force_bytes(inst.address[0].postalCode), force_bytes("3999"))
+        self.assertEqual(force_bytes(inst.address[0].state), force_bytes("Vic"))
+        self.assertEqual(force_bytes(inst.address[0].use), force_bytes("home"))
+        self.assertEqual(force_bytes(inst.gender), force_bytes("male"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("peter"))
+        self.assertEqual(force_bytes(inst.name[0].family), force_bytes("Chalmers"))
+        self.assertEqual(force_bytes(inst.name[0].given[0]), force_bytes("Peter"))
+        self.assertEqual(force_bytes(inst.name[0].given[1]), force_bytes("James"))
+        self.assertEqual(force_bytes(inst.name[0].use), force_bytes("official"))
         self.assertEqual(inst.period.start.date, FHIRDate("2012-03-11").date)
         self.assertEqual(inst.period.start.as_json(), "2012-03-11")
-        self.assertEqual(inst.photo[0].contentType, "image/jpeg")
-        self.assertEqual(inst.photo[0].url, "Binary/f012")
-        self.assertEqual(inst.relationship.coding[0].code, "C")
-        self.assertEqual(inst.relationship.coding[0].system, "http://hl7.org/fhir/v2/0131")
-        self.assertEqual(inst.telecom[0].system, "phone")
-        self.assertEqual(inst.telecom[0].use, "work")
-        self.assertEqual(inst.telecom[0].value, "(03) 5555 6473")
-        self.assertEqual(inst.text.status, "generated")
+        self.assertEqual(force_bytes(inst.photo[0].contentType), force_bytes("image/jpeg"))
+        self.assertEqual(force_bytes(inst.photo[0].url), force_bytes("Binary/f012"))
+        self.assertEqual(force_bytes(inst.relationship.coding[0].code), force_bytes("C"))
+        self.assertEqual(force_bytes(inst.relationship.coding[0].system), force_bytes("http://hl7.org/fhir/v2/0131"))
+        self.assertEqual(force_bytes(inst.telecom[0].system), force_bytes("phone"))
+        self.assertEqual(force_bytes(inst.telecom[0].use), force_bytes("work"))
+        self.assertEqual(force_bytes(inst.telecom[0].value), force_bytes("(03) 5555 6473"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
     
     def testRelatedPerson4(self):
         inst = self.instantiate_from("relatedperson-example-f002-ariadne.json")
@@ -131,17 +134,17 @@ class RelatedPersonTests(unittest.TestCase):
     def implRelatedPerson4(self, inst):
         self.assertEqual(inst.birthDate.date, FHIRDate("1963").date)
         self.assertEqual(inst.birthDate.as_json(), "1963")
-        self.assertEqual(inst.gender, "female")
-        self.assertEqual(inst.id, "f002")
-        self.assertEqual(inst.name[0].text, "Ariadne Bor-Jansma")
-        self.assertEqual(inst.name[0].use, "usual")
+        self.assertEqual(force_bytes(inst.gender), force_bytes("female"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("f002"))
+        self.assertEqual(force_bytes(inst.name[0].text), force_bytes("Ariadne Bor-Jansma"))
+        self.assertEqual(force_bytes(inst.name[0].use), force_bytes("usual"))
         self.assertEqual(inst.period.start.date, FHIRDate("1975").date)
         self.assertEqual(inst.period.start.as_json(), "1975")
-        self.assertEqual(inst.photo[0].contentType, "image/jpeg")
-        self.assertEqual(inst.relationship.coding[0].code, "SIGOTHR")
-        self.assertEqual(inst.relationship.coding[0].system, "http://hl7.org/fhir/v3/RoleCode")
-        self.assertEqual(inst.telecom[0].system, "phone")
-        self.assertEqual(inst.telecom[0].use, "home")
-        self.assertEqual(inst.telecom[0].value, "+31201234567")
-        self.assertEqual(inst.text.status, "generated")
+        self.assertEqual(force_bytes(inst.photo[0].contentType), force_bytes("image/jpeg"))
+        self.assertEqual(force_bytes(inst.relationship.coding[0].code), force_bytes("SIGOTHR"))
+        self.assertEqual(force_bytes(inst.relationship.coding[0].system), force_bytes("http://hl7.org/fhir/v3/RoleCode"))
+        self.assertEqual(force_bytes(inst.telecom[0].system), force_bytes("phone"))
+        self.assertEqual(force_bytes(inst.telecom[0].use), force_bytes("home"))
+        self.assertEqual(force_bytes(inst.telecom[0].value), force_bytes("+31201234567"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 

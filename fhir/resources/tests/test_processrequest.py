@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-11.
+#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
 #  2019, SMART Health IT.
 
 import os
@@ -9,8 +9,11 @@ import pytest
 import io
 import unittest
 import json
+import six
 from fhir.resources import processrequest
 from fhir.resources.fhirdate import FHIRDate
+
+from .fixtures import force_bytes
 
 
 @pytest.mark.usefixtures("base_settings")
@@ -33,16 +36,16 @@ class ProcessRequestTests(unittest.TestCase):
         self.implProcessRequest1(inst2)
     
     def implProcessRequest1(self, inst):
-        self.assertEqual(inst.action, "cancel")
+        self.assertEqual(force_bytes(inst.action), force_bytes("cancel"))
         self.assertEqual(inst.created.date, FHIRDate("2014-08-16").date)
         self.assertEqual(inst.created.as_json(), "2014-08-16")
-        self.assertEqual(inst.id, "87654")
-        self.assertEqual(inst.identifier[0].system, "http://happyvalley.com/processrequest")
-        self.assertEqual(inst.identifier[0].value, "76543")
+        self.assertEqual(force_bytes(inst.id), force_bytes("87654"))
+        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://happyvalley.com/processrequest"))
+        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("76543"))
         self.assertFalse(inst.nullify)
-        self.assertEqual(inst.status, "active")
-        self.assertEqual(inst.text.div, "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the Reversal ProcessRequest</div>")
-        self.assertEqual(inst.text.status, "generated")
+        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
+        self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the Reversal ProcessRequest</div>"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
     
     def testProcessRequest2(self):
         inst = self.instantiate_from("processrequest-example-poll-inclusive.json")
@@ -55,16 +58,16 @@ class ProcessRequestTests(unittest.TestCase):
         self.implProcessRequest2(inst2)
     
     def implProcessRequest2(self, inst):
-        self.assertEqual(inst.action, "poll")
+        self.assertEqual(force_bytes(inst.action), force_bytes("poll"))
         self.assertEqual(inst.created.date, FHIRDate("2014-08-16").date)
         self.assertEqual(inst.created.as_json(), "2014-08-16")
-        self.assertEqual(inst.id, "1112")
-        self.assertEqual(inst.identifier[0].system, "http://happyvalley.com/processrequest")
-        self.assertEqual(inst.identifier[0].value, "112")
-        self.assertEqual(inst.include[0], "PaymentReconciliation")
-        self.assertEqual(inst.status, "active")
-        self.assertEqual(inst.text.div, "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the Poll ProcessRequest</div>")
-        self.assertEqual(inst.text.status, "generated")
+        self.assertEqual(force_bytes(inst.id), force_bytes("1112"))
+        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://happyvalley.com/processrequest"))
+        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("112"))
+        self.assertEqual(force_bytes(inst.include[0]), force_bytes("PaymentReconciliation"))
+        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
+        self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the Poll ProcessRequest</div>"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
     
     def testProcessRequest3(self):
         inst = self.instantiate_from("processrequest-example-poll-eob.json")
@@ -77,16 +80,16 @@ class ProcessRequestTests(unittest.TestCase):
         self.implProcessRequest3(inst2)
     
     def implProcessRequest3(self, inst):
-        self.assertEqual(inst.action, "poll")
+        self.assertEqual(force_bytes(inst.action), force_bytes("poll"))
         self.assertEqual(inst.created.date, FHIRDate("2014-08-16").date)
         self.assertEqual(inst.created.as_json(), "2014-08-16")
-        self.assertEqual(inst.id, "1115")
-        self.assertEqual(inst.identifier[0].system, "http://www.phr.com/patient/12345/processrequest")
-        self.assertEqual(inst.identifier[0].value, "115")
-        self.assertEqual(inst.include[0], "ExplanationOfBenefit")
-        self.assertEqual(inst.status, "active")
-        self.assertEqual(inst.text.div, "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the Poll ProcessRequest</div>")
-        self.assertEqual(inst.text.status, "generated")
+        self.assertEqual(force_bytes(inst.id), force_bytes("1115"))
+        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://www.phr.com/patient/12345/processrequest"))
+        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("115"))
+        self.assertEqual(force_bytes(inst.include[0]), force_bytes("ExplanationOfBenefit"))
+        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
+        self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the Poll ProcessRequest</div>"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
     
     def testProcessRequest4(self):
         inst = self.instantiate_from("processrequest-example.json")
@@ -99,15 +102,15 @@ class ProcessRequestTests(unittest.TestCase):
         self.implProcessRequest4(inst2)
     
     def implProcessRequest4(self, inst):
-        self.assertEqual(inst.action, "poll")
+        self.assertEqual(force_bytes(inst.action), force_bytes("poll"))
         self.assertEqual(inst.created.date, FHIRDate("2014-08-16").date)
         self.assertEqual(inst.created.as_json(), "2014-08-16")
-        self.assertEqual(inst.id, "1110")
-        self.assertEqual(inst.identifier[0].system, "http://happyvalley.com/processrequest")
-        self.assertEqual(inst.identifier[0].value, "110")
-        self.assertEqual(inst.status, "active")
-        self.assertEqual(inst.text.div, "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the Poll ProcessRequest</div>")
-        self.assertEqual(inst.text.status, "generated")
+        self.assertEqual(force_bytes(inst.id), force_bytes("1110"))
+        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://happyvalley.com/processrequest"))
+        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("110"))
+        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
+        self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the Poll ProcessRequest</div>"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
     
     def testProcessRequest5(self):
         inst = self.instantiate_from("processrequest-example-poll-exclusive.json")
@@ -120,17 +123,17 @@ class ProcessRequestTests(unittest.TestCase):
         self.implProcessRequest5(inst2)
     
     def implProcessRequest5(self, inst):
-        self.assertEqual(inst.action, "poll")
+        self.assertEqual(force_bytes(inst.action), force_bytes("poll"))
         self.assertEqual(inst.created.date, FHIRDate("2014-08-16").date)
         self.assertEqual(inst.created.as_json(), "2014-08-16")
-        self.assertEqual(inst.exclude[0], "Communication")
-        self.assertEqual(inst.exclude[1], "PaymentReconciliation")
-        self.assertEqual(inst.id, "1113")
-        self.assertEqual(inst.identifier[0].system, "http://happyvalley.com/processrequest")
-        self.assertEqual(inst.identifier[0].value, "113")
-        self.assertEqual(inst.status, "active")
-        self.assertEqual(inst.text.div, "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the Poll ProcessRequest</div>")
-        self.assertEqual(inst.text.status, "generated")
+        self.assertEqual(force_bytes(inst.exclude[0]), force_bytes("Communication"))
+        self.assertEqual(force_bytes(inst.exclude[1]), force_bytes("PaymentReconciliation"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("1113"))
+        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://happyvalley.com/processrequest"))
+        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("113"))
+        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
+        self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the Poll ProcessRequest</div>"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
     
     def testProcessRequest6(self):
         inst = self.instantiate_from("processrequest-example-reprocess.json")
@@ -143,17 +146,17 @@ class ProcessRequestTests(unittest.TestCase):
         self.implProcessRequest6(inst2)
     
     def implProcessRequest6(self, inst):
-        self.assertEqual(inst.action, "reprocess")
+        self.assertEqual(force_bytes(inst.action), force_bytes("reprocess"))
         self.assertEqual(inst.created.date, FHIRDate("2014-08-16").date)
         self.assertEqual(inst.created.as_json(), "2014-08-16")
-        self.assertEqual(inst.id, "44654")
-        self.assertEqual(inst.identifier[0].system, "http://happyvalley.com/processrequest")
-        self.assertEqual(inst.identifier[0].value, "44543")
+        self.assertEqual(force_bytes(inst.id), force_bytes("44654"))
+        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://happyvalley.com/processrequest"))
+        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("44543"))
         self.assertEqual(inst.item[0].sequenceLinkId, 1)
-        self.assertEqual(inst.reference, "ABC12345G")
-        self.assertEqual(inst.status, "active")
-        self.assertEqual(inst.text.div, "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the ReProcess ProcessRequest resource.</div>")
-        self.assertEqual(inst.text.status, "generated")
+        self.assertEqual(force_bytes(inst.reference), force_bytes("ABC12345G"))
+        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
+        self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the ReProcess ProcessRequest resource.</div>"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
     
     def testProcessRequest7(self):
         inst = self.instantiate_from("processrequest-example-poll-specific.json")
@@ -166,15 +169,15 @@ class ProcessRequestTests(unittest.TestCase):
         self.implProcessRequest7(inst2)
     
     def implProcessRequest7(self, inst):
-        self.assertEqual(inst.action, "poll")
+        self.assertEqual(force_bytes(inst.action), force_bytes("poll"))
         self.assertEqual(inst.created.date, FHIRDate("2014-08-16").date)
         self.assertEqual(inst.created.as_json(), "2014-08-16")
-        self.assertEqual(inst.id, "1111")
-        self.assertEqual(inst.identifier[0].system, "http://happyvalley.com/processrequest")
-        self.assertEqual(inst.identifier[0].value, "111")
-        self.assertEqual(inst.status, "active")
-        self.assertEqual(inst.text.div, "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the Poll ProcessRequest</div>")
-        self.assertEqual(inst.text.status, "generated")
+        self.assertEqual(force_bytes(inst.id), force_bytes("1111"))
+        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://happyvalley.com/processrequest"))
+        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("111"))
+        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
+        self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the Poll ProcessRequest</div>"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
     
     def testProcessRequest8(self):
         inst = self.instantiate_from("processrequest-example-poll-payrec.json")
@@ -187,20 +190,20 @@ class ProcessRequestTests(unittest.TestCase):
         self.implProcessRequest8(inst2)
     
     def implProcessRequest8(self, inst):
-        self.assertEqual(inst.action, "poll")
+        self.assertEqual(force_bytes(inst.action), force_bytes("poll"))
         self.assertEqual(inst.created.date, FHIRDate("2014-08-16").date)
         self.assertEqual(inst.created.as_json(), "2014-08-16")
-        self.assertEqual(inst.id, "1114")
-        self.assertEqual(inst.identifier[0].system, "http://happyvalley.com/processrequest")
-        self.assertEqual(inst.identifier[0].value, "114")
-        self.assertEqual(inst.include[0], "PaymentReconciliation")
+        self.assertEqual(force_bytes(inst.id), force_bytes("1114"))
+        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://happyvalley.com/processrequest"))
+        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("114"))
+        self.assertEqual(force_bytes(inst.include[0]), force_bytes("PaymentReconciliation"))
         self.assertEqual(inst.period.end.date, FHIRDate("2014-08-20").date)
         self.assertEqual(inst.period.end.as_json(), "2014-08-20")
         self.assertEqual(inst.period.start.date, FHIRDate("2014-08-10").date)
         self.assertEqual(inst.period.start.as_json(), "2014-08-10")
-        self.assertEqual(inst.status, "active")
-        self.assertEqual(inst.text.div, "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the Poll ProcessRequest</div>")
-        self.assertEqual(inst.text.status, "generated")
+        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
+        self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the Poll ProcessRequest</div>"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
     
     def testProcessRequest9(self):
         inst = self.instantiate_from("processrequest-example-status.json")
@@ -213,13 +216,13 @@ class ProcessRequestTests(unittest.TestCase):
         self.implProcessRequest9(inst2)
     
     def implProcessRequest9(self, inst):
-        self.assertEqual(inst.action, "status")
+        self.assertEqual(force_bytes(inst.action), force_bytes("status"))
         self.assertEqual(inst.created.date, FHIRDate("2014-08-16").date)
         self.assertEqual(inst.created.as_json(), "2014-08-16")
-        self.assertEqual(inst.id, "87655")
-        self.assertEqual(inst.identifier[0].system, "http://happyvalley.com/processrequest")
-        self.assertEqual(inst.identifier[0].value, "1776543")
-        self.assertEqual(inst.status, "active")
-        self.assertEqual(inst.text.div, "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the Status ProcessRequest</div>")
-        self.assertEqual(inst.text.status, "generated")
+        self.assertEqual(force_bytes(inst.id), force_bytes("87655"))
+        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://happyvalley.com/processrequest"))
+        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("1776543"))
+        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
+        self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the Status ProcessRequest</div>"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 

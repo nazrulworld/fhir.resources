@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-11.
+#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
 #  2019, SMART Health IT.
 
 import os
@@ -9,8 +9,11 @@ import pytest
 import io
 import unittest
 import json
+import six
 from fhir.resources import guidanceresponse
 from fhir.resources.fhirdate import FHIRDate
+
+from .fixtures import force_bytes
 
 
 @pytest.mark.usefixtures("base_settings")
@@ -33,14 +36,14 @@ class GuidanceResponseTests(unittest.TestCase):
         self.implGuidanceResponse1(inst2)
     
     def implGuidanceResponse1(self, inst):
-        self.assertEqual(inst.contained[0].id, "outputParameters1")
-        self.assertEqual(inst.id, "example")
-        self.assertEqual(inst.identifier.system, "http://example.org")
-        self.assertEqual(inst.identifier.value, "guidanceResponse1")
+        self.assertEqual(force_bytes(inst.contained[0].id), force_bytes("outputParameters1"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
+        self.assertEqual(force_bytes(inst.identifier.system), force_bytes("http://example.org"))
+        self.assertEqual(force_bytes(inst.identifier.value), force_bytes("guidanceResponse1"))
         self.assertEqual(inst.occurrenceDateTime.date, FHIRDate("2017-03-10T16:02:00Z").date)
         self.assertEqual(inst.occurrenceDateTime.as_json(), "2017-03-10T16:02:00Z")
-        self.assertEqual(inst.reasonCodeableConcept.text, "Guideline Appropriate Ordering Assessment")
-        self.assertEqual(inst.requestId, "guidanceRequest1")
-        self.assertEqual(inst.status, "success")
-        self.assertEqual(inst.text.status, "generated")
+        self.assertEqual(force_bytes(inst.reasonCodeableConcept.text), force_bytes("Guideline Appropriate Ordering Assessment"))
+        self.assertEqual(force_bytes(inst.requestId), force_bytes("guidanceRequest1"))
+        self.assertEqual(force_bytes(inst.status), force_bytes("success"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 

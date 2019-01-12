@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-11.
+#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
 #  2019, SMART Health IT.
 
 import os
@@ -9,8 +9,11 @@ import pytest
 import io
 import unittest
 import json
+import six
 from fhir.resources import group
 from fhir.resources.fhirdate import FHIRDate
+
+from .fixtures import force_bytes
 
 
 @pytest.mark.usefixtures("base_settings")
@@ -34,20 +37,20 @@ class GroupTests(unittest.TestCase):
     
     def implGroup1(self, inst):
         self.assertTrue(inst.actual)
-        self.assertEqual(inst.characteristic[0].code.text, "gender")
+        self.assertEqual(force_bytes(inst.characteristic[0].code.text), force_bytes("gender"))
         self.assertFalse(inst.characteristic[0].exclude)
-        self.assertEqual(inst.characteristic[0].valueCodeableConcept.text, "mixed")
-        self.assertEqual(inst.characteristic[1].code.text, "owner")
+        self.assertEqual(force_bytes(inst.characteristic[0].valueCodeableConcept.text), force_bytes("mixed"))
+        self.assertEqual(force_bytes(inst.characteristic[1].code.text), force_bytes("owner"))
         self.assertFalse(inst.characteristic[1].exclude)
-        self.assertEqual(inst.characteristic[1].valueCodeableConcept.text, "John Smith")
-        self.assertEqual(inst.code.text, "Horse")
-        self.assertEqual(inst.id, "101")
-        self.assertEqual(inst.identifier[0].system, "http://someveterinarianclinic.org/fhir/NamingSystem/herds")
-        self.assertEqual(inst.identifier[0].value, "12345")
-        self.assertEqual(inst.name, "John's herd")
+        self.assertEqual(force_bytes(inst.characteristic[1].valueCodeableConcept.text), force_bytes("John Smith"))
+        self.assertEqual(force_bytes(inst.code.text), force_bytes("Horse"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("101"))
+        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://someveterinarianclinic.org/fhir/NamingSystem/herds"))
+        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("12345"))
+        self.assertEqual(force_bytes(inst.name), force_bytes("John's herd"))
         self.assertEqual(inst.quantity, 25)
-        self.assertEqual(inst.text.status, "additional")
-        self.assertEqual(inst.type, "animal")
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("additional"))
+        self.assertEqual(force_bytes(inst.type), force_bytes("animal"))
     
     def testGroup2(self):
         inst = self.instantiate_from("group-example-member.json")
@@ -61,7 +64,7 @@ class GroupTests(unittest.TestCase):
     
     def implGroup2(self, inst):
         self.assertTrue(inst.actual)
-        self.assertEqual(inst.id, "102")
+        self.assertEqual(force_bytes(inst.id), force_bytes("102"))
         self.assertEqual(inst.member[0].period.start.date, FHIRDate("2014-10-08").date)
         self.assertEqual(inst.member[0].period.start.as_json(), "2014-10-08")
         self.assertTrue(inst.member[1].inactive)
@@ -71,6 +74,6 @@ class GroupTests(unittest.TestCase):
         self.assertEqual(inst.member[2].period.start.as_json(), "2015-08-06")
         self.assertEqual(inst.member[3].period.start.date, FHIRDate("2015-08-06").date)
         self.assertEqual(inst.member[3].period.start.as_json(), "2015-08-06")
-        self.assertEqual(inst.text.status, "additional")
-        self.assertEqual(inst.type, "person")
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("additional"))
+        self.assertEqual(force_bytes(inst.type), force_bytes("person"))
 

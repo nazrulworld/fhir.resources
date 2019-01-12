@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-11.
+#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
 #  2019, SMART Health IT.
 
 import os
@@ -9,8 +9,11 @@ import pytest
 import io
 import unittest
 import json
+import six
 from fhir.resources import supplydelivery
 from fhir.resources.fhirdate import FHIRDate
+
+from .fixtures import force_bytes
 
 
 @pytest.mark.usefixtures("base_settings")
@@ -33,18 +36,18 @@ class SupplyDeliveryTests(unittest.TestCase):
         self.implSupplyDelivery1(inst2)
     
     def implSupplyDelivery1(self, inst):
-        self.assertEqual(inst.id, "simpledelivery")
-        self.assertEqual(inst.identifier.value, "Order10284")
+        self.assertEqual(force_bytes(inst.id), force_bytes("simpledelivery"))
+        self.assertEqual(force_bytes(inst.identifier.value), force_bytes("Order10284"))
         self.assertEqual(inst.occurrenceDateTime.date, FHIRDate("2016-12-31").date)
         self.assertEqual(inst.occurrenceDateTime.as_json(), "2016-12-31")
-        self.assertEqual(inst.status, "completed")
-        self.assertEqual(inst.suppliedItem.itemCodeableConcept.coding[0].code, "BlueTubes")
-        self.assertEqual(inst.suppliedItem.itemCodeableConcept.coding[0].display, "Blood collect tubes blue cap")
+        self.assertEqual(force_bytes(inst.status), force_bytes("completed"))
+        self.assertEqual(force_bytes(inst.suppliedItem.itemCodeableConcept.coding[0].code), force_bytes("BlueTubes"))
+        self.assertEqual(force_bytes(inst.suppliedItem.itemCodeableConcept.coding[0].display), force_bytes("Blood collect tubes blue cap"))
         self.assertEqual(inst.suppliedItem.quantity.value, 10)
-        self.assertEqual(inst.text.status, "generated")
-        self.assertEqual(inst.type.coding[0].code, "device")
-        self.assertEqual(inst.type.coding[0].system, "http://hl7.org/fhir/supply-item-type")
-        self.assertEqual(inst.type.text, "Blood collect tubes blue cap")
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+        self.assertEqual(force_bytes(inst.type.coding[0].code), force_bytes("device"))
+        self.assertEqual(force_bytes(inst.type.coding[0].system), force_bytes("http://hl7.org/fhir/supply-item-type"))
+        self.assertEqual(force_bytes(inst.type.text), force_bytes("Blood collect tubes blue cap"))
     
     def testSupplyDelivery2(self):
         inst = self.instantiate_from("supplydelivery-example-pumpdelivery.json")
@@ -57,9 +60,9 @@ class SupplyDeliveryTests(unittest.TestCase):
         self.implSupplyDelivery2(inst2)
     
     def implSupplyDelivery2(self, inst):
-        self.assertEqual(inst.id, "pumpdelivery")
-        self.assertEqual(inst.identifier.value, "98398459409")
-        self.assertEqual(inst.status, "in-progress")
-        self.assertEqual(inst.text.div, "<div xmlns=\"http://www.w3.org/1999/xhtml\">[Put rendering here]</div>")
-        self.assertEqual(inst.text.status, "generated")
+        self.assertEqual(force_bytes(inst.id), force_bytes("pumpdelivery"))
+        self.assertEqual(force_bytes(inst.identifier.value), force_bytes("98398459409"))
+        self.assertEqual(force_bytes(inst.status), force_bytes("in-progress"))
+        self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">[Put rendering here]</div>"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 

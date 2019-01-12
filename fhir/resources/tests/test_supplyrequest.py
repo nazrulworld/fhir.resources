@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-11.
+#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
 #  2019, SMART Health IT.
 
 import os
@@ -9,8 +9,11 @@ import pytest
 import io
 import unittest
 import json
+import six
 from fhir.resources import supplyrequest
 from fhir.resources.fhirdate import FHIRDate
+
+from .fixtures import force_bytes
 
 
 @pytest.mark.usefixtures("base_settings")
@@ -35,18 +38,18 @@ class SupplyRequestTests(unittest.TestCase):
     def implSupplyRequest1(self, inst):
         self.assertEqual(inst.authoredOn.date, FHIRDate("2016-12-31").date)
         self.assertEqual(inst.authoredOn.as_json(), "2016-12-31")
-        self.assertEqual(inst.category.coding[0].code, "central")
-        self.assertEqual(inst.category.coding[0].display, "Central Stock Resupply")
-        self.assertEqual(inst.id, "simpleorder")
-        self.assertEqual(inst.identifier.value, "Order10284")
+        self.assertEqual(force_bytes(inst.category.coding[0].code), force_bytes("central"))
+        self.assertEqual(force_bytes(inst.category.coding[0].display), force_bytes("Central Stock Resupply"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("simpleorder"))
+        self.assertEqual(force_bytes(inst.identifier.value), force_bytes("Order10284"))
         self.assertEqual(inst.occurrenceDateTime.date, FHIRDate("2016-12-31").date)
         self.assertEqual(inst.occurrenceDateTime.as_json(), "2016-12-31")
-        self.assertEqual(inst.orderedItem.itemCodeableConcept.coding[0].code, "BlueTubes")
-        self.assertEqual(inst.orderedItem.itemCodeableConcept.coding[0].display, "Blood collect tubes blue cap")
+        self.assertEqual(force_bytes(inst.orderedItem.itemCodeableConcept.coding[0].code), force_bytes("BlueTubes"))
+        self.assertEqual(force_bytes(inst.orderedItem.itemCodeableConcept.coding[0].display), force_bytes("Blood collect tubes blue cap"))
         self.assertEqual(inst.orderedItem.quantity.value, 10)
-        self.assertEqual(inst.priority, "asap")
-        self.assertEqual(inst.reasonCodeableConcept.coding[0].code, "stock_low")
-        self.assertEqual(inst.reasonCodeableConcept.coding[0].display, "Refill due to low stock")
-        self.assertEqual(inst.status, "active")
-        self.assertEqual(inst.text.status, "generated")
+        self.assertEqual(force_bytes(inst.priority), force_bytes("asap"))
+        self.assertEqual(force_bytes(inst.reasonCodeableConcept.coding[0].code), force_bytes("stock_low"))
+        self.assertEqual(force_bytes(inst.reasonCodeableConcept.coding[0].display), force_bytes("Refill due to low stock"))
+        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 

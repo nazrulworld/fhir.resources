@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-11.
+#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
 #  2019, SMART Health IT.
 
 import os
@@ -9,8 +9,11 @@ import pytest
 import io
 import unittest
 import json
+import six
 from fhir.resources import devicemetric
 from fhir.resources.fhirdate import FHIRDate
+
+from .fixtures import force_bytes
 
 
 @pytest.mark.usefixtures("base_settings")
@@ -33,24 +36,24 @@ class DeviceMetricTests(unittest.TestCase):
         self.implDeviceMetric1(inst2)
     
     def implDeviceMetric1(self, inst):
-        self.assertEqual(inst.calibration[0].state, "calibrated")
+        self.assertEqual(force_bytes(inst.calibration[0].state), force_bytes("calibrated"))
         self.assertEqual(inst.calibration[0].time.date, FHIRDate("2016-12-28T09:03:04-05:00").date)
         self.assertEqual(inst.calibration[0].time.as_json(), "2016-12-28T09:03:04-05:00")
-        self.assertEqual(inst.calibration[0].type, "two-point")
-        self.assertEqual(inst.category, "measurement")
-        self.assertEqual(inst.color, "blue")
-        self.assertEqual(inst.id, "example")
-        self.assertEqual(inst.identifier.system, "http://goodcare.org/devicemetric/id")
-        self.assertEqual(inst.identifier.value, "345675")
+        self.assertEqual(force_bytes(inst.calibration[0].type), force_bytes("two-point"))
+        self.assertEqual(force_bytes(inst.category), force_bytes("measurement"))
+        self.assertEqual(force_bytes(inst.color), force_bytes("blue"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
+        self.assertEqual(force_bytes(inst.identifier.system), force_bytes("http://goodcare.org/devicemetric/id"))
+        self.assertEqual(force_bytes(inst.identifier.value), force_bytes("345675"))
         self.assertEqual(inst.measurementPeriod.repeat.frequency, 1)
         self.assertEqual(inst.measurementPeriod.repeat.period, 1)
-        self.assertEqual(inst.measurementPeriod.repeat.periodUnit, "s")
-        self.assertEqual(inst.operationalStatus, "on")
-        self.assertEqual(inst.text.status, "generated")
-        self.assertEqual(inst.type.coding[0].code, "150456")
-        self.assertEqual(inst.type.coding[0].display, "MDC_PULS_OXIM_SAT_O2")
-        self.assertEqual(inst.type.coding[0].system, "https://rtmms.nist.gov")
-        self.assertEqual(inst.unit.coding[0].code, "262688")
-        self.assertEqual(inst.unit.coding[0].display, "MDC_DIM_PERCENT")
-        self.assertEqual(inst.unit.coding[0].system, "https://rtmms.nist.gov")
+        self.assertEqual(force_bytes(inst.measurementPeriod.repeat.periodUnit), force_bytes("s"))
+        self.assertEqual(force_bytes(inst.operationalStatus), force_bytes("on"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+        self.assertEqual(force_bytes(inst.type.coding[0].code), force_bytes("150456"))
+        self.assertEqual(force_bytes(inst.type.coding[0].display), force_bytes("MDC_PULS_OXIM_SAT_O2"))
+        self.assertEqual(force_bytes(inst.type.coding[0].system), force_bytes("https://rtmms.nist.gov"))
+        self.assertEqual(force_bytes(inst.unit.coding[0].code), force_bytes("262688"))
+        self.assertEqual(force_bytes(inst.unit.coding[0].display), force_bytes("MDC_DIM_PERCENT"))
+        self.assertEqual(force_bytes(inst.unit.coding[0].system), force_bytes("https://rtmms.nist.gov"))
 

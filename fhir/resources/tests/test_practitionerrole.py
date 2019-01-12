@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-11.
+#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
 #  2019, SMART Health IT.
 
 import os
@@ -9,8 +9,11 @@ import pytest
 import io
 import unittest
 import json
+import six
 from fhir.resources import practitionerrole
 from fhir.resources.fhirdate import FHIRDate
+
+from .fixtures import force_bytes
 
 
 @pytest.mark.usefixtures("base_settings")
@@ -34,26 +37,26 @@ class PractitionerRoleTests(unittest.TestCase):
     
     def implPractitionerRole1(self, inst):
         self.assertTrue(inst.active)
-        self.assertEqual(inst.availabilityExceptions, "Adam is generally unavailable on public holidays and during the Christmas/New Year break")
+        self.assertEqual(force_bytes(inst.availabilityExceptions), force_bytes("Adam is generally unavailable on public holidays and during the Christmas/New Year break"))
         self.assertEqual(inst.availableTime[0].availableEndTime.date, FHIRDate("16:30:00").date)
         self.assertEqual(inst.availableTime[0].availableEndTime.as_json(), "16:30:00")
         self.assertEqual(inst.availableTime[0].availableStartTime.date, FHIRDate("09:00:00").date)
         self.assertEqual(inst.availableTime[0].availableStartTime.as_json(), "09:00:00")
-        self.assertEqual(inst.availableTime[0].daysOfWeek[0], "mon")
-        self.assertEqual(inst.availableTime[0].daysOfWeek[1], "tue")
-        self.assertEqual(inst.availableTime[0].daysOfWeek[2], "wed")
+        self.assertEqual(force_bytes(inst.availableTime[0].daysOfWeek[0]), force_bytes("mon"))
+        self.assertEqual(force_bytes(inst.availableTime[0].daysOfWeek[1]), force_bytes("tue"))
+        self.assertEqual(force_bytes(inst.availableTime[0].daysOfWeek[2]), force_bytes("wed"))
         self.assertEqual(inst.availableTime[1].availableEndTime.date, FHIRDate("12:00:00").date)
         self.assertEqual(inst.availableTime[1].availableEndTime.as_json(), "12:00:00")
         self.assertEqual(inst.availableTime[1].availableStartTime.date, FHIRDate("09:00:00").date)
         self.assertEqual(inst.availableTime[1].availableStartTime.as_json(), "09:00:00")
-        self.assertEqual(inst.availableTime[1].daysOfWeek[0], "thu")
-        self.assertEqual(inst.availableTime[1].daysOfWeek[1], "fri")
-        self.assertEqual(inst.code[0].coding[0].code, "RP")
-        self.assertEqual(inst.code[0].coding[0].system, "http://hl7.org/fhir/v2/0286")
-        self.assertEqual(inst.id, "example")
-        self.assertEqual(inst.identifier[0].system, "http://www.acme.org/practitioners")
-        self.assertEqual(inst.identifier[0].value, "23")
-        self.assertEqual(inst.notAvailable[0].description, "Adam will be on extended leave during May 2017")
+        self.assertEqual(force_bytes(inst.availableTime[1].daysOfWeek[0]), force_bytes("thu"))
+        self.assertEqual(force_bytes(inst.availableTime[1].daysOfWeek[1]), force_bytes("fri"))
+        self.assertEqual(force_bytes(inst.code[0].coding[0].code), force_bytes("RP"))
+        self.assertEqual(force_bytes(inst.code[0].coding[0].system), force_bytes("http://hl7.org/fhir/v2/0286"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
+        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://www.acme.org/practitioners"))
+        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("23"))
+        self.assertEqual(force_bytes(inst.notAvailable[0].description), force_bytes("Adam will be on extended leave during May 2017"))
         self.assertEqual(inst.notAvailable[0].during.end.date, FHIRDate("2017-05-20").date)
         self.assertEqual(inst.notAvailable[0].during.end.as_json(), "2017-05-20")
         self.assertEqual(inst.notAvailable[0].during.start.date, FHIRDate("2017-05-01").date)
@@ -62,14 +65,14 @@ class PractitionerRoleTests(unittest.TestCase):
         self.assertEqual(inst.period.end.as_json(), "2012-03-31")
         self.assertEqual(inst.period.start.date, FHIRDate("2012-01-01").date)
         self.assertEqual(inst.period.start.as_json(), "2012-01-01")
-        self.assertEqual(inst.specialty[0].coding[0].code, "408443003")
-        self.assertEqual(inst.specialty[0].coding[0].display, "General medical practice")
-        self.assertEqual(inst.specialty[0].coding[0].system, "http://snomed.info/sct")
-        self.assertEqual(inst.telecom[0].system, "phone")
-        self.assertEqual(inst.telecom[0].use, "work")
-        self.assertEqual(inst.telecom[0].value, "(03) 5555 6473")
-        self.assertEqual(inst.telecom[1].system, "email")
-        self.assertEqual(inst.telecom[1].use, "work")
-        self.assertEqual(inst.telecom[1].value, "adam.southern@example.org")
-        self.assertEqual(inst.text.status, "generated")
+        self.assertEqual(force_bytes(inst.specialty[0].coding[0].code), force_bytes("408443003"))
+        self.assertEqual(force_bytes(inst.specialty[0].coding[0].display), force_bytes("General medical practice"))
+        self.assertEqual(force_bytes(inst.specialty[0].coding[0].system), force_bytes("http://snomed.info/sct"))
+        self.assertEqual(force_bytes(inst.telecom[0].system), force_bytes("phone"))
+        self.assertEqual(force_bytes(inst.telecom[0].use), force_bytes("work"))
+        self.assertEqual(force_bytes(inst.telecom[0].value), force_bytes("(03) 5555 6473"))
+        self.assertEqual(force_bytes(inst.telecom[1].system), force_bytes("email"))
+        self.assertEqual(force_bytes(inst.telecom[1].use), force_bytes("work"))
+        self.assertEqual(force_bytes(inst.telecom[1].value), force_bytes("adam.southern@example.org"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 

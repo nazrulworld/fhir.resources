@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-11.
+#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
 #  2019, SMART Health IT.
 
 import os
@@ -9,8 +9,11 @@ import pytest
 import io
 import unittest
 import json
+import six
 from fhir.resources import adverseevent
 from fhir.resources.fhirdate import FHIRDate
+
+from .fixtures import force_bytes
 
 
 @pytest.mark.usefixtures("base_settings")
@@ -33,18 +36,18 @@ class AdverseEventTests(unittest.TestCase):
         self.implAdverseEvent1(inst2)
     
     def implAdverseEvent1(self, inst):
-        self.assertEqual(inst.category, "AE")
+        self.assertEqual(force_bytes(inst.category), force_bytes("AE"))
         self.assertEqual(inst.date.date, FHIRDate("2017-01-29T12:34:56+00:00").date)
         self.assertEqual(inst.date.as_json(), "2017-01-29T12:34:56+00:00")
-        self.assertEqual(inst.description, "This was a mild rash on the left forearm")
-        self.assertEqual(inst.id, "example")
-        self.assertEqual(inst.identifier.system, "http://acme.com/ids/patients/risks")
-        self.assertEqual(inst.identifier.value, "49476534")
-        self.assertEqual(inst.seriousness.coding[0].code, "Mild")
-        self.assertEqual(inst.seriousness.coding[0].display, "Mild")
-        self.assertEqual(inst.seriousness.coding[0].system, "http://hl7.org/fhir/adverse-event-seriousness")
-        self.assertEqual(inst.text.status, "generated")
-        self.assertEqual(inst.type.coding[0].code, "304386008")
-        self.assertEqual(inst.type.coding[0].display, "O/E - itchy rash")
-        self.assertEqual(inst.type.coding[0].system, "http://snomed.info/sct")
+        self.assertEqual(force_bytes(inst.description), force_bytes("This was a mild rash on the left forearm"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
+        self.assertEqual(force_bytes(inst.identifier.system), force_bytes("http://acme.com/ids/patients/risks"))
+        self.assertEqual(force_bytes(inst.identifier.value), force_bytes("49476534"))
+        self.assertEqual(force_bytes(inst.seriousness.coding[0].code), force_bytes("Mild"))
+        self.assertEqual(force_bytes(inst.seriousness.coding[0].display), force_bytes("Mild"))
+        self.assertEqual(force_bytes(inst.seriousness.coding[0].system), force_bytes("http://hl7.org/fhir/adverse-event-seriousness"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+        self.assertEqual(force_bytes(inst.type.coding[0].code), force_bytes("304386008"))
+        self.assertEqual(force_bytes(inst.type.coding[0].display), force_bytes("O/E - itchy rash"))
+        self.assertEqual(force_bytes(inst.type.coding[0].system), force_bytes("http://snomed.info/sct"))
 

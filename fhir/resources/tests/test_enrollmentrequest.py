@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-11.
+#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
 #  2019, SMART Health IT.
 
 import os
@@ -9,8 +9,11 @@ import pytest
 import io
 import unittest
 import json
+import six
 from fhir.resources import enrollmentrequest
 from fhir.resources.fhirdate import FHIRDate
+
+from .fixtures import force_bytes
 
 
 @pytest.mark.usefixtures("base_settings")
@@ -35,10 +38,10 @@ class EnrollmentRequestTests(unittest.TestCase):
     def implEnrollmentRequest1(self, inst):
         self.assertEqual(inst.created.date, FHIRDate("2014-08-16").date)
         self.assertEqual(inst.created.as_json(), "2014-08-16")
-        self.assertEqual(inst.id, "22345")
-        self.assertEqual(inst.identifier[0].system, "http://happyvalley.com/enrollmentrequest")
-        self.assertEqual(inst.identifier[0].value, "EN22345")
-        self.assertEqual(inst.status, "active")
-        self.assertEqual(inst.text.div, "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the EnrollmentRequest.</div>")
-        self.assertEqual(inst.text.status, "generated")
+        self.assertEqual(force_bytes(inst.id), force_bytes("22345"))
+        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://happyvalley.com/enrollmentrequest"))
+        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("EN22345"))
+        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
+        self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the EnrollmentRequest.</div>"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 

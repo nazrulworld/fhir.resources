@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-11.
+#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
 #  2019, SMART Health IT.
 
 import os
@@ -9,8 +9,11 @@ import pytest
 import io
 import unittest
 import json
+import six
 from fhir.resources import documentreference
 from fhir.resources.fhirdate import FHIRDate
+
+from .fixtures import force_bytes
 
 
 @pytest.mark.usefixtures("base_settings")
@@ -33,51 +36,51 @@ class DocumentReferenceTests(unittest.TestCase):
         self.implDocumentReference1(inst2)
     
     def implDocumentReference1(self, inst):
-        self.assertEqual(inst.class_fhir.coding[0].code, "History and Physical")
-        self.assertEqual(inst.class_fhir.coding[0].display, "History and Physical")
-        self.assertEqual(inst.class_fhir.coding[0].system, "http://ihe.net/xds/connectathon/classCodes")
-        self.assertEqual(inst.contained[0].id, "a2")
-        self.assertEqual(inst.content[0].attachment.contentType, "application/hl7-v3+xml")
-        self.assertEqual(inst.content[0].attachment.hash, "2jmj7l5rSw0yVb/vlWAYkK/YBwk=")
-        self.assertEqual(inst.content[0].attachment.language, "en-US")
+        self.assertEqual(force_bytes(inst.class_fhir.coding[0].code), force_bytes("History and Physical"))
+        self.assertEqual(force_bytes(inst.class_fhir.coding[0].display), force_bytes("History and Physical"))
+        self.assertEqual(force_bytes(inst.class_fhir.coding[0].system), force_bytes("http://ihe.net/xds/connectathon/classCodes"))
+        self.assertEqual(force_bytes(inst.contained[0].id), force_bytes("a2"))
+        self.assertEqual(force_bytes(inst.content[0].attachment.contentType), force_bytes("application/hl7-v3+xml"))
+        self.assertEqual(force_bytes(inst.content[0].attachment.hash), force_bytes("2jmj7l5rSw0yVb/vlWAYkK/YBwk="))
+        self.assertEqual(force_bytes(inst.content[0].attachment.language), force_bytes("en-US"))
         self.assertEqual(inst.content[0].attachment.size, 3654)
-        self.assertEqual(inst.content[0].attachment.url, "http://example.org/xds/mhd/Binary/07a6483f-732b-461e-86b6-edb665c45510")
-        self.assertEqual(inst.content[0].format.code, "urn:ihe:pcc:handp:2008")
-        self.assertEqual(inst.content[0].format.display, "History and Physical Specification")
-        self.assertEqual(inst.content[0].format.system, "urn:oid:1.3.6.1.4.1.19376.1.2.3")
-        self.assertEqual(inst.context.event[0].coding[0].code, "T-D8200")
-        self.assertEqual(inst.context.event[0].coding[0].display, "Arm")
-        self.assertEqual(inst.context.event[0].coding[0].system, "http://ihe.net/xds/connectathon/eventCodes")
-        self.assertEqual(inst.context.facilityType.coding[0].code, "Outpatient")
-        self.assertEqual(inst.context.facilityType.coding[0].display, "Outpatient")
-        self.assertEqual(inst.context.facilityType.coding[0].system, "http://www.ihe.net/xds/connectathon/healthcareFacilityTypeCodes")
+        self.assertEqual(force_bytes(inst.content[0].attachment.url), force_bytes("http://example.org/xds/mhd/Binary/07a6483f-732b-461e-86b6-edb665c45510"))
+        self.assertEqual(force_bytes(inst.content[0].format.code), force_bytes("urn:ihe:pcc:handp:2008"))
+        self.assertEqual(force_bytes(inst.content[0].format.display), force_bytes("History and Physical Specification"))
+        self.assertEqual(force_bytes(inst.content[0].format.system), force_bytes("urn:oid:1.3.6.1.4.1.19376.1.2.3"))
+        self.assertEqual(force_bytes(inst.context.event[0].coding[0].code), force_bytes("T-D8200"))
+        self.assertEqual(force_bytes(inst.context.event[0].coding[0].display), force_bytes("Arm"))
+        self.assertEqual(force_bytes(inst.context.event[0].coding[0].system), force_bytes("http://ihe.net/xds/connectathon/eventCodes"))
+        self.assertEqual(force_bytes(inst.context.facilityType.coding[0].code), force_bytes("Outpatient"))
+        self.assertEqual(force_bytes(inst.context.facilityType.coding[0].display), force_bytes("Outpatient"))
+        self.assertEqual(force_bytes(inst.context.facilityType.coding[0].system), force_bytes("http://www.ihe.net/xds/connectathon/healthcareFacilityTypeCodes"))
         self.assertEqual(inst.context.period.end.date, FHIRDate("2004-12-23T08:01:00+11:00").date)
         self.assertEqual(inst.context.period.end.as_json(), "2004-12-23T08:01:00+11:00")
         self.assertEqual(inst.context.period.start.date, FHIRDate("2004-12-23T08:00:00+11:00").date)
         self.assertEqual(inst.context.period.start.as_json(), "2004-12-23T08:00:00+11:00")
-        self.assertEqual(inst.context.practiceSetting.coding[0].code, "General Medicine")
-        self.assertEqual(inst.context.practiceSetting.coding[0].display, "General Medicine")
-        self.assertEqual(inst.context.practiceSetting.coding[0].system, "http://www.ihe.net/xds/connectathon/practiceSettingCodes")
-        self.assertEqual(inst.context.related[0].identifier.system, "urn:ietf:rfc:3986")
-        self.assertEqual(inst.context.related[0].identifier.value, "urn:oid:1.3.6.1.4.1.21367.2005.3.7.2345")
+        self.assertEqual(force_bytes(inst.context.practiceSetting.coding[0].code), force_bytes("General Medicine"))
+        self.assertEqual(force_bytes(inst.context.practiceSetting.coding[0].display), force_bytes("General Medicine"))
+        self.assertEqual(force_bytes(inst.context.practiceSetting.coding[0].system), force_bytes("http://www.ihe.net/xds/connectathon/practiceSettingCodes"))
+        self.assertEqual(force_bytes(inst.context.related[0].identifier.system), force_bytes("urn:ietf:rfc:3986"))
+        self.assertEqual(force_bytes(inst.context.related[0].identifier.value), force_bytes("urn:oid:1.3.6.1.4.1.21367.2005.3.7.2345"))
         self.assertEqual(inst.created.date, FHIRDate("2005-12-24T09:35:00+11:00").date)
         self.assertEqual(inst.created.as_json(), "2005-12-24T09:35:00+11:00")
-        self.assertEqual(inst.description, "Physical")
-        self.assertEqual(inst.docStatus, "preliminary")
-        self.assertEqual(inst.id, "example")
-        self.assertEqual(inst.identifier[0].system, "urn:ietf:rfc:3986")
-        self.assertEqual(inst.identifier[0].value, "urn:oid:1.3.6.1.4.1.21367.2005.3.7.1234")
+        self.assertEqual(force_bytes(inst.description), force_bytes("Physical"))
+        self.assertEqual(force_bytes(inst.docStatus), force_bytes("preliminary"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
+        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("urn:ietf:rfc:3986"))
+        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("urn:oid:1.3.6.1.4.1.21367.2005.3.7.1234"))
         self.assertEqual(inst.indexed.date, FHIRDate("2005-12-24T09:43:41+11:00").date)
         self.assertEqual(inst.indexed.as_json(), "2005-12-24T09:43:41+11:00")
-        self.assertEqual(inst.masterIdentifier.system, "urn:ietf:rfc:3986")
-        self.assertEqual(inst.masterIdentifier.value, "urn:oid:1.3.6.1.4.1.21367.2005.3.7")
-        self.assertEqual(inst.relatesTo[0].code, "appends")
-        self.assertEqual(inst.securityLabel[0].coding[0].code, "V")
-        self.assertEqual(inst.securityLabel[0].coding[0].display, "very restricted")
-        self.assertEqual(inst.securityLabel[0].coding[0].system, "http://hl7.org/fhir/v3/Confidentiality")
-        self.assertEqual(inst.status, "current")
-        self.assertEqual(inst.text.status, "generated")
-        self.assertEqual(inst.type.coding[0].code, "34108-1")
-        self.assertEqual(inst.type.coding[0].display, "Outpatient Note")
-        self.assertEqual(inst.type.coding[0].system, "http://loinc.org")
+        self.assertEqual(force_bytes(inst.masterIdentifier.system), force_bytes("urn:ietf:rfc:3986"))
+        self.assertEqual(force_bytes(inst.masterIdentifier.value), force_bytes("urn:oid:1.3.6.1.4.1.21367.2005.3.7"))
+        self.assertEqual(force_bytes(inst.relatesTo[0].code), force_bytes("appends"))
+        self.assertEqual(force_bytes(inst.securityLabel[0].coding[0].code), force_bytes("V"))
+        self.assertEqual(force_bytes(inst.securityLabel[0].coding[0].display), force_bytes("very restricted"))
+        self.assertEqual(force_bytes(inst.securityLabel[0].coding[0].system), force_bytes("http://hl7.org/fhir/v3/Confidentiality"))
+        self.assertEqual(force_bytes(inst.status), force_bytes("current"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+        self.assertEqual(force_bytes(inst.type.coding[0].code), force_bytes("34108-1"))
+        self.assertEqual(force_bytes(inst.type.coding[0].display), force_bytes("Outpatient Note"))
+        self.assertEqual(force_bytes(inst.type.coding[0].system), force_bytes("http://loinc.org"))
 

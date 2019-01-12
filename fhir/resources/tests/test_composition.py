@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-11.
+#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
 #  2019, SMART Health IT.
 
 import os
@@ -9,8 +9,11 @@ import pytest
 import io
 import unittest
 import json
+import six
 from fhir.resources import composition
 from fhir.resources.fhirdate import FHIRDate
+
+from .fixtures import force_bytes
 
 
 @pytest.mark.usefixtures("base_settings")
@@ -33,51 +36,51 @@ class CompositionTests(unittest.TestCase):
         self.implComposition1(inst2)
     
     def implComposition1(self, inst):
-        self.assertEqual(inst.attester[0].mode[0], "legal")
+        self.assertEqual(force_bytes(inst.attester[0].mode[0]), force_bytes("legal"))
         self.assertEqual(inst.attester[0].time.date, FHIRDate("2012-01-04T09:10:14Z").date)
         self.assertEqual(inst.attester[0].time.as_json(), "2012-01-04T09:10:14Z")
-        self.assertEqual(inst.class_fhir.coding[0].code, "LP173421-1")
-        self.assertEqual(inst.class_fhir.coding[0].display, "Report")
-        self.assertEqual(inst.class_fhir.coding[0].system, "http://loinc.org")
-        self.assertEqual(inst.confidentiality, "N")
+        self.assertEqual(force_bytes(inst.class_fhir.coding[0].code), force_bytes("LP173421-1"))
+        self.assertEqual(force_bytes(inst.class_fhir.coding[0].display), force_bytes("Report"))
+        self.assertEqual(force_bytes(inst.class_fhir.coding[0].system), force_bytes("http://loinc.org"))
+        self.assertEqual(force_bytes(inst.confidentiality), force_bytes("N"))
         self.assertEqual(inst.date.date, FHIRDate("2012-01-04T09:10:14Z").date)
         self.assertEqual(inst.date.as_json(), "2012-01-04T09:10:14Z")
-        self.assertEqual(inst.event[0].code[0].coding[0].code, "HEALTHREC")
-        self.assertEqual(inst.event[0].code[0].coding[0].display, "health record")
-        self.assertEqual(inst.event[0].code[0].coding[0].system, "http://hl7.org/fhir/v3/ActCode")
+        self.assertEqual(force_bytes(inst.event[0].code[0].coding[0].code), force_bytes("HEALTHREC"))
+        self.assertEqual(force_bytes(inst.event[0].code[0].coding[0].display), force_bytes("health record"))
+        self.assertEqual(force_bytes(inst.event[0].code[0].coding[0].system), force_bytes("http://hl7.org/fhir/v3/ActCode"))
         self.assertEqual(inst.event[0].period.end.date, FHIRDate("2012-11-12").date)
         self.assertEqual(inst.event[0].period.end.as_json(), "2012-11-12")
         self.assertEqual(inst.event[0].period.start.date, FHIRDate("2010-07-18").date)
         self.assertEqual(inst.event[0].period.start.as_json(), "2010-07-18")
-        self.assertEqual(inst.id, "example")
-        self.assertEqual(inst.identifier.system, "http://healthintersections.com.au/test")
-        self.assertEqual(inst.identifier.value, "1")
-        self.assertEqual(inst.relatesTo[0].code, "replaces")
-        self.assertEqual(inst.relatesTo[1].code, "appends")
-        self.assertEqual(inst.relatesTo[1].targetIdentifier.system, "http://example.org/fhir/NamingSystem/document-ids")
-        self.assertEqual(inst.relatesTo[1].targetIdentifier.value, "ABC123")
-        self.assertEqual(inst.section[0].code.coding[0].code, "11348-0")
-        self.assertEqual(inst.section[0].code.coding[0].display, "History of past illness Narrative")
-        self.assertEqual(inst.section[0].code.coding[0].system, "http://loinc.org")
-        self.assertEqual(inst.section[0].mode, "snapshot")
-        self.assertEqual(inst.section[0].orderedBy.coding[0].code, "event-date")
-        self.assertEqual(inst.section[0].orderedBy.coding[0].display, "Sorted by Event Date")
-        self.assertEqual(inst.section[0].orderedBy.coding[0].system, "http://hl7.org/fhir/list-order")
-        self.assertEqual(inst.section[0].text.status, "generated")
-        self.assertEqual(inst.section[0].title, "History of present illness")
-        self.assertEqual(inst.section[1].code.coding[0].code, "10157-6")
-        self.assertEqual(inst.section[1].code.coding[0].display, "History of family member diseases Narrative")
-        self.assertEqual(inst.section[1].code.coding[0].system, "http://loinc.org")
-        self.assertEqual(inst.section[1].emptyReason.coding[0].code, "withheld")
-        self.assertEqual(inst.section[1].emptyReason.coding[0].display, "Information Withheld")
-        self.assertEqual(inst.section[1].emptyReason.coding[0].system, "http://hl7.org/fhir/list-empty-reason")
-        self.assertEqual(inst.section[1].mode, "snapshot")
-        self.assertEqual(inst.section[1].text.status, "generated")
-        self.assertEqual(inst.section[1].title, "History of family member diseases")
-        self.assertEqual(inst.status, "final")
-        self.assertEqual(inst.text.status, "generated")
-        self.assertEqual(inst.title, "Consultation Note")
-        self.assertEqual(inst.type.coding[0].code, "11488-4")
-        self.assertEqual(inst.type.coding[0].display, "Consult note")
-        self.assertEqual(inst.type.coding[0].system, "http://loinc.org")
+        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
+        self.assertEqual(force_bytes(inst.identifier.system), force_bytes("http://healthintersections.com.au/test"))
+        self.assertEqual(force_bytes(inst.identifier.value), force_bytes("1"))
+        self.assertEqual(force_bytes(inst.relatesTo[0].code), force_bytes("replaces"))
+        self.assertEqual(force_bytes(inst.relatesTo[1].code), force_bytes("appends"))
+        self.assertEqual(force_bytes(inst.relatesTo[1].targetIdentifier.system), force_bytes("http://example.org/fhir/NamingSystem/document-ids"))
+        self.assertEqual(force_bytes(inst.relatesTo[1].targetIdentifier.value), force_bytes("ABC123"))
+        self.assertEqual(force_bytes(inst.section[0].code.coding[0].code), force_bytes("11348-0"))
+        self.assertEqual(force_bytes(inst.section[0].code.coding[0].display), force_bytes("History of past illness Narrative"))
+        self.assertEqual(force_bytes(inst.section[0].code.coding[0].system), force_bytes("http://loinc.org"))
+        self.assertEqual(force_bytes(inst.section[0].mode), force_bytes("snapshot"))
+        self.assertEqual(force_bytes(inst.section[0].orderedBy.coding[0].code), force_bytes("event-date"))
+        self.assertEqual(force_bytes(inst.section[0].orderedBy.coding[0].display), force_bytes("Sorted by Event Date"))
+        self.assertEqual(force_bytes(inst.section[0].orderedBy.coding[0].system), force_bytes("http://hl7.org/fhir/list-order"))
+        self.assertEqual(force_bytes(inst.section[0].text.status), force_bytes("generated"))
+        self.assertEqual(force_bytes(inst.section[0].title), force_bytes("History of present illness"))
+        self.assertEqual(force_bytes(inst.section[1].code.coding[0].code), force_bytes("10157-6"))
+        self.assertEqual(force_bytes(inst.section[1].code.coding[0].display), force_bytes("History of family member diseases Narrative"))
+        self.assertEqual(force_bytes(inst.section[1].code.coding[0].system), force_bytes("http://loinc.org"))
+        self.assertEqual(force_bytes(inst.section[1].emptyReason.coding[0].code), force_bytes("withheld"))
+        self.assertEqual(force_bytes(inst.section[1].emptyReason.coding[0].display), force_bytes("Information Withheld"))
+        self.assertEqual(force_bytes(inst.section[1].emptyReason.coding[0].system), force_bytes("http://hl7.org/fhir/list-empty-reason"))
+        self.assertEqual(force_bytes(inst.section[1].mode), force_bytes("snapshot"))
+        self.assertEqual(force_bytes(inst.section[1].text.status), force_bytes("generated"))
+        self.assertEqual(force_bytes(inst.section[1].title), force_bytes("History of family member diseases"))
+        self.assertEqual(force_bytes(inst.status), force_bytes("final"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+        self.assertEqual(force_bytes(inst.title), force_bytes("Consultation Note"))
+        self.assertEqual(force_bytes(inst.type.coding[0].code), force_bytes("11488-4"))
+        self.assertEqual(force_bytes(inst.type.coding[0].display), force_bytes("Consult note"))
+        self.assertEqual(force_bytes(inst.type.coding[0].system), force_bytes("http://loinc.org"))
 

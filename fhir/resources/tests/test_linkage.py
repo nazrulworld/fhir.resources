@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-11.
+#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
 #  2019, SMART Health IT.
 
 import os
@@ -9,8 +9,11 @@ import pytest
 import io
 import unittest
 import json
+import six
 from fhir.resources import linkage
 from fhir.resources.fhirdate import FHIRDate
+
+from .fixtures import force_bytes
 
 
 @pytest.mark.usefixtures("base_settings")
@@ -33,8 +36,8 @@ class LinkageTests(unittest.TestCase):
         self.implLinkage1(inst2)
     
     def implLinkage1(self, inst):
-        self.assertEqual(inst.id, "example")
-        self.assertEqual(inst.item[0].type, "source")
-        self.assertEqual(inst.item[1].type, "alternate")
-        self.assertEqual(inst.text.status, "generated")
+        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
+        self.assertEqual(force_bytes(inst.item[0].type), force_bytes("source"))
+        self.assertEqual(force_bytes(inst.item[1].type), force_bytes("alternate"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 

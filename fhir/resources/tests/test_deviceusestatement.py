@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-11.
+#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
 #  2019, SMART Health IT.
 
 import os
@@ -9,8 +9,11 @@ import pytest
 import io
 import unittest
 import json
+import six
 from fhir.resources import deviceusestatement
 from fhir.resources.fhirdate import FHIRDate
+
+from .fixtures import force_bytes
 
 
 @pytest.mark.usefixtures("base_settings")
@@ -33,9 +36,9 @@ class DeviceUseStatementTests(unittest.TestCase):
         self.implDeviceUseStatement1(inst2)
     
     def implDeviceUseStatement1(self, inst):
-        self.assertEqual(inst.id, "example")
-        self.assertEqual(inst.identifier[0].system, "http:goodhealth.org/identifiers")
-        self.assertEqual(inst.identifier[0].value, "51ebb7a9-4e3a-4360-9a05-0cc2d869086f")
-        self.assertEqual(inst.status, "active")
-        self.assertEqual(inst.text.status, "generated")
+        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
+        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http:goodhealth.org/identifiers"))
+        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("51ebb7a9-4e3a-4360-9a05-0cc2d869086f"))
+        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 

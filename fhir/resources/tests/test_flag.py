@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-11.
+#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
 #  2019, SMART Health IT.
 
 import os
@@ -9,8 +9,11 @@ import pytest
 import io
 import unittest
 import json
+import six
 from fhir.resources import flag
 from fhir.resources.fhirdate import FHIRDate
+
+from .fixtures import force_bytes
 
 
 @pytest.mark.usefixtures("base_settings")
@@ -33,16 +36,16 @@ class FlagTests(unittest.TestCase):
         self.implFlag1(inst2)
     
     def implFlag1(self, inst):
-        self.assertEqual(inst.category.coding[0].code, "infection")
-        self.assertEqual(inst.category.coding[0].display, "Infection Control Level")
-        self.assertEqual(inst.category.coding[0].system, "http://example.org/local")
-        self.assertEqual(inst.code.coding[0].code, "l3")
-        self.assertEqual(inst.code.coding[0].display, "Follow Level 3 Protocol")
-        self.assertEqual(inst.code.coding[0].system, "http://example.org/local/if1")
-        self.assertEqual(inst.id, "example-encounter")
-        self.assertEqual(inst.status, "active")
-        self.assertEqual(inst.text.div, "<div xmlns=\"http://www.w3.org/1999/xhtml\">Follow Infection Control Level 3 Protocol</div>")
-        self.assertEqual(inst.text.status, "generated")
+        self.assertEqual(force_bytes(inst.category.coding[0].code), force_bytes("infection"))
+        self.assertEqual(force_bytes(inst.category.coding[0].display), force_bytes("Infection Control Level"))
+        self.assertEqual(force_bytes(inst.category.coding[0].system), force_bytes("http://example.org/local"))
+        self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("l3"))
+        self.assertEqual(force_bytes(inst.code.coding[0].display), force_bytes("Follow Level 3 Protocol"))
+        self.assertEqual(force_bytes(inst.code.coding[0].system), force_bytes("http://example.org/local/if1"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("example-encounter"))
+        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
+        self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">Follow Infection Control Level 3 Protocol</div>"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
     
     def testFlag2(self):
         inst = self.instantiate_from("flag-example.json")
@@ -55,21 +58,21 @@ class FlagTests(unittest.TestCase):
         self.implFlag2(inst2)
     
     def implFlag2(self, inst):
-        self.assertEqual(inst.category.coding[0].code, "admin")
-        self.assertEqual(inst.category.coding[0].display, "Admin")
-        self.assertEqual(inst.category.coding[0].system, "http://example.org/local")
-        self.assertEqual(inst.category.text, "admin")
-        self.assertEqual(inst.code.coding[0].code, "bigdog")
-        self.assertEqual(inst.code.coding[0].display, "Big dog")
-        self.assertEqual(inst.code.coding[0].system, "http://example.org/local")
-        self.assertEqual(inst.code.text, "Patient has a big dog at his home. Always always wear a suit of armor or take other active counter-measures")
-        self.assertEqual(inst.id, "example")
-        self.assertEqual(inst.identifier[0].value, "12345")
+        self.assertEqual(force_bytes(inst.category.coding[0].code), force_bytes("admin"))
+        self.assertEqual(force_bytes(inst.category.coding[0].display), force_bytes("Admin"))
+        self.assertEqual(force_bytes(inst.category.coding[0].system), force_bytes("http://example.org/local"))
+        self.assertEqual(force_bytes(inst.category.text), force_bytes("admin"))
+        self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("bigdog"))
+        self.assertEqual(force_bytes(inst.code.coding[0].display), force_bytes("Big dog"))
+        self.assertEqual(force_bytes(inst.code.coding[0].system), force_bytes("http://example.org/local"))
+        self.assertEqual(force_bytes(inst.code.text), force_bytes("Patient has a big dog at his home. Always always wear a suit of armor or take other active counter-measures"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
+        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("12345"))
         self.assertEqual(inst.period.end.date, FHIRDate("2016-12-01").date)
         self.assertEqual(inst.period.end.as_json(), "2016-12-01")
         self.assertEqual(inst.period.start.date, FHIRDate("2015-01-17").date)
         self.assertEqual(inst.period.start.as_json(), "2015-01-17")
-        self.assertEqual(inst.status, "inactive")
-        self.assertEqual(inst.text.div, "<div xmlns=\"http://www.w3.org/1999/xhtml\">Large Dog warning for Peter Patient</div>")
-        self.assertEqual(inst.text.status, "generated")
+        self.assertEqual(force_bytes(inst.status), force_bytes("inactive"))
+        self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">Large Dog warning for Peter Patient</div>"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 

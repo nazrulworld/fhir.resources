@@ -29,8 +29,6 @@ install:
   - sleep 5
 script:
   - git submodule update --init --recursive
-  - cp script/settings.py fhir-parser/settings.py
-  - cd fhir-parser && python generate.py -d && cd ..
   - make clean
   - pytest -s --cov=fhir/resources/ -s --tb=native -v --cov-report term-missing --cov-append fhir/resources
 after_success:

@@ -9,6 +9,10 @@ FHIR® Resources
 .. image:: https://img.shields.io/travis/nazrulworld/fhir.resources.svg
         :target: https://travis-ci.org/nazrulworld/fhir.resources
 
+.. image:: https://codecov.io/gh/nazrulworld/fhir.resources/branch/master/graph/badge.svg
+        :target: https://codecov.io/gh/nazrulworld/fhir.resources
+
+
 .. image:: https://fire.ly/wp-content/themes/fhir/images/fhir.svg
         :target: https://www.hl7.org/implement/standards/product_brief.cfm?product_id=449
         :alt: HL7® FHIR®

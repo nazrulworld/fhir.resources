@@ -26,7 +26,8 @@ cache:
 install:
   - pip install -U pipenv
   - pipenv install --dev
-  - sleep 5
+  - pip install codecov
+  - sleep 1
 script:
   - git submodule update --init --recursive
   - make clean

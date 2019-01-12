@@ -2,15 +2,15 @@ import hashlib
 import io
 import os
 import pytest
-import pathlib
 import tempfile
 import shutil
 import sys
 import zipfile
 
-PARSER_PATH = pathlib.Path(os.path.abspath(__file__)).parents[3] / 'fhir-parser'
-SCRIPT_PATH = pathlib.Path(os.path.abspath(__file__)).parents[3] / 'script'
-CACHE_PATH = pathlib.Path(os.path.abspath(__file__)).parents[3] / '.cache'
+ROOT_PATH = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+PARSER_PATH = os.path.join(ROOT_PATH, 'fhir-parser')
+SCRIPT_PATH = os.path.join(ROOT_PATH, 'script')
+CACHE_PATH = os.path.join(ROOT_PATH, '.cache')
 
 
 def download_and_store(url, path):
@@ -48,12 +48,12 @@ def expand(self, local):
 @pytest.fixture(scope='session')
 def base_settings():
 
-    if not CACHE_PATH.exists():
-        CACHE_PATH.mkdir()
+    if not os.path.exists(CACHE_PATH):
+        os.mkdir(CACHE_PATH)
 
     settings = {}
 
-    with io.open(str(SCRIPT_PATH / 'settings.py'), 'r') as fp:
+    with io.open(os.path.join(SCRIPT_PATH, 'settings.py'), 'r') as fp:
         exec(fp.read(), settings)
 
     example_data_file_uri = settings['specification_url'] + '/examples-json.zip'
@@ -61,16 +61,16 @@ def base_settings():
     example_data_file_id = \
             hashlib.md5(example_data_file_uri.encode()).hexdigest()
 
-    example_data_file_location = CACHE_PATH / (example_data_file_id + '.zip')
+    example_data_file_location = os.path.join(CACHE_PATH, (example_data_file_id + '.zip'))
 
-    if not example_data_file_location.exists():
+    if not os.path.exists(example_data_file_location):
         download_and_store(
             example_data_file_uri,
-            str(example_data_file_location))
+            example_data_file_location)
 
     temp_data_dir = tempfile.mkdtemp()
     # extract all files from archive and put into temp dir
-    with zipfile.ZipFile(str(example_data_file_location)) as z:
+    with zipfile.ZipFile(example_data_file_location) as z:
         z.extractall(temp_data_dir)
 
     if 'FHIR_UNITTEST_DATADIR' not in os.environ:

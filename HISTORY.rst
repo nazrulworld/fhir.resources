@@ -2,7 +2,7 @@
 History
 =======
 
-3.0.1 (unreleased)
+3.0.1 (2019-01-13)
 ------------------
 
 `Version Info (STU3)`_ ::

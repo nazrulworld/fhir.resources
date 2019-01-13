@@ -2,10 +2,17 @@
 History
 =======
 
-3.0.2 (unreleased)
-------------------
+4.0.1b1 (unreleased)
+--------------------
 
-- Nothing changed yet.
+`Version Info (R4)`_ ::
+
+    [FHIR]
+    FhirVersion=4.0.0-a53ec6ee1b
+    version=4.0.0
+    buildId=a53ec6ee1b
+    date=20181227223754
+
 
 
 3.0.1 (2019-01-13)
@@ -20,4 +27,5 @@ History
     date=20170419074443
 
 
-.. _`Version Info (STU3)`: <http://hl7.org/fhir/stu3/>
+.. _`Version Info (STU3)`: http://hl7.org/fhir/stu3/
+.. _`Version Info (R4)`: http://hl7.org/fhir/R4/

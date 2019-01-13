@@ -46,6 +46,6 @@ class MedicinalProductUndesirableEffectTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
         self.assertEqual(force_bytes(inst.symptomConditionEffect.coding[0].code), force_bytes("Anaemia"))
         self.assertEqual(force_bytes(inst.symptomConditionEffect.coding[0].system), force_bytes("http://ema.europa.eu/example/undesirableeffectassymptom-condition-effect"))
-        self.assertEqual(force_bytes(inst.symptomConditionEffect.text), force_bytes("Prevention of\nVTE in adult\npatients who have\nundergone\nelective hip or\nknee replacement\nsurgery (VTEp)"))
+        self.assertEqual(force_bytes(inst.symptomConditionEffect.text), force_bytes("Prevention of\\nVTE in adult\\npatients who have\\nundergone\\nelective hip or\\nknee replacement\\nsurgery (VTEp)"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 

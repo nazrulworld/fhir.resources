@@ -49,6 +49,6 @@ setup(
         'test': test_requirements + setup_requirements
     },
     url='https://github.com/nazrulworld/fhir.resources',
-    version='4.0.0a1.dev0',
+    version='4.0.0b1.dev0',
     zip_safe=False,
 )

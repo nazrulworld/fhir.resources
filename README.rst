@@ -1,6 +1,6 @@
-===============
-FHIR® Resources
-===============
+====================
+FHIR® Resources (R4)
+====================
 
 
 .. image:: https://img.shields.io/pypi/v/fhir.resources.svg

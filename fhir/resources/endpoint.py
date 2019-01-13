@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/Endpoint) on 2019-01-12.
+#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/Endpoint) on 2019-01-13.
 #  2019, SMART Health IT.
 
 
@@ -47,9 +47,9 @@ class Endpoint(domainresource.DomainResource):
         List of `Identifier` items (represented as `dict` in JSON). """
         
         self.managingOrganization = None
-        """ Organization that manages this endpoint (may not be the
+        """ Organization that manages this endpoint (might not be the
         organization that exposes the endpoint).
-        Type `FHIRReference` referencing `Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` (represented as `dict` in JSON). """
         
         self.name = None
         """ A name that this endpoint can be identified by.

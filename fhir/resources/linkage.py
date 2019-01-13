@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/Linkage) on 2019-01-12.
+#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/Linkage) on 2019-01-13.
 #  2019, SMART Health IT.
 
 
@@ -10,8 +10,8 @@ from . import domainresource
 class Linkage(domainresource.DomainResource):
     """ Links records for 'same' item.
     
-    Identifies two or more records (resource instances) that are referring to
-    the same real-world "occurrence".
+    Identifies two or more records (resource instances) that refer to the same
+    real-world "occurrence".
     """
     
     resource_type = "Linkage"
@@ -30,7 +30,7 @@ class Linkage(domainresource.DomainResource):
         
         self.author = None
         """ Who is responsible for linkages.
-        Type `FHIRReference` referencing `Practitioner, Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` (represented as `dict` in JSON). """
         
         self.item = None
         """ Item to be linked.
@@ -53,8 +53,8 @@ from . import backboneelement
 class LinkageItem(backboneelement.BackboneElement):
     """ Item to be linked.
     
-    Identifies one of the records that is considered to refer to the same real-
-    world occurrence as well as how the items hould be evaluated within the
+    Identifies which record considered as the reference to the same real-world
+    occurrence as well as how the items should be evaluated within the
     collection of linked items.
     """
     

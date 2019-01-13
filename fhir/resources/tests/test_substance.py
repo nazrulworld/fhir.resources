@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
+#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-01-13.
 #  2019, SMART Health IT.
 
 import os
@@ -40,6 +40,9 @@ class SubstanceTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.code.coding[0].display), force_bytes("House dust allergen"))
         self.assertEqual(force_bytes(inst.code.coding[0].system), force_bytes("http://snomed.info/sct"))
         self.assertEqual(force_bytes(inst.id), force_bytes("f201"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
     
     def testSubstance2(self):
@@ -55,13 +58,16 @@ class SubstanceTests(unittest.TestCase):
     def implSubstance2(self, inst):
         self.assertEqual(force_bytes(inst.category[0].coding[0].code), force_bytes("chemical"))
         self.assertEqual(force_bytes(inst.category[0].coding[0].display), force_bytes("Chemical"))
-        self.assertEqual(force_bytes(inst.category[0].coding[0].system), force_bytes("http://hl7.org.fhir/substance-category"))
+        self.assertEqual(force_bytes(inst.category[0].coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/substance-category"))
         self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("88480006"))
         self.assertEqual(force_bytes(inst.code.coding[0].display), force_bytes("Potassium"))
         self.assertEqual(force_bytes(inst.code.coding[0].system), force_bytes("http://snomed.info/sct"))
         self.assertEqual(force_bytes(inst.id), force_bytes("f203"))
         self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://acme.org/identifiers/substances"))
         self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("1234"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
     
     def testSubstance3(self):
@@ -79,6 +85,9 @@ class SubstanceTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.code.coding[0].display), force_bytes("Staphylococcus Aureus"))
         self.assertEqual(force_bytes(inst.code.coding[0].system), force_bytes("http://snomed.info/sct"))
         self.assertEqual(force_bytes(inst.id), force_bytes("f202"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
     
     def testSubstance4(self):
@@ -94,7 +103,7 @@ class SubstanceTests(unittest.TestCase):
     def implSubstance4(self, inst):
         self.assertEqual(force_bytes(inst.category[0].coding[0].code), force_bytes("chemical"))
         self.assertEqual(force_bytes(inst.category[0].coding[0].display), force_bytes("Chemical"))
-        self.assertEqual(force_bytes(inst.category[0].coding[0].system), force_bytes("http://hl7.org.fhir/substance-category"))
+        self.assertEqual(force_bytes(inst.category[0].coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/substance-category"))
         self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("333346007"))
         self.assertEqual(force_bytes(inst.code.coding[0].display), force_bytes("Silver nitrate 20% solution (product)"))
         self.assertEqual(force_bytes(inst.code.coding[0].system), force_bytes("http://snomed.info/sct"))
@@ -110,6 +119,9 @@ class SubstanceTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.instance[0].quantity.system), force_bytes("http://unitsofmeasure.org"))
         self.assertEqual(force_bytes(inst.instance[0].quantity.unit), force_bytes("mL"))
         self.assertEqual(inst.instance[0].quantity.value, 100)
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
     
     def testSubstance5(self):
@@ -125,11 +137,14 @@ class SubstanceTests(unittest.TestCase):
     def implSubstance5(self, inst):
         self.assertEqual(force_bytes(inst.category[0].coding[0].code), force_bytes("allergen"))
         self.assertEqual(force_bytes(inst.category[0].coding[0].display), force_bytes("Allergen"))
-        self.assertEqual(force_bytes(inst.category[0].coding[0].system), force_bytes("http://hl7.org.fhir/substance-category"))
+        self.assertEqual(force_bytes(inst.category[0].coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/substance-category"))
         self.assertEqual(force_bytes(inst.code.text), force_bytes("apitoxin (Honey Bee Venom)"))
         self.assertEqual(force_bytes(inst.id), force_bytes("example"))
         self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://acme.org/identifiers/substances"))
         self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("1463"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
         self.assertEqual(force_bytes(inst.status), force_bytes("active"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
     
@@ -146,7 +161,7 @@ class SubstanceTests(unittest.TestCase):
     def implSubstance6(self, inst):
         self.assertEqual(force_bytes(inst.category[0].coding[0].code), force_bytes("drug"))
         self.assertEqual(force_bytes(inst.category[0].coding[0].display), force_bytes("Drug or Medicament"))
-        self.assertEqual(force_bytes(inst.category[0].coding[0].system), force_bytes("http://hl7.org.fhir/substance-category"))
+        self.assertEqual(force_bytes(inst.category[0].coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/substance-category"))
         self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("392259005"))
         self.assertEqual(force_bytes(inst.code.coding[0].display), force_bytes("Amoxicillin + clavulanate potassium 875mg/125mg tablet (product)"))
         self.assertEqual(force_bytes(inst.code.coding[0].system), force_bytes("http://snomed.info/sct"))
@@ -170,5 +185,8 @@ class SubstanceTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.ingredient[1].quantity.numerator.system), force_bytes("http://unitsofmeasure.org"))
         self.assertEqual(force_bytes(inst.ingredient[1].quantity.numerator.unit), force_bytes("mg"))
         self.assertEqual(inst.ingredient[1].quantity.numerator.value, 125)
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 

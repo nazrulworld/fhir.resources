@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
+#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-01-13.
 #  2019, SMART Health IT.
 
 import os
@@ -38,19 +38,19 @@ class RequestGroupTests(unittest.TestCase):
     def implRequestGroup1(self, inst):
         self.assertEqual(force_bytes(inst.action[0].action[0].description), force_bytes("Administer medication 1"))
         self.assertEqual(force_bytes(inst.action[0].action[0].id), force_bytes("medication-action-1"))
-        self.assertEqual(force_bytes(inst.action[0].action[0].type.code), force_bytes("create"))
+        self.assertEqual(force_bytes(inst.action[0].action[0].type.coding[0].code), force_bytes("create"))
         self.assertEqual(force_bytes(inst.action[0].action[1].description), force_bytes("Administer medication 2"))
         self.assertEqual(force_bytes(inst.action[0].action[1].id), force_bytes("medication-action-2"))
         self.assertEqual(force_bytes(inst.action[0].action[1].relatedAction[0].actionId), force_bytes("medication-action-1"))
         self.assertEqual(force_bytes(inst.action[0].action[1].relatedAction[0].offsetDuration.unit), force_bytes("h"))
         self.assertEqual(inst.action[0].action[1].relatedAction[0].offsetDuration.value, 1)
         self.assertEqual(force_bytes(inst.action[0].action[1].relatedAction[0].relationship), force_bytes("after-end"))
-        self.assertEqual(force_bytes(inst.action[0].action[1].type.code), force_bytes("create"))
+        self.assertEqual(force_bytes(inst.action[0].action[1].type.coding[0].code), force_bytes("create"))
         self.assertEqual(force_bytes(inst.action[0].cardinalityBehavior), force_bytes("single"))
         self.assertEqual(force_bytes(inst.action[0].description), force_bytes("Administer medications at the appropriate time"))
         self.assertEqual(force_bytes(inst.action[0].groupingBehavior), force_bytes("logical-group"))
-        self.assertEqual(force_bytes(inst.action[0].label), force_bytes("1"))
         self.assertEqual(force_bytes(inst.action[0].precheckBehavior), force_bytes("yes"))
+        self.assertEqual(force_bytes(inst.action[0].prefix), force_bytes("1"))
         self.assertEqual(force_bytes(inst.action[0].requiredBehavior), force_bytes("must"))
         self.assertEqual(force_bytes(inst.action[0].selectionBehavior), force_bytes("all"))
         self.assertEqual(force_bytes(inst.action[0].textEquivalent), force_bytes("Administer medication 1, followed an hour later by medication 2"))
@@ -66,9 +66,12 @@ class RequestGroupTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.id), force_bytes("example"))
         self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("requestgroup-1"))
         self.assertEqual(force_bytes(inst.intent), force_bytes("plan"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
         self.assertEqual(force_bytes(inst.note[0].text), force_bytes("Additional notes about the request group"))
         self.assertEqual(force_bytes(inst.priority), force_bytes("routine"))
-        self.assertEqual(force_bytes(inst.reasonCodeableConcept.text), force_bytes("Treatment"))
+        self.assertEqual(force_bytes(inst.reasonCode[0].text), force_bytes("Treatment"))
         self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
         self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">Example RequestGroup illustrating related actions to administer medications in sequence with time delay.</div>"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
@@ -113,7 +116,11 @@ class RequestGroupTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.contained[1].id), force_bytes("2222"))
         self.assertEqual(force_bytes(inst.id), force_bytes("kdn5-example"))
         self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("requestgroup-kdn5"))
+        self.assertEqual(force_bytes(inst.instantiatesCanonical[0]), force_bytes("PlanDefinition/KDN5"))
         self.assertEqual(force_bytes(inst.intent), force_bytes("plan"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
         self.assertEqual(force_bytes(inst.priority), force_bytes("routine"))
         self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
         self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">Administer gemcitabine and carboplatin.</div>"))

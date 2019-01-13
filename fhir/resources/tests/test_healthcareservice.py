@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
+#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-01-13.
 #  2019, SMART Health IT.
 
 import os
@@ -55,18 +55,21 @@ class HealthcareServiceTests(unittest.TestCase):
         self.assertEqual(inst.availableTime[2].availableStartTime.as_json(), "09:30:00")
         self.assertEqual(force_bytes(inst.availableTime[2].daysOfWeek[0]), force_bytes("sat"))
         self.assertEqual(force_bytes(inst.availableTime[2].daysOfWeek[1]), force_bytes("fri"))
-        self.assertEqual(force_bytes(inst.category.coding[0].code), force_bytes("8"))
-        self.assertEqual(force_bytes(inst.category.coding[0].display), force_bytes("Counselling"))
-        self.assertEqual(force_bytes(inst.category.coding[0].system), force_bytes("http://hl7.org/fhir/service-category"))
-        self.assertEqual(force_bytes(inst.category.text), force_bytes("Counselling"))
+        self.assertEqual(force_bytes(inst.category[0].coding[0].code), force_bytes("8"))
+        self.assertEqual(force_bytes(inst.category[0].coding[0].display), force_bytes("Counselling"))
+        self.assertEqual(force_bytes(inst.category[0].coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/service-category"))
+        self.assertEqual(force_bytes(inst.category[0].text), force_bytes("Counselling"))
         self.assertEqual(force_bytes(inst.characteristic[0].coding[0].display), force_bytes("Wheelchair access"))
         self.assertEqual(force_bytes(inst.comment), force_bytes("Providing Specialist psychology services to the greater Den Burg area, many years of experience dealing with PTSD issues"))
         self.assertEqual(force_bytes(inst.contained[0].id), force_bytes("DenBurg"))
-        self.assertEqual(force_bytes(inst.eligibility.coding[0].display), force_bytes("DVA Required"))
-        self.assertEqual(force_bytes(inst.eligibilityNote), force_bytes("Evidence of application for DVA status may be sufficient for commencing assessment"))
+        self.assertEqual(force_bytes(inst.eligibility[0].code.coding[0].display), force_bytes("DVA Required"))
+        self.assertEqual(force_bytes(inst.eligibility[0].comment), force_bytes("Evidence of application for DVA status may be sufficient for commencing assessment"))
         self.assertEqual(force_bytes(inst.id), force_bytes("example"))
         self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://example.org/shared-ids"))
         self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("HS-12"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
         self.assertEqual(force_bytes(inst.name), force_bytes("Consulting psychologists and/or psychology services"))
         self.assertEqual(force_bytes(inst.notAvailable[0].description), force_bytes("Christmas/Boxing Day"))
         self.assertEqual(inst.notAvailable[0].during.end.date, FHIRDate("2015-12-26").date)
@@ -78,7 +81,7 @@ class HealthcareServiceTests(unittest.TestCase):
         self.assertEqual(inst.notAvailable[1].during.end.as_json(), "2016-01-01")
         self.assertEqual(inst.notAvailable[1].during.start.date, FHIRDate("2016-01-01").date)
         self.assertEqual(inst.notAvailable[1].during.start.as_json(), "2016-01-01")
-        self.assertEqual(force_bytes(inst.programName[0]), force_bytes("PTSD outreach"))
+        self.assertEqual(force_bytes(inst.program[0].text), force_bytes("PTSD outreach"))
         self.assertEqual(force_bytes(inst.referralMethod[0].coding[0].code), force_bytes("phone"))
         self.assertEqual(force_bytes(inst.referralMethod[0].coding[0].display), force_bytes("Phone"))
         self.assertEqual(force_bytes(inst.referralMethod[1].coding[0].code), force_bytes("fax"))
@@ -89,7 +92,7 @@ class HealthcareServiceTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.referralMethod[3].coding[0].display), force_bytes("Secure Email"))
         self.assertEqual(force_bytes(inst.serviceProvisionCode[0].coding[0].code), force_bytes("cost"))
         self.assertEqual(force_bytes(inst.serviceProvisionCode[0].coding[0].display), force_bytes("Fees apply"))
-        self.assertEqual(force_bytes(inst.serviceProvisionCode[0].coding[0].system), force_bytes("http://hl7.org/fhir/service-provision-conditions"))
+        self.assertEqual(force_bytes(inst.serviceProvisionCode[0].coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/service-provision-conditions"))
         self.assertEqual(force_bytes(inst.specialty[0].coding[0].code), force_bytes("47505003"))
         self.assertEqual(force_bytes(inst.specialty[0].coding[0].display), force_bytes("Posttraumatic stress disorder"))
         self.assertEqual(force_bytes(inst.specialty[0].coding[0].system), force_bytes("http://snomed.info/sct"))

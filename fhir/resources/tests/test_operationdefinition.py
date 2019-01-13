@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
+#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-01-13.
 #  2019, SMART Health IT.
 
 import os
@@ -36,6 +36,7 @@ class OperationDefinitionTests(unittest.TestCase):
         self.implOperationDefinition1(inst2)
     
     def implOperationDefinition1(self, inst):
+        self.assertEqual(force_bytes(inst.base), force_bytes("OperationDefinition/Questionnaire-populate"))
         self.assertEqual(force_bytes(inst.code), force_bytes("populate"))
         self.assertEqual(force_bytes(inst.comment), force_bytes("Only implemented for Labs and Medications so far"))
         self.assertEqual(force_bytes(inst.contact[0].name), force_bytes("System Administrator"))
@@ -43,7 +44,7 @@ class OperationDefinitionTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.contact[0].telecom[0].value), force_bytes("beep@coyote.acme.com"))
         self.assertEqual(inst.date.date, FHIRDate("2015-08-04").date)
         self.assertEqual(inst.date.as_json(), "2015-08-04")
-        self.assertEqual(force_bytes(inst.description), force_bytes("Limited implementation of the Populate Questionnaire implemenation"))
+        self.assertEqual(force_bytes(inst.description), force_bytes("Limited implementation of the Populate Questionnaire implementation"))
         self.assertEqual(force_bytes(inst.id), force_bytes("example"))
         self.assertTrue(inst.instance)
         self.assertEqual(force_bytes(inst.jurisdiction[0].coding[0].code), force_bytes("GB"))
@@ -84,6 +85,6 @@ class OperationDefinitionTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.useContext[0].code.system), force_bytes("http://build.fhir.org/codesystem-usage-context-type"))
         self.assertEqual(force_bytes(inst.useContext[0].valueCodeableConcept.coding[0].code), force_bytes("IMP"))
         self.assertEqual(force_bytes(inst.useContext[0].valueCodeableConcept.coding[0].display), force_bytes("inpatient encounter"))
-        self.assertEqual(force_bytes(inst.useContext[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/v3/ActCode"))
+        self.assertEqual(force_bytes(inst.useContext[0].valueCodeableConcept.coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActCode"))
         self.assertEqual(force_bytes(inst.version), force_bytes("B"))
 

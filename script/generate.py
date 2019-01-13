@@ -49,7 +49,7 @@ def get_cached_version_info():
 
     with open(str(version_file), 'r') as fp:
         txt = fp.read()
-        config.read_string('\n'.join(txt.strip().split('\n')[1:]))
+        config.read_string('\n'.join(txt.split('\n')[1:]))
 
     return config['FHIR']['version'], config['FHIR']['fhirversion']
 
@@ -60,7 +60,8 @@ def get_fhir_version_info():
         response = requests.get(settings.specification_url + '/version.info')
         text = response.text
         config = configparser.ConfigParser()
-        config.read_string('\r'.join(text.strip().replace('ï»¿', '').split('\r')[1:]))
+
+        config.read_string('\r'.join(text.split('\r')[1:]))
 
         return config['FHIR']['version'], config['FHIR']['fhirversion']
 

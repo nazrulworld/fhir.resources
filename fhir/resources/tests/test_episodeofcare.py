@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
+#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-01-13.
 #  2019, SMART Health IT.
 
 import os
@@ -39,10 +39,13 @@ class EpisodeOfCareTests(unittest.TestCase):
         self.assertEqual(inst.diagnosis[0].rank, 1)
         self.assertEqual(force_bytes(inst.diagnosis[0].role.coding[0].code), force_bytes("CC"))
         self.assertEqual(force_bytes(inst.diagnosis[0].role.coding[0].display), force_bytes("Chief complaint"))
-        self.assertEqual(force_bytes(inst.diagnosis[0].role.coding[0].system), force_bytes("http://hl7.org/fhir/diagnosis-role"))
+        self.assertEqual(force_bytes(inst.diagnosis[0].role.coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/diagnosis-role"))
         self.assertEqual(force_bytes(inst.id), force_bytes("example"))
         self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://example.org/sampleepisodeofcare-identifier"))
         self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("123"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
         self.assertEqual(inst.period.start.date, FHIRDate("2014-09-01").date)
         self.assertEqual(inst.period.start.as_json(), "2014-09-01")
         self.assertEqual(force_bytes(inst.status), force_bytes("active"))
@@ -67,5 +70,5 @@ class EpisodeOfCareTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
         self.assertEqual(force_bytes(inst.type[0].coding[0].code), force_bytes("hacc"))
         self.assertEqual(force_bytes(inst.type[0].coding[0].display), force_bytes("Home and Community Care"))
-        self.assertEqual(force_bytes(inst.type[0].coding[0].system), force_bytes("http://hl7.org/fhir/episodeofcare-type"))
+        self.assertEqual(force_bytes(inst.type[0].coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/episodeofcare-type"))
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
+#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-01-13.
 #  2019, SMART Health IT.
 
 import os
@@ -36,19 +36,18 @@ class MessageDefinitionTests(unittest.TestCase):
         self.implMessageDefinition1(inst2)
     
     def implMessageDefinition1(self, inst):
-        self.assertEqual(force_bytes(inst.category), force_bytes("Notification"))
+        self.assertEqual(force_bytes(inst.category), force_bytes("notification"))
         self.assertEqual(force_bytes(inst.contact[0].telecom[0].system), force_bytes("url"))
         self.assertEqual(force_bytes(inst.contact[0].telecom[0].value), force_bytes("http://hl7.org"))
         self.assertEqual(inst.date.date, FHIRDate("2016-11-09").date)
         self.assertEqual(inst.date.as_json(), "2016-11-09")
-        self.assertEqual(force_bytes(inst.event.code), force_bytes("communication-request"))
-        self.assertEqual(force_bytes(inst.event.system), force_bytes("http://hl7.org/fhir/message-events"))
+        self.assertEqual(force_bytes(inst.eventCoding.code), force_bytes("admin-notify"))
+        self.assertEqual(force_bytes(inst.eventCoding.system), force_bytes("http://example.org/fhir/message-events"))
         self.assertTrue(inst.experimental)
         self.assertEqual(force_bytes(inst.id), force_bytes("example"))
         self.assertEqual(force_bytes(inst.name), force_bytes("EXAMPLE"))
         self.assertEqual(force_bytes(inst.publisher), force_bytes("Health Level Seven, Int'l"))
-        self.assertEqual(force_bytes(inst.purpose), force_bytes("Defines a base example for other MessageDefintion instances."))
-        self.assertFalse(inst.responseRequired)
+        self.assertEqual(force_bytes(inst.purpose), force_bytes("Defines a base example for other MessageDefinition instances."))
         self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
         self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">Message definition base example</div>"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))

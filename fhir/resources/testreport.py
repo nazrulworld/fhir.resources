@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/TestReport) on 2019-01-12.
+#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/TestReport) on 2019-01-13.
 #  2019, SMART Health IT.
 
 
@@ -69,7 +69,7 @@ class TestReport(domainresource.DomainResource):
         self.testScript = None
         """ Reference to the  version-specific TestScript that was executed to
         produce this TestReport.
-        Type `FHIRReference` referencing `TestScript` (represented as `dict` in JSON). """
+        Type `FHIRReference` (represented as `dict` in JSON). """
         
         self.tester = None
         """ Name of the tester producing this report (Organization or
@@ -285,8 +285,8 @@ class TestReportSetupActionOperation(backboneelement.BackboneElement):
 class TestReportTeardown(backboneelement.BackboneElement):
     """ The results of running the series of required clean up steps.
     
-    The results of the series of operations required to clean up after the all
-    the tests were executed (successfully or otherwise).
+    The results of the series of operations required to clean up after all the
+    tests were executed (successfully or otherwise).
     """
     
     resource_type = "TestReportTeardown"

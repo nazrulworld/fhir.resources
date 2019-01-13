@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
+#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-01-13.
 #  2019, SMART Health IT.
 
 import os
@@ -89,9 +89,9 @@ class SearchParameterTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.type), force_bytes("token"))
         self.assertEqual(force_bytes(inst.url), force_bytes("http://hl7.org/fhir/SearchParameter/example"))
         self.assertEqual(force_bytes(inst.useContext[0].code.code), force_bytes("focus"))
-        self.assertEqual(force_bytes(inst.useContext[0].code.system), force_bytes("http://hl7.org/fhir/usage-context-type"))
+        self.assertEqual(force_bytes(inst.useContext[0].code.system), force_bytes("http://terminology.hl7.org/CodeSystem/usage-context-type"))
         self.assertEqual(force_bytes(inst.useContext[0].valueCodeableConcept.coding[0].code), force_bytes("positive"))
-        self.assertEqual(force_bytes(inst.useContext[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/variant-state"))
+        self.assertEqual(force_bytes(inst.useContext[0].valueCodeableConcept.coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/variant-state"))
         self.assertEqual(force_bytes(inst.version), force_bytes("1"))
         self.assertEqual(force_bytes(inst.xpath), force_bytes("f:*/f:id"))
         self.assertEqual(force_bytes(inst.xpathUsage), force_bytes("normal"))
@@ -128,6 +128,6 @@ class SearchParameterTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.target[0]), force_bytes("Organization"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
         self.assertEqual(force_bytes(inst.type), force_bytes("reference"))
-        self.assertEqual(force_bytes(inst.url), force_bytes("http://hl7.org/fhir/SearchParameter/example"))
+        self.assertEqual(force_bytes(inst.url), force_bytes("http://hl7.org/fhir/SearchParameter/example-reference"))
         self.assertEqual(force_bytes(inst.xpathUsage), force_bytes("normal"))
 

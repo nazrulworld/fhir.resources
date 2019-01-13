@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
+#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-01-13.
 #  2019, SMART Health IT.
 
 import os
@@ -41,15 +41,18 @@ class SupplyRequestTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.category.coding[0].code), force_bytes("central"))
         self.assertEqual(force_bytes(inst.category.coding[0].display), force_bytes("Central Stock Resupply"))
         self.assertEqual(force_bytes(inst.id), force_bytes("simpleorder"))
-        self.assertEqual(force_bytes(inst.identifier.value), force_bytes("Order10284"))
+        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("Order10284"))
+        self.assertEqual(force_bytes(inst.itemCodeableConcept.coding[0].code), force_bytes("BlueTubes"))
+        self.assertEqual(force_bytes(inst.itemCodeableConcept.coding[0].display), force_bytes("Blood collect tubes blue cap"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
         self.assertEqual(inst.occurrenceDateTime.date, FHIRDate("2016-12-31").date)
         self.assertEqual(inst.occurrenceDateTime.as_json(), "2016-12-31")
-        self.assertEqual(force_bytes(inst.orderedItem.itemCodeableConcept.coding[0].code), force_bytes("BlueTubes"))
-        self.assertEqual(force_bytes(inst.orderedItem.itemCodeableConcept.coding[0].display), force_bytes("Blood collect tubes blue cap"))
-        self.assertEqual(inst.orderedItem.quantity.value, 10)
         self.assertEqual(force_bytes(inst.priority), force_bytes("asap"))
-        self.assertEqual(force_bytes(inst.reasonCodeableConcept.coding[0].code), force_bytes("stock_low"))
-        self.assertEqual(force_bytes(inst.reasonCodeableConcept.coding[0].display), force_bytes("Refill due to low stock"))
+        self.assertEqual(inst.quantity.value, 10)
+        self.assertEqual(force_bytes(inst.reasonCode[0].coding[0].code), force_bytes("stock_low"))
+        self.assertEqual(force_bytes(inst.reasonCode[0].coding[0].display), force_bytes("Refill due to low stock"))
         self.assertEqual(force_bytes(inst.status), force_bytes("active"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 

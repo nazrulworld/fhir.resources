@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
+#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-01-13.
 #  2019, SMART Health IT.
 
 import os
@@ -47,10 +47,11 @@ class SubscriptionTests(unittest.TestCase):
         self.assertEqual(inst.end.as_json(), "2021-01-01T00:00:00Z")
         self.assertEqual(force_bytes(inst.error), force_bytes("Socket Error 10060 - can't connect to host"))
         self.assertEqual(force_bytes(inst.id), force_bytes("example-error"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
         self.assertEqual(force_bytes(inst.reason), force_bytes("Monitor new neonatal function"))
         self.assertEqual(force_bytes(inst.status), force_bytes("error"))
-        self.assertEqual(force_bytes(inst.tag[0].code), force_bytes("bili-done"))
-        self.assertEqual(force_bytes(inst.tag[0].system), force_bytes("http://example.org/fhir/cs/internal"))
         self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">[Put rendering here]</div>"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
     
@@ -75,10 +76,11 @@ class SubscriptionTests(unittest.TestCase):
         self.assertEqual(inst.end.date, FHIRDate("2021-01-01T00:00:00Z").date)
         self.assertEqual(inst.end.as_json(), "2021-01-01T00:00:00Z")
         self.assertEqual(force_bytes(inst.id), force_bytes("example"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
         self.assertEqual(force_bytes(inst.reason), force_bytes("Monitor new neonatal function"))
         self.assertEqual(force_bytes(inst.status), force_bytes("requested"))
-        self.assertEqual(force_bytes(inst.tag[0].code), force_bytes("bili-done"))
-        self.assertEqual(force_bytes(inst.tag[0].system), force_bytes("http://example.org/fhir/cs/internal"))
         self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">[Put rendering here]</div>"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 

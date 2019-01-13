@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
+#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-01-13.
 #  2019, SMART Health IT.
 
 import os
@@ -56,6 +56,9 @@ class BasicTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.extension[0].extension[2].url), force_bytes("attribute"))
         self.assertEqual(force_bytes(inst.extension[0].url), force_bytes("http://example.org/do-not-use/fhir-extensions/UMLclass"))
         self.assertEqual(force_bytes(inst.id), force_bytes("classModel"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
     
     def testBasic2(self):
@@ -71,6 +74,9 @@ class BasicTests(unittest.TestCase):
     def implBasic2(self, inst):
         self.assertEqual(force_bytes(inst.code.text), force_bytes("Example Narrative Tester"))
         self.assertEqual(force_bytes(inst.id), force_bytes("basic-example-narrative"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("additional"))
     
     def testBasic3(self):
@@ -85,7 +91,7 @@ class BasicTests(unittest.TestCase):
     
     def implBasic3(self, inst):
         self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("referral"))
-        self.assertEqual(force_bytes(inst.code.coding[0].system), force_bytes("http://hl7.org/fhir/basic-resource-type"))
+        self.assertEqual(force_bytes(inst.code.coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/basic-resource-type"))
         self.assertEqual(inst.created.date, FHIRDate("2013-05-14").date)
         self.assertEqual(inst.created.as_json(), "2013-05-14")
         self.assertEqual(force_bytes(inst.extension[0].url), force_bytes("http://example.org/do-not-use/fhir-extensions/referral#requestingPractitioner"))
@@ -95,6 +101,9 @@ class BasicTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.id), force_bytes("referral"))
         self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://goodhealth.org/basic/identifiers"))
         self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("19283746"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
         self.assertEqual(force_bytes(inst.modifierExtension[0].url), force_bytes("http://example.org/do-not-use/fhir-extensions/referral#referredForService"))
         self.assertEqual(force_bytes(inst.modifierExtension[0].valueCodeableConcept.coding[0].code), force_bytes("11429006"))
         self.assertEqual(force_bytes(inst.modifierExtension[0].valueCodeableConcept.coding[0].display), force_bytes("Consultation"))

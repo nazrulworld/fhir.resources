@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
+#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-01-13.
 #  2019, SMART Health IT.
 
 import os
@@ -45,9 +45,6 @@ class CompartmentDefinitionTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.description), force_bytes("The set of resources associated with a particular Device (example with Communication and CommunicationRequest resourses only)."))
         self.assertTrue(inst.experimental)
         self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(force_bytes(inst.jurisdiction[0].coding[0].code), force_bytes("US"))
-        self.assertEqual(force_bytes(inst.jurisdiction[0].coding[0].display), force_bytes("United States of America (the)"))
-        self.assertEqual(force_bytes(inst.jurisdiction[0].coding[0].system), force_bytes("urn:iso:std:iso:3166"))
         self.assertEqual(force_bytes(inst.name), force_bytes("EXAMPLE"))
         self.assertEqual(force_bytes(inst.publisher), force_bytes("Health Level Seven International (FHIR Infrastructure)"))
         self.assertEqual(force_bytes(inst.purpose), force_bytes("Provides an example of a FHIR compartment definition based on the Device resource type."))
@@ -62,10 +59,9 @@ class CompartmentDefinitionTests(unittest.TestCase):
         self.assertTrue(inst.search)
         self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.title), force_bytes("Base FHIR compartment definition for Device(example)"))
         self.assertEqual(force_bytes(inst.url), force_bytes("http://hl7.org/fhir/CompartmentDefinition/example"))
         self.assertEqual(force_bytes(inst.useContext[0].code.code), force_bytes("focus"))
-        self.assertEqual(force_bytes(inst.useContext[0].code.system), force_bytes("http://hl7.org/fhir/usage-context-type"))
+        self.assertEqual(force_bytes(inst.useContext[0].code.system), force_bytes("http://terminology.hl7.org/CodeSystem/usage-context-type"))
         self.assertEqual(force_bytes(inst.useContext[0].valueCodeableConcept.coding[0].code), force_bytes("Device"))
         self.assertEqual(force_bytes(inst.useContext[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/resource-types"))
 

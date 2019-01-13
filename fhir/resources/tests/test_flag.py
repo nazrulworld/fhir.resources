@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
+#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-01-13.
 #  2019, SMART Health IT.
 
 import os
@@ -36,13 +36,16 @@ class FlagTests(unittest.TestCase):
         self.implFlag1(inst2)
     
     def implFlag1(self, inst):
-        self.assertEqual(force_bytes(inst.category.coding[0].code), force_bytes("infection"))
-        self.assertEqual(force_bytes(inst.category.coding[0].display), force_bytes("Infection Control Level"))
-        self.assertEqual(force_bytes(inst.category.coding[0].system), force_bytes("http://example.org/local"))
+        self.assertEqual(force_bytes(inst.category[0].coding[0].code), force_bytes("infection"))
+        self.assertEqual(force_bytes(inst.category[0].coding[0].display), force_bytes("Infection Control Level"))
+        self.assertEqual(force_bytes(inst.category[0].coding[0].system), force_bytes("http://example.org/local"))
         self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("l3"))
         self.assertEqual(force_bytes(inst.code.coding[0].display), force_bytes("Follow Level 3 Protocol"))
         self.assertEqual(force_bytes(inst.code.coding[0].system), force_bytes("http://example.org/local/if1"))
         self.assertEqual(force_bytes(inst.id), force_bytes("example-encounter"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
         self.assertEqual(force_bytes(inst.status), force_bytes("active"))
         self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">Follow Infection Control Level 3 Protocol</div>"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
@@ -58,16 +61,19 @@ class FlagTests(unittest.TestCase):
         self.implFlag2(inst2)
     
     def implFlag2(self, inst):
-        self.assertEqual(force_bytes(inst.category.coding[0].code), force_bytes("admin"))
-        self.assertEqual(force_bytes(inst.category.coding[0].display), force_bytes("Admin"))
-        self.assertEqual(force_bytes(inst.category.coding[0].system), force_bytes("http://example.org/local"))
-        self.assertEqual(force_bytes(inst.category.text), force_bytes("admin"))
+        self.assertEqual(force_bytes(inst.category[0].coding[0].code), force_bytes("safety"))
+        self.assertEqual(force_bytes(inst.category[0].coding[0].display), force_bytes("Safety"))
+        self.assertEqual(force_bytes(inst.category[0].coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/flag-category"))
+        self.assertEqual(force_bytes(inst.category[0].text), force_bytes("Safety"))
         self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("bigdog"))
         self.assertEqual(force_bytes(inst.code.coding[0].display), force_bytes("Big dog"))
         self.assertEqual(force_bytes(inst.code.coding[0].system), force_bytes("http://example.org/local"))
         self.assertEqual(force_bytes(inst.code.text), force_bytes("Patient has a big dog at his home. Always always wear a suit of armor or take other active counter-measures"))
         self.assertEqual(force_bytes(inst.id), force_bytes("example"))
         self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("12345"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
         self.assertEqual(inst.period.end.date, FHIRDate("2016-12-01").date)
         self.assertEqual(inst.period.end.as_json(), "2016-12-01")
         self.assertEqual(inst.period.start.date, FHIRDate("2015-01-17").date)

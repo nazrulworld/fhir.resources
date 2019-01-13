@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
+#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-01-13.
 #  2019, SMART Health IT.
 
 import os
@@ -46,10 +46,12 @@ class GraphDefinitionTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.link[0].path), force_bytes("Composition.section.entry"))
         self.assertEqual(force_bytes(inst.link[0].target[0].compartment[0].code), force_bytes("Patient"))
         self.assertEqual(force_bytes(inst.link[0].target[0].compartment[0].rule), force_bytes("identical"))
+        self.assertEqual(force_bytes(inst.link[0].target[0].compartment[0].use), force_bytes("requirement"))
         self.assertEqual(force_bytes(inst.link[0].target[0].link[0].description), force_bytes("Include any list entries"))
         self.assertEqual(force_bytes(inst.link[0].target[0].link[0].path), force_bytes("List.entry.item"))
         self.assertEqual(force_bytes(inst.link[0].target[0].link[0].target[0].compartment[0].code), force_bytes("Patient"))
         self.assertEqual(force_bytes(inst.link[0].target[0].link[0].target[0].compartment[0].rule), force_bytes("identical"))
+        self.assertEqual(force_bytes(inst.link[0].target[0].link[0].target[0].compartment[0].use), force_bytes("requirement"))
         self.assertEqual(force_bytes(inst.link[0].target[0].link[0].target[0].type), force_bytes("Resource"))
         self.assertEqual(force_bytes(inst.link[0].target[0].type), force_bytes("List"))
         self.assertEqual(force_bytes(inst.name), force_bytes("Document Generation Template"))

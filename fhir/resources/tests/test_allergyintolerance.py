@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
+#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-01-13.
 #  2019, SMART Health IT.
 
 import os
@@ -36,10 +36,10 @@ class AllergyIntoleranceTests(unittest.TestCase):
         self.implAllergyIntolerance1(inst2)
     
     def implAllergyIntolerance1(self, inst):
-        self.assertEqual(inst.assertedDate.date, FHIRDate("2014-10-09T14:58:00+11:00").date)
-        self.assertEqual(inst.assertedDate.as_json(), "2014-10-09T14:58:00+11:00")
         self.assertEqual(force_bytes(inst.category[0]), force_bytes("food"))
-        self.assertEqual(force_bytes(inst.clinicalStatus), force_bytes("active"))
+        self.assertEqual(force_bytes(inst.clinicalStatus.coding[0].code), force_bytes("active"))
+        self.assertEqual(force_bytes(inst.clinicalStatus.coding[0].display), force_bytes("Active"))
+        self.assertEqual(force_bytes(inst.clinicalStatus.coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical"))
         self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("227493005"))
         self.assertEqual(force_bytes(inst.code.coding[0].display), force_bytes("Cashew nuts"))
         self.assertEqual(force_bytes(inst.code.coding[0].system), force_bytes("http://snomed.info/sct"))
@@ -49,6 +49,9 @@ class AllergyIntoleranceTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("49476534"))
         self.assertEqual(inst.lastOccurrence.date, FHIRDate("2012-06").date)
         self.assertEqual(inst.lastOccurrence.as_json(), "2012-06")
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
         self.assertEqual(force_bytes(inst.note[0].text), force_bytes("The criticality is high becasue of the observed anaphylactic reaction when challenged with cashew extract."))
         self.assertEqual(inst.onsetDateTime.date, FHIRDate("2004").date)
         self.assertEqual(inst.onsetDateTime.as_json(), "2004")
@@ -72,7 +75,11 @@ class AllergyIntoleranceTests(unittest.TestCase):
         self.assertEqual(inst.reaction[1].onset.date, FHIRDate("2004").date)
         self.assertEqual(inst.reaction[1].onset.as_json(), "2004")
         self.assertEqual(force_bytes(inst.reaction[1].severity), force_bytes("moderate"))
+        self.assertEqual(inst.recordedDate.date, FHIRDate("2014-10-09T14:58:00+11:00").date)
+        self.assertEqual(inst.recordedDate.as_json(), "2014-10-09T14:58:00+11:00")
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
         self.assertEqual(force_bytes(inst.type), force_bytes("allergy"))
-        self.assertEqual(force_bytes(inst.verificationStatus), force_bytes("confirmed"))
+        self.assertEqual(force_bytes(inst.verificationStatus.coding[0].code), force_bytes("confirmed"))
+        self.assertEqual(force_bytes(inst.verificationStatus.coding[0].display), force_bytes("Confirmed"))
+        self.assertEqual(force_bytes(inst.verificationStatus.coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/allergyintolerance-verification"))
 

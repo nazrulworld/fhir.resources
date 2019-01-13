@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
+#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-01-13.
 #  2019, SMART Health IT.
 
 import os
@@ -38,12 +38,17 @@ class GuidanceResponseTests(unittest.TestCase):
     def implGuidanceResponse1(self, inst):
         self.assertEqual(force_bytes(inst.contained[0].id), force_bytes("outputParameters1"))
         self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(force_bytes(inst.identifier.system), force_bytes("http://example.org"))
-        self.assertEqual(force_bytes(inst.identifier.value), force_bytes("guidanceResponse1"))
+        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://example.org"))
+        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("guidanceResponse1"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
+        self.assertEqual(force_bytes(inst.moduleUri), force_bytes("http://someguidelineprovider.org/radiology-appropriateness-guidelines.html"))
         self.assertEqual(inst.occurrenceDateTime.date, FHIRDate("2017-03-10T16:02:00Z").date)
         self.assertEqual(inst.occurrenceDateTime.as_json(), "2017-03-10T16:02:00Z")
-        self.assertEqual(force_bytes(inst.reasonCodeableConcept.text), force_bytes("Guideline Appropriate Ordering Assessment"))
-        self.assertEqual(force_bytes(inst.requestId), force_bytes("guidanceRequest1"))
+        self.assertEqual(force_bytes(inst.reasonCode[0].text), force_bytes("Guideline Appropriate Ordering Assessment"))
+        self.assertEqual(force_bytes(inst.requestIdentifier.system), force_bytes("http://example.org"))
+        self.assertEqual(force_bytes(inst.requestIdentifier.value), force_bytes("guidanceRequest1"))
         self.assertEqual(force_bytes(inst.status), force_bytes("success"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 

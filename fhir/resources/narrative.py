@@ -1,14 +1,18 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/Narrative) on 2019-01-12.
+#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/Narrative) on 2019-01-13.
 #  2019, SMART Health IT.
 
 
 from . import element
 
 class Narrative(element.Element):
-    """ A human-readable formatted text, including images.
+    """ Human-readable summary of the resource (essential clinical and business
+    information).
+    
+    A human-readable summary of the resource conveying the essential clinical
+    and business information for the resource.
     """
     
     resource_type = "Narrative"

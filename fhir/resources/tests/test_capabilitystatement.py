@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
+#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-01-13.
 #  2019, SMART Health IT.
 
 import os
@@ -36,17 +36,19 @@ class CapabilityStatementTests(unittest.TestCase):
         self.implCapabilityStatement1(inst2)
     
     def implCapabilityStatement1(self, inst):
-        self.assertEqual(force_bytes(inst.acceptUnknown), force_bytes("no"))
         self.assertEqual(force_bytes(inst.contact[0].telecom[0].system), force_bytes("url"))
         self.assertEqual(force_bytes(inst.contact[0].telecom[0].value), force_bytes("http://hl7.org/fhir"))
         self.assertEqual(inst.date.date, FHIRDate("2013-06-18").date)
         self.assertEqual(inst.date.as_json(), "2013-06-18")
         self.assertEqual(force_bytes(inst.description), force_bytes("Prototype Capability Statement for September 2013 Connectathon"))
-        self.assertEqual(force_bytes(inst.fhirVersion), force_bytes("1.0.0"))
+        self.assertEqual(force_bytes(inst.fhirVersion), force_bytes("4.0.0"))
         self.assertEqual(force_bytes(inst.format[0]), force_bytes("json"))
         self.assertEqual(force_bytes(inst.format[1]), force_bytes("xml"))
         self.assertEqual(force_bytes(inst.id), force_bytes("phr"))
         self.assertEqual(force_bytes(inst.kind), force_bytes("capability"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
         self.assertEqual(force_bytes(inst.name), force_bytes("PHR Template"))
         self.assertEqual(force_bytes(inst.publisher), force_bytes("FHIR Project"))
         self.assertEqual(force_bytes(inst.rest[0].documentation), force_bytes("Protoype server Capability Statement for September 2013 Connectathon"))
@@ -92,7 +94,6 @@ class CapabilityStatementTests(unittest.TestCase):
         self.implCapabilityStatement2(inst2)
     
     def implCapabilityStatement2(self, inst):
-        self.assertEqual(force_bytes(inst.acceptUnknown), force_bytes("both"))
         self.assertEqual(force_bytes(inst.contact[0].name), force_bytes("System Administrator"))
         self.assertEqual(force_bytes(inst.contact[0].telecom[0].system), force_bytes("email"))
         self.assertEqual(force_bytes(inst.contact[0].telecom[0].value), force_bytes("wile@acme.org"))
@@ -102,8 +103,9 @@ class CapabilityStatementTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.description), force_bytes("This is the FHIR capability statement for the main EHR at ACME for the private interface - it does not describe the public interface"))
         self.assertEqual(force_bytes(inst.document[0].documentation), force_bytes("Basic rules for all documents in the EHR system"))
         self.assertEqual(force_bytes(inst.document[0].mode), force_bytes("consumer"))
+        self.assertEqual(force_bytes(inst.document[0].profile), force_bytes("http://fhir.hl7.org/base/Profilebc054d23-75e1-4dc6-aca5-838b6b1ac81d/_history/b5fdd9fc-b021-4ea1-911a-721a60663796"))
         self.assertTrue(inst.experimental)
-        self.assertEqual(force_bytes(inst.fhirVersion), force_bytes("1.0.0"))
+        self.assertEqual(force_bytes(inst.fhirVersion), force_bytes("4.0.0"))
         self.assertEqual(force_bytes(inst.format[0]), force_bytes("xml"))
         self.assertEqual(force_bytes(inst.format[1]), force_bytes("json"))
         self.assertEqual(force_bytes(inst.id), force_bytes("example"))
@@ -118,14 +120,10 @@ class CapabilityStatementTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.messaging[0].documentation), force_bytes("ADT A08 equivalent for external system notifications"))
         self.assertEqual(force_bytes(inst.messaging[0].endpoint[0].address), force_bytes("mllp:10.1.1.10:9234"))
         self.assertEqual(force_bytes(inst.messaging[0].endpoint[0].protocol.code), force_bytes("mllp"))
-        self.assertEqual(force_bytes(inst.messaging[0].endpoint[0].protocol.system), force_bytes("http://hl7.org/fhir/message-transport"))
-        self.assertEqual(force_bytes(inst.messaging[0].event[0].category), force_bytes("Consequence"))
-        self.assertEqual(force_bytes(inst.messaging[0].event[0].code.code), force_bytes("admin-notify"))
-        self.assertEqual(force_bytes(inst.messaging[0].event[0].code.system), force_bytes("http://hl7.org/fhir/message-events"))
-        self.assertEqual(force_bytes(inst.messaging[0].event[0].documentation), force_bytes("Notification of an update to a patient resource. changing the links is not supported"))
-        self.assertEqual(force_bytes(inst.messaging[0].event[0].focus), force_bytes("Patient"))
-        self.assertEqual(force_bytes(inst.messaging[0].event[0].mode), force_bytes("receiver"))
+        self.assertEqual(force_bytes(inst.messaging[0].endpoint[0].protocol.system), force_bytes("http://terminology.hl7.org/CodeSystem/message-transport"))
         self.assertEqual(inst.messaging[0].reliableCache, 30)
+        self.assertEqual(force_bytes(inst.messaging[0].supportedMessage[0].definition), force_bytes("MessageDefinition/example"))
+        self.assertEqual(force_bytes(inst.messaging[0].supportedMessage[0].mode), force_bytes("receiver"))
         self.assertEqual(force_bytes(inst.name), force_bytes("ACME-EHR"))
         self.assertEqual(force_bytes(inst.patchFormat[0]), force_bytes("application/xml-patch+xml"))
         self.assertEqual(force_bytes(inst.patchFormat[1]), force_bytes("application/json-patch+json"))
@@ -148,6 +146,7 @@ class CapabilityStatementTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.rest[0].resource[0].interaction[3].code), force_bytes("history-instance"))
         self.assertEqual(force_bytes(inst.rest[0].resource[0].interaction[4].code), force_bytes("create"))
         self.assertEqual(force_bytes(inst.rest[0].resource[0].interaction[5].code), force_bytes("history-type"))
+        self.assertEqual(force_bytes(inst.rest[0].resource[0].profile), force_bytes("http://registry.fhir.org/r4/StructureDefinition/7896271d-57f6-4231-89dc-dcc91eab2416"))
         self.assertTrue(inst.rest[0].resource[0].readHistory)
         self.assertEqual(force_bytes(inst.rest[0].resource[0].searchInclude[0]), force_bytes("Organization"))
         self.assertEqual(force_bytes(inst.rest[0].resource[0].searchParam[0].definition), force_bytes("http://hl7.org/fhir/SearchParameter/Patient-identifier"))
@@ -158,15 +157,14 @@ class CapabilityStatementTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.rest[0].resource[0].searchParam[1].name), force_bytes("general-practitioner"))
         self.assertEqual(force_bytes(inst.rest[0].resource[0].searchParam[1].type), force_bytes("reference"))
         self.assertEqual(force_bytes(inst.rest[0].resource[0].searchRevInclude[0]), force_bytes("Person"))
+        self.assertEqual(force_bytes(inst.rest[0].resource[0].supportedProfile[0]), force_bytes("http://registry.fhir.org/r4/StructureDefinition/00ab9e7a-06c7-4f77-9234-4154ca1e3347"))
         self.assertEqual(force_bytes(inst.rest[0].resource[0].type), force_bytes("Patient"))
         self.assertFalse(inst.rest[0].resource[0].updateCreate)
         self.assertEqual(force_bytes(inst.rest[0].resource[0].versioning), force_bytes("versioned-update"))
-        self.assertEqual(force_bytes(inst.rest[0].security.certificate[0].blob), force_bytes("IHRoaXMgYmxvYiBpcyBub3QgdmFsaWQ="))
-        self.assertEqual(force_bytes(inst.rest[0].security.certificate[0].type), force_bytes("application/jwt"))
         self.assertTrue(inst.rest[0].security.cors)
         self.assertEqual(force_bytes(inst.rest[0].security.description), force_bytes("See Smart on FHIR documentation"))
         self.assertEqual(force_bytes(inst.rest[0].security.service[0].coding[0].code), force_bytes("SMART-on-FHIR"))
-        self.assertEqual(force_bytes(inst.rest[0].security.service[0].coding[0].system), force_bytes("http://hl7.org/fhir/restful-security-service"))
+        self.assertEqual(force_bytes(inst.rest[0].security.service[0].coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/restful-security-service"))
         self.assertEqual(force_bytes(inst.software.name), force_bytes("EHR"))
         self.assertEqual(inst.software.releaseDate.date, FHIRDate("2012-01-04").date)
         self.assertEqual(inst.software.releaseDate.as_json(), "2012-01-04")
@@ -176,8 +174,8 @@ class CapabilityStatementTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.title), force_bytes("ACME EHR capability statement"))
         self.assertEqual(force_bytes(inst.url), force_bytes("urn:uuid:68D043B5-9ECF-4559-A57A-396E0D452311"))
         self.assertEqual(force_bytes(inst.useContext[0].code.code), force_bytes("focus"))
-        self.assertEqual(force_bytes(inst.useContext[0].code.system), force_bytes("http://hl7.org/fhir/usage-context-type"))
+        self.assertEqual(force_bytes(inst.useContext[0].code.system), force_bytes("http://terminology.hl7.org/CodeSystem/usage-context-type"))
         self.assertEqual(force_bytes(inst.useContext[0].valueCodeableConcept.coding[0].code), force_bytes("positive"))
-        self.assertEqual(force_bytes(inst.useContext[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/variant-state"))
+        self.assertEqual(force_bytes(inst.useContext[0].valueCodeableConcept.coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/variant-state"))
         self.assertEqual(force_bytes(inst.version), force_bytes("20130510"))
 

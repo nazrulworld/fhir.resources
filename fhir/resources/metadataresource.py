@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/MetadataResource) on 2019-01-12.
+#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/MetadataResource) on 2019-01-13.
 #  2019, SMART Health IT.
 
 
@@ -29,7 +29,7 @@ class MetadataResource(domainresource.DomainResource):
         List of `ContactDetail` items (represented as `dict` in JSON). """
         
         self.date = None
-        """ Date this was last changed.
+        """ Date last changed.
         Type `FHIRDate` (represented as `str` in JSON). """
         
         self.description = None
@@ -61,11 +61,12 @@ class MetadataResource(domainresource.DomainResource):
         Type `str`. """
         
         self.url = None
-        """ Logical URI to reference this metadata resource (globally unique).
+        """ Canonical identifier for this metadata resource, represented as a
+        URI (globally unique).
         Type `str`. """
         
         self.useContext = None
-        """ Context the content is intended to support.
+        """ The context that the content is intended to support.
         List of `UsageContext` items (represented as `dict` in JSON). """
         
         self.version = None

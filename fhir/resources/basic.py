@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/Basic) on 2019-01-12.
+#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/Basic) on 2019-01-13.
 #  2019, SMART Health IT.
 
 
@@ -27,7 +27,7 @@ class Basic(domainresource.DomainResource):
         
         self.author = None
         """ Who created.
-        Type `FHIRReference` referencing `Practitioner, Patient, RelatedPerson` (represented as `dict` in JSON). """
+        Type `FHIRReference` (represented as `dict` in JSON). """
         
         self.code = None
         """ Kind of Resource.
@@ -43,7 +43,7 @@ class Basic(domainresource.DomainResource):
         
         self.subject = None
         """ Identifies the focus of this resource.
-        Type `FHIRReference` referencing `Resource` (represented as `dict` in JSON). """
+        Type `FHIRReference` (represented as `dict` in JSON). """
         
         super(Basic, self).__init__(jsondict=jsondict, strict=strict)
     

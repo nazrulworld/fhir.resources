@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
+#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-01-13.
 #  2019, SMART Health IT.
 
 import os
@@ -40,8 +40,11 @@ class SlotTests(unittest.TestCase):
         self.assertEqual(inst.end.date, FHIRDate("2013-12-25T09:45:00Z").date)
         self.assertEqual(inst.end.as_json(), "2013-12-25T09:45:00Z")
         self.assertEqual(force_bytes(inst.id), force_bytes("3"))
-        self.assertEqual(force_bytes(inst.serviceCategory.coding[0].code), force_bytes("17"))
-        self.assertEqual(force_bytes(inst.serviceCategory.coding[0].display), force_bytes("General Practice"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
+        self.assertEqual(force_bytes(inst.serviceCategory[0].coding[0].code), force_bytes("17"))
+        self.assertEqual(force_bytes(inst.serviceCategory[0].coding[0].display), force_bytes("General Practice"))
         self.assertEqual(inst.start.date, FHIRDate("2013-12-25T09:30:00Z").date)
         self.assertEqual(inst.start.as_json(), "2013-12-25T09:30:00Z")
         self.assertEqual(force_bytes(inst.status), force_bytes("busy-unavailable"))
@@ -62,8 +65,11 @@ class SlotTests(unittest.TestCase):
         self.assertEqual(inst.end.date, FHIRDate("2013-12-25T10:00:00Z").date)
         self.assertEqual(inst.end.as_json(), "2013-12-25T10:00:00Z")
         self.assertEqual(force_bytes(inst.id), force_bytes("2"))
-        self.assertEqual(force_bytes(inst.serviceCategory.coding[0].code), force_bytes("17"))
-        self.assertEqual(force_bytes(inst.serviceCategory.coding[0].display), force_bytes("General Practice"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
+        self.assertEqual(force_bytes(inst.serviceCategory[0].coding[0].code), force_bytes("17"))
+        self.assertEqual(force_bytes(inst.serviceCategory[0].coding[0].display), force_bytes("General Practice"))
         self.assertEqual(inst.start.date, FHIRDate("2013-12-25T09:45:00Z").date)
         self.assertEqual(inst.start.as_json(), "2013-12-25T09:45:00Z")
         self.assertEqual(force_bytes(inst.status), force_bytes("busy-tentative"))
@@ -86,9 +92,12 @@ class SlotTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.id), force_bytes("1"))
         self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://example.org/identifiers/slots"))
         self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("123132"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
         self.assertTrue(inst.overbooked)
-        self.assertEqual(force_bytes(inst.serviceCategory.coding[0].code), force_bytes("17"))
-        self.assertEqual(force_bytes(inst.serviceCategory.coding[0].display), force_bytes("General Practice"))
+        self.assertEqual(force_bytes(inst.serviceCategory[0].coding[0].code), force_bytes("17"))
+        self.assertEqual(force_bytes(inst.serviceCategory[0].coding[0].display), force_bytes("General Practice"))
         self.assertEqual(inst.start.date, FHIRDate("2013-12-25T09:00:00Z").date)
         self.assertEqual(inst.start.as_json(), "2013-12-25T09:00:00Z")
         self.assertEqual(force_bytes(inst.status), force_bytes("busy"))
@@ -107,13 +116,16 @@ class SlotTests(unittest.TestCase):
     def implSlot4(self, inst):
         self.assertEqual(force_bytes(inst.appointmentType.coding[0].code), force_bytes("WALKIN"))
         self.assertEqual(force_bytes(inst.appointmentType.coding[0].display), force_bytes("A previously unscheduled walk-in visit"))
-        self.assertEqual(force_bytes(inst.appointmentType.coding[0].system), force_bytes("http://hl7.org/fhir/v2/0276"))
+        self.assertEqual(force_bytes(inst.appointmentType.coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v2-0276"))
         self.assertEqual(force_bytes(inst.comment), force_bytes("Assessments should be performed before requesting appointments in this slot."))
         self.assertEqual(inst.end.date, FHIRDate("2013-12-25T09:30:00Z").date)
         self.assertEqual(inst.end.as_json(), "2013-12-25T09:30:00Z")
         self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(force_bytes(inst.serviceCategory.coding[0].code), force_bytes("17"))
-        self.assertEqual(force_bytes(inst.serviceCategory.coding[0].display), force_bytes("General Practice"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
+        self.assertEqual(force_bytes(inst.serviceCategory[0].coding[0].code), force_bytes("17"))
+        self.assertEqual(force_bytes(inst.serviceCategory[0].coding[0].display), force_bytes("General Practice"))
         self.assertEqual(force_bytes(inst.serviceType[0].coding[0].code), force_bytes("57"))
         self.assertEqual(force_bytes(inst.serviceType[0].coding[0].display), force_bytes("Immunization"))
         self.assertEqual(force_bytes(inst.specialty[0].coding[0].code), force_bytes("408480009"))

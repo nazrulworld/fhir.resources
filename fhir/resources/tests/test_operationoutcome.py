@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
+#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-01-13.
 #  2019, SMART Health IT.
 
 import os
@@ -40,7 +40,10 @@ class OperationOutcomeTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.issue[0].code), force_bytes("informational"))
         self.assertEqual(force_bytes(inst.issue[0].details.text), force_bytes("All OK"))
         self.assertEqual(force_bytes(inst.issue[0].severity), force_bytes("information"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("additional"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
     
     def testOperationOutcome2(self):
         inst = self.instantiate_from("operationoutcome-example-searchfail.json")
@@ -58,6 +61,9 @@ class OperationOutcomeTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.issue[0].details.text), force_bytes("The \"name\" parameter has the modifier \"exact\" which is not supported by this server"))
         self.assertEqual(force_bytes(inst.issue[0].location[0]), force_bytes("http.name:exact"))
         self.assertEqual(force_bytes(inst.issue[0].severity), force_bytes("fatal"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
     
     def testOperationOutcome3(self):
@@ -75,10 +81,13 @@ class OperationOutcomeTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.issue[0].code), force_bytes("code-invalid"))
         self.assertEqual(force_bytes(inst.issue[0].details.text), force_bytes("The code \"W\" is not known and not legal in this context"))
         self.assertEqual(force_bytes(inst.issue[0].diagnostics), force_bytes("Acme.Interop.FHIRProcessors.Patient.processGender line 2453"))
-        self.assertEqual(force_bytes(inst.issue[0].expression[0]), force_bytes("Person.gender"))
-        self.assertEqual(force_bytes(inst.issue[0].location[0]), force_bytes("/f:Person/f:gender"))
+        self.assertEqual(force_bytes(inst.issue[0].expression[0]), force_bytes("Patient.gender"))
+        self.assertEqual(force_bytes(inst.issue[0].location[0]), force_bytes("/f:Patient/f:gender"))
         self.assertEqual(force_bytes(inst.issue[0].severity), force_bytes("error"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("additional"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
     
     def testOperationOutcome4(self):
         inst = self.instantiate_from("operationoutcome-example-exception.json")
@@ -95,7 +104,10 @@ class OperationOutcomeTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.issue[0].code), force_bytes("exception"))
         self.assertEqual(force_bytes(inst.issue[0].details.text), force_bytes("SQL Link Communication Error (dbx = 34234)"))
         self.assertEqual(force_bytes(inst.issue[0].severity), force_bytes("error"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("additional"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
     
     def testOperationOutcome5(self):
         inst = self.instantiate_from("operationoutcome-example-break-the-glass.json")
@@ -112,9 +124,12 @@ class OperationOutcomeTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.issue[0].code), force_bytes("suppressed"))
         self.assertEqual(force_bytes(inst.issue[0].details.coding[0].code), force_bytes("ETREAT"))
         self.assertEqual(force_bytes(inst.issue[0].details.coding[0].display), force_bytes("Emergency Treatment"))
-        self.assertEqual(force_bytes(inst.issue[0].details.coding[0].system), force_bytes("http://hl7.org/fhir/v3/ActReason"))
+        self.assertEqual(force_bytes(inst.issue[0].details.coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
         self.assertEqual(force_bytes(inst.issue[0].details.text), force_bytes("Additional information may be available using the Break-The-Glass Protocol"))
         self.assertEqual(force_bytes(inst.issue[0].severity), force_bytes("information"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
     
     def testOperationOutcome6(self):
@@ -134,5 +149,8 @@ class OperationOutcomeTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.issue[0].expression[0]), force_bytes("Patient.identifier"))
         self.assertEqual(force_bytes(inst.issue[0].location[0]), force_bytes("/f:Patient/f:identifier"))
         self.assertEqual(force_bytes(inst.issue[0].severity), force_bytes("error"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 

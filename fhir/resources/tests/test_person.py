@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
+#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-01-13.
 #  2019, SMART Health IT.
 
 import os
@@ -41,6 +41,9 @@ class PersonTests(unittest.TestCase):
         self.assertEqual(inst.birthDate.as_json(), "1963")
         self.assertEqual(force_bytes(inst.gender), force_bytes("female"))
         self.assertEqual(force_bytes(inst.id), force_bytes("f002"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
         self.assertEqual(force_bytes(inst.name[0].text), force_bytes("Ariadne Bor-Jansma"))
         self.assertEqual(force_bytes(inst.name[0].use), force_bytes("usual"))
         self.assertEqual(force_bytes(inst.photo.contentType), force_bytes("image/jpeg"))
@@ -74,9 +77,12 @@ class PersonTests(unittest.TestCase):
         self.assertEqual(inst.identifier[0].period.start.as_json(), "2001-05-06")
         self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("urn:oid:1.2.36.146.595.217.0.1"))
         self.assertEqual(force_bytes(inst.identifier[0].type.coding[0].code), force_bytes("MR"))
-        self.assertEqual(force_bytes(inst.identifier[0].type.coding[0].system), force_bytes("http://hl7.org/fhir/v2/0203"))
+        self.assertEqual(force_bytes(inst.identifier[0].type.coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v2-0203"))
         self.assertEqual(force_bytes(inst.identifier[0].use), force_bytes("usual"))
         self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("12345"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
         self.assertEqual(force_bytes(inst.name[0].family), force_bytes("Chalmers"))
         self.assertEqual(force_bytes(inst.name[0].given[0]), force_bytes("Peter"))
         self.assertEqual(force_bytes(inst.name[0].given[1]), force_bytes("James"))

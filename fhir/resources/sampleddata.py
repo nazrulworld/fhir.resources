@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/SampledData) on 2019-01-12.
+#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/SampledData) on 2019-01-13.
 #  2019, SMART Health IT.
 
 
@@ -57,7 +57,7 @@ class SampledData(element.Element):
     def elementProperties(self):
         js = super(SampledData, self).elementProperties()
         js.extend([
-            ("data", "data", str, False, None, True),
+            ("data", "data", str, False, None, False),
             ("dimensions", "dimensions", int, False, None, True),
             ("factor", "factor", float, False, None, False),
             ("lowerLimit", "lowerLimit", float, False, None, False),

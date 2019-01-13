@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
+#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-01-13.
 #  2019, SMART Health IT.
 
 import os
@@ -44,7 +44,11 @@ class DeviceRequestTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.groupIdentifier.value), force_bytes("ip_request1"))
         self.assertEqual(force_bytes(inst.id), force_bytes("insulinpump"))
         self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("ip_request1.1"))
-        self.assertEqual(force_bytes(inst.intent.text), force_bytes("instance-order"))
+        self.assertEqual(force_bytes(inst.instantiatesCanonical[0]), force_bytes("http://motivemi.com/artifacts/PlanDefinition/low-suicide-risk-order-set"))
+        self.assertEqual(force_bytes(inst.intent), force_bytes("instance-order"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
         self.assertEqual(force_bytes(inst.note[0].text), force_bytes("this is the right device brand and model"))
         self.assertEqual(inst.occurrenceDateTime.date, FHIRDate("2013-05-08T09:33:27+07:00").date)
         self.assertEqual(inst.occurrenceDateTime.as_json(), "2013-05-08T09:33:27+07:00")
@@ -67,7 +71,10 @@ class DeviceRequestTests(unittest.TestCase):
     
     def implDeviceRequest2(self, inst):
         self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(force_bytes(inst.intent.coding[0].code), force_bytes("original-order"))
+        self.assertEqual(force_bytes(inst.intent), force_bytes("original-order"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
         self.assertEqual(force_bytes(inst.status), force_bytes("completed"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 

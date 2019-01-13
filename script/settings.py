@@ -7,7 +7,7 @@ except ImportError:
     pass
 
 # Base URL for where to load specification data from
-specification_url = 'http://hl7.org/fhir/STU3'
+specification_url = 'http://hl7.org/fhir/R4'
 
 # In which directory to find the templates. See below for settings that start with `tpl_`: these are the template names.
 tpl_base = '../script/templates'

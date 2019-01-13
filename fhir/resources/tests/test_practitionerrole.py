@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 3.0.1.11917 on 2019-01-12.
+#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-01-13.
 #  2019, SMART Health IT.
 
 import os
@@ -52,10 +52,13 @@ class PractitionerRoleTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.availableTime[1].daysOfWeek[0]), force_bytes("thu"))
         self.assertEqual(force_bytes(inst.availableTime[1].daysOfWeek[1]), force_bytes("fri"))
         self.assertEqual(force_bytes(inst.code[0].coding[0].code), force_bytes("RP"))
-        self.assertEqual(force_bytes(inst.code[0].coding[0].system), force_bytes("http://hl7.org/fhir/v2/0286"))
+        self.assertEqual(force_bytes(inst.code[0].coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v2-0286"))
         self.assertEqual(force_bytes(inst.id), force_bytes("example"))
         self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://www.acme.org/practitioners"))
         self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("23"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
         self.assertEqual(force_bytes(inst.notAvailable[0].description), force_bytes("Adam will be on extended leave during May 2017"))
         self.assertEqual(inst.notAvailable[0].during.end.date, FHIRDate("2017-05-20").date)
         self.assertEqual(inst.notAvailable[0].during.end.as_json(), "2017-05-20")

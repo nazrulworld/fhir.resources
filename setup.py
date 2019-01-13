@@ -39,7 +39,7 @@ setup(
     long_description=readme + '\n\n' + history,
     include_package_data=True,
     keywords='fhir, resources',
-    name='fhir-resources',
+    name='fhir.resources',
     namespace_packages=['fhir'],
     packages=find_packages(exclude=['ez_setup']),
     setup_requires=setup_requirements,

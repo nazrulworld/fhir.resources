@@ -82,7 +82,7 @@ version, just clone from https://github.com/nazrulworld/fhir.resources and ``pyt
 Release and Version Policy
 --------------------------
 
-This package is following FHIR® release and versioning policy, for example say FHIR release next version 4.0.1,
+This package is following `FHIR® release and versioning policy <https://www.hl7.org/fhir/versions.html>`_, for example say, FHIR releases next version 4.0.1,
 we also release same version here.
 
 

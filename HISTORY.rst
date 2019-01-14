@@ -2,7 +2,7 @@
 History
 =======
 
-4.0.0 (unreleased)
+4.0.0 (2019-01-14)
 ------------------
 
 - see version info at ``4.0.0b1`` section.

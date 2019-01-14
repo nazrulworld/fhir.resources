@@ -6,6 +6,10 @@ FHIR® Resources (R4)
 .. image:: https://img.shields.io/pypi/v/fhir.resources.svg
         :target: https://pypi.python.org/pypi/fhir.resources
 
+.. image:: https://img.shields.io/pypi/pyversions/fhir.resources.svg
+        :target: https://pypi.python.org/pypi/fhir.resources
+        :alt: Supported Python Versions
+
 .. image:: https://img.shields.io/travis/nazrulworld/fhir.resources.svg
         :target: https://travis-ci.org/nazrulworld/fhir.resources
 

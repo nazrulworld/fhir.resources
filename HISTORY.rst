@@ -2,10 +2,10 @@
 History
 =======
 
-4.0.0b2 (unreleased)
---------------------
+4.0.0 (unreleased)
+------------------
 
-- Nothing changed yet.
+- see version info at ``4.0.0b1`` section.
 
 
 4.0.0b1 (2019-01-13)

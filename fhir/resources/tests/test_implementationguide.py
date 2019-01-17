@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-01-13.
+#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-01-17.
 #  2019, SMART Health IT.
 
 import os
@@ -9,11 +9,10 @@ import pytest
 import io
 import unittest
 import json
-import six
-from fhir.resources import implementationguide
-from fhir.resources.fhirdate import FHIRDate
 
 from .fixtures import force_bytes
+from .. import implementationguide
+from ..fhirdate import FHIRDate
 
 
 @pytest.mark.usefixtures("base_settings")

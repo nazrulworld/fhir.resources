@@ -9,7 +9,10 @@ import zipfile
 import pytest
 import six
 
-ROOT_PATH = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+from os.path import dirname
+
+
+ROOT_PATH = dirname(dirname(dirname(dirname(os.path.abspath(__file__)))))
 PARSER_PATH = os.path.join(ROOT_PATH, 'fhir-parser')
 SCRIPT_PATH = os.path.join(ROOT_PATH, 'script')
 CACHE_PATH = os.path.join(ROOT_PATH, '.cache')
@@ -65,14 +68,14 @@ def expand(self, local):
 def base_settings():
 
     if not os.path.exists(CACHE_PATH):
-        os.mkdir(CACHE_PATH)
+        os.makedirs(CACHE_PATH)
 
     settings = {}
 
     with io.open(os.path.join(SCRIPT_PATH, 'settings.py'), 'r') as fp:
         exec(fp.read(), settings)
 
-    example_data_file_uri = settings['specification_url'] + '/examples-json.zip'
+    example_data_file_uri = '/'.join([settings['base_url'], settings['current_version'], 'examples-json.zip'])
 
     example_data_file_id = \
             hashlib.md5(example_data_file_uri.encode()).hexdigest()
@@ -94,4 +97,5 @@ def base_settings():
 
     yield settings
 
+    os.environ.pop('FHIR_UNITTEST_DATADIR')
     shutil.rmtree(temp_data_dir)

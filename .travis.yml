@@ -31,6 +31,7 @@ install:
 script:
   - git submodule update --init --recursive
   - make clean
-  - pytest -s --cov=fhir/resources/ -s --tb=native -v --cov-report term-missing --cov-append fhir/resources
+  - pytest fhir/resources/STU3/tests
+  - pytest -s --cov=fhir/resources/tests -s --tb=native -v --cov-report term-missing --cov-append fhir/resources/tests
 after_success:
   - codecov

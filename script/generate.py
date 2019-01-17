@@ -70,29 +70,49 @@ def get_fhir_version_info():
         return None
 
 
-def update_version(version):
+def update_pytest_fixture(version):
     """ """
-    if not isinstance(version, StrictVersion):
-        version = StrictVersion(version)
-
     lines = list()
-    with open(str(SRC_BASE_PATH / '__init__.py'), 'r', encoding='utf-8') as fp:
+    fixture_file = SRC_BASE_PATH / version / 'tests' / 'fixtures.py'
+    with open(str(fixture_file), 'r', encoding='utf-8') as fp:
         for line in fp:
-            if '__version__' in line:
+            if 'ROOT_PATH =' in line:
                 parts = list()
                 parts.append(line.split('=')[0])
-                parts.append(f'"{version}"')
-
+                parts.append("dirname(dirname(dirname(dirname(dirname(os.path.abspath(__file__))))))\n")
                 line = '= '.join(parts)
-            lines.append(line.strip())
 
-    with open(str(SRC_BASE_PATH / '__init__.py'), 'w', encoding='utf-8') as fp:
-        fp.write('\n'.join(lines))
+            elif 'CACHE_PATH =' in line:
+                parts = list()
+                parts.append(line.split('=')[0])
+                parts.append(f"os.path.join(ROOT_PATH, '.cache', '{version}')\n")
+                line = '= '.join(parts)
+
+            elif 'example_data_file_uri =' in line:
+
+                parts = list()
+                parts.append(line.split('=')[0])
+                parts.append(f"'/'.join([settings['base_url'], '{version}', 'examples-json.zip'])\n")
+                line = '= '.join(parts)
+
+            lines.append(line)
+
+    # let's write
+    fixture_file.write_text(''.join(lines))
+
+    with open(str(SRC_BASE_PATH / version / 'tests' / 'conftest.py'), 'w', encoding='utf-8') as fp:
+        fp.write(
+            "# _*_ coding: utf-8 _*_\n"
+            f"pytest_plugins = ['fhir.resources.{version}.tests.fixtures']\n")
 
 
 def main():
     """ """
     force_download = len(sys.argv) > 1 and '-f' in sys.argv
+    keep_previous_versions = len(sys.argv) > 1 and (
+        "-k" in sys.argv or "--keep-previous-versions" in sys.argv
+    )
+
     fhir_v_info = get_fhir_version_info()
     current_version = get_current_version()
 
@@ -112,9 +132,10 @@ def main():
             '==> New FHIR version {0} is available! However resources '
             'are generated from cache.'.format(fhir_v_info[0]))
 
-    if current_version < StrictVersion(cached_v_info[0]):
-        # Let's update file
-        update_version(StrictVersion(cached_v_info[0]))
+    if keep_previous_versions and getattr(settings, 'previous_versions', None):
+
+        for version in settings.previous_versions:
+            update_pytest_fixture(version)
 
     return 0
 

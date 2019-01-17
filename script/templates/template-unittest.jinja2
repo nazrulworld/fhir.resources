@@ -9,11 +9,10 @@ import pytest
 import io
 import unittest
 import json
-import six
-from fhir.resources import {{ class.module }}
-from fhir.resources.fhirdate import FHIRDate
 
 from .fixtures import force_bytes
+from .. import {{ class.module }}
+from ..fhirdate import FHIRDate
 
 
 @pytest.mark.usefixtures("base_settings")

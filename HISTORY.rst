@@ -2,7 +2,7 @@
 History
 =======
 
-5.0.0b1 (unreleased)
+5.0.0b1 (2019-01-19)
 --------------------
 
 New features

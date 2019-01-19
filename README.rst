@@ -26,9 +26,20 @@ FHIR® Resources (R4)
 All `FHIR Resources <https://www.hl7.org/fhir/R4/resourcelist.html>`_ are available as python class with built-in
 initial validation, exporter as json value.
 
-
+* Provides ``Resource Factory`` class (see example 4) to create resource object in more convenient way.
+* Previous version of FHIR® Resources are available.
 * Free software: BSD license
-* FHIR ResourceList: https://www.hl7.org/fhir/R4/resourcelist.html
+
+
+FHIR® Version Info
+------------------
+
+FHIR® (R4 aka 4.0.0) is available as default. Also previous versions are available as Python sub-package
+(each version name string becomes sub-package name, i.e ``STU3`` ).
+
+**Available Previous Versions**:
+
+* ``STU3`` (3.0.1)
 
 Installation
 ------------
@@ -82,12 +93,35 @@ version, just clone from https://github.com/nazrulworld/fhir.resources and ``pyt
     ...     pass
 
 
+**Example: 4**: Using Resource Factory::
+
+    This package provides a convenient factory to create FHIR® resource, you never need to import manually each resource class.
+
+    >>> from fhir.resources.fhirelementfactory import FHIRElementFactory
+    >>> json_dict = {"resourceType": "Organization",
+    ...     "id": "mmanu",
+    ...     "active": True,
+    ...     "name": "Acme Corporation",
+    ...     "address": [{"country": "Swizterland"}]
+    ... }
+    >>> org = FHIRElementFactory.instantiate('Organization', json_dict)
+    >>> org.address[0].country == "Swizterland"
+    True
+    >>> org.as_json()['active'] is True
+    True
 
 Release and Version Policy
 --------------------------
 
-This package is following `FHIR® release and versioning policy <https://www.hl7.org/fhir/versions.html>`_, for example say, FHIR releases next version 4.0.1,
-we also release same version here.
+Starting from  version ``5.0.0`` we are following our own release policy and we although follow Semantic Versioning scheme like FHIR® version.
+Unlike previous statement (bellow), releasing now is not dependent on FHIR®.
+
+
+.. container:: button--disabled
+            :name: removed old statement
+
+    This package is following `FHIR® release and versioning policy <https://www.hl7.org/fhir/versions.html>`_, for example say, FHIR releases next version 4.0.1,
+    we also release same version here.
 
 
 Credits
@@ -104,3 +138,6 @@ This package skeleton was created with Cookiecutter_ and the `audreyr/cookiecutt
 
 © Copyright HL7® logo, FHIR® logo and the flaming fire are registered trademarks
 owned by `Health Level Seven International <https://www.hl7.org/legal/trademarks.cfm?ref=https://pypi.org/project/fhir-resources/>`_
+
+.. role:: strike
+    :class: strike

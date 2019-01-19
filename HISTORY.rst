@@ -2,10 +2,18 @@
 History
 =======
 
-5.0.0a1 (unreleased)
+5.0.0b1 (unreleased)
 --------------------
 
-- Nothing changed yet.
+New features
+
+- Implemented own build policy, now previous version of FHIR® resources are available as python sub-package.
+
+Build info
+
+- Default version is ``R4`` (see version info at `4.0.0b1 (2019-01-13)` section)
+
+- ``STU3`` (see version info at `3.0.1 (2019-01-13)` section)
 
 
 4.0.0 (2019-01-14)

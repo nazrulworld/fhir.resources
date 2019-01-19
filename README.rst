@@ -117,8 +117,7 @@ Starting from  version ``5.0.0`` we are following our own release policy and we 
 Unlike previous statement (bellow), releasing now is not dependent on FHIR®.
 
 
-.. container:: button--disabled
-            :name: removed old statement
+**removed statement**
 
     This package is following `FHIR® release and versioning policy <https://www.hl7.org/fhir/versions.html>`_, for example say, FHIR releases next version 4.0.1,
     we also release same version here.

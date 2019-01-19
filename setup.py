@@ -20,8 +20,9 @@ test_requirements = ['coverage','pytest', 'pytest-cov']
 setup(
     author="Md Nazrul Islam",
     author_email='email2nazrul@gmail.com',
+    # Get more from https://pypi.org/pypi?%3Aaction=list_classifiers
     classifiers=[
-        'Development Status :: 5 - Production/Stable',
+        'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',
         'Natural Language :: English',
@@ -38,7 +39,7 @@ setup(
     license="BSD license",
     long_description=readme + '\n\n' + history,
     include_package_data=True,
-    keywords='fhir, resources',
+    keywords='fhir, resources, python',
     name='fhir.resources',
     namespace_packages=['fhir'],
     packages=find_packages(exclude=['ez_setup']),
@@ -49,6 +50,6 @@ setup(
         'test': test_requirements + setup_requirements
     },
     url='https://github.com/nazrulworld/fhir.resources',
-    version='5.0.0a1.dev0',
+    version='5.0.0b1.dev0',
     zip_safe=False,
 )

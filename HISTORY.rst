@@ -5,7 +5,12 @@ History
 5.0.0b2 (unreleased)
 --------------------
 
-- Nothing changed yet.
+Breaking or Improvments
+
+- ``elementProperties``: element now has extra property ``type_name``. Now format like ``(name, json_name, type, type_name, is_list, "of_many", not_optional)``
+  The ``type_name`` refers original type name (code) from FHIR Structure Definition and it would be very helpful while
+  making fhir search, fhirpath navigator.
+
 
 
 5.0.0b1 (2019-01-19)

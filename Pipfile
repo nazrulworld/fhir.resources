@@ -10,6 +10,9 @@ MarkupSafe = {version = "==0.23"}
 requests = {version = ">=2.13.0"}
 colorlog = {version = "==2.10.0"}
 certifi = "*"
+isort = "*"
+flake8 = "*"
+black = "*"
 zest-releaser = {extras = ["recommended"],version = "*"}
 
 [packages]

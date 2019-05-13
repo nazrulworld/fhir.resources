@@ -9,7 +9,7 @@ except ImportError:
 # Base URL for where to load specification data from
 base_url = 'http://hl7.org/fhir'
 current_version = 'R4'
-previous_versions = ['STU3',]
+previous_versions = ['STU3']
 specification_url = '/'.join([base_url, current_version])
 
 # In which directory to find the templates. See below for settings that start with `tpl_`: these are the template names.
@@ -42,7 +42,7 @@ manual_profiles = [
         'boolean',
         'string', 'base64Binary', 'code', 'id',
         'decimal', 'integer', 'unsignedInt', 'positiveInt',
-        'uri', 'oid', 'uuid',
+        'uri', 'oid', 'uuid', 'canonical', 'url', 'markdown',
         'FHIRAbstractBase',
     ]),
     ('../script/templates/fhirabstractresource.py', 'fhirabstractresource', ['FHIRAbstractResource']),
@@ -50,3 +50,8 @@ manual_profiles = [
     ('../script/templates/fhirdate.py', 'fhirdate', ['date', 'dateTime', 'instant', 'time']),
     ('../script/templates/fhirsearch.py', 'fhirsearch', ['FHIRSearch']),
 ]
+
+# Testing
+# tpl_resource_target = '/tmp/resources'
+# tpl_unittest_target = '/tmp/resources/tests'
+# tpl_factory_target = '/tmp/resources/fhirelementfactory.py'

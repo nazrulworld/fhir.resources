@@ -51,7 +51,7 @@ manual_profiles = [
     ('../script/templates/fhirsearch.py', 'fhirsearch', ['FHIRSearch']),
 ]
 
-# Testing
-# tpl_resource_target = '/tmp/resources'
-# tpl_unittest_target = '/tmp/resources/tests'
-# tpl_factory_target = '/tmp/resources/fhirelementfactory.py'
+# Testing {safe gurd}
+tpl_resource_target = './downloads/tmp/resources'
+tpl_unittest_target = './downloads/tmp/resources/tests'
+tpl_factory_target = './downloads/tmp/resources/fhirelementfactory.py'

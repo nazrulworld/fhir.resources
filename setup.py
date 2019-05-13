@@ -39,7 +39,7 @@ setup(
     license="BSD license",
     long_description=readme + "\n\n" + history,
     include_package_data=True,
-    keywords="fhir, resources, python",
+    keywords="fhir, resources, python, hl7, health IT, healthcare",
     name="fhir.resources",
     namespace_packages=["fhir"],
     packages=find_packages(exclude=["ez_setup"]),

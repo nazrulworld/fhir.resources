@@ -13,7 +13,7 @@ exclude tox.ini
 exclude Makefile
 exclude .editorconfig
 exclude .gitmodules
-exclude requirements_dev.txt
+exclude requirements_dev.txt pyproject.toml
 
 recursive-include tests *
 recursive-exclude * __pycache__

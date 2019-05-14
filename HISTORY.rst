@@ -5,7 +5,9 @@ History
 5.0.0b3 (unreleased)
 --------------------
 
-- Nothing changed yet.
+New features
+
+- Isuue#1 `Add DSTU2 Support <https://github.com/nazrulworld/fhir.resources/issues/1>`_
 
 
 5.0.0b2 (2019-05-13)

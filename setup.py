@@ -48,6 +48,6 @@ setup(
     tests_require=test_requirements,
     extras_require={"test": test_requirements + setup_requirements},
     url="https://github.com/nazrulworld/fhir.resources",
-    version="5.0.0.dev0",
+    version="5.0.0",
     zip_safe=False,
 )

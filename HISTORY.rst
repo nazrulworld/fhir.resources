@@ -2,10 +2,10 @@
 History
 =======
 
-5.0.0b4 (unreleased)
---------------------
+5.0.0 (unreleased)
+------------------
 
-- Nothing changed yet.
+- Nothing but release stable version.
 
 
 5.0.0b3 (2019-05-14)

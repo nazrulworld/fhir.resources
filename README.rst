@@ -1,6 +1,6 @@
-====================
-FHIR® Resources (R4)
-====================
+=================================
+FHIR® Resources (R4, STU3, DSTU2)
+=================================
 
 
 .. image:: https://img.shields.io/pypi/v/fhir.resources.svg
@@ -23,7 +23,7 @@ FHIR® Resources (R4)
 
 
 
-All `FHIR Resources <https://www.hl7.org/fhir/R4/resourcelist.html>`_ are available as python class with built-in
+All `FHIR Resources <https://www.hl7.org/fhir/resourcelist.html>`_ are available as python class with built-in
 initial validation, exporter as json value.
 
 * Provides ``Resource Factory`` class (see example 4) to create resource object in more convenient way.
@@ -40,6 +40,8 @@ FHIR® (R4 aka 4.0.0) is available as default. Also previous versions are availa
 **Available Previous Versions**:
 
 * ``STU3`` (3.0.1)
+
+* ``DSTU2`` (1.0.2)
 
 Installation
 ------------

@@ -103,3 +103,5 @@ ENV/
 # editor
 .idea
 .vscode
+# Others
+/pip-wheel-metadata

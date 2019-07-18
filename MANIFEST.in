@@ -1,5 +1,6 @@
 graft fhir
 prune script
+prune tests
 prune .github
 prune fhir-parser
 include AUTHORS.rst
@@ -13,7 +14,7 @@ exclude tox.ini
 exclude Makefile
 exclude .editorconfig
 exclude .gitmodules
-exclude requirements_dev.txt pyproject.toml
+exclude requirements_dev.txt pyproject.toml Dockerfile docker-compose.yml
 
 recursive-include tests *
 recursive-exclude * __pycache__

@@ -5,7 +5,9 @@ History
 5.0.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+Bugfixes:
+
+- `Issue#5 <https://github.com/nazrulworld/fhir.resources/issues/5>`_ confusing error message "name 'self' is not defined" [nazrulworld]
 
 
 5.0.0 (2019-06-08)

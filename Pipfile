@@ -11,7 +11,6 @@ requests = {version = ">=2.13.0"}
 colorlog = {version = "==2.10.0"}
 certifi = "*"
 zest-releaser = {extras = ["recommended"],version = "*"}
-pytest = {version = "==4.5.0"}
 
 [packages]
 isodate = "*"

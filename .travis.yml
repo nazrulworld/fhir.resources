@@ -19,6 +19,8 @@ matrix:
     - name: Python 3.7
       python: 3.7
       env: python_version=3.7
+  allow_failures:
+    - python: 2.7
 
 cache:
   directories:

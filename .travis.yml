@@ -26,7 +26,6 @@ cache:
 install:
   - pip install -U pipenv
   - pipenv install --dev
-  - pip install configparser==3.3.0.post2
   - pip install codecov
   - sleep 1
 script:

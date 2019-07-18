@@ -111,8 +111,8 @@ class FHIRAbstractBase(object):
         :returns: An instance created from dictionary data
         """
         if not isinstance(jsondict, dict):
-            raise TypeError("Can only use `_with_json_dict()` on {} with a dictionary, got {}"
-                .format(type(self), type(jsondict)))
+            raise TypeError("Can only use `_with_json_dict()` on {0} with a dictionary, but got {1}"
+                .format(cls, type(jsondict)))
         return cls(jsondict)
 
     @classmethod

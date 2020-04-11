@@ -6,14 +6,15 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-
-
 import sys
+if sys.version.startswith("2"):
+    from .element import Element as BaseTiming
+else:
+    from .backboneelement import BackboneElement as BaseTiming
+from . import element
 
-from . import backboneelement, element
 
-
-class Timing(backboneelement.BackboneElement):
+class Timing(BaseTiming):
     """ A timing schedule that specifies an event that may occur multiple times.
 
     Specifies an event that may occur multiple times. Timing schedules are used

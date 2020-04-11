@@ -6,14 +6,15 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-
-
 import sys
+if sys.version.startswith("2"):
+    from .element import Element as BaseDosage
+else:
+    from .backboneelement import BackboneElement as BaseDosage
+from . import element
 
-from . import backboneelement, element
 
-
-class Dosage(backboneelement.BackboneElement):
+class Dosage(BaseDosage):
     """ How the medication is/was taken or should be taken.
 
     Indicates how the medication is/was taken or should be taken by the

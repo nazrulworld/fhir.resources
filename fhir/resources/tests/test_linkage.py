@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Linkage
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 import os
 import pytest
@@ -23,17 +26,17 @@ class LinkageTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("Linkage", js["resourceType"])
         return linkage.Linkage(js)
-    
+
     def testLinkage1(self):
         inst = self.instantiate_from("linkage-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a Linkage instance")
         self.implLinkage1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Linkage", js["resourceType"])
         inst2 = linkage.Linkage(js)
         self.implLinkage1(inst2)
-    
+
     def implLinkage1(self, inst):
         self.assertEqual(force_bytes(inst.id), force_bytes("example"))
         self.assertEqual(force_bytes(inst.item[0].type), force_bytes("source"))

@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/ResearchStudy) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/ResearchStudy
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -50,7 +53,7 @@ class ResearchStudy(domainresource.DomainResource):
 
         self.enrollment = None
         """ Inclusion & exclusion criteria.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Group']` (represented as `dict` in JSON). """
 
         self.focus = None
         """ Drugs, devices, etc. under study.
@@ -78,7 +81,7 @@ class ResearchStudy(domainresource.DomainResource):
 
         self.partOf = None
         """ Part of larger study.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['ResearchStudy']` (represented as `dict` in JSON). """
 
         self.period = None
         """ When the study began and ended.
@@ -96,11 +99,11 @@ class ResearchStudy(domainresource.DomainResource):
 
         self.principalInvestigator = None
         """ Researcher who oversees multiple aspects of the study.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole']` (represented as `dict` in JSON). """
 
         self.protocol = None
         """ Steps followed in executing study.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['PlanDefinition']` (represented as `dict` in JSON). """
 
         self.reasonStopped = None
         """ accrual-goal-met | closed-due-to-toxicity | closed-due-to-lack-of-
@@ -113,12 +116,12 @@ class ResearchStudy(domainresource.DomainResource):
 
         self.site = None
         """ Facility where study activities are conducted.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Location']` (represented as `dict` in JSON). """
 
         self.sponsor = None
         """ Organization that initiates and is legally responsible for the
         study.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.status = None
         """ active | administratively-completed | approved | closed-to-accrual

@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/CareTeam
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 import os
 import pytest
@@ -23,17 +26,17 @@ class CareTeamTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("CareTeam", js["resourceType"])
         return careteam.CareTeam(js)
-    
+
     def testCareTeam1(self):
         inst = self.instantiate_from("careteam-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a CareTeam instance")
         self.implCareTeam1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("CareTeam", js["resourceType"])
         inst2 = careteam.CareTeam(js)
         self.implCareTeam1(inst2)
-    
+
     def implCareTeam1(self, inst):
         self.assertEqual(force_bytes(inst.category[0].coding[0].code), force_bytes("LA27976-2"))
         self.assertEqual(force_bytes(inst.category[0].coding[0].display), force_bytes("Encounter-focused care team"))

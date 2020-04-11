@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/ActivityDefinition) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/ActivityDefinition
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -92,11 +95,11 @@ class ActivityDefinition(domainresource.DomainResource):
 
         self.library = None
         """ Logic used by the asset.
-        List of `FHIRReference` items referencing `Library` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Library']` (represented as `dict` in JSON). """
 
         self.location = None
         """ Where it should happen.
-        Type `FHIRReference` referencing `Location` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Location']` (represented as `dict` in JSON). """
 
         self.name = None
         """ Name for this activity definition (computer friendly).
@@ -112,7 +115,7 @@ class ActivityDefinition(domainresource.DomainResource):
 
         self.productReference = None
         """ What's administered/supplied.
-        Type `FHIRReference` referencing `Medication, Substance` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Medication'], ['Substance']` (represented as `dict` in JSON). """
 
         self.publisher = None
         """ Name of the publisher (organization or individual).
@@ -160,7 +163,7 @@ class ActivityDefinition(domainresource.DomainResource):
 
         self.transform = None
         """ Transform to apply the template.
-        Type `FHIRReference` referencing `StructureMap` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['StructureMap']` (represented as `dict` in JSON). """
 
         self.url = None
         """ Logical URI to reference this activity definition (globally unique).

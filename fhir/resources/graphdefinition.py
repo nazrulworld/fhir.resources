@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/GraphDefinition) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/GraphDefinition
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -55,7 +58,7 @@ class GraphDefinition(domainresource.DomainResource):
 
         self.profile = None
         """ Profile on base resource.
-        Type `str`. """
+        Type `str` referencing `['StructureDefinition']`. """
 
         self.publisher = None
         """ Name of the publisher (organization or individual).
@@ -193,7 +196,7 @@ class GraphDefinitionLinkTarget(backboneelement.BackboneElement):
 
         self.profile = None
         """ Profile for the target resource.
-        Type `str`. """
+        Type `str` referencing `['StructureDefinition']`. """
 
         self.type = None
         """ Type of resource this link refers to.
@@ -228,7 +231,7 @@ class GraphDefinitionLinkTargetCompartment(backboneelement.BackboneElement):
         """
 
         self.code = None
-        """ Identifies the compartment.
+        """ Patient | Encounter | RelatedPerson | Practitioner | Device.
         Type `str`. """
 
         self.description = None

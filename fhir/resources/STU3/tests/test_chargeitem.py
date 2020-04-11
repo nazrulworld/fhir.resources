@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/ChargeItem
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 import os
 import pytest
@@ -23,17 +26,17 @@ class ChargeItemTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("ChargeItem", js["resourceType"])
         return chargeitem.ChargeItem(js)
-    
+
     def testChargeItem1(self):
         inst = self.instantiate_from("chargeitem-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a ChargeItem instance")
         self.implChargeItem1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("ChargeItem", js["resourceType"])
         inst2 = chargeitem.ChargeItem(js)
         self.implChargeItem1(inst2)
-    
+
     def implChargeItem1(self, inst):
         self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("01510"))
         self.assertEqual(force_bytes(inst.code.coding[0].display), force_bytes("Zusatzpauschale für Beobachtung nach diagnostischer Koronarangiografie"))

@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/CommunicationRequest) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/CommunicationRequest
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -27,7 +30,7 @@ class CommunicationRequest(domainresource.DomainResource):
 
         self.about = None
         """ Resources that pertain to this communication request.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.authoredOn = None
         """ When request transitioned to being actionable.
@@ -35,7 +38,7 @@ class CommunicationRequest(domainresource.DomainResource):
 
         self.basedOn = None
         """ Fulfills plan or proposal.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.category = None
         """ Message category.
@@ -47,7 +50,7 @@ class CommunicationRequest(domainresource.DomainResource):
 
         self.encounter = None
         """ Encounter created as part of.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Encounter']` (represented as `dict` in JSON). """
 
         self.groupIdentifier = None
         """ Composite request this is part of.
@@ -78,7 +81,7 @@ class CommunicationRequest(domainresource.DomainResource):
         List of `CommunicationRequestPayload` items (represented as `dict` in JSON). """
 
         self.priority = None
-        """ Message urgency.
+        """ routine | urgent | asap | stat.
         Type `str`. """
 
         self.reasonCode = None
@@ -87,27 +90,27 @@ class CommunicationRequest(domainresource.DomainResource):
 
         self.reasonReference = None
         """ Why is communication needed?.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Condition', 'Observation', 'DiagnosticReport', 'DocumentReference']` (represented as `dict` in JSON). """
 
         self.recipient = None
         """ Message recipient.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Device', 'Organization', 'Patient', 'Practitioner', 'PractitionerRole', 'RelatedPerson', 'Group', 'CareTeam', 'HealthcareService']` (represented as `dict` in JSON). """
 
         self.replaces = None
         """ Request(s) replaced by this request.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['CommunicationRequest']` (represented as `dict` in JSON). """
 
         self.requester = None
         """ Who/what is requesting service.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'Organization', 'Patient', 'RelatedPerson', 'Device']` (represented as `dict` in JSON). """
 
         self.sender = None
         """ Message sender.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Device', 'Organization', 'Patient', 'Practitioner', 'PractitionerRole', 'RelatedPerson', 'HealthcareService']` (represented as `dict` in JSON). """
 
         self.status = None
-        """ draft | active | suspended | cancelled | completed | entered-in-
-        error | unknown.
+        """ draft | active | on-hold | revoked | completed | entered-in-error |
+        unknown.
         Type `str`. """
 
         self.statusReason = None
@@ -116,7 +119,7 @@ class CommunicationRequest(domainresource.DomainResource):
 
         self.subject = None
         """ Focus of message.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient', 'Group']` (represented as `dict` in JSON). """
 
         super(CommunicationRequest, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -174,7 +177,7 @@ class CommunicationRequestPayload(backboneelement.BackboneElement):
 
         self.contentReference = None
         """ Message part content.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.contentString = None
         """ Message part content.

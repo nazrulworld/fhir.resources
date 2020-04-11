@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/ProcedureRequest) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/ProcedureRequest
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -38,7 +41,7 @@ class ProcedureRequest(domainresource.DomainResource):
 
         self.basedOn = None
         """ What request fulfills.
-        List of `FHIRReference` items referencing `Resource` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.bodySite = None
         """ Location on Body.
@@ -54,11 +57,11 @@ class ProcedureRequest(domainresource.DomainResource):
 
         self.context = None
         """ Encounter or Episode during which request was created.
-        Type `FHIRReference` referencing `Encounter, EpisodeOfCare` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Encounter'], ['EpisodeOfCare']` (represented as `dict` in JSON). """
 
         self.definition = None
         """ Protocol or definition.
-        List of `FHIRReference` items referencing `ActivityDefinition, PlanDefinition` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['ActivityDefinition'], ['PlanDefinition']` (represented as `dict` in JSON). """
 
         self.doNotPerform = None
         """ True if procedure should not be performed.
@@ -90,7 +93,7 @@ class ProcedureRequest(domainresource.DomainResource):
 
         self.performer = None
         """ Requested perfomer.
-        Type `FHIRReference` referencing `Practitioner, Organization, Patient, Device, RelatedPerson, HealthcareService` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner'], ['Organization'], ['Patient'], ['Device'], ['RelatedPerson'], ['HealthcareService']` (represented as `dict` in JSON). """
 
         self.performerType = None
         """ Performer role.
@@ -106,15 +109,15 @@ class ProcedureRequest(domainresource.DomainResource):
 
         self.reasonReference = None
         """ Explanation/Justification for test.
-        List of `FHIRReference` items referencing `Condition, Observation` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Condition'], ['Observation']` (represented as `dict` in JSON). """
 
         self.relevantHistory = None
         """ Request provenance.
-        List of `FHIRReference` items referencing `Provenance` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Provenance']` (represented as `dict` in JSON). """
 
         self.replaces = None
         """ What request replaces.
-        List of `FHIRReference` items referencing `Resource` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.requester = None
         """ Who/what is requesting procedure or diagnostic.
@@ -126,7 +129,7 @@ class ProcedureRequest(domainresource.DomainResource):
 
         self.specimen = None
         """ Procedure Samples.
-        List of `FHIRReference` items referencing `Specimen` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Specimen']` (represented as `dict` in JSON). """
 
         self.status = None
         """ draft | active | suspended | completed | entered-in-error |
@@ -135,11 +138,11 @@ class ProcedureRequest(domainresource.DomainResource):
 
         self.subject = None
         """ Individual the service is ordered for.
-        Type `FHIRReference` referencing `Patient, Group, Location, Device` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient'], ['Group'], ['Location'], ['Device']` (represented as `dict` in JSON). """
 
         self.supportingInfo = None
         """ Additional clinical information.
-        List of `FHIRReference` items referencing `Resource` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         super(ProcedureRequest, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -200,11 +203,11 @@ class ProcedureRequestRequester(backboneelement.BackboneElement):
 
         self.agent = None
         """ Individual making the request.
-        Type `FHIRReference` referencing `Device, Practitioner, Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Device'], ['Practitioner'], ['Organization']` (represented as `dict` in JSON). """
 
         self.onBehalfOf = None
         """ Organization agent is acting for.
-        Type `FHIRReference` referencing `Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         super(ProcedureRequestRequester, self).__init__(jsondict=jsondict, strict=strict)
 

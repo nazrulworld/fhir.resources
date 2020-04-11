@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/VisionPrescription) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/VisionPrescription
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -34,7 +37,7 @@ class VisionPrescription(domainresource.DomainResource):
 
         self.encounter = None
         """ Created during encounter / admission / stay.
-        Type `FHIRReference` referencing `Encounter` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Encounter']` (represented as `dict` in JSON). """
 
         self.identifier = None
         """ Business identifier.
@@ -42,11 +45,11 @@ class VisionPrescription(domainresource.DomainResource):
 
         self.patient = None
         """ Who prescription is for.
-        Type `FHIRReference` referencing `Patient` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
 
         self.prescriber = None
         """ Who authorizes the vision product.
-        Type `FHIRReference` referencing `Practitioner` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner']` (represented as `dict` in JSON). """
 
         self.reasonCodeableConcept = None
         """ Reason or indication for writing the prescription.
@@ -54,7 +57,7 @@ class VisionPrescription(domainresource.DomainResource):
 
         self.reasonReference = None
         """ Reason or indication for writing the prescription.
-        Type `FHIRReference` referencing `Condition` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Condition']` (represented as `dict` in JSON). """
 
         self.status = None
         """ active | cancelled | draft | entered-in-error.

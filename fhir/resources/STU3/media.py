@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/Media) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Media
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -24,7 +27,7 @@ class Media(domainresource.DomainResource):
 
         self.basedOn = None
         """ Procedure that caused this media to be created.
-        List of `FHIRReference` items referencing `ProcedureRequest` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['ProcedureRequest']` (represented as `dict` in JSON). """
 
         self.bodySite = None
         """ Body part in media.
@@ -36,11 +39,11 @@ class Media(domainresource.DomainResource):
 
         self.context = None
         """ Encounter / Episode associated with media.
-        Type `FHIRReference` referencing `Encounter, EpisodeOfCare` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Encounter'], ['EpisodeOfCare']` (represented as `dict` in JSON). """
 
         self.device = None
         """ Observing Device.
-        Type `FHIRReference` referencing `Device, DeviceMetric` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Device'], ['DeviceMetric']` (represented as `dict` in JSON). """
 
         self.duration = None
         """ Length in seconds (audio / video).
@@ -72,7 +75,7 @@ class Media(domainresource.DomainResource):
 
         self.operator = None
         """ The person who generated the image.
-        Type `FHIRReference` referencing `Practitioner` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner']` (represented as `dict` in JSON). """
 
         self.reasonCode = None
         """ Why was event performed?.
@@ -80,7 +83,7 @@ class Media(domainresource.DomainResource):
 
         self.subject = None
         """ Who/What this Media is a record of.
-        Type `FHIRReference` referencing `Patient, Practitioner, Group, Device, Specimen` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient'], ['Practitioner'], ['Group'], ['Device'], ['Specimen']` (represented as `dict` in JSON). """
 
         self.subtype = None
         """ The type of acquisition equipment/process.

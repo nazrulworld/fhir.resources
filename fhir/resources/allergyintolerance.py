@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/AllergyIntolerance) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/AllergyIntolerance
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -26,7 +29,7 @@ class AllergyIntolerance(domainresource.DomainResource):
 
         self.asserter = None
         """ Source of the information about the allergy.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient', 'RelatedPerson', 'Practitioner', 'PractitionerRole']` (represented as `dict` in JSON). """
 
         self.category = None
         """ food | medication | environment | biologic.
@@ -46,7 +49,7 @@ class AllergyIntolerance(domainresource.DomainResource):
 
         self.encounter = None
         """ Encounter when the allergy or intolerance was asserted.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Encounter']` (represented as `dict` in JSON). """
 
         self.identifier = None
         """ External ids for this item.
@@ -82,7 +85,7 @@ class AllergyIntolerance(domainresource.DomainResource):
 
         self.patient = None
         """ Who the sensitivity is for.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
 
         self.reaction = None
         """ Adverse Reaction Events linked to exposure to substance.
@@ -94,7 +97,7 @@ class AllergyIntolerance(domainresource.DomainResource):
 
         self.recorder = None
         """ Who recorded the sensitivity.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'Patient', 'RelatedPerson']` (represented as `dict` in JSON). """
 
         self.type = None
         """ allergy | intolerance - Underlying mechanism (if known).

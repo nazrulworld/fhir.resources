@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/VisionPrescription
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 import os
 import pytest
@@ -23,17 +26,17 @@ class VisionPrescriptionTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("VisionPrescription", js["resourceType"])
         return visionprescription.VisionPrescription(js)
-    
+
     def testVisionPrescription1(self):
         inst = self.instantiate_from("visionprescription-example-1.json")
         self.assertIsNotNone(inst, "Must have instantiated a VisionPrescription instance")
         self.implVisionPrescription1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("VisionPrescription", js["resourceType"])
         inst2 = visionprescription.VisionPrescription(js)
         self.implVisionPrescription1(inst2)
-    
+
     def implVisionPrescription1(self, inst):
         self.assertEqual(inst.created.date, FHIRDate("2014-06-15").date)
         self.assertEqual(inst.created.as_json(), "2014-06-15")
@@ -80,17 +83,17 @@ class VisionPrescriptionTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.status), force_bytes("active"))
         self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">Sample Contract Lens prescription</div>"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-    
+
     def testVisionPrescription2(self):
         inst = self.instantiate_from("visionprescription-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a VisionPrescription instance")
         self.implVisionPrescription2(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("VisionPrescription", js["resourceType"])
         inst2 = visionprescription.VisionPrescription(js)
         self.implVisionPrescription2(inst2)
-    
+
     def implVisionPrescription2(self, inst):
         self.assertEqual(inst.created.date, FHIRDate("2014-06-15").date)
         self.assertEqual(inst.created.as_json(), "2014-06-15")

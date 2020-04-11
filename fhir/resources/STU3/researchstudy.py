@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/ResearchStudy) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/ResearchStudy
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -46,7 +49,7 @@ class ResearchStudy(domainresource.DomainResource):
 
         self.enrollment = None
         """ Inclusion & exclusion criteria.
-        List of `FHIRReference` items referencing `Group` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Group']` (represented as `dict` in JSON). """
 
         self.focus = None
         """ Drugs, devices, conditions, etc. under study.
@@ -70,7 +73,7 @@ class ResearchStudy(domainresource.DomainResource):
 
         self.partOf = None
         """ Part of larger study.
-        List of `FHIRReference` items referencing `ResearchStudy` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['ResearchStudy']` (represented as `dict` in JSON). """
 
         self.period = None
         """ When the study began and ended.
@@ -78,11 +81,11 @@ class ResearchStudy(domainresource.DomainResource):
 
         self.principalInvestigator = None
         """ The individual responsible for the study.
-        Type `FHIRReference` referencing `Practitioner` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner']` (represented as `dict` in JSON). """
 
         self.protocol = None
         """ Steps followed in executing study.
-        List of `FHIRReference` items referencing `PlanDefinition` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['PlanDefinition']` (represented as `dict` in JSON). """
 
         self.reasonStopped = None
         """ Reason for terminating study early.
@@ -94,11 +97,11 @@ class ResearchStudy(domainresource.DomainResource):
 
         self.site = None
         """ Location involved in study execution.
-        List of `FHIRReference` items referencing `Location` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Location']` (represented as `dict` in JSON). """
 
         self.sponsor = None
         """ Organization responsible for the study.
-        Type `FHIRReference` referencing `Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.status = None
         """ draft | in-progress | suspended | stopped | completed | entered-in-

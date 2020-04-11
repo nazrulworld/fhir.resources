@@ -1,7 +1,5 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Base class for all FHIR elements.
+"""Base class for all FHIR elements. """
 
 import sys
 import logging
@@ -307,7 +305,6 @@ class FHIRAbstractBase(object):
         if (sys.version_info < (3, 0)) and (str == typ or unicode == typ):
             return (isinstance(value, str) or isinstance(value, unicode))
         return False
-
 
     # MARK: Handling References
 

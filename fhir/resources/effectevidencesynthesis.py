@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/EffectEvidenceSynthesis) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/EffectEvidenceSynthesis
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -71,11 +74,11 @@ class EffectEvidenceSynthesis(domainresource.DomainResource):
 
         self.exposure = None
         """ What exposure?.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['EvidenceVariable']` (represented as `dict` in JSON). """
 
         self.exposureAlternative = None
         """ What comparison exposure?.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['EvidenceVariable']` (represented as `dict` in JSON). """
 
         self.identifier = None
         """ Additional identifier for the effect evidence synthesis.
@@ -99,11 +102,11 @@ class EffectEvidenceSynthesis(domainresource.DomainResource):
 
         self.outcome = None
         """ What outcome?.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['EvidenceVariable']` (represented as `dict` in JSON). """
 
         self.population = None
         """ What population?.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['EvidenceVariable']` (represented as `dict` in JSON). """
 
         self.publisher = None
         """ Name of the publisher (organization or individual).
@@ -410,7 +413,7 @@ class EffectEvidenceSynthesisResultsByExposure(backboneelement.BackboneElement):
 
         self.riskEvidenceSynthesis = None
         """ Risk evidence synthesis.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['RiskEvidenceSynthesis']` (represented as `dict` in JSON). """
 
         self.variantState = None
         """ Variant exposure states.

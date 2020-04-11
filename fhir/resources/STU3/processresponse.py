@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/ProcessResponse) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/ProcessResponse
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -26,7 +29,7 @@ class ProcessResponse(domainresource.DomainResource):
 
         self.communicationRequest = None
         """ Request for additional information.
-        List of `FHIRReference` items referencing `CommunicationRequest` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['CommunicationRequest']` (represented as `dict` in JSON). """
 
         self.created = None
         """ Creation date.
@@ -50,7 +53,7 @@ class ProcessResponse(domainresource.DomainResource):
 
         self.organization = None
         """ Authoring Organization.
-        Type `FHIRReference` referencing `Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.outcome = None
         """ Processing outcome.
@@ -62,15 +65,15 @@ class ProcessResponse(domainresource.DomainResource):
 
         self.request = None
         """ Request reference.
-        Type `FHIRReference` referencing `Resource` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.requestOrganization = None
         """ Responsible organization.
-        Type `FHIRReference` referencing `Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.requestProvider = None
         """ Responsible Practitioner.
-        Type `FHIRReference` referencing `Practitioner` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner']` (represented as `dict` in JSON). """
 
         self.status = None
         """ active | cancelled | draft | entered-in-error.

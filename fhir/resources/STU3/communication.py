@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/Communication) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Communication
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -27,7 +30,7 @@ class Communication(domainresource.DomainResource):
 
         self.basedOn = None
         """ Request fulfilled by this communication.
-        List of `FHIRReference` items referencing `Resource` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.category = None
         """ Message category.
@@ -35,11 +38,11 @@ class Communication(domainresource.DomainResource):
 
         self.context = None
         """ Encounter or episode leading to message.
-        Type `FHIRReference` referencing `Encounter, EpisodeOfCare` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Encounter'], ['EpisodeOfCare']` (represented as `dict` in JSON). """
 
         self.definition = None
         """ Instantiates protocol or definition.
-        List of `FHIRReference` items referencing `PlanDefinition, ActivityDefinition` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['PlanDefinition'], ['ActivityDefinition']` (represented as `dict` in JSON). """
 
         self.identifier = None
         """ Unique identifier.
@@ -63,7 +66,7 @@ class Communication(domainresource.DomainResource):
 
         self.partOf = None
         """ Part of this action.
-        List of `FHIRReference` items referencing `Resource` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.payload = None
         """ Message payload.
@@ -75,7 +78,7 @@ class Communication(domainresource.DomainResource):
 
         self.reasonReference = None
         """ Why was communication done?.
-        List of `FHIRReference` items referencing `Condition, Observation` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Condition'], ['Observation']` (represented as `dict` in JSON). """
 
         self.received = None
         """ When received.
@@ -83,11 +86,11 @@ class Communication(domainresource.DomainResource):
 
         self.recipient = None
         """ Message recipient.
-        List of `FHIRReference` items referencing `Device, Organization, Patient, Practitioner, RelatedPerson, Group` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Device'], ['Organization'], ['Patient'], ['Practitioner'], ['RelatedPerson'], ['Group']` (represented as `dict` in JSON). """
 
         self.sender = None
         """ Message sender.
-        Type `FHIRReference` referencing `Device, Organization, Patient, Practitioner, RelatedPerson` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Device'], ['Organization'], ['Patient'], ['Practitioner'], ['RelatedPerson']` (represented as `dict` in JSON). """
 
         self.sent = None
         """ When sent.
@@ -100,11 +103,11 @@ class Communication(domainresource.DomainResource):
 
         self.subject = None
         """ Focus of message.
-        Type `FHIRReference` referencing `Patient, Group` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient'], ['Group']` (represented as `dict` in JSON). """
 
         self.topic = None
         """ Focal resources.
-        List of `FHIRReference` items referencing `Resource` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         super(Communication, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -159,7 +162,7 @@ class CommunicationPayload(backboneelement.BackboneElement):
 
         self.contentReference = None
         """ Message part content.
-        Type `FHIRReference` referencing `Resource` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.contentString = None
         """ Message part content.

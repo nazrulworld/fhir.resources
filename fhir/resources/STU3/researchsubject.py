@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/ResearchSubject) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/ResearchSubject
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -38,7 +41,7 @@ class ResearchSubject(domainresource.DomainResource):
 
         self.consent = None
         """ Agreement to participate in study.
-        Type `FHIRReference` referencing `Consent` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Consent']` (represented as `dict` in JSON). """
 
         self.identifier = None
         """ Business Identifier for research subject.
@@ -46,7 +49,7 @@ class ResearchSubject(domainresource.DomainResource):
 
         self.individual = None
         """ Who is part of study.
-        Type `FHIRReference` referencing `Patient` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
 
         self.period = None
         """ Start and end of participation.
@@ -58,7 +61,7 @@ class ResearchSubject(domainresource.DomainResource):
 
         self.study = None
         """ Study subject is part of.
-        Type `FHIRReference` referencing `ResearchStudy` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['ResearchStudy']` (represented as `dict` in JSON). """
 
         super(ResearchSubject, self).__init__(jsondict=jsondict, strict=strict)
 

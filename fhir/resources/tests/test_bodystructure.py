@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/BodyStructure
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 import os
 import pytest
@@ -23,17 +26,17 @@ class BodyStructureTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("BodyStructure", js["resourceType"])
         return bodystructure.BodyStructure(js)
-    
+
     def testBodyStructure1(self):
         inst = self.instantiate_from("bodystructure-example-fetus.json")
         self.assertIsNotNone(inst, "Must have instantiated a BodyStructure instance")
         self.implBodyStructure1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("BodyStructure", js["resourceType"])
         inst2 = bodystructure.BodyStructure(js)
         self.implBodyStructure1(inst2)
-    
+
     def implBodyStructure1(self, inst):
         self.assertEqual(force_bytes(inst.description), force_bytes("EDD 1/1/2017 confirmation by LMP"))
         self.assertEqual(force_bytes(inst.id), force_bytes("fetus"))
@@ -47,18 +50,48 @@ class BodyStructureTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
         self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-    
+
     def testBodyStructure2(self):
-        inst = self.instantiate_from("bodystructure-example-skin-patch.json")
+        inst = self.instantiate_from("bodystructure-example-tumor.json")
         self.assertIsNotNone(inst, "Must have instantiated a BodyStructure instance")
         self.implBodyStructure2(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("BodyStructure", js["resourceType"])
         inst2 = bodystructure.BodyStructure(js)
         self.implBodyStructure2(inst2)
-    
+
     def implBodyStructure2(self, inst):
+        self.assertEqual(force_bytes(inst.description), force_bytes("7 cm maximum diameter"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("tumor"))
+        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://goodhealth.org/bodystructure/identifiers"))
+        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("12345"))
+        self.assertEqual(force_bytes(inst.image[0].contentType), force_bytes("application/dicom"))
+        self.assertEqual(force_bytes(inst.image[0].url), force_bytes("http://imaging.acme.com/wado/server?requestType=WADO&amp;wado_details"))
+        self.assertEqual(force_bytes(inst.location.coding[0].code), force_bytes("78961009"))
+        self.assertEqual(force_bytes(inst.location.coding[0].display), force_bytes("Splenic structure (body structure)"))
+        self.assertEqual(force_bytes(inst.location.coding[0].system), force_bytes("http://snomed.info/sct"))
+        self.assertEqual(force_bytes(inst.location.text), force_bytes("Spleen"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
+        self.assertEqual(force_bytes(inst.morphology.coding[0].code), force_bytes("4147007"))
+        self.assertEqual(force_bytes(inst.morphology.coding[0].display), force_bytes("Mass (morphologic abnormality)"))
+        self.assertEqual(force_bytes(inst.morphology.coding[0].system), force_bytes("http://snomed.info/sct"))
+        self.assertEqual(force_bytes(inst.morphology.text), force_bytes("Splenic mass"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+
+    def testBodyStructure3(self):
+        inst = self.instantiate_from("bodystructure-example-skin-patch.json")
+        self.assertIsNotNone(inst, "Must have instantiated a BodyStructure instance")
+        self.implBodyStructure3(inst)
+
+        js = inst.as_json()
+        self.assertEqual("BodyStructure", js["resourceType"])
+        inst2 = bodystructure.BodyStructure(js)
+        self.implBodyStructure3(inst2)
+
+    def implBodyStructure3(self, inst):
         self.assertFalse(inst.active)
         self.assertEqual(force_bytes(inst.description), force_bytes("inner surface (volar) of the left forearm"))
         self.assertEqual(force_bytes(inst.id), force_bytes("skin-patch"))
@@ -80,35 +113,5 @@ class BodyStructureTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
         self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
         self.assertEqual(force_bytes(inst.morphology.text), force_bytes("Skin patch"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-    
-    def testBodyStructure3(self):
-        inst = self.instantiate_from("bodystructure-example-tumor.json")
-        self.assertIsNotNone(inst, "Must have instantiated a BodyStructure instance")
-        self.implBodyStructure3(inst)
-        
-        js = inst.as_json()
-        self.assertEqual("BodyStructure", js["resourceType"])
-        inst2 = bodystructure.BodyStructure(js)
-        self.implBodyStructure3(inst2)
-    
-    def implBodyStructure3(self, inst):
-        self.assertEqual(force_bytes(inst.description), force_bytes("7 cm maximum diameter"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("tumor"))
-        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://goodhealth.org/bodystructure/identifiers"))
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("12345"))
-        self.assertEqual(force_bytes(inst.image[0].contentType), force_bytes("application/dicom"))
-        self.assertEqual(force_bytes(inst.image[0].url), force_bytes("http://imaging.acme.com/wado/server?requestType=WADO&amp;wado_details"))
-        self.assertEqual(force_bytes(inst.location.coding[0].code), force_bytes("78961009"))
-        self.assertEqual(force_bytes(inst.location.coding[0].display), force_bytes("Splenic structure (body structure)"))
-        self.assertEqual(force_bytes(inst.location.coding[0].system), force_bytes("http://snomed.info/sct"))
-        self.assertEqual(force_bytes(inst.location.text), force_bytes("Spleen"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
-        self.assertEqual(force_bytes(inst.morphology.coding[0].code), force_bytes("4147007"))
-        self.assertEqual(force_bytes(inst.morphology.coding[0].display), force_bytes("Mass (morphologic abnormality)"))
-        self.assertEqual(force_bytes(inst.morphology.coding[0].system), force_bytes("http://snomed.info/sct"))
-        self.assertEqual(force_bytes(inst.morphology.text), force_bytes("Splenic mass"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 

@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/DeviceRequest
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 import os
 import pytest
@@ -23,17 +26,17 @@ class DeviceRequestTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("DeviceRequest", js["resourceType"])
         return devicerequest.DeviceRequest(js)
-    
+
     def testDeviceRequest1(self):
         inst = self.instantiate_from("devicerequest-example-insulinpump.json")
         self.assertIsNotNone(inst, "Must have instantiated a DeviceRequest instance")
         self.implDeviceRequest1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("DeviceRequest", js["resourceType"])
         inst2 = devicerequest.DeviceRequest(js)
         self.implDeviceRequest1(inst2)
-    
+
     def implDeviceRequest1(self, inst):
         self.assertEqual(inst.authoredOn.date, FHIRDate("2013-05-08T09:33:27+07:00").date)
         self.assertEqual(inst.authoredOn.as_json(), "2013-05-08T09:33:27+07:00")
@@ -53,17 +56,17 @@ class DeviceRequestTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.reasonCode[0].text), force_bytes("gastroparesis"))
         self.assertEqual(force_bytes(inst.status), force_bytes("active"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-    
+
     def testDeviceRequest2(self):
         inst = self.instantiate_from("devicerequest-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a DeviceRequest instance")
         self.implDeviceRequest2(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("DeviceRequest", js["resourceType"])
         inst2 = devicerequest.DeviceRequest(js)
         self.implDeviceRequest2(inst2)
-    
+
     def implDeviceRequest2(self, inst):
         self.assertEqual(force_bytes(inst.id), force_bytes("example"))
         self.assertEqual(force_bytes(inst.intent.coding[0].code), force_bytes("original-order"))

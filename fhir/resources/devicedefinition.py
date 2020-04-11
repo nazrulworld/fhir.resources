@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/DeviceDefinition) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/DeviceDefinition
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -47,7 +50,7 @@ class DeviceDefinition(domainresource.DomainResource):
 
         self.manufacturerReference = None
         """ Name of device manufacturer.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.manufacturerString = None
         """ Name of device manufacturer.
@@ -72,11 +75,11 @@ class DeviceDefinition(domainresource.DomainResource):
 
         self.owner = None
         """ Organization responsible for device.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.parentDevice = None
         """ The parent device it can be part of.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['DeviceDefinition']` (represented as `dict` in JSON). """
 
         self.physicalCharacteristics = None
         """ Dimensions, color etc..

@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/DeviceComponent
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 import os
 import pytest
@@ -23,18 +26,47 @@ class DeviceComponentTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("DeviceComponent", js["resourceType"])
         return devicecomponent.DeviceComponent(js)
-    
+
     def testDeviceComponent1(self):
-        inst = self.instantiate_from("devicecomponent-example-prodspec.json")
+        inst = self.instantiate_from("devicecomponent-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a DeviceComponent instance")
         self.implDeviceComponent1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("DeviceComponent", js["resourceType"])
         inst2 = devicecomponent.DeviceComponent(js)
         self.implDeviceComponent1(inst2)
-    
+
     def implDeviceComponent1(self, inst):
+        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
+        self.assertEqual(force_bytes(inst.identifier.value), force_bytes("0"))
+        self.assertEqual(force_bytes(inst.languageCode.coding[0].code), force_bytes("en-US"))
+        self.assertEqual(force_bytes(inst.languageCode.coding[0].system), force_bytes("http://tools.ietf.org/html/bcp47"))
+        self.assertEqual(inst.lastSystemChange.date, FHIRDate("2014-10-07T14:45:00Z").date)
+        self.assertEqual(inst.lastSystemChange.as_json(), "2014-10-07T14:45:00Z")
+        self.assertEqual(force_bytes(inst.measurementPrinciple), force_bytes("optical"))
+        self.assertEqual(force_bytes(inst.operationalStatus[0].coding[0].code), force_bytes("off"))
+        self.assertEqual(force_bytes(inst.operationalStatus[0].coding[0].display), force_bytes("Off"))
+        self.assertEqual(force_bytes(inst.operationalStatus[0].coding[0].system), force_bytes("urn:iso:std:iso:11073:10101"))
+        self.assertEqual(force_bytes(inst.parameterGroup.coding[0].code), force_bytes("miscellaneous"))
+        self.assertEqual(force_bytes(inst.parameterGroup.coding[0].display), force_bytes("Miscellaneous Parameter Group"))
+        self.assertEqual(force_bytes(inst.parameterGroup.coding[0].system), force_bytes("urn:iso:std:iso:11073:10101"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+        self.assertEqual(force_bytes(inst.type.coding[0].code), force_bytes("2000"))
+        self.assertEqual(force_bytes(inst.type.coding[0].display), force_bytes("MDC_DEV_ANALY_SAT_O2_MDS"))
+        self.assertEqual(force_bytes(inst.type.coding[0].system), force_bytes("urn:iso:std:iso:11073:10101"))
+
+    def testDeviceComponent2(self):
+        inst = self.instantiate_from("devicecomponent-example-prodspec.json")
+        self.assertIsNotNone(inst, "Must have instantiated a DeviceComponent instance")
+        self.implDeviceComponent2(inst)
+
+        js = inst.as_json()
+        self.assertEqual("DeviceComponent", js["resourceType"])
+        inst2 = devicecomponent.DeviceComponent(js)
+        self.implDeviceComponent2(inst2)
+
+    def implDeviceComponent2(self, inst):
         self.assertEqual(force_bytes(inst.id), force_bytes("example-prodspec"))
         self.assertEqual(force_bytes(inst.identifier.value), force_bytes("789123"))
         self.assertEqual(force_bytes(inst.languageCode.coding[0].code), force_bytes("en-US"))
@@ -55,35 +87,6 @@ class DeviceComponentTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.productionSpecification[3].productionSpec), force_bytes("1.0.23"))
         self.assertEqual(force_bytes(inst.productionSpecification[3].specType.coding[0].code), force_bytes("firmware-revision"))
         self.assertEqual(force_bytes(inst.productionSpecification[3].specType.coding[0].display), force_bytes("Firmware Revision"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type.coding[0].code), force_bytes("2000"))
-        self.assertEqual(force_bytes(inst.type.coding[0].display), force_bytes("MDC_DEV_ANALY_SAT_O2_MDS"))
-        self.assertEqual(force_bytes(inst.type.coding[0].system), force_bytes("urn:iso:std:iso:11073:10101"))
-    
-    def testDeviceComponent2(self):
-        inst = self.instantiate_from("devicecomponent-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a DeviceComponent instance")
-        self.implDeviceComponent2(inst)
-        
-        js = inst.as_json()
-        self.assertEqual("DeviceComponent", js["resourceType"])
-        inst2 = devicecomponent.DeviceComponent(js)
-        self.implDeviceComponent2(inst2)
-    
-    def implDeviceComponent2(self, inst):
-        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(force_bytes(inst.identifier.value), force_bytes("0"))
-        self.assertEqual(force_bytes(inst.languageCode.coding[0].code), force_bytes("en-US"))
-        self.assertEqual(force_bytes(inst.languageCode.coding[0].system), force_bytes("http://tools.ietf.org/html/bcp47"))
-        self.assertEqual(inst.lastSystemChange.date, FHIRDate("2014-10-07T14:45:00Z").date)
-        self.assertEqual(inst.lastSystemChange.as_json(), "2014-10-07T14:45:00Z")
-        self.assertEqual(force_bytes(inst.measurementPrinciple), force_bytes("optical"))
-        self.assertEqual(force_bytes(inst.operationalStatus[0].coding[0].code), force_bytes("off"))
-        self.assertEqual(force_bytes(inst.operationalStatus[0].coding[0].display), force_bytes("Off"))
-        self.assertEqual(force_bytes(inst.operationalStatus[0].coding[0].system), force_bytes("urn:iso:std:iso:11073:10101"))
-        self.assertEqual(force_bytes(inst.parameterGroup.coding[0].code), force_bytes("miscellaneous"))
-        self.assertEqual(force_bytes(inst.parameterGroup.coding[0].display), force_bytes("Miscellaneous Parameter Group"))
-        self.assertEqual(force_bytes(inst.parameterGroup.coding[0].system), force_bytes("urn:iso:std:iso:11073:10101"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
         self.assertEqual(force_bytes(inst.type.coding[0].code), force_bytes("2000"))
         self.assertEqual(force_bytes(inst.type.coding[0].display), force_bytes("MDC_DEV_ANALY_SAT_O2_MDS"))

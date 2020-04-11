@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/DocumentReference) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/DocumentReference
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -23,11 +26,11 @@ class DocumentReference(domainresource.DomainResource):
 
         self.authenticator = None
         """ Who/what authenticated the document.
-        Type `FHIRReference` referencing `Practitioner, Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner'], ['Organization']` (represented as `dict` in JSON). """
 
         self.author = None
         """ Who and/or what authored the document.
-        List of `FHIRReference` items referencing `Practitioner, Organization, Device, Patient, RelatedPerson` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Practitioner'], ['Organization'], ['Device'], ['Patient'], ['RelatedPerson']` (represented as `dict` in JSON). """
 
         self.class_fhir = None
         """ Categorization of document.
@@ -47,7 +50,7 @@ class DocumentReference(domainresource.DomainResource):
 
         self.custodian = None
         """ Organization which maintains the document.
-        Type `FHIRReference` referencing `Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.description = None
         """ Human-readable description (title).
@@ -83,7 +86,7 @@ class DocumentReference(domainresource.DomainResource):
 
         self.subject = None
         """ Who/what is the subject of the document.
-        Type `FHIRReference` referencing `Patient, Practitioner, Group, Device` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient'], ['Practitioner'], ['Group'], ['Device']` (represented as `dict` in JSON). """
 
         self.type = None
         """ Kind of document (LOINC if possible).
@@ -171,7 +174,7 @@ class DocumentReferenceContext(backboneelement.BackboneElement):
 
         self.encounter = None
         """ Context of the document  content.
-        Type `FHIRReference` referencing `Encounter` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Encounter']` (represented as `dict` in JSON). """
 
         self.event = None
         """ Main clinical acts documented.
@@ -196,7 +199,7 @@ class DocumentReferenceContext(backboneelement.BackboneElement):
 
         self.sourcePatientInfo = None
         """ Patient demographics from source.
-        Type `FHIRReference` referencing `Patient` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
 
         super(DocumentReferenceContext, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -236,7 +239,7 @@ class DocumentReferenceContextRelated(backboneelement.BackboneElement):
 
         self.ref = None
         """ Related Resource.
-        Type `FHIRReference` referencing `Resource` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
 
         super(DocumentReferenceContextRelated, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -272,7 +275,7 @@ class DocumentReferenceRelatesTo(backboneelement.BackboneElement):
 
         self.target = None
         """ Target of the relationship.
-        Type `FHIRReference` referencing `DocumentReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['DocumentReference']` (represented as `dict` in JSON). """
 
         super(DocumentReferenceRelatesTo, self).__init__(jsondict=jsondict, strict=strict)
 

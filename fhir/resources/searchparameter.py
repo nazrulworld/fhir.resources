@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/SearchParameter) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/SearchParameter
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -54,7 +57,7 @@ class SearchParameter(domainresource.DomainResource):
 
         self.derivedFrom = None
         """ Original definition for the search parameter.
-        Type `str`. """
+        Type `str` referencing `['SearchParameter']`. """
 
         self.description = None
         """ Natural language description of the search parameter.
@@ -186,7 +189,7 @@ class SearchParameterComponent(backboneelement.BackboneElement):
 
         self.definition = None
         """ Defines how the part works.
-        Type `str`. """
+        Type `str` referencing `['SearchParameter']`. """
 
         self.expression = None
         """ Subexpression relative to main expression.

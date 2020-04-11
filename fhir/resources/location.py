@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/Location) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Location
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -46,7 +49,7 @@ class Location(domainresource.DomainResource):
         self.endpoint = None
         """ Technical endpoints providing access to services operated for the
         location.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Endpoint']` (represented as `dict` in JSON). """
 
         self.hoursOfOperation = None
         """ What days/times during a week is this location usually open.
@@ -58,7 +61,7 @@ class Location(domainresource.DomainResource):
 
         self.managingOrganization = None
         """ Organization responsible for provisioning and upkeep.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.mode = None
         """ instance | kind.
@@ -75,7 +78,7 @@ class Location(domainresource.DomainResource):
 
         self.partOf = None
         """ Another Location this one is physically a part of.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Location']` (represented as `dict` in JSON). """
 
         self.physicalType = None
         """ Physical form of the location.

@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/AuditEvent) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/AuditEvent
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -113,7 +116,7 @@ class AuditEventAgent(backboneelement.BackboneElement):
 
         self.location = None
         """ Where.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Location']` (represented as `dict` in JSON). """
 
         self.media = None
         """ Type of media.
@@ -149,7 +152,7 @@ class AuditEventAgent(backboneelement.BackboneElement):
 
         self.who = None
         """ Identifier of who.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['PractitionerRole', 'Practitioner', 'Organization', 'Device', 'Patient', 'RelatedPerson']` (represented as `dict` in JSON). """
 
         super(AuditEventAgent, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -257,7 +260,7 @@ class AuditEventEntity(backboneelement.BackboneElement):
 
         self.what = None
         """ Specific instance of resource.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
 
         super(AuditEventEntity, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -335,7 +338,7 @@ class AuditEventSource(backboneelement.BackboneElement):
 
         self.observer = None
         """ The identity of source detecting the event.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['PractitionerRole', 'Practitioner', 'Organization', 'Device', 'Patient', 'RelatedPerson']` (represented as `dict` in JSON). """
 
         self.site = None
         """ Logical source location within the enterprise.

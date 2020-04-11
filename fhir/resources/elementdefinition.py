@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/ElementDefinition) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/ElementDefinition
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import backboneelement
@@ -167,6 +170,10 @@ class ElementDefinition(backboneelement.BackboneElement):
         self.defaultValueMarkdown = None
         """ Specified value if missing from instance.
         Type `str`. """
+
+        self.defaultValueMeta = None
+        """ Specified value if missing from instance.
+        Type `Meta` (represented as `dict` in JSON). """
 
         self.defaultValueMoney = None
         """ Specified value if missing from instance.
@@ -371,6 +378,10 @@ class ElementDefinition(backboneelement.BackboneElement):
         self.fixedMarkdown = None
         """ Value must be exactly this.
         Type `str`. """
+
+        self.fixedMeta = None
+        """ Value must be exactly this.
+        Type `Meta` (represented as `dict` in JSON). """
 
         self.fixedMoney = None
         """ Value must be exactly this.
@@ -688,6 +699,10 @@ class ElementDefinition(backboneelement.BackboneElement):
         """ Value must have at least these property values.
         Type `str`. """
 
+        self.patternMeta = None
+        """ Value must have at least these property values.
+        Type `Meta` (represented as `dict` in JSON). """
+
         self.patternMoney = None
         """ Value must have at least these property values.
         Type `Money` (represented as `dict` in JSON). """
@@ -842,6 +857,7 @@ class ElementDefinition(backboneelement.BackboneElement):
             ("defaultValueInstant", "defaultValueInstant", fhirdate.FHIRDate, "instant", False, "defaultValue", False),
             ("defaultValueInteger", "defaultValueInteger", int, "integer", False, "defaultValue", False),
             ("defaultValueMarkdown", "defaultValueMarkdown", str, "markdown", False, "defaultValue", False),
+            ("defaultValueMeta", "defaultValueMeta", meta.Meta, "Meta", False, "defaultValue", False),
             ("defaultValueMoney", "defaultValueMoney", money.Money, "Money", False, "defaultValue", False),
             ("defaultValueOid", "defaultValueOid", str, "oid", False, "defaultValue", False),
             ("defaultValueParameterDefinition", "defaultValueParameterDefinition", parameterdefinition.ParameterDefinition, "ParameterDefinition", False, "defaultValue", False),
@@ -893,6 +909,7 @@ class ElementDefinition(backboneelement.BackboneElement):
             ("fixedInstant", "fixedInstant", fhirdate.FHIRDate, "instant", False, "fixed", False),
             ("fixedInteger", "fixedInteger", int, "integer", False, "fixed", False),
             ("fixedMarkdown", "fixedMarkdown", str, "markdown", False, "fixed", False),
+            ("fixedMeta", "fixedMeta", meta.Meta, "Meta", False, "fixed", False),
             ("fixedMoney", "fixedMoney", money.Money, "Money", False, "fixed", False),
             ("fixedOid", "fixedOid", str, "oid", False, "fixed", False),
             ("fixedParameterDefinition", "fixedParameterDefinition", parameterdefinition.ParameterDefinition, "ParameterDefinition", False, "fixed", False),
@@ -972,6 +989,7 @@ class ElementDefinition(backboneelement.BackboneElement):
             ("patternInstant", "patternInstant", fhirdate.FHIRDate, "instant", False, "pattern", False),
             ("patternInteger", "patternInteger", int, "integer", False, "pattern", False),
             ("patternMarkdown", "patternMarkdown", str, "markdown", False, "pattern", False),
+            ("patternMeta", "patternMeta", meta.Meta, "Meta", False, "pattern", False),
             ("patternMoney", "patternMoney", money.Money, "Money", False, "pattern", False),
             ("patternOid", "patternOid", str, "oid", False, "pattern", False),
             ("patternParameterDefinition", "patternParameterDefinition", parameterdefinition.ParameterDefinition, "ParameterDefinition", False, "pattern", False),
@@ -1080,7 +1098,7 @@ class ElementDefinitionBinding(element.Element):
 
         self.valueSet = None
         """ Source of value set.
-        Type `str`. """
+        Type `str` referencing `['ValueSet']`. """
 
         super(ElementDefinitionBinding, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -1133,7 +1151,7 @@ class ElementDefinitionConstraint(element.Element):
 
         self.source = None
         """ Reference to original source of constraint.
-        Type `str`. """
+        Type `str` referencing `['StructureDefinition']`. """
 
         self.xpath = None
         """ XPath expression of constraint.
@@ -1288,6 +1306,10 @@ class ElementDefinitionExample(element.Element):
         """ Value of Example (one of allowed types).
         Type `str`. """
 
+        self.valueMeta = None
+        """ Value of Example (one of allowed types).
+        Type `Meta` (represented as `dict` in JSON). """
+
         self.valueMoney = None
         """ Value of Example (one of allowed types).
         Type `Money` (represented as `dict` in JSON). """
@@ -1406,6 +1428,7 @@ class ElementDefinitionExample(element.Element):
             ("valueInstant", "valueInstant", fhirdate.FHIRDate, "instant", False, "value", True),
             ("valueInteger", "valueInteger", int, "integer", False, "value", True),
             ("valueMarkdown", "valueMarkdown", str, "markdown", False, "value", True),
+            ("valueMeta", "valueMeta", meta.Meta, "Meta", False, "value", True),
             ("valueMoney", "valueMoney", money.Money, "Money", False, "value", True),
             ("valueOid", "valueOid", str, "oid", False, "value", True),
             ("valueParameterDefinition", "valueParameterDefinition", parameterdefinition.ParameterDefinition, "ParameterDefinition", False, "value", True),
@@ -1594,12 +1617,12 @@ class ElementDefinitionType(element.Element):
 
         self.profile = None
         """ Profiles (StructureDefinition or IG) - one must apply.
-        List of `str` items. """
+        List of `str` items referencing `['StructureDefinition', 'ImplementationGuide']`. """
 
         self.targetProfile = None
         """ Profile (StructureDefinition or IG) on the Reference/canonical
         target - one must apply.
-        List of `str` items. """
+        List of `str` items referencing `['StructureDefinition', 'ImplementationGuide']`. """
 
         self.versioning = None
         """ either | independent | specific.
@@ -1696,6 +1719,10 @@ try:
     from . import identifier
 except ImportError:
     identifier = sys.modules[__package__ + '.identifier']
+try:
+    from . import meta
+except ImportError:
+    meta = sys.modules[__package__ + '.meta']
 try:
     from . import money
 except ImportError:

@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/MolecularSequence) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/MolecularSequence
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -31,7 +34,7 @@ class MolecularSequence(domainresource.DomainResource):
 
         self.device = None
         """ The method for sequencing.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Device']` (represented as `dict` in JSON). """
 
         self.identifier = None
         """ Unique ID for this particular sequence. This is a FHIR-defined id.
@@ -43,15 +46,15 @@ class MolecularSequence(domainresource.DomainResource):
 
         self.patient = None
         """ Who and/or what this is about.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
 
         self.performer = None
         """ Who should be responsible for test result.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.pointer = None
         """ Pointer to next atomic sequence.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['MolecularSequence']` (represented as `dict` in JSON). """
 
         self.quality = None
         """ An set of value as quality of sequence.
@@ -77,7 +80,7 @@ class MolecularSequence(domainresource.DomainResource):
 
         self.specimen = None
         """ Specimen used for sequencing.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Specimen']` (represented as `dict` in JSON). """
 
         self.structureVariant = None
         """ Structural variant.
@@ -318,7 +321,7 @@ class MolecularSequenceReferenceSeq(backboneelement.BackboneElement):
 
         self.referenceSeqPointer = None
         """ A pointer to another MolecularSequence entity as reference sequence.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['MolecularSequence']` (represented as `dict` in JSON). """
 
         self.referenceSeqString = None
         """ A string to represent reference sequence.
@@ -570,7 +573,7 @@ class MolecularSequenceVariant(backboneelement.BackboneElement):
 
         self.variantPointer = None
         """ Pointer to observed variant information.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Observation']` (represented as `dict` in JSON). """
 
         super(MolecularSequenceVariant, self).__init__(jsondict=jsondict, strict=strict)
 

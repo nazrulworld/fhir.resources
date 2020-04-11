@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/Account) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Account
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -56,7 +59,7 @@ class Account(domainresource.DomainResource):
 
         self.owner = None
         """ Who is responsible?.
-        Type `FHIRReference` referencing `Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.period = None
         """ Transaction window.
@@ -68,7 +71,7 @@ class Account(domainresource.DomainResource):
 
         self.subject = None
         """ What is account tied to?.
-        Type `FHIRReference` referencing `Patient, Device, Practitioner, Location, HealthcareService, Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient'], ['Device'], ['Practitioner'], ['Location'], ['HealthcareService'], ['Organization']` (represented as `dict` in JSON). """
 
         self.type = None
         """ E.g. patient, expense, depreciation.
@@ -115,7 +118,7 @@ class AccountCoverage(backboneelement.BackboneElement):
         self.coverage = None
         """ The party(s) that are responsible for covering the payment of this
         account.
-        Type `FHIRReference` referencing `Coverage` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Coverage']` (represented as `dict` in JSON). """
 
         self.priority = None
         """ The priority of the coverage in the context of this account.
@@ -154,7 +157,7 @@ class AccountGuarantor(backboneelement.BackboneElement):
 
         self.party = None
         """ Responsible entity.
-        Type `FHIRReference` referencing `Patient, RelatedPerson, Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient'], ['RelatedPerson'], ['Organization']` (represented as `dict` in JSON). """
 
         self.period = None
         """ Guarrantee account during.

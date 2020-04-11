@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/Goal) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Goal
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -28,7 +31,7 @@ class Goal(domainresource.DomainResource):
 
         self.addresses = None
         """ Issues addressed by this goal.
-        List of `FHIRReference` items referencing `Condition, Observation, MedicationStatement, NutritionOrder, ProcedureRequest, RiskAssessment` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Condition'], ['Observation'], ['MedicationStatement'], ['NutritionOrder'], ['ProcedureRequest'], ['RiskAssessment']` (represented as `dict` in JSON). """
 
         self.category = None
         """ E.g. Treatment, dietary, behavioral, etc..
@@ -40,7 +43,7 @@ class Goal(domainresource.DomainResource):
 
         self.expressedBy = None
         """ Who's responsible for creating Goal?.
-        Type `FHIRReference` referencing `Patient, Practitioner, RelatedPerson` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient'], ['Practitioner'], ['RelatedPerson']` (represented as `dict` in JSON). """
 
         self.identifier = None
         """ External Ids for this goal.
@@ -56,7 +59,7 @@ class Goal(domainresource.DomainResource):
 
         self.outcomeReference = None
         """ Observation that resulted from goal.
-        List of `FHIRReference` items referencing `Observation` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Observation']` (represented as `dict` in JSON). """
 
         self.priority = None
         """ high-priority | medium-priority | low-priority.
@@ -86,7 +89,7 @@ class Goal(domainresource.DomainResource):
 
         self.subject = None
         """ Who this goal is intended for.
-        Type `FHIRReference` referencing `Patient, Group, Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient'], ['Group'], ['Organization']` (represented as `dict` in JSON). """
 
         self.target = None
         """ Target outcome for the goal.

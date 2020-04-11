@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/NutritionOrder) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/NutritionOrder
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -27,7 +30,7 @@ class NutritionOrder(domainresource.DomainResource):
         self.allergyIntolerance = None
         """ List of the patient's food and nutrition-related allergies and
         intolerances.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['AllergyIntolerance']` (represented as `dict` in JSON). """
 
         self.dateTime = None
         """ Date and time the nutrition order was requested.
@@ -35,7 +38,7 @@ class NutritionOrder(domainresource.DomainResource):
 
         self.encounter = None
         """ The encounter associated with this nutrition order.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Encounter']` (represented as `dict` in JSON). """
 
         self.enteralFormula = None
         """ Enteral formula components.
@@ -60,14 +63,15 @@ class NutritionOrder(domainresource.DomainResource):
 
         self.instantiatesCanonical = None
         """ Instantiates FHIR protocol or definition.
-        List of `str` items. """
+        List of `str` items referencing `['ActivityDefinition', 'PlanDefinition']`. """
 
         self.instantiatesUri = None
         """ Instantiates external protocol or definition.
         List of `str` items. """
 
         self.intent = None
-        """ proposal | plan | order.
+        """ proposal | plan | directive | order | original-order | reflex-order
+        | filler-order | instance-order | option.
         Type `str`. """
 
         self.note = None
@@ -80,15 +84,15 @@ class NutritionOrder(domainresource.DomainResource):
 
         self.orderer = None
         """ Who ordered the diet, formula or nutritional supplement.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole']` (represented as `dict` in JSON). """
 
         self.patient = None
         """ The person who requires the diet, formula or nutritional supplement.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
 
         self.status = None
-        """ proposed | draft | planned | requested | active | on-hold |
-        completed | cancelled | entered-in-error.
+        """ draft | active | on-hold | revoked | completed | entered-in-error |
+        unknown.
         Type `str`. """
 
         self.supplement = None

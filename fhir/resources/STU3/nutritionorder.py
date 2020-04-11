@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/NutritionOrder) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/NutritionOrder
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -27,7 +30,7 @@ class NutritionOrder(domainresource.DomainResource):
         self.allergyIntolerance = None
         """ List of the patient's food and nutrition-related allergies and
         intolerances.
-        List of `FHIRReference` items referencing `AllergyIntolerance` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['AllergyIntolerance']` (represented as `dict` in JSON). """
 
         self.dateTime = None
         """ Date and time the nutrition order was requested.
@@ -35,7 +38,7 @@ class NutritionOrder(domainresource.DomainResource):
 
         self.encounter = None
         """ The encounter associated with this nutrition order.
-        Type `FHIRReference` referencing `Encounter` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Encounter']` (represented as `dict` in JSON). """
 
         self.enteralFormula = None
         """ Enteral formula components.
@@ -60,11 +63,11 @@ class NutritionOrder(domainresource.DomainResource):
 
         self.orderer = None
         """ Who ordered the diet, formula or nutritional supplement.
-        Type `FHIRReference` referencing `Practitioner` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner']` (represented as `dict` in JSON). """
 
         self.patient = None
         """ The person who requires the diet, formula or nutritional supplement.
-        Type `FHIRReference` referencing `Patient` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
 
         self.status = None
         """ proposed | draft | planned | requested | active | on-hold |

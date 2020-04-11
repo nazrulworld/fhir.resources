@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/CapabilityStatement) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/CapabilityStatement
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -95,7 +98,7 @@ class CapabilityStatement(domainresource.DomainResource):
 
         self.profile = None
         """ Profiles for use cases supported.
-        List of `FHIRReference` items referencing `StructureDefinition` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['StructureDefinition']` (represented as `dict` in JSON). """
 
         self.publisher = None
         """ Name of the publisher (organization or individual).
@@ -198,7 +201,7 @@ class CapabilityStatementDocument(backboneelement.BackboneElement):
 
         self.profile = None
         """ Constraint on a resource used in the document.
-        Type `FHIRReference` referencing `StructureDefinition` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['StructureDefinition']` (represented as `dict` in JSON). """
 
         super(CapabilityStatementDocument, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -373,11 +376,11 @@ class CapabilityStatementMessagingEvent(backboneelement.BackboneElement):
 
         self.request = None
         """ Profile that describes the request.
-        Type `FHIRReference` referencing `StructureDefinition` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['StructureDefinition']` (represented as `dict` in JSON). """
 
         self.response = None
         """ Profile that describes the response.
-        Type `FHIRReference` referencing `StructureDefinition` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['StructureDefinition']` (represented as `dict` in JSON). """
 
         super(CapabilityStatementMessagingEvent, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -414,7 +417,7 @@ class CapabilityStatementMessagingSupportedMessage(backboneelement.BackboneEleme
 
         self.definition = None
         """ Message supported by this system.
-        Type `FHIRReference` referencing `MessageDefinition` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['MessageDefinition']` (represented as `dict` in JSON). """
 
         self.mode = None
         """ sender | receiver.
@@ -550,7 +553,7 @@ class CapabilityStatementRestOperation(backboneelement.BackboneElement):
 
         self.definition = None
         """ The defined operation/query.
-        Type `FHIRReference` referencing `OperationDefinition` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['OperationDefinition']` (represented as `dict` in JSON). """
 
         self.name = None
         """ Name by which the operation/query is invoked.
@@ -611,7 +614,7 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
 
         self.profile = None
         """ Base System profile for all uses of resource.
-        Type `FHIRReference` referencing `StructureDefinition` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['StructureDefinition']` (represented as `dict` in JSON). """
 
         self.readHistory = None
         """ Whether vRead can return past versions.

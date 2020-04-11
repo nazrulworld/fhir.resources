@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/Schedule) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Schedule
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -31,7 +34,7 @@ class Schedule(domainresource.DomainResource):
         information for. These are expected to usually be one of
         HealthcareService, Location, Practitioner, PractitionerRole,
         Device, Patient or RelatedPerson.
-        List of `FHIRReference` items referencing `Patient, Practitioner, PractitionerRole, RelatedPerson, Device, HealthcareService, Location` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Patient'], ['Practitioner'], ['PractitionerRole'], ['RelatedPerson'], ['Device'], ['HealthcareService'], ['Location']` (represented as `dict` in JSON). """
 
         self.comment = None
         """ Comments on the availability to describe any extended information.

@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/Patient) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Patient
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -59,7 +62,7 @@ class Patient(domainresource.DomainResource):
 
         self.generalPractitioner = None
         """ Patient's nominated primary care provider.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Organization', 'Practitioner', 'PractitionerRole']` (represented as `dict` in JSON). """
 
         self.identifier = None
         """ An identifier for this patient.
@@ -72,7 +75,7 @@ class Patient(domainresource.DomainResource):
 
         self.managingOrganization = None
         """ Organization that is the custodian of the patient record.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.maritalStatus = None
         """ Marital (civil) status of a patient.
@@ -190,7 +193,7 @@ class PatientContact(backboneelement.BackboneElement):
 
         self.organization = None
         """ Organization that is associated with the contact.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.period = None
         """ The period during which this contact person or organization is
@@ -240,7 +243,7 @@ class PatientLink(backboneelement.BackboneElement):
         self.other = None
         """ The other patient or related person resource that the link refers
         to.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient', 'RelatedPerson']` (represented as `dict` in JSON). """
 
         self.type = None
         """ replaced-by | replaces | refer | seealso.

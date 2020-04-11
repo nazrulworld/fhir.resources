@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/Coverage) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Coverage
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -26,7 +29,7 @@ class Coverage(domainresource.DomainResource):
 
         self.beneficiary = None
         """ Plan beneficiary.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
 
         self.class_fhir = None
         """ Additional coverage classifications.
@@ -34,7 +37,7 @@ class Coverage(domainresource.DomainResource):
 
         self.contract = None
         """ Contract details.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Contract']` (represented as `dict` in JSON). """
 
         self.costToBeneficiary = None
         """ Patient payments for services/products.
@@ -58,7 +61,7 @@ class Coverage(domainresource.DomainResource):
 
         self.payor = None
         """ Issuer of the policy.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Organization', 'Patient', 'RelatedPerson']` (represented as `dict` in JSON). """
 
         self.period = None
         """ Coverage start and end dates.
@@ -66,7 +69,7 @@ class Coverage(domainresource.DomainResource):
 
         self.policyHolder = None
         """ Owner of the policy.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient', 'RelatedPerson', 'Organization']` (represented as `dict` in JSON). """
 
         self.relationship = None
         """ Beneficiary relationship to the subscriber.
@@ -82,7 +85,7 @@ class Coverage(domainresource.DomainResource):
 
         self.subscriber = None
         """ Subscriber to the policy.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient', 'RelatedPerson']` (represented as `dict` in JSON). """
 
         self.subscriberId = None
         """ ID assigned to the subscriber.

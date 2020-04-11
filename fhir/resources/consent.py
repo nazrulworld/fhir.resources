@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/Consent) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Consent
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -40,15 +43,15 @@ class Consent(domainresource.DomainResource):
 
         self.organization = None
         """ Custodian of the consent.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.patient = None
         """ Who the consent applies to.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
 
         self.performer = None
         """ Who is agreeing to the policy and rules.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Organization', 'Patient', 'Practitioner', 'RelatedPerson', 'PractitionerRole']` (represented as `dict` in JSON). """
 
         self.policy = None
         """ Policies covered by this consent.
@@ -72,7 +75,7 @@ class Consent(domainresource.DomainResource):
 
         self.sourceReference = None
         """ Source from which this consent is taken.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Consent', 'DocumentReference', 'Contract', 'QuestionnaireResponse']` (represented as `dict` in JSON). """
 
         self.status = None
         """ draft | proposed | active | rejected | inactive | entered-in-error.
@@ -244,7 +247,7 @@ class ConsentProvisionActor(backboneelement.BackboneElement):
 
         self.reference = None
         """ Resource for the actor (or group, by role).
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Device', 'Group', 'CareTeam', 'Organization', 'Patient', 'Practitioner', 'RelatedPerson', 'PractitionerRole']` (represented as `dict` in JSON). """
 
         self.role = None
         """ How the actor is involved.
@@ -283,7 +286,7 @@ class ConsentProvisionData(backboneelement.BackboneElement):
 
         self.reference = None
         """ The actual data reference.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
 
         super(ConsentProvisionData, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -323,7 +326,7 @@ class ConsentVerification(backboneelement.BackboneElement):
 
         self.verifiedWith = None
         """ Person who verified.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient', 'RelatedPerson']` (represented as `dict` in JSON). """
 
         super(ConsentVerification, self).__init__(jsondict=jsondict, strict=strict)
 

@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/Group) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Group
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -48,7 +51,7 @@ class Group(domainresource.DomainResource):
 
         self.managingEntity = None
         """ Entity that is the custodian of the Group's definition.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization', 'RelatedPerson', 'Practitioner', 'PractitionerRole']` (represented as `dict` in JSON). """
 
         self.member = None
         """ Who or what is in group.
@@ -171,7 +174,7 @@ class GroupMember(backboneelement.BackboneElement):
 
         self.entity = None
         """ Reference to the group member.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient', 'Practitioner', 'PractitionerRole', 'Device', 'Medication', 'Substance', 'Group']` (represented as `dict` in JSON). """
 
         self.inactive = None
         """ If member is no longer in group.

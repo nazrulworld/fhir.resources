@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/MessageDefinition) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/MessageDefinition
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -32,7 +35,7 @@ class MessageDefinition(domainresource.DomainResource):
 
         self.base = None
         """ Definition this one is based on.
-        Type `FHIRReference` referencing `MessageDefinition` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['MessageDefinition']` (represented as `dict` in JSON). """
 
         self.category = None
         """ Consequence | Currency | Notification.
@@ -80,7 +83,7 @@ class MessageDefinition(domainresource.DomainResource):
 
         self.parent = None
         """ Protocol/workflow this is part of.
-        List of `FHIRReference` items referencing `ActivityDefinition, PlanDefinition` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['ActivityDefinition'], ['PlanDefinition']` (represented as `dict` in JSON). """
 
         self.publisher = None
         """ Name of the publisher (organization or individual).
@@ -92,7 +95,7 @@ class MessageDefinition(domainresource.DomainResource):
 
         self.replaces = None
         """ Takes the place of.
-        List of `FHIRReference` items referencing `MessageDefinition` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['MessageDefinition']` (represented as `dict` in JSON). """
 
         self.responseRequired = None
         """ Is a response required?.
@@ -171,7 +174,7 @@ class MessageDefinitionAllowedResponse(backboneelement.BackboneElement):
 
         self.message = None
         """ Reference to allowed message definition response.
-        Type `FHIRReference` referencing `MessageDefinition` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['MessageDefinition']` (represented as `dict` in JSON). """
 
         self.situation = None
         """ When should this response be used.
@@ -220,7 +223,7 @@ class MessageDefinitionFocus(backboneelement.BackboneElement):
 
         self.profile = None
         """ Profile that must be adhered to by focus.
-        Type `FHIRReference` referencing `StructureDefinition` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['StructureDefinition']` (represented as `dict` in JSON). """
 
         super(MessageDefinitionFocus, self).__init__(jsondict=jsondict, strict=strict)
 

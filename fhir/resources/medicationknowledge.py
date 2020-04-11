@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/MedicationKnowledge) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/MedicationKnowledge
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -33,7 +36,7 @@ class MedicationKnowledge(domainresource.DomainResource):
 
         self.associatedMedication = None
         """ A medication resource that is associated with this medication.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Medication']` (represented as `dict` in JSON). """
 
         self.code = None
         """ Code that identifies this medication.
@@ -41,7 +44,7 @@ class MedicationKnowledge(domainresource.DomainResource):
 
         self.contraindication = None
         """ Potential clinical issue with or between medication(s).
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['DetectedIssue']` (represented as `dict` in JSON). """
 
         self.cost = None
         """ The pricing of the medication.
@@ -70,7 +73,7 @@ class MedicationKnowledge(domainresource.DomainResource):
 
         self.manufacturer = None
         """ Manufacturer of the item.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.medicineClassification = None
         """ Categorization of the medication within a formulary or
@@ -174,7 +177,7 @@ class MedicationKnowledgeAdministrationGuidelines(backboneelement.BackboneElemen
         self.indicationReference = None
         """ Indication for use that apply to the specific administration
         guidelines.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['ObservationDefinition']` (represented as `dict` in JSON). """
 
         self.patientCharacteristics = None
         """ Characteristics of the patient that are relevant to the
@@ -388,7 +391,7 @@ class MedicationKnowledgeIngredient(backboneelement.BackboneElement):
 
         self.itemReference = None
         """ Medication(s) or substance(s) contained in the medication.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Substance']` (represented as `dict` in JSON). """
 
         self.strength = None
         """ Quantity of ingredient present.
@@ -532,7 +535,7 @@ class MedicationKnowledgeMonograph(backboneelement.BackboneElement):
 
         self.source = None
         """ Associated documentation about the medication.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['DocumentReference', 'Media']` (represented as `dict` in JSON). """
 
         self.type = None
         """ The category of medication document.
@@ -607,7 +610,7 @@ class MedicationKnowledgeRegulatory(backboneelement.BackboneElement):
 
         self.regulatoryAuthority = None
         """ Specifies the authority of the regulation.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.schedule = None
         """ Specifies the schedule of a medication in jurisdiction.
@@ -746,7 +749,7 @@ class MedicationKnowledgeRelatedMedicationKnowledge(backboneelement.BackboneElem
 
         self.reference = None
         """ Associated documentation about the associated medication knowledge.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['MedicationKnowledge']` (represented as `dict` in JSON). """
 
         self.type = None
         """ Category of medicationKnowledge.

@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Device
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 import os
 import pytest
@@ -23,17 +26,17 @@ class DeviceTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("Device", js["resourceType"])
         return device.Device(js)
-    
+
     def testDevice1(self):
         inst = self.instantiate_from("device-example-f001-feedingtube.json")
         self.assertIsNotNone(inst, "Must have instantiated a Device instance")
         self.implDevice1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Device", js["resourceType"])
         inst2 = device.Device(js)
         self.implDevice1(inst2)
-    
+
     def implDevice1(self, inst):
         self.assertEqual(force_bytes(inst.id), force_bytes("f001"))
         self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http:/goodhealthhospital/identifier/devices"))
@@ -44,17 +47,17 @@ class DeviceTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.status), force_bytes("active"))
         self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f001</p><p><b>identifier</b>: 12345</p><p><b>status</b>: active</p></div>"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-    
+
     def testDevice2(self):
         inst = self.instantiate_from("device-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a Device instance")
         self.implDevice2(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Device", js["resourceType"])
         inst2 = device.Device(js)
         self.implDevice2(inst2)
-    
+
     def implDevice2(self, inst):
         self.assertEqual(force_bytes(inst.id), force_bytes("example"))
         self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://goodcare.org/devices/id"))

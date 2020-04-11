@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/RequestGroup) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/RequestGroup
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -30,7 +33,7 @@ class RequestGroup(domainresource.DomainResource):
 
         self.author = None
         """ Device or practitioner that authored the request group.
-        Type `FHIRReference` referencing `Device, Practitioner` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Device'], ['Practitioner']` (represented as `dict` in JSON). """
 
         self.authoredOn = None
         """ When the request group was authored.
@@ -38,15 +41,15 @@ class RequestGroup(domainresource.DomainResource):
 
         self.basedOn = None
         """ Fulfills plan, proposal, or order.
-        List of `FHIRReference` items referencing `Resource` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.context = None
         """ Encounter or Episode for the request group.
-        Type `FHIRReference` referencing `Encounter, EpisodeOfCare` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Encounter'], ['EpisodeOfCare']` (represented as `dict` in JSON). """
 
         self.definition = None
         """ Instantiates protocol or definition.
-        List of `FHIRReference` items referencing `Resource` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.groupIdentifier = None
         """ Composite request this is part of.
@@ -74,11 +77,11 @@ class RequestGroup(domainresource.DomainResource):
 
         self.reasonReference = None
         """ Reason for the request group.
-        Type `FHIRReference` referencing `Resource` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.replaces = None
         """ Request(s) replaced by this request.
-        List of `FHIRReference` items referencing `Resource` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.status = None
         """ draft | active | suspended | cancelled | completed | entered-in-
@@ -87,7 +90,7 @@ class RequestGroup(domainresource.DomainResource):
 
         self.subject = None
         """ Who the request group is about.
-        Type `FHIRReference` referencing `Patient, Group` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient'], ['Group']` (represented as `dict` in JSON). """
 
         super(RequestGroup, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -166,7 +169,7 @@ class RequestGroupAction(backboneelement.BackboneElement):
 
         self.participant = None
         """ Who should perform the action.
-        List of `FHIRReference` items referencing `Patient, Person, Practitioner, RelatedPerson` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Patient'], ['Person'], ['Practitioner'], ['RelatedPerson']` (represented as `dict` in JSON). """
 
         self.precheckBehavior = None
         """ yes | no.
@@ -182,7 +185,7 @@ class RequestGroupAction(backboneelement.BackboneElement):
 
         self.resource = None
         """ The target of the action.
-        Type `FHIRReference` referencing `Resource` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.selectionBehavior = None
         """ any | all | all-or-none | exactly-one | at-most-one | one-or-more.

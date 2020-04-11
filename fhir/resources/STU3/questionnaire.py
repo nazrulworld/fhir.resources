@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/Questionnaire) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Questionnaire
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -205,7 +208,7 @@ class QuestionnaireItem(backboneelement.BackboneElement):
 
         self.initialReference = None
         """ Default value when item is first rendered.
-        Type `FHIRReference` referencing `Resource` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.initialString = None
         """ Default value when item is first rendered.
@@ -237,7 +240,7 @@ class QuestionnaireItem(backboneelement.BackboneElement):
 
         self.options = None
         """ Valueset containing permitted answers.
-        Type `FHIRReference` referencing `ValueSet` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['ValueSet']` (represented as `dict` in JSON). """
 
         self.prefix = None
         """ E.g. "1(a)", "2.5.3".
@@ -350,7 +353,7 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
 
         self.answerReference = None
         """ Value question must have.
-        Type `FHIRReference` referencing `Resource` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.answerString = None
         """ Value question must have.

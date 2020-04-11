@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/PlanDefinition) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/PlanDefinition
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -89,7 +92,7 @@ class PlanDefinition(domainresource.DomainResource):
 
         self.library = None
         """ Logic used by the plan definition.
-        List of `str` items. """
+        List of `str` items referencing `['Library']`. """
 
         self.name = None
         """ Name for this plan definition (computer friendly).
@@ -121,7 +124,7 @@ class PlanDefinition(domainresource.DomainResource):
 
         self.subjectReference = None
         """ Type of individual the plan definition is focused on.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Group']` (represented as `dict` in JSON). """
 
         self.subtitle = None
         """ Subordinate title of the plan definition.
@@ -233,7 +236,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
 
         self.definitionCanonical = None
         """ Description of the activity to be performed.
-        Type `str`. """
+        Type `str` referencing `['ActivityDefinition', 'PlanDefinition', 'Questionnaire']`. """
 
         self.definitionUri = None
         """ Description of the activity to be performed.
@@ -305,7 +308,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
 
         self.subjectReference = None
         """ Type of individual the action is focused on.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Group']` (represented as `dict` in JSON). """
 
         self.textEquivalent = None
         """ Static text equivalent of the action, used if the dynamic aspects
@@ -342,7 +345,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
 
         self.transform = None
         """ Transform to apply the template.
-        Type `str`. """
+        Type `str` referencing `['StructureMap']`. """
 
         self.trigger = None
         """ When the action should be triggered.

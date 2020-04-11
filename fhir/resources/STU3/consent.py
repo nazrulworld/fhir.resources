@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/Consent) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Consent
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -40,7 +43,7 @@ class Consent(domainresource.DomainResource):
 
         self.consentingParty = None
         """ Who is agreeing to the policy and exceptions.
-        List of `FHIRReference` items referencing `Organization, Patient, Practitioner, RelatedPerson` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Organization'], ['Patient'], ['Practitioner'], ['RelatedPerson']` (represented as `dict` in JSON). """
 
         self.data = None
         """ Data controlled by this consent.
@@ -64,11 +67,11 @@ class Consent(domainresource.DomainResource):
 
         self.organization = None
         """ Custodian of the consent.
-        List of `FHIRReference` items referencing `Organization` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.patient = None
         """ Who the consent applies to.
-        Type `FHIRReference` referencing `Patient` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
 
         self.period = None
         """ Period that this consent applies.
@@ -100,7 +103,7 @@ class Consent(domainresource.DomainResource):
 
         self.sourceReference = None
         """ Source from which this consent is taken.
-        Type `FHIRReference` referencing `Consent, DocumentReference, Contract, QuestionnaireResponse` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Consent'], ['DocumentReference'], ['Contract'], ['QuestionnaireResponse']` (represented as `dict` in JSON). """
 
         self.status = None
         """ draft | proposed | active | rejected | inactive | entered-in-error.
@@ -156,7 +159,7 @@ class ConsentActor(backboneelement.BackboneElement):
 
         self.reference = None
         """ Resource for the actor (or group, by role).
-        Type `FHIRReference` referencing `Device, Group, CareTeam, Organization, Patient, Practitioner, RelatedPerson` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Device'], ['Group'], ['CareTeam'], ['Organization'], ['Patient'], ['Practitioner'], ['RelatedPerson']` (represented as `dict` in JSON). """
 
         self.role = None
         """ How the actor is involved.
@@ -196,7 +199,7 @@ class ConsentData(backboneelement.BackboneElement):
 
         self.reference = None
         """ The actual data reference.
-        Type `FHIRReference` referencing `Resource` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
 
         super(ConsentData, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -304,7 +307,7 @@ class ConsentExceptActor(backboneelement.BackboneElement):
 
         self.reference = None
         """ Resource for the actor (or group, by role).
-        Type `FHIRReference` referencing `Device, Group, CareTeam, Organization, Patient, Practitioner, RelatedPerson` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Device'], ['Group'], ['CareTeam'], ['Organization'], ['Patient'], ['Practitioner'], ['RelatedPerson']` (represented as `dict` in JSON). """
 
         self.role = None
         """ How the actor is involved.
@@ -344,7 +347,7 @@ class ConsentExceptData(backboneelement.BackboneElement):
 
         self.reference = None
         """ The actual data reference.
-        Type `FHIRReference` referencing `Resource` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
 
         super(ConsentExceptData, self).__init__(jsondict=jsondict, strict=strict)
 

@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/CareTeam) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/CareTeam
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -31,7 +34,7 @@ class CareTeam(domainresource.DomainResource):
 
         self.encounter = None
         """ Encounter created as part of.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Encounter']` (represented as `dict` in JSON). """
 
         self.identifier = None
         """ External Ids for this team.
@@ -39,7 +42,7 @@ class CareTeam(domainresource.DomainResource):
 
         self.managingOrganization = None
         """ Organization responsible for the care team.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.name = None
         """ Name of the team, such as crisis assessment team.
@@ -63,7 +66,7 @@ class CareTeam(domainresource.DomainResource):
 
         self.reasonReference = None
         """ Why the care team exists.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Condition']` (represented as `dict` in JSON). """
 
         self.status = None
         """ proposed | active | suspended | inactive | entered-in-error.
@@ -71,7 +74,7 @@ class CareTeam(domainresource.DomainResource):
 
         self.subject = None
         """ Who care team is for.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient', 'Group']` (represented as `dict` in JSON). """
 
         self.telecom = None
         """ A contact detail for the care team (that applies to all members).
@@ -120,11 +123,11 @@ class CareTeamParticipant(backboneelement.BackboneElement):
 
         self.member = None
         """ Who is involved.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'RelatedPerson', 'Patient', 'Organization', 'CareTeam']` (represented as `dict` in JSON). """
 
         self.onBehalfOf = None
         """ Organization of the practitioner.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.period = None
         """ Time period of participant.

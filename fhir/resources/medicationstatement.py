@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/MedicationStatement) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/MedicationStatement
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -48,7 +51,7 @@ class MedicationStatement(domainresource.DomainResource):
 
         self.basedOn = None
         """ Fulfils plan, proposal or order.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['MedicationRequest', 'CarePlan', 'ServiceRequest']` (represented as `dict` in JSON). """
 
         self.category = None
         """ Type of medication usage.
@@ -56,7 +59,7 @@ class MedicationStatement(domainresource.DomainResource):
 
         self.context = None
         """ Encounter / Episode associated with MedicationStatement.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Encounter', 'EpisodeOfCare']` (represented as `dict` in JSON). """
 
         self.dateAsserted = None
         """ When the statement was asserted?.
@@ -64,7 +67,7 @@ class MedicationStatement(domainresource.DomainResource):
 
         self.derivedFrom = None
         """ Additional supporting information.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.dosage = None
         """ Details of how medication is/was taken or should be taken.
@@ -85,7 +88,7 @@ class MedicationStatement(domainresource.DomainResource):
         self.informationSource = None
         """ Person or organization that provided the information about the
         taking of this medication.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient', 'Practitioner', 'PractitionerRole', 'RelatedPerson', 'Organization']` (represented as `dict` in JSON). """
 
         self.medicationCodeableConcept = None
         """ What medication was taken.
@@ -93,7 +96,7 @@ class MedicationStatement(domainresource.DomainResource):
 
         self.medicationReference = None
         """ What medication was taken.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Medication']` (represented as `dict` in JSON). """
 
         self.note = None
         """ Further information about the statement.
@@ -101,7 +104,7 @@ class MedicationStatement(domainresource.DomainResource):
 
         self.partOf = None
         """ Part of referenced event.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['MedicationAdministration', 'MedicationDispense', 'MedicationStatement', 'Procedure', 'Observation']` (represented as `dict` in JSON). """
 
         self.reasonCode = None
         """ Reason for why the medication is being/was taken.
@@ -110,7 +113,7 @@ class MedicationStatement(domainresource.DomainResource):
         self.reasonReference = None
         """ Condition or observation that supports why the medication is
         being/was taken.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Condition', 'Observation', 'DiagnosticReport']` (represented as `dict` in JSON). """
 
         self.status = None
         """ active | completed | entered-in-error | intended | stopped | on-
@@ -123,7 +126,7 @@ class MedicationStatement(domainresource.DomainResource):
 
         self.subject = None
         """ Who is/was taking  the medication.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient', 'Group']` (represented as `dict` in JSON). """
 
         super(MedicationStatement, self).__init__(jsondict=jsondict, strict=strict)
 

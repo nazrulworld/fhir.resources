@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/SubstanceSpecification) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/SubstanceSpecification
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -57,11 +60,11 @@ class SubstanceSpecification(domainresource.DomainResource):
 
         self.nucleicAcid = None
         """ Data items specific to nucleic acids.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['SubstanceNucleicAcid']` (represented as `dict` in JSON). """
 
         self.polymer = None
         """ Data items specific to polymers.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['SubstancePolymer']` (represented as `dict` in JSON). """
 
         self.property = None
         """ General specifications for this substance, including how it is
@@ -70,11 +73,11 @@ class SubstanceSpecification(domainresource.DomainResource):
 
         self.protein = None
         """ Data items specific to proteins.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['SubstanceProtein']` (represented as `dict` in JSON). """
 
         self.referenceInformation = None
         """ General information detailing this substance.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['SubstanceReferenceInformation']` (represented as `dict` in JSON). """
 
         self.relationship = None
         """ A link between this substance and another, with details of the
@@ -83,11 +86,11 @@ class SubstanceSpecification(domainresource.DomainResource):
 
         self.source = None
         """ Supporting literature.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['DocumentReference']` (represented as `dict` in JSON). """
 
         self.sourceMaterial = None
         """ Material or taxonomic/anatomical source for the substance.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['SubstanceSourceMaterial']` (represented as `dict` in JSON). """
 
         self.status = None
         """ Status of substance within the catalogue e.g. approved.
@@ -235,7 +238,7 @@ class SubstanceSpecificationName(backboneelement.BackboneElement):
 
         self.source = None
         """ Supporting literature.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['DocumentReference']` (represented as `dict` in JSON). """
 
         self.status = None
         """ The status of the name.
@@ -350,7 +353,7 @@ class SubstanceSpecificationProperty(backboneelement.BackboneElement):
         self.definingSubstanceReference = None
         """ A substance upon which a defining property depends (e.g. for
         solubility: in water, in alcohol).
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['SubstanceSpecification', 'Substance']` (represented as `dict` in JSON). """
 
         self.parameters = None
         """ Parameters that were used in the measurement of a property (e.g.
@@ -432,7 +435,7 @@ class SubstanceSpecificationRelationship(backboneelement.BackboneElement):
 
         self.source = None
         """ Supporting literature.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['DocumentReference']` (represented as `dict` in JSON). """
 
         self.substanceCodeableConcept = None
         """ A pointer to another substance, as a resource or just a
@@ -442,7 +445,7 @@ class SubstanceSpecificationRelationship(backboneelement.BackboneElement):
         self.substanceReference = None
         """ A pointer to another substance, as a resource or just a
         representational code.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['SubstanceSpecification']` (represented as `dict` in JSON). """
 
         super(SubstanceSpecificationRelationship, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -507,7 +510,7 @@ class SubstanceSpecificationStructure(backboneelement.BackboneElement):
 
         self.source = None
         """ Supporting literature.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['DocumentReference']` (represented as `dict` in JSON). """
 
         self.stereochemistry = None
         """ Stereochemistry type.
@@ -686,7 +689,7 @@ class SubstanceSpecificationstr(backboneelement.BackboneElement):
 
         self.source = None
         """ Supporting literature.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['DocumentReference']` (represented as `dict` in JSON). """
 
         self.status = None
         """ Status of the code assignment.

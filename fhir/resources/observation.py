@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/Observation) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Observation
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -26,7 +29,7 @@ class Observation(domainresource.DomainResource):
 
         self.basedOn = None
         """ Fulfills plan, proposal or order.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['CarePlan', 'DeviceRequest', 'ImmunizationRecommendation', 'MedicationRequest', 'NutritionOrder', 'ServiceRequest']` (represented as `dict` in JSON). """
 
         self.bodySite = None
         """ Observed body part.
@@ -50,11 +53,11 @@ class Observation(domainresource.DomainResource):
 
         self.derivedFrom = None
         """ Related measurements the observation is made from.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['DocumentReference', 'ImagingStudy', 'Media', 'QuestionnaireResponse', 'Observation', 'MolecularSequence']` (represented as `dict` in JSON). """
 
         self.device = None
         """ (Measurement) Device.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Device', 'DeviceMetric']` (represented as `dict` in JSON). """
 
         self.effectiveDateTime = None
         """ Clinically relevant time/time-period for observation.
@@ -74,16 +77,16 @@ class Observation(domainresource.DomainResource):
 
         self.encounter = None
         """ Healthcare event during which this observation is made.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Encounter']` (represented as `dict` in JSON). """
 
         self.focus = None
         """ What the observation is about, when it is not about the subject of
         record.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.hasMember = None
         """ Related resource that belongs to the Observation group.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Observation', 'QuestionnaireResponse', 'MolecularSequence']` (represented as `dict` in JSON). """
 
         self.identifier = None
         """ Business Identifier for observation.
@@ -107,11 +110,11 @@ class Observation(domainresource.DomainResource):
 
         self.partOf = None
         """ Part of referenced event.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['MedicationAdministration', 'MedicationDispense', 'MedicationStatement', 'Procedure', 'Immunization', 'ImagingStudy']` (represented as `dict` in JSON). """
 
         self.performer = None
         """ Who is responsible for the observation.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Practitioner', 'PractitionerRole', 'Organization', 'CareTeam', 'Patient', 'RelatedPerson']` (represented as `dict` in JSON). """
 
         self.referenceRange = None
         """ Provides guide for interpretation.
@@ -119,7 +122,7 @@ class Observation(domainresource.DomainResource):
 
         self.specimen = None
         """ Specimen used for this observation.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Specimen']` (represented as `dict` in JSON). """
 
         self.status = None
         """ registered | preliminary | final | amended +.
@@ -127,7 +130,7 @@ class Observation(domainresource.DomainResource):
 
         self.subject = None
         """ Who and/or what the observation is about.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient', 'Group', 'Device', 'Location']` (represented as `dict` in JSON). """
 
         self.valueBoolean = None
         """ Actual result.

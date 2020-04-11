@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/ImplementationGuide
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 import os
 import pytest
@@ -23,17 +26,17 @@ class ImplementationGuideTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("ImplementationGuide", js["resourceType"])
         return implementationguide.ImplementationGuide(js)
-    
+
     def testImplementationGuide1(self):
         inst = self.instantiate_from("implementationguide-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a ImplementationGuide instance")
         self.implImplementationGuide1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("ImplementationGuide", js["resourceType"])
         inst2 = implementationguide.ImplementationGuide(js)
         self.implImplementationGuide1(inst2)
-    
+
     def implImplementationGuide1(self, inst):
         self.assertEqual(force_bytes(inst.binary[0]), force_bytes("http://h7.org/fhir/fhir.css"))
         self.assertEqual(force_bytes(inst.contact[0].name), force_bytes("ONC"))

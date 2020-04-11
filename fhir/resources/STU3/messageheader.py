@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/MessageHeader) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/MessageHeader
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -29,7 +32,7 @@ class MessageHeader(domainresource.DomainResource):
 
         self.author = None
         """ The source of the decision.
-        Type `FHIRReference` referencing `Practitioner` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner']` (represented as `dict` in JSON). """
 
         self.destination = None
         """ Message destination application(s).
@@ -37,7 +40,7 @@ class MessageHeader(domainresource.DomainResource):
 
         self.enterer = None
         """ The source of the data entry.
-        Type `FHIRReference` referencing `Practitioner` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner']` (represented as `dict` in JSON). """
 
         self.event = None
         """ Code for the event this message represents.
@@ -45,7 +48,7 @@ class MessageHeader(domainresource.DomainResource):
 
         self.focus = None
         """ The actual content of the message.
-        List of `FHIRReference` items referencing `Resource` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.reason = None
         """ Cause of event.
@@ -53,7 +56,7 @@ class MessageHeader(domainresource.DomainResource):
 
         self.receiver = None
         """ Intended "real-world" recipient for the data.
-        Type `FHIRReference` referencing `Practitioner, Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner'], ['Organization']` (represented as `dict` in JSON). """
 
         self.response = None
         """ If this is a reply to prior message.
@@ -61,11 +64,11 @@ class MessageHeader(domainresource.DomainResource):
 
         self.responsible = None
         """ Final responsibility for event.
-        Type `FHIRReference` referencing `Practitioner, Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner'], ['Organization']` (represented as `dict` in JSON). """
 
         self.sender = None
         """ Real world sender of the message.
-        Type `FHIRReference` referencing `Practitioner, Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner'], ['Organization']` (represented as `dict` in JSON). """
 
         self.source = None
         """ Message source application.
@@ -124,7 +127,7 @@ class MessageHeaderDestination(backboneelement.BackboneElement):
 
         self.target = None
         """ Particular delivery destination within the destination.
-        Type `FHIRReference` referencing `Device` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Device']` (represented as `dict` in JSON). """
 
         super(MessageHeaderDestination, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -161,7 +164,7 @@ class MessageHeaderResponse(backboneelement.BackboneElement):
 
         self.details = None
         """ Specific list of hints/warnings/errors.
-        Type `FHIRReference` referencing `OperationOutcome` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['OperationOutcome']` (represented as `dict` in JSON). """
 
         self.identifier = None
         """ Id of original message.

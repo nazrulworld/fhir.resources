@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/OrganizationAffiliation) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/OrganizationAffiliation
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -33,11 +36,11 @@ class OrganizationAffiliation(domainresource.DomainResource):
         self.endpoint = None
         """ Technical endpoints providing access to services operated for this
         role.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Endpoint']` (represented as `dict` in JSON). """
 
         self.healthcareService = None
         """ Healthcare services provided through the role.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['HealthcareService']` (represented as `dict` in JSON). """
 
         self.identifier = None
         """ Business identifiers that are specific to this role.
@@ -45,22 +48,22 @@ class OrganizationAffiliation(domainresource.DomainResource):
 
         self.location = None
         """ The location(s) at which the role occurs.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Location']` (represented as `dict` in JSON). """
 
         self.network = None
         """ Health insurance provider network in which the
         participatingOrganization provides the role's services (if defined)
         at the indicated locations (if defined).
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.organization = None
         """ Organization where the role is available.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.participatingOrganization = None
         """ Organization that provides/performs the role (e.g. providing
         services or is a member of).
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.period = None
         """ The period during which the participatingOrganization is affiliated

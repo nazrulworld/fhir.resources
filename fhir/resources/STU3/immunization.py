@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/Immunization) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Immunization
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -36,7 +39,7 @@ class Immunization(domainresource.DomainResource):
 
         self.encounter = None
         """ Encounter administered as part of.
-        Type `FHIRReference` referencing `Encounter` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Encounter']` (represented as `dict` in JSON). """
 
         self.expirationDate = None
         """ Vaccine expiration date.
@@ -52,7 +55,7 @@ class Immunization(domainresource.DomainResource):
 
         self.location = None
         """ Where vaccination occurred.
-        Type `FHIRReference` referencing `Location` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Location']` (represented as `dict` in JSON). """
 
         self.lotNumber = None
         """ Vaccine lot number.
@@ -60,7 +63,7 @@ class Immunization(domainresource.DomainResource):
 
         self.manufacturer = None
         """ Vaccine manufacturer.
-        Type `FHIRReference` referencing `Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.notGiven = None
         """ Flag for whether immunization was given.
@@ -72,7 +75,7 @@ class Immunization(domainresource.DomainResource):
 
         self.patient = None
         """ Who was immunized.
-        Type `FHIRReference` referencing `Patient` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
 
         self.practitioner = None
         """ Who performed event.
@@ -195,7 +198,7 @@ class ImmunizationPractitioner(backboneelement.BackboneElement):
 
         self.actor = None
         """ Individual who was performing.
-        Type `FHIRReference` referencing `Practitioner` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner']` (represented as `dict` in JSON). """
 
         self.role = None
         """ What type of performance was done.
@@ -235,7 +238,7 @@ class ImmunizationReaction(backboneelement.BackboneElement):
 
         self.detail = None
         """ Additional information on reaction.
-        Type `FHIRReference` referencing `Observation` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Observation']` (represented as `dict` in JSON). """
 
         self.reported = None
         """ Indicates self-reported reaction.
@@ -272,7 +275,7 @@ class ImmunizationVaccinationProtocol(backboneelement.BackboneElement):
 
         self.authority = None
         """ Who is responsible for protocol.
-        Type `FHIRReference` referencing `Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.description = None
         """ Details of vaccine protocol.

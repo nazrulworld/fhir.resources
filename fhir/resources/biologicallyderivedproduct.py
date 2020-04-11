@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/BiologicallyDerivedProduct) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/BiologicallyDerivedProduct
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -39,7 +42,7 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
 
         self.parent = None
         """ BiologicallyDerivedProduct parent.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['BiologicallyDerivedProduct']` (represented as `dict` in JSON). """
 
         self.processing = None
         """ Any processing of the product during collection.
@@ -59,7 +62,7 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
 
         self.request = None
         """ Procedure request.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['ServiceRequest']` (represented as `dict` in JSON). """
 
         self.status = None
         """ available | unavailable.
@@ -115,11 +118,11 @@ class BiologicallyDerivedProductCollection(backboneelement.BackboneElement):
 
         self.collector = None
         """ Individual performing collection.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole']` (represented as `dict` in JSON). """
 
         self.source = None
         """ Who is product from.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient', 'Organization']` (represented as `dict` in JSON). """
 
         super(BiologicallyDerivedProductCollection, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -196,7 +199,7 @@ class BiologicallyDerivedProductProcessing(backboneelement.BackboneElement):
 
         self.additive = None
         """ Substance added during processing.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Substance']` (represented as `dict` in JSON). """
 
         self.description = None
         """ Description of of processing.

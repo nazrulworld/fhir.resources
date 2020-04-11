@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/CatalogEntry
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 import os
 import pytest
@@ -23,17 +26,17 @@ class CatalogEntryTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("CatalogEntry", js["resourceType"])
         return catalogentry.CatalogEntry(js)
-    
+
     def testCatalogEntry1(self):
         inst = self.instantiate_from("catalogentry-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a CatalogEntry instance")
         self.implCatalogEntry1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("CatalogEntry", js["resourceType"])
         inst2 = catalogentry.CatalogEntry(js)
         self.implCatalogEntry1(inst2)
-    
+
     def implCatalogEntry1(self, inst):
         self.assertEqual(force_bytes(inst.id), force_bytes("example"))
         self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://example.com/identifier"))

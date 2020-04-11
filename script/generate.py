@@ -16,7 +16,6 @@ import subprocess
 import shutil
 import sys
 
-import settings
 
 SRC_BASE_PATH = pathlib.Path(os.path.abspath(__file__)).parents[1] / 'fhir' / 'resources'
 PARSER_BASE_PATH = pathlib.Path(os.path.abspath(__file__)).parents[1] / 'fhir-parser'
@@ -108,34 +107,16 @@ def update_pytest_fixture(version):
 
 def main():
     """ """
-    force_download = len(sys.argv) > 1 and '-f' in sys.argv
-    keep_previous_versions = len(sys.argv) > 1 and (
-        "-k" in sys.argv or "--keep-previous-versions" in sys.argv
-    )
-
-    fhir_v_info = get_fhir_version_info()
-    current_version = get_current_version()
+    if str(PARSER_BASE_PATH) not in sys.path:
+        sys.path.append(str(PARSER_BASE_PATH))
 
     args = [f'{PARSER_BASE_PATH}/generate.py'] + sys.argv[1:]
-
-    shutil.copy(str(SCRIPT_BASE_PATH / 'settings.py'), str(PARSER_BASE_PATH / 'settings.py'))
+    shutil.copy(str(SCRIPT_BASE_PATH / 'base_local.py'), str(PARSER_BASE_PATH / "config" / "base_local.py"))
     try:
         subprocess.check_call(args=args, cwd=str(PARSER_BASE_PATH))
     except subprocess.CalledProcessError as exc:
         sys.stderr.write(str(exc) + '\n')
         return 1
-
-    cached_v_info = get_cached_version_info()
-
-    if (StrictVersion(fhir_v_info[0]) > StrictVersion(cached_v_info[0])) and not force_download:
-        sys.stdout.write(
-            '==> New FHIR version {0} is available! However resources '
-            'are generated from cache.'.format(fhir_v_info[0]))
-
-    if keep_previous_versions and getattr(settings, 'previous_versions', None):
-
-        for version in settings.previous_versions:
-            update_pytest_fixture(version)
 
     return 0
 

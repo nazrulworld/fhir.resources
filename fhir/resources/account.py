@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/Account) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Account
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -48,11 +51,11 @@ class Account(domainresource.DomainResource):
 
         self.owner = None
         """ Entity managing the Account.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.partOf = None
         """ Reference to a parent Account.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Account']` (represented as `dict` in JSON). """
 
         self.servicePeriod = None
         """ Transaction window.
@@ -64,7 +67,7 @@ class Account(domainresource.DomainResource):
 
         self.subject = None
         """ The entity that caused the expenses.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Patient', 'Device', 'Practitioner', 'PractitionerRole', 'Location', 'HealthcareService', 'Organization']` (represented as `dict` in JSON). """
 
         self.type = None
         """ E.g. patient, expense, depreciation.
@@ -110,7 +113,7 @@ class AccountCoverage(backboneelement.BackboneElement):
         self.coverage = None
         """ The party(s), such as insurances, that may contribute to the
         payment of this account.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Coverage']` (represented as `dict` in JSON). """
 
         self.priority = None
         """ The priority of the coverage in the context of this account.
@@ -150,7 +153,7 @@ class AccountGuarantor(backboneelement.BackboneElement):
 
         self.party = None
         """ Responsible entity.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient', 'RelatedPerson', 'Organization']` (represented as `dict` in JSON). """
 
         self.period = None
         """ Guarantee account during.

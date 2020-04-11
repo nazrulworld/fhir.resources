@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Location
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 import os
 import pytest
@@ -23,125 +26,18 @@ class LocationTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("Location", js["resourceType"])
         return location.Location(js)
-    
+
     def testLocation1(self):
-        inst = self.instantiate_from("location-example-room.json")
+        inst = self.instantiate_from("location-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a Location instance")
         self.implLocation1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Location", js["resourceType"])
         inst2 = location.Location(js)
         self.implLocation1(inst2)
-    
+
     def implLocation1(self, inst):
-        self.assertEqual(force_bytes(inst.alias[0]), force_bytes("South Wing OR 5"))
-        self.assertEqual(force_bytes(inst.alias[1]), force_bytes("Main Wing OR 2"))
-        self.assertEqual(force_bytes(inst.description), force_bytes("Old South Wing, Neuro Radiology Operation Room 1 on second floor"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("2"))
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("B1-S.F2.1.00"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
-        self.assertEqual(force_bytes(inst.mode), force_bytes("instance"))
-        self.assertEqual(force_bytes(inst.name), force_bytes("South Wing Neuro OR 1"))
-        self.assertEqual(force_bytes(inst.operationalStatus.code), force_bytes("H"))
-        self.assertEqual(force_bytes(inst.operationalStatus.display), force_bytes("Housekeeping"))
-        self.assertEqual(force_bytes(inst.operationalStatus.system), force_bytes("http://terminology.hl7.org/CodeSystem/v2-0116"))
-        self.assertEqual(force_bytes(inst.physicalType.coding[0].code), force_bytes("ro"))
-        self.assertEqual(force_bytes(inst.physicalType.coding[0].display), force_bytes("Room"))
-        self.assertEqual(force_bytes(inst.physicalType.coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/location-physical-type"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("suspended"))
-        self.assertEqual(force_bytes(inst.telecom[0].system), force_bytes("phone"))
-        self.assertEqual(force_bytes(inst.telecom[0].value), force_bytes("2329"))
-        self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">Burgers UMC, South Wing, second floor, Neuro Radiology Operation Room 1</div>"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type[0].coding[0].code), force_bytes("RNEU"))
-        self.assertEqual(force_bytes(inst.type[0].coding[0].display), force_bytes("Neuroradiology unit"))
-        self.assertEqual(force_bytes(inst.type[0].coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-RoleCode"))
-    
-    def testLocation2(self):
-        inst = self.instantiate_from("location-example-hl7hq.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Location instance")
-        self.implLocation2(inst)
-        
-        js = inst.as_json()
-        self.assertEqual("Location", js["resourceType"])
-        inst2 = location.Location(js)
-        self.implLocation2(inst2)
-    
-    def implLocation2(self, inst):
-        self.assertEqual(force_bytes(inst.address.city), force_bytes("Ann Arbor"))
-        self.assertEqual(force_bytes(inst.address.country), force_bytes("USA"))
-        self.assertEqual(force_bytes(inst.address.line[0]), force_bytes("3300 Washtenaw Avenue, Suite 227"))
-        self.assertEqual(force_bytes(inst.address.postalCode), force_bytes("48104"))
-        self.assertEqual(force_bytes(inst.address.state), force_bytes("MI"))
-        self.assertEqual(force_bytes(inst.description), force_bytes("HL7 Headquarters"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("hl7"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
-        self.assertEqual(force_bytes(inst.mode), force_bytes("instance"))
-        self.assertEqual(force_bytes(inst.name), force_bytes("Health Level Seven International"))
-        self.assertEqual(force_bytes(inst.physicalType.coding[0].code), force_bytes("bu"))
-        self.assertEqual(force_bytes(inst.physicalType.coding[0].display), force_bytes("Building"))
-        self.assertEqual(force_bytes(inst.physicalType.coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/location-physical-type"))
-        self.assertEqual(inst.position.latitude, -83.69471)
-        self.assertEqual(inst.position.longitude, 42.2565)
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(force_bytes(inst.telecom[0].system), force_bytes("phone"))
-        self.assertEqual(force_bytes(inst.telecom[0].value), force_bytes("(+1) 734-677-7777"))
-        self.assertEqual(force_bytes(inst.telecom[1].system), force_bytes("fax"))
-        self.assertEqual(force_bytes(inst.telecom[1].value), force_bytes("(+1) 734-677-6622"))
-        self.assertEqual(force_bytes(inst.telecom[2].system), force_bytes("email"))
-        self.assertEqual(force_bytes(inst.telecom[2].value), force_bytes("hq@HL7.org"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type[0].coding[0].code), force_bytes("SLEEP"))
-        self.assertEqual(force_bytes(inst.type[0].coding[0].display), force_bytes("Sleep disorders unit"))
-        self.assertEqual(force_bytes(inst.type[0].coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-RoleCode"))
-    
-    def testLocation3(self):
-        inst = self.instantiate_from("location-example-ambulance.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Location instance")
-        self.implLocation3(inst)
-        
-        js = inst.as_json()
-        self.assertEqual("Location", js["resourceType"])
-        inst2 = location.Location(js)
-        self.implLocation3(inst2)
-    
-    def implLocation3(self, inst):
-        self.assertEqual(force_bytes(inst.description), force_bytes("Ambulance provided by Burgers University Medical Center"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("amb"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
-        self.assertEqual(force_bytes(inst.mode), force_bytes("kind"))
-        self.assertEqual(force_bytes(inst.name), force_bytes("BUMC Ambulance"))
-        self.assertEqual(force_bytes(inst.physicalType.coding[0].code), force_bytes("ve"))
-        self.assertEqual(force_bytes(inst.physicalType.coding[0].display), force_bytes("Vehicle"))
-        self.assertEqual(force_bytes(inst.physicalType.coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/location-physical-type"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(force_bytes(inst.telecom[0].system), force_bytes("phone"))
-        self.assertEqual(force_bytes(inst.telecom[0].use), force_bytes("mobile"))
-        self.assertEqual(force_bytes(inst.telecom[0].value), force_bytes("2329"))
-        self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">Mobile Clinic</div>"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type[0].coding[0].code), force_bytes("AMB"))
-        self.assertEqual(force_bytes(inst.type[0].coding[0].display), force_bytes("Ambulance"))
-        self.assertEqual(force_bytes(inst.type[0].coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-RoleCode"))
-    
-    def testLocation4(self):
-        inst = self.instantiate_from("location-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Location instance")
-        self.implLocation4(inst)
-        
-        js = inst.as_json()
-        self.assertEqual("Location", js["resourceType"])
-        inst2 = location.Location(js)
-        self.implLocation4(inst2)
-    
-    def implLocation4(self, inst):
         self.assertEqual(force_bytes(inst.address.city), force_bytes("Den Burg"))
         self.assertEqual(force_bytes(inst.address.country), force_bytes("NLD"))
         self.assertEqual(force_bytes(inst.address.line[0]), force_bytes("Galapagosweg 91, Building A"))
@@ -177,17 +73,112 @@ class LocationTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.telecom[3].value), force_bytes("http://sampleorg.com/southwing"))
         self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">Burgers UMC, South Wing, second floor</div>"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-    
+
+    def testLocation2(self):
+        inst = self.instantiate_from("location-example-room.json")
+        self.assertIsNotNone(inst, "Must have instantiated a Location instance")
+        self.implLocation2(inst)
+
+        js = inst.as_json()
+        self.assertEqual("Location", js["resourceType"])
+        inst2 = location.Location(js)
+        self.implLocation2(inst2)
+
+    def implLocation2(self, inst):
+        self.assertEqual(force_bytes(inst.alias[0]), force_bytes("South Wing OR 5"))
+        self.assertEqual(force_bytes(inst.alias[1]), force_bytes("Main Wing OR 2"))
+        self.assertEqual(force_bytes(inst.description), force_bytes("Old South Wing, Neuro Radiology Operation Room 1 on second floor"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("2"))
+        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("B1-S.F2.1.00"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
+        self.assertEqual(force_bytes(inst.mode), force_bytes("instance"))
+        self.assertEqual(force_bytes(inst.name), force_bytes("South Wing Neuro OR 1"))
+        self.assertEqual(force_bytes(inst.operationalStatus.code), force_bytes("H"))
+        self.assertEqual(force_bytes(inst.operationalStatus.display), force_bytes("Housekeeping"))
+        self.assertEqual(force_bytes(inst.operationalStatus.system), force_bytes("http://terminology.hl7.org/CodeSystem/v2-0116"))
+        self.assertEqual(force_bytes(inst.physicalType.coding[0].code), force_bytes("ro"))
+        self.assertEqual(force_bytes(inst.physicalType.coding[0].display), force_bytes("Room"))
+        self.assertEqual(force_bytes(inst.physicalType.coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/location-physical-type"))
+        self.assertEqual(force_bytes(inst.status), force_bytes("suspended"))
+        self.assertEqual(force_bytes(inst.telecom[0].system), force_bytes("phone"))
+        self.assertEqual(force_bytes(inst.telecom[0].value), force_bytes("2329"))
+        self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">Burgers UMC, South Wing, second floor, Neuro Radiology Operation Room 1</div>"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+        self.assertEqual(force_bytes(inst.type[0].coding[0].code), force_bytes("RNEU"))
+        self.assertEqual(force_bytes(inst.type[0].coding[0].display), force_bytes("Neuroradiology unit"))
+        self.assertEqual(force_bytes(inst.type[0].coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-RoleCode"))
+
+    def testLocation3(self):
+        inst = self.instantiate_from("location-example-ambulance.json")
+        self.assertIsNotNone(inst, "Must have instantiated a Location instance")
+        self.implLocation3(inst)
+
+        js = inst.as_json()
+        self.assertEqual("Location", js["resourceType"])
+        inst2 = location.Location(js)
+        self.implLocation3(inst2)
+
+    def implLocation3(self, inst):
+        self.assertEqual(force_bytes(inst.description), force_bytes("Ambulance provided by Burgers University Medical Center"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("amb"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
+        self.assertEqual(force_bytes(inst.mode), force_bytes("kind"))
+        self.assertEqual(force_bytes(inst.name), force_bytes("BUMC Ambulance"))
+        self.assertEqual(force_bytes(inst.physicalType.coding[0].code), force_bytes("ve"))
+        self.assertEqual(force_bytes(inst.physicalType.coding[0].display), force_bytes("Vehicle"))
+        self.assertEqual(force_bytes(inst.physicalType.coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/location-physical-type"))
+        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
+        self.assertEqual(force_bytes(inst.telecom[0].system), force_bytes("phone"))
+        self.assertEqual(force_bytes(inst.telecom[0].use), force_bytes("mobile"))
+        self.assertEqual(force_bytes(inst.telecom[0].value), force_bytes("2329"))
+        self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">Mobile Clinic</div>"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+        self.assertEqual(force_bytes(inst.type[0].coding[0].code), force_bytes("AMB"))
+        self.assertEqual(force_bytes(inst.type[0].coding[0].display), force_bytes("Ambulance"))
+        self.assertEqual(force_bytes(inst.type[0].coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-RoleCode"))
+
+    def testLocation4(self):
+        inst = self.instantiate_from("location-example-ukpharmacy.json")
+        self.assertIsNotNone(inst, "Must have instantiated a Location instance")
+        self.implLocation4(inst)
+
+        js = inst.as_json()
+        self.assertEqual("Location", js["resourceType"])
+        inst2 = location.Location(js)
+        self.implLocation4(inst2)
+
+    def implLocation4(self, inst):
+        self.assertEqual(force_bytes(inst.description), force_bytes("All Pharmacies in the United Kingdom covered by the National Pharmacy Association"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("ukp"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
+        self.assertEqual(force_bytes(inst.mode), force_bytes("kind"))
+        self.assertEqual(force_bytes(inst.name), force_bytes("UK Pharmacies"))
+        self.assertEqual(force_bytes(inst.physicalType.coding[0].code), force_bytes("jdn"))
+        self.assertEqual(force_bytes(inst.physicalType.coding[0].display), force_bytes("Jurisdiction"))
+        self.assertEqual(force_bytes(inst.physicalType.coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/location-physical-type"))
+        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
+        self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">UK Pharmacies</div>"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+        self.assertEqual(force_bytes(inst.type[0].coding[0].code), force_bytes("PHARM"))
+        self.assertEqual(force_bytes(inst.type[0].coding[0].display), force_bytes("Pharmacy"))
+        self.assertEqual(force_bytes(inst.type[0].coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-RoleCode"))
+
     def testLocation5(self):
         inst = self.instantiate_from("location-example-patients-home.json")
         self.assertIsNotNone(inst, "Must have instantiated a Location instance")
         self.implLocation5(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Location", js["resourceType"])
         inst2 = location.Location(js)
         self.implLocation5(inst2)
-    
+
     def implLocation5(self, inst):
         self.assertEqual(force_bytes(inst.description), force_bytes("Patient's Home"))
         self.assertEqual(force_bytes(inst.id), force_bytes("ph"))
@@ -205,32 +196,44 @@ class LocationTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.type[0].coding[0].code), force_bytes("PTRES"))
         self.assertEqual(force_bytes(inst.type[0].coding[0].display), force_bytes("Patient's Residence"))
         self.assertEqual(force_bytes(inst.type[0].coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-RoleCode"))
-    
+
     def testLocation6(self):
-        inst = self.instantiate_from("location-example-ukpharmacy.json")
+        inst = self.instantiate_from("location-example-hl7hq.json")
         self.assertIsNotNone(inst, "Must have instantiated a Location instance")
         self.implLocation6(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Location", js["resourceType"])
         inst2 = location.Location(js)
         self.implLocation6(inst2)
-    
+
     def implLocation6(self, inst):
-        self.assertEqual(force_bytes(inst.description), force_bytes("All Pharmacies in the United Kingdom covered by the National Pharmacy Association"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("ukp"))
+        self.assertEqual(force_bytes(inst.address.city), force_bytes("Ann Arbor"))
+        self.assertEqual(force_bytes(inst.address.country), force_bytes("USA"))
+        self.assertEqual(force_bytes(inst.address.line[0]), force_bytes("3300 Washtenaw Avenue, Suite 227"))
+        self.assertEqual(force_bytes(inst.address.postalCode), force_bytes("48104"))
+        self.assertEqual(force_bytes(inst.address.state), force_bytes("MI"))
+        self.assertEqual(force_bytes(inst.description), force_bytes("HL7 Headquarters"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("hl7"))
         self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
         self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
         self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
-        self.assertEqual(force_bytes(inst.mode), force_bytes("kind"))
-        self.assertEqual(force_bytes(inst.name), force_bytes("UK Pharmacies"))
-        self.assertEqual(force_bytes(inst.physicalType.coding[0].code), force_bytes("jdn"))
-        self.assertEqual(force_bytes(inst.physicalType.coding[0].display), force_bytes("Jurisdiction"))
+        self.assertEqual(force_bytes(inst.mode), force_bytes("instance"))
+        self.assertEqual(force_bytes(inst.name), force_bytes("Health Level Seven International"))
+        self.assertEqual(force_bytes(inst.physicalType.coding[0].code), force_bytes("bu"))
+        self.assertEqual(force_bytes(inst.physicalType.coding[0].display), force_bytes("Building"))
         self.assertEqual(force_bytes(inst.physicalType.coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/location-physical-type"))
+        self.assertEqual(inst.position.latitude, -83.69471)
+        self.assertEqual(inst.position.longitude, 42.2565)
         self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">UK Pharmacies</div>"))
+        self.assertEqual(force_bytes(inst.telecom[0].system), force_bytes("phone"))
+        self.assertEqual(force_bytes(inst.telecom[0].value), force_bytes("(+1) 734-677-7777"))
+        self.assertEqual(force_bytes(inst.telecom[1].system), force_bytes("fax"))
+        self.assertEqual(force_bytes(inst.telecom[1].value), force_bytes("(+1) 734-677-6622"))
+        self.assertEqual(force_bytes(inst.telecom[2].system), force_bytes("email"))
+        self.assertEqual(force_bytes(inst.telecom[2].value), force_bytes("hq@HL7.org"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type[0].coding[0].code), force_bytes("PHARM"))
-        self.assertEqual(force_bytes(inst.type[0].coding[0].display), force_bytes("Pharmacy"))
+        self.assertEqual(force_bytes(inst.type[0].coding[0].code), force_bytes("SLEEP"))
+        self.assertEqual(force_bytes(inst.type[0].coding[0].display), force_bytes("Sleep disorders unit"))
         self.assertEqual(force_bytes(inst.type[0].coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-RoleCode"))
 

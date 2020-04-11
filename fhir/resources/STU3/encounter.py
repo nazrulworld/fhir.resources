@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/Encounter) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Encounter
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -27,11 +30,11 @@ class Encounter(domainresource.DomainResource):
 
         self.account = None
         """ The set of accounts that may be used for billing for this Encounter.
-        List of `FHIRReference` items referencing `Account` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Account']` (represented as `dict` in JSON). """
 
         self.appointment = None
         """ The appointment that scheduled this encounter.
-        Type `FHIRReference` referencing `Appointment` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Appointment']` (represented as `dict` in JSON). """
 
         self.classHistory = None
         """ List of past encounter classes.
@@ -47,7 +50,7 @@ class Encounter(domainresource.DomainResource):
 
         self.episodeOfCare = None
         """ Episode(s) of care that this encounter should be recorded against.
-        List of `FHIRReference` items referencing `EpisodeOfCare` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['EpisodeOfCare']` (represented as `dict` in JSON). """
 
         self.hospitalization = None
         """ Details about the admission to a healthcare service.
@@ -59,7 +62,7 @@ class Encounter(domainresource.DomainResource):
 
         self.incomingReferral = None
         """ The ReferralRequest that initiated this encounter.
-        List of `FHIRReference` items referencing `ReferralRequest` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['ReferralRequest']` (represented as `dict` in JSON). """
 
         self.length = None
         """ Quantity of time the encounter lasted (less time absent).
@@ -71,7 +74,7 @@ class Encounter(domainresource.DomainResource):
 
         self.partOf = None
         """ Another Encounter this encounter is part of.
-        Type `FHIRReference` referencing `Encounter` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Encounter']` (represented as `dict` in JSON). """
 
         self.participant = None
         """ List of participants involved in the encounter.
@@ -91,7 +94,7 @@ class Encounter(domainresource.DomainResource):
 
         self.serviceProvider = None
         """ The custodian organization of this Encounter record.
-        Type `FHIRReference` referencing `Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.status = None
         """ planned | arrived | triaged | in-progress | onleave | finished |
@@ -104,7 +107,7 @@ class Encounter(domainresource.DomainResource):
 
         self.subject = None
         """ The patient ro group present at the encounter.
-        Type `FHIRReference` referencing `Patient, Group` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient'], ['Group']` (represented as `dict` in JSON). """
 
         self.type = None
         """ Specific type of encounter.
@@ -200,7 +203,7 @@ class EncounterDiagnosis(backboneelement.BackboneElement):
 
         self.condition = None
         """ Reason the encounter takes place (resource).
-        Type `FHIRReference` referencing `Condition, Procedure` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Condition'], ['Procedure']` (represented as `dict` in JSON). """
 
         self.rank = None
         """ Ranking of the diagnosis (for each role type).
@@ -243,7 +246,7 @@ class EncounterHospitalization(backboneelement.BackboneElement):
 
         self.destination = None
         """ Location to which the patient is discharged.
-        Type `FHIRReference` referencing `Location` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Location']` (represented as `dict` in JSON). """
 
         self.dietPreference = None
         """ Diet preferences reported by the patient.
@@ -255,7 +258,7 @@ class EncounterHospitalization(backboneelement.BackboneElement):
 
         self.origin = None
         """ The location from which the patient came before admission.
-        Type `FHIRReference` referencing `Location` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Location']` (represented as `dict` in JSON). """
 
         self.preAdmissionIdentifier = None
         """ Pre-admission identifier.
@@ -310,7 +313,7 @@ class EncounterLocation(backboneelement.BackboneElement):
 
         self.location = None
         """ Location the encounter takes place.
-        Type `FHIRReference` referencing `Location` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Location']` (represented as `dict` in JSON). """
 
         self.period = None
         """ Time period during which the patient was present at the location.
@@ -350,7 +353,7 @@ class EncounterParticipant(backboneelement.BackboneElement):
 
         self.individual = None
         """ Persons involved in the encounter other than the patient.
-        Type `FHIRReference` referencing `Practitioner, RelatedPerson` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner'], ['RelatedPerson']` (represented as `dict` in JSON). """
 
         self.period = None
         """ Period of time during the encounter that the participant

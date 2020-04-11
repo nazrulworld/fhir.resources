@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/MedicinalProductContraindication) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/MedicinalProductContraindication
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -47,12 +50,12 @@ class MedicinalProductContraindication(domainresource.DomainResource):
 
         self.subject = None
         """ The medication for which this is an indication.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['MedicinalProduct', 'Medication']` (represented as `dict` in JSON). """
 
         self.therapeuticIndication = None
         """ Information about the use of the medicinal product in relation to
         other therapies as part of the indication.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['MedicinalProductIndication']` (represented as `dict` in JSON). """
 
         super(MedicinalProductContraindication, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -97,7 +100,7 @@ class MedicinalProductContraindicationOtherTherapy(backboneelement.BackboneEleme
         """ Reference to a specific medication (active substance, medicinal
         product or class of products) as part of an indication or
         contraindication.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['MedicinalProduct', 'Medication', 'Substance', 'SubstanceSpecification']` (represented as `dict` in JSON). """
 
         self.therapyRelationshipType = None
         """ The type of relationship between the medicinal product indication

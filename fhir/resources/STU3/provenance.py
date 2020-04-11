@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/Provenance) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Provenance
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -46,7 +49,7 @@ class Provenance(domainresource.DomainResource):
 
         self.location = None
         """ Where the activity occurred, if relevant.
-        Type `FHIRReference` referencing `Location` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Location']` (represented as `dict` in JSON). """
 
         self.period = None
         """ When the activity occurred.
@@ -70,7 +73,7 @@ class Provenance(domainresource.DomainResource):
 
         self.target = None
         """ Target Reference(s) (usually version specific).
-        List of `FHIRReference` items referencing `Resource` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         super(Provenance, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -112,7 +115,7 @@ class ProvenanceAgent(backboneelement.BackboneElement):
 
         self.onBehalfOfReference = None
         """ Who the agent is representing.
-        Type `FHIRReference` referencing `Practitioner, RelatedPerson, Patient, Device, Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner'], ['RelatedPerson'], ['Patient'], ['Device'], ['Organization']` (represented as `dict` in JSON). """
 
         self.onBehalfOfUri = None
         """ Who the agent is representing.
@@ -128,7 +131,7 @@ class ProvenanceAgent(backboneelement.BackboneElement):
 
         self.whoReference = None
         """ Who participated.
-        Type `FHIRReference` referencing `Practitioner, RelatedPerson, Patient, Device, Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner'], ['RelatedPerson'], ['Patient'], ['Device'], ['Organization']` (represented as `dict` in JSON). """
 
         self.whoUri = None
         """ Who participated.
@@ -177,7 +180,7 @@ class ProvenanceEntity(backboneelement.BackboneElement):
 
         self.whatReference = None
         """ Identity of entity.
-        Type `FHIRReference` referencing `Resource` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.whatUri = None
         """ Identity of entity.

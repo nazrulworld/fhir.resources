@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/ImmunizationRecommendation) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/ImmunizationRecommendation
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -31,7 +34,7 @@ class ImmunizationRecommendation(domainresource.DomainResource):
 
         self.patient = None
         """ Who this profile is for.
-        Type `FHIRReference` referencing `Patient` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
 
         self.recommendation = None
         """ Vaccine administration recommendations.
@@ -87,11 +90,11 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
 
         self.supportingImmunization = None
         """ Past immunizations supporting recommendation.
-        List of `FHIRReference` items referencing `Immunization` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Immunization']` (represented as `dict` in JSON). """
 
         self.supportingPatientInformation = None
         """ Patient observations supporting recommendation.
-        List of `FHIRReference` items referencing `Observation, AllergyIntolerance` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Observation'], ['AllergyIntolerance']` (represented as `dict` in JSON). """
 
         self.targetDisease = None
         """ Disease to be immunized against.
@@ -174,7 +177,7 @@ class ImmunizationRecommendationRecommendationProtocol(backboneelement.BackboneE
 
         self.authority = None
         """ Who is responsible for protocol.
-        Type `FHIRReference` referencing `Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.description = None
         """ Protocol details.

@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/MedicinalProductUndesirableEffect
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 import os
 import pytest
@@ -23,17 +26,17 @@ class MedicinalProductUndesirableEffectTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("MedicinalProductUndesirableEffect", js["resourceType"])
         return medicinalproductundesirableeffect.MedicinalProductUndesirableEffect(js)
-    
+
     def testMedicinalProductUndesirableEffect1(self):
         inst = self.instantiate_from("medicinalproductundesirableeffect-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a MedicinalProductUndesirableEffect instance")
         self.implMedicinalProductUndesirableEffect1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("MedicinalProductUndesirableEffect", js["resourceType"])
         inst2 = medicinalproductundesirableeffect.MedicinalProductUndesirableEffect(js)
         self.implMedicinalProductUndesirableEffect1(inst2)
-    
+
     def implMedicinalProductUndesirableEffect1(self, inst):
         self.assertEqual(force_bytes(inst.classification.coding[0].code), force_bytes("Bloodandlymphaticsystemdisorders"))
         self.assertEqual(force_bytes(inst.classification.coding[0].system), force_bytes("http://ema.europa.eu/example/symptom-condition-effectclassification"))

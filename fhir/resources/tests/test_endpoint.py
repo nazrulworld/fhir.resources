@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Endpoint
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 import os
 import pytest
@@ -23,41 +26,18 @@ class EndpointTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("Endpoint", js["resourceType"])
         return endpoint.Endpoint(js)
-    
+
     def testEndpoint1(self):
-        inst = self.instantiate_from("endpoint-example-direct.json")
+        inst = self.instantiate_from("endpoint-example-iid.json")
         self.assertIsNotNone(inst, "Must have instantiated a Endpoint instance")
         self.implEndpoint1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Endpoint", js["resourceType"])
         inst2 = endpoint.Endpoint(js)
         self.implEndpoint1(inst2)
-    
+
     def implEndpoint1(self, inst):
-        self.assertEqual(force_bytes(inst.address), force_bytes("mailto:MARTIN.SMIETANKA@directnppes.com"))
-        self.assertEqual(force_bytes(inst.connectionType.code), force_bytes("direct-project"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("direct-endpoint"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
-        self.assertEqual(force_bytes(inst.name), force_bytes("MARTIN SMIETANKA"))
-        self.assertEqual(force_bytes(inst.payloadType[0].coding[0].code), force_bytes("urn:hl7-org:sdwg:ccda-structuredBody:1.1"))
-        self.assertEqual(force_bytes(inst.payloadType[0].coding[0].system), force_bytes("urn:oid:1.3.6.1.4.1.19376.1.2.3"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-    
-    def testEndpoint2(self):
-        inst = self.instantiate_from("endpoint-example-iid.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Endpoint instance")
-        self.implEndpoint2(inst)
-        
-        js = inst.as_json()
-        self.assertEqual("Endpoint", js["resourceType"])
-        inst2 = endpoint.Endpoint(js)
-        self.implEndpoint2(inst2)
-    
-    def implEndpoint2(self, inst):
         self.assertEqual(force_bytes(inst.address), force_bytes("https://pacs.hospital.org/IHEInvokeImageDisplay"))
         self.assertEqual(force_bytes(inst.connectionType.code), force_bytes("ihe-iid"))
         self.assertEqual(force_bytes(inst.connectionType.system), force_bytes("http://terminology.hl7.org/CodeSystem/endpoint-connection-type"))
@@ -69,17 +49,40 @@ class EndpointTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.payloadType[0].text), force_bytes("DICOM IID"))
         self.assertEqual(force_bytes(inst.status), force_bytes("active"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-    
+
+    def testEndpoint2(self):
+        inst = self.instantiate_from("endpoint-example-direct.json")
+        self.assertIsNotNone(inst, "Must have instantiated a Endpoint instance")
+        self.implEndpoint2(inst)
+
+        js = inst.as_json()
+        self.assertEqual("Endpoint", js["resourceType"])
+        inst2 = endpoint.Endpoint(js)
+        self.implEndpoint2(inst2)
+
+    def implEndpoint2(self, inst):
+        self.assertEqual(force_bytes(inst.address), force_bytes("mailto:MARTIN.SMIETANKA@directnppes.com"))
+        self.assertEqual(force_bytes(inst.connectionType.code), force_bytes("direct-project"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("direct-endpoint"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
+        self.assertEqual(force_bytes(inst.name), force_bytes("MARTIN SMIETANKA"))
+        self.assertEqual(force_bytes(inst.payloadType[0].coding[0].code), force_bytes("urn:hl7-org:sdwg:ccda-structuredBody:1.1"))
+        self.assertEqual(force_bytes(inst.payloadType[0].coding[0].system), force_bytes("urn:oid:1.3.6.1.4.1.19376.1.2.3"))
+        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+
     def testEndpoint3(self):
         inst = self.instantiate_from("endpoint-example-wadors.json")
         self.assertIsNotNone(inst, "Must have instantiated a Endpoint instance")
         self.implEndpoint3(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Endpoint", js["resourceType"])
         inst2 = endpoint.Endpoint(js)
         self.implEndpoint3(inst2)
-    
+
     def implEndpoint3(self, inst):
         self.assertEqual(force_bytes(inst.address), force_bytes("https://pacs.hospital.org/wado-rs"))
         self.assertEqual(force_bytes(inst.connectionType.code), force_bytes("dicom-wado-rs"))
@@ -93,17 +96,17 @@ class EndpointTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.payloadType[0].text), force_bytes("DICOM WADO-RS"))
         self.assertEqual(force_bytes(inst.status), force_bytes("active"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-    
+
     def testEndpoint4(self):
         inst = self.instantiate_from("endpoint-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a Endpoint instance")
         self.implEndpoint4(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Endpoint", js["resourceType"])
         inst2 = endpoint.Endpoint(js)
         self.implEndpoint4(inst2)
-    
+
     def implEndpoint4(self, inst):
         self.assertEqual(force_bytes(inst.address), force_bytes("http://fhir3.healthintersections.com.au/open/CarePlan"))
         self.assertEqual(force_bytes(inst.connectionType.code), force_bytes("hl7-fhir-rest"))

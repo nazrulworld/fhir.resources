@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/Composition) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Composition
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -38,7 +41,7 @@ class Composition(domainresource.DomainResource):
 
         self.author = None
         """ Who and/or what authored the composition.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Practitioner', 'PractitionerRole', 'Device', 'Patient', 'RelatedPerson', 'Organization']` (represented as `dict` in JSON). """
 
         self.category = None
         """ Categorization of Composition.
@@ -50,7 +53,7 @@ class Composition(domainresource.DomainResource):
 
         self.custodian = None
         """ Organization which maintains the composition.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.date = None
         """ Composition editing time.
@@ -58,7 +61,7 @@ class Composition(domainresource.DomainResource):
 
         self.encounter = None
         """ Context of the Composition.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Encounter']` (represented as `dict` in JSON). """
 
         self.event = None
         """ The clinical service(s) being documented.
@@ -82,7 +85,7 @@ class Composition(domainresource.DomainResource):
 
         self.subject = None
         """ Who and/or what the composition is about.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.title = None
         """ Human Readable name/title.
@@ -140,7 +143,7 @@ class CompositionAttester(backboneelement.BackboneElement):
 
         self.party = None
         """ Who attested the composition.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient', 'RelatedPerson', 'Practitioner', 'PractitionerRole', 'Organization']` (represented as `dict` in JSON). """
 
         self.time = None
         """ When the composition was attested.
@@ -181,7 +184,7 @@ class CompositionEvent(backboneelement.BackboneElement):
 
         self.detail = None
         """ The event(s) being documented.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.period = None
         """ The period covered by the documentation.
@@ -226,7 +229,7 @@ class CompositionRelatesTo(backboneelement.BackboneElement):
 
         self.targetReference = None
         """ Target of the relationship.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Composition']` (represented as `dict` in JSON). """
 
         super(CompositionRelatesTo, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -258,7 +261,7 @@ class CompositionSection(backboneelement.BackboneElement):
 
         self.author = None
         """ Who and/or what authored the section.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Practitioner', 'PractitionerRole', 'Device', 'Patient', 'RelatedPerson', 'Organization']` (represented as `dict` in JSON). """
 
         self.code = None
         """ Classification of section (recommended).
@@ -270,12 +273,12 @@ class CompositionSection(backboneelement.BackboneElement):
 
         self.entry = None
         """ A reference to data that supports this section.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.focus = None
         """ Who/what the section is about, when it is not about the subject of
         composition.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.mode = None
         """ working | snapshot | changes.

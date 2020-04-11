@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/DetectedIssue
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 import os
 import pytest
@@ -23,17 +26,17 @@ class DetectedIssueTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("DetectedIssue", js["resourceType"])
         return detectedissue.DetectedIssue(js)
-    
+
     def testDetectedIssue1(self):
         inst = self.instantiate_from("detectedissue-example-allergy.json")
         self.assertIsNotNone(inst, "Must have instantiated a DetectedIssue instance")
         self.implDetectedIssue1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("DetectedIssue", js["resourceType"])
         inst2 = detectedissue.DetectedIssue(js)
         self.implDetectedIssue1(inst2)
-    
+
     def implDetectedIssue1(self, inst):
         self.assertEqual(force_bytes(inst.id), force_bytes("allergy"))
         self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
@@ -42,18 +45,46 @@ class DetectedIssueTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.status), force_bytes("final"))
         self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">[Put rendering here]</div>"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-    
+
     def testDetectedIssue2(self):
-        inst = self.instantiate_from("detectedissue-example.json")
+        inst = self.instantiate_from("detectedissue-example-dup.json")
         self.assertIsNotNone(inst, "Must have instantiated a DetectedIssue instance")
         self.implDetectedIssue2(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("DetectedIssue", js["resourceType"])
         inst2 = detectedissue.DetectedIssue(js)
         self.implDetectedIssue2(inst2)
-    
+
     def implDetectedIssue2(self, inst):
+        self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("DUPTHPY"))
+        self.assertEqual(force_bytes(inst.code.coding[0].display), force_bytes("Duplicate Therapy Alert"))
+        self.assertEqual(force_bytes(inst.code.coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActCode"))
+        self.assertEqual(force_bytes(inst.detail), force_bytes("Similar test was performed within the past 14 days"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("duplicate"))
+        self.assertEqual(inst.identifiedDateTime.date, FHIRDate("2013-05-08").date)
+        self.assertEqual(inst.identifiedDateTime.as_json(), "2013-05-08")
+        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://example.org"))
+        self.assertEqual(force_bytes(inst.identifier[0].use), force_bytes("official"))
+        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("12345"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
+        self.assertEqual(force_bytes(inst.reference), force_bytes("http://www.tmhp.com/RadiologyClinicalDecisionSupport/2011/CHEST%20IMAGING%20GUIDELINES%202011.pdf"))
+        self.assertEqual(force_bytes(inst.status), force_bytes("final"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+
+    def testDetectedIssue3(self):
+        inst = self.instantiate_from("detectedissue-example.json")
+        self.assertIsNotNone(inst, "Must have instantiated a DetectedIssue instance")
+        self.implDetectedIssue3(inst)
+
+        js = inst.as_json()
+        self.assertEqual("DetectedIssue", js["resourceType"])
+        inst2 = detectedissue.DetectedIssue(js)
+        self.implDetectedIssue3(inst2)
+
+    def implDetectedIssue3(self, inst):
         self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("DRG"))
         self.assertEqual(force_bytes(inst.code.coding[0].display), force_bytes("Drug Interaction Alert"))
         self.assertEqual(force_bytes(inst.code.coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActCode"))
@@ -72,51 +103,23 @@ class DetectedIssueTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.severity), force_bytes("high"))
         self.assertEqual(force_bytes(inst.status), force_bytes("final"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-    
-    def testDetectedIssue3(self):
+
+    def testDetectedIssue4(self):
         inst = self.instantiate_from("detectedissue-example-lab.json")
         self.assertIsNotNone(inst, "Must have instantiated a DetectedIssue instance")
-        self.implDetectedIssue3(inst)
-        
+        self.implDetectedIssue4(inst)
+
         js = inst.as_json()
         self.assertEqual("DetectedIssue", js["resourceType"])
         inst2 = detectedissue.DetectedIssue(js)
-        self.implDetectedIssue3(inst2)
-    
-    def implDetectedIssue3(self, inst):
+        self.implDetectedIssue4(inst2)
+
+    def implDetectedIssue4(self, inst):
         self.assertEqual(force_bytes(inst.id), force_bytes("lab"))
         self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
         self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
         self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
         self.assertEqual(force_bytes(inst.status), force_bytes("final"))
         self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">[Put rendering here]</div>"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-    
-    def testDetectedIssue4(self):
-        inst = self.instantiate_from("detectedissue-example-dup.json")
-        self.assertIsNotNone(inst, "Must have instantiated a DetectedIssue instance")
-        self.implDetectedIssue4(inst)
-        
-        js = inst.as_json()
-        self.assertEqual("DetectedIssue", js["resourceType"])
-        inst2 = detectedissue.DetectedIssue(js)
-        self.implDetectedIssue4(inst2)
-    
-    def implDetectedIssue4(self, inst):
-        self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("DUPTHPY"))
-        self.assertEqual(force_bytes(inst.code.coding[0].display), force_bytes("Duplicate Therapy Alert"))
-        self.assertEqual(force_bytes(inst.code.coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActCode"))
-        self.assertEqual(force_bytes(inst.detail), force_bytes("Similar test was performed within the past 14 days"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("duplicate"))
-        self.assertEqual(inst.identifiedDateTime.date, FHIRDate("2013-05-08").date)
-        self.assertEqual(inst.identifiedDateTime.as_json(), "2013-05-08")
-        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://example.org"))
-        self.assertEqual(force_bytes(inst.identifier[0].use), force_bytes("official"))
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("12345"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
-        self.assertEqual(force_bytes(inst.reference), force_bytes("http://www.tmhp.com/RadiologyClinicalDecisionSupport/2011/CHEST%20IMAGING%20GUIDELINES%202011.pdf"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("final"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 

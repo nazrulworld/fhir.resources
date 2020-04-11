@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/PaymentReconciliation) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/PaymentReconciliation
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -62,7 +65,7 @@ class PaymentReconciliation(domainresource.DomainResource):
 
         self.paymentIssuer = None
         """ Party generating payment.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.period = None
         """ Period covered.
@@ -74,11 +77,11 @@ class PaymentReconciliation(domainresource.DomainResource):
 
         self.request = None
         """ Reference to requesting resource.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Task']` (represented as `dict` in JSON). """
 
         self.requestor = None
         """ Responsible practitioner.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'Organization']` (represented as `dict` in JSON). """
 
         self.status = None
         """ active | cancelled | draft | entered-in-error.
@@ -140,7 +143,7 @@ class PaymentReconciliationDetail(backboneelement.BackboneElement):
 
         self.payee = None
         """ Recipient of the payment.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'Organization']` (represented as `dict` in JSON). """
 
         self.predecessor = None
         """ Business identifier of the prior payment detail.
@@ -148,19 +151,19 @@ class PaymentReconciliationDetail(backboneelement.BackboneElement):
 
         self.request = None
         """ Request giving rise to the payment.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.response = None
         """ Response committing to a payment.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.responsible = None
         """ Contact for the response.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['PractitionerRole']` (represented as `dict` in JSON). """
 
         self.submitter = None
         """ Submitter of the request.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'Organization']` (represented as `dict` in JSON). """
 
         self.type = None
         """ Category of payment.

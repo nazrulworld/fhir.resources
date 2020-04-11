@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/ResearchSubject
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 import os
 import pytest
@@ -23,17 +26,17 @@ class ResearchSubjectTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("ResearchSubject", js["resourceType"])
         return researchsubject.ResearchSubject(js)
-    
+
     def testResearchSubject1(self):
         inst = self.instantiate_from("researchsubject-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a ResearchSubject instance")
         self.implResearchSubject1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("ResearchSubject", js["resourceType"])
         inst2 = researchsubject.ResearchSubject(js)
         self.implResearchSubject1(inst2)
-    
+
     def implResearchSubject1(self, inst):
         self.assertEqual(force_bytes(inst.id), force_bytes("example"))
         self.assertEqual(force_bytes(inst.identifier.system), force_bytes("http://example.org/studysubjectids"))

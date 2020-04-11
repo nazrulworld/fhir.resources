@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/MessageHeader
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 import os
 import pytest
@@ -23,17 +26,17 @@ class MessageHeaderTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("MessageHeader", js["resourceType"])
         return messageheader.MessageHeader(js)
-    
+
     def testMessageHeader1(self):
         inst = self.instantiate_from("messageheader-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a MessageHeader instance")
         self.implMessageHeader1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("MessageHeader", js["resourceType"])
         inst2 = messageheader.MessageHeader(js)
         self.implMessageHeader1(inst2)
-    
+
     def implMessageHeader1(self, inst):
         self.assertEqual(force_bytes(inst.definition), force_bytes("http:////acme.com/ehr/fhir/messagedefinition/patientrequest"))
         self.assertEqual(force_bytes(inst.destination[0].endpoint), force_bytes("llp:10.11.12.14:5432"))

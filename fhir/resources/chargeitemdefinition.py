@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/ChargeItemDefinition) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/ChargeItemDefinition
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -74,7 +77,7 @@ class ChargeItemDefinition(domainresource.DomainResource):
 
         self.instance = None
         """ Instances this definition applies to.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Medication', 'Substance', 'Device']` (represented as `dict` in JSON). """
 
         self.jurisdiction = None
         """ Intended jurisdiction for charge item definition (if applicable).
@@ -87,7 +90,7 @@ class ChargeItemDefinition(domainresource.DomainResource):
         self.partOf = None
         """ A larger definition of which this particular definition is a
         component or step.
-        List of `str` items. """
+        List of `str` items referencing `['ChargeItemDefinition']`. """
 
         self.propertyGroup = None
         """ Group of properties which are applicable under the same conditions.
@@ -100,7 +103,7 @@ class ChargeItemDefinition(domainresource.DomainResource):
         self.replaces = None
         """ Completed or terminated request(s) whose function is taken by this
         new request.
-        List of `str` items. """
+        List of `str` items referencing `['ChargeItemDefinition']`. """
 
         self.status = None
         """ draft | active | retired | unknown.

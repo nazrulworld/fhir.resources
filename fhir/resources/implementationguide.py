@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/ImplementationGuide) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/ImplementationGuide
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -248,7 +251,7 @@ class ImplementationGuideDefinitionPage(backboneelement.BackboneElement):
 
         self.nameReference = None
         """ Where to find that page.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Binary']` (represented as `dict` in JSON). """
 
         self.nameUrl = None
         """ Where to find that page.
@@ -340,7 +343,7 @@ class ImplementationGuideDefinitionResource(backboneelement.BackboneElement):
 
         self.exampleCanonical = None
         """ Is an example/What is this an example of?.
-        Type `str`. """
+        Type `str` referencing `['StructureDefinition']`. """
 
         self.fhirVersion = None
         """ Versions this applies to (if different to IG).
@@ -356,7 +359,7 @@ class ImplementationGuideDefinitionResource(backboneelement.BackboneElement):
 
         self.reference = None
         """ Location of the resource.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
 
         super(ImplementationGuideDefinitionResource, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -436,7 +439,7 @@ class ImplementationGuideDependsOn(backboneelement.BackboneElement):
 
         self.uri = None
         """ Identity of the IG that this depends on.
-        Type `str`. """
+        Type `str` referencing `['ImplementationGuide']`. """
 
         self.version = None
         """ Version of the IG.
@@ -473,7 +476,7 @@ class ImplementationGuideGlobal(backboneelement.BackboneElement):
 
         self.profile = None
         """ Profile that all resources must conform to.
-        Type `str`. """
+        Type `str` referencing `['StructureDefinition']`. """
 
         self.type = None
         """ Type this profile applies to.
@@ -606,11 +609,11 @@ class ImplementationGuideManifestResource(backboneelement.BackboneElement):
 
         self.exampleCanonical = None
         """ Is an example/What is this an example of?.
-        Type `str`. """
+        Type `str` referencing `['StructureDefinition']`. """
 
         self.reference = None
         """ Location of the resource.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.relativePath = None
         """ Relative path for page in IG.

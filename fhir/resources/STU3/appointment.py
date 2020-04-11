@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/Appointment) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Appointment
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -51,11 +54,11 @@ class Appointment(domainresource.DomainResource):
         self.incomingReferral = None
         """ The ReferralRequest provided as information to allocate to the
         Encounter.
-        List of `FHIRReference` items referencing `ReferralRequest` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['ReferralRequest']` (represented as `dict` in JSON). """
 
         self.indication = None
         """ Reason the appointment is to takes place (resource).
-        List of `FHIRReference` items referencing `Condition, Procedure` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Condition'], ['Procedure']` (represented as `dict` in JSON). """
 
         self.minutesDuration = None
         """ Can be less than start/end (e.g. estimate).
@@ -90,7 +93,7 @@ class Appointment(domainresource.DomainResource):
 
         self.slot = None
         """ The slots that this appointment is filling.
-        List of `FHIRReference` items referencing `Slot` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Slot']` (represented as `dict` in JSON). """
 
         self.specialty = None
         """ The specialty of a practitioner that would be required to perform
@@ -108,7 +111,7 @@ class Appointment(domainresource.DomainResource):
 
         self.supportingInformation = None
         """ Additional information to support the appointment.
-        List of `FHIRReference` items referencing `Resource` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         super(Appointment, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -159,7 +162,7 @@ class AppointmentParticipant(backboneelement.BackboneElement):
 
         self.actor = None
         """ Person, Location/HealthcareService or Device.
-        Type `FHIRReference` referencing `Patient, Practitioner, RelatedPerson, Device, HealthcareService, Location` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient'], ['Practitioner'], ['RelatedPerson'], ['Device'], ['HealthcareService'], ['Location']` (represented as `dict` in JSON). """
 
         self.required = None
         """ required | optional | information-only.

@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/Invoice) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Invoice
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -26,7 +29,7 @@ class Invoice(domainresource.DomainResource):
 
         self.account = None
         """ Account that is being balanced.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Account']` (represented as `dict` in JSON). """
 
         self.cancelledReason = None
         """ Reason for cancellation of this Invoice.
@@ -42,7 +45,7 @@ class Invoice(domainresource.DomainResource):
 
         self.issuer = None
         """ Issuing Organization of Invoice.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.lineItem = None
         """ Line items of this Invoice.
@@ -62,7 +65,7 @@ class Invoice(domainresource.DomainResource):
 
         self.recipient = None
         """ Recipient of this invoice.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization', 'Patient', 'RelatedPerson']` (represented as `dict` in JSON). """
 
         self.status = None
         """ draft | issued | balanced | cancelled | entered-in-error.
@@ -70,7 +73,7 @@ class Invoice(domainresource.DomainResource):
 
         self.subject = None
         """ Recipient(s) of goods and services.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient', 'Group']` (represented as `dict` in JSON). """
 
         self.totalGross = None
         """ Gross total of this Invoice.
@@ -141,7 +144,7 @@ class InvoiceLineItem(backboneelement.BackboneElement):
         self.chargeItemReference = None
         """ Reference to ChargeItem containing details of this line item or an
         inline billing code.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['ChargeItem']` (represented as `dict` in JSON). """
 
         self.priceComponent = None
         """ Components of total line item price.
@@ -232,7 +235,7 @@ class InvoiceParticipant(backboneelement.BackboneElement):
 
         self.actor = None
         """ Individual who was involved.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner', 'Organization', 'Patient', 'PractitionerRole', 'Device', 'RelatedPerson']` (represented as `dict` in JSON). """
 
         self.role = None
         """ Type of involvement in creation of this Invoice.

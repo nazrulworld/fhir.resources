@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/ResearchDefinition) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/ResearchDefinition
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -72,11 +75,11 @@ class ResearchDefinition(domainresource.DomainResource):
 
         self.exposure = None
         """ What exposure?.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['ResearchElementDefinition']` (represented as `dict` in JSON). """
 
         self.exposureAlternative = None
         """ What alternative exposure state?.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['ResearchElementDefinition']` (represented as `dict` in JSON). """
 
         self.identifier = None
         """ Additional identifier for the research definition.
@@ -92,7 +95,7 @@ class ResearchDefinition(domainresource.DomainResource):
 
         self.library = None
         """ Logic used by the ResearchDefinition.
-        List of `str` items. """
+        List of `str` items referencing `['Library']`. """
 
         self.name = None
         """ Name for this research definition (computer friendly).
@@ -100,11 +103,11 @@ class ResearchDefinition(domainresource.DomainResource):
 
         self.outcome = None
         """ What outcome?.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['ResearchElementDefinition']` (represented as `dict` in JSON). """
 
         self.population = None
         """ What population?.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['ResearchElementDefinition']` (represented as `dict` in JSON). """
 
         self.publisher = None
         """ Name of the publisher (organization or individual).
@@ -138,7 +141,7 @@ class ResearchDefinition(domainresource.DomainResource):
         self.subjectReference = None
         """ E.g. Patient, Practitioner, RelatedPerson, Organization, Location,
         Device.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Group']` (represented as `dict` in JSON). """
 
         self.subtitle = None
         """ Subordinate title of the ResearchDefinition.

@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/TestReport
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 import os
 import pytest
@@ -23,17 +26,17 @@ class TestReportTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("TestReport", js["resourceType"])
         return testreport.TestReport(js)
-    
+
     def testTestReport1(self):
         inst = self.instantiate_from("testreport-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a TestReport instance")
         self.implTestReport1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("TestReport", js["resourceType"])
         inst2 = testreport.TestReport(js)
         self.implTestReport1(inst2)
-    
+
     def implTestReport1(self, inst):
         self.assertEqual(force_bytes(inst.id), force_bytes("testreport-example"))
         self.assertEqual(force_bytes(inst.identifier.system), force_bytes("urn:ietf:rfc:3986"))

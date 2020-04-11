@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/CarePlan) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/CarePlan
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -31,19 +34,19 @@ class CarePlan(domainresource.DomainResource):
 
         self.addresses = None
         """ Health issues this plan addresses.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Condition']` (represented as `dict` in JSON). """
 
         self.author = None
         """ Who is the designated responsible party.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient', 'Practitioner', 'PractitionerRole', 'Device', 'RelatedPerson', 'Organization', 'CareTeam']` (represented as `dict` in JSON). """
 
         self.basedOn = None
         """ Fulfills CarePlan.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['CarePlan']` (represented as `dict` in JSON). """
 
         self.careTeam = None
         """ Who's involved in plan?.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['CareTeam']` (represented as `dict` in JSON). """
 
         self.category = None
         """ Type of plan.
@@ -51,7 +54,7 @@ class CarePlan(domainresource.DomainResource):
 
         self.contributor = None
         """ Who provided the content of the care plan.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Patient', 'Practitioner', 'PractitionerRole', 'Device', 'RelatedPerson', 'Organization', 'CareTeam']` (represented as `dict` in JSON). """
 
         self.created = None
         """ Date record was first recorded.
@@ -63,11 +66,11 @@ class CarePlan(domainresource.DomainResource):
 
         self.encounter = None
         """ Encounter created as part of.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Encounter']` (represented as `dict` in JSON). """
 
         self.goal = None
         """ Desired outcome of plan.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Goal']` (represented as `dict` in JSON). """
 
         self.identifier = None
         """ External Ids for this plan.
@@ -75,7 +78,7 @@ class CarePlan(domainresource.DomainResource):
 
         self.instantiatesCanonical = None
         """ Instantiates FHIR protocol or definition.
-        List of `str` items. """
+        List of `str` items referencing `['PlanDefinition', 'Questionnaire', 'Measure', 'ActivityDefinition', 'OperationDefinition']`. """
 
         self.instantiatesUri = None
         """ Instantiates external protocol or definition.
@@ -91,7 +94,7 @@ class CarePlan(domainresource.DomainResource):
 
         self.partOf = None
         """ Part of referenced CarePlan.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['CarePlan']` (represented as `dict` in JSON). """
 
         self.period = None
         """ Time period plan covers.
@@ -99,20 +102,20 @@ class CarePlan(domainresource.DomainResource):
 
         self.replaces = None
         """ CarePlan replaced by this CarePlan.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['CarePlan']` (represented as `dict` in JSON). """
 
         self.status = None
-        """ draft | active | suspended | completed | entered-in-error |
-        cancelled | unknown.
+        """ draft | active | on-hold | revoked | completed | entered-in-error |
+        unknown.
         Type `str`. """
 
         self.subject = None
         """ Who the care plan is for.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient', 'Group']` (represented as `dict` in JSON). """
 
         self.supportingInfo = None
         """ Information considered as part of plan.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.title = None
         """ Human-friendly name for the care plan.
@@ -180,7 +183,7 @@ class CarePlanActivity(backboneelement.BackboneElement):
 
         self.outcomeReference = None
         """ Appointment, Encounter, Procedure, etc..
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.progress = None
         """ Comments about the activity status/progress.
@@ -188,7 +191,7 @@ class CarePlanActivity(backboneelement.BackboneElement):
 
         self.reference = None
         """ Activity details defined in specific resource.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Appointment', 'CommunicationRequest', 'DeviceRequest', 'MedicationRequest', 'NutritionOrder', 'Task', 'ServiceRequest', 'VisionPrescription', 'RequestGroup']` (represented as `dict` in JSON). """
 
         super(CarePlanActivity, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -240,27 +243,29 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
 
         self.goal = None
         """ Goals this activity relates to.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Goal']` (represented as `dict` in JSON). """
 
         self.instantiatesCanonical = None
         """ Instantiates FHIR protocol or definition.
-        List of `str` items. """
+        List of `str` items referencing `['PlanDefinition', 'ActivityDefinition', 'Questionnaire', 'Measure', 'OperationDefinition']`. """
 
         self.instantiatesUri = None
         """ Instantiates external protocol or definition.
         List of `str` items. """
 
         self.kind = None
-        """ Kind of resource.
+        """ Appointment | CommunicationRequest | DeviceRequest |
+        MedicationRequest | NutritionOrder | Task | ServiceRequest |
+        VisionPrescription.
         Type `str`. """
 
         self.location = None
         """ Where it should happen.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Location']` (represented as `dict` in JSON). """
 
         self.performer = None
         """ Who will be responsible?.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Practitioner', 'PractitionerRole', 'Organization', 'RelatedPerson', 'Patient', 'CareTeam', 'HealthcareService', 'Device']` (represented as `dict` in JSON). """
 
         self.productCodeableConcept = None
         """ What is to be administered/supplied.
@@ -268,7 +273,7 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
 
         self.productReference = None
         """ What is to be administered/supplied.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Medication', 'Substance']` (represented as `dict` in JSON). """
 
         self.quantity = None
         """ How much to administer/supply/consume.
@@ -280,7 +285,7 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
 
         self.reasonReference = None
         """ Why activity is needed.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Condition', 'Observation', 'DiagnosticReport', 'DocumentReference']` (represented as `dict` in JSON). """
 
         self.scheduledPeriod = None
         """ When activity is to occur.

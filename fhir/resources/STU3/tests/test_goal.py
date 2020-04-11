@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Goal
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 import os
 import pytest
@@ -23,17 +26,17 @@ class GoalTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("Goal", js["resourceType"])
         return goal.Goal(js)
-    
+
     def testGoal1(self):
         inst = self.instantiate_from("goal-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a Goal instance")
         self.implGoal1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Goal", js["resourceType"])
         inst2 = goal.Goal(js)
         self.implGoal1(inst2)
-    
+
     def implGoal1(self, inst):
         self.assertEqual(force_bytes(inst.category[0].coding[0].code), force_bytes("dietary"))
         self.assertEqual(force_bytes(inst.category[0].coding[0].system), force_bytes("http://hl7.org/fhir/goal-category"))
@@ -64,17 +67,17 @@ class GoalTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.target.measure.coding[0].display), force_bytes("Weight Measured"))
         self.assertEqual(force_bytes(inst.target.measure.coding[0].system), force_bytes("http://loinc.org"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("additional"))
-    
+
     def testGoal2(self):
         inst = self.instantiate_from("goal-example-stop-smoking.json")
         self.assertIsNotNone(inst, "Must have instantiated a Goal instance")
         self.implGoal2(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Goal", js["resourceType"])
         inst2 = goal.Goal(js)
         self.implGoal2(inst2)
-    
+
     def implGoal2(self, inst):
         self.assertEqual(force_bytes(inst.description.text), force_bytes("Stop smoking"))
         self.assertEqual(force_bytes(inst.id), force_bytes("stop-smoking"))

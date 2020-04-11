@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Subscription
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 import os
 import pytest
@@ -23,17 +26,17 @@ class SubscriptionTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("Subscription", js["resourceType"])
         return subscription.Subscription(js)
-    
+
     def testSubscription1(self):
         inst = self.instantiate_from("subscription-example-error.json")
         self.assertIsNotNone(inst, "Must have instantiated a Subscription instance")
         self.implSubscription1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Subscription", js["resourceType"])
         inst2 = subscription.Subscription(js)
         self.implSubscription1(inst2)
-    
+
     def implSubscription1(self, inst):
         self.assertEqual(force_bytes(inst.channel.endpoint), force_bytes("https://biliwatch.com/customers/mount-auburn-miu/on-result"))
         self.assertEqual(force_bytes(inst.channel.header[0]), force_bytes("Authorization: Bearer secret-token-abc-123"))
@@ -53,17 +56,17 @@ class SubscriptionTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.status), force_bytes("error"))
         self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">[Put rendering here]</div>"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-    
+
     def testSubscription2(self):
         inst = self.instantiate_from("subscription-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a Subscription instance")
         self.implSubscription2(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Subscription", js["resourceType"])
         inst2 = subscription.Subscription(js)
         self.implSubscription2(inst2)
-    
+
     def implSubscription2(self, inst):
         self.assertEqual(force_bytes(inst.channel.endpoint), force_bytes("https://biliwatch.com/customers/mount-auburn-miu/on-result"))
         self.assertEqual(force_bytes(inst.channel.header[0]), force_bytes("Authorization: Bearer secret-token-abc-123"))

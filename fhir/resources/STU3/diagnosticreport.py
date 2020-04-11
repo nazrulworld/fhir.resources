@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/DiagnosticReport) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/DiagnosticReport
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -30,7 +33,7 @@ class DiagnosticReport(domainresource.DomainResource):
 
         self.basedOn = None
         """ What was requested.
-        List of `FHIRReference` items referencing `CarePlan, ImmunizationRecommendation, MedicationRequest, NutritionOrder, ProcedureRequest, ReferralRequest` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['CarePlan'], ['ImmunizationRecommendation'], ['MedicationRequest'], ['NutritionOrder'], ['ProcedureRequest'], ['ReferralRequest']` (represented as `dict` in JSON). """
 
         self.category = None
         """ Service category.
@@ -50,7 +53,7 @@ class DiagnosticReport(domainresource.DomainResource):
 
         self.context = None
         """ Health care event when test ordered.
-        Type `FHIRReference` referencing `Encounter, EpisodeOfCare` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Encounter'], ['EpisodeOfCare']` (represented as `dict` in JSON). """
 
         self.effectiveDateTime = None
         """ Clinically relevant time/time-period for report.
@@ -71,7 +74,7 @@ class DiagnosticReport(domainresource.DomainResource):
         self.imagingStudy = None
         """ Reference to full details of imaging associated with the diagnostic
         report.
-        List of `FHIRReference` items referencing `ImagingStudy, ImagingManifest` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['ImagingStudy'], ['ImagingManifest']` (represented as `dict` in JSON). """
 
         self.issued = None
         """ DateTime this version was released.
@@ -87,11 +90,11 @@ class DiagnosticReport(domainresource.DomainResource):
 
         self.result = None
         """ Observations - simple, or complex nested groups.
-        List of `FHIRReference` items referencing `Observation` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Observation']` (represented as `dict` in JSON). """
 
         self.specimen = None
         """ Specimens this report is based on.
-        List of `FHIRReference` items referencing `Specimen` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Specimen']` (represented as `dict` in JSON). """
 
         self.status = None
         """ registered | partial | preliminary | final +.
@@ -99,7 +102,7 @@ class DiagnosticReport(domainresource.DomainResource):
 
         self.subject = None
         """ The subject of the report - usually, but not always, the patient.
-        Type `FHIRReference` referencing `Patient, Group, Device, Location` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient'], ['Group'], ['Device'], ['Location']` (represented as `dict` in JSON). """
 
         super(DiagnosticReport, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -154,7 +157,7 @@ class DiagnosticReportImage(backboneelement.BackboneElement):
 
         self.link = None
         """ Reference to the image source.
-        Type `FHIRReference` referencing `Media` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Media']` (represented as `dict` in JSON). """
 
         super(DiagnosticReportImage, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -185,7 +188,7 @@ class DiagnosticReportPerformer(backboneelement.BackboneElement):
 
         self.actor = None
         """ Practitioner or Organization  participant.
-        Type `FHIRReference` referencing `Practitioner, Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner'], ['Organization']` (represented as `dict` in JSON). """
 
         self.role = None
         """ Type of performer.

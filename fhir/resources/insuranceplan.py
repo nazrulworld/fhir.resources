@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/InsurancePlan) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/InsurancePlan
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -23,7 +26,7 @@ class InsurancePlan(domainresource.DomainResource):
 
         self.administeredBy = None
         """ Product administrator.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.alias = None
         """ Alternate names.
@@ -39,11 +42,11 @@ class InsurancePlan(domainresource.DomainResource):
 
         self.coverageArea = None
         """ Where product applies.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Location']` (represented as `dict` in JSON). """
 
         self.endpoint = None
         """ Technical endpoint.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Endpoint']` (represented as `dict` in JSON). """
 
         self.identifier = None
         """ Business Identifier for Product.
@@ -55,11 +58,11 @@ class InsurancePlan(domainresource.DomainResource):
 
         self.network = None
         """ What networks are Included.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.ownedBy = None
         """ Plan issuer.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.period = None
         """ When the product is available.
@@ -169,7 +172,7 @@ class InsurancePlanCoverage(backboneelement.BackboneElement):
 
         self.network = None
         """ What networks provide coverage.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.type = None
         """ Type of coverage.
@@ -280,7 +283,7 @@ class InsurancePlanPlan(backboneelement.BackboneElement):
 
         self.coverageArea = None
         """ Where product applies.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Location']` (represented as `dict` in JSON). """
 
         self.generalCost = None
         """ Overall costs.
@@ -292,7 +295,7 @@ class InsurancePlanPlan(backboneelement.BackboneElement):
 
         self.network = None
         """ What networks provide coverage.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.specificCost = None
         """ Specific costs.

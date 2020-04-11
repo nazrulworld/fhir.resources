@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/Patient) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Patient
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -63,7 +66,7 @@ class Patient(domainresource.DomainResource):
 
         self.generalPractitioner = None
         """ Patient's nominated primary care provider.
-        List of `FHIRReference` items referencing `Organization, Practitioner` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Organization'], ['Practitioner']` (represented as `dict` in JSON). """
 
         self.identifier = None
         """ An identifier for this patient.
@@ -76,7 +79,7 @@ class Patient(domainresource.DomainResource):
 
         self.managingOrganization = None
         """ Organization that is the custodian of the patient record.
-        Type `FHIRReference` referencing `Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.maritalStatus = None
         """ Marital (civil) status of a patient.
@@ -238,7 +241,7 @@ class PatientContact(backboneelement.BackboneElement):
 
         self.organization = None
         """ Organization that is associated with the contact.
-        Type `FHIRReference` referencing `Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.period = None
         """ The period during which this contact person or organization is
@@ -288,7 +291,7 @@ class PatientLink(backboneelement.BackboneElement):
         self.other = None
         """ The other patient or related person resource that the link refers
         to.
-        Type `FHIRReference` referencing `Patient, RelatedPerson` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient'], ['RelatedPerson']` (represented as `dict` in JSON). """
 
         self.type = None
         """ replaced-by | replaces | refer | seealso - type of link.

@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/ValueSet) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/ValueSet
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -204,7 +207,7 @@ class ValueSetComposeInclude(backboneelement.BackboneElement):
 
         self.valueSet = None
         """ Select the contents included in this value set.
-        List of `str` items. """
+        List of `str` items referencing `['ValueSet']`. """
 
         self.version = None
         """ Specific version of the code system referred to.

@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/DetectedIssue) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/DetectedIssue
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -28,7 +31,7 @@ class DetectedIssue(domainresource.DomainResource):
 
         self.author = None
         """ The provider or device that identified the issue.
-        Type `FHIRReference` referencing `Practitioner, Device` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner'], ['Device']` (represented as `dict` in JSON). """
 
         self.category = None
         """ Issue Category, e.g. drug-drug, duplicate therapy, etc..
@@ -48,7 +51,7 @@ class DetectedIssue(domainresource.DomainResource):
 
         self.implicated = None
         """ Problem resource.
-        List of `FHIRReference` items referencing `Resource` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.mitigation = None
         """ Step taken to address.
@@ -56,7 +59,7 @@ class DetectedIssue(domainresource.DomainResource):
 
         self.patient = None
         """ Associated patient.
-        Type `FHIRReference` referencing `Patient` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
 
         self.reference = None
         """ Authority for issue.
@@ -117,7 +120,7 @@ class DetectedIssueMitigation(backboneelement.BackboneElement):
 
         self.author = None
         """ Who is committing?.
-        Type `FHIRReference` referencing `Practitioner` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner']` (represented as `dict` in JSON). """
 
         self.date = None
         """ Date committed.

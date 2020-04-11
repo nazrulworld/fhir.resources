@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/HealthcareService
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 import os
 import pytest
@@ -23,17 +26,17 @@ class HealthcareServiceTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("HealthcareService", js["resourceType"])
         return healthcareservice.HealthcareService(js)
-    
+
     def testHealthcareService1(self):
         inst = self.instantiate_from("healthcareservice-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a HealthcareService instance")
         self.implHealthcareService1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("HealthcareService", js["resourceType"])
         inst2 = healthcareservice.HealthcareService(js)
         self.implHealthcareService1(inst2)
-    
+
     def implHealthcareService1(self, inst):
         self.assertTrue(inst.active)
         self.assertFalse(inst.appointmentRequired)

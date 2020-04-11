@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/AdverseEvent
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 import os
 import pytest
@@ -23,17 +26,17 @@ class AdverseEventTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("AdverseEvent", js["resourceType"])
         return adverseevent.AdverseEvent(js)
-    
+
     def testAdverseEvent1(self):
         inst = self.instantiate_from("adverseevent-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a AdverseEvent instance")
         self.implAdverseEvent1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("AdverseEvent", js["resourceType"])
         inst2 = adverseevent.AdverseEvent(js)
         self.implAdverseEvent1(inst2)
-    
+
     def implAdverseEvent1(self, inst):
         self.assertEqual(force_bytes(inst.category), force_bytes("AE"))
         self.assertEqual(inst.date.date, FHIRDate("2017-01-29T12:34:56+00:00").date)

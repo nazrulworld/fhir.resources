@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/Medication) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Medication
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -51,7 +54,7 @@ class Medication(domainresource.DomainResource):
 
         self.manufacturer = None
         """ Manufacturer of the item.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.status = None
         """ active | inactive | entered-in-error.
@@ -137,7 +140,7 @@ class MedicationIngredient(backboneelement.BackboneElement):
 
         self.itemReference = None
         """ The actual ingredient or content.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Substance', 'Medication']` (represented as `dict` in JSON). """
 
         self.strength = None
         """ Quantity of ingredient present.

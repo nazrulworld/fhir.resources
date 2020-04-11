@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/DeviceRequest) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/DeviceRequest
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -31,7 +34,7 @@ class DeviceRequest(domainresource.DomainResource):
 
         self.basedOn = None
         """ What request fulfills.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.codeCodeableConcept = None
         """ Device requested.
@@ -39,11 +42,11 @@ class DeviceRequest(domainresource.DomainResource):
 
         self.codeReference = None
         """ Device requested.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Device']` (represented as `dict` in JSON). """
 
         self.encounter = None
         """ Encounter motivating request.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Encounter']` (represented as `dict` in JSON). """
 
         self.groupIdentifier = None
         """ Identifier of composite request.
@@ -55,7 +58,7 @@ class DeviceRequest(domainresource.DomainResource):
 
         self.instantiatesCanonical = None
         """ Instantiates FHIR protocol or definition.
-        List of `str` items. """
+        List of `str` items referencing `['ActivityDefinition', 'PlanDefinition']`. """
 
         self.instantiatesUri = None
         """ Instantiates external protocol or definition.
@@ -63,10 +66,11 @@ class DeviceRequest(domainresource.DomainResource):
 
         self.insurance = None
         """ Associated insurance coverage.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Coverage', 'ClaimResponse']` (represented as `dict` in JSON). """
 
         self.intent = None
-        """ proposal | plan | original-order | encoded | reflex-order.
+        """ proposal | plan | directive | order | original-order | reflex-order
+        | filler-order | instance-order | option.
         Type `str`. """
 
         self.note = None
@@ -91,7 +95,7 @@ class DeviceRequest(domainresource.DomainResource):
 
         self.performer = None
         """ Requested Filler.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'Organization', 'CareTeam', 'HealthcareService', 'Patient', 'Device', 'RelatedPerson']` (represented as `dict` in JSON). """
 
         self.performerType = None
         """ Filler role.
@@ -99,11 +103,10 @@ class DeviceRequest(domainresource.DomainResource):
 
         self.priorRequest = None
         """ What request replaces.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.priority = None
-        """ Indicates how quickly the {{title}} should be addressed with
-        respect to other requests.
+        """ routine | urgent | asap | stat.
         Type `str`. """
 
         self.reasonCode = None
@@ -112,28 +115,28 @@ class DeviceRequest(domainresource.DomainResource):
 
         self.reasonReference = None
         """ Linked Reason for request.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Condition', 'Observation', 'DiagnosticReport', 'DocumentReference']` (represented as `dict` in JSON). """
 
         self.relevantHistory = None
         """ Request provenance.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Provenance']` (represented as `dict` in JSON). """
 
         self.requester = None
         """ Who/what is requesting diagnostics.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Device', 'Practitioner', 'PractitionerRole', 'Organization']` (represented as `dict` in JSON). """
 
         self.status = None
-        """ draft | active | suspended | completed | entered-in-error |
-        cancelled.
+        """ draft | active | on-hold | revoked | completed | entered-in-error |
+        unknown.
         Type `str`. """
 
         self.subject = None
         """ Focus of request.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient', 'Group', 'Location', 'Device']` (represented as `dict` in JSON). """
 
         self.supportingInfo = None
         """ Additional clinical information.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         super(DeviceRequest, self).__init__(jsondict=jsondict, strict=strict)
 

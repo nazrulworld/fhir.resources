@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/ClaimResponse) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/ClaimResponse
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -34,7 +37,7 @@ class ClaimResponse(domainresource.DomainResource):
 
         self.communicationRequest = None
         """ Request for additional information.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['CommunicationRequest']` (represented as `dict` in JSON). """
 
         self.created = None
         """ Response creation date.
@@ -70,7 +73,7 @@ class ClaimResponse(domainresource.DomainResource):
 
         self.insurer = None
         """ Party responsible for reimbursement.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.item = None
         """ Adjudication for claim line items.
@@ -82,7 +85,7 @@ class ClaimResponse(domainresource.DomainResource):
 
         self.patient = None
         """ The recipient of the products and services.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
 
         self.payeeType = None
         """ Party to be paid any benefits payable.
@@ -106,11 +109,11 @@ class ClaimResponse(domainresource.DomainResource):
 
         self.request = None
         """ Id of resource triggering adjudication.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Claim']` (represented as `dict` in JSON). """
 
         self.requestor = None
         """ Party responsible for the claim.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'Organization']` (represented as `dict` in JSON). """
 
         self.status = None
         """ active | cancelled | draft | entered-in-error.
@@ -221,7 +224,7 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
 
         self.locationReference = None
         """ Place of service or where product was supplied.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Location']` (represented as `dict` in JSON). """
 
         self.modifier = None
         """ Service/Product billing modifiers.
@@ -245,7 +248,7 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
 
         self.provider = None
         """ Authorized providers.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Practitioner', 'PractitionerRole', 'Organization']` (represented as `dict` in JSON). """
 
         self.quantity = None
         """ Count of products or services.
@@ -504,11 +507,11 @@ class ClaimResponseInsurance(backboneelement.BackboneElement):
 
         self.claimResponse = None
         """ Adjudication results.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['ClaimResponse']` (represented as `dict` in JSON). """
 
         self.coverage = None
         """ Insurance information.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Coverage']` (represented as `dict` in JSON). """
 
         self.focal = None
         """ Coverage to be used for adjudication.

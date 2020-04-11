@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/ImagingStudy) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/ImagingStudy
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -30,7 +33,7 @@ class ImagingStudy(domainresource.DomainResource):
 
         self.basedOn = None
         """ Request fulfilled.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['CarePlan', 'ServiceRequest', 'Appointment', 'AppointmentResponse', 'Task']` (represented as `dict` in JSON). """
 
         self.description = None
         """ Institution-generated description.
@@ -38,11 +41,11 @@ class ImagingStudy(domainresource.DomainResource):
 
         self.encounter = None
         """ Encounter with which this imaging study is associated.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Encounter']` (represented as `dict` in JSON). """
 
         self.endpoint = None
         """ Study access endpoint.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Endpoint']` (represented as `dict` in JSON). """
 
         self.identifier = None
         """ Identifiers for the whole study.
@@ -50,11 +53,11 @@ class ImagingStudy(domainresource.DomainResource):
 
         self.interpreter = None
         """ Who interpreted images.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Practitioner', 'PractitionerRole']` (represented as `dict` in JSON). """
 
         self.location = None
         """ Where ImagingStudy occurred.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Location']` (represented as `dict` in JSON). """
 
         self.modality = None
         """ All series modality if actual acquisition modalities.
@@ -78,7 +81,7 @@ class ImagingStudy(domainresource.DomainResource):
 
         self.procedureReference = None
         """ The performed Procedure reference.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Procedure']` (represented as `dict` in JSON). """
 
         self.reasonCode = None
         """ Why the study was requested.
@@ -86,11 +89,11 @@ class ImagingStudy(domainresource.DomainResource):
 
         self.reasonReference = None
         """ Why was study performed.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Condition', 'Observation', 'Media', 'DiagnosticReport', 'DocumentReference']` (represented as `dict` in JSON). """
 
         self.referrer = None
         """ Referring physician.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole']` (represented as `dict` in JSON). """
 
         self.series = None
         """ Each study has one or more series of instances.
@@ -106,7 +109,7 @@ class ImagingStudy(domainresource.DomainResource):
 
         self.subject = None
         """ Who or what is the subject of the study.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient', 'Device', 'Group']` (represented as `dict` in JSON). """
 
         super(ImagingStudy, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -165,7 +168,7 @@ class ImagingStudySeries(backboneelement.BackboneElement):
 
         self.endpoint = None
         """ Series access endpoint.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Endpoint']` (represented as `dict` in JSON). """
 
         self.instance = None
         """ A single SOP instance from the series.
@@ -193,7 +196,7 @@ class ImagingStudySeries(backboneelement.BackboneElement):
 
         self.specimen = None
         """ Specimen imaged.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Specimen']` (represented as `dict` in JSON). """
 
         self.started = None
         """ When the series started.
@@ -288,7 +291,7 @@ class ImagingStudySeriesPerformer(backboneelement.BackboneElement):
 
         self.actor = None
         """ Who performed the series.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'Organization', 'CareTeam', 'Patient', 'Device', 'RelatedPerson']` (represented as `dict` in JSON). """
 
         self.function = None
         """ Type of performance.

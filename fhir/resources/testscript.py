@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/TestScript) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/TestScript
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -77,7 +80,7 @@ class TestScript(domainresource.DomainResource):
 
         self.profile = None
         """ Reference of the validation profile.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.publisher = None
         """ Name of the publisher (organization or individual).
@@ -224,7 +227,7 @@ class TestScriptFixture(backboneelement.BackboneElement):
 
         self.resource = None
         """ Reference of the resource.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
 
         super(TestScriptFixture, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -296,7 +299,7 @@ class TestScriptMetadataCapability(backboneelement.BackboneElement):
 
         self.capabilities = None
         """ Required Capability Statement.
-        Type `str`. """
+        Type `str` referencing `['CapabilityStatement']`. """
 
         self.description = None
         """ The expected capabilities of the server.

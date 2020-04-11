@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/ImagingStudy) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/ImagingStudy
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -38,11 +41,11 @@ class ImagingStudy(domainresource.DomainResource):
 
         self.basedOn = None
         """ Request fulfilled.
-        List of `FHIRReference` items referencing `ReferralRequest, CarePlan, ProcedureRequest` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['ReferralRequest'], ['CarePlan'], ['ProcedureRequest']` (represented as `dict` in JSON). """
 
         self.context = None
         """ Originating context.
-        Type `FHIRReference` referencing `Encounter, EpisodeOfCare` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Encounter'], ['EpisodeOfCare']` (represented as `dict` in JSON). """
 
         self.description = None
         """ Institution-generated description.
@@ -50,7 +53,7 @@ class ImagingStudy(domainresource.DomainResource):
 
         self.endpoint = None
         """ Study access endpoint.
-        List of `FHIRReference` items referencing `Endpoint` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Endpoint']` (represented as `dict` in JSON). """
 
         self.identifier = None
         """ Other identifiers for the study.
@@ -58,7 +61,7 @@ class ImagingStudy(domainresource.DomainResource):
 
         self.interpreter = None
         """ Who interpreted images.
-        List of `FHIRReference` items referencing `Practitioner` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Practitioner']` (represented as `dict` in JSON). """
 
         self.modalityList = None
         """ All series modality if actual acquisition modalities.
@@ -74,7 +77,7 @@ class ImagingStudy(domainresource.DomainResource):
 
         self.patient = None
         """ Who the images are of.
-        Type `FHIRReference` referencing `Patient` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
 
         self.procedureCode = None
         """ The performed procedure code.
@@ -82,7 +85,7 @@ class ImagingStudy(domainresource.DomainResource):
 
         self.procedureReference = None
         """ The performed Procedure reference.
-        List of `FHIRReference` items referencing `Procedure` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Procedure']` (represented as `dict` in JSON). """
 
         self.reason = None
         """ Why the study was requested.
@@ -90,7 +93,7 @@ class ImagingStudy(domainresource.DomainResource):
 
         self.referrer = None
         """ Referring physician.
-        Type `FHIRReference` referencing `Practitioner` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner']` (represented as `dict` in JSON). """
 
         self.series = None
         """ Each study has one or more series of instances.
@@ -164,7 +167,7 @@ class ImagingStudySeries(backboneelement.BackboneElement):
 
         self.endpoint = None
         """ Series access endpoint.
-        List of `FHIRReference` items referencing `Endpoint` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Endpoint']` (represented as `dict` in JSON). """
 
         self.instance = None
         """ A single SOP instance from the series.
@@ -188,7 +191,7 @@ class ImagingStudySeries(backboneelement.BackboneElement):
 
         self.performer = None
         """ Who performed the series.
-        List of `FHIRReference` items referencing `Practitioner` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Practitioner']` (represented as `dict` in JSON). """
 
         self.started = None
         """ When the series started.

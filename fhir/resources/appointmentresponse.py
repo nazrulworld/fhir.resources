@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/AppointmentResponse) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/AppointmentResponse
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -24,11 +27,11 @@ class AppointmentResponse(domainresource.DomainResource):
 
         self.actor = None
         """ Person, Location, HealthcareService, or Device.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient', 'Practitioner', 'PractitionerRole', 'RelatedPerson', 'Device', 'HealthcareService', 'Location']` (represented as `dict` in JSON). """
 
         self.appointment = None
         """ Appointment this response relates to.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Appointment']` (represented as `dict` in JSON). """
 
         self.comment = None
         """ Additional comments.
@@ -43,8 +46,7 @@ class AppointmentResponse(domainresource.DomainResource):
         List of `Identifier` items (represented as `dict` in JSON). """
 
         self.participantStatus = None
-        """ accepted | declined | tentative | in-process | completed | needs-
-        action | entered-in-error.
+        """ accepted | declined | tentative | needs-action.
         Type `str`. """
 
         self.participantType = None

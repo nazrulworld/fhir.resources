@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/RiskAssessment) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/RiskAssessment
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -26,11 +29,11 @@ class RiskAssessment(domainresource.DomainResource):
 
         self.basedOn = None
         """ Request fulfilled by this assessment.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.basis = None
         """ Information used in assessment.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.code = None
         """ Type of assessment.
@@ -38,11 +41,11 @@ class RiskAssessment(domainresource.DomainResource):
 
         self.condition = None
         """ Condition assessed.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Condition']` (represented as `dict` in JSON). """
 
         self.encounter = None
         """ Where was assessment performed?.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Encounter']` (represented as `dict` in JSON). """
 
         self.identifier = None
         """ Unique identifier for the assessment.
@@ -70,11 +73,11 @@ class RiskAssessment(domainresource.DomainResource):
 
         self.parent = None
         """ Part of this occurrence.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.performer = None
         """ Who did assessment?.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'Device']` (represented as `dict` in JSON). """
 
         self.prediction = None
         """ Outcome predicted.
@@ -86,7 +89,7 @@ class RiskAssessment(domainresource.DomainResource):
 
         self.reasonReference = None
         """ Why the assessment was necessary?.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Condition', 'Observation', 'DiagnosticReport', 'DocumentReference']` (represented as `dict` in JSON). """
 
         self.status = None
         """ registered | preliminary | final | amended +.
@@ -94,7 +97,7 @@ class RiskAssessment(domainresource.DomainResource):
 
         self.subject = None
         """ Who/what does assessment apply to?.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient', 'Group']` (represented as `dict` in JSON). """
 
         super(RiskAssessment, self).__init__(jsondict=jsondict, strict=strict)
 

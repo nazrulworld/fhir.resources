@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/ClinicalImpression
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 import os
 import pytest
@@ -23,17 +26,17 @@ class ClinicalImpressionTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("ClinicalImpression", js["resourceType"])
         return clinicalimpression.ClinicalImpression(js)
-    
+
     def testClinicalImpression1(self):
         inst = self.instantiate_from("clinicalimpression-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a ClinicalImpression instance")
         self.implClinicalImpression1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("ClinicalImpression", js["resourceType"])
         inst2 = clinicalimpression.ClinicalImpression(js)
         self.implClinicalImpression1(inst2)
-    
+
     def implClinicalImpression1(self, inst):
         self.assertEqual(inst.date.date, FHIRDate("2014-12-06T22:33:00+11:00").date)
         self.assertEqual(inst.date.as_json(), "2014-12-06T22:33:00+11:00")

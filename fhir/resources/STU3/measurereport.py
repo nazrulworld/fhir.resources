@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/MeasureReport) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/MeasureReport
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -29,7 +32,7 @@ class MeasureReport(domainresource.DomainResource):
 
         self.evaluatedResources = None
         """ What data was evaluated to produce the measure score.
-        Type `FHIRReference` referencing `Bundle` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Bundle']` (represented as `dict` in JSON). """
 
         self.group = None
         """ Measure results for each group.
@@ -41,11 +44,11 @@ class MeasureReport(domainresource.DomainResource):
 
         self.measure = None
         """ What measure was evaluated.
-        Type `FHIRReference` referencing `Measure` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Measure']` (represented as `dict` in JSON). """
 
         self.patient = None
         """ What patient the report is for.
-        Type `FHIRReference` referencing `Patient` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
 
         self.period = None
         """ What period the report covers.
@@ -53,7 +56,7 @@ class MeasureReport(domainresource.DomainResource):
 
         self.reportingOrganization = None
         """ Who is reporting the data.
-        Type `FHIRReference` referencing `Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.status = None
         """ complete | pending | error.
@@ -163,7 +166,7 @@ class MeasureReportGroupPopulation(backboneelement.BackboneElement):
 
         self.patients = None
         """ For patient-list reports, the patients in this population.
-        Type `FHIRReference` referencing `List` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['List']` (represented as `dict` in JSON). """
 
         super(MeasureReportGroupPopulation, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -289,7 +292,7 @@ class MeasureReportGroupStratifierStratumPopulation(backboneelement.BackboneElem
 
         self.patients = None
         """ For patient-list reports, the patients in this population.
-        Type `FHIRReference` referencing `List` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['List']` (represented as `dict` in JSON). """
 
         super(MeasureReportGroupStratifierStratumPopulation, self).__init__(jsondict=jsondict, strict=strict)
 

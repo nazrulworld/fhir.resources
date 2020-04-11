@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/MedicinalProductInteraction
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 import os
 import pytest
@@ -23,17 +26,17 @@ class MedicinalProductInteractionTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("MedicinalProductInteraction", js["resourceType"])
         return medicinalproductinteraction.MedicinalProductInteraction(js)
-    
+
     def testMedicinalProductInteraction1(self):
         inst = self.instantiate_from("medicinalproductinteraction-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a MedicinalProductInteraction instance")
         self.implMedicinalProductInteraction1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("MedicinalProductInteraction", js["resourceType"])
         inst2 = medicinalproductinteraction.MedicinalProductInteraction(js)
         self.implMedicinalProductInteraction1(inst2)
-    
+
     def implMedicinalProductInteraction1(self, inst):
         self.assertEqual(force_bytes(inst.effect.coding[0].code), force_bytes("Increasedplasmaconcentrations"))
         self.assertEqual(force_bytes(inst.effect.coding[0].system), force_bytes("http://ema.europa.eu/example/interactionseffect"))

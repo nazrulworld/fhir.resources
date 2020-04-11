@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/MedicinalProductUndesirableEffect) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/MedicinalProductUndesirableEffect
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -37,7 +40,7 @@ class MedicinalProductUndesirableEffect(domainresource.DomainResource):
 
         self.subject = None
         """ The medication for which this is an indication.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['MedicinalProduct', 'Medication']` (represented as `dict` in JSON). """
 
         self.symptomConditionEffect = None
         """ The symptom, condition or undesirable effect.

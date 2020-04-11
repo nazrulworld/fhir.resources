@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/ChargeItem) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/ChargeItem
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -31,7 +34,7 @@ class ChargeItem(domainresource.DomainResource):
 
         self.account = None
         """ Account to place this charge.
-        List of `FHIRReference` items referencing `Account` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Account']` (represented as `dict` in JSON). """
 
         self.bodysite = None
         """ Anatomical location, if relevant.
@@ -43,7 +46,7 @@ class ChargeItem(domainresource.DomainResource):
 
         self.context = None
         """ Encounter / Episode associated with event.
-        Type `FHIRReference` referencing `Encounter, EpisodeOfCare` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Encounter'], ['EpisodeOfCare']` (represented as `dict` in JSON). """
 
         self.definition = None
         """ Defining information about the code of this charge item.
@@ -55,7 +58,7 @@ class ChargeItem(domainresource.DomainResource):
 
         self.enterer = None
         """ Individual who was entering.
-        Type `FHIRReference` referencing `Practitioner, Organization, Patient, Device, RelatedPerson` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner'], ['Organization'], ['Patient'], ['Device'], ['RelatedPerson']` (represented as `dict` in JSON). """
 
         self.factorOverride = None
         """ Factor overriding the associated rules.
@@ -87,7 +90,7 @@ class ChargeItem(domainresource.DomainResource):
 
         self.partOf = None
         """ Part of referenced ChargeItem.
-        List of `FHIRReference` items referencing `ChargeItem` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['ChargeItem']` (represented as `dict` in JSON). """
 
         self.participant = None
         """ Who performed charged service.
@@ -95,7 +98,7 @@ class ChargeItem(domainresource.DomainResource):
 
         self.performingOrganization = None
         """ Organization providing the charged sevice.
-        Type `FHIRReference` referencing `Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.priceOverride = None
         """ Price overriding the associated rules.
@@ -111,11 +114,11 @@ class ChargeItem(domainresource.DomainResource):
 
         self.requestingOrganization = None
         """ Organization requesting the charged service.
-        Type `FHIRReference` referencing `Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.service = None
         """ Which rendered service is being charged?.
-        List of `FHIRReference` items referencing `DiagnosticReport, ImagingStudy, Immunization, MedicationAdministration, MedicationDispense, Observation, Procedure, SupplyDelivery` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['DiagnosticReport'], ['ImagingStudy'], ['Immunization'], ['MedicationAdministration'], ['MedicationDispense'], ['Observation'], ['Procedure'], ['SupplyDelivery']` (represented as `dict` in JSON). """
 
         self.status = None
         """ planned | billable | not-billable | aborted | billed | entered-in-
@@ -124,11 +127,11 @@ class ChargeItem(domainresource.DomainResource):
 
         self.subject = None
         """ Individual service was done for/to.
-        Type `FHIRReference` referencing `Patient, Group` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient'], ['Group']` (represented as `dict` in JSON). """
 
         self.supportingInformation = None
         """ Further information supporting the this charge.
-        List of `FHIRReference` items referencing `Resource` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         super(ChargeItem, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -184,7 +187,7 @@ class ChargeItemParticipant(backboneelement.BackboneElement):
 
         self.actor = None
         """ Individual who was performing.
-        Type `FHIRReference` referencing `Practitioner, Organization, Patient, Device, RelatedPerson` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner'], ['Organization'], ['Patient'], ['Device'], ['RelatedPerson']` (represented as `dict` in JSON). """
 
         self.role = None
         """ What type of performance was done.

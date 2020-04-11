@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Account
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 import os
 import pytest
@@ -23,18 +26,55 @@ class AccountTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("Account", js["resourceType"])
         return account.Account(js)
-    
+
     def testAccount1(self):
-        inst = self.instantiate_from("account-example-with-guarantor.json")
+        inst = self.instantiate_from("account-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a Account instance")
         self.implAccount1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Account", js["resourceType"])
         inst2 = account.Account(js)
         self.implAccount1(inst2)
-    
+
     def implAccount1(self, inst):
+        self.assertEqual(inst.active.end.date, FHIRDate("2016-06-30").date)
+        self.assertEqual(inst.active.end.as_json(), "2016-06-30")
+        self.assertEqual(inst.active.start.date, FHIRDate("2016-01-01").date)
+        self.assertEqual(inst.active.start.as_json(), "2016-01-01")
+        self.assertEqual(force_bytes(inst.balance.code), force_bytes("USD"))
+        self.assertEqual(force_bytes(inst.balance.system), force_bytes("urn:iso:std:iso:4217"))
+        self.assertEqual(force_bytes(inst.balance.unit), force_bytes("USD"))
+        self.assertEqual(inst.balance.value, -1200)
+        self.assertEqual(inst.coverage[0].priority, 1)
+        self.assertEqual(force_bytes(inst.description), force_bytes("Hospital charges"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
+        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("urn:oid:0.1.2.3.4.5.6.7"))
+        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("654321"))
+        self.assertEqual(force_bytes(inst.name), force_bytes("HACC Funded Billing for Peter James Chalmers"))
+        self.assertEqual(inst.period.end.date, FHIRDate("2016-06-30").date)
+        self.assertEqual(inst.period.end.as_json(), "2016-06-30")
+        self.assertEqual(inst.period.start.date, FHIRDate("2016-01-01").date)
+        self.assertEqual(inst.period.start.as_json(), "2016-01-01")
+        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
+        self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">HACC Funded Billing for Peter James Chalmers</div>"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+        self.assertEqual(force_bytes(inst.type.coding[0].code), force_bytes("PBILLACCT"))
+        self.assertEqual(force_bytes(inst.type.coding[0].display), force_bytes("patient billing account"))
+        self.assertEqual(force_bytes(inst.type.coding[0].system), force_bytes("http://hl7.org/fhir/v3/ActCode"))
+        self.assertEqual(force_bytes(inst.type.text), force_bytes("patient"))
+
+    def testAccount2(self):
+        inst = self.instantiate_from("account-example-with-guarantor.json")
+        self.assertIsNotNone(inst, "Must have instantiated a Account instance")
+        self.implAccount2(inst)
+
+        js = inst.as_json()
+        self.assertEqual("Account", js["resourceType"])
+        inst2 = account.Account(js)
+        self.implAccount2(inst2)
+
+    def implAccount2(self, inst):
         self.assertEqual(inst.active.end.date, FHIRDate("2016-06-30").date)
         self.assertEqual(inst.active.end.as_json(), "2016-06-30")
         self.assertEqual(inst.active.start.date, FHIRDate("2016-01-01").date)
@@ -59,43 +99,6 @@ class AccountTests(unittest.TestCase):
         self.assertEqual(inst.period.start.as_json(), "2016-01-01")
         self.assertEqual(force_bytes(inst.status), force_bytes("active"))
         self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">Inpatient Admission for Peter James Chalmers Account</div>"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type.coding[0].code), force_bytes("PBILLACCT"))
-        self.assertEqual(force_bytes(inst.type.coding[0].display), force_bytes("patient billing account"))
-        self.assertEqual(force_bytes(inst.type.coding[0].system), force_bytes("http://hl7.org/fhir/v3/ActCode"))
-        self.assertEqual(force_bytes(inst.type.text), force_bytes("patient"))
-    
-    def testAccount2(self):
-        inst = self.instantiate_from("account-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Account instance")
-        self.implAccount2(inst)
-        
-        js = inst.as_json()
-        self.assertEqual("Account", js["resourceType"])
-        inst2 = account.Account(js)
-        self.implAccount2(inst2)
-    
-    def implAccount2(self, inst):
-        self.assertEqual(inst.active.end.date, FHIRDate("2016-06-30").date)
-        self.assertEqual(inst.active.end.as_json(), "2016-06-30")
-        self.assertEqual(inst.active.start.date, FHIRDate("2016-01-01").date)
-        self.assertEqual(inst.active.start.as_json(), "2016-01-01")
-        self.assertEqual(force_bytes(inst.balance.code), force_bytes("USD"))
-        self.assertEqual(force_bytes(inst.balance.system), force_bytes("urn:iso:std:iso:4217"))
-        self.assertEqual(force_bytes(inst.balance.unit), force_bytes("USD"))
-        self.assertEqual(inst.balance.value, -1200)
-        self.assertEqual(inst.coverage[0].priority, 1)
-        self.assertEqual(force_bytes(inst.description), force_bytes("Hospital charges"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("urn:oid:0.1.2.3.4.5.6.7"))
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("654321"))
-        self.assertEqual(force_bytes(inst.name), force_bytes("HACC Funded Billing for Peter James Chalmers"))
-        self.assertEqual(inst.period.end.date, FHIRDate("2016-06-30").date)
-        self.assertEqual(inst.period.end.as_json(), "2016-06-30")
-        self.assertEqual(inst.period.start.date, FHIRDate("2016-01-01").date)
-        self.assertEqual(inst.period.start.as_json(), "2016-01-01")
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">HACC Funded Billing for Peter James Chalmers</div>"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
         self.assertEqual(force_bytes(inst.type.coding[0].code), force_bytes("PBILLACCT"))
         self.assertEqual(force_bytes(inst.type.coding[0].display), force_bytes("patient billing account"))

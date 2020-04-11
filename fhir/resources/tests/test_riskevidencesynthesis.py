@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/RiskEvidenceSynthesis
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 import os
 import pytest
@@ -23,17 +26,17 @@ class RiskEvidenceSynthesisTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("RiskEvidenceSynthesis", js["resourceType"])
         return riskevidencesynthesis.RiskEvidenceSynthesis(js)
-    
+
     def testRiskEvidenceSynthesis1(self):
         inst = self.instantiate_from("riskevidencesynthesis-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a RiskEvidenceSynthesis instance")
         self.implRiskEvidenceSynthesis1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("RiskEvidenceSynthesis", js["resourceType"])
         inst2 = riskevidencesynthesis.RiskEvidenceSynthesis(js)
         self.implRiskEvidenceSynthesis1(inst2)
-    
+
     def implRiskEvidenceSynthesis1(self, inst):
         self.assertEqual(force_bytes(inst.id), force_bytes("example"))
         self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))

@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/EnrollmentRequest
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 import os
 import pytest
@@ -23,17 +26,17 @@ class EnrollmentRequestTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("EnrollmentRequest", js["resourceType"])
         return enrollmentrequest.EnrollmentRequest(js)
-    
+
     def testEnrollmentRequest1(self):
         inst = self.instantiate_from("enrollmentrequest-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a EnrollmentRequest instance")
         self.implEnrollmentRequest1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("EnrollmentRequest", js["resourceType"])
         inst2 = enrollmentrequest.EnrollmentRequest(js)
         self.implEnrollmentRequest1(inst2)
-    
+
     def implEnrollmentRequest1(self, inst):
         self.assertEqual(inst.created.date, FHIRDate("2014-08-16").date)
         self.assertEqual(inst.created.as_json(), "2014-08-16")

@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/TestScript) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/TestScript
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -77,7 +80,7 @@ class TestScript(domainresource.DomainResource):
 
         self.profile = None
         """ Reference of the validation profile.
-        List of `FHIRReference` items referencing `Resource` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.publisher = None
         """ Name of the publisher (organization or individual).
@@ -233,7 +236,7 @@ class TestScriptFixture(backboneelement.BackboneElement):
 
         self.resource = None
         """ Reference of the resource.
-        Type `FHIRReference` referencing `Resource` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
 
         super(TestScriptFixture, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -305,7 +308,7 @@ class TestScriptMetadataCapability(backboneelement.BackboneElement):
 
         self.capabilities = None
         """ Required Capability Statement.
-        Type `FHIRReference` referencing `CapabilityStatement` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['CapabilityStatement']` (represented as `dict` in JSON). """
 
         self.description = None
         """ The expected capabilities of the server.
@@ -440,7 +443,7 @@ class TestScriptRule(backboneelement.BackboneElement):
 
         self.resource = None
         """ Assert rule resource reference.
-        Type `FHIRReference` referencing `Resource` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
 
         super(TestScriptRule, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -507,7 +510,7 @@ class TestScriptRuleset(backboneelement.BackboneElement):
 
         self.resource = None
         """ Assert ruleset resource reference.
-        Type `FHIRReference` referencing `Resource` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.rule = None
         """ The referenced rule within the ruleset.

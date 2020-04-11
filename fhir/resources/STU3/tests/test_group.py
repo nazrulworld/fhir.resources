@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Group
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 import os
 import pytest
@@ -23,17 +26,17 @@ class GroupTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("Group", js["resourceType"])
         return group.Group(js)
-    
+
     def testGroup1(self):
         inst = self.instantiate_from("group-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a Group instance")
         self.implGroup1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Group", js["resourceType"])
         inst2 = group.Group(js)
         self.implGroup1(inst2)
-    
+
     def implGroup1(self, inst):
         self.assertTrue(inst.actual)
         self.assertEqual(force_bytes(inst.characteristic[0].code.text), force_bytes("gender"))
@@ -50,17 +53,17 @@ class GroupTests(unittest.TestCase):
         self.assertEqual(inst.quantity, 25)
         self.assertEqual(force_bytes(inst.text.status), force_bytes("additional"))
         self.assertEqual(force_bytes(inst.type), force_bytes("animal"))
-    
+
     def testGroup2(self):
         inst = self.instantiate_from("group-example-member.json")
         self.assertIsNotNone(inst, "Must have instantiated a Group instance")
         self.implGroup2(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Group", js["resourceType"])
         inst2 = group.Group(js)
         self.implGroup2(inst2)
-    
+
     def implGroup2(self, inst):
         self.assertTrue(inst.actual)
         self.assertEqual(force_bytes(inst.id), force_bytes("102"))

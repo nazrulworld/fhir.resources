@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/ObservationDefinition) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/ObservationDefinition
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -27,7 +30,7 @@ class ObservationDefinition(domainresource.DomainResource):
         self.abnormalCodedValueSet = None
         """ Value set of abnormal coded values for the observations conforming
         to this ObservationDefinition.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['ValueSet']` (represented as `dict` in JSON). """
 
         self.category = None
         """ Category of observation.
@@ -40,7 +43,7 @@ class ObservationDefinition(domainresource.DomainResource):
         self.criticalCodedValueSet = None
         """ Value set of critical coded values for the observations conforming
         to this ObservationDefinition.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['ValueSet']` (represented as `dict` in JSON). """
 
         self.identifier = None
         """ Business identifier for this ObservationDefinition instance.
@@ -57,7 +60,7 @@ class ObservationDefinition(domainresource.DomainResource):
         self.normalCodedValueSet = None
         """ Value set of normal coded values for the observations conforming to
         this ObservationDefinition.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['ValueSet']` (represented as `dict` in JSON). """
 
         self.permittedDataType = None
         """ Quantity | CodeableConcept | string | boolean | integer | Range |
@@ -79,7 +82,7 @@ class ObservationDefinition(domainresource.DomainResource):
         self.validCodedValueSet = None
         """ Value set of valid coded values for the observations conforming to
         this ObservationDefinition.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['ValueSet']` (represented as `dict` in JSON). """
 
         super(ObservationDefinition, self).__init__(jsondict=jsondict, strict=strict)
 

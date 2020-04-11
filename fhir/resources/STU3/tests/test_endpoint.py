@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Endpoint
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 import os
 import pytest
@@ -23,17 +26,17 @@ class EndpointTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("Endpoint", js["resourceType"])
         return endpoint.Endpoint(js)
-    
+
     def testEndpoint1(self):
         inst = self.instantiate_from("endpoint-example-iid.json")
         self.assertIsNotNone(inst, "Must have instantiated a Endpoint instance")
         self.implEndpoint1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Endpoint", js["resourceType"])
         inst2 = endpoint.Endpoint(js)
         self.implEndpoint1(inst2)
-    
+
     def implEndpoint1(self, inst):
         self.assertEqual(force_bytes(inst.address), force_bytes("https://pacs.hospital.org/IHEInvokeImageDisplay"))
         self.assertEqual(force_bytes(inst.connectionType.code), force_bytes("ihe-iid"))
@@ -43,17 +46,17 @@ class EndpointTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.payloadType[0].text), force_bytes("DICOM IID"))
         self.assertEqual(force_bytes(inst.status), force_bytes("active"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-    
+
     def testEndpoint2(self):
         inst = self.instantiate_from("endpoint-example-wadors.json")
         self.assertIsNotNone(inst, "Must have instantiated a Endpoint instance")
         self.implEndpoint2(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Endpoint", js["resourceType"])
         inst2 = endpoint.Endpoint(js)
         self.implEndpoint2(inst2)
-    
+
     def implEndpoint2(self, inst):
         self.assertEqual(force_bytes(inst.address), force_bytes("https://pacs.hospital.org/wado-rs"))
         self.assertEqual(force_bytes(inst.connectionType.code), force_bytes("dicom-wado-rs"))
@@ -64,17 +67,17 @@ class EndpointTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.payloadType[0].text), force_bytes("DICOM WADO-RS"))
         self.assertEqual(force_bytes(inst.status), force_bytes("active"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-    
+
     def testEndpoint3(self):
         inst = self.instantiate_from("endpoint-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a Endpoint instance")
         self.implEndpoint3(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Endpoint", js["resourceType"])
         inst2 = endpoint.Endpoint(js)
         self.implEndpoint3(inst2)
-    
+
     def implEndpoint3(self, inst):
         self.assertEqual(force_bytes(inst.address), force_bytes("http://fhir3.healthintersections.com.au/open/CarePlan"))
         self.assertEqual(force_bytes(inst.connectionType.code), force_bytes("hl7-fhir-rest"))

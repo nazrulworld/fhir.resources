@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/PractitionerRole
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 import os
 import pytest
@@ -23,17 +26,17 @@ class PractitionerRoleTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("PractitionerRole", js["resourceType"])
         return practitionerrole.PractitionerRole(js)
-    
+
     def testPractitionerRole1(self):
         inst = self.instantiate_from("practitionerrole-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a PractitionerRole instance")
         self.implPractitionerRole1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("PractitionerRole", js["resourceType"])
         inst2 = practitionerrole.PractitionerRole(js)
         self.implPractitionerRole1(inst2)
-    
+
     def implPractitionerRole1(self, inst):
         self.assertTrue(inst.active)
         self.assertEqual(force_bytes(inst.availabilityExceptions), force_bytes("Adam is generally unavailable on public holidays and during the Christmas/New Year break"))

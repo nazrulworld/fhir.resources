@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/Goal) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Goal
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -33,7 +36,7 @@ class Goal(domainresource.DomainResource):
 
         self.addresses = None
         """ Issues addressed by this goal.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Condition', 'Observation', 'MedicationStatement', 'NutritionOrder', 'ServiceRequest', 'RiskAssessment']` (represented as `dict` in JSON). """
 
         self.category = None
         """ E.g. Treatment, dietary, behavioral, etc..
@@ -45,7 +48,7 @@ class Goal(domainresource.DomainResource):
 
         self.expressedBy = None
         """ Who's responsible for creating Goal?.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient', 'Practitioner', 'PractitionerRole', 'RelatedPerson']` (represented as `dict` in JSON). """
 
         self.identifier = None
         """ External Ids for this goal.
@@ -66,7 +69,7 @@ class Goal(domainresource.DomainResource):
 
         self.outcomeReference = None
         """ Observation that resulted from goal.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Observation']` (represented as `dict` in JSON). """
 
         self.priority = None
         """ high-priority | medium-priority | low-priority.
@@ -90,7 +93,7 @@ class Goal(domainresource.DomainResource):
 
         self.subject = None
         """ Who this goal is intended for.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient', 'Group', 'Organization']` (represented as `dict` in JSON). """
 
         self.target = None
         """ Target outcome for the goal.

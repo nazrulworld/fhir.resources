@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/CoverageEligibilityResponse) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/CoverageEligibilityResponse
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -50,7 +53,7 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
 
         self.insurer = None
         """ Coverage issuer.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.outcome = None
         """ queued | complete | error | partial.
@@ -58,7 +61,7 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
 
         self.patient = None
         """ Intended recipient of products and services.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
 
         self.preAuthRef = None
         """ Preauthorization reference.
@@ -70,11 +73,11 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
 
         self.request = None
         """ Eligibility request reference.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['CoverageEligibilityRequest']` (represented as `dict` in JSON). """
 
         self.requestor = None
         """ Party responsible for the request.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'Organization']` (represented as `dict` in JSON). """
 
         self.servicedDate = None
         """ Estimated date or dates of service.
@@ -168,7 +171,7 @@ class CoverageEligibilityResponseInsurance(backboneelement.BackboneElement):
 
         self.coverage = None
         """ Insurance information.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Coverage']` (represented as `dict` in JSON). """
 
         self.inforce = None
         """ Coverage inforce indicator.
@@ -254,7 +257,7 @@ class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
 
         self.provider = None
         """ Performing practitioner.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole']` (represented as `dict` in JSON). """
 
         self.term = None
         """ Annual or lifetime.

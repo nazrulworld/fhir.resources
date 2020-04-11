@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/Observation) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Observation
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -26,7 +29,7 @@ class Observation(domainresource.DomainResource):
 
         self.basedOn = None
         """ Fulfills plan, proposal or order.
-        List of `FHIRReference` items referencing `CarePlan, DeviceRequest, ImmunizationRecommendation, MedicationRequest, NutritionOrder, ProcedureRequest, ReferralRequest` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['CarePlan'], ['DeviceRequest'], ['ImmunizationRecommendation'], ['MedicationRequest'], ['NutritionOrder'], ['ProcedureRequest'], ['ReferralRequest']` (represented as `dict` in JSON). """
 
         self.bodySite = None
         """ Observed body part.
@@ -50,7 +53,7 @@ class Observation(domainresource.DomainResource):
 
         self.context = None
         """ Healthcare event during which this observation is made.
-        Type `FHIRReference` referencing `Encounter, EpisodeOfCare` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Encounter'], ['EpisodeOfCare']` (represented as `dict` in JSON). """
 
         self.dataAbsentReason = None
         """ Why the result is missing.
@@ -58,7 +61,7 @@ class Observation(domainresource.DomainResource):
 
         self.device = None
         """ (Measurement) Device.
-        Type `FHIRReference` referencing `Device, DeviceMetric` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Device'], ['DeviceMetric']` (represented as `dict` in JSON). """
 
         self.effectiveDateTime = None
         """ Clinically relevant time/time-period for observation.
@@ -86,7 +89,7 @@ class Observation(domainresource.DomainResource):
 
         self.performer = None
         """ Who is responsible for the observation.
-        List of `FHIRReference` items referencing `Practitioner, Organization, Patient, RelatedPerson` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Practitioner'], ['Organization'], ['Patient'], ['RelatedPerson']` (represented as `dict` in JSON). """
 
         self.referenceRange = None
         """ Provides guide for interpretation.
@@ -98,7 +101,7 @@ class Observation(domainresource.DomainResource):
 
         self.specimen = None
         """ Specimen used for this observation.
-        Type `FHIRReference` referencing `Specimen` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Specimen']` (represented as `dict` in JSON). """
 
         self.status = None
         """ registered | preliminary | final | amended +.
@@ -106,7 +109,7 @@ class Observation(domainresource.DomainResource):
 
         self.subject = None
         """ Who and/or what this is about.
-        Type `FHIRReference` referencing `Patient, Group, Device, Location` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient'], ['Group'], ['Device'], ['Location']` (represented as `dict` in JSON). """
 
         self.valueAttachment = None
         """ Actual result.
@@ -369,7 +372,7 @@ class ObservationRelated(backboneelement.BackboneElement):
 
         self.target = None
         """ Resource that is related to this one.
-        Type `FHIRReference` referencing `Observation, QuestionnaireResponse, Sequence` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Observation'], ['QuestionnaireResponse'], ['Sequence']` (represented as `dict` in JSON). """
 
         self.type = None
         """ has-member | derived-from | sequel-to | replaces | qualified-by |

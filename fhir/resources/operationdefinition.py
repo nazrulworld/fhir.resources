@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/OperationDefinition) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/OperationDefinition
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -30,7 +33,7 @@ class OperationDefinition(domainresource.DomainResource):
 
         self.base = None
         """ Marks this as a profile of the base.
-        Type `str`. """
+        Type `str` referencing `['OperationDefinition']`. """
 
         self.code = None
         """ Name used to invoke the operation.
@@ -58,7 +61,7 @@ class OperationDefinition(domainresource.DomainResource):
 
         self.inputProfile = None
         """ Validation information for in parameters.
-        Type `str`. """
+        Type `str` referencing `['StructureDefinition']`. """
 
         self.instance = None
         """ Invoke on an instance?.
@@ -78,7 +81,7 @@ class OperationDefinition(domainresource.DomainResource):
 
         self.outputProfile = None
         """ Validation information for out parameters.
-        Type `str`. """
+        Type `str` referencing `['StructureDefinition']`. """
 
         self.overload = None
         """ Define overloaded variants for when  generating code.
@@ -254,7 +257,7 @@ class OperationDefinitionParameter(backboneelement.BackboneElement):
 
         self.targetProfile = None
         """ If type is Reference | canonical, allowed targets.
-        List of `str` items. """
+        List of `str` items referencing `['StructureDefinition']`. """
 
         self.type = None
         """ What type this parameter has.
@@ -307,7 +310,7 @@ class OperationDefinitionParameterBinding(backboneelement.BackboneElement):
 
         self.valueSet = None
         """ Source of value set.
-        Type `str`. """
+        Type `str` referencing `['ValueSet']`. """
 
         super(OperationDefinitionParameterBinding, self).__init__(jsondict=jsondict, strict=strict)
 

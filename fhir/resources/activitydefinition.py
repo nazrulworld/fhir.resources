@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/ActivityDefinition) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/ActivityDefinition
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -91,7 +94,8 @@ class ActivityDefinition(domainresource.DomainResource):
         List of `Identifier` items (represented as `dict` in JSON). """
 
         self.intent = None
-        """ proposal | plan | order.
+        """ proposal | plan | directive | order | original-order | reflex-order
+        | filler-order | instance-order | option.
         Type `str`. """
 
         self.jurisdiction = None
@@ -108,11 +112,11 @@ class ActivityDefinition(domainresource.DomainResource):
 
         self.library = None
         """ Logic used by the activity definition.
-        List of `str` items. """
+        List of `str` items referencing `['Library']`. """
 
         self.location = None
         """ Where it should happen.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Location']` (represented as `dict` in JSON). """
 
         self.name = None
         """ Name for this activity definition (computer friendly).
@@ -120,11 +124,11 @@ class ActivityDefinition(domainresource.DomainResource):
 
         self.observationRequirement = None
         """ What observations are required to perform this action.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['ObservationDefinition']` (represented as `dict` in JSON). """
 
         self.observationResultRequirement = None
         """ What observations must be produced by this action.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['ObservationDefinition']` (represented as `dict` in JSON). """
 
         self.participant = None
         """ Who should participate in the action.
@@ -140,11 +144,11 @@ class ActivityDefinition(domainresource.DomainResource):
 
         self.productReference = None
         """ What's administered/supplied.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Medication', 'Substance']` (represented as `dict` in JSON). """
 
         self.profile = None
         """ What profile the resource needs to conform to.
-        Type `str`. """
+        Type `str` referencing `['StructureDefinition']`. """
 
         self.publisher = None
         """ Name of the publisher (organization or individual).
@@ -168,7 +172,7 @@ class ActivityDefinition(domainresource.DomainResource):
 
         self.specimenRequirement = None
         """ What specimens are required to perform this action.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['SpecimenDefinition']` (represented as `dict` in JSON). """
 
         self.status = None
         """ draft | active | retired | unknown.
@@ -180,7 +184,7 @@ class ActivityDefinition(domainresource.DomainResource):
 
         self.subjectReference = None
         """ Type of individual the activity definition is intended for.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Group']` (represented as `dict` in JSON). """
 
         self.subtitle = None
         """ Subordinate title of the activity definition.
@@ -220,7 +224,7 @@ class ActivityDefinition(domainresource.DomainResource):
 
         self.transform = None
         """ Transform to apply the template.
-        Type `str`. """
+        Type `str` referencing `['StructureMap']`. """
 
         self.url = None
         """ Canonical identifier for this activity definition, represented as a

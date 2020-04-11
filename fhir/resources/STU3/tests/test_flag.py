@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Flag
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 import os
 import pytest
@@ -23,40 +26,18 @@ class FlagTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("Flag", js["resourceType"])
         return flag.Flag(js)
-    
+
     def testFlag1(self):
-        inst = self.instantiate_from("flag-example-encounter.json")
+        inst = self.instantiate_from("flag-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a Flag instance")
         self.implFlag1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Flag", js["resourceType"])
         inst2 = flag.Flag(js)
         self.implFlag1(inst2)
-    
+
     def implFlag1(self, inst):
-        self.assertEqual(force_bytes(inst.category.coding[0].code), force_bytes("infection"))
-        self.assertEqual(force_bytes(inst.category.coding[0].display), force_bytes("Infection Control Level"))
-        self.assertEqual(force_bytes(inst.category.coding[0].system), force_bytes("http://example.org/local"))
-        self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("l3"))
-        self.assertEqual(force_bytes(inst.code.coding[0].display), force_bytes("Follow Level 3 Protocol"))
-        self.assertEqual(force_bytes(inst.code.coding[0].system), force_bytes("http://example.org/local/if1"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("example-encounter"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">Follow Infection Control Level 3 Protocol</div>"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-    
-    def testFlag2(self):
-        inst = self.instantiate_from("flag-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Flag instance")
-        self.implFlag2(inst)
-        
-        js = inst.as_json()
-        self.assertEqual("Flag", js["resourceType"])
-        inst2 = flag.Flag(js)
-        self.implFlag2(inst2)
-    
-    def implFlag2(self, inst):
         self.assertEqual(force_bytes(inst.category.coding[0].code), force_bytes("admin"))
         self.assertEqual(force_bytes(inst.category.coding[0].display), force_bytes("Admin"))
         self.assertEqual(force_bytes(inst.category.coding[0].system), force_bytes("http://example.org/local"))
@@ -73,5 +54,27 @@ class FlagTests(unittest.TestCase):
         self.assertEqual(inst.period.start.as_json(), "2015-01-17")
         self.assertEqual(force_bytes(inst.status), force_bytes("inactive"))
         self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">Large Dog warning for Peter Patient</div>"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+
+    def testFlag2(self):
+        inst = self.instantiate_from("flag-example-encounter.json")
+        self.assertIsNotNone(inst, "Must have instantiated a Flag instance")
+        self.implFlag2(inst)
+
+        js = inst.as_json()
+        self.assertEqual("Flag", js["resourceType"])
+        inst2 = flag.Flag(js)
+        self.implFlag2(inst2)
+
+    def implFlag2(self, inst):
+        self.assertEqual(force_bytes(inst.category.coding[0].code), force_bytes("infection"))
+        self.assertEqual(force_bytes(inst.category.coding[0].display), force_bytes("Infection Control Level"))
+        self.assertEqual(force_bytes(inst.category.coding[0].system), force_bytes("http://example.org/local"))
+        self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("l3"))
+        self.assertEqual(force_bytes(inst.code.coding[0].display), force_bytes("Follow Level 3 Protocol"))
+        self.assertEqual(force_bytes(inst.code.coding[0].system), force_bytes("http://example.org/local/if1"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("example-encounter"))
+        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
+        self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">Follow Infection Control Level 3 Protocol</div>"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 

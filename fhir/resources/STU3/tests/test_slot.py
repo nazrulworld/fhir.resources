@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Slot
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 import os
 import pytest
@@ -23,62 +26,18 @@ class SlotTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("Slot", js["resourceType"])
         return slot.Slot(js)
-    
+
     def testSlot1(self):
-        inst = self.instantiate_from("slot-example-unavailable.json")
+        inst = self.instantiate_from("slot-example-busy.json")
         self.assertIsNotNone(inst, "Must have instantiated a Slot instance")
         self.implSlot1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Slot", js["resourceType"])
         inst2 = slot.Slot(js)
         self.implSlot1(inst2)
-    
+
     def implSlot1(self, inst):
-        self.assertEqual(force_bytes(inst.comment), force_bytes("Dr Careful is out of the office"))
-        self.assertEqual(inst.end.date, FHIRDate("2013-12-25T09:45:00Z").date)
-        self.assertEqual(inst.end.as_json(), "2013-12-25T09:45:00Z")
-        self.assertEqual(force_bytes(inst.id), force_bytes("3"))
-        self.assertEqual(force_bytes(inst.serviceCategory.coding[0].code), force_bytes("17"))
-        self.assertEqual(force_bytes(inst.serviceCategory.coding[0].display), force_bytes("General Practice"))
-        self.assertEqual(inst.start.date, FHIRDate("2013-12-25T09:30:00Z").date)
-        self.assertEqual(inst.start.as_json(), "2013-12-25T09:30:00Z")
-        self.assertEqual(force_bytes(inst.status), force_bytes("busy-unavailable"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-    
-    def testSlot2(self):
-        inst = self.instantiate_from("slot-example-tentative.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Slot instance")
-        self.implSlot2(inst)
-        
-        js = inst.as_json()
-        self.assertEqual("Slot", js["resourceType"])
-        inst2 = slot.Slot(js)
-        self.implSlot2(inst2)
-    
-    def implSlot2(self, inst):
-        self.assertEqual(force_bytes(inst.comment), force_bytes("Dr Careful is out of the office"))
-        self.assertEqual(inst.end.date, FHIRDate("2013-12-25T10:00:00Z").date)
-        self.assertEqual(inst.end.as_json(), "2013-12-25T10:00:00Z")
-        self.assertEqual(force_bytes(inst.id), force_bytes("2"))
-        self.assertEqual(force_bytes(inst.serviceCategory.coding[0].code), force_bytes("17"))
-        self.assertEqual(force_bytes(inst.serviceCategory.coding[0].display), force_bytes("General Practice"))
-        self.assertEqual(inst.start.date, FHIRDate("2013-12-25T09:45:00Z").date)
-        self.assertEqual(inst.start.as_json(), "2013-12-25T09:45:00Z")
-        self.assertEqual(force_bytes(inst.status), force_bytes("busy-tentative"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-    
-    def testSlot3(self):
-        inst = self.instantiate_from("slot-example-busy.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Slot instance")
-        self.implSlot3(inst)
-        
-        js = inst.as_json()
-        self.assertEqual("Slot", js["resourceType"])
-        inst2 = slot.Slot(js)
-        self.implSlot3(inst2)
-    
-    def implSlot3(self, inst):
         self.assertEqual(force_bytes(inst.comment), force_bytes("Assessments should be performed before requesting appointments in this slot."))
         self.assertEqual(inst.end.date, FHIRDate("2013-12-25T09:15:00Z").date)
         self.assertEqual(inst.end.as_json(), "2013-12-25T09:15:00Z")
@@ -92,18 +51,18 @@ class SlotTests(unittest.TestCase):
         self.assertEqual(inst.start.as_json(), "2013-12-25T09:00:00Z")
         self.assertEqual(force_bytes(inst.status), force_bytes("busy"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-    
-    def testSlot4(self):
+
+    def testSlot2(self):
         inst = self.instantiate_from("slot-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a Slot instance")
-        self.implSlot4(inst)
-        
+        self.implSlot2(inst)
+
         js = inst.as_json()
         self.assertEqual("Slot", js["resourceType"])
         inst2 = slot.Slot(js)
-        self.implSlot4(inst2)
-    
-    def implSlot4(self, inst):
+        self.implSlot2(inst2)
+
+    def implSlot2(self, inst):
         self.assertEqual(force_bytes(inst.appointmentType.coding[0].code), force_bytes("WALKIN"))
         self.assertEqual(force_bytes(inst.appointmentType.coding[0].display), force_bytes("A previously unscheduled walk-in visit"))
         self.assertEqual(force_bytes(inst.appointmentType.coding[0].system), force_bytes("http://hl7.org/fhir/v2/0276"))
@@ -120,5 +79,49 @@ class SlotTests(unittest.TestCase):
         self.assertEqual(inst.start.date, FHIRDate("2013-12-25T09:15:00Z").date)
         self.assertEqual(inst.start.as_json(), "2013-12-25T09:15:00Z")
         self.assertEqual(force_bytes(inst.status), force_bytes("free"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+
+    def testSlot3(self):
+        inst = self.instantiate_from("slot-example-unavailable.json")
+        self.assertIsNotNone(inst, "Must have instantiated a Slot instance")
+        self.implSlot3(inst)
+
+        js = inst.as_json()
+        self.assertEqual("Slot", js["resourceType"])
+        inst2 = slot.Slot(js)
+        self.implSlot3(inst2)
+
+    def implSlot3(self, inst):
+        self.assertEqual(force_bytes(inst.comment), force_bytes("Dr Careful is out of the office"))
+        self.assertEqual(inst.end.date, FHIRDate("2013-12-25T09:45:00Z").date)
+        self.assertEqual(inst.end.as_json(), "2013-12-25T09:45:00Z")
+        self.assertEqual(force_bytes(inst.id), force_bytes("3"))
+        self.assertEqual(force_bytes(inst.serviceCategory.coding[0].code), force_bytes("17"))
+        self.assertEqual(force_bytes(inst.serviceCategory.coding[0].display), force_bytes("General Practice"))
+        self.assertEqual(inst.start.date, FHIRDate("2013-12-25T09:30:00Z").date)
+        self.assertEqual(inst.start.as_json(), "2013-12-25T09:30:00Z")
+        self.assertEqual(force_bytes(inst.status), force_bytes("busy-unavailable"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+
+    def testSlot4(self):
+        inst = self.instantiate_from("slot-example-tentative.json")
+        self.assertIsNotNone(inst, "Must have instantiated a Slot instance")
+        self.implSlot4(inst)
+
+        js = inst.as_json()
+        self.assertEqual("Slot", js["resourceType"])
+        inst2 = slot.Slot(js)
+        self.implSlot4(inst2)
+
+    def implSlot4(self, inst):
+        self.assertEqual(force_bytes(inst.comment), force_bytes("Dr Careful is out of the office"))
+        self.assertEqual(inst.end.date, FHIRDate("2013-12-25T10:00:00Z").date)
+        self.assertEqual(inst.end.as_json(), "2013-12-25T10:00:00Z")
+        self.assertEqual(force_bytes(inst.id), force_bytes("2"))
+        self.assertEqual(force_bytes(inst.serviceCategory.coding[0].code), force_bytes("17"))
+        self.assertEqual(force_bytes(inst.serviceCategory.coding[0].display), force_bytes("General Practice"))
+        self.assertEqual(inst.start.date, FHIRDate("2013-12-25T09:45:00Z").date)
+        self.assertEqual(inst.start.as_json(), "2013-12-25T09:45:00Z")
+        self.assertEqual(force_bytes(inst.status), force_bytes("busy-tentative"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 

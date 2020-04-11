@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/Flag) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Flag
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -26,7 +29,7 @@ class Flag(domainresource.DomainResource):
 
         self.author = None
         """ Flag creator.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Device', 'Organization', 'Patient', 'Practitioner', 'PractitionerRole']` (represented as `dict` in JSON). """
 
         self.category = None
         """ Clinical, administrative, etc..
@@ -38,7 +41,7 @@ class Flag(domainresource.DomainResource):
 
         self.encounter = None
         """ Alert relevant during encounter.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Encounter']` (represented as `dict` in JSON). """
 
         self.identifier = None
         """ Business identifier.
@@ -54,7 +57,7 @@ class Flag(domainresource.DomainResource):
 
         self.subject = None
         """ Who/What is flag about?.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient', 'Location', 'Group', 'Organization', 'Practitioner', 'PlanDefinition', 'Medication', 'Procedure']` (represented as `dict` in JSON). """
 
         super(Flag, self).__init__(jsondict=jsondict, strict=strict)
 

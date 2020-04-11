@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Invoice
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 import os
 import pytest
@@ -23,17 +26,17 @@ class InvoiceTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("Invoice", js["resourceType"])
         return invoice.Invoice(js)
-    
+
     def testInvoice1(self):
         inst = self.instantiate_from("invoice-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a Invoice instance")
         self.implInvoice1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Invoice", js["resourceType"])
         inst2 = invoice.Invoice(js)
         self.implInvoice1(inst2)
-    
+
     def implInvoice1(self, inst):
         self.assertEqual(inst.date.date, FHIRDate("2017-01-25T08:00:00+01:00").date)
         self.assertEqual(inst.date.as_json(), "2017-01-25T08:00:00+01:00")

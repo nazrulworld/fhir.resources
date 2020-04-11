@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/AdverseEvent) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/AdverseEvent
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -42,7 +45,7 @@ class AdverseEvent(domainresource.DomainResource):
         self.contributor = None
         """ Who  was involved in the adverse event or the potential adverse
         event.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Practitioner', 'PractitionerRole', 'Device']` (represented as `dict` in JSON). """
 
         self.date = None
         """ When the event occurred.
@@ -54,7 +57,7 @@ class AdverseEvent(domainresource.DomainResource):
 
         self.encounter = None
         """ Encounter created as part of.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Encounter']` (represented as `dict` in JSON). """
 
         self.event = None
         """ Type of the event itself in relation to the subject.
@@ -66,7 +69,7 @@ class AdverseEvent(domainresource.DomainResource):
 
         self.location = None
         """ Location where adverse event occurred.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Location']` (represented as `dict` in JSON). """
 
         self.outcome = None
         """ resolved | recovering | ongoing | resolvedWithSequelae | fatal |
@@ -79,15 +82,15 @@ class AdverseEvent(domainresource.DomainResource):
 
         self.recorder = None
         """ Who recorded the adverse event.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient', 'Practitioner', 'PractitionerRole', 'RelatedPerson']` (represented as `dict` in JSON). """
 
         self.referenceDocument = None
         """ AdverseEvent.referenceDocument.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['DocumentReference']` (represented as `dict` in JSON). """
 
         self.resultingCondition = None
         """ Effect on the subject due to this event.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Condition']` (represented as `dict` in JSON). """
 
         self.seriousness = None
         """ Seriousness of the event.
@@ -99,15 +102,15 @@ class AdverseEvent(domainresource.DomainResource):
 
         self.study = None
         """ AdverseEvent.study.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['ResearchStudy']` (represented as `dict` in JSON). """
 
         self.subject = None
         """ Subject impacted by event.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient', 'Group', 'Practitioner', 'RelatedPerson']` (represented as `dict` in JSON). """
 
         self.subjectMedicalHistory = None
         """ AdverseEvent.subjectMedicalHistory.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Condition', 'Observation', 'AllergyIntolerance', 'FamilyMemberHistory', 'Immunization', 'Procedure', 'Media', 'DocumentReference']` (represented as `dict` in JSON). """
 
         self.suspectEntity = None
         """ The suspected agent causing the adverse event.
@@ -166,7 +169,7 @@ class AdverseEventSuspectEntity(backboneelement.BackboneElement):
 
         self.instance = None
         """ Refers to the specific entity that caused the adverse event.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Immunization', 'Procedure', 'Substance', 'Medication', 'MedicationAdministration', 'MedicationStatement', 'Device']` (represented as `dict` in JSON). """
 
         super(AdverseEventSuspectEntity, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -199,7 +202,7 @@ class AdverseEventSuspectEntityCausality(backboneelement.BackboneElement):
 
         self.author = None
         """ AdverseEvent.suspectEntity.causalityAuthor.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole']` (represented as `dict` in JSON). """
 
         self.method = None
         """ ProbabilityScale | Bayesian | Checklist.

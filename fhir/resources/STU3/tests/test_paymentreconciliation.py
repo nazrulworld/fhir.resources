@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/PaymentReconciliation
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 import os
 import pytest
@@ -23,17 +26,17 @@ class PaymentReconciliationTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("PaymentReconciliation", js["resourceType"])
         return paymentreconciliation.PaymentReconciliation(js)
-    
+
     def testPaymentReconciliation1(self):
         inst = self.instantiate_from("paymentreconciliation-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a PaymentReconciliation instance")
         self.implPaymentReconciliation1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("PaymentReconciliation", js["resourceType"])
         inst2 = paymentreconciliation.PaymentReconciliation(js)
         self.implPaymentReconciliation1(inst2)
-    
+
     def implPaymentReconciliation1(self, inst):
         self.assertEqual(inst.created.date, FHIRDate("2014-08-16").date)
         self.assertEqual(inst.created.as_json(), "2014-08-16")

@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/SupplyRequest
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 import os
 import pytest
@@ -23,17 +26,17 @@ class SupplyRequestTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("SupplyRequest", js["resourceType"])
         return supplyrequest.SupplyRequest(js)
-    
+
     def testSupplyRequest1(self):
         inst = self.instantiate_from("supplyrequest-example-simpleorder.json")
         self.assertIsNotNone(inst, "Must have instantiated a SupplyRequest instance")
         self.implSupplyRequest1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("SupplyRequest", js["resourceType"])
         inst2 = supplyrequest.SupplyRequest(js)
         self.implSupplyRequest1(inst2)
-    
+
     def implSupplyRequest1(self, inst):
         self.assertEqual(inst.authoredOn.date, FHIRDate("2016-12-31").date)
         self.assertEqual(inst.authoredOn.as_json(), "2016-12-31")

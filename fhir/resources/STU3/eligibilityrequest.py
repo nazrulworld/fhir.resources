@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/EligibilityRequest) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/EligibilityRequest
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -40,7 +43,7 @@ class EligibilityRequest(domainresource.DomainResource):
 
         self.coverage = None
         """ Insurance or medical plan.
-        Type `FHIRReference` referencing `Coverage` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Coverage']` (represented as `dict` in JSON). """
 
         self.created = None
         """ Creation date.
@@ -48,11 +51,11 @@ class EligibilityRequest(domainresource.DomainResource):
 
         self.enterer = None
         """ Author.
-        Type `FHIRReference` referencing `Practitioner` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner']` (represented as `dict` in JSON). """
 
         self.facility = None
         """ Servicing Facility.
-        Type `FHIRReference` referencing `Location` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Location']` (represented as `dict` in JSON). """
 
         self.identifier = None
         """ Business Identifier.
@@ -60,15 +63,15 @@ class EligibilityRequest(domainresource.DomainResource):
 
         self.insurer = None
         """ Target.
-        Type `FHIRReference` referencing `Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.organization = None
         """ Responsible organization.
-        Type `FHIRReference` referencing `Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.patient = None
         """ The subject of the Products and Services.
-        Type `FHIRReference` referencing `Patient` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
 
         self.priority = None
         """ Desired processing priority.
@@ -76,7 +79,7 @@ class EligibilityRequest(domainresource.DomainResource):
 
         self.provider = None
         """ Responsible practitioner.
-        Type `FHIRReference` referencing `Practitioner` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner']` (represented as `dict` in JSON). """
 
         self.servicedDate = None
         """ Estimated date or dates of Service.

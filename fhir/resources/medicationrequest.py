@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/MedicationRequest) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/MedicationRequest
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -34,7 +37,7 @@ class MedicationRequest(domainresource.DomainResource):
 
         self.basedOn = None
         """ What request fulfills.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['CarePlan', 'MedicationRequest', 'ServiceRequest', 'ImmunizationRecommendation']` (represented as `dict` in JSON). """
 
         self.category = None
         """ Type of medication usage.
@@ -46,7 +49,7 @@ class MedicationRequest(domainresource.DomainResource):
 
         self.detectedIssue = None
         """ Clinical Issue with action.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['DetectedIssue']` (represented as `dict` in JSON). """
 
         self.dispenseRequest = None
         """ Medication supply authorization.
@@ -62,11 +65,11 @@ class MedicationRequest(domainresource.DomainResource):
 
         self.encounter = None
         """ Encounter created as part of encounter/admission/stay.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Encounter']` (represented as `dict` in JSON). """
 
         self.eventHistory = None
         """ A list of events of interest in the lifecycle.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Provenance']` (represented as `dict` in JSON). """
 
         self.groupIdentifier = None
         """ Composite request this is part of.
@@ -86,10 +89,11 @@ class MedicationRequest(domainresource.DomainResource):
 
         self.insurance = None
         """ Associated insurance coverage.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Coverage', 'ClaimResponse']` (represented as `dict` in JSON). """
 
         self.intent = None
-        """ proposal | plan | order | original-order | instance-order | option.
+        """ proposal | plan | order | original-order | reflex-order | filler-
+        order | instance-order | option.
         Type `str`. """
 
         self.medicationCodeableConcept = None
@@ -98,7 +102,7 @@ class MedicationRequest(domainresource.DomainResource):
 
         self.medicationReference = None
         """ Medication to be taken.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Medication']` (represented as `dict` in JSON). """
 
         self.note = None
         """ Information about the prescription.
@@ -106,7 +110,7 @@ class MedicationRequest(domainresource.DomainResource):
 
         self.performer = None
         """ Intended performer of administration.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'Organization', 'Patient', 'Device', 'RelatedPerson', 'CareTeam']` (represented as `dict` in JSON). """
 
         self.performerType = None
         """ Desired kind of performer of the medication administration.
@@ -114,7 +118,7 @@ class MedicationRequest(domainresource.DomainResource):
 
         self.priorPrescription = None
         """ An order/prescription that is being replaced.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['MedicationRequest']` (represented as `dict` in JSON). """
 
         self.priority = None
         """ routine | urgent | asap | stat.
@@ -127,11 +131,11 @@ class MedicationRequest(domainresource.DomainResource):
         self.reasonReference = None
         """ Condition or observation that supports why the prescription is
         being written.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Condition', 'Observation']` (represented as `dict` in JSON). """
 
         self.recorder = None
         """ Person who entered the request.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole']` (represented as `dict` in JSON). """
 
         self.reportedBoolean = None
         """ Reported rather than primary record.
@@ -139,11 +143,11 @@ class MedicationRequest(domainresource.DomainResource):
 
         self.reportedReference = None
         """ Reported rather than primary record.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient', 'Practitioner', 'PractitionerRole', 'RelatedPerson', 'Organization']` (represented as `dict` in JSON). """
 
         self.requester = None
         """ Who/What requested the Request.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'Organization', 'Patient', 'RelatedPerson', 'Device']` (represented as `dict` in JSON). """
 
         self.status = None
         """ active | on-hold | cancelled | completed | entered-in-error |
@@ -156,7 +160,7 @@ class MedicationRequest(domainresource.DomainResource):
 
         self.subject = None
         """ Who or group medication request is for.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient', 'Group']` (represented as `dict` in JSON). """
 
         self.substitution = None
         """ Any restrictions on medication substitution.
@@ -164,7 +168,7 @@ class MedicationRequest(domainresource.DomainResource):
 
         self.supportingInformation = None
         """ Information to support ordering of the medication.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         super(MedicationRequest, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -250,7 +254,7 @@ class MedicationRequestDispenseRequest(backboneelement.BackboneElement):
 
         self.performer = None
         """ Intended dispenser.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.quantity = None
         """ Amount of medication to supply per dispense.

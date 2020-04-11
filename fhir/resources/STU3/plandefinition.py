@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/PlanDefinition) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/PlanDefinition
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -81,7 +84,7 @@ class PlanDefinition(domainresource.DomainResource):
 
         self.library = None
         """ Logic used by the plan definition.
-        List of `FHIRReference` items referencing `Library` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Library']` (represented as `dict` in JSON). """
 
         self.name = None
         """ Name for this plan definition (computer friendly).
@@ -202,7 +205,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
 
         self.definition = None
         """ Description of the activity to be performed.
-        Type `FHIRReference` referencing `ActivityDefinition, PlanDefinition` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['ActivityDefinition'], ['PlanDefinition']` (represented as `dict` in JSON). """
 
         self.description = None
         """ Short description of the action.
@@ -291,7 +294,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
 
         self.transform = None
         """ Transform to apply the template.
-        Type `FHIRReference` referencing `StructureMap` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['StructureMap']` (represented as `dict` in JSON). """
 
         self.triggerDefinition = None
         """ When the action should be triggered.

@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/ReferralRequest) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/ReferralRequest
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -31,15 +34,15 @@ class ReferralRequest(domainresource.DomainResource):
 
         self.basedOn = None
         """ Request fulfilled by this request.
-        List of `FHIRReference` items referencing `ReferralRequest, CarePlan, ProcedureRequest` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['ReferralRequest'], ['CarePlan'], ['ProcedureRequest']` (represented as `dict` in JSON). """
 
         self.context = None
         """ Originating encounter.
-        Type `FHIRReference` referencing `Encounter, EpisodeOfCare` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Encounter'], ['EpisodeOfCare']` (represented as `dict` in JSON). """
 
         self.definition = None
         """ Instantiates protocol or definition.
-        List of `FHIRReference` items referencing `ActivityDefinition, PlanDefinition` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['ActivityDefinition'], ['PlanDefinition']` (represented as `dict` in JSON). """
 
         self.description = None
         """ A textual description of the referral.
@@ -79,19 +82,19 @@ class ReferralRequest(domainresource.DomainResource):
 
         self.reasonReference = None
         """ Why is service needed?.
-        List of `FHIRReference` items referencing `Condition, Observation` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Condition'], ['Observation']` (represented as `dict` in JSON). """
 
         self.recipient = None
         """ Receiver of referral / transfer of care request.
-        List of `FHIRReference` items referencing `Practitioner, Organization, HealthcareService` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Practitioner'], ['Organization'], ['HealthcareService']` (represented as `dict` in JSON). """
 
         self.relevantHistory = None
         """ Key events in history of request.
-        List of `FHIRReference` items referencing `Provenance` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Provenance']` (represented as `dict` in JSON). """
 
         self.replaces = None
         """ Request(s) replaced by this request.
-        List of `FHIRReference` items referencing `ReferralRequest` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['ReferralRequest']` (represented as `dict` in JSON). """
 
         self.requester = None
         """ Who/what is requesting service.
@@ -113,12 +116,12 @@ class ReferralRequest(domainresource.DomainResource):
 
         self.subject = None
         """ Patient referred to care or transfer.
-        Type `FHIRReference` referencing `Patient, Group` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient'], ['Group']` (represented as `dict` in JSON). """
 
         self.supportingInfo = None
         """ Additonal information to support referral or transfer of care
         request.
-        List of `FHIRReference` items referencing `Resource` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.type = None
         """ Referral/Transition of care request type.
@@ -178,11 +181,11 @@ class ReferralRequestRequester(backboneelement.BackboneElement):
 
         self.agent = None
         """ Individual making the request.
-        Type `FHIRReference` referencing `Practitioner, Organization, Patient, RelatedPerson, Device` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner'], ['Organization'], ['Patient'], ['RelatedPerson'], ['Device']` (represented as `dict` in JSON). """
 
         self.onBehalfOf = None
         """ Organization agent is acting for.
-        Type `FHIRReference` referencing `Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         super(ReferralRequestRequester, self).__init__(jsondict=jsondict, strict=strict)
 

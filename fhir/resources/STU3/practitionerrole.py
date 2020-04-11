@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/PractitionerRole) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/PractitionerRole
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -43,12 +46,12 @@ class PractitionerRole(domainresource.DomainResource):
         self.endpoint = None
         """ Technical endpoints providing access to services operated for the
         practitioner with this role.
-        List of `FHIRReference` items referencing `Endpoint` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Endpoint']` (represented as `dict` in JSON). """
 
         self.healthcareService = None
         """ The list of healthcare services that this worker provides for this
         role's Organization/Location(s).
-        List of `FHIRReference` items referencing `HealthcareService` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['HealthcareService']` (represented as `dict` in JSON). """
 
         self.identifier = None
         """ Business Identifiers that are specific to a role/location.
@@ -56,7 +59,7 @@ class PractitionerRole(domainresource.DomainResource):
 
         self.location = None
         """ The location(s) at which this practitioner provides care.
-        List of `FHIRReference` items referencing `Location` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Location']` (represented as `dict` in JSON). """
 
         self.notAvailable = None
         """ Not available during this time due to provided reason.
@@ -64,7 +67,7 @@ class PractitionerRole(domainresource.DomainResource):
 
         self.organization = None
         """ Organization where the roles are available.
-        Type `FHIRReference` referencing `Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.period = None
         """ The period during which the practitioner is authorized to perform
@@ -74,7 +77,7 @@ class PractitionerRole(domainresource.DomainResource):
         self.practitioner = None
         """ Practitioner that is able to provide the defined services for the
         organation.
-        Type `FHIRReference` referencing `Practitioner` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner']` (represented as `dict` in JSON). """
 
         self.specialty = None
         """ Specific specialty of the practitioner.

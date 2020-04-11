@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/SupplyRequest) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/SupplyRequest
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -34,11 +37,11 @@ class SupplyRequest(domainresource.DomainResource):
 
         self.deliverFrom = None
         """ The origin of the supply.
-        Type `FHIRReference` referencing `Organization, Location` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization'], ['Location']` (represented as `dict` in JSON). """
 
         self.deliverTo = None
         """ The destination of the supply.
-        Type `FHIRReference` referencing `Organization, Location, Patient` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization'], ['Location'], ['Patient']` (represented as `dict` in JSON). """
 
         self.identifier = None
         """ Unique identifier.
@@ -70,7 +73,7 @@ class SupplyRequest(domainresource.DomainResource):
 
         self.reasonReference = None
         """ Why the supply item was requested.
-        Type `FHIRReference` referencing `Resource` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.requester = None
         """ Who/what is requesting service.
@@ -82,7 +85,7 @@ class SupplyRequest(domainresource.DomainResource):
 
         self.supplier = None
         """ Who is intended to fulfill the request.
-        List of `FHIRReference` items referencing `Organization` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Organization']` (represented as `dict` in JSON). """
 
         super(SupplyRequest, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -130,7 +133,7 @@ class SupplyRequestOrderedItem(backboneelement.BackboneElement):
 
         self.itemReference = None
         """ Medication, Substance, or Device requested to be supplied.
-        Type `FHIRReference` referencing `Medication, Substance, Device` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Medication'], ['Substance'], ['Device']` (represented as `dict` in JSON). """
 
         self.quantity = None
         """ The requested amount of the item indicated.
@@ -167,11 +170,11 @@ class SupplyRequestRequester(backboneelement.BackboneElement):
 
         self.agent = None
         """ Individual making the request.
-        Type `FHIRReference` referencing `Practitioner, Organization, Patient, RelatedPerson, Device` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner'], ['Organization'], ['Patient'], ['RelatedPerson'], ['Device']` (represented as `dict` in JSON). """
 
         self.onBehalfOf = None
         """ Organization agent is acting for.
-        Type `FHIRReference` referencing `Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         super(SupplyRequestRequester, self).__init__(jsondict=jsondict, strict=strict)
 

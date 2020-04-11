@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/MedicationDispense) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/MedicationDispense
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -29,7 +32,7 @@ class MedicationDispense(domainresource.DomainResource):
 
         self.authorizingPrescription = None
         """ Medication order that authorizes the dispense.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['MedicationRequest']` (represented as `dict` in JSON). """
 
         self.category = None
         """ Type of medication dispense.
@@ -37,7 +40,7 @@ class MedicationDispense(domainresource.DomainResource):
 
         self.context = None
         """ Encounter / Episode associated with event.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Encounter', 'EpisodeOfCare']` (represented as `dict` in JSON). """
 
         self.daysSupply = None
         """ Amount of medication expressed as a timing amount.
@@ -45,11 +48,11 @@ class MedicationDispense(domainresource.DomainResource):
 
         self.destination = None
         """ Where the medication was sent.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Location']` (represented as `dict` in JSON). """
 
         self.detectedIssue = None
         """ Clinical issue with action.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['DetectedIssue']` (represented as `dict` in JSON). """
 
         self.dosageInstruction = None
         """ How the medication is to be used by the patient or administered by
@@ -58,7 +61,7 @@ class MedicationDispense(domainresource.DomainResource):
 
         self.eventHistory = None
         """ A list of relevant lifecycle events.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Provenance']` (represented as `dict` in JSON). """
 
         self.identifier = None
         """ External identifier.
@@ -66,7 +69,7 @@ class MedicationDispense(domainresource.DomainResource):
 
         self.location = None
         """ Where the dispense occurred.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Location']` (represented as `dict` in JSON). """
 
         self.medicationCodeableConcept = None
         """ What medication was supplied.
@@ -74,7 +77,7 @@ class MedicationDispense(domainresource.DomainResource):
 
         self.medicationReference = None
         """ What medication was supplied.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Medication']` (represented as `dict` in JSON). """
 
         self.note = None
         """ Information about the dispense.
@@ -82,7 +85,7 @@ class MedicationDispense(domainresource.DomainResource):
 
         self.partOf = None
         """ Event that dispense is part of.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Procedure']` (represented as `dict` in JSON). """
 
         self.performer = None
         """ Who performed event.
@@ -94,11 +97,11 @@ class MedicationDispense(domainresource.DomainResource):
 
         self.receiver = None
         """ Who collected the medication.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Patient', 'Practitioner']` (represented as `dict` in JSON). """
 
         self.status = None
         """ preparation | in-progress | cancelled | on-hold | completed |
-        entered-in-error | stopped | unknown.
+        entered-in-error | stopped | declined | unknown.
         Type `str`. """
 
         self.statusReasonCodeableConcept = None
@@ -107,11 +110,11 @@ class MedicationDispense(domainresource.DomainResource):
 
         self.statusReasonReference = None
         """ Why a dispense was not performed.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['DetectedIssue']` (represented as `dict` in JSON). """
 
         self.subject = None
         """ Who the dispense is for.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient', 'Group']` (represented as `dict` in JSON). """
 
         self.substitution = None
         """ Whether a substitution was performed on the dispense.
@@ -119,7 +122,7 @@ class MedicationDispense(domainresource.DomainResource):
 
         self.supportingInformation = None
         """ Information that supports the dispensing of the medication.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.type = None
         """ Trial fill, partial fill, emergency fill, etc..
@@ -188,7 +191,7 @@ class MedicationDispensePerformer(backboneelement.BackboneElement):
 
         self.actor = None
         """ Individual who was performing.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'Organization', 'Patient', 'Device', 'RelatedPerson']` (represented as `dict` in JSON). """
 
         self.function = None
         """ Who performed the dispense and what they did.
@@ -231,7 +234,7 @@ class MedicationDispenseSubstitution(backboneelement.BackboneElement):
 
         self.responsibleParty = None
         """ Who is responsible for the substitution.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Practitioner', 'PractitionerRole']` (represented as `dict` in JSON). """
 
         self.type = None
         """ Code signifying whether a different drug was dispensed from what

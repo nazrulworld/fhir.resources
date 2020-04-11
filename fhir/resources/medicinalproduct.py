@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/MedicinalProduct) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/MedicinalProduct
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -29,11 +32,11 @@ class MedicinalProduct(domainresource.DomainResource):
 
         self.attachedDocument = None
         """ Supporting documentation, typically for regulatory submission.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['DocumentReference']` (represented as `dict` in JSON). """
 
         self.clinicalTrial = None
         """ Clinical trials or studies that this product is involved in.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['ResearchStudy']` (represented as `dict` in JSON). """
 
         self.combinedPharmaceuticalDoseForm = None
         """ The dose form for a single part product, or combined form of a
@@ -42,7 +45,7 @@ class MedicinalProduct(domainresource.DomainResource):
 
         self.contact = None
         """ A product specific contact, person (in a role), or an organization.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Organization', 'PractitionerRole']` (represented as `dict` in JSON). """
 
         self.crossReference = None
         """ Reference to another product, e.g. for linking authorised to
@@ -75,7 +78,7 @@ class MedicinalProduct(domainresource.DomainResource):
         self.masterFile = None
         """ A master file for to the medicinal product (e.g. Pharmacovigilance
         System Master File).
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['DocumentReference']` (represented as `dict` in JSON). """
 
         self.name = None
         """ The product's name, including full name and possibly coded parts.
@@ -83,7 +86,7 @@ class MedicinalProduct(domainresource.DomainResource):
 
         self.packagedMedicinalProduct = None
         """ Package representation for the product.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['MedicinalProductPackaged']` (represented as `dict` in JSON). """
 
         self.paediatricUseIndicator = None
         """ If authorised for use in children.
@@ -91,7 +94,7 @@ class MedicinalProduct(domainresource.DomainResource):
 
         self.pharmaceuticalProduct = None
         """ Pharmaceutical aspects of product.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['MedicinalProductPharmaceutical']` (represented as `dict` in JSON). """
 
         self.productClassification = None
         """ Allows the product to be classified by various systems.
@@ -171,7 +174,7 @@ class MedicinalProductManufacturingBusinessOperation(backboneelement.BackboneEle
 
         self.manufacturer = None
         """ The manufacturer or establishment associated with the process.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.operationType = None
         """ The type of manufacturing operation.
@@ -179,7 +182,7 @@ class MedicinalProductManufacturingBusinessOperation(backboneelement.BackboneEle
 
         self.regulator = None
         """ A regulator which oversees the operation.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         super(MedicinalProductManufacturingBusinessOperation, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -334,7 +337,7 @@ class MedicinalProductSpecialDesignation(backboneelement.BackboneElement):
 
         self.indicationReference = None
         """ Condition for which the medicinal use applies.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['MedicinalProductIndication']` (represented as `dict` in JSON). """
 
         self.intendedUse = None
         """ The intended use of the product, e.g. prevention, treatment.

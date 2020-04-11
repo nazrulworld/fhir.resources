@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/ImplementationGuide
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 import os
 import pytest
@@ -23,17 +26,17 @@ class ImplementationGuideTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("ImplementationGuide", js["resourceType"])
         return implementationguide.ImplementationGuide(js)
-    
+
     def testImplementationGuide1(self):
         inst = self.instantiate_from("implementationguide-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a ImplementationGuide instance")
         self.implImplementationGuide1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("ImplementationGuide", js["resourceType"])
         inst2 = implementationguide.ImplementationGuide(js)
         self.implImplementationGuide1(inst2)
-    
+
     def implImplementationGuide1(self, inst):
         self.assertEqual(force_bytes(inst.contact[0].name), force_bytes("ONC"))
         self.assertEqual(force_bytes(inst.contact[0].telecom[0].system), force_bytes("url"))
@@ -59,7 +62,7 @@ class ImplementationGuideTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.definition.resource[0].name), force_bytes("Test Example"))
         self.assertEqual(force_bytes(inst.dependsOn[0].uri), force_bytes("http://hl7.org/fhir/ImplementationGuide/uscore"))
         self.assertFalse(inst.experimental)
-        self.assertEqual(force_bytes(inst.fhirVersion[0]), force_bytes("4.0.0"))
+        self.assertEqual(force_bytes(inst.fhirVersion[0]), force_bytes("4.0.1"))
         self.assertEqual(force_bytes(inst.global_fhir[0].profile), force_bytes("http://hl7.org/fhir/us/core/StructureDefinition/patient"))
         self.assertEqual(force_bytes(inst.global_fhir[0].type), force_bytes("Patient"))
         self.assertEqual(force_bytes(inst.id), force_bytes("example"))

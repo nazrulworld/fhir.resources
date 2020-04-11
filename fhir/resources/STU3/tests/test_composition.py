@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Composition
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 import os
 import pytest
@@ -23,17 +26,17 @@ class CompositionTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("Composition", js["resourceType"])
         return composition.Composition(js)
-    
+
     def testComposition1(self):
         inst = self.instantiate_from("composition-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a Composition instance")
         self.implComposition1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Composition", js["resourceType"])
         inst2 = composition.Composition(js)
         self.implComposition1(inst2)
-    
+
     def implComposition1(self, inst):
         self.assertEqual(force_bytes(inst.attester[0].mode[0]), force_bytes("legal"))
         self.assertEqual(inst.attester[0].time.date, FHIRDate("2012-01-04T09:10:14Z").date)

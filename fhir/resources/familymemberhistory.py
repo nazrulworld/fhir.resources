@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/FamilyMemberHistory) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/FamilyMemberHistory
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -90,7 +93,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
 
         self.instantiatesCanonical = None
         """ Instantiates FHIR protocol or definition.
-        List of `str` items. """
+        List of `str` items referencing `['PlanDefinition', 'Questionnaire', 'ActivityDefinition', 'Measure', 'OperationDefinition']`. """
 
         self.instantiatesUri = None
         """ Instantiates external protocol or definition.
@@ -106,7 +109,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
 
         self.patient = None
         """ Patient history is about.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
 
         self.reasonCode = None
         """ Why was family member history performed?.
@@ -114,7 +117,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
 
         self.reasonReference = None
         """ Why was family member history performed?.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Condition', 'Observation', 'AllergyIntolerance', 'QuestionnaireResponse', 'DiagnosticReport', 'DocumentReference']` (represented as `dict` in JSON). """
 
         self.relationship = None
         """ Relationship to the subject.

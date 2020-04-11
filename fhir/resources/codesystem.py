@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/CodeSystem) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/CodeSystem
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -105,7 +108,7 @@ class CodeSystem(domainresource.DomainResource):
         self.supplements = None
         """ Canonical URL of Code System this adds designations and properties
         to.
-        Type `str`. """
+        Type `str` referencing `['CodeSystem']`. """
 
         self.title = None
         """ Name for this code system (human friendly).
@@ -122,7 +125,7 @@ class CodeSystem(domainresource.DomainResource):
 
         self.valueSet = None
         """ Canonical reference to the value set with entire code system.
-        Type `str`. """
+        Type `str` referencing `['ValueSet']`. """
 
         self.version = None
         """ Business version of the code system (Coding.version).
@@ -358,7 +361,8 @@ class CodeSystemFilter(backboneelement.BackboneElement):
         Type `str`. """
 
         self.operator = None
-        """ Operators that can be used with filter.
+        """ = | is-a | descendent-of | is-not-a | regex | in | not-in |
+        generalizes | exists.
         List of `str` items. """
 
         self.value = None

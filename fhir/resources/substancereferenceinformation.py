@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/SubstanceReferenceInformation) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/SubstanceReferenceInformation
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -81,7 +84,7 @@ class SubstanceReferenceInformationClassification(backboneelement.BackboneElemen
 
         self.source = None
         """ Todo.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['DocumentReference']` (represented as `dict` in JSON). """
 
         self.subtype = None
         """ Todo.
@@ -124,7 +127,7 @@ class SubstanceReferenceInformationGene(backboneelement.BackboneElement):
 
         self.source = None
         """ Todo.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['DocumentReference']` (represented as `dict` in JSON). """
 
         super(SubstanceReferenceInformationGene, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -158,7 +161,7 @@ class SubstanceReferenceInformationGeneElement(backboneelement.BackboneElement):
 
         self.source = None
         """ Todo.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['DocumentReference']` (represented as `dict` in JSON). """
 
         self.type = None
         """ Todo.
@@ -220,7 +223,7 @@ class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
 
         self.source = None
         """ Todo.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['DocumentReference']` (represented as `dict` in JSON). """
 
         self.target = None
         """ Todo.

@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Immunization
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 import os
 import pytest
@@ -23,43 +26,18 @@ class ImmunizationTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("Immunization", js["resourceType"])
         return immunization.Immunization(js)
-    
+
     def testImmunization1(self):
-        inst = self.instantiate_from("immunization-example-refused.json")
+        inst = self.instantiate_from("immunization-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a Immunization instance")
         self.implImmunization1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Immunization", js["resourceType"])
         inst2 = immunization.Immunization(js)
         self.implImmunization1(inst2)
-    
+
     def implImmunization1(self, inst):
-        self.assertEqual(inst.date.date, FHIRDate("2013-01-10").date)
-        self.assertEqual(inst.date.as_json(), "2013-01-10")
-        self.assertEqual(force_bytes(inst.explanation.reasonNotGiven[0].coding[0].code), force_bytes("MEDPREC"))
-        self.assertEqual(force_bytes(inst.explanation.reasonNotGiven[0].coding[0].display), force_bytes("medical precaution"))
-        self.assertEqual(force_bytes(inst.explanation.reasonNotGiven[0].coding[0].system), force_bytes("http://hl7.org/fhir/v3/ActReason"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("notGiven"))
-        self.assertTrue(inst.notGiven)
-        self.assertTrue(inst.primarySource)
-        self.assertEqual(force_bytes(inst.status), force_bytes("completed"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.vaccineCode.coding[0].code), force_bytes("01"))
-        self.assertEqual(force_bytes(inst.vaccineCode.coding[0].display), force_bytes("DTP"))
-        self.assertEqual(force_bytes(inst.vaccineCode.coding[0].system), force_bytes("http://hl7.org/fhir/sid/cvx"))
-    
-    def testImmunization2(self):
-        inst = self.instantiate_from("immunization-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Immunization instance")
-        self.implImmunization2(inst)
-        
-        js = inst.as_json()
-        self.assertEqual("Immunization", js["resourceType"])
-        inst2 = immunization.Immunization(js)
-        self.implImmunization2(inst2)
-    
-    def implImmunization2(self, inst):
         self.assertEqual(inst.date.date, FHIRDate("2013-01-10").date)
         self.assertEqual(inst.date.as_json(), "2013-01-10")
         self.assertEqual(force_bytes(inst.doseQuantity.code), force_bytes("mg"))
@@ -106,18 +84,18 @@ class ImmunizationTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.vaccineCode.coding[0].code), force_bytes("FLUVAX"))
         self.assertEqual(force_bytes(inst.vaccineCode.coding[0].system), force_bytes("urn:oid:1.2.36.1.2001.1005.17"))
         self.assertEqual(force_bytes(inst.vaccineCode.text), force_bytes("Fluvax (Influenza)"))
-    
-    def testImmunization3(self):
+
+    def testImmunization2(self):
         inst = self.instantiate_from("immunization-example-historical.json")
         self.assertIsNotNone(inst, "Must have instantiated a Immunization instance")
-        self.implImmunization3(inst)
-        
+        self.implImmunization2(inst)
+
         js = inst.as_json()
         self.assertEqual("Immunization", js["resourceType"])
         inst2 = immunization.Immunization(js)
-        self.implImmunization3(inst2)
-    
-    def implImmunization3(self, inst):
+        self.implImmunization2(inst2)
+
+    def implImmunization2(self, inst):
         self.assertEqual(inst.date.date, FHIRDate("2012-01-15").date)
         self.assertEqual(inst.date.as_json(), "2012-01-15")
         self.assertEqual(force_bytes(inst.id), force_bytes("historical"))
@@ -134,4 +112,29 @@ class ImmunizationTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.vaccineCode.coding[0].code), force_bytes("GNFLU"))
         self.assertEqual(force_bytes(inst.vaccineCode.coding[0].system), force_bytes("urn:oid:1.2.36.1.2001.1005.17"))
         self.assertEqual(force_bytes(inst.vaccineCode.text), force_bytes("Influenza"))
+
+    def testImmunization3(self):
+        inst = self.instantiate_from("immunization-example-refused.json")
+        self.assertIsNotNone(inst, "Must have instantiated a Immunization instance")
+        self.implImmunization3(inst)
+
+        js = inst.as_json()
+        self.assertEqual("Immunization", js["resourceType"])
+        inst2 = immunization.Immunization(js)
+        self.implImmunization3(inst2)
+
+    def implImmunization3(self, inst):
+        self.assertEqual(inst.date.date, FHIRDate("2013-01-10").date)
+        self.assertEqual(inst.date.as_json(), "2013-01-10")
+        self.assertEqual(force_bytes(inst.explanation.reasonNotGiven[0].coding[0].code), force_bytes("MEDPREC"))
+        self.assertEqual(force_bytes(inst.explanation.reasonNotGiven[0].coding[0].display), force_bytes("medical precaution"))
+        self.assertEqual(force_bytes(inst.explanation.reasonNotGiven[0].coding[0].system), force_bytes("http://hl7.org/fhir/v3/ActReason"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("notGiven"))
+        self.assertTrue(inst.notGiven)
+        self.assertTrue(inst.primarySource)
+        self.assertEqual(force_bytes(inst.status), force_bytes("completed"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+        self.assertEqual(force_bytes(inst.vaccineCode.coding[0].code), force_bytes("01"))
+        self.assertEqual(force_bytes(inst.vaccineCode.coding[0].display), force_bytes("DTP"))
+        self.assertEqual(force_bytes(inst.vaccineCode.coding[0].system), force_bytes("http://hl7.org/fhir/sid/cvx"))
 

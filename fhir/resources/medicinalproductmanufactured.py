@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/MedicinalProductManufactured) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/MedicinalProductManufactured
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -23,7 +26,7 @@ class MedicinalProductManufactured(domainresource.DomainResource):
 
         self.ingredient = None
         """ Ingredient.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['MedicinalProductIngredient']` (represented as `dict` in JSON). """
 
         self.manufacturedDoseForm = None
         """ Dose form as manufactured and before any transformation into the
@@ -33,7 +36,7 @@ class MedicinalProductManufactured(domainresource.DomainResource):
         self.manufacturer = None
         """ Manufacturer of the item (Note that this should be named
         "manufacturer" but it currently causes technical issues).
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.otherCharacteristics = None
         """ Other codeable characteristics.

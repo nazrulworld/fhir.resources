@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/DocumentManifest) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/DocumentManifest
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -26,11 +29,11 @@ class DocumentManifest(domainresource.DomainResource):
 
         self.author = None
         """ Who and/or what authored the DocumentManifest.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Practitioner', 'PractitionerRole', 'Organization', 'Device', 'Patient', 'RelatedPerson']` (represented as `dict` in JSON). """
 
         self.content = None
         """ Items in manifest.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.created = None
         """ When this document manifest created.
@@ -50,7 +53,7 @@ class DocumentManifest(domainresource.DomainResource):
 
         self.recipient = None
         """ Intended to get notified about this set of documents.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Patient', 'Practitioner', 'PractitionerRole', 'RelatedPerson', 'Organization']` (represented as `dict` in JSON). """
 
         self.related = None
         """ Related things.
@@ -66,7 +69,7 @@ class DocumentManifest(domainresource.DomainResource):
 
         self.subject = None
         """ The subject of the set of documents.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient', 'Practitioner', 'Group', 'Device']` (represented as `dict` in JSON). """
 
         self.type = None
         """ Kind of document set.
@@ -117,7 +120,7 @@ class DocumentManifestRelated(backboneelement.BackboneElement):
 
         self.ref = None
         """ Related Resource.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
 
         super(DocumentManifestRelated, self).__init__(jsondict=jsondict, strict=strict)
 

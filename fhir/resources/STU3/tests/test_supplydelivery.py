@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/SupplyDelivery
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 import os
 import pytest
@@ -23,17 +26,17 @@ class SupplyDeliveryTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("SupplyDelivery", js["resourceType"])
         return supplydelivery.SupplyDelivery(js)
-    
+
     def testSupplyDelivery1(self):
         inst = self.instantiate_from("supplydelivery-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a SupplyDelivery instance")
         self.implSupplyDelivery1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("SupplyDelivery", js["resourceType"])
         inst2 = supplydelivery.SupplyDelivery(js)
         self.implSupplyDelivery1(inst2)
-    
+
     def implSupplyDelivery1(self, inst):
         self.assertEqual(force_bytes(inst.id), force_bytes("simpledelivery"))
         self.assertEqual(force_bytes(inst.identifier.value), force_bytes("Order10284"))
@@ -47,17 +50,17 @@ class SupplyDeliveryTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.type.coding[0].code), force_bytes("device"))
         self.assertEqual(force_bytes(inst.type.coding[0].system), force_bytes("http://hl7.org/fhir/supply-item-type"))
         self.assertEqual(force_bytes(inst.type.text), force_bytes("Blood collect tubes blue cap"))
-    
+
     def testSupplyDelivery2(self):
         inst = self.instantiate_from("supplydelivery-example-pumpdelivery.json")
         self.assertIsNotNone(inst, "Must have instantiated a SupplyDelivery instance")
         self.implSupplyDelivery2(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("SupplyDelivery", js["resourceType"])
         inst2 = supplydelivery.SupplyDelivery(js)
         self.implSupplyDelivery2(inst2)
-    
+
     def implSupplyDelivery2(self, inst):
         self.assertEqual(force_bytes(inst.id), force_bytes("pumpdelivery"))
         self.assertEqual(force_bytes(inst.identifier.value), force_bytes("98398459409"))

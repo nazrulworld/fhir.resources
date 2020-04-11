@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/ExampleScenario
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 import os
 import pytest
@@ -23,17 +26,17 @@ class ExampleScenarioTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("ExampleScenario", js["resourceType"])
         return examplescenario.ExampleScenario(js)
-    
+
     def testExampleScenario1(self):
         inst = self.instantiate_from("examplescenario-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a ExampleScenario instance")
         self.implExampleScenario1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("ExampleScenario", js["resourceType"])
         inst2 = examplescenario.ExampleScenario(js)
         self.implExampleScenario1(inst2)
-    
+
     def implExampleScenario1(self, inst):
         self.assertEqual(force_bytes(inst.actor[0].actorId), force_bytes("Nurse"))
         self.assertEqual(force_bytes(inst.actor[0].description), force_bytes("The Nurse"))

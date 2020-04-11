@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/ChargeItemDefinition
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 import os
 import pytest
@@ -23,17 +26,17 @@ class ChargeItemDefinitionTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("ChargeItemDefinition", js["resourceType"])
         return chargeitemdefinition.ChargeItemDefinition(js)
-    
+
     def testChargeItemDefinition1(self):
         inst = self.instantiate_from("chargeitemdefinition-device-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a ChargeItemDefinition instance")
         self.implChargeItemDefinition1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("ChargeItemDefinition", js["resourceType"])
         inst2 = chargeitemdefinition.ChargeItemDefinition(js)
         self.implChargeItemDefinition1(inst2)
-    
+
     def implChargeItemDefinition1(self, inst):
         self.assertEqual(force_bytes(inst.applicability[0].description), force_bytes("Verify ChargeItem pertains to Device 12345"))
         self.assertEqual(force_bytes(inst.applicability[0].expression), force_bytes("%context.service.suppliedItem='Device/12345'"))
@@ -65,17 +68,17 @@ class ChargeItemDefinitionTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.status), force_bytes("active"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
         self.assertEqual(force_bytes(inst.url), force_bytes("http://sap.org/ChargeItemDefinition/device-123"))
-    
+
     def testChargeItemDefinition2(self):
         inst = self.instantiate_from("chargeitemdefinition-ebm-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a ChargeItemDefinition instance")
         self.implChargeItemDefinition2(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("ChargeItemDefinition", js["resourceType"])
         inst2 = chargeitemdefinition.ChargeItemDefinition(js)
         self.implChargeItemDefinition2(inst2)
-    
+
     def implChargeItemDefinition2(self, inst):
         self.assertEqual(force_bytes(inst.applicability[0].description), force_bytes("Excludes billing code 13250 for same Encounter"))
         self.assertEqual(force_bytes(inst.applicability[0].expression), force_bytes("[some CQL expression]"))

@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/ExplanationOfBenefit) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/ExplanationOfBenefit
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -47,11 +50,11 @@ class ExplanationOfBenefit(domainresource.DomainResource):
 
         self.claim = None
         """ Claim reference.
-        Type `FHIRReference` referencing `Claim` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Claim']` (represented as `dict` in JSON). """
 
         self.claimResponse = None
         """ Claim response reference.
-        Type `FHIRReference` referencing `ClaimResponse` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['ClaimResponse']` (represented as `dict` in JSON). """
 
         self.created = None
         """ Creation date.
@@ -71,11 +74,11 @@ class ExplanationOfBenefit(domainresource.DomainResource):
 
         self.enterer = None
         """ Author.
-        Type `FHIRReference` referencing `Practitioner` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner']` (represented as `dict` in JSON). """
 
         self.facility = None
         """ Servicing Facility.
-        Type `FHIRReference` referencing `Location` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Location']` (represented as `dict` in JSON). """
 
         self.form = None
         """ Printed Form Identifier.
@@ -100,7 +103,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
 
         self.insurer = None
         """ Insurer responsible for the EOB.
-        Type `FHIRReference` referencing `Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.item = None
         """ Goods and Services.
@@ -108,11 +111,11 @@ class ExplanationOfBenefit(domainresource.DomainResource):
 
         self.organization = None
         """ Responsible organization for the claim.
-        Type `FHIRReference` referencing `Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.originalPrescription = None
         """ Original prescription if superceded by fulfiller.
-        Type `FHIRReference` referencing `MedicationRequest` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['MedicationRequest']` (represented as `dict` in JSON). """
 
         self.outcome = None
         """ complete | error | partial.
@@ -120,7 +123,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
 
         self.patient = None
         """ The subject of the Products and Services.
-        Type `FHIRReference` referencing `Patient` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
 
         self.payee = None
         """ Party to be paid any benefits payable.
@@ -136,7 +139,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
 
         self.prescription = None
         """ Prescription authorizing services or products.
-        Type `FHIRReference` referencing `MedicationRequest, VisionPrescription` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['MedicationRequest'], ['VisionPrescription']` (represented as `dict` in JSON). """
 
         self.procedure = None
         """ Procedures performed.
@@ -148,11 +151,11 @@ class ExplanationOfBenefit(domainresource.DomainResource):
 
         self.provider = None
         """ Responsible provider for the claim.
-        Type `FHIRReference` referencing `Practitioner` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner']` (represented as `dict` in JSON). """
 
         self.referral = None
         """ Treatment Referral.
-        Type `FHIRReference` referencing `ReferralRequest` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['ReferralRequest']` (represented as `dict` in JSON). """
 
         self.related = None
         """ Related Claims which may be revelant to processing this claim.
@@ -258,7 +261,7 @@ class ExplanationOfBenefitAccident(backboneelement.BackboneElement):
 
         self.locationReference = None
         """ Accident Place.
-        Type `FHIRReference` referencing `Location` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Location']` (represented as `dict` in JSON). """
 
         self.type = None
         """ The nature of the accident.
@@ -549,7 +552,7 @@ class ExplanationOfBenefitCareTeam(backboneelement.BackboneElement):
 
         self.provider = None
         """ Member of the Care Team.
-        Type `FHIRReference` referencing `Practitioner, Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner'], ['Organization']` (represented as `dict` in JSON). """
 
         self.qualification = None
         """ Type, classification or Specialization.
@@ -603,7 +606,7 @@ class ExplanationOfBenefitDiagnosis(backboneelement.BackboneElement):
 
         self.diagnosisReference = None
         """ Patient's diagnosis.
-        Type `FHIRReference` referencing `Condition` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Condition']` (represented as `dict` in JSON). """
 
         self.packageCode = None
         """ Package billing code.
@@ -684,7 +687,7 @@ class ExplanationOfBenefitInformation(backboneelement.BackboneElement):
 
         self.valueReference = None
         """ Additional Data or supporting information.
-        Type `FHIRReference` referencing `Resource` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.valueString = None
         """ Additional Data or supporting information.
@@ -727,7 +730,7 @@ class ExplanationOfBenefitInsurance(backboneelement.BackboneElement):
 
         self.coverage = None
         """ Insurance information.
-        Type `FHIRReference` referencing `Coverage` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Coverage']` (represented as `dict` in JSON). """
 
         self.preAuthRef = None
         """ Pre-Authorization/Determination Reference.
@@ -786,7 +789,7 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
 
         self.encounter = None
         """ Encounters related to this billed item.
-        List of `FHIRReference` items referencing `Encounter` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Encounter']` (represented as `dict` in JSON). """
 
         self.factor = None
         """ Price scaling factor.
@@ -806,7 +809,7 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
 
         self.locationReference = None
         """ Place of service.
-        Type `FHIRReference` referencing `Location` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Location']` (represented as `dict` in JSON). """
 
         self.modifier = None
         """ Service/Product billing modifiers.
@@ -858,7 +861,7 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
 
         self.udi = None
         """ Unique Device Identifier.
-        List of `FHIRReference` items referencing `Device` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Device']` (represented as `dict` in JSON). """
 
         self.unitPrice = None
         """ Fee, charge or cost per point.
@@ -1014,7 +1017,7 @@ class ExplanationOfBenefitItemDetail(backboneelement.BackboneElement):
 
         self.udi = None
         """ Unique Device Identifier.
-        List of `FHIRReference` items referencing `Device` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Device']` (represented as `dict` in JSON). """
 
         self.unitPrice = None
         """ Fee, charge or cost per point.
@@ -1110,7 +1113,7 @@ class ExplanationOfBenefitItemDetailSubDetail(backboneelement.BackboneElement):
 
         self.udi = None
         """ Unique Device Identifier.
-        List of `FHIRReference` items referencing `Device` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Device']` (represented as `dict` in JSON). """
 
         self.unitPrice = None
         """ Fee, charge or cost per point.
@@ -1157,7 +1160,7 @@ class ExplanationOfBenefitPayee(backboneelement.BackboneElement):
 
         self.party = None
         """ Party to receive the payable.
-        Type `FHIRReference` referencing `Practitioner, Organization, Patient, RelatedPerson` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner'], ['Organization'], ['Patient'], ['RelatedPerson']` (represented as `dict` in JSON). """
 
         self.resourceType = None
         """ organization | patient | practitioner | relatedperson.
@@ -1260,7 +1263,7 @@ class ExplanationOfBenefitProcedure(backboneelement.BackboneElement):
 
         self.procedureReference = None
         """ Patient's list of procedures performed.
-        Type `FHIRReference` referencing `Procedure` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Procedure']` (represented as `dict` in JSON). """
 
         self.sequence = None
         """ Procedure sequence for reference.
@@ -1343,7 +1346,7 @@ class ExplanationOfBenefitRelated(backboneelement.BackboneElement):
 
         self.claim = None
         """ Reference to the related claim.
-        Type `FHIRReference` referencing `Claim` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Claim']` (represented as `dict` in JSON). """
 
         self.reference = None
         """ Related file or case reference.

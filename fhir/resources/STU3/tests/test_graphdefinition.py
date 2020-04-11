@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/GraphDefinition
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 import os
 import pytest
@@ -23,17 +26,17 @@ class GraphDefinitionTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("GraphDefinition", js["resourceType"])
         return graphdefinition.GraphDefinition(js)
-    
+
     def testGraphDefinition1(self):
         inst = self.instantiate_from("graphdefinition-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a GraphDefinition instance")
         self.implGraphDefinition1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("GraphDefinition", js["resourceType"])
         inst2 = graphdefinition.GraphDefinition(js)
         self.implGraphDefinition1(inst2)
-    
+
     def implGraphDefinition1(self, inst):
         self.assertEqual(force_bytes(inst.contact[0].telecom[0].system), force_bytes("url"))
         self.assertEqual(force_bytes(inst.contact[0].telecom[0].value), force_bytes("http://hl7.org/fhir"))

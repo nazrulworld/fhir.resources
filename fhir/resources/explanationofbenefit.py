@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/ExplanationOfBenefit) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/ExplanationOfBenefit
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -55,11 +58,11 @@ class ExplanationOfBenefit(domainresource.DomainResource):
 
         self.claim = None
         """ Claim reference.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Claim']` (represented as `dict` in JSON). """
 
         self.claimResponse = None
         """ Claim response reference.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['ClaimResponse']` (represented as `dict` in JSON). """
 
         self.created = None
         """ Response creation date.
@@ -75,11 +78,11 @@ class ExplanationOfBenefit(domainresource.DomainResource):
 
         self.enterer = None
         """ Author of the claim.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole']` (represented as `dict` in JSON). """
 
         self.facility = None
         """ Servicing Facility.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Location']` (represented as `dict` in JSON). """
 
         self.form = None
         """ Printed reference or actual form.
@@ -107,7 +110,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
 
         self.insurer = None
         """ Party responsible for reimbursement.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.item = None
         """ Product or service provided.
@@ -115,7 +118,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
 
         self.originalPrescription = None
         """ Original prescription if superceded by fulfiller.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['MedicationRequest']` (represented as `dict` in JSON). """
 
         self.outcome = None
         """ queued | complete | error | partial.
@@ -123,7 +126,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
 
         self.patient = None
         """ The recipient of the products and services.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
 
         self.payee = None
         """ Recipient of benefits payable.
@@ -147,7 +150,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
 
         self.prescription = None
         """ Prescription authorizing services or products.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['MedicationRequest', 'VisionPrescription']` (represented as `dict` in JSON). """
 
         self.priority = None
         """ Desired processing urgency.
@@ -163,11 +166,11 @@ class ExplanationOfBenefit(domainresource.DomainResource):
 
         self.provider = None
         """ Party responsible for the claim.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'Organization']` (represented as `dict` in JSON). """
 
         self.referral = None
         """ Treatment Referral.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['ServiceRequest']` (represented as `dict` in JSON). """
 
         self.related = None
         """ Prior or corollary claims.
@@ -278,7 +281,7 @@ class ExplanationOfBenefitAccident(backboneelement.BackboneElement):
 
         self.locationReference = None
         """ Where the event occurred.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Location']` (represented as `dict` in JSON). """
 
         self.type = None
         """ The nature of the accident.
@@ -348,7 +351,7 @@ class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
 
         self.locationReference = None
         """ Place of service or where product was supplied.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Location']` (represented as `dict` in JSON). """
 
         self.modifier = None
         """ Service/Product billing modifiers.
@@ -372,7 +375,7 @@ class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
 
         self.provider = None
         """ Authorized providers.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Practitioner', 'PractitionerRole', 'Organization']` (represented as `dict` in JSON). """
 
         self.quantity = None
         """ Count of products or services.
@@ -699,7 +702,7 @@ class ExplanationOfBenefitCareTeam(backboneelement.BackboneElement):
 
         self.provider = None
         """ Practitioner or organization.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'Organization']` (represented as `dict` in JSON). """
 
         self.qualification = None
         """ Practitioner credential or specialization.
@@ -753,7 +756,7 @@ class ExplanationOfBenefitDiagnosis(backboneelement.BackboneElement):
 
         self.diagnosisReference = None
         """ Nature of illness or problem.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Condition']` (represented as `dict` in JSON). """
 
         self.onAdmission = None
         """ Present on admission.
@@ -805,7 +808,7 @@ class ExplanationOfBenefitInsurance(backboneelement.BackboneElement):
 
         self.coverage = None
         """ Insurance information.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Coverage']` (represented as `dict` in JSON). """
 
         self.focal = None
         """ Coverage to be used for adjudication.
@@ -870,7 +873,7 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
 
         self.encounter = None
         """ Encounters related to this billed item.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Encounter']` (represented as `dict` in JSON). """
 
         self.factor = None
         """ Price scaling factor.
@@ -890,7 +893,7 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
 
         self.locationReference = None
         """ Place of service or where product was supplied.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Location']` (represented as `dict` in JSON). """
 
         self.modifier = None
         """ Product or service billing modifiers.
@@ -942,7 +945,7 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
 
         self.udi = None
         """ Unique device identifier.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Device']` (represented as `dict` in JSON). """
 
         self.unitPrice = None
         """ Fee, charge or cost per item.
@@ -1096,7 +1099,7 @@ class ExplanationOfBenefitItemDetail(backboneelement.BackboneElement):
 
         self.udi = None
         """ Unique device identifier.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Device']` (represented as `dict` in JSON). """
 
         self.unitPrice = None
         """ Fee, charge or cost per item.
@@ -1187,7 +1190,7 @@ class ExplanationOfBenefitItemDetailSubDetail(backboneelement.BackboneElement):
 
         self.udi = None
         """ Unique device identifier.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Device']` (represented as `dict` in JSON). """
 
         self.unitPrice = None
         """ Fee, charge or cost per item.
@@ -1234,7 +1237,7 @@ class ExplanationOfBenefitPayee(backboneelement.BackboneElement):
 
         self.party = None
         """ Recipient reference.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'Organization', 'Patient', 'RelatedPerson']` (represented as `dict` in JSON). """
 
         self.type = None
         """ Category of recipient.
@@ -1333,7 +1336,7 @@ class ExplanationOfBenefitProcedure(backboneelement.BackboneElement):
 
         self.procedureReference = None
         """ Specific clinical procedure.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Procedure']` (represented as `dict` in JSON). """
 
         self.sequence = None
         """ Procedure instance identifier.
@@ -1345,7 +1348,7 @@ class ExplanationOfBenefitProcedure(backboneelement.BackboneElement):
 
         self.udi = None
         """ Unique device identifier.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Device']` (represented as `dict` in JSON). """
 
         super(ExplanationOfBenefitProcedure, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -1427,7 +1430,7 @@ class ExplanationOfBenefitRelated(backboneelement.BackboneElement):
 
         self.claim = None
         """ Reference to the related claim.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Claim']` (represented as `dict` in JSON). """
 
         self.reference = None
         """ File or case reference.
@@ -1504,7 +1507,7 @@ class ExplanationOfBenefitSupportingInfo(backboneelement.BackboneElement):
 
         self.valueReference = None
         """ Data to be provided.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.valueString = None
         """ Data to be provided.

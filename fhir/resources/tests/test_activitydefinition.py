@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/ActivityDefinition
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 import os
 import pytest
@@ -23,18 +26,75 @@ class ActivityDefinitionTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("ActivityDefinition", js["resourceType"])
         return activitydefinition.ActivityDefinition(js)
-    
+
     def testActivityDefinition1(self):
-        inst = self.instantiate_from("activitydefinition-predecessor-example.json")
+        inst = self.instantiate_from("activitydefinition-administer-zika-virus-exposure-assessment.json")
         self.assertIsNotNone(inst, "Must have instantiated a ActivityDefinition instance")
         self.implActivityDefinition1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("ActivityDefinition", js["resourceType"])
         inst2 = activitydefinition.ActivityDefinition(js)
         self.implActivityDefinition1(inst2)
-    
+
     def implActivityDefinition1(self, inst):
+        self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("zika-virus-exposure-assessment"))
+        self.assertEqual(force_bytes(inst.code.coding[0].system), force_bytes("http://example.org/questionnaires"))
+        self.assertEqual(force_bytes(inst.description), force_bytes("Administer Zika Virus Exposure Assessment"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("administer-zika-virus-exposure-assessment"))
+        self.assertEqual(force_bytes(inst.kind), force_bytes("ServiceRequest"))
+        self.assertEqual(force_bytes(inst.library[0]), force_bytes("Library/zika-virus-intervention-logic"))
+        self.assertEqual(force_bytes(inst.participant[0].type), force_bytes("practitioner"))
+        self.assertEqual(force_bytes(inst.relatedArtifact[0].type), force_bytes("derived-from"))
+        self.assertEqual(force_bytes(inst.relatedArtifact[0].url), force_bytes("https://www.cdc.gov/zika/hc-providers/pregnant-woman.html"))
+        self.assertEqual(force_bytes(inst.relatedArtifact[1].resource), force_bytes("Questionnaire/zika-virus-exposure-assessment"))
+        self.assertEqual(force_bytes(inst.relatedArtifact[1].type), force_bytes("depends-on"))
+        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+        self.assertEqual(force_bytes(inst.url), force_bytes("http://example.org/ActivityDefinition/administer-zika-virus-exposure-assessment"))
+        self.assertEqual(force_bytes(inst.useContext[0].code.code), force_bytes("age"))
+        self.assertEqual(force_bytes(inst.useContext[0].code.system), force_bytes("http://terminology.hl7.org/CodeSystem/usage-context-type"))
+        self.assertEqual(force_bytes(inst.useContext[0].valueRange.low.unit), force_bytes("a"))
+        self.assertEqual(inst.useContext[0].valueRange.low.value, 12)
+
+    def testActivityDefinition2(self):
+        inst = self.instantiate_from("activitydefinition-provide-mosquito-prevention-advice.json")
+        self.assertIsNotNone(inst, "Must have instantiated a ActivityDefinition instance")
+        self.implActivityDefinition2(inst)
+
+        js = inst.as_json()
+        self.assertEqual("ActivityDefinition", js["resourceType"])
+        inst2 = activitydefinition.ActivityDefinition(js)
+        self.implActivityDefinition2(inst2)
+
+    def implActivityDefinition2(self, inst):
+        self.assertEqual(force_bytes(inst.code.text), force_bytes("Provide Mosquito Prevention Advice"))
+        self.assertEqual(force_bytes(inst.description), force_bytes("Provide mosquito prevention advice"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("provide-mosquito-prevention-advice"))
+        self.assertEqual(force_bytes(inst.kind), force_bytes("CommunicationRequest"))
+        self.assertEqual(force_bytes(inst.library[0]), force_bytes("Library/zika-virus-intervention-logic"))
+        self.assertEqual(force_bytes(inst.participant[0].type), force_bytes("practitioner"))
+        self.assertEqual(force_bytes(inst.relatedArtifact[0].display), force_bytes("Advice for patients about how to avoid Mosquito bites."))
+        self.assertEqual(force_bytes(inst.relatedArtifact[0].type), force_bytes("documentation"))
+        self.assertEqual(force_bytes(inst.relatedArtifact[0].url), force_bytes("http://www.cdc.gov/zika/prevention/index.html"))
+        self.assertEqual(force_bytes(inst.relatedArtifact[1].display), force_bytes("Advice for patients about which mosquito repellents are effective and safe to use in pregnancy. [DEET, IF3535 and Picardin are safe during]"))
+        self.assertEqual(force_bytes(inst.relatedArtifact[1].type), force_bytes("documentation"))
+        self.assertEqual(force_bytes(inst.relatedArtifact[1].url), force_bytes("https://www.epa.gov/insect-repellents/find-insect-repellent-right-you"))
+        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+        self.assertEqual(force_bytes(inst.url), force_bytes("http://example.org/ActivityDefinition/provide-mosquito-prevention-advice"))
+
+    def testActivityDefinition3(self):
+        inst = self.instantiate_from("activitydefinition-predecessor-example.json")
+        self.assertIsNotNone(inst, "Must have instantiated a ActivityDefinition instance")
+        self.implActivityDefinition3(inst)
+
+        js = inst.as_json()
+        self.assertEqual("ActivityDefinition", js["resourceType"])
+        inst2 = activitydefinition.ActivityDefinition(js)
+        self.implActivityDefinition3(inst2)
+
+    def implActivityDefinition3(self, inst):
         self.assertEqual(inst.approvalDate.date, FHIRDate("2016-03-12").date)
         self.assertEqual(inst.approvalDate.as_json(), "2016-03-12")
         self.assertEqual(force_bytes(inst.author[0].name), force_bytes("Motive Medical Intelligence"))
@@ -120,88 +180,44 @@ class ActivityDefinitionTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.useContext[6].valueCodeableConcept.coding[0].display), force_bytes("Outpatient environment"))
         self.assertEqual(force_bytes(inst.useContext[6].valueCodeableConcept.coding[0].system), force_bytes("http://snomed.info/sct"))
         self.assertEqual(force_bytes(inst.version), force_bytes("1.0.0"))
-    
-    def testActivityDefinition2(self):
-        inst = self.instantiate_from("activitydefinition-supplyrequest-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ActivityDefinition instance")
-        self.implActivityDefinition2(inst)
-        
-        js = inst.as_json()
-        self.assertEqual("ActivityDefinition", js["resourceType"])
-        inst2 = activitydefinition.ActivityDefinition(js)
-        self.implActivityDefinition2(inst2)
-    
-    def implActivityDefinition2(self, inst):
-        self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("BlueTubes"))
-        self.assertEqual(force_bytes(inst.code.coding[0].display), force_bytes("Blood collect tubes blue cap"))
-        self.assertEqual(force_bytes(inst.description), force_bytes("10 Blood collect tubes blue cap"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("blood-tubes-supply"))
-        self.assertEqual(force_bytes(inst.kind), force_bytes("SupplyRequest"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
-        self.assertEqual(force_bytes(inst.purpose), force_bytes("Describes a request for 10 Blood collection tubes with blue caps."))
-        self.assertEqual(inst.quantity.value, 10)
-        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.transform), force_bytes("StructureMap/supplyrequest-transform"))
-    
-    def testActivityDefinition3(self):
-        inst = self.instantiate_from("activitydefinition-servicerequest-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ActivityDefinition instance")
-        self.implActivityDefinition3(inst)
-        
-        js = inst.as_json()
-        self.assertEqual("ActivityDefinition", js["resourceType"])
-        inst2 = activitydefinition.ActivityDefinition(js)
-        self.implActivityDefinition3(inst2)
-    
-    def implActivityDefinition3(self, inst):
-        self.assertEqual(force_bytes(inst.bodySite[0].coding[0].code), force_bytes("17401000"))
-        self.assertEqual(force_bytes(inst.bodySite[0].coding[0].display), force_bytes("Heart valve structure"))
-        self.assertEqual(force_bytes(inst.bodySite[0].coding[0].system), force_bytes("http://snomed.info/sct"))
-        self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("34068001"))
-        self.assertEqual(force_bytes(inst.code.coding[0].display), force_bytes("Heart valve replacement"))
-        self.assertEqual(force_bytes(inst.code.coding[0].system), force_bytes("http://snomed.info/sct"))
-        self.assertEqual(force_bytes(inst.description), force_bytes("Heart valve replacement"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("heart-valve-replacement"))
-        self.assertEqual(force_bytes(inst.kind), force_bytes("ServiceRequest"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
-        self.assertEqual(force_bytes(inst.participant[0].role.coding[0].code), force_bytes("207RI0011X"))
-        self.assertEqual(force_bytes(inst.participant[0].role.coding[0].display), force_bytes("Interventional Cardiology"))
-        self.assertEqual(force_bytes(inst.participant[0].role.coding[0].system), force_bytes("http://nucc.org/provider-taxonomy"))
-        self.assertEqual(force_bytes(inst.participant[0].role.text), force_bytes("Interventional Cardiology"))
-        self.assertEqual(force_bytes(inst.participant[0].type), force_bytes("practitioner"))
-        self.assertEqual(force_bytes(inst.purpose), force_bytes("Describes the proposal to perform a Heart Valve replacement."))
-        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.topic[0].coding[0].code), force_bytes("34068001"))
-        self.assertEqual(force_bytes(inst.topic[0].coding[0].display), force_bytes("Heart valve replacement"))
-        self.assertEqual(force_bytes(inst.topic[0].coding[0].system), force_bytes("http://snomed.info/sct"))
-        self.assertEqual(force_bytes(inst.useContext[0].code.code), force_bytes("age"))
-        self.assertEqual(force_bytes(inst.useContext[0].code.system), force_bytes("http://terminology.hl7.org/CodeSystem/usage-context-type"))
-        self.assertEqual(force_bytes(inst.useContext[0].valueCodeableConcept.coding[0].code), force_bytes("D000328"))
-        self.assertEqual(force_bytes(inst.useContext[0].valueCodeableConcept.coding[0].display), force_bytes("Adult"))
-        self.assertEqual(force_bytes(inst.useContext[0].valueCodeableConcept.coding[0].system), force_bytes("https://meshb.nlm.nih.gov"))
-        self.assertEqual(force_bytes(inst.useContext[1].code.code), force_bytes("user"))
-        self.assertEqual(force_bytes(inst.useContext[1].code.system), force_bytes("http://terminology.hl7.org/CodeSystem/usage-context-type"))
-        self.assertEqual(force_bytes(inst.useContext[1].valueCodeableConcept.coding[0].code), force_bytes("309343006"))
-        self.assertEqual(force_bytes(inst.useContext[1].valueCodeableConcept.coding[0].display), force_bytes("Physician"))
-        self.assertEqual(force_bytes(inst.useContext[1].valueCodeableConcept.coding[0].system), force_bytes("http://snomed.info/sct"))
-    
+
     def testActivityDefinition4(self):
-        inst = self.instantiate_from("activitydefinition-medicationorder-example.json")
+        inst = self.instantiate_from("activitydefinition-order-serum-zika-dengue-virus-igm.json")
         self.assertIsNotNone(inst, "Must have instantiated a ActivityDefinition instance")
         self.implActivityDefinition4(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("ActivityDefinition", js["resourceType"])
         inst2 = activitydefinition.ActivityDefinition(js)
         self.implActivityDefinition4(inst2)
-    
+
     def implActivityDefinition4(self, inst):
+        self.assertEqual(force_bytes(inst.code.text), force_bytes("Serum Zika and Dengue Virus IgM"))
+        self.assertEqual(force_bytes(inst.description), force_bytes("Order Serum Zika and Dengue Virus IgM"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("serum-zika-dengue-virus-igm"))
+        self.assertEqual(force_bytes(inst.kind), force_bytes("ServiceRequest"))
+        self.assertEqual(force_bytes(inst.library[0]), force_bytes("Library/zika-virus-intervention-logic"))
+        self.assertEqual(force_bytes(inst.participant[0].type), force_bytes("practitioner"))
+        self.assertEqual(force_bytes(inst.relatedArtifact[0].display), force_bytes("Explanation of diagnostic tests for Zika virus and which to use based on the patient’s clinical and exposure history."))
+        self.assertEqual(force_bytes(inst.relatedArtifact[0].type), force_bytes("documentation"))
+        self.assertEqual(force_bytes(inst.relatedArtifact[0].url), force_bytes("http://www.cdc.gov/zika/hc-providers/diagnostic.html"))
+        self.assertEqual(force_bytes(inst.relatedArtifact[1].resource), force_bytes("ActivityDefinition/serum-dengue-virus-igm"))
+        self.assertEqual(force_bytes(inst.relatedArtifact[1].type), force_bytes("derived-from"))
+        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+        self.assertEqual(force_bytes(inst.url), force_bytes("http://example.org/ActivityDefinition/serum-zika-dengue-virus-igm"))
+
+    def testActivityDefinition5(self):
+        inst = self.instantiate_from("activitydefinition-medicationorder-example.json")
+        self.assertIsNotNone(inst, "Must have instantiated a ActivityDefinition instance")
+        self.implActivityDefinition5(inst)
+
+        js = inst.as_json()
+        self.assertEqual("ActivityDefinition", js["resourceType"])
+        inst2 = activitydefinition.ActivityDefinition(js)
+        self.implActivityDefinition5(inst2)
+
+    def implActivityDefinition5(self, inst):
         self.assertEqual(inst.approvalDate.date, FHIRDate("2016-03-12").date)
         self.assertEqual(inst.approvalDate.as_json(), "2016-03-12")
         self.assertEqual(force_bytes(inst.author[0].name), force_bytes("Motive Medical Intelligence"))
@@ -307,18 +323,18 @@ class ActivityDefinitionTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.useContext[6].valueCodeableConcept.coding[0].display), force_bytes("Outpatient environment"))
         self.assertEqual(force_bytes(inst.useContext[6].valueCodeableConcept.coding[0].system), force_bytes("http://snomed.info/sct"))
         self.assertEqual(force_bytes(inst.version), force_bytes("1.0.0"))
-    
-    def testActivityDefinition5(self):
+
+    def testActivityDefinition6(self):
         inst = self.instantiate_from("activitydefinition-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a ActivityDefinition instance")
-        self.implActivityDefinition5(inst)
-        
+        self.implActivityDefinition6(inst)
+
         js = inst.as_json()
         self.assertEqual("ActivityDefinition", js["resourceType"])
         inst2 = activitydefinition.ActivityDefinition(js)
-        self.implActivityDefinition5(inst2)
-    
-    def implActivityDefinition5(self, inst):
+        self.implActivityDefinition6(inst2)
+
+    def implActivityDefinition6(self, inst):
         self.assertEqual(inst.approvalDate.date, FHIRDate("2017-03-01").date)
         self.assertEqual(inst.approvalDate.as_json(), "2017-03-01")
         self.assertEqual(force_bytes(inst.author[0].name), force_bytes("Motive Medical Intelligence"))
@@ -404,4 +420,96 @@ class ActivityDefinitionTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.useContext[6].valueCodeableConcept.coding[0].display), force_bytes("Outpatient environment"))
         self.assertEqual(force_bytes(inst.useContext[6].valueCodeableConcept.coding[0].system), force_bytes("http://snomed.info/sct"))
         self.assertEqual(force_bytes(inst.version), force_bytes("1.1.0"))
+
+    def testActivityDefinition7(self):
+        inst = self.instantiate_from("activitydefinition-order-serum-dengue-virus-igm.json")
+        self.assertIsNotNone(inst, "Must have instantiated a ActivityDefinition instance")
+        self.implActivityDefinition7(inst)
+
+        js = inst.as_json()
+        self.assertEqual("ActivityDefinition", js["resourceType"])
+        inst2 = activitydefinition.ActivityDefinition(js)
+        self.implActivityDefinition7(inst2)
+
+    def implActivityDefinition7(self, inst):
+        self.assertEqual(force_bytes(inst.code.text), force_bytes("Serum Dengue Virus IgM"))
+        self.assertEqual(force_bytes(inst.description), force_bytes("Order Serum Dengue Virus IgM"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("serum-dengue-virus-igm"))
+        self.assertEqual(force_bytes(inst.kind), force_bytes("ServiceRequest"))
+        self.assertEqual(force_bytes(inst.participant[0].type), force_bytes("practitioner"))
+        self.assertEqual(force_bytes(inst.relatedArtifact[0].display), force_bytes("Explanation of diagnostic tests for Dengue virus and which to use based on the patient’s clinical and exposure history."))
+        self.assertEqual(force_bytes(inst.relatedArtifact[0].type), force_bytes("documentation"))
+        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+        self.assertEqual(force_bytes(inst.url), force_bytes("http://example.org/ActivityDefinition/serum-dengue-virus-igm"))
+
+    def testActivityDefinition8(self):
+        inst = self.instantiate_from("activitydefinition-servicerequest-example.json")
+        self.assertIsNotNone(inst, "Must have instantiated a ActivityDefinition instance")
+        self.implActivityDefinition8(inst)
+
+        js = inst.as_json()
+        self.assertEqual("ActivityDefinition", js["resourceType"])
+        inst2 = activitydefinition.ActivityDefinition(js)
+        self.implActivityDefinition8(inst2)
+
+    def implActivityDefinition8(self, inst):
+        self.assertEqual(force_bytes(inst.bodySite[0].coding[0].code), force_bytes("17401000"))
+        self.assertEqual(force_bytes(inst.bodySite[0].coding[0].display), force_bytes("Heart valve structure"))
+        self.assertEqual(force_bytes(inst.bodySite[0].coding[0].system), force_bytes("http://snomed.info/sct"))
+        self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("34068001"))
+        self.assertEqual(force_bytes(inst.code.coding[0].display), force_bytes("Heart valve replacement"))
+        self.assertEqual(force_bytes(inst.code.coding[0].system), force_bytes("http://snomed.info/sct"))
+        self.assertEqual(force_bytes(inst.description), force_bytes("Heart valve replacement"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("heart-valve-replacement"))
+        self.assertEqual(force_bytes(inst.kind), force_bytes("ServiceRequest"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
+        self.assertEqual(force_bytes(inst.participant[0].role.coding[0].code), force_bytes("207RI0011X"))
+        self.assertEqual(force_bytes(inst.participant[0].role.coding[0].display), force_bytes("Interventional Cardiology"))
+        self.assertEqual(force_bytes(inst.participant[0].role.coding[0].system), force_bytes("http://nucc.org/provider-taxonomy"))
+        self.assertEqual(force_bytes(inst.participant[0].role.text), force_bytes("Interventional Cardiology"))
+        self.assertEqual(force_bytes(inst.participant[0].type), force_bytes("practitioner"))
+        self.assertEqual(force_bytes(inst.purpose), force_bytes("Describes the proposal to perform a Heart Valve replacement."))
+        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+        self.assertEqual(force_bytes(inst.topic[0].coding[0].code), force_bytes("34068001"))
+        self.assertEqual(force_bytes(inst.topic[0].coding[0].display), force_bytes("Heart valve replacement"))
+        self.assertEqual(force_bytes(inst.topic[0].coding[0].system), force_bytes("http://snomed.info/sct"))
+        self.assertEqual(force_bytes(inst.useContext[0].code.code), force_bytes("age"))
+        self.assertEqual(force_bytes(inst.useContext[0].code.system), force_bytes("http://terminology.hl7.org/CodeSystem/usage-context-type"))
+        self.assertEqual(force_bytes(inst.useContext[0].valueCodeableConcept.coding[0].code), force_bytes("D000328"))
+        self.assertEqual(force_bytes(inst.useContext[0].valueCodeableConcept.coding[0].display), force_bytes("Adult"))
+        self.assertEqual(force_bytes(inst.useContext[0].valueCodeableConcept.coding[0].system), force_bytes("https://meshb.nlm.nih.gov"))
+        self.assertEqual(force_bytes(inst.useContext[1].code.code), force_bytes("user"))
+        self.assertEqual(force_bytes(inst.useContext[1].code.system), force_bytes("http://terminology.hl7.org/CodeSystem/usage-context-type"))
+        self.assertEqual(force_bytes(inst.useContext[1].valueCodeableConcept.coding[0].code), force_bytes("309343006"))
+        self.assertEqual(force_bytes(inst.useContext[1].valueCodeableConcept.coding[0].display), force_bytes("Physician"))
+        self.assertEqual(force_bytes(inst.useContext[1].valueCodeableConcept.coding[0].system), force_bytes("http://snomed.info/sct"))
+
+    def testActivityDefinition9(self):
+        inst = self.instantiate_from("activitydefinition-supplyrequest-example.json")
+        self.assertIsNotNone(inst, "Must have instantiated a ActivityDefinition instance")
+        self.implActivityDefinition9(inst)
+
+        js = inst.as_json()
+        self.assertEqual("ActivityDefinition", js["resourceType"])
+        inst2 = activitydefinition.ActivityDefinition(js)
+        self.implActivityDefinition9(inst2)
+
+    def implActivityDefinition9(self, inst):
+        self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("BlueTubes"))
+        self.assertEqual(force_bytes(inst.code.coding[0].display), force_bytes("Blood collect tubes blue cap"))
+        self.assertEqual(force_bytes(inst.description), force_bytes("10 Blood collect tubes blue cap"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("blood-tubes-supply"))
+        self.assertEqual(force_bytes(inst.kind), force_bytes("SupplyRequest"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
+        self.assertEqual(force_bytes(inst.purpose), force_bytes("Describes a request for 10 Blood collection tubes with blue caps."))
+        self.assertEqual(inst.quantity.value, 10)
+        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+        self.assertEqual(force_bytes(inst.transform), force_bytes("StructureMap/supplyrequest-transform"))
 

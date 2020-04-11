@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/MedicinalProductPharmaceutical) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/MedicinalProductPharmaceutical
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -32,7 +35,7 @@ class MedicinalProductPharmaceutical(domainresource.DomainResource):
 
         self.device = None
         """ Accompanying device.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['DeviceDefinition']` (represented as `dict` in JSON). """
 
         self.identifier = None
         """ An identifier for the pharmaceutical medicinal product.
@@ -40,7 +43,7 @@ class MedicinalProductPharmaceutical(domainresource.DomainResource):
 
         self.ingredient = None
         """ Ingredient.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['MedicinalProductIngredient']` (represented as `dict` in JSON). """
 
         self.routeOfAdministration = None
         """ The path by which the pharmaceutical product is taken into or makes

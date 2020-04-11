@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/Organization) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Organization
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -46,7 +49,7 @@ class Organization(domainresource.DomainResource):
         self.endpoint = None
         """ Technical endpoints providing access to services operated for the
         organization.
-        List of `FHIRReference` items referencing `Endpoint` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Endpoint']` (represented as `dict` in JSON). """
 
         self.identifier = None
         """ Identifies this organization  across multiple systems.
@@ -58,7 +61,7 @@ class Organization(domainresource.DomainResource):
 
         self.partOf = None
         """ The organization of which this organization forms a part.
-        Type `FHIRReference` referencing `Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.telecom = None
         """ A contact detail for the organization.

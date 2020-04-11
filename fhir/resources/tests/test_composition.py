@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Composition
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 import os
 import pytest
@@ -23,18 +26,59 @@ class CompositionTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("Composition", js["resourceType"])
         return composition.Composition(js)
-    
+
     def testComposition1(self):
-        inst = self.instantiate_from("composition-example.json")
+        inst = self.instantiate_from("composition-example-mixed.json")
         self.assertIsNotNone(inst, "Must have instantiated a Composition instance")
         self.implComposition1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Composition", js["resourceType"])
         inst2 = composition.Composition(js)
         self.implComposition1(inst2)
-    
+
     def implComposition1(self, inst):
+        self.assertEqual(force_bytes(inst.attester[0].mode), force_bytes("legal"))
+        self.assertEqual(inst.attester[0].time.date, FHIRDate("2012-01-04T09:10:14Z").date)
+        self.assertEqual(inst.attester[0].time.as_json(), "2012-01-04T09:10:14Z")
+        self.assertEqual(force_bytes(inst.category[0].coding[0].code), force_bytes("LP173421-1"))
+        self.assertEqual(force_bytes(inst.category[0].coding[0].display), force_bytes("Report"))
+        self.assertEqual(force_bytes(inst.category[0].coding[0].system), force_bytes("http://loinc.org"))
+        self.assertEqual(force_bytes(inst.confidentiality), force_bytes("N"))
+        self.assertEqual(inst.date.date, FHIRDate("2018-10-30T16:56:04+11:00").date)
+        self.assertEqual(inst.date.as_json(), "2018-10-30T16:56:04+11:00")
+        self.assertEqual(force_bytes(inst.id), force_bytes("example-mixed"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
+        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
+        self.assertEqual(force_bytes(inst.section[0].code.coding[0].code), force_bytes("newborn"))
+        self.assertEqual(force_bytes(inst.section[0].code.coding[0].display), force_bytes("New Born Details"))
+        self.assertEqual(force_bytes(inst.section[0].code.coding[0].system), force_bytes("http://acme.org/codes/SectionType"))
+        self.assertEqual(force_bytes(inst.section[0].text.status), force_bytes("generated"))
+        self.assertEqual(force_bytes(inst.section[0].title), force_bytes("Child's Details"))
+        self.assertEqual(force_bytes(inst.section[1].code.coding[0].code), force_bytes("mother"))
+        self.assertEqual(force_bytes(inst.section[1].code.coding[0].display), force_bytes("Mother's Details"))
+        self.assertEqual(force_bytes(inst.section[1].code.coding[0].system), force_bytes("http://acme.org/codes/SectionType"))
+        self.assertEqual(force_bytes(inst.section[1].text.status), force_bytes("generated"))
+        self.assertEqual(force_bytes(inst.section[1].title), force_bytes("Mpther's Details"))
+        self.assertEqual(force_bytes(inst.status), force_bytes("final"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+        self.assertEqual(force_bytes(inst.title), force_bytes("Discharge Summary (Neonatal Service)"))
+        self.assertEqual(force_bytes(inst.type.coding[0].code), force_bytes("78418-1"))
+        self.assertEqual(force_bytes(inst.type.coding[0].display), force_bytes("Neonatal perinatal medicine Discharge summary"))
+        self.assertEqual(force_bytes(inst.type.coding[0].system), force_bytes("http://loinc.org"))
+
+    def testComposition2(self):
+        inst = self.instantiate_from("composition-example.json")
+        self.assertIsNotNone(inst, "Must have instantiated a Composition instance")
+        self.implComposition2(inst)
+
+        js = inst.as_json()
+        self.assertEqual("Composition", js["resourceType"])
+        inst2 = composition.Composition(js)
+        self.implComposition2(inst2)
+
+    def implComposition2(self, inst):
         self.assertEqual(force_bytes(inst.attester[0].mode), force_bytes("legal"))
         self.assertEqual(inst.attester[0].time.date, FHIRDate("2012-01-04T09:10:14Z").date)
         self.assertEqual(inst.attester[0].time.as_json(), "2012-01-04T09:10:14Z")
@@ -84,46 +128,5 @@ class CompositionTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.title), force_bytes("Consultation Note"))
         self.assertEqual(force_bytes(inst.type.coding[0].code), force_bytes("11488-4"))
         self.assertEqual(force_bytes(inst.type.coding[0].display), force_bytes("Consult note"))
-        self.assertEqual(force_bytes(inst.type.coding[0].system), force_bytes("http://loinc.org"))
-    
-    def testComposition2(self):
-        inst = self.instantiate_from("composition-example-mixed.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Composition instance")
-        self.implComposition2(inst)
-        
-        js = inst.as_json()
-        self.assertEqual("Composition", js["resourceType"])
-        inst2 = composition.Composition(js)
-        self.implComposition2(inst2)
-    
-    def implComposition2(self, inst):
-        self.assertEqual(force_bytes(inst.attester[0].mode), force_bytes("legal"))
-        self.assertEqual(inst.attester[0].time.date, FHIRDate("2012-01-04T09:10:14Z").date)
-        self.assertEqual(inst.attester[0].time.as_json(), "2012-01-04T09:10:14Z")
-        self.assertEqual(force_bytes(inst.category[0].coding[0].code), force_bytes("LP173421-1"))
-        self.assertEqual(force_bytes(inst.category[0].coding[0].display), force_bytes("Report"))
-        self.assertEqual(force_bytes(inst.category[0].coding[0].system), force_bytes("http://loinc.org"))
-        self.assertEqual(force_bytes(inst.confidentiality), force_bytes("N"))
-        self.assertEqual(inst.date.date, FHIRDate("2018-10-30T16:56:04+11:00").date)
-        self.assertEqual(inst.date.as_json(), "2018-10-30T16:56:04+11:00")
-        self.assertEqual(force_bytes(inst.id), force_bytes("example-mixed"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
-        self.assertEqual(force_bytes(inst.section[0].code.coding[0].code), force_bytes("newborn"))
-        self.assertEqual(force_bytes(inst.section[0].code.coding[0].display), force_bytes("New Born Details"))
-        self.assertEqual(force_bytes(inst.section[0].code.coding[0].system), force_bytes("http://acme.org/codes/SectionType"))
-        self.assertEqual(force_bytes(inst.section[0].text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.section[0].title), force_bytes("Child's Details"))
-        self.assertEqual(force_bytes(inst.section[1].code.coding[0].code), force_bytes("mother"))
-        self.assertEqual(force_bytes(inst.section[1].code.coding[0].display), force_bytes("Mother's Details"))
-        self.assertEqual(force_bytes(inst.section[1].code.coding[0].system), force_bytes("http://acme.org/codes/SectionType"))
-        self.assertEqual(force_bytes(inst.section[1].text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.section[1].title), force_bytes("Mpther's Details"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("final"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.title), force_bytes("Discharge Summary (Neonatal Service)"))
-        self.assertEqual(force_bytes(inst.type.coding[0].code), force_bytes("78418-1"))
-        self.assertEqual(force_bytes(inst.type.coding[0].display), force_bytes("Neonatal perinatal medicine Discharge summary"))
         self.assertEqual(force_bytes(inst.type.coding[0].system), force_bytes("http://loinc.org"))
 

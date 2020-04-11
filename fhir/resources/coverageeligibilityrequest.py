@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/CoverageEligibilityRequest) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/CoverageEligibilityRequest
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -33,11 +36,11 @@ class CoverageEligibilityRequest(domainresource.DomainResource):
 
         self.enterer = None
         """ Author.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole']` (represented as `dict` in JSON). """
 
         self.facility = None
         """ Servicing facility.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Location']` (represented as `dict` in JSON). """
 
         self.identifier = None
         """ Business Identifier for coverage eligiblity request.
@@ -49,7 +52,7 @@ class CoverageEligibilityRequest(domainresource.DomainResource):
 
         self.insurer = None
         """ Coverage issuer.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.item = None
         """ Item to be evaluated for eligibiity.
@@ -57,7 +60,7 @@ class CoverageEligibilityRequest(domainresource.DomainResource):
 
         self.patient = None
         """ Intended recipient of products and services.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
 
         self.priority = None
         """ Desired processing priority.
@@ -65,7 +68,7 @@ class CoverageEligibilityRequest(domainresource.DomainResource):
 
         self.provider = None
         """ Party responsible for the request.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'Organization']` (represented as `dict` in JSON). """
 
         self.purpose = None
         """ auth-requirements | benefits | discovery | validation.
@@ -136,7 +139,7 @@ class CoverageEligibilityRequestInsurance(backboneelement.BackboneElement):
 
         self.coverage = None
         """ Insurance information.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Coverage']` (represented as `dict` in JSON). """
 
         self.focal = None
         """ Applicable coverage.
@@ -177,7 +180,7 @@ class CoverageEligibilityRequestItem(backboneelement.BackboneElement):
 
         self.detail = None
         """ Product or service details.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.diagnosis = None
         """ Applicable diagnosis.
@@ -185,7 +188,7 @@ class CoverageEligibilityRequestItem(backboneelement.BackboneElement):
 
         self.facility = None
         """ Servicing facility.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Location', 'Organization']` (represented as `dict` in JSON). """
 
         self.modifier = None
         """ Product or service billing modifiers.
@@ -197,7 +200,7 @@ class CoverageEligibilityRequestItem(backboneelement.BackboneElement):
 
         self.provider = None
         """ Perfoming practitioner.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole']` (represented as `dict` in JSON). """
 
         self.quantity = None
         """ Count of products or services.
@@ -252,7 +255,7 @@ class CoverageEligibilityRequestItemDiagnosis(backboneelement.BackboneElement):
 
         self.diagnosisReference = None
         """ Nature of illness or problem.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Condition']` (represented as `dict` in JSON). """
 
         super(CoverageEligibilityRequestItemDiagnosis, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -288,7 +291,7 @@ class CoverageEligibilityRequestSupportingInfo(backboneelement.BackboneElement):
 
         self.information = None
         """ Data to be provided.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.sequence = None
         """ Information instance identifier.

@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Basic
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 import os
 import pytest
@@ -23,17 +26,17 @@ class BasicTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("Basic", js["resourceType"])
         return basic.Basic(js)
-    
+
     def testBasic1(self):
         inst = self.instantiate_from("basic-example2.json")
         self.assertIsNotNone(inst, "Must have instantiated a Basic instance")
         self.implBasic1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Basic", js["resourceType"])
         inst2 = basic.Basic(js)
         self.implBasic1(inst2)
-    
+
     def implBasic1(self, inst):
         self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("UMLCLASSMODEL"))
         self.assertEqual(force_bytes(inst.code.coding[0].system), force_bytes("http://example.org/do-not-use/fhir-codes#resourceTypes"))
@@ -59,17 +62,17 @@ class BasicTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
         self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-    
+
     def testBasic2(self):
         inst = self.instantiate_from("basic-example-narrative.json")
         self.assertIsNotNone(inst, "Must have instantiated a Basic instance")
         self.implBasic2(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Basic", js["resourceType"])
         inst2 = basic.Basic(js)
         self.implBasic2(inst2)
-    
+
     def implBasic2(self, inst):
         self.assertEqual(force_bytes(inst.code.text), force_bytes("Example Narrative Tester"))
         self.assertEqual(force_bytes(inst.id), force_bytes("basic-example-narrative"))
@@ -77,17 +80,17 @@ class BasicTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
         self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("additional"))
-    
+
     def testBasic3(self):
         inst = self.instantiate_from("basic-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a Basic instance")
         self.implBasic3(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Basic", js["resourceType"])
         inst2 = basic.Basic(js)
         self.implBasic3(inst2)
-    
+
     def implBasic3(self, inst):
         self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("referral"))
         self.assertEqual(force_bytes(inst.code.coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/basic-resource-type"))

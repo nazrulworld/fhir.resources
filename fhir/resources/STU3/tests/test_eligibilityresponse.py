@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/EligibilityResponse
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 import os
 import pytest
@@ -23,45 +26,18 @@ class EligibilityResponseTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("EligibilityResponse", js["resourceType"])
         return eligibilityresponse.EligibilityResponse(js)
-    
+
     def testEligibilityResponse1(self):
-        inst = self.instantiate_from("eligibilityresponse-example-error.json")
+        inst = self.instantiate_from("eligibilityresponse-example-benefits-2.json")
         self.assertIsNotNone(inst, "Must have instantiated a EligibilityResponse instance")
         self.implEligibilityResponse1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("EligibilityResponse", js["resourceType"])
         inst2 = eligibilityresponse.EligibilityResponse(js)
         self.implEligibilityResponse1(inst2)
-    
+
     def implEligibilityResponse1(self, inst):
-        self.assertEqual(inst.created.date, FHIRDate("2014-09-16").date)
-        self.assertEqual(inst.created.as_json(), "2014-09-16")
-        self.assertEqual(force_bytes(inst.disposition), force_bytes("Eligibiliy request could not be processed, please address errors before submitting."))
-        self.assertEqual(force_bytes(inst.error[0].code.coding[0].code), force_bytes("a001"))
-        self.assertEqual(force_bytes(inst.error[0].code.coding[0].system), force_bytes("http://hl7.org/fhir/adjudication-error"))
-        self.assertEqual(force_bytes(inst.form.coding[0].code), force_bytes("ELRSP/2017/01"))
-        self.assertEqual(force_bytes(inst.form.coding[0].system), force_bytes("http://national.org/form"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("E2503"))
-        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://www.BenefitsInc.com/fhir/eligibilityresponse"))
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("8812343"))
-        self.assertEqual(force_bytes(inst.outcome.coding[0].code), force_bytes("error"))
-        self.assertEqual(force_bytes(inst.outcome.coding[0].system), force_bytes("http://hl7.org/fhir/remittance-outcome"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the EligibilityResponse.</div>"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-    
-    def testEligibilityResponse2(self):
-        inst = self.instantiate_from("eligibilityresponse-example-benefits-2.json")
-        self.assertIsNotNone(inst, "Must have instantiated a EligibilityResponse instance")
-        self.implEligibilityResponse2(inst)
-        
-        js = inst.as_json()
-        self.assertEqual("EligibilityResponse", js["resourceType"])
-        inst2 = eligibilityresponse.EligibilityResponse(js)
-        self.implEligibilityResponse2(inst2)
-    
-    def implEligibilityResponse2(self, inst):
         self.assertEqual(force_bytes(inst.contained[0].id), force_bytes("patient-1"))
         self.assertEqual(force_bytes(inst.contained[1].id), force_bytes("coverage-1"))
         self.assertEqual(inst.created.date, FHIRDate("2014-09-16").date)
@@ -140,17 +116,44 @@ class EligibilityResponseTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.status), force_bytes("active"))
         self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the EligibilityResponse.</div>"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-    
+
+    def testEligibilityResponse2(self):
+        inst = self.instantiate_from("eligibilityresponse-example-error.json")
+        self.assertIsNotNone(inst, "Must have instantiated a EligibilityResponse instance")
+        self.implEligibilityResponse2(inst)
+
+        js = inst.as_json()
+        self.assertEqual("EligibilityResponse", js["resourceType"])
+        inst2 = eligibilityresponse.EligibilityResponse(js)
+        self.implEligibilityResponse2(inst2)
+
+    def implEligibilityResponse2(self, inst):
+        self.assertEqual(inst.created.date, FHIRDate("2014-09-16").date)
+        self.assertEqual(inst.created.as_json(), "2014-09-16")
+        self.assertEqual(force_bytes(inst.disposition), force_bytes("Eligibiliy request could not be processed, please address errors before submitting."))
+        self.assertEqual(force_bytes(inst.error[0].code.coding[0].code), force_bytes("a001"))
+        self.assertEqual(force_bytes(inst.error[0].code.coding[0].system), force_bytes("http://hl7.org/fhir/adjudication-error"))
+        self.assertEqual(force_bytes(inst.form.coding[0].code), force_bytes("ELRSP/2017/01"))
+        self.assertEqual(force_bytes(inst.form.coding[0].system), force_bytes("http://national.org/form"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("E2503"))
+        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://www.BenefitsInc.com/fhir/eligibilityresponse"))
+        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("8812343"))
+        self.assertEqual(force_bytes(inst.outcome.coding[0].code), force_bytes("error"))
+        self.assertEqual(force_bytes(inst.outcome.coding[0].system), force_bytes("http://hl7.org/fhir/remittance-outcome"))
+        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
+        self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the EligibilityResponse.</div>"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+
     def testEligibilityResponse3(self):
         inst = self.instantiate_from("eligibilityresponse-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a EligibilityResponse instance")
         self.implEligibilityResponse3(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("EligibilityResponse", js["resourceType"])
         inst2 = eligibilityresponse.EligibilityResponse(js)
         self.implEligibilityResponse3(inst2)
-    
+
     def implEligibilityResponse3(self, inst):
         self.assertEqual(inst.created.date, FHIRDate("2014-08-16").date)
         self.assertEqual(inst.created.as_json(), "2014-08-16")
@@ -164,17 +167,17 @@ class EligibilityResponseTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.status), force_bytes("active"))
         self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the EligibilityResponse.</div>"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-    
+
     def testEligibilityResponse4(self):
         inst = self.instantiate_from("eligibilityresponse-example-benefits.json")
         self.assertIsNotNone(inst, "Must have instantiated a EligibilityResponse instance")
         self.implEligibilityResponse4(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("EligibilityResponse", js["resourceType"])
         inst2 = eligibilityresponse.EligibilityResponse(js)
         self.implEligibilityResponse4(inst2)
-    
+
     def implEligibilityResponse4(self, inst):
         self.assertEqual(inst.created.date, FHIRDate("2014-08-16").date)
         self.assertEqual(inst.created.as_json(), "2014-08-16")

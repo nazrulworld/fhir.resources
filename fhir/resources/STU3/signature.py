@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/Signature) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Signature
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import element
@@ -36,7 +39,7 @@ class Signature(element.Element):
 
         self.onBehalfOfReference = None
         """ The party represented.
-        Type `FHIRReference` referencing `Practitioner, RelatedPerson, Patient, Device, Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner'], ['RelatedPerson'], ['Patient'], ['Device'], ['Organization']` (represented as `dict` in JSON). """
 
         self.onBehalfOfUri = None
         """ The party represented.
@@ -52,7 +55,7 @@ class Signature(element.Element):
 
         self.whoReference = None
         """ Who signed.
-        Type `FHIRReference` referencing `Practitioner, RelatedPerson, Patient, Device, Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner'], ['RelatedPerson'], ['Patient'], ['Device'], ['Organization']` (represented as `dict` in JSON). """
 
         self.whoUri = None
         """ Who signed.

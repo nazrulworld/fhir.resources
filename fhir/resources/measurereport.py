@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/MeasureReport) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/MeasureReport
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -31,7 +34,7 @@ class MeasureReport(domainresource.DomainResource):
 
         self.evaluatedResource = None
         """ What data was used to calculate the measure score.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.group = None
         """ Measure results for each group.
@@ -47,7 +50,7 @@ class MeasureReport(domainresource.DomainResource):
 
         self.measure = None
         """ What measure was calculated.
-        Type `str`. """
+        Type `str` referencing `['Measure']`. """
 
         self.period = None
         """ What period the report covers.
@@ -55,7 +58,7 @@ class MeasureReport(domainresource.DomainResource):
 
         self.reporter = None
         """ Who is reporting the data.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'Location', 'Organization']` (represented as `dict` in JSON). """
 
         self.status = None
         """ complete | pending | error.
@@ -63,7 +66,7 @@ class MeasureReport(domainresource.DomainResource):
 
         self.subject = None
         """ What individual(s) the report is for.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient', 'Practitioner', 'PractitionerRole', 'Location', 'Device', 'RelatedPerson', 'Group']` (represented as `dict` in JSON). """
 
         self.type = None
         """ individual | subject-list | summary | data-collection.
@@ -166,7 +169,7 @@ class MeasureReportGroupPopulation(backboneelement.BackboneElement):
 
         self.subjectResults = None
         """ For subject-list reports, the subject results in this population.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['List']` (represented as `dict` in JSON). """
 
         super(MeasureReportGroupPopulation, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -329,7 +332,7 @@ class MeasureReportGroupStratifierStratumPopulation(backboneelement.BackboneElem
 
         self.subjectResults = None
         """ For subject-list reports, the subject results in this population.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['List']` (represented as `dict` in JSON). """
 
         super(MeasureReportGroupStratifierStratumPopulation, self).__init__(jsondict=jsondict, strict=strict)
 

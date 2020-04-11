@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/MedicationAdministration) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/MedicationAdministration
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -33,15 +36,15 @@ class MedicationAdministration(domainresource.DomainResource):
 
         self.context = None
         """ Encounter or Episode of Care administered as part of.
-        Type `FHIRReference` referencing `Encounter, EpisodeOfCare` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Encounter'], ['EpisodeOfCare']` (represented as `dict` in JSON). """
 
         self.definition = None
         """ Instantiates protocol or definition.
-        List of `FHIRReference` items referencing `PlanDefinition, ActivityDefinition` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['PlanDefinition'], ['ActivityDefinition']` (represented as `dict` in JSON). """
 
         self.device = None
         """ Device used to administer.
-        List of `FHIRReference` items referencing `Device` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Device']` (represented as `dict` in JSON). """
 
         self.dosage = None
         """ Details of how medication was taken.
@@ -57,7 +60,7 @@ class MedicationAdministration(domainresource.DomainResource):
 
         self.eventHistory = None
         """ A list of events of interest in the lifecycle.
-        List of `FHIRReference` items referencing `Provenance` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Provenance']` (represented as `dict` in JSON). """
 
         self.identifier = None
         """ External identifier.
@@ -69,7 +72,7 @@ class MedicationAdministration(domainresource.DomainResource):
 
         self.medicationReference = None
         """ What was administered.
-        Type `FHIRReference` referencing `Medication` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Medication']` (represented as `dict` in JSON). """
 
         self.notGiven = None
         """ True if medication not administered.
@@ -81,7 +84,7 @@ class MedicationAdministration(domainresource.DomainResource):
 
         self.partOf = None
         """ Part of referenced event.
-        List of `FHIRReference` items referencing `MedicationAdministration, Procedure` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['MedicationAdministration'], ['Procedure']` (represented as `dict` in JSON). """
 
         self.performer = None
         """ Who administered substance.
@@ -89,7 +92,7 @@ class MedicationAdministration(domainresource.DomainResource):
 
         self.prescription = None
         """ Request administration performed against.
-        Type `FHIRReference` referencing `MedicationRequest` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['MedicationRequest']` (represented as `dict` in JSON). """
 
         self.reasonCode = None
         """ Reason administration performed.
@@ -102,7 +105,7 @@ class MedicationAdministration(domainresource.DomainResource):
         self.reasonReference = None
         """ Condition or Observation that supports why the medication was
         administered.
-        List of `FHIRReference` items referencing `Condition, Observation` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Condition'], ['Observation']` (represented as `dict` in JSON). """
 
         self.status = None
         """ in-progress | on-hold | completed | entered-in-error | stopped |
@@ -111,11 +114,11 @@ class MedicationAdministration(domainresource.DomainResource):
 
         self.subject = None
         """ Who received medication.
-        Type `FHIRReference` referencing `Patient, Group` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient'], ['Group']` (represented as `dict` in JSON). """
 
         self.supportingInformation = None
         """ Additional information to support administration.
-        List of `FHIRReference` items referencing `Resource` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         super(MedicationAdministration, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -230,11 +233,11 @@ class MedicationAdministrationPerformer(backboneelement.BackboneElement):
 
         self.actor = None
         """ Individual who was performing.
-        Type `FHIRReference` referencing `Practitioner, Patient, RelatedPerson, Device` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner'], ['Patient'], ['RelatedPerson'], ['Device']` (represented as `dict` in JSON). """
 
         self.onBehalfOf = None
         """ Organization organization was acting for.
-        Type `FHIRReference` referencing `Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         super(MedicationAdministrationPerformer, self).__init__(jsondict=jsondict, strict=strict)
 

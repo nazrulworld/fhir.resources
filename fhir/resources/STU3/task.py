@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/Task) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Task
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -27,7 +30,7 @@ class Task(domainresource.DomainResource):
 
         self.basedOn = None
         """ Request fulfilled by this task.
-        List of `FHIRReference` items referencing `Resource` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.businessStatus = None
         """ E.g. "Specimen collected", "IV prepped".
@@ -39,11 +42,11 @@ class Task(domainresource.DomainResource):
 
         self.context = None
         """ Healthcare event during which this task originated.
-        Type `FHIRReference` referencing `Encounter, EpisodeOfCare` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Encounter'], ['EpisodeOfCare']` (represented as `dict` in JSON). """
 
         self.definitionReference = None
         """ Formal definition of task.
-        Type `FHIRReference` referencing `ActivityDefinition` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['ActivityDefinition']` (represented as `dict` in JSON). """
 
         self.definitionUri = None
         """ Formal definition of task.
@@ -59,11 +62,11 @@ class Task(domainresource.DomainResource):
 
         self.focus = None
         """ What task is acting on.
-        Type `FHIRReference` referencing `Resource` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.for_fhir = None
         """ Beneficiary of the Task.
-        Type `FHIRReference` referencing `Resource` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.groupIdentifier = None
         """ Requisition or grouper id.
@@ -95,11 +98,11 @@ class Task(domainresource.DomainResource):
 
         self.owner = None
         """ Responsible individual.
-        Type `FHIRReference` referencing `Device, Organization, Patient, Practitioner, RelatedPerson` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Device'], ['Organization'], ['Patient'], ['Practitioner'], ['RelatedPerson']` (represented as `dict` in JSON). """
 
         self.partOf = None
         """ Composite task.
-        List of `FHIRReference` items referencing `Task` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Task']` (represented as `dict` in JSON). """
 
         self.performerType = None
         """ requester | dispatcher | scheduler | performer | monitor | manager
@@ -116,7 +119,7 @@ class Task(domainresource.DomainResource):
 
         self.relevantHistory = None
         """ Key events in history of the Task.
-        List of `FHIRReference` items referencing `Provenance` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Provenance']` (represented as `dict` in JSON). """
 
         self.requester = None
         """ Who is asking for task to be done.
@@ -631,11 +634,11 @@ class TaskRequester(backboneelement.BackboneElement):
 
         self.agent = None
         """ Individual asking for task.
-        Type `FHIRReference` referencing `Device, Organization, Patient, Practitioner, RelatedPerson` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Device'], ['Organization'], ['Patient'], ['Practitioner'], ['RelatedPerson']` (represented as `dict` in JSON). """
 
         self.onBehalfOf = None
         """ Organization individual is acting for.
-        Type `FHIRReference` referencing `Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         super(TaskRequester, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -672,7 +675,7 @@ class TaskRestriction(backboneelement.BackboneElement):
 
         self.recipient = None
         """ For whom is fulfillment sought?.
-        List of `FHIRReference` items referencing `Patient, Practitioner, RelatedPerson, Group, Organization` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Patient'], ['Practitioner'], ['RelatedPerson'], ['Group'], ['Organization']` (represented as `dict` in JSON). """
 
         self.repetitions = None
         """ How many times to repeat.

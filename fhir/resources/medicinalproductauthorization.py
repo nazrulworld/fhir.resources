@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/MedicinalProductAuthorization) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/MedicinalProductAuthorization
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -37,7 +40,7 @@ class MedicinalProductAuthorization(domainresource.DomainResource):
 
         self.holder = None
         """ Marketing Authorization Holder.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.identifier = None
         """ Business identifier for the marketing authorization, as assigned by
@@ -68,7 +71,7 @@ class MedicinalProductAuthorization(domainresource.DomainResource):
 
         self.regulator = None
         """ Medicines Regulatory Agency.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.restoreDate = None
         """ The date when a suspended the marketing or the marketing
@@ -85,7 +88,7 @@ class MedicinalProductAuthorization(domainresource.DomainResource):
 
         self.subject = None
         """ The medicinal product that is being authorized.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['MedicinalProduct', 'MedicinalProductPackaged']` (represented as `dict` in JSON). """
 
         self.validityPeriod = None
         """ The beginning of the time period in which the marketing

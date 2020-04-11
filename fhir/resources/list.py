@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/List) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/List
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -35,7 +38,7 @@ class List(domainresource.DomainResource):
 
         self.encounter = None
         """ Context in which list created.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Encounter']` (represented as `dict` in JSON). """
 
         self.entry = None
         """ Entries in the list.
@@ -59,7 +62,7 @@ class List(domainresource.DomainResource):
 
         self.source = None
         """ Who and/or what defined the list contents (aka Author).
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'Patient', 'Device']` (represented as `dict` in JSON). """
 
         self.status = None
         """ current | retired | entered-in-error.
@@ -67,7 +70,7 @@ class List(domainresource.DomainResource):
 
         self.subject = None
         """ If all resources have the same subject.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient', 'Group', 'Device', 'Location']` (represented as `dict` in JSON). """
 
         self.title = None
         """ Descriptive name for the list.
@@ -127,7 +130,7 @@ class ListEntry(backboneelement.BackboneElement):
 
         self.item = None
         """ Actual entry.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
 
         super(ListEntry, self).__init__(jsondict=jsondict, strict=strict)
 

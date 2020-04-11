@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/CarePlan) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/CarePlan
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -31,19 +34,19 @@ class CarePlan(domainresource.DomainResource):
 
         self.addresses = None
         """ Health issues this plan addresses.
-        List of `FHIRReference` items referencing `Condition` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Condition']` (represented as `dict` in JSON). """
 
         self.author = None
         """ Who is responsible for contents of the plan.
-        List of `FHIRReference` items referencing `Patient, Practitioner, RelatedPerson, Organization, CareTeam` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Patient'], ['Practitioner'], ['RelatedPerson'], ['Organization'], ['CareTeam']` (represented as `dict` in JSON). """
 
         self.basedOn = None
         """ Fulfills care plan.
-        List of `FHIRReference` items referencing `CarePlan` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['CarePlan']` (represented as `dict` in JSON). """
 
         self.careTeam = None
         """ Who's involved in plan?.
-        List of `FHIRReference` items referencing `CareTeam` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['CareTeam']` (represented as `dict` in JSON). """
 
         self.category = None
         """ Type of plan.
@@ -51,11 +54,11 @@ class CarePlan(domainresource.DomainResource):
 
         self.context = None
         """ Created in context of.
-        Type `FHIRReference` referencing `Encounter, EpisodeOfCare` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Encounter'], ['EpisodeOfCare']` (represented as `dict` in JSON). """
 
         self.definition = None
         """ Protocol or definition.
-        List of `FHIRReference` items referencing `PlanDefinition, Questionnaire` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['PlanDefinition'], ['Questionnaire']` (represented as `dict` in JSON). """
 
         self.description = None
         """ Summary of nature of plan.
@@ -63,7 +66,7 @@ class CarePlan(domainresource.DomainResource):
 
         self.goal = None
         """ Desired outcome of plan.
-        List of `FHIRReference` items referencing `Goal` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Goal']` (represented as `dict` in JSON). """
 
         self.identifier = None
         """ External Ids for this plan.
@@ -79,7 +82,7 @@ class CarePlan(domainresource.DomainResource):
 
         self.partOf = None
         """ Part of referenced CarePlan.
-        List of `FHIRReference` items referencing `CarePlan` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['CarePlan']` (represented as `dict` in JSON). """
 
         self.period = None
         """ Time period plan covers.
@@ -87,7 +90,7 @@ class CarePlan(domainresource.DomainResource):
 
         self.replaces = None
         """ CarePlan replaced by this CarePlan.
-        List of `FHIRReference` items referencing `CarePlan` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['CarePlan']` (represented as `dict` in JSON). """
 
         self.status = None
         """ draft | active | suspended | completed | entered-in-error |
@@ -96,11 +99,11 @@ class CarePlan(domainresource.DomainResource):
 
         self.subject = None
         """ Who care plan is for.
-        Type `FHIRReference` referencing `Patient, Group` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient'], ['Group']` (represented as `dict` in JSON). """
 
         self.supportingInfo = None
         """ Information considered as part of plan.
-        List of `FHIRReference` items referencing `Resource` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.title = None
         """ Human-friendly name for the CarePlan.
@@ -165,7 +168,7 @@ class CarePlanActivity(backboneelement.BackboneElement):
 
         self.outcomeReference = None
         """ Appointment, Encounter, Procedure, etc..
-        List of `FHIRReference` items referencing `Resource` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.progress = None
         """ Comments about the activity status/progress.
@@ -173,7 +176,7 @@ class CarePlanActivity(backboneelement.BackboneElement):
 
         self.reference = None
         """ Activity details defined in specific resource.
-        Type `FHIRReference` referencing `Appointment, CommunicationRequest, DeviceRequest, MedicationRequest, NutritionOrder, Task, ProcedureRequest, ReferralRequest, VisionPrescription, RequestGroup` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Appointment'], ['CommunicationRequest'], ['DeviceRequest'], ['MedicationRequest'], ['NutritionOrder'], ['Task'], ['ProcedureRequest'], ['ReferralRequest'], ['VisionPrescription'], ['RequestGroup']` (represented as `dict` in JSON). """
 
         super(CarePlanActivity, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -221,7 +224,7 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
 
         self.definition = None
         """ Protocol or definition.
-        Type `FHIRReference` referencing `PlanDefinition, ActivityDefinition, Questionnaire` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['PlanDefinition'], ['ActivityDefinition'], ['Questionnaire']` (represented as `dict` in JSON). """
 
         self.description = None
         """ Extra info describing activity to perform.
@@ -229,15 +232,15 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
 
         self.goal = None
         """ Goals this activity relates to.
-        List of `FHIRReference` items referencing `Goal` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Goal']` (represented as `dict` in JSON). """
 
         self.location = None
         """ Where it should happen.
-        Type `FHIRReference` referencing `Location` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Location']` (represented as `dict` in JSON). """
 
         self.performer = None
         """ Who will be responsible?.
-        List of `FHIRReference` items referencing `Practitioner, Organization, RelatedPerson, Patient, CareTeam` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Practitioner'], ['Organization'], ['RelatedPerson'], ['Patient'], ['CareTeam']` (represented as `dict` in JSON). """
 
         self.productCodeableConcept = None
         """ What is to be administered/supplied.
@@ -245,7 +248,7 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
 
         self.productReference = None
         """ What is to be administered/supplied.
-        Type `FHIRReference` referencing `Medication, Substance` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Medication'], ['Substance']` (represented as `dict` in JSON). """
 
         self.prohibited = None
         """ Do NOT do.
@@ -261,7 +264,7 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
 
         self.reasonReference = None
         """ Condition triggering need for activity.
-        List of `FHIRReference` items referencing `Condition` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Condition']` (represented as `dict` in JSON). """
 
         self.scheduledPeriod = None
         """ When activity is to occur.

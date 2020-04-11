@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/ImmunizationRecommendation) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/ImmunizationRecommendation
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -26,7 +29,7 @@ class ImmunizationRecommendation(domainresource.DomainResource):
 
         self.authority = None
         """ Who is responsible for protocol.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.date = None
         """ Date recommendation(s) created.
@@ -38,7 +41,7 @@ class ImmunizationRecommendation(domainresource.DomainResource):
 
         self.patient = None
         """ Who this profile is for.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
 
         self.recommendation = None
         """ Vaccine administration recommendations.
@@ -116,11 +119,11 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
 
         self.supportingImmunization = None
         """ Past immunizations supporting recommendation.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Immunization', 'ImmunizationEvaluation']` (represented as `dict` in JSON). """
 
         self.supportingPatientInformation = None
         """ Patient observations supporting recommendation.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.targetDisease = None
         """ Disease to be immunized against.

@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/ClinicalImpression) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/ClinicalImpression
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -32,7 +35,7 @@ class ClinicalImpression(domainresource.DomainResource):
 
         self.assessor = None
         """ The clinician performing the assessment.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole']` (represented as `dict` in JSON). """
 
         self.code = None
         """ Kind of assessment performed.
@@ -56,7 +59,7 @@ class ClinicalImpression(domainresource.DomainResource):
 
         self.encounter = None
         """ Encounter created as part of.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Encounter']` (represented as `dict` in JSON). """
 
         self.finding = None
         """ Possible or likely findings and diagnoses.
@@ -76,11 +79,11 @@ class ClinicalImpression(domainresource.DomainResource):
 
         self.previous = None
         """ Reference to last assessment.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['ClinicalImpression']` (represented as `dict` in JSON). """
 
         self.problem = None
         """ Relevant impressions of patient state.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Condition', 'AllergyIntolerance']` (represented as `dict` in JSON). """
 
         self.prognosisCodeableConcept = None
         """ Estimate of likely outcome.
@@ -88,14 +91,14 @@ class ClinicalImpression(domainresource.DomainResource):
 
         self.prognosisReference = None
         """ RiskAssessment expressing likely outcome.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['RiskAssessment']` (represented as `dict` in JSON). """
 
         self.protocol = None
         """ Clinical Protocol followed.
         List of `str` items. """
 
         self.status = None
-        """ draft | completed | entered-in-error.
+        """ in-progress | completed | entered-in-error.
         Type `str`. """
 
         self.statusReason = None
@@ -104,7 +107,7 @@ class ClinicalImpression(domainresource.DomainResource):
 
         self.subject = None
         """ Patient or group assessed.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient', 'Group']` (represented as `dict` in JSON). """
 
         self.summary = None
         """ Summary of the assessment.
@@ -112,7 +115,7 @@ class ClinicalImpression(domainresource.DomainResource):
 
         self.supportingInfo = None
         """ Information supporting the clinical impression.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         super(ClinicalImpression, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -173,7 +176,7 @@ class ClinicalImpressionFinding(backboneelement.BackboneElement):
 
         self.itemReference = None
         """ What was found.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Condition', 'Observation', 'Media']` (represented as `dict` in JSON). """
 
         super(ClinicalImpressionFinding, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -213,7 +216,7 @@ class ClinicalImpressionInvestigation(backboneelement.BackboneElement):
 
         self.item = None
         """ Record of a specific investigation.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Observation', 'QuestionnaireResponse', 'FamilyMemberHistory', 'DiagnosticReport', 'RiskAssessment', 'ImagingStudy', 'Media']` (represented as `dict` in JSON). """
 
         super(ClinicalImpressionInvestigation, self).__init__(jsondict=jsondict, strict=strict)
 

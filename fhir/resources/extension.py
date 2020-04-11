@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/Extension) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Extension
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import element
@@ -139,6 +142,10 @@ class Extension(element.Element):
         """ Value of extension.
         Type `str`. """
 
+        self.valueMeta = None
+        """ Value of extension.
+        Type `Meta` (represented as `dict` in JSON). """
+
         self.valueMoney = None
         """ Value of extension.
         Type `Money` (represented as `dict` in JSON). """
@@ -228,7 +235,7 @@ class Extension(element.Element):
     def elementProperties(self):
         js = super(Extension, self).elementProperties()
         js.extend([
-            ("url", "url", str, "string", False, None, True),
+            ("url", "url", str, "uri", False, None, True),
             ("valueAddress", "valueAddress", address.Address, "Address", False, "value", False),
             ("valueAge", "valueAge", age.Age, "Age", False, "value", False),
             ("valueAnnotation", "valueAnnotation", annotation.Annotation, "Annotation", False, "value", False),
@@ -257,6 +264,7 @@ class Extension(element.Element):
             ("valueInstant", "valueInstant", fhirdate.FHIRDate, "instant", False, "value", False),
             ("valueInteger", "valueInteger", int, "integer", False, "value", False),
             ("valueMarkdown", "valueMarkdown", str, "markdown", False, "value", False),
+            ("valueMeta", "valueMeta", meta.Meta, "Meta", False, "value", False),
             ("valueMoney", "valueMoney", money.Money, "Money", False, "value", False),
             ("valueOid", "valueOid", str, "oid", False, "value", False),
             ("valueParameterDefinition", "valueParameterDefinition", parameterdefinition.ParameterDefinition, "ParameterDefinition", False, "value", False),
@@ -359,6 +367,10 @@ try:
     from . import identifier
 except ImportError:
     identifier = sys.modules[__package__ + '.identifier']
+try:
+    from . import meta
+except ImportError:
+    meta = sys.modules[__package__ + '.meta']
 try:
     from . import money
 except ImportError:

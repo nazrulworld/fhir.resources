@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/DiagnosticReport) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/DiagnosticReport
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -30,7 +33,7 @@ class DiagnosticReport(domainresource.DomainResource):
 
         self.basedOn = None
         """ What was requested.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['CarePlan', 'ImmunizationRecommendation', 'MedicationRequest', 'NutritionOrder', 'ServiceRequest']` (represented as `dict` in JSON). """
 
         self.category = None
         """ Service category.
@@ -58,7 +61,7 @@ class DiagnosticReport(domainresource.DomainResource):
 
         self.encounter = None
         """ Health care event when test ordered.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Encounter']` (represented as `dict` in JSON). """
 
         self.identifier = None
         """ Business identifier for report.
@@ -67,7 +70,7 @@ class DiagnosticReport(domainresource.DomainResource):
         self.imagingStudy = None
         """ Reference to full details of imaging associated with the diagnostic
         report.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['ImagingStudy']` (represented as `dict` in JSON). """
 
         self.issued = None
         """ DateTime this version was made.
@@ -79,7 +82,7 @@ class DiagnosticReport(domainresource.DomainResource):
 
         self.performer = None
         """ Responsible Diagnostic Service.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Practitioner', 'PractitionerRole', 'Organization', 'CareTeam']` (represented as `dict` in JSON). """
 
         self.presentedForm = None
         """ Entire report as issued.
@@ -87,15 +90,15 @@ class DiagnosticReport(domainresource.DomainResource):
 
         self.result = None
         """ Observations.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Observation']` (represented as `dict` in JSON). """
 
         self.resultsInterpreter = None
         """ Primary result interpreter.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Practitioner', 'PractitionerRole', 'Organization', 'CareTeam']` (represented as `dict` in JSON). """
 
         self.specimen = None
         """ Specimens this report is based on.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Specimen']` (represented as `dict` in JSON). """
 
         self.status = None
         """ registered | partial | preliminary | final +.
@@ -103,7 +106,7 @@ class DiagnosticReport(domainresource.DomainResource):
 
         self.subject = None
         """ The subject of the report - usually, but not always, the patient.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient', 'Group', 'Device', 'Location']` (represented as `dict` in JSON). """
 
         super(DiagnosticReport, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -159,7 +162,7 @@ class DiagnosticReportMedia(backboneelement.BackboneElement):
 
         self.link = None
         """ Reference to the image source.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Media']` (represented as `dict` in JSON). """
 
         super(DiagnosticReportMedia, self).__init__(jsondict=jsondict, strict=strict)
 

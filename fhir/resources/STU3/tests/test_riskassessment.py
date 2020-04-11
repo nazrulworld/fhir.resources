@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/RiskAssessment
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 import os
 import pytest
@@ -23,40 +26,32 @@ class RiskAssessmentTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("RiskAssessment", js["resourceType"])
         return riskassessment.RiskAssessment(js)
-    
+
     def testRiskAssessment1(self):
-        inst = self.instantiate_from("riskassessment-example-prognosis.json")
+        inst = self.instantiate_from("riskassessment-example-population.json")
         self.assertIsNotNone(inst, "Must have instantiated a RiskAssessment instance")
         self.implRiskAssessment1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("RiskAssessment", js["resourceType"])
         inst2 = riskassessment.RiskAssessment(js)
         self.implRiskAssessment1(inst2)
-    
+
     def implRiskAssessment1(self, inst):
-        self.assertEqual(force_bytes(inst.id), force_bytes("prognosis"))
-        self.assertEqual(inst.occurrenceDateTime.date, FHIRDate("2010-11-22").date)
-        self.assertEqual(inst.occurrenceDateTime.as_json(), "2010-11-22")
-        self.assertEqual(force_bytes(inst.prediction[0].outcome.coding[0].code), force_bytes("249943000:363698007=72098002,260868000=6934004"))
-        self.assertEqual(force_bytes(inst.prediction[0].outcome.coding[0].system), force_bytes("http://snomed.info/sct"))
-        self.assertEqual(force_bytes(inst.prediction[0].outcome.text), force_bytes("permanent weakness of the left arm"))
-        self.assertEqual(force_bytes(inst.prediction[0].qualitativeRisk.coding[0].code), force_bytes("moderate"))
-        self.assertEqual(force_bytes(inst.prediction[0].qualitativeRisk.coding[0].display), force_bytes("moderate likelihood"))
-        self.assertEqual(force_bytes(inst.prediction[0].qualitativeRisk.coding[0].system), force_bytes("http://hl7.org/fhir/risk-probability"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("population"))
         self.assertEqual(force_bytes(inst.status), force_bytes("final"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("additional"))
-    
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+
     def testRiskAssessment2(self):
         inst = self.instantiate_from("riskassessment-example-cardiac.json")
         self.assertIsNotNone(inst, "Must have instantiated a RiskAssessment instance")
         self.implRiskAssessment2(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("RiskAssessment", js["resourceType"])
         inst2 = riskassessment.RiskAssessment(js)
         self.implRiskAssessment2(inst2)
-    
+
     def implRiskAssessment2(self, inst):
         self.assertEqual(force_bytes(inst.id), force_bytes("cardiac"))
         self.assertEqual(force_bytes(inst.identifier.system), force_bytes("http://example.org"))
@@ -76,33 +71,18 @@ class RiskAssessmentTests(unittest.TestCase):
         self.assertEqual(inst.prediction[0].whenRange.low.value, 39)
         self.assertEqual(force_bytes(inst.status), force_bytes("final"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("additional"))
-    
+
     def testRiskAssessment3(self):
-        inst = self.instantiate_from("riskassessment-example-population.json")
+        inst = self.instantiate_from("riskassessment-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a RiskAssessment instance")
         self.implRiskAssessment3(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("RiskAssessment", js["resourceType"])
         inst2 = riskassessment.RiskAssessment(js)
         self.implRiskAssessment3(inst2)
-    
+
     def implRiskAssessment3(self, inst):
-        self.assertEqual(force_bytes(inst.id), force_bytes("population"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("final"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-    
-    def testRiskAssessment4(self):
-        inst = self.instantiate_from("riskassessment-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a RiskAssessment instance")
-        self.implRiskAssessment4(inst)
-        
-        js = inst.as_json()
-        self.assertEqual("RiskAssessment", js["resourceType"])
-        inst2 = riskassessment.RiskAssessment(js)
-        self.implRiskAssessment4(inst2)
-    
-    def implRiskAssessment4(self, inst):
         self.assertEqual(force_bytes(inst.comment), force_bytes("High degree of certainty"))
         self.assertEqual(force_bytes(inst.id), force_bytes("genetic"))
         self.assertEqual(force_bytes(inst.method.coding[0].code), force_bytes("BRCAPRO"))
@@ -186,4 +166,27 @@ class RiskAssessmentTests(unittest.TestCase):
         self.assertEqual(inst.prediction[7].whenRange.low.value, 83)
         self.assertEqual(force_bytes(inst.status), force_bytes("final"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+
+    def testRiskAssessment4(self):
+        inst = self.instantiate_from("riskassessment-example-prognosis.json")
+        self.assertIsNotNone(inst, "Must have instantiated a RiskAssessment instance")
+        self.implRiskAssessment4(inst)
+
+        js = inst.as_json()
+        self.assertEqual("RiskAssessment", js["resourceType"])
+        inst2 = riskassessment.RiskAssessment(js)
+        self.implRiskAssessment4(inst2)
+
+    def implRiskAssessment4(self, inst):
+        self.assertEqual(force_bytes(inst.id), force_bytes("prognosis"))
+        self.assertEqual(inst.occurrenceDateTime.date, FHIRDate("2010-11-22").date)
+        self.assertEqual(inst.occurrenceDateTime.as_json(), "2010-11-22")
+        self.assertEqual(force_bytes(inst.prediction[0].outcome.coding[0].code), force_bytes("249943000:363698007=72098002,260868000=6934004"))
+        self.assertEqual(force_bytes(inst.prediction[0].outcome.coding[0].system), force_bytes("http://snomed.info/sct"))
+        self.assertEqual(force_bytes(inst.prediction[0].outcome.text), force_bytes("permanent weakness of the left arm"))
+        self.assertEqual(force_bytes(inst.prediction[0].qualitativeRisk.coding[0].code), force_bytes("moderate"))
+        self.assertEqual(force_bytes(inst.prediction[0].qualitativeRisk.coding[0].display), force_bytes("moderate likelihood"))
+        self.assertEqual(force_bytes(inst.prediction[0].qualitativeRisk.coding[0].system), force_bytes("http://hl7.org/fhir/risk-probability"))
+        self.assertEqual(force_bytes(inst.status), force_bytes("final"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("additional"))
 

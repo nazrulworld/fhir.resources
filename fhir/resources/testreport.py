@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/TestReport) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/TestReport
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -69,7 +72,7 @@ class TestReport(domainresource.DomainResource):
         self.testScript = None
         """ Reference to the  version-specific TestScript that was executed to
         produce this TestReport.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['TestScript']` (represented as `dict` in JSON). """
 
         self.tester = None
         """ Name of the tester producing this report (Organization or

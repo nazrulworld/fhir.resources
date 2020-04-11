@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/EnrollmentResponse) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/EnrollmentResponse
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -38,7 +41,7 @@ class EnrollmentResponse(domainresource.DomainResource):
 
         self.organization = None
         """ Insurer.
-        Type `FHIRReference` referencing `Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.outcome = None
         """ complete | error | partial.
@@ -46,15 +49,15 @@ class EnrollmentResponse(domainresource.DomainResource):
 
         self.request = None
         """ Claim reference.
-        Type `FHIRReference` referencing `EnrollmentRequest` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['EnrollmentRequest']` (represented as `dict` in JSON). """
 
         self.requestOrganization = None
         """ Responsible organization.
-        Type `FHIRReference` referencing `Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.requestProvider = None
         """ Responsible practitioner.
-        Type `FHIRReference` referencing `Practitioner` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner']` (represented as `dict` in JSON). """
 
         self.status = None
         """ active | cancelled | draft | entered-in-error.

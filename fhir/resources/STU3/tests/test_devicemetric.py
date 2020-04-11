@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/DeviceMetric
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 import os
 import pytest
@@ -23,17 +26,17 @@ class DeviceMetricTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("DeviceMetric", js["resourceType"])
         return devicemetric.DeviceMetric(js)
-    
+
     def testDeviceMetric1(self):
         inst = self.instantiate_from("devicemetric-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a DeviceMetric instance")
         self.implDeviceMetric1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("DeviceMetric", js["resourceType"])
         inst2 = devicemetric.DeviceMetric(js)
         self.implDeviceMetric1(inst2)
-    
+
     def implDeviceMetric1(self, inst):
         self.assertEqual(force_bytes(inst.calibration[0].state), force_bytes("calibrated"))
         self.assertEqual(inst.calibration[0].time.date, FHIRDate("2016-12-28T09:03:04-05:00").date)

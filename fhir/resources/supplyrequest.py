@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/SupplyRequest) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/SupplyRequest
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -34,11 +37,11 @@ class SupplyRequest(domainresource.DomainResource):
 
         self.deliverFrom = None
         """ The origin of the supply.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization', 'Location']` (represented as `dict` in JSON). """
 
         self.deliverTo = None
         """ The destination of the supply.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization', 'Location', 'Patient']` (represented as `dict` in JSON). """
 
         self.identifier = None
         """ Business Identifier for SupplyRequest.
@@ -50,7 +53,7 @@ class SupplyRequest(domainresource.DomainResource):
 
         self.itemReference = None
         """ Medication, Substance, or Device requested to be supplied.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Medication', 'Substance', 'Device']` (represented as `dict` in JSON). """
 
         self.occurrenceDateTime = None
         """ When the request should be fulfilled.
@@ -82,11 +85,11 @@ class SupplyRequest(domainresource.DomainResource):
 
         self.reasonReference = None
         """ The reason why the supply item was requested.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Condition', 'Observation', 'DiagnosticReport', 'DocumentReference']` (represented as `dict` in JSON). """
 
         self.requester = None
         """ Individual making the request.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'Organization', 'Patient', 'RelatedPerson', 'Device']` (represented as `dict` in JSON). """
 
         self.status = None
         """ draft | active | suspended +.
@@ -94,7 +97,7 @@ class SupplyRequest(domainresource.DomainResource):
 
         self.supplier = None
         """ Who is intended to fulfill the request.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Organization', 'HealthcareService']` (represented as `dict` in JSON). """
 
         super(SupplyRequest, self).__init__(jsondict=jsondict, strict=strict)
 

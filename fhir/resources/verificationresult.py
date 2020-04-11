@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/VerificationResult) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/VerificationResult
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -62,7 +65,7 @@ class VerificationResult(domainresource.DomainResource):
 
         self.target = None
         """ A resource that was validated.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.targetLocation = None
         """ The fhirpath location(s) within the resource that was validated.
@@ -132,7 +135,7 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
         self.onBehalfOf = None
         """ When the who is asserting on behalf of another (organization or
         individual).
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization', 'Practitioner', 'PractitionerRole']` (represented as `dict` in JSON). """
 
         self.proxyIdentityCertificate = None
         """ A digital identity certificate associated with the proxy entity
@@ -154,7 +157,7 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
 
         self.who = None
         """ The individual or organization attesting to information.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'Organization']` (represented as `dict` in JSON). """
 
         super(VerificationResultAttestation, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -216,7 +219,7 @@ class VerificationResultPrimarySource(backboneelement.BackboneElement):
 
         self.who = None
         """ Reference to the primary source.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization', 'Practitioner', 'PractitionerRole']` (represented as `dict` in JSON). """
 
         super(VerificationResultPrimarySource, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -258,7 +261,7 @@ class VerificationResultValidator(backboneelement.BackboneElement):
 
         self.organization = None
         """ Reference to the organization validating information.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         super(VerificationResultValidator, self).__init__(jsondict=jsondict, strict=strict)
 

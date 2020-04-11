@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/ImagingManifest) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/ImagingManifest
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -26,7 +29,7 @@ class ImagingManifest(domainresource.DomainResource):
 
         self.author = None
         """ Author (human or machine).
-        Type `FHIRReference` referencing `Practitioner, Device, Organization, Patient, RelatedPerson` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner'], ['Device'], ['Organization'], ['Patient'], ['RelatedPerson']` (represented as `dict` in JSON). """
 
         self.authoringTime = None
         """ Time when the selection of instances was made.
@@ -42,7 +45,7 @@ class ImagingManifest(domainresource.DomainResource):
 
         self.patient = None
         """ Patient of the selected objects.
-        Type `FHIRReference` referencing `Patient` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
 
         self.study = None
         """ Study identity of the selected instances.
@@ -84,11 +87,11 @@ class ImagingManifestStudy(backboneelement.BackboneElement):
 
         self.endpoint = None
         """ Study access service endpoint.
-        List of `FHIRReference` items referencing `Endpoint` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Endpoint']` (represented as `dict` in JSON). """
 
         self.imagingStudy = None
         """ Reference to ImagingStudy.
-        Type `FHIRReference` referencing `ImagingStudy` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['ImagingStudy']` (represented as `dict` in JSON). """
 
         self.series = None
         """ Series identity of the selected instances.
@@ -130,7 +133,7 @@ class ImagingManifestStudySeries(backboneelement.BackboneElement):
 
         self.endpoint = None
         """ Series access endpoint.
-        List of `FHIRReference` items referencing `Endpoint` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Endpoint']` (represented as `dict` in JSON). """
 
         self.instance = None
         """ The selected instance.

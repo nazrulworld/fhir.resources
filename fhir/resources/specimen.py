@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/Specimen) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Specimen
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -49,7 +52,7 @@ class Specimen(domainresource.DomainResource):
 
         self.parent = None
         """ Specimen from which this specimen originated.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Specimen']` (represented as `dict` in JSON). """
 
         self.processing = None
         """ Processing and processing step details.
@@ -61,7 +64,7 @@ class Specimen(domainresource.DomainResource):
 
         self.request = None
         """ Why the specimen was collected.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['ServiceRequest']` (represented as `dict` in JSON). """
 
         self.status = None
         """ available | unavailable | unsatisfactory | entered-in-error.
@@ -71,7 +74,7 @@ class Specimen(domainresource.DomainResource):
         """ Where the specimen came from. This may be from patient(s), from a
         location (e.g., the source of an environmental sample), or a
         sampling of a substance or a device.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient', 'Group', 'Device', 'Substance', 'Location']` (represented as `dict` in JSON). """
 
         self.type = None
         """ Kind of material that forms the specimen.
@@ -131,7 +134,7 @@ class SpecimenCollection(backboneelement.BackboneElement):
 
         self.collector = None
         """ Who collected the specimen.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole']` (represented as `dict` in JSON). """
 
         self.duration = None
         """ How long it took to collect specimen.
@@ -194,7 +197,7 @@ class SpecimenContainer(backboneelement.BackboneElement):
 
         self.additiveReference = None
         """ Additive associated with container.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Substance']` (represented as `dict` in JSON). """
 
         self.capacity = None
         """ Container volume or size.
@@ -250,7 +253,7 @@ class SpecimenProcessing(backboneelement.BackboneElement):
 
         self.additive = None
         """ Material used in the processing step.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Substance']` (represented as `dict` in JSON). """
 
         self.description = None
         """ Textual description of procedure.

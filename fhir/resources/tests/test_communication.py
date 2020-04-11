@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Communication
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 import os
 import pytest
@@ -23,52 +26,53 @@ class CommunicationTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("Communication", js["resourceType"])
         return communication.Communication(js)
-    
+
     def testCommunication1(self):
-        inst = self.instantiate_from("communication-example.json")
+        inst = self.instantiate_from("communication-example-fm-attachment.json")
         self.assertIsNotNone(inst, "Must have instantiated a Communication instance")
         self.implCommunication1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Communication", js["resourceType"])
         inst2 = communication.Communication(js)
         self.implCommunication1(inst2)
-    
+
     def implCommunication1(self, inst):
-        self.assertEqual(force_bytes(inst.category[0].coding[0].code), force_bytes("Alert"))
+        self.assertEqual(force_bytes(inst.category[0].coding[0].code), force_bytes("SolicitedAttachment"))
         self.assertEqual(force_bytes(inst.category[0].coding[0].system), force_bytes("http://acme.org/messagetypes"))
-        self.assertEqual(force_bytes(inst.category[0].text), force_bytes("Alert"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("urn:oid:1.3.4.5.6.7"))
-        self.assertEqual(force_bytes(inst.identifier[0].type.text), force_bytes("Paging System"))
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("2345678901"))
-        self.assertEqual(force_bytes(inst.instantiatesUri[0]), force_bytes("http://example.org/hyperkalemia"))
-        self.assertEqual(force_bytes(inst.medium[0].coding[0].code), force_bytes("WRITTEN"))
-        self.assertEqual(force_bytes(inst.medium[0].coding[0].display), force_bytes("written"))
-        self.assertEqual(force_bytes(inst.medium[0].coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ParticipationMode"))
-        self.assertEqual(force_bytes(inst.medium[0].text), force_bytes("written"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("fm-attachment"))
+        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://www.providerco.com/communication"))
+        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("12345"))
         self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
         self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
         self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
-        self.assertEqual(force_bytes(inst.payload[0].contentString), force_bytes("Patient 1 has a very high serum potassium value (7.2 mmol/L on 2014-Dec-12 at 5:55 pm)"))
-        self.assertEqual(inst.received.date, FHIRDate("2014-12-12T18:01:11-08:00").date)
-        self.assertEqual(inst.received.as_json(), "2014-12-12T18:01:11-08:00")
-        self.assertEqual(inst.sent.date, FHIRDate("2014-12-12T18:01:10-08:00").date)
-        self.assertEqual(inst.sent.as_json(), "2014-12-12T18:01:10-08:00")
+        self.assertEqual(force_bytes(inst.payload[0].contentAttachment.contentType), force_bytes("application/pdf"))
+        self.assertEqual(inst.payload[0].contentAttachment.creation.date, FHIRDate("2010-02-01T11:50:23-05:00").date)
+        self.assertEqual(inst.payload[0].contentAttachment.creation.as_json(), "2010-02-01T11:50:23-05:00")
+        self.assertEqual(force_bytes(inst.payload[0].contentAttachment.data), force_bytes("SGVsbG8="))
+        self.assertEqual(force_bytes(inst.payload[0].contentAttachment.title), force_bytes("accident notes 20100201.pdf"))
+        self.assertEqual(force_bytes(inst.payload[1].contentAttachment.contentType), force_bytes("application/pdf"))
+        self.assertEqual(inst.payload[1].contentAttachment.creation.date, FHIRDate("2010-02-01T10:57:34+01:00").date)
+        self.assertEqual(inst.payload[1].contentAttachment.creation.as_json(), "2010-02-01T10:57:34+01:00")
+        self.assertEqual(force_bytes(inst.payload[1].contentAttachment.hash), force_bytes("SGVsbG8gdGhlcmU="))
+        self.assertEqual(inst.payload[1].contentAttachment.size, 104274)
+        self.assertEqual(force_bytes(inst.payload[1].contentAttachment.url), force_bytes("http://example.org/docs/AB12345"))
+        self.assertEqual(inst.sent.date, FHIRDate("2016-06-12T18:01:10-08:00").date)
+        self.assertEqual(inst.sent.as_json(), "2016-06-12T18:01:10-08:00")
         self.assertEqual(force_bytes(inst.status), force_bytes("completed"))
-        self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">Patient has very high serum potassium</div>"))
+        self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">Attachment which is unsolicited</div>"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-    
+
     def testCommunication2(self):
         inst = self.instantiate_from("communication-example-fm-solicited-attachment.json")
         self.assertIsNotNone(inst, "Must have instantiated a Communication instance")
         self.implCommunication2(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Communication", js["resourceType"])
         inst2 = communication.Communication(js)
         self.implCommunication2(inst2)
-    
+
     def implCommunication2(self, inst):
         self.assertEqual(force_bytes(inst.category[0].coding[0].code), force_bytes("SolicitedAttachment"))
         self.assertEqual(force_bytes(inst.category[0].coding[0].system), force_bytes("http://acme.org/messagetypes"))
@@ -97,40 +101,39 @@ class CommunicationTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.status), force_bytes("completed"))
         self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">Attachment in response to a Request</div>"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-    
+
     def testCommunication3(self):
-        inst = self.instantiate_from("communication-example-fm-attachment.json")
+        inst = self.instantiate_from("communication-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a Communication instance")
         self.implCommunication3(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Communication", js["resourceType"])
         inst2 = communication.Communication(js)
         self.implCommunication3(inst2)
-    
+
     def implCommunication3(self, inst):
-        self.assertEqual(force_bytes(inst.category[0].coding[0].code), force_bytes("SolicitedAttachment"))
+        self.assertEqual(force_bytes(inst.category[0].coding[0].code), force_bytes("Alert"))
         self.assertEqual(force_bytes(inst.category[0].coding[0].system), force_bytes("http://acme.org/messagetypes"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("fm-attachment"))
-        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://www.providerco.com/communication"))
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("12345"))
+        self.assertEqual(force_bytes(inst.category[0].text), force_bytes("Alert"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
+        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("urn:oid:1.3.4.5.6.7"))
+        self.assertEqual(force_bytes(inst.identifier[0].type.text), force_bytes("Paging System"))
+        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("2345678901"))
+        self.assertEqual(force_bytes(inst.instantiatesUri[0]), force_bytes("http://example.org/hyperkalemia"))
+        self.assertEqual(force_bytes(inst.medium[0].coding[0].code), force_bytes("WRITTEN"))
+        self.assertEqual(force_bytes(inst.medium[0].coding[0].display), force_bytes("written"))
+        self.assertEqual(force_bytes(inst.medium[0].coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ParticipationMode"))
+        self.assertEqual(force_bytes(inst.medium[0].text), force_bytes("written"))
         self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
         self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
         self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
-        self.assertEqual(force_bytes(inst.payload[0].contentAttachment.contentType), force_bytes("application/pdf"))
-        self.assertEqual(inst.payload[0].contentAttachment.creation.date, FHIRDate("2010-02-01T11:50:23-05:00").date)
-        self.assertEqual(inst.payload[0].contentAttachment.creation.as_json(), "2010-02-01T11:50:23-05:00")
-        self.assertEqual(force_bytes(inst.payload[0].contentAttachment.data), force_bytes("SGVsbG8="))
-        self.assertEqual(force_bytes(inst.payload[0].contentAttachment.title), force_bytes("accident notes 20100201.pdf"))
-        self.assertEqual(force_bytes(inst.payload[1].contentAttachment.contentType), force_bytes("application/pdf"))
-        self.assertEqual(inst.payload[1].contentAttachment.creation.date, FHIRDate("2010-02-01T10:57:34+01:00").date)
-        self.assertEqual(inst.payload[1].contentAttachment.creation.as_json(), "2010-02-01T10:57:34+01:00")
-        self.assertEqual(force_bytes(inst.payload[1].contentAttachment.hash), force_bytes("SGVsbG8gdGhlcmU="))
-        self.assertEqual(inst.payload[1].contentAttachment.size, 104274)
-        self.assertEqual(force_bytes(inst.payload[1].contentAttachment.url), force_bytes("http://example.org/docs/AB12345"))
-        self.assertEqual(inst.sent.date, FHIRDate("2016-06-12T18:01:10-08:00").date)
-        self.assertEqual(inst.sent.as_json(), "2016-06-12T18:01:10-08:00")
+        self.assertEqual(force_bytes(inst.payload[0].contentString), force_bytes("Patient 1 has a very high serum potassium value (7.2 mmol/L on 2014-Dec-12 at 5:55 pm)"))
+        self.assertEqual(inst.received.date, FHIRDate("2014-12-12T18:01:11-08:00").date)
+        self.assertEqual(inst.received.as_json(), "2014-12-12T18:01:11-08:00")
+        self.assertEqual(inst.sent.date, FHIRDate("2014-12-12T18:01:10-08:00").date)
+        self.assertEqual(inst.sent.as_json(), "2014-12-12T18:01:10-08:00")
         self.assertEqual(force_bytes(inst.status), force_bytes("completed"))
-        self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">Attachment which is unsolicited</div>"))
+        self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">Patient has very high serum potassium</div>"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 

@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 import os
 import pytest
@@ -23,17 +26,17 @@ class QuestionnaireResponseTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("QuestionnaireResponse", js["resourceType"])
         return questionnaireresponse.QuestionnaireResponse(js)
-    
+
     def testQuestionnaireResponse1(self):
         inst = self.instantiate_from("questionnaireresponse-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a QuestionnaireResponse instance")
         self.implQuestionnaireResponse1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("QuestionnaireResponse", js["resourceType"])
         inst2 = questionnaireresponse.QuestionnaireResponse(js)
         self.implQuestionnaireResponse1(inst2)
-    
+
     def implQuestionnaireResponse1(self, inst):
         self.assertEqual(inst.authored.date, FHIRDate("2013-02-19T14:15:00-05:00").date)
         self.assertEqual(inst.authored.as_json(), "2013-02-19T14:15:00-05:00")
@@ -60,62 +63,18 @@ class QuestionnaireResponseTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.item[0].linkId), force_bytes("1"))
         self.assertEqual(force_bytes(inst.status), force_bytes("completed"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-    
+
     def testQuestionnaireResponse2(self):
-        inst = self.instantiate_from("questionnaireresponse-example-f201-lifelines.json")
+        inst = self.instantiate_from("questionnaireresponse-example-ussg-fht-answers.json")
         self.assertIsNotNone(inst, "Must have instantiated a QuestionnaireResponse instance")
         self.implQuestionnaireResponse2(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("QuestionnaireResponse", js["resourceType"])
         inst2 = questionnaireresponse.QuestionnaireResponse(js)
         self.implQuestionnaireResponse2(inst2)
-    
+
     def implQuestionnaireResponse2(self, inst):
-        self.assertEqual(inst.authored.date, FHIRDate("2013-06-18T00:00:00+01:00").date)
-        self.assertEqual(inst.authored.as_json(), "2013-06-18T00:00:00+01:00")
-        self.assertEqual(force_bytes(inst.id), force_bytes("f201"))
-        self.assertEqual(force_bytes(inst.item[0].item[0].answer[0].valueString), force_bytes("I am allergic to house dust"))
-        self.assertEqual(force_bytes(inst.item[0].item[0].linkId), force_bytes("1.1"))
-        self.assertEqual(force_bytes(inst.item[0].item[0].text), force_bytes("Do you have allergies?"))
-        self.assertEqual(force_bytes(inst.item[0].linkId), force_bytes("1"))
-        self.assertEqual(force_bytes(inst.item[1].item[0].answer[0].valueString), force_bytes("Male"))
-        self.assertEqual(force_bytes(inst.item[1].item[0].linkId), force_bytes("2.1"))
-        self.assertEqual(force_bytes(inst.item[1].item[0].text), force_bytes("What is your gender?"))
-        self.assertEqual(inst.item[1].item[1].answer[0].valueDate.date, FHIRDate("1960-03-13").date)
-        self.assertEqual(inst.item[1].item[1].answer[0].valueDate.as_json(), "1960-03-13")
-        self.assertEqual(force_bytes(inst.item[1].item[1].linkId), force_bytes("2.2"))
-        self.assertEqual(force_bytes(inst.item[1].item[1].text), force_bytes("What is your date of birth?"))
-        self.assertEqual(force_bytes(inst.item[1].item[2].answer[0].valueString), force_bytes("The Netherlands"))
-        self.assertEqual(force_bytes(inst.item[1].item[2].linkId), force_bytes("2.3"))
-        self.assertEqual(force_bytes(inst.item[1].item[2].text), force_bytes("What is your country of birth?"))
-        self.assertEqual(force_bytes(inst.item[1].item[3].answer[0].valueString), force_bytes("married"))
-        self.assertEqual(force_bytes(inst.item[1].item[3].linkId), force_bytes("2.4"))
-        self.assertEqual(force_bytes(inst.item[1].item[3].text), force_bytes("What is your marital status?"))
-        self.assertEqual(force_bytes(inst.item[1].linkId), force_bytes("2"))
-        self.assertEqual(force_bytes(inst.item[1].text), force_bytes("General questions"))
-        self.assertEqual(force_bytes(inst.item[2].item[0].answer[0].valueString), force_bytes("No"))
-        self.assertEqual(force_bytes(inst.item[2].item[0].linkId), force_bytes("3.1"))
-        self.assertEqual(force_bytes(inst.item[2].item[0].text), force_bytes("Do you smoke?"))
-        self.assertEqual(force_bytes(inst.item[2].item[1].answer[0].valueString), force_bytes("No, but I used to drink"))
-        self.assertEqual(force_bytes(inst.item[2].item[1].linkId), force_bytes("3.2"))
-        self.assertEqual(force_bytes(inst.item[2].item[1].text), force_bytes("Do you drink alchohol?"))
-        self.assertEqual(force_bytes(inst.item[2].linkId), force_bytes("3"))
-        self.assertEqual(force_bytes(inst.item[2].text), force_bytes("Intoxications"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("completed"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-    
-    def testQuestionnaireResponse3(self):
-        inst = self.instantiate_from("questionnaireresponse-example-ussg-fht-answers.json")
-        self.assertIsNotNone(inst, "Must have instantiated a QuestionnaireResponse instance")
-        self.implQuestionnaireResponse3(inst)
-        
-        js = inst.as_json()
-        self.assertEqual("QuestionnaireResponse", js["resourceType"])
-        inst2 = questionnaireresponse.QuestionnaireResponse(js)
-        self.implQuestionnaireResponse3(inst2)
-    
-    def implQuestionnaireResponse3(self, inst):
         self.assertEqual(inst.authored.date, FHIRDate("2008-01-17").date)
         self.assertEqual(inst.authored.as_json(), "2008-01-17")
         self.assertEqual(force_bytes(inst.id), force_bytes("ussg-fht-answers"))
@@ -668,53 +627,62 @@ class QuestionnaireResponseTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.item[2].text), force_bytes("Family member health information"))
         self.assertEqual(force_bytes(inst.status), force_bytes("in-progress"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-    
+
+    def testQuestionnaireResponse3(self):
+        inst = self.instantiate_from("questionnaireresponse-example-f201-lifelines.json")
+        self.assertIsNotNone(inst, "Must have instantiated a QuestionnaireResponse instance")
+        self.implQuestionnaireResponse3(inst)
+
+        js = inst.as_json()
+        self.assertEqual("QuestionnaireResponse", js["resourceType"])
+        inst2 = questionnaireresponse.QuestionnaireResponse(js)
+        self.implQuestionnaireResponse3(inst2)
+
+    def implQuestionnaireResponse3(self, inst):
+        self.assertEqual(inst.authored.date, FHIRDate("2013-06-18T00:00:00+01:00").date)
+        self.assertEqual(inst.authored.as_json(), "2013-06-18T00:00:00+01:00")
+        self.assertEqual(force_bytes(inst.id), force_bytes("f201"))
+        self.assertEqual(force_bytes(inst.item[0].item[0].answer[0].valueString), force_bytes("I am allergic to house dust"))
+        self.assertEqual(force_bytes(inst.item[0].item[0].linkId), force_bytes("1.1"))
+        self.assertEqual(force_bytes(inst.item[0].item[0].text), force_bytes("Do you have allergies?"))
+        self.assertEqual(force_bytes(inst.item[0].linkId), force_bytes("1"))
+        self.assertEqual(force_bytes(inst.item[1].item[0].answer[0].valueString), force_bytes("Male"))
+        self.assertEqual(force_bytes(inst.item[1].item[0].linkId), force_bytes("2.1"))
+        self.assertEqual(force_bytes(inst.item[1].item[0].text), force_bytes("What is your gender?"))
+        self.assertEqual(inst.item[1].item[1].answer[0].valueDate.date, FHIRDate("1960-03-13").date)
+        self.assertEqual(inst.item[1].item[1].answer[0].valueDate.as_json(), "1960-03-13")
+        self.assertEqual(force_bytes(inst.item[1].item[1].linkId), force_bytes("2.2"))
+        self.assertEqual(force_bytes(inst.item[1].item[1].text), force_bytes("What is your date of birth?"))
+        self.assertEqual(force_bytes(inst.item[1].item[2].answer[0].valueString), force_bytes("The Netherlands"))
+        self.assertEqual(force_bytes(inst.item[1].item[2].linkId), force_bytes("2.3"))
+        self.assertEqual(force_bytes(inst.item[1].item[2].text), force_bytes("What is your country of birth?"))
+        self.assertEqual(force_bytes(inst.item[1].item[3].answer[0].valueString), force_bytes("married"))
+        self.assertEqual(force_bytes(inst.item[1].item[3].linkId), force_bytes("2.4"))
+        self.assertEqual(force_bytes(inst.item[1].item[3].text), force_bytes("What is your marital status?"))
+        self.assertEqual(force_bytes(inst.item[1].linkId), force_bytes("2"))
+        self.assertEqual(force_bytes(inst.item[1].text), force_bytes("General questions"))
+        self.assertEqual(force_bytes(inst.item[2].item[0].answer[0].valueString), force_bytes("No"))
+        self.assertEqual(force_bytes(inst.item[2].item[0].linkId), force_bytes("3.1"))
+        self.assertEqual(force_bytes(inst.item[2].item[0].text), force_bytes("Do you smoke?"))
+        self.assertEqual(force_bytes(inst.item[2].item[1].answer[0].valueString), force_bytes("No, but I used to drink"))
+        self.assertEqual(force_bytes(inst.item[2].item[1].linkId), force_bytes("3.2"))
+        self.assertEqual(force_bytes(inst.item[2].item[1].text), force_bytes("Do you drink alchohol?"))
+        self.assertEqual(force_bytes(inst.item[2].linkId), force_bytes("3"))
+        self.assertEqual(force_bytes(inst.item[2].text), force_bytes("Intoxications"))
+        self.assertEqual(force_bytes(inst.status), force_bytes("completed"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+
     def testQuestionnaireResponse4(self):
-        inst = self.instantiate_from("questionnaireresponse-example-gcs.json")
+        inst = self.instantiate_from("questionnaireresponse-example-bluebook.json")
         self.assertIsNotNone(inst, "Must have instantiated a QuestionnaireResponse instance")
         self.implQuestionnaireResponse4(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("QuestionnaireResponse", js["resourceType"])
         inst2 = questionnaireresponse.QuestionnaireResponse(js)
         self.implQuestionnaireResponse4(inst2)
-    
+
     def implQuestionnaireResponse4(self, inst):
-        self.assertEqual(inst.authored.date, FHIRDate("2014-12-11T04:44:16Z").date)
-        self.assertEqual(inst.authored.as_json(), "2014-12-11T04:44:16Z")
-        self.assertEqual(force_bytes(inst.id), force_bytes("gcs"))
-        self.assertEqual(force_bytes(inst.item[0].answer[0].valueCoding.code), force_bytes("LA6560-2"))
-        self.assertEqual(force_bytes(inst.item[0].answer[0].valueCoding.display), force_bytes("Confused"))
-        self.assertEqual(force_bytes(inst.item[0].answer[0].valueCoding.extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/iso21090-CO-value"))
-        self.assertEqual(inst.item[0].answer[0].valueCoding.extension[0].valueDecimal, 4)
-        self.assertEqual(force_bytes(inst.item[0].answer[0].valueCoding.system), force_bytes("http://loinc.org"))
-        self.assertEqual(force_bytes(inst.item[0].linkId), force_bytes("1.1"))
-        self.assertEqual(force_bytes(inst.item[1].answer[0].valueCoding.code), force_bytes("LA6566-9"))
-        self.assertEqual(force_bytes(inst.item[1].answer[0].valueCoding.display), force_bytes("Localizing pain"))
-        self.assertEqual(force_bytes(inst.item[1].answer[0].valueCoding.extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/iso21090-CO-value"))
-        self.assertEqual(inst.item[1].answer[0].valueCoding.extension[0].valueDecimal, 5)
-        self.assertEqual(force_bytes(inst.item[1].answer[0].valueCoding.system), force_bytes("http://loinc.org"))
-        self.assertEqual(force_bytes(inst.item[1].linkId), force_bytes("1.2"))
-        self.assertEqual(force_bytes(inst.item[2].answer[0].valueCoding.code), force_bytes("LA6556-0"))
-        self.assertEqual(force_bytes(inst.item[2].answer[0].valueCoding.display), force_bytes("Eyes open spontaneously"))
-        self.assertEqual(force_bytes(inst.item[2].answer[0].valueCoding.extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/iso21090-CO-value"))
-        self.assertEqual(inst.item[2].answer[0].valueCoding.extension[0].valueDecimal, 4)
-        self.assertEqual(force_bytes(inst.item[2].answer[0].valueCoding.system), force_bytes("http://loinc.org"))
-        self.assertEqual(force_bytes(inst.item[2].linkId), force_bytes("1.3"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("completed"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-    
-    def testQuestionnaireResponse5(self):
-        inst = self.instantiate_from("questionnaireresponse-example-bluebook.json")
-        self.assertIsNotNone(inst, "Must have instantiated a QuestionnaireResponse instance")
-        self.implQuestionnaireResponse5(inst)
-        
-        js = inst.as_json()
-        self.assertEqual("QuestionnaireResponse", js["resourceType"])
-        inst2 = questionnaireresponse.QuestionnaireResponse(js)
-        self.implQuestionnaireResponse5(inst2)
-    
-    def implQuestionnaireResponse5(self, inst):
         self.assertEqual(inst.authored.date, FHIRDate("2013-02-19T14:15:00+10:00").date)
         self.assertEqual(inst.authored.as_json(), "2013-02-19T14:15:00+10:00")
         self.assertEqual(force_bytes(inst.id), force_bytes("bb"))
@@ -757,6 +725,41 @@ class QuestionnaireResponseTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.item[0].item[1].text), force_bytes("Neonatal Information"))
         self.assertEqual(force_bytes(inst.item[0].linkId), force_bytes("birthDetails"))
         self.assertEqual(force_bytes(inst.item[0].text), force_bytes("Birth details - To be completed by health professional"))
+        self.assertEqual(force_bytes(inst.status), force_bytes("completed"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+
+    def testQuestionnaireResponse5(self):
+        inst = self.instantiate_from("questionnaireresponse-example-gcs.json")
+        self.assertIsNotNone(inst, "Must have instantiated a QuestionnaireResponse instance")
+        self.implQuestionnaireResponse5(inst)
+
+        js = inst.as_json()
+        self.assertEqual("QuestionnaireResponse", js["resourceType"])
+        inst2 = questionnaireresponse.QuestionnaireResponse(js)
+        self.implQuestionnaireResponse5(inst2)
+
+    def implQuestionnaireResponse5(self, inst):
+        self.assertEqual(inst.authored.date, FHIRDate("2014-12-11T04:44:16Z").date)
+        self.assertEqual(inst.authored.as_json(), "2014-12-11T04:44:16Z")
+        self.assertEqual(force_bytes(inst.id), force_bytes("gcs"))
+        self.assertEqual(force_bytes(inst.item[0].answer[0].valueCoding.code), force_bytes("LA6560-2"))
+        self.assertEqual(force_bytes(inst.item[0].answer[0].valueCoding.display), force_bytes("Confused"))
+        self.assertEqual(force_bytes(inst.item[0].answer[0].valueCoding.extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/iso21090-CO-value"))
+        self.assertEqual(inst.item[0].answer[0].valueCoding.extension[0].valueDecimal, 4)
+        self.assertEqual(force_bytes(inst.item[0].answer[0].valueCoding.system), force_bytes("http://loinc.org"))
+        self.assertEqual(force_bytes(inst.item[0].linkId), force_bytes("1.1"))
+        self.assertEqual(force_bytes(inst.item[1].answer[0].valueCoding.code), force_bytes("LA6566-9"))
+        self.assertEqual(force_bytes(inst.item[1].answer[0].valueCoding.display), force_bytes("Localizing pain"))
+        self.assertEqual(force_bytes(inst.item[1].answer[0].valueCoding.extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/iso21090-CO-value"))
+        self.assertEqual(inst.item[1].answer[0].valueCoding.extension[0].valueDecimal, 5)
+        self.assertEqual(force_bytes(inst.item[1].answer[0].valueCoding.system), force_bytes("http://loinc.org"))
+        self.assertEqual(force_bytes(inst.item[1].linkId), force_bytes("1.2"))
+        self.assertEqual(force_bytes(inst.item[2].answer[0].valueCoding.code), force_bytes("LA6556-0"))
+        self.assertEqual(force_bytes(inst.item[2].answer[0].valueCoding.display), force_bytes("Eyes open spontaneously"))
+        self.assertEqual(force_bytes(inst.item[2].answer[0].valueCoding.extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/iso21090-CO-value"))
+        self.assertEqual(inst.item[2].answer[0].valueCoding.extension[0].valueDecimal, 4)
+        self.assertEqual(force_bytes(inst.item[2].answer[0].valueCoding.system), force_bytes("http://loinc.org"))
+        self.assertEqual(force_bytes(inst.item[2].linkId), force_bytes("1.3"))
         self.assertEqual(force_bytes(inst.status), force_bytes("completed"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 

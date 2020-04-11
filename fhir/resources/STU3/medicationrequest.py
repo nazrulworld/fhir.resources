@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/MedicationRequest) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/MedicationRequest
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -34,7 +37,7 @@ class MedicationRequest(domainresource.DomainResource):
 
         self.basedOn = None
         """ What request fulfills.
-        List of `FHIRReference` items referencing `CarePlan, MedicationRequest, ProcedureRequest, ReferralRequest` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['CarePlan'], ['MedicationRequest'], ['ProcedureRequest'], ['ReferralRequest']` (represented as `dict` in JSON). """
 
         self.category = None
         """ Type of medication usage.
@@ -42,15 +45,15 @@ class MedicationRequest(domainresource.DomainResource):
 
         self.context = None
         """ Created during encounter/admission/stay.
-        Type `FHIRReference` referencing `Encounter, EpisodeOfCare` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Encounter'], ['EpisodeOfCare']` (represented as `dict` in JSON). """
 
         self.definition = None
         """ Protocol or definition.
-        List of `FHIRReference` items referencing `ActivityDefinition, PlanDefinition` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['ActivityDefinition'], ['PlanDefinition']` (represented as `dict` in JSON). """
 
         self.detectedIssue = None
         """ Clinical Issue with action.
-        List of `FHIRReference` items referencing `DetectedIssue` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['DetectedIssue']` (represented as `dict` in JSON). """
 
         self.dispenseRequest = None
         """ Medication supply authorization.
@@ -62,7 +65,7 @@ class MedicationRequest(domainresource.DomainResource):
 
         self.eventHistory = None
         """ A list of events of interest in the lifecycle.
-        List of `FHIRReference` items referencing `Provenance` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Provenance']` (represented as `dict` in JSON). """
 
         self.groupIdentifier = None
         """ Composite request this is part of.
@@ -82,7 +85,7 @@ class MedicationRequest(domainresource.DomainResource):
 
         self.medicationReference = None
         """ Medication to be taken.
-        Type `FHIRReference` referencing `Medication` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Medication']` (represented as `dict` in JSON). """
 
         self.note = None
         """ Information about the prescription.
@@ -90,7 +93,7 @@ class MedicationRequest(domainresource.DomainResource):
 
         self.priorPrescription = None
         """ An order/prescription that is being replaced.
-        Type `FHIRReference` referencing `MedicationRequest` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['MedicationRequest']` (represented as `dict` in JSON). """
 
         self.priority = None
         """ routine | urgent | stat | asap.
@@ -103,11 +106,11 @@ class MedicationRequest(domainresource.DomainResource):
         self.reasonReference = None
         """ Condition or Observation that supports why the prescription is
         being written.
-        List of `FHIRReference` items referencing `Condition, Observation` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Condition'], ['Observation']` (represented as `dict` in JSON). """
 
         self.recorder = None
         """ Person who entered the request.
-        Type `FHIRReference` referencing `Practitioner` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner']` (represented as `dict` in JSON). """
 
         self.requester = None
         """ Who/What requested the Request.
@@ -120,7 +123,7 @@ class MedicationRequest(domainresource.DomainResource):
 
         self.subject = None
         """ Who or group medication request is for.
-        Type `FHIRReference` referencing `Patient, Group` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient'], ['Group']` (represented as `dict` in JSON). """
 
         self.substitution = None
         """ Any restrictions on medication substitution.
@@ -128,7 +131,7 @@ class MedicationRequest(domainresource.DomainResource):
 
         self.supportingInformation = None
         """ Information to support ordering of the medication.
-        List of `FHIRReference` items referencing `Resource` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         super(MedicationRequest, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -197,7 +200,7 @@ class MedicationRequestDispenseRequest(backboneelement.BackboneElement):
 
         self.performer = None
         """ Intended dispenser.
-        Type `FHIRReference` referencing `Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.quantity = None
         """ Amount of medication to supply per dispense.
@@ -240,11 +243,11 @@ class MedicationRequestRequester(backboneelement.BackboneElement):
 
         self.agent = None
         """ Who ordered the initial medication(s).
-        Type `FHIRReference` referencing `Practitioner, Organization, Patient, RelatedPerson, Device` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner'], ['Organization'], ['Patient'], ['RelatedPerson'], ['Device']` (represented as `dict` in JSON). """
 
         self.onBehalfOf = None
         """ Organization agent is acting for.
-        Type `FHIRReference` referencing `Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         super(MedicationRequestRequester, self).__init__(jsondict=jsondict, strict=strict)
 

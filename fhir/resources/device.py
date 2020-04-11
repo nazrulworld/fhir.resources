@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/Device) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Device
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -31,7 +34,7 @@ class Device(domainresource.DomainResource):
 
         self.definition = None
         """ The reference to the definition for the device.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['DeviceDefinition']` (represented as `dict` in JSON). """
 
         self.deviceName = None
         """ The name of the device as given by the manufacturer.
@@ -51,7 +54,7 @@ class Device(domainresource.DomainResource):
 
         self.location = None
         """ Where the device is found.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Location']` (represented as `dict` in JSON). """
 
         self.lotNumber = None
         """ Lot number of manufacture.
@@ -75,11 +78,11 @@ class Device(domainresource.DomainResource):
 
         self.owner = None
         """ Organization responsible for device.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.parent = None
         """ The parent device.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Device']` (represented as `dict` in JSON). """
 
         self.partNumber = None
         """ The part number of the device.
@@ -87,7 +90,7 @@ class Device(domainresource.DomainResource):
 
         self.patient = None
         """ Patient to whom Device is affixed.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
 
         self.property = None
         """ The actual configuration settings of a device as it actually

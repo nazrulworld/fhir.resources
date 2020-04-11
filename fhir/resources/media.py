@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/Media) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Media
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -24,7 +27,7 @@ class Media(domainresource.DomainResource):
 
         self.basedOn = None
         """ Procedure that caused this media to be created.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['ServiceRequest', 'CarePlan']` (represented as `dict` in JSON). """
 
         self.bodySite = None
         """ Observed body part.
@@ -44,7 +47,7 @@ class Media(domainresource.DomainResource):
 
         self.device = None
         """ Observing Device.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Device', 'DeviceMetric', 'Device']` (represented as `dict` in JSON). """
 
         self.deviceName = None
         """ Name of the device/manufacturer.
@@ -56,7 +59,7 @@ class Media(domainresource.DomainResource):
 
         self.encounter = None
         """ Encounter associated with media.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Encounter']` (represented as `dict` in JSON). """
 
         self.frames = None
         """ Number of frames if > 1 (photo).
@@ -84,24 +87,24 @@ class Media(domainresource.DomainResource):
 
         self.operator = None
         """ The person who generated the image.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'Organization', 'CareTeam', 'Patient', 'Device', 'RelatedPerson']` (represented as `dict` in JSON). """
 
         self.partOf = None
         """ Part of referenced event.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.reasonCode = None
         """ Why was event performed?.
         List of `CodeableConcept` items (represented as `dict` in JSON). """
 
         self.status = None
-        """ preparation | in-progress | not-done | suspended | aborted |
+        """ preparation | in-progress | not-done | on-hold | stopped |
         completed | entered-in-error | unknown.
         Type `str`. """
 
         self.subject = None
         """ Who/What this Media is a record of.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient', 'Practitioner', 'PractitionerRole', 'Group', 'Device', 'Specimen', 'Location']` (represented as `dict` in JSON). """
 
         self.type = None
         """ Classification of media as image, video, or audio.

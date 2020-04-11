@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/Condition) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Condition
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -54,7 +57,7 @@ class Condition(domainresource.DomainResource):
 
         self.asserter = None
         """ Person who asserts this condition.
-        Type `FHIRReference` referencing `Practitioner, Patient, RelatedPerson` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner'], ['Patient'], ['RelatedPerson']` (represented as `dict` in JSON). """
 
         self.bodySite = None
         """ Anatomical location, if relevant.
@@ -74,7 +77,7 @@ class Condition(domainresource.DomainResource):
 
         self.context = None
         """ Encounter or episode when condition first asserted.
-        Type `FHIRReference` referencing `Encounter, EpisodeOfCare` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Encounter'], ['EpisodeOfCare']` (represented as `dict` in JSON). """
 
         self.evidence = None
         """ Supporting evidence.
@@ -118,7 +121,7 @@ class Condition(domainresource.DomainResource):
 
         self.subject = None
         """ Who has the condition?.
-        Type `FHIRReference` referencing `Patient, Group` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient'], ['Group']` (represented as `dict` in JSON). """
 
         self.verificationStatus = None
         """ provisional | differential | confirmed | refuted | entered-in-error
@@ -184,7 +187,7 @@ class ConditionEvidence(backboneelement.BackboneElement):
 
         self.detail = None
         """ Supporting information found elsewhere.
-        List of `FHIRReference` items referencing `Resource` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         super(ConditionEvidence, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -216,7 +219,7 @@ class ConditionStage(backboneelement.BackboneElement):
 
         self.assessment = None
         """ Formal record of assessment.
-        List of `FHIRReference` items referencing `ClinicalImpression, DiagnosticReport, Observation` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['ClinicalImpression'], ['DiagnosticReport'], ['Observation']` (represented as `dict` in JSON). """
 
         self.summary = None
         """ Simple summary (disease specific).

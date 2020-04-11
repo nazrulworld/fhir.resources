@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/SupplyDelivery) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/SupplyDelivery
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -25,11 +28,11 @@ class SupplyDelivery(domainresource.DomainResource):
 
         self.basedOn = None
         """ Fulfills plan, proposal or order.
-        List of `FHIRReference` items referencing `SupplyRequest` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['SupplyRequest']` (represented as `dict` in JSON). """
 
         self.destination = None
         """ Where the Supply was sent.
-        Type `FHIRReference` referencing `Location` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Location']` (represented as `dict` in JSON). """
 
         self.identifier = None
         """ External identifier.
@@ -49,15 +52,15 @@ class SupplyDelivery(domainresource.DomainResource):
 
         self.partOf = None
         """ Part of referenced event.
-        List of `FHIRReference` items referencing `SupplyDelivery, Contract` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['SupplyDelivery'], ['Contract']` (represented as `dict` in JSON). """
 
         self.patient = None
         """ Patient for whom the item is supplied.
-        Type `FHIRReference` referencing `Patient` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
 
         self.receiver = None
         """ Who collected the Supply.
-        List of `FHIRReference` items referencing `Practitioner` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Practitioner']` (represented as `dict` in JSON). """
 
         self.status = None
         """ in-progress | completed | abandoned | entered-in-error.
@@ -69,7 +72,7 @@ class SupplyDelivery(domainresource.DomainResource):
 
         self.supplier = None
         """ Dispenser.
-        Type `FHIRReference` referencing `Practitioner, Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner'], ['Organization']` (represented as `dict` in JSON). """
 
         self.type = None
         """ Category of dispense event.
@@ -121,7 +124,7 @@ class SupplyDeliverySuppliedItem(backboneelement.BackboneElement):
 
         self.itemReference = None
         """ Medication, Substance, or Device supplied.
-        Type `FHIRReference` referencing `Medication, Substance, Device` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Medication'], ['Substance'], ['Device']` (represented as `dict` in JSON). """
 
         self.quantity = None
         """ Amount dispensed.

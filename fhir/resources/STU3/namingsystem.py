@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/NamingSystem) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/NamingSystem
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -55,7 +58,7 @@ class NamingSystem(domainresource.DomainResource):
 
         self.replacedBy = None
         """ Use this instead.
-        Type `FHIRReference` referencing `NamingSystem` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['NamingSystem']` (represented as `dict` in JSON). """
 
         self.responsible = None
         """ Who maintains system namespace?.

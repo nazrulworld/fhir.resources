@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/Contract) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Contract
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -34,11 +37,11 @@ class Contract(domainresource.DomainResource):
 
         self.author = None
         """ Source of Contract.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient', 'Practitioner', 'PractitionerRole', 'Organization']` (represented as `dict` in JSON). """
 
         self.authority = None
         """ Authority under which this Contract has standing.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.contentDefinition = None
         """ Contract precursor content.
@@ -51,7 +54,7 @@ class Contract(domainresource.DomainResource):
         self.domain = None
         """ A sphere of control governed by an authoritative jurisdiction,
         organization, or person.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Location']` (represented as `dict` in JSON). """
 
         self.expirationType = None
         """ Contract cessation cause.
@@ -67,7 +70,7 @@ class Contract(domainresource.DomainResource):
 
         self.instantiatesCanonical = None
         """ Source Contract Definition.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Contract']` (represented as `dict` in JSON). """
 
         self.instantiatesUri = None
         """ External Contract Definition.
@@ -91,7 +94,7 @@ class Contract(domainresource.DomainResource):
 
         self.legallyBindingReference = None
         """ Binding Contract.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Composition', 'DocumentReference', 'QuestionnaireResponse', 'Contract']` (represented as `dict` in JSON). """
 
         self.name = None
         """ Computer friendly designation.
@@ -99,7 +102,7 @@ class Contract(domainresource.DomainResource):
 
         self.relevantHistory = None
         """ Key event in Contract History.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Provenance']` (represented as `dict` in JSON). """
 
         self.rule = None
         """ Computable Contract Language.
@@ -115,11 +118,12 @@ class Contract(domainresource.DomainResource):
 
         self.site = None
         """ Specific Location.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Location']` (represented as `dict` in JSON). """
 
         self.status = None
-        """ draft | active | suspended | cancelled | completed | entered-in-
-        error | unknown.
+        """ amended | appended | cancelled | disputed | entered-in-error |
+        executable | executed | negotiable | offered | policy | rejected |
+        renewed | revoked | resolved | terminated.
         Type `str`. """
 
         self.subType = None
@@ -128,7 +132,7 @@ class Contract(domainresource.DomainResource):
 
         self.subject = None
         """ Contract Target Entity.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.subtitle = None
         """ Subordinate Friendly name.
@@ -136,7 +140,7 @@ class Contract(domainresource.DomainResource):
 
         self.supportingInfo = None
         """ Extra Information.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.term = None
         """ Contract Term List.
@@ -152,7 +156,7 @@ class Contract(domainresource.DomainResource):
 
         self.topicReference = None
         """ Focus of contract interest.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.type = None
         """ Legal instrument category.
@@ -239,12 +243,14 @@ class ContractContentDefinition(backboneelement.BackboneElement):
         Type `FHIRDate` (represented as `str` in JSON). """
 
         self.publicationStatus = None
-        """ draft | active | retired | unknown.
+        """ amended | appended | cancelled | disputed | entered-in-error |
+        executable | executed | negotiable | offered | policy | rejected |
+        renewed | revoked | resolved | terminated.
         Type `str`. """
 
         self.publisher = None
         """ Publisher Entity.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'Organization']` (represented as `dict` in JSON). """
 
         self.subType = None
         """ Detailed Content Type Definition.
@@ -297,7 +303,7 @@ class ContractFriendly(backboneelement.BackboneElement):
 
         self.contentReference = None
         """ Easily comprehended representation of this Contract.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Composition', 'DocumentReference', 'QuestionnaireResponse']` (represented as `dict` in JSON). """
 
         super(ContractFriendly, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -332,7 +338,7 @@ class ContractLegal(backboneelement.BackboneElement):
 
         self.contentReference = None
         """ Contract Legal Text.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Composition', 'DocumentReference', 'QuestionnaireResponse']` (represented as `dict` in JSON). """
 
         super(ContractLegal, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -367,7 +373,7 @@ class ContractRule(backboneelement.BackboneElement):
 
         self.contentReference = None
         """ Computable Contract Rules.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['DocumentReference']` (represented as `dict` in JSON). """
 
         super(ContractRule, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -401,7 +407,7 @@ class ContractSigner(backboneelement.BackboneElement):
 
         self.party = None
         """ Contract Signatory Party.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization', 'Patient', 'Practitioner', 'PractitionerRole', 'RelatedPerson']` (represented as `dict` in JSON). """
 
         self.signature = None
         """ Contract Documentation Signature.
@@ -486,7 +492,7 @@ class ContractTerm(backboneelement.BackboneElement):
 
         self.topicReference = None
         """ Term Concern.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.type = None
         """ Contract Term Type or Form.
@@ -533,7 +539,7 @@ class ContractTermAction(backboneelement.BackboneElement):
 
         self.context = None
         """ Episode associated with action.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Encounter', 'EpisodeOfCare']` (represented as `dict` in JSON). """
 
         self.contextLinkId = None
         """ Pointer to specific item.
@@ -569,7 +575,7 @@ class ContractTermAction(backboneelement.BackboneElement):
 
         self.performer = None
         """ Actor that wil execute (or not) the action.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['RelatedPerson', 'Patient', 'Practitioner', 'PractitionerRole', 'CareTeam', 'Device', 'Substance', 'Organization', 'Location']` (represented as `dict` in JSON). """
 
         self.performerLinkId = None
         """ Pointer to specific item.
@@ -597,11 +603,11 @@ class ContractTermAction(backboneelement.BackboneElement):
 
         self.reasonReference = None
         """ Why is action (not) needed?.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Condition', 'Observation', 'DiagnosticReport', 'DocumentReference', 'Questionnaire', 'QuestionnaireResponse']` (represented as `dict` in JSON). """
 
         self.requester = None
         """ Who asked for action.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Patient', 'RelatedPerson', 'Practitioner', 'PractitionerRole', 'Device', 'Group', 'Organization']` (represented as `dict` in JSON). """
 
         self.requesterLinkId = None
         """ Pointer to specific item.
@@ -671,7 +677,7 @@ class ContractTermActionSubject(backboneelement.BackboneElement):
 
         self.reference = None
         """ Entity of the action.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Patient', 'RelatedPerson', 'Practitioner', 'PractitionerRole', 'Device', 'Group', 'Organization']` (represented as `dict` in JSON). """
 
         self.role = None
         """ Role type of the agent.
@@ -752,7 +758,7 @@ class ContractTermAsset(backboneelement.BackboneElement):
 
         self.typeReference = None
         """ Associated entities.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.usePeriod = None
         """ Time period.
@@ -806,7 +812,7 @@ class ContractTermAssetContext(backboneelement.BackboneElement):
 
         self.reference = None
         """ Creator,custodian or owner.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.text = None
         """ Context description.
@@ -848,7 +854,7 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
 
         self.entityReference = None
         """ Contract Valued Item Type.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.factor = None
         """ Contract Valued Item Price Scaling Factor.
@@ -884,11 +890,11 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
 
         self.recipient = None
         """ Who will receive payment.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization', 'Patient', 'Practitioner', 'PractitionerRole', 'RelatedPerson']` (represented as `dict` in JSON). """
 
         self.responsible = None
         """ Who will make payment.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization', 'Patient', 'Practitioner', 'PractitionerRole', 'RelatedPerson']` (represented as `dict` in JSON). """
 
         self.securityLabelNumber = None
         """ Security Labels that define affected terms.
@@ -972,7 +978,7 @@ class ContractTermOffer(backboneelement.BackboneElement):
 
         self.topic = None
         """ Negotiable offer asset.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.type = None
         """ Contract Offer Type or Form.
@@ -1045,7 +1051,7 @@ class ContractTermOfferAnswer(backboneelement.BackboneElement):
 
         self.valueReference = None
         """ The actual answer response.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.valueString = None
         """ The actual answer response.
@@ -1096,7 +1102,7 @@ class ContractTermOfferParty(backboneelement.BackboneElement):
 
         self.reference = None
         """ Referenced entity.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Patient', 'RelatedPerson', 'Practitioner', 'PractitionerRole', 'Device', 'Group', 'Organization']` (represented as `dict` in JSON). """
 
         self.role = None
         """ Participant engagement type.

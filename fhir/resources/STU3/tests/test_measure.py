@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Measure
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 import os
 import pytest
@@ -23,37 +26,83 @@ class MeasureTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("Measure", js["resourceType"])
         return measure.Measure(js)
-    
+
     def testMeasure1(self):
-        inst = self.instantiate_from("measure-composite-example.json")
+        inst = self.instantiate_from("measure-exclusive-breastfeeding.json")
         self.assertIsNotNone(inst, "Must have instantiated a Measure instance")
         self.implMeasure1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Measure", js["resourceType"])
         inst2 = measure.Measure(js)
         self.implMeasure1(inst2)
-    
+
     def implMeasure1(self, inst):
-        self.assertEqual(force_bytes(inst.compositeScoring.coding[0].code), force_bytes("opportunity"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("composite-example"))
-        self.assertEqual(force_bytes(inst.relatedArtifact[0].type), force_bytes("composed-of"))
-        self.assertEqual(force_bytes(inst.relatedArtifact[1].type), force_bytes("composed-of"))
+        self.assertEqual(inst.date.date, FHIRDate("2015-03-08").date)
+        self.assertEqual(inst.date.as_json(), "2015-03-08")
+        self.assertEqual(force_bytes(inst.description), force_bytes("Exclusive breastfeeding measure of outcomes for exclusive breastmilk feeding of newborns."))
+        self.assertEqual(force_bytes(inst.group[0].identifier.value), force_bytes("Population Group 1"))
+        self.assertEqual(force_bytes(inst.group[0].population[0].code.coding[0].code), force_bytes("initial-population"))
+        self.assertEqual(force_bytes(inst.group[0].population[0].criteria), force_bytes("InitialPopulation1"))
+        self.assertEqual(force_bytes(inst.group[0].population[0].identifier.value), force_bytes("initial-population-1-identifier"))
+        self.assertEqual(force_bytes(inst.group[0].population[1].code.coding[0].code), force_bytes("denominator"))
+        self.assertEqual(force_bytes(inst.group[0].population[1].criteria), force_bytes("Denominator1"))
+        self.assertEqual(force_bytes(inst.group[0].population[1].identifier.value), force_bytes("denominator-1-identifier"))
+        self.assertEqual(force_bytes(inst.group[0].population[2].code.coding[0].code), force_bytes("denominator-exclusions"))
+        self.assertEqual(force_bytes(inst.group[0].population[2].criteria), force_bytes("DenominatorExclusions1"))
+        self.assertEqual(force_bytes(inst.group[0].population[2].identifier.value), force_bytes("denominator-exclusions-1-identifier"))
+        self.assertEqual(force_bytes(inst.group[0].population[3].code.coding[0].code), force_bytes("numerator"))
+        self.assertEqual(force_bytes(inst.group[0].population[3].criteria), force_bytes("Numerator1"))
+        self.assertEqual(force_bytes(inst.group[0].population[3].identifier.value), force_bytes("numerator-1-identifier"))
+        self.assertEqual(force_bytes(inst.group[1].identifier.value), force_bytes("Population Group 2"))
+        self.assertEqual(force_bytes(inst.group[1].population[0].code.coding[0].code), force_bytes("initial-population"))
+        self.assertEqual(force_bytes(inst.group[1].population[0].criteria), force_bytes("InitialPopulation2"))
+        self.assertEqual(force_bytes(inst.group[1].population[0].identifier.value), force_bytes("initial-population-2-identifier"))
+        self.assertEqual(force_bytes(inst.group[1].population[1].code.coding[0].code), force_bytes("denominator"))
+        self.assertEqual(force_bytes(inst.group[1].population[1].criteria), force_bytes("Denominator2"))
+        self.assertEqual(force_bytes(inst.group[1].population[1].identifier.value), force_bytes("denominator-2-identifier"))
+        self.assertEqual(force_bytes(inst.group[1].population[2].code.coding[0].code), force_bytes("denominator-exclusion"))
+        self.assertEqual(force_bytes(inst.group[1].population[2].criteria), force_bytes("DenominatorExclusions2"))
+        self.assertEqual(force_bytes(inst.group[1].population[2].identifier.value), force_bytes("denominator-exclusions-2-identifier"))
+        self.assertEqual(force_bytes(inst.group[1].population[3].code.coding[0].code), force_bytes("numerator"))
+        self.assertEqual(force_bytes(inst.group[1].population[3].criteria), force_bytes("Numerator2"))
+        self.assertEqual(force_bytes(inst.group[1].population[3].identifier.value), force_bytes("numerator-2-identifier"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("measure-exclusive-breastfeeding"))
+        self.assertEqual(force_bytes(inst.identifier[0].use), force_bytes("official"))
+        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("exclusive-breastfeeding-measure"))
+        self.assertEqual(force_bytes(inst.improvementNotation), force_bytes("Improvement noted as an increase in the rate"))
+        self.assertEqual(force_bytes(inst.purpose), force_bytes("Measure of newborns who were fed breast milk only since birth"))
+        self.assertEqual(force_bytes(inst.relatedArtifact[0].citation), force_bytes("American Academy of Pediatrics. (2005). Section on Breastfeeding. Policy Statement:Breastfeeding and the Use of Human Milk. Pediatrics.115:496-506."))
+        self.assertEqual(force_bytes(inst.relatedArtifact[0].type), force_bytes("documentation"))
+        self.assertEqual(force_bytes(inst.relatedArtifact[1].type), force_bytes("documentation"))
+        self.assertEqual(force_bytes(inst.relatedArtifact[2].type), force_bytes("documentation"))
+        self.assertEqual(force_bytes(inst.relatedArtifact[3].type), force_bytes("documentation"))
+        self.assertEqual(force_bytes(inst.relatedArtifact[4].type), force_bytes("documentation"))
+        self.assertEqual(force_bytes(inst.relatedArtifact[5].type), force_bytes("documentation"))
+        self.assertEqual(force_bytes(inst.relatedArtifact[6].citation), force_bytes("Kramer, M.S. & Kakuma, R. (2002).Optimal duration of exclusive breastfeeding. [107 refs] Cochrane Database of Systematic Reviews. (1):CD003517."))
+        self.assertEqual(force_bytes(inst.relatedArtifact[6].type), force_bytes("documentation"))
+        self.assertEqual(force_bytes(inst.relatedArtifact[7].citation), force_bytes("Petrova, A., Hegyi, T., & Mehta, R. (2007). Maternal race/ethnicity and one-month exclusive breastfeeding in association with the in-hospital feeding modality. Breastfeeding Medicine. 2(2):92-8."))
+        self.assertEqual(force_bytes(inst.relatedArtifact[7].type), force_bytes("documentation"))
+        self.assertEqual(force_bytes(inst.relatedArtifact[8].type), force_bytes("documentation"))
+        self.assertEqual(force_bytes(inst.relatedArtifact[9].type), force_bytes("documentation"))
         self.assertEqual(force_bytes(inst.scoring.coding[0].code), force_bytes("proportion"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
+        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.title), force_bytes("Behavioral Assessment Composite Measure"))
-    
+        self.assertEqual(force_bytes(inst.title), force_bytes("Exclusive Breastfeeding Measure"))
+        self.assertEqual(force_bytes(inst.topic[0].text), force_bytes("Exclusive Breastfeeding"))
+        self.assertEqual(force_bytes(inst.type[0].coding[0].code), force_bytes("process"))
+        self.assertEqual(force_bytes(inst.version), force_bytes("4.0.0"))
+
     def testMeasure2(self):
         inst = self.instantiate_from("measure-component-b-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a Measure instance")
         self.implMeasure2(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Measure", js["resourceType"])
         inst2 = measure.Measure(js)
         self.implMeasure2(inst2)
-    
+
     def implMeasure2(self, inst):
         self.assertEqual(force_bytes(inst.group[0].identifier.value), force_bytes("Main"))
         self.assertEqual(force_bytes(inst.group[0].population[0].code.coding[0].code), force_bytes("initial-population"))
@@ -67,17 +116,17 @@ class MeasureTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
         self.assertEqual(force_bytes(inst.title), force_bytes("Screening for Depression"))
-    
+
     def testMeasure3(self):
         inst = self.instantiate_from("measure-predecessor-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a Measure instance")
         self.implMeasure3(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Measure", js["resourceType"])
         inst2 = measure.Measure(js)
         self.implMeasure3(inst2)
-    
+
     def implMeasure3(self, inst):
         self.assertEqual(inst.date.date, FHIRDate("2014-03-08").date)
         self.assertEqual(inst.date.as_json(), "2014-03-08")
@@ -133,17 +182,17 @@ class MeasureTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.topic[0].text), force_bytes("Exclusive Breastfeeding"))
         self.assertEqual(force_bytes(inst.type[0].coding[0].code), force_bytes("process"))
         self.assertEqual(force_bytes(inst.version), force_bytes("3.0.1"))
-    
+
     def testMeasure4(self):
         inst = self.instantiate_from("measure-cms146-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a Measure instance")
         self.implMeasure4(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Measure", js["resourceType"])
         inst2 = measure.Measure(js)
         self.implMeasure4(inst2)
-    
+
     def implMeasure4(self, inst):
         self.assertEqual(inst.approvalDate.date, FHIRDate("2016-01-01").date)
         self.assertEqual(inst.approvalDate.as_json(), "2016-01-01")
@@ -214,17 +263,17 @@ class MeasureTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.useContext[0].code.code), force_bytes("program"))
         self.assertEqual(force_bytes(inst.useContext[0].valueCodeableConcept.text), force_bytes("eligibile-provider"))
         self.assertEqual(force_bytes(inst.version), force_bytes("1.0.0"))
-    
+
     def testMeasure5(self):
         inst = self.instantiate_from("measure-component-a-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a Measure instance")
         self.implMeasure5(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Measure", js["resourceType"])
         inst2 = measure.Measure(js)
         self.implMeasure5(inst2)
-    
+
     def implMeasure5(self, inst):
         self.assertEqual(force_bytes(inst.group[0].identifier.value), force_bytes("Main"))
         self.assertEqual(force_bytes(inst.group[0].population[0].code.coding[0].code), force_bytes("initial-population"))
@@ -238,4 +287,24 @@ class MeasureTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
         self.assertEqual(force_bytes(inst.title), force_bytes("Screening for Alcohol Misuse"))
+
+    def testMeasure6(self):
+        inst = self.instantiate_from("measure-composite-example.json")
+        self.assertIsNotNone(inst, "Must have instantiated a Measure instance")
+        self.implMeasure6(inst)
+
+        js = inst.as_json()
+        self.assertEqual("Measure", js["resourceType"])
+        inst2 = measure.Measure(js)
+        self.implMeasure6(inst2)
+
+    def implMeasure6(self, inst):
+        self.assertEqual(force_bytes(inst.compositeScoring.coding[0].code), force_bytes("opportunity"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("composite-example"))
+        self.assertEqual(force_bytes(inst.relatedArtifact[0].type), force_bytes("composed-of"))
+        self.assertEqual(force_bytes(inst.relatedArtifact[1].type), force_bytes("composed-of"))
+        self.assertEqual(force_bytes(inst.scoring.coding[0].code), force_bytes("proportion"))
+        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+        self.assertEqual(force_bytes(inst.title), force_bytes("Behavioral Assessment Composite Measure"))
 

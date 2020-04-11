@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/MessageDefinition) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/MessageDefinition
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -32,7 +35,7 @@ class MessageDefinition(domainresource.DomainResource):
 
         self.base = None
         """ Definition this one is based on.
-        Type `str`. """
+        Type `str` referencing `['MessageDefinition']`. """
 
         self.category = None
         """ consequence | currency | notification.
@@ -72,7 +75,7 @@ class MessageDefinition(domainresource.DomainResource):
 
         self.graph = None
         """ Canonical reference to a GraphDefinition.
-        List of `str` items. """
+        List of `str` items referencing `['GraphDefinition']`. """
 
         self.identifier = None
         """ Primary key for the message definition on a given server.
@@ -88,7 +91,7 @@ class MessageDefinition(domainresource.DomainResource):
 
         self.parent = None
         """ Protocol/workflow this is part of.
-        List of `str` items. """
+        List of `str` items referencing `['ActivityDefinition', 'PlanDefinition']`. """
 
         self.publisher = None
         """ Name of the publisher (organization or individual).
@@ -100,7 +103,7 @@ class MessageDefinition(domainresource.DomainResource):
 
         self.replaces = None
         """ Takes the place of.
-        List of `str` items. """
+        List of `str` items referencing `['MessageDefinition']`. """
 
         self.responseRequired = None
         """ always | on-error | never | on-success.
@@ -181,7 +184,7 @@ class MessageDefinitionAllowedResponse(backboneelement.BackboneElement):
 
         self.message = None
         """ Reference to allowed message definition response.
-        Type `str`. """
+        Type `str` referencing `['MessageDefinition']`. """
 
         self.situation = None
         """ When should this response be used.
@@ -230,7 +233,7 @@ class MessageDefinitionFocus(backboneelement.BackboneElement):
 
         self.profile = None
         """ Profile that must be adhered to by focus.
-        Type `str`. """
+        Type `str` referencing `['StructureDefinition']`. """
 
         super(MessageDefinitionFocus, self).__init__(jsondict=jsondict, strict=strict)
 

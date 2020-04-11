@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/EligibilityRequest
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 import os
 import pytest
@@ -23,17 +26,17 @@ class EligibilityRequestTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("EligibilityRequest", js["resourceType"])
         return eligibilityrequest.EligibilityRequest(js)
-    
+
     def testEligibilityRequest1(self):
         inst = self.instantiate_from("eligibilityrequest-example-2.json")
         self.assertIsNotNone(inst, "Must have instantiated a EligibilityRequest instance")
         self.implEligibilityRequest1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("EligibilityRequest", js["resourceType"])
         inst2 = eligibilityrequest.EligibilityRequest(js)
         self.implEligibilityRequest1(inst2)
-    
+
     def implEligibilityRequest1(self, inst):
         self.assertEqual(force_bytes(inst.benefitCategory.coding[0].code), force_bytes("medical"))
         self.assertEqual(force_bytes(inst.benefitCategory.coding[0].system), force_bytes("http://hl7.org/fhir/benefit-category"))
@@ -52,17 +55,17 @@ class EligibilityRequestTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.status), force_bytes("active"))
         self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the EligibilityRequest</div>"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-    
+
     def testEligibilityRequest2(self):
         inst = self.instantiate_from("eligibilityrequest-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a EligibilityRequest instance")
         self.implEligibilityRequest2(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("EligibilityRequest", js["resourceType"])
         inst2 = eligibilityrequest.EligibilityRequest(js)
         self.implEligibilityRequest2(inst2)
-    
+
     def implEligibilityRequest2(self, inst):
         self.assertEqual(inst.created.date, FHIRDate("2014-08-16").date)
         self.assertEqual(inst.created.as_json(), "2014-08-16")

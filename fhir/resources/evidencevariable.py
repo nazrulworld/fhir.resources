@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/EvidenceVariable) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/EvidenceVariable
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -191,7 +194,7 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
 
         self.definitionCanonical = None
         """ What code or expression defines members?.
-        Type `str`. """
+        Type `str` referencing `['ActivityDefinition']`. """
 
         self.definitionCodeableConcept = None
         """ What code or expression defines members?.
@@ -207,7 +210,7 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
 
         self.definitionReference = None
         """ What code or expression defines members?.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Group']` (represented as `dict` in JSON). """
 
         self.definitionTriggerDefinition = None
         """ What code or expression defines members?.

@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/PaymentNotice
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 import os
 import pytest
@@ -23,17 +26,17 @@ class PaymentNoticeTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("PaymentNotice", js["resourceType"])
         return paymentnotice.PaymentNotice(js)
-    
+
     def testPaymentNotice1(self):
         inst = self.instantiate_from("paymentnotice-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a PaymentNotice instance")
         self.implPaymentNotice1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("PaymentNotice", js["resourceType"])
         inst2 = paymentnotice.PaymentNotice(js)
         self.implPaymentNotice1(inst2)
-    
+
     def implPaymentNotice1(self, inst):
         self.assertEqual(force_bytes(inst.amount.currency), force_bytes("USD"))
         self.assertEqual(inst.amount.value, 12500.0)

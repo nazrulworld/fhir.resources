@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/Questionnaire) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Questionnaire
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -48,7 +51,7 @@ class Questionnaire(domainresource.DomainResource):
 
         self.derivedFrom = None
         """ Instantiates protocol or definition.
-        List of `str` items. """
+        List of `str` items referencing `['Questionnaire']`. """
 
         self.description = None
         """ Natural language description of the questionnaire.
@@ -171,7 +174,7 @@ class QuestionnaireItem(backboneelement.BackboneElement):
 
         self.answerValueSet = None
         """ Valueset containing permitted answers.
-        Type `str`. """
+        Type `str` referencing `['ValueSet']`. """
 
         self.code = None
         """ Corresponding concept for this item in a terminology.
@@ -288,7 +291,7 @@ class QuestionnaireItemAnswerOption(backboneelement.BackboneElement):
 
         self.valueReference = None
         """ Answer value.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.valueString = None
         """ Answer value.
@@ -362,7 +365,7 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
 
         self.answerReference = None
         """ Value for question comparison based on operator.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.answerString = None
         """ Value for question comparison based on operator.
@@ -452,7 +455,7 @@ class QuestionnaireItemInitial(backboneelement.BackboneElement):
 
         self.valueReference = None
         """ Actual value for initializing the question.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.valueString = None
         """ Actual value for initializing the question.

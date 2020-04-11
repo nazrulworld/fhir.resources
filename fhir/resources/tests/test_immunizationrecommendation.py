@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/ImmunizationRecommendation
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 import os
 import pytest
@@ -23,17 +26,17 @@ class ImmunizationRecommendationTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("ImmunizationRecommendation", js["resourceType"])
         return immunizationrecommendation.ImmunizationRecommendation(js)
-    
+
     def testImmunizationRecommendation1(self):
         inst = self.instantiate_from("immunizationrecommendation-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a ImmunizationRecommendation instance")
         self.implImmunizationRecommendation1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("ImmunizationRecommendation", js["resourceType"])
         inst2 = immunizationrecommendation.ImmunizationRecommendation(js)
         self.implImmunizationRecommendation1(inst2)
-    
+
     def implImmunizationRecommendation1(self, inst):
         self.assertEqual(inst.date.date, FHIRDate("2015-02-09T11:04:15.817-05:00").date)
         self.assertEqual(inst.date.as_json(), "2015-02-09T11:04:15.817-05:00")
@@ -68,17 +71,17 @@ class ImmunizationRecommendationTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.recommendation[0].vaccineCode[0].coding[0].system), force_bytes("http://snomed.info/sct"))
         self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">Authored by Joginder Madra</div>"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-    
+
     def testImmunizationRecommendation2(self):
         inst = self.instantiate_from("immunizationrecommendation-example-target-disease.json")
         self.assertIsNotNone(inst, "Must have instantiated a ImmunizationRecommendation instance")
         self.implImmunizationRecommendation2(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("ImmunizationRecommendation", js["resourceType"])
         inst2 = immunizationrecommendation.ImmunizationRecommendation(js)
         self.implImmunizationRecommendation2(inst2)
-    
+
     def implImmunizationRecommendation2(self, inst):
         self.assertEqual(inst.date.date, FHIRDate("2015-02-09T11:04:15.817-05:00").date)
         self.assertEqual(inst.date.as_json(), "2015-02-09T11:04:15.817-05:00")

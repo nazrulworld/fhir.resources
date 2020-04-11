@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/Procedure) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Procedure
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -27,11 +30,11 @@ class Procedure(domainresource.DomainResource):
 
         self.asserter = None
         """ Person who asserts this procedure.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient', 'RelatedPerson', 'Practitioner', 'PractitionerRole']` (represented as `dict` in JSON). """
 
         self.basedOn = None
         """ A request for this procedure.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['CarePlan', 'ServiceRequest']` (represented as `dict` in JSON). """
 
         self.bodySite = None
         """ Target body sites.
@@ -51,11 +54,11 @@ class Procedure(domainresource.DomainResource):
 
         self.complicationDetail = None
         """ A condition that is a result of the procedure.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Condition']` (represented as `dict` in JSON). """
 
         self.encounter = None
         """ Encounter created as part of.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Encounter']` (represented as `dict` in JSON). """
 
         self.focalDevice = None
         """ Manipulated, implanted, or removed device.
@@ -71,7 +74,7 @@ class Procedure(domainresource.DomainResource):
 
         self.instantiatesCanonical = None
         """ Instantiates FHIR protocol or definition.
-        List of `str` items. """
+        List of `str` items referencing `['PlanDefinition', 'ActivityDefinition', 'Measure', 'OperationDefinition', 'Questionnaire']`. """
 
         self.instantiatesUri = None
         """ Instantiates external protocol or definition.
@@ -79,7 +82,7 @@ class Procedure(domainresource.DomainResource):
 
         self.location = None
         """ Where the procedure happened.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Location']` (represented as `dict` in JSON). """
 
         self.note = None
         """ Additional information about the procedure.
@@ -91,7 +94,7 @@ class Procedure(domainresource.DomainResource):
 
         self.partOf = None
         """ Part of referenced event.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Procedure', 'Observation', 'MedicationAdministration']` (represented as `dict` in JSON). """
 
         self.performedAge = None
         """ When the procedure was performed.
@@ -123,18 +126,18 @@ class Procedure(domainresource.DomainResource):
 
         self.reasonReference = None
         """ The justification that the procedure was performed.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Condition', 'Observation', 'Procedure', 'DiagnosticReport', 'DocumentReference']` (represented as `dict` in JSON). """
 
         self.recorder = None
         """ Who recorded the procedure.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient', 'RelatedPerson', 'Practitioner', 'PractitionerRole']` (represented as `dict` in JSON). """
 
         self.report = None
         """ Any report resulting from the procedure.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['DiagnosticReport', 'DocumentReference', 'Composition']` (represented as `dict` in JSON). """
 
         self.status = None
-        """ preparation | in-progress | not-done | suspended | aborted |
+        """ preparation | in-progress | not-done | on-hold | stopped |
         completed | entered-in-error | unknown.
         Type `str`. """
 
@@ -144,7 +147,7 @@ class Procedure(domainresource.DomainResource):
 
         self.subject = None
         """ Who the procedure was performed on.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient', 'Group']` (represented as `dict` in JSON). """
 
         self.usedCode = None
         """ Coded items used during the procedure.
@@ -152,7 +155,7 @@ class Procedure(domainresource.DomainResource):
 
         self.usedReference = None
         """ Items used during procedure.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Device', 'Medication', 'Substance']` (represented as `dict` in JSON). """
 
         super(Procedure, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -221,7 +224,7 @@ class ProcedureFocalDevice(backboneelement.BackboneElement):
 
         self.manipulated = None
         """ Device that was changed.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Device']` (represented as `dict` in JSON). """
 
         super(ProcedureFocalDevice, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -252,7 +255,7 @@ class ProcedurePerformer(backboneelement.BackboneElement):
 
         self.actor = None
         """ The reference to the practitioner.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'Organization', 'Patient', 'RelatedPerson', 'Device']` (represented as `dict` in JSON). """
 
         self.function = None
         """ Type of performance.
@@ -260,7 +263,7 @@ class ProcedurePerformer(backboneelement.BackboneElement):
 
         self.onBehalfOf = None
         """ Organization the device or practitioner was acting for.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         super(ProcedurePerformer, self).__init__(jsondict=jsondict, strict=strict)
 

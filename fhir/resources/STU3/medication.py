@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/Medication) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Medication
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -50,7 +53,7 @@ class Medication(domainresource.DomainResource):
 
         self.manufacturer = None
         """ Manufacturer of the item.
-        Type `FHIRReference` referencing `Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.package = None
         """ Details about packaged medications.
@@ -110,7 +113,7 @@ class MedicationIngredient(backboneelement.BackboneElement):
 
         self.itemReference = None
         """ The product contained.
-        Type `FHIRReference` referencing `Substance, Medication` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Substance'], ['Medication']` (represented as `dict` in JSON). """
 
         super(MedicationIngredient, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -227,7 +230,7 @@ class MedicationPackageContent(backboneelement.BackboneElement):
 
         self.itemReference = None
         """ The item in the package.
-        Type `FHIRReference` referencing `Medication` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Medication']` (represented as `dict` in JSON). """
 
         super(MedicationPackageContent, self).__init__(jsondict=jsondict, strict=strict)
 

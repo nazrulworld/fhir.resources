@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/HealthcareService) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/HealthcareService
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -56,7 +59,7 @@ class HealthcareService(domainresource.DomainResource):
 
         self.coverageArea = None
         """ Location(s) service is intended for/available to.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Location']` (represented as `dict` in JSON). """
 
         self.eligibility = None
         """ Specific eligibility requirements required to use the service.
@@ -65,7 +68,7 @@ class HealthcareService(domainresource.DomainResource):
         self.endpoint = None
         """ Technical endpoints providing access to electronic services
         operated for the healthcare service.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Endpoint']` (represented as `dict` in JSON). """
 
         self.extraDetails = None
         """ Extra details about the service that can't be placed in the other
@@ -78,7 +81,7 @@ class HealthcareService(domainresource.DomainResource):
 
         self.location = None
         """ Location(s) where service may be provided.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Location']` (represented as `dict` in JSON). """
 
         self.name = None
         """ Description of service as presented to a consumer while searching.
@@ -98,7 +101,7 @@ class HealthcareService(domainresource.DomainResource):
 
         self.providedBy = None
         """ Organization that provides this service.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.referralMethod = None
         """ Ways that the service accepts referrals.

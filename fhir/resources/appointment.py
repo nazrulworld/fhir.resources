@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/Appointment) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Appointment
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -30,7 +33,7 @@ class Appointment(domainresource.DomainResource):
 
         self.basedOn = None
         """ The service request this appointment is allocated to assess.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['ServiceRequest']` (represented as `dict` in JSON). """
 
         self.cancelationReason = None
         """ The coded reason for the appointment being cancelled.
@@ -78,7 +81,7 @@ class Appointment(domainresource.DomainResource):
 
         self.reasonReference = None
         """ Reason the appointment is to take place (resource).
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Condition', 'Procedure', 'Observation', 'ImmunizationRecommendation']` (represented as `dict` in JSON). """
 
         self.requestedPeriod = None
         """ Potential date/time interval(s) requested to allocate the
@@ -97,7 +100,7 @@ class Appointment(domainresource.DomainResource):
 
         self.slot = None
         """ The slots that this appointment is filling.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Slot']` (represented as `dict` in JSON). """
 
         self.specialty = None
         """ The specialty of a practitioner that would be required to perform
@@ -115,7 +118,7 @@ class Appointment(domainresource.DomainResource):
 
         self.supportingInformation = None
         """ Additional information to support the appointment.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         super(Appointment, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -168,7 +171,7 @@ class AppointmentParticipant(backboneelement.BackboneElement):
 
         self.actor = None
         """ Person, Location/HealthcareService or Device.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient', 'Practitioner', 'PractitionerRole', 'RelatedPerson', 'Device', 'HealthcareService', 'Location']` (represented as `dict` in JSON). """
 
         self.period = None
         """ Participation period of the actor.

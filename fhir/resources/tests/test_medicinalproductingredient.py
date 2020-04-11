@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/MedicinalProductIngredient
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 import os
 import pytest
@@ -23,17 +26,17 @@ class MedicinalProductIngredientTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("MedicinalProductIngredient", js["resourceType"])
         return medicinalproductingredient.MedicinalProductIngredient(js)
-    
+
     def testMedicinalProductIngredient1(self):
         inst = self.instantiate_from("medicinalproductingredient-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a MedicinalProductIngredient instance")
         self.implMedicinalProductIngredient1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("MedicinalProductIngredient", js["resourceType"])
         inst2 = medicinalproductingredient.MedicinalProductIngredient(js)
         self.implMedicinalProductIngredient1(inst2)
-    
+
     def implMedicinalProductIngredient1(self, inst):
         self.assertEqual(force_bytes(inst.id), force_bytes("example"))
         self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))

@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/CatalogEntry) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/CatalogEntry
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -55,7 +58,7 @@ class CatalogEntry(domainresource.DomainResource):
 
         self.referencedItem = None
         """ The item that is being defined.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Medication', 'Device', 'Organization', 'Practitioner', 'PractitionerRole', 'HealthcareService', 'ActivityDefinition', 'PlanDefinition', 'SpecimenDefinition', 'ObservationDefinition', 'Binary']` (represented as `dict` in JSON). """
 
         self.relatedEntry = None
         """ An item that this catalog entry is related to.
@@ -121,7 +124,7 @@ class CatalogEntryRelatedEntry(backboneelement.BackboneElement):
 
         self.item = None
         """ The reference to the related item.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['CatalogEntry']` (represented as `dict` in JSON). """
 
         self.relationtype = None
         """ triggers | is-replaced-by.

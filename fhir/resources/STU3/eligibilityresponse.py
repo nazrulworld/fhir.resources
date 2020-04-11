@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/EligibilityResponse) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/EligibilityResponse
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -54,7 +57,7 @@ class EligibilityResponse(domainresource.DomainResource):
 
         self.insurer = None
         """ Insurer issuing the coverage.
-        Type `FHIRReference` referencing `Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.outcome = None
         """ complete | error | partial.
@@ -62,15 +65,15 @@ class EligibilityResponse(domainresource.DomainResource):
 
         self.request = None
         """ Eligibility reference.
-        Type `FHIRReference` referencing `EligibilityRequest` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['EligibilityRequest']` (represented as `dict` in JSON). """
 
         self.requestOrganization = None
         """ Responsible organization.
-        Type `FHIRReference` referencing `Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.requestProvider = None
         """ Responsible practitioner.
-        Type `FHIRReference` referencing `Practitioner` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Practitioner']` (represented as `dict` in JSON). """
 
         self.status = None
         """ active | cancelled | draft | entered-in-error.
@@ -153,11 +156,11 @@ class EligibilityResponseInsurance(backboneelement.BackboneElement):
 
         self.contract = None
         """ Contract details.
-        Type `FHIRReference` referencing `Contract` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Contract']` (represented as `dict` in JSON). """
 
         self.coverage = None
         """ Updated Coverage details.
-        Type `FHIRReference` referencing `Coverage` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Coverage']` (represented as `dict` in JSON). """
 
         super(EligibilityResponseInsurance, self).__init__(jsondict=jsondict, strict=strict)
 

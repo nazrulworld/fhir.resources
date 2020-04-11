@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/AllergyIntolerance
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 import os
 import pytest
@@ -23,17 +26,17 @@ class AllergyIntoleranceTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("AllergyIntolerance", js["resourceType"])
         return allergyintolerance.AllergyIntolerance(js)
-    
+
     def testAllergyIntolerance1(self):
         inst = self.instantiate_from("allergyintolerance-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a AllergyIntolerance instance")
         self.implAllergyIntolerance1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("AllergyIntolerance", js["resourceType"])
         inst2 = allergyintolerance.AllergyIntolerance(js)
         self.implAllergyIntolerance1(inst2)
-    
+
     def implAllergyIntolerance1(self, inst):
         self.assertEqual(inst.assertedDate.date, FHIRDate("2014-10-09T14:58:00+11:00").date)
         self.assertEqual(inst.assertedDate.as_json(), "2014-10-09T14:58:00+11:00")
@@ -73,5 +76,56 @@ class AllergyIntoleranceTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.reaction[1].severity), force_bytes("moderate"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
         self.assertEqual(force_bytes(inst.type), force_bytes("allergy"))
+        self.assertEqual(force_bytes(inst.verificationStatus), force_bytes("confirmed"))
+
+    def testAllergyIntolerance2(self):
+        inst = self.instantiate_from("allergyintolerance-medication.json")
+        self.assertIsNotNone(inst, "Must have instantiated a AllergyIntolerance instance")
+        self.implAllergyIntolerance2(inst)
+
+        js = inst.as_json()
+        self.assertEqual("AllergyIntolerance", js["resourceType"])
+        inst2 = allergyintolerance.AllergyIntolerance(js)
+        self.implAllergyIntolerance2(inst2)
+
+    def implAllergyIntolerance2(self, inst):
+        self.assertEqual(inst.assertedDate.date, FHIRDate("2010-03-01").date)
+        self.assertEqual(inst.assertedDate.as_json(), "2010-03-01")
+        self.assertEqual(force_bytes(inst.category[0]), force_bytes("medication"))
+        self.assertEqual(force_bytes(inst.clinicalStatus), force_bytes("active"))
+        self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("7980"))
+        self.assertEqual(force_bytes(inst.code.coding[0].display), force_bytes("Penicillin G"))
+        self.assertEqual(force_bytes(inst.code.coding[0].system), force_bytes("http://www.nlm.nih.gov/research/umls/rxnorm"))
+        self.assertEqual(force_bytes(inst.criticality), force_bytes("high"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("medication"))
+        self.assertEqual(force_bytes(inst.reaction[0].manifestation[0].coding[0].code), force_bytes("247472004"))
+        self.assertEqual(force_bytes(inst.reaction[0].manifestation[0].coding[0].display), force_bytes("Hives"))
+        self.assertEqual(force_bytes(inst.reaction[0].manifestation[0].coding[0].system), force_bytes("http://snomed.info/sct"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+        self.assertEqual(force_bytes(inst.verificationStatus), force_bytes("unconfirmed"))
+
+    def testAllergyIntolerance3(self):
+        inst = self.instantiate_from("allergyintolerance-fishallergy.json")
+        self.assertIsNotNone(inst, "Must have instantiated a AllergyIntolerance instance")
+        self.implAllergyIntolerance3(inst)
+
+        js = inst.as_json()
+        self.assertEqual("AllergyIntolerance", js["resourceType"])
+        inst2 = allergyintolerance.AllergyIntolerance(js)
+        self.implAllergyIntolerance3(inst2)
+
+    def implAllergyIntolerance3(self, inst):
+        self.assertEqual(inst.assertedDate.date, FHIRDate("2015-08-06T15:37:31-06:00").date)
+        self.assertEqual(inst.assertedDate.as_json(), "2015-08-06T15:37:31-06:00")
+        self.assertEqual(force_bytes(inst.category[0]), force_bytes("food"))
+        self.assertEqual(force_bytes(inst.clinicalStatus), force_bytes("active"))
+        self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("227037002"))
+        self.assertEqual(force_bytes(inst.code.coding[0].display), force_bytes("Fish - dietary (substance)"))
+        self.assertEqual(force_bytes(inst.code.coding[0].system), force_bytes("http://snomed.info/sct"))
+        self.assertEqual(force_bytes(inst.code.text), force_bytes("Allergic to fresh fish. Tolerates canned fish"))
+        self.assertEqual(force_bytes(inst.id), force_bytes("fishallergy"))
+        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://acme.com/ids/patients/risks"))
+        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("49476535"))
+        self.assertEqual(force_bytes(inst.text.status), force_bytes("additional"))
         self.assertEqual(force_bytes(inst.verificationStatus), force_bytes("confirmed"))
 

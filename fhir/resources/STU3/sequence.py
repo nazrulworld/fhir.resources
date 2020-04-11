@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 (http://hl7.org/fhir/StructureDefinition/Sequence) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Sequence
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 
 from . import domainresource
@@ -31,7 +34,7 @@ class Sequence(domainresource.DomainResource):
 
         self.device = None
         """ The method for sequencing.
-        Type `FHIRReference` referencing `Device` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Device']` (represented as `dict` in JSON). """
 
         self.identifier = None
         """ Unique ID for this particular sequence. This is a FHIR-defined id.
@@ -43,15 +46,15 @@ class Sequence(domainresource.DomainResource):
 
         self.patient = None
         """ Who and/or what this is about.
-        Type `FHIRReference` referencing `Patient` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
 
         self.performer = None
         """ Who should be responsible for test result.
-        Type `FHIRReference` referencing `Organization` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.pointer = None
         """ Pointer to next atomic sequence.
-        List of `FHIRReference` items referencing `Sequence` (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Sequence']` (represented as `dict` in JSON). """
 
         self.quality = None
         """ An set of value as quality of sequence.
@@ -77,7 +80,7 @@ class Sequence(domainresource.DomainResource):
 
         self.specimen = None
         """ Specimen used for sequencing.
-        Type `FHIRReference` referencing `Specimen` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Specimen']` (represented as `dict` in JSON). """
 
         self.type = None
         """ aa | dna | rna.
@@ -243,7 +246,7 @@ class SequenceReferenceSeq(backboneelement.BackboneElement):
 
         self.referenceSeqPointer = None
         """ A Pointer to another Sequence entity as reference sequence.
-        Type `FHIRReference` referencing `Sequence` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Sequence']` (represented as `dict` in JSON). """
 
         self.referenceSeqString = None
         """ A string to represent reference sequence.
@@ -378,7 +381,7 @@ class SequenceVariant(backboneelement.BackboneElement):
 
         self.variantPointer = None
         """ Pointer to observed variant information.
-        Type `FHIRReference` referencing `Observation` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Observation']` (represented as `dict` in JSON). """
 
         super(SequenceVariant, self).__init__(jsondict=jsondict, strict=strict)
 

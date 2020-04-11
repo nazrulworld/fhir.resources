@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/StructureMap) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/StructureMap
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -52,7 +55,7 @@ class StructureMap(domainresource.DomainResource):
 
         self.import_fhir = None
         """ Other maps used by this map (canonical URLs).
-        List of `str` items. """
+        List of `str` items referencing `['StructureMap']`. """
 
         self.jurisdiction = None
         """ Intended jurisdiction for structure map (if applicable).
@@ -451,6 +454,10 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         """ Default value if no value exists.
         Type `str`. """
 
+        self.defaultValueMeta = None
+        """ Default value if no value exists.
+        Type `Meta` (represented as `dict` in JSON). """
+
         self.defaultValueMoney = None
         """ Default value if no value exists.
         Type `Money` (represented as `dict` in JSON). """
@@ -599,6 +606,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
             ("defaultValueInstant", "defaultValueInstant", fhirdate.FHIRDate, "instant", False, "defaultValue", False),
             ("defaultValueInteger", "defaultValueInteger", int, "integer", False, "defaultValue", False),
             ("defaultValueMarkdown", "defaultValueMarkdown", str, "markdown", False, "defaultValue", False),
+            ("defaultValueMeta", "defaultValueMeta", meta.Meta, "Meta", False, "defaultValue", False),
             ("defaultValueMoney", "defaultValueMoney", money.Money, "Money", False, "defaultValue", False),
             ("defaultValueOid", "defaultValueOid", str, "oid", False, "defaultValue", False),
             ("defaultValueParameterDefinition", "defaultValueParameterDefinition", parameterdefinition.ParameterDefinition, "ParameterDefinition", False, "defaultValue", False),
@@ -773,7 +781,7 @@ class StructureMapStructure(backboneelement.BackboneElement):
 
         self.url = None
         """ Canonical reference to structure definition.
-        Type `str`. """
+        Type `str` referencing `['StructureDefinition']`. """
 
         super(StructureMapStructure, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -865,6 +873,10 @@ try:
     from . import identifier
 except ImportError:
     identifier = sys.modules[__package__ + '.identifier']
+try:
+    from . import meta
+except ImportError:
+    meta = sys.modules[__package__ + '.meta']
 try:
     from . import money
 except ImportError:

@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 3.0.1.11917 on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/FamilyMemberHistory
+Release: STU3
+Version: 3.0.2
+Revision: 11917
+Last updated: 2019-10-24T11:53:00+11:00
+"""
 
 import os
 import pytest
@@ -23,17 +26,17 @@ class FamilyMemberHistoryTests(unittest.TestCase):
             js = json.load(handle)
             self.assertEqual("FamilyMemberHistory", js["resourceType"])
         return familymemberhistory.FamilyMemberHistory(js)
-    
+
     def testFamilyMemberHistory1(self):
         inst = self.instantiate_from("familymemberhistory-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a FamilyMemberHistory instance")
         self.implFamilyMemberHistory1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("FamilyMemberHistory", js["resourceType"])
         inst2 = familymemberhistory.FamilyMemberHistory(js)
         self.implFamilyMemberHistory1(inst2)
-    
+
     def implFamilyMemberHistory1(self, inst):
         self.assertEqual(force_bytes(inst.condition[0].code.coding[0].code), force_bytes("315619001"))
         self.assertEqual(force_bytes(inst.condition[0].code.coding[0].display), force_bytes("Myocardial Infarction"))
@@ -56,17 +59,17 @@ class FamilyMemberHistoryTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.status), force_bytes("completed"))
         self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">Father died of a heart attack aged 74</div>"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-    
+
     def testFamilyMemberHistory2(self):
         inst = self.instantiate_from("familymemberhistory-example-mother.json")
         self.assertIsNotNone(inst, "Must have instantiated a FamilyMemberHistory instance")
         self.implFamilyMemberHistory2(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("FamilyMemberHistory", js["resourceType"])
         inst2 = familymemberhistory.FamilyMemberHistory(js)
         self.implFamilyMemberHistory2(inst2)
-    
+
     def implFamilyMemberHistory2(self, inst):
         self.assertEqual(force_bytes(inst.condition[0].code.coding[0].code), force_bytes("371041009"))
         self.assertEqual(force_bytes(inst.condition[0].code.coding[0].display), force_bytes("Embolic Stroke"))

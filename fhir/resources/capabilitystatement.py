@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/CapabilityStatement) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/CapabilityStatement
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -64,15 +67,15 @@ class CapabilityStatement(domainresource.DomainResource):
 
         self.implementationGuide = None
         """ Implementation guides supported.
-        List of `str` items. """
+        List of `str` items referencing `['ImplementationGuide']`. """
 
         self.imports = None
         """ Canonical URL of another capability statement this adds to.
-        List of `str` items. """
+        List of `str` items referencing `['CapabilityStatement']`. """
 
         self.instantiates = None
         """ Canonical URL of another capability statement this implements.
-        List of `str` items. """
+        List of `str` items referencing `['CapabilityStatement']`. """
 
         self.jurisdiction = None
         """ Intended jurisdiction for capability statement (if applicable).
@@ -194,7 +197,7 @@ class CapabilityStatementDocument(backboneelement.BackboneElement):
 
         self.profile = None
         """ Constraint on the resources used in the document.
-        Type `str`. """
+        Type `str` referencing `['StructureDefinition']`. """
 
         super(CapabilityStatementDocument, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -228,7 +231,7 @@ class CapabilityStatementImplementation(backboneelement.BackboneElement):
 
         self.custodian = None
         """ Organization that manages the data.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
         self.description = None
         """ Describes this specific instance.
@@ -350,7 +353,7 @@ class CapabilityStatementMessagingSupportedMessage(backboneelement.BackboneEleme
 
         self.definition = None
         """ Message supported by this system.
-        Type `str`. """
+        Type `str` referencing `['MessageDefinition']`. """
 
         self.mode = None
         """ sender | receiver.
@@ -385,7 +388,7 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
 
         self.compartment = None
         """ Compartments served/used by system.
-        List of `str` items. """
+        List of `str` items referencing `['CompartmentDefinition']`. """
 
         self.documentation = None
         """ General description of implementation.
@@ -515,7 +518,7 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
 
         self.profile = None
         """ Base System profile for all uses of resource.
-        Type `str`. """
+        Type `str` referencing `['StructureDefinition']`. """
 
         self.readHistory = None
         """ Whether vRead can return past versions.
@@ -539,7 +542,7 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
 
         self.supportedProfile = None
         """ Profiles for use cases supported.
-        List of `str` items. """
+        List of `str` items referencing `['StructureDefinition']`. """
 
         self.type = None
         """ A resource type that is supported.
@@ -635,7 +638,7 @@ class CapabilityStatementRestResourceOperation(backboneelement.BackboneElement):
 
         self.definition = None
         """ The defined operation/query.
-        Type `str`. """
+        Type `str` referencing `['OperationDefinition']`. """
 
         self.documentation = None
         """ Specific details about operation behavior.
@@ -677,7 +680,7 @@ class CapabilityStatementRestResourceSearchParam(backboneelement.BackboneElement
 
         self.definition = None
         """ Source of definition for parameter.
-        Type `str`. """
+        Type `str` referencing `['SearchParameter']`. """
 
         self.documentation = None
         """ Server-specific usage.

@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/GuidanceResponse) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/GuidanceResponse
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -31,11 +34,11 @@ class GuidanceResponse(domainresource.DomainResource):
 
         self.encounter = None
         """ Encounter during which the response was returned.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Encounter']` (represented as `dict` in JSON). """
 
         self.evaluationMessage = None
         """ Messages resulting from the evaluation of the artifact or artifacts.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['OperationOutcome']` (represented as `dict` in JSON). """
 
         self.identifier = None
         """ Business identifier.
@@ -63,11 +66,11 @@ class GuidanceResponse(domainresource.DomainResource):
 
         self.outputParameters = None
         """ The output parameters of the evaluation, if any.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Parameters']` (represented as `dict` in JSON). """
 
         self.performer = None
         """ Device returning the guidance.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Device']` (represented as `dict` in JSON). """
 
         self.reasonCode = None
         """ Why guidance is needed.
@@ -75,7 +78,7 @@ class GuidanceResponse(domainresource.DomainResource):
 
         self.reasonReference = None
         """ Why guidance is needed.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Condition', 'Observation', 'DiagnosticReport', 'DocumentReference']` (represented as `dict` in JSON). """
 
         self.requestIdentifier = None
         """ The identifier of the request associated with this response, if any.
@@ -83,7 +86,7 @@ class GuidanceResponse(domainresource.DomainResource):
 
         self.result = None
         """ Proposed actions, if any.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['CarePlan', 'RequestGroup']` (represented as `dict` in JSON). """
 
         self.status = None
         """ success | data-requested | data-required | in-progress | failure |
@@ -92,7 +95,7 @@ class GuidanceResponse(domainresource.DomainResource):
 
         self.subject = None
         """ Patient the request was performed for.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient', 'Group']` (represented as `dict` in JSON). """
 
         super(GuidanceResponse, self).__init__(jsondict=jsondict, strict=strict)
 

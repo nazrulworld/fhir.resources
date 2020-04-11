@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/RequestGroup) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/RequestGroup
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -30,7 +33,7 @@ class RequestGroup(domainresource.DomainResource):
 
         self.author = None
         """ Device or practitioner that authored the request group.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Device', 'Practitioner', 'PractitionerRole']` (represented as `dict` in JSON). """
 
         self.authoredOn = None
         """ When the request group was authored.
@@ -38,7 +41,7 @@ class RequestGroup(domainresource.DomainResource):
 
         self.basedOn = None
         """ Fulfills plan, proposal, or order.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.code = None
         """ What's being requested/ordered.
@@ -46,7 +49,7 @@ class RequestGroup(domainresource.DomainResource):
 
         self.encounter = None
         """ Created as part of.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Encounter']` (represented as `dict` in JSON). """
 
         self.groupIdentifier = None
         """ Composite request this is part of.
@@ -65,7 +68,8 @@ class RequestGroup(domainresource.DomainResource):
         List of `str` items. """
 
         self.intent = None
-        """ proposal | plan | order.
+        """ proposal | plan | directive | order | original-order | reflex-order
+        | filler-order | instance-order | option.
         Type `str`. """
 
         self.note = None
@@ -82,20 +86,20 @@ class RequestGroup(domainresource.DomainResource):
 
         self.reasonReference = None
         """ Why the request group is needed.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Condition', 'Observation', 'DiagnosticReport', 'DocumentReference']` (represented as `dict` in JSON). """
 
         self.replaces = None
         """ Request(s) replaced by this request.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.status = None
-        """ draft | active | suspended | cancelled | completed | entered-in-
-        error | unknown.
+        """ draft | active | on-hold | revoked | completed | entered-in-error |
+        unknown.
         Type `str`. """
 
         self.subject = None
         """ Who the request group is about.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Patient', 'Group']` (represented as `dict` in JSON). """
 
         super(RequestGroup, self).__init__(jsondict=jsondict, strict=strict)
 
@@ -172,7 +176,7 @@ class RequestGroupAction(backboneelement.BackboneElement):
 
         self.participant = None
         """ Who should perform the action.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        List of `FHIRReference` items referencing `['Patient', 'Practitioner', 'PractitionerRole', 'RelatedPerson', 'Device']` (represented as `dict` in JSON). """
 
         self.precheckBehavior = None
         """ yes | no.
@@ -196,7 +200,7 @@ class RequestGroupAction(backboneelement.BackboneElement):
 
         self.resource = None
         """ The target of the action.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
 
         self.selectionBehavior = None
         """ any | all | all-or-none | exactly-one | at-most-one | one-or-more.

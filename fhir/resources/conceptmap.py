@@ -1,8 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/ConceptMap) on 2019-05-13.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/ConceptMap
+Release: R4
+Version: 4.0.1
+Build ID: 9346c8cc45
+Last updated: 2019-11-01T09:29:23.356+11:00
+"""
 
 
 from . import domainresource
@@ -72,7 +75,7 @@ class ConceptMap(domainresource.DomainResource):
         self.sourceCanonical = None
         """ The source value set that contains the concepts that are being
         mapped.
-        Type `str`. """
+        Type `str` referencing `['ValueSet']`. """
 
         self.sourceUri = None
         """ The source value set that contains the concepts that are being
@@ -85,7 +88,7 @@ class ConceptMap(domainresource.DomainResource):
 
         self.targetCanonical = None
         """ The target value set which provides context for the mappings.
-        Type `str`. """
+        Type `str` referencing `['ValueSet']`. """
 
         self.targetUri = None
         """ The target value set which provides context for the mappings.
@@ -319,7 +322,7 @@ class ConceptMapGroupElementTargetDependsOn(backboneelement.BackboneElement):
 
         self.system = None
         """ Code System (if necessary).
-        Type `str`. """
+        Type `str` referencing `['CodeSystem']`. """
 
         self.value = None
         """ Value of the referenced element.
@@ -371,7 +374,7 @@ class ConceptMapGroupUnmapped(backboneelement.BackboneElement):
         self.url = None
         """ canonical reference to an additional ConceptMap to use for mapping
         if the source concept is unmapped.
-        Type `str`. """
+        Type `str` referencing `['ConceptMap']`. """
 
         super(ConceptMapGroupUnmapped, self).__init__(jsondict=jsondict, strict=strict)
 

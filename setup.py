@@ -25,7 +25,7 @@ development_requirements = [
     "certifi",
     "isort",
     "black",
-    "zest-releaser['recommended']",
+    "zest-releaser[recommended]"
 ]
 
 setup(
@@ -58,8 +58,8 @@ setup(
     test_suite="tests",
     tests_require=test_requirements,
     extras_require={
-        "test": test_requirements + setup_requirements,
-        "all": test_requirements + setup_requirements + development_requirements,
+        "test": (test_requirements + setup_requirements),
+        "all": (test_requirements + setup_requirements + development_requirements)
     },
     url="https://github.com/nazrulworld/fhir.resources",
     version="5.1.0.dev0",

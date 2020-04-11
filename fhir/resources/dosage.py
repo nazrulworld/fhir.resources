@@ -8,6 +8,13 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 import sys
 if sys.version.startswith("2"):
+    # Disclaimer: Dosage is originally baseDefinition
+    # from http://hl7.org/fhir/StructureDefinition/BackboneElement
+    # But there is circular dependency problem in python2!
+    # extension.Extension is used in BackboneElement.modifierExtension as value type.
+    # and also dosage.Dosage is used as Extension.valueDosage value type.
+    # As a result we are using ``BackboneElement`` as base class of Dosage,
+    # faced import error (because od circular dependency).
     from .element import Element as BaseDosage
 else:
     from .backboneelement import BackboneElement as BaseDosage

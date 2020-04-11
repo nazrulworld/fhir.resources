@@ -30,6 +30,7 @@ initial validation, exporter as json value.
 
 * Provides ``Resource Factory`` class (see example 4) to create resource object in more convenient way.
 * Previous version of FHIR® Resources are available.
+* Fully support for `fhirclient <https://pypi.org/project/fhirclient/>`_ as models.
 * Free software: BSD license
 
 

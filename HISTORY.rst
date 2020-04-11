@@ -5,7 +5,11 @@ History
 5.1.0 (unreleased)
 ------------------
 
-- Nothing changed yet.
+Improvements
+
+- FHIR ``STU3``release version upgraded from ``3.0.1`` to ``3.0.2``, Please find changes history here https://www.hl7.org/fhir/history.html.
+
+- FHIR ``R4`` release version upgraded from ``4.0.0`` to ``4.0.1``, find changes history here https://www.hl7.org/fhir/history.html.
 
 
 5.0.1 (2019-07-18)

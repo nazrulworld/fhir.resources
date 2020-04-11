@@ -16,6 +16,8 @@ FHIR® Resources (R4, STU3, DSTU2)
 .. image:: https://codecov.io/gh/nazrulworld/fhir.resources/branch/master/graph/badge.svg
         :target: https://codecov.io/gh/nazrulworld/fhir.resources
 
+.. image:: https://img.shields.io/badge/code%20style-black-000000.svg
+    :target: https://github.com/psf/black
 
 .. image:: https://fire.ly/wp-content/themes/fhir/images/fhir.svg
         :target: https://www.hl7.org/implement/standards/product_brief.cfm?product_id=449
@@ -34,12 +36,12 @@ initial validation, exporter as json value.
 FHIR® Version Info
 ------------------
 
-FHIR® (R4 aka 4.0.0) is available as default. Also previous versions are available as Python sub-package
-(each version name string becomes sub-package name, i.e ``STU3`` ).
+FHIR® (Release R4, version 4.0.1) is available as default. Also previous versions are available as Python sub-package
+(each release name string becomes sub-package name, i.e ``STU3`` ).
 
 **Available Previous Versions**:
 
-* ``STU3`` (3.0.1)
+* ``STU3`` (3.0.2)
 
 * ``DSTU2`` (1.0.2)
 
@@ -128,14 +130,14 @@ Unlike previous statement (bellow), releasing now is not dependent on FHIR®.
 Credits
 -------
 
-All FHIR® Resources (python classes) are generated using fhir-parser_.
+All FHIR® Resources (python classes) are generated using fhir-parser_ which is forked from https://github.com/smart-on-fhir/fhir-parser.git.
 
 
 This package skeleton was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
 
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter
 .. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
-.. _`fhir-parser`: https://github.com/smart-on-fhir/fhir-parser.git
+.. _`fhir-parser`: https://github.com/nazrulworld/fhir-parser
 
 © Copyright HL7® logo, FHIR® logo and the flaming fire are registered trademarks
 owned by `Health Level Seven International <https://www.hl7.org/legal/trademarks.cfm?ref=https://pypi.org/project/fhir-resources/>`_

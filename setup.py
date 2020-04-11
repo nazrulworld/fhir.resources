@@ -17,6 +17,17 @@ setup_requirements = ["pytest-runner"]
 
 test_requirements = ["coverage", "pytest", "pytest-cov"]
 
+development_requirements = [
+    "Jinja2==2.11.1",
+    "MarkupSafe==1.1.1",
+    "requests==2.23.0",
+    "colorlog==2.10.0",
+    "certifi",
+    "isort",
+    "black",
+    "zest-releaser['recommended']",
+]
+
 setup(
     author="Md Nazrul Islam",
     author_email="email2nazrul@gmail.com",
@@ -46,8 +57,11 @@ setup(
     setup_requires=setup_requirements,
     test_suite="tests",
     tests_require=test_requirements,
-    extras_require={"test": test_requirements + setup_requirements},
+    extras_require={
+        "test": test_requirements + setup_requirements,
+        "all": test_requirements + setup_requirements + development_requirements,
+    },
     url="https://github.com/nazrulworld/fhir.resources",
-    version="5.0.2.dev0",
+    version="5.1.0.dev0",
     zip_safe=False,
 )

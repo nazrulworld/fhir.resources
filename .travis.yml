@@ -26,9 +26,9 @@ cache:
   directories:
     - eggs
 install:
-  - pip install -U pipenv
-  - pipenv install --dev
-  - pip install codecov
+  - virtualenv -p `which python` .
+  - ./bin/pip install .[test]
+  - ./bin/pip install codecov
   - sleep 1
 script:
   - git submodule update --init --recursive

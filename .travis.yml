@@ -26,8 +26,7 @@ cache:
   directories:
     - eggs
 install:
-  - pip install .[test]
-  - python setup.py develop
+  - pip install -e .[test]
   - pip install codecov
   - sleep 1
 script:

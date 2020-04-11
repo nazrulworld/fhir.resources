@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class Procedure(domainresource.DomainResource):
     """ An action that is being or was performed on a patient.
@@ -141,39 +144,239 @@ class Procedure(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(Procedure, self).elementProperties()
-        js.extend([
-            ("basedOn", "basedOn", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("bodySite", "bodySite", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("category", "category", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("complication", "complication", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("complicationDetail", "complicationDetail", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("context", "context", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("definition", "definition", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("focalDevice", "focalDevice", ProcedureFocalDevice, "ProcedureFocalDevice", True, None, False),
-            ("followUp", "followUp", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("location", "location", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("notDone", "notDone", bool, "boolean", False, None, False),
-            ("notDoneReason", "notDoneReason", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("note", "note", annotation.Annotation, "Annotation", True, None, False),
-            ("outcome", "outcome", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("partOf", "partOf", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("performedDateTime", "performedDateTime", fhirdate.FHIRDate, "dateTime", False, "performed", False),
-            ("performedPeriod", "performedPeriod", period.Period, "Period", False, "performed", False),
-            ("performer", "performer", ProcedurePerformer, "ProcedurePerformer", True, None, False),
-            ("reasonCode", "reasonCode", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("reasonReference", "reasonReference", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("report", "report", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("subject", "subject", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("usedCode", "usedCode", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("usedReference", "usedReference", fhirreference.FHIRReference, "Reference", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "basedOn",
+                    "basedOn",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "bodySite",
+                    "bodySite",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "category",
+                    "category",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "complication",
+                    "complication",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "complicationDetail",
+                    "complicationDetail",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "context",
+                    "context",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "definition",
+                    "definition",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "focalDevice",
+                    "focalDevice",
+                    ProcedureFocalDevice,
+                    "ProcedureFocalDevice",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "followUp",
+                    "followUp",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "location",
+                    "location",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("notDone", "notDone", bool, "boolean", False, None, False),
+                (
+                    "notDoneReason",
+                    "notDoneReason",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "note",
+                    "note",
+                    annotation.Annotation,
+                    "Annotation",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "outcome",
+                    "outcome",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "partOf",
+                    "partOf",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "performedDateTime",
+                    "performedDateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    "performed",
+                    False,
+                ),
+                (
+                    "performedPeriod",
+                    "performedPeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "performed",
+                    False,
+                ),
+                (
+                    "performer",
+                    "performer",
+                    ProcedurePerformer,
+                    "ProcedurePerformer",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "reasonCode",
+                    "reasonCode",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "reasonReference",
+                    "reasonReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "report",
+                    "report",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, True),
+                (
+                    "subject",
+                    "subject",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "usedCode",
+                    "usedCode",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "usedReference",
+                    "usedReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class ProcedureFocalDevice(backboneelement.BackboneElement):
     """ Device changed in procedure.
@@ -205,10 +408,28 @@ class ProcedureFocalDevice(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ProcedureFocalDevice, self).elementProperties()
-        js.extend([
-            ("action", "action", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("manipulated", "manipulated", fhirreference.FHIRReference, "Reference", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "action",
+                    "action",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "manipulated",
+                    "manipulated",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -244,36 +465,61 @@ class ProcedurePerformer(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ProcedurePerformer, self).elementProperties()
-        js.extend([
-            ("actor", "actor", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("onBehalfOf", "onBehalfOf", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("role", "role", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "actor",
+                    "actor",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "onBehalfOf",
+                    "onBehalfOf",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "role",
+                    "role",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import annotation
 except ImportError:
-    annotation = sys.modules[__package__ + '.annotation']
+    annotation = sys.modules[__package__ + ".annotation"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]

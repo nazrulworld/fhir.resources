@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
+import sys
+
 from . import element
+
 
 class TriggerDefinition(element.Element):
     """ Defines an expected trigger for a module.
@@ -59,32 +62,73 @@ class TriggerDefinition(element.Element):
 
     def elementProperties(self):
         js = super(TriggerDefinition, self).elementProperties()
-        js.extend([
-            ("eventData", "eventData", datarequirement.DataRequirement, "DataRequirement", False, None, False),
-            ("eventName", "eventName", str, "string", False, None, False),
-            ("eventTimingDate", "eventTimingDate", fhirdate.FHIRDate, "date", False, "eventTiming", False),
-            ("eventTimingDateTime", "eventTimingDateTime", fhirdate.FHIRDate, "dateTime", False, "eventTiming", False),
-            ("eventTimingReference", "eventTimingReference", fhirreference.FHIRReference, "Reference", False, "eventTiming", False),
-            ("eventTimingTiming", "eventTimingTiming", timing.Timing, "Timing", False, "eventTiming", False),
-            ("type", "type", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "eventData",
+                    "eventData",
+                    datarequirement.DataRequirement,
+                    "DataRequirement",
+                    False,
+                    None,
+                    False,
+                ),
+                ("eventName", "eventName", str, "string", False, None, False),
+                (
+                    "eventTimingDate",
+                    "eventTimingDate",
+                    fhirdate.FHIRDate,
+                    "date",
+                    False,
+                    "eventTiming",
+                    False,
+                ),
+                (
+                    "eventTimingDateTime",
+                    "eventTimingDateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    "eventTiming",
+                    False,
+                ),
+                (
+                    "eventTimingReference",
+                    "eventTimingReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "eventTiming",
+                    False,
+                ),
+                (
+                    "eventTimingTiming",
+                    "eventTimingTiming",
+                    timing.Timing,
+                    "Timing",
+                    False,
+                    "eventTiming",
+                    False,
+                ),
+                ("type", "type", str, "code", False, None, True),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import datarequirement
 except ImportError:
-    datarequirement = sys.modules[__package__ + '.datarequirement']
+    datarequirement = sys.modules[__package__ + ".datarequirement"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import timing
 except ImportError:
-    timing = sys.modules[__package__ + '.timing']
+    timing = sys.modules[__package__ + ".timing"]

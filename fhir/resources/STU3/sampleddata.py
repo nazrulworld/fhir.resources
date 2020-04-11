@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
+import sys
+
 from . import element
+
 
 class SampledData(element.Element):
     """ A series of measurements taken by a device.
@@ -59,20 +62,21 @@ class SampledData(element.Element):
 
     def elementProperties(self):
         js = super(SampledData, self).elementProperties()
-        js.extend([
-            ("data", "data", str, "string", False, None, True),
-            ("dimensions", "dimensions", int, "positiveInt", False, None, True),
-            ("factor", "factor", float, "decimal", False, None, False),
-            ("lowerLimit", "lowerLimit", float, "decimal", False, None, False),
-            ("origin", "origin", quantity.Quantity, "Quantity", False, None, True),
-            ("period", "period", float, "decimal", False, None, True),
-            ("upperLimit", "upperLimit", float, "decimal", False, None, False),
-        ])
+        js.extend(
+            [
+                ("data", "data", str, "string", False, None, True),
+                ("dimensions", "dimensions", int, "positiveInt", False, None, True),
+                ("factor", "factor", float, "decimal", False, None, False),
+                ("lowerLimit", "lowerLimit", float, "decimal", False, None, False),
+                ("origin", "origin", quantity.Quantity, "Quantity", False, None, True),
+                ("period", "period", float, "decimal", False, None, True),
+                ("upperLimit", "upperLimit", float, "decimal", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import quantity
 except ImportError:
-    quantity = sys.modules[__package__ + '.quantity']
+    quantity = sys.modules[__package__ + ".quantity"]

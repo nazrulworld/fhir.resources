@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class ImmunizationRecommendation(domainresource.DomainResource):
     """ Guidance or advice relating to an immunization.
@@ -40,19 +43,45 @@ class ImmunizationRecommendation(domainresource.DomainResource):
         """ Vaccine administration recommendations.
         List of `ImmunizationRecommendationRecommendation` items (represented as `dict` in JSON). """
 
-        super(ImmunizationRecommendation, self).__init__(jsondict=jsondict, strict=strict)
+        super(ImmunizationRecommendation, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ImmunizationRecommendation, self).elementProperties()
-        js.extend([
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("patient", "patient", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("recommendation", "recommendation", ImmunizationRecommendationRecommendation, "ImmunizationRecommendationRecommendation", True, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "patient",
+                    "patient",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "recommendation",
+                    "recommendation",
+                    ImmunizationRecommendationRecommendation,
+                    "ImmunizationRecommendationRecommendation",
+                    True,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
     """ Vaccine administration recommendations.
@@ -104,25 +133,87 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
         """ Vaccine recommendation applies to.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(ImmunizationRecommendationRecommendation, self).__init__(jsondict=jsondict, strict=strict)
+        super(ImmunizationRecommendationRecommendation, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ImmunizationRecommendationRecommendation, self).elementProperties()
-        js.extend([
-            ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, True),
-            ("dateCriterion", "dateCriterion", ImmunizationRecommendationRecommendationDateCriterion, "ImmunizationRecommendationRecommendationDateCriterion", True, None, False),
-            ("doseNumber", "doseNumber", int, "positiveInt", False, None, False),
-            ("forecastStatus", "forecastStatus", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("protocol", "protocol", ImmunizationRecommendationRecommendationProtocol, "ImmunizationRecommendationRecommendationProtocol", False, None, False),
-            ("supportingImmunization", "supportingImmunization", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("supportingPatientInformation", "supportingPatientInformation", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("targetDisease", "targetDisease", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("vaccineCode", "vaccineCode", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, True),
+                (
+                    "dateCriterion",
+                    "dateCriterion",
+                    ImmunizationRecommendationRecommendationDateCriterion,
+                    "ImmunizationRecommendationRecommendationDateCriterion",
+                    True,
+                    None,
+                    False,
+                ),
+                ("doseNumber", "doseNumber", int, "positiveInt", False, None, False),
+                (
+                    "forecastStatus",
+                    "forecastStatus",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "protocol",
+                    "protocol",
+                    ImmunizationRecommendationRecommendationProtocol,
+                    "ImmunizationRecommendationRecommendationProtocol",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "supportingImmunization",
+                    "supportingImmunization",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "supportingPatientInformation",
+                    "supportingPatientInformation",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "targetDisease",
+                    "targetDisease",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "vaccineCode",
+                    "vaccineCode",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-class ImmunizationRecommendationRecommendationDateCriterion(backboneelement.BackboneElement):
+class ImmunizationRecommendationRecommendationDateCriterion(
+    backboneelement.BackboneElement
+):
     """ Dates governing proposed immunization.
 
     Vaccine date recommendations.  For example, earliest date to administer,
@@ -147,14 +238,28 @@ class ImmunizationRecommendationRecommendationDateCriterion(backboneelement.Back
         """ Recommended date.
         Type `FHIRDate` (represented as `str` in JSON). """
 
-        super(ImmunizationRecommendationRecommendationDateCriterion, self).__init__(jsondict=jsondict, strict=strict)
+        super(ImmunizationRecommendationRecommendationDateCriterion, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
-        js = super(ImmunizationRecommendationRecommendationDateCriterion, self).elementProperties()
-        js.extend([
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("value", "value", fhirdate.FHIRDate, "dateTime", False, None, True),
-        ])
+        js = super(
+            ImmunizationRecommendationRecommendationDateCriterion, self
+        ).elementProperties()
+        js.extend(
+            [
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                ("value", "value", fhirdate.FHIRDate, "dateTime", False, None, True),
+            ]
+        )
         return js
 
 
@@ -191,33 +296,54 @@ class ImmunizationRecommendationRecommendationProtocol(backboneelement.BackboneE
         """ Name of vaccination series.
         Type `str`. """
 
-        super(ImmunizationRecommendationRecommendationProtocol, self).__init__(jsondict=jsondict, strict=strict)
+        super(ImmunizationRecommendationRecommendationProtocol, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
-        js = super(ImmunizationRecommendationRecommendationProtocol, self).elementProperties()
-        js.extend([
-            ("authority", "authority", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("description", "description", str, "string", False, None, False),
-            ("doseSequence", "doseSequence", int, "positiveInt", False, None, False),
-            ("series", "series", str, "string", False, None, False),
-        ])
+        js = super(
+            ImmunizationRecommendationRecommendationProtocol, self
+        ).elementProperties()
+        js.extend(
+            [
+                (
+                    "authority",
+                    "authority",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("description", "description", str, "string", False, None, False),
+                (
+                    "doseSequence",
+                    "doseSequence",
+                    int,
+                    "positiveInt",
+                    False,
+                    None,
+                    False,
+                ),
+                ("series", "series", str, "string", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]

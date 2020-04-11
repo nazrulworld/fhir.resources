@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class CarePlan(domainresource.DomainResource):
     """ Healthcare plan for patient or group.
@@ -125,35 +128,171 @@ class CarePlan(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(CarePlan, self).elementProperties()
-        js.extend([
-            ("activity", "activity", CarePlanActivity, "CarePlanActivity", True, None, False),
-            ("addresses", "addresses", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("author", "author", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("basedOn", "basedOn", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("careTeam", "careTeam", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("category", "category", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("contributor", "contributor", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("created", "created", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("description", "description", str, "string", False, None, False),
-            ("encounter", "encounter", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("goal", "goal", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("instantiatesCanonical", "instantiatesCanonical", str, "canonical", True, None, False),
-            ("instantiatesUri", "instantiatesUri", str, "uri", True, None, False),
-            ("intent", "intent", str, "code", False, None, True),
-            ("note", "note", annotation.Annotation, "Annotation", True, None, False),
-            ("partOf", "partOf", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("period", "period", period.Period, "Period", False, None, False),
-            ("replaces", "replaces", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("subject", "subject", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("supportingInfo", "supportingInfo", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("title", "title", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "activity",
+                    "activity",
+                    CarePlanActivity,
+                    "CarePlanActivity",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "addresses",
+                    "addresses",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "author",
+                    "author",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "basedOn",
+                    "basedOn",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "careTeam",
+                    "careTeam",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "category",
+                    "category",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "contributor",
+                    "contributor",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "created",
+                    "created",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                ("description", "description", str, "string", False, None, False),
+                (
+                    "encounter",
+                    "encounter",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "goal",
+                    "goal",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "instantiatesCanonical",
+                    "instantiatesCanonical",
+                    str,
+                    "canonical",
+                    True,
+                    None,
+                    False,
+                ),
+                ("instantiatesUri", "instantiatesUri", str, "uri", True, None, False),
+                ("intent", "intent", str, "code", False, None, True),
+                (
+                    "note",
+                    "note",
+                    annotation.Annotation,
+                    "Annotation",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "partOf",
+                    "partOf",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                ("period", "period", period.Period, "Period", False, None, False),
+                (
+                    "replaces",
+                    "replaces",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, True),
+                (
+                    "subject",
+                    "subject",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "supportingInfo",
+                    "supportingInfo",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                ("title", "title", str, "string", False, None, False),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class CarePlanActivity(backboneelement.BackboneElement):
     """ Action to occur as part of plan.
@@ -197,13 +336,55 @@ class CarePlanActivity(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(CarePlanActivity, self).elementProperties()
-        js.extend([
-            ("detail", "detail", CarePlanActivityDetail, "CarePlanActivityDetail", False, None, False),
-            ("outcomeCodeableConcept", "outcomeCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("outcomeReference", "outcomeReference", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("progress", "progress", annotation.Annotation, "Annotation", True, None, False),
-            ("reference", "reference", fhirreference.FHIRReference, "Reference", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "detail",
+                    "detail",
+                    CarePlanActivityDetail,
+                    "CarePlanActivityDetail",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "outcomeCodeableConcept",
+                    "outcomeCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "outcomeReference",
+                    "outcomeReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "progress",
+                    "progress",
+                    annotation.Annotation,
+                    "Annotation",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "reference",
+                    "reference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -312,61 +493,182 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(CarePlanActivityDetail, self).elementProperties()
-        js.extend([
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("dailyAmount", "dailyAmount", quantity.Quantity, "Quantity", False, None, False),
-            ("description", "description", str, "string", False, None, False),
-            ("doNotPerform", "doNotPerform", bool, "boolean", False, None, False),
-            ("goal", "goal", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("instantiatesCanonical", "instantiatesCanonical", str, "canonical", True, None, False),
-            ("instantiatesUri", "instantiatesUri", str, "uri", True, None, False),
-            ("kind", "kind", str, "code", False, None, False),
-            ("location", "location", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("performer", "performer", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("productCodeableConcept", "productCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "product", False),
-            ("productReference", "productReference", fhirreference.FHIRReference, "Reference", False, "product", False),
-            ("quantity", "quantity", quantity.Quantity, "Quantity", False, None, False),
-            ("reasonCode", "reasonCode", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("reasonReference", "reasonReference", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("scheduledPeriod", "scheduledPeriod", period.Period, "Period", False, "scheduled", False),
-            ("scheduledString", "scheduledString", str, "string", False, "scheduled", False),
-            ("scheduledTiming", "scheduledTiming", timing.Timing, "Timing", False, "scheduled", False),
-            ("status", "status", str, "code", False, None, True),
-            ("statusReason", "statusReason", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "dailyAmount",
+                    "dailyAmount",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    None,
+                    False,
+                ),
+                ("description", "description", str, "string", False, None, False),
+                ("doNotPerform", "doNotPerform", bool, "boolean", False, None, False),
+                (
+                    "goal",
+                    "goal",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "instantiatesCanonical",
+                    "instantiatesCanonical",
+                    str,
+                    "canonical",
+                    True,
+                    None,
+                    False,
+                ),
+                ("instantiatesUri", "instantiatesUri", str, "uri", True, None, False),
+                ("kind", "kind", str, "code", False, None, False),
+                (
+                    "location",
+                    "location",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "performer",
+                    "performer",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "productCodeableConcept",
+                    "productCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "product",
+                    False,
+                ),
+                (
+                    "productReference",
+                    "productReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "product",
+                    False,
+                ),
+                (
+                    "quantity",
+                    "quantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "reasonCode",
+                    "reasonCode",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "reasonReference",
+                    "reasonReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "scheduledPeriod",
+                    "scheduledPeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "scheduled",
+                    False,
+                ),
+                (
+                    "scheduledString",
+                    "scheduledString",
+                    str,
+                    "string",
+                    False,
+                    "scheduled",
+                    False,
+                ),
+                (
+                    "scheduledTiming",
+                    "scheduledTiming",
+                    timing.Timing,
+                    "Timing",
+                    False,
+                    "scheduled",
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, True),
+                (
+                    "statusReason",
+                    "statusReason",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import annotation
 except ImportError:
-    annotation = sys.modules[__package__ + '.annotation']
+    annotation = sys.modules[__package__ + ".annotation"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]
 try:
     from . import quantity
 except ImportError:
-    quantity = sys.modules[__package__ + '.quantity']
+    quantity = sys.modules[__package__ + ".quantity"]
 try:
     from . import timing
 except ImportError:
-    timing = sys.modules[__package__ + '.timing']
+    timing = sys.modules[__package__ + ".timing"]

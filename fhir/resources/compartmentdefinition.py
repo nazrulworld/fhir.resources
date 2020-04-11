@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class CompartmentDefinition(domainresource.DomainResource):
     """ Compartment Definition for a resource.
@@ -88,26 +91,50 @@ class CompartmentDefinition(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(CompartmentDefinition, self).elementProperties()
-        js.extend([
-            ("code", "code", str, "code", False, None, True),
-            ("contact", "contact", contactdetail.ContactDetail, "ContactDetail", True, None, False),
-            ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("description", "description", str, "markdown", False, None, False),
-            ("experimental", "experimental", bool, "boolean", False, None, False),
-            ("name", "name", str, "string", False, None, True),
-            ("publisher", "publisher", str, "string", False, None, False),
-            ("purpose", "purpose", str, "markdown", False, None, False),
-            ("resource", "resource", CompartmentDefinitionResource, "CompartmentDefinitionResource", True, None, False),
-            ("search", "search", bool, "boolean", False, None, True),
-            ("status", "status", str, "code", False, None, True),
-            ("url", "url", str, "uri", False, None, True),
-            ("useContext", "useContext", usagecontext.UsageContext, "UsageContext", True, None, False),
-            ("version", "version", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                ("code", "code", str, "code", False, None, True),
+                (
+                    "contact",
+                    "contact",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
+                ("description", "description", str, "markdown", False, None, False),
+                ("experimental", "experimental", bool, "boolean", False, None, False),
+                ("name", "name", str, "string", False, None, True),
+                ("publisher", "publisher", str, "string", False, None, False),
+                ("purpose", "purpose", str, "markdown", False, None, False),
+                (
+                    "resource",
+                    "resource",
+                    CompartmentDefinitionResource,
+                    "CompartmentDefinitionResource",
+                    True,
+                    None,
+                    False,
+                ),
+                ("search", "search", bool, "boolean", False, None, True),
+                ("status", "status", str, "code", False, None, True),
+                ("url", "url", str, "uri", False, None, True),
+                (
+                    "useContext",
+                    "useContext",
+                    usagecontext.UsageContext,
+                    "UsageContext",
+                    True,
+                    None,
+                    False,
+                ),
+                ("version", "version", str, "string", False, None, False),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class CompartmentDefinitionResource(backboneelement.BackboneElement):
     """ How a resource is related to the compartment.
@@ -137,28 +164,31 @@ class CompartmentDefinitionResource(backboneelement.BackboneElement):
         """ Search Parameter Name, or chained parameters.
         List of `str` items. """
 
-        super(CompartmentDefinitionResource, self).__init__(jsondict=jsondict, strict=strict)
+        super(CompartmentDefinitionResource, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(CompartmentDefinitionResource, self).elementProperties()
-        js.extend([
-            ("code", "code", str, "code", False, None, True),
-            ("documentation", "documentation", str, "string", False, None, False),
-            ("param", "param", str, "string", True, None, False),
-        ])
+        js.extend(
+            [
+                ("code", "code", str, "code", False, None, True),
+                ("documentation", "documentation", str, "string", False, None, False),
+                ("param", "param", str, "string", True, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import contactdetail
 except ImportError:
-    contactdetail = sys.modules[__package__ + '.contactdetail']
+    contactdetail = sys.modules[__package__ + ".contactdetail"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import usagecontext
 except ImportError:
-    usagecontext = sys.modules[__package__ + '.usagecontext']
+    usagecontext = sys.modules[__package__ + ".usagecontext"]

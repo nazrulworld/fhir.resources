@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class DeviceDefinition(domainresource.DomainResource):
     """ An instance of a medical-related component of a medical device.
@@ -130,35 +133,195 @@ class DeviceDefinition(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(DeviceDefinition, self).elementProperties()
-        js.extend([
-            ("capability", "capability", DeviceDefinitionCapability, "DeviceDefinitionCapability", True, None, False),
-            ("contact", "contact", contactpoint.ContactPoint, "ContactPoint", True, None, False),
-            ("deviceName", "deviceName", DeviceDefinitionDeviceName, "DeviceDefinitionDeviceName", True, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("languageCode", "languageCode", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("manufacturerReference", "manufacturerReference", fhirreference.FHIRReference, "Reference", False, "manufacturer", False),
-            ("manufacturerString", "manufacturerString", str, "string", False, "manufacturer", False),
-            ("material", "material", DeviceDefinitionMaterial, "DeviceDefinitionMaterial", True, None, False),
-            ("modelNumber", "modelNumber", str, "string", False, None, False),
-            ("note", "note", annotation.Annotation, "Annotation", True, None, False),
-            ("onlineInformation", "onlineInformation", str, "uri", False, None, False),
-            ("owner", "owner", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("parentDevice", "parentDevice", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("physicalCharacteristics", "physicalCharacteristics", prodcharacteristic.ProdCharacteristic, "ProdCharacteristic", False, None, False),
-            ("property", "property", DeviceDefinitionProperty, "DeviceDefinitionProperty", True, None, False),
-            ("quantity", "quantity", quantity.Quantity, "Quantity", False, None, False),
-            ("safety", "safety", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("shelfLifeStorage", "shelfLifeStorage", productshelflife.ProductShelfLife, "ProductShelfLife", True, None, False),
-            ("specialization", "specialization", DeviceDefinitionSpecialization, "DeviceDefinitionSpecialization", True, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("udiDeviceIdentifier", "udiDeviceIdentifier", DeviceDefinitionUdiDeviceIdentifier, "DeviceDefinitionUdiDeviceIdentifier", True, None, False),
-            ("url", "url", str, "uri", False, None, False),
-            ("version", "version", str, "string", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "capability",
+                    "capability",
+                    DeviceDefinitionCapability,
+                    "DeviceDefinitionCapability",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "contact",
+                    "contact",
+                    contactpoint.ContactPoint,
+                    "ContactPoint",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "deviceName",
+                    "deviceName",
+                    DeviceDefinitionDeviceName,
+                    "DeviceDefinitionDeviceName",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "languageCode",
+                    "languageCode",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "manufacturerReference",
+                    "manufacturerReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "manufacturer",
+                    False,
+                ),
+                (
+                    "manufacturerString",
+                    "manufacturerString",
+                    str,
+                    "string",
+                    False,
+                    "manufacturer",
+                    False,
+                ),
+                (
+                    "material",
+                    "material",
+                    DeviceDefinitionMaterial,
+                    "DeviceDefinitionMaterial",
+                    True,
+                    None,
+                    False,
+                ),
+                ("modelNumber", "modelNumber", str, "string", False, None, False),
+                (
+                    "note",
+                    "note",
+                    annotation.Annotation,
+                    "Annotation",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "onlineInformation",
+                    "onlineInformation",
+                    str,
+                    "uri",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "owner",
+                    "owner",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "parentDevice",
+                    "parentDevice",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "physicalCharacteristics",
+                    "physicalCharacteristics",
+                    prodcharacteristic.ProdCharacteristic,
+                    "ProdCharacteristic",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "property",
+                    "property",
+                    DeviceDefinitionProperty,
+                    "DeviceDefinitionProperty",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "quantity",
+                    "quantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "safety",
+                    "safety",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "shelfLifeStorage",
+                    "shelfLifeStorage",
+                    productshelflife.ProductShelfLife,
+                    "ProductShelfLife",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "specialization",
+                    "specialization",
+                    DeviceDefinitionSpecialization,
+                    "DeviceDefinitionSpecialization",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "udiDeviceIdentifier",
+                    "udiDeviceIdentifier",
+                    DeviceDefinitionUdiDeviceIdentifier,
+                    "DeviceDefinitionUdiDeviceIdentifier",
+                    True,
+                    None,
+                    False,
+                ),
+                ("url", "url", str, "uri", False, None, False),
+                ("version", "version", str, "string", True, None, False),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class DeviceDefinitionCapability(backboneelement.BackboneElement):
     """ Device capabilities.
@@ -182,14 +345,34 @@ class DeviceDefinitionCapability(backboneelement.BackboneElement):
         """ Type of capability.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(DeviceDefinitionCapability, self).__init__(jsondict=jsondict, strict=strict)
+        super(DeviceDefinitionCapability, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(DeviceDefinitionCapability, self).elementProperties()
-        js.extend([
-            ("description", "description", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "description",
+                    "description",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -216,14 +399,18 @@ class DeviceDefinitionDeviceName(backboneelement.BackboneElement):
         manufacturer-name | model-name | other.
         Type `str`. """
 
-        super(DeviceDefinitionDeviceName, self).__init__(jsondict=jsondict, strict=strict)
+        super(DeviceDefinitionDeviceName, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(DeviceDefinitionDeviceName, self).elementProperties()
-        js.extend([
-            ("name", "name", str, "string", False, None, True),
-            ("type", "type", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                ("name", "name", str, "string", False, None, True),
+                ("type", "type", str, "code", False, None, True),
+            ]
+        )
         return js
 
 
@@ -257,11 +444,29 @@ class DeviceDefinitionMaterial(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(DeviceDefinitionMaterial, self).elementProperties()
-        js.extend([
-            ("allergenicIndicator", "allergenicIndicator", bool, "boolean", False, None, False),
-            ("alternate", "alternate", bool, "boolean", False, None, False),
-            ("substance", "substance", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "allergenicIndicator",
+                    "allergenicIndicator",
+                    bool,
+                    "boolean",
+                    False,
+                    None,
+                    False,
+                ),
+                ("alternate", "alternate", bool, "boolean", False, None, False),
+                (
+                    "substance",
+                    "substance",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -297,11 +502,37 @@ class DeviceDefinitionProperty(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(DeviceDefinitionProperty, self).elementProperties()
-        js.extend([
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("valueCode", "valueCode", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("valueQuantity", "valueQuantity", quantity.Quantity, "Quantity", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "valueCode",
+                    "valueCode",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "valueQuantity",
+                    "valueQuantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -328,14 +559,18 @@ class DeviceDefinitionSpecialization(backboneelement.BackboneElement):
         """ The version of the standard that is used to operate and communicate.
         Type `str`. """
 
-        super(DeviceDefinitionSpecialization, self).__init__(jsondict=jsondict, strict=strict)
+        super(DeviceDefinitionSpecialization, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(DeviceDefinitionSpecialization, self).elementProperties()
-        js.extend([
-            ("systemType", "systemType", str, "string", False, None, True),
-            ("version", "version", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                ("systemType", "systemType", str, "string", False, None, True),
+                ("version", "version", str, "string", False, None, False),
+            ]
+        )
         return js
 
 
@@ -372,48 +607,59 @@ class DeviceDefinitionUdiDeviceIdentifier(backboneelement.BackboneElement):
         """ The jurisdiction to which the deviceIdentifier applies.
         Type `str`. """
 
-        super(DeviceDefinitionUdiDeviceIdentifier, self).__init__(jsondict=jsondict, strict=strict)
+        super(DeviceDefinitionUdiDeviceIdentifier, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(DeviceDefinitionUdiDeviceIdentifier, self).elementProperties()
-        js.extend([
-            ("deviceIdentifier", "deviceIdentifier", str, "string", False, None, True),
-            ("issuer", "issuer", str, "uri", False, None, True),
-            ("jurisdiction", "jurisdiction", str, "uri", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "deviceIdentifier",
+                    "deviceIdentifier",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    True,
+                ),
+                ("issuer", "issuer", str, "uri", False, None, True),
+                ("jurisdiction", "jurisdiction", str, "uri", False, None, True),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import annotation
 except ImportError:
-    annotation = sys.modules[__package__ + '.annotation']
+    annotation = sys.modules[__package__ + ".annotation"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import contactpoint
 except ImportError:
-    contactpoint = sys.modules[__package__ + '.contactpoint']
+    contactpoint = sys.modules[__package__ + ".contactpoint"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import prodcharacteristic
 except ImportError:
-    prodcharacteristic = sys.modules[__package__ + '.prodcharacteristic']
+    prodcharacteristic = sys.modules[__package__ + ".prodcharacteristic"]
 try:
     from . import productshelflife
 except ImportError:
-    productshelflife = sys.modules[__package__ + '.productshelflife']
+    productshelflife = sys.modules[__package__ + ".productshelflife"]
 try:
     from . import quantity
 except ImportError:
-    quantity = sys.modules[__package__ + '.quantity']
+    quantity = sys.modules[__package__ + ".quantity"]

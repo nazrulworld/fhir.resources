@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
+import sys
+
 from . import element
+
 
 class Timing(element.Element):
     """ A timing schedule that specifies an event that may occur multiple times.
@@ -46,11 +49,21 @@ class Timing(element.Element):
 
     def elementProperties(self):
         js = super(Timing, self).elementProperties()
-        js.extend([
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("event", "event", fhirdate.FHIRDate, "dateTime", True, None, False),
-            ("repeat", "repeat", TimingRepeat, "TimingRepeat", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("event", "event", fhirdate.FHIRDate, "dateTime", True, None, False),
+                ("repeat", "repeat", TimingRepeat, "TimingRepeat", False, None, False),
+            ]
+        )
         return js
 
 
@@ -142,46 +155,79 @@ class TimingRepeat(element.Element):
 
     def elementProperties(self):
         js = super(TimingRepeat, self).elementProperties()
-        js.extend([
-            ("boundsDuration", "boundsDuration", duration.Duration, "Duration", False, "bounds", False),
-            ("boundsPeriod", "boundsPeriod", period.Period, "Period", False, "bounds", False),
-            ("boundsRange", "boundsRange", range.Range, "Range", False, "bounds", False),
-            ("count", "count", int, "integer", False, None, False),
-            ("countMax", "countMax", int, "integer", False, None, False),
-            ("dayOfWeek", "dayOfWeek", str, "code", True, None, False),
-            ("duration", "duration", float, "decimal", False, None, False),
-            ("durationMax", "durationMax", float, "decimal", False, None, False),
-            ("durationUnit", "durationUnit", str, "code", False, None, False),
-            ("frequency", "frequency", int, "integer", False, None, False),
-            ("frequencyMax", "frequencyMax", int, "integer", False, None, False),
-            ("offset", "offset", int, "unsignedInt", False, None, False),
-            ("period", "period", float, "decimal", False, None, False),
-            ("periodMax", "periodMax", float, "decimal", False, None, False),
-            ("periodUnit", "periodUnit", str, "code", False, None, False),
-            ("timeOfDay", "timeOfDay", fhirdate.FHIRDate, "time", True, None, False),
-            ("when", "when", str, "code", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "boundsDuration",
+                    "boundsDuration",
+                    duration.Duration,
+                    "Duration",
+                    False,
+                    "bounds",
+                    False,
+                ),
+                (
+                    "boundsPeriod",
+                    "boundsPeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "bounds",
+                    False,
+                ),
+                (
+                    "boundsRange",
+                    "boundsRange",
+                    range.Range,
+                    "Range",
+                    False,
+                    "bounds",
+                    False,
+                ),
+                ("count", "count", int, "integer", False, None, False),
+                ("countMax", "countMax", int, "integer", False, None, False),
+                ("dayOfWeek", "dayOfWeek", str, "code", True, None, False),
+                ("duration", "duration", float, "decimal", False, None, False),
+                ("durationMax", "durationMax", float, "decimal", False, None, False),
+                ("durationUnit", "durationUnit", str, "code", False, None, False),
+                ("frequency", "frequency", int, "integer", False, None, False),
+                ("frequencyMax", "frequencyMax", int, "integer", False, None, False),
+                ("offset", "offset", int, "unsignedInt", False, None, False),
+                ("period", "period", float, "decimal", False, None, False),
+                ("periodMax", "periodMax", float, "decimal", False, None, False),
+                ("periodUnit", "periodUnit", str, "code", False, None, False),
+                (
+                    "timeOfDay",
+                    "timeOfDay",
+                    fhirdate.FHIRDate,
+                    "time",
+                    True,
+                    None,
+                    False,
+                ),
+                ("when", "when", str, "code", True, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import duration
 except ImportError:
-    duration = sys.modules[__package__ + '.duration']
+    duration = sys.modules[__package__ + ".duration"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]
 try:
     from . import range
 except ImportError:
-    range = sys.modules[__package__ + '.range']
+    range = sys.modules[__package__ + ".range"]

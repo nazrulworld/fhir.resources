@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
+import sys
+
 from . import fhirabstractresource
+
 
 class Resource(fhirabstractresource.FHIRAbstractResource):
     """ Base Resource.
@@ -46,17 +49,18 @@ class Resource(fhirabstractresource.FHIRAbstractResource):
 
     def elementProperties(self):
         js = super(Resource, self).elementProperties()
-        js.extend([
-            ("id", "id", str, "string", False, None, False),
-            ("implicitRules", "implicitRules", str, "uri", False, None, False),
-            ("language", "language", str, "code", False, None, False),
-            ("meta", "meta", meta.Meta, "Meta", False, None, False),
-        ])
+        js.extend(
+            [
+                ("id", "id", str, "string", False, None, False),
+                ("implicitRules", "implicitRules", str, "uri", False, None, False),
+                ("language", "language", str, "code", False, None, False),
+                ("meta", "meta", meta.Meta, "Meta", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import meta
 except ImportError:
-    meta = sys.modules[__package__ + '.meta']
+    meta = sys.modules[__package__ + ".meta"]

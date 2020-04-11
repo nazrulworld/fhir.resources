@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class MedicinalProductAuthorization(domainresource.DomainResource):
     """ The regulatory authorization of a medicinal product.
@@ -97,34 +100,166 @@ class MedicinalProductAuthorization(domainresource.DomainResource):
         using the ISO 8601 date format.
         Type `Period` (represented as `dict` in JSON). """
 
-        super(MedicinalProductAuthorization, self).__init__(jsondict=jsondict, strict=strict)
+        super(MedicinalProductAuthorization, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(MedicinalProductAuthorization, self).elementProperties()
-        js.extend([
-            ("country", "country", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("dataExclusivityPeriod", "dataExclusivityPeriod", period.Period, "Period", False, None, False),
-            ("dateOfFirstAuthorization", "dateOfFirstAuthorization", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("holder", "holder", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("internationalBirthDate", "internationalBirthDate", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("jurisdiction", "jurisdiction", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("jurisdictionalAuthorization", "jurisdictionalAuthorization", MedicinalProductAuthorizationJurisdictionalAuthorization, "MedicinalProductAuthorizationJurisdictionalAuthorization", True, None, False),
-            ("legalBasis", "legalBasis", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("procedure", "procedure", MedicinalProductAuthorizationProcedure, "MedicinalProductAuthorizationProcedure", False, None, False),
-            ("regulator", "regulator", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("restoreDate", "restoreDate", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("status", "status", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("statusDate", "statusDate", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("subject", "subject", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("validityPeriod", "validityPeriod", period.Period, "Period", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "country",
+                    "country",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "dataExclusivityPeriod",
+                    "dataExclusivityPeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "dateOfFirstAuthorization",
+                    "dateOfFirstAuthorization",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "holder",
+                    "holder",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "internationalBirthDate",
+                    "internationalBirthDate",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "jurisdiction",
+                    "jurisdiction",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "jurisdictionalAuthorization",
+                    "jurisdictionalAuthorization",
+                    MedicinalProductAuthorizationJurisdictionalAuthorization,
+                    "MedicinalProductAuthorizationJurisdictionalAuthorization",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "legalBasis",
+                    "legalBasis",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "procedure",
+                    "procedure",
+                    MedicinalProductAuthorizationProcedure,
+                    "MedicinalProductAuthorizationProcedure",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "regulator",
+                    "regulator",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "restoreDate",
+                    "restoreDate",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "status",
+                    "status",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "statusDate",
+                    "statusDate",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "subject",
+                    "subject",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "validityPeriod",
+                    "validityPeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-from . import backboneelement
-
-class MedicinalProductAuthorizationJurisdictionalAuthorization(backboneelement.BackboneElement):
+class MedicinalProductAuthorizationJurisdictionalAuthorization(
+    backboneelement.BackboneElement
+):
     """ Authorization in areas within a country.
     """
 
@@ -158,17 +293,63 @@ class MedicinalProductAuthorizationJurisdictionalAuthorization(backboneelement.B
         """ The start and expected end date of the authorization.
         Type `Period` (represented as `dict` in JSON). """
 
-        super(MedicinalProductAuthorizationJurisdictionalAuthorization, self).__init__(jsondict=jsondict, strict=strict)
+        super(MedicinalProductAuthorizationJurisdictionalAuthorization, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
-        js = super(MedicinalProductAuthorizationJurisdictionalAuthorization, self).elementProperties()
-        js.extend([
-            ("country", "country", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("jurisdiction", "jurisdiction", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("legalStatusOfSupply", "legalStatusOfSupply", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("validityPeriod", "validityPeriod", period.Period, "Period", False, None, False),
-        ])
+        js = super(
+            MedicinalProductAuthorizationJurisdictionalAuthorization, self
+        ).elementProperties()
+        js.extend(
+            [
+                (
+                    "country",
+                    "country",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "jurisdiction",
+                    "jurisdiction",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "legalStatusOfSupply",
+                    "legalStatusOfSupply",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "validityPeriod",
+                    "validityPeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -206,38 +387,81 @@ class MedicinalProductAuthorizationProcedure(backboneelement.BackboneElement):
         """ Type of procedure.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(MedicinalProductAuthorizationProcedure, self).__init__(jsondict=jsondict, strict=strict)
+        super(MedicinalProductAuthorizationProcedure, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(MedicinalProductAuthorizationProcedure, self).elementProperties()
-        js.extend([
-            ("application", "application", MedicinalProductAuthorizationProcedure, "MedicinalProductAuthorizationProcedure", True, None, False),
-            ("dateDateTime", "dateDateTime", fhirdate.FHIRDate, "dateTime", False, "date", False),
-            ("datePeriod", "datePeriod", period.Period, "Period", False, "date", False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", False, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "application",
+                    "application",
+                    MedicinalProductAuthorizationProcedure,
+                    "MedicinalProductAuthorizationProcedure",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "dateDateTime",
+                    "dateDateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    "date",
+                    False,
+                ),
+                (
+                    "datePeriod",
+                    "datePeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "date",
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]

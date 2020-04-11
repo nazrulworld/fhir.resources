@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class Location(domainresource.DomainResource):
     """ Details and position information for a physical place.
@@ -96,27 +99,99 @@ class Location(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(Location, self).elementProperties()
-        js.extend([
-            ("address", "address", address.Address, "Address", False, None, False),
-            ("alias", "alias", str, "string", True, None, False),
-            ("description", "description", str, "string", False, None, False),
-            ("endpoint", "endpoint", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("managingOrganization", "managingOrganization", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("mode", "mode", str, "code", False, None, False),
-            ("name", "name", str, "string", False, None, False),
-            ("operationalStatus", "operationalStatus", coding.Coding, "Coding", False, None, False),
-            ("partOf", "partOf", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("physicalType", "physicalType", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("position", "position", LocationPosition, "LocationPosition", False, None, False),
-            ("status", "status", str, "code", False, None, False),
-            ("telecom", "telecom", contactpoint.ContactPoint, "ContactPoint", True, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                ("address", "address", address.Address, "Address", False, None, False),
+                ("alias", "alias", str, "string", True, None, False),
+                ("description", "description", str, "string", False, None, False),
+                (
+                    "endpoint",
+                    "endpoint",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "managingOrganization",
+                    "managingOrganization",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("mode", "mode", str, "code", False, None, False),
+                ("name", "name", str, "string", False, None, False),
+                (
+                    "operationalStatus",
+                    "operationalStatus",
+                    coding.Coding,
+                    "Coding",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "partOf",
+                    "partOf",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "physicalType",
+                    "physicalType",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "position",
+                    "position",
+                    LocationPosition,
+                    "LocationPosition",
+                    False,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, False),
+                (
+                    "telecom",
+                    "telecom",
+                    contactpoint.ContactPoint,
+                    "ContactPoint",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class LocationPosition(backboneelement.BackboneElement):
     """ The absolute geographic location.
@@ -151,36 +226,37 @@ class LocationPosition(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(LocationPosition, self).elementProperties()
-        js.extend([
-            ("altitude", "altitude", float, "decimal", False, None, False),
-            ("latitude", "latitude", float, "decimal", False, None, True),
-            ("longitude", "longitude", float, "decimal", False, None, True),
-        ])
+        js.extend(
+            [
+                ("altitude", "altitude", float, "decimal", False, None, False),
+                ("latitude", "latitude", float, "decimal", False, None, True),
+                ("longitude", "longitude", float, "decimal", False, None, True),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import address
 except ImportError:
-    address = sys.modules[__package__ + '.address']
+    address = sys.modules[__package__ + ".address"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import coding
 except ImportError:
-    coding = sys.modules[__package__ + '.coding']
+    coding = sys.modules[__package__ + ".coding"]
 try:
     from . import contactpoint
 except ImportError:
-    contactpoint = sys.modules[__package__ + '.contactpoint']
+    contactpoint = sys.modules[__package__ + ".contactpoint"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]

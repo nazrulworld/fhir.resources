@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class Medication(domainresource.DomainResource):
     """ Definition of a Medication.
@@ -67,21 +70,77 @@ class Medication(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(Medication, self).elementProperties()
-        js.extend([
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("form", "form", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("image", "image", attachment.Attachment, "Attachment", True, None, False),
-            ("ingredient", "ingredient", MedicationIngredient, "MedicationIngredient", True, None, False),
-            ("isBrand", "isBrand", bool, "boolean", False, None, False),
-            ("isOverTheCounter", "isOverTheCounter", bool, "boolean", False, None, False),
-            ("manufacturer", "manufacturer", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("package", "package", MedicationPackage, "MedicationPackage", False, None, False),
-            ("status", "status", str, "code", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "form",
+                    "form",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "image",
+                    "image",
+                    attachment.Attachment,
+                    "Attachment",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "ingredient",
+                    "ingredient",
+                    MedicationIngredient,
+                    "MedicationIngredient",
+                    True,
+                    None,
+                    False,
+                ),
+                ("isBrand", "isBrand", bool, "boolean", False, None, False),
+                (
+                    "isOverTheCounter",
+                    "isOverTheCounter",
+                    bool,
+                    "boolean",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "manufacturer",
+                    "manufacturer",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "package",
+                    "package",
+                    MedicationPackage,
+                    "MedicationPackage",
+                    False,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, False),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class MedicationIngredient(backboneelement.BackboneElement):
     """ Active or inactive ingredient.
@@ -119,12 +178,30 @@ class MedicationIngredient(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(MedicationIngredient, self).elementProperties()
-        js.extend([
-            ("amount", "amount", ratio.Ratio, "Ratio", False, None, False),
-            ("isActive", "isActive", bool, "boolean", False, None, False),
-            ("itemCodeableConcept", "itemCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "item", True),
-            ("itemReference", "itemReference", fhirreference.FHIRReference, "Reference", False, "item", True),
-        ])
+        js.extend(
+            [
+                ("amount", "amount", ratio.Ratio, "Ratio", False, None, False),
+                ("isActive", "isActive", bool, "boolean", False, None, False),
+                (
+                    "itemCodeableConcept",
+                    "itemCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "item",
+                    True,
+                ),
+                (
+                    "itemReference",
+                    "itemReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "item",
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -160,11 +237,37 @@ class MedicationPackage(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(MedicationPackage, self).elementProperties()
-        js.extend([
-            ("batch", "batch", MedicationPackageBatch, "MedicationPackageBatch", True, None, False),
-            ("container", "container", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("content", "content", MedicationPackageContent, "MedicationPackageContent", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "batch",
+                    "batch",
+                    MedicationPackageBatch,
+                    "MedicationPackageBatch",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "container",
+                    "container",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "content",
+                    "content",
+                    MedicationPackageContent,
+                    "MedicationPackageContent",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -197,10 +300,20 @@ class MedicationPackageBatch(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(MedicationPackageBatch, self).elementProperties()
-        js.extend([
-            ("expirationDate", "expirationDate", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("lotNumber", "lotNumber", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "expirationDate",
+                    "expirationDate",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                ("lotNumber", "lotNumber", str, "string", False, None, False),
+            ]
+        )
         return js
 
 
@@ -236,36 +349,53 @@ class MedicationPackageContent(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(MedicationPackageContent, self).elementProperties()
-        js.extend([
-            ("amount", "amount", quantity.Quantity, "Quantity", False, None, False),
-            ("itemCodeableConcept", "itemCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "item", True),
-            ("itemReference", "itemReference", fhirreference.FHIRReference, "Reference", False, "item", True),
-        ])
+        js.extend(
+            [
+                ("amount", "amount", quantity.Quantity, "Quantity", False, None, False),
+                (
+                    "itemCodeableConcept",
+                    "itemCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "item",
+                    True,
+                ),
+                (
+                    "itemReference",
+                    "itemReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "item",
+                    True,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import attachment
 except ImportError:
-    attachment = sys.modules[__package__ + '.attachment']
+    attachment = sys.modules[__package__ + ".attachment"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import quantity
 except ImportError:
-    quantity = sys.modules[__package__ + '.quantity']
+    quantity = sys.modules[__package__ + ".quantity"]
 try:
     from . import ratio
 except ImportError:
-    ratio = sys.modules[__package__ + '.ratio']
+    ratio = sys.modules[__package__ + ".ratio"]

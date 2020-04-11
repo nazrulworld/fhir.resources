@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class RequestGroup(domainresource.DomainResource):
     """ A group of related requests.
@@ -105,30 +108,142 @@ class RequestGroup(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(RequestGroup, self).elementProperties()
-        js.extend([
-            ("action", "action", RequestGroupAction, "RequestGroupAction", True, None, False),
-            ("author", "author", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("authoredOn", "authoredOn", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("basedOn", "basedOn", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("encounter", "encounter", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("groupIdentifier", "groupIdentifier", identifier.Identifier, "Identifier", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("instantiatesCanonical", "instantiatesCanonical", str, "canonical", True, None, False),
-            ("instantiatesUri", "instantiatesUri", str, "uri", True, None, False),
-            ("intent", "intent", str, "code", False, None, True),
-            ("note", "note", annotation.Annotation, "Annotation", True, None, False),
-            ("priority", "priority", str, "code", False, None, False),
-            ("reasonCode", "reasonCode", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("reasonReference", "reasonReference", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("replaces", "replaces", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("subject", "subject", fhirreference.FHIRReference, "Reference", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "action",
+                    "action",
+                    RequestGroupAction,
+                    "RequestGroupAction",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "author",
+                    "author",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "authoredOn",
+                    "authoredOn",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "basedOn",
+                    "basedOn",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "encounter",
+                    "encounter",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "groupIdentifier",
+                    "groupIdentifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "instantiatesCanonical",
+                    "instantiatesCanonical",
+                    str,
+                    "canonical",
+                    True,
+                    None,
+                    False,
+                ),
+                ("instantiatesUri", "instantiatesUri", str, "uri", True, None, False),
+                ("intent", "intent", str, "code", False, None, True),
+                (
+                    "note",
+                    "note",
+                    annotation.Annotation,
+                    "Annotation",
+                    True,
+                    None,
+                    False,
+                ),
+                ("priority", "priority", str, "code", False, None, False),
+                (
+                    "reasonCode",
+                    "reasonCode",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "reasonReference",
+                    "reasonReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "replaces",
+                    "replaces",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, True),
+                (
+                    "subject",
+                    "subject",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class RequestGroupAction(backboneelement.BackboneElement):
     """ Proposed actions, if any.
@@ -247,32 +362,178 @@ class RequestGroupAction(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(RequestGroupAction, self).elementProperties()
-        js.extend([
-            ("action", "action", RequestGroupAction, "RequestGroupAction", True, None, False),
-            ("cardinalityBehavior", "cardinalityBehavior", str, "code", False, None, False),
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("condition", "condition", RequestGroupActionCondition, "RequestGroupActionCondition", True, None, False),
-            ("description", "description", str, "string", False, None, False),
-            ("documentation", "documentation", relatedartifact.RelatedArtifact, "RelatedArtifact", True, None, False),
-            ("groupingBehavior", "groupingBehavior", str, "code", False, None, False),
-            ("participant", "participant", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("precheckBehavior", "precheckBehavior", str, "code", False, None, False),
-            ("prefix", "prefix", str, "string", False, None, False),
-            ("priority", "priority", str, "code", False, None, False),
-            ("relatedAction", "relatedAction", RequestGroupActionRelatedAction, "RequestGroupActionRelatedAction", True, None, False),
-            ("requiredBehavior", "requiredBehavior", str, "code", False, None, False),
-            ("resource", "resource", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("selectionBehavior", "selectionBehavior", str, "code", False, None, False),
-            ("textEquivalent", "textEquivalent", str, "string", False, None, False),
-            ("timingAge", "timingAge", age.Age, "Age", False, "timing", False),
-            ("timingDateTime", "timingDateTime", fhirdate.FHIRDate, "dateTime", False, "timing", False),
-            ("timingDuration", "timingDuration", duration.Duration, "Duration", False, "timing", False),
-            ("timingPeriod", "timingPeriod", period.Period, "Period", False, "timing", False),
-            ("timingRange", "timingRange", range.Range, "Range", False, "timing", False),
-            ("timingTiming", "timingTiming", timing.Timing, "Timing", False, "timing", False),
-            ("title", "title", str, "string", False, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "action",
+                    "action",
+                    RequestGroupAction,
+                    "RequestGroupAction",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "cardinalityBehavior",
+                    "cardinalityBehavior",
+                    str,
+                    "code",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "condition",
+                    "condition",
+                    RequestGroupActionCondition,
+                    "RequestGroupActionCondition",
+                    True,
+                    None,
+                    False,
+                ),
+                ("description", "description", str, "string", False, None, False),
+                (
+                    "documentation",
+                    "documentation",
+                    relatedartifact.RelatedArtifact,
+                    "RelatedArtifact",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "groupingBehavior",
+                    "groupingBehavior",
+                    str,
+                    "code",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "participant",
+                    "participant",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "precheckBehavior",
+                    "precheckBehavior",
+                    str,
+                    "code",
+                    False,
+                    None,
+                    False,
+                ),
+                ("prefix", "prefix", str, "string", False, None, False),
+                ("priority", "priority", str, "code", False, None, False),
+                (
+                    "relatedAction",
+                    "relatedAction",
+                    RequestGroupActionRelatedAction,
+                    "RequestGroupActionRelatedAction",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "requiredBehavior",
+                    "requiredBehavior",
+                    str,
+                    "code",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "resource",
+                    "resource",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "selectionBehavior",
+                    "selectionBehavior",
+                    str,
+                    "code",
+                    False,
+                    None,
+                    False,
+                ),
+                ("textEquivalent", "textEquivalent", str, "string", False, None, False),
+                ("timingAge", "timingAge", age.Age, "Age", False, "timing", False),
+                (
+                    "timingDateTime",
+                    "timingDateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    "timing",
+                    False,
+                ),
+                (
+                    "timingDuration",
+                    "timingDuration",
+                    duration.Duration,
+                    "Duration",
+                    False,
+                    "timing",
+                    False,
+                ),
+                (
+                    "timingPeriod",
+                    "timingPeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "timing",
+                    False,
+                ),
+                (
+                    "timingRange",
+                    "timingRange",
+                    range.Range,
+                    "Range",
+                    False,
+                    "timing",
+                    False,
+                ),
+                (
+                    "timingTiming",
+                    "timingTiming",
+                    timing.Timing,
+                    "Timing",
+                    False,
+                    "timing",
+                    False,
+                ),
+                ("title", "title", str, "string", False, None, False),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -301,14 +562,26 @@ class RequestGroupActionCondition(backboneelement.BackboneElement):
         """ applicability | start | stop.
         Type `str`. """
 
-        super(RequestGroupActionCondition, self).__init__(jsondict=jsondict, strict=strict)
+        super(RequestGroupActionCondition, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(RequestGroupActionCondition, self).elementProperties()
-        js.extend([
-            ("expression", "expression", expression.Expression, "Expression", False, None, False),
-            ("kind", "kind", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "expression",
+                    "expression",
+                    expression.Expression,
+                    "Expression",
+                    False,
+                    None,
+                    False,
+                ),
+                ("kind", "kind", str, "code", False, None, True),
+            ]
+        )
         return js
 
 
@@ -346,65 +619,84 @@ class RequestGroupActionRelatedAction(backboneelement.BackboneElement):
         concurrent | concurrent-with-end | after-start | after | after-end.
         Type `str`. """
 
-        super(RequestGroupActionRelatedAction, self).__init__(jsondict=jsondict, strict=strict)
+        super(RequestGroupActionRelatedAction, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(RequestGroupActionRelatedAction, self).elementProperties()
-        js.extend([
-            ("actionId", "actionId", str, "id", False, None, True),
-            ("offsetDuration", "offsetDuration", duration.Duration, "Duration", False, "offset", False),
-            ("offsetRange", "offsetRange", range.Range, "Range", False, "offset", False),
-            ("relationship", "relationship", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                ("actionId", "actionId", str, "id", False, None, True),
+                (
+                    "offsetDuration",
+                    "offsetDuration",
+                    duration.Duration,
+                    "Duration",
+                    False,
+                    "offset",
+                    False,
+                ),
+                (
+                    "offsetRange",
+                    "offsetRange",
+                    range.Range,
+                    "Range",
+                    False,
+                    "offset",
+                    False,
+                ),
+                ("relationship", "relationship", str, "code", False, None, True),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import age
 except ImportError:
-    age = sys.modules[__package__ + '.age']
+    age = sys.modules[__package__ + ".age"]
 try:
     from . import annotation
 except ImportError:
-    annotation = sys.modules[__package__ + '.annotation']
+    annotation = sys.modules[__package__ + ".annotation"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import duration
 except ImportError:
-    duration = sys.modules[__package__ + '.duration']
+    duration = sys.modules[__package__ + ".duration"]
 try:
     from . import expression
 except ImportError:
-    expression = sys.modules[__package__ + '.expression']
+    expression = sys.modules[__package__ + ".expression"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]
 try:
     from . import range
 except ImportError:
-    range = sys.modules[__package__ + '.range']
+    range = sys.modules[__package__ + ".range"]
 try:
     from . import relatedartifact
 except ImportError:
-    relatedartifact = sys.modules[__package__ + '.relatedartifact']
+    relatedartifact = sys.modules[__package__ + ".relatedartifact"]
 try:
     from . import timing
 except ImportError:
-    timing = sys.modules[__package__ + '.timing']
+    timing = sys.modules[__package__ + ".timing"]

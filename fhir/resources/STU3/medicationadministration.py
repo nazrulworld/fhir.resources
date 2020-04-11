@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class MedicationAdministration(domainresource.DomainResource):
     """ Administration of medication to a patient.
@@ -124,34 +127,194 @@ class MedicationAdministration(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(MedicationAdministration, self).elementProperties()
-        js.extend([
-            ("category", "category", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("context", "context", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("definition", "definition", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("device", "device", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("dosage", "dosage", MedicationAdministrationDosage, "MedicationAdministrationDosage", False, None, False),
-            ("effectiveDateTime", "effectiveDateTime", fhirdate.FHIRDate, "dateTime", False, "effective", True),
-            ("effectivePeriod", "effectivePeriod", period.Period, "Period", False, "effective", True),
-            ("eventHistory", "eventHistory", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("medicationCodeableConcept", "medicationCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "medication", True),
-            ("medicationReference", "medicationReference", fhirreference.FHIRReference, "Reference", False, "medication", True),
-            ("notGiven", "notGiven", bool, "boolean", False, None, False),
-            ("note", "note", annotation.Annotation, "Annotation", True, None, False),
-            ("partOf", "partOf", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("performer", "performer", MedicationAdministrationPerformer, "MedicationAdministrationPerformer", True, None, False),
-            ("prescription", "prescription", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("reasonCode", "reasonCode", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("reasonNotGiven", "reasonNotGiven", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("reasonReference", "reasonReference", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("subject", "subject", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("supportingInformation", "supportingInformation", fhirreference.FHIRReference, "Reference", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "category",
+                    "category",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "context",
+                    "context",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "definition",
+                    "definition",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "device",
+                    "device",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "dosage",
+                    "dosage",
+                    MedicationAdministrationDosage,
+                    "MedicationAdministrationDosage",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "effectiveDateTime",
+                    "effectiveDateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    "effective",
+                    True,
+                ),
+                (
+                    "effectivePeriod",
+                    "effectivePeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "effective",
+                    True,
+                ),
+                (
+                    "eventHistory",
+                    "eventHistory",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "medicationCodeableConcept",
+                    "medicationCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "medication",
+                    True,
+                ),
+                (
+                    "medicationReference",
+                    "medicationReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "medication",
+                    True,
+                ),
+                ("notGiven", "notGiven", bool, "boolean", False, None, False),
+                (
+                    "note",
+                    "note",
+                    annotation.Annotation,
+                    "Annotation",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "partOf",
+                    "partOf",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "performer",
+                    "performer",
+                    MedicationAdministrationPerformer,
+                    "MedicationAdministrationPerformer",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "prescription",
+                    "prescription",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "reasonCode",
+                    "reasonCode",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "reasonNotGiven",
+                    "reasonNotGiven",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "reasonReference",
+                    "reasonReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, True),
+                (
+                    "subject",
+                    "subject",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "supportingInformation",
+                    "supportingInformation",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class MedicationAdministrationDosage(backboneelement.BackboneElement):
     """ Details of how medication was taken.
@@ -198,19 +361,55 @@ class MedicationAdministrationDosage(backboneelement.BackboneElement):
         """ Free text dosage instructions e.g. SIG.
         Type `str`. """
 
-        super(MedicationAdministrationDosage, self).__init__(jsondict=jsondict, strict=strict)
+        super(MedicationAdministrationDosage, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(MedicationAdministrationDosage, self).elementProperties()
-        js.extend([
-            ("dose", "dose", quantity.Quantity, "Quantity", False, None, False),
-            ("method", "method", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("rateQuantity", "rateQuantity", quantity.Quantity, "Quantity", False, "rate", False),
-            ("rateRatio", "rateRatio", ratio.Ratio, "Ratio", False, "rate", False),
-            ("route", "route", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("site", "site", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("text", "text", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                ("dose", "dose", quantity.Quantity, "Quantity", False, None, False),
+                (
+                    "method",
+                    "method",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "rateQuantity",
+                    "rateQuantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    "rate",
+                    False,
+                ),
+                ("rateRatio", "rateRatio", ratio.Ratio, "Ratio", False, "rate", False),
+                (
+                    "route",
+                    "route",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "site",
+                    "site",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("text", "text", str, "string", False, None, False),
+            ]
+        )
         return js
 
 
@@ -239,47 +438,66 @@ class MedicationAdministrationPerformer(backboneelement.BackboneElement):
         """ Organization organization was acting for.
         Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
-        super(MedicationAdministrationPerformer, self).__init__(jsondict=jsondict, strict=strict)
+        super(MedicationAdministrationPerformer, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(MedicationAdministrationPerformer, self).elementProperties()
-        js.extend([
-            ("actor", "actor", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("onBehalfOf", "onBehalfOf", fhirreference.FHIRReference, "Reference", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "actor",
+                    "actor",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "onBehalfOf",
+                    "onBehalfOf",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import annotation
 except ImportError:
-    annotation = sys.modules[__package__ + '.annotation']
+    annotation = sys.modules[__package__ + ".annotation"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]
 try:
     from . import quantity
 except ImportError:
-    quantity = sys.modules[__package__ + '.quantity']
+    quantity = sys.modules[__package__ + ".quantity"]
 try:
     from . import ratio
 except ImportError:
-    ratio = sys.modules[__package__ + '.ratio']
+    ratio = sys.modules[__package__ + ".ratio"]

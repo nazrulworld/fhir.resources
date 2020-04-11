@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class MedicinalProductPharmaceutical(domainresource.DomainResource):
     """ A pharmaceutical product described in terms of its composition and dose
@@ -54,23 +57,81 @@ class MedicinalProductPharmaceutical(domainresource.DomainResource):
         """ Todo.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(MedicinalProductPharmaceutical, self).__init__(jsondict=jsondict, strict=strict)
+        super(MedicinalProductPharmaceutical, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(MedicinalProductPharmaceutical, self).elementProperties()
-        js.extend([
-            ("administrableDoseForm", "administrableDoseForm", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("characteristics", "characteristics", MedicinalProductPharmaceuticalCharacteristics, "MedicinalProductPharmaceuticalCharacteristics", True, None, False),
-            ("device", "device", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("ingredient", "ingredient", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("routeOfAdministration", "routeOfAdministration", MedicinalProductPharmaceuticalRouteOfAdministration, "MedicinalProductPharmaceuticalRouteOfAdministration", True, None, True),
-            ("unitOfPresentation", "unitOfPresentation", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "administrableDoseForm",
+                    "administrableDoseForm",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "characteristics",
+                    "characteristics",
+                    MedicinalProductPharmaceuticalCharacteristics,
+                    "MedicinalProductPharmaceuticalCharacteristics",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "device",
+                    "device",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "ingredient",
+                    "ingredient",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "routeOfAdministration",
+                    "routeOfAdministration",
+                    MedicinalProductPharmaceuticalRouteOfAdministration,
+                    "MedicinalProductPharmaceuticalRouteOfAdministration",
+                    True,
+                    None,
+                    True,
+                ),
+                (
+                    "unitOfPresentation",
+                    "unitOfPresentation",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class MedicinalProductPharmaceuticalCharacteristics(backboneelement.BackboneElement):
     """ Characteristics e.g. a products onset of action.
@@ -94,18 +155,42 @@ class MedicinalProductPharmaceuticalCharacteristics(backboneelement.BackboneElem
         """ The status of characteristic e.g. assigned or pending.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(MedicinalProductPharmaceuticalCharacteristics, self).__init__(jsondict=jsondict, strict=strict)
+        super(MedicinalProductPharmaceuticalCharacteristics, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
-        js = super(MedicinalProductPharmaceuticalCharacteristics, self).elementProperties()
-        js.extend([
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("status", "status", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js = super(
+            MedicinalProductPharmaceuticalCharacteristics, self
+        ).elementProperties()
+        js.extend(
+            [
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "status",
+                    "status",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-class MedicinalProductPharmaceuticalRouteOfAdministration(backboneelement.BackboneElement):
+class MedicinalProductPharmaceuticalRouteOfAdministration(
+    backboneelement.BackboneElement
+):
     """ The path by which the pharmaceutical product is taken into or makes contact
     with the body.
     """
@@ -157,23 +242,87 @@ class MedicinalProductPharmaceuticalRouteOfAdministration(backboneelement.Backbo
         """ A species for which this route applies.
         List of `MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies` items (represented as `dict` in JSON). """
 
-        super(MedicinalProductPharmaceuticalRouteOfAdministration, self).__init__(jsondict=jsondict, strict=strict)
+        super(MedicinalProductPharmaceuticalRouteOfAdministration, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
-        js = super(MedicinalProductPharmaceuticalRouteOfAdministration, self).elementProperties()
-        js.extend([
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("firstDose", "firstDose", quantity.Quantity, "Quantity", False, None, False),
-            ("maxDosePerDay", "maxDosePerDay", quantity.Quantity, "Quantity", False, None, False),
-            ("maxDosePerTreatmentPeriod", "maxDosePerTreatmentPeriod", ratio.Ratio, "Ratio", False, None, False),
-            ("maxSingleDose", "maxSingleDose", quantity.Quantity, "Quantity", False, None, False),
-            ("maxTreatmentPeriod", "maxTreatmentPeriod", duration.Duration, "Duration", False, None, False),
-            ("targetSpecies", "targetSpecies", MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies, "MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies", True, None, False),
-        ])
+        js = super(
+            MedicinalProductPharmaceuticalRouteOfAdministration, self
+        ).elementProperties()
+        js.extend(
+            [
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "firstDose",
+                    "firstDose",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "maxDosePerDay",
+                    "maxDosePerDay",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "maxDosePerTreatmentPeriod",
+                    "maxDosePerTreatmentPeriod",
+                    ratio.Ratio,
+                    "Ratio",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "maxSingleDose",
+                    "maxSingleDose",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "maxTreatmentPeriod",
+                    "maxTreatmentPeriod",
+                    duration.Duration,
+                    "Duration",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "targetSpecies",
+                    "targetSpecies",
+                    MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies,
+                    "MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies(backboneelement.BackboneElement):
+class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies(
+    backboneelement.BackboneElement
+):
     """ A species for which this route applies.
     """
 
@@ -196,18 +345,42 @@ class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies(backbonee
         is not appropriate.
         List of `MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod` items (represented as `dict` in JSON). """
 
-        super(MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies, self).__init__(jsondict=jsondict, strict=strict)
+        super(
+            MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies, self
+        ).__init__(jsondict=jsondict, strict=strict)
 
     def elementProperties(self):
-        js = super(MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies, self).elementProperties()
-        js.extend([
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("withdrawalPeriod", "withdrawalPeriod", MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod, "MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod", True, None, False),
-        ])
+        js = super(
+            MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies, self
+        ).elementProperties()
+        js.extend(
+            [
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "withdrawalPeriod",
+                    "withdrawalPeriod",
+                    MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod,
+                    "MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod(backboneelement.BackboneElement):
+class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod(
+    backboneelement.BackboneElement
+):
     """ A species specific time during which consumption of animal product is not
     appropriate.
     """
@@ -235,40 +408,63 @@ class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawal
         """ A value for the time.
         Type `Quantity` (represented as `dict` in JSON). """
 
-        super(MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod, self).__init__(jsondict=jsondict, strict=strict)
+        super(
+            MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod,
+            self,
+        ).__init__(jsondict=jsondict, strict=strict)
 
     def elementProperties(self):
-        js = super(MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod, self).elementProperties()
-        js.extend([
-            ("supportingInformation", "supportingInformation", str, "string", False, None, False),
-            ("tissue", "tissue", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("value", "value", quantity.Quantity, "Quantity", False, None, True),
-        ])
+        js = super(
+            MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod,
+            self,
+        ).elementProperties()
+        js.extend(
+            [
+                (
+                    "supportingInformation",
+                    "supportingInformation",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "tissue",
+                    "tissue",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                ("value", "value", quantity.Quantity, "Quantity", False, None, True),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import duration
 except ImportError:
-    duration = sys.modules[__package__ + '.duration']
+    duration = sys.modules[__package__ + ".duration"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import quantity
 except ImportError:
-    quantity = sys.modules[__package__ + '.quantity']
+    quantity = sys.modules[__package__ + ".quantity"]
 try:
     from . import ratio
 except ImportError:
-    ratio = sys.modules[__package__ + '.ratio']
+    ratio = sys.modules[__package__ + ".ratio"]

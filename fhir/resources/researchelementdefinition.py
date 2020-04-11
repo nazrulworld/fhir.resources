@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class ResearchElementDefinition(domainresource.DomainResource):
     """ A population, intervention, or exposure definition.
@@ -168,50 +171,180 @@ class ResearchElementDefinition(domainresource.DomainResource):
         """ Business version of the research element definition.
         Type `str`. """
 
-        super(ResearchElementDefinition, self).__init__(jsondict=jsondict, strict=strict)
+        super(ResearchElementDefinition, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ResearchElementDefinition, self).elementProperties()
-        js.extend([
-            ("approvalDate", "approvalDate", fhirdate.FHIRDate, "date", False, None, False),
-            ("author", "author", contactdetail.ContactDetail, "ContactDetail", True, None, False),
-            ("characteristic", "characteristic", ResearchElementDefinitionCharacteristic, "ResearchElementDefinitionCharacteristic", True, None, True),
-            ("comment", "comment", str, "string", True, None, False),
-            ("contact", "contact", contactdetail.ContactDetail, "ContactDetail", True, None, False),
-            ("copyright", "copyright", str, "markdown", False, None, False),
-            ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("description", "description", str, "markdown", False, None, False),
-            ("editor", "editor", contactdetail.ContactDetail, "ContactDetail", True, None, False),
-            ("effectivePeriod", "effectivePeriod", period.Period, "Period", False, None, False),
-            ("endorser", "endorser", contactdetail.ContactDetail, "ContactDetail", True, None, False),
-            ("experimental", "experimental", bool, "boolean", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("jurisdiction", "jurisdiction", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("lastReviewDate", "lastReviewDate", fhirdate.FHIRDate, "date", False, None, False),
-            ("library", "library", str, "canonical", True, None, False),
-            ("name", "name", str, "string", False, None, False),
-            ("publisher", "publisher", str, "string", False, None, False),
-            ("purpose", "purpose", str, "markdown", False, None, False),
-            ("relatedArtifact", "relatedArtifact", relatedartifact.RelatedArtifact, "RelatedArtifact", True, None, False),
-            ("reviewer", "reviewer", contactdetail.ContactDetail, "ContactDetail", True, None, False),
-            ("shortTitle", "shortTitle", str, "string", False, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("subjectCodeableConcept", "subjectCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "subject", False),
-            ("subjectReference", "subjectReference", fhirreference.FHIRReference, "Reference", False, "subject", False),
-            ("subtitle", "subtitle", str, "string", False, None, False),
-            ("title", "title", str, "string", False, None, False),
-            ("topic", "topic", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("type", "type", str, "code", False, None, True),
-            ("url", "url", str, "uri", False, None, False),
-            ("usage", "usage", str, "string", False, None, False),
-            ("useContext", "useContext", usagecontext.UsageContext, "UsageContext", True, None, False),
-            ("variableType", "variableType", str, "code", False, None, False),
-            ("version", "version", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "approvalDate",
+                    "approvalDate",
+                    fhirdate.FHIRDate,
+                    "date",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "author",
+                    "author",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "characteristic",
+                    "characteristic",
+                    ResearchElementDefinitionCharacteristic,
+                    "ResearchElementDefinitionCharacteristic",
+                    True,
+                    None,
+                    True,
+                ),
+                ("comment", "comment", str, "string", True, None, False),
+                (
+                    "contact",
+                    "contact",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                ("copyright", "copyright", str, "markdown", False, None, False),
+                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
+                ("description", "description", str, "markdown", False, None, False),
+                (
+                    "editor",
+                    "editor",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "effectivePeriod",
+                    "effectivePeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "endorser",
+                    "endorser",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                ("experimental", "experimental", bool, "boolean", False, None, False),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "jurisdiction",
+                    "jurisdiction",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "lastReviewDate",
+                    "lastReviewDate",
+                    fhirdate.FHIRDate,
+                    "date",
+                    False,
+                    None,
+                    False,
+                ),
+                ("library", "library", str, "canonical", True, None, False),
+                ("name", "name", str, "string", False, None, False),
+                ("publisher", "publisher", str, "string", False, None, False),
+                ("purpose", "purpose", str, "markdown", False, None, False),
+                (
+                    "relatedArtifact",
+                    "relatedArtifact",
+                    relatedartifact.RelatedArtifact,
+                    "RelatedArtifact",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "reviewer",
+                    "reviewer",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                ("shortTitle", "shortTitle", str, "string", False, None, False),
+                ("status", "status", str, "code", False, None, True),
+                (
+                    "subjectCodeableConcept",
+                    "subjectCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "subject",
+                    False,
+                ),
+                (
+                    "subjectReference",
+                    "subjectReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "subject",
+                    False,
+                ),
+                ("subtitle", "subtitle", str, "string", False, None, False),
+                ("title", "title", str, "string", False, None, False),
+                (
+                    "topic",
+                    "topic",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                ("type", "type", str, "code", False, None, True),
+                ("url", "url", str, "uri", False, None, False),
+                ("usage", "usage", str, "string", False, None, False),
+                (
+                    "useContext",
+                    "useContext",
+                    usagecontext.UsageContext,
+                    "UsageContext",
+                    True,
+                    None,
+                    False,
+                ),
+                ("variableType", "variableType", str, "code", False, None, False),
+                ("version", "version", str, "string", False, None, False),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
     """ What defines the members of the research element.
@@ -316,82 +449,245 @@ class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
         """ What code/value pairs define members?.
         List of `UsageContext` items (represented as `dict` in JSON). """
 
-        super(ResearchElementDefinitionCharacteristic, self).__init__(jsondict=jsondict, strict=strict)
+        super(ResearchElementDefinitionCharacteristic, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ResearchElementDefinitionCharacteristic, self).elementProperties()
-        js.extend([
-            ("definitionCanonical", "definitionCanonical", str, "canonical", False, "definition", True),
-            ("definitionCodeableConcept", "definitionCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "definition", True),
-            ("definitionDataRequirement", "definitionDataRequirement", datarequirement.DataRequirement, "DataRequirement", False, "definition", True),
-            ("definitionExpression", "definitionExpression", expression.Expression, "Expression", False, "definition", True),
-            ("exclude", "exclude", bool, "boolean", False, None, False),
-            ("participantEffectiveDateTime", "participantEffectiveDateTime", fhirdate.FHIRDate, "dateTime", False, "participantEffective", False),
-            ("participantEffectiveDescription", "participantEffectiveDescription", str, "string", False, None, False),
-            ("participantEffectiveDuration", "participantEffectiveDuration", duration.Duration, "Duration", False, "participantEffective", False),
-            ("participantEffectiveGroupMeasure", "participantEffectiveGroupMeasure", str, "code", False, None, False),
-            ("participantEffectivePeriod", "participantEffectivePeriod", period.Period, "Period", False, "participantEffective", False),
-            ("participantEffectiveTimeFromStart", "participantEffectiveTimeFromStart", duration.Duration, "Duration", False, None, False),
-            ("participantEffectiveTiming", "participantEffectiveTiming", timing.Timing, "Timing", False, "participantEffective", False),
-            ("studyEffectiveDateTime", "studyEffectiveDateTime", fhirdate.FHIRDate, "dateTime", False, "studyEffective", False),
-            ("studyEffectiveDescription", "studyEffectiveDescription", str, "string", False, None, False),
-            ("studyEffectiveDuration", "studyEffectiveDuration", duration.Duration, "Duration", False, "studyEffective", False),
-            ("studyEffectiveGroupMeasure", "studyEffectiveGroupMeasure", str, "code", False, None, False),
-            ("studyEffectivePeriod", "studyEffectivePeriod", period.Period, "Period", False, "studyEffective", False),
-            ("studyEffectiveTimeFromStart", "studyEffectiveTimeFromStart", duration.Duration, "Duration", False, None, False),
-            ("studyEffectiveTiming", "studyEffectiveTiming", timing.Timing, "Timing", False, "studyEffective", False),
-            ("unitOfMeasure", "unitOfMeasure", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("usageContext", "usageContext", usagecontext.UsageContext, "UsageContext", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "definitionCanonical",
+                    "definitionCanonical",
+                    str,
+                    "canonical",
+                    False,
+                    "definition",
+                    True,
+                ),
+                (
+                    "definitionCodeableConcept",
+                    "definitionCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "definition",
+                    True,
+                ),
+                (
+                    "definitionDataRequirement",
+                    "definitionDataRequirement",
+                    datarequirement.DataRequirement,
+                    "DataRequirement",
+                    False,
+                    "definition",
+                    True,
+                ),
+                (
+                    "definitionExpression",
+                    "definitionExpression",
+                    expression.Expression,
+                    "Expression",
+                    False,
+                    "definition",
+                    True,
+                ),
+                ("exclude", "exclude", bool, "boolean", False, None, False),
+                (
+                    "participantEffectiveDateTime",
+                    "participantEffectiveDateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    "participantEffective",
+                    False,
+                ),
+                (
+                    "participantEffectiveDescription",
+                    "participantEffectiveDescription",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "participantEffectiveDuration",
+                    "participantEffectiveDuration",
+                    duration.Duration,
+                    "Duration",
+                    False,
+                    "participantEffective",
+                    False,
+                ),
+                (
+                    "participantEffectiveGroupMeasure",
+                    "participantEffectiveGroupMeasure",
+                    str,
+                    "code",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "participantEffectivePeriod",
+                    "participantEffectivePeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "participantEffective",
+                    False,
+                ),
+                (
+                    "participantEffectiveTimeFromStart",
+                    "participantEffectiveTimeFromStart",
+                    duration.Duration,
+                    "Duration",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "participantEffectiveTiming",
+                    "participantEffectiveTiming",
+                    timing.Timing,
+                    "Timing",
+                    False,
+                    "participantEffective",
+                    False,
+                ),
+                (
+                    "studyEffectiveDateTime",
+                    "studyEffectiveDateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    "studyEffective",
+                    False,
+                ),
+                (
+                    "studyEffectiveDescription",
+                    "studyEffectiveDescription",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "studyEffectiveDuration",
+                    "studyEffectiveDuration",
+                    duration.Duration,
+                    "Duration",
+                    False,
+                    "studyEffective",
+                    False,
+                ),
+                (
+                    "studyEffectiveGroupMeasure",
+                    "studyEffectiveGroupMeasure",
+                    str,
+                    "code",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "studyEffectivePeriod",
+                    "studyEffectivePeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "studyEffective",
+                    False,
+                ),
+                (
+                    "studyEffectiveTimeFromStart",
+                    "studyEffectiveTimeFromStart",
+                    duration.Duration,
+                    "Duration",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "studyEffectiveTiming",
+                    "studyEffectiveTiming",
+                    timing.Timing,
+                    "Timing",
+                    False,
+                    "studyEffective",
+                    False,
+                ),
+                (
+                    "unitOfMeasure",
+                    "unitOfMeasure",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "usageContext",
+                    "usageContext",
+                    usagecontext.UsageContext,
+                    "UsageContext",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import contactdetail
 except ImportError:
-    contactdetail = sys.modules[__package__ + '.contactdetail']
+    contactdetail = sys.modules[__package__ + ".contactdetail"]
 try:
     from . import datarequirement
 except ImportError:
-    datarequirement = sys.modules[__package__ + '.datarequirement']
+    datarequirement = sys.modules[__package__ + ".datarequirement"]
 try:
     from . import duration
 except ImportError:
-    duration = sys.modules[__package__ + '.duration']
+    duration = sys.modules[__package__ + ".duration"]
 try:
     from . import expression
 except ImportError:
-    expression = sys.modules[__package__ + '.expression']
+    expression = sys.modules[__package__ + ".expression"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]
 try:
     from . import relatedartifact
 except ImportError:
-    relatedartifact = sys.modules[__package__ + '.relatedartifact']
+    relatedartifact = sys.modules[__package__ + ".relatedartifact"]
 try:
     from . import timing
 except ImportError:
-    timing = sys.modules[__package__ + '.timing']
+    timing = sys.modules[__package__ + ".timing"]
 try:
     from . import usagecontext
 except ImportError:
-    usagecontext = sys.modules[__package__ + '.usagecontext']
+    usagecontext = sys.modules[__package__ + ".usagecontext"]

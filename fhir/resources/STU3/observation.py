@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class Observation(domainresource.DomainResource):
     """ Measurements and simple assertions.
@@ -159,44 +162,268 @@ class Observation(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(Observation, self).elementProperties()
-        js.extend([
-            ("basedOn", "basedOn", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("bodySite", "bodySite", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("category", "category", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("comment", "comment", str, "string", False, None, False),
-            ("component", "component", ObservationComponent, "ObservationComponent", True, None, False),
-            ("context", "context", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("dataAbsentReason", "dataAbsentReason", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("device", "device", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("effectiveDateTime", "effectiveDateTime", fhirdate.FHIRDate, "dateTime", False, "effective", False),
-            ("effectivePeriod", "effectivePeriod", period.Period, "Period", False, "effective", False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("interpretation", "interpretation", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("issued", "issued", fhirdate.FHIRDate, "instant", False, None, False),
-            ("method", "method", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("performer", "performer", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("referenceRange", "referenceRange", ObservationReferenceRange, "ObservationReferenceRange", True, None, False),
-            ("related", "related", ObservationRelated, "ObservationRelated", True, None, False),
-            ("specimen", "specimen", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("subject", "subject", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("valueAttachment", "valueAttachment", attachment.Attachment, "Attachment", False, "value", False),
-            ("valueBoolean", "valueBoolean", bool, "boolean", False, "value", False),
-            ("valueCodeableConcept", "valueCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "value", False),
-            ("valueDateTime", "valueDateTime", fhirdate.FHIRDate, "dateTime", False, "value", False),
-            ("valuePeriod", "valuePeriod", period.Period, "Period", False, "value", False),
-            ("valueQuantity", "valueQuantity", quantity.Quantity, "Quantity", False, "value", False),
-            ("valueRange", "valueRange", range.Range, "Range", False, "value", False),
-            ("valueRatio", "valueRatio", ratio.Ratio, "Ratio", False, "value", False),
-            ("valueSampledData", "valueSampledData", sampleddata.SampledData, "SampledData", False, "value", False),
-            ("valueString", "valueString", str, "string", False, "value", False),
-            ("valueTime", "valueTime", fhirdate.FHIRDate, "time", False, "value", False),
-        ])
+        js.extend(
+            [
+                (
+                    "basedOn",
+                    "basedOn",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "bodySite",
+                    "bodySite",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "category",
+                    "category",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                ("comment", "comment", str, "string", False, None, False),
+                (
+                    "component",
+                    "component",
+                    ObservationComponent,
+                    "ObservationComponent",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "context",
+                    "context",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "dataAbsentReason",
+                    "dataAbsentReason",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "device",
+                    "device",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "effectiveDateTime",
+                    "effectiveDateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    "effective",
+                    False,
+                ),
+                (
+                    "effectivePeriod",
+                    "effectivePeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "effective",
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "interpretation",
+                    "interpretation",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("issued", "issued", fhirdate.FHIRDate, "instant", False, None, False),
+                (
+                    "method",
+                    "method",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "performer",
+                    "performer",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "referenceRange",
+                    "referenceRange",
+                    ObservationReferenceRange,
+                    "ObservationReferenceRange",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "related",
+                    "related",
+                    ObservationRelated,
+                    "ObservationRelated",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "specimen",
+                    "specimen",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, True),
+                (
+                    "subject",
+                    "subject",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "valueAttachment",
+                    "valueAttachment",
+                    attachment.Attachment,
+                    "Attachment",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueBoolean",
+                    "valueBoolean",
+                    bool,
+                    "boolean",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueCodeableConcept",
+                    "valueCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueDateTime",
+                    "valueDateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valuePeriod",
+                    "valuePeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueQuantity",
+                    "valueQuantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueRange",
+                    "valueRange",
+                    range.Range,
+                    "Range",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueRatio",
+                    "valueRatio",
+                    ratio.Ratio,
+                    "Ratio",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueSampledData",
+                    "valueSampledData",
+                    sampleddata.SampledData,
+                    "SampledData",
+                    False,
+                    "value",
+                    False,
+                ),
+                ("valueString", "valueString", str, "string", False, "value", False),
+                (
+                    "valueTime",
+                    "valueTime",
+                    fhirdate.FHIRDate,
+                    "time",
+                    False,
+                    "value",
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class ObservationComponent(backboneelement.BackboneElement):
     """ Component results.
@@ -278,22 +505,128 @@ class ObservationComponent(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ObservationComponent, self).elementProperties()
-        js.extend([
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("dataAbsentReason", "dataAbsentReason", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("interpretation", "interpretation", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("referenceRange", "referenceRange", ObservationReferenceRange, "ObservationReferenceRange", True, None, False),
-            ("valueAttachment", "valueAttachment", attachment.Attachment, "Attachment", False, "value", False),
-            ("valueCodeableConcept", "valueCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "value", False),
-            ("valueDateTime", "valueDateTime", fhirdate.FHIRDate, "dateTime", False, "value", False),
-            ("valuePeriod", "valuePeriod", period.Period, "Period", False, "value", False),
-            ("valueQuantity", "valueQuantity", quantity.Quantity, "Quantity", False, "value", False),
-            ("valueRange", "valueRange", range.Range, "Range", False, "value", False),
-            ("valueRatio", "valueRatio", ratio.Ratio, "Ratio", False, "value", False),
-            ("valueSampledData", "valueSampledData", sampleddata.SampledData, "SampledData", False, "value", False),
-            ("valueString", "valueString", str, "string", False, "value", False),
-            ("valueTime", "valueTime", fhirdate.FHIRDate, "time", False, "value", False),
-        ])
+        js.extend(
+            [
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "dataAbsentReason",
+                    "dataAbsentReason",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "interpretation",
+                    "interpretation",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "referenceRange",
+                    "referenceRange",
+                    ObservationReferenceRange,
+                    "ObservationReferenceRange",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "valueAttachment",
+                    "valueAttachment",
+                    attachment.Attachment,
+                    "Attachment",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueCodeableConcept",
+                    "valueCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueDateTime",
+                    "valueDateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valuePeriod",
+                    "valuePeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueQuantity",
+                    "valueQuantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueRange",
+                    "valueRange",
+                    range.Range,
+                    "Range",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueRatio",
+                    "valueRatio",
+                    ratio.Ratio,
+                    "Ratio",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueSampledData",
+                    "valueSampledData",
+                    sampleddata.SampledData,
+                    "SampledData",
+                    False,
+                    "value",
+                    False,
+                ),
+                ("valueString", "valueString", str, "string", False, "value", False),
+                (
+                    "valueTime",
+                    "valueTime",
+                    fhirdate.FHIRDate,
+                    "time",
+                    False,
+                    "value",
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -338,18 +671,38 @@ class ObservationReferenceRange(backboneelement.BackboneElement):
         """ Reference range qualifier.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(ObservationReferenceRange, self).__init__(jsondict=jsondict, strict=strict)
+        super(ObservationReferenceRange, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ObservationReferenceRange, self).elementProperties()
-        js.extend([
-            ("age", "age", range.Range, "Range", False, None, False),
-            ("appliesTo", "appliesTo", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("high", "high", quantity.Quantity, "Quantity", False, None, False),
-            ("low", "low", quantity.Quantity, "Quantity", False, None, False),
-            ("text", "text", str, "string", False, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                ("age", "age", range.Range, "Range", False, None, False),
+                (
+                    "appliesTo",
+                    "appliesTo",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                ("high", "high", quantity.Quantity, "Quantity", False, None, False),
+                ("low", "low", quantity.Quantity, "Quantity", False, None, False),
+                ("text", "text", str, "string", False, None, False),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -383,51 +736,60 @@ class ObservationRelated(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ObservationRelated, self).elementProperties()
-        js.extend([
-            ("target", "target", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("type", "type", str, "code", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "target",
+                    "target",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                ("type", "type", str, "code", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import attachment
 except ImportError:
-    attachment = sys.modules[__package__ + '.attachment']
+    attachment = sys.modules[__package__ + ".attachment"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]
 try:
     from . import quantity
 except ImportError:
-    quantity = sys.modules[__package__ + '.quantity']
+    quantity = sys.modules[__package__ + ".quantity"]
 try:
     from . import range
 except ImportError:
-    range = sys.modules[__package__ + '.range']
+    range = sys.modules[__package__ + ".range"]
 try:
     from . import ratio
 except ImportError:
-    ratio = sys.modules[__package__ + '.ratio']
+    ratio = sys.modules[__package__ + ".ratio"]
 try:
     from . import sampleddata
 except ImportError:
-    sampleddata = sys.modules[__package__ + '.sampleddata']
+    sampleddata = sys.modules[__package__ + ".sampleddata"]

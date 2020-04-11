@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class Practitioner(domainresource.DomainResource):
     """ A person with a  formal responsibility in the provisioning of healthcare or
@@ -73,22 +76,70 @@ class Practitioner(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(Practitioner, self).elementProperties()
-        js.extend([
-            ("active", "active", bool, "boolean", False, None, False),
-            ("address", "address", address.Address, "Address", True, None, False),
-            ("birthDate", "birthDate", fhirdate.FHIRDate, "date", False, None, False),
-            ("communication", "communication", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("gender", "gender", str, "code", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("name", "name", humanname.HumanName, "HumanName", True, None, False),
-            ("photo", "photo", attachment.Attachment, "Attachment", True, None, False),
-            ("qualification", "qualification", PractitionerQualification, "PractitionerQualification", True, None, False),
-            ("telecom", "telecom", contactpoint.ContactPoint, "ContactPoint", True, None, False),
-        ])
+        js.extend(
+            [
+                ("active", "active", bool, "boolean", False, None, False),
+                ("address", "address", address.Address, "Address", True, None, False),
+                (
+                    "birthDate",
+                    "birthDate",
+                    fhirdate.FHIRDate,
+                    "date",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "communication",
+                    "communication",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                ("gender", "gender", str, "code", False, None, False),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                ("name", "name", humanname.HumanName, "HumanName", True, None, False),
+                (
+                    "photo",
+                    "photo",
+                    attachment.Attachment,
+                    "Attachment",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "qualification",
+                    "qualification",
+                    PractitionerQualification,
+                    "PractitionerQualification",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "telecom",
+                    "telecom",
+                    contactpoint.ContactPoint,
+                    "ContactPoint",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class PractitionerQualification(backboneelement.BackboneElement):
     """ Qualifications obtained by training and certification.
@@ -120,53 +171,80 @@ class PractitionerQualification(backboneelement.BackboneElement):
         """ Period during which the qualification is valid.
         Type `Period` (represented as `dict` in JSON). """
 
-        super(PractitionerQualification, self).__init__(jsondict=jsondict, strict=strict)
+        super(PractitionerQualification, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(PractitionerQualification, self).elementProperties()
-        js.extend([
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("issuer", "issuer", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("period", "period", period.Period, "Period", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "issuer",
+                    "issuer",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("period", "period", period.Period, "Period", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import address
 except ImportError:
-    address = sys.modules[__package__ + '.address']
+    address = sys.modules[__package__ + ".address"]
 try:
     from . import attachment
 except ImportError:
-    attachment = sys.modules[__package__ + '.attachment']
+    attachment = sys.modules[__package__ + ".attachment"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import contactpoint
 except ImportError:
-    contactpoint = sys.modules[__package__ + '.contactpoint']
+    contactpoint = sys.modules[__package__ + ".contactpoint"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import humanname
 except ImportError:
-    humanname = sys.modules[__package__ + '.humanname']
+    humanname = sys.modules[__package__ + ".humanname"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]

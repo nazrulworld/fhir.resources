@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class ClaimResponse(domainresource.DomainResource):
     """ Response to a claim predetermination or preauthorization.
@@ -139,39 +142,215 @@ class ClaimResponse(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(ClaimResponse, self).elementProperties()
-        js.extend([
-            ("addItem", "addItem", ClaimResponseAddItem, "ClaimResponseAddItem", True, None, False),
-            ("adjudication", "adjudication", ClaimResponseItemAdjudication, "ClaimResponseItemAdjudication", True, None, False),
-            ("communicationRequest", "communicationRequest", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("created", "created", fhirdate.FHIRDate, "dateTime", False, None, True),
-            ("disposition", "disposition", str, "string", False, None, False),
-            ("error", "error", ClaimResponseError, "ClaimResponseError", True, None, False),
-            ("form", "form", attachment.Attachment, "Attachment", False, None, False),
-            ("formCode", "formCode", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("fundsReserve", "fundsReserve", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("insurance", "insurance", ClaimResponseInsurance, "ClaimResponseInsurance", True, None, False),
-            ("insurer", "insurer", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("item", "item", ClaimResponseItem, "ClaimResponseItem", True, None, False),
-            ("outcome", "outcome", str, "code", False, None, True),
-            ("patient", "patient", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("payeeType", "payeeType", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("payment", "payment", ClaimResponsePayment, "ClaimResponsePayment", False, None, False),
-            ("preAuthPeriod", "preAuthPeriod", period.Period, "Period", False, None, False),
-            ("preAuthRef", "preAuthRef", str, "string", False, None, False),
-            ("processNote", "processNote", ClaimResponseProcessNote, "ClaimResponseProcessNote", True, None, False),
-            ("request", "request", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("requestor", "requestor", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("subType", "subType", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("total", "total", ClaimResponseTotal, "ClaimResponseTotal", True, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("use", "use", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "addItem",
+                    "addItem",
+                    ClaimResponseAddItem,
+                    "ClaimResponseAddItem",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "adjudication",
+                    "adjudication",
+                    ClaimResponseItemAdjudication,
+                    "ClaimResponseItemAdjudication",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "communicationRequest",
+                    "communicationRequest",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "created",
+                    "created",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    True,
+                ),
+                ("disposition", "disposition", str, "string", False, None, False),
+                (
+                    "error",
+                    "error",
+                    ClaimResponseError,
+                    "ClaimResponseError",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "form",
+                    "form",
+                    attachment.Attachment,
+                    "Attachment",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "formCode",
+                    "formCode",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "fundsReserve",
+                    "fundsReserve",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "insurance",
+                    "insurance",
+                    ClaimResponseInsurance,
+                    "ClaimResponseInsurance",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "insurer",
+                    "insurer",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "item",
+                    "item",
+                    ClaimResponseItem,
+                    "ClaimResponseItem",
+                    True,
+                    None,
+                    False,
+                ),
+                ("outcome", "outcome", str, "code", False, None, True),
+                (
+                    "patient",
+                    "patient",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "payeeType",
+                    "payeeType",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "payment",
+                    "payment",
+                    ClaimResponsePayment,
+                    "ClaimResponsePayment",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "preAuthPeriod",
+                    "preAuthPeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    None,
+                    False,
+                ),
+                ("preAuthRef", "preAuthRef", str, "string", False, None, False),
+                (
+                    "processNote",
+                    "processNote",
+                    ClaimResponseProcessNote,
+                    "ClaimResponseProcessNote",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "request",
+                    "request",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "requestor",
+                    "requestor",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, True),
+                (
+                    "subType",
+                    "subType",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "total",
+                    "total",
+                    ClaimResponseTotal,
+                    "ClaimResponseTotal",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                ("use", "use", str, "code", False, None, True),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class ClaimResponseAddItem(backboneelement.BackboneElement):
     """ Insurer added line items.
@@ -278,29 +457,159 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ClaimResponseAddItem, self).elementProperties()
-        js.extend([
-            ("adjudication", "adjudication", ClaimResponseItemAdjudication, "ClaimResponseItemAdjudication", True, None, True),
-            ("bodySite", "bodySite", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("detail", "detail", ClaimResponseAddItemDetail, "ClaimResponseAddItemDetail", True, None, False),
-            ("detailSequence", "detailSequence", int, "positiveInt", True, None, False),
-            ("factor", "factor", float, "decimal", False, None, False),
-            ("itemSequence", "itemSequence", int, "positiveInt", True, None, False),
-            ("locationAddress", "locationAddress", address.Address, "Address", False, "location", False),
-            ("locationCodeableConcept", "locationCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "location", False),
-            ("locationReference", "locationReference", fhirreference.FHIRReference, "Reference", False, "location", False),
-            ("modifier", "modifier", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("net", "net", money.Money, "Money", False, None, False),
-            ("noteNumber", "noteNumber", int, "positiveInt", True, None, False),
-            ("productOrService", "productOrService", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("programCode", "programCode", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("provider", "provider", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("quantity", "quantity", quantity.Quantity, "Quantity", False, None, False),
-            ("servicedDate", "servicedDate", fhirdate.FHIRDate, "date", False, "serviced", False),
-            ("servicedPeriod", "servicedPeriod", period.Period, "Period", False, "serviced", False),
-            ("subSite", "subSite", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("subdetailSequence", "subdetailSequence", int, "positiveInt", True, None, False),
-            ("unitPrice", "unitPrice", money.Money, "Money", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "adjudication",
+                    "adjudication",
+                    ClaimResponseItemAdjudication,
+                    "ClaimResponseItemAdjudication",
+                    True,
+                    None,
+                    True,
+                ),
+                (
+                    "bodySite",
+                    "bodySite",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "detail",
+                    "detail",
+                    ClaimResponseAddItemDetail,
+                    "ClaimResponseAddItemDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "detailSequence",
+                    "detailSequence",
+                    int,
+                    "positiveInt",
+                    True,
+                    None,
+                    False,
+                ),
+                ("factor", "factor", float, "decimal", False, None, False),
+                ("itemSequence", "itemSequence", int, "positiveInt", True, None, False),
+                (
+                    "locationAddress",
+                    "locationAddress",
+                    address.Address,
+                    "Address",
+                    False,
+                    "location",
+                    False,
+                ),
+                (
+                    "locationCodeableConcept",
+                    "locationCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "location",
+                    False,
+                ),
+                (
+                    "locationReference",
+                    "locationReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "location",
+                    False,
+                ),
+                (
+                    "modifier",
+                    "modifier",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                ("net", "net", money.Money, "Money", False, None, False),
+                ("noteNumber", "noteNumber", int, "positiveInt", True, None, False),
+                (
+                    "productOrService",
+                    "productOrService",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "programCode",
+                    "programCode",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "provider",
+                    "provider",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "quantity",
+                    "quantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "servicedDate",
+                    "servicedDate",
+                    fhirdate.FHIRDate,
+                    "date",
+                    False,
+                    "serviced",
+                    False,
+                ),
+                (
+                    "servicedPeriod",
+                    "servicedPeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "serviced",
+                    False,
+                ),
+                (
+                    "subSite",
+                    "subSite",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "subdetailSequence",
+                    "subdetailSequence",
+                    int,
+                    "positiveInt",
+                    True,
+                    None,
+                    False,
+                ),
+                ("unitPrice", "unitPrice", money.Money, "Money", False, None, False),
+            ]
+        )
         return js
 
 
@@ -356,21 +665,65 @@ class ClaimResponseAddItemDetail(backboneelement.BackboneElement):
         """ Fee, charge or cost per item.
         Type `Money` (represented as `dict` in JSON). """
 
-        super(ClaimResponseAddItemDetail, self).__init__(jsondict=jsondict, strict=strict)
+        super(ClaimResponseAddItemDetail, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ClaimResponseAddItemDetail, self).elementProperties()
-        js.extend([
-            ("adjudication", "adjudication", ClaimResponseItemAdjudication, "ClaimResponseItemAdjudication", True, None, True),
-            ("factor", "factor", float, "decimal", False, None, False),
-            ("modifier", "modifier", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("net", "net", money.Money, "Money", False, None, False),
-            ("noteNumber", "noteNumber", int, "positiveInt", True, None, False),
-            ("productOrService", "productOrService", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("quantity", "quantity", quantity.Quantity, "Quantity", False, None, False),
-            ("subDetail", "subDetail", ClaimResponseAddItemDetailSubDetail, "ClaimResponseAddItemDetailSubDetail", True, None, False),
-            ("unitPrice", "unitPrice", money.Money, "Money", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "adjudication",
+                    "adjudication",
+                    ClaimResponseItemAdjudication,
+                    "ClaimResponseItemAdjudication",
+                    True,
+                    None,
+                    True,
+                ),
+                ("factor", "factor", float, "decimal", False, None, False),
+                (
+                    "modifier",
+                    "modifier",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                ("net", "net", money.Money, "Money", False, None, False),
+                ("noteNumber", "noteNumber", int, "positiveInt", True, None, False),
+                (
+                    "productOrService",
+                    "productOrService",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "quantity",
+                    "quantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "subDetail",
+                    "subDetail",
+                    ClaimResponseAddItemDetailSubDetail,
+                    "ClaimResponseAddItemDetailSubDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                ("unitPrice", "unitPrice", money.Money, "Money", False, None, False),
+            ]
+        )
         return js
 
 
@@ -422,20 +775,56 @@ class ClaimResponseAddItemDetailSubDetail(backboneelement.BackboneElement):
         """ Fee, charge or cost per item.
         Type `Money` (represented as `dict` in JSON). """
 
-        super(ClaimResponseAddItemDetailSubDetail, self).__init__(jsondict=jsondict, strict=strict)
+        super(ClaimResponseAddItemDetailSubDetail, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ClaimResponseAddItemDetailSubDetail, self).elementProperties()
-        js.extend([
-            ("adjudication", "adjudication", ClaimResponseItemAdjudication, "ClaimResponseItemAdjudication", True, None, True),
-            ("factor", "factor", float, "decimal", False, None, False),
-            ("modifier", "modifier", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("net", "net", money.Money, "Money", False, None, False),
-            ("noteNumber", "noteNumber", int, "positiveInt", True, None, False),
-            ("productOrService", "productOrService", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("quantity", "quantity", quantity.Quantity, "Quantity", False, None, False),
-            ("unitPrice", "unitPrice", money.Money, "Money", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "adjudication",
+                    "adjudication",
+                    ClaimResponseItemAdjudication,
+                    "ClaimResponseItemAdjudication",
+                    True,
+                    None,
+                    True,
+                ),
+                ("factor", "factor", float, "decimal", False, None, False),
+                (
+                    "modifier",
+                    "modifier",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                ("net", "net", money.Money, "Money", False, None, False),
+                ("noteNumber", "noteNumber", int, "positiveInt", True, None, False),
+                (
+                    "productOrService",
+                    "productOrService",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "quantity",
+                    "quantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    None,
+                    False,
+                ),
+                ("unitPrice", "unitPrice", money.Money, "Money", False, None, False),
+            ]
+        )
         return js
 
 
@@ -475,12 +864,46 @@ class ClaimResponseError(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ClaimResponseError, self).elementProperties()
-        js.extend([
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("detailSequence", "detailSequence", int, "positiveInt", False, None, False),
-            ("itemSequence", "itemSequence", int, "positiveInt", False, None, False),
-            ("subDetailSequence", "subDetailSequence", int, "positiveInt", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "detailSequence",
+                    "detailSequence",
+                    int,
+                    "positiveInt",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "itemSequence",
+                    "itemSequence",
+                    int,
+                    "positiveInt",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "subDetailSequence",
+                    "subDetailSequence",
+                    int,
+                    "positiveInt",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -525,13 +948,39 @@ class ClaimResponseInsurance(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ClaimResponseInsurance, self).elementProperties()
-        js.extend([
-            ("businessArrangement", "businessArrangement", str, "string", False, None, False),
-            ("claimResponse", "claimResponse", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("coverage", "coverage", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("focal", "focal", bool, "boolean", False, None, True),
-            ("sequence", "sequence", int, "positiveInt", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "businessArrangement",
+                    "businessArrangement",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "claimResponse",
+                    "claimResponse",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "coverage",
+                    "coverage",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                ("focal", "focal", bool, "boolean", False, None, True),
+                ("sequence", "sequence", int, "positiveInt", False, None, True),
+            ]
+        )
         return js
 
 
@@ -572,12 +1021,30 @@ class ClaimResponseItem(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ClaimResponseItem, self).elementProperties()
-        js.extend([
-            ("adjudication", "adjudication", ClaimResponseItemAdjudication, "ClaimResponseItemAdjudication", True, None, True),
-            ("detail", "detail", ClaimResponseItemDetail, "ClaimResponseItemDetail", True, None, False),
-            ("itemSequence", "itemSequence", int, "positiveInt", False, None, True),
-            ("noteNumber", "noteNumber", int, "positiveInt", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "adjudication",
+                    "adjudication",
+                    ClaimResponseItemAdjudication,
+                    "ClaimResponseItemAdjudication",
+                    True,
+                    None,
+                    True,
+                ),
+                (
+                    "detail",
+                    "detail",
+                    ClaimResponseItemDetail,
+                    "ClaimResponseItemDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                ("itemSequence", "itemSequence", int, "positiveInt", False, None, True),
+                ("noteNumber", "noteNumber", int, "positiveInt", True, None, False),
+            ]
+        )
         return js
 
 
@@ -615,16 +1082,36 @@ class ClaimResponseItemAdjudication(backboneelement.BackboneElement):
         """ Non-monetary value.
         Type `float`. """
 
-        super(ClaimResponseItemAdjudication, self).__init__(jsondict=jsondict, strict=strict)
+        super(ClaimResponseItemAdjudication, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ClaimResponseItemAdjudication, self).elementProperties()
-        js.extend([
-            ("amount", "amount", money.Money, "Money", False, None, False),
-            ("category", "category", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("reason", "reason", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("value", "value", float, "decimal", False, None, False),
-        ])
+        js.extend(
+            [
+                ("amount", "amount", money.Money, "Money", False, None, False),
+                (
+                    "category",
+                    "category",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "reason",
+                    "reason",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("value", "value", float, "decimal", False, None, False),
+            ]
+        )
         return js
 
 
@@ -665,12 +1152,38 @@ class ClaimResponseItemDetail(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ClaimResponseItemDetail, self).elementProperties()
-        js.extend([
-            ("adjudication", "adjudication", ClaimResponseItemAdjudication, "ClaimResponseItemAdjudication", True, None, True),
-            ("detailSequence", "detailSequence", int, "positiveInt", False, None, True),
-            ("noteNumber", "noteNumber", int, "positiveInt", True, None, False),
-            ("subDetail", "subDetail", ClaimResponseItemDetailSubDetail, "ClaimResponseItemDetailSubDetail", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "adjudication",
+                    "adjudication",
+                    ClaimResponseItemAdjudication,
+                    "ClaimResponseItemAdjudication",
+                    True,
+                    None,
+                    True,
+                ),
+                (
+                    "detailSequence",
+                    "detailSequence",
+                    int,
+                    "positiveInt",
+                    False,
+                    None,
+                    True,
+                ),
+                ("noteNumber", "noteNumber", int, "positiveInt", True, None, False),
+                (
+                    "subDetail",
+                    "subDetail",
+                    ClaimResponseItemDetailSubDetail,
+                    "ClaimResponseItemDetailSubDetail",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -702,15 +1215,35 @@ class ClaimResponseItemDetailSubDetail(backboneelement.BackboneElement):
         """ Claim sub-detail instance identifier.
         Type `int`. """
 
-        super(ClaimResponseItemDetailSubDetail, self).__init__(jsondict=jsondict, strict=strict)
+        super(ClaimResponseItemDetailSubDetail, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ClaimResponseItemDetailSubDetail, self).elementProperties()
-        js.extend([
-            ("adjudication", "adjudication", ClaimResponseItemAdjudication, "ClaimResponseItemAdjudication", True, None, False),
-            ("noteNumber", "noteNumber", int, "positiveInt", True, None, False),
-            ("subDetailSequence", "subDetailSequence", int, "positiveInt", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "adjudication",
+                    "adjudication",
+                    ClaimResponseItemAdjudication,
+                    "ClaimResponseItemAdjudication",
+                    True,
+                    None,
+                    False,
+                ),
+                ("noteNumber", "noteNumber", int, "positiveInt", True, None, False),
+                (
+                    "subDetailSequence",
+                    "subDetailSequence",
+                    int,
+                    "positiveInt",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -758,14 +1291,40 @@ class ClaimResponsePayment(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ClaimResponsePayment, self).elementProperties()
-        js.extend([
-            ("adjustment", "adjustment", money.Money, "Money", False, None, False),
-            ("adjustmentReason", "adjustmentReason", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("amount", "amount", money.Money, "Money", False, None, True),
-            ("date", "date", fhirdate.FHIRDate, "date", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", False, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-        ])
+        js.extend(
+            [
+                ("adjustment", "adjustment", money.Money, "Money", False, None, False),
+                (
+                    "adjustmentReason",
+                    "adjustmentReason",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("amount", "amount", money.Money, "Money", False, None, True),
+                ("date", "date", fhirdate.FHIRDate, "date", False, None, False),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -806,12 +1365,22 @@ class ClaimResponseProcessNote(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ClaimResponseProcessNote, self).elementProperties()
-        js.extend([
-            ("language", "language", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("number", "number", int, "positiveInt", False, None, False),
-            ("text", "text", str, "string", False, None, True),
-            ("type", "type", str, "code", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "language",
+                    "language",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("number", "number", int, "positiveInt", False, None, False),
+                ("text", "text", str, "string", False, None, True),
+                ("type", "type", str, "code", False, None, False),
+            ]
+        )
         return js
 
 
@@ -843,47 +1412,56 @@ class ClaimResponseTotal(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ClaimResponseTotal, self).elementProperties()
-        js.extend([
-            ("amount", "amount", money.Money, "Money", False, None, True),
-            ("category", "category", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-        ])
+        js.extend(
+            [
+                ("amount", "amount", money.Money, "Money", False, None, True),
+                (
+                    "category",
+                    "category",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import address
 except ImportError:
-    address = sys.modules[__package__ + '.address']
+    address = sys.modules[__package__ + ".address"]
 try:
     from . import attachment
 except ImportError:
-    attachment = sys.modules[__package__ + '.attachment']
+    attachment = sys.modules[__package__ + ".attachment"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import money
 except ImportError:
-    money = sys.modules[__package__ + '.money']
+    money = sys.modules[__package__ + ".money"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]
 try:
     from . import quantity
 except ImportError:
-    quantity = sys.modules[__package__ + '.quantity']
+    quantity = sys.modules[__package__ + ".quantity"]

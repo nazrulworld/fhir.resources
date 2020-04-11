@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class MessageHeader(domainresource.DomainResource):
     """ A resource that describes a message that is exchanged between systems.
@@ -84,24 +87,104 @@ class MessageHeader(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(MessageHeader, self).elementProperties()
-        js.extend([
-            ("author", "author", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("definition", "definition", str, "canonical", False, None, False),
-            ("destination", "destination", MessageHeaderDestination, "MessageHeaderDestination", True, None, False),
-            ("enterer", "enterer", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("eventCoding", "eventCoding", coding.Coding, "Coding", False, "event", True),
-            ("eventUri", "eventUri", str, "uri", False, "event", True),
-            ("focus", "focus", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("reason", "reason", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("response", "response", MessageHeaderResponse, "MessageHeaderResponse", False, None, False),
-            ("responsible", "responsible", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("sender", "sender", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("source", "source", MessageHeaderSource, "MessageHeaderSource", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "author",
+                    "author",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("definition", "definition", str, "canonical", False, None, False),
+                (
+                    "destination",
+                    "destination",
+                    MessageHeaderDestination,
+                    "MessageHeaderDestination",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "enterer",
+                    "enterer",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "eventCoding",
+                    "eventCoding",
+                    coding.Coding,
+                    "Coding",
+                    False,
+                    "event",
+                    True,
+                ),
+                ("eventUri", "eventUri", str, "uri", False, "event", True),
+                (
+                    "focus",
+                    "focus",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "reason",
+                    "reason",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "response",
+                    "response",
+                    MessageHeaderResponse,
+                    "MessageHeaderResponse",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "responsible",
+                    "responsible",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "sender",
+                    "sender",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "source",
+                    "source",
+                    MessageHeaderSource,
+                    "MessageHeaderSource",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class MessageHeaderDestination(backboneelement.BackboneElement):
     """ Message destination application(s).
@@ -139,12 +222,30 @@ class MessageHeaderDestination(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(MessageHeaderDestination, self).elementProperties()
-        js.extend([
-            ("endpoint", "endpoint", str, "url", False, None, True),
-            ("name", "name", str, "string", False, None, False),
-            ("receiver", "receiver", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("target", "target", fhirreference.FHIRReference, "Reference", False, None, False),
-        ])
+        js.extend(
+            [
+                ("endpoint", "endpoint", str, "url", False, None, True),
+                ("name", "name", str, "string", False, None, False),
+                (
+                    "receiver",
+                    "receiver",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "target",
+                    "target",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -181,11 +282,21 @@ class MessageHeaderResponse(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(MessageHeaderResponse, self).elementProperties()
-        js.extend([
-            ("code", "code", str, "code", False, None, True),
-            ("details", "details", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("identifier", "identifier", str, "id", False, None, True),
-        ])
+        js.extend(
+            [
+                ("code", "code", str, "code", False, None, True),
+                (
+                    "details",
+                    "details",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("identifier", "identifier", str, "id", False, None, True),
+            ]
+        )
         return js
 
 
@@ -229,30 +340,39 @@ class MessageHeaderSource(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(MessageHeaderSource, self).elementProperties()
-        js.extend([
-            ("contact", "contact", contactpoint.ContactPoint, "ContactPoint", False, None, False),
-            ("endpoint", "endpoint", str, "url", False, None, True),
-            ("name", "name", str, "string", False, None, False),
-            ("software", "software", str, "string", False, None, False),
-            ("version", "version", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "contact",
+                    "contact",
+                    contactpoint.ContactPoint,
+                    "ContactPoint",
+                    False,
+                    None,
+                    False,
+                ),
+                ("endpoint", "endpoint", str, "url", False, None, True),
+                ("name", "name", str, "string", False, None, False),
+                ("software", "software", str, "string", False, None, False),
+                ("version", "version", str, "string", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import coding
 except ImportError:
-    coding = sys.modules[__package__ + '.coding']
+    coding = sys.modules[__package__ + ".coding"]
 try:
     from . import contactpoint
 except ImportError:
-    contactpoint = sys.modules[__package__ + '.contactpoint']
+    contactpoint = sys.modules[__package__ + ".contactpoint"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]

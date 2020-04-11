@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
+import sys
+
 from . import backboneelement
+
 
 class ProdCharacteristic(backboneelement.BackboneElement):
     """ The marketing status describes the date when a medicinal product is
@@ -99,32 +102,65 @@ class ProdCharacteristic(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ProdCharacteristic, self).elementProperties()
-        js.extend([
-            ("color", "color", str, "string", True, None, False),
-            ("depth", "depth", quantity.Quantity, "Quantity", False, None, False),
-            ("externalDiameter", "externalDiameter", quantity.Quantity, "Quantity", False, None, False),
-            ("height", "height", quantity.Quantity, "Quantity", False, None, False),
-            ("image", "image", attachment.Attachment, "Attachment", True, None, False),
-            ("imprint", "imprint", str, "string", True, None, False),
-            ("nominalVolume", "nominalVolume", quantity.Quantity, "Quantity", False, None, False),
-            ("scoring", "scoring", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("shape", "shape", str, "string", False, None, False),
-            ("weight", "weight", quantity.Quantity, "Quantity", False, None, False),
-            ("width", "width", quantity.Quantity, "Quantity", False, None, False),
-        ])
+        js.extend(
+            [
+                ("color", "color", str, "string", True, None, False),
+                ("depth", "depth", quantity.Quantity, "Quantity", False, None, False),
+                (
+                    "externalDiameter",
+                    "externalDiameter",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    None,
+                    False,
+                ),
+                ("height", "height", quantity.Quantity, "Quantity", False, None, False),
+                (
+                    "image",
+                    "image",
+                    attachment.Attachment,
+                    "Attachment",
+                    True,
+                    None,
+                    False,
+                ),
+                ("imprint", "imprint", str, "string", True, None, False),
+                (
+                    "nominalVolume",
+                    "nominalVolume",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "scoring",
+                    "scoring",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("shape", "shape", str, "string", False, None, False),
+                ("weight", "weight", quantity.Quantity, "Quantity", False, None, False),
+                ("width", "width", quantity.Quantity, "Quantity", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import attachment
 except ImportError:
-    attachment = sys.modules[__package__ + '.attachment']
+    attachment = sys.modules[__package__ + ".attachment"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import quantity
 except ImportError:
-    quantity = sys.modules[__package__ + '.quantity']
+    quantity = sys.modules[__package__ + ".quantity"]

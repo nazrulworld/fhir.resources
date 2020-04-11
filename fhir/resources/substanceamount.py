@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import backboneelement
+import sys
+
+from . import backboneelement, element
+
 
 class SubstanceAmount(backboneelement.BackboneElement):
     """ Chemical substances are a single substance type whose primary defining
@@ -74,18 +77,50 @@ class SubstanceAmount(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(SubstanceAmount, self).elementProperties()
-        js.extend([
-            ("amountQuantity", "amountQuantity", quantity.Quantity, "Quantity", False, "amount", False),
-            ("amountRange", "amountRange", range.Range, "Range", False, "amount", False),
-            ("amountString", "amountString", str, "string", False, "amount", False),
-            ("amountText", "amountText", str, "string", False, None, False),
-            ("amountType", "amountType", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("referenceRange", "referenceRange", SubstanceAmountReferenceRange, "SubstanceAmountReferenceRange", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "amountQuantity",
+                    "amountQuantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    "amount",
+                    False,
+                ),
+                (
+                    "amountRange",
+                    "amountRange",
+                    range.Range,
+                    "Range",
+                    False,
+                    "amount",
+                    False,
+                ),
+                ("amountString", "amountString", str, "string", False, "amount", False),
+                ("amountText", "amountText", str, "string", False, None, False),
+                (
+                    "amountType",
+                    "amountType",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "referenceRange",
+                    "referenceRange",
+                    SubstanceAmountReferenceRange,
+                    "SubstanceAmountReferenceRange",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import element
 
 class SubstanceAmountReferenceRange(element.Element):
     """ Reference range of possible or expected values.
@@ -109,27 +144,46 @@ class SubstanceAmountReferenceRange(element.Element):
         """ Lower limit possible or expected.
         Type `Quantity` (represented as `dict` in JSON). """
 
-        super(SubstanceAmountReferenceRange, self).__init__(jsondict=jsondict, strict=strict)
+        super(SubstanceAmountReferenceRange, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(SubstanceAmountReferenceRange, self).elementProperties()
-        js.extend([
-            ("highLimit", "highLimit", quantity.Quantity, "Quantity", False, None, False),
-            ("lowLimit", "lowLimit", quantity.Quantity, "Quantity", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "highLimit",
+                    "highLimit",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "lowLimit",
+                    "lowLimit",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import quantity
 except ImportError:
-    quantity = sys.modules[__package__ + '.quantity']
+    quantity = sys.modules[__package__ + ".quantity"]
 try:
     from . import range
 except ImportError:
-    range = sys.modules[__package__ + '.range']
+    range = sys.modules[__package__ + ".range"]

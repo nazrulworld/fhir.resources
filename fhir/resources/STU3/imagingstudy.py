@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class ImagingStudy(domainresource.DomainResource):
     """ A set of images produced in single study (one or more series of references
@@ -111,31 +114,159 @@ class ImagingStudy(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(ImagingStudy, self).elementProperties()
-        js.extend([
-            ("accession", "accession", identifier.Identifier, "Identifier", False, None, False),
-            ("availability", "availability", str, "code", False, None, False),
-            ("basedOn", "basedOn", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("context", "context", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("description", "description", str, "string", False, None, False),
-            ("endpoint", "endpoint", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("interpreter", "interpreter", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("modalityList", "modalityList", coding.Coding, "Coding", True, None, False),
-            ("numberOfInstances", "numberOfInstances", int, "unsignedInt", False, None, False),
-            ("numberOfSeries", "numberOfSeries", int, "unsignedInt", False, None, False),
-            ("patient", "patient", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("procedureCode", "procedureCode", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("procedureReference", "procedureReference", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("reason", "reason", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("referrer", "referrer", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("series", "series", ImagingStudySeries, "ImagingStudySeries", True, None, False),
-            ("started", "started", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("uid", "uid", str, "oid", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "accession",
+                    "accession",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                ("availability", "availability", str, "code", False, None, False),
+                (
+                    "basedOn",
+                    "basedOn",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "context",
+                    "context",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("description", "description", str, "string", False, None, False),
+                (
+                    "endpoint",
+                    "endpoint",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "interpreter",
+                    "interpreter",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "modalityList",
+                    "modalityList",
+                    coding.Coding,
+                    "Coding",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "numberOfInstances",
+                    "numberOfInstances",
+                    int,
+                    "unsignedInt",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "numberOfSeries",
+                    "numberOfSeries",
+                    int,
+                    "unsignedInt",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "patient",
+                    "patient",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "procedureCode",
+                    "procedureCode",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "procedureReference",
+                    "procedureReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "reason",
+                    "reason",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "referrer",
+                    "referrer",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "series",
+                    "series",
+                    ImagingStudySeries,
+                    "ImagingStudySeries",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "started",
+                    "started",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                ("uid", "uid", str, "oid", False, None, True),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class ImagingStudySeries(backboneelement.BackboneElement):
     """ Each study has one or more series of instances.
@@ -205,20 +336,70 @@ class ImagingStudySeries(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ImagingStudySeries, self).elementProperties()
-        js.extend([
-            ("availability", "availability", str, "code", False, None, False),
-            ("bodySite", "bodySite", coding.Coding, "Coding", False, None, False),
-            ("description", "description", str, "string", False, None, False),
-            ("endpoint", "endpoint", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("instance", "instance", ImagingStudySeriesInstance, "ImagingStudySeriesInstance", True, None, False),
-            ("laterality", "laterality", coding.Coding, "Coding", False, None, False),
-            ("modality", "modality", coding.Coding, "Coding", False, None, True),
-            ("number", "number", int, "unsignedInt", False, None, False),
-            ("numberOfInstances", "numberOfInstances", int, "unsignedInt", False, None, False),
-            ("performer", "performer", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("started", "started", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("uid", "uid", str, "oid", False, None, True),
-        ])
+        js.extend(
+            [
+                ("availability", "availability", str, "code", False, None, False),
+                ("bodySite", "bodySite", coding.Coding, "Coding", False, None, False),
+                ("description", "description", str, "string", False, None, False),
+                (
+                    "endpoint",
+                    "endpoint",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "instance",
+                    "instance",
+                    ImagingStudySeriesInstance,
+                    "ImagingStudySeriesInstance",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "laterality",
+                    "laterality",
+                    coding.Coding,
+                    "Coding",
+                    False,
+                    None,
+                    False,
+                ),
+                ("modality", "modality", coding.Coding, "Coding", False, None, True),
+                ("number", "number", int, "unsignedInt", False, None, False),
+                (
+                    "numberOfInstances",
+                    "numberOfInstances",
+                    int,
+                    "unsignedInt",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "performer",
+                    "performer",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "started",
+                    "started",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                ("uid", "uid", str, "oid", False, None, True),
+            ]
+        )
         return js
 
 
@@ -255,37 +436,40 @@ class ImagingStudySeriesInstance(backboneelement.BackboneElement):
         """ Formal DICOM identifier for this instance.
         Type `str`. """
 
-        super(ImagingStudySeriesInstance, self).__init__(jsondict=jsondict, strict=strict)
+        super(ImagingStudySeriesInstance, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ImagingStudySeriesInstance, self).elementProperties()
-        js.extend([
-            ("number", "number", int, "unsignedInt", False, None, False),
-            ("sopClass", "sopClass", str, "oid", False, None, True),
-            ("title", "title", str, "string", False, None, False),
-            ("uid", "uid", str, "oid", False, None, True),
-        ])
+        js.extend(
+            [
+                ("number", "number", int, "unsignedInt", False, None, False),
+                ("sopClass", "sopClass", str, "oid", False, None, True),
+                ("title", "title", str, "string", False, None, False),
+                ("uid", "uid", str, "oid", False, None, True),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import coding
 except ImportError:
-    coding = sys.modules[__package__ + '.coding']
+    coding = sys.modules[__package__ + ".coding"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]

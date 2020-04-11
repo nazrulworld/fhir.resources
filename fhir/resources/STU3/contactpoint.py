@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
+import sys
+
 from . import element
+
 
 class ContactPoint(element.Element):
     """ Details of a Technology mediated contact point (phone, fax, email, etc.).
@@ -51,18 +54,19 @@ class ContactPoint(element.Element):
 
     def elementProperties(self):
         js = super(ContactPoint, self).elementProperties()
-        js.extend([
-            ("period", "period", period.Period, "Period", False, None, False),
-            ("rank", "rank", int, "positiveInt", False, None, False),
-            ("system", "system", str, "code", False, None, False),
-            ("use", "use", str, "code", False, None, False),
-            ("value", "value", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                ("period", "period", period.Period, "Period", False, None, False),
+                ("rank", "rank", int, "positiveInt", False, None, False),
+                ("system", "system", str, "code", False, None, False),
+                ("use", "use", str, "code", False, None, False),
+                ("value", "value", str, "string", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]

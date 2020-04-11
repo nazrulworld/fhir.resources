@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 """Facilitate working with dates.
 2014, SMART Health IT."""
-import sys
-import logging
-import isodate
 import datetime
+import logging
+import sys
+
+import isodate
 
 logger = logging.getLogger(__name__)
 

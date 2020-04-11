@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class TerminologyCapabilities(domainresource.DomainResource):
     """ A statement of system capabilities.
@@ -134,36 +137,116 @@ class TerminologyCapabilities(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(TerminologyCapabilities, self).elementProperties()
-        js.extend([
-            ("closure", "closure", TerminologyCapabilitiesClosure, "TerminologyCapabilitiesClosure", False, None, False),
-            ("codeSearch", "codeSearch", str, "code", False, None, False),
-            ("codeSystem", "codeSystem", TerminologyCapabilitiesCodeSystem, "TerminologyCapabilitiesCodeSystem", True, None, False),
-            ("contact", "contact", contactdetail.ContactDetail, "ContactDetail", True, None, False),
-            ("copyright", "copyright", str, "markdown", False, None, False),
-            ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, True),
-            ("description", "description", str, "markdown", False, None, False),
-            ("expansion", "expansion", TerminologyCapabilitiesExpansion, "TerminologyCapabilitiesExpansion", False, None, False),
-            ("experimental", "experimental", bool, "boolean", False, None, False),
-            ("implementation", "implementation", TerminologyCapabilitiesImplementation, "TerminologyCapabilitiesImplementation", False, None, False),
-            ("jurisdiction", "jurisdiction", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("kind", "kind", str, "code", False, None, True),
-            ("lockedDate", "lockedDate", bool, "boolean", False, None, False),
-            ("name", "name", str, "string", False, None, False),
-            ("publisher", "publisher", str, "string", False, None, False),
-            ("purpose", "purpose", str, "markdown", False, None, False),
-            ("software", "software", TerminologyCapabilitiesSoftware, "TerminologyCapabilitiesSoftware", False, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("title", "title", str, "string", False, None, False),
-            ("translation", "translation", TerminologyCapabilitiesTranslation, "TerminologyCapabilitiesTranslation", False, None, False),
-            ("url", "url", str, "uri", False, None, False),
-            ("useContext", "useContext", usagecontext.UsageContext, "UsageContext", True, None, False),
-            ("validateCode", "validateCode", TerminologyCapabilitiesValidateCode, "TerminologyCapabilitiesValidateCode", False, None, False),
-            ("version", "version", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "closure",
+                    "closure",
+                    TerminologyCapabilitiesClosure,
+                    "TerminologyCapabilitiesClosure",
+                    False,
+                    None,
+                    False,
+                ),
+                ("codeSearch", "codeSearch", str, "code", False, None, False),
+                (
+                    "codeSystem",
+                    "codeSystem",
+                    TerminologyCapabilitiesCodeSystem,
+                    "TerminologyCapabilitiesCodeSystem",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "contact",
+                    "contact",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                ("copyright", "copyright", str, "markdown", False, None, False),
+                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, True),
+                ("description", "description", str, "markdown", False, None, False),
+                (
+                    "expansion",
+                    "expansion",
+                    TerminologyCapabilitiesExpansion,
+                    "TerminologyCapabilitiesExpansion",
+                    False,
+                    None,
+                    False,
+                ),
+                ("experimental", "experimental", bool, "boolean", False, None, False),
+                (
+                    "implementation",
+                    "implementation",
+                    TerminologyCapabilitiesImplementation,
+                    "TerminologyCapabilitiesImplementation",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "jurisdiction",
+                    "jurisdiction",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                ("kind", "kind", str, "code", False, None, True),
+                ("lockedDate", "lockedDate", bool, "boolean", False, None, False),
+                ("name", "name", str, "string", False, None, False),
+                ("publisher", "publisher", str, "string", False, None, False),
+                ("purpose", "purpose", str, "markdown", False, None, False),
+                (
+                    "software",
+                    "software",
+                    TerminologyCapabilitiesSoftware,
+                    "TerminologyCapabilitiesSoftware",
+                    False,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, True),
+                ("title", "title", str, "string", False, None, False),
+                (
+                    "translation",
+                    "translation",
+                    TerminologyCapabilitiesTranslation,
+                    "TerminologyCapabilitiesTranslation",
+                    False,
+                    None,
+                    False,
+                ),
+                ("url", "url", str, "uri", False, None, False),
+                (
+                    "useContext",
+                    "useContext",
+                    usagecontext.UsageContext,
+                    "UsageContext",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "validateCode",
+                    "validateCode",
+                    TerminologyCapabilitiesValidateCode,
+                    "TerminologyCapabilitiesValidateCode",
+                    False,
+                    None,
+                    False,
+                ),
+                ("version", "version", str, "string", False, None, False),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class TerminologyCapabilitiesClosure(backboneelement.BackboneElement):
     """ Information about the [ConceptMap/$closure](conceptmap-operation-
@@ -186,13 +269,15 @@ class TerminologyCapabilitiesClosure(backboneelement.BackboneElement):
         """ If cross-system closure is supported.
         Type `bool`. """
 
-        super(TerminologyCapabilitiesClosure, self).__init__(jsondict=jsondict, strict=strict)
+        super(TerminologyCapabilitiesClosure, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(TerminologyCapabilitiesClosure, self).elementProperties()
-        js.extend([
-            ("translation", "translation", bool, "boolean", False, None, False),
-        ])
+        js.extend(
+            [("translation", "translation", bool, "boolean", False, None, False),]
+        )
         return js
 
 
@@ -226,15 +311,27 @@ class TerminologyCapabilitiesCodeSystem(backboneelement.BackboneElement):
         """ Version of Code System supported.
         List of `TerminologyCapabilitiesCodeSystemVersion` items (represented as `dict` in JSON). """
 
-        super(TerminologyCapabilitiesCodeSystem, self).__init__(jsondict=jsondict, strict=strict)
+        super(TerminologyCapabilitiesCodeSystem, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(TerminologyCapabilitiesCodeSystem, self).elementProperties()
-        js.extend([
-            ("subsumption", "subsumption", bool, "boolean", False, None, False),
-            ("uri", "uri", str, "canonical", False, None, False),
-            ("version", "version", TerminologyCapabilitiesCodeSystemVersion, "TerminologyCapabilitiesCodeSystemVersion", True, None, False),
-        ])
+        js.extend(
+            [
+                ("subsumption", "subsumption", bool, "boolean", False, None, False),
+                ("uri", "uri", str, "canonical", False, None, False),
+                (
+                    "version",
+                    "version",
+                    TerminologyCapabilitiesCodeSystemVersion,
+                    "TerminologyCapabilitiesCodeSystemVersion",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -278,18 +375,30 @@ class TerminologyCapabilitiesCodeSystemVersion(backboneelement.BackboneElement):
         """ Properties supported for $lookup.
         List of `str` items. """
 
-        super(TerminologyCapabilitiesCodeSystemVersion, self).__init__(jsondict=jsondict, strict=strict)
+        super(TerminologyCapabilitiesCodeSystemVersion, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(TerminologyCapabilitiesCodeSystemVersion, self).elementProperties()
-        js.extend([
-            ("code", "code", str, "string", False, None, False),
-            ("compositional", "compositional", bool, "boolean", False, None, False),
-            ("filter", "filter", TerminologyCapabilitiesCodeSystemVersionFilter, "TerminologyCapabilitiesCodeSystemVersionFilter", True, None, False),
-            ("isDefault", "isDefault", bool, "boolean", False, None, False),
-            ("language", "language", str, "code", True, None, False),
-            ("property", "property", str, "code", True, None, False),
-        ])
+        js.extend(
+            [
+                ("code", "code", str, "string", False, None, False),
+                ("compositional", "compositional", bool, "boolean", False, None, False),
+                (
+                    "filter",
+                    "filter",
+                    TerminologyCapabilitiesCodeSystemVersionFilter,
+                    "TerminologyCapabilitiesCodeSystemVersionFilter",
+                    True,
+                    None,
+                    False,
+                ),
+                ("isDefault", "isDefault", bool, "boolean", False, None, False),
+                ("language", "language", str, "code", True, None, False),
+                ("property", "property", str, "code", True, None, False),
+            ]
+        )
         return js
 
 
@@ -315,14 +424,20 @@ class TerminologyCapabilitiesCodeSystemVersionFilter(backboneelement.BackboneEle
         """ Operations supported for the property.
         List of `str` items. """
 
-        super(TerminologyCapabilitiesCodeSystemVersionFilter, self).__init__(jsondict=jsondict, strict=strict)
+        super(TerminologyCapabilitiesCodeSystemVersionFilter, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
-        js = super(TerminologyCapabilitiesCodeSystemVersionFilter, self).elementProperties()
-        js.extend([
-            ("code", "code", str, "code", False, None, True),
-            ("op", "op", str, "code", True, None, True),
-        ])
+        js = super(
+            TerminologyCapabilitiesCodeSystemVersionFilter, self
+        ).elementProperties()
+        js.extend(
+            [
+                ("code", "code", str, "code", False, None, True),
+                ("op", "op", str, "code", True, None, True),
+            ]
+        )
         return js
 
 
@@ -361,17 +476,29 @@ class TerminologyCapabilitiesExpansion(backboneelement.BackboneElement):
         """ Documentation about text searching works.
         Type `str`. """
 
-        super(TerminologyCapabilitiesExpansion, self).__init__(jsondict=jsondict, strict=strict)
+        super(TerminologyCapabilitiesExpansion, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(TerminologyCapabilitiesExpansion, self).elementProperties()
-        js.extend([
-            ("hierarchical", "hierarchical", bool, "boolean", False, None, False),
-            ("incomplete", "incomplete", bool, "boolean", False, None, False),
-            ("paging", "paging", bool, "boolean", False, None, False),
-            ("parameter", "parameter", TerminologyCapabilitiesExpansionParameter, "TerminologyCapabilitiesExpansionParameter", True, None, False),
-            ("textFilter", "textFilter", str, "markdown", False, None, False),
-        ])
+        js.extend(
+            [
+                ("hierarchical", "hierarchical", bool, "boolean", False, None, False),
+                ("incomplete", "incomplete", bool, "boolean", False, None, False),
+                ("paging", "paging", bool, "boolean", False, None, False),
+                (
+                    "parameter",
+                    "parameter",
+                    TerminologyCapabilitiesExpansionParameter,
+                    "TerminologyCapabilitiesExpansionParameter",
+                    True,
+                    None,
+                    False,
+                ),
+                ("textFilter", "textFilter", str, "markdown", False, None, False),
+            ]
+        )
         return js
 
 
@@ -397,14 +524,18 @@ class TerminologyCapabilitiesExpansionParameter(backboneelement.BackboneElement)
         """ Expansion Parameter name.
         Type `str`. """
 
-        super(TerminologyCapabilitiesExpansionParameter, self).__init__(jsondict=jsondict, strict=strict)
+        super(TerminologyCapabilitiesExpansionParameter, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(TerminologyCapabilitiesExpansionParameter, self).elementProperties()
-        js.extend([
-            ("documentation", "documentation", str, "string", False, None, False),
-            ("name", "name", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                ("documentation", "documentation", str, "string", False, None, False),
+                ("name", "name", str, "code", False, None, True),
+            ]
+        )
         return js
 
 
@@ -434,14 +565,18 @@ class TerminologyCapabilitiesImplementation(backboneelement.BackboneElement):
         """ Base URL for the implementation.
         Type `str`. """
 
-        super(TerminologyCapabilitiesImplementation, self).__init__(jsondict=jsondict, strict=strict)
+        super(TerminologyCapabilitiesImplementation, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(TerminologyCapabilitiesImplementation, self).elementProperties()
-        js.extend([
-            ("description", "description", str, "string", False, None, True),
-            ("url", "url", str, "url", False, None, False),
-        ])
+        js.extend(
+            [
+                ("description", "description", str, "string", False, None, True),
+                ("url", "url", str, "url", False, None, False),
+            ]
+        )
         return js
 
 
@@ -471,14 +606,18 @@ class TerminologyCapabilitiesSoftware(backboneelement.BackboneElement):
         """ Version covered by this statement.
         Type `str`. """
 
-        super(TerminologyCapabilitiesSoftware, self).__init__(jsondict=jsondict, strict=strict)
+        super(TerminologyCapabilitiesSoftware, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(TerminologyCapabilitiesSoftware, self).elementProperties()
-        js.extend([
-            ("name", "name", str, "string", False, None, True),
-            ("version", "version", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                ("name", "name", str, "string", False, None, True),
+                ("version", "version", str, "string", False, None, False),
+            ]
+        )
         return js
 
 
@@ -501,13 +640,15 @@ class TerminologyCapabilitiesTranslation(backboneelement.BackboneElement):
         """ Whether the client must identify the map.
         Type `bool`. """
 
-        super(TerminologyCapabilitiesTranslation, self).__init__(jsondict=jsondict, strict=strict)
+        super(TerminologyCapabilitiesTranslation, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(TerminologyCapabilitiesTranslation, self).elementProperties()
-        js.extend([
-            ("needsMap", "needsMap", bool, "boolean", False, None, True),
-        ])
+        js.extend(
+            [("needsMap", "needsMap", bool, "boolean", False, None, True),]
+        )
         return js
 
 
@@ -530,30 +671,31 @@ class TerminologyCapabilitiesValidateCode(backboneelement.BackboneElement):
         """ Whether translations are validated.
         Type `bool`. """
 
-        super(TerminologyCapabilitiesValidateCode, self).__init__(jsondict=jsondict, strict=strict)
+        super(TerminologyCapabilitiesValidateCode, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(TerminologyCapabilitiesValidateCode, self).elementProperties()
-        js.extend([
-            ("translations", "translations", bool, "boolean", False, None, True),
-        ])
+        js.extend(
+            [("translations", "translations", bool, "boolean", False, None, True),]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import contactdetail
 except ImportError:
-    contactdetail = sys.modules[__package__ + '.contactdetail']
+    contactdetail = sys.modules[__package__ + ".contactdetail"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import usagecontext
 except ImportError:
-    usagecontext = sys.modules[__package__ + '.usagecontext']
+    usagecontext = sys.modules[__package__ + ".usagecontext"]

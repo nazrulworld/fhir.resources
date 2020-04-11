@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class ValueSet(domainresource.DomainResource):
     """ A set of codes drawn from one or more code systems.
@@ -107,30 +110,78 @@ class ValueSet(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(ValueSet, self).elementProperties()
-        js.extend([
-            ("compose", "compose", ValueSetCompose, "ValueSetCompose", False, None, False),
-            ("contact", "contact", contactdetail.ContactDetail, "ContactDetail", True, None, False),
-            ("copyright", "copyright", str, "markdown", False, None, False),
-            ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("description", "description", str, "markdown", False, None, False),
-            ("expansion", "expansion", ValueSetExpansion, "ValueSetExpansion", False, None, False),
-            ("experimental", "experimental", bool, "boolean", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("immutable", "immutable", bool, "boolean", False, None, False),
-            ("jurisdiction", "jurisdiction", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("name", "name", str, "string", False, None, False),
-            ("publisher", "publisher", str, "string", False, None, False),
-            ("purpose", "purpose", str, "markdown", False, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("title", "title", str, "string", False, None, False),
-            ("url", "url", str, "uri", False, None, False),
-            ("useContext", "useContext", usagecontext.UsageContext, "UsageContext", True, None, False),
-            ("version", "version", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "compose",
+                    "compose",
+                    ValueSetCompose,
+                    "ValueSetCompose",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "contact",
+                    "contact",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                ("copyright", "copyright", str, "markdown", False, None, False),
+                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
+                ("description", "description", str, "markdown", False, None, False),
+                (
+                    "expansion",
+                    "expansion",
+                    ValueSetExpansion,
+                    "ValueSetExpansion",
+                    False,
+                    None,
+                    False,
+                ),
+                ("experimental", "experimental", bool, "boolean", False, None, False),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                ("immutable", "immutable", bool, "boolean", False, None, False),
+                (
+                    "jurisdiction",
+                    "jurisdiction",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                ("name", "name", str, "string", False, None, False),
+                ("publisher", "publisher", str, "string", False, None, False),
+                ("purpose", "purpose", str, "markdown", False, None, False),
+                ("status", "status", str, "code", False, None, True),
+                ("title", "title", str, "string", False, None, False),
+                ("url", "url", str, "uri", False, None, False),
+                (
+                    "useContext",
+                    "useContext",
+                    usagecontext.UsageContext,
+                    "UsageContext",
+                    True,
+                    None,
+                    False,
+                ),
+                ("version", "version", str, "string", False, None, False),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class ValueSetCompose(backboneelement.BackboneElement):
     """ Content logical definition of the value set (CLD).
@@ -170,12 +221,38 @@ class ValueSetCompose(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ValueSetCompose, self).elementProperties()
-        js.extend([
-            ("exclude", "exclude", ValueSetComposeInclude, "ValueSetComposeInclude", True, None, False),
-            ("inactive", "inactive", bool, "boolean", False, None, False),
-            ("include", "include", ValueSetComposeInclude, "ValueSetComposeInclude", True, None, True),
-            ("lockedDate", "lockedDate", fhirdate.FHIRDate, "date", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "exclude",
+                    "exclude",
+                    ValueSetComposeInclude,
+                    "ValueSetComposeInclude",
+                    True,
+                    None,
+                    False,
+                ),
+                ("inactive", "inactive", bool, "boolean", False, None, False),
+                (
+                    "include",
+                    "include",
+                    ValueSetComposeInclude,
+                    "ValueSetComposeInclude",
+                    True,
+                    None,
+                    True,
+                ),
+                (
+                    "lockedDate",
+                    "lockedDate",
+                    fhirdate.FHIRDate,
+                    "date",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -217,13 +294,31 @@ class ValueSetComposeInclude(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ValueSetComposeInclude, self).elementProperties()
-        js.extend([
-            ("concept", "concept", ValueSetComposeIncludeConcept, "ValueSetComposeIncludeConcept", True, None, False),
-            ("filter", "filter", ValueSetComposeIncludeFilter, "ValueSetComposeIncludeFilter", True, None, False),
-            ("system", "system", str, "uri", False, None, False),
-            ("valueSet", "valueSet", str, "canonical", True, None, False),
-            ("version", "version", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "concept",
+                    "concept",
+                    ValueSetComposeIncludeConcept,
+                    "ValueSetComposeIncludeConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "filter",
+                    "filter",
+                    ValueSetComposeIncludeFilter,
+                    "ValueSetComposeIncludeFilter",
+                    True,
+                    None,
+                    False,
+                ),
+                ("system", "system", str, "uri", False, None, False),
+                ("valueSet", "valueSet", str, "canonical", True, None, False),
+                ("version", "version", str, "string", False, None, False),
+            ]
+        )
         return js
 
 
@@ -255,15 +350,27 @@ class ValueSetComposeIncludeConcept(backboneelement.BackboneElement):
         """ Text to display for this code for this value set in this valueset.
         Type `str`. """
 
-        super(ValueSetComposeIncludeConcept, self).__init__(jsondict=jsondict, strict=strict)
+        super(ValueSetComposeIncludeConcept, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ValueSetComposeIncludeConcept, self).elementProperties()
-        js.extend([
-            ("code", "code", str, "code", False, None, True),
-            ("designation", "designation", ValueSetComposeIncludeConceptDesignation, "ValueSetComposeIncludeConceptDesignation", True, None, False),
-            ("display", "display", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                ("code", "code", str, "code", False, None, True),
+                (
+                    "designation",
+                    "designation",
+                    ValueSetComposeIncludeConceptDesignation,
+                    "ValueSetComposeIncludeConceptDesignation",
+                    True,
+                    None,
+                    False,
+                ),
+                ("display", "display", str, "string", False, None, False),
+            ]
+        )
         return js
 
 
@@ -297,15 +404,19 @@ class ValueSetComposeIncludeConceptDesignation(backboneelement.BackboneElement):
         """ The text value for this designation.
         Type `str`. """
 
-        super(ValueSetComposeIncludeConceptDesignation, self).__init__(jsondict=jsondict, strict=strict)
+        super(ValueSetComposeIncludeConceptDesignation, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ValueSetComposeIncludeConceptDesignation, self).elementProperties()
-        js.extend([
-            ("language", "language", str, "code", False, None, False),
-            ("use", "use", coding.Coding, "Coding", False, None, False),
-            ("value", "value", str, "string", False, None, True),
-        ])
+        js.extend(
+            [
+                ("language", "language", str, "code", False, None, False),
+                ("use", "use", coding.Coding, "Coding", False, None, False),
+                ("value", "value", str, "string", False, None, True),
+            ]
+        )
         return js
 
 
@@ -341,15 +452,19 @@ class ValueSetComposeIncludeFilter(backboneelement.BackboneElement):
         exists.
         Type `str`. """
 
-        super(ValueSetComposeIncludeFilter, self).__init__(jsondict=jsondict, strict=strict)
+        super(ValueSetComposeIncludeFilter, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ValueSetComposeIncludeFilter, self).elementProperties()
-        js.extend([
-            ("op", "op", str, "code", False, None, True),
-            ("property", "property", str, "code", False, None, True),
-            ("value", "value", str, "string", False, None, True),
-        ])
+        js.extend(
+            [
+                ("op", "op", str, "code", False, None, True),
+                ("property", "property", str, "code", False, None, True),
+                ("value", "value", str, "string", False, None, True),
+            ]
+        )
         return js
 
 
@@ -399,14 +514,40 @@ class ValueSetExpansion(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ValueSetExpansion, self).elementProperties()
-        js.extend([
-            ("contains", "contains", ValueSetExpansionContains, "ValueSetExpansionContains", True, None, False),
-            ("identifier", "identifier", str, "uri", False, None, False),
-            ("offset", "offset", int, "integer", False, None, False),
-            ("parameter", "parameter", ValueSetExpansionParameter, "ValueSetExpansionParameter", True, None, False),
-            ("timestamp", "timestamp", fhirdate.FHIRDate, "dateTime", False, None, True),
-            ("total", "total", int, "integer", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "contains",
+                    "contains",
+                    ValueSetExpansionContains,
+                    "ValueSetExpansionContains",
+                    True,
+                    None,
+                    False,
+                ),
+                ("identifier", "identifier", str, "uri", False, None, False),
+                ("offset", "offset", int, "integer", False, None, False),
+                (
+                    "parameter",
+                    "parameter",
+                    ValueSetExpansionParameter,
+                    "ValueSetExpansionParameter",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "timestamp",
+                    "timestamp",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    True,
+                ),
+                ("total", "total", int, "integer", False, None, False),
+            ]
+        )
         return js
 
 
@@ -458,20 +599,40 @@ class ValueSetExpansionContains(backboneelement.BackboneElement):
         """ Version in which this code/display is defined.
         Type `str`. """
 
-        super(ValueSetExpansionContains, self).__init__(jsondict=jsondict, strict=strict)
+        super(ValueSetExpansionContains, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ValueSetExpansionContains, self).elementProperties()
-        js.extend([
-            ("abstract", "abstract", bool, "boolean", False, None, False),
-            ("code", "code", str, "code", False, None, False),
-            ("contains", "contains", ValueSetExpansionContains, "ValueSetExpansionContains", True, None, False),
-            ("designation", "designation", ValueSetComposeIncludeConceptDesignation, "ValueSetComposeIncludeConceptDesignation", True, None, False),
-            ("display", "display", str, "string", False, None, False),
-            ("inactive", "inactive", bool, "boolean", False, None, False),
-            ("system", "system", str, "uri", False, None, False),
-            ("version", "version", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                ("abstract", "abstract", bool, "boolean", False, None, False),
+                ("code", "code", str, "code", False, None, False),
+                (
+                    "contains",
+                    "contains",
+                    ValueSetExpansionContains,
+                    "ValueSetExpansionContains",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "designation",
+                    "designation",
+                    ValueSetComposeIncludeConceptDesignation,
+                    "ValueSetComposeIncludeConceptDesignation",
+                    True,
+                    None,
+                    False,
+                ),
+                ("display", "display", str, "string", False, None, False),
+                ("inactive", "inactive", bool, "boolean", False, None, False),
+                ("system", "system", str, "uri", False, None, False),
+                ("version", "version", str, "string", False, None, False),
+            ]
+        )
         return js
 
 
@@ -525,45 +686,72 @@ class ValueSetExpansionParameter(backboneelement.BackboneElement):
         """ Value of the named parameter.
         Type `str`. """
 
-        super(ValueSetExpansionParameter, self).__init__(jsondict=jsondict, strict=strict)
+        super(ValueSetExpansionParameter, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ValueSetExpansionParameter, self).elementProperties()
-        js.extend([
-            ("name", "name", str, "string", False, None, True),
-            ("valueBoolean", "valueBoolean", bool, "boolean", False, "value", False),
-            ("valueCode", "valueCode", str, "code", False, "value", False),
-            ("valueDateTime", "valueDateTime", fhirdate.FHIRDate, "dateTime", False, "value", False),
-            ("valueDecimal", "valueDecimal", float, "decimal", False, "value", False),
-            ("valueInteger", "valueInteger", int, "integer", False, "value", False),
-            ("valueString", "valueString", str, "string", False, "value", False),
-            ("valueUri", "valueUri", str, "uri", False, "value", False),
-        ])
+        js.extend(
+            [
+                ("name", "name", str, "string", False, None, True),
+                (
+                    "valueBoolean",
+                    "valueBoolean",
+                    bool,
+                    "boolean",
+                    False,
+                    "value",
+                    False,
+                ),
+                ("valueCode", "valueCode", str, "code", False, "value", False),
+                (
+                    "valueDateTime",
+                    "valueDateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueDecimal",
+                    "valueDecimal",
+                    float,
+                    "decimal",
+                    False,
+                    "value",
+                    False,
+                ),
+                ("valueInteger", "valueInteger", int, "integer", False, "value", False),
+                ("valueString", "valueString", str, "string", False, "value", False),
+                ("valueUri", "valueUri", str, "uri", False, "value", False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import coding
 except ImportError:
-    coding = sys.modules[__package__ + '.coding']
+    coding = sys.modules[__package__ + ".coding"]
 try:
     from . import contactdetail
 except ImportError:
-    contactdetail = sys.modules[__package__ + '.contactdetail']
+    contactdetail = sys.modules[__package__ + ".contactdetail"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import usagecontext
 except ImportError:
-    usagecontext = sys.modules[__package__ + '.usagecontext']
+    usagecontext = sys.modules[__package__ + ".usagecontext"]

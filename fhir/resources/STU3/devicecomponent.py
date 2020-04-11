@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class DeviceComponent(domainresource.DomainResource):
     """ An instance of a medical-related component of a medical device.
@@ -75,22 +78,102 @@ class DeviceComponent(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(DeviceComponent, self).elementProperties()
-        js.extend([
-            ("identifier", "identifier", identifier.Identifier, "Identifier", False, None, True),
-            ("languageCode", "languageCode", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("lastSystemChange", "lastSystemChange", fhirdate.FHIRDate, "instant", False, None, False),
-            ("measurementPrinciple", "measurementPrinciple", str, "code", False, None, False),
-            ("operationalStatus", "operationalStatus", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("parameterGroup", "parameterGroup", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("parent", "parent", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("productionSpecification", "productionSpecification", DeviceComponentProductionSpecification, "DeviceComponentProductionSpecification", True, None, False),
-            ("source", "source", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "languageCode",
+                    "languageCode",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "lastSystemChange",
+                    "lastSystemChange",
+                    fhirdate.FHIRDate,
+                    "instant",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "measurementPrinciple",
+                    "measurementPrinciple",
+                    str,
+                    "code",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "operationalStatus",
+                    "operationalStatus",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "parameterGroup",
+                    "parameterGroup",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "parent",
+                    "parent",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "productionSpecification",
+                    "productionSpecification",
+                    DeviceComponentProductionSpecification,
+                    "DeviceComponentProductionSpecification",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "source",
+                    "source",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class DeviceComponentProductionSpecification(backboneelement.BackboneElement):
     """ Specification details such as Component Revisions, or Serial Numbers.
@@ -122,32 +205,51 @@ class DeviceComponentProductionSpecification(backboneelement.BackboneElement):
         or software revision.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(DeviceComponentProductionSpecification, self).__init__(jsondict=jsondict, strict=strict)
+        super(DeviceComponentProductionSpecification, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(DeviceComponentProductionSpecification, self).elementProperties()
-        js.extend([
-            ("componentId", "componentId", identifier.Identifier, "Identifier", False, None, False),
-            ("productionSpec", "productionSpec", str, "string", False, None, False),
-            ("specType", "specType", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "componentId",
+                    "componentId",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                ("productionSpec", "productionSpec", str, "string", False, None, False),
+                (
+                    "specType",
+                    "specType",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]

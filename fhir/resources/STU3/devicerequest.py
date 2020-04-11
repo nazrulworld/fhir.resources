@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class DeviceRequest(domainresource.DomainResource):
     """ Medical device request.
@@ -130,36 +133,212 @@ class DeviceRequest(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(DeviceRequest, self).elementProperties()
-        js.extend([
-            ("authoredOn", "authoredOn", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("basedOn", "basedOn", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("codeCodeableConcept", "codeCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "code", True),
-            ("codeReference", "codeReference", fhirreference.FHIRReference, "Reference", False, "code", True),
-            ("context", "context", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("definition", "definition", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("groupIdentifier", "groupIdentifier", identifier.Identifier, "Identifier", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("intent", "intent", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("note", "note", annotation.Annotation, "Annotation", True, None, False),
-            ("occurrenceDateTime", "occurrenceDateTime", fhirdate.FHIRDate, "dateTime", False, "occurrence", False),
-            ("occurrencePeriod", "occurrencePeriod", period.Period, "Period", False, "occurrence", False),
-            ("occurrenceTiming", "occurrenceTiming", timing.Timing, "Timing", False, "occurrence", False),
-            ("performer", "performer", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("performerType", "performerType", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("priorRequest", "priorRequest", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("priority", "priority", str, "code", False, None, False),
-            ("reasonCode", "reasonCode", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("reasonReference", "reasonReference", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("relevantHistory", "relevantHistory", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("requester", "requester", DeviceRequestRequester, "DeviceRequestRequester", False, None, False),
-            ("status", "status", str, "code", False, None, False),
-            ("subject", "subject", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("supportingInfo", "supportingInfo", fhirreference.FHIRReference, "Reference", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "authoredOn",
+                    "authoredOn",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "basedOn",
+                    "basedOn",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "codeCodeableConcept",
+                    "codeCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "code",
+                    True,
+                ),
+                (
+                    "codeReference",
+                    "codeReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "code",
+                    True,
+                ),
+                (
+                    "context",
+                    "context",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "definition",
+                    "definition",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "groupIdentifier",
+                    "groupIdentifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "intent",
+                    "intent",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "note",
+                    "note",
+                    annotation.Annotation,
+                    "Annotation",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "occurrenceDateTime",
+                    "occurrenceDateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    "occurrence",
+                    False,
+                ),
+                (
+                    "occurrencePeriod",
+                    "occurrencePeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "occurrence",
+                    False,
+                ),
+                (
+                    "occurrenceTiming",
+                    "occurrenceTiming",
+                    timing.Timing,
+                    "Timing",
+                    False,
+                    "occurrence",
+                    False,
+                ),
+                (
+                    "performer",
+                    "performer",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "performerType",
+                    "performerType",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "priorRequest",
+                    "priorRequest",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                ("priority", "priority", str, "code", False, None, False),
+                (
+                    "reasonCode",
+                    "reasonCode",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "reasonReference",
+                    "reasonReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "relevantHistory",
+                    "relevantHistory",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "requester",
+                    "requester",
+                    DeviceRequestRequester,
+                    "DeviceRequestRequester",
+                    False,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, False),
+                (
+                    "subject",
+                    "subject",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "supportingInfo",
+                    "supportingInfo",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class DeviceRequestRequester(backboneelement.BackboneElement):
     """ Who/what is requesting diagnostics.
@@ -190,39 +369,56 @@ class DeviceRequestRequester(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(DeviceRequestRequester, self).elementProperties()
-        js.extend([
-            ("agent", "agent", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("onBehalfOf", "onBehalfOf", fhirreference.FHIRReference, "Reference", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "agent",
+                    "agent",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "onBehalfOf",
+                    "onBehalfOf",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import annotation
 except ImportError:
-    annotation = sys.modules[__package__ + '.annotation']
+    annotation = sys.modules[__package__ + ".annotation"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]
 try:
     from . import timing
 except ImportError:
-    timing = sys.modules[__package__ + '.timing']
+    timing = sys.modules[__package__ + ".timing"]

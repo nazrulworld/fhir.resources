@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
+import sys
+
 from . import domainresource
+
 
 class ImmunizationEvaluation(domainresource.DomainResource):
     """ Immunization evaluation information.
@@ -92,40 +95,129 @@ class ImmunizationEvaluation(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(ImmunizationEvaluation, self).elementProperties()
-        js.extend([
-            ("authority", "authority", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("description", "description", str, "string", False, None, False),
-            ("doseNumberPositiveInt", "doseNumberPositiveInt", int, "positiveInt", False, "doseNumber", False),
-            ("doseNumberString", "doseNumberString", str, "string", False, "doseNumber", False),
-            ("doseStatus", "doseStatus", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("doseStatusReason", "doseStatusReason", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("immunizationEvent", "immunizationEvent", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("patient", "patient", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("series", "series", str, "string", False, None, False),
-            ("seriesDosesPositiveInt", "seriesDosesPositiveInt", int, "positiveInt", False, "seriesDoses", False),
-            ("seriesDosesString", "seriesDosesString", str, "string", False, "seriesDoses", False),
-            ("status", "status", str, "code", False, None, True),
-            ("targetDisease", "targetDisease", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "authority",
+                    "authority",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
+                ("description", "description", str, "string", False, None, False),
+                (
+                    "doseNumberPositiveInt",
+                    "doseNumberPositiveInt",
+                    int,
+                    "positiveInt",
+                    False,
+                    "doseNumber",
+                    False,
+                ),
+                (
+                    "doseNumberString",
+                    "doseNumberString",
+                    str,
+                    "string",
+                    False,
+                    "doseNumber",
+                    False,
+                ),
+                (
+                    "doseStatus",
+                    "doseStatus",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "doseStatusReason",
+                    "doseStatusReason",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "immunizationEvent",
+                    "immunizationEvent",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "patient",
+                    "patient",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                ("series", "series", str, "string", False, None, False),
+                (
+                    "seriesDosesPositiveInt",
+                    "seriesDosesPositiveInt",
+                    int,
+                    "positiveInt",
+                    False,
+                    "seriesDoses",
+                    False,
+                ),
+                (
+                    "seriesDosesString",
+                    "seriesDosesString",
+                    str,
+                    "string",
+                    False,
+                    "seriesDoses",
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, True),
+                (
+                    "targetDisease",
+                    "targetDisease",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]

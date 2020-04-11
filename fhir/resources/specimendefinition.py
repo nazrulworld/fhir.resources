@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class SpecimenDefinition(domainresource.DomainResource):
     """ Kind of specimen.
@@ -54,18 +57,58 @@ class SpecimenDefinition(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(SpecimenDefinition, self).elementProperties()
-        js.extend([
-            ("collection", "collection", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", False, None, False),
-            ("patientPreparation", "patientPreparation", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("timeAspect", "timeAspect", str, "string", False, None, False),
-            ("typeCollected", "typeCollected", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("typeTested", "typeTested", SpecimenDefinitionTypeTested, "SpecimenDefinitionTypeTested", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "collection",
+                    "collection",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "patientPreparation",
+                    "patientPreparation",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                ("timeAspect", "timeAspect", str, "string", False, None, False),
+                (
+                    "typeCollected",
+                    "typeCollected",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "typeTested",
+                    "typeTested",
+                    SpecimenDefinitionTypeTested,
+                    "SpecimenDefinitionTypeTested",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class SpecimenDefinitionTypeTested(backboneelement.BackboneElement):
     """ Specimen in container intended for testing by lab.
@@ -115,20 +158,64 @@ class SpecimenDefinitionTypeTested(backboneelement.BackboneElement):
         """ Type of intended specimen.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(SpecimenDefinitionTypeTested, self).__init__(jsondict=jsondict, strict=strict)
+        super(SpecimenDefinitionTypeTested, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(SpecimenDefinitionTypeTested, self).elementProperties()
-        js.extend([
-            ("container", "container", SpecimenDefinitionTypeTestedContainer, "SpecimenDefinitionTypeTestedContainer", False, None, False),
-            ("handling", "handling", SpecimenDefinitionTypeTestedHandling, "SpecimenDefinitionTypeTestedHandling", True, None, False),
-            ("isDerived", "isDerived", bool, "boolean", False, None, False),
-            ("preference", "preference", str, "code", False, None, True),
-            ("rejectionCriterion", "rejectionCriterion", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("requirement", "requirement", str, "string", False, None, False),
-            ("retentionTime", "retentionTime", duration.Duration, "Duration", False, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "container",
+                    "container",
+                    SpecimenDefinitionTypeTestedContainer,
+                    "SpecimenDefinitionTypeTestedContainer",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "handling",
+                    "handling",
+                    SpecimenDefinitionTypeTestedHandling,
+                    "SpecimenDefinitionTypeTestedHandling",
+                    True,
+                    None,
+                    False,
+                ),
+                ("isDerived", "isDerived", bool, "boolean", False, None, False),
+                ("preference", "preference", str, "code", False, None, True),
+                (
+                    "rejectionCriterion",
+                    "rejectionCriterion",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                ("requirement", "requirement", str, "string", False, None, False),
+                (
+                    "retentionTime",
+                    "retentionTime",
+                    duration.Duration,
+                    "Duration",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -182,21 +269,81 @@ class SpecimenDefinitionTypeTestedContainer(backboneelement.BackboneElement):
         """ Kind of container associated with the kind of specimen.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(SpecimenDefinitionTypeTestedContainer, self).__init__(jsondict=jsondict, strict=strict)
+        super(SpecimenDefinitionTypeTestedContainer, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(SpecimenDefinitionTypeTestedContainer, self).elementProperties()
-        js.extend([
-            ("additive", "additive", SpecimenDefinitionTypeTestedContainerAdditive, "SpecimenDefinitionTypeTestedContainerAdditive", True, None, False),
-            ("cap", "cap", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("capacity", "capacity", quantity.Quantity, "Quantity", False, None, False),
-            ("description", "description", str, "string", False, None, False),
-            ("material", "material", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("minimumVolumeQuantity", "minimumVolumeQuantity", quantity.Quantity, "Quantity", False, "minimumVolume", False),
-            ("minimumVolumeString", "minimumVolumeString", str, "string", False, "minimumVolume", False),
-            ("preparation", "preparation", str, "string", False, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "additive",
+                    "additive",
+                    SpecimenDefinitionTypeTestedContainerAdditive,
+                    "SpecimenDefinitionTypeTestedContainerAdditive",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "cap",
+                    "cap",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "capacity",
+                    "capacity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    None,
+                    False,
+                ),
+                ("description", "description", str, "string", False, None, False),
+                (
+                    "material",
+                    "material",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "minimumVolumeQuantity",
+                    "minimumVolumeQuantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    "minimumVolume",
+                    False,
+                ),
+                (
+                    "minimumVolumeString",
+                    "minimumVolumeString",
+                    str,
+                    "string",
+                    False,
+                    "minimumVolume",
+                    False,
+                ),
+                ("preparation", "preparation", str, "string", False, None, False),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -225,14 +372,36 @@ class SpecimenDefinitionTypeTestedContainerAdditive(backboneelement.BackboneElem
         """ Additive associated with container.
         Type `FHIRReference` referencing `['Substance']` (represented as `dict` in JSON). """
 
-        super(SpecimenDefinitionTypeTestedContainerAdditive, self).__init__(jsondict=jsondict, strict=strict)
+        super(SpecimenDefinitionTypeTestedContainerAdditive, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
-        js = super(SpecimenDefinitionTypeTestedContainerAdditive, self).elementProperties()
-        js.extend([
-            ("additiveCodeableConcept", "additiveCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "additive", True),
-            ("additiveReference", "additiveReference", fhirreference.FHIRReference, "Reference", False, "additive", True),
-        ])
+        js = super(
+            SpecimenDefinitionTypeTestedContainerAdditive, self
+        ).elementProperties()
+        js.extend(
+            [
+                (
+                    "additiveCodeableConcept",
+                    "additiveCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "additive",
+                    True,
+                ),
+                (
+                    "additiveReference",
+                    "additiveReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "additive",
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -269,41 +438,68 @@ class SpecimenDefinitionTypeTestedHandling(backboneelement.BackboneElement):
         """ Temperature range.
         Type `Range` (represented as `dict` in JSON). """
 
-        super(SpecimenDefinitionTypeTestedHandling, self).__init__(jsondict=jsondict, strict=strict)
+        super(SpecimenDefinitionTypeTestedHandling, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(SpecimenDefinitionTypeTestedHandling, self).elementProperties()
-        js.extend([
-            ("instruction", "instruction", str, "string", False, None, False),
-            ("maxDuration", "maxDuration", duration.Duration, "Duration", False, None, False),
-            ("temperatureQualifier", "temperatureQualifier", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("temperatureRange", "temperatureRange", range.Range, "Range", False, None, False),
-        ])
+        js.extend(
+            [
+                ("instruction", "instruction", str, "string", False, None, False),
+                (
+                    "maxDuration",
+                    "maxDuration",
+                    duration.Duration,
+                    "Duration",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "temperatureQualifier",
+                    "temperatureQualifier",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "temperatureRange",
+                    "temperatureRange",
+                    range.Range,
+                    "Range",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import duration
 except ImportError:
-    duration = sys.modules[__package__ + '.duration']
+    duration = sys.modules[__package__ + ".duration"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import quantity
 except ImportError:
-    quantity = sys.modules[__package__ + '.quantity']
+    quantity = sys.modules[__package__ + ".quantity"]
 try:
     from . import range
 except ImportError:
-    range = sys.modules[__package__ + '.range']
+    range = sys.modules[__package__ + ".range"]

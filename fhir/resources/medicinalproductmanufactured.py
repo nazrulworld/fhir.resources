@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
+import sys
+
 from . import domainresource
+
 
 class MedicinalProductManufactured(domainresource.DomainResource):
     """ The manufactured item as contained in the packaged medicinal product.
@@ -55,36 +58,95 @@ class MedicinalProductManufactured(domainresource.DomainResource):
         item is described.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(MedicinalProductManufactured, self).__init__(jsondict=jsondict, strict=strict)
+        super(MedicinalProductManufactured, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(MedicinalProductManufactured, self).elementProperties()
-        js.extend([
-            ("ingredient", "ingredient", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("manufacturedDoseForm", "manufacturedDoseForm", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("manufacturer", "manufacturer", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("otherCharacteristics", "otherCharacteristics", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("physicalCharacteristics", "physicalCharacteristics", prodcharacteristic.ProdCharacteristic, "ProdCharacteristic", False, None, False),
-            ("quantity", "quantity", quantity.Quantity, "Quantity", False, None, True),
-            ("unitOfPresentation", "unitOfPresentation", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "ingredient",
+                    "ingredient",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "manufacturedDoseForm",
+                    "manufacturedDoseForm",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "manufacturer",
+                    "manufacturer",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "otherCharacteristics",
+                    "otherCharacteristics",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "physicalCharacteristics",
+                    "physicalCharacteristics",
+                    prodcharacteristic.ProdCharacteristic,
+                    "ProdCharacteristic",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "quantity",
+                    "quantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "unitOfPresentation",
+                    "unitOfPresentation",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import prodcharacteristic
 except ImportError:
-    prodcharacteristic = sys.modules[__package__ + '.prodcharacteristic']
+    prodcharacteristic = sys.modules[__package__ + ".prodcharacteristic"]
 try:
     from . import quantity
 except ImportError:
-    quantity = sys.modules[__package__ + '.quantity']
+    quantity = sys.modules[__package__ + ".quantity"]

@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class SearchParameter(domainresource.DomainResource):
     """ Search parameter for a resource.
@@ -138,38 +141,70 @@ class SearchParameter(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(SearchParameter, self).elementProperties()
-        js.extend([
-            ("base", "base", str, "code", True, None, True),
-            ("chain", "chain", str, "string", True, None, False),
-            ("code", "code", str, "code", False, None, True),
-            ("comparator", "comparator", str, "code", True, None, False),
-            ("component", "component", SearchParameterComponent, "SearchParameterComponent", True, None, False),
-            ("contact", "contact", contactdetail.ContactDetail, "ContactDetail", True, None, False),
-            ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("derivedFrom", "derivedFrom", str, "canonical", False, None, False),
-            ("description", "description", str, "markdown", False, None, True),
-            ("experimental", "experimental", bool, "boolean", False, None, False),
-            ("expression", "expression", str, "string", False, None, False),
-            ("jurisdiction", "jurisdiction", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("modifier", "modifier", str, "code", True, None, False),
-            ("multipleAnd", "multipleAnd", bool, "boolean", False, None, False),
-            ("multipleOr", "multipleOr", bool, "boolean", False, None, False),
-            ("name", "name", str, "string", False, None, True),
-            ("publisher", "publisher", str, "string", False, None, False),
-            ("purpose", "purpose", str, "markdown", False, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("target", "target", str, "code", True, None, False),
-            ("type", "type", str, "code", False, None, True),
-            ("url", "url", str, "uri", False, None, True),
-            ("useContext", "useContext", usagecontext.UsageContext, "UsageContext", True, None, False),
-            ("version", "version", str, "string", False, None, False),
-            ("xpath", "xpath", str, "string", False, None, False),
-            ("xpathUsage", "xpathUsage", str, "code", False, None, False),
-        ])
+        js.extend(
+            [
+                ("base", "base", str, "code", True, None, True),
+                ("chain", "chain", str, "string", True, None, False),
+                ("code", "code", str, "code", False, None, True),
+                ("comparator", "comparator", str, "code", True, None, False),
+                (
+                    "component",
+                    "component",
+                    SearchParameterComponent,
+                    "SearchParameterComponent",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "contact",
+                    "contact",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
+                ("derivedFrom", "derivedFrom", str, "canonical", False, None, False),
+                ("description", "description", str, "markdown", False, None, True),
+                ("experimental", "experimental", bool, "boolean", False, None, False),
+                ("expression", "expression", str, "string", False, None, False),
+                (
+                    "jurisdiction",
+                    "jurisdiction",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                ("modifier", "modifier", str, "code", True, None, False),
+                ("multipleAnd", "multipleAnd", bool, "boolean", False, None, False),
+                ("multipleOr", "multipleOr", bool, "boolean", False, None, False),
+                ("name", "name", str, "string", False, None, True),
+                ("publisher", "publisher", str, "string", False, None, False),
+                ("purpose", "purpose", str, "markdown", False, None, False),
+                ("status", "status", str, "code", False, None, True),
+                ("target", "target", str, "code", True, None, False),
+                ("type", "type", str, "code", False, None, True),
+                ("url", "url", str, "uri", False, None, True),
+                (
+                    "useContext",
+                    "useContext",
+                    usagecontext.UsageContext,
+                    "UsageContext",
+                    True,
+                    None,
+                    False,
+                ),
+                ("version", "version", str, "string", False, None, False),
+                ("xpath", "xpath", str, "string", False, None, False),
+                ("xpathUsage", "xpathUsage", str, "code", False, None, False),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class SearchParameterComponent(backboneelement.BackboneElement):
     """ For Composite resources to define the parts.
@@ -199,27 +234,28 @@ class SearchParameterComponent(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(SearchParameterComponent, self).elementProperties()
-        js.extend([
-            ("definition", "definition", str, "canonical", False, None, True),
-            ("expression", "expression", str, "string", False, None, True),
-        ])
+        js.extend(
+            [
+                ("definition", "definition", str, "canonical", False, None, True),
+                ("expression", "expression", str, "string", False, None, True),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import contactdetail
 except ImportError:
-    contactdetail = sys.modules[__package__ + '.contactdetail']
+    contactdetail = sys.modules[__package__ + ".contactdetail"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import usagecontext
 except ImportError:
-    usagecontext = sys.modules[__package__ + '.usagecontext']
+    usagecontext = sys.modules[__package__ + ".usagecontext"]

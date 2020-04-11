@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class CatalogEntry(domainresource.DomainResource):
     """ An entry in a catalog.
@@ -85,25 +88,113 @@ class CatalogEntry(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(CatalogEntry, self).elementProperties()
-        js.extend([
-            ("additionalCharacteristic", "additionalCharacteristic", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("additionalClassification", "additionalClassification", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("additionalIdentifier", "additionalIdentifier", identifier.Identifier, "Identifier", True, None, False),
-            ("classification", "classification", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("lastUpdated", "lastUpdated", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("orderable", "orderable", bool, "boolean", False, None, True),
-            ("referencedItem", "referencedItem", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("relatedEntry", "relatedEntry", CatalogEntryRelatedEntry, "CatalogEntryRelatedEntry", True, None, False),
-            ("status", "status", str, "code", False, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("validTo", "validTo", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("validityPeriod", "validityPeriod", period.Period, "Period", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "additionalCharacteristic",
+                    "additionalCharacteristic",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "additionalClassification",
+                    "additionalClassification",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "additionalIdentifier",
+                    "additionalIdentifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "classification",
+                    "classification",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "lastUpdated",
+                    "lastUpdated",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                ("orderable", "orderable", bool, "boolean", False, None, True),
+                (
+                    "referencedItem",
+                    "referencedItem",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "relatedEntry",
+                    "relatedEntry",
+                    CatalogEntryRelatedEntry,
+                    "CatalogEntryRelatedEntry",
+                    True,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, False),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "validTo",
+                    "validTo",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "validityPeriod",
+                    "validityPeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class CatalogEntryRelatedEntry(backboneelement.BackboneElement):
     """ An item that this catalog entry is related to.
@@ -134,31 +225,40 @@ class CatalogEntryRelatedEntry(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(CatalogEntryRelatedEntry, self).elementProperties()
-        js.extend([
-            ("item", "item", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("relationtype", "relationtype", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "item",
+                    "item",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                ("relationtype", "relationtype", str, "code", False, None, True),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]

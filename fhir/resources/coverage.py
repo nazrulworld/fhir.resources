@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class Coverage(domainresource.DomainResource):
     """ Insurance or medical plan or a payment agreement.
@@ -99,29 +102,109 @@ class Coverage(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(Coverage, self).elementProperties()
-        js.extend([
-            ("beneficiary", "beneficiary", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("class_fhir", "class", CoverageClass, "CoverageClass", True, None, False),
-            ("contract", "contract", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("costToBeneficiary", "costToBeneficiary", CoverageCostToBeneficiary, "CoverageCostToBeneficiary", True, None, False),
-            ("dependent", "dependent", str, "string", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("network", "network", str, "string", False, None, False),
-            ("order", "order", int, "positiveInt", False, None, False),
-            ("payor", "payor", fhirreference.FHIRReference, "Reference", True, None, True),
-            ("period", "period", period.Period, "Period", False, None, False),
-            ("policyHolder", "policyHolder", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("relationship", "relationship", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("subrogation", "subrogation", bool, "boolean", False, None, False),
-            ("subscriber", "subscriber", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("subscriberId", "subscriberId", str, "string", False, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "beneficiary",
+                    "beneficiary",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "class_fhir",
+                    "class",
+                    CoverageClass,
+                    "CoverageClass",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "contract",
+                    "contract",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "costToBeneficiary",
+                    "costToBeneficiary",
+                    CoverageCostToBeneficiary,
+                    "CoverageCostToBeneficiary",
+                    True,
+                    None,
+                    False,
+                ),
+                ("dependent", "dependent", str, "string", False, None, False),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                ("network", "network", str, "string", False, None, False),
+                ("order", "order", int, "positiveInt", False, None, False),
+                (
+                    "payor",
+                    "payor",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    True,
+                ),
+                ("period", "period", period.Period, "Period", False, None, False),
+                (
+                    "policyHolder",
+                    "policyHolder",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "relationship",
+                    "relationship",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, True),
+                ("subrogation", "subrogation", bool, "boolean", False, None, False),
+                (
+                    "subscriber",
+                    "subscriber",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("subscriberId", "subscriberId", str, "string", False, None, False),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class CoverageClass(backboneelement.BackboneElement):
     """ Additional coverage classifications.
@@ -155,11 +238,21 @@ class CoverageClass(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(CoverageClass, self).elementProperties()
-        js.extend([
-            ("name", "name", str, "string", False, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("value", "value", str, "string", False, None, True),
-        ])
+        js.extend(
+            [
+                ("name", "name", str, "string", False, None, False),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                ("value", "value", str, "string", False, None, True),
+            ]
+        )
         return js
 
 
@@ -197,16 +290,52 @@ class CoverageCostToBeneficiary(backboneelement.BackboneElement):
         """ The amount or percentage due from the beneficiary.
         Type `Quantity` (represented as `dict` in JSON). """
 
-        super(CoverageCostToBeneficiary, self).__init__(jsondict=jsondict, strict=strict)
+        super(CoverageCostToBeneficiary, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(CoverageCostToBeneficiary, self).elementProperties()
-        js.extend([
-            ("exception", "exception", CoverageCostToBeneficiaryException, "CoverageCostToBeneficiaryException", True, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("valueMoney", "valueMoney", money.Money, "Money", False, "value", True),
-            ("valueQuantity", "valueQuantity", quantity.Quantity, "Quantity", False, "value", True),
-        ])
+        js.extend(
+            [
+                (
+                    "exception",
+                    "exception",
+                    CoverageCostToBeneficiaryException,
+                    "CoverageCostToBeneficiaryException",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "valueMoney",
+                    "valueMoney",
+                    money.Money,
+                    "Money",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueQuantity",
+                    "valueQuantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    "value",
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -235,39 +364,50 @@ class CoverageCostToBeneficiaryException(backboneelement.BackboneElement):
         """ Exception category.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(CoverageCostToBeneficiaryException, self).__init__(jsondict=jsondict, strict=strict)
+        super(CoverageCostToBeneficiaryException, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(CoverageCostToBeneficiaryException, self).elementProperties()
-        js.extend([
-            ("period", "period", period.Period, "Period", False, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-        ])
+        js.extend(
+            [
+                ("period", "period", period.Period, "Period", False, None, False),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import money
 except ImportError:
-    money = sys.modules[__package__ + '.money']
+    money = sys.modules[__package__ + ".money"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]
 try:
     from . import quantity
 except ImportError:
-    quantity = sys.modules[__package__ + '.quantity']
+    quantity = sys.modules[__package__ + ".quantity"]

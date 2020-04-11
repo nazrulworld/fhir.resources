@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class Contract(domainresource.DomainResource):
     """ Legal Agreement.
@@ -174,47 +177,223 @@ class Contract(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(Contract, self).elementProperties()
-        js.extend([
-            ("alias", "alias", str, "string", True, None, False),
-            ("applies", "applies", period.Period, "Period", False, None, False),
-            ("author", "author", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("authority", "authority", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("contentDefinition", "contentDefinition", ContractContentDefinition, "ContractContentDefinition", False, None, False),
-            ("contentDerivative", "contentDerivative", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("domain", "domain", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("expirationType", "expirationType", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("friendly", "friendly", ContractFriendly, "ContractFriendly", True, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("instantiatesCanonical", "instantiatesCanonical", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("instantiatesUri", "instantiatesUri", str, "uri", False, None, False),
-            ("issued", "issued", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("legal", "legal", ContractLegal, "ContractLegal", True, None, False),
-            ("legalState", "legalState", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("legallyBindingAttachment", "legallyBindingAttachment", attachment.Attachment, "Attachment", False, "legallyBinding", False),
-            ("legallyBindingReference", "legallyBindingReference", fhirreference.FHIRReference, "Reference", False, "legallyBinding", False),
-            ("name", "name", str, "string", False, None, False),
-            ("relevantHistory", "relevantHistory", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("rule", "rule", ContractRule, "ContractRule", True, None, False),
-            ("scope", "scope", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("signer", "signer", ContractSigner, "ContractSigner", True, None, False),
-            ("site", "site", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("status", "status", str, "code", False, None, False),
-            ("subType", "subType", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("subject", "subject", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("subtitle", "subtitle", str, "string", False, None, False),
-            ("supportingInfo", "supportingInfo", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("term", "term", ContractTerm, "ContractTerm", True, None, False),
-            ("title", "title", str, "string", False, None, False),
-            ("topicCodeableConcept", "topicCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "topic", False),
-            ("topicReference", "topicReference", fhirreference.FHIRReference, "Reference", False, "topic", False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("url", "url", str, "uri", False, None, False),
-            ("version", "version", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                ("alias", "alias", str, "string", True, None, False),
+                ("applies", "applies", period.Period, "Period", False, None, False),
+                (
+                    "author",
+                    "author",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "authority",
+                    "authority",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "contentDefinition",
+                    "contentDefinition",
+                    ContractContentDefinition,
+                    "ContractContentDefinition",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "contentDerivative",
+                    "contentDerivative",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "domain",
+                    "domain",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "expirationType",
+                    "expirationType",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "friendly",
+                    "friendly",
+                    ContractFriendly,
+                    "ContractFriendly",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "instantiatesCanonical",
+                    "instantiatesCanonical",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("instantiatesUri", "instantiatesUri", str, "uri", False, None, False),
+                ("issued", "issued", fhirdate.FHIRDate, "dateTime", False, None, False),
+                ("legal", "legal", ContractLegal, "ContractLegal", True, None, False),
+                (
+                    "legalState",
+                    "legalState",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "legallyBindingAttachment",
+                    "legallyBindingAttachment",
+                    attachment.Attachment,
+                    "Attachment",
+                    False,
+                    "legallyBinding",
+                    False,
+                ),
+                (
+                    "legallyBindingReference",
+                    "legallyBindingReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "legallyBinding",
+                    False,
+                ),
+                ("name", "name", str, "string", False, None, False),
+                (
+                    "relevantHistory",
+                    "relevantHistory",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                ("rule", "rule", ContractRule, "ContractRule", True, None, False),
+                (
+                    "scope",
+                    "scope",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "signer",
+                    "signer",
+                    ContractSigner,
+                    "ContractSigner",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "site",
+                    "site",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, False),
+                (
+                    "subType",
+                    "subType",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "subject",
+                    "subject",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                ("subtitle", "subtitle", str, "string", False, None, False),
+                (
+                    "supportingInfo",
+                    "supportingInfo",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                ("term", "term", ContractTerm, "ContractTerm", True, None, False),
+                ("title", "title", str, "string", False, None, False),
+                (
+                    "topicCodeableConcept",
+                    "topicCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "topic",
+                    False,
+                ),
+                (
+                    "topicReference",
+                    "topicReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "topic",
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("url", "url", str, "uri", False, None, False),
+                ("version", "version", str, "string", False, None, False),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class ContractContentDefinition(backboneelement.BackboneElement):
     """ Contract precursor content.
@@ -260,18 +439,62 @@ class ContractContentDefinition(backboneelement.BackboneElement):
         """ Content structure and use.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(ContractContentDefinition, self).__init__(jsondict=jsondict, strict=strict)
+        super(ContractContentDefinition, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ContractContentDefinition, self).elementProperties()
-        js.extend([
-            ("copyright", "copyright", str, "markdown", False, None, False),
-            ("publicationDate", "publicationDate", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("publicationStatus", "publicationStatus", str, "code", False, None, True),
-            ("publisher", "publisher", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("subType", "subType", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-        ])
+        js.extend(
+            [
+                ("copyright", "copyright", str, "markdown", False, None, False),
+                (
+                    "publicationDate",
+                    "publicationDate",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "publicationStatus",
+                    "publicationStatus",
+                    str,
+                    "code",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "publisher",
+                    "publisher",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "subType",
+                    "subType",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -309,10 +532,28 @@ class ContractFriendly(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ContractFriendly, self).elementProperties()
-        js.extend([
-            ("contentAttachment", "contentAttachment", attachment.Attachment, "Attachment", False, "content", True),
-            ("contentReference", "contentReference", fhirreference.FHIRReference, "Reference", False, "content", True),
-        ])
+        js.extend(
+            [
+                (
+                    "contentAttachment",
+                    "contentAttachment",
+                    attachment.Attachment,
+                    "Attachment",
+                    False,
+                    "content",
+                    True,
+                ),
+                (
+                    "contentReference",
+                    "contentReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "content",
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -344,10 +585,28 @@ class ContractLegal(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ContractLegal, self).elementProperties()
-        js.extend([
-            ("contentAttachment", "contentAttachment", attachment.Attachment, "Attachment", False, "content", True),
-            ("contentReference", "contentReference", fhirreference.FHIRReference, "Reference", False, "content", True),
-        ])
+        js.extend(
+            [
+                (
+                    "contentAttachment",
+                    "contentAttachment",
+                    attachment.Attachment,
+                    "Attachment",
+                    False,
+                    "content",
+                    True,
+                ),
+                (
+                    "contentReference",
+                    "contentReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "content",
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -379,10 +638,28 @@ class ContractRule(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ContractRule, self).elementProperties()
-        js.extend([
-            ("contentAttachment", "contentAttachment", attachment.Attachment, "Attachment", False, "content", True),
-            ("contentReference", "contentReference", fhirreference.FHIRReference, "Reference", False, "content", True),
-        ])
+        js.extend(
+            [
+                (
+                    "contentAttachment",
+                    "contentAttachment",
+                    attachment.Attachment,
+                    "Attachment",
+                    False,
+                    "content",
+                    True,
+                ),
+                (
+                    "contentReference",
+                    "contentReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "content",
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -421,11 +698,29 @@ class ContractSigner(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ContractSigner, self).elementProperties()
-        js.extend([
-            ("party", "party", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("signature", "signature", signature.Signature, "Signature", True, None, True),
-            ("type", "type", coding.Coding, "Coding", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "party",
+                    "party",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "signature",
+                    "signature",
+                    signature.Signature,
+                    "Signature",
+                    True,
+                    None,
+                    True,
+                ),
+                ("type", "type", coding.Coding, "Coding", False, None, True),
+            ]
+        )
         return js
 
 
@@ -502,21 +797,95 @@ class ContractTerm(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ContractTerm, self).elementProperties()
-        js.extend([
-            ("action", "action", ContractTermAction, "ContractTermAction", True, None, False),
-            ("applies", "applies", period.Period, "Period", False, None, False),
-            ("asset", "asset", ContractTermAsset, "ContractTermAsset", True, None, False),
-            ("group", "group", ContractTerm, "ContractTerm", True, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", False, None, False),
-            ("issued", "issued", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("offer", "offer", ContractTermOffer, "ContractTermOffer", False, None, True),
-            ("securityLabel", "securityLabel", ContractTermSecurityLabel, "ContractTermSecurityLabel", True, None, False),
-            ("subType", "subType", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("text", "text", str, "string", False, None, False),
-            ("topicCodeableConcept", "topicCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "topic", False),
-            ("topicReference", "topicReference", fhirreference.FHIRReference, "Reference", False, "topic", False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "action",
+                    "action",
+                    ContractTermAction,
+                    "ContractTermAction",
+                    True,
+                    None,
+                    False,
+                ),
+                ("applies", "applies", period.Period, "Period", False, None, False),
+                (
+                    "asset",
+                    "asset",
+                    ContractTermAsset,
+                    "ContractTermAsset",
+                    True,
+                    None,
+                    False,
+                ),
+                ("group", "group", ContractTerm, "ContractTerm", True, None, False),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                ("issued", "issued", fhirdate.FHIRDate, "dateTime", False, None, False),
+                (
+                    "offer",
+                    "offer",
+                    ContractTermOffer,
+                    "ContractTermOffer",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "securityLabel",
+                    "securityLabel",
+                    ContractTermSecurityLabel,
+                    "ContractTermSecurityLabel",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "subType",
+                    "subType",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("text", "text", str, "string", False, None, False),
+                (
+                    "topicCodeableConcept",
+                    "topicCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "topic",
+                    False,
+                ),
+                (
+                    "topicReference",
+                    "topicReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "topic",
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -633,31 +1002,177 @@ class ContractTermAction(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ContractTermAction, self).elementProperties()
-        js.extend([
-            ("context", "context", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("contextLinkId", "contextLinkId", str, "string", True, None, False),
-            ("doNotPerform", "doNotPerform", bool, "boolean", False, None, False),
-            ("intent", "intent", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("linkId", "linkId", str, "string", True, None, False),
-            ("note", "note", annotation.Annotation, "Annotation", True, None, False),
-            ("occurrenceDateTime", "occurrenceDateTime", fhirdate.FHIRDate, "dateTime", False, "occurrence", False),
-            ("occurrencePeriod", "occurrencePeriod", period.Period, "Period", False, "occurrence", False),
-            ("occurrenceTiming", "occurrenceTiming", timing.Timing, "Timing", False, "occurrence", False),
-            ("performer", "performer", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("performerLinkId", "performerLinkId", str, "string", True, None, False),
-            ("performerRole", "performerRole", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("performerType", "performerType", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("reason", "reason", str, "string", True, None, False),
-            ("reasonCode", "reasonCode", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("reasonLinkId", "reasonLinkId", str, "string", True, None, False),
-            ("reasonReference", "reasonReference", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("requester", "requester", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("requesterLinkId", "requesterLinkId", str, "string", True, None, False),
-            ("securityLabelNumber", "securityLabelNumber", int, "unsignedInt", True, None, False),
-            ("status", "status", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("subject", "subject", ContractTermActionSubject, "ContractTermActionSubject", True, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "context",
+                    "context",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("contextLinkId", "contextLinkId", str, "string", True, None, False),
+                ("doNotPerform", "doNotPerform", bool, "boolean", False, None, False),
+                (
+                    "intent",
+                    "intent",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                ("linkId", "linkId", str, "string", True, None, False),
+                (
+                    "note",
+                    "note",
+                    annotation.Annotation,
+                    "Annotation",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "occurrenceDateTime",
+                    "occurrenceDateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    "occurrence",
+                    False,
+                ),
+                (
+                    "occurrencePeriod",
+                    "occurrencePeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "occurrence",
+                    False,
+                ),
+                (
+                    "occurrenceTiming",
+                    "occurrenceTiming",
+                    timing.Timing,
+                    "Timing",
+                    False,
+                    "occurrence",
+                    False,
+                ),
+                (
+                    "performer",
+                    "performer",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "performerLinkId",
+                    "performerLinkId",
+                    str,
+                    "string",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "performerRole",
+                    "performerRole",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "performerType",
+                    "performerType",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                ("reason", "reason", str, "string", True, None, False),
+                (
+                    "reasonCode",
+                    "reasonCode",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                ("reasonLinkId", "reasonLinkId", str, "string", True, None, False),
+                (
+                    "reasonReference",
+                    "reasonReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "requester",
+                    "requester",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "requesterLinkId",
+                    "requesterLinkId",
+                    str,
+                    "string",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "securityLabelNumber",
+                    "securityLabelNumber",
+                    int,
+                    "unsignedInt",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "status",
+                    "status",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "subject",
+                    "subject",
+                    ContractTermActionSubject,
+                    "ContractTermActionSubject",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -683,14 +1198,34 @@ class ContractTermActionSubject(backboneelement.BackboneElement):
         """ Role type of the agent.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(ContractTermActionSubject, self).__init__(jsondict=jsondict, strict=strict)
+        super(ContractTermActionSubject, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ContractTermActionSubject, self).elementProperties()
-        js.extend([
-            ("reference", "reference", fhirreference.FHIRReference, "Reference", True, None, True),
-            ("role", "role", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "reference",
+                    "reference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    True,
+                ),
+                (
+                    "role",
+                    "role",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -772,23 +1307,105 @@ class ContractTermAsset(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ContractTermAsset, self).elementProperties()
-        js.extend([
-            ("answer", "answer", ContractTermOfferAnswer, "ContractTermOfferAnswer", True, None, False),
-            ("condition", "condition", str, "string", False, None, False),
-            ("context", "context", ContractTermAssetContext, "ContractTermAssetContext", True, None, False),
-            ("linkId", "linkId", str, "string", True, None, False),
-            ("period", "period", period.Period, "Period", True, None, False),
-            ("periodType", "periodType", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("relationship", "relationship", coding.Coding, "Coding", False, None, False),
-            ("scope", "scope", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("securityLabelNumber", "securityLabelNumber", int, "unsignedInt", True, None, False),
-            ("subtype", "subtype", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("text", "text", str, "string", False, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("typeReference", "typeReference", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("usePeriod", "usePeriod", period.Period, "Period", True, None, False),
-            ("valuedItem", "valuedItem", ContractTermAssetValuedItem, "ContractTermAssetValuedItem", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "answer",
+                    "answer",
+                    ContractTermOfferAnswer,
+                    "ContractTermOfferAnswer",
+                    True,
+                    None,
+                    False,
+                ),
+                ("condition", "condition", str, "string", False, None, False),
+                (
+                    "context",
+                    "context",
+                    ContractTermAssetContext,
+                    "ContractTermAssetContext",
+                    True,
+                    None,
+                    False,
+                ),
+                ("linkId", "linkId", str, "string", True, None, False),
+                ("period", "period", period.Period, "Period", True, None, False),
+                (
+                    "periodType",
+                    "periodType",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "relationship",
+                    "relationship",
+                    coding.Coding,
+                    "Coding",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "scope",
+                    "scope",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "securityLabelNumber",
+                    "securityLabelNumber",
+                    int,
+                    "unsignedInt",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "subtype",
+                    "subtype",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                ("text", "text", str, "string", False, None, False),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "typeReference",
+                    "typeReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                ("usePeriod", "usePeriod", period.Period, "Period", True, None, False),
+                (
+                    "valuedItem",
+                    "valuedItem",
+                    ContractTermAssetValuedItem,
+                    "ContractTermAssetValuedItem",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -822,11 +1439,29 @@ class ContractTermAssetContext(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ContractTermAssetContext, self).elementProperties()
-        js.extend([
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("reference", "reference", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("text", "text", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "reference",
+                    "reference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("text", "text", str, "string", False, None, False),
+            ]
+        )
         return js
 
 
@@ -904,27 +1539,103 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
         """ Contract Valued Item fee, charge, or cost.
         Type `Money` (represented as `dict` in JSON). """
 
-        super(ContractTermAssetValuedItem, self).__init__(jsondict=jsondict, strict=strict)
+        super(ContractTermAssetValuedItem, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ContractTermAssetValuedItem, self).elementProperties()
-        js.extend([
-            ("effectiveTime", "effectiveTime", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("entityCodeableConcept", "entityCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "entity", False),
-            ("entityReference", "entityReference", fhirreference.FHIRReference, "Reference", False, "entity", False),
-            ("factor", "factor", float, "decimal", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", False, None, False),
-            ("linkId", "linkId", str, "string", True, None, False),
-            ("net", "net", money.Money, "Money", False, None, False),
-            ("payment", "payment", str, "string", False, None, False),
-            ("paymentDate", "paymentDate", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("points", "points", float, "decimal", False, None, False),
-            ("quantity", "quantity", quantity.Quantity, "Quantity", False, None, False),
-            ("recipient", "recipient", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("responsible", "responsible", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("securityLabelNumber", "securityLabelNumber", int, "unsignedInt", True, None, False),
-            ("unitPrice", "unitPrice", money.Money, "Money", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "effectiveTime",
+                    "effectiveTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "entityCodeableConcept",
+                    "entityCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "entity",
+                    False,
+                ),
+                (
+                    "entityReference",
+                    "entityReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "entity",
+                    False,
+                ),
+                ("factor", "factor", float, "decimal", False, None, False),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                ("linkId", "linkId", str, "string", True, None, False),
+                ("net", "net", money.Money, "Money", False, None, False),
+                ("payment", "payment", str, "string", False, None, False),
+                (
+                    "paymentDate",
+                    "paymentDate",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                ("points", "points", float, "decimal", False, None, False),
+                (
+                    "quantity",
+                    "quantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "recipient",
+                    "recipient",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "responsible",
+                    "responsible",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "securityLabelNumber",
+                    "securityLabelNumber",
+                    int,
+                    "unsignedInt",
+                    True,
+                    None,
+                    False,
+                ),
+                ("unitPrice", "unitPrice", money.Money, "Money", False, None, False),
+            ]
+        )
         return js
 
 
@@ -988,18 +1699,84 @@ class ContractTermOffer(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ContractTermOffer, self).elementProperties()
-        js.extend([
-            ("answer", "answer", ContractTermOfferAnswer, "ContractTermOfferAnswer", True, None, False),
-            ("decision", "decision", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("decisionMode", "decisionMode", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("linkId", "linkId", str, "string", True, None, False),
-            ("party", "party", ContractTermOfferParty, "ContractTermOfferParty", True, None, False),
-            ("securityLabelNumber", "securityLabelNumber", int, "unsignedInt", True, None, False),
-            ("text", "text", str, "string", False, None, False),
-            ("topic", "topic", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "answer",
+                    "answer",
+                    ContractTermOfferAnswer,
+                    "ContractTermOfferAnswer",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "decision",
+                    "decision",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "decisionMode",
+                    "decisionMode",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                ("linkId", "linkId", str, "string", True, None, False),
+                (
+                    "party",
+                    "party",
+                    ContractTermOfferParty,
+                    "ContractTermOfferParty",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "securityLabelNumber",
+                    "securityLabelNumber",
+                    int,
+                    "unsignedInt",
+                    True,
+                    None,
+                    False,
+                ),
+                ("text", "text", str, "string", False, None, False),
+                (
+                    "topic",
+                    "topic",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -1069,20 +1846,86 @@ class ContractTermOfferAnswer(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ContractTermOfferAnswer, self).elementProperties()
-        js.extend([
-            ("valueAttachment", "valueAttachment", attachment.Attachment, "Attachment", False, "value", True),
-            ("valueBoolean", "valueBoolean", bool, "boolean", False, "value", True),
-            ("valueCoding", "valueCoding", coding.Coding, "Coding", False, "value", True),
-            ("valueDate", "valueDate", fhirdate.FHIRDate, "date", False, "value", True),
-            ("valueDateTime", "valueDateTime", fhirdate.FHIRDate, "dateTime", False, "value", True),
-            ("valueDecimal", "valueDecimal", float, "decimal", False, "value", True),
-            ("valueInteger", "valueInteger", int, "integer", False, "value", True),
-            ("valueQuantity", "valueQuantity", quantity.Quantity, "Quantity", False, "value", True),
-            ("valueReference", "valueReference", fhirreference.FHIRReference, "Reference", False, "value", True),
-            ("valueString", "valueString", str, "string", False, "value", True),
-            ("valueTime", "valueTime", fhirdate.FHIRDate, "time", False, "value", True),
-            ("valueUri", "valueUri", str, "uri", False, "value", True),
-        ])
+        js.extend(
+            [
+                (
+                    "valueAttachment",
+                    "valueAttachment",
+                    attachment.Attachment,
+                    "Attachment",
+                    False,
+                    "value",
+                    True,
+                ),
+                ("valueBoolean", "valueBoolean", bool, "boolean", False, "value", True),
+                (
+                    "valueCoding",
+                    "valueCoding",
+                    coding.Coding,
+                    "Coding",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueDate",
+                    "valueDate",
+                    fhirdate.FHIRDate,
+                    "date",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueDateTime",
+                    "valueDateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueDecimal",
+                    "valueDecimal",
+                    float,
+                    "decimal",
+                    False,
+                    "value",
+                    True,
+                ),
+                ("valueInteger", "valueInteger", int, "integer", False, "value", True),
+                (
+                    "valueQuantity",
+                    "valueQuantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueReference",
+                    "valueReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "value",
+                    True,
+                ),
+                ("valueString", "valueString", str, "string", False, "value", True),
+                (
+                    "valueTime",
+                    "valueTime",
+                    fhirdate.FHIRDate,
+                    "time",
+                    False,
+                    "value",
+                    True,
+                ),
+                ("valueUri", "valueUri", str, "uri", False, "value", True),
+            ]
+        )
         return js
 
 
@@ -1112,10 +1955,28 @@ class ContractTermOfferParty(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ContractTermOfferParty, self).elementProperties()
-        js.extend([
-            ("reference", "reference", fhirreference.FHIRReference, "Reference", True, None, True),
-            ("role", "role", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "reference",
+                    "reference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    True,
+                ),
+                (
+                    "role",
+                    "role",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -1152,65 +2013,76 @@ class ContractTermSecurityLabel(backboneelement.BackboneElement):
         """ Link to Security Labels.
         List of `int` items. """
 
-        super(ContractTermSecurityLabel, self).__init__(jsondict=jsondict, strict=strict)
+        super(ContractTermSecurityLabel, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ContractTermSecurityLabel, self).elementProperties()
-        js.extend([
-            ("category", "category", coding.Coding, "Coding", True, None, False),
-            ("classification", "classification", coding.Coding, "Coding", False, None, True),
-            ("control", "control", coding.Coding, "Coding", True, None, False),
-            ("number", "number", int, "unsignedInt", True, None, False),
-        ])
+        js.extend(
+            [
+                ("category", "category", coding.Coding, "Coding", True, None, False),
+                (
+                    "classification",
+                    "classification",
+                    coding.Coding,
+                    "Coding",
+                    False,
+                    None,
+                    True,
+                ),
+                ("control", "control", coding.Coding, "Coding", True, None, False),
+                ("number", "number", int, "unsignedInt", True, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import annotation
 except ImportError:
-    annotation = sys.modules[__package__ + '.annotation']
+    annotation = sys.modules[__package__ + ".annotation"]
 try:
     from . import attachment
 except ImportError:
-    attachment = sys.modules[__package__ + '.attachment']
+    attachment = sys.modules[__package__ + ".attachment"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import coding
 except ImportError:
-    coding = sys.modules[__package__ + '.coding']
+    coding = sys.modules[__package__ + ".coding"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import money
 except ImportError:
-    money = sys.modules[__package__ + '.money']
+    money = sys.modules[__package__ + ".money"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]
 try:
     from . import quantity
 except ImportError:
-    quantity = sys.modules[__package__ + '.quantity']
+    quantity = sys.modules[__package__ + ".quantity"]
 try:
     from . import signature
 except ImportError:
-    signature = sys.modules[__package__ + '.signature']
+    signature = sys.modules[__package__ + ".signature"]
 try:
     from . import timing
 except ImportError:
-    timing = sys.modules[__package__ + '.timing']
+    timing = sys.modules[__package__ + ".timing"]

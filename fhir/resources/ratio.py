@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
+import sys
+
 from . import element
+
 
 class Ratio(element.Element):
     """ A ratio of two Quantity values - a numerator and a denominator.
@@ -39,15 +42,32 @@ class Ratio(element.Element):
 
     def elementProperties(self):
         js = super(Ratio, self).elementProperties()
-        js.extend([
-            ("denominator", "denominator", quantity.Quantity, "Quantity", False, None, False),
-            ("numerator", "numerator", quantity.Quantity, "Quantity", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "denominator",
+                    "denominator",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "numerator",
+                    "numerator",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import quantity
 except ImportError:
-    quantity = sys.modules[__package__ + '.quantity']
+    quantity = sys.modules[__package__ + ".quantity"]

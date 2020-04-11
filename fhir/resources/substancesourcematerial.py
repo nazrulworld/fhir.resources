@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class SubstanceSourceMaterial(domainresource.DomainResource):
     """ Source material shall capture information on the taxonomic and anatomical
@@ -120,25 +123,121 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(SubstanceSourceMaterial, self).elementProperties()
-        js.extend([
-            ("countryOfOrigin", "countryOfOrigin", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("developmentStage", "developmentStage", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("fractionDescription", "fractionDescription", SubstanceSourceMaterialFractionDescription, "SubstanceSourceMaterialFractionDescription", True, None, False),
-            ("geographicalLocation", "geographicalLocation", str, "string", True, None, False),
-            ("organism", "organism", SubstanceSourceMaterialOrganism, "SubstanceSourceMaterialOrganism", False, None, False),
-            ("organismId", "organismId", identifier.Identifier, "Identifier", False, None, False),
-            ("organismName", "organismName", str, "string", False, None, False),
-            ("parentSubstanceId", "parentSubstanceId", identifier.Identifier, "Identifier", True, None, False),
-            ("parentSubstanceName", "parentSubstanceName", str, "string", True, None, False),
-            ("partDescription", "partDescription", SubstanceSourceMaterialPartDescription, "SubstanceSourceMaterialPartDescription", True, None, False),
-            ("sourceMaterialClass", "sourceMaterialClass", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("sourceMaterialState", "sourceMaterialState", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("sourceMaterialType", "sourceMaterialType", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "countryOfOrigin",
+                    "countryOfOrigin",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "developmentStage",
+                    "developmentStage",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "fractionDescription",
+                    "fractionDescription",
+                    SubstanceSourceMaterialFractionDescription,
+                    "SubstanceSourceMaterialFractionDescription",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "geographicalLocation",
+                    "geographicalLocation",
+                    str,
+                    "string",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "organism",
+                    "organism",
+                    SubstanceSourceMaterialOrganism,
+                    "SubstanceSourceMaterialOrganism",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "organismId",
+                    "organismId",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                ("organismName", "organismName", str, "string", False, None, False),
+                (
+                    "parentSubstanceId",
+                    "parentSubstanceId",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "parentSubstanceName",
+                    "parentSubstanceName",
+                    str,
+                    "string",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "partDescription",
+                    "partDescription",
+                    SubstanceSourceMaterialPartDescription,
+                    "SubstanceSourceMaterialPartDescription",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "sourceMaterialClass",
+                    "sourceMaterialClass",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "sourceMaterialState",
+                    "sourceMaterialState",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "sourceMaterialType",
+                    "sourceMaterialType",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class SubstanceSourceMaterialFractionDescription(backboneelement.BackboneElement):
     """ Many complex materials are fractions of parts of plants, animals, or
@@ -173,14 +272,26 @@ class SubstanceSourceMaterialFractionDescription(backboneelement.BackboneElement
         described in Specified Substance Group 1.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(SubstanceSourceMaterialFractionDescription, self).__init__(jsondict=jsondict, strict=strict)
+        super(SubstanceSourceMaterialFractionDescription, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(SubstanceSourceMaterialFractionDescription, self).elementProperties()
-        js.extend([
-            ("fraction", "fraction", str, "string", False, None, False),
-            ("materialType", "materialType", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                ("fraction", "fraction", str, "string", False, None, False),
+                (
+                    "materialType",
+                    "materialType",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -240,20 +351,88 @@ class SubstanceSourceMaterialOrganism(backboneelement.BackboneElement):
         for species and infraspecies.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(SubstanceSourceMaterialOrganism, self).__init__(jsondict=jsondict, strict=strict)
+        super(SubstanceSourceMaterialOrganism, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(SubstanceSourceMaterialOrganism, self).elementProperties()
-        js.extend([
-            ("author", "author", SubstanceSourceMaterialOrganismAuthor, "SubstanceSourceMaterialOrganismAuthor", True, None, False),
-            ("family", "family", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("genus", "genus", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("hybrid", "hybrid", SubstanceSourceMaterialOrganismHybrid, "SubstanceSourceMaterialOrganismHybrid", False, None, False),
-            ("intraspecificDescription", "intraspecificDescription", str, "string", False, None, False),
-            ("intraspecificType", "intraspecificType", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("organismGeneral", "organismGeneral", SubstanceSourceMaterialOrganismOrganismGeneral, "SubstanceSourceMaterialOrganismOrganismGeneral", False, None, False),
-            ("species", "species", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "author",
+                    "author",
+                    SubstanceSourceMaterialOrganismAuthor,
+                    "SubstanceSourceMaterialOrganismAuthor",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "family",
+                    "family",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "genus",
+                    "genus",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "hybrid",
+                    "hybrid",
+                    SubstanceSourceMaterialOrganismHybrid,
+                    "SubstanceSourceMaterialOrganismHybrid",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "intraspecificDescription",
+                    "intraspecificDescription",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "intraspecificType",
+                    "intraspecificType",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "organismGeneral",
+                    "organismGeneral",
+                    SubstanceSourceMaterialOrganismOrganismGeneral,
+                    "SubstanceSourceMaterialOrganismOrganismGeneral",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "species",
+                    "species",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -286,14 +465,34 @@ class SubstanceSourceMaterialOrganismAuthor(backboneelement.BackboneElement):
         author(s), who validly published the plant/animal name.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(SubstanceSourceMaterialOrganismAuthor, self).__init__(jsondict=jsondict, strict=strict)
+        super(SubstanceSourceMaterialOrganismAuthor, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(SubstanceSourceMaterialOrganismAuthor, self).elementProperties()
-        js.extend([
-            ("authorDescription", "authorDescription", str, "string", False, None, False),
-            ("authorType", "authorType", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "authorDescription",
+                    "authorDescription",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "authorType",
+                    "authorType",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -339,17 +538,61 @@ class SubstanceSourceMaterialOrganismHybrid(backboneelement.BackboneElement):
         shall be specified.
         Type `str`. """
 
-        super(SubstanceSourceMaterialOrganismHybrid, self).__init__(jsondict=jsondict, strict=strict)
+        super(SubstanceSourceMaterialOrganismHybrid, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(SubstanceSourceMaterialOrganismHybrid, self).elementProperties()
-        js.extend([
-            ("hybridType", "hybridType", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("maternalOrganismId", "maternalOrganismId", str, "string", False, None, False),
-            ("maternalOrganismName", "maternalOrganismName", str, "string", False, None, False),
-            ("paternalOrganismId", "paternalOrganismId", str, "string", False, None, False),
-            ("paternalOrganismName", "paternalOrganismName", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "hybridType",
+                    "hybridType",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "maternalOrganismId",
+                    "maternalOrganismId",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "maternalOrganismName",
+                    "maternalOrganismName",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "paternalOrganismId",
+                    "paternalOrganismId",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "paternalOrganismName",
+                    "paternalOrganismName",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -383,16 +626,54 @@ class SubstanceSourceMaterialOrganismOrganismGeneral(backboneelement.BackboneEle
         """ The phylum of an organism shall be specified.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(SubstanceSourceMaterialOrganismOrganismGeneral, self).__init__(jsondict=jsondict, strict=strict)
+        super(SubstanceSourceMaterialOrganismOrganismGeneral, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
-        js = super(SubstanceSourceMaterialOrganismOrganismGeneral, self).elementProperties()
-        js.extend([
-            ("class_fhir", "class", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("kingdom", "kingdom", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("order", "order", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("phylum", "phylum", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js = super(
+            SubstanceSourceMaterialOrganismOrganismGeneral, self
+        ).elementProperties()
+        js.extend(
+            [
+                (
+                    "class_fhir",
+                    "class",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "kingdom",
+                    "kingdom",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "order",
+                    "order",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "phylum",
+                    "phylum",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -420,23 +701,42 @@ class SubstanceSourceMaterialPartDescription(backboneelement.BackboneElement):
         alternative locations may apply.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(SubstanceSourceMaterialPartDescription, self).__init__(jsondict=jsondict, strict=strict)
+        super(SubstanceSourceMaterialPartDescription, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(SubstanceSourceMaterialPartDescription, self).elementProperties()
-        js.extend([
-            ("part", "part", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("partLocation", "partLocation", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "part",
+                    "part",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "partLocation",
+                    "partLocation",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]

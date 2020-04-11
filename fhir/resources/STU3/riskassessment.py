@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class RiskAssessment(domainresource.DomainResource):
     """ Potential outcomes for a subject with likelihood.
@@ -103,30 +106,150 @@ class RiskAssessment(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(RiskAssessment, self).elementProperties()
-        js.extend([
-            ("basedOn", "basedOn", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("basis", "basis", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("comment", "comment", str, "string", False, None, False),
-            ("condition", "condition", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("context", "context", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", False, None, False),
-            ("method", "method", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("mitigation", "mitigation", str, "string", False, None, False),
-            ("occurrenceDateTime", "occurrenceDateTime", fhirdate.FHIRDate, "dateTime", False, "occurrence", False),
-            ("occurrencePeriod", "occurrencePeriod", period.Period, "Period", False, "occurrence", False),
-            ("parent", "parent", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("performer", "performer", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("prediction", "prediction", RiskAssessmentPrediction, "RiskAssessmentPrediction", True, None, False),
-            ("reasonCodeableConcept", "reasonCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "reason", False),
-            ("reasonReference", "reasonReference", fhirreference.FHIRReference, "Reference", False, "reason", False),
-            ("status", "status", str, "code", False, None, True),
-            ("subject", "subject", fhirreference.FHIRReference, "Reference", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "basedOn",
+                    "basedOn",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "basis",
+                    "basis",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("comment", "comment", str, "string", False, None, False),
+                (
+                    "condition",
+                    "condition",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "context",
+                    "context",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "method",
+                    "method",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("mitigation", "mitigation", str, "string", False, None, False),
+                (
+                    "occurrenceDateTime",
+                    "occurrenceDateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    "occurrence",
+                    False,
+                ),
+                (
+                    "occurrencePeriod",
+                    "occurrencePeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "occurrence",
+                    False,
+                ),
+                (
+                    "parent",
+                    "parent",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "performer",
+                    "performer",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "prediction",
+                    "prediction",
+                    RiskAssessmentPrediction,
+                    "RiskAssessmentPrediction",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "reasonCodeableConcept",
+                    "reasonCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "reason",
+                    False,
+                ),
+                (
+                    "reasonReference",
+                    "reasonReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "reason",
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, True),
+                (
+                    "subject",
+                    "subject",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class RiskAssessmentPrediction(backboneelement.BackboneElement):
     """ Outcome predicted.
@@ -180,41 +303,82 @@ class RiskAssessmentPrediction(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(RiskAssessmentPrediction, self).elementProperties()
-        js.extend([
-            ("outcome", "outcome", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("probabilityDecimal", "probabilityDecimal", float, "decimal", False, "probability", False),
-            ("probabilityRange", "probabilityRange", range.Range, "Range", False, "probability", False),
-            ("qualitativeRisk", "qualitativeRisk", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("rationale", "rationale", str, "string", False, None, False),
-            ("relativeRisk", "relativeRisk", float, "decimal", False, None, False),
-            ("whenPeriod", "whenPeriod", period.Period, "Period", False, "when", False),
-            ("whenRange", "whenRange", range.Range, "Range", False, "when", False),
-        ])
+        js.extend(
+            [
+                (
+                    "outcome",
+                    "outcome",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "probabilityDecimal",
+                    "probabilityDecimal",
+                    float,
+                    "decimal",
+                    False,
+                    "probability",
+                    False,
+                ),
+                (
+                    "probabilityRange",
+                    "probabilityRange",
+                    range.Range,
+                    "Range",
+                    False,
+                    "probability",
+                    False,
+                ),
+                (
+                    "qualitativeRisk",
+                    "qualitativeRisk",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("rationale", "rationale", str, "string", False, None, False),
+                ("relativeRisk", "relativeRisk", float, "decimal", False, None, False),
+                (
+                    "whenPeriod",
+                    "whenPeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "when",
+                    False,
+                ),
+                ("whenRange", "whenRange", range.Range, "Range", False, "when", False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]
 try:
     from . import range
 except ImportError:
-    range = sys.modules[__package__ + '.range']
+    range = sys.modules[__package__ + ".range"]

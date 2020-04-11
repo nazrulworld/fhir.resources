@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
+import sys
+
 from . import domainresource
+
 
 class Evidence(domainresource.DomainResource):
     """ A research context or question.
@@ -146,73 +149,210 @@ class Evidence(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(Evidence, self).elementProperties()
-        js.extend([
-            ("approvalDate", "approvalDate", fhirdate.FHIRDate, "date", False, None, False),
-            ("author", "author", contactdetail.ContactDetail, "ContactDetail", True, None, False),
-            ("contact", "contact", contactdetail.ContactDetail, "ContactDetail", True, None, False),
-            ("copyright", "copyright", str, "markdown", False, None, False),
-            ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("description", "description", str, "markdown", False, None, False),
-            ("editor", "editor", contactdetail.ContactDetail, "ContactDetail", True, None, False),
-            ("effectivePeriod", "effectivePeriod", period.Period, "Period", False, None, False),
-            ("endorser", "endorser", contactdetail.ContactDetail, "ContactDetail", True, None, False),
-            ("exposureBackground", "exposureBackground", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("exposureVariant", "exposureVariant", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("jurisdiction", "jurisdiction", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("lastReviewDate", "lastReviewDate", fhirdate.FHIRDate, "date", False, None, False),
-            ("name", "name", str, "string", False, None, False),
-            ("note", "note", annotation.Annotation, "Annotation", True, None, False),
-            ("outcome", "outcome", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("publisher", "publisher", str, "string", False, None, False),
-            ("relatedArtifact", "relatedArtifact", relatedartifact.RelatedArtifact, "RelatedArtifact", True, None, False),
-            ("reviewer", "reviewer", contactdetail.ContactDetail, "ContactDetail", True, None, False),
-            ("shortTitle", "shortTitle", str, "string", False, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("subtitle", "subtitle", str, "string", False, None, False),
-            ("title", "title", str, "string", False, None, False),
-            ("topic", "topic", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("url", "url", str, "uri", False, None, False),
-            ("useContext", "useContext", usagecontext.UsageContext, "UsageContext", True, None, False),
-            ("version", "version", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "approvalDate",
+                    "approvalDate",
+                    fhirdate.FHIRDate,
+                    "date",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "author",
+                    "author",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "contact",
+                    "contact",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                ("copyright", "copyright", str, "markdown", False, None, False),
+                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
+                ("description", "description", str, "markdown", False, None, False),
+                (
+                    "editor",
+                    "editor",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "effectivePeriod",
+                    "effectivePeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "endorser",
+                    "endorser",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "exposureBackground",
+                    "exposureBackground",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "exposureVariant",
+                    "exposureVariant",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "jurisdiction",
+                    "jurisdiction",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "lastReviewDate",
+                    "lastReviewDate",
+                    fhirdate.FHIRDate,
+                    "date",
+                    False,
+                    None,
+                    False,
+                ),
+                ("name", "name", str, "string", False, None, False),
+                (
+                    "note",
+                    "note",
+                    annotation.Annotation,
+                    "Annotation",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "outcome",
+                    "outcome",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                ("publisher", "publisher", str, "string", False, None, False),
+                (
+                    "relatedArtifact",
+                    "relatedArtifact",
+                    relatedartifact.RelatedArtifact,
+                    "RelatedArtifact",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "reviewer",
+                    "reviewer",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                ("shortTitle", "shortTitle", str, "string", False, None, False),
+                ("status", "status", str, "code", False, None, True),
+                ("subtitle", "subtitle", str, "string", False, None, False),
+                ("title", "title", str, "string", False, None, False),
+                (
+                    "topic",
+                    "topic",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                ("url", "url", str, "uri", False, None, False),
+                (
+                    "useContext",
+                    "useContext",
+                    usagecontext.UsageContext,
+                    "UsageContext",
+                    True,
+                    None,
+                    False,
+                ),
+                ("version", "version", str, "string", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import annotation
 except ImportError:
-    annotation = sys.modules[__package__ + '.annotation']
+    annotation = sys.modules[__package__ + ".annotation"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import contactdetail
 except ImportError:
-    contactdetail = sys.modules[__package__ + '.contactdetail']
+    contactdetail = sys.modules[__package__ + ".contactdetail"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]
 try:
     from . import relatedartifact
 except ImportError:
-    relatedartifact = sys.modules[__package__ + '.relatedartifact']
+    relatedartifact = sys.modules[__package__ + ".relatedartifact"]
 try:
     from . import usagecontext
 except ImportError:
-    usagecontext = sys.modules[__package__ + '.usagecontext']
+    usagecontext = sys.modules[__package__ + ".usagecontext"]

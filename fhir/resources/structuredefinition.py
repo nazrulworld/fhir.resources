@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class StructureDefinition(domainresource.DomainResource):
     """ Structural Definition.
@@ -141,39 +144,119 @@ class StructureDefinition(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(StructureDefinition, self).elementProperties()
-        js.extend([
-            ("abstract", "abstract", bool, "boolean", False, None, True),
-            ("baseDefinition", "baseDefinition", str, "canonical", False, None, False),
-            ("contact", "contact", contactdetail.ContactDetail, "ContactDetail", True, None, False),
-            ("context", "context", StructureDefinitionContext, "StructureDefinitionContext", True, None, False),
-            ("contextInvariant", "contextInvariant", str, "string", True, None, False),
-            ("copyright", "copyright", str, "markdown", False, None, False),
-            ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("derivation", "derivation", str, "code", False, None, False),
-            ("description", "description", str, "markdown", False, None, False),
-            ("differential", "differential", StructureDefinitionDifferential, "StructureDefinitionDifferential", False, None, False),
-            ("experimental", "experimental", bool, "boolean", False, None, False),
-            ("fhirVersion", "fhirVersion", str, "code", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("jurisdiction", "jurisdiction", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("keyword", "keyword", coding.Coding, "Coding", True, None, False),
-            ("kind", "kind", str, "code", False, None, True),
-            ("mapping", "mapping", StructureDefinitionMapping, "StructureDefinitionMapping", True, None, False),
-            ("name", "name", str, "string", False, None, True),
-            ("publisher", "publisher", str, "string", False, None, False),
-            ("purpose", "purpose", str, "markdown", False, None, False),
-            ("snapshot", "snapshot", StructureDefinitionSnapshot, "StructureDefinitionSnapshot", False, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("title", "title", str, "string", False, None, False),
-            ("type", "type", str, "uri", False, None, True),
-            ("url", "url", str, "uri", False, None, True),
-            ("useContext", "useContext", usagecontext.UsageContext, "UsageContext", True, None, False),
-            ("version", "version", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                ("abstract", "abstract", bool, "boolean", False, None, True),
+                (
+                    "baseDefinition",
+                    "baseDefinition",
+                    str,
+                    "canonical",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "contact",
+                    "contact",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "context",
+                    "context",
+                    StructureDefinitionContext,
+                    "StructureDefinitionContext",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "contextInvariant",
+                    "contextInvariant",
+                    str,
+                    "string",
+                    True,
+                    None,
+                    False,
+                ),
+                ("copyright", "copyright", str, "markdown", False, None, False),
+                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
+                ("derivation", "derivation", str, "code", False, None, False),
+                ("description", "description", str, "markdown", False, None, False),
+                (
+                    "differential",
+                    "differential",
+                    StructureDefinitionDifferential,
+                    "StructureDefinitionDifferential",
+                    False,
+                    None,
+                    False,
+                ),
+                ("experimental", "experimental", bool, "boolean", False, None, False),
+                ("fhirVersion", "fhirVersion", str, "code", False, None, False),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "jurisdiction",
+                    "jurisdiction",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                ("keyword", "keyword", coding.Coding, "Coding", True, None, False),
+                ("kind", "kind", str, "code", False, None, True),
+                (
+                    "mapping",
+                    "mapping",
+                    StructureDefinitionMapping,
+                    "StructureDefinitionMapping",
+                    True,
+                    None,
+                    False,
+                ),
+                ("name", "name", str, "string", False, None, True),
+                ("publisher", "publisher", str, "string", False, None, False),
+                ("purpose", "purpose", str, "markdown", False, None, False),
+                (
+                    "snapshot",
+                    "snapshot",
+                    StructureDefinitionSnapshot,
+                    "StructureDefinitionSnapshot",
+                    False,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, True),
+                ("title", "title", str, "string", False, None, False),
+                ("type", "type", str, "uri", False, None, True),
+                ("url", "url", str, "uri", False, None, True),
+                (
+                    "useContext",
+                    "useContext",
+                    usagecontext.UsageContext,
+                    "UsageContext",
+                    True,
+                    None,
+                    False,
+                ),
+                ("version", "version", str, "string", False, None, False),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class StructureDefinitionContext(backboneelement.BackboneElement):
     """ If an extension, where it can be used in instances.
@@ -200,14 +283,18 @@ class StructureDefinitionContext(backboneelement.BackboneElement):
         """ fhirpath | element | extension.
         Type `str`. """
 
-        super(StructureDefinitionContext, self).__init__(jsondict=jsondict, strict=strict)
+        super(StructureDefinitionContext, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(StructureDefinitionContext, self).elementProperties()
-        js.extend([
-            ("expression", "expression", str, "string", False, None, True),
-            ("type", "type", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                ("expression", "expression", str, "string", False, None, True),
+                ("type", "type", str, "code", False, None, True),
+            ]
+        )
         return js
 
 
@@ -232,13 +319,25 @@ class StructureDefinitionDifferential(backboneelement.BackboneElement):
         """ Definition of elements in the resource (if no StructureDefinition).
         List of `ElementDefinition` items (represented as `dict` in JSON). """
 
-        super(StructureDefinitionDifferential, self).__init__(jsondict=jsondict, strict=strict)
+        super(StructureDefinitionDifferential, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(StructureDefinitionDifferential, self).elementProperties()
-        js.extend([
-            ("element", "element", elementdefinition.ElementDefinition, "ElementDefinition", True, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "element",
+                    "element",
+                    elementdefinition.ElementDefinition,
+                    "ElementDefinition",
+                    True,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -274,16 +373,20 @@ class StructureDefinitionMapping(backboneelement.BackboneElement):
         """ Identifies what this mapping refers to.
         Type `str`. """
 
-        super(StructureDefinitionMapping, self).__init__(jsondict=jsondict, strict=strict)
+        super(StructureDefinitionMapping, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(StructureDefinitionMapping, self).elementProperties()
-        js.extend([
-            ("comment", "comment", str, "string", False, None, False),
-            ("identity", "identity", str, "id", False, None, True),
-            ("name", "name", str, "string", False, None, False),
-            ("uri", "uri", str, "uri", False, None, False),
-        ])
+        js.extend(
+            [
+                ("comment", "comment", str, "string", False, None, False),
+                ("identity", "identity", str, "id", False, None, True),
+                ("name", "name", str, "string", False, None, False),
+                ("uri", "uri", str, "uri", False, None, False),
+            ]
+        )
         return js
 
 
@@ -308,42 +411,53 @@ class StructureDefinitionSnapshot(backboneelement.BackboneElement):
         """ Definition of elements in the resource (if no StructureDefinition).
         List of `ElementDefinition` items (represented as `dict` in JSON). """
 
-        super(StructureDefinitionSnapshot, self).__init__(jsondict=jsondict, strict=strict)
+        super(StructureDefinitionSnapshot, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(StructureDefinitionSnapshot, self).elementProperties()
-        js.extend([
-            ("element", "element", elementdefinition.ElementDefinition, "ElementDefinition", True, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "element",
+                    "element",
+                    elementdefinition.ElementDefinition,
+                    "ElementDefinition",
+                    True,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import coding
 except ImportError:
-    coding = sys.modules[__package__ + '.coding']
+    coding = sys.modules[__package__ + ".coding"]
 try:
     from . import contactdetail
 except ImportError:
-    contactdetail = sys.modules[__package__ + '.contactdetail']
+    contactdetail = sys.modules[__package__ + ".contactdetail"]
 try:
     from . import elementdefinition
 except ImportError:
-    elementdefinition = sys.modules[__package__ + '.elementdefinition']
+    elementdefinition = sys.modules[__package__ + ".elementdefinition"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import usagecontext
 except ImportError:
-    usagecontext = sys.modules[__package__ + '.usagecontext']
+    usagecontext = sys.modules[__package__ + ".usagecontext"]

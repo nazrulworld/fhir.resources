@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
+import sys
+
 from . import element
+
 
 class Extension(element.Element):
     """ Optional Extensions Element.
@@ -234,188 +237,509 @@ class Extension(element.Element):
 
     def elementProperties(self):
         js = super(Extension, self).elementProperties()
-        js.extend([
-            ("url", "url", str, "uri", False, None, True),
-            ("valueAddress", "valueAddress", address.Address, "Address", False, "value", False),
-            ("valueAge", "valueAge", age.Age, "Age", False, "value", False),
-            ("valueAnnotation", "valueAnnotation", annotation.Annotation, "Annotation", False, "value", False),
-            ("valueAttachment", "valueAttachment", attachment.Attachment, "Attachment", False, "value", False),
-            ("valueBase64Binary", "valueBase64Binary", str, "base64Binary", False, "value", False),
-            ("valueBoolean", "valueBoolean", bool, "boolean", False, "value", False),
-            ("valueCanonical", "valueCanonical", str, "canonical", False, "value", False),
-            ("valueCode", "valueCode", str, "code", False, "value", False),
-            ("valueCodeableConcept", "valueCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "value", False),
-            ("valueCoding", "valueCoding", coding.Coding, "Coding", False, "value", False),
-            ("valueContactDetail", "valueContactDetail", contactdetail.ContactDetail, "ContactDetail", False, "value", False),
-            ("valueContactPoint", "valueContactPoint", contactpoint.ContactPoint, "ContactPoint", False, "value", False),
-            ("valueContributor", "valueContributor", contributor.Contributor, "Contributor", False, "value", False),
-            ("valueCount", "valueCount", count.Count, "Count", False, "value", False),
-            ("valueDataRequirement", "valueDataRequirement", datarequirement.DataRequirement, "DataRequirement", False, "value", False),
-            ("valueDate", "valueDate", fhirdate.FHIRDate, "date", False, "value", False),
-            ("valueDateTime", "valueDateTime", fhirdate.FHIRDate, "dateTime", False, "value", False),
-            ("valueDecimal", "valueDecimal", float, "decimal", False, "value", False),
-            ("valueDistance", "valueDistance", distance.Distance, "Distance", False, "value", False),
-            ("valueDosage", "valueDosage", dosage.Dosage, "Dosage", False, "value", False),
-            ("valueDuration", "valueDuration", duration.Duration, "Duration", False, "value", False),
-            ("valueExpression", "valueExpression", expression.Expression, "Expression", False, "value", False),
-            ("valueHumanName", "valueHumanName", humanname.HumanName, "HumanName", False, "value", False),
-            ("valueId", "valueId", str, "id", False, "value", False),
-            ("valueIdentifier", "valueIdentifier", identifier.Identifier, "Identifier", False, "value", False),
-            ("valueInstant", "valueInstant", fhirdate.FHIRDate, "instant", False, "value", False),
-            ("valueInteger", "valueInteger", int, "integer", False, "value", False),
-            ("valueMarkdown", "valueMarkdown", str, "markdown", False, "value", False),
-            ("valueMeta", "valueMeta", meta.Meta, "Meta", False, "value", False),
-            ("valueMoney", "valueMoney", money.Money, "Money", False, "value", False),
-            ("valueOid", "valueOid", str, "oid", False, "value", False),
-            ("valueParameterDefinition", "valueParameterDefinition", parameterdefinition.ParameterDefinition, "ParameterDefinition", False, "value", False),
-            ("valuePeriod", "valuePeriod", period.Period, "Period", False, "value", False),
-            ("valuePositiveInt", "valuePositiveInt", int, "positiveInt", False, "value", False),
-            ("valueQuantity", "valueQuantity", quantity.Quantity, "Quantity", False, "value", False),
-            ("valueRange", "valueRange", range.Range, "Range", False, "value", False),
-            ("valueRatio", "valueRatio", ratio.Ratio, "Ratio", False, "value", False),
-            ("valueReference", "valueReference", fhirreference.FHIRReference, "Reference", False, "value", False),
-            ("valueRelatedArtifact", "valueRelatedArtifact", relatedartifact.RelatedArtifact, "RelatedArtifact", False, "value", False),
-            ("valueSampledData", "valueSampledData", sampleddata.SampledData, "SampledData", False, "value", False),
-            ("valueSignature", "valueSignature", signature.Signature, "Signature", False, "value", False),
-            ("valueString", "valueString", str, "string", False, "value", False),
-            ("valueTime", "valueTime", fhirdate.FHIRDate, "time", False, "value", False),
-            ("valueTiming", "valueTiming", timing.Timing, "Timing", False, "value", False),
-            ("valueTriggerDefinition", "valueTriggerDefinition", triggerdefinition.TriggerDefinition, "TriggerDefinition", False, "value", False),
-            ("valueUnsignedInt", "valueUnsignedInt", int, "unsignedInt", False, "value", False),
-            ("valueUri", "valueUri", str, "uri", False, "value", False),
-            ("valueUrl", "valueUrl", str, "url", False, "value", False),
-            ("valueUsageContext", "valueUsageContext", usagecontext.UsageContext, "UsageContext", False, "value", False),
-            ("valueUuid", "valueUuid", str, "uuid", False, "value", False),
-        ])
+        js.extend(
+            [
+                ("url", "url", str, "uri", False, None, True),
+                (
+                    "valueAddress",
+                    "valueAddress",
+                    address.Address,
+                    "Address",
+                    False,
+                    "value",
+                    False,
+                ),
+                ("valueAge", "valueAge", age.Age, "Age", False, "value", False),
+                (
+                    "valueAnnotation",
+                    "valueAnnotation",
+                    annotation.Annotation,
+                    "Annotation",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueAttachment",
+                    "valueAttachment",
+                    attachment.Attachment,
+                    "Attachment",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueBase64Binary",
+                    "valueBase64Binary",
+                    str,
+                    "base64Binary",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueBoolean",
+                    "valueBoolean",
+                    bool,
+                    "boolean",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueCanonical",
+                    "valueCanonical",
+                    str,
+                    "canonical",
+                    False,
+                    "value",
+                    False,
+                ),
+                ("valueCode", "valueCode", str, "code", False, "value", False),
+                (
+                    "valueCodeableConcept",
+                    "valueCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueCoding",
+                    "valueCoding",
+                    coding.Coding,
+                    "Coding",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueContactDetail",
+                    "valueContactDetail",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueContactPoint",
+                    "valueContactPoint",
+                    contactpoint.ContactPoint,
+                    "ContactPoint",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueContributor",
+                    "valueContributor",
+                    contributor.Contributor,
+                    "Contributor",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueCount",
+                    "valueCount",
+                    count.Count,
+                    "Count",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueDataRequirement",
+                    "valueDataRequirement",
+                    datarequirement.DataRequirement,
+                    "DataRequirement",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueDate",
+                    "valueDate",
+                    fhirdate.FHIRDate,
+                    "date",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueDateTime",
+                    "valueDateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueDecimal",
+                    "valueDecimal",
+                    float,
+                    "decimal",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueDistance",
+                    "valueDistance",
+                    distance.Distance,
+                    "Distance",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueDosage",
+                    "valueDosage",
+                    dosage.Dosage,
+                    "Dosage",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueDuration",
+                    "valueDuration",
+                    duration.Duration,
+                    "Duration",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueExpression",
+                    "valueExpression",
+                    expression.Expression,
+                    "Expression",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueHumanName",
+                    "valueHumanName",
+                    humanname.HumanName,
+                    "HumanName",
+                    False,
+                    "value",
+                    False,
+                ),
+                ("valueId", "valueId", str, "id", False, "value", False),
+                (
+                    "valueIdentifier",
+                    "valueIdentifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueInstant",
+                    "valueInstant",
+                    fhirdate.FHIRDate,
+                    "instant",
+                    False,
+                    "value",
+                    False,
+                ),
+                ("valueInteger", "valueInteger", int, "integer", False, "value", False),
+                (
+                    "valueMarkdown",
+                    "valueMarkdown",
+                    str,
+                    "markdown",
+                    False,
+                    "value",
+                    False,
+                ),
+                ("valueMeta", "valueMeta", meta.Meta, "Meta", False, "value", False),
+                (
+                    "valueMoney",
+                    "valueMoney",
+                    money.Money,
+                    "Money",
+                    False,
+                    "value",
+                    False,
+                ),
+                ("valueOid", "valueOid", str, "oid", False, "value", False),
+                (
+                    "valueParameterDefinition",
+                    "valueParameterDefinition",
+                    parameterdefinition.ParameterDefinition,
+                    "ParameterDefinition",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valuePeriod",
+                    "valuePeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valuePositiveInt",
+                    "valuePositiveInt",
+                    int,
+                    "positiveInt",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueQuantity",
+                    "valueQuantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueRange",
+                    "valueRange",
+                    range.Range,
+                    "Range",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueRatio",
+                    "valueRatio",
+                    ratio.Ratio,
+                    "Ratio",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueReference",
+                    "valueReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueRelatedArtifact",
+                    "valueRelatedArtifact",
+                    relatedartifact.RelatedArtifact,
+                    "RelatedArtifact",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueSampledData",
+                    "valueSampledData",
+                    sampleddata.SampledData,
+                    "SampledData",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueSignature",
+                    "valueSignature",
+                    signature.Signature,
+                    "Signature",
+                    False,
+                    "value",
+                    False,
+                ),
+                ("valueString", "valueString", str, "string", False, "value", False),
+                (
+                    "valueTime",
+                    "valueTime",
+                    fhirdate.FHIRDate,
+                    "time",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueTiming",
+                    "valueTiming",
+                    timing.Timing,
+                    "Timing",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueTriggerDefinition",
+                    "valueTriggerDefinition",
+                    triggerdefinition.TriggerDefinition,
+                    "TriggerDefinition",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueUnsignedInt",
+                    "valueUnsignedInt",
+                    int,
+                    "unsignedInt",
+                    False,
+                    "value",
+                    False,
+                ),
+                ("valueUri", "valueUri", str, "uri", False, "value", False),
+                ("valueUrl", "valueUrl", str, "url", False, "value", False),
+                (
+                    "valueUsageContext",
+                    "valueUsageContext",
+                    usagecontext.UsageContext,
+                    "UsageContext",
+                    False,
+                    "value",
+                    False,
+                ),
+                ("valueUuid", "valueUuid", str, "uuid", False, "value", False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import address
 except ImportError:
-    address = sys.modules[__package__ + '.address']
+    address = sys.modules[__package__ + ".address"]
 try:
     from . import age
 except ImportError:
-    age = sys.modules[__package__ + '.age']
+    age = sys.modules[__package__ + ".age"]
 try:
     from . import annotation
 except ImportError:
-    annotation = sys.modules[__package__ + '.annotation']
+    annotation = sys.modules[__package__ + ".annotation"]
 try:
     from . import attachment
 except ImportError:
-    attachment = sys.modules[__package__ + '.attachment']
+    attachment = sys.modules[__package__ + ".attachment"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import coding
 except ImportError:
-    coding = sys.modules[__package__ + '.coding']
+    coding = sys.modules[__package__ + ".coding"]
 try:
     from . import contactdetail
 except ImportError:
-    contactdetail = sys.modules[__package__ + '.contactdetail']
+    contactdetail = sys.modules[__package__ + ".contactdetail"]
 try:
     from . import contactpoint
 except ImportError:
-    contactpoint = sys.modules[__package__ + '.contactpoint']
+    contactpoint = sys.modules[__package__ + ".contactpoint"]
 try:
     from . import contributor
 except ImportError:
-    contributor = sys.modules[__package__ + '.contributor']
+    contributor = sys.modules[__package__ + ".contributor"]
 try:
     from . import count
 except ImportError:
-    count = sys.modules[__package__ + '.count']
+    count = sys.modules[__package__ + ".count"]
 try:
     from . import datarequirement
 except ImportError:
-    datarequirement = sys.modules[__package__ + '.datarequirement']
+    datarequirement = sys.modules[__package__ + ".datarequirement"]
 try:
     from . import distance
 except ImportError:
-    distance = sys.modules[__package__ + '.distance']
+    distance = sys.modules[__package__ + ".distance"]
 try:
     from . import dosage
 except ImportError:
-    dosage = sys.modules[__package__ + '.dosage']
+    dosage = sys.modules[__package__ + ".dosage"]
 try:
     from . import duration
 except ImportError:
-    duration = sys.modules[__package__ + '.duration']
+    duration = sys.modules[__package__ + ".duration"]
 try:
     from . import expression
 except ImportError:
-    expression = sys.modules[__package__ + '.expression']
+    expression = sys.modules[__package__ + ".expression"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import humanname
 except ImportError:
-    humanname = sys.modules[__package__ + '.humanname']
+    humanname = sys.modules[__package__ + ".humanname"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import meta
 except ImportError:
-    meta = sys.modules[__package__ + '.meta']
+    meta = sys.modules[__package__ + ".meta"]
 try:
     from . import money
 except ImportError:
-    money = sys.modules[__package__ + '.money']
+    money = sys.modules[__package__ + ".money"]
 try:
     from . import parameterdefinition
 except ImportError:
-    parameterdefinition = sys.modules[__package__ + '.parameterdefinition']
+    parameterdefinition = sys.modules[__package__ + ".parameterdefinition"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]
 try:
     from . import quantity
 except ImportError:
-    quantity = sys.modules[__package__ + '.quantity']
+    quantity = sys.modules[__package__ + ".quantity"]
 try:
     from . import range
 except ImportError:
-    range = sys.modules[__package__ + '.range']
+    range = sys.modules[__package__ + ".range"]
 try:
     from . import ratio
 except ImportError:
-    ratio = sys.modules[__package__ + '.ratio']
+    ratio = sys.modules[__package__ + ".ratio"]
 try:
     from . import relatedartifact
 except ImportError:
-    relatedartifact = sys.modules[__package__ + '.relatedartifact']
+    relatedartifact = sys.modules[__package__ + ".relatedartifact"]
 try:
     from . import sampleddata
 except ImportError:
-    sampleddata = sys.modules[__package__ + '.sampleddata']
+    sampleddata = sys.modules[__package__ + ".sampleddata"]
 try:
     from . import signature
 except ImportError:
-    signature = sys.modules[__package__ + '.signature']
+    signature = sys.modules[__package__ + ".signature"]
 try:
     from . import timing
 except ImportError:
-    timing = sys.modules[__package__ + '.timing']
+    timing = sys.modules[__package__ + ".timing"]
 try:
     from . import triggerdefinition
 except ImportError:
-    triggerdefinition = sys.modules[__package__ + '.triggerdefinition']
+    triggerdefinition = sys.modules[__package__ + ".triggerdefinition"]
 try:
     from . import usagecontext
 except ImportError:
-    usagecontext = sys.modules[__package__ + '.usagecontext']
+    usagecontext = sys.modules[__package__ + ".usagecontext"]

@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class Condition(domainresource.DomainResource):
     """ Detailed information about conditions, problems or diagnoses.
@@ -132,37 +135,213 @@ class Condition(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(Condition, self).elementProperties()
-        js.extend([
-            ("abatementAge", "abatementAge", age.Age, "Age", False, "abatement", False),
-            ("abatementDateTime", "abatementDateTime", fhirdate.FHIRDate, "dateTime", False, "abatement", False),
-            ("abatementPeriod", "abatementPeriod", period.Period, "Period", False, "abatement", False),
-            ("abatementRange", "abatementRange", range.Range, "Range", False, "abatement", False),
-            ("abatementString", "abatementString", str, "string", False, "abatement", False),
-            ("asserter", "asserter", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("bodySite", "bodySite", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("category", "category", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("clinicalStatus", "clinicalStatus", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("encounter", "encounter", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("evidence", "evidence", ConditionEvidence, "ConditionEvidence", True, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("note", "note", annotation.Annotation, "Annotation", True, None, False),
-            ("onsetAge", "onsetAge", age.Age, "Age", False, "onset", False),
-            ("onsetDateTime", "onsetDateTime", fhirdate.FHIRDate, "dateTime", False, "onset", False),
-            ("onsetPeriod", "onsetPeriod", period.Period, "Period", False, "onset", False),
-            ("onsetRange", "onsetRange", range.Range, "Range", False, "onset", False),
-            ("onsetString", "onsetString", str, "string", False, "onset", False),
-            ("recordedDate", "recordedDate", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("recorder", "recorder", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("severity", "severity", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("stage", "stage", ConditionStage, "ConditionStage", True, None, False),
-            ("subject", "subject", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("verificationStatus", "verificationStatus", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "abatementAge",
+                    "abatementAge",
+                    age.Age,
+                    "Age",
+                    False,
+                    "abatement",
+                    False,
+                ),
+                (
+                    "abatementDateTime",
+                    "abatementDateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    "abatement",
+                    False,
+                ),
+                (
+                    "abatementPeriod",
+                    "abatementPeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "abatement",
+                    False,
+                ),
+                (
+                    "abatementRange",
+                    "abatementRange",
+                    range.Range,
+                    "Range",
+                    False,
+                    "abatement",
+                    False,
+                ),
+                (
+                    "abatementString",
+                    "abatementString",
+                    str,
+                    "string",
+                    False,
+                    "abatement",
+                    False,
+                ),
+                (
+                    "asserter",
+                    "asserter",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "bodySite",
+                    "bodySite",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "category",
+                    "category",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "clinicalStatus",
+                    "clinicalStatus",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "encounter",
+                    "encounter",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "evidence",
+                    "evidence",
+                    ConditionEvidence,
+                    "ConditionEvidence",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "note",
+                    "note",
+                    annotation.Annotation,
+                    "Annotation",
+                    True,
+                    None,
+                    False,
+                ),
+                ("onsetAge", "onsetAge", age.Age, "Age", False, "onset", False),
+                (
+                    "onsetDateTime",
+                    "onsetDateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    "onset",
+                    False,
+                ),
+                (
+                    "onsetPeriod",
+                    "onsetPeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "onset",
+                    False,
+                ),
+                (
+                    "onsetRange",
+                    "onsetRange",
+                    range.Range,
+                    "Range",
+                    False,
+                    "onset",
+                    False,
+                ),
+                ("onsetString", "onsetString", str, "string", False, "onset", False),
+                (
+                    "recordedDate",
+                    "recordedDate",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "recorder",
+                    "recorder",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "severity",
+                    "severity",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("stage", "stage", ConditionStage, "ConditionStage", True, None, False),
+                (
+                    "subject",
+                    "subject",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "verificationStatus",
+                    "verificationStatus",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class ConditionEvidence(backboneelement.BackboneElement):
     """ Supporting evidence.
@@ -194,10 +373,28 @@ class ConditionEvidence(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ConditionEvidence, self).elementProperties()
-        js.extend([
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("detail", "detail", fhirreference.FHIRReference, "Reference", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "detail",
+                    "detail",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -234,44 +431,69 @@ class ConditionStage(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ConditionStage, self).elementProperties()
-        js.extend([
-            ("assessment", "assessment", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("summary", "summary", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "assessment",
+                    "assessment",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "summary",
+                    "summary",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import age
 except ImportError:
-    age = sys.modules[__package__ + '.age']
+    age = sys.modules[__package__ + ".age"]
 try:
     from . import annotation
 except ImportError:
-    annotation = sys.modules[__package__ + '.annotation']
+    annotation = sys.modules[__package__ + ".annotation"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]
 try:
     from . import range
 except ImportError:
-    range = sys.modules[__package__ + '.range']
+    range = sys.modules[__package__ + ".range"]

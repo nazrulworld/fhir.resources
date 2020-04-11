@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class SupplyRequest(domainresource.DomainResource):
     """ Request for a medication, substance or device.
@@ -103,30 +106,158 @@ class SupplyRequest(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(SupplyRequest, self).elementProperties()
-        js.extend([
-            ("authoredOn", "authoredOn", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("category", "category", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("deliverFrom", "deliverFrom", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("deliverTo", "deliverTo", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("itemCodeableConcept", "itemCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "item", True),
-            ("itemReference", "itemReference", fhirreference.FHIRReference, "Reference", False, "item", True),
-            ("occurrenceDateTime", "occurrenceDateTime", fhirdate.FHIRDate, "dateTime", False, "occurrence", False),
-            ("occurrencePeriod", "occurrencePeriod", period.Period, "Period", False, "occurrence", False),
-            ("occurrenceTiming", "occurrenceTiming", timing.Timing, "Timing", False, "occurrence", False),
-            ("parameter", "parameter", SupplyRequestParameter, "SupplyRequestParameter", True, None, False),
-            ("priority", "priority", str, "code", False, None, False),
-            ("quantity", "quantity", quantity.Quantity, "Quantity", False, None, True),
-            ("reasonCode", "reasonCode", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("reasonReference", "reasonReference", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("requester", "requester", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("status", "status", str, "code", False, None, False),
-            ("supplier", "supplier", fhirreference.FHIRReference, "Reference", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "authoredOn",
+                    "authoredOn",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "category",
+                    "category",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "deliverFrom",
+                    "deliverFrom",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "deliverTo",
+                    "deliverTo",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "itemCodeableConcept",
+                    "itemCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "item",
+                    True,
+                ),
+                (
+                    "itemReference",
+                    "itemReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "item",
+                    True,
+                ),
+                (
+                    "occurrenceDateTime",
+                    "occurrenceDateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    "occurrence",
+                    False,
+                ),
+                (
+                    "occurrencePeriod",
+                    "occurrencePeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "occurrence",
+                    False,
+                ),
+                (
+                    "occurrenceTiming",
+                    "occurrenceTiming",
+                    timing.Timing,
+                    "Timing",
+                    False,
+                    "occurrence",
+                    False,
+                ),
+                (
+                    "parameter",
+                    "parameter",
+                    SupplyRequestParameter,
+                    "SupplyRequestParameter",
+                    True,
+                    None,
+                    False,
+                ),
+                ("priority", "priority", str, "code", False, None, False),
+                (
+                    "quantity",
+                    "quantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "reasonCode",
+                    "reasonCode",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "reasonReference",
+                    "reasonReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "requester",
+                    "requester",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, False),
+                (
+                    "supplier",
+                    "supplier",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class SupplyRequestParameter(backboneelement.BackboneElement):
     """ Ordered item details.
@@ -169,46 +300,87 @@ class SupplyRequestParameter(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(SupplyRequestParameter, self).elementProperties()
-        js.extend([
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("valueBoolean", "valueBoolean", bool, "boolean", False, "value", False),
-            ("valueCodeableConcept", "valueCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "value", False),
-            ("valueQuantity", "valueQuantity", quantity.Quantity, "Quantity", False, "value", False),
-            ("valueRange", "valueRange", range.Range, "Range", False, "value", False),
-        ])
+        js.extend(
+            [
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "valueBoolean",
+                    "valueBoolean",
+                    bool,
+                    "boolean",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueCodeableConcept",
+                    "valueCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueQuantity",
+                    "valueQuantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueRange",
+                    "valueRange",
+                    range.Range,
+                    "Range",
+                    False,
+                    "value",
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]
 try:
     from . import quantity
 except ImportError:
-    quantity = sys.modules[__package__ + '.quantity']
+    quantity = sys.modules[__package__ + ".quantity"]
 try:
     from . import range
 except ImportError:
-    range = sys.modules[__package__ + '.range']
+    range = sys.modules[__package__ + ".range"]
 try:
     from . import timing
 except ImportError:
-    timing = sys.modules[__package__ + '.timing']
+    timing = sys.modules[__package__ + ".timing"]

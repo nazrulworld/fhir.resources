@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class Coverage(domainresource.DomainResource):
     """ Insurance or medical plan or a payment agreement.
@@ -95,28 +98,100 @@ class Coverage(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(Coverage, self).elementProperties()
-        js.extend([
-            ("beneficiary", "beneficiary", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("contract", "contract", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("dependent", "dependent", str, "string", False, None, False),
-            ("grouping", "grouping", CoverageGrouping, "CoverageGrouping", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("network", "network", str, "string", False, None, False),
-            ("order", "order", int, "positiveInt", False, None, False),
-            ("payor", "payor", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("period", "period", period.Period, "Period", False, None, False),
-            ("policyHolder", "policyHolder", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("relationship", "relationship", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("sequence", "sequence", str, "string", False, None, False),
-            ("status", "status", str, "code", False, None, False),
-            ("subscriber", "subscriber", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("subscriberId", "subscriberId", str, "string", False, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "beneficiary",
+                    "beneficiary",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "contract",
+                    "contract",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                ("dependent", "dependent", str, "string", False, None, False),
+                (
+                    "grouping",
+                    "grouping",
+                    CoverageGrouping,
+                    "CoverageGrouping",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                ("network", "network", str, "string", False, None, False),
+                ("order", "order", int, "positiveInt", False, None, False),
+                (
+                    "payor",
+                    "payor",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                ("period", "period", period.Period, "Period", False, None, False),
+                (
+                    "policyHolder",
+                    "policyHolder",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "relationship",
+                    "relationship",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("sequence", "sequence", str, "string", False, None, False),
+                ("status", "status", str, "code", False, None, False),
+                (
+                    "subscriber",
+                    "subscriber",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("subscriberId", "subscriberId", str, "string", False, None, False),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class CoverageGrouping(backboneelement.BackboneElement):
     """ Additional coverage classifications.
@@ -187,37 +262,54 @@ class CoverageGrouping(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(CoverageGrouping, self).elementProperties()
-        js.extend([
-            ("classDisplay", "classDisplay", str, "string", False, None, False),
-            ("class_fhir", "class", str, "string", False, None, False),
-            ("group", "group", str, "string", False, None, False),
-            ("groupDisplay", "groupDisplay", str, "string", False, None, False),
-            ("plan", "plan", str, "string", False, None, False),
-            ("planDisplay", "planDisplay", str, "string", False, None, False),
-            ("subClass", "subClass", str, "string", False, None, False),
-            ("subClassDisplay", "subClassDisplay", str, "string", False, None, False),
-            ("subGroup", "subGroup", str, "string", False, None, False),
-            ("subGroupDisplay", "subGroupDisplay", str, "string", False, None, False),
-            ("subPlan", "subPlan", str, "string", False, None, False),
-            ("subPlanDisplay", "subPlanDisplay", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                ("classDisplay", "classDisplay", str, "string", False, None, False),
+                ("class_fhir", "class", str, "string", False, None, False),
+                ("group", "group", str, "string", False, None, False),
+                ("groupDisplay", "groupDisplay", str, "string", False, None, False),
+                ("plan", "plan", str, "string", False, None, False),
+                ("planDisplay", "planDisplay", str, "string", False, None, False),
+                ("subClass", "subClass", str, "string", False, None, False),
+                (
+                    "subClassDisplay",
+                    "subClassDisplay",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                ("subGroup", "subGroup", str, "string", False, None, False),
+                (
+                    "subGroupDisplay",
+                    "subGroupDisplay",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                ("subPlan", "subPlan", str, "string", False, None, False),
+                ("subPlanDisplay", "subPlanDisplay", str, "string", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]

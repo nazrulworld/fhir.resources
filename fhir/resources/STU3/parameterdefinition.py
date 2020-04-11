@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
+import sys
+
 from . import element
+
 
 class ParameterDefinition(element.Element):
     """ Definition of a parameter to a module.
@@ -61,20 +64,29 @@ class ParameterDefinition(element.Element):
 
     def elementProperties(self):
         js = super(ParameterDefinition, self).elementProperties()
-        js.extend([
-            ("documentation", "documentation", str, "string", False, None, False),
-            ("max", "max", str, "string", False, None, False),
-            ("min", "min", int, "integer", False, None, False),
-            ("name", "name", str, "code", False, None, False),
-            ("profile", "profile", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("type", "type", str, "code", False, None, True),
-            ("use", "use", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                ("documentation", "documentation", str, "string", False, None, False),
+                ("max", "max", str, "string", False, None, False),
+                ("min", "min", int, "integer", False, None, False),
+                ("name", "name", str, "code", False, None, False),
+                (
+                    "profile",
+                    "profile",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("type", "type", str, "code", False, None, True),
+                ("use", "use", str, "code", False, None, True),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]

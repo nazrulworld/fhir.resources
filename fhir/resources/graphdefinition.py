@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class GraphDefinition(domainresource.DomainResource):
     """ Definition of a graph of resources.
@@ -93,27 +96,59 @@ class GraphDefinition(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(GraphDefinition, self).elementProperties()
-        js.extend([
-            ("contact", "contact", contactdetail.ContactDetail, "ContactDetail", True, None, False),
-            ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("description", "description", str, "markdown", False, None, False),
-            ("experimental", "experimental", bool, "boolean", False, None, False),
-            ("jurisdiction", "jurisdiction", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("link", "link", GraphDefinitionLink, "GraphDefinitionLink", True, None, False),
-            ("name", "name", str, "string", False, None, True),
-            ("profile", "profile", str, "canonical", False, None, False),
-            ("publisher", "publisher", str, "string", False, None, False),
-            ("purpose", "purpose", str, "markdown", False, None, False),
-            ("start", "start", str, "code", False, None, True),
-            ("status", "status", str, "code", False, None, True),
-            ("url", "url", str, "uri", False, None, False),
-            ("useContext", "useContext", usagecontext.UsageContext, "UsageContext", True, None, False),
-            ("version", "version", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "contact",
+                    "contact",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
+                ("description", "description", str, "markdown", False, None, False),
+                ("experimental", "experimental", bool, "boolean", False, None, False),
+                (
+                    "jurisdiction",
+                    "jurisdiction",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "link",
+                    "link",
+                    GraphDefinitionLink,
+                    "GraphDefinitionLink",
+                    True,
+                    None,
+                    False,
+                ),
+                ("name", "name", str, "string", False, None, True),
+                ("profile", "profile", str, "canonical", False, None, False),
+                ("publisher", "publisher", str, "string", False, None, False),
+                ("purpose", "purpose", str, "markdown", False, None, False),
+                ("start", "start", str, "code", False, None, True),
+                ("status", "status", str, "code", False, None, True),
+                ("url", "url", str, "uri", False, None, False),
+                (
+                    "useContext",
+                    "useContext",
+                    usagecontext.UsageContext,
+                    "UsageContext",
+                    True,
+                    None,
+                    False,
+                ),
+                ("version", "version", str, "string", False, None, False),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class GraphDefinitionLink(backboneelement.BackboneElement):
     """ Links this graph makes rules about.
@@ -157,14 +192,24 @@ class GraphDefinitionLink(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(GraphDefinitionLink, self).elementProperties()
-        js.extend([
-            ("description", "description", str, "string", False, None, False),
-            ("max", "max", str, "string", False, None, False),
-            ("min", "min", int, "integer", False, None, False),
-            ("path", "path", str, "string", False, None, False),
-            ("sliceName", "sliceName", str, "string", False, None, False),
-            ("target", "target", GraphDefinitionLinkTarget, "GraphDefinitionLinkTarget", True, None, False),
-        ])
+        js.extend(
+            [
+                ("description", "description", str, "string", False, None, False),
+                ("max", "max", str, "string", False, None, False),
+                ("min", "min", int, "integer", False, None, False),
+                ("path", "path", str, "string", False, None, False),
+                ("sliceName", "sliceName", str, "string", False, None, False),
+                (
+                    "target",
+                    "target",
+                    GraphDefinitionLinkTarget,
+                    "GraphDefinitionLinkTarget",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -202,17 +247,37 @@ class GraphDefinitionLinkTarget(backboneelement.BackboneElement):
         """ Type of resource this link refers to.
         Type `str`. """
 
-        super(GraphDefinitionLinkTarget, self).__init__(jsondict=jsondict, strict=strict)
+        super(GraphDefinitionLinkTarget, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(GraphDefinitionLinkTarget, self).elementProperties()
-        js.extend([
-            ("compartment", "compartment", GraphDefinitionLinkTargetCompartment, "GraphDefinitionLinkTargetCompartment", True, None, False),
-            ("link", "link", GraphDefinitionLink, "GraphDefinitionLink", True, None, False),
-            ("params", "params", str, "string", False, None, False),
-            ("profile", "profile", str, "canonical", False, None, False),
-            ("type", "type", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "compartment",
+                    "compartment",
+                    GraphDefinitionLinkTargetCompartment,
+                    "GraphDefinitionLinkTargetCompartment",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "link",
+                    "link",
+                    GraphDefinitionLink,
+                    "GraphDefinitionLink",
+                    True,
+                    None,
+                    False,
+                ),
+                ("params", "params", str, "string", False, None, False),
+                ("profile", "profile", str, "canonical", False, None, False),
+                ("type", "type", str, "code", False, None, True),
+            ]
+        )
         return js
 
 
@@ -250,34 +315,37 @@ class GraphDefinitionLinkTargetCompartment(backboneelement.BackboneElement):
         """ condition | requirement.
         Type `str`. """
 
-        super(GraphDefinitionLinkTargetCompartment, self).__init__(jsondict=jsondict, strict=strict)
+        super(GraphDefinitionLinkTargetCompartment, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(GraphDefinitionLinkTargetCompartment, self).elementProperties()
-        js.extend([
-            ("code", "code", str, "code", False, None, True),
-            ("description", "description", str, "string", False, None, False),
-            ("expression", "expression", str, "string", False, None, False),
-            ("rule", "rule", str, "code", False, None, True),
-            ("use", "use", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                ("code", "code", str, "code", False, None, True),
+                ("description", "description", str, "string", False, None, False),
+                ("expression", "expression", str, "string", False, None, False),
+                ("rule", "rule", str, "code", False, None, True),
+                ("use", "use", str, "code", False, None, True),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import contactdetail
 except ImportError:
-    contactdetail = sys.modules[__package__ + '.contactdetail']
+    contactdetail = sys.modules[__package__ + ".contactdetail"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import usagecontext
 except ImportError:
-    usagecontext = sys.modules[__package__ + '.usagecontext']
+    usagecontext = sys.modules[__package__ + ".usagecontext"]

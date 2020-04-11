@@ -7,22 +7,23 @@ Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
 
-import os
-import pytest
 import io
-import unittest
 import json
+import os
+import unittest
 
-from .fixtures import force_bytes
+import pytest
+
 from .. import operationoutcome
 from ..fhirdate import FHIRDate
+from .fixtures import force_bytes
 
 
 @pytest.mark.usefixtures("base_settings")
 class OperationOutcomeTests(unittest.TestCase):
     def instantiate_from(self, filename):
-        datadir = os.environ.get('FHIR_UNITTEST_DATADIR') or ''
-        with io.open(os.path.join(datadir, filename), 'r', encoding='utf-8') as handle:
+        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
+        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
             js = json.load(handle)
             self.assertEqual("OperationOutcome", js["resourceType"])
         return operationoutcome.OperationOutcome(js)
@@ -40,9 +41,17 @@ class OperationOutcomeTests(unittest.TestCase):
     def implOperationOutcome1(self, inst):
         self.assertEqual(force_bytes(inst.id), force_bytes("validationfail"))
         self.assertEqual(force_bytes(inst.issue[0].code), force_bytes("structure"))
-        self.assertEqual(force_bytes(inst.issue[0].details.text), force_bytes("Error parsing resource XML (Unknown Content \"label\""))
-        self.assertEqual(force_bytes(inst.issue[0].expression[0]), force_bytes("Patient.identifier"))
-        self.assertEqual(force_bytes(inst.issue[0].location[0]), force_bytes("/f:Patient/f:identifier"))
+        self.assertEqual(
+            force_bytes(inst.issue[0].details.text),
+            force_bytes('Error parsing resource XML (Unknown Content "label"'),
+        )
+        self.assertEqual(
+            force_bytes(inst.issue[0].expression[0]), force_bytes("Patient.identifier")
+        )
+        self.assertEqual(
+            force_bytes(inst.issue[0].location[0]),
+            force_bytes("/f:Patient/f:identifier"),
+        )
         self.assertEqual(force_bytes(inst.issue[0].severity), force_bytes("error"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 
@@ -59,11 +68,26 @@ class OperationOutcomeTests(unittest.TestCase):
     def implOperationOutcome2(self, inst):
         self.assertEqual(force_bytes(inst.id), force_bytes("break-the-glass"))
         self.assertEqual(force_bytes(inst.issue[0].code), force_bytes("suppressed"))
-        self.assertEqual(force_bytes(inst.issue[0].details.coding[0].code), force_bytes("ETREAT"))
-        self.assertEqual(force_bytes(inst.issue[0].details.coding[0].display), force_bytes("Emergency Treatment"))
-        self.assertEqual(force_bytes(inst.issue[0].details.coding[0].system), force_bytes("http://hl7.org/fhir/v3/ActReason"))
-        self.assertEqual(force_bytes(inst.issue[0].details.text), force_bytes("Additional information may be available using the Break-The-Glass Protocol"))
-        self.assertEqual(force_bytes(inst.issue[0].severity), force_bytes("information"))
+        self.assertEqual(
+            force_bytes(inst.issue[0].details.coding[0].code), force_bytes("ETREAT")
+        )
+        self.assertEqual(
+            force_bytes(inst.issue[0].details.coding[0].display),
+            force_bytes("Emergency Treatment"),
+        )
+        self.assertEqual(
+            force_bytes(inst.issue[0].details.coding[0].system),
+            force_bytes("http://hl7.org/fhir/v3/ActReason"),
+        )
+        self.assertEqual(
+            force_bytes(inst.issue[0].details.text),
+            force_bytes(
+                "Additional information may be available using the Break-The-Glass Protocol"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.issue[0].severity), force_bytes("information")
+        )
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 
     def testOperationOutcome3(self):
@@ -79,8 +103,15 @@ class OperationOutcomeTests(unittest.TestCase):
     def implOperationOutcome3(self, inst):
         self.assertEqual(force_bytes(inst.id), force_bytes("searchfail"))
         self.assertEqual(force_bytes(inst.issue[0].code), force_bytes("code-invalid"))
-        self.assertEqual(force_bytes(inst.issue[0].details.text), force_bytes("The \"name\" parameter has the modifier \"exact\" which is not supported by this server"))
-        self.assertEqual(force_bytes(inst.issue[0].location[0]), force_bytes("http.name:exact"))
+        self.assertEqual(
+            force_bytes(inst.issue[0].details.text),
+            force_bytes(
+                'The "name" parameter has the modifier "exact" which is not supported by this server'
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.issue[0].location[0]), force_bytes("http.name:exact")
+        )
         self.assertEqual(force_bytes(inst.issue[0].severity), force_bytes("fatal"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 
@@ -97,7 +128,10 @@ class OperationOutcomeTests(unittest.TestCase):
     def implOperationOutcome4(self, inst):
         self.assertEqual(force_bytes(inst.id), force_bytes("exception"))
         self.assertEqual(force_bytes(inst.issue[0].code), force_bytes("exception"))
-        self.assertEqual(force_bytes(inst.issue[0].details.text), force_bytes("SQL Link Communication Error (dbx = 34234)"))
+        self.assertEqual(
+            force_bytes(inst.issue[0].details.text),
+            force_bytes("SQL Link Communication Error (dbx = 34234)"),
+        )
         self.assertEqual(force_bytes(inst.issue[0].severity), force_bytes("error"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("additional"))
 
@@ -114,10 +148,20 @@ class OperationOutcomeTests(unittest.TestCase):
     def implOperationOutcome5(self, inst):
         self.assertEqual(force_bytes(inst.id), force_bytes("101"))
         self.assertEqual(force_bytes(inst.issue[0].code), force_bytes("code-invalid"))
-        self.assertEqual(force_bytes(inst.issue[0].details.text), force_bytes("The code \"W\" is not known and not legal in this context"))
-        self.assertEqual(force_bytes(inst.issue[0].diagnostics), force_bytes("Acme.Interop.FHIRProcessors.Patient.processGender line 2453"))
-        self.assertEqual(force_bytes(inst.issue[0].expression[0]), force_bytes("Person.gender"))
-        self.assertEqual(force_bytes(inst.issue[0].location[0]), force_bytes("/f:Person/f:gender"))
+        self.assertEqual(
+            force_bytes(inst.issue[0].details.text),
+            force_bytes('The code "W" is not known and not legal in this context'),
+        )
+        self.assertEqual(
+            force_bytes(inst.issue[0].diagnostics),
+            force_bytes("Acme.Interop.FHIRProcessors.Patient.processGender line 2453"),
+        )
+        self.assertEqual(
+            force_bytes(inst.issue[0].expression[0]), force_bytes("Person.gender")
+        )
+        self.assertEqual(
+            force_bytes(inst.issue[0].location[0]), force_bytes("/f:Person/f:gender")
+        )
         self.assertEqual(force_bytes(inst.issue[0].severity), force_bytes("error"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("additional"))
 
@@ -135,6 +179,7 @@ class OperationOutcomeTests(unittest.TestCase):
         self.assertEqual(force_bytes(inst.id), force_bytes("allok"))
         self.assertEqual(force_bytes(inst.issue[0].code), force_bytes("informational"))
         self.assertEqual(force_bytes(inst.issue[0].details.text), force_bytes("All OK"))
-        self.assertEqual(force_bytes(inst.issue[0].severity), force_bytes("information"))
+        self.assertEqual(
+            force_bytes(inst.issue[0].severity), force_bytes("information")
+        )
         self.assertEqual(force_bytes(inst.text.status), force_bytes("additional"))
-

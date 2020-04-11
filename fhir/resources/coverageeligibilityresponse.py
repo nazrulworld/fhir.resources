@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class CoverageEligibilityResponse(domainresource.DomainResource):
     """ CoverageEligibilityResponse resource.
@@ -91,32 +94,122 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
         """ active | cancelled | draft | entered-in-error.
         Type `str`. """
 
-        super(CoverageEligibilityResponse, self).__init__(jsondict=jsondict, strict=strict)
+        super(CoverageEligibilityResponse, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(CoverageEligibilityResponse, self).elementProperties()
-        js.extend([
-            ("created", "created", fhirdate.FHIRDate, "dateTime", False, None, True),
-            ("disposition", "disposition", str, "string", False, None, False),
-            ("error", "error", CoverageEligibilityResponseError, "CoverageEligibilityResponseError", True, None, False),
-            ("form", "form", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("insurance", "insurance", CoverageEligibilityResponseInsurance, "CoverageEligibilityResponseInsurance", True, None, False),
-            ("insurer", "insurer", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("outcome", "outcome", str, "code", False, None, True),
-            ("patient", "patient", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("preAuthRef", "preAuthRef", str, "string", False, None, False),
-            ("purpose", "purpose", str, "code", True, None, True),
-            ("request", "request", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("requestor", "requestor", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("servicedDate", "servicedDate", fhirdate.FHIRDate, "date", False, "serviced", False),
-            ("servicedPeriod", "servicedPeriod", period.Period, "Period", False, "serviced", False),
-            ("status", "status", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "created",
+                    "created",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    True,
+                ),
+                ("disposition", "disposition", str, "string", False, None, False),
+                (
+                    "error",
+                    "error",
+                    CoverageEligibilityResponseError,
+                    "CoverageEligibilityResponseError",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "form",
+                    "form",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "insurance",
+                    "insurance",
+                    CoverageEligibilityResponseInsurance,
+                    "CoverageEligibilityResponseInsurance",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "insurer",
+                    "insurer",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                ("outcome", "outcome", str, "code", False, None, True),
+                (
+                    "patient",
+                    "patient",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                ("preAuthRef", "preAuthRef", str, "string", False, None, False),
+                ("purpose", "purpose", str, "code", True, None, True),
+                (
+                    "request",
+                    "request",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "requestor",
+                    "requestor",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "servicedDate",
+                    "servicedDate",
+                    fhirdate.FHIRDate,
+                    "date",
+                    False,
+                    "serviced",
+                    False,
+                ),
+                (
+                    "servicedPeriod",
+                    "servicedPeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "serviced",
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, True),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class CoverageEligibilityResponseError(backboneelement.BackboneElement):
     """ Processing errors.
@@ -138,13 +231,25 @@ class CoverageEligibilityResponseError(backboneelement.BackboneElement):
         """ Error code detailing processing issues.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(CoverageEligibilityResponseError, self).__init__(jsondict=jsondict, strict=strict)
+        super(CoverageEligibilityResponseError, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(CoverageEligibilityResponseError, self).elementProperties()
-        js.extend([
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -181,16 +286,44 @@ class CoverageEligibilityResponseInsurance(backboneelement.BackboneElement):
         """ Benefits and authorization details.
         List of `CoverageEligibilityResponseInsuranceItem` items (represented as `dict` in JSON). """
 
-        super(CoverageEligibilityResponseInsurance, self).__init__(jsondict=jsondict, strict=strict)
+        super(CoverageEligibilityResponseInsurance, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(CoverageEligibilityResponseInsurance, self).elementProperties()
-        js.extend([
-            ("benefitPeriod", "benefitPeriod", period.Period, "Period", False, None, False),
-            ("coverage", "coverage", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("inforce", "inforce", bool, "boolean", False, None, False),
-            ("item", "item", CoverageEligibilityResponseInsuranceItem, "CoverageEligibilityResponseInsuranceItem", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "benefitPeriod",
+                    "benefitPeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "coverage",
+                    "coverage",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                ("inforce", "inforce", bool, "boolean", False, None, False),
+                (
+                    "item",
+                    "item",
+                    CoverageEligibilityResponseInsuranceItem,
+                    "CoverageEligibilityResponseInsuranceItem",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -267,26 +400,118 @@ class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
         """ Individual or family.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(CoverageEligibilityResponseInsuranceItem, self).__init__(jsondict=jsondict, strict=strict)
+        super(CoverageEligibilityResponseInsuranceItem, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(CoverageEligibilityResponseInsuranceItem, self).elementProperties()
-        js.extend([
-            ("authorizationRequired", "authorizationRequired", bool, "boolean", False, None, False),
-            ("authorizationSupporting", "authorizationSupporting", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("authorizationUrl", "authorizationUrl", str, "uri", False, None, False),
-            ("benefit", "benefit", CoverageEligibilityResponseInsuranceItemBenefit, "CoverageEligibilityResponseInsuranceItemBenefit", True, None, False),
-            ("category", "category", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("description", "description", str, "string", False, None, False),
-            ("excluded", "excluded", bool, "boolean", False, None, False),
-            ("modifier", "modifier", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("name", "name", str, "string", False, None, False),
-            ("network", "network", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("productOrService", "productOrService", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("provider", "provider", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("term", "term", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("unit", "unit", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "authorizationRequired",
+                    "authorizationRequired",
+                    bool,
+                    "boolean",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "authorizationSupporting",
+                    "authorizationSupporting",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "authorizationUrl",
+                    "authorizationUrl",
+                    str,
+                    "uri",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "benefit",
+                    "benefit",
+                    CoverageEligibilityResponseInsuranceItemBenefit,
+                    "CoverageEligibilityResponseInsuranceItemBenefit",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "category",
+                    "category",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("description", "description", str, "string", False, None, False),
+                ("excluded", "excluded", bool, "boolean", False, None, False),
+                (
+                    "modifier",
+                    "modifier",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                ("name", "name", str, "string", False, None, False),
+                (
+                    "network",
+                    "network",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "productOrService",
+                    "productOrService",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "provider",
+                    "provider",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "term",
+                    "term",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "unit",
+                    "unit",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -334,44 +559,89 @@ class CoverageEligibilityResponseInsuranceItemBenefit(backboneelement.BackboneEl
         """ Benefits used.
         Type `int`. """
 
-        super(CoverageEligibilityResponseInsuranceItemBenefit, self).__init__(jsondict=jsondict, strict=strict)
+        super(CoverageEligibilityResponseInsuranceItemBenefit, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
-        js = super(CoverageEligibilityResponseInsuranceItemBenefit, self).elementProperties()
-        js.extend([
-            ("allowedMoney", "allowedMoney", money.Money, "Money", False, "allowed", False),
-            ("allowedString", "allowedString", str, "string", False, "allowed", False),
-            ("allowedUnsignedInt", "allowedUnsignedInt", int, "unsignedInt", False, "allowed", False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("usedMoney", "usedMoney", money.Money, "Money", False, "used", False),
-            ("usedString", "usedString", str, "string", False, "used", False),
-            ("usedUnsignedInt", "usedUnsignedInt", int, "unsignedInt", False, "used", False),
-        ])
+        js = super(
+            CoverageEligibilityResponseInsuranceItemBenefit, self
+        ).elementProperties()
+        js.extend(
+            [
+                (
+                    "allowedMoney",
+                    "allowedMoney",
+                    money.Money,
+                    "Money",
+                    False,
+                    "allowed",
+                    False,
+                ),
+                (
+                    "allowedString",
+                    "allowedString",
+                    str,
+                    "string",
+                    False,
+                    "allowed",
+                    False,
+                ),
+                (
+                    "allowedUnsignedInt",
+                    "allowedUnsignedInt",
+                    int,
+                    "unsignedInt",
+                    False,
+                    "allowed",
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                ("usedMoney", "usedMoney", money.Money, "Money", False, "used", False),
+                ("usedString", "usedString", str, "string", False, "used", False),
+                (
+                    "usedUnsignedInt",
+                    "usedUnsignedInt",
+                    int,
+                    "unsignedInt",
+                    False,
+                    "used",
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import money
 except ImportError:
-    money = sys.modules[__package__ + '.money']
+    money = sys.modules[__package__ + ".money"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]

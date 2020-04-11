@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
+import sys
+
 from . import domainresource
+
 
 class ResearchSubject(domainresource.DomainResource):
     """ Physical entity which is the primary unit of interest in the study.
@@ -65,29 +68,62 @@ class ResearchSubject(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(ResearchSubject, self).elementProperties()
-        js.extend([
-            ("actualArm", "actualArm", str, "string", False, None, False),
-            ("assignedArm", "assignedArm", str, "string", False, None, False),
-            ("consent", "consent", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("individual", "individual", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("period", "period", period.Period, "Period", False, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("study", "study", fhirreference.FHIRReference, "Reference", False, None, True),
-        ])
+        js.extend(
+            [
+                ("actualArm", "actualArm", str, "string", False, None, False),
+                ("assignedArm", "assignedArm", str, "string", False, None, False),
+                (
+                    "consent",
+                    "consent",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "individual",
+                    "individual",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                ("period", "period", period.Period, "Period", False, None, False),
+                ("status", "status", str, "code", False, None, True),
+                (
+                    "study",
+                    "study",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]

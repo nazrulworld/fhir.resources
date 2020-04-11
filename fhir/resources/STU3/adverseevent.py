@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class AdverseEvent(domainresource.DomainResource):
     """ Medical care, research study or other healthcare event causing physical
@@ -106,28 +109,132 @@ class AdverseEvent(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(AdverseEvent, self).elementProperties()
-        js.extend([
-            ("category", "category", str, "code", False, None, False),
-            ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("description", "description", str, "string", False, None, False),
-            ("eventParticipant", "eventParticipant", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", False, None, False),
-            ("location", "location", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("outcome", "outcome", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("reaction", "reaction", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("recorder", "recorder", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("referenceDocument", "referenceDocument", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("seriousness", "seriousness", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("study", "study", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("subject", "subject", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("subjectMedicalHistory", "subjectMedicalHistory", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("suspectEntity", "suspectEntity", AdverseEventSuspectEntity, "AdverseEventSuspectEntity", True, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                ("category", "category", str, "code", False, None, False),
+                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
+                ("description", "description", str, "string", False, None, False),
+                (
+                    "eventParticipant",
+                    "eventParticipant",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "location",
+                    "location",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "outcome",
+                    "outcome",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "reaction",
+                    "reaction",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "recorder",
+                    "recorder",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "referenceDocument",
+                    "referenceDocument",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "seriousness",
+                    "seriousness",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "study",
+                    "study",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "subject",
+                    "subject",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "subjectMedicalHistory",
+                    "subjectMedicalHistory",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "suspectEntity",
+                    "suspectEntity",
+                    AdverseEventSuspectEntity,
+                    "AdverseEventSuspectEntity",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class AdverseEventSuspectEntity(backboneelement.BackboneElement):
     """ The suspected agent causing the adverse event.
@@ -173,36 +280,87 @@ class AdverseEventSuspectEntity(backboneelement.BackboneElement):
         """ Refers to the specific entity that caused the adverse event.
         Type `FHIRReference` referencing `['Substance'], ['Medication'], ['MedicationAdministration'], ['MedicationStatement'], ['Device']` (represented as `dict` in JSON). """
 
-        super(AdverseEventSuspectEntity, self).__init__(jsondict=jsondict, strict=strict)
+        super(AdverseEventSuspectEntity, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(AdverseEventSuspectEntity, self).elementProperties()
-        js.extend([
-            ("causality", "causality", str, "code", False, None, False),
-            ("causalityAssessment", "causalityAssessment", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("causalityAuthor", "causalityAuthor", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("causalityMethod", "causalityMethod", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("causalityProductRelatedness", "causalityProductRelatedness", str, "string", False, None, False),
-            ("causalityResult", "causalityResult", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("instance", "instance", fhirreference.FHIRReference, "Reference", False, None, True),
-        ])
+        js.extend(
+            [
+                ("causality", "causality", str, "code", False, None, False),
+                (
+                    "causalityAssessment",
+                    "causalityAssessment",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "causalityAuthor",
+                    "causalityAuthor",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "causalityMethod",
+                    "causalityMethod",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "causalityProductRelatedness",
+                    "causalityProductRelatedness",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "causalityResult",
+                    "causalityResult",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "instance",
+                    "instance",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]

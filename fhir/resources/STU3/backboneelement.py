@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
+import sys
+
 from . import element
+
 
 class BackboneElement(element.Element):
     """ Base for elements defined inside a resource.
@@ -35,14 +38,23 @@ class BackboneElement(element.Element):
 
     def elementProperties(self):
         js = super(BackboneElement, self).elementProperties()
-        js.extend([
-            ("modifierExtension", "modifierExtension", extension.Extension, "Extension", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "modifierExtension",
+                    "modifierExtension",
+                    extension.Extension,
+                    "Extension",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import extension
 except ImportError:
-    extension = sys.modules[__package__ + '.extension']
+    extension = sys.modules[__package__ + ".extension"]

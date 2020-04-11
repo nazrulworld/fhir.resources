@@ -10,6 +10,7 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 
 from . import element
 
+
 class Money(element.Element):
     """ An amount of economic utility in some recognized currency.
     """
@@ -36,10 +37,10 @@ class Money(element.Element):
 
     def elementProperties(self):
         js = super(Money, self).elementProperties()
-        js.extend([
-            ("currency", "currency", str, "code", False, None, False),
-            ("value", "value", float, "decimal", False, None, False),
-        ])
+        js.extend(
+            [
+                ("currency", "currency", str, "code", False, None, False),
+                ("value", "value", float, "decimal", False, None, False),
+            ]
+        )
         return js
-
-

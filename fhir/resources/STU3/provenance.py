@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class Provenance(domainresource.DomainResource):
     """ Who, What, When for a set of resources.
@@ -79,22 +82,70 @@ class Provenance(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(Provenance, self).elementProperties()
-        js.extend([
-            ("activity", "activity", coding.Coding, "Coding", False, None, False),
-            ("agent", "agent", ProvenanceAgent, "ProvenanceAgent", True, None, True),
-            ("entity", "entity", ProvenanceEntity, "ProvenanceEntity", True, None, False),
-            ("location", "location", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("period", "period", period.Period, "Period", False, None, False),
-            ("policy", "policy", str, "uri", True, None, False),
-            ("reason", "reason", coding.Coding, "Coding", True, None, False),
-            ("recorded", "recorded", fhirdate.FHIRDate, "instant", False, None, True),
-            ("signature", "signature", signature.Signature, "Signature", True, None, False),
-            ("target", "target", fhirreference.FHIRReference, "Reference", True, None, True),
-        ])
+        js.extend(
+            [
+                ("activity", "activity", coding.Coding, "Coding", False, None, False),
+                (
+                    "agent",
+                    "agent",
+                    ProvenanceAgent,
+                    "ProvenanceAgent",
+                    True,
+                    None,
+                    True,
+                ),
+                (
+                    "entity",
+                    "entity",
+                    ProvenanceEntity,
+                    "ProvenanceEntity",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "location",
+                    "location",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("period", "period", period.Period, "Period", False, None, False),
+                ("policy", "policy", str, "uri", True, None, False),
+                ("reason", "reason", coding.Coding, "Coding", True, None, False),
+                (
+                    "recorded",
+                    "recorded",
+                    fhirdate.FHIRDate,
+                    "instant",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "signature",
+                    "signature",
+                    signature.Signature,
+                    "Signature",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "target",
+                    "target",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class ProvenanceAgent(backboneelement.BackboneElement):
     """ Actor involved.
@@ -141,14 +192,56 @@ class ProvenanceAgent(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ProvenanceAgent, self).elementProperties()
-        js.extend([
-            ("onBehalfOfReference", "onBehalfOfReference", fhirreference.FHIRReference, "Reference", False, "onBehalfOf", False),
-            ("onBehalfOfUri", "onBehalfOfUri", str, "uri", False, "onBehalfOf", False),
-            ("relatedAgentType", "relatedAgentType", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("role", "role", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("whoReference", "whoReference", fhirreference.FHIRReference, "Reference", False, "who", True),
-            ("whoUri", "whoUri", str, "uri", False, "who", True),
-        ])
+        js.extend(
+            [
+                (
+                    "onBehalfOfReference",
+                    "onBehalfOfReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "onBehalfOf",
+                    False,
+                ),
+                (
+                    "onBehalfOfUri",
+                    "onBehalfOfUri",
+                    str,
+                    "uri",
+                    False,
+                    "onBehalfOf",
+                    False,
+                ),
+                (
+                    "relatedAgentType",
+                    "relatedAgentType",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "role",
+                    "role",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "whoReference",
+                    "whoReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "who",
+                    True,
+                ),
+                ("whoUri", "whoUri", str, "uri", False, "who", True),
+            ]
+        )
         return js
 
 
@@ -190,42 +283,67 @@ class ProvenanceEntity(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ProvenanceEntity, self).elementProperties()
-        js.extend([
-            ("agent", "agent", ProvenanceAgent, "ProvenanceAgent", True, None, False),
-            ("role", "role", str, "code", False, None, True),
-            ("whatIdentifier", "whatIdentifier", identifier.Identifier, "Identifier", False, "what", True),
-            ("whatReference", "whatReference", fhirreference.FHIRReference, "Reference", False, "what", True),
-            ("whatUri", "whatUri", str, "uri", False, "what", True),
-        ])
+        js.extend(
+            [
+                (
+                    "agent",
+                    "agent",
+                    ProvenanceAgent,
+                    "ProvenanceAgent",
+                    True,
+                    None,
+                    False,
+                ),
+                ("role", "role", str, "code", False, None, True),
+                (
+                    "whatIdentifier",
+                    "whatIdentifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    "what",
+                    True,
+                ),
+                (
+                    "whatReference",
+                    "whatReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "what",
+                    True,
+                ),
+                ("whatUri", "whatUri", str, "uri", False, "what", True),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import coding
 except ImportError:
-    coding = sys.modules[__package__ + '.coding']
+    coding = sys.modules[__package__ + ".coding"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]
 try:
     from . import signature
 except ImportError:
-    signature = sys.modules[__package__ + '.signature']
+    signature = sys.modules[__package__ + ".signature"]

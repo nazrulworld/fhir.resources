@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class HealthcareService(domainresource.DomainResource):
     """ The details of a healthcare service available at a location.
@@ -127,36 +130,196 @@ class HealthcareService(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(HealthcareService, self).elementProperties()
-        js.extend([
-            ("active", "active", bool, "boolean", False, None, False),
-            ("appointmentRequired", "appointmentRequired", bool, "boolean", False, None, False),
-            ("availabilityExceptions", "availabilityExceptions", str, "string", False, None, False),
-            ("availableTime", "availableTime", HealthcareServiceAvailableTime, "HealthcareServiceAvailableTime", True, None, False),
-            ("category", "category", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("characteristic", "characteristic", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("comment", "comment", str, "string", False, None, False),
-            ("communication", "communication", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("coverageArea", "coverageArea", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("eligibility", "eligibility", HealthcareServiceEligibility, "HealthcareServiceEligibility", True, None, False),
-            ("endpoint", "endpoint", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("extraDetails", "extraDetails", str, "markdown", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("location", "location", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("name", "name", str, "string", False, None, False),
-            ("notAvailable", "notAvailable", HealthcareServiceNotAvailable, "HealthcareServiceNotAvailable", True, None, False),
-            ("photo", "photo", attachment.Attachment, "Attachment", False, None, False),
-            ("program", "program", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("providedBy", "providedBy", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("referralMethod", "referralMethod", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("serviceProvisionCode", "serviceProvisionCode", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("specialty", "specialty", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("telecom", "telecom", contactpoint.ContactPoint, "ContactPoint", True, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-        ])
+        js.extend(
+            [
+                ("active", "active", bool, "boolean", False, None, False),
+                (
+                    "appointmentRequired",
+                    "appointmentRequired",
+                    bool,
+                    "boolean",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "availabilityExceptions",
+                    "availabilityExceptions",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "availableTime",
+                    "availableTime",
+                    HealthcareServiceAvailableTime,
+                    "HealthcareServiceAvailableTime",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "category",
+                    "category",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "characteristic",
+                    "characteristic",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                ("comment", "comment", str, "string", False, None, False),
+                (
+                    "communication",
+                    "communication",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "coverageArea",
+                    "coverageArea",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "eligibility",
+                    "eligibility",
+                    HealthcareServiceEligibility,
+                    "HealthcareServiceEligibility",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "endpoint",
+                    "endpoint",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                ("extraDetails", "extraDetails", str, "markdown", False, None, False),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "location",
+                    "location",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                ("name", "name", str, "string", False, None, False),
+                (
+                    "notAvailable",
+                    "notAvailable",
+                    HealthcareServiceNotAvailable,
+                    "HealthcareServiceNotAvailable",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "photo",
+                    "photo",
+                    attachment.Attachment,
+                    "Attachment",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "program",
+                    "program",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "providedBy",
+                    "providedBy",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "referralMethod",
+                    "referralMethod",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "serviceProvisionCode",
+                    "serviceProvisionCode",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "specialty",
+                    "specialty",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "telecom",
+                    "telecom",
+                    contactpoint.ContactPoint,
+                    "ContactPoint",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class HealthcareServiceAvailableTime(backboneelement.BackboneElement):
     """ Times the Service Site is available.
@@ -190,16 +353,36 @@ class HealthcareServiceAvailableTime(backboneelement.BackboneElement):
         """ mon | tue | wed | thu | fri | sat | sun.
         List of `str` items. """
 
-        super(HealthcareServiceAvailableTime, self).__init__(jsondict=jsondict, strict=strict)
+        super(HealthcareServiceAvailableTime, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(HealthcareServiceAvailableTime, self).elementProperties()
-        js.extend([
-            ("allDay", "allDay", bool, "boolean", False, None, False),
-            ("availableEndTime", "availableEndTime", fhirdate.FHIRDate, "time", False, None, False),
-            ("availableStartTime", "availableStartTime", fhirdate.FHIRDate, "time", False, None, False),
-            ("daysOfWeek", "daysOfWeek", str, "code", True, None, False),
-        ])
+        js.extend(
+            [
+                ("allDay", "allDay", bool, "boolean", False, None, False),
+                (
+                    "availableEndTime",
+                    "availableEndTime",
+                    fhirdate.FHIRDate,
+                    "time",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "availableStartTime",
+                    "availableStartTime",
+                    fhirdate.FHIRDate,
+                    "time",
+                    False,
+                    None,
+                    False,
+                ),
+                ("daysOfWeek", "daysOfWeek", str, "code", True, None, False),
+            ]
+        )
         return js
 
 
@@ -228,14 +411,26 @@ class HealthcareServiceEligibility(backboneelement.BackboneElement):
         """ Describes the eligibility conditions for the service.
         Type `str`. """
 
-        super(HealthcareServiceEligibility, self).__init__(jsondict=jsondict, strict=strict)
+        super(HealthcareServiceEligibility, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(HealthcareServiceEligibility, self).elementProperties()
-        js.extend([
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("comment", "comment", str, "markdown", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("comment", "comment", str, "markdown", False, None, False),
+            ]
+        )
         return js
 
 
@@ -264,43 +459,46 @@ class HealthcareServiceNotAvailable(backboneelement.BackboneElement):
         """ Service not available from this date.
         Type `Period` (represented as `dict` in JSON). """
 
-        super(HealthcareServiceNotAvailable, self).__init__(jsondict=jsondict, strict=strict)
+        super(HealthcareServiceNotAvailable, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(HealthcareServiceNotAvailable, self).elementProperties()
-        js.extend([
-            ("description", "description", str, "string", False, None, True),
-            ("during", "during", period.Period, "Period", False, None, False),
-        ])
+        js.extend(
+            [
+                ("description", "description", str, "string", False, None, True),
+                ("during", "during", period.Period, "Period", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import attachment
 except ImportError:
-    attachment = sys.modules[__package__ + '.attachment']
+    attachment = sys.modules[__package__ + ".attachment"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import contactpoint
 except ImportError:
-    contactpoint = sys.modules[__package__ + '.contactpoint']
+    contactpoint = sys.modules[__package__ + ".contactpoint"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]

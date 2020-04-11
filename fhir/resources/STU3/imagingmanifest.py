@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class ImagingManifest(domainresource.DomainResource):
     """ Key Object Selection.
@@ -55,18 +58,58 @@ class ImagingManifest(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(ImagingManifest, self).elementProperties()
-        js.extend([
-            ("author", "author", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("authoringTime", "authoringTime", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("description", "description", str, "string", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", False, None, False),
-            ("patient", "patient", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("study", "study", ImagingManifestStudy, "ImagingManifestStudy", True, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "author",
+                    "author",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "authoringTime",
+                    "authoringTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                ("description", "description", str, "string", False, None, False),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "patient",
+                    "patient",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "study",
+                    "study",
+                    ImagingManifestStudy,
+                    "ImagingManifestStudy",
+                    True,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class ImagingManifestStudy(backboneelement.BackboneElement):
     """ Study identity of the selected instances.
@@ -105,12 +148,38 @@ class ImagingManifestStudy(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ImagingManifestStudy, self).elementProperties()
-        js.extend([
-            ("endpoint", "endpoint", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("imagingStudy", "imagingStudy", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("series", "series", ImagingManifestStudySeries, "ImagingManifestStudySeries", True, None, True),
-            ("uid", "uid", str, "oid", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "endpoint",
+                    "endpoint",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "imagingStudy",
+                    "imagingStudy",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "series",
+                    "series",
+                    ImagingManifestStudySeries,
+                    "ImagingManifestStudySeries",
+                    True,
+                    None,
+                    True,
+                ),
+                ("uid", "uid", str, "oid", False, None, True),
+            ]
+        )
         return js
 
 
@@ -143,15 +212,35 @@ class ImagingManifestStudySeries(backboneelement.BackboneElement):
         """ Series instance UID.
         Type `str`. """
 
-        super(ImagingManifestStudySeries, self).__init__(jsondict=jsondict, strict=strict)
+        super(ImagingManifestStudySeries, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ImagingManifestStudySeries, self).elementProperties()
-        js.extend([
-            ("endpoint", "endpoint", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("instance", "instance", ImagingManifestStudySeriesInstance, "ImagingManifestStudySeriesInstance", True, None, True),
-            ("uid", "uid", str, "oid", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "endpoint",
+                    "endpoint",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "instance",
+                    "instance",
+                    ImagingManifestStudySeriesInstance,
+                    "ImagingManifestStudySeriesInstance",
+                    True,
+                    None,
+                    True,
+                ),
+                ("uid", "uid", str, "oid", False, None, True),
+            ]
+        )
         return js
 
 
@@ -179,27 +268,30 @@ class ImagingManifestStudySeriesInstance(backboneelement.BackboneElement):
         """ Selected instance UID.
         Type `str`. """
 
-        super(ImagingManifestStudySeriesInstance, self).__init__(jsondict=jsondict, strict=strict)
+        super(ImagingManifestStudySeriesInstance, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ImagingManifestStudySeriesInstance, self).elementProperties()
-        js.extend([
-            ("sopClass", "sopClass", str, "oid", False, None, True),
-            ("uid", "uid", str, "oid", False, None, True),
-        ])
+        js.extend(
+            [
+                ("sopClass", "sopClass", str, "oid", False, None, True),
+                ("uid", "uid", str, "oid", False, None, True),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]

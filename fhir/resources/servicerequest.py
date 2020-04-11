@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
+import sys
+
 from . import domainresource
+
 
 class ServiceRequest(domainresource.DomainResource):
     """ A request for a service to be performed.
@@ -185,87 +188,352 @@ class ServiceRequest(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(ServiceRequest, self).elementProperties()
-        js.extend([
-            ("asNeededBoolean", "asNeededBoolean", bool, "boolean", False, "asNeeded", False),
-            ("asNeededCodeableConcept", "asNeededCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "asNeeded", False),
-            ("authoredOn", "authoredOn", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("basedOn", "basedOn", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("bodySite", "bodySite", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("category", "category", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("doNotPerform", "doNotPerform", bool, "boolean", False, None, False),
-            ("encounter", "encounter", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("instantiatesCanonical", "instantiatesCanonical", str, "canonical", True, None, False),
-            ("instantiatesUri", "instantiatesUri", str, "uri", True, None, False),
-            ("insurance", "insurance", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("intent", "intent", str, "code", False, None, True),
-            ("locationCode", "locationCode", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("locationReference", "locationReference", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("note", "note", annotation.Annotation, "Annotation", True, None, False),
-            ("occurrenceDateTime", "occurrenceDateTime", fhirdate.FHIRDate, "dateTime", False, "occurrence", False),
-            ("occurrencePeriod", "occurrencePeriod", period.Period, "Period", False, "occurrence", False),
-            ("occurrenceTiming", "occurrenceTiming", timing.Timing, "Timing", False, "occurrence", False),
-            ("orderDetail", "orderDetail", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("patientInstruction", "patientInstruction", str, "string", False, None, False),
-            ("performer", "performer", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("performerType", "performerType", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("priority", "priority", str, "code", False, None, False),
-            ("quantityQuantity", "quantityQuantity", quantity.Quantity, "Quantity", False, "quantity", False),
-            ("quantityRange", "quantityRange", range.Range, "Range", False, "quantity", False),
-            ("quantityRatio", "quantityRatio", ratio.Ratio, "Ratio", False, "quantity", False),
-            ("reasonCode", "reasonCode", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("reasonReference", "reasonReference", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("relevantHistory", "relevantHistory", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("replaces", "replaces", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("requester", "requester", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("requisition", "requisition", identifier.Identifier, "Identifier", False, None, False),
-            ("specimen", "specimen", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("subject", "subject", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("supportingInfo", "supportingInfo", fhirreference.FHIRReference, "Reference", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "asNeededBoolean",
+                    "asNeededBoolean",
+                    bool,
+                    "boolean",
+                    False,
+                    "asNeeded",
+                    False,
+                ),
+                (
+                    "asNeededCodeableConcept",
+                    "asNeededCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "asNeeded",
+                    False,
+                ),
+                (
+                    "authoredOn",
+                    "authoredOn",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "basedOn",
+                    "basedOn",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "bodySite",
+                    "bodySite",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "category",
+                    "category",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("doNotPerform", "doNotPerform", bool, "boolean", False, None, False),
+                (
+                    "encounter",
+                    "encounter",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "instantiatesCanonical",
+                    "instantiatesCanonical",
+                    str,
+                    "canonical",
+                    True,
+                    None,
+                    False,
+                ),
+                ("instantiatesUri", "instantiatesUri", str, "uri", True, None, False),
+                (
+                    "insurance",
+                    "insurance",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                ("intent", "intent", str, "code", False, None, True),
+                (
+                    "locationCode",
+                    "locationCode",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "locationReference",
+                    "locationReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "note",
+                    "note",
+                    annotation.Annotation,
+                    "Annotation",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "occurrenceDateTime",
+                    "occurrenceDateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    "occurrence",
+                    False,
+                ),
+                (
+                    "occurrencePeriod",
+                    "occurrencePeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "occurrence",
+                    False,
+                ),
+                (
+                    "occurrenceTiming",
+                    "occurrenceTiming",
+                    timing.Timing,
+                    "Timing",
+                    False,
+                    "occurrence",
+                    False,
+                ),
+                (
+                    "orderDetail",
+                    "orderDetail",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "patientInstruction",
+                    "patientInstruction",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "performer",
+                    "performer",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "performerType",
+                    "performerType",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("priority", "priority", str, "code", False, None, False),
+                (
+                    "quantityQuantity",
+                    "quantityQuantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    "quantity",
+                    False,
+                ),
+                (
+                    "quantityRange",
+                    "quantityRange",
+                    range.Range,
+                    "Range",
+                    False,
+                    "quantity",
+                    False,
+                ),
+                (
+                    "quantityRatio",
+                    "quantityRatio",
+                    ratio.Ratio,
+                    "Ratio",
+                    False,
+                    "quantity",
+                    False,
+                ),
+                (
+                    "reasonCode",
+                    "reasonCode",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "reasonReference",
+                    "reasonReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "relevantHistory",
+                    "relevantHistory",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "replaces",
+                    "replaces",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "requester",
+                    "requester",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "requisition",
+                    "requisition",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "specimen",
+                    "specimen",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, True),
+                (
+                    "subject",
+                    "subject",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "supportingInfo",
+                    "supportingInfo",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import annotation
 except ImportError:
-    annotation = sys.modules[__package__ + '.annotation']
+    annotation = sys.modules[__package__ + ".annotation"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]
 try:
     from . import quantity
 except ImportError:
-    quantity = sys.modules[__package__ + '.quantity']
+    quantity = sys.modules[__package__ + ".quantity"]
 try:
     from . import range
 except ImportError:
-    range = sys.modules[__package__ + '.range']
+    range = sys.modules[__package__ + ".range"]
 try:
     from . import ratio
 except ImportError:
-    ratio = sys.modules[__package__ + '.ratio']
+    ratio = sys.modules[__package__ + ".ratio"]
 try:
     from . import timing
 except ImportError:
-    timing = sys.modules[__package__ + '.timing']
+    timing = sys.modules[__package__ + ".timing"]

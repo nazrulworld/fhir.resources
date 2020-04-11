@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class ConceptMap(domainresource.DomainResource):
     """ A map from one set of concepts to one or more other concepts.
@@ -115,32 +118,88 @@ class ConceptMap(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(ConceptMap, self).elementProperties()
-        js.extend([
-            ("contact", "contact", contactdetail.ContactDetail, "ContactDetail", True, None, False),
-            ("copyright", "copyright", str, "markdown", False, None, False),
-            ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("description", "description", str, "markdown", False, None, False),
-            ("experimental", "experimental", bool, "boolean", False, None, False),
-            ("group", "group", ConceptMapGroup, "ConceptMapGroup", True, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", False, None, False),
-            ("jurisdiction", "jurisdiction", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("name", "name", str, "string", False, None, False),
-            ("publisher", "publisher", str, "string", False, None, False),
-            ("purpose", "purpose", str, "markdown", False, None, False),
-            ("sourceCanonical", "sourceCanonical", str, "canonical", False, "source", False),
-            ("sourceUri", "sourceUri", str, "uri", False, "source", False),
-            ("status", "status", str, "code", False, None, True),
-            ("targetCanonical", "targetCanonical", str, "canonical", False, "target", False),
-            ("targetUri", "targetUri", str, "uri", False, "target", False),
-            ("title", "title", str, "string", False, None, False),
-            ("url", "url", str, "uri", False, None, False),
-            ("useContext", "useContext", usagecontext.UsageContext, "UsageContext", True, None, False),
-            ("version", "version", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "contact",
+                    "contact",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                ("copyright", "copyright", str, "markdown", False, None, False),
+                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
+                ("description", "description", str, "markdown", False, None, False),
+                ("experimental", "experimental", bool, "boolean", False, None, False),
+                (
+                    "group",
+                    "group",
+                    ConceptMapGroup,
+                    "ConceptMapGroup",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "jurisdiction",
+                    "jurisdiction",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                ("name", "name", str, "string", False, None, False),
+                ("publisher", "publisher", str, "string", False, None, False),
+                ("purpose", "purpose", str, "markdown", False, None, False),
+                (
+                    "sourceCanonical",
+                    "sourceCanonical",
+                    str,
+                    "canonical",
+                    False,
+                    "source",
+                    False,
+                ),
+                ("sourceUri", "sourceUri", str, "uri", False, "source", False),
+                ("status", "status", str, "code", False, None, True),
+                (
+                    "targetCanonical",
+                    "targetCanonical",
+                    str,
+                    "canonical",
+                    False,
+                    "target",
+                    False,
+                ),
+                ("targetUri", "targetUri", str, "uri", False, "target", False),
+                ("title", "title", str, "string", False, None, False),
+                ("url", "url", str, "uri", False, None, False),
+                (
+                    "useContext",
+                    "useContext",
+                    usagecontext.UsageContext,
+                    "UsageContext",
+                    True,
+                    None,
+                    False,
+                ),
+                ("version", "version", str, "string", False, None, False),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class ConceptMapGroup(backboneelement.BackboneElement):
     """ Same source and target systems.
@@ -186,14 +245,32 @@ class ConceptMapGroup(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ConceptMapGroup, self).elementProperties()
-        js.extend([
-            ("element", "element", ConceptMapGroupElement, "ConceptMapGroupElement", True, None, True),
-            ("source", "source", str, "uri", False, None, False),
-            ("sourceVersion", "sourceVersion", str, "string", False, None, False),
-            ("target", "target", str, "uri", False, None, False),
-            ("targetVersion", "targetVersion", str, "string", False, None, False),
-            ("unmapped", "unmapped", ConceptMapGroupUnmapped, "ConceptMapGroupUnmapped", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "element",
+                    "element",
+                    ConceptMapGroupElement,
+                    "ConceptMapGroupElement",
+                    True,
+                    None,
+                    True,
+                ),
+                ("source", "source", str, "uri", False, None, False),
+                ("sourceVersion", "sourceVersion", str, "string", False, None, False),
+                ("target", "target", str, "uri", False, None, False),
+                ("targetVersion", "targetVersion", str, "string", False, None, False),
+                (
+                    "unmapped",
+                    "unmapped",
+                    ConceptMapGroupUnmapped,
+                    "ConceptMapGroupUnmapped",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -230,11 +307,21 @@ class ConceptMapGroupElement(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ConceptMapGroupElement, self).elementProperties()
-        js.extend([
-            ("code", "code", str, "code", False, None, False),
-            ("display", "display", str, "string", False, None, False),
-            ("target", "target", ConceptMapGroupElementTarget, "ConceptMapGroupElementTarget", True, None, False),
-        ])
+        js.extend(
+            [
+                ("code", "code", str, "code", False, None, False),
+                ("display", "display", str, "string", False, None, False),
+                (
+                    "target",
+                    "target",
+                    ConceptMapGroupElementTarget,
+                    "ConceptMapGroupElementTarget",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -279,18 +366,38 @@ class ConceptMapGroupElementTarget(backboneelement.BackboneElement):
         """ Other concepts that this mapping also produces.
         List of `ConceptMapGroupElementTargetDependsOn` items (represented as `dict` in JSON). """
 
-        super(ConceptMapGroupElementTarget, self).__init__(jsondict=jsondict, strict=strict)
+        super(ConceptMapGroupElementTarget, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ConceptMapGroupElementTarget, self).elementProperties()
-        js.extend([
-            ("code", "code", str, "code", False, None, False),
-            ("comment", "comment", str, "string", False, None, False),
-            ("dependsOn", "dependsOn", ConceptMapGroupElementTargetDependsOn, "ConceptMapGroupElementTargetDependsOn", True, None, False),
-            ("display", "display", str, "string", False, None, False),
-            ("equivalence", "equivalence", str, "code", False, None, True),
-            ("product", "product", ConceptMapGroupElementTargetDependsOn, "ConceptMapGroupElementTargetDependsOn", True, None, False),
-        ])
+        js.extend(
+            [
+                ("code", "code", str, "code", False, None, False),
+                ("comment", "comment", str, "string", False, None, False),
+                (
+                    "dependsOn",
+                    "dependsOn",
+                    ConceptMapGroupElementTargetDependsOn,
+                    "ConceptMapGroupElementTargetDependsOn",
+                    True,
+                    None,
+                    False,
+                ),
+                ("display", "display", str, "string", False, None, False),
+                ("equivalence", "equivalence", str, "code", False, None, True),
+                (
+                    "product",
+                    "product",
+                    ConceptMapGroupElementTargetDependsOn,
+                    "ConceptMapGroupElementTargetDependsOn",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -328,16 +435,20 @@ class ConceptMapGroupElementTargetDependsOn(backboneelement.BackboneElement):
         """ Value of the referenced element.
         Type `str`. """
 
-        super(ConceptMapGroupElementTargetDependsOn, self).__init__(jsondict=jsondict, strict=strict)
+        super(ConceptMapGroupElementTargetDependsOn, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ConceptMapGroupElementTargetDependsOn, self).elementProperties()
-        js.extend([
-            ("display", "display", str, "string", False, None, False),
-            ("property", "property", str, "uri", False, None, True),
-            ("system", "system", str, "canonical", False, None, False),
-            ("value", "value", str, "string", False, None, True),
-        ])
+        js.extend(
+            [
+                ("display", "display", str, "string", False, None, False),
+                ("property", "property", str, "uri", False, None, True),
+                ("system", "system", str, "canonical", False, None, False),
+                ("value", "value", str, "string", False, None, True),
+            ]
+        )
         return js
 
 
@@ -380,33 +491,34 @@ class ConceptMapGroupUnmapped(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ConceptMapGroupUnmapped, self).elementProperties()
-        js.extend([
-            ("code", "code", str, "code", False, None, False),
-            ("display", "display", str, "string", False, None, False),
-            ("mode", "mode", str, "code", False, None, True),
-            ("url", "url", str, "canonical", False, None, False),
-        ])
+        js.extend(
+            [
+                ("code", "code", str, "code", False, None, False),
+                ("display", "display", str, "string", False, None, False),
+                ("mode", "mode", str, "code", False, None, True),
+                ("url", "url", str, "canonical", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import contactdetail
 except ImportError:
-    contactdetail = sys.modules[__package__ + '.contactdetail']
+    contactdetail = sys.modules[__package__ + ".contactdetail"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import usagecontext
 except ImportError:
-    usagecontext = sys.modules[__package__ + '.usagecontext']
+    usagecontext = sys.modules[__package__ + ".usagecontext"]

@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
+import sys
+
 from . import resource
+
 
 class DomainResource(resource.Resource):
     """ A resource with narrative, extensions, and contained resources.
@@ -46,21 +49,46 @@ class DomainResource(resource.Resource):
 
     def elementProperties(self):
         js = super(DomainResource, self).elementProperties()
-        js.extend([
-            ("contained", "contained", resource.Resource, "Resource", True, None, False),
-            ("extension", "extension", extension.Extension, "Extension", True, None, False),
-            ("modifierExtension", "modifierExtension", extension.Extension, "Extension", True, None, False),
-            ("text", "text", narrative.Narrative, "Narrative", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "contained",
+                    "contained",
+                    resource.Resource,
+                    "Resource",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "extension",
+                    "extension",
+                    extension.Extension,
+                    "Extension",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "modifierExtension",
+                    "modifierExtension",
+                    extension.Extension,
+                    "Extension",
+                    True,
+                    None,
+                    False,
+                ),
+                ("text", "text", narrative.Narrative, "Narrative", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import extension
 except ImportError:
-    extension = sys.modules[__package__ + '.extension']
+    extension = sys.modules[__package__ + ".extension"]
 try:
     from . import narrative
 except ImportError:
-    narrative = sys.modules[__package__ + '.narrative']
+    narrative = sys.modules[__package__ + ".narrative"]

@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
+import sys
+
 from . import element
+
 
 class Period(element.Element):
     """ Time range defined by start and end date/time.
@@ -38,15 +41,16 @@ class Period(element.Element):
 
     def elementProperties(self):
         js = super(Period, self).elementProperties()
-        js.extend([
-            ("end", "end", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("start", "start", fhirdate.FHIRDate, "dateTime", False, None, False),
-        ])
+        js.extend(
+            [
+                ("end", "end", fhirdate.FHIRDate, "dateTime", False, None, False),
+                ("start", "start", fhirdate.FHIRDate, "dateTime", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]

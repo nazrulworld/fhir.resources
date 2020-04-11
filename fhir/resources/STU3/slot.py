@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
+import sys
+
 from . import domainresource
+
 
 class Slot(domainresource.DomainResource):
     """ A slot of time on a schedule that may be available for booking appointments.
@@ -81,36 +84,85 @@ class Slot(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(Slot, self).elementProperties()
-        js.extend([
-            ("appointmentType", "appointmentType", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("comment", "comment", str, "string", False, None, False),
-            ("end", "end", fhirdate.FHIRDate, "instant", False, None, True),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("overbooked", "overbooked", bool, "boolean", False, None, False),
-            ("schedule", "schedule", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("serviceCategory", "serviceCategory", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("serviceType", "serviceType", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("specialty", "specialty", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("start", "start", fhirdate.FHIRDate, "instant", False, None, True),
-            ("status", "status", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "appointmentType",
+                    "appointmentType",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("comment", "comment", str, "string", False, None, False),
+                ("end", "end", fhirdate.FHIRDate, "instant", False, None, True),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                ("overbooked", "overbooked", bool, "boolean", False, None, False),
+                (
+                    "schedule",
+                    "schedule",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "serviceCategory",
+                    "serviceCategory",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "serviceType",
+                    "serviceType",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "specialty",
+                    "specialty",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                ("start", "start", fhirdate.FHIRDate, "instant", False, None, True),
+                ("status", "status", str, "code", False, None, True),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]

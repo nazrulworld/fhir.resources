@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class Invoice(domainresource.DomainResource):
     """ Invoice containing ChargeItems from an Account.
@@ -95,28 +98,116 @@ class Invoice(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(Invoice, self).elementProperties()
-        js.extend([
-            ("account", "account", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("cancelledReason", "cancelledReason", str, "string", False, None, False),
-            ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("issuer", "issuer", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("lineItem", "lineItem", InvoiceLineItem, "InvoiceLineItem", True, None, False),
-            ("note", "note", annotation.Annotation, "Annotation", True, None, False),
-            ("participant", "participant", InvoiceParticipant, "InvoiceParticipant", True, None, False),
-            ("paymentTerms", "paymentTerms", str, "markdown", False, None, False),
-            ("recipient", "recipient", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("subject", "subject", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("totalGross", "totalGross", money.Money, "Money", False, None, False),
-            ("totalNet", "totalNet", money.Money, "Money", False, None, False),
-            ("totalPriceComponent", "totalPriceComponent", InvoiceLineItemPriceComponent, "InvoiceLineItemPriceComponent", True, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "account",
+                    "account",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "cancelledReason",
+                    "cancelledReason",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "issuer",
+                    "issuer",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "lineItem",
+                    "lineItem",
+                    InvoiceLineItem,
+                    "InvoiceLineItem",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "note",
+                    "note",
+                    annotation.Annotation,
+                    "Annotation",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "participant",
+                    "participant",
+                    InvoiceParticipant,
+                    "InvoiceParticipant",
+                    True,
+                    None,
+                    False,
+                ),
+                ("paymentTerms", "paymentTerms", str, "markdown", False, None, False),
+                (
+                    "recipient",
+                    "recipient",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, True),
+                (
+                    "subject",
+                    "subject",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("totalGross", "totalGross", money.Money, "Money", False, None, False),
+                ("totalNet", "totalNet", money.Money, "Money", False, None, False),
+                (
+                    "totalPriceComponent",
+                    "totalPriceComponent",
+                    InvoiceLineItemPriceComponent,
+                    "InvoiceLineItemPriceComponent",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class InvoiceLineItem(backboneelement.BackboneElement):
     """ Line items of this Invoice.
@@ -158,12 +249,38 @@ class InvoiceLineItem(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(InvoiceLineItem, self).elementProperties()
-        js.extend([
-            ("chargeItemCodeableConcept", "chargeItemCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "chargeItem", True),
-            ("chargeItemReference", "chargeItemReference", fhirreference.FHIRReference, "Reference", False, "chargeItem", True),
-            ("priceComponent", "priceComponent", InvoiceLineItemPriceComponent, "InvoiceLineItemPriceComponent", True, None, False),
-            ("sequence", "sequence", int, "positiveInt", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "chargeItemCodeableConcept",
+                    "chargeItemCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "chargeItem",
+                    True,
+                ),
+                (
+                    "chargeItemReference",
+                    "chargeItemReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "chargeItem",
+                    True,
+                ),
+                (
+                    "priceComponent",
+                    "priceComponent",
+                    InvoiceLineItemPriceComponent,
+                    "InvoiceLineItemPriceComponent",
+                    True,
+                    None,
+                    False,
+                ),
+                ("sequence", "sequence", int, "positiveInt", False, None, False),
+            ]
+        )
         return js
 
 
@@ -204,16 +321,28 @@ class InvoiceLineItemPriceComponent(backboneelement.BackboneElement):
         """ base | surcharge | deduction | discount | tax | informational.
         Type `str`. """
 
-        super(InvoiceLineItemPriceComponent, self).__init__(jsondict=jsondict, strict=strict)
+        super(InvoiceLineItemPriceComponent, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(InvoiceLineItemPriceComponent, self).elementProperties()
-        js.extend([
-            ("amount", "amount", money.Money, "Money", False, None, False),
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("factor", "factor", float, "decimal", False, None, False),
-            ("type", "type", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                ("amount", "amount", money.Money, "Money", False, None, False),
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("factor", "factor", float, "decimal", False, None, False),
+                ("type", "type", str, "code", False, None, True),
+            ]
+        )
         return js
 
 
@@ -245,35 +374,52 @@ class InvoiceParticipant(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(InvoiceParticipant, self).elementProperties()
-        js.extend([
-            ("actor", "actor", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("role", "role", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "actor",
+                    "actor",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "role",
+                    "role",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import annotation
 except ImportError:
-    annotation = sys.modules[__package__ + '.annotation']
+    annotation = sys.modules[__package__ + ".annotation"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import money
 except ImportError:
-    money = sys.modules[__package__ + '.money']
+    money = sys.modules[__package__ + ".money"]

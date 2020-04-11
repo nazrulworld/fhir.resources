@@ -1,1 +1,1 @@
-pytest_plugins = ['fhir.resources.tests.fixtures']
+pytest_plugins = ["fhir.resources.tests.fixtures"]

@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class Composition(domainresource.DomainResource):
     """ A set of resources composed into a single coherent clinical statement with
@@ -97,27 +100,115 @@ class Composition(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(Composition, self).elementProperties()
-        js.extend([
-            ("attester", "attester", CompositionAttester, "CompositionAttester", True, None, False),
-            ("author", "author", fhirreference.FHIRReference, "Reference", True, None, True),
-            ("class_fhir", "class", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("confidentiality", "confidentiality", str, "code", False, None, False),
-            ("custodian", "custodian", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, True),
-            ("encounter", "encounter", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("event", "event", CompositionEvent, "CompositionEvent", True, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", False, None, False),
-            ("relatesTo", "relatesTo", CompositionRelatesTo, "CompositionRelatesTo", True, None, False),
-            ("section", "section", CompositionSection, "CompositionSection", True, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("subject", "subject", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("title", "title", str, "string", False, None, True),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "attester",
+                    "attester",
+                    CompositionAttester,
+                    "CompositionAttester",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "author",
+                    "author",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    True,
+                ),
+                (
+                    "class_fhir",
+                    "class",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("confidentiality", "confidentiality", str, "code", False, None, False),
+                (
+                    "custodian",
+                    "custodian",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, True),
+                (
+                    "encounter",
+                    "encounter",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "event",
+                    "event",
+                    CompositionEvent,
+                    "CompositionEvent",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "relatesTo",
+                    "relatesTo",
+                    CompositionRelatesTo,
+                    "CompositionRelatesTo",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "section",
+                    "section",
+                    CompositionSection,
+                    "CompositionSection",
+                    True,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, True),
+                (
+                    "subject",
+                    "subject",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                ("title", "title", str, "string", False, None, True),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class CompositionAttester(backboneelement.BackboneElement):
     """ Attests to accuracy of composition.
@@ -151,11 +242,21 @@ class CompositionAttester(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(CompositionAttester, self).elementProperties()
-        js.extend([
-            ("mode", "mode", str, "code", True, None, True),
-            ("party", "party", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("time", "time", fhirdate.FHIRDate, "dateTime", False, None, False),
-        ])
+        js.extend(
+            [
+                ("mode", "mode", str, "code", True, None, True),
+                (
+                    "party",
+                    "party",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("time", "time", fhirdate.FHIRDate, "dateTime", False, None, False),
+            ]
+        )
         return js
 
 
@@ -192,11 +293,29 @@ class CompositionEvent(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(CompositionEvent, self).elementProperties()
-        js.extend([
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("detail", "detail", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("period", "period", period.Period, "Period", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "detail",
+                    "detail",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                ("period", "period", period.Period, "Period", False, None, False),
+            ]
+        )
         return js
 
 
@@ -233,11 +352,29 @@ class CompositionRelatesTo(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(CompositionRelatesTo, self).elementProperties()
-        js.extend([
-            ("code", "code", str, "code", False, None, True),
-            ("targetIdentifier", "targetIdentifier", identifier.Identifier, "Identifier", False, "target", True),
-            ("targetReference", "targetReference", fhirreference.FHIRReference, "Reference", False, "target", True),
-        ])
+        js.extend(
+            [
+                ("code", "code", str, "code", False, None, True),
+                (
+                    "targetIdentifier",
+                    "targetIdentifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    "target",
+                    True,
+                ),
+                (
+                    "targetReference",
+                    "targetReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "target",
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -293,41 +430,82 @@ class CompositionSection(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(CompositionSection, self).elementProperties()
-        js.extend([
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("emptyReason", "emptyReason", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("entry", "entry", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("mode", "mode", str, "code", False, None, False),
-            ("orderedBy", "orderedBy", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("section", "section", CompositionSection, "CompositionSection", True, None, False),
-            ("text", "text", narrative.Narrative, "Narrative", False, None, False),
-            ("title", "title", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "emptyReason",
+                    "emptyReason",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "entry",
+                    "entry",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                ("mode", "mode", str, "code", False, None, False),
+                (
+                    "orderedBy",
+                    "orderedBy",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "section",
+                    "section",
+                    CompositionSection,
+                    "CompositionSection",
+                    True,
+                    None,
+                    False,
+                ),
+                ("text", "text", narrative.Narrative, "Narrative", False, None, False),
+                ("title", "title", str, "string", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import narrative
 except ImportError:
-    narrative = sys.modules[__package__ + '.narrative']
+    narrative = sys.modules[__package__ + ".narrative"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]

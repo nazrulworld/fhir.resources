@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class OperationOutcome(domainresource.DomainResource):
     """ Information about the success/failure of an action.
@@ -35,13 +38,21 @@ class OperationOutcome(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(OperationOutcome, self).elementProperties()
-        js.extend([
-            ("issue", "issue", OperationOutcomeIssue, "OperationOutcomeIssue", True, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "issue",
+                    "issue",
+                    OperationOutcomeIssue,
+                    "OperationOutcomeIssue",
+                    True,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class OperationOutcomeIssue(backboneelement.BackboneElement):
     """ A single issue associated with the action.
@@ -87,19 +98,28 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(OperationOutcomeIssue, self).elementProperties()
-        js.extend([
-            ("code", "code", str, "code", False, None, True),
-            ("details", "details", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("diagnostics", "diagnostics", str, "string", False, None, False),
-            ("expression", "expression", str, "string", True, None, False),
-            ("location", "location", str, "string", True, None, False),
-            ("severity", "severity", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                ("code", "code", str, "code", False, None, True),
+                (
+                    "details",
+                    "details",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("diagnostics", "diagnostics", str, "string", False, None, False),
+                ("expression", "expression", str, "string", True, None, False),
+                ("location", "location", str, "string", True, None, False),
+                ("severity", "severity", str, "code", False, None, True),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]

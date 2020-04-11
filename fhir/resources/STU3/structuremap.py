@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class StructureMap(domainresource.DomainResource):
     """ A Map of relationships between 2 structures that can be used to transform
@@ -101,30 +104,78 @@ class StructureMap(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(StructureMap, self).elementProperties()
-        js.extend([
-            ("contact", "contact", contactdetail.ContactDetail, "ContactDetail", True, None, False),
-            ("copyright", "copyright", str, "markdown", False, None, False),
-            ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("description", "description", str, "markdown", False, None, False),
-            ("experimental", "experimental", bool, "boolean", False, None, False),
-            ("group", "group", StructureMapGroup, "StructureMapGroup", True, None, True),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("import_fhir", "import", str, "uri", True, None, False),
-            ("jurisdiction", "jurisdiction", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("name", "name", str, "string", False, None, True),
-            ("publisher", "publisher", str, "string", False, None, False),
-            ("purpose", "purpose", str, "markdown", False, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("structure", "structure", StructureMapStructure, "StructureMapStructure", True, None, False),
-            ("title", "title", str, "string", False, None, False),
-            ("url", "url", str, "uri", False, None, True),
-            ("useContext", "useContext", usagecontext.UsageContext, "UsageContext", True, None, False),
-            ("version", "version", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "contact",
+                    "contact",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                ("copyright", "copyright", str, "markdown", False, None, False),
+                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
+                ("description", "description", str, "markdown", False, None, False),
+                ("experimental", "experimental", bool, "boolean", False, None, False),
+                (
+                    "group",
+                    "group",
+                    StructureMapGroup,
+                    "StructureMapGroup",
+                    True,
+                    None,
+                    True,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                ("import_fhir", "import", str, "uri", True, None, False),
+                (
+                    "jurisdiction",
+                    "jurisdiction",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                ("name", "name", str, "string", False, None, True),
+                ("publisher", "publisher", str, "string", False, None, False),
+                ("purpose", "purpose", str, "markdown", False, None, False),
+                ("status", "status", str, "code", False, None, True),
+                (
+                    "structure",
+                    "structure",
+                    StructureMapStructure,
+                    "StructureMapStructure",
+                    True,
+                    None,
+                    False,
+                ),
+                ("title", "title", str, "string", False, None, False),
+                ("url", "url", str, "uri", False, None, True),
+                (
+                    "useContext",
+                    "useContext",
+                    usagecontext.UsageContext,
+                    "UsageContext",
+                    True,
+                    None,
+                    False,
+                ),
+                ("version", "version", str, "string", False, None, False),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class StructureMapGroup(backboneelement.BackboneElement):
     """ Named sections for reader convenience.
@@ -171,14 +222,32 @@ class StructureMapGroup(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(StructureMapGroup, self).elementProperties()
-        js.extend([
-            ("documentation", "documentation", str, "string", False, None, False),
-            ("extends", "extends", str, "id", False, None, False),
-            ("input", "input", StructureMapGroupInput, "StructureMapGroupInput", True, None, True),
-            ("name", "name", str, "id", False, None, True),
-            ("rule", "rule", StructureMapGroupRule, "StructureMapGroupRule", True, None, True),
-            ("typeMode", "typeMode", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                ("documentation", "documentation", str, "string", False, None, False),
+                ("extends", "extends", str, "id", False, None, False),
+                (
+                    "input",
+                    "input",
+                    StructureMapGroupInput,
+                    "StructureMapGroupInput",
+                    True,
+                    None,
+                    True,
+                ),
+                ("name", "name", str, "id", False, None, True),
+                (
+                    "rule",
+                    "rule",
+                    StructureMapGroupRule,
+                    "StructureMapGroupRule",
+                    True,
+                    None,
+                    True,
+                ),
+                ("typeMode", "typeMode", str, "code", False, None, True),
+            ]
+        )
         return js
 
 
@@ -219,12 +288,14 @@ class StructureMapGroupInput(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(StructureMapGroupInput, self).elementProperties()
-        js.extend([
-            ("documentation", "documentation", str, "string", False, None, False),
-            ("mode", "mode", str, "code", False, None, True),
-            ("name", "name", str, "id", False, None, True),
-            ("type", "type", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                ("documentation", "documentation", str, "string", False, None, False),
+                ("mode", "mode", str, "code", False, None, True),
+                ("name", "name", str, "id", False, None, True),
+                ("type", "type", str, "string", False, None, False),
+            ]
+        )
         return js
 
 
@@ -270,14 +341,48 @@ class StructureMapGroupRule(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(StructureMapGroupRule, self).elementProperties()
-        js.extend([
-            ("dependent", "dependent", StructureMapGroupRuleDependent, "StructureMapGroupRuleDependent", True, None, False),
-            ("documentation", "documentation", str, "string", False, None, False),
-            ("name", "name", str, "id", False, None, True),
-            ("rule", "rule", StructureMapGroupRule, "StructureMapGroupRule", True, None, False),
-            ("source", "source", StructureMapGroupRuleSource, "StructureMapGroupRuleSource", True, None, True),
-            ("target", "target", StructureMapGroupRuleTarget, "StructureMapGroupRuleTarget", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "dependent",
+                    "dependent",
+                    StructureMapGroupRuleDependent,
+                    "StructureMapGroupRuleDependent",
+                    True,
+                    None,
+                    False,
+                ),
+                ("documentation", "documentation", str, "string", False, None, False),
+                ("name", "name", str, "id", False, None, True),
+                (
+                    "rule",
+                    "rule",
+                    StructureMapGroupRule,
+                    "StructureMapGroupRule",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "source",
+                    "source",
+                    StructureMapGroupRuleSource,
+                    "StructureMapGroupRuleSource",
+                    True,
+                    None,
+                    True,
+                ),
+                (
+                    "target",
+                    "target",
+                    StructureMapGroupRuleTarget,
+                    "StructureMapGroupRuleTarget",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -303,14 +408,18 @@ class StructureMapGroupRuleDependent(backboneelement.BackboneElement):
         """ Variable to pass to the rule or group.
         List of `str` items. """
 
-        super(StructureMapGroupRuleDependent, self).__init__(jsondict=jsondict, strict=strict)
+        super(StructureMapGroupRuleDependent, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(StructureMapGroupRuleDependent, self).elementProperties()
-        js.extend([
-            ("name", "name", str, "id", False, None, True),
-            ("variable", "variable", str, "string", True, None, True),
-        ])
+        js.extend(
+            [
+                ("name", "name", str, "id", False, None, True),
+                ("variable", "variable", str, "string", True, None, True),
+            ]
+        )
         return js
 
 
@@ -517,59 +626,367 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         """ Named context for field, if a field is specified.
         Type `str`. """
 
-        super(StructureMapGroupRuleSource, self).__init__(jsondict=jsondict, strict=strict)
+        super(StructureMapGroupRuleSource, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(StructureMapGroupRuleSource, self).elementProperties()
-        js.extend([
-            ("check", "check", str, "string", False, None, False),
-            ("condition", "condition", str, "string", False, None, False),
-            ("context", "context", str, "id", False, None, True),
-            ("defaultValueAddress", "defaultValueAddress", address.Address, "Address", False, "defaultValue", False),
-            ("defaultValueAge", "defaultValueAge", age.Age, "Age", False, "defaultValue", False),
-            ("defaultValueAnnotation", "defaultValueAnnotation", annotation.Annotation, "Annotation", False, "defaultValue", False),
-            ("defaultValueAttachment", "defaultValueAttachment", attachment.Attachment, "Attachment", False, "defaultValue", False),
-            ("defaultValueBase64Binary", "defaultValueBase64Binary", str, "base64Binary", False, "defaultValue", False),
-            ("defaultValueBoolean", "defaultValueBoolean", bool, "boolean", False, "defaultValue", False),
-            ("defaultValueCode", "defaultValueCode", str, "code", False, "defaultValue", False),
-            ("defaultValueCodeableConcept", "defaultValueCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "defaultValue", False),
-            ("defaultValueCoding", "defaultValueCoding", coding.Coding, "Coding", False, "defaultValue", False),
-            ("defaultValueContactPoint", "defaultValueContactPoint", contactpoint.ContactPoint, "ContactPoint", False, "defaultValue", False),
-            ("defaultValueCount", "defaultValueCount", count.Count, "Count", False, "defaultValue", False),
-            ("defaultValueDate", "defaultValueDate", fhirdate.FHIRDate, "date", False, "defaultValue", False),
-            ("defaultValueDateTime", "defaultValueDateTime", fhirdate.FHIRDate, "dateTime", False, "defaultValue", False),
-            ("defaultValueDecimal", "defaultValueDecimal", float, "decimal", False, "defaultValue", False),
-            ("defaultValueDistance", "defaultValueDistance", distance.Distance, "Distance", False, "defaultValue", False),
-            ("defaultValueDuration", "defaultValueDuration", duration.Duration, "Duration", False, "defaultValue", False),
-            ("defaultValueHumanName", "defaultValueHumanName", humanname.HumanName, "HumanName", False, "defaultValue", False),
-            ("defaultValueId", "defaultValueId", str, "id", False, "defaultValue", False),
-            ("defaultValueIdentifier", "defaultValueIdentifier", identifier.Identifier, "Identifier", False, "defaultValue", False),
-            ("defaultValueInstant", "defaultValueInstant", fhirdate.FHIRDate, "instant", False, "defaultValue", False),
-            ("defaultValueInteger", "defaultValueInteger", int, "integer", False, "defaultValue", False),
-            ("defaultValueMarkdown", "defaultValueMarkdown", str, "markdown", False, "defaultValue", False),
-            ("defaultValueMeta", "defaultValueMeta", meta.Meta, "Meta", False, "defaultValue", False),
-            ("defaultValueMoney", "defaultValueMoney", money.Money, "Money", False, "defaultValue", False),
-            ("defaultValueOid", "defaultValueOid", str, "oid", False, "defaultValue", False),
-            ("defaultValuePeriod", "defaultValuePeriod", period.Period, "Period", False, "defaultValue", False),
-            ("defaultValuePositiveInt", "defaultValuePositiveInt", int, "positiveInt", False, "defaultValue", False),
-            ("defaultValueQuantity", "defaultValueQuantity", quantity.Quantity, "Quantity", False, "defaultValue", False),
-            ("defaultValueRange", "defaultValueRange", range.Range, "Range", False, "defaultValue", False),
-            ("defaultValueRatio", "defaultValueRatio", ratio.Ratio, "Ratio", False, "defaultValue", False),
-            ("defaultValueReference", "defaultValueReference", fhirreference.FHIRReference, "Reference", False, "defaultValue", False),
-            ("defaultValueSampledData", "defaultValueSampledData", sampleddata.SampledData, "SampledData", False, "defaultValue", False),
-            ("defaultValueSignature", "defaultValueSignature", signature.Signature, "Signature", False, "defaultValue", False),
-            ("defaultValueString", "defaultValueString", str, "string", False, "defaultValue", False),
-            ("defaultValueTime", "defaultValueTime", fhirdate.FHIRDate, "time", False, "defaultValue", False),
-            ("defaultValueTiming", "defaultValueTiming", timing.Timing, "Timing", False, "defaultValue", False),
-            ("defaultValueUnsignedInt", "defaultValueUnsignedInt", int, "unsignedInt", False, "defaultValue", False),
-            ("defaultValueUri", "defaultValueUri", str, "uri", False, "defaultValue", False),
-            ("element", "element", str, "string", False, None, False),
-            ("listMode", "listMode", str, "code", False, None, False),
-            ("max", "max", str, "string", False, None, False),
-            ("min", "min", int, "integer", False, None, False),
-            ("type", "type", str, "string", False, None, False),
-            ("variable", "variable", str, "id", False, None, False),
-        ])
+        js.extend(
+            [
+                ("check", "check", str, "string", False, None, False),
+                ("condition", "condition", str, "string", False, None, False),
+                ("context", "context", str, "id", False, None, True),
+                (
+                    "defaultValueAddress",
+                    "defaultValueAddress",
+                    address.Address,
+                    "Address",
+                    False,
+                    "defaultValue",
+                    False,
+                ),
+                (
+                    "defaultValueAge",
+                    "defaultValueAge",
+                    age.Age,
+                    "Age",
+                    False,
+                    "defaultValue",
+                    False,
+                ),
+                (
+                    "defaultValueAnnotation",
+                    "defaultValueAnnotation",
+                    annotation.Annotation,
+                    "Annotation",
+                    False,
+                    "defaultValue",
+                    False,
+                ),
+                (
+                    "defaultValueAttachment",
+                    "defaultValueAttachment",
+                    attachment.Attachment,
+                    "Attachment",
+                    False,
+                    "defaultValue",
+                    False,
+                ),
+                (
+                    "defaultValueBase64Binary",
+                    "defaultValueBase64Binary",
+                    str,
+                    "base64Binary",
+                    False,
+                    "defaultValue",
+                    False,
+                ),
+                (
+                    "defaultValueBoolean",
+                    "defaultValueBoolean",
+                    bool,
+                    "boolean",
+                    False,
+                    "defaultValue",
+                    False,
+                ),
+                (
+                    "defaultValueCode",
+                    "defaultValueCode",
+                    str,
+                    "code",
+                    False,
+                    "defaultValue",
+                    False,
+                ),
+                (
+                    "defaultValueCodeableConcept",
+                    "defaultValueCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "defaultValue",
+                    False,
+                ),
+                (
+                    "defaultValueCoding",
+                    "defaultValueCoding",
+                    coding.Coding,
+                    "Coding",
+                    False,
+                    "defaultValue",
+                    False,
+                ),
+                (
+                    "defaultValueContactPoint",
+                    "defaultValueContactPoint",
+                    contactpoint.ContactPoint,
+                    "ContactPoint",
+                    False,
+                    "defaultValue",
+                    False,
+                ),
+                (
+                    "defaultValueCount",
+                    "defaultValueCount",
+                    count.Count,
+                    "Count",
+                    False,
+                    "defaultValue",
+                    False,
+                ),
+                (
+                    "defaultValueDate",
+                    "defaultValueDate",
+                    fhirdate.FHIRDate,
+                    "date",
+                    False,
+                    "defaultValue",
+                    False,
+                ),
+                (
+                    "defaultValueDateTime",
+                    "defaultValueDateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    "defaultValue",
+                    False,
+                ),
+                (
+                    "defaultValueDecimal",
+                    "defaultValueDecimal",
+                    float,
+                    "decimal",
+                    False,
+                    "defaultValue",
+                    False,
+                ),
+                (
+                    "defaultValueDistance",
+                    "defaultValueDistance",
+                    distance.Distance,
+                    "Distance",
+                    False,
+                    "defaultValue",
+                    False,
+                ),
+                (
+                    "defaultValueDuration",
+                    "defaultValueDuration",
+                    duration.Duration,
+                    "Duration",
+                    False,
+                    "defaultValue",
+                    False,
+                ),
+                (
+                    "defaultValueHumanName",
+                    "defaultValueHumanName",
+                    humanname.HumanName,
+                    "HumanName",
+                    False,
+                    "defaultValue",
+                    False,
+                ),
+                (
+                    "defaultValueId",
+                    "defaultValueId",
+                    str,
+                    "id",
+                    False,
+                    "defaultValue",
+                    False,
+                ),
+                (
+                    "defaultValueIdentifier",
+                    "defaultValueIdentifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    "defaultValue",
+                    False,
+                ),
+                (
+                    "defaultValueInstant",
+                    "defaultValueInstant",
+                    fhirdate.FHIRDate,
+                    "instant",
+                    False,
+                    "defaultValue",
+                    False,
+                ),
+                (
+                    "defaultValueInteger",
+                    "defaultValueInteger",
+                    int,
+                    "integer",
+                    False,
+                    "defaultValue",
+                    False,
+                ),
+                (
+                    "defaultValueMarkdown",
+                    "defaultValueMarkdown",
+                    str,
+                    "markdown",
+                    False,
+                    "defaultValue",
+                    False,
+                ),
+                (
+                    "defaultValueMeta",
+                    "defaultValueMeta",
+                    meta.Meta,
+                    "Meta",
+                    False,
+                    "defaultValue",
+                    False,
+                ),
+                (
+                    "defaultValueMoney",
+                    "defaultValueMoney",
+                    money.Money,
+                    "Money",
+                    False,
+                    "defaultValue",
+                    False,
+                ),
+                (
+                    "defaultValueOid",
+                    "defaultValueOid",
+                    str,
+                    "oid",
+                    False,
+                    "defaultValue",
+                    False,
+                ),
+                (
+                    "defaultValuePeriod",
+                    "defaultValuePeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "defaultValue",
+                    False,
+                ),
+                (
+                    "defaultValuePositiveInt",
+                    "defaultValuePositiveInt",
+                    int,
+                    "positiveInt",
+                    False,
+                    "defaultValue",
+                    False,
+                ),
+                (
+                    "defaultValueQuantity",
+                    "defaultValueQuantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    "defaultValue",
+                    False,
+                ),
+                (
+                    "defaultValueRange",
+                    "defaultValueRange",
+                    range.Range,
+                    "Range",
+                    False,
+                    "defaultValue",
+                    False,
+                ),
+                (
+                    "defaultValueRatio",
+                    "defaultValueRatio",
+                    ratio.Ratio,
+                    "Ratio",
+                    False,
+                    "defaultValue",
+                    False,
+                ),
+                (
+                    "defaultValueReference",
+                    "defaultValueReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "defaultValue",
+                    False,
+                ),
+                (
+                    "defaultValueSampledData",
+                    "defaultValueSampledData",
+                    sampleddata.SampledData,
+                    "SampledData",
+                    False,
+                    "defaultValue",
+                    False,
+                ),
+                (
+                    "defaultValueSignature",
+                    "defaultValueSignature",
+                    signature.Signature,
+                    "Signature",
+                    False,
+                    "defaultValue",
+                    False,
+                ),
+                (
+                    "defaultValueString",
+                    "defaultValueString",
+                    str,
+                    "string",
+                    False,
+                    "defaultValue",
+                    False,
+                ),
+                (
+                    "defaultValueTime",
+                    "defaultValueTime",
+                    fhirdate.FHIRDate,
+                    "time",
+                    False,
+                    "defaultValue",
+                    False,
+                ),
+                (
+                    "defaultValueTiming",
+                    "defaultValueTiming",
+                    timing.Timing,
+                    "Timing",
+                    False,
+                    "defaultValue",
+                    False,
+                ),
+                (
+                    "defaultValueUnsignedInt",
+                    "defaultValueUnsignedInt",
+                    int,
+                    "unsignedInt",
+                    False,
+                    "defaultValue",
+                    False,
+                ),
+                (
+                    "defaultValueUri",
+                    "defaultValueUri",
+                    str,
+                    "uri",
+                    False,
+                    "defaultValue",
+                    False,
+                ),
+                ("element", "element", str, "string", False, None, False),
+                ("listMode", "listMode", str, "code", False, None, False),
+                ("max", "max", str, "string", False, None, False),
+                ("min", "min", int, "integer", False, None, False),
+                ("type", "type", str, "string", False, None, False),
+                ("variable", "variable", str, "id", False, None, False),
+            ]
+        )
         return js
 
 
@@ -619,20 +1036,32 @@ class StructureMapGroupRuleTarget(backboneelement.BackboneElement):
         """ Named context for field, if desired, and a field is specified.
         Type `str`. """
 
-        super(StructureMapGroupRuleTarget, self).__init__(jsondict=jsondict, strict=strict)
+        super(StructureMapGroupRuleTarget, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(StructureMapGroupRuleTarget, self).elementProperties()
-        js.extend([
-            ("context", "context", str, "id", False, None, False),
-            ("contextType", "contextType", str, "code", False, None, False),
-            ("element", "element", str, "string", False, None, False),
-            ("listMode", "listMode", str, "code", True, None, False),
-            ("listRuleId", "listRuleId", str, "id", False, None, False),
-            ("parameter", "parameter", StructureMapGroupRuleTargetParameter, "StructureMapGroupRuleTargetParameter", True, None, False),
-            ("transform", "transform", str, "code", False, None, False),
-            ("variable", "variable", str, "id", False, None, False),
-        ])
+        js.extend(
+            [
+                ("context", "context", str, "id", False, None, False),
+                ("contextType", "contextType", str, "code", False, None, False),
+                ("element", "element", str, "string", False, None, False),
+                ("listMode", "listMode", str, "code", True, None, False),
+                ("listRuleId", "listRuleId", str, "id", False, None, False),
+                (
+                    "parameter",
+                    "parameter",
+                    StructureMapGroupRuleTargetParameter,
+                    "StructureMapGroupRuleTargetParameter",
+                    True,
+                    None,
+                    False,
+                ),
+                ("transform", "transform", str, "code", False, None, False),
+                ("variable", "variable", str, "id", False, None, False),
+            ]
+        )
         return js
 
 
@@ -670,17 +1099,29 @@ class StructureMapGroupRuleTargetParameter(backboneelement.BackboneElement):
         """ Parameter value - variable or literal.
         Type `str`. """
 
-        super(StructureMapGroupRuleTargetParameter, self).__init__(jsondict=jsondict, strict=strict)
+        super(StructureMapGroupRuleTargetParameter, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(StructureMapGroupRuleTargetParameter, self).elementProperties()
-        js.extend([
-            ("valueBoolean", "valueBoolean", bool, "boolean", False, "value", True),
-            ("valueDecimal", "valueDecimal", float, "decimal", False, "value", True),
-            ("valueId", "valueId", str, "id", False, "value", True),
-            ("valueInteger", "valueInteger", int, "integer", False, "value", True),
-            ("valueString", "valueString", str, "string", False, "value", True),
-        ])
+        js.extend(
+            [
+                ("valueBoolean", "valueBoolean", bool, "boolean", False, "value", True),
+                (
+                    "valueDecimal",
+                    "valueDecimal",
+                    float,
+                    "decimal",
+                    False,
+                    "value",
+                    True,
+                ),
+                ("valueId", "valueId", str, "id", False, "value", True),
+                ("valueInteger", "valueInteger", int, "integer", False, "value", True),
+                ("valueString", "valueString", str, "string", False, "value", True),
+            ]
+        )
         return js
 
 
@@ -721,113 +1162,114 @@ class StructureMapStructure(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(StructureMapStructure, self).elementProperties()
-        js.extend([
-            ("alias", "alias", str, "string", False, None, False),
-            ("documentation", "documentation", str, "string", False, None, False),
-            ("mode", "mode", str, "code", False, None, True),
-            ("url", "url", str, "uri", False, None, True),
-        ])
+        js.extend(
+            [
+                ("alias", "alias", str, "string", False, None, False),
+                ("documentation", "documentation", str, "string", False, None, False),
+                ("mode", "mode", str, "code", False, None, True),
+                ("url", "url", str, "uri", False, None, True),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import address
 except ImportError:
-    address = sys.modules[__package__ + '.address']
+    address = sys.modules[__package__ + ".address"]
 try:
     from . import age
 except ImportError:
-    age = sys.modules[__package__ + '.age']
+    age = sys.modules[__package__ + ".age"]
 try:
     from . import annotation
 except ImportError:
-    annotation = sys.modules[__package__ + '.annotation']
+    annotation = sys.modules[__package__ + ".annotation"]
 try:
     from . import attachment
 except ImportError:
-    attachment = sys.modules[__package__ + '.attachment']
+    attachment = sys.modules[__package__ + ".attachment"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import coding
 except ImportError:
-    coding = sys.modules[__package__ + '.coding']
+    coding = sys.modules[__package__ + ".coding"]
 try:
     from . import contactdetail
 except ImportError:
-    contactdetail = sys.modules[__package__ + '.contactdetail']
+    contactdetail = sys.modules[__package__ + ".contactdetail"]
 try:
     from . import contactpoint
 except ImportError:
-    contactpoint = sys.modules[__package__ + '.contactpoint']
+    contactpoint = sys.modules[__package__ + ".contactpoint"]
 try:
     from . import count
 except ImportError:
-    count = sys.modules[__package__ + '.count']
+    count = sys.modules[__package__ + ".count"]
 try:
     from . import distance
 except ImportError:
-    distance = sys.modules[__package__ + '.distance']
+    distance = sys.modules[__package__ + ".distance"]
 try:
     from . import duration
 except ImportError:
-    duration = sys.modules[__package__ + '.duration']
+    duration = sys.modules[__package__ + ".duration"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import humanname
 except ImportError:
-    humanname = sys.modules[__package__ + '.humanname']
+    humanname = sys.modules[__package__ + ".humanname"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import meta
 except ImportError:
-    meta = sys.modules[__package__ + '.meta']
+    meta = sys.modules[__package__ + ".meta"]
 try:
     from . import money
 except ImportError:
-    money = sys.modules[__package__ + '.money']
+    money = sys.modules[__package__ + ".money"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]
 try:
     from . import quantity
 except ImportError:
-    quantity = sys.modules[__package__ + '.quantity']
+    quantity = sys.modules[__package__ + ".quantity"]
 try:
     from . import range
 except ImportError:
-    range = sys.modules[__package__ + '.range']
+    range = sys.modules[__package__ + ".range"]
 try:
     from . import ratio
 except ImportError:
-    ratio = sys.modules[__package__ + '.ratio']
+    ratio = sys.modules[__package__ + ".ratio"]
 try:
     from . import sampleddata
 except ImportError:
-    sampleddata = sys.modules[__package__ + '.sampleddata']
+    sampleddata = sys.modules[__package__ + ".sampleddata"]
 try:
     from . import signature
 except ImportError:
-    signature = sys.modules[__package__ + '.signature']
+    signature = sys.modules[__package__ + ".signature"]
 try:
     from . import timing
 except ImportError:
-    timing = sys.modules[__package__ + '.timing']
+    timing = sys.modules[__package__ + ".timing"]
 try:
     from . import usagecontext
 except ImportError:
-    usagecontext = sys.modules[__package__ + '.usagecontext']
+    usagecontext = sys.modules[__package__ + ".usagecontext"]

@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class FamilyMemberHistory(domainresource.DomainResource):
     """ Information about patient's relatives, relevant for patient.
@@ -135,38 +138,166 @@ class FamilyMemberHistory(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(FamilyMemberHistory, self).elementProperties()
-        js.extend([
-            ("ageAge", "ageAge", age.Age, "Age", False, "age", False),
-            ("ageRange", "ageRange", range.Range, "Range", False, "age", False),
-            ("ageString", "ageString", str, "string", False, "age", False),
-            ("bornDate", "bornDate", fhirdate.FHIRDate, "date", False, "born", False),
-            ("bornPeriod", "bornPeriod", period.Period, "Period", False, "born", False),
-            ("bornString", "bornString", str, "string", False, "born", False),
-            ("condition", "condition", FamilyMemberHistoryCondition, "FamilyMemberHistoryCondition", True, None, False),
-            ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("deceasedAge", "deceasedAge", age.Age, "Age", False, "deceased", False),
-            ("deceasedBoolean", "deceasedBoolean", bool, "boolean", False, "deceased", False),
-            ("deceasedDate", "deceasedDate", fhirdate.FHIRDate, "date", False, "deceased", False),
-            ("deceasedRange", "deceasedRange", range.Range, "Range", False, "deceased", False),
-            ("deceasedString", "deceasedString", str, "string", False, "deceased", False),
-            ("definition", "definition", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("estimatedAge", "estimatedAge", bool, "boolean", False, None, False),
-            ("gender", "gender", str, "code", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("name", "name", str, "string", False, None, False),
-            ("notDone", "notDone", bool, "boolean", False, None, False),
-            ("notDoneReason", "notDoneReason", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("note", "note", annotation.Annotation, "Annotation", True, None, False),
-            ("patient", "patient", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("reasonCode", "reasonCode", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("reasonReference", "reasonReference", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("relationship", "relationship", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("status", "status", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                ("ageAge", "ageAge", age.Age, "Age", False, "age", False),
+                ("ageRange", "ageRange", range.Range, "Range", False, "age", False),
+                ("ageString", "ageString", str, "string", False, "age", False),
+                (
+                    "bornDate",
+                    "bornDate",
+                    fhirdate.FHIRDate,
+                    "date",
+                    False,
+                    "born",
+                    False,
+                ),
+                (
+                    "bornPeriod",
+                    "bornPeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "born",
+                    False,
+                ),
+                ("bornString", "bornString", str, "string", False, "born", False),
+                (
+                    "condition",
+                    "condition",
+                    FamilyMemberHistoryCondition,
+                    "FamilyMemberHistoryCondition",
+                    True,
+                    None,
+                    False,
+                ),
+                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
+                (
+                    "deceasedAge",
+                    "deceasedAge",
+                    age.Age,
+                    "Age",
+                    False,
+                    "deceased",
+                    False,
+                ),
+                (
+                    "deceasedBoolean",
+                    "deceasedBoolean",
+                    bool,
+                    "boolean",
+                    False,
+                    "deceased",
+                    False,
+                ),
+                (
+                    "deceasedDate",
+                    "deceasedDate",
+                    fhirdate.FHIRDate,
+                    "date",
+                    False,
+                    "deceased",
+                    False,
+                ),
+                (
+                    "deceasedRange",
+                    "deceasedRange",
+                    range.Range,
+                    "Range",
+                    False,
+                    "deceased",
+                    False,
+                ),
+                (
+                    "deceasedString",
+                    "deceasedString",
+                    str,
+                    "string",
+                    False,
+                    "deceased",
+                    False,
+                ),
+                (
+                    "definition",
+                    "definition",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                ("estimatedAge", "estimatedAge", bool, "boolean", False, None, False),
+                ("gender", "gender", str, "code", False, None, False),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                ("name", "name", str, "string", False, None, False),
+                ("notDone", "notDone", bool, "boolean", False, None, False),
+                (
+                    "notDoneReason",
+                    "notDoneReason",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "note",
+                    "note",
+                    annotation.Annotation,
+                    "Annotation",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "patient",
+                    "patient",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "reasonCode",
+                    "reasonCode",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "reasonReference",
+                    "reasonReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "relationship",
+                    "relationship",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                ("status", "status", str, "code", False, None, True),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class FamilyMemberHistoryCondition(backboneelement.BackboneElement):
     """ Condition that the related person had.
@@ -215,52 +346,95 @@ class FamilyMemberHistoryCondition(backboneelement.BackboneElement):
         """ deceased | permanent disability | etc..
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(FamilyMemberHistoryCondition, self).__init__(jsondict=jsondict, strict=strict)
+        super(FamilyMemberHistoryCondition, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(FamilyMemberHistoryCondition, self).elementProperties()
-        js.extend([
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("note", "note", annotation.Annotation, "Annotation", True, None, False),
-            ("onsetAge", "onsetAge", age.Age, "Age", False, "onset", False),
-            ("onsetPeriod", "onsetPeriod", period.Period, "Period", False, "onset", False),
-            ("onsetRange", "onsetRange", range.Range, "Range", False, "onset", False),
-            ("onsetString", "onsetString", str, "string", False, "onset", False),
-            ("outcome", "outcome", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "note",
+                    "note",
+                    annotation.Annotation,
+                    "Annotation",
+                    True,
+                    None,
+                    False,
+                ),
+                ("onsetAge", "onsetAge", age.Age, "Age", False, "onset", False),
+                (
+                    "onsetPeriod",
+                    "onsetPeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "onset",
+                    False,
+                ),
+                (
+                    "onsetRange",
+                    "onsetRange",
+                    range.Range,
+                    "Range",
+                    False,
+                    "onset",
+                    False,
+                ),
+                ("onsetString", "onsetString", str, "string", False, "onset", False),
+                (
+                    "outcome",
+                    "outcome",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import age
 except ImportError:
-    age = sys.modules[__package__ + '.age']
+    age = sys.modules[__package__ + ".age"]
 try:
     from . import annotation
 except ImportError:
-    annotation = sys.modules[__package__ + '.annotation']
+    annotation = sys.modules[__package__ + ".annotation"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]
 try:
     from . import range
 except ImportError:
-    range = sys.modules[__package__ + '.range']
+    range = sys.modules[__package__ + ".range"]

@@ -10,6 +10,7 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 
 from . import quantity
 
+
 class Age(quantity.Quantity):
     """ A duration of time during which an organism (or a process) has existed.
     """
@@ -25,5 +26,3 @@ class Age(quantity.Quantity):
         """
 
         super(Age, self).__init__(jsondict=jsondict, strict=strict)
-
-

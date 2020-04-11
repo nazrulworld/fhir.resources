@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class Measure(domainresource.DomainResource):
     """ A quality measure definition.
@@ -203,54 +206,230 @@ class Measure(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(Measure, self).elementProperties()
-        js.extend([
-            ("approvalDate", "approvalDate", fhirdate.FHIRDate, "date", False, None, False),
-            ("author", "author", contactdetail.ContactDetail, "ContactDetail", True, None, False),
-            ("clinicalRecommendationStatement", "clinicalRecommendationStatement", str, "markdown", False, None, False),
-            ("compositeScoring", "compositeScoring", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("contact", "contact", contactdetail.ContactDetail, "ContactDetail", True, None, False),
-            ("copyright", "copyright", str, "markdown", False, None, False),
-            ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("definition", "definition", str, "markdown", True, None, False),
-            ("description", "description", str, "markdown", False, None, False),
-            ("disclaimer", "disclaimer", str, "markdown", False, None, False),
-            ("editor", "editor", contactdetail.ContactDetail, "ContactDetail", True, None, False),
-            ("effectivePeriod", "effectivePeriod", period.Period, "Period", False, None, False),
-            ("endorser", "endorser", contactdetail.ContactDetail, "ContactDetail", True, None, False),
-            ("experimental", "experimental", bool, "boolean", False, None, False),
-            ("group", "group", MeasureGroup, "MeasureGroup", True, None, False),
-            ("guidance", "guidance", str, "markdown", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("improvementNotation", "improvementNotation", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("jurisdiction", "jurisdiction", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("lastReviewDate", "lastReviewDate", fhirdate.FHIRDate, "date", False, None, False),
-            ("library", "library", str, "canonical", True, None, False),
-            ("name", "name", str, "string", False, None, False),
-            ("publisher", "publisher", str, "string", False, None, False),
-            ("purpose", "purpose", str, "markdown", False, None, False),
-            ("rateAggregation", "rateAggregation", str, "string", False, None, False),
-            ("rationale", "rationale", str, "markdown", False, None, False),
-            ("relatedArtifact", "relatedArtifact", relatedartifact.RelatedArtifact, "RelatedArtifact", True, None, False),
-            ("reviewer", "reviewer", contactdetail.ContactDetail, "ContactDetail", True, None, False),
-            ("riskAdjustment", "riskAdjustment", str, "string", False, None, False),
-            ("scoring", "scoring", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("subjectCodeableConcept", "subjectCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "subject", False),
-            ("subjectReference", "subjectReference", fhirreference.FHIRReference, "Reference", False, "subject", False),
-            ("subtitle", "subtitle", str, "string", False, None, False),
-            ("supplementalData", "supplementalData", MeasureSupplementalData, "MeasureSupplementalData", True, None, False),
-            ("title", "title", str, "string", False, None, False),
-            ("topic", "topic", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("url", "url", str, "uri", False, None, False),
-            ("usage", "usage", str, "string", False, None, False),
-            ("useContext", "useContext", usagecontext.UsageContext, "UsageContext", True, None, False),
-            ("version", "version", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "approvalDate",
+                    "approvalDate",
+                    fhirdate.FHIRDate,
+                    "date",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "author",
+                    "author",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "clinicalRecommendationStatement",
+                    "clinicalRecommendationStatement",
+                    str,
+                    "markdown",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "compositeScoring",
+                    "compositeScoring",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "contact",
+                    "contact",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                ("copyright", "copyright", str, "markdown", False, None, False),
+                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
+                ("definition", "definition", str, "markdown", True, None, False),
+                ("description", "description", str, "markdown", False, None, False),
+                ("disclaimer", "disclaimer", str, "markdown", False, None, False),
+                (
+                    "editor",
+                    "editor",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "effectivePeriod",
+                    "effectivePeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "endorser",
+                    "endorser",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                ("experimental", "experimental", bool, "boolean", False, None, False),
+                ("group", "group", MeasureGroup, "MeasureGroup", True, None, False),
+                ("guidance", "guidance", str, "markdown", False, None, False),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "improvementNotation",
+                    "improvementNotation",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "jurisdiction",
+                    "jurisdiction",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "lastReviewDate",
+                    "lastReviewDate",
+                    fhirdate.FHIRDate,
+                    "date",
+                    False,
+                    None,
+                    False,
+                ),
+                ("library", "library", str, "canonical", True, None, False),
+                ("name", "name", str, "string", False, None, False),
+                ("publisher", "publisher", str, "string", False, None, False),
+                ("purpose", "purpose", str, "markdown", False, None, False),
+                (
+                    "rateAggregation",
+                    "rateAggregation",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                ("rationale", "rationale", str, "markdown", False, None, False),
+                (
+                    "relatedArtifact",
+                    "relatedArtifact",
+                    relatedartifact.RelatedArtifact,
+                    "RelatedArtifact",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "reviewer",
+                    "reviewer",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                ("riskAdjustment", "riskAdjustment", str, "string", False, None, False),
+                (
+                    "scoring",
+                    "scoring",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, True),
+                (
+                    "subjectCodeableConcept",
+                    "subjectCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "subject",
+                    False,
+                ),
+                (
+                    "subjectReference",
+                    "subjectReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "subject",
+                    False,
+                ),
+                ("subtitle", "subtitle", str, "string", False, None, False),
+                (
+                    "supplementalData",
+                    "supplementalData",
+                    MeasureSupplementalData,
+                    "MeasureSupplementalData",
+                    True,
+                    None,
+                    False,
+                ),
+                ("title", "title", str, "string", False, None, False),
+                (
+                    "topic",
+                    "topic",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                ("url", "url", str, "uri", False, None, False),
+                ("usage", "usage", str, "string", False, None, False),
+                (
+                    "useContext",
+                    "useContext",
+                    usagecontext.UsageContext,
+                    "UsageContext",
+                    True,
+                    None,
+                    False,
+                ),
+                ("version", "version", str, "string", False, None, False),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class MeasureGroup(backboneelement.BackboneElement):
     """ Population criteria group.
@@ -288,12 +467,38 @@ class MeasureGroup(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(MeasureGroup, self).elementProperties()
-        js.extend([
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("description", "description", str, "string", False, None, False),
-            ("population", "population", MeasureGroupPopulation, "MeasureGroupPopulation", True, None, False),
-            ("stratifier", "stratifier", MeasureGroupStratifier, "MeasureGroupStratifier", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("description", "description", str, "string", False, None, False),
+                (
+                    "population",
+                    "population",
+                    MeasureGroupPopulation,
+                    "MeasureGroupPopulation",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "stratifier",
+                    "stratifier",
+                    MeasureGroupStratifier,
+                    "MeasureGroupStratifier",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -331,11 +536,29 @@ class MeasureGroupPopulation(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(MeasureGroupPopulation, self).elementProperties()
-        js.extend([
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("criteria", "criteria", expression.Expression, "Expression", False, None, True),
-            ("description", "description", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "criteria",
+                    "criteria",
+                    expression.Expression,
+                    "Expression",
+                    False,
+                    None,
+                    True,
+                ),
+                ("description", "description", str, "string", False, None, False),
+            ]
+        )
         return js
 
 
@@ -377,12 +600,38 @@ class MeasureGroupStratifier(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(MeasureGroupStratifier, self).elementProperties()
-        js.extend([
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("component", "component", MeasureGroupStratifierComponent, "MeasureGroupStratifierComponent", True, None, False),
-            ("criteria", "criteria", expression.Expression, "Expression", False, None, False),
-            ("description", "description", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "component",
+                    "component",
+                    MeasureGroupStratifierComponent,
+                    "MeasureGroupStratifierComponent",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "criteria",
+                    "criteria",
+                    expression.Expression,
+                    "Expression",
+                    False,
+                    None,
+                    False,
+                ),
+                ("description", "description", str, "string", False, None, False),
+            ]
+        )
         return js
 
 
@@ -416,15 +665,35 @@ class MeasureGroupStratifierComponent(backboneelement.BackboneElement):
         """ The human readable description of this stratifier component.
         Type `str`. """
 
-        super(MeasureGroupStratifierComponent, self).__init__(jsondict=jsondict, strict=strict)
+        super(MeasureGroupStratifierComponent, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(MeasureGroupStratifierComponent, self).elementProperties()
-        js.extend([
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("criteria", "criteria", expression.Expression, "Expression", False, None, True),
-            ("description", "description", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "criteria",
+                    "criteria",
+                    expression.Expression,
+                    "Expression",
+                    False,
+                    None,
+                    True,
+                ),
+                ("description", "description", str, "string", False, None, False),
+            ]
+        )
         return js
 
 
@@ -466,49 +735,74 @@ class MeasureSupplementalData(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(MeasureSupplementalData, self).elementProperties()
-        js.extend([
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("criteria", "criteria", expression.Expression, "Expression", False, None, True),
-            ("description", "description", str, "string", False, None, False),
-            ("usage", "usage", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "criteria",
+                    "criteria",
+                    expression.Expression,
+                    "Expression",
+                    False,
+                    None,
+                    True,
+                ),
+                ("description", "description", str, "string", False, None, False),
+                (
+                    "usage",
+                    "usage",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import contactdetail
 except ImportError:
-    contactdetail = sys.modules[__package__ + '.contactdetail']
+    contactdetail = sys.modules[__package__ + ".contactdetail"]
 try:
     from . import expression
 except ImportError:
-    expression = sys.modules[__package__ + '.expression']
+    expression = sys.modules[__package__ + ".expression"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]
 try:
     from . import relatedartifact
 except ImportError:
-    relatedartifact = sys.modules[__package__ + '.relatedartifact']
+    relatedartifact = sys.modules[__package__ + ".relatedartifact"]
 try:
     from . import usagecontext
 except ImportError:
-    usagecontext = sys.modules[__package__ + '.usagecontext']
+    usagecontext = sys.modules[__package__ + ".usagecontext"]

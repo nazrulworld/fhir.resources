@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class PlanDefinition(domainresource.DomainResource):
     """ The definition of a plan for a series of actions, independent of any
@@ -138,38 +141,150 @@ class PlanDefinition(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(PlanDefinition, self).elementProperties()
-        js.extend([
-            ("action", "action", PlanDefinitionAction, "PlanDefinitionAction", True, None, False),
-            ("approvalDate", "approvalDate", fhirdate.FHIRDate, "date", False, None, False),
-            ("contact", "contact", contactdetail.ContactDetail, "ContactDetail", True, None, False),
-            ("contributor", "contributor", contributor.Contributor, "Contributor", True, None, False),
-            ("copyright", "copyright", str, "markdown", False, None, False),
-            ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("description", "description", str, "markdown", False, None, False),
-            ("effectivePeriod", "effectivePeriod", period.Period, "Period", False, None, False),
-            ("experimental", "experimental", bool, "boolean", False, None, False),
-            ("goal", "goal", PlanDefinitionGoal, "PlanDefinitionGoal", True, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("jurisdiction", "jurisdiction", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("lastReviewDate", "lastReviewDate", fhirdate.FHIRDate, "date", False, None, False),
-            ("library", "library", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("name", "name", str, "string", False, None, False),
-            ("publisher", "publisher", str, "string", False, None, False),
-            ("purpose", "purpose", str, "markdown", False, None, False),
-            ("relatedArtifact", "relatedArtifact", relatedartifact.RelatedArtifact, "RelatedArtifact", True, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("title", "title", str, "string", False, None, False),
-            ("topic", "topic", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("url", "url", str, "uri", False, None, False),
-            ("usage", "usage", str, "string", False, None, False),
-            ("useContext", "useContext", usagecontext.UsageContext, "UsageContext", True, None, False),
-            ("version", "version", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "action",
+                    "action",
+                    PlanDefinitionAction,
+                    "PlanDefinitionAction",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "approvalDate",
+                    "approvalDate",
+                    fhirdate.FHIRDate,
+                    "date",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "contact",
+                    "contact",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "contributor",
+                    "contributor",
+                    contributor.Contributor,
+                    "Contributor",
+                    True,
+                    None,
+                    False,
+                ),
+                ("copyright", "copyright", str, "markdown", False, None, False),
+                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
+                ("description", "description", str, "markdown", False, None, False),
+                (
+                    "effectivePeriod",
+                    "effectivePeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    None,
+                    False,
+                ),
+                ("experimental", "experimental", bool, "boolean", False, None, False),
+                (
+                    "goal",
+                    "goal",
+                    PlanDefinitionGoal,
+                    "PlanDefinitionGoal",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "jurisdiction",
+                    "jurisdiction",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "lastReviewDate",
+                    "lastReviewDate",
+                    fhirdate.FHIRDate,
+                    "date",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "library",
+                    "library",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                ("name", "name", str, "string", False, None, False),
+                ("publisher", "publisher", str, "string", False, None, False),
+                ("purpose", "purpose", str, "markdown", False, None, False),
+                (
+                    "relatedArtifact",
+                    "relatedArtifact",
+                    relatedartifact.RelatedArtifact,
+                    "RelatedArtifact",
+                    True,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, True),
+                ("title", "title", str, "string", False, None, False),
+                (
+                    "topic",
+                    "topic",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("url", "url", str, "uri", False, None, False),
+                ("usage", "usage", str, "string", False, None, False),
+                (
+                    "useContext",
+                    "useContext",
+                    usagecontext.UsageContext,
+                    "UsageContext",
+                    True,
+                    None,
+                    False,
+                ),
+                ("version", "version", str, "string", False, None, False),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class PlanDefinitionAction(backboneelement.BackboneElement):
     """ Action defined by the plan.
@@ -308,37 +423,223 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(PlanDefinitionAction, self).elementProperties()
-        js.extend([
-            ("action", "action", PlanDefinitionAction, "PlanDefinitionAction", True, None, False),
-            ("cardinalityBehavior", "cardinalityBehavior", str, "code", False, None, False),
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("condition", "condition", PlanDefinitionActionCondition, "PlanDefinitionActionCondition", True, None, False),
-            ("definition", "definition", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("description", "description", str, "string", False, None, False),
-            ("documentation", "documentation", relatedartifact.RelatedArtifact, "RelatedArtifact", True, None, False),
-            ("dynamicValue", "dynamicValue", PlanDefinitionActionDynamicValue, "PlanDefinitionActionDynamicValue", True, None, False),
-            ("goalId", "goalId", str, "id", True, None, False),
-            ("groupingBehavior", "groupingBehavior", str, "code", False, None, False),
-            ("input", "input", datarequirement.DataRequirement, "DataRequirement", True, None, False),
-            ("label", "label", str, "string", False, None, False),
-            ("output", "output", datarequirement.DataRequirement, "DataRequirement", True, None, False),
-            ("participant", "participant", PlanDefinitionActionParticipant, "PlanDefinitionActionParticipant", True, None, False),
-            ("precheckBehavior", "precheckBehavior", str, "code", False, None, False),
-            ("reason", "reason", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("relatedAction", "relatedAction", PlanDefinitionActionRelatedAction, "PlanDefinitionActionRelatedAction", True, None, False),
-            ("requiredBehavior", "requiredBehavior", str, "code", False, None, False),
-            ("selectionBehavior", "selectionBehavior", str, "code", False, None, False),
-            ("textEquivalent", "textEquivalent", str, "string", False, None, False),
-            ("timingDateTime", "timingDateTime", fhirdate.FHIRDate, "dateTime", False, "timing", False),
-            ("timingDuration", "timingDuration", duration.Duration, "Duration", False, "timing", False),
-            ("timingPeriod", "timingPeriod", period.Period, "Period", False, "timing", False),
-            ("timingRange", "timingRange", range.Range, "Range", False, "timing", False),
-            ("timingTiming", "timingTiming", timing.Timing, "Timing", False, "timing", False),
-            ("title", "title", str, "string", False, None, False),
-            ("transform", "transform", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("triggerDefinition", "triggerDefinition", triggerdefinition.TriggerDefinition, "TriggerDefinition", True, None, False),
-            ("type", "type", coding.Coding, "Coding", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "action",
+                    "action",
+                    PlanDefinitionAction,
+                    "PlanDefinitionAction",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "cardinalityBehavior",
+                    "cardinalityBehavior",
+                    str,
+                    "code",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "condition",
+                    "condition",
+                    PlanDefinitionActionCondition,
+                    "PlanDefinitionActionCondition",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "definition",
+                    "definition",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("description", "description", str, "string", False, None, False),
+                (
+                    "documentation",
+                    "documentation",
+                    relatedartifact.RelatedArtifact,
+                    "RelatedArtifact",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "dynamicValue",
+                    "dynamicValue",
+                    PlanDefinitionActionDynamicValue,
+                    "PlanDefinitionActionDynamicValue",
+                    True,
+                    None,
+                    False,
+                ),
+                ("goalId", "goalId", str, "id", True, None, False),
+                (
+                    "groupingBehavior",
+                    "groupingBehavior",
+                    str,
+                    "code",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "input",
+                    "input",
+                    datarequirement.DataRequirement,
+                    "DataRequirement",
+                    True,
+                    None,
+                    False,
+                ),
+                ("label", "label", str, "string", False, None, False),
+                (
+                    "output",
+                    "output",
+                    datarequirement.DataRequirement,
+                    "DataRequirement",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "participant",
+                    "participant",
+                    PlanDefinitionActionParticipant,
+                    "PlanDefinitionActionParticipant",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "precheckBehavior",
+                    "precheckBehavior",
+                    str,
+                    "code",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "reason",
+                    "reason",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "relatedAction",
+                    "relatedAction",
+                    PlanDefinitionActionRelatedAction,
+                    "PlanDefinitionActionRelatedAction",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "requiredBehavior",
+                    "requiredBehavior",
+                    str,
+                    "code",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "selectionBehavior",
+                    "selectionBehavior",
+                    str,
+                    "code",
+                    False,
+                    None,
+                    False,
+                ),
+                ("textEquivalent", "textEquivalent", str, "string", False, None, False),
+                (
+                    "timingDateTime",
+                    "timingDateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    "timing",
+                    False,
+                ),
+                (
+                    "timingDuration",
+                    "timingDuration",
+                    duration.Duration,
+                    "Duration",
+                    False,
+                    "timing",
+                    False,
+                ),
+                (
+                    "timingPeriod",
+                    "timingPeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "timing",
+                    False,
+                ),
+                (
+                    "timingRange",
+                    "timingRange",
+                    range.Range,
+                    "Range",
+                    False,
+                    "timing",
+                    False,
+                ),
+                (
+                    "timingTiming",
+                    "timingTiming",
+                    timing.Timing,
+                    "Timing",
+                    False,
+                    "timing",
+                    False,
+                ),
+                ("title", "title", str, "string", False, None, False),
+                (
+                    "transform",
+                    "transform",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "triggerDefinition",
+                    "triggerDefinition",
+                    triggerdefinition.TriggerDefinition,
+                    "TriggerDefinition",
+                    True,
+                    None,
+                    False,
+                ),
+                ("type", "type", coding.Coding, "Coding", False, None, False),
+            ]
+        )
         return js
 
 
@@ -375,16 +676,20 @@ class PlanDefinitionActionCondition(backboneelement.BackboneElement):
         """ Language of the expression.
         Type `str`. """
 
-        super(PlanDefinitionActionCondition, self).__init__(jsondict=jsondict, strict=strict)
+        super(PlanDefinitionActionCondition, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(PlanDefinitionActionCondition, self).elementProperties()
-        js.extend([
-            ("description", "description", str, "string", False, None, False),
-            ("expression", "expression", str, "string", False, None, False),
-            ("kind", "kind", str, "code", False, None, True),
-            ("language", "language", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                ("description", "description", str, "string", False, None, False),
+                ("expression", "expression", str, "string", False, None, False),
+                ("kind", "kind", str, "code", False, None, True),
+                ("language", "language", str, "string", False, None, False),
+            ]
+        )
         return js
 
 
@@ -424,16 +729,20 @@ class PlanDefinitionActionDynamicValue(backboneelement.BackboneElement):
         """ The path to the element to be set dynamically.
         Type `str`. """
 
-        super(PlanDefinitionActionDynamicValue, self).__init__(jsondict=jsondict, strict=strict)
+        super(PlanDefinitionActionDynamicValue, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(PlanDefinitionActionDynamicValue, self).elementProperties()
-        js.extend([
-            ("description", "description", str, "string", False, None, False),
-            ("expression", "expression", str, "string", False, None, False),
-            ("language", "language", str, "string", False, None, False),
-            ("path", "path", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                ("description", "description", str, "string", False, None, False),
+                ("expression", "expression", str, "string", False, None, False),
+                ("language", "language", str, "string", False, None, False),
+                ("path", "path", str, "string", False, None, False),
+            ]
+        )
         return js
 
 
@@ -461,14 +770,26 @@ class PlanDefinitionActionParticipant(backboneelement.BackboneElement):
         """ patient | practitioner | related-person.
         Type `str`. """
 
-        super(PlanDefinitionActionParticipant, self).__init__(jsondict=jsondict, strict=strict)
+        super(PlanDefinitionActionParticipant, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(PlanDefinitionActionParticipant, self).elementProperties()
-        js.extend([
-            ("role", "role", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("type", "type", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "role",
+                    "role",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("type", "type", str, "code", False, None, True),
+            ]
+        )
         return js
 
 
@@ -506,16 +827,36 @@ class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
         concurrent | concurrent-with-end | after-start | after | after-end.
         Type `str`. """
 
-        super(PlanDefinitionActionRelatedAction, self).__init__(jsondict=jsondict, strict=strict)
+        super(PlanDefinitionActionRelatedAction, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(PlanDefinitionActionRelatedAction, self).elementProperties()
-        js.extend([
-            ("actionId", "actionId", str, "id", False, None, True),
-            ("offsetDuration", "offsetDuration", duration.Duration, "Duration", False, "offset", False),
-            ("offsetRange", "offsetRange", range.Range, "Range", False, "offset", False),
-            ("relationship", "relationship", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                ("actionId", "actionId", str, "id", False, None, True),
+                (
+                    "offsetDuration",
+                    "offsetDuration",
+                    duration.Duration,
+                    "Duration",
+                    False,
+                    "offset",
+                    False,
+                ),
+                (
+                    "offsetRange",
+                    "offsetRange",
+                    range.Range,
+                    "Range",
+                    False,
+                    "offset",
+                    False,
+                ),
+                ("relationship", "relationship", str, "code", False, None, True),
+            ]
+        )
         return js
 
 
@@ -570,15 +911,73 @@ class PlanDefinitionGoal(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(PlanDefinitionGoal, self).elementProperties()
-        js.extend([
-            ("addresses", "addresses", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("category", "category", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("description", "description", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("documentation", "documentation", relatedartifact.RelatedArtifact, "RelatedArtifact", True, None, False),
-            ("priority", "priority", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("start", "start", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("target", "target", PlanDefinitionGoalTarget, "PlanDefinitionGoalTarget", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "addresses",
+                    "addresses",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "category",
+                    "category",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "description",
+                    "description",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "documentation",
+                    "documentation",
+                    relatedartifact.RelatedArtifact,
+                    "RelatedArtifact",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "priority",
+                    "priority",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "start",
+                    "start",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "target",
+                    "target",
+                    PlanDefinitionGoalTarget,
+                    "PlanDefinitionGoalTarget",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -622,78 +1021,111 @@ class PlanDefinitionGoalTarget(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(PlanDefinitionGoalTarget, self).elementProperties()
-        js.extend([
-            ("detailCodeableConcept", "detailCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "detail", False),
-            ("detailQuantity", "detailQuantity", quantity.Quantity, "Quantity", False, "detail", False),
-            ("detailRange", "detailRange", range.Range, "Range", False, "detail", False),
-            ("due", "due", duration.Duration, "Duration", False, None, False),
-            ("measure", "measure", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "detailCodeableConcept",
+                    "detailCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "detail",
+                    False,
+                ),
+                (
+                    "detailQuantity",
+                    "detailQuantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    "detail",
+                    False,
+                ),
+                (
+                    "detailRange",
+                    "detailRange",
+                    range.Range,
+                    "Range",
+                    False,
+                    "detail",
+                    False,
+                ),
+                ("due", "due", duration.Duration, "Duration", False, None, False),
+                (
+                    "measure",
+                    "measure",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import coding
 except ImportError:
-    coding = sys.modules[__package__ + '.coding']
+    coding = sys.modules[__package__ + ".coding"]
 try:
     from . import contactdetail
 except ImportError:
-    contactdetail = sys.modules[__package__ + '.contactdetail']
+    contactdetail = sys.modules[__package__ + ".contactdetail"]
 try:
     from . import contributor
 except ImportError:
-    contributor = sys.modules[__package__ + '.contributor']
+    contributor = sys.modules[__package__ + ".contributor"]
 try:
     from . import datarequirement
 except ImportError:
-    datarequirement = sys.modules[__package__ + '.datarequirement']
+    datarequirement = sys.modules[__package__ + ".datarequirement"]
 try:
     from . import duration
 except ImportError:
-    duration = sys.modules[__package__ + '.duration']
+    duration = sys.modules[__package__ + ".duration"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]
 try:
     from . import quantity
 except ImportError:
-    quantity = sys.modules[__package__ + '.quantity']
+    quantity = sys.modules[__package__ + ".quantity"]
 try:
     from . import range
 except ImportError:
-    range = sys.modules[__package__ + '.range']
+    range = sys.modules[__package__ + ".range"]
 try:
     from . import relatedartifact
 except ImportError:
-    relatedartifact = sys.modules[__package__ + '.relatedartifact']
+    relatedartifact = sys.modules[__package__ + ".relatedartifact"]
 try:
     from . import timing
 except ImportError:
-    timing = sys.modules[__package__ + '.timing']
+    timing = sys.modules[__package__ + ".timing"]
 try:
     from . import triggerdefinition
 except ImportError:
-    triggerdefinition = sys.modules[__package__ + '.triggerdefinition']
+    triggerdefinition = sys.modules[__package__ + ".triggerdefinition"]
 try:
     from . import usagecontext
 except ImportError:
-    usagecontext = sys.modules[__package__ + '.usagecontext']
+    usagecontext = sys.modules[__package__ + ".usagecontext"]

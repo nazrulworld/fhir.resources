@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
+import sys
+
 from . import element
+
 
 class RelatedArtifact(element.Element):
     """ Related artifacts for a knowledge resource.
@@ -60,20 +63,29 @@ class RelatedArtifact(element.Element):
 
     def elementProperties(self):
         js = super(RelatedArtifact, self).elementProperties()
-        js.extend([
-            ("citation", "citation", str, "markdown", False, None, False),
-            ("display", "display", str, "string", False, None, False),
-            ("document", "document", attachment.Attachment, "Attachment", False, None, False),
-            ("label", "label", str, "string", False, None, False),
-            ("resource", "resource", str, "canonical", False, None, False),
-            ("type", "type", str, "code", False, None, True),
-            ("url", "url", str, "url", False, None, False),
-        ])
+        js.extend(
+            [
+                ("citation", "citation", str, "markdown", False, None, False),
+                ("display", "display", str, "string", False, None, False),
+                (
+                    "document",
+                    "document",
+                    attachment.Attachment,
+                    "Attachment",
+                    False,
+                    None,
+                    False,
+                ),
+                ("label", "label", str, "string", False, None, False),
+                ("resource", "resource", str, "canonical", False, None, False),
+                ("type", "type", str, "code", False, None, True),
+                ("url", "url", str, "url", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import attachment
 except ImportError:
-    attachment = sys.modules[__package__ + '.attachment']
+    attachment = sys.modules[__package__ + ".attachment"]

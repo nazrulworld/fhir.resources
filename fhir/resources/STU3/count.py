@@ -10,6 +10,7 @@ Last updated: 2019-10-24T11:53:00+11:00
 
 from . import quantity
 
+
 class Count(quantity.Quantity):
     """ A measured or measurable amount.
 
@@ -29,5 +30,3 @@ class Count(quantity.Quantity):
         """
 
         super(Count, self).__init__(jsondict=jsondict, strict=strict)
-
-

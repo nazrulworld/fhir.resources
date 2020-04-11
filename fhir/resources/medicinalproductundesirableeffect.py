@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
+import sys
+
 from . import domainresource
+
 
 class MedicinalProductUndesirableEffect(domainresource.DomainResource):
     """ MedicinalProductUndesirableEffect.
@@ -46,30 +49,73 @@ class MedicinalProductUndesirableEffect(domainresource.DomainResource):
         """ The symptom, condition or undesirable effect.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(MedicinalProductUndesirableEffect, self).__init__(jsondict=jsondict, strict=strict)
+        super(MedicinalProductUndesirableEffect, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(MedicinalProductUndesirableEffect, self).elementProperties()
-        js.extend([
-            ("classification", "classification", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("frequencyOfOccurrence", "frequencyOfOccurrence", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("population", "population", population.Population, "Population", True, None, False),
-            ("subject", "subject", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("symptomConditionEffect", "symptomConditionEffect", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "classification",
+                    "classification",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "frequencyOfOccurrence",
+                    "frequencyOfOccurrence",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "population",
+                    "population",
+                    population.Population,
+                    "Population",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "subject",
+                    "subject",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "symptomConditionEffect",
+                    "symptomConditionEffect",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import population
 except ImportError:
-    population = sys.modules[__package__ + '.population']
+    population = sys.modules[__package__ + ".population"]

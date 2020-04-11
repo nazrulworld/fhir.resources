@@ -7,22 +7,23 @@ Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
-import os
-import pytest
 import io
-import unittest
 import json
+import os
+import unittest
 
-from .fixtures import force_bytes
+import pytest
+
 from .. import group
 from ..fhirdate import FHIRDate
+from .fixtures import force_bytes
 
 
 @pytest.mark.usefixtures("base_settings")
 class GroupTests(unittest.TestCase):
     def instantiate_from(self, filename):
-        datadir = os.environ.get('FHIR_UNITTEST_DATADIR') or ''
-        with io.open(os.path.join(datadir, filename), 'r', encoding='utf-8') as handle:
+        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
+        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
             js = json.load(handle)
             self.assertEqual("Group", js["resourceType"])
         return group.Group(js)
@@ -39,19 +40,37 @@ class GroupTests(unittest.TestCase):
 
     def implGroup1(self, inst):
         self.assertTrue(inst.actual)
-        self.assertEqual(force_bytes(inst.characteristic[0].code.text), force_bytes("gender"))
+        self.assertEqual(
+            force_bytes(inst.characteristic[0].code.text), force_bytes("gender")
+        )
         self.assertFalse(inst.characteristic[0].exclude)
-        self.assertEqual(force_bytes(inst.characteristic[0].valueCodeableConcept.text), force_bytes("mixed"))
-        self.assertEqual(force_bytes(inst.characteristic[1].code.text), force_bytes("owner"))
+        self.assertEqual(
+            force_bytes(inst.characteristic[0].valueCodeableConcept.text),
+            force_bytes("mixed"),
+        )
+        self.assertEqual(
+            force_bytes(inst.characteristic[1].code.text), force_bytes("owner")
+        )
         self.assertFalse(inst.characteristic[1].exclude)
-        self.assertEqual(force_bytes(inst.characteristic[1].valueCodeableConcept.text), force_bytes("John Smith"))
+        self.assertEqual(
+            force_bytes(inst.characteristic[1].valueCodeableConcept.text),
+            force_bytes("John Smith"),
+        )
         self.assertEqual(force_bytes(inst.code.text), force_bytes("Horse"))
         self.assertEqual(force_bytes(inst.id), force_bytes("101"))
-        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://someveterinarianclinic.org/fhir/NamingSystem/herds"))
+        self.assertEqual(
+            force_bytes(inst.identifier[0].system),
+            force_bytes("http://someveterinarianclinic.org/fhir/NamingSystem/herds"),
+        )
         self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("12345"))
         self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
+        self.assertEqual(
+            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
+        )
+        self.assertEqual(
+            force_bytes(inst.meta.tag[0].system),
+            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
+        )
         self.assertEqual(force_bytes(inst.name), force_bytes("John's herd"))
         self.assertEqual(inst.quantity, 25)
         self.assertEqual(force_bytes(inst.text.status), force_bytes("additional"))
@@ -80,8 +99,13 @@ class GroupTests(unittest.TestCase):
         self.assertEqual(inst.member[3].period.start.date, FHIRDate("2015-08-06").date)
         self.assertEqual(inst.member[3].period.start.as_json(), "2015-08-06")
         self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
+        self.assertEqual(
+            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
+        )
+        self.assertEqual(
+            force_bytes(inst.meta.tag[0].system),
+            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
+        )
         self.assertEqual(force_bytes(inst.text.status), force_bytes("additional"))
         self.assertEqual(force_bytes(inst.type), force_bytes("person"))
 
@@ -97,14 +121,28 @@ class GroupTests(unittest.TestCase):
 
     def implGroup3(self, inst):
         self.assertTrue(inst.actual)
-        self.assertEqual(force_bytes(inst.characteristic[0].code.coding[0].code), force_bytes("attributed-to"))
-        self.assertEqual(force_bytes(inst.characteristic[0].code.coding[0].system), force_bytes("http://example.org"))
-        self.assertEqual(force_bytes(inst.characteristic[0].code.text), force_bytes("Patients primarily attributed to"))
+        self.assertEqual(
+            force_bytes(inst.characteristic[0].code.coding[0].code),
+            force_bytes("attributed-to"),
+        )
+        self.assertEqual(
+            force_bytes(inst.characteristic[0].code.coding[0].system),
+            force_bytes("http://example.org"),
+        )
+        self.assertEqual(
+            force_bytes(inst.characteristic[0].code.text),
+            force_bytes("Patients primarily attributed to"),
+        )
         self.assertFalse(inst.characteristic[0].exclude)
         self.assertEqual(force_bytes(inst.id), force_bytes("example-patientlist"))
         self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
+        self.assertEqual(
+            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
+        )
+        self.assertEqual(
+            force_bytes(inst.meta.tag[0].system),
+            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
+        )
         self.assertEqual(force_bytes(inst.text.status), force_bytes("additional"))
         self.assertEqual(force_bytes(inst.type), force_bytes("person"))
 
@@ -121,25 +159,55 @@ class GroupTests(unittest.TestCase):
     def implGroup4(self, inst):
         self.assertTrue(inst.active)
         self.assertTrue(inst.actual)
-        self.assertEqual(force_bytes(inst.characteristic[0].code.text), force_bytes("gender"))
+        self.assertEqual(
+            force_bytes(inst.characteristic[0].code.text), force_bytes("gender")
+        )
         self.assertFalse(inst.characteristic[0].exclude)
-        self.assertEqual(force_bytes(inst.characteristic[0].valueCodeableConcept.text), force_bytes("female"))
-        self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("388393002"))
-        self.assertEqual(force_bytes(inst.code.coding[0].display), force_bytes("Genus Sus (organism)"))
-        self.assertEqual(force_bytes(inst.code.coding[0].system), force_bytes("http://snomed.info/sct"))
+        self.assertEqual(
+            force_bytes(inst.characteristic[0].valueCodeableConcept.text),
+            force_bytes("female"),
+        )
+        self.assertEqual(
+            force_bytes(inst.code.coding[0].code), force_bytes("388393002")
+        )
+        self.assertEqual(
+            force_bytes(inst.code.coding[0].display),
+            force_bytes("Genus Sus (organism)"),
+        )
+        self.assertEqual(
+            force_bytes(inst.code.coding[0].system),
+            force_bytes("http://snomed.info/sct"),
+        )
         self.assertEqual(force_bytes(inst.code.coding[1].code), force_bytes("POR"))
-        self.assertEqual(force_bytes(inst.code.coding[1].display), force_bytes("porcine"))
-        self.assertEqual(force_bytes(inst.code.coding[1].system), force_bytes("https://www.aphis.usda.gov"))
+        self.assertEqual(
+            force_bytes(inst.code.coding[1].display), force_bytes("porcine")
+        )
+        self.assertEqual(
+            force_bytes(inst.code.coding[1].system),
+            force_bytes("https://www.aphis.usda.gov"),
+        )
         self.assertEqual(force_bytes(inst.code.text), force_bytes("Porcine"))
-        self.assertEqual(force_bytes(inst.extension[0].url), force_bytes("http://example.org/fhir/StructureDefinition/owner"))
+        self.assertEqual(
+            force_bytes(inst.extension[0].url),
+            force_bytes("http://example.org/fhir/StructureDefinition/owner"),
+        )
         self.assertEqual(force_bytes(inst.id), force_bytes("herd1"))
-        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("https://vetmed.iastate.edu/vdl"))
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("20171120-1234"))
+        self.assertEqual(
+            force_bytes(inst.identifier[0].system),
+            force_bytes("https://vetmed.iastate.edu/vdl"),
+        )
+        self.assertEqual(
+            force_bytes(inst.identifier[0].value), force_bytes("20171120-1234")
+        )
         self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
+        self.assertEqual(
+            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
+        )
+        self.assertEqual(
+            force_bytes(inst.meta.tag[0].system),
+            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
+        )
         self.assertEqual(force_bytes(inst.name), force_bytes("Breeding herd"))
         self.assertEqual(inst.quantity, 2500)
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
         self.assertEqual(force_bytes(inst.type), force_bytes("animal"))
-

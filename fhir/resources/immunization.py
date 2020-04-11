@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class Immunization(domainresource.DomainResource):
     """ Immunization event information.
@@ -147,41 +150,241 @@ class Immunization(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(Immunization, self).elementProperties()
-        js.extend([
-            ("doseQuantity", "doseQuantity", quantity.Quantity, "Quantity", False, None, False),
-            ("education", "education", ImmunizationEducation, "ImmunizationEducation", True, None, False),
-            ("encounter", "encounter", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("expirationDate", "expirationDate", fhirdate.FHIRDate, "date", False, None, False),
-            ("fundingSource", "fundingSource", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("isSubpotent", "isSubpotent", bool, "boolean", False, None, False),
-            ("location", "location", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("lotNumber", "lotNumber", str, "string", False, None, False),
-            ("manufacturer", "manufacturer", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("note", "note", annotation.Annotation, "Annotation", True, None, False),
-            ("occurrenceDateTime", "occurrenceDateTime", fhirdate.FHIRDate, "dateTime", False, "occurrence", True),
-            ("occurrenceString", "occurrenceString", str, "string", False, "occurrence", True),
-            ("patient", "patient", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("performer", "performer", ImmunizationPerformer, "ImmunizationPerformer", True, None, False),
-            ("primarySource", "primarySource", bool, "boolean", False, None, False),
-            ("programEligibility", "programEligibility", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("protocolApplied", "protocolApplied", ImmunizationProtocolApplied, "ImmunizationProtocolApplied", True, None, False),
-            ("reaction", "reaction", ImmunizationReaction, "ImmunizationReaction", True, None, False),
-            ("reasonCode", "reasonCode", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("reasonReference", "reasonReference", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("recorded", "recorded", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("reportOrigin", "reportOrigin", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("route", "route", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("site", "site", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("statusReason", "statusReason", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("subpotentReason", "subpotentReason", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("vaccineCode", "vaccineCode", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "doseQuantity",
+                    "doseQuantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "education",
+                    "education",
+                    ImmunizationEducation,
+                    "ImmunizationEducation",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "encounter",
+                    "encounter",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "expirationDate",
+                    "expirationDate",
+                    fhirdate.FHIRDate,
+                    "date",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "fundingSource",
+                    "fundingSource",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                ("isSubpotent", "isSubpotent", bool, "boolean", False, None, False),
+                (
+                    "location",
+                    "location",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("lotNumber", "lotNumber", str, "string", False, None, False),
+                (
+                    "manufacturer",
+                    "manufacturer",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "note",
+                    "note",
+                    annotation.Annotation,
+                    "Annotation",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "occurrenceDateTime",
+                    "occurrenceDateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    "occurrence",
+                    True,
+                ),
+                (
+                    "occurrenceString",
+                    "occurrenceString",
+                    str,
+                    "string",
+                    False,
+                    "occurrence",
+                    True,
+                ),
+                (
+                    "patient",
+                    "patient",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "performer",
+                    "performer",
+                    ImmunizationPerformer,
+                    "ImmunizationPerformer",
+                    True,
+                    None,
+                    False,
+                ),
+                ("primarySource", "primarySource", bool, "boolean", False, None, False),
+                (
+                    "programEligibility",
+                    "programEligibility",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "protocolApplied",
+                    "protocolApplied",
+                    ImmunizationProtocolApplied,
+                    "ImmunizationProtocolApplied",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "reaction",
+                    "reaction",
+                    ImmunizationReaction,
+                    "ImmunizationReaction",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "reasonCode",
+                    "reasonCode",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "reasonReference",
+                    "reasonReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "recorded",
+                    "recorded",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "reportOrigin",
+                    "reportOrigin",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "route",
+                    "route",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "site",
+                    "site",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, True),
+                (
+                    "statusReason",
+                    "statusReason",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "subpotentReason",
+                    "subpotentReason",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "vaccineCode",
+                    "vaccineCode",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class ImmunizationEducation(backboneelement.BackboneElement):
     """ Educational material presented to patient.
@@ -220,12 +423,30 @@ class ImmunizationEducation(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ImmunizationEducation, self).elementProperties()
-        js.extend([
-            ("documentType", "documentType", str, "string", False, None, False),
-            ("presentationDate", "presentationDate", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("publicationDate", "publicationDate", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("reference", "reference", str, "uri", False, None, False),
-        ])
+        js.extend(
+            [
+                ("documentType", "documentType", str, "string", False, None, False),
+                (
+                    "presentationDate",
+                    "presentationDate",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "publicationDate",
+                    "publicationDate",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                ("reference", "reference", str, "uri", False, None, False),
+            ]
+        )
         return js
 
 
@@ -257,10 +478,28 @@ class ImmunizationPerformer(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ImmunizationPerformer, self).elementProperties()
-        js.extend([
-            ("actor", "actor", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("function", "function", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "actor",
+                    "actor",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "function",
+                    "function",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -309,19 +548,71 @@ class ImmunizationProtocolApplied(backboneelement.BackboneElement):
         """ Vaccine preventatable disease being targetted.
         List of `CodeableConcept` items (represented as `dict` in JSON). """
 
-        super(ImmunizationProtocolApplied, self).__init__(jsondict=jsondict, strict=strict)
+        super(ImmunizationProtocolApplied, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ImmunizationProtocolApplied, self).elementProperties()
-        js.extend([
-            ("authority", "authority", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("doseNumberPositiveInt", "doseNumberPositiveInt", int, "positiveInt", False, "doseNumber", True),
-            ("doseNumberString", "doseNumberString", str, "string", False, "doseNumber", True),
-            ("series", "series", str, "string", False, None, False),
-            ("seriesDosesPositiveInt", "seriesDosesPositiveInt", int, "positiveInt", False, "seriesDoses", False),
-            ("seriesDosesString", "seriesDosesString", str, "string", False, "seriesDoses", False),
-            ("targetDisease", "targetDisease", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "authority",
+                    "authority",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "doseNumberPositiveInt",
+                    "doseNumberPositiveInt",
+                    int,
+                    "positiveInt",
+                    False,
+                    "doseNumber",
+                    True,
+                ),
+                (
+                    "doseNumberString",
+                    "doseNumberString",
+                    str,
+                    "string",
+                    False,
+                    "doseNumber",
+                    True,
+                ),
+                ("series", "series", str, "string", False, None, False),
+                (
+                    "seriesDosesPositiveInt",
+                    "seriesDosesPositiveInt",
+                    int,
+                    "positiveInt",
+                    False,
+                    "seriesDoses",
+                    False,
+                ),
+                (
+                    "seriesDosesString",
+                    "seriesDosesString",
+                    str,
+                    "string",
+                    False,
+                    "seriesDoses",
+                    False,
+                ),
+                (
+                    "targetDisease",
+                    "targetDisease",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -358,36 +649,45 @@ class ImmunizationReaction(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ImmunizationReaction, self).elementProperties()
-        js.extend([
-            ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("detail", "detail", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("reported", "reported", bool, "boolean", False, None, False),
-        ])
+        js.extend(
+            [
+                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
+                (
+                    "detail",
+                    "detail",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("reported", "reported", bool, "boolean", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import annotation
 except ImportError:
-    annotation = sys.modules[__package__ + '.annotation']
+    annotation = sys.modules[__package__ + ".annotation"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import quantity
 except ImportError:
-    quantity = sys.modules[__package__ + '.quantity']
+    quantity = sys.modules[__package__ + ".quantity"]

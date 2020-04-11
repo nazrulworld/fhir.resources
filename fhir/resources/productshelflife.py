@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
+import sys
+
 from . import backboneelement
+
 
 class ProductShelfLife(backboneelement.BackboneElement):
     """ The shelf-life and storage information for a medicinal product item or
@@ -57,25 +60,50 @@ class ProductShelfLife(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ProductShelfLife, self).elementProperties()
-        js.extend([
-            ("identifier", "identifier", identifier.Identifier, "Identifier", False, None, False),
-            ("period", "period", quantity.Quantity, "Quantity", False, None, True),
-            ("specialPrecautionsForStorage", "specialPrecautionsForStorage", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                ("period", "period", quantity.Quantity, "Quantity", False, None, True),
+                (
+                    "specialPrecautionsForStorage",
+                    "specialPrecautionsForStorage",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import quantity
 except ImportError:
-    quantity = sys.modules[__package__ + '.quantity']
+    quantity = sys.modules[__package__ + ".quantity"]

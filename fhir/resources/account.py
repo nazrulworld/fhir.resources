@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class Account(domainresource.DomainResource):
     """ Tracks balance, charges, for patient or cost center.
@@ -77,23 +80,87 @@ class Account(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(Account, self).elementProperties()
-        js.extend([
-            ("coverage", "coverage", AccountCoverage, "AccountCoverage", True, None, False),
-            ("description", "description", str, "string", False, None, False),
-            ("guarantor", "guarantor", AccountGuarantor, "AccountGuarantor", True, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("name", "name", str, "string", False, None, False),
-            ("owner", "owner", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("partOf", "partOf", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("servicePeriod", "servicePeriod", period.Period, "Period", False, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("subject", "subject", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "coverage",
+                    "coverage",
+                    AccountCoverage,
+                    "AccountCoverage",
+                    True,
+                    None,
+                    False,
+                ),
+                ("description", "description", str, "string", False, None, False),
+                (
+                    "guarantor",
+                    "guarantor",
+                    AccountGuarantor,
+                    "AccountGuarantor",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                ("name", "name", str, "string", False, None, False),
+                (
+                    "owner",
+                    "owner",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "partOf",
+                    "partOf",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "servicePeriod",
+                    "servicePeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, True),
+                (
+                    "subject",
+                    "subject",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class AccountCoverage(backboneelement.BackboneElement):
     """ The party(s) that are responsible for covering the payment of this account,
@@ -123,10 +190,20 @@ class AccountCoverage(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(AccountCoverage, self).elementProperties()
-        js.extend([
-            ("coverage", "coverage", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("priority", "priority", int, "positiveInt", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "coverage",
+                    "coverage",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                ("priority", "priority", int, "positiveInt", False, None, False),
+            ]
+        )
         return js
 
 
@@ -163,28 +240,37 @@ class AccountGuarantor(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(AccountGuarantor, self).elementProperties()
-        js.extend([
-            ("onHold", "onHold", bool, "boolean", False, None, False),
-            ("party", "party", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("period", "period", period.Period, "Period", False, None, False),
-        ])
+        js.extend(
+            [
+                ("onHold", "onHold", bool, "boolean", False, None, False),
+                (
+                    "party",
+                    "party",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                ("period", "period", period.Period, "Period", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]

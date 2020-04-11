@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class Substance(domainresource.DomainResource):
     """ A homogeneous material with a definite composition.
@@ -56,19 +59,59 @@ class Substance(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(Substance, self).elementProperties()
-        js.extend([
-            ("category", "category", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("description", "description", str, "string", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("ingredient", "ingredient", SubstanceIngredient, "SubstanceIngredient", True, None, False),
-            ("instance", "instance", SubstanceInstance, "SubstanceInstance", True, None, False),
-            ("status", "status", str, "code", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "category",
+                    "category",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                ("description", "description", str, "string", False, None, False),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "ingredient",
+                    "ingredient",
+                    SubstanceIngredient,
+                    "SubstanceIngredient",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "instance",
+                    "instance",
+                    SubstanceInstance,
+                    "SubstanceInstance",
+                    True,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, False),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class SubstanceIngredient(backboneelement.BackboneElement):
     """ Composition information about the substance.
@@ -102,11 +145,29 @@ class SubstanceIngredient(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(SubstanceIngredient, self).elementProperties()
-        js.extend([
-            ("quantity", "quantity", ratio.Ratio, "Ratio", False, None, False),
-            ("substanceCodeableConcept", "substanceCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "substance", True),
-            ("substanceReference", "substanceReference", fhirreference.FHIRReference, "Reference", False, "substance", True),
-        ])
+        js.extend(
+            [
+                ("quantity", "quantity", ratio.Ratio, "Ratio", False, None, False),
+                (
+                    "substanceCodeableConcept",
+                    "substanceCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "substance",
+                    True,
+                ),
+                (
+                    "substanceReference",
+                    "substanceReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "substance",
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -143,36 +204,53 @@ class SubstanceInstance(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(SubstanceInstance, self).elementProperties()
-        js.extend([
-            ("expiry", "expiry", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", False, None, False),
-            ("quantity", "quantity", quantity.Quantity, "Quantity", False, None, False),
-        ])
+        js.extend(
+            [
+                ("expiry", "expiry", fhirdate.FHIRDate, "dateTime", False, None, False),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "quantity",
+                    "quantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import quantity
 except ImportError:
-    quantity = sys.modules[__package__ + '.quantity']
+    quantity = sys.modules[__package__ + ".quantity"]
 try:
     from . import ratio
 except ImportError:
-    ratio = sys.modules[__package__ + '.ratio']
+    ratio = sys.modules[__package__ + ".ratio"]

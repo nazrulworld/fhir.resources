@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class VerificationResult(domainresource.DomainResource):
     """ Describes validation requirements, source(s), status and dates for one or
@@ -89,26 +92,114 @@ class VerificationResult(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(VerificationResult, self).elementProperties()
-        js.extend([
-            ("attestation", "attestation", VerificationResultAttestation, "VerificationResultAttestation", False, None, False),
-            ("failureAction", "failureAction", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("frequency", "frequency", timing.Timing, "Timing", False, None, False),
-            ("lastPerformed", "lastPerformed", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("need", "need", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("nextScheduled", "nextScheduled", fhirdate.FHIRDate, "date", False, None, False),
-            ("primarySource", "primarySource", VerificationResultPrimarySource, "VerificationResultPrimarySource", True, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("statusDate", "statusDate", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("target", "target", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("targetLocation", "targetLocation", str, "string", True, None, False),
-            ("validationProcess", "validationProcess", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("validationType", "validationType", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("validator", "validator", VerificationResultValidator, "VerificationResultValidator", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "attestation",
+                    "attestation",
+                    VerificationResultAttestation,
+                    "VerificationResultAttestation",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "failureAction",
+                    "failureAction",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("frequency", "frequency", timing.Timing, "Timing", False, None, False),
+                (
+                    "lastPerformed",
+                    "lastPerformed",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "need",
+                    "need",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "nextScheduled",
+                    "nextScheduled",
+                    fhirdate.FHIRDate,
+                    "date",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "primarySource",
+                    "primarySource",
+                    VerificationResultPrimarySource,
+                    "VerificationResultPrimarySource",
+                    True,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, True),
+                (
+                    "statusDate",
+                    "statusDate",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "target",
+                    "target",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                ("targetLocation", "targetLocation", str, "string", True, None, False),
+                (
+                    "validationProcess",
+                    "validationProcess",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "validationType",
+                    "validationType",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "validator",
+                    "validator",
+                    VerificationResultValidator,
+                    "VerificationResultValidator",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class VerificationResultAttestation(backboneelement.BackboneElement):
     """ Information about the entity attesting to information.
@@ -159,20 +250,80 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
         """ The individual or organization attesting to information.
         Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'Organization']` (represented as `dict` in JSON). """
 
-        super(VerificationResultAttestation, self).__init__(jsondict=jsondict, strict=strict)
+        super(VerificationResultAttestation, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(VerificationResultAttestation, self).elementProperties()
-        js.extend([
-            ("communicationMethod", "communicationMethod", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("date", "date", fhirdate.FHIRDate, "date", False, None, False),
-            ("onBehalfOf", "onBehalfOf", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("proxyIdentityCertificate", "proxyIdentityCertificate", str, "string", False, None, False),
-            ("proxySignature", "proxySignature", signature.Signature, "Signature", False, None, False),
-            ("sourceIdentityCertificate", "sourceIdentityCertificate", str, "string", False, None, False),
-            ("sourceSignature", "sourceSignature", signature.Signature, "Signature", False, None, False),
-            ("who", "who", fhirreference.FHIRReference, "Reference", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "communicationMethod",
+                    "communicationMethod",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("date", "date", fhirdate.FHIRDate, "date", False, None, False),
+                (
+                    "onBehalfOf",
+                    "onBehalfOf",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "proxyIdentityCertificate",
+                    "proxyIdentityCertificate",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "proxySignature",
+                    "proxySignature",
+                    signature.Signature,
+                    "Signature",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "sourceIdentityCertificate",
+                    "sourceIdentityCertificate",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "sourceSignature",
+                    "sourceSignature",
+                    signature.Signature,
+                    "Signature",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "who",
+                    "who",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -221,19 +372,79 @@ class VerificationResultPrimarySource(backboneelement.BackboneElement):
         """ Reference to the primary source.
         Type `FHIRReference` referencing `['Organization', 'Practitioner', 'PractitionerRole']` (represented as `dict` in JSON). """
 
-        super(VerificationResultPrimarySource, self).__init__(jsondict=jsondict, strict=strict)
+        super(VerificationResultPrimarySource, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(VerificationResultPrimarySource, self).elementProperties()
-        js.extend([
-            ("canPushUpdates", "canPushUpdates", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("communicationMethod", "communicationMethod", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("pushTypeAvailable", "pushTypeAvailable", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("validationDate", "validationDate", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("validationStatus", "validationStatus", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("who", "who", fhirreference.FHIRReference, "Reference", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "canPushUpdates",
+                    "canPushUpdates",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "communicationMethod",
+                    "communicationMethod",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "pushTypeAvailable",
+                    "pushTypeAvailable",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "validationDate",
+                    "validationDate",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "validationStatus",
+                    "validationStatus",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "who",
+                    "who",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -263,36 +474,63 @@ class VerificationResultValidator(backboneelement.BackboneElement):
         """ Reference to the organization validating information.
         Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
-        super(VerificationResultValidator, self).__init__(jsondict=jsondict, strict=strict)
+        super(VerificationResultValidator, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(VerificationResultValidator, self).elementProperties()
-        js.extend([
-            ("attestationSignature", "attestationSignature", signature.Signature, "Signature", False, None, False),
-            ("identityCertificate", "identityCertificate", str, "string", False, None, False),
-            ("organization", "organization", fhirreference.FHIRReference, "Reference", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "attestationSignature",
+                    "attestationSignature",
+                    signature.Signature,
+                    "Signature",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "identityCertificate",
+                    "identityCertificate",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "organization",
+                    "organization",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import signature
 except ImportError:
-    signature = sys.modules[__package__ + '.signature']
+    signature = sys.modules[__package__ + ".signature"]
 try:
     from . import timing
 except ImportError:
-    timing = sys.modules[__package__ + '.timing']
+    timing = sys.modules[__package__ + ".timing"]

@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class DetectedIssue(domainresource.DomainResource):
     """ Clinical issue with action.
@@ -85,25 +88,97 @@ class DetectedIssue(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(DetectedIssue, self).elementProperties()
-        js.extend([
-            ("author", "author", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("detail", "detail", str, "string", False, None, False),
-            ("evidence", "evidence", DetectedIssueEvidence, "DetectedIssueEvidence", True, None, False),
-            ("identifiedDateTime", "identifiedDateTime", fhirdate.FHIRDate, "dateTime", False, "identified", False),
-            ("identifiedPeriod", "identifiedPeriod", period.Period, "Period", False, "identified", False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("implicated", "implicated", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("mitigation", "mitigation", DetectedIssueMitigation, "DetectedIssueMitigation", True, None, False),
-            ("patient", "patient", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("reference", "reference", str, "uri", False, None, False),
-            ("severity", "severity", str, "code", False, None, False),
-            ("status", "status", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "author",
+                    "author",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("detail", "detail", str, "string", False, None, False),
+                (
+                    "evidence",
+                    "evidence",
+                    DetectedIssueEvidence,
+                    "DetectedIssueEvidence",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "identifiedDateTime",
+                    "identifiedDateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    "identified",
+                    False,
+                ),
+                (
+                    "identifiedPeriod",
+                    "identifiedPeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "identified",
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "implicated",
+                    "implicated",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "mitigation",
+                    "mitigation",
+                    DetectedIssueMitigation,
+                    "DetectedIssueMitigation",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "patient",
+                    "patient",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("reference", "reference", str, "uri", False, None, False),
+                ("severity", "severity", str, "code", False, None, False),
+                ("status", "status", str, "code", False, None, True),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class DetectedIssueEvidence(backboneelement.BackboneElement):
     """ Supporting evidence.
@@ -134,10 +209,28 @@ class DetectedIssueEvidence(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(DetectedIssueEvidence, self).elementProperties()
-        js.extend([
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("detail", "detail", fhirreference.FHIRReference, "Reference", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "detail",
+                    "detail",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -176,32 +269,49 @@ class DetectedIssueMitigation(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(DetectedIssueMitigation, self).elementProperties()
-        js.extend([
-            ("action", "action", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("author", "author", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "action",
+                    "action",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "author",
+                    "author",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]

@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class ClinicalImpression(domainresource.DomainResource):
     """ A clinical assessment performed when planning treatments and management
@@ -121,33 +124,161 @@ class ClinicalImpression(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(ClinicalImpression, self).elementProperties()
-        js.extend([
-            ("assessor", "assessor", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("description", "description", str, "string", False, None, False),
-            ("effectiveDateTime", "effectiveDateTime", fhirdate.FHIRDate, "dateTime", False, "effective", False),
-            ("effectivePeriod", "effectivePeriod", period.Period, "Period", False, "effective", False),
-            ("encounter", "encounter", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("finding", "finding", ClinicalImpressionFinding, "ClinicalImpressionFinding", True, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("investigation", "investigation", ClinicalImpressionInvestigation, "ClinicalImpressionInvestigation", True, None, False),
-            ("note", "note", annotation.Annotation, "Annotation", True, None, False),
-            ("previous", "previous", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("problem", "problem", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("prognosisCodeableConcept", "prognosisCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("prognosisReference", "prognosisReference", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("protocol", "protocol", str, "uri", True, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("statusReason", "statusReason", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("subject", "subject", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("summary", "summary", str, "string", False, None, False),
-            ("supportingInfo", "supportingInfo", fhirreference.FHIRReference, "Reference", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "assessor",
+                    "assessor",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
+                ("description", "description", str, "string", False, None, False),
+                (
+                    "effectiveDateTime",
+                    "effectiveDateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    "effective",
+                    False,
+                ),
+                (
+                    "effectivePeriod",
+                    "effectivePeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "effective",
+                    False,
+                ),
+                (
+                    "encounter",
+                    "encounter",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "finding",
+                    "finding",
+                    ClinicalImpressionFinding,
+                    "ClinicalImpressionFinding",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "investigation",
+                    "investigation",
+                    ClinicalImpressionInvestigation,
+                    "ClinicalImpressionInvestigation",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "note",
+                    "note",
+                    annotation.Annotation,
+                    "Annotation",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "previous",
+                    "previous",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "problem",
+                    "problem",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "prognosisCodeableConcept",
+                    "prognosisCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "prognosisReference",
+                    "prognosisReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                ("protocol", "protocol", str, "uri", True, None, False),
+                ("status", "status", str, "code", False, None, True),
+                (
+                    "statusReason",
+                    "statusReason",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "subject",
+                    "subject",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                ("summary", "summary", str, "string", False, None, False),
+                (
+                    "supportingInfo",
+                    "supportingInfo",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class ClinicalImpressionFinding(backboneelement.BackboneElement):
     """ Possible or likely findings and diagnoses.
@@ -178,15 +309,35 @@ class ClinicalImpressionFinding(backboneelement.BackboneElement):
         """ What was found.
         Type `FHIRReference` referencing `['Condition', 'Observation', 'Media']` (represented as `dict` in JSON). """
 
-        super(ClinicalImpressionFinding, self).__init__(jsondict=jsondict, strict=strict)
+        super(ClinicalImpressionFinding, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ClinicalImpressionFinding, self).elementProperties()
-        js.extend([
-            ("basis", "basis", str, "string", False, None, False),
-            ("itemCodeableConcept", "itemCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("itemReference", "itemReference", fhirreference.FHIRReference, "Reference", False, None, False),
-        ])
+        js.extend(
+            [
+                ("basis", "basis", str, "string", False, None, False),
+                (
+                    "itemCodeableConcept",
+                    "itemCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "itemReference",
+                    "itemReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -218,39 +369,58 @@ class ClinicalImpressionInvestigation(backboneelement.BackboneElement):
         """ Record of a specific investigation.
         List of `FHIRReference` items referencing `['Observation', 'QuestionnaireResponse', 'FamilyMemberHistory', 'DiagnosticReport', 'RiskAssessment', 'ImagingStudy', 'Media']` (represented as `dict` in JSON). """
 
-        super(ClinicalImpressionInvestigation, self).__init__(jsondict=jsondict, strict=strict)
+        super(ClinicalImpressionInvestigation, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ClinicalImpressionInvestigation, self).elementProperties()
-        js.extend([
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("item", "item", fhirreference.FHIRReference, "Reference", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "item",
+                    "item",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import annotation
 except ImportError:
-    annotation = sys.modules[__package__ + '.annotation']
+    annotation = sys.modules[__package__ + ".annotation"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]

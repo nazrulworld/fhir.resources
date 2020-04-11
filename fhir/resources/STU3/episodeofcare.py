@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class EpisodeOfCare(domainresource.DomainResource):
     """ An association of a Patient with an Organization and  Healthcare
@@ -86,24 +89,104 @@ class EpisodeOfCare(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(EpisodeOfCare, self).elementProperties()
-        js.extend([
-            ("account", "account", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("careManager", "careManager", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("diagnosis", "diagnosis", EpisodeOfCareDiagnosis, "EpisodeOfCareDiagnosis", True, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("managingOrganization", "managingOrganization", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("patient", "patient", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("period", "period", period.Period, "Period", False, None, False),
-            ("referralRequest", "referralRequest", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("statusHistory", "statusHistory", EpisodeOfCareStatusHistory, "EpisodeOfCareStatusHistory", True, None, False),
-            ("team", "team", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "account",
+                    "account",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "careManager",
+                    "careManager",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "diagnosis",
+                    "diagnosis",
+                    EpisodeOfCareDiagnosis,
+                    "EpisodeOfCareDiagnosis",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "managingOrganization",
+                    "managingOrganization",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "patient",
+                    "patient",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                ("period", "period", period.Period, "Period", False, None, False),
+                (
+                    "referralRequest",
+                    "referralRequest",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, True),
+                (
+                    "statusHistory",
+                    "statusHistory",
+                    EpisodeOfCareStatusHistory,
+                    "EpisodeOfCareStatusHistory",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "team",
+                    "team",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class EpisodeOfCareDiagnosis(backboneelement.BackboneElement):
     """ The list of diagnosis relevant to this episode of care.
@@ -136,11 +219,29 @@ class EpisodeOfCareDiagnosis(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(EpisodeOfCareDiagnosis, self).elementProperties()
-        js.extend([
-            ("condition", "condition", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("rank", "rank", int, "positiveInt", False, None, False),
-            ("role", "role", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "condition",
+                    "condition",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                ("rank", "rank", int, "positiveInt", False, None, False),
+                (
+                    "role",
+                    "role",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -171,31 +272,34 @@ class EpisodeOfCareStatusHistory(backboneelement.BackboneElement):
         entered-in-error.
         Type `str`. """
 
-        super(EpisodeOfCareStatusHistory, self).__init__(jsondict=jsondict, strict=strict)
+        super(EpisodeOfCareStatusHistory, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(EpisodeOfCareStatusHistory, self).elementProperties()
-        js.extend([
-            ("period", "period", period.Period, "Period", False, None, True),
-            ("status", "status", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                ("period", "period", period.Period, "Period", False, None, True),
+                ("status", "status", str, "code", False, None, True),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]

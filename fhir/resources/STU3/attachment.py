@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
+import sys
+
 from . import element
+
 
 class Attachment(element.Element):
     """ Content in a format defined elsewhere.
@@ -62,21 +65,30 @@ class Attachment(element.Element):
 
     def elementProperties(self):
         js = super(Attachment, self).elementProperties()
-        js.extend([
-            ("contentType", "contentType", str, "code", False, None, False),
-            ("creation", "creation", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("data", "data", str, "base64Binary", False, None, False),
-            ("hash", "hash", str, "base64Binary", False, None, False),
-            ("language", "language", str, "code", False, None, False),
-            ("size", "size", int, "unsignedInt", False, None, False),
-            ("title", "title", str, "string", False, None, False),
-            ("url", "url", str, "uri", False, None, False),
-        ])
+        js.extend(
+            [
+                ("contentType", "contentType", str, "code", False, None, False),
+                (
+                    "creation",
+                    "creation",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                ("data", "data", str, "base64Binary", False, None, False),
+                ("hash", "hash", str, "base64Binary", False, None, False),
+                ("language", "language", str, "code", False, None, False),
+                ("size", "size", int, "unsignedInt", False, None, False),
+                ("title", "title", str, "string", False, None, False),
+                ("url", "url", str, "uri", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]

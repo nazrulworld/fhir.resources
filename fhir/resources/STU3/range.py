@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
+import sys
+
 from . import element
+
 
 class Range(element.Element):
     """ Set of values bounded by low and high.
@@ -38,15 +41,16 @@ class Range(element.Element):
 
     def elementProperties(self):
         js = super(Range, self).elementProperties()
-        js.extend([
-            ("high", "high", quantity.Quantity, "Quantity", False, None, False),
-            ("low", "low", quantity.Quantity, "Quantity", False, None, False),
-        ])
+        js.extend(
+            [
+                ("high", "high", quantity.Quantity, "Quantity", False, None, False),
+                ("low", "low", quantity.Quantity, "Quantity", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import quantity
 except ImportError:
-    quantity = sys.modules[__package__ + '.quantity']
+    quantity = sys.modules[__package__ + ".quantity"]

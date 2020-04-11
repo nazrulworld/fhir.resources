@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class ImplementationGuide(domainresource.DomainResource):
     """ A set of rules about how FHIR is used.
@@ -105,30 +108,86 @@ class ImplementationGuide(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(ImplementationGuide, self).elementProperties()
-        js.extend([
-            ("binary", "binary", str, "uri", True, None, False),
-            ("contact", "contact", contactdetail.ContactDetail, "ContactDetail", True, None, False),
-            ("copyright", "copyright", str, "markdown", False, None, False),
-            ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("dependency", "dependency", ImplementationGuideDependency, "ImplementationGuideDependency", True, None, False),
-            ("description", "description", str, "markdown", False, None, False),
-            ("experimental", "experimental", bool, "boolean", False, None, False),
-            ("fhirVersion", "fhirVersion", str, "id", False, None, False),
-            ("global_fhir", "global", ImplementationGuideGlobal, "ImplementationGuideGlobal", True, None, False),
-            ("jurisdiction", "jurisdiction", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("name", "name", str, "string", False, None, True),
-            ("package", "package", ImplementationGuidePackage, "ImplementationGuidePackage", True, None, False),
-            ("page", "page", ImplementationGuidePage, "ImplementationGuidePage", False, None, False),
-            ("publisher", "publisher", str, "string", False, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("url", "url", str, "uri", False, None, True),
-            ("useContext", "useContext", usagecontext.UsageContext, "UsageContext", True, None, False),
-            ("version", "version", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                ("binary", "binary", str, "uri", True, None, False),
+                (
+                    "contact",
+                    "contact",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                ("copyright", "copyright", str, "markdown", False, None, False),
+                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
+                (
+                    "dependency",
+                    "dependency",
+                    ImplementationGuideDependency,
+                    "ImplementationGuideDependency",
+                    True,
+                    None,
+                    False,
+                ),
+                ("description", "description", str, "markdown", False, None, False),
+                ("experimental", "experimental", bool, "boolean", False, None, False),
+                ("fhirVersion", "fhirVersion", str, "id", False, None, False),
+                (
+                    "global_fhir",
+                    "global",
+                    ImplementationGuideGlobal,
+                    "ImplementationGuideGlobal",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "jurisdiction",
+                    "jurisdiction",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                ("name", "name", str, "string", False, None, True),
+                (
+                    "package",
+                    "package",
+                    ImplementationGuidePackage,
+                    "ImplementationGuidePackage",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "page",
+                    "page",
+                    ImplementationGuidePage,
+                    "ImplementationGuidePage",
+                    False,
+                    None,
+                    False,
+                ),
+                ("publisher", "publisher", str, "string", False, None, False),
+                ("status", "status", str, "code", False, None, True),
+                ("url", "url", str, "uri", False, None, True),
+                (
+                    "useContext",
+                    "useContext",
+                    usagecontext.UsageContext,
+                    "UsageContext",
+                    True,
+                    None,
+                    False,
+                ),
+                ("version", "version", str, "string", False, None, False),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class ImplementationGuideDependency(backboneelement.BackboneElement):
     """ Another Implementation guide this depends on.
@@ -156,14 +215,18 @@ class ImplementationGuideDependency(backboneelement.BackboneElement):
         """ Where to find dependency.
         Type `str`. """
 
-        super(ImplementationGuideDependency, self).__init__(jsondict=jsondict, strict=strict)
+        super(ImplementationGuideDependency, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ImplementationGuideDependency, self).elementProperties()
-        js.extend([
-            ("type", "type", str, "code", False, None, True),
-            ("uri", "uri", str, "uri", False, None, True),
-        ])
+        js.extend(
+            [
+                ("type", "type", str, "code", False, None, True),
+                ("uri", "uri", str, "uri", False, None, True),
+            ]
+        )
         return js
 
 
@@ -192,14 +255,26 @@ class ImplementationGuideGlobal(backboneelement.BackboneElement):
         """ Type this profiles applies to.
         Type `str`. """
 
-        super(ImplementationGuideGlobal, self).__init__(jsondict=jsondict, strict=strict)
+        super(ImplementationGuideGlobal, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ImplementationGuideGlobal, self).elementProperties()
-        js.extend([
-            ("profile", "profile", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("type", "type", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "profile",
+                    "profile",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                ("type", "type", str, "code", False, None, True),
+            ]
+        )
         return js
 
 
@@ -232,15 +307,27 @@ class ImplementationGuidePackage(backboneelement.BackboneElement):
         """ Resource in the implementation guide.
         List of `ImplementationGuidePackageResource` items (represented as `dict` in JSON). """
 
-        super(ImplementationGuidePackage, self).__init__(jsondict=jsondict, strict=strict)
+        super(ImplementationGuidePackage, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ImplementationGuidePackage, self).elementProperties()
-        js.extend([
-            ("description", "description", str, "string", False, None, False),
-            ("name", "name", str, "string", False, None, True),
-            ("resource", "resource", ImplementationGuidePackageResource, "ImplementationGuidePackageResource", True, None, True),
-        ])
+        js.extend(
+            [
+                ("description", "description", str, "string", False, None, False),
+                ("name", "name", str, "string", False, None, True),
+                (
+                    "resource",
+                    "resource",
+                    ImplementationGuidePackageResource,
+                    "ImplementationGuidePackageResource",
+                    True,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -291,19 +378,39 @@ class ImplementationGuidePackageResource(backboneelement.BackboneElement):
         """ Location of the resource.
         Type `str`. """
 
-        super(ImplementationGuidePackageResource, self).__init__(jsondict=jsondict, strict=strict)
+        super(ImplementationGuidePackageResource, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ImplementationGuidePackageResource, self).elementProperties()
-        js.extend([
-            ("acronym", "acronym", str, "string", False, None, False),
-            ("description", "description", str, "string", False, None, False),
-            ("example", "example", bool, "boolean", False, None, True),
-            ("exampleFor", "exampleFor", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("name", "name", str, "string", False, None, False),
-            ("sourceReference", "sourceReference", fhirreference.FHIRReference, "Reference", False, "source", True),
-            ("sourceUri", "sourceUri", str, "uri", False, "source", True),
-        ])
+        js.extend(
+            [
+                ("acronym", "acronym", str, "string", False, None, False),
+                ("description", "description", str, "string", False, None, False),
+                ("example", "example", bool, "boolean", False, None, True),
+                (
+                    "exampleFor",
+                    "exampleFor",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("name", "name", str, "string", False, None, False),
+                (
+                    "sourceReference",
+                    "sourceReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "source",
+                    True,
+                ),
+                ("sourceUri", "sourceUri", str, "uri", False, "source", True),
+            ]
+        )
         return js
 
 
@@ -357,36 +464,45 @@ class ImplementationGuidePage(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ImplementationGuidePage, self).elementProperties()
-        js.extend([
-            ("format", "format", str, "code", False, None, False),
-            ("kind", "kind", str, "code", False, None, True),
-            ("package", "package", str, "string", True, None, False),
-            ("page", "page", ImplementationGuidePage, "ImplementationGuidePage", True, None, False),
-            ("source", "source", str, "uri", False, None, True),
-            ("title", "title", str, "string", False, None, True),
-            ("type", "type", str, "code", True, None, False),
-        ])
+        js.extend(
+            [
+                ("format", "format", str, "code", False, None, False),
+                ("kind", "kind", str, "code", False, None, True),
+                ("package", "package", str, "string", True, None, False),
+                (
+                    "page",
+                    "page",
+                    ImplementationGuidePage,
+                    "ImplementationGuidePage",
+                    True,
+                    None,
+                    False,
+                ),
+                ("source", "source", str, "uri", False, None, True),
+                ("title", "title", str, "string", False, None, True),
+                ("type", "type", str, "code", True, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import contactdetail
 except ImportError:
-    contactdetail = sys.modules[__package__ + '.contactdetail']
+    contactdetail = sys.modules[__package__ + ".contactdetail"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import usagecontext
 except ImportError:
-    usagecontext = sys.modules[__package__ + '.usagecontext']
+    usagecontext = sys.modules[__package__ + ".usagecontext"]

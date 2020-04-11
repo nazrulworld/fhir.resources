@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
+import sys
+
 from . import element
+
 
 class ContactDetail(element.Element):
     """ Contact information.
@@ -38,15 +41,24 @@ class ContactDetail(element.Element):
 
     def elementProperties(self):
         js = super(ContactDetail, self).elementProperties()
-        js.extend([
-            ("name", "name", str, "string", False, None, False),
-            ("telecom", "telecom", contactpoint.ContactPoint, "ContactPoint", True, None, False),
-        ])
+        js.extend(
+            [
+                ("name", "name", str, "string", False, None, False),
+                (
+                    "telecom",
+                    "telecom",
+                    contactpoint.ContactPoint,
+                    "ContactPoint",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import contactpoint
 except ImportError:
-    contactpoint = sys.modules[__package__ + '.contactpoint']
+    contactpoint = sys.modules[__package__ + ".contactpoint"]

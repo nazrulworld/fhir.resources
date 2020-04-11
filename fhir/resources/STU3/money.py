@@ -10,6 +10,7 @@ Last updated: 2019-10-24T11:53:00+11:00
 
 from . import quantity
 
+
 class Money(quantity.Quantity):
     """ An amount of economic utility in some recognized currency.
     """
@@ -25,5 +26,3 @@ class Money(quantity.Quantity):
         """
 
         super(Money, self).__init__(jsondict=jsondict, strict=strict)
-
-

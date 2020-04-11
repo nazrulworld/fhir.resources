@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
+import sys
+
 from . import element
+
 
 class Dosage(element.Element):
     """ How the medication is/was taken or should be taken.
@@ -103,47 +106,144 @@ class Dosage(element.Element):
 
     def elementProperties(self):
         js = super(Dosage, self).elementProperties()
-        js.extend([
-            ("additionalInstruction", "additionalInstruction", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("asNeededBoolean", "asNeededBoolean", bool, "boolean", False, "asNeeded", False),
-            ("asNeededCodeableConcept", "asNeededCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "asNeeded", False),
-            ("doseQuantity", "doseQuantity", quantity.Quantity, "Quantity", False, "dose", False),
-            ("doseRange", "doseRange", range.Range, "Range", False, "dose", False),
-            ("maxDosePerAdministration", "maxDosePerAdministration", quantity.Quantity, "Quantity", False, None, False),
-            ("maxDosePerLifetime", "maxDosePerLifetime", quantity.Quantity, "Quantity", False, None, False),
-            ("maxDosePerPeriod", "maxDosePerPeriod", ratio.Ratio, "Ratio", False, None, False),
-            ("method", "method", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("patientInstruction", "patientInstruction", str, "string", False, None, False),
-            ("rateQuantity", "rateQuantity", quantity.Quantity, "Quantity", False, "rate", False),
-            ("rateRange", "rateRange", range.Range, "Range", False, "rate", False),
-            ("rateRatio", "rateRatio", ratio.Ratio, "Ratio", False, "rate", False),
-            ("route", "route", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("sequence", "sequence", int, "integer", False, None, False),
-            ("site", "site", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("text", "text", str, "string", False, None, False),
-            ("timing", "timing", timing.Timing, "Timing", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "additionalInstruction",
+                    "additionalInstruction",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "asNeededBoolean",
+                    "asNeededBoolean",
+                    bool,
+                    "boolean",
+                    False,
+                    "asNeeded",
+                    False,
+                ),
+                (
+                    "asNeededCodeableConcept",
+                    "asNeededCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "asNeeded",
+                    False,
+                ),
+                (
+                    "doseQuantity",
+                    "doseQuantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    "dose",
+                    False,
+                ),
+                ("doseRange", "doseRange", range.Range, "Range", False, "dose", False),
+                (
+                    "maxDosePerAdministration",
+                    "maxDosePerAdministration",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "maxDosePerLifetime",
+                    "maxDosePerLifetime",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "maxDosePerPeriod",
+                    "maxDosePerPeriod",
+                    ratio.Ratio,
+                    "Ratio",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "method",
+                    "method",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "patientInstruction",
+                    "patientInstruction",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "rateQuantity",
+                    "rateQuantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    "rate",
+                    False,
+                ),
+                ("rateRange", "rateRange", range.Range, "Range", False, "rate", False),
+                ("rateRatio", "rateRatio", ratio.Ratio, "Ratio", False, "rate", False),
+                (
+                    "route",
+                    "route",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("sequence", "sequence", int, "integer", False, None, False),
+                (
+                    "site",
+                    "site",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("text", "text", str, "string", False, None, False),
+                ("timing", "timing", timing.Timing, "Timing", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import quantity
 except ImportError:
-    quantity = sys.modules[__package__ + '.quantity']
+    quantity = sys.modules[__package__ + ".quantity"]
 try:
     from . import range
 except ImportError:
-    range = sys.modules[__package__ + '.range']
+    range = sys.modules[__package__ + ".range"]
 try:
     from . import ratio
 except ImportError:
-    ratio = sys.modules[__package__ + '.ratio']
+    ratio = sys.modules[__package__ + ".ratio"]
 try:
     from . import timing
 except ImportError:
-    timing = sys.modules[__package__ + '.timing']
+    timing = sys.modules[__package__ + ".timing"]

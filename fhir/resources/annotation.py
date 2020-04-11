@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
+import sys
+
 from . import element
+
 
 class Annotation(element.Element):
     """ Text node with attribution.
@@ -47,21 +50,30 @@ class Annotation(element.Element):
 
     def elementProperties(self):
         js = super(Annotation, self).elementProperties()
-        js.extend([
-            ("authorReference", "authorReference", fhirreference.FHIRReference, "Reference", False, "author", False),
-            ("authorString", "authorString", str, "string", False, "author", False),
-            ("text", "text", str, "markdown", False, None, True),
-            ("time", "time", fhirdate.FHIRDate, "dateTime", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "authorReference",
+                    "authorReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "author",
+                    False,
+                ),
+                ("authorString", "authorString", str, "string", False, "author", False),
+                ("text", "text", str, "markdown", False, None, True),
+                ("time", "time", fhirdate.FHIRDate, "dateTime", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]

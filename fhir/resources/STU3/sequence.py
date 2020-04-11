@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class Sequence(domainresource.DomainResource):
     """ Information about a biological sequence.
@@ -94,27 +97,123 @@ class Sequence(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(Sequence, self).elementProperties()
-        js.extend([
-            ("coordinateSystem", "coordinateSystem", int, "integer", False, None, True),
-            ("device", "device", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("observedSeq", "observedSeq", str, "string", False, None, False),
-            ("patient", "patient", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("performer", "performer", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("pointer", "pointer", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("quality", "quality", SequenceQuality, "SequenceQuality", True, None, False),
-            ("quantity", "quantity", quantity.Quantity, "Quantity", False, None, False),
-            ("readCoverage", "readCoverage", int, "integer", False, None, False),
-            ("referenceSeq", "referenceSeq", SequenceReferenceSeq, "SequenceReferenceSeq", False, None, False),
-            ("repository", "repository", SequenceRepository, "SequenceRepository", True, None, False),
-            ("specimen", "specimen", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("type", "type", str, "code", False, None, False),
-            ("variant", "variant", SequenceVariant, "SequenceVariant", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "coordinateSystem",
+                    "coordinateSystem",
+                    int,
+                    "integer",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "device",
+                    "device",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                ("observedSeq", "observedSeq", str, "string", False, None, False),
+                (
+                    "patient",
+                    "patient",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "performer",
+                    "performer",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "pointer",
+                    "pointer",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "quality",
+                    "quality",
+                    SequenceQuality,
+                    "SequenceQuality",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "quantity",
+                    "quantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    None,
+                    False,
+                ),
+                ("readCoverage", "readCoverage", int, "integer", False, None, False),
+                (
+                    "referenceSeq",
+                    "referenceSeq",
+                    SequenceReferenceSeq,
+                    "SequenceReferenceSeq",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "repository",
+                    "repository",
+                    SequenceRepository,
+                    "SequenceRepository",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "specimen",
+                    "specimen",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("type", "type", str, "code", False, None, False),
+                (
+                    "variant",
+                    "variant",
+                    SequenceVariant,
+                    "SequenceVariant",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class SequenceQuality(backboneelement.BackboneElement):
     """ An set of value as quality of sequence.
@@ -195,22 +294,40 @@ class SequenceQuality(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(SequenceQuality, self).elementProperties()
-        js.extend([
-            ("end", "end", int, "integer", False, None, False),
-            ("fScore", "fScore", float, "decimal", False, None, False),
-            ("gtFP", "gtFP", float, "decimal", False, None, False),
-            ("method", "method", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("precision", "precision", float, "decimal", False, None, False),
-            ("queryFP", "queryFP", float, "decimal", False, None, False),
-            ("queryTP", "queryTP", float, "decimal", False, None, False),
-            ("recall", "recall", float, "decimal", False, None, False),
-            ("score", "score", quantity.Quantity, "Quantity", False, None, False),
-            ("standardSequence", "standardSequence", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("start", "start", int, "integer", False, None, False),
-            ("truthFN", "truthFN", float, "decimal", False, None, False),
-            ("truthTP", "truthTP", float, "decimal", False, None, False),
-            ("type", "type", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                ("end", "end", int, "integer", False, None, False),
+                ("fScore", "fScore", float, "decimal", False, None, False),
+                ("gtFP", "gtFP", float, "decimal", False, None, False),
+                (
+                    "method",
+                    "method",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("precision", "precision", float, "decimal", False, None, False),
+                ("queryFP", "queryFP", float, "decimal", False, None, False),
+                ("queryTP", "queryTP", float, "decimal", False, None, False),
+                ("recall", "recall", float, "decimal", False, None, False),
+                ("score", "score", quantity.Quantity, "Quantity", False, None, False),
+                (
+                    "standardSequence",
+                    "standardSequence",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("start", "start", int, "integer", False, None, False),
+                ("truthFN", "truthFN", float, "decimal", False, None, False),
+                ("truthTP", "truthTP", float, "decimal", False, None, False),
+                ("type", "type", str, "code", False, None, True),
+            ]
+        )
         return js
 
 
@@ -268,16 +385,50 @@ class SequenceReferenceSeq(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(SequenceReferenceSeq, self).elementProperties()
-        js.extend([
-            ("chromosome", "chromosome", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("genomeBuild", "genomeBuild", str, "string", False, None, False),
-            ("referenceSeqId", "referenceSeqId", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("referenceSeqPointer", "referenceSeqPointer", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("referenceSeqString", "referenceSeqString", str, "string", False, None, False),
-            ("strand", "strand", int, "integer", False, None, False),
-            ("windowEnd", "windowEnd", int, "integer", False, None, True),
-            ("windowStart", "windowStart", int, "integer", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "chromosome",
+                    "chromosome",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("genomeBuild", "genomeBuild", str, "string", False, None, False),
+                (
+                    "referenceSeqId",
+                    "referenceSeqId",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "referenceSeqPointer",
+                    "referenceSeqPointer",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "referenceSeqString",
+                    "referenceSeqString",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                ("strand", "strand", int, "integer", False, None, False),
+                ("windowEnd", "windowEnd", int, "integer", False, None, True),
+                ("windowStart", "windowStart", int, "integer", False, None, True),
+            ]
+        )
         return js
 
 
@@ -327,14 +478,16 @@ class SequenceRepository(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(SequenceRepository, self).elementProperties()
-        js.extend([
-            ("datasetId", "datasetId", str, "string", False, None, False),
-            ("name", "name", str, "string", False, None, False),
-            ("readsetId", "readsetId", str, "string", False, None, False),
-            ("type", "type", str, "code", False, None, True),
-            ("url", "url", str, "uri", False, None, False),
-            ("variantsetId", "variantsetId", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                ("datasetId", "datasetId", str, "string", False, None, False),
+                ("name", "name", str, "string", False, None, False),
+                ("readsetId", "readsetId", str, "string", False, None, False),
+                ("type", "type", str, "code", False, None, True),
+                ("url", "url", str, "uri", False, None, False),
+                ("variantsetId", "variantsetId", str, "string", False, None, False),
+            ]
+        )
         return js
 
 
@@ -387,31 +540,48 @@ class SequenceVariant(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(SequenceVariant, self).elementProperties()
-        js.extend([
-            ("cigar", "cigar", str, "string", False, None, False),
-            ("end", "end", int, "integer", False, None, False),
-            ("observedAllele", "observedAllele", str, "string", False, None, False),
-            ("referenceAllele", "referenceAllele", str, "string", False, None, False),
-            ("start", "start", int, "integer", False, None, False),
-            ("variantPointer", "variantPointer", fhirreference.FHIRReference, "Reference", False, None, False),
-        ])
+        js.extend(
+            [
+                ("cigar", "cigar", str, "string", False, None, False),
+                ("end", "end", int, "integer", False, None, False),
+                ("observedAllele", "observedAllele", str, "string", False, None, False),
+                (
+                    "referenceAllele",
+                    "referenceAllele",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                ("start", "start", int, "integer", False, None, False),
+                (
+                    "variantPointer",
+                    "variantPointer",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import quantity
 except ImportError:
-    quantity = sys.modules[__package__ + '.quantity']
+    quantity = sys.modules[__package__ + ".quantity"]

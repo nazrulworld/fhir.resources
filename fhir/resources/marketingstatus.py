@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
+import sys
+
 from . import backboneelement
+
 
 class MarketingStatus(backboneelement.BackboneElement):
     """ The marketing status describes the date when a medicinal product is
@@ -70,26 +73,59 @@ class MarketingStatus(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(MarketingStatus, self).elementProperties()
-        js.extend([
-            ("country", "country", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("dateRange", "dateRange", period.Period, "Period", False, None, True),
-            ("jurisdiction", "jurisdiction", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("restoreDate", "restoreDate", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("status", "status", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "country",
+                    "country",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                ("dateRange", "dateRange", period.Period, "Period", False, None, True),
+                (
+                    "jurisdiction",
+                    "jurisdiction",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "restoreDate",
+                    "restoreDate",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "status",
+                    "status",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]

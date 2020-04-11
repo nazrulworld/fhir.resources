@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
+import sys
+
 from . import domainresource
+
 
 class EnrollmentResponse(domainresource.DomainResource):
     """ EnrollmentResponse resource.
@@ -63,29 +66,70 @@ class EnrollmentResponse(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(EnrollmentResponse, self).elementProperties()
-        js.extend([
-            ("created", "created", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("disposition", "disposition", str, "string", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("organization", "organization", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("outcome", "outcome", str, "code", False, None, False),
-            ("request", "request", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("requestProvider", "requestProvider", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("status", "status", str, "code", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "created",
+                    "created",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                ("disposition", "disposition", str, "string", False, None, False),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "organization",
+                    "organization",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("outcome", "outcome", str, "code", False, None, False),
+                (
+                    "request",
+                    "request",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "requestProvider",
+                    "requestProvider",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]

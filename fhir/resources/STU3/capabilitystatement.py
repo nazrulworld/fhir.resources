@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class CapabilityStatement(domainresource.DomainResource):
     """ A statement of system capabilities.
@@ -141,39 +144,119 @@ class CapabilityStatement(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(CapabilityStatement, self).elementProperties()
-        js.extend([
-            ("acceptUnknown", "acceptUnknown", str, "code", False, None, True),
-            ("contact", "contact", contactdetail.ContactDetail, "ContactDetail", True, None, False),
-            ("copyright", "copyright", str, "markdown", False, None, False),
-            ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, True),
-            ("description", "description", str, "markdown", False, None, False),
-            ("document", "document", CapabilityStatementDocument, "CapabilityStatementDocument", True, None, False),
-            ("experimental", "experimental", bool, "boolean", False, None, False),
-            ("fhirVersion", "fhirVersion", str, "id", False, None, True),
-            ("format", "format", str, "code", True, None, True),
-            ("implementation", "implementation", CapabilityStatementImplementation, "CapabilityStatementImplementation", False, None, False),
-            ("implementationGuide", "implementationGuide", str, "uri", True, None, False),
-            ("instantiates", "instantiates", str, "uri", True, None, False),
-            ("jurisdiction", "jurisdiction", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("kind", "kind", str, "code", False, None, True),
-            ("messaging", "messaging", CapabilityStatementMessaging, "CapabilityStatementMessaging", True, None, False),
-            ("name", "name", str, "string", False, None, False),
-            ("patchFormat", "patchFormat", str, "code", True, None, False),
-            ("profile", "profile", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("publisher", "publisher", str, "string", False, None, False),
-            ("purpose", "purpose", str, "markdown", False, None, False),
-            ("rest", "rest", CapabilityStatementRest, "CapabilityStatementRest", True, None, False),
-            ("software", "software", CapabilityStatementSoftware, "CapabilityStatementSoftware", False, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("title", "title", str, "string", False, None, False),
-            ("url", "url", str, "uri", False, None, False),
-            ("useContext", "useContext", usagecontext.UsageContext, "UsageContext", True, None, False),
-            ("version", "version", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                ("acceptUnknown", "acceptUnknown", str, "code", False, None, True),
+                (
+                    "contact",
+                    "contact",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                ("copyright", "copyright", str, "markdown", False, None, False),
+                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, True),
+                ("description", "description", str, "markdown", False, None, False),
+                (
+                    "document",
+                    "document",
+                    CapabilityStatementDocument,
+                    "CapabilityStatementDocument",
+                    True,
+                    None,
+                    False,
+                ),
+                ("experimental", "experimental", bool, "boolean", False, None, False),
+                ("fhirVersion", "fhirVersion", str, "id", False, None, True),
+                ("format", "format", str, "code", True, None, True),
+                (
+                    "implementation",
+                    "implementation",
+                    CapabilityStatementImplementation,
+                    "CapabilityStatementImplementation",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "implementationGuide",
+                    "implementationGuide",
+                    str,
+                    "uri",
+                    True,
+                    None,
+                    False,
+                ),
+                ("instantiates", "instantiates", str, "uri", True, None, False),
+                (
+                    "jurisdiction",
+                    "jurisdiction",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                ("kind", "kind", str, "code", False, None, True),
+                (
+                    "messaging",
+                    "messaging",
+                    CapabilityStatementMessaging,
+                    "CapabilityStatementMessaging",
+                    True,
+                    None,
+                    False,
+                ),
+                ("name", "name", str, "string", False, None, False),
+                ("patchFormat", "patchFormat", str, "code", True, None, False),
+                (
+                    "profile",
+                    "profile",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                ("publisher", "publisher", str, "string", False, None, False),
+                ("purpose", "purpose", str, "markdown", False, None, False),
+                (
+                    "rest",
+                    "rest",
+                    CapabilityStatementRest,
+                    "CapabilityStatementRest",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "software",
+                    "software",
+                    CapabilityStatementSoftware,
+                    "CapabilityStatementSoftware",
+                    False,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, True),
+                ("title", "title", str, "string", False, None, False),
+                ("url", "url", str, "uri", False, None, False),
+                (
+                    "useContext",
+                    "useContext",
+                    usagecontext.UsageContext,
+                    "UsageContext",
+                    True,
+                    None,
+                    False,
+                ),
+                ("version", "version", str, "string", False, None, False),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class CapabilityStatementDocument(backboneelement.BackboneElement):
     """ Document definition.
@@ -203,15 +286,27 @@ class CapabilityStatementDocument(backboneelement.BackboneElement):
         """ Constraint on a resource used in the document.
         Type `FHIRReference` referencing `['StructureDefinition']` (represented as `dict` in JSON). """
 
-        super(CapabilityStatementDocument, self).__init__(jsondict=jsondict, strict=strict)
+        super(CapabilityStatementDocument, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(CapabilityStatementDocument, self).elementProperties()
-        js.extend([
-            ("documentation", "documentation", str, "string", False, None, False),
-            ("mode", "mode", str, "code", False, None, True),
-            ("profile", "profile", fhirreference.FHIRReference, "Reference", False, None, True),
-        ])
+        js.extend(
+            [
+                ("documentation", "documentation", str, "string", False, None, False),
+                ("mode", "mode", str, "code", False, None, True),
+                (
+                    "profile",
+                    "profile",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -241,14 +336,18 @@ class CapabilityStatementImplementation(backboneelement.BackboneElement):
         """ Base URL for the installation.
         Type `str`. """
 
-        super(CapabilityStatementImplementation, self).__init__(jsondict=jsondict, strict=strict)
+        super(CapabilityStatementImplementation, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(CapabilityStatementImplementation, self).elementProperties()
-        js.extend([
-            ("description", "description", str, "string", False, None, True),
-            ("url", "url", str, "uri", False, None, False),
-        ])
+        js.extend(
+            [
+                ("description", "description", str, "string", False, None, True),
+                ("url", "url", str, "uri", False, None, False),
+            ]
+        )
         return js
 
 
@@ -288,17 +387,53 @@ class CapabilityStatementMessaging(backboneelement.BackboneElement):
         """ Messages supported by this system.
         List of `CapabilityStatementMessagingSupportedMessage` items (represented as `dict` in JSON). """
 
-        super(CapabilityStatementMessaging, self).__init__(jsondict=jsondict, strict=strict)
+        super(CapabilityStatementMessaging, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(CapabilityStatementMessaging, self).elementProperties()
-        js.extend([
-            ("documentation", "documentation", str, "string", False, None, False),
-            ("endpoint", "endpoint", CapabilityStatementMessagingEndpoint, "CapabilityStatementMessagingEndpoint", True, None, False),
-            ("event", "event", CapabilityStatementMessagingEvent, "CapabilityStatementMessagingEvent", True, None, False),
-            ("reliableCache", "reliableCache", int, "unsignedInt", False, None, False),
-            ("supportedMessage", "supportedMessage", CapabilityStatementMessagingSupportedMessage, "CapabilityStatementMessagingSupportedMessage", True, None, False),
-        ])
+        js.extend(
+            [
+                ("documentation", "documentation", str, "string", False, None, False),
+                (
+                    "endpoint",
+                    "endpoint",
+                    CapabilityStatementMessagingEndpoint,
+                    "CapabilityStatementMessagingEndpoint",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "event",
+                    "event",
+                    CapabilityStatementMessagingEvent,
+                    "CapabilityStatementMessagingEvent",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "reliableCache",
+                    "reliableCache",
+                    int,
+                    "unsignedInt",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "supportedMessage",
+                    "supportedMessage",
+                    CapabilityStatementMessagingSupportedMessage,
+                    "CapabilityStatementMessagingSupportedMessage",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -327,14 +462,18 @@ class CapabilityStatementMessagingEndpoint(backboneelement.BackboneElement):
         """ http | ftp | mllp +.
         Type `Coding` (represented as `dict` in JSON). """
 
-        super(CapabilityStatementMessagingEndpoint, self).__init__(jsondict=jsondict, strict=strict)
+        super(CapabilityStatementMessagingEndpoint, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(CapabilityStatementMessagingEndpoint, self).elementProperties()
-        js.extend([
-            ("address", "address", str, "uri", False, None, True),
-            ("protocol", "protocol", coding.Coding, "Coding", False, None, True),
-        ])
+        js.extend(
+            [
+                ("address", "address", str, "uri", False, None, True),
+                ("protocol", "protocol", coding.Coding, "Coding", False, None, True),
+            ]
+        )
         return js
 
 
@@ -382,19 +521,39 @@ class CapabilityStatementMessagingEvent(backboneelement.BackboneElement):
         """ Profile that describes the response.
         Type `FHIRReference` referencing `['StructureDefinition']` (represented as `dict` in JSON). """
 
-        super(CapabilityStatementMessagingEvent, self).__init__(jsondict=jsondict, strict=strict)
+        super(CapabilityStatementMessagingEvent, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(CapabilityStatementMessagingEvent, self).elementProperties()
-        js.extend([
-            ("category", "category", str, "code", False, None, False),
-            ("code", "code", coding.Coding, "Coding", False, None, True),
-            ("documentation", "documentation", str, "string", False, None, False),
-            ("focus", "focus", str, "code", False, None, True),
-            ("mode", "mode", str, "code", False, None, True),
-            ("request", "request", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("response", "response", fhirreference.FHIRReference, "Reference", False, None, True),
-        ])
+        js.extend(
+            [
+                ("category", "category", str, "code", False, None, False),
+                ("code", "code", coding.Coding, "Coding", False, None, True),
+                ("documentation", "documentation", str, "string", False, None, False),
+                ("focus", "focus", str, "code", False, None, True),
+                ("mode", "mode", str, "code", False, None, True),
+                (
+                    "request",
+                    "request",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "response",
+                    "response",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -423,14 +582,28 @@ class CapabilityStatementMessagingSupportedMessage(backboneelement.BackboneEleme
         """ sender | receiver.
         Type `str`. """
 
-        super(CapabilityStatementMessagingSupportedMessage, self).__init__(jsondict=jsondict, strict=strict)
+        super(CapabilityStatementMessagingSupportedMessage, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
-        js = super(CapabilityStatementMessagingSupportedMessage, self).elementProperties()
-        js.extend([
-            ("definition", "definition", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("mode", "mode", str, "code", False, None, True),
-        ])
+        js = super(
+            CapabilityStatementMessagingSupportedMessage, self
+        ).elementProperties()
+        js.extend(
+            [
+                (
+                    "definition",
+                    "definition",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                ("mode", "mode", str, "code", False, None, True),
+            ]
+        )
         return js
 
 
@@ -486,16 +659,58 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(CapabilityStatementRest, self).elementProperties()
-        js.extend([
-            ("compartment", "compartment", str, "uri", True, None, False),
-            ("documentation", "documentation", str, "string", False, None, False),
-            ("interaction", "interaction", CapabilityStatementRestInteraction, "CapabilityStatementRestInteraction", True, None, False),
-            ("mode", "mode", str, "code", False, None, True),
-            ("operation", "operation", CapabilityStatementRestOperation, "CapabilityStatementRestOperation", True, None, False),
-            ("resource", "resource", CapabilityStatementRestResource, "CapabilityStatementRestResource", True, None, False),
-            ("searchParam", "searchParam", CapabilityStatementRestResourceSearchParam, "CapabilityStatementRestResourceSearchParam", True, None, False),
-            ("security", "security", CapabilityStatementRestSecurity, "CapabilityStatementRestSecurity", False, None, False),
-        ])
+        js.extend(
+            [
+                ("compartment", "compartment", str, "uri", True, None, False),
+                ("documentation", "documentation", str, "string", False, None, False),
+                (
+                    "interaction",
+                    "interaction",
+                    CapabilityStatementRestInteraction,
+                    "CapabilityStatementRestInteraction",
+                    True,
+                    None,
+                    False,
+                ),
+                ("mode", "mode", str, "code", False, None, True),
+                (
+                    "operation",
+                    "operation",
+                    CapabilityStatementRestOperation,
+                    "CapabilityStatementRestOperation",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "resource",
+                    "resource",
+                    CapabilityStatementRestResource,
+                    "CapabilityStatementRestResource",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "searchParam",
+                    "searchParam",
+                    CapabilityStatementRestResourceSearchParam,
+                    "CapabilityStatementRestResourceSearchParam",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "security",
+                    "security",
+                    CapabilityStatementRestSecurity,
+                    "CapabilityStatementRestSecurity",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -523,14 +738,18 @@ class CapabilityStatementRestInteraction(backboneelement.BackboneElement):
         """ Anything special about operation behavior.
         Type `str`. """
 
-        super(CapabilityStatementRestInteraction, self).__init__(jsondict=jsondict, strict=strict)
+        super(CapabilityStatementRestInteraction, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(CapabilityStatementRestInteraction, self).elementProperties()
-        js.extend([
-            ("code", "code", str, "code", False, None, True),
-            ("documentation", "documentation", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                ("code", "code", str, "code", False, None, True),
+                ("documentation", "documentation", str, "string", False, None, False),
+            ]
+        )
         return js
 
 
@@ -559,14 +778,26 @@ class CapabilityStatementRestOperation(backboneelement.BackboneElement):
         """ Name by which the operation/query is invoked.
         Type `str`. """
 
-        super(CapabilityStatementRestOperation, self).__init__(jsondict=jsondict, strict=strict)
+        super(CapabilityStatementRestOperation, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(CapabilityStatementRestOperation, self).elementProperties()
-        js.extend([
-            ("definition", "definition", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("name", "name", str, "string", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "definition",
+                    "definition",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                ("name", "name", str, "string", False, None, True),
+            ]
+        )
         return js
 
 
@@ -648,27 +879,87 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
         """ no-version | versioned | versioned-update.
         Type `str`. """
 
-        super(CapabilityStatementRestResource, self).__init__(jsondict=jsondict, strict=strict)
+        super(CapabilityStatementRestResource, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(CapabilityStatementRestResource, self).elementProperties()
-        js.extend([
-            ("conditionalCreate", "conditionalCreate", bool, "boolean", False, None, False),
-            ("conditionalDelete", "conditionalDelete", str, "code", False, None, False),
-            ("conditionalRead", "conditionalRead", str, "code", False, None, False),
-            ("conditionalUpdate", "conditionalUpdate", bool, "boolean", False, None, False),
-            ("documentation", "documentation", str, "markdown", False, None, False),
-            ("interaction", "interaction", CapabilityStatementRestResourceInteraction, "CapabilityStatementRestResourceInteraction", True, None, True),
-            ("profile", "profile", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("readHistory", "readHistory", bool, "boolean", False, None, False),
-            ("referencePolicy", "referencePolicy", str, "code", True, None, False),
-            ("searchInclude", "searchInclude", str, "string", True, None, False),
-            ("searchParam", "searchParam", CapabilityStatementRestResourceSearchParam, "CapabilityStatementRestResourceSearchParam", True, None, False),
-            ("searchRevInclude", "searchRevInclude", str, "string", True, None, False),
-            ("type", "type", str, "code", False, None, True),
-            ("updateCreate", "updateCreate", bool, "boolean", False, None, False),
-            ("versioning", "versioning", str, "code", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "conditionalCreate",
+                    "conditionalCreate",
+                    bool,
+                    "boolean",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "conditionalDelete",
+                    "conditionalDelete",
+                    str,
+                    "code",
+                    False,
+                    None,
+                    False,
+                ),
+                ("conditionalRead", "conditionalRead", str, "code", False, None, False),
+                (
+                    "conditionalUpdate",
+                    "conditionalUpdate",
+                    bool,
+                    "boolean",
+                    False,
+                    None,
+                    False,
+                ),
+                ("documentation", "documentation", str, "markdown", False, None, False),
+                (
+                    "interaction",
+                    "interaction",
+                    CapabilityStatementRestResourceInteraction,
+                    "CapabilityStatementRestResourceInteraction",
+                    True,
+                    None,
+                    True,
+                ),
+                (
+                    "profile",
+                    "profile",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("readHistory", "readHistory", bool, "boolean", False, None, False),
+                ("referencePolicy", "referencePolicy", str, "code", True, None, False),
+                ("searchInclude", "searchInclude", str, "string", True, None, False),
+                (
+                    "searchParam",
+                    "searchParam",
+                    CapabilityStatementRestResourceSearchParam,
+                    "CapabilityStatementRestResourceSearchParam",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "searchRevInclude",
+                    "searchRevInclude",
+                    str,
+                    "string",
+                    True,
+                    None,
+                    False,
+                ),
+                ("type", "type", str, "code", False, None, True),
+                ("updateCreate", "updateCreate", bool, "boolean", False, None, False),
+                ("versioning", "versioning", str, "code", False, None, False),
+            ]
+        )
         return js
 
 
@@ -697,14 +988,18 @@ class CapabilityStatementRestResourceInteraction(backboneelement.BackboneElement
         """ Anything special about operation behavior.
         Type `str`. """
 
-        super(CapabilityStatementRestResourceInteraction, self).__init__(jsondict=jsondict, strict=strict)
+        super(CapabilityStatementRestResourceInteraction, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(CapabilityStatementRestResourceInteraction, self).elementProperties()
-        js.extend([
-            ("code", "code", str, "code", False, None, True),
-            ("documentation", "documentation", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                ("code", "code", str, "code", False, None, True),
+                ("documentation", "documentation", str, "string", False, None, False),
+            ]
+        )
         return js
 
 
@@ -743,16 +1038,20 @@ class CapabilityStatementRestResourceSearchParam(backboneelement.BackboneElement
         uri.
         Type `str`. """
 
-        super(CapabilityStatementRestResourceSearchParam, self).__init__(jsondict=jsondict, strict=strict)
+        super(CapabilityStatementRestResourceSearchParam, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(CapabilityStatementRestResourceSearchParam, self).elementProperties()
-        js.extend([
-            ("definition", "definition", str, "uri", False, None, False),
-            ("documentation", "documentation", str, "string", False, None, False),
-            ("name", "name", str, "string", False, None, True),
-            ("type", "type", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                ("definition", "definition", str, "uri", False, None, False),
+                ("documentation", "documentation", str, "string", False, None, False),
+                ("name", "name", str, "string", False, None, True),
+                ("type", "type", str, "code", False, None, True),
+            ]
+        )
         return js
 
 
@@ -789,16 +1088,36 @@ class CapabilityStatementRestSecurity(backboneelement.BackboneElement):
         """ OAuth | SMART-on-FHIR | NTLM | Basic | Kerberos | Certificates.
         List of `CodeableConcept` items (represented as `dict` in JSON). """
 
-        super(CapabilityStatementRestSecurity, self).__init__(jsondict=jsondict, strict=strict)
+        super(CapabilityStatementRestSecurity, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(CapabilityStatementRestSecurity, self).elementProperties()
-        js.extend([
-            ("certificate", "certificate", CapabilityStatementRestSecurityCertificate, "CapabilityStatementRestSecurityCertificate", True, None, False),
-            ("cors", "cors", bool, "boolean", False, None, False),
-            ("description", "description", str, "string", False, None, False),
-            ("service", "service", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "certificate",
+                    "certificate",
+                    CapabilityStatementRestSecurityCertificate,
+                    "CapabilityStatementRestSecurityCertificate",
+                    True,
+                    None,
+                    False,
+                ),
+                ("cors", "cors", bool, "boolean", False, None, False),
+                ("description", "description", str, "string", False, None, False),
+                (
+                    "service",
+                    "service",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -824,14 +1143,18 @@ class CapabilityStatementRestSecurityCertificate(backboneelement.BackboneElement
         """ Mime type for certificates.
         Type `str`. """
 
-        super(CapabilityStatementRestSecurityCertificate, self).__init__(jsondict=jsondict, strict=strict)
+        super(CapabilityStatementRestSecurityCertificate, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(CapabilityStatementRestSecurityCertificate, self).elementProperties()
-        js.extend([
-            ("blob", "blob", str, "base64Binary", False, None, False),
-            ("type", "type", str, "code", False, None, False),
-        ])
+        js.extend(
+            [
+                ("blob", "blob", str, "base64Binary", False, None, False),
+                ("type", "type", str, "code", False, None, False),
+            ]
+        )
         return js
 
 
@@ -865,40 +1188,51 @@ class CapabilityStatementSoftware(backboneelement.BackboneElement):
         """ Version covered by this statement.
         Type `str`. """
 
-        super(CapabilityStatementSoftware, self).__init__(jsondict=jsondict, strict=strict)
+        super(CapabilityStatementSoftware, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(CapabilityStatementSoftware, self).elementProperties()
-        js.extend([
-            ("name", "name", str, "string", False, None, True),
-            ("releaseDate", "releaseDate", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("version", "version", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                ("name", "name", str, "string", False, None, True),
+                (
+                    "releaseDate",
+                    "releaseDate",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                ("version", "version", str, "string", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import coding
 except ImportError:
-    coding = sys.modules[__package__ + '.coding']
+    coding = sys.modules[__package__ + ".coding"]
 try:
     from . import contactdetail
 except ImportError:
-    contactdetail = sys.modules[__package__ + '.contactdetail']
+    contactdetail = sys.modules[__package__ + ".contactdetail"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import usagecontext
 except ImportError:
-    usagecontext = sys.modules[__package__ + '.usagecontext']
+    usagecontext = sys.modules[__package__ + ".usagecontext"]

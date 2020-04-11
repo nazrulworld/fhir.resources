@@ -7,22 +7,23 @@ Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
 
-import os
-import pytest
 import io
-import unittest
 import json
+import os
+import unittest
 
-from .fixtures import force_bytes
+import pytest
+
 from .. import parameters
 from ..fhirdate import FHIRDate
+from .fixtures import force_bytes
 
 
 @pytest.mark.usefixtures("base_settings")
 class ParametersTests(unittest.TestCase):
     def instantiate_from(self, filename):
-        datadir = os.environ.get('FHIR_UNITTEST_DATADIR') or ''
-        with io.open(os.path.join(datadir, filename), 'r', encoding='utf-8') as handle:
+        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
+        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
             js = json.load(handle)
             self.assertEqual("Parameters", js["resourceType"])
         return parameters.Parameters(js)
@@ -43,4 +44,3 @@ class ParametersTests(unittest.TestCase):
         self.assertEqual(inst.parameter[0].valueDate.date, FHIRDate("2010-01-01").date)
         self.assertEqual(inst.parameter[0].valueDate.as_json(), "2010-01-01")
         self.assertEqual(force_bytes(inst.parameter[1].name), force_bytes("end"))
-

@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class Person(domainresource.DomainResource):
     """ A generic person record.
@@ -71,22 +74,62 @@ class Person(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(Person, self).elementProperties()
-        js.extend([
-            ("active", "active", bool, "boolean", False, None, False),
-            ("address", "address", address.Address, "Address", True, None, False),
-            ("birthDate", "birthDate", fhirdate.FHIRDate, "date", False, None, False),
-            ("gender", "gender", str, "code", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("link", "link", PersonLink, "PersonLink", True, None, False),
-            ("managingOrganization", "managingOrganization", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("name", "name", humanname.HumanName, "HumanName", True, None, False),
-            ("photo", "photo", attachment.Attachment, "Attachment", False, None, False),
-            ("telecom", "telecom", contactpoint.ContactPoint, "ContactPoint", True, None, False),
-        ])
+        js.extend(
+            [
+                ("active", "active", bool, "boolean", False, None, False),
+                ("address", "address", address.Address, "Address", True, None, False),
+                (
+                    "birthDate",
+                    "birthDate",
+                    fhirdate.FHIRDate,
+                    "date",
+                    False,
+                    None,
+                    False,
+                ),
+                ("gender", "gender", str, "code", False, None, False),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                ("link", "link", PersonLink, "PersonLink", True, None, False),
+                (
+                    "managingOrganization",
+                    "managingOrganization",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("name", "name", humanname.HumanName, "HumanName", True, None, False),
+                (
+                    "photo",
+                    "photo",
+                    attachment.Attachment,
+                    "Attachment",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "telecom",
+                    "telecom",
+                    contactpoint.ContactPoint,
+                    "ContactPoint",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class PersonLink(backboneelement.BackboneElement):
     """ Link to a resource that concerns the same actual person.
@@ -114,39 +157,48 @@ class PersonLink(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(PersonLink, self).elementProperties()
-        js.extend([
-            ("assurance", "assurance", str, "code", False, None, False),
-            ("target", "target", fhirreference.FHIRReference, "Reference", False, None, True),
-        ])
+        js.extend(
+            [
+                ("assurance", "assurance", str, "code", False, None, False),
+                (
+                    "target",
+                    "target",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import address
 except ImportError:
-    address = sys.modules[__package__ + '.address']
+    address = sys.modules[__package__ + ".address"]
 try:
     from . import attachment
 except ImportError:
-    attachment = sys.modules[__package__ + '.attachment']
+    attachment = sys.modules[__package__ + ".attachment"]
 try:
     from . import contactpoint
 except ImportError:
-    contactpoint = sys.modules[__package__ + '.contactpoint']
+    contactpoint = sys.modules[__package__ + ".contactpoint"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import humanname
 except ImportError:
-    humanname = sys.modules[__package__ + '.humanname']
+    humanname = sys.modules[__package__ + ".humanname"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]

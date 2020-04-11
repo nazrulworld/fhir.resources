@@ -10,6 +10,7 @@ Last updated: 2019-10-24T11:53:00+11:00
 
 from . import quantity
 
+
 class Distance(quantity.Quantity):
     """ A length - a value with a unit that is a physical distance.
     """
@@ -25,5 +26,3 @@ class Distance(quantity.Quantity):
         """
 
         super(Distance, self).__init__(jsondict=jsondict, strict=strict)
-
-

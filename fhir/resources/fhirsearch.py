@@ -25,11 +25,12 @@ class FHIRSearch(object):
 
         if struct is not None:
             if dict != type(struct):
-                raise Exception("Must pass a Python dictionary, but got a {}".format(type(struct)))
+                raise Exception(
+                    "Must pass a Python dictionary, but got a {}".format(type(struct))
+                )
             self.wants_expand = True
             for key, val in struct.items():
                 self.params.append(FHIRSearchParam(key, val))
-
 
     # MARK: Execution
 
@@ -48,7 +49,7 @@ class FHIRSearch(object):
                 else:
                     parts.append(param.as_parameter())
 
-        return '{}?{}'.format(self.resource_type.resource_type, '&'.join(parts))
+        return "{}?{}".format(self.resource_type.resource_type, "&".join(parts))
 
     def perform(self, server):
         """ Construct the search URL and execute it against the given server.
@@ -60,6 +61,7 @@ class FHIRSearch(object):
             raise Exception("Need a server to perform search")
 
         from . import bundle
+
         res = server.request_json(self.construct())
         bundle = bundle.Bundle(res)
         bundle._server = server
@@ -113,7 +115,7 @@ class FHIRSearchParam(object):
     def as_parameter(self):
         """ Return a string that represents the reciever as "key=value".
         """
-        return '{}={}'.format(self.name, quote_plus(self.value, safe=',<=>'))
+        return "{}={}".format(self.name, quote_plus(self.value, safe=",<=>"))
 
 
 class FHIRSearchParamHandler(object):
@@ -135,8 +137,7 @@ class FHIRSearchParamHandler(object):
     def can_handle(cls, key):
         if cls.handles is not None:
             return key in cls.handles
-        return True         # base class handles everything else, so be sure to test it last!
-
+        return True  # base class handles everything else, so be sure to test it last!
 
     def __init__(self, key, value):
         self.key = key
@@ -187,78 +188,92 @@ class FHIRSearchParamHandler(object):
 
     def apply(self, param):
         if self.key is not None:
-            param.name = '{}.{}'.format(param.name, self.key)
+            param.name = "{}.{}".format(param.name, self.key)
         if 0 == len(self.multiplier):
             param.value = self.value
 
 
 class FHIRSearchParamModifierHandler(FHIRSearchParamHandler):
     modifiers = {
-        '$asc': ':asc',
-        '$desc': ':desc',
-        '$exact': ':exact',
-        '$missing': ':missing',
-        '$null': ':missing',
-        '$text': ':text',
+        "$asc": ":asc",
+        "$desc": ":desc",
+        "$exact": ":exact",
+        "$missing": ":missing",
+        "$null": ":missing",
+        "$text": ":text",
     }
     handles = modifiers.keys()
 
     def apply(self, param):
         if self.key not in self.__class__.modifiers:
-            raise Exception('Unknown modifier "{}" for "{}"'.format(self.key, param.name))
+            raise Exception(
+                'Unknown modifier "{}" for "{}"'.format(self.key, param.name)
+            )
         param.name += self.__class__.modifiers[self.key]
         param.value = self.value
 
 
 class FHIRSearchParamOperatorHandler(FHIRSearchParamHandler):
     operators = {
-        '$gt': '>',
-        '$lt': '<',
-        '$lte': '<=',
-        '$gte': '>=',
+        "$gt": ">",
+        "$lt": "<",
+        "$lte": "<=",
+        "$gte": ">=",
     }
     handles = operators.keys()
 
     def apply(self, param):
         if self.key not in self.__class__.operators:
-            raise Exception('Unknown operator "{}" for "{}"'.format(self.key, parent.name))
+            raise Exception(
+                'Unknown operator "{}" for "{}"'.format(self.key, parent.name)
+            )
         param.value = self.__class__.operators[self.key] + self.value
 
 
 class FHIRSearchParamMultiHandler(FHIRSearchParamHandler):
-    handles = ['$and', '$or']
+    handles = ["$and", "$or"]
 
     def prepare(self, parent):
         if list != type(self.value):
-            raise Exception('Expecting a list argument for "{}" but got {}'.format(parent.key, self.value))
+            raise Exception(
+                'Expecting a list argument for "{}" but got {}'.format(
+                    parent.key, self.value
+                )
+            )
 
         handlers = []
         for val in self.value:
             if dict == type(val):
                 for kkey, vval in val.items():
-                    handlers.append(FHIRSearchParamHandler.handler_for(kkey)(kkey, vval))
+                    handlers.append(
+                        FHIRSearchParamHandler.handler_for(kkey)(kkey, vval)
+                    )
             else:
-                handlers.append(FHIRSearchParamHandler.handler_for(parent.key)(None, val))
+                handlers.append(
+                    FHIRSearchParamHandler.handler_for(parent.key)(None, val)
+                )
 
-        if '$and' == self.key:
+        if "$and" == self.key:
             for handler in handlers:
                 handler.prepare(parent)
-        elif '$or' == self.key:
+        elif "$or" == self.key:
             ors = [h.value for h in handlers]
-            handler = FHIRSearchParamHandler.handler_for(parent.key)(None, ','.join(ors))
+            handler = FHIRSearchParamHandler.handler_for(parent.key)(
+                None, ",".join(ors)
+            )
             handler.prepare(parent)
         else:
             raise Exception('I cannot handle "{}"'.format(self.key))
 
 
 class FHIRSearchParamTypeHandler(FHIRSearchParamHandler):
-    handles = ['$type']
+    handles = ["$type"]
 
     def prepare(self, parent):
         parent.modifier.append(self)
 
     def apply(self, param):
-        param.name = '{}:{}'.format(param.name, self.value)
+        param.name = "{}:{}".format(param.name, self.value)
 
 
 # announce all handlers
@@ -266,4 +281,3 @@ FHIRSearchParamHandler.announce_handler(FHIRSearchParamModifierHandler)
 FHIRSearchParamHandler.announce_handler(FHIRSearchParamOperatorHandler)
 FHIRSearchParamHandler.announce_handler(FHIRSearchParamMultiHandler)
 FHIRSearchParamHandler.announce_handler(FHIRSearchParamTypeHandler)
-

@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class CommunicationRequest(domainresource.DomainResource):
     """ A request for information to be sent to a receiver.
@@ -117,33 +120,185 @@ class CommunicationRequest(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(CommunicationRequest, self).elementProperties()
-        js.extend([
-            ("authoredOn", "authoredOn", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("basedOn", "basedOn", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("category", "category", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("context", "context", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("groupIdentifier", "groupIdentifier", identifier.Identifier, "Identifier", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("medium", "medium", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("note", "note", annotation.Annotation, "Annotation", True, None, False),
-            ("occurrenceDateTime", "occurrenceDateTime", fhirdate.FHIRDate, "dateTime", False, "occurrence", False),
-            ("occurrencePeriod", "occurrencePeriod", period.Period, "Period", False, "occurrence", False),
-            ("payload", "payload", CommunicationRequestPayload, "CommunicationRequestPayload", True, None, False),
-            ("priority", "priority", str, "code", False, None, False),
-            ("reasonCode", "reasonCode", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("reasonReference", "reasonReference", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("recipient", "recipient", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("replaces", "replaces", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("requester", "requester", CommunicationRequestRequester, "CommunicationRequestRequester", False, None, False),
-            ("sender", "sender", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("subject", "subject", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("topic", "topic", fhirreference.FHIRReference, "Reference", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "authoredOn",
+                    "authoredOn",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "basedOn",
+                    "basedOn",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "category",
+                    "category",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "context",
+                    "context",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "groupIdentifier",
+                    "groupIdentifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "medium",
+                    "medium",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "note",
+                    "note",
+                    annotation.Annotation,
+                    "Annotation",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "occurrenceDateTime",
+                    "occurrenceDateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    "occurrence",
+                    False,
+                ),
+                (
+                    "occurrencePeriod",
+                    "occurrencePeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "occurrence",
+                    False,
+                ),
+                (
+                    "payload",
+                    "payload",
+                    CommunicationRequestPayload,
+                    "CommunicationRequestPayload",
+                    True,
+                    None,
+                    False,
+                ),
+                ("priority", "priority", str, "code", False, None, False),
+                (
+                    "reasonCode",
+                    "reasonCode",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "reasonReference",
+                    "reasonReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "recipient",
+                    "recipient",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "replaces",
+                    "replaces",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "requester",
+                    "requester",
+                    CommunicationRequestRequester,
+                    "CommunicationRequestRequester",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "sender",
+                    "sender",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, True),
+                (
+                    "subject",
+                    "subject",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "topic",
+                    "topic",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class CommunicationRequestPayload(backboneelement.BackboneElement):
     """ Message payload.
@@ -173,15 +328,43 @@ class CommunicationRequestPayload(backboneelement.BackboneElement):
         """ Message part content.
         Type `str`. """
 
-        super(CommunicationRequestPayload, self).__init__(jsondict=jsondict, strict=strict)
+        super(CommunicationRequestPayload, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(CommunicationRequestPayload, self).elementProperties()
-        js.extend([
-            ("contentAttachment", "contentAttachment", attachment.Attachment, "Attachment", False, "content", True),
-            ("contentReference", "contentReference", fhirreference.FHIRReference, "Reference", False, "content", True),
-            ("contentString", "contentString", str, "string", False, "content", True),
-        ])
+        js.extend(
+            [
+                (
+                    "contentAttachment",
+                    "contentAttachment",
+                    attachment.Attachment,
+                    "Attachment",
+                    False,
+                    "content",
+                    True,
+                ),
+                (
+                    "contentReference",
+                    "contentReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "content",
+                    True,
+                ),
+                (
+                    "contentString",
+                    "contentString",
+                    str,
+                    "string",
+                    False,
+                    "content",
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -210,43 +393,62 @@ class CommunicationRequestRequester(backboneelement.BackboneElement):
         """ Organization agent is acting for.
         Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
-        super(CommunicationRequestRequester, self).__init__(jsondict=jsondict, strict=strict)
+        super(CommunicationRequestRequester, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(CommunicationRequestRequester, self).elementProperties()
-        js.extend([
-            ("agent", "agent", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("onBehalfOf", "onBehalfOf", fhirreference.FHIRReference, "Reference", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "agent",
+                    "agent",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "onBehalfOf",
+                    "onBehalfOf",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import annotation
 except ImportError:
-    annotation = sys.modules[__package__ + '.annotation']
+    annotation = sys.modules[__package__ + ".annotation"]
 try:
     from . import attachment
 except ImportError:
-    attachment = sys.modules[__package__ + '.attachment']
+    attachment = sys.modules[__package__ + ".attachment"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]

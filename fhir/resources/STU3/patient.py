@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class Patient(domainresource.DomainResource):
     """ Information about an individual or animal receiving health care services.
@@ -109,31 +112,143 @@ class Patient(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(Patient, self).elementProperties()
-        js.extend([
-            ("active", "active", bool, "boolean", False, None, False),
-            ("address", "address", address.Address, "Address", True, None, False),
-            ("animal", "animal", PatientAnimal, "PatientAnimal", False, None, False),
-            ("birthDate", "birthDate", fhirdate.FHIRDate, "date", False, None, False),
-            ("communication", "communication", PatientCommunication, "PatientCommunication", True, None, False),
-            ("contact", "contact", PatientContact, "PatientContact", True, None, False),
-            ("deceasedBoolean", "deceasedBoolean", bool, "boolean", False, "deceased", False),
-            ("deceasedDateTime", "deceasedDateTime", fhirdate.FHIRDate, "dateTime", False, "deceased", False),
-            ("gender", "gender", str, "code", False, None, False),
-            ("generalPractitioner", "generalPractitioner", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("link", "link", PatientLink, "PatientLink", True, None, False),
-            ("managingOrganization", "managingOrganization", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("maritalStatus", "maritalStatus", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("multipleBirthBoolean", "multipleBirthBoolean", bool, "boolean", False, "multipleBirth", False),
-            ("multipleBirthInteger", "multipleBirthInteger", int, "integer", False, "multipleBirth", False),
-            ("name", "name", humanname.HumanName, "HumanName", True, None, False),
-            ("photo", "photo", attachment.Attachment, "Attachment", True, None, False),
-            ("telecom", "telecom", contactpoint.ContactPoint, "ContactPoint", True, None, False),
-        ])
+        js.extend(
+            [
+                ("active", "active", bool, "boolean", False, None, False),
+                ("address", "address", address.Address, "Address", True, None, False),
+                (
+                    "animal",
+                    "animal",
+                    PatientAnimal,
+                    "PatientAnimal",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "birthDate",
+                    "birthDate",
+                    fhirdate.FHIRDate,
+                    "date",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "communication",
+                    "communication",
+                    PatientCommunication,
+                    "PatientCommunication",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "contact",
+                    "contact",
+                    PatientContact,
+                    "PatientContact",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "deceasedBoolean",
+                    "deceasedBoolean",
+                    bool,
+                    "boolean",
+                    False,
+                    "deceased",
+                    False,
+                ),
+                (
+                    "deceasedDateTime",
+                    "deceasedDateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    "deceased",
+                    False,
+                ),
+                ("gender", "gender", str, "code", False, None, False),
+                (
+                    "generalPractitioner",
+                    "generalPractitioner",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                ("link", "link", PatientLink, "PatientLink", True, None, False),
+                (
+                    "managingOrganization",
+                    "managingOrganization",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "maritalStatus",
+                    "maritalStatus",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "multipleBirthBoolean",
+                    "multipleBirthBoolean",
+                    bool,
+                    "boolean",
+                    False,
+                    "multipleBirth",
+                    False,
+                ),
+                (
+                    "multipleBirthInteger",
+                    "multipleBirthInteger",
+                    int,
+                    "integer",
+                    False,
+                    "multipleBirth",
+                    False,
+                ),
+                ("name", "name", humanname.HumanName, "HumanName", True, None, False),
+                (
+                    "photo",
+                    "photo",
+                    attachment.Attachment,
+                    "Attachment",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "telecom",
+                    "telecom",
+                    contactpoint.ContactPoint,
+                    "ContactPoint",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class PatientAnimal(backboneelement.BackboneElement):
     """ This patient is known to be an animal (non-human).
@@ -167,11 +282,37 @@ class PatientAnimal(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(PatientAnimal, self).elementProperties()
-        js.extend([
-            ("breed", "breed", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("genderStatus", "genderStatus", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("species", "species", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "breed",
+                    "breed",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "genderStatus",
+                    "genderStatus",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "species",
+                    "species",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -206,10 +347,20 @@ class PatientCommunication(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(PatientCommunication, self).elementProperties()
-        js.extend([
-            ("language", "language", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("preferred", "preferred", bool, "boolean", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "language",
+                    "language",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                ("preferred", "preferred", bool, "boolean", False, None, False),
+            ]
+        )
         return js
 
 
@@ -260,15 +411,41 @@ class PatientContact(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(PatientContact, self).elementProperties()
-        js.extend([
-            ("address", "address", address.Address, "Address", False, None, False),
-            ("gender", "gender", str, "code", False, None, False),
-            ("name", "name", humanname.HumanName, "HumanName", False, None, False),
-            ("organization", "organization", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("period", "period", period.Period, "Period", False, None, False),
-            ("relationship", "relationship", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("telecom", "telecom", contactpoint.ContactPoint, "ContactPoint", True, None, False),
-        ])
+        js.extend(
+            [
+                ("address", "address", address.Address, "Address", False, None, False),
+                ("gender", "gender", str, "code", False, None, False),
+                ("name", "name", humanname.HumanName, "HumanName", False, None, False),
+                (
+                    "organization",
+                    "organization",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("period", "period", period.Period, "Period", False, None, False),
+                (
+                    "relationship",
+                    "relationship",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "telecom",
+                    "telecom",
+                    contactpoint.ContactPoint,
+                    "ContactPoint",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -301,47 +478,56 @@ class PatientLink(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(PatientLink, self).elementProperties()
-        js.extend([
-            ("other", "other", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("type", "type", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "other",
+                    "other",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                ("type", "type", str, "code", False, None, True),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import address
 except ImportError:
-    address = sys.modules[__package__ + '.address']
+    address = sys.modules[__package__ + ".address"]
 try:
     from . import attachment
 except ImportError:
-    attachment = sys.modules[__package__ + '.attachment']
+    attachment = sys.modules[__package__ + ".attachment"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import contactpoint
 except ImportError:
-    contactpoint = sys.modules[__package__ + '.contactpoint']
+    contactpoint = sys.modules[__package__ + ".contactpoint"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import humanname
 except ImportError:
-    humanname = sys.modules[__package__ + '.humanname']
+    humanname = sys.modules[__package__ + ".humanname"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]

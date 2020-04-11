@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class Claim(domainresource.DomainResource):
     """ Claim, Pre-determination or Pre-authorization.
@@ -153,42 +156,234 @@ class Claim(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(Claim, self).elementProperties()
-        js.extend([
-            ("accident", "accident", ClaimAccident, "ClaimAccident", False, None, False),
-            ("billablePeriod", "billablePeriod", period.Period, "Period", False, None, False),
-            ("careTeam", "careTeam", ClaimCareTeam, "ClaimCareTeam", True, None, False),
-            ("created", "created", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("diagnosis", "diagnosis", ClaimDiagnosis, "ClaimDiagnosis", True, None, False),
-            ("employmentImpacted", "employmentImpacted", period.Period, "Period", False, None, False),
-            ("enterer", "enterer", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("facility", "facility", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("fundsReserve", "fundsReserve", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("hospitalization", "hospitalization", period.Period, "Period", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("information", "information", ClaimInformation, "ClaimInformation", True, None, False),
-            ("insurance", "insurance", ClaimInsurance, "ClaimInsurance", True, None, False),
-            ("insurer", "insurer", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("item", "item", ClaimItem, "ClaimItem", True, None, False),
-            ("organization", "organization", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("originalPrescription", "originalPrescription", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("patient", "patient", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("payee", "payee", ClaimPayee, "ClaimPayee", False, None, False),
-            ("prescription", "prescription", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("priority", "priority", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("procedure", "procedure", ClaimProcedure, "ClaimProcedure", True, None, False),
-            ("provider", "provider", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("referral", "referral", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("related", "related", ClaimRelated, "ClaimRelated", True, None, False),
-            ("status", "status", str, "code", False, None, False),
-            ("subType", "subType", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("total", "total", money.Money, "Money", False, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("use", "use", str, "code", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "accident",
+                    "accident",
+                    ClaimAccident,
+                    "ClaimAccident",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "billablePeriod",
+                    "billablePeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "careTeam",
+                    "careTeam",
+                    ClaimCareTeam,
+                    "ClaimCareTeam",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "created",
+                    "created",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "diagnosis",
+                    "diagnosis",
+                    ClaimDiagnosis,
+                    "ClaimDiagnosis",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "employmentImpacted",
+                    "employmentImpacted",
+                    period.Period,
+                    "Period",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "enterer",
+                    "enterer",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "facility",
+                    "facility",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "fundsReserve",
+                    "fundsReserve",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "hospitalization",
+                    "hospitalization",
+                    period.Period,
+                    "Period",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "information",
+                    "information",
+                    ClaimInformation,
+                    "ClaimInformation",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "insurance",
+                    "insurance",
+                    ClaimInsurance,
+                    "ClaimInsurance",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "insurer",
+                    "insurer",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("item", "item", ClaimItem, "ClaimItem", True, None, False),
+                (
+                    "organization",
+                    "organization",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "originalPrescription",
+                    "originalPrescription",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "patient",
+                    "patient",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("payee", "payee", ClaimPayee, "ClaimPayee", False, None, False),
+                (
+                    "prescription",
+                    "prescription",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "priority",
+                    "priority",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "procedure",
+                    "procedure",
+                    ClaimProcedure,
+                    "ClaimProcedure",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "provider",
+                    "provider",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "referral",
+                    "referral",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("related", "related", ClaimRelated, "ClaimRelated", True, None, False),
+                ("status", "status", str, "code", False, None, False),
+                (
+                    "subType",
+                    "subType",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                ("total", "total", money.Money, "Money", False, None, False),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("use", "use", str, "code", False, None, False),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class ClaimAccident(backboneelement.BackboneElement):
     """ Details about an accident.
@@ -228,12 +423,38 @@ class ClaimAccident(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ClaimAccident, self).elementProperties()
-        js.extend([
-            ("date", "date", fhirdate.FHIRDate, "date", False, None, True),
-            ("locationAddress", "locationAddress", address.Address, "Address", False, "location", False),
-            ("locationReference", "locationReference", fhirreference.FHIRReference, "Reference", False, "location", False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                ("date", "date", fhirdate.FHIRDate, "date", False, None, True),
+                (
+                    "locationAddress",
+                    "locationAddress",
+                    address.Address,
+                    "Address",
+                    False,
+                    "location",
+                    False,
+                ),
+                (
+                    "locationReference",
+                    "locationReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "location",
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -278,13 +499,39 @@ class ClaimCareTeam(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ClaimCareTeam, self).elementProperties()
-        js.extend([
-            ("provider", "provider", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("qualification", "qualification", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("responsible", "responsible", bool, "boolean", False, None, False),
-            ("role", "role", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("sequence", "sequence", int, "positiveInt", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "provider",
+                    "provider",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "qualification",
+                    "qualification",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("responsible", "responsible", bool, "boolean", False, None, False),
+                (
+                    "role",
+                    "role",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("sequence", "sequence", int, "positiveInt", False, None, True),
+            ]
+        )
         return js
 
 
@@ -328,13 +575,47 @@ class ClaimDiagnosis(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ClaimDiagnosis, self).elementProperties()
-        js.extend([
-            ("diagnosisCodeableConcept", "diagnosisCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "diagnosis", True),
-            ("diagnosisReference", "diagnosisReference", fhirreference.FHIRReference, "Reference", False, "diagnosis", True),
-            ("packageCode", "packageCode", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("sequence", "sequence", int, "positiveInt", False, None, True),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "diagnosisCodeableConcept",
+                    "diagnosisCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "diagnosis",
+                    True,
+                ),
+                (
+                    "diagnosisReference",
+                    "diagnosisReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "diagnosis",
+                    True,
+                ),
+                (
+                    "packageCode",
+                    "packageCode",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("sequence", "sequence", int, "positiveInt", False, None, True),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -401,18 +682,84 @@ class ClaimInformation(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ClaimInformation, self).elementProperties()
-        js.extend([
-            ("category", "category", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("reason", "reason", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("sequence", "sequence", int, "positiveInt", False, None, True),
-            ("timingDate", "timingDate", fhirdate.FHIRDate, "date", False, "timing", False),
-            ("timingPeriod", "timingPeriod", period.Period, "Period", False, "timing", False),
-            ("valueAttachment", "valueAttachment", attachment.Attachment, "Attachment", False, "value", False),
-            ("valueQuantity", "valueQuantity", quantity.Quantity, "Quantity", False, "value", False),
-            ("valueReference", "valueReference", fhirreference.FHIRReference, "Reference", False, "value", False),
-            ("valueString", "valueString", str, "string", False, "value", False),
-        ])
+        js.extend(
+            [
+                (
+                    "category",
+                    "category",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "reason",
+                    "reason",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("sequence", "sequence", int, "positiveInt", False, None, True),
+                (
+                    "timingDate",
+                    "timingDate",
+                    fhirdate.FHIRDate,
+                    "date",
+                    False,
+                    "timing",
+                    False,
+                ),
+                (
+                    "timingPeriod",
+                    "timingPeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "timing",
+                    False,
+                ),
+                (
+                    "valueAttachment",
+                    "valueAttachment",
+                    attachment.Attachment,
+                    "Attachment",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueQuantity",
+                    "valueQuantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueReference",
+                    "valueReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "value",
+                    False,
+                ),
+                ("valueString", "valueString", str, "string", False, "value", False),
+            ]
+        )
         return js
 
 
@@ -460,14 +807,40 @@ class ClaimInsurance(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ClaimInsurance, self).elementProperties()
-        js.extend([
-            ("businessArrangement", "businessArrangement", str, "string", False, None, False),
-            ("claimResponse", "claimResponse", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("coverage", "coverage", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("focal", "focal", bool, "boolean", False, None, True),
-            ("preAuthRef", "preAuthRef", str, "string", True, None, False),
-            ("sequence", "sequence", int, "positiveInt", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "businessArrangement",
+                    "businessArrangement",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "claimResponse",
+                    "claimResponse",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "coverage",
+                    "coverage",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                ("focal", "focal", bool, "boolean", False, None, True),
+                ("preAuthRef", "preAuthRef", str, "string", True, None, False),
+                ("sequence", "sequence", int, "positiveInt", False, None, True),
+            ]
+        )
         return js
 
 
@@ -587,32 +960,194 @@ class ClaimItem(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ClaimItem, self).elementProperties()
-        js.extend([
-            ("bodySite", "bodySite", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("careTeamLinkId", "careTeamLinkId", int, "positiveInt", True, None, False),
-            ("category", "category", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("detail", "detail", ClaimItemDetail, "ClaimItemDetail", True, None, False),
-            ("diagnosisLinkId", "diagnosisLinkId", int, "positiveInt", True, None, False),
-            ("encounter", "encounter", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("factor", "factor", float, "decimal", False, None, False),
-            ("informationLinkId", "informationLinkId", int, "positiveInt", True, None, False),
-            ("locationAddress", "locationAddress", address.Address, "Address", False, "location", False),
-            ("locationCodeableConcept", "locationCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "location", False),
-            ("locationReference", "locationReference", fhirreference.FHIRReference, "Reference", False, "location", False),
-            ("modifier", "modifier", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("net", "net", money.Money, "Money", False, None, False),
-            ("procedureLinkId", "procedureLinkId", int, "positiveInt", True, None, False),
-            ("programCode", "programCode", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("quantity", "quantity", quantity.Quantity, "Quantity", False, None, False),
-            ("revenue", "revenue", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("sequence", "sequence", int, "positiveInt", False, None, True),
-            ("service", "service", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("servicedDate", "servicedDate", fhirdate.FHIRDate, "date", False, "serviced", False),
-            ("servicedPeriod", "servicedPeriod", period.Period, "Period", False, "serviced", False),
-            ("subSite", "subSite", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("udi", "udi", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("unitPrice", "unitPrice", money.Money, "Money", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "bodySite",
+                    "bodySite",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "careTeamLinkId",
+                    "careTeamLinkId",
+                    int,
+                    "positiveInt",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "category",
+                    "category",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "detail",
+                    "detail",
+                    ClaimItemDetail,
+                    "ClaimItemDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "diagnosisLinkId",
+                    "diagnosisLinkId",
+                    int,
+                    "positiveInt",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "encounter",
+                    "encounter",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                ("factor", "factor", float, "decimal", False, None, False),
+                (
+                    "informationLinkId",
+                    "informationLinkId",
+                    int,
+                    "positiveInt",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "locationAddress",
+                    "locationAddress",
+                    address.Address,
+                    "Address",
+                    False,
+                    "location",
+                    False,
+                ),
+                (
+                    "locationCodeableConcept",
+                    "locationCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "location",
+                    False,
+                ),
+                (
+                    "locationReference",
+                    "locationReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "location",
+                    False,
+                ),
+                (
+                    "modifier",
+                    "modifier",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                ("net", "net", money.Money, "Money", False, None, False),
+                (
+                    "procedureLinkId",
+                    "procedureLinkId",
+                    int,
+                    "positiveInt",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "programCode",
+                    "programCode",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "quantity",
+                    "quantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "revenue",
+                    "revenue",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("sequence", "sequence", int, "positiveInt", False, None, True),
+                (
+                    "service",
+                    "service",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "servicedDate",
+                    "servicedDate",
+                    fhirdate.FHIRDate,
+                    "date",
+                    False,
+                    "serviced",
+                    False,
+                ),
+                (
+                    "servicedPeriod",
+                    "servicedPeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "serviced",
+                    False,
+                ),
+                (
+                    "subSite",
+                    "subSite",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "udi",
+                    "udi",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                ("unitPrice", "unitPrice", money.Money, "Money", False, None, False),
+            ]
+        )
         return js
 
 
@@ -684,20 +1219,86 @@ class ClaimItemDetail(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ClaimItemDetail, self).elementProperties()
-        js.extend([
-            ("category", "category", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("factor", "factor", float, "decimal", False, None, False),
-            ("modifier", "modifier", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("net", "net", money.Money, "Money", False, None, False),
-            ("programCode", "programCode", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("quantity", "quantity", quantity.Quantity, "Quantity", False, None, False),
-            ("revenue", "revenue", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("sequence", "sequence", int, "positiveInt", False, None, True),
-            ("service", "service", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("subDetail", "subDetail", ClaimItemDetailSubDetail, "ClaimItemDetailSubDetail", True, None, False),
-            ("udi", "udi", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("unitPrice", "unitPrice", money.Money, "Money", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "category",
+                    "category",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("factor", "factor", float, "decimal", False, None, False),
+                (
+                    "modifier",
+                    "modifier",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                ("net", "net", money.Money, "Money", False, None, False),
+                (
+                    "programCode",
+                    "programCode",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "quantity",
+                    "quantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "revenue",
+                    "revenue",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("sequence", "sequence", int, "positiveInt", False, None, True),
+                (
+                    "service",
+                    "service",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "subDetail",
+                    "subDetail",
+                    ClaimItemDetailSubDetail,
+                    "ClaimItemDetailSubDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "udi",
+                    "udi",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                ("unitPrice", "unitPrice", money.Money, "Money", False, None, False),
+            ]
+        )
         return js
 
 
@@ -765,19 +1366,77 @@ class ClaimItemDetailSubDetail(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ClaimItemDetailSubDetail, self).elementProperties()
-        js.extend([
-            ("category", "category", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("factor", "factor", float, "decimal", False, None, False),
-            ("modifier", "modifier", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("net", "net", money.Money, "Money", False, None, False),
-            ("programCode", "programCode", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("quantity", "quantity", quantity.Quantity, "Quantity", False, None, False),
-            ("revenue", "revenue", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("sequence", "sequence", int, "positiveInt", False, None, True),
-            ("service", "service", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("udi", "udi", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("unitPrice", "unitPrice", money.Money, "Money", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "category",
+                    "category",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("factor", "factor", float, "decimal", False, None, False),
+                (
+                    "modifier",
+                    "modifier",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                ("net", "net", money.Money, "Money", False, None, False),
+                (
+                    "programCode",
+                    "programCode",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "quantity",
+                    "quantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "revenue",
+                    "revenue",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("sequence", "sequence", int, "positiveInt", False, None, True),
+                (
+                    "service",
+                    "service",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "udi",
+                    "udi",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                ("unitPrice", "unitPrice", money.Money, "Money", False, None, False),
+            ]
+        )
         return js
 
 
@@ -813,11 +1472,37 @@ class ClaimPayee(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ClaimPayee, self).elementProperties()
-        js.extend([
-            ("party", "party", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("resourceType", "resourceType", coding.Coding, "Coding", False, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "party",
+                    "party",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "resourceType",
+                    "resourceType",
+                    coding.Coding,
+                    "Coding",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -857,12 +1542,30 @@ class ClaimProcedure(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ClaimProcedure, self).elementProperties()
-        js.extend([
-            ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("procedureCodeableConcept", "procedureCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "procedure", True),
-            ("procedureReference", "procedureReference", fhirreference.FHIRReference, "Reference", False, "procedure", True),
-            ("sequence", "sequence", int, "positiveInt", False, None, True),
-        ])
+        js.extend(
+            [
+                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
+                (
+                    "procedureCodeableConcept",
+                    "procedureCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "procedure",
+                    True,
+                ),
+                (
+                    "procedureReference",
+                    "procedureReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "procedure",
+                    True,
+                ),
+                ("sequence", "sequence", int, "positiveInt", False, None, True),
+            ]
+        )
         return js
 
 
@@ -899,52 +1602,77 @@ class ClaimRelated(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ClaimRelated, self).elementProperties()
-        js.extend([
-            ("claim", "claim", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("reference", "reference", identifier.Identifier, "Identifier", False, None, False),
-            ("relationship", "relationship", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "claim",
+                    "claim",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "reference",
+                    "reference",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "relationship",
+                    "relationship",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import address
 except ImportError:
-    address = sys.modules[__package__ + '.address']
+    address = sys.modules[__package__ + ".address"]
 try:
     from . import attachment
 except ImportError:
-    attachment = sys.modules[__package__ + '.attachment']
+    attachment = sys.modules[__package__ + ".attachment"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import coding
 except ImportError:
-    coding = sys.modules[__package__ + '.coding']
+    coding = sys.modules[__package__ + ".coding"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import money
 except ImportError:
-    money = sys.modules[__package__ + '.money']
+    money = sys.modules[__package__ + ".money"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]
 try:
     from . import quantity
 except ImportError:
-    quantity = sys.modules[__package__ + '.quantity']
+    quantity = sys.modules[__package__ + ".quantity"]

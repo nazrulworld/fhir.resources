@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class OperationDefinition(domainresource.DomainResource):
     """ Definition of an operation or a named query.
@@ -124,35 +127,83 @@ class OperationDefinition(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(OperationDefinition, self).elementProperties()
-        js.extend([
-            ("base", "base", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("code", "code", str, "code", False, None, True),
-            ("comment", "comment", str, "string", False, None, False),
-            ("contact", "contact", contactdetail.ContactDetail, "ContactDetail", True, None, False),
-            ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("description", "description", str, "markdown", False, None, False),
-            ("experimental", "experimental", bool, "boolean", False, None, False),
-            ("idempotent", "idempotent", bool, "boolean", False, None, False),
-            ("instance", "instance", bool, "boolean", False, None, True),
-            ("jurisdiction", "jurisdiction", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("kind", "kind", str, "code", False, None, True),
-            ("name", "name", str, "string", False, None, True),
-            ("overload", "overload", OperationDefinitionOverload, "OperationDefinitionOverload", True, None, False),
-            ("parameter", "parameter", OperationDefinitionParameter, "OperationDefinitionParameter", True, None, False),
-            ("publisher", "publisher", str, "string", False, None, False),
-            ("purpose", "purpose", str, "markdown", False, None, False),
-            ("resource", "resource", str, "code", True, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("system", "system", bool, "boolean", False, None, True),
-            ("type", "type", bool, "boolean", False, None, True),
-            ("url", "url", str, "uri", False, None, False),
-            ("useContext", "useContext", usagecontext.UsageContext, "UsageContext", True, None, False),
-            ("version", "version", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "base",
+                    "base",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("code", "code", str, "code", False, None, True),
+                ("comment", "comment", str, "string", False, None, False),
+                (
+                    "contact",
+                    "contact",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
+                ("description", "description", str, "markdown", False, None, False),
+                ("experimental", "experimental", bool, "boolean", False, None, False),
+                ("idempotent", "idempotent", bool, "boolean", False, None, False),
+                ("instance", "instance", bool, "boolean", False, None, True),
+                (
+                    "jurisdiction",
+                    "jurisdiction",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                ("kind", "kind", str, "code", False, None, True),
+                ("name", "name", str, "string", False, None, True),
+                (
+                    "overload",
+                    "overload",
+                    OperationDefinitionOverload,
+                    "OperationDefinitionOverload",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "parameter",
+                    "parameter",
+                    OperationDefinitionParameter,
+                    "OperationDefinitionParameter",
+                    True,
+                    None,
+                    False,
+                ),
+                ("publisher", "publisher", str, "string", False, None, False),
+                ("purpose", "purpose", str, "markdown", False, None, False),
+                ("resource", "resource", str, "code", True, None, False),
+                ("status", "status", str, "code", False, None, True),
+                ("system", "system", bool, "boolean", False, None, True),
+                ("type", "type", bool, "boolean", False, None, True),
+                ("url", "url", str, "uri", False, None, False),
+                (
+                    "useContext",
+                    "useContext",
+                    usagecontext.UsageContext,
+                    "UsageContext",
+                    True,
+                    None,
+                    False,
+                ),
+                ("version", "version", str, "string", False, None, False),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class OperationDefinitionOverload(backboneelement.BackboneElement):
     """ Define overloaded variants for when  generating code.
@@ -180,14 +231,18 @@ class OperationDefinitionOverload(backboneelement.BackboneElement):
         """ Name of parameter to include in overload.
         List of `str` items. """
 
-        super(OperationDefinitionOverload, self).__init__(jsondict=jsondict, strict=strict)
+        super(OperationDefinitionOverload, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(OperationDefinitionOverload, self).elementProperties()
-        js.extend([
-            ("comment", "comment", str, "string", False, None, False),
-            ("parameterName", "parameterName", str, "string", True, None, False),
-        ])
+        js.extend(
+            [
+                ("comment", "comment", str, "string", False, None, False),
+                ("parameterName", "parameterName", str, "string", True, None, False),
+            ]
+        )
         return js
 
 
@@ -248,22 +303,50 @@ class OperationDefinitionParameter(backboneelement.BackboneElement):
         """ in | out.
         Type `str`. """
 
-        super(OperationDefinitionParameter, self).__init__(jsondict=jsondict, strict=strict)
+        super(OperationDefinitionParameter, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(OperationDefinitionParameter, self).elementProperties()
-        js.extend([
-            ("binding", "binding", OperationDefinitionParameterBinding, "OperationDefinitionParameterBinding", False, None, False),
-            ("documentation", "documentation", str, "string", False, None, False),
-            ("max", "max", str, "string", False, None, True),
-            ("min", "min", int, "integer", False, None, True),
-            ("name", "name", str, "code", False, None, True),
-            ("part", "part", OperationDefinitionParameter, "OperationDefinitionParameter", True, None, False),
-            ("profile", "profile", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("searchType", "searchType", str, "code", False, None, False),
-            ("type", "type", str, "code", False, None, False),
-            ("use", "use", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "binding",
+                    "binding",
+                    OperationDefinitionParameterBinding,
+                    "OperationDefinitionParameterBinding",
+                    False,
+                    None,
+                    False,
+                ),
+                ("documentation", "documentation", str, "string", False, None, False),
+                ("max", "max", str, "string", False, None, True),
+                ("min", "min", int, "integer", False, None, True),
+                ("name", "name", str, "code", False, None, True),
+                (
+                    "part",
+                    "part",
+                    OperationDefinitionParameter,
+                    "OperationDefinitionParameter",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "profile",
+                    "profile",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("searchType", "searchType", str, "code", False, None, False),
+                ("type", "type", str, "code", False, None, False),
+                ("use", "use", str, "code", False, None, True),
+            ]
+        )
         return js
 
 
@@ -296,36 +379,47 @@ class OperationDefinitionParameterBinding(backboneelement.BackboneElement):
         """ Source of value set.
         Type `str`. """
 
-        super(OperationDefinitionParameterBinding, self).__init__(jsondict=jsondict, strict=strict)
+        super(OperationDefinitionParameterBinding, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(OperationDefinitionParameterBinding, self).elementProperties()
-        js.extend([
-            ("strength", "strength", str, "code", False, None, True),
-            ("valueSetReference", "valueSetReference", fhirreference.FHIRReference, "Reference", False, "valueSet", True),
-            ("valueSetUri", "valueSetUri", str, "uri", False, "valueSet", True),
-        ])
+        js.extend(
+            [
+                ("strength", "strength", str, "code", False, None, True),
+                (
+                    "valueSetReference",
+                    "valueSetReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "valueSet",
+                    True,
+                ),
+                ("valueSetUri", "valueSetUri", str, "uri", False, "valueSet", True),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import contactdetail
 except ImportError:
-    contactdetail = sys.modules[__package__ + '.contactdetail']
+    contactdetail = sys.modules[__package__ + ".contactdetail"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import usagecontext
 except ImportError:
-    usagecontext = sys.modules[__package__ + '.usagecontext']
+    usagecontext = sys.modules[__package__ + ".usagecontext"]

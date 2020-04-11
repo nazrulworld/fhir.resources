@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class MeasureReport(domainresource.DomainResource):
     """ Results of a measure evaluation.
@@ -70,22 +73,70 @@ class MeasureReport(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(MeasureReport, self).elementProperties()
-        js.extend([
-            ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("evaluatedResources", "evaluatedResources", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("group", "group", MeasureReportGroup, "MeasureReportGroup", True, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", False, None, False),
-            ("measure", "measure", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("patient", "patient", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("period", "period", period.Period, "Period", False, None, True),
-            ("reportingOrganization", "reportingOrganization", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("type", "type", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
+                (
+                    "evaluatedResources",
+                    "evaluatedResources",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "group",
+                    "group",
+                    MeasureReportGroup,
+                    "MeasureReportGroup",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "measure",
+                    "measure",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "patient",
+                    "patient",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("period", "period", period.Period, "Period", False, None, True),
+                (
+                    "reportingOrganization",
+                    "reportingOrganization",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, True),
+                ("type", "type", str, "code", False, None, True),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class MeasureReportGroup(backboneelement.BackboneElement):
     """ Measure results for each group.
@@ -124,12 +175,38 @@ class MeasureReportGroup(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(MeasureReportGroup, self).elementProperties()
-        js.extend([
-            ("identifier", "identifier", identifier.Identifier, "Identifier", False, None, True),
-            ("measureScore", "measureScore", float, "decimal", False, None, False),
-            ("population", "population", MeasureReportGroupPopulation, "MeasureReportGroupPopulation", True, None, False),
-            ("stratifier", "stratifier", MeasureReportGroupStratifier, "MeasureReportGroupStratifier", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    True,
+                ),
+                ("measureScore", "measureScore", float, "decimal", False, None, False),
+                (
+                    "population",
+                    "population",
+                    MeasureReportGroupPopulation,
+                    "MeasureReportGroupPopulation",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "stratifier",
+                    "stratifier",
+                    MeasureReportGroupStratifier,
+                    "MeasureReportGroupStratifier",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -168,16 +245,44 @@ class MeasureReportGroupPopulation(backboneelement.BackboneElement):
         """ For patient-list reports, the patients in this population.
         Type `FHIRReference` referencing `['List']` (represented as `dict` in JSON). """
 
-        super(MeasureReportGroupPopulation, self).__init__(jsondict=jsondict, strict=strict)
+        super(MeasureReportGroupPopulation, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(MeasureReportGroupPopulation, self).elementProperties()
-        js.extend([
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("count", "count", int, "integer", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", False, None, False),
-            ("patients", "patients", fhirreference.FHIRReference, "Reference", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("count", "count", int, "integer", False, None, False),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "patients",
+                    "patients",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -206,14 +311,34 @@ class MeasureReportGroupStratifier(backboneelement.BackboneElement):
         """ Stratum results, one for each unique value in the stratifier.
         List of `MeasureReportGroupStratifierStratum` items (represented as `dict` in JSON). """
 
-        super(MeasureReportGroupStratifier, self).__init__(jsondict=jsondict, strict=strict)
+        super(MeasureReportGroupStratifier, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(MeasureReportGroupStratifier, self).elementProperties()
-        js.extend([
-            ("identifier", "identifier", identifier.Identifier, "Identifier", False, None, False),
-            ("stratum", "stratum", MeasureReportGroupStratifierStratum, "MeasureReportGroupStratifierStratum", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "stratum",
+                    "stratum",
+                    MeasureReportGroupStratifierStratum,
+                    "MeasureReportGroupStratifierStratum",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -247,15 +372,27 @@ class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
         """ The stratum value, e.g. male.
         Type `str`. """
 
-        super(MeasureReportGroupStratifierStratum, self).__init__(jsondict=jsondict, strict=strict)
+        super(MeasureReportGroupStratifierStratum, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(MeasureReportGroupStratifierStratum, self).elementProperties()
-        js.extend([
-            ("measureScore", "measureScore", float, "decimal", False, None, False),
-            ("population", "population", MeasureReportGroupStratifierStratumPopulation, "MeasureReportGroupStratifierStratumPopulation", True, None, False),
-            ("value", "value", str, "string", False, None, True),
-        ])
+        js.extend(
+            [
+                ("measureScore", "measureScore", float, "decimal", False, None, False),
+                (
+                    "population",
+                    "population",
+                    MeasureReportGroupStratifierStratumPopulation,
+                    "MeasureReportGroupStratifierStratumPopulation",
+                    True,
+                    None,
+                    False,
+                ),
+                ("value", "value", str, "string", False, None, True),
+            ]
+        )
         return js
 
 
@@ -294,37 +431,66 @@ class MeasureReportGroupStratifierStratumPopulation(backboneelement.BackboneElem
         """ For patient-list reports, the patients in this population.
         Type `FHIRReference` referencing `['List']` (represented as `dict` in JSON). """
 
-        super(MeasureReportGroupStratifierStratumPopulation, self).__init__(jsondict=jsondict, strict=strict)
+        super(MeasureReportGroupStratifierStratumPopulation, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
-        js = super(MeasureReportGroupStratifierStratumPopulation, self).elementProperties()
-        js.extend([
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("count", "count", int, "integer", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", False, None, False),
-            ("patients", "patients", fhirreference.FHIRReference, "Reference", False, None, False),
-        ])
+        js = super(
+            MeasureReportGroupStratifierStratumPopulation, self
+        ).elementProperties()
+        js.extend(
+            [
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("count", "count", int, "integer", False, None, False),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "patients",
+                    "patients",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]

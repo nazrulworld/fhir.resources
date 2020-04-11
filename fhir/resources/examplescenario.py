@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class ExampleScenario(domainresource.DomainResource):
     """ Example of workflow instance.
@@ -97,29 +100,85 @@ class ExampleScenario(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(ExampleScenario, self).elementProperties()
-        js.extend([
-            ("actor", "actor", ExampleScenarioActor, "ExampleScenarioActor", True, None, False),
-            ("contact", "contact", contactdetail.ContactDetail, "ContactDetail", True, None, False),
-            ("copyright", "copyright", str, "markdown", False, None, False),
-            ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("experimental", "experimental", bool, "boolean", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("instance", "instance", ExampleScenarioInstance, "ExampleScenarioInstance", True, None, False),
-            ("jurisdiction", "jurisdiction", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("name", "name", str, "string", False, None, False),
-            ("process", "process", ExampleScenarioProcess, "ExampleScenarioProcess", True, None, False),
-            ("publisher", "publisher", str, "string", False, None, False),
-            ("purpose", "purpose", str, "markdown", False, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("url", "url", str, "uri", False, None, False),
-            ("useContext", "useContext", usagecontext.UsageContext, "UsageContext", True, None, False),
-            ("version", "version", str, "string", False, None, False),
-            ("workflow", "workflow", str, "canonical", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "actor",
+                    "actor",
+                    ExampleScenarioActor,
+                    "ExampleScenarioActor",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "contact",
+                    "contact",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                ("copyright", "copyright", str, "markdown", False, None, False),
+                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
+                ("experimental", "experimental", bool, "boolean", False, None, False),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "instance",
+                    "instance",
+                    ExampleScenarioInstance,
+                    "ExampleScenarioInstance",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "jurisdiction",
+                    "jurisdiction",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                ("name", "name", str, "string", False, None, False),
+                (
+                    "process",
+                    "process",
+                    ExampleScenarioProcess,
+                    "ExampleScenarioProcess",
+                    True,
+                    None,
+                    False,
+                ),
+                ("publisher", "publisher", str, "string", False, None, False),
+                ("purpose", "purpose", str, "markdown", False, None, False),
+                ("status", "status", str, "code", False, None, True),
+                ("url", "url", str, "uri", False, None, False),
+                (
+                    "useContext",
+                    "useContext",
+                    usagecontext.UsageContext,
+                    "UsageContext",
+                    True,
+                    None,
+                    False,
+                ),
+                ("version", "version", str, "string", False, None, False),
+                ("workflow", "workflow", str, "canonical", True, None, False),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class ExampleScenarioActor(backboneelement.BackboneElement):
     """ Actor participating in the resource.
@@ -155,12 +214,14 @@ class ExampleScenarioActor(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ExampleScenarioActor, self).elementProperties()
-        js.extend([
-            ("actorId", "actorId", str, "string", False, None, True),
-            ("description", "description", str, "markdown", False, None, False),
-            ("name", "name", str, "string", False, None, False),
-            ("type", "type", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                ("actorId", "actorId", str, "string", False, None, True),
+                ("description", "description", str, "markdown", False, None, False),
+                ("name", "name", str, "string", False, None, False),
+                ("type", "type", str, "code", False, None, True),
+            ]
+        )
         return js
 
 
@@ -206,14 +267,32 @@ class ExampleScenarioInstance(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ExampleScenarioInstance, self).elementProperties()
-        js.extend([
-            ("containedInstance", "containedInstance", ExampleScenarioInstanceContainedInstance, "ExampleScenarioInstanceContainedInstance", True, None, False),
-            ("description", "description", str, "markdown", False, None, False),
-            ("name", "name", str, "string", False, None, False),
-            ("resourceId", "resourceId", str, "string", False, None, True),
-            ("resourceType", "resourceType", str, "code", False, None, True),
-            ("version", "version", ExampleScenarioInstanceVersion, "ExampleScenarioInstanceVersion", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "containedInstance",
+                    "containedInstance",
+                    ExampleScenarioInstanceContainedInstance,
+                    "ExampleScenarioInstanceContainedInstance",
+                    True,
+                    None,
+                    False,
+                ),
+                ("description", "description", str, "markdown", False, None, False),
+                ("name", "name", str, "string", False, None, False),
+                ("resourceId", "resourceId", str, "string", False, None, True),
+                ("resourceType", "resourceType", str, "code", False, None, True),
+                (
+                    "version",
+                    "version",
+                    ExampleScenarioInstanceVersion,
+                    "ExampleScenarioInstanceVersion",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -242,14 +321,18 @@ class ExampleScenarioInstanceContainedInstance(backboneelement.BackboneElement):
         """ A specific version of a resource contained in the instance.
         Type `str`. """
 
-        super(ExampleScenarioInstanceContainedInstance, self).__init__(jsondict=jsondict, strict=strict)
+        super(ExampleScenarioInstanceContainedInstance, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ExampleScenarioInstanceContainedInstance, self).elementProperties()
-        js.extend([
-            ("resourceId", "resourceId", str, "string", False, None, True),
-            ("versionId", "versionId", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                ("resourceId", "resourceId", str, "string", False, None, True),
+                ("versionId", "versionId", str, "string", False, None, False),
+            ]
+        )
         return js
 
 
@@ -275,14 +358,18 @@ class ExampleScenarioInstanceVersion(backboneelement.BackboneElement):
         """ The identifier of a specific version of a resource.
         Type `str`. """
 
-        super(ExampleScenarioInstanceVersion, self).__init__(jsondict=jsondict, strict=strict)
+        super(ExampleScenarioInstanceVersion, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ExampleScenarioInstanceVersion, self).elementProperties()
-        js.extend([
-            ("description", "description", str, "markdown", False, None, True),
-            ("versionId", "versionId", str, "string", False, None, True),
-        ])
+        js.extend(
+            [
+                ("description", "description", str, "markdown", False, None, True),
+                ("versionId", "versionId", str, "string", False, None, True),
+            ]
+        )
         return js
 
 
@@ -324,13 +411,31 @@ class ExampleScenarioProcess(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ExampleScenarioProcess, self).elementProperties()
-        js.extend([
-            ("description", "description", str, "markdown", False, None, False),
-            ("postConditions", "postConditions", str, "markdown", False, None, False),
-            ("preConditions", "preConditions", str, "markdown", False, None, False),
-            ("step", "step", ExampleScenarioProcessStep, "ExampleScenarioProcessStep", True, None, False),
-            ("title", "title", str, "string", False, None, True),
-        ])
+        js.extend(
+            [
+                ("description", "description", str, "markdown", False, None, False),
+                (
+                    "postConditions",
+                    "postConditions",
+                    str,
+                    "markdown",
+                    False,
+                    None,
+                    False,
+                ),
+                ("preConditions", "preConditions", str, "markdown", False, None, False),
+                (
+                    "step",
+                    "step",
+                    ExampleScenarioProcessStep,
+                    "ExampleScenarioProcessStep",
+                    True,
+                    None,
+                    False,
+                ),
+                ("title", "title", str, "string", False, None, True),
+            ]
+        )
         return js
 
 
@@ -364,16 +469,44 @@ class ExampleScenarioProcessStep(backboneelement.BackboneElement):
         """ Nested process.
         List of `ExampleScenarioProcess` items (represented as `dict` in JSON). """
 
-        super(ExampleScenarioProcessStep, self).__init__(jsondict=jsondict, strict=strict)
+        super(ExampleScenarioProcessStep, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ExampleScenarioProcessStep, self).elementProperties()
-        js.extend([
-            ("alternative", "alternative", ExampleScenarioProcessStepAlternative, "ExampleScenarioProcessStepAlternative", True, None, False),
-            ("operation", "operation", ExampleScenarioProcessStepOperation, "ExampleScenarioProcessStepOperation", False, None, False),
-            ("pause", "pause", bool, "boolean", False, None, False),
-            ("process", "process", ExampleScenarioProcess, "ExampleScenarioProcess", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "alternative",
+                    "alternative",
+                    ExampleScenarioProcessStepAlternative,
+                    "ExampleScenarioProcessStepAlternative",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "operation",
+                    "operation",
+                    ExampleScenarioProcessStepOperation,
+                    "ExampleScenarioProcessStepOperation",
+                    False,
+                    None,
+                    False,
+                ),
+                ("pause", "pause", bool, "boolean", False, None, False),
+                (
+                    "process",
+                    "process",
+                    ExampleScenarioProcess,
+                    "ExampleScenarioProcess",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -406,15 +539,27 @@ class ExampleScenarioProcessStepAlternative(backboneelement.BackboneElement):
         """ Label for alternative.
         Type `str`. """
 
-        super(ExampleScenarioProcessStepAlternative, self).__init__(jsondict=jsondict, strict=strict)
+        super(ExampleScenarioProcessStepAlternative, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ExampleScenarioProcessStepAlternative, self).elementProperties()
-        js.extend([
-            ("description", "description", str, "markdown", False, None, False),
-            ("step", "step", ExampleScenarioProcessStep, "ExampleScenarioProcessStep", True, None, False),
-            ("title", "title", str, "string", False, None, True),
-        ])
+        js.extend(
+            [
+                ("description", "description", str, "markdown", False, None, False),
+                (
+                    "step",
+                    "step",
+                    ExampleScenarioProcessStep,
+                    "ExampleScenarioProcessStep",
+                    True,
+                    None,
+                    False,
+                ),
+                ("title", "title", str, "string", False, None, True),
+            ]
+        )
         return js
 
 
@@ -472,43 +617,78 @@ class ExampleScenarioProcessStepOperation(backboneelement.BackboneElement):
         """ The type of operation - CRUD.
         Type `str`. """
 
-        super(ExampleScenarioProcessStepOperation, self).__init__(jsondict=jsondict, strict=strict)
+        super(ExampleScenarioProcessStepOperation, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ExampleScenarioProcessStepOperation, self).elementProperties()
-        js.extend([
-            ("description", "description", str, "markdown", False, None, False),
-            ("initiator", "initiator", str, "string", False, None, False),
-            ("initiatorActive", "initiatorActive", bool, "boolean", False, None, False),
-            ("name", "name", str, "string", False, None, False),
-            ("number", "number", str, "string", False, None, True),
-            ("receiver", "receiver", str, "string", False, None, False),
-            ("receiverActive", "receiverActive", bool, "boolean", False, None, False),
-            ("request", "request", ExampleScenarioInstanceContainedInstance, "ExampleScenarioInstanceContainedInstance", False, None, False),
-            ("response", "response", ExampleScenarioInstanceContainedInstance, "ExampleScenarioInstanceContainedInstance", False, None, False),
-            ("type", "type", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                ("description", "description", str, "markdown", False, None, False),
+                ("initiator", "initiator", str, "string", False, None, False),
+                (
+                    "initiatorActive",
+                    "initiatorActive",
+                    bool,
+                    "boolean",
+                    False,
+                    None,
+                    False,
+                ),
+                ("name", "name", str, "string", False, None, False),
+                ("number", "number", str, "string", False, None, True),
+                ("receiver", "receiver", str, "string", False, None, False),
+                (
+                    "receiverActive",
+                    "receiverActive",
+                    bool,
+                    "boolean",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "request",
+                    "request",
+                    ExampleScenarioInstanceContainedInstance,
+                    "ExampleScenarioInstanceContainedInstance",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "response",
+                    "response",
+                    ExampleScenarioInstanceContainedInstance,
+                    "ExampleScenarioInstanceContainedInstance",
+                    False,
+                    None,
+                    False,
+                ),
+                ("type", "type", str, "string", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import contactdetail
 except ImportError:
-    contactdetail = sys.modules[__package__ + '.contactdetail']
+    contactdetail = sys.modules[__package__ + ".contactdetail"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import usagecontext
 except ImportError:
-    usagecontext = sys.modules[__package__ + '.usagecontext']
+    usagecontext = sys.modules[__package__ + ".usagecontext"]

@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class Goal(domainresource.DomainResource):
     """ Describes the intended objective(s) for a patient, group or organization.
@@ -99,28 +102,132 @@ class Goal(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(Goal, self).elementProperties()
-        js.extend([
-            ("addresses", "addresses", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("category", "category", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("description", "description", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("expressedBy", "expressedBy", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("note", "note", annotation.Annotation, "Annotation", True, None, False),
-            ("outcomeCode", "outcomeCode", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("outcomeReference", "outcomeReference", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("priority", "priority", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("startCodeableConcept", "startCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "start", False),
-            ("startDate", "startDate", fhirdate.FHIRDate, "date", False, "start", False),
-            ("status", "status", str, "code", False, None, True),
-            ("statusDate", "statusDate", fhirdate.FHIRDate, "date", False, None, False),
-            ("statusReason", "statusReason", str, "string", False, None, False),
-            ("subject", "subject", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("target", "target", GoalTarget, "GoalTarget", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "addresses",
+                    "addresses",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "category",
+                    "category",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "description",
+                    "description",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "expressedBy",
+                    "expressedBy",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "note",
+                    "note",
+                    annotation.Annotation,
+                    "Annotation",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "outcomeCode",
+                    "outcomeCode",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "outcomeReference",
+                    "outcomeReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "priority",
+                    "priority",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "startCodeableConcept",
+                    "startCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "start",
+                    False,
+                ),
+                (
+                    "startDate",
+                    "startDate",
+                    fhirdate.FHIRDate,
+                    "date",
+                    False,
+                    "start",
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, True),
+                (
+                    "statusDate",
+                    "statusDate",
+                    fhirdate.FHIRDate,
+                    "date",
+                    False,
+                    None,
+                    False,
+                ),
+                ("statusReason", "statusReason", str, "string", False, None, False),
+                (
+                    "subject",
+                    "subject",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("target", "target", GoalTarget, "GoalTarget", False, None, False),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class GoalTarget(backboneelement.BackboneElement):
     """ Target outcome for the goal.
@@ -166,47 +273,88 @@ class GoalTarget(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(GoalTarget, self).elementProperties()
-        js.extend([
-            ("detailCodeableConcept", "detailCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "detail", False),
-            ("detailQuantity", "detailQuantity", quantity.Quantity, "Quantity", False, "detail", False),
-            ("detailRange", "detailRange", range.Range, "Range", False, "detail", False),
-            ("dueDate", "dueDate", fhirdate.FHIRDate, "date", False, "due", False),
-            ("dueDuration", "dueDuration", duration.Duration, "Duration", False, "due", False),
-            ("measure", "measure", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "detailCodeableConcept",
+                    "detailCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "detail",
+                    False,
+                ),
+                (
+                    "detailQuantity",
+                    "detailQuantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    "detail",
+                    False,
+                ),
+                (
+                    "detailRange",
+                    "detailRange",
+                    range.Range,
+                    "Range",
+                    False,
+                    "detail",
+                    False,
+                ),
+                ("dueDate", "dueDate", fhirdate.FHIRDate, "date", False, "due", False),
+                (
+                    "dueDuration",
+                    "dueDuration",
+                    duration.Duration,
+                    "Duration",
+                    False,
+                    "due",
+                    False,
+                ),
+                (
+                    "measure",
+                    "measure",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import annotation
 except ImportError:
-    annotation = sys.modules[__package__ + '.annotation']
+    annotation = sys.modules[__package__ + ".annotation"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import duration
 except ImportError:
-    duration = sys.modules[__package__ + '.duration']
+    duration = sys.modules[__package__ + ".duration"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import quantity
 except ImportError:
-    quantity = sys.modules[__package__ + '.quantity']
+    quantity = sys.modules[__package__ + ".quantity"]
 try:
     from . import range
 except ImportError:
-    range = sys.modules[__package__ + '.range']
+    range = sys.modules[__package__ + ".range"]

@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class DataElement(domainresource.DomainResource):
     """ Resource data element.
@@ -96,28 +99,76 @@ class DataElement(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(DataElement, self).elementProperties()
-        js.extend([
-            ("contact", "contact", contactdetail.ContactDetail, "ContactDetail", True, None, False),
-            ("copyright", "copyright", str, "markdown", False, None, False),
-            ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("element", "element", elementdefinition.ElementDefinition, "ElementDefinition", True, None, True),
-            ("experimental", "experimental", bool, "boolean", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("jurisdiction", "jurisdiction", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("mapping", "mapping", DataElementMapping, "DataElementMapping", True, None, False),
-            ("name", "name", str, "string", False, None, False),
-            ("publisher", "publisher", str, "string", False, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("stringency", "stringency", str, "code", False, None, False),
-            ("title", "title", str, "string", False, None, False),
-            ("url", "url", str, "uri", False, None, False),
-            ("useContext", "useContext", usagecontext.UsageContext, "UsageContext", True, None, False),
-            ("version", "version", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "contact",
+                    "contact",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                ("copyright", "copyright", str, "markdown", False, None, False),
+                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
+                (
+                    "element",
+                    "element",
+                    elementdefinition.ElementDefinition,
+                    "ElementDefinition",
+                    True,
+                    None,
+                    True,
+                ),
+                ("experimental", "experimental", bool, "boolean", False, None, False),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "jurisdiction",
+                    "jurisdiction",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "mapping",
+                    "mapping",
+                    DataElementMapping,
+                    "DataElementMapping",
+                    True,
+                    None,
+                    False,
+                ),
+                ("name", "name", str, "string", False, None, False),
+                ("publisher", "publisher", str, "string", False, None, False),
+                ("status", "status", str, "code", False, None, True),
+                ("stringency", "stringency", str, "code", False, None, False),
+                ("title", "title", str, "string", False, None, False),
+                ("url", "url", str, "uri", False, None, False),
+                (
+                    "useContext",
+                    "useContext",
+                    usagecontext.UsageContext,
+                    "UsageContext",
+                    True,
+                    None,
+                    False,
+                ),
+                ("version", "version", str, "string", False, None, False),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class DataElementMapping(backboneelement.BackboneElement):
     """ External specification mapped to.
@@ -156,37 +207,38 @@ class DataElementMapping(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(DataElementMapping, self).elementProperties()
-        js.extend([
-            ("comment", "comment", str, "string", False, None, False),
-            ("identity", "identity", str, "id", False, None, True),
-            ("name", "name", str, "string", False, None, False),
-            ("uri", "uri", str, "uri", False, None, False),
-        ])
+        js.extend(
+            [
+                ("comment", "comment", str, "string", False, None, False),
+                ("identity", "identity", str, "id", False, None, True),
+                ("name", "name", str, "string", False, None, False),
+                ("uri", "uri", str, "uri", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import contactdetail
 except ImportError:
-    contactdetail = sys.modules[__package__ + '.contactdetail']
+    contactdetail = sys.modules[__package__ + ".contactdetail"]
 try:
     from . import elementdefinition
 except ImportError:
-    elementdefinition = sys.modules[__package__ + '.elementdefinition']
+    elementdefinition = sys.modules[__package__ + ".elementdefinition"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import usagecontext
 except ImportError:
-    usagecontext = sys.modules[__package__ + '.usagecontext']
+    usagecontext = sys.modules[__package__ + ".usagecontext"]

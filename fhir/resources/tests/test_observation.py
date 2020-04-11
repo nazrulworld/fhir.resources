@@ -7,22 +7,23 @@ Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
-import os
-import pytest
 import io
-import unittest
 import json
+import os
+import unittest
 
-from .fixtures import force_bytes
+import pytest
+
 from .. import observation
 from ..fhirdate import FHIRDate
+from .fixtures import force_bytes
 
 
 @pytest.mark.usefixtures("base_settings")
 class ObservationTests(unittest.TestCase):
     def instantiate_from(self, filename):
-        datadir = os.environ.get('FHIR_UNITTEST_DATADIR') or ''
-        with io.open(os.path.join(datadir, filename), 'r', encoding='utf-8') as handle:
+        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
+        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
             js = json.load(handle)
             self.assertEqual("Observation", js["resourceType"])
         return observation.Observation(js)
@@ -39,29 +40,85 @@ class ObservationTests(unittest.TestCase):
 
     def implObservation1(self, inst):
         self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("55233-1"))
-        self.assertEqual(force_bytes(inst.code.coding[0].display), force_bytes("Genetic analysis master panel-- This is the parent OBR for the panel holding all of the associated observations that can be reported with a molecular genetics analysis result."))
-        self.assertEqual(force_bytes(inst.code.coding[0].system), force_bytes("http://loinc.org"))
-        self.assertEqual(force_bytes(inst.extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/observation-geneticsGene"))
-        self.assertEqual(force_bytes(inst.extension[0].valueCodeableConcept.coding[0].code), force_bytes("3236"))
-        self.assertEqual(force_bytes(inst.extension[0].valueCodeableConcept.coding[0].display), force_bytes("EGFR"))
-        self.assertEqual(force_bytes(inst.extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://www.genenames.org"))
-        self.assertEqual(force_bytes(inst.extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/observation-geneticsDNARegionName"))
-        self.assertEqual(force_bytes(inst.extension[1].valueString), force_bytes("Exon 21"))
-        self.assertEqual(force_bytes(inst.extension[2].url), force_bytes("http://hl7.org/fhir/StructureDefinition/observation-geneticsGenomicSourceClass"))
-        self.assertEqual(force_bytes(inst.extension[2].valueCodeableConcept.coding[0].code), force_bytes("LA6684-0"))
-        self.assertEqual(force_bytes(inst.extension[2].valueCodeableConcept.coding[0].display), force_bytes("somatic"))
-        self.assertEqual(force_bytes(inst.extension[2].valueCodeableConcept.coding[0].system), force_bytes("http://loinc.org"))
+        self.assertEqual(
+            force_bytes(inst.code.coding[0].display),
+            force_bytes(
+                "Genetic analysis master panel-- This is the parent OBR for the panel holding all of the associated observations that can be reported with a molecular genetics analysis result."
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.code.coding[0].system), force_bytes("http://loinc.org")
+        )
+        self.assertEqual(
+            force_bytes(inst.extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/observation-geneticsGene"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.extension[0].valueCodeableConcept.coding[0].code),
+            force_bytes("3236"),
+        )
+        self.assertEqual(
+            force_bytes(inst.extension[0].valueCodeableConcept.coding[0].display),
+            force_bytes("EGFR"),
+        )
+        self.assertEqual(
+            force_bytes(inst.extension[0].valueCodeableConcept.coding[0].system),
+            force_bytes("http://www.genenames.org"),
+        )
+        self.assertEqual(
+            force_bytes(inst.extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/observation-geneticsDNARegionName"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.extension[1].valueString), force_bytes("Exon 21")
+        )
+        self.assertEqual(
+            force_bytes(inst.extension[2].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/observation-geneticsGenomicSourceClass"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.extension[2].valueCodeableConcept.coding[0].code),
+            force_bytes("LA6684-0"),
+        )
+        self.assertEqual(
+            force_bytes(inst.extension[2].valueCodeableConcept.coding[0].display),
+            force_bytes("somatic"),
+        )
+        self.assertEqual(
+            force_bytes(inst.extension[2].valueCodeableConcept.coding[0].system),
+            force_bytes("http://loinc.org"),
+        )
         self.assertEqual(force_bytes(inst.id), force_bytes("example-genetics-1"))
         self.assertEqual(inst.issued.date, FHIRDate("2013-04-03T15:30:10+01:00").date)
         self.assertEqual(inst.issued.as_json(), "2013-04-03T15:30:10+01:00")
         self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
+        self.assertEqual(
+            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
+        )
+        self.assertEqual(
+            force_bytes(inst.meta.tag[0].system),
+            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
+        )
         self.assertEqual(force_bytes(inst.status), force_bytes("final"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.valueCodeableConcept.coding[0].code), force_bytes("10828004"))
-        self.assertEqual(force_bytes(inst.valueCodeableConcept.coding[0].display), force_bytes("Positive"))
-        self.assertEqual(force_bytes(inst.valueCodeableConcept.coding[0].system), force_bytes("http://snomed.info/sct"))
+        self.assertEqual(
+            force_bytes(inst.valueCodeableConcept.coding[0].code),
+            force_bytes("10828004"),
+        )
+        self.assertEqual(
+            force_bytes(inst.valueCodeableConcept.coding[0].display),
+            force_bytes("Positive"),
+        )
+        self.assertEqual(
+            force_bytes(inst.valueCodeableConcept.coding[0].system),
+            force_bytes("http://snomed.info/sct"),
+        )
 
     def testObservation2(self):
         inst = self.instantiate_from("observation-example-bmd.json")
@@ -74,21 +131,40 @@ class ObservationTests(unittest.TestCase):
         self.implObservation2(inst2)
 
     def implObservation2(self, inst):
-        self.assertEqual(force_bytes(inst.bodySite.coding[0].code), force_bytes("71341001:272741003=7771000"))
-        self.assertEqual(force_bytes(inst.bodySite.coding[0].system), force_bytes("http://snomed.info/sct"))
+        self.assertEqual(
+            force_bytes(inst.bodySite.coding[0].code),
+            force_bytes("71341001:272741003=7771000"),
+        )
+        self.assertEqual(
+            force_bytes(inst.bodySite.coding[0].system),
+            force_bytes("http://snomed.info/sct"),
+        )
         self.assertEqual(force_bytes(inst.bodySite.text), force_bytes("Left Femur"))
         self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("24701-5"))
-        self.assertEqual(force_bytes(inst.code.coding[0].display), force_bytes("Femur DXA Bone density"))
-        self.assertEqual(force_bytes(inst.code.coding[0].system), force_bytes("http://loinc.org"))
+        self.assertEqual(
+            force_bytes(inst.code.coding[0].display),
+            force_bytes("Femur DXA Bone density"),
+        )
+        self.assertEqual(
+            force_bytes(inst.code.coding[0].system), force_bytes("http://loinc.org")
+        )
         self.assertEqual(force_bytes(inst.code.text), force_bytes("BMD - Left Femur"))
         self.assertEqual(force_bytes(inst.id), force_bytes("bmd"))
         self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
+        self.assertEqual(
+            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
+        )
+        self.assertEqual(
+            force_bytes(inst.meta.tag[0].system),
+            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
+        )
         self.assertEqual(force_bytes(inst.status), force_bytes("final"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
         self.assertEqual(force_bytes(inst.valueQuantity.code), force_bytes("g/cm-2"))
-        self.assertEqual(force_bytes(inst.valueQuantity.system), force_bytes("http://unitsofmeasure.org"))
+        self.assertEqual(
+            force_bytes(inst.valueQuantity.system),
+            force_bytes("http://unitsofmeasure.org"),
+        )
         self.assertEqual(force_bytes(inst.valueQuantity.unit), force_bytes("g/cm²"))
         self.assertEqual(inst.valueQuantity.value, 0.887)
 
@@ -103,26 +179,50 @@ class ObservationTests(unittest.TestCase):
         self.implObservation3(inst2)
 
     def implObservation3(self, inst):
-        self.assertEqual(force_bytes(inst.category[0].coding[0].code), force_bytes("vital-signs"))
-        self.assertEqual(force_bytes(inst.category[0].coding[0].display), force_bytes("Vital Signs"))
-        self.assertEqual(force_bytes(inst.category[0].coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/observation-category"))
+        self.assertEqual(
+            force_bytes(inst.category[0].coding[0].code), force_bytes("vital-signs")
+        )
+        self.assertEqual(
+            force_bytes(inst.category[0].coding[0].display), force_bytes("Vital Signs")
+        )
+        self.assertEqual(
+            force_bytes(inst.category[0].coding[0].system),
+            force_bytes("http://terminology.hl7.org/CodeSystem/observation-category"),
+        )
         self.assertEqual(force_bytes(inst.category[0].text), force_bytes("Vital Signs"))
         self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("9279-1"))
-        self.assertEqual(force_bytes(inst.code.coding[0].display), force_bytes("Respiratory rate"))
-        self.assertEqual(force_bytes(inst.code.coding[0].system), force_bytes("http://loinc.org"))
+        self.assertEqual(
+            force_bytes(inst.code.coding[0].display), force_bytes("Respiratory rate")
+        )
+        self.assertEqual(
+            force_bytes(inst.code.coding[0].system), force_bytes("http://loinc.org")
+        )
         self.assertEqual(force_bytes(inst.code.text), force_bytes("Respiratory rate"))
         self.assertEqual(inst.effectiveDateTime.date, FHIRDate("1999-07-02").date)
         self.assertEqual(inst.effectiveDateTime.as_json(), "1999-07-02")
         self.assertEqual(force_bytes(inst.id), force_bytes("respiratory-rate"))
-        self.assertEqual(force_bytes(inst.meta.profile[0]), force_bytes("http://hl7.org/fhir/StructureDefinition/vitalsigns"))
+        self.assertEqual(
+            force_bytes(inst.meta.profile[0]),
+            force_bytes("http://hl7.org/fhir/StructureDefinition/vitalsigns"),
+        )
         self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
+        self.assertEqual(
+            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
+        )
+        self.assertEqual(
+            force_bytes(inst.meta.tag[0].system),
+            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
+        )
         self.assertEqual(force_bytes(inst.status), force_bytes("final"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
         self.assertEqual(force_bytes(inst.valueQuantity.code), force_bytes("/min"))
-        self.assertEqual(force_bytes(inst.valueQuantity.system), force_bytes("http://unitsofmeasure.org"))
-        self.assertEqual(force_bytes(inst.valueQuantity.unit), force_bytes("breaths/minute"))
+        self.assertEqual(
+            force_bytes(inst.valueQuantity.system),
+            force_bytes("http://unitsofmeasure.org"),
+        )
+        self.assertEqual(
+            force_bytes(inst.valueQuantity.unit), force_bytes("breaths/minute")
+        )
         self.assertEqual(inst.valueQuantity.value, 26)
 
     def testObservation4(self):
@@ -136,31 +236,67 @@ class ObservationTests(unittest.TestCase):
         self.implObservation4(inst2)
 
     def implObservation4(self, inst):
-        self.assertEqual(force_bytes(inst.category[0].coding[0].code), force_bytes("vital-signs"))
-        self.assertEqual(force_bytes(inst.category[0].coding[0].display), force_bytes("Vital Signs"))
-        self.assertEqual(force_bytes(inst.category[0].coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/observation-category"))
+        self.assertEqual(
+            force_bytes(inst.category[0].coding[0].code), force_bytes("vital-signs")
+        )
+        self.assertEqual(
+            force_bytes(inst.category[0].coding[0].display), force_bytes("Vital Signs")
+        )
+        self.assertEqual(
+            force_bytes(inst.category[0].coding[0].system),
+            force_bytes("http://terminology.hl7.org/CodeSystem/observation-category"),
+        )
         self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("29463-7"))
-        self.assertEqual(force_bytes(inst.code.coding[0].display), force_bytes("Body Weight"))
-        self.assertEqual(force_bytes(inst.code.coding[0].system), force_bytes("http://loinc.org"))
+        self.assertEqual(
+            force_bytes(inst.code.coding[0].display), force_bytes("Body Weight")
+        )
+        self.assertEqual(
+            force_bytes(inst.code.coding[0].system), force_bytes("http://loinc.org")
+        )
         self.assertEqual(force_bytes(inst.code.coding[1].code), force_bytes("3141-9"))
-        self.assertEqual(force_bytes(inst.code.coding[1].display), force_bytes("Body weight Measured"))
-        self.assertEqual(force_bytes(inst.code.coding[1].system), force_bytes("http://loinc.org"))
+        self.assertEqual(
+            force_bytes(inst.code.coding[1].display),
+            force_bytes("Body weight Measured"),
+        )
+        self.assertEqual(
+            force_bytes(inst.code.coding[1].system), force_bytes("http://loinc.org")
+        )
         self.assertEqual(force_bytes(inst.code.coding[2].code), force_bytes("27113001"))
-        self.assertEqual(force_bytes(inst.code.coding[2].display), force_bytes("Body weight"))
-        self.assertEqual(force_bytes(inst.code.coding[2].system), force_bytes("http://snomed.info/sct"))
-        self.assertEqual(force_bytes(inst.code.coding[3].code), force_bytes("body-weight"))
-        self.assertEqual(force_bytes(inst.code.coding[3].display), force_bytes("Body Weight"))
-        self.assertEqual(force_bytes(inst.code.coding[3].system), force_bytes("http://acme.org/devices/clinical-codes"))
+        self.assertEqual(
+            force_bytes(inst.code.coding[2].display), force_bytes("Body weight")
+        )
+        self.assertEqual(
+            force_bytes(inst.code.coding[2].system),
+            force_bytes("http://snomed.info/sct"),
+        )
+        self.assertEqual(
+            force_bytes(inst.code.coding[3].code), force_bytes("body-weight")
+        )
+        self.assertEqual(
+            force_bytes(inst.code.coding[3].display), force_bytes("Body Weight")
+        )
+        self.assertEqual(
+            force_bytes(inst.code.coding[3].system),
+            force_bytes("http://acme.org/devices/clinical-codes"),
+        )
         self.assertEqual(inst.effectiveDateTime.date, FHIRDate("2016-03-28").date)
         self.assertEqual(inst.effectiveDateTime.as_json(), "2016-03-28")
         self.assertEqual(force_bytes(inst.id), force_bytes("example"))
         self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
+        self.assertEqual(
+            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
+        )
+        self.assertEqual(
+            force_bytes(inst.meta.tag[0].system),
+            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
+        )
         self.assertEqual(force_bytes(inst.status), force_bytes("final"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
         self.assertEqual(force_bytes(inst.valueQuantity.code), force_bytes("[lb_av]"))
-        self.assertEqual(force_bytes(inst.valueQuantity.system), force_bytes("http://unitsofmeasure.org"))
+        self.assertEqual(
+            force_bytes(inst.valueQuantity.system),
+            force_bytes("http://unitsofmeasure.org"),
+        )
         self.assertEqual(force_bytes(inst.valueQuantity.unit), force_bytes("lbs"))
         self.assertEqual(inst.valueQuantity.value, 185)
 
@@ -176,23 +312,57 @@ class ObservationTests(unittest.TestCase):
 
     def implObservation5(self, inst):
         self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("55233-1"))
-        self.assertEqual(force_bytes(inst.code.coding[0].display), force_bytes("Genetic analysis master panel-- This is the parent OBR for the panel holding all of the associated observations that can be reported with a molecular genetics analysis result."))
-        self.assertEqual(force_bytes(inst.code.coding[0].system), force_bytes("http://loinc.org"))
-        self.assertEqual(force_bytes(inst.extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/observation-geneticsGene"))
-        self.assertEqual(force_bytes(inst.extension[0].valueCodeableConcept.coding[0].code), force_bytes("2623"))
-        self.assertEqual(force_bytes(inst.extension[0].valueCodeableConcept.coding[0].display), force_bytes("CYP2C9"))
-        self.assertEqual(force_bytes(inst.extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://www.genenames.org"))
+        self.assertEqual(
+            force_bytes(inst.code.coding[0].display),
+            force_bytes(
+                "Genetic analysis master panel-- This is the parent OBR for the panel holding all of the associated observations that can be reported with a molecular genetics analysis result."
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.code.coding[0].system), force_bytes("http://loinc.org")
+        )
+        self.assertEqual(
+            force_bytes(inst.extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/observation-geneticsGene"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.extension[0].valueCodeableConcept.coding[0].code),
+            force_bytes("2623"),
+        )
+        self.assertEqual(
+            force_bytes(inst.extension[0].valueCodeableConcept.coding[0].display),
+            force_bytes("CYP2C9"),
+        )
+        self.assertEqual(
+            force_bytes(inst.extension[0].valueCodeableConcept.coding[0].system),
+            force_bytes("http://www.genenames.org"),
+        )
         self.assertEqual(force_bytes(inst.id), force_bytes("example-haplotype2"))
         self.assertEqual(inst.issued.date, FHIRDate("2013-04-03T15:30:10+01:00").date)
         self.assertEqual(inst.issued.as_json(), "2013-04-03T15:30:10+01:00")
         self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
+        self.assertEqual(
+            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
+        )
+        self.assertEqual(
+            force_bytes(inst.meta.tag[0].system),
+            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
+        )
         self.assertEqual(force_bytes(inst.status), force_bytes("unknown"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.valueCodeableConcept.coding[0].code), force_bytes("PA16581679"))
-        self.assertEqual(force_bytes(inst.valueCodeableConcept.coding[0].display), force_bytes("*4"))
-        self.assertEqual(force_bytes(inst.valueCodeableConcept.coding[0].system), force_bytes("http://pharmakb.org"))
+        self.assertEqual(
+            force_bytes(inst.valueCodeableConcept.coding[0].code),
+            force_bytes("PA16581679"),
+        )
+        self.assertEqual(
+            force_bytes(inst.valueCodeableConcept.coding[0].display), force_bytes("*4")
+        )
+        self.assertEqual(
+            force_bytes(inst.valueCodeableConcept.coding[0].system),
+            force_bytes("http://pharmakb.org"),
+        )
 
     def testObservation6(self):
         inst = self.instantiate_from("observation-example-mbp.json")
@@ -205,24 +375,45 @@ class ObservationTests(unittest.TestCase):
         self.implObservation6(inst2)
 
     def implObservation6(self, inst):
-        self.assertEqual(force_bytes(inst.category[0].coding[0].code), force_bytes("vital-signs"))
-        self.assertEqual(force_bytes(inst.category[0].coding[0].display), force_bytes("Vital Signs"))
-        self.assertEqual(force_bytes(inst.category[0].coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/observation-category"))
+        self.assertEqual(
+            force_bytes(inst.category[0].coding[0].code), force_bytes("vital-signs")
+        )
+        self.assertEqual(
+            force_bytes(inst.category[0].coding[0].display), force_bytes("Vital Signs")
+        )
+        self.assertEqual(
+            force_bytes(inst.category[0].coding[0].system),
+            force_bytes("http://terminology.hl7.org/CodeSystem/observation-category"),
+        )
         self.assertEqual(force_bytes(inst.category[0].text), force_bytes("Vital Signs"))
         self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("8478-0"))
-        self.assertEqual(force_bytes(inst.code.coding[0].display), force_bytes("Mean blood pressure"))
-        self.assertEqual(force_bytes(inst.code.coding[0].system), force_bytes("http://loinc.org"))
-        self.assertEqual(force_bytes(inst.code.text), force_bytes("Mean blood pressure"))
+        self.assertEqual(
+            force_bytes(inst.code.coding[0].display), force_bytes("Mean blood pressure")
+        )
+        self.assertEqual(
+            force_bytes(inst.code.coding[0].system), force_bytes("http://loinc.org")
+        )
+        self.assertEqual(
+            force_bytes(inst.code.text), force_bytes("Mean blood pressure")
+        )
         self.assertEqual(inst.effectiveDateTime.date, FHIRDate("1999-07-02").date)
         self.assertEqual(inst.effectiveDateTime.as_json(), "1999-07-02")
         self.assertEqual(force_bytes(inst.id), force_bytes("mbp"))
         self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
+        self.assertEqual(
+            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
+        )
+        self.assertEqual(
+            force_bytes(inst.meta.tag[0].system),
+            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
+        )
         self.assertEqual(force_bytes(inst.status), force_bytes("final"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
         self.assertEqual(force_bytes(inst.valueQuantity.code), force_bytes("mm[Hg]"))
-        self.assertEqual(force_bytes(inst.valueQuantity.system), force_bytes("http://unitsofmeasure.org"))
+        self.assertEqual(
+            force_bytes(inst.valueQuantity.system),
+            force_bytes("http://unitsofmeasure.org"),
+        )
         self.assertEqual(force_bytes(inst.valueQuantity.unit), force_bytes("mm[Hg]"))
         self.assertEqual(inst.valueQuantity.value, 80)
 
@@ -238,20 +429,60 @@ class ObservationTests(unittest.TestCase):
 
     def implObservation7(self, inst):
         self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("59041-4"))
-        self.assertEqual(force_bytes(inst.code.coding[0].display), force_bytes("BRCA1+BRCA2 gene mutations tested for in Blood or Tissue by Molecular genetics method Nominal"))
-        self.assertEqual(force_bytes(inst.code.coding[0].system), force_bytes("http://loinc.org"))
-        self.assertEqual(force_bytes(inst.extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/observation-geneticsGene"))
-        self.assertEqual(force_bytes(inst.extension[0].valueCodeableConcept.coding[0].code), force_bytes("KX470182.1"))
-        self.assertEqual(force_bytes(inst.extension[0].valueCodeableConcept.coding[0].display), force_bytes("BRCA"))
-        self.assertEqual(force_bytes(inst.extension[0].valueCodeableConcept.coding[0].system), force_bytes("https://www.ncbi.nlm.nih.gov/nuccore"))
-        self.assertEqual(force_bytes(inst.extension[1].url), force_bytes("http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"))
-        self.assertEqual(force_bytes(inst.extension[1].valueCodeableConcept.coding[0].code), force_bytes("413581001"))
-        self.assertEqual(force_bytes(inst.extension[1].valueCodeableConcept.coding[0].display), force_bytes("Unknown racial group"))
-        self.assertEqual(force_bytes(inst.extension[1].valueCodeableConcept.coding[0].system), force_bytes("http://browser.ihtsdotools.org/"))
+        self.assertEqual(
+            force_bytes(inst.code.coding[0].display),
+            force_bytes(
+                "BRCA1+BRCA2 gene mutations tested for in Blood or Tissue by Molecular genetics method Nominal"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.code.coding[0].system), force_bytes("http://loinc.org")
+        )
+        self.assertEqual(
+            force_bytes(inst.extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/observation-geneticsGene"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.extension[0].valueCodeableConcept.coding[0].code),
+            force_bytes("KX470182.1"),
+        )
+        self.assertEqual(
+            force_bytes(inst.extension[0].valueCodeableConcept.coding[0].display),
+            force_bytes("BRCA"),
+        )
+        self.assertEqual(
+            force_bytes(inst.extension[0].valueCodeableConcept.coding[0].system),
+            force_bytes("https://www.ncbi.nlm.nih.gov/nuccore"),
+        )
+        self.assertEqual(
+            force_bytes(inst.extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.extension[1].valueCodeableConcept.coding[0].code),
+            force_bytes("413581001"),
+        )
+        self.assertEqual(
+            force_bytes(inst.extension[1].valueCodeableConcept.coding[0].display),
+            force_bytes("Unknown racial group"),
+        )
+        self.assertEqual(
+            force_bytes(inst.extension[1].valueCodeableConcept.coding[0].system),
+            force_bytes("http://browser.ihtsdotools.org/"),
+        )
         self.assertEqual(force_bytes(inst.id), force_bytes("example-genetics-brcapat"))
         self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
+        self.assertEqual(
+            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
+        )
+        self.assertEqual(
+            force_bytes(inst.meta.tag[0].system),
+            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
+        )
         self.assertEqual(force_bytes(inst.status), force_bytes("final"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 
@@ -266,25 +497,48 @@ class ObservationTests(unittest.TestCase):
         self.implObservation8(inst2)
 
     def implObservation8(self, inst):
-        self.assertEqual(force_bytes(inst.category[0].coding[0].code), force_bytes("vital-signs"))
-        self.assertEqual(force_bytes(inst.category[0].coding[0].display), force_bytes("Vital Signs"))
-        self.assertEqual(force_bytes(inst.category[0].coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/observation-category"))
+        self.assertEqual(
+            force_bytes(inst.category[0].coding[0].code), force_bytes("vital-signs")
+        )
+        self.assertEqual(
+            force_bytes(inst.category[0].coding[0].display), force_bytes("Vital Signs")
+        )
+        self.assertEqual(
+            force_bytes(inst.category[0].coding[0].system),
+            force_bytes("http://terminology.hl7.org/CodeSystem/observation-category"),
+        )
         self.assertEqual(force_bytes(inst.category[0].text), force_bytes("Vital Signs"))
         self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("39156-5"))
-        self.assertEqual(force_bytes(inst.code.coding[0].display), force_bytes("Body mass index (BMI) [Ratio]"))
-        self.assertEqual(force_bytes(inst.code.coding[0].system), force_bytes("http://loinc.org"))
+        self.assertEqual(
+            force_bytes(inst.code.coding[0].display),
+            force_bytes("Body mass index (BMI) [Ratio]"),
+        )
+        self.assertEqual(
+            force_bytes(inst.code.coding[0].system), force_bytes("http://loinc.org")
+        )
         self.assertEqual(force_bytes(inst.code.text), force_bytes("BMI"))
         self.assertEqual(inst.effectiveDateTime.date, FHIRDate("1999-07-02").date)
         self.assertEqual(inst.effectiveDateTime.as_json(), "1999-07-02")
         self.assertEqual(force_bytes(inst.id), force_bytes("bmi"))
-        self.assertEqual(force_bytes(inst.meta.profile[0]), force_bytes("http://hl7.org/fhir/StructureDefinition/vitalsigns"))
+        self.assertEqual(
+            force_bytes(inst.meta.profile[0]),
+            force_bytes("http://hl7.org/fhir/StructureDefinition/vitalsigns"),
+        )
         self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
+        self.assertEqual(
+            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
+        )
+        self.assertEqual(
+            force_bytes(inst.meta.tag[0].system),
+            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
+        )
         self.assertEqual(force_bytes(inst.status), force_bytes("final"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
         self.assertEqual(force_bytes(inst.valueQuantity.code), force_bytes("kg/m2"))
-        self.assertEqual(force_bytes(inst.valueQuantity.system), force_bytes("http://unitsofmeasure.org"))
+        self.assertEqual(
+            force_bytes(inst.valueQuantity.system),
+            force_bytes("http://unitsofmeasure.org"),
+        )
         self.assertEqual(force_bytes(inst.valueQuantity.unit), force_bytes("kg/m2"))
         self.assertEqual(inst.valueQuantity.value, 16.2)
 
@@ -299,25 +553,47 @@ class ObservationTests(unittest.TestCase):
         self.implObservation9(inst2)
 
     def implObservation9(self, inst):
-        self.assertEqual(force_bytes(inst.category[0].coding[0].code), force_bytes("vital-signs"))
-        self.assertEqual(force_bytes(inst.category[0].coding[0].display), force_bytes("Vital Signs"))
-        self.assertEqual(force_bytes(inst.category[0].coding[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/observation-category"))
+        self.assertEqual(
+            force_bytes(inst.category[0].coding[0].code), force_bytes("vital-signs")
+        )
+        self.assertEqual(
+            force_bytes(inst.category[0].coding[0].display), force_bytes("Vital Signs")
+        )
+        self.assertEqual(
+            force_bytes(inst.category[0].coding[0].system),
+            force_bytes("http://terminology.hl7.org/CodeSystem/observation-category"),
+        )
         self.assertEqual(force_bytes(inst.category[0].text), force_bytes("Vital Signs"))
         self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("8302-2"))
-        self.assertEqual(force_bytes(inst.code.coding[0].display), force_bytes("Body height"))
-        self.assertEqual(force_bytes(inst.code.coding[0].system), force_bytes("http://loinc.org"))
+        self.assertEqual(
+            force_bytes(inst.code.coding[0].display), force_bytes("Body height")
+        )
+        self.assertEqual(
+            force_bytes(inst.code.coding[0].system), force_bytes("http://loinc.org")
+        )
         self.assertEqual(force_bytes(inst.code.text), force_bytes("Body height"))
         self.assertEqual(inst.effectiveDateTime.date, FHIRDate("1999-07-02").date)
         self.assertEqual(inst.effectiveDateTime.as_json(), "1999-07-02")
         self.assertEqual(force_bytes(inst.id), force_bytes("body-height"))
-        self.assertEqual(force_bytes(inst.meta.profile[0]), force_bytes("http://hl7.org/fhir/StructureDefinition/vitalsigns"))
+        self.assertEqual(
+            force_bytes(inst.meta.profile[0]),
+            force_bytes("http://hl7.org/fhir/StructureDefinition/vitalsigns"),
+        )
         self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
+        self.assertEqual(
+            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
+        )
+        self.assertEqual(
+            force_bytes(inst.meta.tag[0].system),
+            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
+        )
         self.assertEqual(force_bytes(inst.status), force_bytes("final"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
         self.assertEqual(force_bytes(inst.valueQuantity.code), force_bytes("[in_i]"))
-        self.assertEqual(force_bytes(inst.valueQuantity.system), force_bytes("http://unitsofmeasure.org"))
+        self.assertEqual(
+            force_bytes(inst.valueQuantity.system),
+            force_bytes("http://unitsofmeasure.org"),
+        )
         self.assertEqual(force_bytes(inst.valueQuantity.unit), force_bytes("in"))
         self.assertEqual(inst.valueQuantity.value, 66.89999999999999)
 
@@ -337,9 +613,13 @@ class ObservationTests(unittest.TestCase):
         self.assertEqual(inst.effectiveDateTime.as_json(), "2016-05-18")
         self.assertEqual(force_bytes(inst.id), force_bytes("eye-color"))
         self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].display), force_bytes("test health data"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].system), force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"))
+        self.assertEqual(
+            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
+        )
+        self.assertEqual(
+            force_bytes(inst.meta.tag[0].system),
+            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
+        )
         self.assertEqual(force_bytes(inst.status), force_bytes("final"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
         self.assertEqual(force_bytes(inst.valueString), force_bytes("blue"))
-

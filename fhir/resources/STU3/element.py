@@ -10,6 +10,7 @@ Last updated: 2019-10-24T11:53:00+11:00
 
 from . import fhirabstractbase
 
+
 class Element(fhirabstractbase.FHIRAbstractBase):
     """ Base for all elements.
 
@@ -39,10 +40,19 @@ class Element(fhirabstractbase.FHIRAbstractBase):
     def elementProperties(self):
         js = super(Element, self).elementProperties()
         from . import extension
-        js.extend([
-            ("extension", "extension", extension.Extension, "Extension", True, None, False),
-            ("id", "id", str, "string", False, None, False),
-        ])
+
+        js.extend(
+            [
+                (
+                    "extension",
+                    "extension",
+                    extension.Extension,
+                    "Extension",
+                    True,
+                    None,
+                    False,
+                ),
+                ("id", "id", str, "string", False, None, False),
+            ]
+        )
         return js
-
-

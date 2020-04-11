@@ -10,6 +10,7 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 
 from . import element
 
+
 class Expression(element.Element):
     """ An expression that can be used to generate a value.
 
@@ -52,13 +53,13 @@ class Expression(element.Element):
 
     def elementProperties(self):
         js = super(Expression, self).elementProperties()
-        js.extend([
-            ("description", "description", str, "string", False, None, False),
-            ("expression", "expression", str, "string", False, None, False),
-            ("language", "language", str, "code", False, None, True),
-            ("name", "name", str, "id", False, None, False),
-            ("reference", "reference", str, "uri", False, None, False),
-        ])
+        js.extend(
+            [
+                ("description", "description", str, "string", False, None, False),
+                ("expression", "expression", str, "string", False, None, False),
+                ("language", "language", str, "code", False, None, True),
+                ("name", "name", str, "id", False, None, False),
+                ("reference", "reference", str, "uri", False, None, False),
+            ]
+        )
         return js
-
-

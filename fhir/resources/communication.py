@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class Communication(domainresource.DomainResource):
     """ A record of information transmitted from a sender to a receiver.
@@ -125,35 +128,187 @@ class Communication(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(Communication, self).elementProperties()
-        js.extend([
-            ("about", "about", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("basedOn", "basedOn", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("category", "category", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("encounter", "encounter", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("inResponseTo", "inResponseTo", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("instantiatesCanonical", "instantiatesCanonical", str, "canonical", True, None, False),
-            ("instantiatesUri", "instantiatesUri", str, "uri", True, None, False),
-            ("medium", "medium", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("note", "note", annotation.Annotation, "Annotation", True, None, False),
-            ("partOf", "partOf", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("payload", "payload", CommunicationPayload, "CommunicationPayload", True, None, False),
-            ("priority", "priority", str, "code", False, None, False),
-            ("reasonCode", "reasonCode", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("reasonReference", "reasonReference", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("received", "received", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("recipient", "recipient", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("sender", "sender", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("sent", "sent", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("statusReason", "statusReason", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("subject", "subject", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("topic", "topic", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "about",
+                    "about",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "basedOn",
+                    "basedOn",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "category",
+                    "category",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "encounter",
+                    "encounter",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "inResponseTo",
+                    "inResponseTo",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "instantiatesCanonical",
+                    "instantiatesCanonical",
+                    str,
+                    "canonical",
+                    True,
+                    None,
+                    False,
+                ),
+                ("instantiatesUri", "instantiatesUri", str, "uri", True, None, False),
+                (
+                    "medium",
+                    "medium",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "note",
+                    "note",
+                    annotation.Annotation,
+                    "Annotation",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "partOf",
+                    "partOf",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "payload",
+                    "payload",
+                    CommunicationPayload,
+                    "CommunicationPayload",
+                    True,
+                    None,
+                    False,
+                ),
+                ("priority", "priority", str, "code", False, None, False),
+                (
+                    "reasonCode",
+                    "reasonCode",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "reasonReference",
+                    "reasonReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "received",
+                    "received",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "recipient",
+                    "recipient",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "sender",
+                    "sender",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("sent", "sent", fhirdate.FHIRDate, "dateTime", False, None, False),
+                ("status", "status", str, "code", False, None, True),
+                (
+                    "statusReason",
+                    "statusReason",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "subject",
+                    "subject",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "topic",
+                    "topic",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class CommunicationPayload(backboneelement.BackboneElement):
     """ Message payload.
@@ -187,36 +342,61 @@ class CommunicationPayload(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(CommunicationPayload, self).elementProperties()
-        js.extend([
-            ("contentAttachment", "contentAttachment", attachment.Attachment, "Attachment", False, "content", True),
-            ("contentReference", "contentReference", fhirreference.FHIRReference, "Reference", False, "content", True),
-            ("contentString", "contentString", str, "string", False, "content", True),
-        ])
+        js.extend(
+            [
+                (
+                    "contentAttachment",
+                    "contentAttachment",
+                    attachment.Attachment,
+                    "Attachment",
+                    False,
+                    "content",
+                    True,
+                ),
+                (
+                    "contentReference",
+                    "contentReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "content",
+                    True,
+                ),
+                (
+                    "contentString",
+                    "contentString",
+                    str,
+                    "string",
+                    False,
+                    "content",
+                    True,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import annotation
 except ImportError:
-    annotation = sys.modules[__package__ + '.annotation']
+    annotation = sys.modules[__package__ + ".annotation"]
 try:
     from . import attachment
 except ImportError:
-    attachment = sys.modules[__package__ + '.attachment']
+    attachment = sys.modules[__package__ + ".attachment"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]

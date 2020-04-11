@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class Medication(domainresource.DomainResource):
     """ Definition of a Medication.
@@ -64,20 +67,68 @@ class Medication(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(Medication, self).elementProperties()
-        js.extend([
-            ("amount", "amount", ratio.Ratio, "Ratio", False, None, False),
-            ("batch", "batch", MedicationBatch, "MedicationBatch", False, None, False),
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("form", "form", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("ingredient", "ingredient", MedicationIngredient, "MedicationIngredient", True, None, False),
-            ("manufacturer", "manufacturer", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("status", "status", str, "code", False, None, False),
-        ])
+        js.extend(
+            [
+                ("amount", "amount", ratio.Ratio, "Ratio", False, None, False),
+                (
+                    "batch",
+                    "batch",
+                    MedicationBatch,
+                    "MedicationBatch",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "form",
+                    "form",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "ingredient",
+                    "ingredient",
+                    MedicationIngredient,
+                    "MedicationIngredient",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "manufacturer",
+                    "manufacturer",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, False),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class MedicationBatch(backboneelement.BackboneElement):
     """ Details about packaged medications.
@@ -107,10 +158,20 @@ class MedicationBatch(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(MedicationBatch, self).elementProperties()
-        js.extend([
-            ("expirationDate", "expirationDate", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("lotNumber", "lotNumber", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "expirationDate",
+                    "expirationDate",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                ("lotNumber", "lotNumber", str, "string", False, None, False),
+            ]
+        )
         return js
 
 
@@ -150,33 +211,50 @@ class MedicationIngredient(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(MedicationIngredient, self).elementProperties()
-        js.extend([
-            ("isActive", "isActive", bool, "boolean", False, None, False),
-            ("itemCodeableConcept", "itemCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "item", True),
-            ("itemReference", "itemReference", fhirreference.FHIRReference, "Reference", False, "item", True),
-            ("strength", "strength", ratio.Ratio, "Ratio", False, None, False),
-        ])
+        js.extend(
+            [
+                ("isActive", "isActive", bool, "boolean", False, None, False),
+                (
+                    "itemCodeableConcept",
+                    "itemCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "item",
+                    True,
+                ),
+                (
+                    "itemReference",
+                    "itemReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "item",
+                    True,
+                ),
+                ("strength", "strength", ratio.Ratio, "Ratio", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import ratio
 except ImportError:
-    ratio = sys.modules[__package__ + '.ratio']
+    ratio = sys.modules[__package__ + ".ratio"]

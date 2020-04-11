@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
+import sys
+
 from . import element
+
 
 class Meta(element.Element):
     """ Metadata about a resource.
@@ -52,22 +55,31 @@ class Meta(element.Element):
 
     def elementProperties(self):
         js = super(Meta, self).elementProperties()
-        js.extend([
-            ("lastUpdated", "lastUpdated", fhirdate.FHIRDate, "instant", False, None, False),
-            ("profile", "profile", str, "uri", True, None, False),
-            ("security", "security", coding.Coding, "Coding", True, None, False),
-            ("tag", "tag", coding.Coding, "Coding", True, None, False),
-            ("versionId", "versionId", str, "id", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "lastUpdated",
+                    "lastUpdated",
+                    fhirdate.FHIRDate,
+                    "instant",
+                    False,
+                    None,
+                    False,
+                ),
+                ("profile", "profile", str, "uri", True, None, False),
+                ("security", "security", coding.Coding, "Coding", True, None, False),
+                ("tag", "tag", coding.Coding, "Coding", True, None, False),
+                ("versionId", "versionId", str, "id", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import coding
 except ImportError:
-    coding = sys.modules[__package__ + '.coding']
+    coding = sys.modules[__package__ + ".coding"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]

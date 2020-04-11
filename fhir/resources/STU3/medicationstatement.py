@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
+import sys
+
 from . import domainresource
+
 
 class MedicationStatement(domainresource.DomainResource):
     """ Record of medication being taken by a patient.
@@ -136,57 +139,194 @@ class MedicationStatement(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(MedicationStatement, self).elementProperties()
-        js.extend([
-            ("basedOn", "basedOn", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("category", "category", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("context", "context", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("dateAsserted", "dateAsserted", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("derivedFrom", "derivedFrom", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("dosage", "dosage", dosage.Dosage, "Dosage", True, None, False),
-            ("effectiveDateTime", "effectiveDateTime", fhirdate.FHIRDate, "dateTime", False, "effective", False),
-            ("effectivePeriod", "effectivePeriod", period.Period, "Period", False, "effective", False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("informationSource", "informationSource", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("medicationCodeableConcept", "medicationCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "medication", True),
-            ("medicationReference", "medicationReference", fhirreference.FHIRReference, "Reference", False, "medication", True),
-            ("note", "note", annotation.Annotation, "Annotation", True, None, False),
-            ("partOf", "partOf", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("reasonCode", "reasonCode", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("reasonNotTaken", "reasonNotTaken", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("reasonReference", "reasonReference", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("subject", "subject", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("taken", "taken", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "basedOn",
+                    "basedOn",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "category",
+                    "category",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "context",
+                    "context",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "dateAsserted",
+                    "dateAsserted",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "derivedFrom",
+                    "derivedFrom",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                ("dosage", "dosage", dosage.Dosage, "Dosage", True, None, False),
+                (
+                    "effectiveDateTime",
+                    "effectiveDateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    "effective",
+                    False,
+                ),
+                (
+                    "effectivePeriod",
+                    "effectivePeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "effective",
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "informationSource",
+                    "informationSource",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "medicationCodeableConcept",
+                    "medicationCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "medication",
+                    True,
+                ),
+                (
+                    "medicationReference",
+                    "medicationReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "medication",
+                    True,
+                ),
+                (
+                    "note",
+                    "note",
+                    annotation.Annotation,
+                    "Annotation",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "partOf",
+                    "partOf",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "reasonCode",
+                    "reasonCode",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "reasonNotTaken",
+                    "reasonNotTaken",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "reasonReference",
+                    "reasonReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, True),
+                (
+                    "subject",
+                    "subject",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                ("taken", "taken", str, "code", False, None, True),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import annotation
 except ImportError:
-    annotation = sys.modules[__package__ + '.annotation']
+    annotation = sys.modules[__package__ + ".annotation"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import dosage
 except ImportError:
-    dosage = sys.modules[__package__ + '.dosage']
+    dosage = sys.modules[__package__ + ".dosage"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]

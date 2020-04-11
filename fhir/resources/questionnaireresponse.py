@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class QuestionnaireResponse(domainresource.DomainResource):
     """ A structured set of questions and their answers.
@@ -76,23 +79,103 @@ class QuestionnaireResponse(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(QuestionnaireResponse, self).elementProperties()
-        js.extend([
-            ("author", "author", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("authored", "authored", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("basedOn", "basedOn", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("encounter", "encounter", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", False, None, False),
-            ("item", "item", QuestionnaireResponseItem, "QuestionnaireResponseItem", True, None, False),
-            ("partOf", "partOf", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("questionnaire", "questionnaire", str, "canonical", False, None, False),
-            ("source", "source", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("subject", "subject", fhirreference.FHIRReference, "Reference", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "author",
+                    "author",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "authored",
+                    "authored",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "basedOn",
+                    "basedOn",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "encounter",
+                    "encounter",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "item",
+                    "item",
+                    QuestionnaireResponseItem,
+                    "QuestionnaireResponseItem",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "partOf",
+                    "partOf",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "questionnaire",
+                    "questionnaire",
+                    str,
+                    "canonical",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "source",
+                    "source",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, True),
+                (
+                    "subject",
+                    "subject",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class QuestionnaireResponseItem(backboneelement.BackboneElement):
     """ Groups and questions.
@@ -131,17 +214,37 @@ class QuestionnaireResponseItem(backboneelement.BackboneElement):
         """ Name for group or question text.
         Type `str`. """
 
-        super(QuestionnaireResponseItem, self).__init__(jsondict=jsondict, strict=strict)
+        super(QuestionnaireResponseItem, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(QuestionnaireResponseItem, self).elementProperties()
-        js.extend([
-            ("answer", "answer", QuestionnaireResponseItemAnswer, "QuestionnaireResponseItemAnswer", True, None, False),
-            ("definition", "definition", str, "uri", False, None, False),
-            ("item", "item", QuestionnaireResponseItem, "QuestionnaireResponseItem", True, None, False),
-            ("linkId", "linkId", str, "string", False, None, True),
-            ("text", "text", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "answer",
+                    "answer",
+                    QuestionnaireResponseItemAnswer,
+                    "QuestionnaireResponseItemAnswer",
+                    True,
+                    None,
+                    False,
+                ),
+                ("definition", "definition", str, "uri", False, None, False),
+                (
+                    "item",
+                    "item",
+                    QuestionnaireResponseItem,
+                    "QuestionnaireResponseItem",
+                    True,
+                    None,
+                    False,
+                ),
+                ("linkId", "linkId", str, "string", False, None, True),
+                ("text", "text", str, "string", False, None, False),
+            ]
+        )
         return js
 
 
@@ -213,50 +316,133 @@ class QuestionnaireResponseItemAnswer(backboneelement.BackboneElement):
         """ Single-valued answer to the question.
         Type `str`. """
 
-        super(QuestionnaireResponseItemAnswer, self).__init__(jsondict=jsondict, strict=strict)
+        super(QuestionnaireResponseItemAnswer, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(QuestionnaireResponseItemAnswer, self).elementProperties()
-        js.extend([
-            ("item", "item", QuestionnaireResponseItem, "QuestionnaireResponseItem", True, None, False),
-            ("valueAttachment", "valueAttachment", attachment.Attachment, "Attachment", False, "value", False),
-            ("valueBoolean", "valueBoolean", bool, "boolean", False, "value", False),
-            ("valueCoding", "valueCoding", coding.Coding, "Coding", False, "value", False),
-            ("valueDate", "valueDate", fhirdate.FHIRDate, "date", False, "value", False),
-            ("valueDateTime", "valueDateTime", fhirdate.FHIRDate, "dateTime", False, "value", False),
-            ("valueDecimal", "valueDecimal", float, "decimal", False, "value", False),
-            ("valueInteger", "valueInteger", int, "integer", False, "value", False),
-            ("valueQuantity", "valueQuantity", quantity.Quantity, "Quantity", False, "value", False),
-            ("valueReference", "valueReference", fhirreference.FHIRReference, "Reference", False, "value", False),
-            ("valueString", "valueString", str, "string", False, "value", False),
-            ("valueTime", "valueTime", fhirdate.FHIRDate, "time", False, "value", False),
-            ("valueUri", "valueUri", str, "uri", False, "value", False),
-        ])
+        js.extend(
+            [
+                (
+                    "item",
+                    "item",
+                    QuestionnaireResponseItem,
+                    "QuestionnaireResponseItem",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "valueAttachment",
+                    "valueAttachment",
+                    attachment.Attachment,
+                    "Attachment",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueBoolean",
+                    "valueBoolean",
+                    bool,
+                    "boolean",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueCoding",
+                    "valueCoding",
+                    coding.Coding,
+                    "Coding",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueDate",
+                    "valueDate",
+                    fhirdate.FHIRDate,
+                    "date",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueDateTime",
+                    "valueDateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueDecimal",
+                    "valueDecimal",
+                    float,
+                    "decimal",
+                    False,
+                    "value",
+                    False,
+                ),
+                ("valueInteger", "valueInteger", int, "integer", False, "value", False),
+                (
+                    "valueQuantity",
+                    "valueQuantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueReference",
+                    "valueReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "value",
+                    False,
+                ),
+                ("valueString", "valueString", str, "string", False, "value", False),
+                (
+                    "valueTime",
+                    "valueTime",
+                    fhirdate.FHIRDate,
+                    "time",
+                    False,
+                    "value",
+                    False,
+                ),
+                ("valueUri", "valueUri", str, "uri", False, "value", False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import attachment
 except ImportError:
-    attachment = sys.modules[__package__ + '.attachment']
+    attachment = sys.modules[__package__ + ".attachment"]
 try:
     from . import coding
 except ImportError:
-    coding = sys.modules[__package__ + '.coding']
+    coding = sys.modules[__package__ + ".coding"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import quantity
 except ImportError:
-    quantity = sys.modules[__package__ + '.quantity']
+    quantity = sys.modules[__package__ + ".quantity"]

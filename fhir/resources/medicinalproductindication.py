@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class MedicinalProductIndication(domainresource.DomainResource):
     """ MedicinalProductIndication.
@@ -67,25 +70,99 @@ class MedicinalProductIndication(domainresource.DomainResource):
         """ Describe the undesirable effects of the medicinal product.
         List of `FHIRReference` items referencing `['MedicinalProductUndesirableEffect']` (represented as `dict` in JSON). """
 
-        super(MedicinalProductIndication, self).__init__(jsondict=jsondict, strict=strict)
+        super(MedicinalProductIndication, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(MedicinalProductIndication, self).elementProperties()
-        js.extend([
-            ("comorbidity", "comorbidity", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("diseaseStatus", "diseaseStatus", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("diseaseSymptomProcedure", "diseaseSymptomProcedure", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("duration", "duration", quantity.Quantity, "Quantity", False, None, False),
-            ("intendedEffect", "intendedEffect", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("otherTherapy", "otherTherapy", MedicinalProductIndicationOtherTherapy, "MedicinalProductIndicationOtherTherapy", True, None, False),
-            ("population", "population", population.Population, "Population", True, None, False),
-            ("subject", "subject", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("undesirableEffect", "undesirableEffect", fhirreference.FHIRReference, "Reference", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "comorbidity",
+                    "comorbidity",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "diseaseStatus",
+                    "diseaseStatus",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "diseaseSymptomProcedure",
+                    "diseaseSymptomProcedure",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "duration",
+                    "duration",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "intendedEffect",
+                    "intendedEffect",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "otherTherapy",
+                    "otherTherapy",
+                    MedicinalProductIndicationOtherTherapy,
+                    "MedicinalProductIndicationOtherTherapy",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "population",
+                    "population",
+                    population.Population,
+                    "Population",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "subject",
+                    "subject",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "undesirableEffect",
+                    "undesirableEffect",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class MedicinalProductIndicationOtherTherapy(backboneelement.BackboneElement):
     """ Information about the use of the medicinal product in relation to other
@@ -119,32 +196,59 @@ class MedicinalProductIndicationOtherTherapy(backboneelement.BackboneElement):
         or contraindication and another therapy.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(MedicinalProductIndicationOtherTherapy, self).__init__(jsondict=jsondict, strict=strict)
+        super(MedicinalProductIndicationOtherTherapy, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(MedicinalProductIndicationOtherTherapy, self).elementProperties()
-        js.extend([
-            ("medicationCodeableConcept", "medicationCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "medication", True),
-            ("medicationReference", "medicationReference", fhirreference.FHIRReference, "Reference", False, "medication", True),
-            ("therapyRelationshipType", "therapyRelationshipType", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "medicationCodeableConcept",
+                    "medicationCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "medication",
+                    True,
+                ),
+                (
+                    "medicationReference",
+                    "medicationReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "medication",
+                    True,
+                ),
+                (
+                    "therapyRelationshipType",
+                    "therapyRelationshipType",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import population
 except ImportError:
-    population = sys.modules[__package__ + '.population']
+    population = sys.modules[__package__ + ".population"]
 try:
     from . import quantity
 except ImportError:
-    quantity = sys.modules[__package__ + '.quantity']
+    quantity = sys.modules[__package__ + ".quantity"]

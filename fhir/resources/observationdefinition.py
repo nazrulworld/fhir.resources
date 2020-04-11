@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class ObservationDefinition(domainresource.DomainResource):
     """ Definition of an observation.
@@ -88,25 +91,129 @@ class ObservationDefinition(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(ObservationDefinition, self).elementProperties()
-        js.extend([
-            ("abnormalCodedValueSet", "abnormalCodedValueSet", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("category", "category", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("criticalCodedValueSet", "criticalCodedValueSet", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("method", "method", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("multipleResultsAllowed", "multipleResultsAllowed", bool, "boolean", False, None, False),
-            ("normalCodedValueSet", "normalCodedValueSet", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("permittedDataType", "permittedDataType", str, "code", True, None, False),
-            ("preferredReportName", "preferredReportName", str, "string", False, None, False),
-            ("qualifiedInterval", "qualifiedInterval", ObservationDefinitionQualifiedInterval, "ObservationDefinitionQualifiedInterval", True, None, False),
-            ("quantitativeDetails", "quantitativeDetails", ObservationDefinitionQuantitativeDetails, "ObservationDefinitionQuantitativeDetails", False, None, False),
-            ("validCodedValueSet", "validCodedValueSet", fhirreference.FHIRReference, "Reference", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "abnormalCodedValueSet",
+                    "abnormalCodedValueSet",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "category",
+                    "category",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "criticalCodedValueSet",
+                    "criticalCodedValueSet",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "method",
+                    "method",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "multipleResultsAllowed",
+                    "multipleResultsAllowed",
+                    bool,
+                    "boolean",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "normalCodedValueSet",
+                    "normalCodedValueSet",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "permittedDataType",
+                    "permittedDataType",
+                    str,
+                    "code",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "preferredReportName",
+                    "preferredReportName",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "qualifiedInterval",
+                    "qualifiedInterval",
+                    ObservationDefinitionQualifiedInterval,
+                    "ObservationDefinitionQualifiedInterval",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "quantitativeDetails",
+                    "quantitativeDetails",
+                    ObservationDefinitionQuantitativeDetails,
+                    "ObservationDefinitionQuantitativeDetails",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "validCodedValueSet",
+                    "validCodedValueSet",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
     """ Qualified range for continuous and ordinal observation results.
@@ -157,20 +264,48 @@ class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
         """ The interval itself, for continuous or ordinal observations.
         Type `Range` (represented as `dict` in JSON). """
 
-        super(ObservationDefinitionQualifiedInterval, self).__init__(jsondict=jsondict, strict=strict)
+        super(ObservationDefinitionQualifiedInterval, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ObservationDefinitionQualifiedInterval, self).elementProperties()
-        js.extend([
-            ("age", "age", range.Range, "Range", False, None, False),
-            ("appliesTo", "appliesTo", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("category", "category", str, "code", False, None, False),
-            ("condition", "condition", str, "string", False, None, False),
-            ("context", "context", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("gender", "gender", str, "code", False, None, False),
-            ("gestationalAge", "gestationalAge", range.Range, "Range", False, None, False),
-            ("range", "range", range.Range, "Range", False, None, False),
-        ])
+        js.extend(
+            [
+                ("age", "age", range.Range, "Range", False, None, False),
+                (
+                    "appliesTo",
+                    "appliesTo",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                ("category", "category", str, "code", False, None, False),
+                ("condition", "condition", str, "string", False, None, False),
+                (
+                    "context",
+                    "context",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("gender", "gender", str, "code", False, None, False),
+                (
+                    "gestationalAge",
+                    "gestationalAge",
+                    range.Range,
+                    "Range",
+                    False,
+                    None,
+                    False,
+                ),
+                ("range", "range", range.Range, "Range", False, None, False),
+            ]
+        )
         return js
 
 
@@ -206,33 +341,68 @@ class ObservationDefinitionQuantitativeDetails(backboneelement.BackboneElement):
         """ SI unit for quantitative results.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(ObservationDefinitionQuantitativeDetails, self).__init__(jsondict=jsondict, strict=strict)
+        super(ObservationDefinitionQuantitativeDetails, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ObservationDefinitionQuantitativeDetails, self).elementProperties()
-        js.extend([
-            ("conversionFactor", "conversionFactor", float, "decimal", False, None, False),
-            ("customaryUnit", "customaryUnit", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("decimalPrecision", "decimalPrecision", int, "integer", False, None, False),
-            ("unit", "unit", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "conversionFactor",
+                    "conversionFactor",
+                    float,
+                    "decimal",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "customaryUnit",
+                    "customaryUnit",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "decimalPrecision",
+                    "decimalPrecision",
+                    int,
+                    "integer",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "unit",
+                    "unit",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import range
 except ImportError:
-    range = sys.modules[__package__ + '.range']
+    range = sys.modules[__package__ + ".range"]

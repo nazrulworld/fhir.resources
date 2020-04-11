@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class MedicinalProductInteraction(domainresource.DomainResource):
     """ MedicinalProductInteraction.
@@ -57,23 +60,73 @@ class MedicinalProductInteraction(domainresource.DomainResource):
         interaction, drug-lab test interaction.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(MedicinalProductInteraction, self).__init__(jsondict=jsondict, strict=strict)
+        super(MedicinalProductInteraction, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(MedicinalProductInteraction, self).elementProperties()
-        js.extend([
-            ("description", "description", str, "string", False, None, False),
-            ("effect", "effect", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("incidence", "incidence", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("interactant", "interactant", MedicinalProductInteractionInteractant, "MedicinalProductInteractionInteractant", True, None, False),
-            ("management", "management", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("subject", "subject", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                ("description", "description", str, "string", False, None, False),
+                (
+                    "effect",
+                    "effect",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "incidence",
+                    "incidence",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "interactant",
+                    "interactant",
+                    MedicinalProductInteractionInteractant,
+                    "MedicinalProductInteractionInteractant",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "management",
+                    "management",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "subject",
+                    "subject",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class MedicinalProductInteractionInteractant(backboneelement.BackboneElement):
     """ The specific medication, food or laboratory test that interacts.
@@ -97,23 +150,42 @@ class MedicinalProductInteractionInteractant(backboneelement.BackboneElement):
         """ The specific medication, food or laboratory test that interacts.
         Type `FHIRReference` referencing `['MedicinalProduct', 'Medication', 'Substance', 'ObservationDefinition']` (represented as `dict` in JSON). """
 
-        super(MedicinalProductInteractionInteractant, self).__init__(jsondict=jsondict, strict=strict)
+        super(MedicinalProductInteractionInteractant, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(MedicinalProductInteractionInteractant, self).elementProperties()
-        js.extend([
-            ("itemCodeableConcept", "itemCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "item", True),
-            ("itemReference", "itemReference", fhirreference.FHIRReference, "Reference", False, "item", True),
-        ])
+        js.extend(
+            [
+                (
+                    "itemCodeableConcept",
+                    "itemCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "item",
+                    True,
+                ),
+                (
+                    "itemReference",
+                    "itemReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "item",
+                    True,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]

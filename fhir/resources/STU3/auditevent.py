@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class AuditEvent(domainresource.DomainResource):
     """ Event record kept for security purposes.
@@ -72,22 +75,62 @@ class AuditEvent(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(AuditEvent, self).elementProperties()
-        js.extend([
-            ("action", "action", str, "code", False, None, False),
-            ("agent", "agent", AuditEventAgent, "AuditEventAgent", True, None, True),
-            ("entity", "entity", AuditEventEntity, "AuditEventEntity", True, None, False),
-            ("outcome", "outcome", str, "code", False, None, False),
-            ("outcomeDesc", "outcomeDesc", str, "string", False, None, False),
-            ("purposeOfEvent", "purposeOfEvent", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("recorded", "recorded", fhirdate.FHIRDate, "instant", False, None, True),
-            ("source", "source", AuditEventSource, "AuditEventSource", False, None, True),
-            ("subtype", "subtype", coding.Coding, "Coding", True, None, False),
-            ("type", "type", coding.Coding, "Coding", False, None, True),
-        ])
+        js.extend(
+            [
+                ("action", "action", str, "code", False, None, False),
+                (
+                    "agent",
+                    "agent",
+                    AuditEventAgent,
+                    "AuditEventAgent",
+                    True,
+                    None,
+                    True,
+                ),
+                (
+                    "entity",
+                    "entity",
+                    AuditEventEntity,
+                    "AuditEventEntity",
+                    True,
+                    None,
+                    False,
+                ),
+                ("outcome", "outcome", str, "code", False, None, False),
+                ("outcomeDesc", "outcomeDesc", str, "string", False, None, False),
+                (
+                    "purposeOfEvent",
+                    "purposeOfEvent",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "recorded",
+                    "recorded",
+                    fhirdate.FHIRDate,
+                    "instant",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "source",
+                    "source",
+                    AuditEventSource,
+                    "AuditEventSource",
+                    False,
+                    None,
+                    True,
+                ),
+                ("subtype", "subtype", coding.Coding, "Coding", True, None, False),
+                ("type", "type", coding.Coding, "Coding", False, None, True),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class AuditEventAgent(backboneelement.BackboneElement):
     """ Actor involved in the event.
@@ -153,19 +196,69 @@ class AuditEventAgent(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(AuditEventAgent, self).elementProperties()
-        js.extend([
-            ("altId", "altId", str, "string", False, None, False),
-            ("location", "location", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("media", "media", coding.Coding, "Coding", False, None, False),
-            ("name", "name", str, "string", False, None, False),
-            ("network", "network", AuditEventAgentNetwork, "AuditEventAgentNetwork", False, None, False),
-            ("policy", "policy", str, "uri", True, None, False),
-            ("purposeOfUse", "purposeOfUse", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("reference", "reference", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("requestor", "requestor", bool, "boolean", False, None, True),
-            ("role", "role", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("userId", "userId", identifier.Identifier, "Identifier", False, None, False),
-        ])
+        js.extend(
+            [
+                ("altId", "altId", str, "string", False, None, False),
+                (
+                    "location",
+                    "location",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("media", "media", coding.Coding, "Coding", False, None, False),
+                ("name", "name", str, "string", False, None, False),
+                (
+                    "network",
+                    "network",
+                    AuditEventAgentNetwork,
+                    "AuditEventAgentNetwork",
+                    False,
+                    None,
+                    False,
+                ),
+                ("policy", "policy", str, "uri", True, None, False),
+                (
+                    "purposeOfUse",
+                    "purposeOfUse",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "reference",
+                    "reference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("requestor", "requestor", bool, "boolean", False, None, True),
+                (
+                    "role",
+                    "role",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "userId",
+                    "userId",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -198,10 +291,12 @@ class AuditEventAgentNetwork(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(AuditEventAgentNetwork, self).elementProperties()
-        js.extend([
-            ("address", "address", str, "string", False, None, False),
-            ("type", "type", str, "code", False, None, False),
-        ])
+        js.extend(
+            [
+                ("address", "address", str, "string", False, None, False),
+                ("type", "type", str, "code", False, None, False),
+            ]
+        )
         return js
 
 
@@ -265,18 +360,52 @@ class AuditEventEntity(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(AuditEventEntity, self).elementProperties()
-        js.extend([
-            ("description", "description", str, "string", False, None, False),
-            ("detail", "detail", AuditEventEntityDetail, "AuditEventEntityDetail", True, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", False, None, False),
-            ("lifecycle", "lifecycle", coding.Coding, "Coding", False, None, False),
-            ("name", "name", str, "string", False, None, False),
-            ("query", "query", str, "base64Binary", False, None, False),
-            ("reference", "reference", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("role", "role", coding.Coding, "Coding", False, None, False),
-            ("securityLabel", "securityLabel", coding.Coding, "Coding", True, None, False),
-            ("type", "type", coding.Coding, "Coding", False, None, False),
-        ])
+        js.extend(
+            [
+                ("description", "description", str, "string", False, None, False),
+                (
+                    "detail",
+                    "detail",
+                    AuditEventEntityDetail,
+                    "AuditEventEntityDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                ("lifecycle", "lifecycle", coding.Coding, "Coding", False, None, False),
+                ("name", "name", str, "string", False, None, False),
+                ("query", "query", str, "base64Binary", False, None, False),
+                (
+                    "reference",
+                    "reference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("role", "role", coding.Coding, "Coding", False, None, False),
+                (
+                    "securityLabel",
+                    "securityLabel",
+                    coding.Coding,
+                    "Coding",
+                    True,
+                    None,
+                    False,
+                ),
+                ("type", "type", coding.Coding, "Coding", False, None, False),
+            ]
+        )
         return js
 
 
@@ -308,10 +437,12 @@ class AuditEventEntityDetail(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(AuditEventEntityDetail, self).elementProperties()
-        js.extend([
-            ("type", "type", str, "string", False, None, True),
-            ("value", "value", str, "base64Binary", False, None, True),
-        ])
+        js.extend(
+            [
+                ("type", "type", str, "string", False, None, True),
+                ("value", "value", str, "base64Binary", False, None, True),
+            ]
+        )
         return js
 
 
@@ -347,32 +478,41 @@ class AuditEventSource(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(AuditEventSource, self).elementProperties()
-        js.extend([
-            ("identifier", "identifier", identifier.Identifier, "Identifier", False, None, True),
-            ("site", "site", str, "string", False, None, False),
-            ("type", "type", coding.Coding, "Coding", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    True,
+                ),
+                ("site", "site", str, "string", False, None, False),
+                ("type", "type", coding.Coding, "Coding", True, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import coding
 except ImportError:
-    coding = sys.modules[__package__ + '.coding']
+    coding = sys.modules[__package__ + ".coding"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]

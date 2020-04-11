@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class Linkage(domainresource.DomainResource):
     """ Links records for 'same' item.
@@ -43,15 +46,23 @@ class Linkage(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(Linkage, self).elementProperties()
-        js.extend([
-            ("active", "active", bool, "boolean", False, None, False),
-            ("author", "author", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("item", "item", LinkageItem, "LinkageItem", True, None, True),
-        ])
+        js.extend(
+            [
+                ("active", "active", bool, "boolean", False, None, False),
+                (
+                    "author",
+                    "author",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("item", "item", LinkageItem, "LinkageItem", True, None, True),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class LinkageItem(backboneelement.BackboneElement):
     """ Item to be linked.
@@ -83,15 +94,24 @@ class LinkageItem(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(LinkageItem, self).elementProperties()
-        js.extend([
-            ("resource", "resource", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("type", "type", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "resource",
+                    "resource",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                ("type", "type", str, "code", False, None, True),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]

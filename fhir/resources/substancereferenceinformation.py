@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class SubstanceReferenceInformation(domainresource.DomainResource):
     """ Todo.
@@ -44,21 +47,55 @@ class SubstanceReferenceInformation(domainresource.DomainResource):
         """ Todo.
         List of `SubstanceReferenceInformationTarget` items (represented as `dict` in JSON). """
 
-        super(SubstanceReferenceInformation, self).__init__(jsondict=jsondict, strict=strict)
+        super(SubstanceReferenceInformation, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(SubstanceReferenceInformation, self).elementProperties()
-        js.extend([
-            ("classification", "classification", SubstanceReferenceInformationClassification, "SubstanceReferenceInformationClassification", True, None, False),
-            ("comment", "comment", str, "string", False, None, False),
-            ("gene", "gene", SubstanceReferenceInformationGene, "SubstanceReferenceInformationGene", True, None, False),
-            ("geneElement", "geneElement", SubstanceReferenceInformationGeneElement, "SubstanceReferenceInformationGeneElement", True, None, False),
-            ("target", "target", SubstanceReferenceInformationTarget, "SubstanceReferenceInformationTarget", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "classification",
+                    "classification",
+                    SubstanceReferenceInformationClassification,
+                    "SubstanceReferenceInformationClassification",
+                    True,
+                    None,
+                    False,
+                ),
+                ("comment", "comment", str, "string", False, None, False),
+                (
+                    "gene",
+                    "gene",
+                    SubstanceReferenceInformationGene,
+                    "SubstanceReferenceInformationGene",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "geneElement",
+                    "geneElement",
+                    SubstanceReferenceInformationGeneElement,
+                    "SubstanceReferenceInformationGeneElement",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "target",
+                    "target",
+                    SubstanceReferenceInformationTarget,
+                    "SubstanceReferenceInformationTarget",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class SubstanceReferenceInformationClassification(backboneelement.BackboneElement):
     """ Todo.
@@ -90,16 +127,54 @@ class SubstanceReferenceInformationClassification(backboneelement.BackboneElemen
         """ Todo.
         List of `CodeableConcept` items (represented as `dict` in JSON). """
 
-        super(SubstanceReferenceInformationClassification, self).__init__(jsondict=jsondict, strict=strict)
+        super(SubstanceReferenceInformationClassification, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
-        js = super(SubstanceReferenceInformationClassification, self).elementProperties()
-        js.extend([
-            ("classification", "classification", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("domain", "domain", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("source", "source", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("subtype", "subtype", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-        ])
+        js = super(
+            SubstanceReferenceInformationClassification, self
+        ).elementProperties()
+        js.extend(
+            [
+                (
+                    "classification",
+                    "classification",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "domain",
+                    "domain",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "source",
+                    "source",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "subtype",
+                    "subtype",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -129,15 +204,43 @@ class SubstanceReferenceInformationGene(backboneelement.BackboneElement):
         """ Todo.
         List of `FHIRReference` items referencing `['DocumentReference']` (represented as `dict` in JSON). """
 
-        super(SubstanceReferenceInformationGene, self).__init__(jsondict=jsondict, strict=strict)
+        super(SubstanceReferenceInformationGene, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(SubstanceReferenceInformationGene, self).elementProperties()
-        js.extend([
-            ("gene", "gene", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("geneSequenceOrigin", "geneSequenceOrigin", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("source", "source", fhirreference.FHIRReference, "Reference", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "gene",
+                    "gene",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "geneSequenceOrigin",
+                    "geneSequenceOrigin",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "source",
+                    "source",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -167,15 +270,43 @@ class SubstanceReferenceInformationGeneElement(backboneelement.BackboneElement):
         """ Todo.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(SubstanceReferenceInformationGeneElement, self).__init__(jsondict=jsondict, strict=strict)
+        super(SubstanceReferenceInformationGeneElement, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(SubstanceReferenceInformationGeneElement, self).elementProperties()
-        js.extend([
-            ("element", "element", identifier.Identifier, "Identifier", False, None, False),
-            ("source", "source", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "element",
+                    "element",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "source",
+                    "source",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -233,43 +364,118 @@ class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
         """ Todo.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(SubstanceReferenceInformationTarget, self).__init__(jsondict=jsondict, strict=strict)
+        super(SubstanceReferenceInformationTarget, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(SubstanceReferenceInformationTarget, self).elementProperties()
-        js.extend([
-            ("amountQuantity", "amountQuantity", quantity.Quantity, "Quantity", False, "amount", False),
-            ("amountRange", "amountRange", range.Range, "Range", False, "amount", False),
-            ("amountString", "amountString", str, "string", False, "amount", False),
-            ("amountType", "amountType", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("interaction", "interaction", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("organism", "organism", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("organismType", "organismType", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("source", "source", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("target", "target", identifier.Identifier, "Identifier", False, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "amountQuantity",
+                    "amountQuantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    "amount",
+                    False,
+                ),
+                (
+                    "amountRange",
+                    "amountRange",
+                    range.Range,
+                    "Range",
+                    False,
+                    "amount",
+                    False,
+                ),
+                ("amountString", "amountString", str, "string", False, "amount", False),
+                (
+                    "amountType",
+                    "amountType",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "interaction",
+                    "interaction",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "organism",
+                    "organism",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "organismType",
+                    "organismType",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "source",
+                    "source",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "target",
+                    "target",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import quantity
 except ImportError:
-    quantity = sys.modules[__package__ + '.quantity']
+    quantity = sys.modules[__package__ + ".quantity"]
 try:
     from . import range
 except ImportError:
-    range = sys.modules[__package__ + '.range']
+    range = sys.modules[__package__ + ".range"]

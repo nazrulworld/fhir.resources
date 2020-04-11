@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class EligibilityResponse(domainresource.DomainResource):
     """ EligibilityResponse resource.
@@ -83,25 +86,105 @@ class EligibilityResponse(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(EligibilityResponse, self).elementProperties()
-        js.extend([
-            ("created", "created", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("disposition", "disposition", str, "string", False, None, False),
-            ("error", "error", EligibilityResponseError, "EligibilityResponseError", True, None, False),
-            ("form", "form", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("inforce", "inforce", bool, "boolean", False, None, False),
-            ("insurance", "insurance", EligibilityResponseInsurance, "EligibilityResponseInsurance", True, None, False),
-            ("insurer", "insurer", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("outcome", "outcome", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("request", "request", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("requestOrganization", "requestOrganization", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("requestProvider", "requestProvider", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("status", "status", str, "code", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "created",
+                    "created",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                ("disposition", "disposition", str, "string", False, None, False),
+                (
+                    "error",
+                    "error",
+                    EligibilityResponseError,
+                    "EligibilityResponseError",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "form",
+                    "form",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                ("inforce", "inforce", bool, "boolean", False, None, False),
+                (
+                    "insurance",
+                    "insurance",
+                    EligibilityResponseInsurance,
+                    "EligibilityResponseInsurance",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "insurer",
+                    "insurer",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "outcome",
+                    "outcome",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "request",
+                    "request",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "requestOrganization",
+                    "requestOrganization",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "requestProvider",
+                    "requestProvider",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, False),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class EligibilityResponseError(backboneelement.BackboneElement):
     """ Processing errors.
@@ -127,9 +210,19 @@ class EligibilityResponseError(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(EligibilityResponseError, self).elementProperties()
-        js.extend([
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -162,15 +255,43 @@ class EligibilityResponseInsurance(backboneelement.BackboneElement):
         """ Updated Coverage details.
         Type `FHIRReference` referencing `['Coverage']` (represented as `dict` in JSON). """
 
-        super(EligibilityResponseInsurance, self).__init__(jsondict=jsondict, strict=strict)
+        super(EligibilityResponseInsurance, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(EligibilityResponseInsurance, self).elementProperties()
-        js.extend([
-            ("benefitBalance", "benefitBalance", EligibilityResponseInsuranceBenefitBalance, "EligibilityResponseInsuranceBenefitBalance", True, None, False),
-            ("contract", "contract", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("coverage", "coverage", fhirreference.FHIRReference, "Reference", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "benefitBalance",
+                    "benefitBalance",
+                    EligibilityResponseInsuranceBenefitBalance,
+                    "EligibilityResponseInsuranceBenefitBalance",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "contract",
+                    "contract",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "coverage",
+                    "coverage",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -226,25 +347,79 @@ class EligibilityResponseInsuranceBenefitBalance(backboneelement.BackboneElement
         """ Individual or family.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(EligibilityResponseInsuranceBenefitBalance, self).__init__(jsondict=jsondict, strict=strict)
+        super(EligibilityResponseInsuranceBenefitBalance, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(EligibilityResponseInsuranceBenefitBalance, self).elementProperties()
-        js.extend([
-            ("category", "category", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("description", "description", str, "string", False, None, False),
-            ("excluded", "excluded", bool, "boolean", False, None, False),
-            ("financial", "financial", EligibilityResponseInsuranceBenefitBalanceFinancial, "EligibilityResponseInsuranceBenefitBalanceFinancial", True, None, False),
-            ("name", "name", str, "string", False, None, False),
-            ("network", "network", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("subCategory", "subCategory", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("term", "term", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("unit", "unit", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "category",
+                    "category",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                ("description", "description", str, "string", False, None, False),
+                ("excluded", "excluded", bool, "boolean", False, None, False),
+                (
+                    "financial",
+                    "financial",
+                    EligibilityResponseInsuranceBenefitBalanceFinancial,
+                    "EligibilityResponseInsuranceBenefitBalanceFinancial",
+                    True,
+                    None,
+                    False,
+                ),
+                ("name", "name", str, "string", False, None, False),
+                (
+                    "network",
+                    "network",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "subCategory",
+                    "subCategory",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "term",
+                    "term",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "unit",
+                    "unit",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-class EligibilityResponseInsuranceBenefitBalanceFinancial(backboneelement.BackboneElement):
+class EligibilityResponseInsuranceBenefitBalanceFinancial(
+    backboneelement.BackboneElement
+):
     """ Benefit Summary.
 
     Benefits Used to date.
@@ -284,39 +459,84 @@ class EligibilityResponseInsuranceBenefitBalanceFinancial(backboneelement.Backbo
         """ Benefits used.
         Type `int`. """
 
-        super(EligibilityResponseInsuranceBenefitBalanceFinancial, self).__init__(jsondict=jsondict, strict=strict)
+        super(EligibilityResponseInsuranceBenefitBalanceFinancial, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
-        js = super(EligibilityResponseInsuranceBenefitBalanceFinancial, self).elementProperties()
-        js.extend([
-            ("allowedMoney", "allowedMoney", money.Money, "Money", False, "allowed", False),
-            ("allowedString", "allowedString", str, "string", False, "allowed", False),
-            ("allowedUnsignedInt", "allowedUnsignedInt", int, "unsignedInt", False, "allowed", False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("usedMoney", "usedMoney", money.Money, "Money", False, "used", False),
-            ("usedUnsignedInt", "usedUnsignedInt", int, "unsignedInt", False, "used", False),
-        ])
+        js = super(
+            EligibilityResponseInsuranceBenefitBalanceFinancial, self
+        ).elementProperties()
+        js.extend(
+            [
+                (
+                    "allowedMoney",
+                    "allowedMoney",
+                    money.Money,
+                    "Money",
+                    False,
+                    "allowed",
+                    False,
+                ),
+                (
+                    "allowedString",
+                    "allowedString",
+                    str,
+                    "string",
+                    False,
+                    "allowed",
+                    False,
+                ),
+                (
+                    "allowedUnsignedInt",
+                    "allowedUnsignedInt",
+                    int,
+                    "unsignedInt",
+                    False,
+                    "allowed",
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                ("usedMoney", "usedMoney", money.Money, "Money", False, "used", False),
+                (
+                    "usedUnsignedInt",
+                    "usedUnsignedInt",
+                    int,
+                    "unsignedInt",
+                    False,
+                    "used",
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import money
 except ImportError:
-    money = sys.modules[__package__ + '.money']
+    money = sys.modules[__package__ + ".money"]

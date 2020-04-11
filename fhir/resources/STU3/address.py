@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
+import sys
+
 from . import element
+
 
 class Address(element.Element):
     """ An address expressed using postal conventions (as opposed to GPS or other
@@ -75,23 +78,24 @@ class Address(element.Element):
 
     def elementProperties(self):
         js = super(Address, self).elementProperties()
-        js.extend([
-            ("city", "city", str, "string", False, None, False),
-            ("country", "country", str, "string", False, None, False),
-            ("district", "district", str, "string", False, None, False),
-            ("line", "line", str, "string", True, None, False),
-            ("period", "period", period.Period, "Period", False, None, False),
-            ("postalCode", "postalCode", str, "string", False, None, False),
-            ("state", "state", str, "string", False, None, False),
-            ("text", "text", str, "string", False, None, False),
-            ("type", "type", str, "code", False, None, False),
-            ("use", "use", str, "code", False, None, False),
-        ])
+        js.extend(
+            [
+                ("city", "city", str, "string", False, None, False),
+                ("country", "country", str, "string", False, None, False),
+                ("district", "district", str, "string", False, None, False),
+                ("line", "line", str, "string", True, None, False),
+                ("period", "period", period.Period, "Period", False, None, False),
+                ("postalCode", "postalCode", str, "string", False, None, False),
+                ("state", "state", str, "string", False, None, False),
+                ("text", "text", str, "string", False, None, False),
+                ("type", "type", str, "code", False, None, False),
+                ("use", "use", str, "code", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]

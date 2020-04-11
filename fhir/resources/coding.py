@@ -10,6 +10,7 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 
 from . import element
 
+
 class Coding(element.Element):
     """ A reference to a code defined by a terminology system.
     """
@@ -48,13 +49,13 @@ class Coding(element.Element):
 
     def elementProperties(self):
         js = super(Coding, self).elementProperties()
-        js.extend([
-            ("code", "code", str, "code", False, None, False),
-            ("display", "display", str, "string", False, None, False),
-            ("system", "system", str, "uri", False, None, False),
-            ("userSelected", "userSelected", bool, "boolean", False, None, False),
-            ("version", "version", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                ("code", "code", str, "code", False, None, False),
+                ("display", "display", str, "string", False, None, False),
+                ("system", "system", str, "uri", False, None, False),
+                ("userSelected", "userSelected", bool, "boolean", False, None, False),
+                ("version", "version", str, "string", False, None, False),
+            ]
+        )
         return js
-
-

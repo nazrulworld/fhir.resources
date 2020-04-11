@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class SubstanceSpecification(domainresource.DomainResource):
     """ The detailed description of a substance, typically at a level beyond what
@@ -108,31 +111,167 @@ class SubstanceSpecification(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(SubstanceSpecification, self).elementProperties()
-        js.extend([
-            ("code", "code", SubstanceSpecificationstr, "SubstanceSpecificationstr", True, None, False),
-            ("comment", "comment", str, "string", False, None, False),
-            ("description", "description", str, "string", False, None, False),
-            ("domain", "domain", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", False, None, False),
-            ("moiety", "moiety", SubstanceSpecificationMoiety, "SubstanceSpecificationMoiety", True, None, False),
-            ("molecularWeight", "molecularWeight", SubstanceSpecificationStructureIsotopeMolecularWeight, "SubstanceSpecificationStructureIsotopeMolecularWeight", True, None, False),
-            ("name", "name", SubstanceSpecificationName, "SubstanceSpecificationName", True, None, False),
-            ("nucleicAcid", "nucleicAcid", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("polymer", "polymer", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("property", "property", SubstanceSpecificationProperty, "SubstanceSpecificationProperty", True, None, False),
-            ("protein", "protein", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("referenceInformation", "referenceInformation", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("relationship", "relationship", SubstanceSpecificationRelationship, "SubstanceSpecificationRelationship", True, None, False),
-            ("source", "source", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("sourceMaterial", "sourceMaterial", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("status", "status", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("structure", "structure", SubstanceSpecificationStructure, "SubstanceSpecificationStructure", False, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "code",
+                    "code",
+                    SubstanceSpecificationstr,
+                    "SubstanceSpecificationstr",
+                    True,
+                    None,
+                    False,
+                ),
+                ("comment", "comment", str, "string", False, None, False),
+                ("description", "description", str, "string", False, None, False),
+                (
+                    "domain",
+                    "domain",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "moiety",
+                    "moiety",
+                    SubstanceSpecificationMoiety,
+                    "SubstanceSpecificationMoiety",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "molecularWeight",
+                    "molecularWeight",
+                    SubstanceSpecificationStructureIsotopeMolecularWeight,
+                    "SubstanceSpecificationStructureIsotopeMolecularWeight",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "name",
+                    "name",
+                    SubstanceSpecificationName,
+                    "SubstanceSpecificationName",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "nucleicAcid",
+                    "nucleicAcid",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "polymer",
+                    "polymer",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "property",
+                    "property",
+                    SubstanceSpecificationProperty,
+                    "SubstanceSpecificationProperty",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "protein",
+                    "protein",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "referenceInformation",
+                    "referenceInformation",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "relationship",
+                    "relationship",
+                    SubstanceSpecificationRelationship,
+                    "SubstanceSpecificationRelationship",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "source",
+                    "source",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "sourceMaterial",
+                    "sourceMaterial",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "status",
+                    "status",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "structure",
+                    "structure",
+                    SubstanceSpecificationStructure,
+                    "SubstanceSpecificationStructure",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class SubstanceSpecificationMoiety(backboneelement.BackboneElement):
     """ Moiety, for structural modifications.
@@ -180,20 +319,72 @@ class SubstanceSpecificationMoiety(backboneelement.BackboneElement):
         """ Stereochemistry type.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(SubstanceSpecificationMoiety, self).__init__(jsondict=jsondict, strict=strict)
+        super(SubstanceSpecificationMoiety, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(SubstanceSpecificationMoiety, self).elementProperties()
-        js.extend([
-            ("amountQuantity", "amountQuantity", quantity.Quantity, "Quantity", False, "amount", False),
-            ("amountString", "amountString", str, "string", False, "amount", False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", False, None, False),
-            ("molecularFormula", "molecularFormula", str, "string", False, None, False),
-            ("name", "name", str, "string", False, None, False),
-            ("opticalActivity", "opticalActivity", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("role", "role", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("stereochemistry", "stereochemistry", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "amountQuantity",
+                    "amountQuantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    "amount",
+                    False,
+                ),
+                ("amountString", "amountString", str, "string", False, "amount", False),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "molecularFormula",
+                    "molecularFormula",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                ("name", "name", str, "string", False, None, False),
+                (
+                    "opticalActivity",
+                    "opticalActivity",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "role",
+                    "role",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "stereochemistry",
+                    "stereochemistry",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -256,23 +447,99 @@ class SubstanceSpecificationName(backboneelement.BackboneElement):
         """ Name type.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(SubstanceSpecificationName, self).__init__(jsondict=jsondict, strict=strict)
+        super(SubstanceSpecificationName, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(SubstanceSpecificationName, self).elementProperties()
-        js.extend([
-            ("domain", "domain", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("jurisdiction", "jurisdiction", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("language", "language", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("name", "name", str, "string", False, None, True),
-            ("official", "official", SubstanceSpecificationNameOfficial, "SubstanceSpecificationNameOfficial", True, None, False),
-            ("preferred", "preferred", bool, "boolean", False, None, False),
-            ("source", "source", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("status", "status", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("synonym", "synonym", SubstanceSpecificationName, "SubstanceSpecificationName", True, None, False),
-            ("translation", "translation", SubstanceSpecificationName, "SubstanceSpecificationName", True, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "domain",
+                    "domain",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "jurisdiction",
+                    "jurisdiction",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "language",
+                    "language",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                ("name", "name", str, "string", False, None, True),
+                (
+                    "official",
+                    "official",
+                    SubstanceSpecificationNameOfficial,
+                    "SubstanceSpecificationNameOfficial",
+                    True,
+                    None,
+                    False,
+                ),
+                ("preferred", "preferred", bool, "boolean", False, None, False),
+                (
+                    "source",
+                    "source",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "status",
+                    "status",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "synonym",
+                    "synonym",
+                    SubstanceSpecificationName,
+                    "SubstanceSpecificationName",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "translation",
+                    "translation",
+                    SubstanceSpecificationName,
+                    "SubstanceSpecificationName",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -302,15 +569,35 @@ class SubstanceSpecificationNameOfficial(backboneelement.BackboneElement):
         """ The status of the official name.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(SubstanceSpecificationNameOfficial, self).__init__(jsondict=jsondict, strict=strict)
+        super(SubstanceSpecificationNameOfficial, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(SubstanceSpecificationNameOfficial, self).elementProperties()
-        js.extend([
-            ("authority", "authority", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("status", "status", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "authority",
+                    "authority",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
+                (
+                    "status",
+                    "status",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -360,19 +647,63 @@ class SubstanceSpecificationProperty(backboneelement.BackboneElement):
         for viscosity: measured at 20C with a pH of 7.1).
         Type `str`. """
 
-        super(SubstanceSpecificationProperty, self).__init__(jsondict=jsondict, strict=strict)
+        super(SubstanceSpecificationProperty, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(SubstanceSpecificationProperty, self).elementProperties()
-        js.extend([
-            ("amountQuantity", "amountQuantity", quantity.Quantity, "Quantity", False, "amount", False),
-            ("amountString", "amountString", str, "string", False, "amount", False),
-            ("category", "category", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("definingSubstanceCodeableConcept", "definingSubstanceCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "definingSubstance", False),
-            ("definingSubstanceReference", "definingSubstanceReference", fhirreference.FHIRReference, "Reference", False, "definingSubstance", False),
-            ("parameters", "parameters", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "amountQuantity",
+                    "amountQuantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    "amount",
+                    False,
+                ),
+                ("amountString", "amountString", str, "string", False, "amount", False),
+                (
+                    "category",
+                    "category",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "definingSubstanceCodeableConcept",
+                    "definingSubstanceCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "definingSubstance",
+                    False,
+                ),
+                (
+                    "definingSubstanceReference",
+                    "definingSubstanceReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "definingSubstance",
+                    False,
+                ),
+                ("parameters", "parameters", str, "string", False, None, False),
+            ]
+        )
         return js
 
 
@@ -447,23 +778,99 @@ class SubstanceSpecificationRelationship(backboneelement.BackboneElement):
         representational code.
         Type `FHIRReference` referencing `['SubstanceSpecification']` (represented as `dict` in JSON). """
 
-        super(SubstanceSpecificationRelationship, self).__init__(jsondict=jsondict, strict=strict)
+        super(SubstanceSpecificationRelationship, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(SubstanceSpecificationRelationship, self).elementProperties()
-        js.extend([
-            ("amountQuantity", "amountQuantity", quantity.Quantity, "Quantity", False, "amount", False),
-            ("amountRange", "amountRange", range.Range, "Range", False, "amount", False),
-            ("amountRatio", "amountRatio", ratio.Ratio, "Ratio", False, "amount", False),
-            ("amountRatioLowLimit", "amountRatioLowLimit", ratio.Ratio, "Ratio", False, None, False),
-            ("amountString", "amountString", str, "string", False, "amount", False),
-            ("amountType", "amountType", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("isDefining", "isDefining", bool, "boolean", False, None, False),
-            ("relationship", "relationship", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("source", "source", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("substanceCodeableConcept", "substanceCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "substance", False),
-            ("substanceReference", "substanceReference", fhirreference.FHIRReference, "Reference", False, "substance", False),
-        ])
+        js.extend(
+            [
+                (
+                    "amountQuantity",
+                    "amountQuantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    "amount",
+                    False,
+                ),
+                (
+                    "amountRange",
+                    "amountRange",
+                    range.Range,
+                    "Range",
+                    False,
+                    "amount",
+                    False,
+                ),
+                (
+                    "amountRatio",
+                    "amountRatio",
+                    ratio.Ratio,
+                    "Ratio",
+                    False,
+                    "amount",
+                    False,
+                ),
+                (
+                    "amountRatioLowLimit",
+                    "amountRatioLowLimit",
+                    ratio.Ratio,
+                    "Ratio",
+                    False,
+                    None,
+                    False,
+                ),
+                ("amountString", "amountString", str, "string", False, "amount", False),
+                (
+                    "amountType",
+                    "amountType",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("isDefining", "isDefining", bool, "boolean", False, None, False),
+                (
+                    "relationship",
+                    "relationship",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "source",
+                    "source",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "substanceCodeableConcept",
+                    "substanceCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "substance",
+                    False,
+                ),
+                (
+                    "substanceReference",
+                    "substanceReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "substance",
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -516,20 +923,88 @@ class SubstanceSpecificationStructure(backboneelement.BackboneElement):
         """ Stereochemistry type.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(SubstanceSpecificationStructure, self).__init__(jsondict=jsondict, strict=strict)
+        super(SubstanceSpecificationStructure, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(SubstanceSpecificationStructure, self).elementProperties()
-        js.extend([
-            ("isotope", "isotope", SubstanceSpecificationStructureIsotope, "SubstanceSpecificationStructureIsotope", True, None, False),
-            ("molecularFormula", "molecularFormula", str, "string", False, None, False),
-            ("molecularFormulaByMoiety", "molecularFormulaByMoiety", str, "string", False, None, False),
-            ("molecularWeight", "molecularWeight", SubstanceSpecificationStructureIsotopeMolecularWeight, "SubstanceSpecificationStructureIsotopeMolecularWeight", False, None, False),
-            ("opticalActivity", "opticalActivity", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("representation", "representation", SubstanceSpecificationStructureRepresentation, "SubstanceSpecificationStructureRepresentation", True, None, False),
-            ("source", "source", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("stereochemistry", "stereochemistry", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "isotope",
+                    "isotope",
+                    SubstanceSpecificationStructureIsotope,
+                    "SubstanceSpecificationStructureIsotope",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "molecularFormula",
+                    "molecularFormula",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "molecularFormulaByMoiety",
+                    "molecularFormulaByMoiety",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "molecularWeight",
+                    "molecularWeight",
+                    SubstanceSpecificationStructureIsotopeMolecularWeight,
+                    "SubstanceSpecificationStructureIsotopeMolecularWeight",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "opticalActivity",
+                    "opticalActivity",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "representation",
+                    "representation",
+                    SubstanceSpecificationStructureRepresentation,
+                    "SubstanceSpecificationStructureRepresentation",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "source",
+                    "source",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "stereochemistry",
+                    "stereochemistry",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -569,21 +1044,67 @@ class SubstanceSpecificationStructureIsotope(backboneelement.BackboneElement):
         """ The type of isotopic substitution present in a single substance.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(SubstanceSpecificationStructureIsotope, self).__init__(jsondict=jsondict, strict=strict)
+        super(SubstanceSpecificationStructureIsotope, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(SubstanceSpecificationStructureIsotope, self).elementProperties()
-        js.extend([
-            ("halfLife", "halfLife", quantity.Quantity, "Quantity", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", False, None, False),
-            ("molecularWeight", "molecularWeight", SubstanceSpecificationStructureIsotopeMolecularWeight, "SubstanceSpecificationStructureIsotopeMolecularWeight", False, None, False),
-            ("name", "name", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("substitution", "substitution", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "halfLife",
+                    "halfLife",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "molecularWeight",
+                    "molecularWeight",
+                    SubstanceSpecificationStructureIsotopeMolecularWeight,
+                    "SubstanceSpecificationStructureIsotopeMolecularWeight",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "name",
+                    "name",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "substitution",
+                    "substitution",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-class SubstanceSpecificationStructureIsotopeMolecularWeight(backboneelement.BackboneElement):
+class SubstanceSpecificationStructureIsotopeMolecularWeight(
+    backboneelement.BackboneElement
+):
     """ The molecular weight or weight range (for proteins, polymers or nucleic
     acids).
     """
@@ -614,15 +1135,37 @@ class SubstanceSpecificationStructureIsotopeMolecularWeight(backboneelement.Back
         number average), weight average.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(SubstanceSpecificationStructureIsotopeMolecularWeight, self).__init__(jsondict=jsondict, strict=strict)
+        super(SubstanceSpecificationStructureIsotopeMolecularWeight, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
-        js = super(SubstanceSpecificationStructureIsotopeMolecularWeight, self).elementProperties()
-        js.extend([
-            ("amount", "amount", quantity.Quantity, "Quantity", False, None, False),
-            ("method", "method", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js = super(
+            SubstanceSpecificationStructureIsotopeMolecularWeight, self
+        ).elementProperties()
+        js.extend(
+            [
+                ("amount", "amount", quantity.Quantity, "Quantity", False, None, False),
+                (
+                    "method",
+                    "method",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -653,15 +1196,37 @@ class SubstanceSpecificationStructureRepresentation(backboneelement.BackboneElem
         """ The type of structure (e.g. Full, Partial, Representative).
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(SubstanceSpecificationStructureRepresentation, self).__init__(jsondict=jsondict, strict=strict)
+        super(SubstanceSpecificationStructureRepresentation, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
-        js = super(SubstanceSpecificationStructureRepresentation, self).elementProperties()
-        js.extend([
-            ("attachment", "attachment", attachment.Attachment, "Attachment", False, None, False),
-            ("representation", "representation", str, "string", False, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js = super(
+            SubstanceSpecificationStructureRepresentation, self
+        ).elementProperties()
+        js.extend(
+            [
+                (
+                    "attachment",
+                    "attachment",
+                    attachment.Attachment,
+                    "Attachment",
+                    False,
+                    None,
+                    False,
+                ),
+                ("representation", "representation", str, "string", False, None, False),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -700,50 +1265,85 @@ class SubstanceSpecificationstr(backboneelement.BackboneElement):
         terminology maintenance.
         Type `FHIRDate` (represented as `str` in JSON). """
 
-        super(SubstanceSpecificationstr, self).__init__(jsondict=jsondict, strict=strict)
+        super(SubstanceSpecificationstr, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(SubstanceSpecificationstr, self).elementProperties()
-        js.extend([
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("comment", "comment", str, "string", False, None, False),
-            ("source", "source", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("status", "status", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("statusDate", "statusDate", fhirdate.FHIRDate, "dateTime", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("comment", "comment", str, "string", False, None, False),
+                (
+                    "source",
+                    "source",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "status",
+                    "status",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "statusDate",
+                    "statusDate",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import attachment
 except ImportError:
-    attachment = sys.modules[__package__ + '.attachment']
+    attachment = sys.modules[__package__ + ".attachment"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import quantity
 except ImportError:
-    quantity = sys.modules[__package__ + '.quantity']
+    quantity = sys.modules[__package__ + ".quantity"]
 try:
     from . import range
 except ImportError:
-    range = sys.modules[__package__ + '.range']
+    range = sys.modules[__package__ + ".range"]
 try:
     from . import ratio
 except ImportError:
-    ratio = sys.modules[__package__ + '.ratio']
+    ratio = sys.modules[__package__ + ".ratio"]

@@ -5,7 +5,9 @@
 #  2019, SMART Health IT.
 
 
-from . import domainresource
+from . import (backboneelement, codeableconcept, domainresource, fhirdate,
+               fhirreference, identifier)
+
 
 class DetectedIssue(domainresource.DomainResource):
     """ Clinical issue with action.
@@ -15,9 +17,9 @@ class DetectedIssue(domainresource.DomainResource):
     interaction, Ineffective treatment frequency, Procedure-condition conflict,
     etc.
     """
-    
+
     resource_name = "DetectedIssue"
-    
+
     def __init__(self, jsondict=None, strict=True):
         """ Initialize all valid properties.
         
@@ -25,67 +27,88 @@ class DetectedIssue(domainresource.DomainResource):
         :param dict jsondict: A JSON dictionary to use for initialization
         :param bool strict: If True (the default), invalid variables will raise a TypeError
         """
-        
+
         self.author = None
         """ The provider or device that identified the issue.
         Type `FHIRReference` referencing `Practitioner, Device` (represented as `dict` in JSON). """
-        
+
         self.category = None
         """ Issue Category, e.g. drug-drug, duplicate therapy, etc..
         Type `CodeableConcept` (represented as `dict` in JSON). """
-        
+
         self.date = None
         """ When identified.
         Type `FHIRDate` (represented as `str` in JSON). """
-        
+
         self.detail = None
         """ Description and context.
         Type `str`. """
-        
+
         self.identifier = None
         """ Unique id for the detected issue.
         Type `Identifier` (represented as `dict` in JSON). """
-        
+
         self.implicated = None
         """ Problem resource.
         List of `FHIRReference` items referencing `Resource` (represented as `dict` in JSON). """
-        
+
         self.mitigation = None
         """ Step taken to address.
         List of `DetectedIssueMitigation` items (represented as `dict` in JSON). """
-        
+
         self.patient = None
         """ Associated patient.
         Type `FHIRReference` referencing `Patient` (represented as `dict` in JSON). """
-        
+
         self.reference = None
         """ Authority for issue.
         Type `str`. """
-        
+
         self.severity = None
         """ high | moderate | low.
         Type `str`. """
-        
+
         super(DetectedIssue, self).__init__(jsondict=jsondict, strict=strict)
-    
+
     def elementProperties(self):
         js = super(DetectedIssue, self).elementProperties()
-        js.extend([
-            ("author", "author", fhirreference.FHIRReference, False, None, False),
-            ("category", "category", codeableconcept.CodeableConcept, False, None, False),
-            ("date", "date", fhirdate.FHIRDate, False, None, False),
-            ("detail", "detail", str, False, None, False),
-            ("identifier", "identifier", identifier.Identifier, False, None, False),
-            ("implicated", "implicated", fhirreference.FHIRReference, True, None, False),
-            ("mitigation", "mitigation", DetectedIssueMitigation, True, None, False),
-            ("patient", "patient", fhirreference.FHIRReference, False, None, False),
-            ("reference", "reference", str, False, None, False),
-            ("severity", "severity", str, False, None, False),
-        ])
+        js.extend(
+            [
+                ("author", "author", fhirreference.FHIRReference, False, None, False),
+                (
+                    "category",
+                    "category",
+                    codeableconcept.CodeableConcept,
+                    False,
+                    None,
+                    False,
+                ),
+                ("date", "date", fhirdate.FHIRDate, False, None, False),
+                ("detail", "detail", str, False, None, False),
+                ("identifier", "identifier", identifier.Identifier, False, None, False),
+                (
+                    "implicated",
+                    "implicated",
+                    fhirreference.FHIRReference,
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "mitigation",
+                    "mitigation",
+                    DetectedIssueMitigation,
+                    True,
+                    None,
+                    False,
+                ),
+                ("patient", "patient", fhirreference.FHIRReference, False, None, False),
+                ("reference", "reference", str, False, None, False),
+                ("severity", "severity", str, False, None, False),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class DetectedIssueMitigation(backboneelement.BackboneElement):
     """ Step taken to address.
@@ -95,9 +118,9 @@ class DetectedIssueMitigation(backboneelement.BackboneElement):
     manifesting.  Can also reflect an observation of known mitigating factors
     that may reduce/eliminate the need for any action.
     """
-    
+
     resource_name = "DetectedIssueMitigation"
-    
+
     def __init__(self, jsondict=None, strict=True):
         """ Initialize all valid properties.
         
@@ -105,32 +128,35 @@ class DetectedIssueMitigation(backboneelement.BackboneElement):
         :param dict jsondict: A JSON dictionary to use for initialization
         :param bool strict: If True (the default), invalid variables will raise a TypeError
         """
-        
+
         self.action = None
         """ What mitigation?.
         Type `CodeableConcept` (represented as `dict` in JSON). """
-        
+
         self.author = None
         """ Who is committing?.
         Type `FHIRReference` referencing `Practitioner` (represented as `dict` in JSON). """
-        
+
         self.date = None
         """ Date committed.
         Type `FHIRDate` (represented as `str` in JSON). """
-        
+
         super(DetectedIssueMitigation, self).__init__(jsondict=jsondict, strict=strict)
-    
+
     def elementProperties(self):
         js = super(DetectedIssueMitigation, self).elementProperties()
-        js.extend([
-            ("action", "action", codeableconcept.CodeableConcept, False, None, True),
-            ("author", "author", fhirreference.FHIRReference, False, None, False),
-            ("date", "date", fhirdate.FHIRDate, False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "action",
+                    "action",
+                    codeableconcept.CodeableConcept,
+                    False,
+                    None,
+                    True,
+                ),
+                ("author", "author", fhirreference.FHIRReference, False, None, False),
+                ("date", "date", fhirdate.FHIRDate, False, None, False),
+            ]
+        )
         return js
-
-
-from . import codeableconcept
-from . import fhirdate
-from . import fhirreference
-from . import identifier

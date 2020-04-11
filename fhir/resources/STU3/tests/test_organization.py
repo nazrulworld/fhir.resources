@@ -7,22 +7,23 @@ Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
 
-import os
-import pytest
 import io
-import unittest
 import json
+import os
+import unittest
 
-from .fixtures import force_bytes
+import pytest
+
 from .. import organization
 from ..fhirdate import FHIRDate
+from .fixtures import force_bytes
 
 
 @pytest.mark.usefixtures("base_settings")
 class OrganizationTests(unittest.TestCase):
     def instantiate_from(self, filename):
-        datadir = os.environ.get('FHIR_UNITTEST_DATADIR') or ''
-        with io.open(os.path.join(datadir, filename), 'r', encoding='utf-8') as handle:
+        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
+        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
             js = json.load(handle)
             self.assertEqual("Organization", js["resourceType"])
         return organization.Organization(js)
@@ -40,17 +41,31 @@ class OrganizationTests(unittest.TestCase):
     def implOrganization1(self, inst):
         self.assertEqual(force_bytes(inst.address[0].city), force_bytes("Ann Arbor"))
         self.assertEqual(force_bytes(inst.address[0].country), force_bytes("USA"))
-        self.assertEqual(force_bytes(inst.address[0].line[0]), force_bytes("3300 Washtenaw Avenue, Suite 227"))
+        self.assertEqual(
+            force_bytes(inst.address[0].line[0]),
+            force_bytes("3300 Washtenaw Avenue, Suite 227"),
+        )
         self.assertEqual(force_bytes(inst.address[0].postalCode), force_bytes("48104"))
         self.assertEqual(force_bytes(inst.address[0].state), force_bytes("MI"))
-        self.assertEqual(force_bytes(inst.extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/organization-alias"))
-        self.assertEqual(force_bytes(inst.extension[0].valueString), force_bytes("HL7 International"))
+        self.assertEqual(
+            force_bytes(inst.extension[0].url),
+            force_bytes("http://hl7.org/fhir/StructureDefinition/organization-alias"),
+        )
+        self.assertEqual(
+            force_bytes(inst.extension[0].valueString), force_bytes("HL7 International")
+        )
         self.assertEqual(force_bytes(inst.id), force_bytes("hl7"))
-        self.assertEqual(force_bytes(inst.name), force_bytes("Health Level Seven International"))
+        self.assertEqual(
+            force_bytes(inst.name), force_bytes("Health Level Seven International")
+        )
         self.assertEqual(force_bytes(inst.telecom[0].system), force_bytes("phone"))
-        self.assertEqual(force_bytes(inst.telecom[0].value), force_bytes("(+1) 734-677-7777"))
+        self.assertEqual(
+            force_bytes(inst.telecom[0].value), force_bytes("(+1) 734-677-7777")
+        )
         self.assertEqual(force_bytes(inst.telecom[1].system), force_bytes("fax"))
-        self.assertEqual(force_bytes(inst.telecom[1].value), force_bytes("(+1) 734-677-6622"))
+        self.assertEqual(
+            force_bytes(inst.telecom[1].value), force_bytes("(+1) 734-677-6622")
+        )
         self.assertEqual(force_bytes(inst.telecom[2].system), force_bytes("email"))
         self.assertEqual(force_bytes(inst.telecom[2].value), force_bytes("hq@HL7.org"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
@@ -67,7 +82,9 @@ class OrganizationTests(unittest.TestCase):
 
     def implOrganization2(self, inst):
         self.assertTrue(inst.active)
-        self.assertEqual(force_bytes(inst.address[0].country), force_bytes("Swizterland"))
+        self.assertEqual(
+            force_bytes(inst.address[0].country), force_bytes("Swizterland")
+        )
         self.assertEqual(force_bytes(inst.id), force_bytes("mmanu"))
         self.assertEqual(force_bytes(inst.name), force_bytes("Acme Corporation"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
@@ -84,15 +101,22 @@ class OrganizationTests(unittest.TestCase):
 
     def implOrganization3(self, inst):
         self.assertEqual(force_bytes(inst.id), force_bytes("1"))
-        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://www.acme.org.au/units"))
+        self.assertEqual(
+            force_bytes(inst.identifier[0].system),
+            force_bytes("http://www.acme.org.au/units"),
+        )
         self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("Gastro"))
         self.assertEqual(force_bytes(inst.name), force_bytes("Gastroenterology"))
         self.assertEqual(force_bytes(inst.telecom[0].system), force_bytes("phone"))
         self.assertEqual(force_bytes(inst.telecom[0].use), force_bytes("mobile"))
-        self.assertEqual(force_bytes(inst.telecom[0].value), force_bytes("+1 555 234 3523"))
+        self.assertEqual(
+            force_bytes(inst.telecom[0].value), force_bytes("+1 555 234 3523")
+        )
         self.assertEqual(force_bytes(inst.telecom[1].system), force_bytes("email"))
         self.assertEqual(force_bytes(inst.telecom[1].use), force_bytes("work"))
-        self.assertEqual(force_bytes(inst.telecom[1].value), force_bytes("gastro@acme.org"))
+        self.assertEqual(
+            force_bytes(inst.telecom[1].value), force_bytes("gastro@acme.org")
+        )
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 
     def testOrganization4(self):
@@ -106,16 +130,25 @@ class OrganizationTests(unittest.TestCase):
         self.implOrganization4(inst2)
 
     def implOrganization4(self, inst):
-        self.assertEqual(force_bytes(inst.id), force_bytes("1832473e-2fe0-452d-abe9-3cdb9879522f"))
-        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://www.acme.org.au/units"))
+        self.assertEqual(
+            force_bytes(inst.id), force_bytes("1832473e-2fe0-452d-abe9-3cdb9879522f")
+        )
+        self.assertEqual(
+            force_bytes(inst.identifier[0].system),
+            force_bytes("http://www.acme.org.au/units"),
+        )
         self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("ClinLab"))
         self.assertEqual(force_bytes(inst.name), force_bytes("Clinical Lab"))
         self.assertEqual(force_bytes(inst.telecom[0].system), force_bytes("phone"))
         self.assertEqual(force_bytes(inst.telecom[0].use), force_bytes("work"))
-        self.assertEqual(force_bytes(inst.telecom[0].value), force_bytes("+1 555 234 1234"))
+        self.assertEqual(
+            force_bytes(inst.telecom[0].value), force_bytes("+1 555 234 1234")
+        )
         self.assertEqual(force_bytes(inst.telecom[1].system), force_bytes("email"))
         self.assertEqual(force_bytes(inst.telecom[1].use), force_bytes("work"))
-        self.assertEqual(force_bytes(inst.telecom[1].value), force_bytes("contact@labs.acme.org"))
+        self.assertEqual(
+            force_bytes(inst.telecom[1].value), force_bytes("contact@labs.acme.org")
+        )
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 
     def testOrganization5(self):
@@ -130,25 +163,60 @@ class OrganizationTests(unittest.TestCase):
 
     def implOrganization5(self, inst):
         self.assertTrue(inst.active)
-        self.assertEqual(force_bytes(inst.address[0].line[0]), force_bytes("South Wing, floor 2"))
-        self.assertEqual(force_bytes(inst.contact[0].address.line[0]), force_bytes("South Wing, floor 2"))
-        self.assertEqual(force_bytes(inst.contact[0].name.text), force_bytes("mevr. D. de Haan"))
-        self.assertEqual(force_bytes(inst.contact[0].purpose.coding[0].code), force_bytes("ADMIN"))
-        self.assertEqual(force_bytes(inst.contact[0].purpose.coding[0].system), force_bytes("http://hl7.org/fhir/contactentity-type"))
-        self.assertEqual(force_bytes(inst.contact[0].telecom[0].system), force_bytes("phone"))
-        self.assertEqual(force_bytes(inst.contact[0].telecom[0].value), force_bytes("022-655 2321"))
-        self.assertEqual(force_bytes(inst.contact[0].telecom[1].system), force_bytes("email"))
-        self.assertEqual(force_bytes(inst.contact[0].telecom[1].value), force_bytes("cardio@burgersumc.nl"))
-        self.assertEqual(force_bytes(inst.contact[0].telecom[2].system), force_bytes("fax"))
-        self.assertEqual(force_bytes(inst.contact[0].telecom[2].value), force_bytes("022-655 2322"))
+        self.assertEqual(
+            force_bytes(inst.address[0].line[0]), force_bytes("South Wing, floor 2")
+        )
+        self.assertEqual(
+            force_bytes(inst.contact[0].address.line[0]),
+            force_bytes("South Wing, floor 2"),
+        )
+        self.assertEqual(
+            force_bytes(inst.contact[0].name.text), force_bytes("mevr. D. de Haan")
+        )
+        self.assertEqual(
+            force_bytes(inst.contact[0].purpose.coding[0].code), force_bytes("ADMIN")
+        )
+        self.assertEqual(
+            force_bytes(inst.contact[0].purpose.coding[0].system),
+            force_bytes("http://hl7.org/fhir/contactentity-type"),
+        )
+        self.assertEqual(
+            force_bytes(inst.contact[0].telecom[0].system), force_bytes("phone")
+        )
+        self.assertEqual(
+            force_bytes(inst.contact[0].telecom[0].value), force_bytes("022-655 2321")
+        )
+        self.assertEqual(
+            force_bytes(inst.contact[0].telecom[1].system), force_bytes("email")
+        )
+        self.assertEqual(
+            force_bytes(inst.contact[0].telecom[1].value),
+            force_bytes("cardio@burgersumc.nl"),
+        )
+        self.assertEqual(
+            force_bytes(inst.contact[0].telecom[2].system), force_bytes("fax")
+        )
+        self.assertEqual(
+            force_bytes(inst.contact[0].telecom[2].value), force_bytes("022-655 2322")
+        )
         self.assertEqual(force_bytes(inst.id), force_bytes("f002"))
-        self.assertEqual(force_bytes(inst.name), force_bytes("Burgers UMC Cardiology unit"))
+        self.assertEqual(
+            force_bytes(inst.name), force_bytes("Burgers UMC Cardiology unit")
+        )
         self.assertEqual(force_bytes(inst.telecom[0].system), force_bytes("phone"))
-        self.assertEqual(force_bytes(inst.telecom[0].value), force_bytes("022-655 2320"))
+        self.assertEqual(
+            force_bytes(inst.telecom[0].value), force_bytes("022-655 2320")
+        )
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
         self.assertEqual(force_bytes(inst.type[0].coding[0].code), force_bytes("dept"))
-        self.assertEqual(force_bytes(inst.type[0].coding[0].display), force_bytes("Hospital Department"))
-        self.assertEqual(force_bytes(inst.type[0].coding[0].system), force_bytes("http://hl7.org/fhir/organization-type"))
+        self.assertEqual(
+            force_bytes(inst.type[0].coding[0].display),
+            force_bytes("Hospital Department"),
+        )
+        self.assertEqual(
+            force_bytes(inst.type[0].coding[0].system),
+            force_bytes("http://hl7.org/fhir/organization-type"),
+        )
 
     def testOrganization6(self):
         inst = self.instantiate_from("organization-example-f201-aumc.json")
@@ -164,40 +232,95 @@ class OrganizationTests(unittest.TestCase):
         self.assertTrue(inst.active)
         self.assertEqual(force_bytes(inst.address[0].city), force_bytes("Den Helder"))
         self.assertEqual(force_bytes(inst.address[0].country), force_bytes("NLD"))
-        self.assertEqual(force_bytes(inst.address[0].line[0]), force_bytes("Walvisbaai 3"))
+        self.assertEqual(
+            force_bytes(inst.address[0].line[0]), force_bytes("Walvisbaai 3")
+        )
         self.assertEqual(force_bytes(inst.address[0].postalCode), force_bytes("2333ZA"))
         self.assertEqual(force_bytes(inst.address[0].use), force_bytes("work"))
-        self.assertEqual(force_bytes(inst.contact[0].address.city), force_bytes("Den helder"))
-        self.assertEqual(force_bytes(inst.contact[0].address.country), force_bytes("NLD"))
-        self.assertEqual(force_bytes(inst.contact[0].address.line[0]), force_bytes("Walvisbaai 3"))
-        self.assertEqual(force_bytes(inst.contact[0].address.line[1]), force_bytes("Gebouw 2"))
-        self.assertEqual(force_bytes(inst.contact[0].address.postalCode), force_bytes("2333ZA"))
+        self.assertEqual(
+            force_bytes(inst.contact[0].address.city), force_bytes("Den helder")
+        )
+        self.assertEqual(
+            force_bytes(inst.contact[0].address.country), force_bytes("NLD")
+        )
+        self.assertEqual(
+            force_bytes(inst.contact[0].address.line[0]), force_bytes("Walvisbaai 3")
+        )
+        self.assertEqual(
+            force_bytes(inst.contact[0].address.line[1]), force_bytes("Gebouw 2")
+        )
+        self.assertEqual(
+            force_bytes(inst.contact[0].address.postalCode), force_bytes("2333ZA")
+        )
         self.assertEqual(force_bytes(inst.contact[0].name.family), force_bytes("Brand"))
-        self.assertEqual(force_bytes(inst.contact[0].name.given[0]), force_bytes("Ronald"))
-        self.assertEqual(force_bytes(inst.contact[0].name.prefix[0]), force_bytes("Prof.Dr."))
-        self.assertEqual(force_bytes(inst.contact[0].name.text), force_bytes("Professor Brand"))
+        self.assertEqual(
+            force_bytes(inst.contact[0].name.given[0]), force_bytes("Ronald")
+        )
+        self.assertEqual(
+            force_bytes(inst.contact[0].name.prefix[0]), force_bytes("Prof.Dr.")
+        )
+        self.assertEqual(
+            force_bytes(inst.contact[0].name.text), force_bytes("Professor Brand")
+        )
         self.assertEqual(force_bytes(inst.contact[0].name.use), force_bytes("official"))
-        self.assertEqual(force_bytes(inst.contact[0].telecom[0].system), force_bytes("phone"))
-        self.assertEqual(force_bytes(inst.contact[0].telecom[0].use), force_bytes("work"))
-        self.assertEqual(force_bytes(inst.contact[0].telecom[0].value), force_bytes("+31715269702"))
+        self.assertEqual(
+            force_bytes(inst.contact[0].telecom[0].system), force_bytes("phone")
+        )
+        self.assertEqual(
+            force_bytes(inst.contact[0].telecom[0].use), force_bytes("work")
+        )
+        self.assertEqual(
+            force_bytes(inst.contact[0].telecom[0].value), force_bytes("+31715269702")
+        )
         self.assertEqual(force_bytes(inst.id), force_bytes("f201"))
-        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://www.zorgkaartnederland.nl/"))
+        self.assertEqual(
+            force_bytes(inst.identifier[0].system),
+            force_bytes("http://www.zorgkaartnederland.nl/"),
+        )
         self.assertEqual(force_bytes(inst.identifier[0].use), force_bytes("official"))
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("Artis University Medical Center"))
-        self.assertEqual(force_bytes(inst.name), force_bytes("Artis University Medical Center (AUMC)"))
+        self.assertEqual(
+            force_bytes(inst.identifier[0].value),
+            force_bytes("Artis University Medical Center"),
+        )
+        self.assertEqual(
+            force_bytes(inst.name),
+            force_bytes("Artis University Medical Center (AUMC)"),
+        )
         self.assertEqual(force_bytes(inst.telecom[0].system), force_bytes("phone"))
         self.assertEqual(force_bytes(inst.telecom[0].use), force_bytes("work"))
-        self.assertEqual(force_bytes(inst.telecom[0].value), force_bytes("+31715269111"))
+        self.assertEqual(
+            force_bytes(inst.telecom[0].value), force_bytes("+31715269111")
+        )
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type[0].coding[0].code), force_bytes("405608006"))
-        self.assertEqual(force_bytes(inst.type[0].coding[0].display), force_bytes("Academic Medical Center"))
-        self.assertEqual(force_bytes(inst.type[0].coding[0].system), force_bytes("http://snomed.info/sct"))
+        self.assertEqual(
+            force_bytes(inst.type[0].coding[0].code), force_bytes("405608006")
+        )
+        self.assertEqual(
+            force_bytes(inst.type[0].coding[0].display),
+            force_bytes("Academic Medical Center"),
+        )
+        self.assertEqual(
+            force_bytes(inst.type[0].coding[0].system),
+            force_bytes("http://snomed.info/sct"),
+        )
         self.assertEqual(force_bytes(inst.type[0].coding[1].code), force_bytes("V6"))
-        self.assertEqual(force_bytes(inst.type[0].coding[1].display), force_bytes("University Medical Hospital"))
-        self.assertEqual(force_bytes(inst.type[0].coding[1].system), force_bytes("urn:oid:2.16.840.1.113883.2.4.15.1060"))
+        self.assertEqual(
+            force_bytes(inst.type[0].coding[1].display),
+            force_bytes("University Medical Hospital"),
+        )
+        self.assertEqual(
+            force_bytes(inst.type[0].coding[1].system),
+            force_bytes("urn:oid:2.16.840.1.113883.2.4.15.1060"),
+        )
         self.assertEqual(force_bytes(inst.type[0].coding[2].code), force_bytes("prov"))
-        self.assertEqual(force_bytes(inst.type[0].coding[2].display), force_bytes("Healthcare Provider"))
-        self.assertEqual(force_bytes(inst.type[0].coding[2].system), force_bytes("http://hl7.org/fhir/organization-type"))
+        self.assertEqual(
+            force_bytes(inst.type[0].coding[2].display),
+            force_bytes("Healthcare Provider"),
+        )
+        self.assertEqual(
+            force_bytes(inst.type[0].coding[2].system),
+            force_bytes("http://hl7.org/fhir/organization-type"),
+        )
 
     def testOrganization7(self):
         inst = self.instantiate_from("organization-example-good-health-care.json")
@@ -211,8 +334,12 @@ class OrganizationTests(unittest.TestCase):
 
     def implOrganization7(self, inst):
         self.assertEqual(force_bytes(inst.id), force_bytes("2.16.840.1.113883.19.5"))
-        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("urn:ietf:rfc:3986"))
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("2.16.840.1.113883.19.5"))
+        self.assertEqual(
+            force_bytes(inst.identifier[0].system), force_bytes("urn:ietf:rfc:3986")
+        )
+        self.assertEqual(
+            force_bytes(inst.identifier[0].value), force_bytes("2.16.840.1.113883.19.5")
+        )
         self.assertEqual(force_bytes(inst.name), force_bytes("Good Health Clinic"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 
@@ -229,40 +356,89 @@ class OrganizationTests(unittest.TestCase):
     def implOrganization8(self, inst):
         self.assertEqual(force_bytes(inst.address[0].city), force_bytes("Den Burg"))
         self.assertEqual(force_bytes(inst.address[0].country), force_bytes("NLD"))
-        self.assertEqual(force_bytes(inst.address[0].line[0]), force_bytes("Galapagosweg 91"))
-        self.assertEqual(force_bytes(inst.address[0].postalCode), force_bytes("9105 PZ"))
+        self.assertEqual(
+            force_bytes(inst.address[0].line[0]), force_bytes("Galapagosweg 91")
+        )
+        self.assertEqual(
+            force_bytes(inst.address[0].postalCode), force_bytes("9105 PZ")
+        )
         self.assertEqual(force_bytes(inst.address[0].use), force_bytes("work"))
         self.assertEqual(force_bytes(inst.address[1].city), force_bytes("Den Burg"))
         self.assertEqual(force_bytes(inst.address[1].country), force_bytes("NLD"))
-        self.assertEqual(force_bytes(inst.address[1].line[0]), force_bytes("PO Box 2311"))
-        self.assertEqual(force_bytes(inst.address[1].postalCode), force_bytes("9100 AA"))
+        self.assertEqual(
+            force_bytes(inst.address[1].line[0]), force_bytes("PO Box 2311")
+        )
+        self.assertEqual(
+            force_bytes(inst.address[1].postalCode), force_bytes("9100 AA")
+        )
         self.assertEqual(force_bytes(inst.address[1].use), force_bytes("work"))
-        self.assertEqual(force_bytes(inst.contact[0].purpose.coding[0].code), force_bytes("PRESS"))
-        self.assertEqual(force_bytes(inst.contact[0].purpose.coding[0].system), force_bytes("http://hl7.org/fhir/contactentity-type"))
-        self.assertEqual(force_bytes(inst.contact[0].telecom[0].system), force_bytes("phone"))
-        self.assertEqual(force_bytes(inst.contact[0].telecom[0].value), force_bytes("022-655 2334"))
-        self.assertEqual(force_bytes(inst.contact[1].purpose.coding[0].code), force_bytes("PATINF"))
-        self.assertEqual(force_bytes(inst.contact[1].purpose.coding[0].system), force_bytes("http://hl7.org/fhir/contactentity-type"))
-        self.assertEqual(force_bytes(inst.contact[1].telecom[0].system), force_bytes("phone"))
-        self.assertEqual(force_bytes(inst.contact[1].telecom[0].value), force_bytes("022-655 2335"))
+        self.assertEqual(
+            force_bytes(inst.contact[0].purpose.coding[0].code), force_bytes("PRESS")
+        )
+        self.assertEqual(
+            force_bytes(inst.contact[0].purpose.coding[0].system),
+            force_bytes("http://hl7.org/fhir/contactentity-type"),
+        )
+        self.assertEqual(
+            force_bytes(inst.contact[0].telecom[0].system), force_bytes("phone")
+        )
+        self.assertEqual(
+            force_bytes(inst.contact[0].telecom[0].value), force_bytes("022-655 2334")
+        )
+        self.assertEqual(
+            force_bytes(inst.contact[1].purpose.coding[0].code), force_bytes("PATINF")
+        )
+        self.assertEqual(
+            force_bytes(inst.contact[1].purpose.coding[0].system),
+            force_bytes("http://hl7.org/fhir/contactentity-type"),
+        )
+        self.assertEqual(
+            force_bytes(inst.contact[1].telecom[0].system), force_bytes("phone")
+        )
+        self.assertEqual(
+            force_bytes(inst.contact[1].telecom[0].value), force_bytes("022-655 2335")
+        )
         self.assertEqual(force_bytes(inst.id), force_bytes("f001"))
-        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("urn:oid:2.16.528.1"))
+        self.assertEqual(
+            force_bytes(inst.identifier[0].system), force_bytes("urn:oid:2.16.528.1")
+        )
         self.assertEqual(force_bytes(inst.identifier[0].use), force_bytes("official"))
         self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("91654"))
-        self.assertEqual(force_bytes(inst.identifier[1].system), force_bytes("urn:oid:2.16.840.1.113883.2.4.6.1"))
+        self.assertEqual(
+            force_bytes(inst.identifier[1].system),
+            force_bytes("urn:oid:2.16.840.1.113883.2.4.6.1"),
+        )
         self.assertEqual(force_bytes(inst.identifier[1].use), force_bytes("usual"))
-        self.assertEqual(force_bytes(inst.identifier[1].value), force_bytes("17-0112278"))
-        self.assertEqual(force_bytes(inst.name), force_bytes("Burgers University Medical Center"))
+        self.assertEqual(
+            force_bytes(inst.identifier[1].value), force_bytes("17-0112278")
+        )
+        self.assertEqual(
+            force_bytes(inst.name), force_bytes("Burgers University Medical Center")
+        )
         self.assertEqual(force_bytes(inst.telecom[0].system), force_bytes("phone"))
         self.assertEqual(force_bytes(inst.telecom[0].use), force_bytes("work"))
-        self.assertEqual(force_bytes(inst.telecom[0].value), force_bytes("022-655 2300"))
+        self.assertEqual(
+            force_bytes(inst.telecom[0].value), force_bytes("022-655 2300")
+        )
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
         self.assertEqual(force_bytes(inst.type[0].coding[0].code), force_bytes("V6"))
-        self.assertEqual(force_bytes(inst.type[0].coding[0].display), force_bytes("University Medical Hospital"))
-        self.assertEqual(force_bytes(inst.type[0].coding[0].system), force_bytes("urn:oid:2.16.840.1.113883.2.4.15.1060"))
+        self.assertEqual(
+            force_bytes(inst.type[0].coding[0].display),
+            force_bytes("University Medical Hospital"),
+        )
+        self.assertEqual(
+            force_bytes(inst.type[0].coding[0].system),
+            force_bytes("urn:oid:2.16.840.1.113883.2.4.15.1060"),
+        )
         self.assertEqual(force_bytes(inst.type[0].coding[1].code), force_bytes("prov"))
-        self.assertEqual(force_bytes(inst.type[0].coding[1].display), force_bytes("Healthcare Provider"))
-        self.assertEqual(force_bytes(inst.type[0].coding[1].system), force_bytes("http://hl7.org/fhir/organization-type"))
+        self.assertEqual(
+            force_bytes(inst.type[0].coding[1].display),
+            force_bytes("Healthcare Provider"),
+        )
+        self.assertEqual(
+            force_bytes(inst.type[0].coding[1].system),
+            force_bytes("http://hl7.org/fhir/organization-type"),
+        )
 
     def testOrganization9(self):
         inst = self.instantiate_from("organization-example-insurer.json")
@@ -277,7 +453,10 @@ class OrganizationTests(unittest.TestCase):
     def implOrganization9(self, inst):
         self.assertEqual(force_bytes(inst.alias[0]), force_bytes("ABC Insurance"))
         self.assertEqual(force_bytes(inst.id), force_bytes("2"))
-        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("urn:oid:2.16.840.1.113883.3.19.2.3"))
+        self.assertEqual(
+            force_bytes(inst.identifier[0].system),
+            force_bytes("urn:oid:2.16.840.1.113883.3.19.2.3"),
+        )
         self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("666666"))
         self.assertEqual(force_bytes(inst.name), force_bytes("XYZ Insurance"))
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
@@ -296,22 +475,46 @@ class OrganizationTests(unittest.TestCase):
         self.assertTrue(inst.active)
         self.assertEqual(force_bytes(inst.address[0].city), force_bytes("Blijdorp"))
         self.assertEqual(force_bytes(inst.address[0].country), force_bytes("NLD"))
-        self.assertEqual(force_bytes(inst.address[0].line[0]), force_bytes("apenrots 230"))
+        self.assertEqual(
+            force_bytes(inst.address[0].line[0]), force_bytes("apenrots 230")
+        )
         self.assertEqual(force_bytes(inst.address[0].postalCode), force_bytes("3056BE"))
         self.assertEqual(force_bytes(inst.address[0].use), force_bytes("work"))
         self.assertEqual(force_bytes(inst.id), force_bytes("f203"))
-        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://www.zorgkaartnederland.nl/"))
-        self.assertEqual(force_bytes(inst.identifier[0].type.text), force_bytes("Zorginstelling naam"))
+        self.assertEqual(
+            force_bytes(inst.identifier[0].system),
+            force_bytes("http://www.zorgkaartnederland.nl/"),
+        )
+        self.assertEqual(
+            force_bytes(inst.identifier[0].type.text),
+            force_bytes("Zorginstelling naam"),
+        )
         self.assertEqual(force_bytes(inst.identifier[0].use), force_bytes("official"))
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("Blijdorp MC"))
-        self.assertEqual(force_bytes(inst.name), force_bytes("Blijdorp Medisch Centrum (BUMC)"))
+        self.assertEqual(
+            force_bytes(inst.identifier[0].value), force_bytes("Blijdorp MC")
+        )
+        self.assertEqual(
+            force_bytes(inst.name), force_bytes("Blijdorp Medisch Centrum (BUMC)")
+        )
         self.assertEqual(force_bytes(inst.telecom[0].system), force_bytes("phone"))
         self.assertEqual(force_bytes(inst.telecom[0].use), force_bytes("work"))
-        self.assertEqual(force_bytes(inst.telecom[0].value), force_bytes("+31107040704"))
+        self.assertEqual(
+            force_bytes(inst.telecom[0].value), force_bytes("+31107040704")
+        )
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type[0].coding[0].code), force_bytes("405608006"))
-        self.assertEqual(force_bytes(inst.type[0].coding[0].display), force_bytes("Academic Medical Center"))
-        self.assertEqual(force_bytes(inst.type[0].coding[0].system), force_bytes("http://snomed.info/sct"))
+        self.assertEqual(
+            force_bytes(inst.type[0].coding[0].code), force_bytes("405608006")
+        )
+        self.assertEqual(
+            force_bytes(inst.type[0].coding[0].display),
+            force_bytes("Academic Medical Center"),
+        )
+        self.assertEqual(
+            force_bytes(inst.type[0].coding[0].system),
+            force_bytes("http://snomed.info/sct"),
+        )
         self.assertEqual(force_bytes(inst.type[0].coding[1].code), force_bytes("prov"))
-        self.assertEqual(force_bytes(inst.type[0].coding[1].system), force_bytes("http://hl7.org/fhir/organization-type"))
-
+        self.assertEqual(
+            force_bytes(inst.type[0].coding[1].system),
+            force_bytes("http://hl7.org/fhir/organization-type"),
+        )

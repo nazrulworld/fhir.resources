@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class ChargeItemDefinition(domainresource.DomainResource):
     """ Definition of properties and rules about how the price and the
@@ -130,35 +133,123 @@ class ChargeItemDefinition(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(ChargeItemDefinition, self).elementProperties()
-        js.extend([
-            ("applicability", "applicability", ChargeItemDefinitionApplicability, "ChargeItemDefinitionApplicability", True, None, False),
-            ("approvalDate", "approvalDate", fhirdate.FHIRDate, "date", False, None, False),
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("contact", "contact", contactdetail.ContactDetail, "ContactDetail", True, None, False),
-            ("copyright", "copyright", str, "markdown", False, None, False),
-            ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("derivedFromUri", "derivedFromUri", str, "uri", True, None, False),
-            ("description", "description", str, "markdown", False, None, False),
-            ("effectivePeriod", "effectivePeriod", period.Period, "Period", False, None, False),
-            ("experimental", "experimental", bool, "boolean", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("instance", "instance", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("jurisdiction", "jurisdiction", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("lastReviewDate", "lastReviewDate", fhirdate.FHIRDate, "date", False, None, False),
-            ("partOf", "partOf", str, "canonical", True, None, False),
-            ("propertyGroup", "propertyGroup", ChargeItemDefinitionPropertyGroup, "ChargeItemDefinitionPropertyGroup", True, None, False),
-            ("publisher", "publisher", str, "string", False, None, False),
-            ("replaces", "replaces", str, "canonical", True, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("title", "title", str, "string", False, None, False),
-            ("url", "url", str, "uri", False, None, True),
-            ("useContext", "useContext", usagecontext.UsageContext, "UsageContext", True, None, False),
-            ("version", "version", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "applicability",
+                    "applicability",
+                    ChargeItemDefinitionApplicability,
+                    "ChargeItemDefinitionApplicability",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "approvalDate",
+                    "approvalDate",
+                    fhirdate.FHIRDate,
+                    "date",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "contact",
+                    "contact",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                ("copyright", "copyright", str, "markdown", False, None, False),
+                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
+                ("derivedFromUri", "derivedFromUri", str, "uri", True, None, False),
+                ("description", "description", str, "markdown", False, None, False),
+                (
+                    "effectivePeriod",
+                    "effectivePeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    None,
+                    False,
+                ),
+                ("experimental", "experimental", bool, "boolean", False, None, False),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "instance",
+                    "instance",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "jurisdiction",
+                    "jurisdiction",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "lastReviewDate",
+                    "lastReviewDate",
+                    fhirdate.FHIRDate,
+                    "date",
+                    False,
+                    None,
+                    False,
+                ),
+                ("partOf", "partOf", str, "canonical", True, None, False),
+                (
+                    "propertyGroup",
+                    "propertyGroup",
+                    ChargeItemDefinitionPropertyGroup,
+                    "ChargeItemDefinitionPropertyGroup",
+                    True,
+                    None,
+                    False,
+                ),
+                ("publisher", "publisher", str, "string", False, None, False),
+                ("replaces", "replaces", str, "canonical", True, None, False),
+                ("status", "status", str, "code", False, None, True),
+                ("title", "title", str, "string", False, None, False),
+                ("url", "url", str, "uri", False, None, True),
+                (
+                    "useContext",
+                    "useContext",
+                    usagecontext.UsageContext,
+                    "UsageContext",
+                    True,
+                    None,
+                    False,
+                ),
+                ("version", "version", str, "string", False, None, False),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class ChargeItemDefinitionApplicability(backboneelement.BackboneElement):
     """ Whether or not the billing code is applicable.
@@ -188,15 +279,19 @@ class ChargeItemDefinitionApplicability(backboneelement.BackboneElement):
         """ Language of the expression.
         Type `str`. """
 
-        super(ChargeItemDefinitionApplicability, self).__init__(jsondict=jsondict, strict=strict)
+        super(ChargeItemDefinitionApplicability, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ChargeItemDefinitionApplicability, self).elementProperties()
-        js.extend([
-            ("description", "description", str, "string", False, None, False),
-            ("expression", "expression", str, "string", False, None, False),
-            ("language", "language", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                ("description", "description", str, "string", False, None, False),
+                ("expression", "expression", str, "string", False, None, False),
+                ("language", "language", str, "string", False, None, False),
+            ]
+        )
         return js
 
 
@@ -226,14 +321,34 @@ class ChargeItemDefinitionPropertyGroup(backboneelement.BackboneElement):
         """ Components of total line item price.
         List of `ChargeItemDefinitionPropertyGroupPriceComponent` items (represented as `dict` in JSON). """
 
-        super(ChargeItemDefinitionPropertyGroup, self).__init__(jsondict=jsondict, strict=strict)
+        super(ChargeItemDefinitionPropertyGroup, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ChargeItemDefinitionPropertyGroup, self).elementProperties()
-        js.extend([
-            ("applicability", "applicability", ChargeItemDefinitionApplicability, "ChargeItemDefinitionApplicability", True, None, False),
-            ("priceComponent", "priceComponent", ChargeItemDefinitionPropertyGroupPriceComponent, "ChargeItemDefinitionPropertyGroupPriceComponent", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "applicability",
+                    "applicability",
+                    ChargeItemDefinitionApplicability,
+                    "ChargeItemDefinitionApplicability",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "priceComponent",
+                    "priceComponent",
+                    ChargeItemDefinitionPropertyGroupPriceComponent,
+                    "ChargeItemDefinitionPropertyGroupPriceComponent",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -274,49 +389,62 @@ class ChargeItemDefinitionPropertyGroupPriceComponent(backboneelement.BackboneEl
         """ base | surcharge | deduction | discount | tax | informational.
         Type `str`. """
 
-        super(ChargeItemDefinitionPropertyGroupPriceComponent, self).__init__(jsondict=jsondict, strict=strict)
+        super(ChargeItemDefinitionPropertyGroupPriceComponent, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
-        js = super(ChargeItemDefinitionPropertyGroupPriceComponent, self).elementProperties()
-        js.extend([
-            ("amount", "amount", money.Money, "Money", False, None, False),
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("factor", "factor", float, "decimal", False, None, False),
-            ("type", "type", str, "code", False, None, True),
-        ])
+        js = super(
+            ChargeItemDefinitionPropertyGroupPriceComponent, self
+        ).elementProperties()
+        js.extend(
+            [
+                ("amount", "amount", money.Money, "Money", False, None, False),
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("factor", "factor", float, "decimal", False, None, False),
+                ("type", "type", str, "code", False, None, True),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import contactdetail
 except ImportError:
-    contactdetail = sys.modules[__package__ + '.contactdetail']
+    contactdetail = sys.modules[__package__ + ".contactdetail"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import money
 except ImportError:
-    money = sys.modules[__package__ + '.money']
+    money = sys.modules[__package__ + ".money"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]
 try:
     from . import usagecontext
 except ImportError:
-    usagecontext = sys.modules[__package__ + '.usagecontext']
+    usagecontext = sys.modules[__package__ + ".usagecontext"]

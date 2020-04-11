@@ -5,7 +5,9 @@
 #  2019, SMART Health IT.
 
 
-from . import domainresource
+from . import (codeableconcept, coding, domainresource, fhirreference,
+               identifier, period, quantity)
+
 
 class Account(domainresource.DomainResource):
     """ None.
@@ -14,9 +16,9 @@ class Account(domainresource.DomainResource):
     the healthcare field, used to track charges for a patient, cost centres,
     etc.
     """
-    
+
     resource_name = "Account"
-    
+
     def __init__(self, jsondict=None, strict=True):
         """ Initialize all valid properties.
         
@@ -24,74 +26,68 @@ class Account(domainresource.DomainResource):
         :param dict jsondict: A JSON dictionary to use for initialization
         :param bool strict: If True (the default), invalid variables will raise a TypeError
         """
-        
+
         self.activePeriod = None
         """ Valid from..to.
         Type `Period` (represented as `dict` in JSON). """
-        
+
         self.balance = None
         """ How much is in account?.
         Type `Quantity` referencing `Money` (represented as `dict` in JSON). """
-        
+
         self.coveragePeriod = None
         """ Transaction window.
         Type `Period` (represented as `dict` in JSON). """
-        
+
         self.currency = None
         """ Base currency in which balance is tracked.
         Type `Coding` (represented as `dict` in JSON). """
-        
+
         self.description = None
         """ Explanation of purpose/use.
         Type `str`. """
-        
+
         self.identifier = None
         """ Account number.
         List of `Identifier` items (represented as `dict` in JSON). """
-        
+
         self.name = None
         """ Human-readable label.
         Type `str`. """
-        
+
         self.owner = None
         """ Who is responsible?.
         Type `FHIRReference` referencing `Organization` (represented as `dict` in JSON). """
-        
+
         self.status = None
         """ active | inactive.
         Type `str`. """
-        
+
         self.subject = None
         """ What is account tied to?.
         Type `FHIRReference` referencing `Patient, Device, Practitioner, Location, HealthcareService, Organization` (represented as `dict` in JSON). """
-        
+
         self.type = None
         """ E.g. patient, expense, depreciation.
         Type `CodeableConcept` (represented as `dict` in JSON). """
-        
+
         super(Account, self).__init__(jsondict=jsondict, strict=strict)
-    
+
     def elementProperties(self):
         js = super(Account, self).elementProperties()
-        js.extend([
-            ("activePeriod", "activePeriod", period.Period, False, None, False),
-            ("balance", "balance", quantity.Quantity, False, None, False),
-            ("coveragePeriod", "coveragePeriod", period.Period, False, None, False),
-            ("currency", "currency", coding.Coding, False, None, False),
-            ("description", "description", str, False, None, False),
-            ("identifier", "identifier", identifier.Identifier, True, None, False),
-            ("name", "name", str, False, None, False),
-            ("owner", "owner", fhirreference.FHIRReference, False, None, False),
-            ("status", "status", str, False, None, False),
-            ("subject", "subject", fhirreference.FHIRReference, False, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, False, None, False),
-        ])
+        js.extend(
+            [
+                ("activePeriod", "activePeriod", period.Period, False, None, False),
+                ("balance", "balance", quantity.Quantity, False, None, False),
+                ("coveragePeriod", "coveragePeriod", period.Period, False, None, False),
+                ("currency", "currency", coding.Coding, False, None, False),
+                ("description", "description", str, False, None, False),
+                ("identifier", "identifier", identifier.Identifier, True, None, False),
+                ("name", "name", str, False, None, False),
+                ("owner", "owner", fhirreference.FHIRReference, False, None, False),
+                ("status", "status", str, False, None, False),
+                ("subject", "subject", fhirreference.FHIRReference, False, None, False),
+                ("type", "type", codeableconcept.CodeableConcept, False, None, False),
+            ]
+        )
         return js
-
-
-from . import codeableconcept
-from . import coding
-from . import fhirreference
-from . import identifier
-from . import period
-from . import quantity

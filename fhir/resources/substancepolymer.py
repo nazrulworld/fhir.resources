@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class SubstancePolymer(domainresource.DomainResource):
     """ Todo.
@@ -52,18 +55,58 @@ class SubstancePolymer(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(SubstancePolymer, self).elementProperties()
-        js.extend([
-            ("class_fhir", "class", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("copolymerConnectivity", "copolymerConnectivity", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("geometry", "geometry", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("modification", "modification", str, "string", True, None, False),
-            ("monomerSet", "monomerSet", SubstancePolymerMonomerSet, "SubstancePolymerMonomerSet", True, None, False),
-            ("repeat", "repeat", SubstancePolymerRepeat, "SubstancePolymerRepeat", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "class_fhir",
+                    "class",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "copolymerConnectivity",
+                    "copolymerConnectivity",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "geometry",
+                    "geometry",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("modification", "modification", str, "string", True, None, False),
+                (
+                    "monomerSet",
+                    "monomerSet",
+                    SubstancePolymerMonomerSet,
+                    "SubstancePolymerMonomerSet",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "repeat",
+                    "repeat",
+                    SubstancePolymerRepeat,
+                    "SubstancePolymerRepeat",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class SubstancePolymerMonomerSet(backboneelement.BackboneElement):
     """ Todo.
@@ -87,14 +130,34 @@ class SubstancePolymerMonomerSet(backboneelement.BackboneElement):
         """ Todo.
         List of `SubstancePolymerMonomerSetStartingMaterial` items (represented as `dict` in JSON). """
 
-        super(SubstancePolymerMonomerSet, self).__init__(jsondict=jsondict, strict=strict)
+        super(SubstancePolymerMonomerSet, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(SubstancePolymerMonomerSet, self).elementProperties()
-        js.extend([
-            ("ratioType", "ratioType", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("startingMaterial", "startingMaterial", SubstancePolymerMonomerSetStartingMaterial, "SubstancePolymerMonomerSetStartingMaterial", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "ratioType",
+                    "ratioType",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "startingMaterial",
+                    "startingMaterial",
+                    SubstancePolymerMonomerSetStartingMaterial,
+                    "SubstancePolymerMonomerSetStartingMaterial",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -128,16 +191,44 @@ class SubstancePolymerMonomerSetStartingMaterial(backboneelement.BackboneElement
         """ Todo.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(SubstancePolymerMonomerSetStartingMaterial, self).__init__(jsondict=jsondict, strict=strict)
+        super(SubstancePolymerMonomerSetStartingMaterial, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(SubstancePolymerMonomerSetStartingMaterial, self).elementProperties()
-        js.extend([
-            ("amount", "amount", substanceamount.SubstanceAmount, "SubstanceAmount", False, None, False),
-            ("isDefining", "isDefining", bool, "boolean", False, None, False),
-            ("material", "material", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "amount",
+                    "amount",
+                    substanceamount.SubstanceAmount,
+                    "SubstanceAmount",
+                    False,
+                    None,
+                    False,
+                ),
+                ("isDefining", "isDefining", bool, "boolean", False, None, False),
+                (
+                    "material",
+                    "material",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -175,12 +266,38 @@ class SubstancePolymerRepeat(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(SubstancePolymerRepeat, self).elementProperties()
-        js.extend([
-            ("averageMolecularFormula", "averageMolecularFormula", str, "string", False, None, False),
-            ("numberOfUnits", "numberOfUnits", int, "integer", False, None, False),
-            ("repeatUnit", "repeatUnit", SubstancePolymerRepeatRepeatUnit, "SubstancePolymerRepeatRepeatUnit", True, None, False),
-            ("repeatUnitAmountType", "repeatUnitAmountType", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "averageMolecularFormula",
+                    "averageMolecularFormula",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                ("numberOfUnits", "numberOfUnits", int, "integer", False, None, False),
+                (
+                    "repeatUnit",
+                    "repeatUnit",
+                    SubstancePolymerRepeatRepeatUnit,
+                    "SubstancePolymerRepeatRepeatUnit",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "repeatUnitAmountType",
+                    "repeatUnitAmountType",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -218,21 +335,59 @@ class SubstancePolymerRepeatRepeatUnit(backboneelement.BackboneElement):
         """ Todo.
         List of `SubstancePolymerRepeatRepeatUnitStructuralRepresentation` items (represented as `dict` in JSON). """
 
-        super(SubstancePolymerRepeatRepeatUnit, self).__init__(jsondict=jsondict, strict=strict)
+        super(SubstancePolymerRepeatRepeatUnit, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(SubstancePolymerRepeatRepeatUnit, self).elementProperties()
-        js.extend([
-            ("amount", "amount", substanceamount.SubstanceAmount, "SubstanceAmount", False, None, False),
-            ("degreeOfPolymerisation", "degreeOfPolymerisation", SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation, "SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation", True, None, False),
-            ("orientationOfPolymerisation", "orientationOfPolymerisation", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("repeatUnit", "repeatUnit", str, "string", False, None, False),
-            ("structuralRepresentation", "structuralRepresentation", SubstancePolymerRepeatRepeatUnitStructuralRepresentation, "SubstancePolymerRepeatRepeatUnitStructuralRepresentation", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "amount",
+                    "amount",
+                    substanceamount.SubstanceAmount,
+                    "SubstanceAmount",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "degreeOfPolymerisation",
+                    "degreeOfPolymerisation",
+                    SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation,
+                    "SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "orientationOfPolymerisation",
+                    "orientationOfPolymerisation",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("repeatUnit", "repeatUnit", str, "string", False, None, False),
+                (
+                    "structuralRepresentation",
+                    "structuralRepresentation",
+                    SubstancePolymerRepeatRepeatUnitStructuralRepresentation,
+                    "SubstancePolymerRepeatRepeatUnitStructuralRepresentation",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-class SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation(backboneelement.BackboneElement):
+class SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation(
+    backboneelement.BackboneElement
+):
     """ Todo.
     """
 
@@ -254,18 +409,42 @@ class SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation(backboneelement.Bac
         """ Todo.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation, self).__init__(jsondict=jsondict, strict=strict)
+        super(SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
-        js = super(SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation, self).elementProperties()
-        js.extend([
-            ("amount", "amount", substanceamount.SubstanceAmount, "SubstanceAmount", False, None, False),
-            ("degree", "degree", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js = super(
+            SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation, self
+        ).elementProperties()
+        js.extend(
+            [
+                (
+                    "amount",
+                    "amount",
+                    substanceamount.SubstanceAmount,
+                    "SubstanceAmount",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "degree",
+                    "degree",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-class SubstancePolymerRepeatRepeatUnitStructuralRepresentation(backboneelement.BackboneElement):
+class SubstancePolymerRepeatRepeatUnitStructuralRepresentation(
+    backboneelement.BackboneElement
+):
     """ Todo.
     """
 
@@ -291,28 +470,49 @@ class SubstancePolymerRepeatRepeatUnitStructuralRepresentation(backboneelement.B
         """ Todo.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(SubstancePolymerRepeatRepeatUnitStructuralRepresentation, self).__init__(jsondict=jsondict, strict=strict)
+        super(SubstancePolymerRepeatRepeatUnitStructuralRepresentation, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
-        js = super(SubstancePolymerRepeatRepeatUnitStructuralRepresentation, self).elementProperties()
-        js.extend([
-            ("attachment", "attachment", attachment.Attachment, "Attachment", False, None, False),
-            ("representation", "representation", str, "string", False, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js = super(
+            SubstancePolymerRepeatRepeatUnitStructuralRepresentation, self
+        ).elementProperties()
+        js.extend(
+            [
+                (
+                    "attachment",
+                    "attachment",
+                    attachment.Attachment,
+                    "Attachment",
+                    False,
+                    None,
+                    False,
+                ),
+                ("representation", "representation", str, "string", False, None, False),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import attachment
 except ImportError:
-    attachment = sys.modules[__package__ + '.attachment']
+    attachment = sys.modules[__package__ + ".attachment"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import substanceamount
 except ImportError:
-    substanceamount = sys.modules[__package__ + '.substanceamount']
+    substanceamount = sys.modules[__package__ + ".substanceamount"]

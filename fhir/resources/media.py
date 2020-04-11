@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
+import sys
+
 from . import domainresource
+
 
 class Media(domainresource.DomainResource):
     """ A photo, video, or audio recording acquired or used in healthcare. The
@@ -122,60 +125,189 @@ class Media(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(Media, self).elementProperties()
-        js.extend([
-            ("basedOn", "basedOn", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("bodySite", "bodySite", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("content", "content", attachment.Attachment, "Attachment", False, None, True),
-            ("createdDateTime", "createdDateTime", fhirdate.FHIRDate, "dateTime", False, "created", False),
-            ("createdPeriod", "createdPeriod", period.Period, "Period", False, "created", False),
-            ("device", "device", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("deviceName", "deviceName", str, "string", False, None, False),
-            ("duration", "duration", float, "decimal", False, None, False),
-            ("encounter", "encounter", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("frames", "frames", int, "positiveInt", False, None, False),
-            ("height", "height", int, "positiveInt", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("issued", "issued", fhirdate.FHIRDate, "instant", False, None, False),
-            ("modality", "modality", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("note", "note", annotation.Annotation, "Annotation", True, None, False),
-            ("operator", "operator", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("partOf", "partOf", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("reasonCode", "reasonCode", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("subject", "subject", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("view", "view", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("width", "width", int, "positiveInt", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "basedOn",
+                    "basedOn",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "bodySite",
+                    "bodySite",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "content",
+                    "content",
+                    attachment.Attachment,
+                    "Attachment",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "createdDateTime",
+                    "createdDateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    "created",
+                    False,
+                ),
+                (
+                    "createdPeriod",
+                    "createdPeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "created",
+                    False,
+                ),
+                (
+                    "device",
+                    "device",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("deviceName", "deviceName", str, "string", False, None, False),
+                ("duration", "duration", float, "decimal", False, None, False),
+                (
+                    "encounter",
+                    "encounter",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("frames", "frames", int, "positiveInt", False, None, False),
+                ("height", "height", int, "positiveInt", False, None, False),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                ("issued", "issued", fhirdate.FHIRDate, "instant", False, None, False),
+                (
+                    "modality",
+                    "modality",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "note",
+                    "note",
+                    annotation.Annotation,
+                    "Annotation",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "operator",
+                    "operator",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "partOf",
+                    "partOf",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "reasonCode",
+                    "reasonCode",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, True),
+                (
+                    "subject",
+                    "subject",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "view",
+                    "view",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("width", "width", int, "positiveInt", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import annotation
 except ImportError:
-    annotation = sys.modules[__package__ + '.annotation']
+    annotation = sys.modules[__package__ + ".annotation"]
 try:
     from . import attachment
 except ImportError:
-    attachment = sys.modules[__package__ + '.attachment']
+    attachment = sys.modules[__package__ + ".attachment"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]

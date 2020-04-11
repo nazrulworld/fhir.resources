@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class Consent(domainresource.DomainResource):
     """ A healthcare consumer's  choices to permit or deny recipients or roles to
@@ -89,26 +92,122 @@ class Consent(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(Consent, self).elementProperties()
-        js.extend([
-            ("category", "category", codeableconcept.CodeableConcept, "CodeableConcept", True, None, True),
-            ("dateTime", "dateTime", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("organization", "organization", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("patient", "patient", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("performer", "performer", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("policy", "policy", ConsentPolicy, "ConsentPolicy", True, None, False),
-            ("policyRule", "policyRule", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("provision", "provision", ConsentProvision, "ConsentProvision", False, None, False),
-            ("scope", "scope", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("sourceAttachment", "sourceAttachment", attachment.Attachment, "Attachment", False, "source", False),
-            ("sourceReference", "sourceReference", fhirreference.FHIRReference, "Reference", False, "source", False),
-            ("status", "status", str, "code", False, None, True),
-            ("verification", "verification", ConsentVerification, "ConsentVerification", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "category",
+                    "category",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    True,
+                ),
+                (
+                    "dateTime",
+                    "dateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "organization",
+                    "organization",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "patient",
+                    "patient",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "performer",
+                    "performer",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                ("policy", "policy", ConsentPolicy, "ConsentPolicy", True, None, False),
+                (
+                    "policyRule",
+                    "policyRule",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "provision",
+                    "provision",
+                    ConsentProvision,
+                    "ConsentProvision",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "scope",
+                    "scope",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "sourceAttachment",
+                    "sourceAttachment",
+                    attachment.Attachment,
+                    "Attachment",
+                    False,
+                    "source",
+                    False,
+                ),
+                (
+                    "sourceReference",
+                    "sourceReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "source",
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, True),
+                (
+                    "verification",
+                    "verification",
+                    ConsentVerification,
+                    "ConsentVerification",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class ConsentPolicy(backboneelement.BackboneElement):
     """ Policies covered by this consent.
@@ -140,10 +239,12 @@ class ConsentPolicy(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ConsentPolicy, self).elementProperties()
-        js.extend([
-            ("authority", "authority", str, "uri", False, None, False),
-            ("uri", "uri", str, "uri", False, None, False),
-        ])
+        js.extend(
+            [
+                ("authority", "authority", str, "uri", False, None, False),
+                ("uri", "uri", str, "uri", False, None, False),
+            ]
+        )
         return js
 
 
@@ -212,19 +313,77 @@ class ConsentProvision(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ConsentProvision, self).elementProperties()
-        js.extend([
-            ("action", "action", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("actor", "actor", ConsentProvisionActor, "ConsentProvisionActor", True, None, False),
-            ("class_fhir", "class", coding.Coding, "Coding", True, None, False),
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("data", "data", ConsentProvisionData, "ConsentProvisionData", True, None, False),
-            ("dataPeriod", "dataPeriod", period.Period, "Period", False, None, False),
-            ("period", "period", period.Period, "Period", False, None, False),
-            ("provision", "provision", ConsentProvision, "ConsentProvision", True, None, False),
-            ("purpose", "purpose", coding.Coding, "Coding", True, None, False),
-            ("securityLabel", "securityLabel", coding.Coding, "Coding", True, None, False),
-            ("type", "type", str, "code", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "action",
+                    "action",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "actor",
+                    "actor",
+                    ConsentProvisionActor,
+                    "ConsentProvisionActor",
+                    True,
+                    None,
+                    False,
+                ),
+                ("class_fhir", "class", coding.Coding, "Coding", True, None, False),
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "data",
+                    "data",
+                    ConsentProvisionData,
+                    "ConsentProvisionData",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "dataPeriod",
+                    "dataPeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    None,
+                    False,
+                ),
+                ("period", "period", period.Period, "Period", False, None, False),
+                (
+                    "provision",
+                    "provision",
+                    ConsentProvision,
+                    "ConsentProvision",
+                    True,
+                    None,
+                    False,
+                ),
+                ("purpose", "purpose", coding.Coding, "Coding", True, None, False),
+                (
+                    "securityLabel",
+                    "securityLabel",
+                    coding.Coding,
+                    "Coding",
+                    True,
+                    None,
+                    False,
+                ),
+                ("type", "type", str, "code", False, None, False),
+            ]
+        )
         return js
 
 
@@ -257,10 +416,28 @@ class ConsentProvisionActor(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ConsentProvisionActor, self).elementProperties()
-        js.extend([
-            ("reference", "reference", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("role", "role", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "reference",
+                    "reference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "role",
+                    "role",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -292,10 +469,20 @@ class ConsentProvisionData(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ConsentProvisionData, self).elementProperties()
-        js.extend([
-            ("meaning", "meaning", str, "code", False, None, True),
-            ("reference", "reference", fhirreference.FHIRReference, "Reference", False, None, True),
-        ])
+        js.extend(
+            [
+                ("meaning", "meaning", str, "code", False, None, True),
+                (
+                    "reference",
+                    "reference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -332,40 +519,57 @@ class ConsentVerification(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ConsentVerification, self).elementProperties()
-        js.extend([
-            ("verificationDate", "verificationDate", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("verified", "verified", bool, "boolean", False, None, True),
-            ("verifiedWith", "verifiedWith", fhirreference.FHIRReference, "Reference", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "verificationDate",
+                    "verificationDate",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                ("verified", "verified", bool, "boolean", False, None, True),
+                (
+                    "verifiedWith",
+                    "verifiedWith",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import attachment
 except ImportError:
-    attachment = sys.modules[__package__ + '.attachment']
+    attachment = sys.modules[__package__ + ".attachment"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import coding
 except ImportError:
-    coding = sys.modules[__package__ + '.coding']
+    coding = sys.modules[__package__ + ".coding"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]

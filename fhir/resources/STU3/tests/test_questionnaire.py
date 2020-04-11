@@ -7,23 +7,24 @@ Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
 
-import os
-import pytest
-import io
-import unittest
-import json
 import copy
+import io
+import json
+import os
+import unittest
 
-from .fixtures import force_bytes
+import pytest
+
 from .. import questionnaire
 from ..fhirdate import FHIRDate
+from .fixtures import force_bytes
 
 
 @pytest.mark.usefixtures("base_settings")
 class QuestionnaireTests(unittest.TestCase):
     def instantiate_from(self, filename):
-        datadir = os.environ.get('FHIR_UNITTEST_DATADIR') or ''
-        with io.open(os.path.join(datadir, filename), 'r', encoding='utf-8') as handle:
+        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
+        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
             js = json.load(handle)
             self.assertEqual("Questionnaire", js["resourceType"])
 
@@ -35,6 +36,7 @@ class QuestionnaireTests(unittest.TestCase):
                     container[index] = item
                 if "item" in item:
                     _do_clean(item["item"])
+
         # do some extra!
         _do_clean(js["item"])
         return questionnaire.Questionnaire(js)
@@ -54,129 +56,567 @@ class QuestionnaireTests(unittest.TestCase):
         self.assertEqual(inst.date.date, FHIRDate("2017-04-19T07:44:43+10:00").date)
         self.assertEqual(inst.date.as_json(), "2017-04-19T07:44:43+10:00")
         self.assertEqual(force_bytes(inst.id), force_bytes("qs1"))
-        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("urn:ietf:rfc:3986"))
+        self.assertEqual(
+            force_bytes(inst.identifier[0].system), force_bytes("urn:ietf:rfc:3986")
+        )
         self.assertEqual(force_bytes(inst.item[0].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].text), force_bytes("Demographics and administrative information about a person independent of a specific health-related context."))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0].item[1].extension[0].valueCodeableConcept.coding[0].code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0].item[1].extension[0].valueCodeableConcept.coding[0].display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0].item[1].extension[0].valueCodeableConcept.coding[0].system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].text),
+            force_bytes(
+                "Demographics and administrative information about a person independent of a specific health-related context."
+            ),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[1].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[2].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[2].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].extension[1].valueString), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[1].linkId), force_bytes("Person.id.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].extension[1].valueString),
+            force_bytes("string"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[2]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[2]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[2]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].item[1].linkId),
+            force_bytes("Person.id.value"),
+        )
         self.assertFalse(inst.item[0].item[2].item[1].repeats)
         self.assertFalse(inst.item[0].item[2].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[1].text), force_bytes("Logical id of this artifact"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[1].type), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].linkId), force_bytes("Person.id"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].item[1].text),
+            force_bytes("Logical id of this artifact"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].item[1].type), force_bytes("string")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].linkId), force_bytes("Person.id")
+        )
         self.assertTrue(inst.item[0].item[2].repeats)
         self.assertFalse(inst.item[0].item[2].required)
         self.assertEqual(force_bytes(inst.item[0].item[2].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[3].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].text), force_bytes("The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource."))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].linkId), force_bytes("Person.meta"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[3]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[3]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[3]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].item[0].text),
+            force_bytes(
+                "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource."
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].linkId), force_bytes("Person.meta")
+        )
         self.assertTrue(inst.item[0].item[3].repeats)
         self.assertFalse(inst.item[0].item[3].required)
-        self.assertEqual(force_bytes(inst.item[0].item[3].text), force_bytes("Metadata about the resource"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].text),
+            force_bytes("Metadata about the resource"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[3].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[4].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[4].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].extension[1].valueString), force_bytes("uri"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[1].linkId), force_bytes("Person.implicitRules.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].extension[1].valueString),
+            force_bytes("uri"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[4]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[4]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[4]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[1].linkId),
+            force_bytes("Person.implicitRules.value"),
+        )
         self.assertFalse(inst.item[0].item[4].item[1].repeats)
         self.assertFalse(inst.item[0].item[4].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[1].text), force_bytes("A set of rules under which this content was created"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[1].type), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].linkId), force_bytes("Person.implicitRules"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[1].text),
+            force_bytes("A set of rules under which this content was created"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[1].type), force_bytes("string")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].linkId),
+            force_bytes("Person.implicitRules"),
+        )
         self.assertTrue(inst.item[0].item[4].repeats)
         self.assertFalse(inst.item[0].item[4].required)
         self.assertEqual(force_bytes(inst.item[0].item[4].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[5].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[5].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].extension[1].valueString), force_bytes("code"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[1].linkId), force_bytes("Person.language.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].extension[1].valueString),
+            force_bytes("code"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[5]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[5]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[5]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].item[1].linkId),
+            force_bytes("Person.language.value"),
+        )
         self.assertFalse(inst.item[0].item[5].item[1].repeats)
         self.assertFalse(inst.item[0].item[5].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[1].text), force_bytes("language"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[1].type), force_bytes("choice"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].linkId), force_bytes("Person.language"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].item[1].text), force_bytes("language")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].item[1].type), force_bytes("choice")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].linkId), force_bytes("Person.language")
+        )
         self.assertTrue(inst.item[0].item[5].repeats)
         self.assertFalse(inst.item[0].item[5].required)
         self.assertEqual(force_bytes(inst.item[0].item[5].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[6].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].linkId), force_bytes("Person.text"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[6]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[6]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[6]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].linkId), force_bytes("Person.text")
+        )
         self.assertTrue(inst.item[0].item[6].repeats)
         self.assertFalse(inst.item[0].item[6].required)
-        self.assertEqual(force_bytes(inst.item[0].item[6].text), force_bytes("Text summary of the resource, for human interpretation"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].text),
+            force_bytes("Text summary of the resource, for human interpretation"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[6].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].linkId), force_bytes("Person.contained"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[7]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[7]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[7]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].linkId), force_bytes("Person.contained")
+        )
         self.assertTrue(inst.item[0].item[7].repeats)
         self.assertFalse(inst.item[0].item[7].required)
-        self.assertEqual(force_bytes(inst.item[0].item[7].text), force_bytes("Contained, inline Resources"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].text),
+            force_bytes("Contained, inline Resources"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[7].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].linkId), force_bytes("Person.extension"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].linkId), force_bytes("Person.extension")
+        )
         self.assertTrue(inst.item[0].item[8].repeats)
         self.assertFalse(inst.item[0].item[8].required)
-        self.assertEqual(force_bytes(inst.item[0].item[8].text), force_bytes("Additional Content defined by implementations"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].text),
+            force_bytes("Additional Content defined by implementations"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[8].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].linkId), force_bytes("Person.modifierExtension"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[9]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[9]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[9]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].linkId),
+            force_bytes("Person.modifierExtension"),
+        )
         self.assertTrue(inst.item[0].item[9].repeats)
         self.assertFalse(inst.item[0].item[9].required)
-        self.assertEqual(force_bytes(inst.item[0].item[9].text), force_bytes("Extensions that cannot be ignored"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].text),
+            force_bytes("Extensions that cannot be ignored"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[9].type), force_bytes("group"))
         self.assertEqual(force_bytes(inst.item[0].linkId), force_bytes("Person"))
         self.assertTrue(inst.item[0].repeats)
         self.assertFalse(inst.item[0].required)
-        self.assertEqual(force_bytes(inst.item[0].text), force_bytes("A generic person record"))
+        self.assertEqual(
+            force_bytes(inst.item[0].text), force_bytes("A generic person record")
+        )
         self.assertEqual(force_bytes(inst.item[0].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.publisher), force_bytes("Health Level Seven International (Patient Administration)"))
+        self.assertEqual(
+            force_bytes(inst.publisher),
+            force_bytes("Health Level Seven International (Patient Administration)"),
+        )
         self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
 
     def testQuestionnaire2(self):
@@ -199,129 +639,573 @@ class QuestionnaireTests(unittest.TestCase):
         self.assertEqual(inst.date.date, FHIRDate("2015-10-09T00:00:00+11:00").date)
         self.assertEqual(inst.date.as_json(), "2015-10-09T00:00:00+11:00")
         self.assertEqual(force_bytes(inst.id), force_bytes("qs1"))
-        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("urn:ietf:rfc:3986"))
+        self.assertEqual(
+            force_bytes(inst.identifier[0].system), force_bytes("urn:ietf:rfc:3986")
+        )
         self.assertEqual(force_bytes(inst.item[0].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0].item[1].extension[0].valueCodeableConcept.coding[0].code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0].item[1].extension[0].valueCodeableConcept.coding[0].display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0].item[1].extension[0].valueCodeableConcept.coding[0].system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[1].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[2].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[2].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].extension[1].valueString), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[1].linkId), force_bytes("DiagnosticReport.id.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].extension[1].valueString),
+            force_bytes("string"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[2]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[2]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[2]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].item[1].linkId),
+            force_bytes("DiagnosticReport.id.value"),
+        )
         self.assertFalse(inst.item[0].item[2].item[1].repeats)
         self.assertFalse(inst.item[0].item[2].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[1].text), force_bytes("Logical id of this artifact"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[1].type), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].linkId), force_bytes("DiagnosticReport.id"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].item[1].text),
+            force_bytes("Logical id of this artifact"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].item[1].type), force_bytes("string")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].linkId), force_bytes("DiagnosticReport.id")
+        )
         self.assertTrue(inst.item[0].item[2].repeats)
         self.assertFalse(inst.item[0].item[2].required)
         self.assertEqual(force_bytes(inst.item[0].item[2].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[3].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].text), force_bytes("The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource."))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].linkId), force_bytes("DiagnosticReport.meta"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[3]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[3]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[3]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].item[0].text),
+            force_bytes(
+                "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource."
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].linkId),
+            force_bytes("DiagnosticReport.meta"),
+        )
         self.assertTrue(inst.item[0].item[3].repeats)
         self.assertFalse(inst.item[0].item[3].required)
-        self.assertEqual(force_bytes(inst.item[0].item[3].text), force_bytes("Metadata about the resource"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].text),
+            force_bytes("Metadata about the resource"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[3].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[4].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[4].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].extension[1].valueString), force_bytes("uri"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[1].linkId), force_bytes("DiagnosticReport.implicitRules.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].extension[1].valueString),
+            force_bytes("uri"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[4]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[4]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[4]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[1].linkId),
+            force_bytes("DiagnosticReport.implicitRules.value"),
+        )
         self.assertFalse(inst.item[0].item[4].item[1].repeats)
         self.assertFalse(inst.item[0].item[4].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[1].text), force_bytes("A set of rules under which this content was created"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[1].type), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].linkId), force_bytes("DiagnosticReport.implicitRules"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[1].text),
+            force_bytes("A set of rules under which this content was created"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[1].type), force_bytes("string")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].linkId),
+            force_bytes("DiagnosticReport.implicitRules"),
+        )
         self.assertTrue(inst.item[0].item[4].repeats)
         self.assertFalse(inst.item[0].item[4].required)
         self.assertEqual(force_bytes(inst.item[0].item[4].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[5].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[5].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].extension[1].valueString), force_bytes("code"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[1].linkId), force_bytes("DiagnosticReport.language.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].extension[1].valueString),
+            force_bytes("code"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[5]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[5]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[5]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].item[1].linkId),
+            force_bytes("DiagnosticReport.language.value"),
+        )
         self.assertFalse(inst.item[0].item[5].item[1].repeats)
         self.assertFalse(inst.item[0].item[5].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[1].text), force_bytes("language"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[1].type), force_bytes("choice"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].linkId), force_bytes("DiagnosticReport.language"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].item[1].text), force_bytes("language")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].item[1].type), force_bytes("choice")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].linkId),
+            force_bytes("DiagnosticReport.language"),
+        )
         self.assertTrue(inst.item[0].item[5].repeats)
         self.assertFalse(inst.item[0].item[5].required)
         self.assertEqual(force_bytes(inst.item[0].item[5].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[6].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].linkId), force_bytes("DiagnosticReport.text"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[6]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[6]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[6]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].linkId),
+            force_bytes("DiagnosticReport.text"),
+        )
         self.assertTrue(inst.item[0].item[6].repeats)
         self.assertFalse(inst.item[0].item[6].required)
-        self.assertEqual(force_bytes(inst.item[0].item[6].text), force_bytes("Text summary of the resource, for human interpretation"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].text),
+            force_bytes("Text summary of the resource, for human interpretation"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[6].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].linkId), force_bytes("DiagnosticReport.contained"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[7]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[7]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[7]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].linkId),
+            force_bytes("DiagnosticReport.contained"),
+        )
         self.assertTrue(inst.item[0].item[7].repeats)
         self.assertFalse(inst.item[0].item[7].required)
-        self.assertEqual(force_bytes(inst.item[0].item[7].text), force_bytes("Contained, inline Resources"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].text),
+            force_bytes("Contained, inline Resources"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[7].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].text), force_bytes("An Extension"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].linkId), force_bytes("DiagnosticReport.extension"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[0].text), force_bytes("An Extension")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].linkId),
+            force_bytes("DiagnosticReport.extension"),
+        )
         self.assertTrue(inst.item[0].item[8].repeats)
         self.assertFalse(inst.item[0].item[8].required)
-        self.assertEqual(force_bytes(inst.item[0].item[8].text), force_bytes("Extension"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].text), force_bytes("Extension")
+        )
         self.assertEqual(force_bytes(inst.item[0].item[8].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].linkId), force_bytes("DiagnosticReport.modifierExtension"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[9]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[9]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[9]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].linkId),
+            force_bytes("DiagnosticReport.modifierExtension"),
+        )
         self.assertTrue(inst.item[0].item[9].repeats)
         self.assertFalse(inst.item[0].item[9].required)
-        self.assertEqual(force_bytes(inst.item[0].item[9].text), force_bytes("Extensions that cannot be ignored"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].text),
+            force_bytes("Extensions that cannot be ignored"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[9].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].linkId), force_bytes("DiagnosticReport"))
+        self.assertEqual(
+            force_bytes(inst.item[0].linkId), force_bytes("DiagnosticReport")
+        )
         self.assertTrue(inst.item[0].repeats)
         self.assertFalse(inst.item[0].required)
-        self.assertEqual(force_bytes(inst.item[0].text), force_bytes("A Diagnostic report - a combination of request information, atomic results, images, interpretation, as well as formatted reports"))
+        self.assertEqual(
+            force_bytes(inst.item[0].text),
+            force_bytes(
+                "A Diagnostic report - a combination of request information, atomic results, images, interpretation, as well as formatted reports"
+            ),
+        )
         self.assertEqual(force_bytes(inst.item[0].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.publisher), force_bytes("Health Level Seven International (Clinical Genomics)"))
+        self.assertEqual(
+            force_bytes(inst.publisher),
+            force_bytes("Health Level Seven International (Clinical Genomics)"),
+        )
         self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
 
     def testQuestionnaire3(self):
@@ -338,129 +1222,575 @@ class QuestionnaireTests(unittest.TestCase):
         self.assertEqual(inst.date.date, FHIRDate("2017-04-19T07:44:43+10:00").date)
         self.assertEqual(inst.date.as_json(), "2017-04-19T07:44:43+10:00")
         self.assertEqual(force_bytes(inst.id), force_bytes("qs1"))
-        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("urn:ietf:rfc:3986"))
+        self.assertEqual(
+            force_bytes(inst.identifier[0].system), force_bytes("urn:ietf:rfc:3986")
+        )
         self.assertEqual(force_bytes(inst.item[0].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].text), force_bytes("A collection of error, warning or information messages that result from a system action."))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0].item[1].extension[0].valueCodeableConcept.coding[0].code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0].item[1].extension[0].valueCodeableConcept.coding[0].display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0].item[1].extension[0].valueCodeableConcept.coding[0].system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].text),
+            force_bytes(
+                "A collection of error, warning or information messages that result from a system action."
+            ),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[1].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[2].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[2].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].extension[1].valueString), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[1].linkId), force_bytes("OperationOutcome.id.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].extension[1].valueString),
+            force_bytes("string"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[2]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[2]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[2]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].item[1].linkId),
+            force_bytes("OperationOutcome.id.value"),
+        )
         self.assertFalse(inst.item[0].item[2].item[1].repeats)
         self.assertFalse(inst.item[0].item[2].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[1].text), force_bytes("Logical id of this artifact"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[1].type), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].linkId), force_bytes("OperationOutcome.id"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].item[1].text),
+            force_bytes("Logical id of this artifact"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].item[1].type), force_bytes("string")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].linkId), force_bytes("OperationOutcome.id")
+        )
         self.assertTrue(inst.item[0].item[2].repeats)
         self.assertFalse(inst.item[0].item[2].required)
         self.assertEqual(force_bytes(inst.item[0].item[2].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[3].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].text), force_bytes("The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource."))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].linkId), force_bytes("OperationOutcome.meta"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[3]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[3]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[3]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].item[0].text),
+            force_bytes(
+                "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource."
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].linkId),
+            force_bytes("OperationOutcome.meta"),
+        )
         self.assertTrue(inst.item[0].item[3].repeats)
         self.assertFalse(inst.item[0].item[3].required)
-        self.assertEqual(force_bytes(inst.item[0].item[3].text), force_bytes("Metadata about the resource"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].text),
+            force_bytes("Metadata about the resource"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[3].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[4].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[4].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].extension[1].valueString), force_bytes("uri"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[1].linkId), force_bytes("OperationOutcome.implicitRules.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].extension[1].valueString),
+            force_bytes("uri"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[4]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[4]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[4]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[1].linkId),
+            force_bytes("OperationOutcome.implicitRules.value"),
+        )
         self.assertFalse(inst.item[0].item[4].item[1].repeats)
         self.assertFalse(inst.item[0].item[4].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[1].text), force_bytes("A set of rules under which this content was created"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[1].type), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].linkId), force_bytes("OperationOutcome.implicitRules"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[1].text),
+            force_bytes("A set of rules under which this content was created"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[1].type), force_bytes("string")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].linkId),
+            force_bytes("OperationOutcome.implicitRules"),
+        )
         self.assertTrue(inst.item[0].item[4].repeats)
         self.assertFalse(inst.item[0].item[4].required)
         self.assertEqual(force_bytes(inst.item[0].item[4].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[5].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[5].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].extension[1].valueString), force_bytes("code"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[1].linkId), force_bytes("OperationOutcome.language.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].extension[1].valueString),
+            force_bytes("code"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[5]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[5]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[5]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].item[1].linkId),
+            force_bytes("OperationOutcome.language.value"),
+        )
         self.assertFalse(inst.item[0].item[5].item[1].repeats)
         self.assertFalse(inst.item[0].item[5].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[1].text), force_bytes("language"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[1].type), force_bytes("choice"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].linkId), force_bytes("OperationOutcome.language"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].item[1].text), force_bytes("language")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].item[1].type), force_bytes("choice")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].linkId),
+            force_bytes("OperationOutcome.language"),
+        )
         self.assertTrue(inst.item[0].item[5].repeats)
         self.assertFalse(inst.item[0].item[5].required)
         self.assertEqual(force_bytes(inst.item[0].item[5].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[6].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].linkId), force_bytes("OperationOutcome.text"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[6]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[6]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[6]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].linkId),
+            force_bytes("OperationOutcome.text"),
+        )
         self.assertTrue(inst.item[0].item[6].repeats)
         self.assertFalse(inst.item[0].item[6].required)
-        self.assertEqual(force_bytes(inst.item[0].item[6].text), force_bytes("Text summary of the resource, for human interpretation"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].text),
+            force_bytes("Text summary of the resource, for human interpretation"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[6].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].linkId), force_bytes("OperationOutcome.contained"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[7]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[7]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[7]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].linkId),
+            force_bytes("OperationOutcome.contained"),
+        )
         self.assertTrue(inst.item[0].item[7].repeats)
         self.assertFalse(inst.item[0].item[7].required)
-        self.assertEqual(force_bytes(inst.item[0].item[7].text), force_bytes("Contained, inline Resources"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].text),
+            force_bytes("Contained, inline Resources"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[7].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].linkId), force_bytes("OperationOutcome.extension"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].linkId),
+            force_bytes("OperationOutcome.extension"),
+        )
         self.assertTrue(inst.item[0].item[8].repeats)
         self.assertFalse(inst.item[0].item[8].required)
-        self.assertEqual(force_bytes(inst.item[0].item[8].text), force_bytes("Additional Content defined by implementations"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].text),
+            force_bytes("Additional Content defined by implementations"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[8].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].linkId), force_bytes("OperationOutcome.modifierExtension"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[9]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[9]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[9]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].linkId),
+            force_bytes("OperationOutcome.modifierExtension"),
+        )
         self.assertTrue(inst.item[0].item[9].repeats)
         self.assertFalse(inst.item[0].item[9].required)
-        self.assertEqual(force_bytes(inst.item[0].item[9].text), force_bytes("Extensions that cannot be ignored"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].text),
+            force_bytes("Extensions that cannot be ignored"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[9].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].linkId), force_bytes("OperationOutcome"))
+        self.assertEqual(
+            force_bytes(inst.item[0].linkId), force_bytes("OperationOutcome")
+        )
         self.assertTrue(inst.item[0].repeats)
         self.assertFalse(inst.item[0].required)
-        self.assertEqual(force_bytes(inst.item[0].text), force_bytes("Information about the success/failure of an action"))
+        self.assertEqual(
+            force_bytes(inst.item[0].text),
+            force_bytes("Information about the success/failure of an action"),
+        )
         self.assertEqual(force_bytes(inst.item[0].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.publisher), force_bytes("Health Level Seven International (FHIR Infrastructure)"))
+        self.assertEqual(
+            force_bytes(inst.publisher),
+            force_bytes("Health Level Seven International (FHIR Infrastructure)"),
+        )
         self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
 
     def testQuestionnaire4(self):
@@ -479,146 +1809,658 @@ class QuestionnaireTests(unittest.TestCase):
         self.assertEqual(inst.date.date, FHIRDate("2017-04-19T07:44:43+10:00").date)
         self.assertEqual(inst.date.as_json(), "2017-04-19T07:44:43+10:00")
         self.assertEqual(force_bytes(inst.id), force_bytes("qs1"))
-        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("urn:ietf:rfc:3986"))
-        self.assertEqual(force_bytes(inst.item[0].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[0].text), force_bytes("This resource allows for the definition of some activity to be performed, independent of a particular patient, practitioner, or other performance context."))
+        self.assertEqual(
+            force_bytes(inst.identifier[0].system), force_bytes("urn:ietf:rfc:3986")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[0].text),
+            force_bytes(
+                "This resource allows for the definition of some activity to be performed, independent of a particular patient, practitioner, or other performance context."
+            ),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[1].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[1].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].extension[1].valueString), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[1].linkId), force_bytes("ActivityDefinition.id.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].extension[1].valueString),
+            force_bytes("string"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[1]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[1]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[1]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].item[1].linkId),
+            force_bytes("ActivityDefinition.id.value"),
+        )
         self.assertFalse(inst.item[0].item[1].item[1].repeats)
         self.assertFalse(inst.item[0].item[1].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[1].text), force_bytes("Logical id of this artifact"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[1].type), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].linkId), force_bytes("ActivityDefinition.id"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].item[1].text),
+            force_bytes("Logical id of this artifact"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].item[1].type), force_bytes("string")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].linkId),
+            force_bytes("ActivityDefinition.id"),
+        )
         self.assertTrue(inst.item[0].item[1].repeats)
         self.assertFalse(inst.item[0].item[1].required)
         self.assertEqual(force_bytes(inst.item[0].item[1].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[2].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].text), force_bytes("The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource."))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].linkId), force_bytes("ActivityDefinition.meta"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[2]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[2]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[2]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].item[0].text),
+            force_bytes(
+                "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource."
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].linkId),
+            force_bytes("ActivityDefinition.meta"),
+        )
         self.assertTrue(inst.item[0].item[2].repeats)
         self.assertFalse(inst.item[0].item[2].required)
-        self.assertEqual(force_bytes(inst.item[0].item[2].text), force_bytes("Metadata about the resource"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].text),
+            force_bytes("Metadata about the resource"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[2].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[3].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[3].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].extension[1].valueString), force_bytes("uri"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[1].linkId), force_bytes("ActivityDefinition.implicitRules.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].extension[1].valueString),
+            force_bytes("uri"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[3]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[3]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[3]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].item[1].linkId),
+            force_bytes("ActivityDefinition.implicitRules.value"),
+        )
         self.assertFalse(inst.item[0].item[3].item[1].repeats)
         self.assertFalse(inst.item[0].item[3].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[1].text), force_bytes("A set of rules under which this content was created"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[1].type), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].linkId), force_bytes("ActivityDefinition.implicitRules"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].item[1].text),
+            force_bytes("A set of rules under which this content was created"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].item[1].type), force_bytes("string")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].linkId),
+            force_bytes("ActivityDefinition.implicitRules"),
+        )
         self.assertTrue(inst.item[0].item[3].repeats)
         self.assertFalse(inst.item[0].item[3].required)
         self.assertEqual(force_bytes(inst.item[0].item[3].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[4].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[4].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].extension[1].valueString), force_bytes("code"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[1].linkId), force_bytes("ActivityDefinition.language.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].extension[1].valueString),
+            force_bytes("code"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[4]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[4]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[4]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[1].linkId),
+            force_bytes("ActivityDefinition.language.value"),
+        )
         self.assertFalse(inst.item[0].item[4].item[1].repeats)
         self.assertFalse(inst.item[0].item[4].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[1].text), force_bytes("language"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[1].type), force_bytes("choice"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].linkId), force_bytes("ActivityDefinition.language"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[1].text), force_bytes("language")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[1].type), force_bytes("choice")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].linkId),
+            force_bytes("ActivityDefinition.language"),
+        )
         self.assertTrue(inst.item[0].item[4].repeats)
         self.assertFalse(inst.item[0].item[4].required)
         self.assertEqual(force_bytes(inst.item[0].item[4].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[5].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].linkId), force_bytes("ActivityDefinition.text"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[5]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[5]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[5]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].linkId),
+            force_bytes("ActivityDefinition.text"),
+        )
         self.assertTrue(inst.item[0].item[5].repeats)
         self.assertFalse(inst.item[0].item[5].required)
-        self.assertEqual(force_bytes(inst.item[0].item[5].text), force_bytes("Text summary of the resource, for human interpretation"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].text),
+            force_bytes("Text summary of the resource, for human interpretation"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[5].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].linkId), force_bytes("ActivityDefinition.contained"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[6]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[6]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[6]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].linkId),
+            force_bytes("ActivityDefinition.contained"),
+        )
         self.assertTrue(inst.item[0].item[6].repeats)
         self.assertFalse(inst.item[0].item[6].required)
-        self.assertEqual(force_bytes(inst.item[0].item[6].text), force_bytes("Contained, inline Resources"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].text),
+            force_bytes("Contained, inline Resources"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[6].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].linkId), force_bytes("ActivityDefinition.extension"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[7]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[7]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[7]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].linkId),
+            force_bytes("ActivityDefinition.extension"),
+        )
         self.assertTrue(inst.item[0].item[7].repeats)
         self.assertFalse(inst.item[0].item[7].required)
-        self.assertEqual(force_bytes(inst.item[0].item[7].text), force_bytes("Additional Content defined by implementations"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].text),
+            force_bytes("Additional Content defined by implementations"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[7].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].linkId), force_bytes("ActivityDefinition.modifierExtension"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].linkId),
+            force_bytes("ActivityDefinition.modifierExtension"),
+        )
         self.assertTrue(inst.item[0].item[8].repeats)
         self.assertFalse(inst.item[0].item[8].required)
-        self.assertEqual(force_bytes(inst.item[0].item[8].text), force_bytes("Extensions that cannot be ignored"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].text),
+            force_bytes("Extensions that cannot be ignored"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[8].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[9].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[9].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].extension[1].valueString), force_bytes("uri"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[1].linkId), force_bytes("ActivityDefinition.url.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].extension[1].valueString),
+            force_bytes("uri"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[9]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[9]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[9]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[1].linkId),
+            force_bytes("ActivityDefinition.url.value"),
+        )
         self.assertFalse(inst.item[0].item[9].item[1].repeats)
         self.assertFalse(inst.item[0].item[9].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[1].text), force_bytes("Logical URI to reference this activity definition (globally unique)"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[1].type), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].linkId), force_bytes("ActivityDefinition.url"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[1].text),
+            force_bytes(
+                "Logical URI to reference this activity definition (globally unique)"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[1].type), force_bytes("string")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].linkId),
+            force_bytes("ActivityDefinition.url"),
+        )
         self.assertTrue(inst.item[0].item[9].repeats)
         self.assertFalse(inst.item[0].item[9].required)
         self.assertEqual(force_bytes(inst.item[0].item[9].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].linkId), force_bytes("ActivityDefinition"))
+        self.assertEqual(
+            force_bytes(inst.item[0].linkId), force_bytes("ActivityDefinition")
+        )
         self.assertTrue(inst.item[0].repeats)
         self.assertFalse(inst.item[0].required)
-        self.assertEqual(force_bytes(inst.item[0].text), force_bytes("The definition of a specific activity to be taken, independent of any particular patient or context"))
+        self.assertEqual(
+            force_bytes(inst.item[0].text),
+            force_bytes(
+                "The definition of a specific activity to be taken, independent of any particular patient or context"
+            ),
+        )
         self.assertEqual(force_bytes(inst.item[0].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.publisher), force_bytes("Health Level Seven International (Clinical Decision Support)"))
+        self.assertEqual(
+            force_bytes(inst.publisher),
+            force_bytes("Health Level Seven International (Clinical Decision Support)"),
+        )
         self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
 
     def testQuestionnaire5(self):
@@ -635,134 +2477,595 @@ class QuestionnaireTests(unittest.TestCase):
         self.assertEqual(inst.date.date, FHIRDate("2017-04-19T07:44:43+10:00").date)
         self.assertEqual(inst.date.as_json(), "2017-04-19T07:44:43+10:00")
         self.assertEqual(force_bytes(inst.id), force_bytes("qs1"))
-        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("urn:ietf:rfc:3986"))
-        self.assertEqual(force_bytes(inst.item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"))
+        self.assertEqual(
+            force_bytes(inst.identifier[0].system), force_bytes("urn:ietf:rfc:3986")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].extension[1].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[0].text), force_bytes("In FHIR, search is not performed directly on a resource (by XML or JSON path), but on a named parameter that maps into the resource content."))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[0].text),
+            force_bytes(
+                "In FHIR, search is not performed directly on a resource (by XML or JSON path), but on a named parameter that maps into the resource content."
+            ),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].text), force_bytes("A search parameter that defines a named search item that can be used to search/filter on a resource."))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0].item[1].extension[0].valueCodeableConcept.coding[0].code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0].item[1].extension[0].valueCodeableConcept.coding[0].display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0].item[1].extension[0].valueCodeableConcept.coding[0].system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].text),
+            force_bytes(
+                "A search parameter that defines a named search item that can be used to search/filter on a resource."
+            ),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[1].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[2].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[2].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].extension[1].valueString), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[1].linkId), force_bytes("SearchParameter.id.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].extension[1].valueString),
+            force_bytes("string"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[2]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[2]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[2]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].item[1].linkId),
+            force_bytes("SearchParameter.id.value"),
+        )
         self.assertFalse(inst.item[0].item[2].item[1].repeats)
         self.assertFalse(inst.item[0].item[2].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[1].text), force_bytes("Logical id of this artifact"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[1].type), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].linkId), force_bytes("SearchParameter.id"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].item[1].text),
+            force_bytes("Logical id of this artifact"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].item[1].type), force_bytes("string")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].linkId), force_bytes("SearchParameter.id")
+        )
         self.assertTrue(inst.item[0].item[2].repeats)
         self.assertFalse(inst.item[0].item[2].required)
         self.assertEqual(force_bytes(inst.item[0].item[2].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[3].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].text), force_bytes("The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource."))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].linkId), force_bytes("SearchParameter.meta"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[3]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[3]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[3]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].item[0].text),
+            force_bytes(
+                "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource."
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].linkId),
+            force_bytes("SearchParameter.meta"),
+        )
         self.assertTrue(inst.item[0].item[3].repeats)
         self.assertFalse(inst.item[0].item[3].required)
-        self.assertEqual(force_bytes(inst.item[0].item[3].text), force_bytes("Metadata about the resource"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].text),
+            force_bytes("Metadata about the resource"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[3].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[4].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[4].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].extension[1].valueString), force_bytes("uri"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[1].linkId), force_bytes("SearchParameter.implicitRules.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].extension[1].valueString),
+            force_bytes("uri"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[4]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[4]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[4]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[1].linkId),
+            force_bytes("SearchParameter.implicitRules.value"),
+        )
         self.assertFalse(inst.item[0].item[4].item[1].repeats)
         self.assertFalse(inst.item[0].item[4].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[1].text), force_bytes("A set of rules under which this content was created"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[1].type), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].linkId), force_bytes("SearchParameter.implicitRules"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[1].text),
+            force_bytes("A set of rules under which this content was created"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[1].type), force_bytes("string")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].linkId),
+            force_bytes("SearchParameter.implicitRules"),
+        )
         self.assertTrue(inst.item[0].item[4].repeats)
         self.assertFalse(inst.item[0].item[4].required)
         self.assertEqual(force_bytes(inst.item[0].item[4].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[5].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[5].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].extension[1].valueString), force_bytes("code"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[1].linkId), force_bytes("SearchParameter.language.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].extension[1].valueString),
+            force_bytes("code"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[5]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[5]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[5]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].item[1].linkId),
+            force_bytes("SearchParameter.language.value"),
+        )
         self.assertFalse(inst.item[0].item[5].item[1].repeats)
         self.assertFalse(inst.item[0].item[5].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[1].text), force_bytes("language"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[1].type), force_bytes("choice"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].linkId), force_bytes("SearchParameter.language"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].item[1].text), force_bytes("language")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].item[1].type), force_bytes("choice")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].linkId),
+            force_bytes("SearchParameter.language"),
+        )
         self.assertTrue(inst.item[0].item[5].repeats)
         self.assertFalse(inst.item[0].item[5].required)
         self.assertEqual(force_bytes(inst.item[0].item[5].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[6].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].linkId), force_bytes("SearchParameter.text"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[6]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[6]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[6]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].linkId),
+            force_bytes("SearchParameter.text"),
+        )
         self.assertTrue(inst.item[0].item[6].repeats)
         self.assertFalse(inst.item[0].item[6].required)
-        self.assertEqual(force_bytes(inst.item[0].item[6].text), force_bytes("Text summary of the resource, for human interpretation"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].text),
+            force_bytes("Text summary of the resource, for human interpretation"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[6].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].linkId), force_bytes("SearchParameter.contained"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[7]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[7]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[7]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].linkId),
+            force_bytes("SearchParameter.contained"),
+        )
         self.assertTrue(inst.item[0].item[7].repeats)
         self.assertFalse(inst.item[0].item[7].required)
-        self.assertEqual(force_bytes(inst.item[0].item[7].text), force_bytes("Contained, inline Resources"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].text),
+            force_bytes("Contained, inline Resources"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[7].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].linkId), force_bytes("SearchParameter.extension"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].linkId),
+            force_bytes("SearchParameter.extension"),
+        )
         self.assertTrue(inst.item[0].item[8].repeats)
         self.assertFalse(inst.item[0].item[8].required)
-        self.assertEqual(force_bytes(inst.item[0].item[8].text), force_bytes("Additional Content defined by implementations"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].text),
+            force_bytes("Additional Content defined by implementations"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[8].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].linkId), force_bytes("SearchParameter.modifierExtension"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[9]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[9]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[9]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].linkId),
+            force_bytes("SearchParameter.modifierExtension"),
+        )
         self.assertTrue(inst.item[0].item[9].repeats)
         self.assertFalse(inst.item[0].item[9].required)
-        self.assertEqual(force_bytes(inst.item[0].item[9].text), force_bytes("Extensions that cannot be ignored"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].text),
+            force_bytes("Extensions that cannot be ignored"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[9].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].linkId), force_bytes("SearchParameter"))
+        self.assertEqual(
+            force_bytes(inst.item[0].linkId), force_bytes("SearchParameter")
+        )
         self.assertFalse(inst.item[0].repeats)
         self.assertTrue(inst.item[0].required)
-        self.assertEqual(force_bytes(inst.item[0].text), force_bytes("Search Parameter for a resource"))
+        self.assertEqual(
+            force_bytes(inst.item[0].text),
+            force_bytes("Search Parameter for a resource"),
+        )
         self.assertEqual(force_bytes(inst.item[0].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.publisher), force_bytes("Health Level Seven International (FHIR Infrastructure)"))
+        self.assertEqual(
+            force_bytes(inst.publisher),
+            force_bytes("Health Level Seven International (FHIR Infrastructure)"),
+        )
         self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
 
     def testQuestionnaire6(self):
@@ -789,156 +3092,677 @@ class QuestionnaireTests(unittest.TestCase):
         self.assertEqual(inst.date.date, FHIRDate("2017-04-19T07:44:43+10:00").date)
         self.assertEqual(inst.date.as_json(), "2017-04-19T07:44:43+10:00")
         self.assertEqual(force_bytes(inst.id), force_bytes("qs1"))
-        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("urn:ietf:rfc:3986"))
-        self.assertEqual(force_bytes(inst.item[0].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[0].text), force_bytes("This resource provides: the claim details; adjudication details from the processing of a Claim; and optionally account balance information, for informing the subscriber of the benefits provided."))
+        self.assertEqual(
+            force_bytes(inst.identifier[0].system), force_bytes("urn:ietf:rfc:3986")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[0].text),
+            force_bytes(
+                "This resource provides: the claim details; adjudication details from the processing of a Claim; and optionally account balance information, for informing the subscriber of the benefits provided."
+            ),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[1].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[1].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].extension[1].valueString), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[1].linkId), force_bytes("ExplanationOfBenefit.id.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].extension[1].valueString),
+            force_bytes("string"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[1]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[1]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[1]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].item[1].linkId),
+            force_bytes("ExplanationOfBenefit.id.value"),
+        )
         self.assertFalse(inst.item[0].item[1].item[1].repeats)
         self.assertFalse(inst.item[0].item[1].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[1].text), force_bytes("Logical id of this artifact"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[1].type), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].linkId), force_bytes("ExplanationOfBenefit.id"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].item[1].text),
+            force_bytes("Logical id of this artifact"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].item[1].type), force_bytes("string")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].linkId),
+            force_bytes("ExplanationOfBenefit.id"),
+        )
         self.assertTrue(inst.item[0].item[1].repeats)
         self.assertFalse(inst.item[0].item[1].required)
         self.assertEqual(force_bytes(inst.item[0].item[1].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[2].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].text), force_bytes("The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource."))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].linkId), force_bytes("ExplanationOfBenefit.meta"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[2]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[2]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[2]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].item[0].text),
+            force_bytes(
+                "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource."
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].linkId),
+            force_bytes("ExplanationOfBenefit.meta"),
+        )
         self.assertTrue(inst.item[0].item[2].repeats)
         self.assertFalse(inst.item[0].item[2].required)
-        self.assertEqual(force_bytes(inst.item[0].item[2].text), force_bytes("Metadata about the resource"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].text),
+            force_bytes("Metadata about the resource"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[2].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[3].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[3].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].extension[1].valueString), force_bytes("uri"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[1].linkId), force_bytes("ExplanationOfBenefit.implicitRules.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].extension[1].valueString),
+            force_bytes("uri"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[3]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[3]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[3]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].item[1].linkId),
+            force_bytes("ExplanationOfBenefit.implicitRules.value"),
+        )
         self.assertFalse(inst.item[0].item[3].item[1].repeats)
         self.assertFalse(inst.item[0].item[3].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[1].text), force_bytes("A set of rules under which this content was created"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[1].type), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].linkId), force_bytes("ExplanationOfBenefit.implicitRules"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].item[1].text),
+            force_bytes("A set of rules under which this content was created"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].item[1].type), force_bytes("string")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].linkId),
+            force_bytes("ExplanationOfBenefit.implicitRules"),
+        )
         self.assertTrue(inst.item[0].item[3].repeats)
         self.assertFalse(inst.item[0].item[3].required)
         self.assertEqual(force_bytes(inst.item[0].item[3].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[4].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[4].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].extension[1].valueString), force_bytes("code"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[1].linkId), force_bytes("ExplanationOfBenefit.language.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].extension[1].valueString),
+            force_bytes("code"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[4]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[4]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[4]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[1].linkId),
+            force_bytes("ExplanationOfBenefit.language.value"),
+        )
         self.assertFalse(inst.item[0].item[4].item[1].repeats)
         self.assertFalse(inst.item[0].item[4].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[1].text), force_bytes("language"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[1].type), force_bytes("choice"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].linkId), force_bytes("ExplanationOfBenefit.language"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[1].text), force_bytes("language")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[1].type), force_bytes("choice")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].linkId),
+            force_bytes("ExplanationOfBenefit.language"),
+        )
         self.assertTrue(inst.item[0].item[4].repeats)
         self.assertFalse(inst.item[0].item[4].required)
         self.assertEqual(force_bytes(inst.item[0].item[4].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[5].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].linkId), force_bytes("ExplanationOfBenefit.text"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[5]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[5]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[5]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].linkId),
+            force_bytes("ExplanationOfBenefit.text"),
+        )
         self.assertTrue(inst.item[0].item[5].repeats)
         self.assertFalse(inst.item[0].item[5].required)
-        self.assertEqual(force_bytes(inst.item[0].item[5].text), force_bytes("Text summary of the resource, for human interpretation"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].text),
+            force_bytes("Text summary of the resource, for human interpretation"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[5].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].linkId), force_bytes("ExplanationOfBenefit.contained"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[6]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[6]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[6]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].linkId),
+            force_bytes("ExplanationOfBenefit.contained"),
+        )
         self.assertTrue(inst.item[0].item[6].repeats)
         self.assertFalse(inst.item[0].item[6].required)
-        self.assertEqual(force_bytes(inst.item[0].item[6].text), force_bytes("Contained, inline Resources"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].text),
+            force_bytes("Contained, inline Resources"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[6].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].linkId), force_bytes("ExplanationOfBenefit.extension"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[7]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[7]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[7]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].linkId),
+            force_bytes("ExplanationOfBenefit.extension"),
+        )
         self.assertTrue(inst.item[0].item[7].repeats)
         self.assertFalse(inst.item[0].item[7].required)
-        self.assertEqual(force_bytes(inst.item[0].item[7].text), force_bytes("Additional Content defined by implementations"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].text),
+            force_bytes("Additional Content defined by implementations"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[7].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].linkId), force_bytes("ExplanationOfBenefit.modifierExtension"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].linkId),
+            force_bytes("ExplanationOfBenefit.modifierExtension"),
+        )
         self.assertTrue(inst.item[0].item[8].repeats)
         self.assertFalse(inst.item[0].item[8].required)
-        self.assertEqual(force_bytes(inst.item[0].item[8].text), force_bytes("Extensions that cannot be ignored"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].text),
+            force_bytes("Extensions that cannot be ignored"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[8].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].extension[0].valueString), force_bytes("Identifier"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].text), force_bytes("The EOB Business Identifier."))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[1].linkId), force_bytes("ExplanationOfBenefit.identifier.label"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].extension[0].valueString),
+            force_bytes("Identifier"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[9]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[9]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[9]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[0].text),
+            force_bytes("The EOB Business Identifier."),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[1].linkId),
+            force_bytes("ExplanationOfBenefit.identifier.label"),
+        )
         self.assertFalse(inst.item[0].item[9].item[1].repeats)
         self.assertFalse(inst.item[0].item[9].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[1].text), force_bytes("label:"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[1].type), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[2].linkId), force_bytes("ExplanationOfBenefit.identifier.system"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[1].text), force_bytes("label:")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[1].type), force_bytes("string")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[2].linkId),
+            force_bytes("ExplanationOfBenefit.identifier.system"),
+        )
         self.assertFalse(inst.item[0].item[9].item[2].repeats)
         self.assertFalse(inst.item[0].item[9].item[2].required)
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[2].text), force_bytes("system:"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[2].type), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[3].linkId), force_bytes("ExplanationOfBenefit.identifier.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[2].text), force_bytes("system:")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[2].type), force_bytes("string")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[3].linkId),
+            force_bytes("ExplanationOfBenefit.identifier.value"),
+        )
         self.assertFalse(inst.item[0].item[9].item[3].repeats)
         self.assertFalse(inst.item[0].item[9].item[3].required)
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[3].text), force_bytes("value:"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[3].type), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].linkId), force_bytes("ExplanationOfBenefit.identifier"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[3].text), force_bytes("value:")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[3].type), force_bytes("string")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].linkId),
+            force_bytes("ExplanationOfBenefit.identifier"),
+        )
         self.assertTrue(inst.item[0].item[9].repeats)
         self.assertFalse(inst.item[0].item[9].required)
-        self.assertEqual(force_bytes(inst.item[0].item[9].text), force_bytes("Business Identifier"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].text), force_bytes("Business Identifier")
+        )
         self.assertEqual(force_bytes(inst.item[0].item[9].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].linkId), force_bytes("ExplanationOfBenefit"))
+        self.assertEqual(
+            force_bytes(inst.item[0].linkId), force_bytes("ExplanationOfBenefit")
+        )
         self.assertTrue(inst.item[0].repeats)
         self.assertFalse(inst.item[0].required)
-        self.assertEqual(force_bytes(inst.item[0].text), force_bytes("Explanation of Benefit resource"))
+        self.assertEqual(
+            force_bytes(inst.item[0].text),
+            force_bytes("Explanation of Benefit resource"),
+        )
         self.assertEqual(force_bytes(inst.item[0].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.publisher), force_bytes("Health Level Seven International (Financial Management)"))
+        self.assertEqual(
+            force_bytes(inst.publisher),
+            force_bytes("Health Level Seven International (Financial Management)"),
+        )
         self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
 
     def testQuestionnaire7(self):
@@ -964,154 +3788,659 @@ class QuestionnaireTests(unittest.TestCase):
         self.assertEqual(inst.date.date, FHIRDate("2017-04-19T07:44:43+10:00").date)
         self.assertEqual(inst.date.as_json(), "2017-04-19T07:44:43+10:00")
         self.assertEqual(force_bytes(inst.id), force_bytes("qs1"))
-        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("urn:ietf:rfc:3986"))
-        self.assertEqual(force_bytes(inst.item[0].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
+        self.assertEqual(
+            force_bytes(inst.identifier[0].system), force_bytes("urn:ietf:rfc:3986")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[1].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[1].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].extension[1].valueString), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[1].linkId), force_bytes("CarePlan.id.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].extension[1].valueString),
+            force_bytes("string"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[1]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[1]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[1]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].item[1].linkId),
+            force_bytes("CarePlan.id.value"),
+        )
         self.assertFalse(inst.item[0].item[1].item[1].repeats)
         self.assertFalse(inst.item[0].item[1].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[1].text), force_bytes("Logical id of this artifact"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[1].type), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].linkId), force_bytes("CarePlan.id"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].item[1].text),
+            force_bytes("Logical id of this artifact"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].item[1].type), force_bytes("string")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].linkId), force_bytes("CarePlan.id")
+        )
         self.assertTrue(inst.item[0].item[1].repeats)
         self.assertFalse(inst.item[0].item[1].required)
         self.assertEqual(force_bytes(inst.item[0].item[1].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[2].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].text), force_bytes("The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource."))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].linkId), force_bytes("CarePlan.meta"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[2]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[2]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[2]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].item[0].text),
+            force_bytes(
+                "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource."
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].linkId), force_bytes("CarePlan.meta")
+        )
         self.assertTrue(inst.item[0].item[2].repeats)
         self.assertFalse(inst.item[0].item[2].required)
-        self.assertEqual(force_bytes(inst.item[0].item[2].text), force_bytes("Metadata about the resource"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].text),
+            force_bytes("Metadata about the resource"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[2].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[3].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[3].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].extension[1].valueString), force_bytes("uri"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[1].linkId), force_bytes("CarePlan.implicitRules.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].extension[1].valueString),
+            force_bytes("uri"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[3]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[3]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[3]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].item[1].linkId),
+            force_bytes("CarePlan.implicitRules.value"),
+        )
         self.assertFalse(inst.item[0].item[3].item[1].repeats)
         self.assertFalse(inst.item[0].item[3].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[1].text), force_bytes("A set of rules under which this content was created"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[1].type), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].linkId), force_bytes("CarePlan.implicitRules"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].item[1].text),
+            force_bytes("A set of rules under which this content was created"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].item[1].type), force_bytes("string")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].linkId),
+            force_bytes("CarePlan.implicitRules"),
+        )
         self.assertTrue(inst.item[0].item[3].repeats)
         self.assertFalse(inst.item[0].item[3].required)
         self.assertEqual(force_bytes(inst.item[0].item[3].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[4].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[4].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].extension[1].valueString), force_bytes("code"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[1].linkId), force_bytes("CarePlan.language.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].extension[1].valueString),
+            force_bytes("code"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[4]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[4]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[4]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[1].linkId),
+            force_bytes("CarePlan.language.value"),
+        )
         self.assertFalse(inst.item[0].item[4].item[1].repeats)
         self.assertFalse(inst.item[0].item[4].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[1].text), force_bytes("language"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[1].type), force_bytes("choice"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].linkId), force_bytes("CarePlan.language"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[1].text), force_bytes("language")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[1].type), force_bytes("choice")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].linkId), force_bytes("CarePlan.language")
+        )
         self.assertTrue(inst.item[0].item[4].repeats)
         self.assertFalse(inst.item[0].item[4].required)
         self.assertEqual(force_bytes(inst.item[0].item[4].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[5].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].linkId), force_bytes("CarePlan.text"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[5]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[5]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[5]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].linkId), force_bytes("CarePlan.text")
+        )
         self.assertTrue(inst.item[0].item[5].repeats)
         self.assertFalse(inst.item[0].item[5].required)
-        self.assertEqual(force_bytes(inst.item[0].item[5].text), force_bytes("Text summary of the resource, for human interpretation"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].text),
+            force_bytes("Text summary of the resource, for human interpretation"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[5].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].linkId), force_bytes("CarePlan.contained"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[6]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[6]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[6]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].linkId), force_bytes("CarePlan.contained")
+        )
         self.assertTrue(inst.item[0].item[6].repeats)
         self.assertFalse(inst.item[0].item[6].required)
-        self.assertEqual(force_bytes(inst.item[0].item[6].text), force_bytes("Contained, inline Resources"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].text),
+            force_bytes("Contained, inline Resources"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[6].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].linkId), force_bytes("CarePlan.extension"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[7]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[7]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[7]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].linkId), force_bytes("CarePlan.extension")
+        )
         self.assertTrue(inst.item[0].item[7].repeats)
         self.assertFalse(inst.item[0].item[7].required)
-        self.assertEqual(force_bytes(inst.item[0].item[7].text), force_bytes("Additional Content defined by implementations"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].text),
+            force_bytes("Additional Content defined by implementations"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[7].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].linkId), force_bytes("CarePlan.modifierExtension"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].linkId),
+            force_bytes("CarePlan.modifierExtension"),
+        )
         self.assertTrue(inst.item[0].item[8].repeats)
         self.assertFalse(inst.item[0].item[8].required)
-        self.assertEqual(force_bytes(inst.item[0].item[8].text), force_bytes("Extensions that cannot be ignored"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].text),
+            force_bytes("Extensions that cannot be ignored"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[8].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].extension[0].valueString), force_bytes("Identifier"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[1].linkId), force_bytes("CarePlan.identifier.label"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].extension[0].valueString),
+            force_bytes("Identifier"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[9]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[9]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[9]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[1].linkId),
+            force_bytes("CarePlan.identifier.label"),
+        )
         self.assertFalse(inst.item[0].item[9].item[1].repeats)
         self.assertFalse(inst.item[0].item[9].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[1].text), force_bytes("label:"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[1].type), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[2].linkId), force_bytes("CarePlan.identifier.system"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[1].text), force_bytes("label:")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[1].type), force_bytes("string")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[2].linkId),
+            force_bytes("CarePlan.identifier.system"),
+        )
         self.assertFalse(inst.item[0].item[9].item[2].repeats)
         self.assertFalse(inst.item[0].item[9].item[2].required)
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[2].text), force_bytes("system:"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[2].type), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[3].linkId), force_bytes("CarePlan.identifier.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[2].text), force_bytes("system:")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[2].type), force_bytes("string")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[3].linkId),
+            force_bytes("CarePlan.identifier.value"),
+        )
         self.assertFalse(inst.item[0].item[9].item[3].repeats)
         self.assertFalse(inst.item[0].item[9].item[3].required)
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[3].text), force_bytes("value:"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[3].type), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].linkId), force_bytes("CarePlan.identifier"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[3].text), force_bytes("value:")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[3].type), force_bytes("string")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].linkId), force_bytes("CarePlan.identifier")
+        )
         self.assertTrue(inst.item[0].item[9].repeats)
         self.assertFalse(inst.item[0].item[9].required)
-        self.assertEqual(force_bytes(inst.item[0].item[9].text), force_bytes("External Ids for this plan"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].text),
+            force_bytes("External Ids for this plan"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[9].type), force_bytes("group"))
         self.assertEqual(force_bytes(inst.item[0].linkId), force_bytes("CarePlan"))
         self.assertTrue(inst.item[0].repeats)
         self.assertFalse(inst.item[0].required)
-        self.assertEqual(force_bytes(inst.item[0].text), force_bytes("Healthcare plan for patient or group"))
+        self.assertEqual(
+            force_bytes(inst.item[0].text),
+            force_bytes("Healthcare plan for patient or group"),
+        )
         self.assertEqual(force_bytes(inst.item[0].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.publisher), force_bytes("Health Level Seven International (Patient Care)"))
+        self.assertEqual(
+            force_bytes(inst.publisher),
+            force_bytes("Health Level Seven International (Patient Care)"),
+        )
         self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
 
     def testQuestionnaire8(self):
@@ -1129,146 +4458,649 @@ class QuestionnaireTests(unittest.TestCase):
         self.assertEqual(inst.date.date, FHIRDate("2017-04-19T07:44:43+10:00").date)
         self.assertEqual(inst.date.as_json(), "2017-04-19T07:44:43+10:00")
         self.assertEqual(force_bytes(inst.id), force_bytes("qs1"))
-        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("urn:ietf:rfc:3986"))
-        self.assertEqual(force_bytes(inst.item[0].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[0].text), force_bytes("A code system resource specifies a set of codes drawn from one or more code systems."))
+        self.assertEqual(
+            force_bytes(inst.identifier[0].system), force_bytes("urn:ietf:rfc:3986")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[0].text),
+            force_bytes(
+                "A code system resource specifies a set of codes drawn from one or more code systems."
+            ),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[1].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[1].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].extension[1].valueString), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[1].linkId), force_bytes("CodeSystem.id.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].extension[1].valueString),
+            force_bytes("string"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[1]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[1]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[1]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].item[1].linkId),
+            force_bytes("CodeSystem.id.value"),
+        )
         self.assertFalse(inst.item[0].item[1].item[1].repeats)
         self.assertFalse(inst.item[0].item[1].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[1].text), force_bytes("Logical id of this artifact"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[1].type), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].linkId), force_bytes("CodeSystem.id"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].item[1].text),
+            force_bytes("Logical id of this artifact"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].item[1].type), force_bytes("string")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].linkId), force_bytes("CodeSystem.id")
+        )
         self.assertTrue(inst.item[0].item[1].repeats)
         self.assertFalse(inst.item[0].item[1].required)
         self.assertEqual(force_bytes(inst.item[0].item[1].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[2].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].text), force_bytes("The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource."))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].linkId), force_bytes("CodeSystem.meta"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[2]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[2]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[2]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].item[0].text),
+            force_bytes(
+                "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource."
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].linkId), force_bytes("CodeSystem.meta")
+        )
         self.assertTrue(inst.item[0].item[2].repeats)
         self.assertFalse(inst.item[0].item[2].required)
-        self.assertEqual(force_bytes(inst.item[0].item[2].text), force_bytes("Metadata about the resource"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].text),
+            force_bytes("Metadata about the resource"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[2].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[3].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[3].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].extension[1].valueString), force_bytes("uri"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[1].linkId), force_bytes("CodeSystem.implicitRules.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].extension[1].valueString),
+            force_bytes("uri"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[3]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[3]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[3]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].item[1].linkId),
+            force_bytes("CodeSystem.implicitRules.value"),
+        )
         self.assertFalse(inst.item[0].item[3].item[1].repeats)
         self.assertFalse(inst.item[0].item[3].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[1].text), force_bytes("A set of rules under which this content was created"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[1].type), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].linkId), force_bytes("CodeSystem.implicitRules"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].item[1].text),
+            force_bytes("A set of rules under which this content was created"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].item[1].type), force_bytes("string")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].linkId),
+            force_bytes("CodeSystem.implicitRules"),
+        )
         self.assertTrue(inst.item[0].item[3].repeats)
         self.assertFalse(inst.item[0].item[3].required)
         self.assertEqual(force_bytes(inst.item[0].item[3].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[4].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[4].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].extension[1].valueString), force_bytes("code"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[1].linkId), force_bytes("CodeSystem.language.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].extension[1].valueString),
+            force_bytes("code"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[4]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[4]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[4]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[1].linkId),
+            force_bytes("CodeSystem.language.value"),
+        )
         self.assertFalse(inst.item[0].item[4].item[1].repeats)
         self.assertFalse(inst.item[0].item[4].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[1].text), force_bytes("language"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[1].type), force_bytes("choice"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].linkId), force_bytes("CodeSystem.language"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[1].text), force_bytes("language")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[1].type), force_bytes("choice")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].linkId), force_bytes("CodeSystem.language")
+        )
         self.assertTrue(inst.item[0].item[4].repeats)
         self.assertFalse(inst.item[0].item[4].required)
         self.assertEqual(force_bytes(inst.item[0].item[4].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[5].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].linkId), force_bytes("CodeSystem.text"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[5]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[5]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[5]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].linkId), force_bytes("CodeSystem.text")
+        )
         self.assertTrue(inst.item[0].item[5].repeats)
         self.assertFalse(inst.item[0].item[5].required)
-        self.assertEqual(force_bytes(inst.item[0].item[5].text), force_bytes("Text summary of the resource, for human interpretation"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].text),
+            force_bytes("Text summary of the resource, for human interpretation"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[5].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].linkId), force_bytes("CodeSystem.contained"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[6]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[6]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[6]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].linkId),
+            force_bytes("CodeSystem.contained"),
+        )
         self.assertTrue(inst.item[0].item[6].repeats)
         self.assertFalse(inst.item[0].item[6].required)
-        self.assertEqual(force_bytes(inst.item[0].item[6].text), force_bytes("Contained, inline Resources"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].text),
+            force_bytes("Contained, inline Resources"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[6].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].linkId), force_bytes("CodeSystem.extension"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[7]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[7]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[7]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].linkId),
+            force_bytes("CodeSystem.extension"),
+        )
         self.assertTrue(inst.item[0].item[7].repeats)
         self.assertFalse(inst.item[0].item[7].required)
-        self.assertEqual(force_bytes(inst.item[0].item[7].text), force_bytes("Additional Content defined by implementations"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].text),
+            force_bytes("Additional Content defined by implementations"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[7].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].linkId), force_bytes("CodeSystem.modifierExtension"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].linkId),
+            force_bytes("CodeSystem.modifierExtension"),
+        )
         self.assertTrue(inst.item[0].item[8].repeats)
         self.assertFalse(inst.item[0].item[8].required)
-        self.assertEqual(force_bytes(inst.item[0].item[8].text), force_bytes("Extensions that cannot be ignored"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].text),
+            force_bytes("Extensions that cannot be ignored"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[8].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[9].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[9].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].extension[1].valueString), force_bytes("uri"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[1].linkId), force_bytes("CodeSystem.url.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].extension[1].valueString),
+            force_bytes("uri"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[9]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[9]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[9]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[1].linkId),
+            force_bytes("CodeSystem.url.value"),
+        )
         self.assertFalse(inst.item[0].item[9].item[1].repeats)
         self.assertFalse(inst.item[0].item[9].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[1].text), force_bytes("Logical URI to reference this code system (globally unique) (Coding.system)"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[1].type), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].linkId), force_bytes("CodeSystem.url"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[1].text),
+            force_bytes(
+                "Logical URI to reference this code system (globally unique) (Coding.system)"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[1].type), force_bytes("string")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].linkId), force_bytes("CodeSystem.url")
+        )
         self.assertTrue(inst.item[0].item[9].repeats)
         self.assertFalse(inst.item[0].item[9].required)
         self.assertEqual(force_bytes(inst.item[0].item[9].type), force_bytes("group"))
         self.assertEqual(force_bytes(inst.item[0].linkId), force_bytes("CodeSystem"))
         self.assertTrue(inst.item[0].repeats)
         self.assertFalse(inst.item[0].required)
-        self.assertEqual(force_bytes(inst.item[0].text), force_bytes("A set of codes drawn from one or more code systems"))
+        self.assertEqual(
+            force_bytes(inst.item[0].text),
+            force_bytes("A set of codes drawn from one or more code systems"),
+        )
         self.assertEqual(force_bytes(inst.item[0].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.publisher), force_bytes("Health Level Seven International (Vocabulary)"))
+        self.assertEqual(
+            force_bytes(inst.publisher),
+            force_bytes("Health Level Seven International (Vocabulary)"),
+        )
         self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
 
     def testQuestionnaire9(self):
@@ -1285,145 +5117,639 @@ class QuestionnaireTests(unittest.TestCase):
         self.assertEqual(inst.date.date, FHIRDate("2017-04-19T07:44:43+10:00").date)
         self.assertEqual(inst.date.as_json(), "2017-04-19T07:44:43+10:00")
         self.assertEqual(force_bytes(inst.id), force_bytes("qs1"))
-        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("urn:ietf:rfc:3986"))
-        self.assertEqual(force_bytes(inst.item[0].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
+        self.assertEqual(
+            force_bytes(inst.identifier[0].system), force_bytes("urn:ietf:rfc:3986")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[1].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[1].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].extension[1].valueString), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[1].linkId), force_bytes("Library.id.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].extension[1].valueString),
+            force_bytes("string"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[1]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[1]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[1]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].item[1].linkId),
+            force_bytes("Library.id.value"),
+        )
         self.assertFalse(inst.item[0].item[1].item[1].repeats)
         self.assertFalse(inst.item[0].item[1].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[1].text), force_bytes("Logical id of this artifact"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[1].type), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].linkId), force_bytes("Library.id"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].item[1].text),
+            force_bytes("Logical id of this artifact"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].item[1].type), force_bytes("string")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].linkId), force_bytes("Library.id")
+        )
         self.assertTrue(inst.item[0].item[1].repeats)
         self.assertFalse(inst.item[0].item[1].required)
         self.assertEqual(force_bytes(inst.item[0].item[1].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[2].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].text), force_bytes("The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource."))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].linkId), force_bytes("Library.meta"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[2]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[2]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[2]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].item[0].text),
+            force_bytes(
+                "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource."
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].linkId), force_bytes("Library.meta")
+        )
         self.assertTrue(inst.item[0].item[2].repeats)
         self.assertFalse(inst.item[0].item[2].required)
-        self.assertEqual(force_bytes(inst.item[0].item[2].text), force_bytes("Metadata about the resource"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].text),
+            force_bytes("Metadata about the resource"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[2].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[3].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[3].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].extension[1].valueString), force_bytes("uri"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[1].linkId), force_bytes("Library.implicitRules.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].extension[1].valueString),
+            force_bytes("uri"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[3]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[3]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[3]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].item[1].linkId),
+            force_bytes("Library.implicitRules.value"),
+        )
         self.assertFalse(inst.item[0].item[3].item[1].repeats)
         self.assertFalse(inst.item[0].item[3].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[1].text), force_bytes("A set of rules under which this content was created"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[1].type), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].linkId), force_bytes("Library.implicitRules"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].item[1].text),
+            force_bytes("A set of rules under which this content was created"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].item[1].type), force_bytes("string")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].linkId),
+            force_bytes("Library.implicitRules"),
+        )
         self.assertTrue(inst.item[0].item[3].repeats)
         self.assertFalse(inst.item[0].item[3].required)
         self.assertEqual(force_bytes(inst.item[0].item[3].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[4].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[4].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].extension[1].valueString), force_bytes("code"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[1].linkId), force_bytes("Library.language.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].extension[1].valueString),
+            force_bytes("code"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[4]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[4]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[4]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[1].linkId),
+            force_bytes("Library.language.value"),
+        )
         self.assertFalse(inst.item[0].item[4].item[1].repeats)
         self.assertFalse(inst.item[0].item[4].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[1].text), force_bytes("language"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[1].type), force_bytes("choice"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].linkId), force_bytes("Library.language"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[1].text), force_bytes("language")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[1].type), force_bytes("choice")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].linkId), force_bytes("Library.language")
+        )
         self.assertTrue(inst.item[0].item[4].repeats)
         self.assertFalse(inst.item[0].item[4].required)
         self.assertEqual(force_bytes(inst.item[0].item[4].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[5].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].linkId), force_bytes("Library.text"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[5]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[5]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[5]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].linkId), force_bytes("Library.text")
+        )
         self.assertTrue(inst.item[0].item[5].repeats)
         self.assertFalse(inst.item[0].item[5].required)
-        self.assertEqual(force_bytes(inst.item[0].item[5].text), force_bytes("Text summary of the resource, for human interpretation"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].text),
+            force_bytes("Text summary of the resource, for human interpretation"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[5].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].linkId), force_bytes("Library.contained"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[6]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[6]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[6]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].linkId), force_bytes("Library.contained")
+        )
         self.assertTrue(inst.item[0].item[6].repeats)
         self.assertFalse(inst.item[0].item[6].required)
-        self.assertEqual(force_bytes(inst.item[0].item[6].text), force_bytes("Contained, inline Resources"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].text),
+            force_bytes("Contained, inline Resources"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[6].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].linkId), force_bytes("Library.extension"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[7]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[7]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[7]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].linkId), force_bytes("Library.extension")
+        )
         self.assertTrue(inst.item[0].item[7].repeats)
         self.assertFalse(inst.item[0].item[7].required)
-        self.assertEqual(force_bytes(inst.item[0].item[7].text), force_bytes("Additional Content defined by implementations"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].text),
+            force_bytes("Additional Content defined by implementations"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[7].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].linkId), force_bytes("Library.modifierExtension"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].linkId),
+            force_bytes("Library.modifierExtension"),
+        )
         self.assertTrue(inst.item[0].item[8].repeats)
         self.assertFalse(inst.item[0].item[8].required)
-        self.assertEqual(force_bytes(inst.item[0].item[8].text), force_bytes("Extensions that cannot be ignored"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].text),
+            force_bytes("Extensions that cannot be ignored"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[8].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[9].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[9].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].extension[1].valueString), force_bytes("uri"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[1].linkId), force_bytes("Library.url.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].extension[1].valueString),
+            force_bytes("uri"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[9]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[9]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[9]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[1].linkId),
+            force_bytes("Library.url.value"),
+        )
         self.assertFalse(inst.item[0].item[9].item[1].repeats)
         self.assertFalse(inst.item[0].item[9].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[1].text), force_bytes("Logical URI to reference this library (globally unique)"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[1].type), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].linkId), force_bytes("Library.url"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[1].text),
+            force_bytes("Logical URI to reference this library (globally unique)"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[1].type), force_bytes("string")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].linkId), force_bytes("Library.url")
+        )
         self.assertTrue(inst.item[0].item[9].repeats)
         self.assertFalse(inst.item[0].item[9].required)
         self.assertEqual(force_bytes(inst.item[0].item[9].type), force_bytes("group"))
         self.assertEqual(force_bytes(inst.item[0].linkId), force_bytes("Library"))
         self.assertTrue(inst.item[0].repeats)
         self.assertFalse(inst.item[0].required)
-        self.assertEqual(force_bytes(inst.item[0].text), force_bytes("Represents a library of quality improvement components"))
+        self.assertEqual(
+            force_bytes(inst.item[0].text),
+            force_bytes("Represents a library of quality improvement components"),
+        )
         self.assertEqual(force_bytes(inst.item[0].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.publisher), force_bytes("Health Level Seven International (Clinical Decision Support)"))
+        self.assertEqual(
+            force_bytes(inst.publisher),
+            force_bytes("Health Level Seven International (Clinical Decision Support)"),
+        )
         self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
 
     def testQuestionnaire10(self):
@@ -1447,335 +5773,1576 @@ class QuestionnaireTests(unittest.TestCase):
         self.assertEqual(inst.date.date, FHIRDate("2015-02-28T00:00:00+11:00").date)
         self.assertEqual(inst.date.as_json(), "2015-02-28T00:00:00+11:00")
         self.assertEqual(force_bytes(inst.id), force_bytes("qs1"))
-        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("urn:ietf:rfc:3986"))
-        self.assertEqual(force_bytes(inst.item[0].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[0].text), force_bytes("Captures constraints on each element within the resource, profile, or extension."))
+        self.assertEqual(
+            force_bytes(inst.identifier[0].system), force_bytes("urn:ietf:rfc:3986")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[0].text),
+            force_bytes(
+                "Captures constraints on each element within the resource, profile, or extension."
+            ),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[1].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[1].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].extension[1].valueString), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[0].text), force_bytes("unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."))
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[1].linkId), force_bytes("ElementDefinition.id.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].extension[1].valueString),
+            force_bytes("string"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[1]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[1]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[1]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].item[0].text),
+            force_bytes(
+                "unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].item[1].linkId),
+            force_bytes("ElementDefinition.id.value"),
+        )
         self.assertFalse(inst.item[0].item[1].item[1].repeats)
         self.assertFalse(inst.item[0].item[1].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[1].text), force_bytes("xml:id (or equivalent in JSON)"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].item[1].type), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[1].linkId), force_bytes("ElementDefinition.id"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].item[1].text),
+            force_bytes("xml:id (or equivalent in JSON)"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].item[1].type), force_bytes("string")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[1].linkId),
+            force_bytes("ElementDefinition.id"),
+        )
         self.assertTrue(inst.item[0].item[1].repeats)
         self.assertFalse(inst.item[0].item[1].required)
         self.assertEqual(force_bytes(inst.item[0].item[1].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[2].linkId), force_bytes("ElementDefinition.extension"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[2]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[2]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[2]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].linkId),
+            force_bytes("ElementDefinition.extension"),
+        )
         self.assertTrue(inst.item[0].item[2].repeats)
         self.assertFalse(inst.item[0].item[2].required)
-        self.assertEqual(force_bytes(inst.item[0].item[2].text), force_bytes("Additional Content defined by implementations"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[2].text),
+            force_bytes("Additional Content defined by implementations"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[2].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[3].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[3].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[3].extension[1].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[3].extension[2].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].extension[2].valueString), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].text), force_bytes("The path identifies the element and is expressed as a \".\"-separated list of ancestor elements, beginning with the name of the resource or extension."))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[1].linkId), force_bytes("ElementDefinition.path.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].extension[2].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].extension[2].valueString),
+            force_bytes("string"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[3]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[3]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[3]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].item[0].text),
+            force_bytes(
+                'The path identifies the element and is expressed as a "."-separated list of ancestor elements, beginning with the name of the resource or extension.'
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].item[1].linkId),
+            force_bytes("ElementDefinition.path.value"),
+        )
         self.assertFalse(inst.item[0].item[3].item[1].repeats)
         self.assertFalse(inst.item[0].item[3].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[1].text), force_bytes("Path of the element in the hierarchy of elements"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].item[1].type), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[3].linkId), force_bytes("ElementDefinition.path"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].item[1].text),
+            force_bytes("Path of the element in the hierarchy of elements"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].item[1].type), force_bytes("string")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[3].linkId),
+            force_bytes("ElementDefinition.path"),
+        )
         self.assertTrue(inst.item[0].item[3].repeats)
         self.assertTrue(inst.item[0].item[3].required)
         self.assertEqual(force_bytes(inst.item[0].item[3].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[4].extension[0].valueInteger, 0)
-        self.assertEqual(force_bytes(inst.item[0].item[4].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].extension[1].valueString), force_bytes("code"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[1].linkId), force_bytes("ElementDefinition.representation.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].extension[1].valueString),
+            force_bytes("code"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[4]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[4]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[4]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[1].linkId),
+            force_bytes("ElementDefinition.representation.value"),
+        )
         self.assertFalse(inst.item[0].item[4].item[1].repeats)
         self.assertFalse(inst.item[0].item[4].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[1].text), force_bytes("representation"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].item[1].type), force_bytes("choice"))
-        self.assertEqual(force_bytes(inst.item[0].item[4].linkId), force_bytes("ElementDefinition.representation"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[1].text),
+            force_bytes("representation"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].item[1].type), force_bytes("choice")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[4].linkId),
+            force_bytes("ElementDefinition.representation"),
+        )
         self.assertTrue(inst.item[0].item[4].repeats)
         self.assertFalse(inst.item[0].item[4].required)
         self.assertEqual(force_bytes(inst.item[0].item[4].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[5].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[5].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].extension[1].valueString), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[1].linkId), force_bytes("ElementDefinition.sliceName.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].extension[1].valueString),
+            force_bytes("string"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[5]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[5]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[5]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].item[1].linkId),
+            force_bytes("ElementDefinition.sliceName.value"),
+        )
         self.assertFalse(inst.item[0].item[5].item[1].repeats)
         self.assertFalse(inst.item[0].item[5].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[1].text), force_bytes("Name for this particular element (in a set of slices)"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].item[1].type), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[5].linkId), force_bytes("ElementDefinition.sliceName"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].item[1].text),
+            force_bytes("Name for this particular element (in a set of slices)"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].item[1].type), force_bytes("string")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[5].linkId),
+            force_bytes("ElementDefinition.sliceName"),
+        )
         self.assertTrue(inst.item[0].item[5].repeats)
         self.assertFalse(inst.item[0].item[5].required)
         self.assertEqual(force_bytes(inst.item[0].item[5].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[6].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[6].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].extension[1].valueString), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[1].linkId), force_bytes("ElementDefinition.label.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].extension[1].valueString),
+            force_bytes("string"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[6]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[6]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[6]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].item[1].linkId),
+            force_bytes("ElementDefinition.label.value"),
+        )
         self.assertFalse(inst.item[0].item[6].item[1].repeats)
         self.assertFalse(inst.item[0].item[6].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[1].text), force_bytes("Name for element to display with or prompt for element"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].item[1].type), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[6].linkId), force_bytes("ElementDefinition.label"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].item[1].text),
+            force_bytes("Name for element to display with or prompt for element"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].item[1].type), force_bytes("string")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[6].linkId),
+            force_bytes("ElementDefinition.label"),
+        )
         self.assertTrue(inst.item[0].item[6].repeats)
         self.assertFalse(inst.item[0].item[6].required)
         self.assertEqual(force_bytes(inst.item[0].item[6].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].extension[0].valueString), force_bytes("Coding"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[1].linkId), force_bytes("ElementDefinition.code.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].extension[0].valueString),
+            force_bytes("Coding"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[7]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[7]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[7]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].item[1].linkId),
+            force_bytes("ElementDefinition.code.value"),
+        )
         self.assertFalse(inst.item[0].item[7].item[1].repeats)
         self.assertFalse(inst.item[0].item[7].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[1].text), force_bytes("Corresponding codes in terminologies"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].item[1].type), force_bytes("open-choice"))
-        self.assertEqual(force_bytes(inst.item[0].item[7].linkId), force_bytes("ElementDefinition.code"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].item[1].text),
+            force_bytes("Corresponding codes in terminologies"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].item[1].type), force_bytes("open-choice")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[7].linkId),
+            force_bytes("ElementDefinition.code"),
+        )
         self.assertTrue(inst.item[0].item[7].repeats)
         self.assertFalse(inst.item[0].item[7].required)
         self.assertEqual(force_bytes(inst.item[0].item[7].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[8].extension[0].valueInteger, 0)
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[1].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[1].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[1].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[1].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[1].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[2].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[1].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[1]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[1]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[1]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[1].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[2].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[8].item[2].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[2].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[2].extension[1].valueString), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[2].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[2].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[2].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[2].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[2].item[0].text), force_bytes("unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[2].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[2].item[1].linkId), force_bytes("ElementDefinition.slicing.id.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[2].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[2].extension[1].valueString),
+            force_bytes("string"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[2].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[2]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[2]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[2]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[2].item[0].text),
+            force_bytes(
+                "unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[2].item[0].type),
+            force_bytes("display"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[2].item[1].linkId),
+            force_bytes("ElementDefinition.slicing.id.value"),
+        )
         self.assertFalse(inst.item[0].item[8].item[2].item[1].repeats)
         self.assertFalse(inst.item[0].item[8].item[2].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[2].item[1].text), force_bytes("xml:id (or equivalent in JSON)"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[2].item[1].type), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[2].linkId), force_bytes("ElementDefinition.slicing.id"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[2].item[1].text),
+            force_bytes("xml:id (or equivalent in JSON)"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[2].item[1].type),
+            force_bytes("string"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[2].linkId),
+            force_bytes("ElementDefinition.slicing.id"),
+        )
         self.assertTrue(inst.item[0].item[8].item[2].repeats)
         self.assertFalse(inst.item[0].item[8].item[2].required)
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[2].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[3].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[3].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[3].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[3].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[3].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[3].linkId), force_bytes("ElementDefinition.slicing.extension"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[2].type), force_bytes("group")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[3].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[3]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[3]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[3]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[3].item[0].type),
+            force_bytes("display"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[3].linkId),
+            force_bytes("ElementDefinition.slicing.extension"),
+        )
         self.assertTrue(inst.item[0].item[8].item[3].repeats)
         self.assertFalse(inst.item[0].item[8].item[3].required)
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[3].text), force_bytes("Additional Content defined by implementations"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[3].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[1].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[1].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[1].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[1].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[1].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[2].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
-        self.assertEqual(inst.item[0].item[8].item[4].item[2].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[2].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[2].extension[1].valueString), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[2].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[2].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[2].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[2].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[2].item[0].text), force_bytes("unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[2].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[2].item[1].linkId), force_bytes("ElementDefinition.slicing.discriminator.id.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[3].text),
+            force_bytes("Additional Content defined by implementations"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[3].type), force_bytes("group")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].item[0].type),
+            force_bytes("display"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].item[1].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[4]
+                .item[1]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[4]
+                .item[1]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[4]
+                .item[1]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].item[1].type),
+            force_bytes("display"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].item[2].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
+        self.assertEqual(
+            inst.item[0].item[8].item[4].item[2].extension[0].valueInteger, 1
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].item[2].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].item[2].extension[1].valueString),
+            force_bytes("string"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].item[2].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[4]
+                .item[2]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[4]
+                .item[2]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[4]
+                .item[2]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].item[2].item[0].text),
+            force_bytes(
+                "unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].item[2].item[0].type),
+            force_bytes("display"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].item[2].item[1].linkId),
+            force_bytes("ElementDefinition.slicing.discriminator.id.value"),
+        )
         self.assertFalse(inst.item[0].item[8].item[4].item[2].item[1].repeats)
         self.assertFalse(inst.item[0].item[8].item[4].item[2].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[2].item[1].text), force_bytes("xml:id (or equivalent in JSON)"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[2].item[1].type), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[2].linkId), force_bytes("ElementDefinition.slicing.discriminator.id"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].item[2].item[1].text),
+            force_bytes("xml:id (or equivalent in JSON)"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].item[2].item[1].type),
+            force_bytes("string"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].item[2].linkId),
+            force_bytes("ElementDefinition.slicing.discriminator.id"),
+        )
         self.assertTrue(inst.item[0].item[8].item[4].item[2].repeats)
         self.assertFalse(inst.item[0].item[8].item[4].item[2].required)
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[2].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[3].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[3].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[3].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[3].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[3].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[3].linkId), force_bytes("ElementDefinition.slicing.discriminator.extension"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].item[2].type), force_bytes("group")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].item[3].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[4]
+                .item[3]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[4]
+                .item[3]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[4]
+                .item[3]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].item[3].item[0].type),
+            force_bytes("display"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].item[3].linkId),
+            force_bytes("ElementDefinition.slicing.discriminator.extension"),
+        )
         self.assertTrue(inst.item[0].item[8].item[4].item[3].repeats)
         self.assertFalse(inst.item[0].item[8].item[4].item[3].required)
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[3].text), force_bytes("Additional Content defined by implementations"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[3].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[4].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"))
-        self.assertEqual(inst.item[0].item[8].item[4].item[4].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[4].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
-        self.assertEqual(inst.item[0].item[8].item[4].item[4].extension[1].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[4].extension[2].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[4].extension[2].valueString), force_bytes("code"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[4].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[4].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[4].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[4].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[4].item[0].text), force_bytes("How the element value is interpreted when discrimination is evaluated."))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[4].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[4].item[1].linkId), force_bytes("ElementDefinition.slicing.discriminator.type.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].item[3].text),
+            force_bytes("Additional Content defined by implementations"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].item[3].type), force_bytes("group")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].item[4].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"
+            ),
+        )
+        self.assertEqual(
+            inst.item[0].item[8].item[4].item[4].extension[0].valueInteger, 1
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].item[4].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
+        self.assertEqual(
+            inst.item[0].item[8].item[4].item[4].extension[1].valueInteger, 1
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].item[4].extension[2].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].item[4].extension[2].valueString),
+            force_bytes("code"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].item[4].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[4]
+                .item[4]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[4]
+                .item[4]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[4]
+                .item[4]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].item[4].item[0].text),
+            force_bytes(
+                "How the element value is interpreted when discrimination is evaluated."
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].item[4].item[0].type),
+            force_bytes("display"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].item[4].item[1].linkId),
+            force_bytes("ElementDefinition.slicing.discriminator.type.value"),
+        )
         self.assertFalse(inst.item[0].item[8].item[4].item[4].item[1].repeats)
         self.assertFalse(inst.item[0].item[8].item[4].item[4].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[4].item[1].text), force_bytes("type"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[4].item[1].type), force_bytes("choice"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[4].linkId), force_bytes("ElementDefinition.slicing.discriminator.type"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].item[4].item[1].text),
+            force_bytes("type"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].item[4].item[1].type),
+            force_bytes("choice"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].item[4].linkId),
+            force_bytes("ElementDefinition.slicing.discriminator.type"),
+        )
         self.assertTrue(inst.item[0].item[8].item[4].item[4].repeats)
         self.assertTrue(inst.item[0].item[8].item[4].item[4].required)
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[4].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[5].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"))
-        self.assertEqual(inst.item[0].item[8].item[4].item[5].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[5].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
-        self.assertEqual(inst.item[0].item[8].item[4].item[5].extension[1].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[5].extension[2].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[5].extension[2].valueString), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[5].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[5].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[5].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[5].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[5].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[5].item[1].linkId), force_bytes("ElementDefinition.slicing.discriminator.path.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].item[4].type), force_bytes("group")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].item[5].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"
+            ),
+        )
+        self.assertEqual(
+            inst.item[0].item[8].item[4].item[5].extension[0].valueInteger, 1
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].item[5].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
+        self.assertEqual(
+            inst.item[0].item[8].item[4].item[5].extension[1].valueInteger, 1
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].item[5].extension[2].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].item[5].extension[2].valueString),
+            force_bytes("string"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].item[5].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[4]
+                .item[5]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[4]
+                .item[5]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[4]
+                .item[5]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].item[5].item[0].type),
+            force_bytes("display"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].item[5].item[1].linkId),
+            force_bytes("ElementDefinition.slicing.discriminator.path.value"),
+        )
         self.assertFalse(inst.item[0].item[8].item[4].item[5].item[1].repeats)
         self.assertFalse(inst.item[0].item[8].item[4].item[5].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[5].item[1].text), force_bytes("Path to element value"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[5].item[1].type), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[5].linkId), force_bytes("ElementDefinition.slicing.discriminator.path"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].item[5].item[1].text),
+            force_bytes("Path to element value"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].item[5].item[1].type),
+            force_bytes("string"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].item[5].linkId),
+            force_bytes("ElementDefinition.slicing.discriminator.path"),
+        )
         self.assertTrue(inst.item[0].item[8].item[4].item[5].repeats)
         self.assertTrue(inst.item[0].item[8].item[4].item[5].required)
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].item[5].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].linkId), force_bytes("ElementDefinition.slicing.discriminator"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].item[5].type), force_bytes("group")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].linkId),
+            force_bytes("ElementDefinition.slicing.discriminator"),
+        )
         self.assertTrue(inst.item[0].item[8].item[4].repeats)
         self.assertFalse(inst.item[0].item[8].item[4].required)
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].text), force_bytes("Element values that are used to distinguish the slices"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[4].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[5].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].text),
+            force_bytes("Element values that are used to distinguish the slices"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[4].type), force_bytes("group")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[5].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[8].item[5].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[5].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[5].extension[1].valueString), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[5].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[5].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[5].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[5].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[5].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[5].item[1].linkId), force_bytes("ElementDefinition.slicing.description.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[5].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[5].extension[1].valueString),
+            force_bytes("string"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[5].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[5]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[5]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[5]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[5].item[0].type),
+            force_bytes("display"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[5].item[1].linkId),
+            force_bytes("ElementDefinition.slicing.description.value"),
+        )
         self.assertFalse(inst.item[0].item[8].item[5].item[1].repeats)
         self.assertFalse(inst.item[0].item[8].item[5].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[5].item[1].text), force_bytes("Text description of how slicing works (or not)"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[5].item[1].type), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[5].linkId), force_bytes("ElementDefinition.slicing.description"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[5].item[1].text),
+            force_bytes("Text description of how slicing works (or not)"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[5].item[1].type),
+            force_bytes("string"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[5].linkId),
+            force_bytes("ElementDefinition.slicing.description"),
+        )
         self.assertTrue(inst.item[0].item[8].item[5].repeats)
         self.assertFalse(inst.item[0].item[8].item[5].required)
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[5].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[6].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[5].type), force_bytes("group")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[6].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[8].item[6].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[6].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[6].extension[1].valueString), force_bytes("boolean"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[6].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[6].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[6].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[6].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[6].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[6].item[1].linkId), force_bytes("ElementDefinition.slicing.ordered.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[6].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[6].extension[1].valueString),
+            force_bytes("boolean"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[6].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[6]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[6]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[6]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[6].item[0].type),
+            force_bytes("display"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[6].item[1].linkId),
+            force_bytes("ElementDefinition.slicing.ordered.value"),
+        )
         self.assertFalse(inst.item[0].item[8].item[6].item[1].repeats)
         self.assertFalse(inst.item[0].item[8].item[6].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[6].item[1].text), force_bytes("If elements must be in same order as slices"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[6].item[1].type), force_bytes("boolean"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[6].linkId), force_bytes("ElementDefinition.slicing.ordered"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[6].item[1].text),
+            force_bytes("If elements must be in same order as slices"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[6].item[1].type),
+            force_bytes("boolean"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[6].linkId),
+            force_bytes("ElementDefinition.slicing.ordered"),
+        )
         self.assertTrue(inst.item[0].item[8].item[6].repeats)
         self.assertFalse(inst.item[0].item[8].item[6].required)
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[6].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[7].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[6].type), force_bytes("group")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[7].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[8].item[7].extension[0].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[7].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[7].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[8].item[7].extension[1].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[7].extension[2].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[7].extension[2].valueString), force_bytes("code"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[7].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[7].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[7].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[7].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[7].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[7].item[1].linkId), force_bytes("ElementDefinition.slicing.rules.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[7].extension[2].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[7].extension[2].valueString),
+            force_bytes("code"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[7].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[7]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[7]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[8]
+                .item[7]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[7].item[0].type),
+            force_bytes("display"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[7].item[1].linkId),
+            force_bytes("ElementDefinition.slicing.rules.value"),
+        )
         self.assertFalse(inst.item[0].item[8].item[7].item[1].repeats)
         self.assertFalse(inst.item[0].item[8].item[7].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[7].item[1].text), force_bytes("rules"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[7].item[1].type), force_bytes("choice"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[7].linkId), force_bytes("ElementDefinition.slicing.rules"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[7].item[1].text), force_bytes("rules")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[7].item[1].type),
+            force_bytes("choice"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[7].linkId),
+            force_bytes("ElementDefinition.slicing.rules"),
+        )
         self.assertTrue(inst.item[0].item[8].item[7].repeats)
         self.assertTrue(inst.item[0].item[8].item[7].required)
-        self.assertEqual(force_bytes(inst.item[0].item[8].item[7].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[8].linkId), force_bytes("ElementDefinition.slicing"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].item[7].type), force_bytes("group")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].linkId),
+            force_bytes("ElementDefinition.slicing"),
+        )
         self.assertTrue(inst.item[0].item[8].repeats)
         self.assertFalse(inst.item[0].item[8].required)
-        self.assertEqual(force_bytes(inst.item[0].item[8].text), force_bytes("This element is sliced - slices follow"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[8].text),
+            force_bytes("This element is sliced - slices follow"),
+        )
         self.assertEqual(force_bytes(inst.item[0].item[8].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            ),
+        )
         self.assertEqual(inst.item[0].item[9].extension[0].valueInteger, 0)
-        self.assertEqual(force_bytes(inst.item[0].item[9].extension[1].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].extension[1].valueString), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].extension[0].url), force_bytes("http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].code), force_bytes("flyover"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].display), force_bytes("Fly-over"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].system), force_bytes("http://hl7.org/fhir/questionnaire-item-control"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[0].type), force_bytes("display"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[1].linkId), force_bytes("ElementDefinition.short.value"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].extension[1].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].extension[1].valueString),
+            force_bytes("string"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[0].extension[0].url),
+            force_bytes(
+                "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            ),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[9]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .code
+            ),
+            force_bytes("flyover"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[9]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .display
+            ),
+            force_bytes("Fly-over"),
+        )
+        self.assertEqual(
+            force_bytes(
+                inst.item[0]
+                .item[9]
+                .item[0]
+                .extension[0]
+                .valueCodeableConcept.coding[0]
+                .system
+            ),
+            force_bytes("http://hl7.org/fhir/questionnaire-item-control"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[0].type), force_bytes("display")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[1].linkId),
+            force_bytes("ElementDefinition.short.value"),
+        )
         self.assertFalse(inst.item[0].item[9].item[1].repeats)
         self.assertFalse(inst.item[0].item[9].item[1].required)
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[1].text), force_bytes("Concise definition for space-constrained presentation"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].item[1].type), force_bytes("string"))
-        self.assertEqual(force_bytes(inst.item[0].item[9].linkId), force_bytes("ElementDefinition.short"))
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[1].text),
+            force_bytes("Concise definition for space-constrained presentation"),
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].item[1].type), force_bytes("string")
+        )
+        self.assertEqual(
+            force_bytes(inst.item[0].item[9].linkId),
+            force_bytes("ElementDefinition.short"),
+        )
         self.assertTrue(inst.item[0].item[9].repeats)
         self.assertFalse(inst.item[0].item[9].required)
         self.assertEqual(force_bytes(inst.item[0].item[9].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.item[0].linkId), force_bytes("ElementDefinition"))
+        self.assertEqual(
+            force_bytes(inst.item[0].linkId), force_bytes("ElementDefinition")
+        )
         self.assertTrue(inst.item[0].repeats)
         self.assertFalse(inst.item[0].required)
-        self.assertEqual(force_bytes(inst.item[0].text), force_bytes("Definition of an element in a resource or extension"))
+        self.assertEqual(
+            force_bytes(inst.item[0].text),
+            force_bytes("Definition of an element in a resource or extension"),
+        )
         self.assertEqual(force_bytes(inst.item[0].type), force_bytes("group"))
-        self.assertEqual(force_bytes(inst.publisher), force_bytes("Health Level Seven International (Orders and Observations)"))
+        self.assertEqual(
+            force_bytes(inst.publisher),
+            force_bytes("Health Level Seven International (Orders and Observations)"),
+        )
         self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-

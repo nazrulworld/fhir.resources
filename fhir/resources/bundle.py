@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import resource
+import sys
+
+from . import backboneelement, resource
+
 
 class Bundle(resource.Resource):
     """ Contains a collection of resources.
@@ -59,19 +62,43 @@ class Bundle(resource.Resource):
 
     def elementProperties(self):
         js = super(Bundle, self).elementProperties()
-        js.extend([
-            ("entry", "entry", BundleEntry, "BundleEntry", True, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", False, None, False),
-            ("link", "link", BundleLink, "BundleLink", True, None, False),
-            ("signature", "signature", signature.Signature, "Signature", False, None, False),
-            ("timestamp", "timestamp", fhirdate.FHIRDate, "instant", False, None, False),
-            ("total", "total", int, "unsignedInt", False, None, False),
-            ("type", "type", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                ("entry", "entry", BundleEntry, "BundleEntry", True, None, False),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                ("link", "link", BundleLink, "BundleLink", True, None, False),
+                (
+                    "signature",
+                    "signature",
+                    signature.Signature,
+                    "Signature",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "timestamp",
+                    "timestamp",
+                    fhirdate.FHIRDate,
+                    "instant",
+                    False,
+                    None,
+                    False,
+                ),
+                ("total", "total", int, "unsignedInt", False, None, False),
+                ("type", "type", str, "code", False, None, True),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class BundleEntry(backboneelement.BackboneElement):
     """ Entry in the bundle - will have a resource or information.
@@ -118,14 +145,48 @@ class BundleEntry(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(BundleEntry, self).elementProperties()
-        js.extend([
-            ("fullUrl", "fullUrl", str, "uri", False, None, False),
-            ("link", "link", BundleLink, "BundleLink", True, None, False),
-            ("request", "request", BundleEntryRequest, "BundleEntryRequest", False, None, False),
-            ("resource", "resource", resource.Resource, "Resource", False, None, False),
-            ("response", "response", BundleEntryResponse, "BundleEntryResponse", False, None, False),
-            ("search", "search", BundleEntrySearch, "BundleEntrySearch", False, None, False),
-        ])
+        js.extend(
+            [
+                ("fullUrl", "fullUrl", str, "uri", False, None, False),
+                ("link", "link", BundleLink, "BundleLink", True, None, False),
+                (
+                    "request",
+                    "request",
+                    BundleEntryRequest,
+                    "BundleEntryRequest",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "resource",
+                    "resource",
+                    resource.Resource,
+                    "Resource",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "response",
+                    "response",
+                    BundleEntryResponse,
+                    "BundleEntryResponse",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "search",
+                    "search",
+                    BundleEntrySearch,
+                    "BundleEntrySearch",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -175,14 +236,24 @@ class BundleEntryRequest(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(BundleEntryRequest, self).elementProperties()
-        js.extend([
-            ("ifMatch", "ifMatch", str, "string", False, None, False),
-            ("ifModifiedSince", "ifModifiedSince", fhirdate.FHIRDate, "instant", False, None, False),
-            ("ifNoneExist", "ifNoneExist", str, "string", False, None, False),
-            ("ifNoneMatch", "ifNoneMatch", str, "string", False, None, False),
-            ("method", "method", str, "code", False, None, True),
-            ("url", "url", str, "uri", False, None, True),
-        ])
+        js.extend(
+            [
+                ("ifMatch", "ifMatch", str, "string", False, None, False),
+                (
+                    "ifModifiedSince",
+                    "ifModifiedSince",
+                    fhirdate.FHIRDate,
+                    "instant",
+                    False,
+                    None,
+                    False,
+                ),
+                ("ifNoneExist", "ifNoneExist", str, "string", False, None, False),
+                ("ifNoneMatch", "ifNoneMatch", str, "string", False, None, False),
+                ("method", "method", str, "code", False, None, True),
+                ("url", "url", str, "uri", False, None, True),
+            ]
+        )
         return js
 
 
@@ -228,13 +299,31 @@ class BundleEntryResponse(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(BundleEntryResponse, self).elementProperties()
-        js.extend([
-            ("etag", "etag", str, "string", False, None, False),
-            ("lastModified", "lastModified", fhirdate.FHIRDate, "instant", False, None, False),
-            ("location", "location", str, "uri", False, None, False),
-            ("outcome", "outcome", resource.Resource, "Resource", False, None, False),
-            ("status", "status", str, "string", False, None, True),
-        ])
+        js.extend(
+            [
+                ("etag", "etag", str, "string", False, None, False),
+                (
+                    "lastModified",
+                    "lastModified",
+                    fhirdate.FHIRDate,
+                    "instant",
+                    False,
+                    None,
+                    False,
+                ),
+                ("location", "location", str, "uri", False, None, False),
+                (
+                    "outcome",
+                    "outcome",
+                    resource.Resource,
+                    "Resource",
+                    False,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "string", False, None, True),
+            ]
+        )
         return js
 
 
@@ -267,10 +356,12 @@ class BundleEntrySearch(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(BundleEntrySearch, self).elementProperties()
-        js.extend([
-            ("mode", "mode", str, "code", False, None, False),
-            ("score", "score", float, "decimal", False, None, False),
-        ])
+        js.extend(
+            [
+                ("mode", "mode", str, "code", False, None, False),
+                ("score", "score", float, "decimal", False, None, False),
+            ]
+        )
         return js
 
 
@@ -303,23 +394,24 @@ class BundleLink(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(BundleLink, self).elementProperties()
-        js.extend([
-            ("relation", "relation", str, "string", False, None, True),
-            ("url", "url", str, "uri", False, None, True),
-        ])
+        js.extend(
+            [
+                ("relation", "relation", str, "string", False, None, True),
+                ("url", "url", str, "uri", False, None, True),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import signature
 except ImportError:
-    signature = sys.modules[__package__ + '.signature']
+    signature = sys.modules[__package__ + ".signature"]

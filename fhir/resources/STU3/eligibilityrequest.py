@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
+import sys
+
 from . import domainresource
+
 
 class EligibilityRequest(domainresource.DomainResource):
     """ Determine insurance validity and scope of coverage.
@@ -97,45 +100,166 @@ class EligibilityRequest(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(EligibilityRequest, self).elementProperties()
-        js.extend([
-            ("benefitCategory", "benefitCategory", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("benefitSubCategory", "benefitSubCategory", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("businessArrangement", "businessArrangement", str, "string", False, None, False),
-            ("coverage", "coverage", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("created", "created", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("enterer", "enterer", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("facility", "facility", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("insurer", "insurer", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("organization", "organization", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("patient", "patient", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("priority", "priority", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("provider", "provider", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("servicedDate", "servicedDate", fhirdate.FHIRDate, "date", False, "serviced", False),
-            ("servicedPeriod", "servicedPeriod", period.Period, "Period", False, "serviced", False),
-            ("status", "status", str, "code", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "benefitCategory",
+                    "benefitCategory",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "benefitSubCategory",
+                    "benefitSubCategory",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "businessArrangement",
+                    "businessArrangement",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "coverage",
+                    "coverage",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "created",
+                    "created",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "enterer",
+                    "enterer",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "facility",
+                    "facility",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "insurer",
+                    "insurer",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "organization",
+                    "organization",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "patient",
+                    "patient",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "priority",
+                    "priority",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "provider",
+                    "provider",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "servicedDate",
+                    "servicedDate",
+                    fhirdate.FHIRDate,
+                    "date",
+                    False,
+                    "serviced",
+                    False,
+                ),
+                (
+                    "servicedPeriod",
+                    "servicedPeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "serviced",
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]

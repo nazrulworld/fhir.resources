@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class MolecularSequence(domainresource.DomainResource):
     """ Information about a biological sequence.
@@ -98,28 +101,132 @@ class MolecularSequence(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(MolecularSequence, self).elementProperties()
-        js.extend([
-            ("coordinateSystem", "coordinateSystem", int, "integer", False, None, True),
-            ("device", "device", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("observedSeq", "observedSeq", str, "string", False, None, False),
-            ("patient", "patient", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("performer", "performer", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("pointer", "pointer", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("quality", "quality", MolecularSequenceQuality, "MolecularSequenceQuality", True, None, False),
-            ("quantity", "quantity", quantity.Quantity, "Quantity", False, None, False),
-            ("readCoverage", "readCoverage", int, "integer", False, None, False),
-            ("referenceSeq", "referenceSeq", MolecularSequenceReferenceSeq, "MolecularSequenceReferenceSeq", False, None, False),
-            ("repository", "repository", MolecularSequenceRepository, "MolecularSequenceRepository", True, None, False),
-            ("specimen", "specimen", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("structureVariant", "structureVariant", MolecularSequenceStructureVariant, "MolecularSequenceStructureVariant", True, None, False),
-            ("type", "type", str, "code", False, None, False),
-            ("variant", "variant", MolecularSequenceVariant, "MolecularSequenceVariant", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "coordinateSystem",
+                    "coordinateSystem",
+                    int,
+                    "integer",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "device",
+                    "device",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                ("observedSeq", "observedSeq", str, "string", False, None, False),
+                (
+                    "patient",
+                    "patient",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "performer",
+                    "performer",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "pointer",
+                    "pointer",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "quality",
+                    "quality",
+                    MolecularSequenceQuality,
+                    "MolecularSequenceQuality",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "quantity",
+                    "quantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    None,
+                    False,
+                ),
+                ("readCoverage", "readCoverage", int, "integer", False, None, False),
+                (
+                    "referenceSeq",
+                    "referenceSeq",
+                    MolecularSequenceReferenceSeq,
+                    "MolecularSequenceReferenceSeq",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "repository",
+                    "repository",
+                    MolecularSequenceRepository,
+                    "MolecularSequenceRepository",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "specimen",
+                    "specimen",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "structureVariant",
+                    "structureVariant",
+                    MolecularSequenceStructureVariant,
+                    "MolecularSequenceStructureVariant",
+                    True,
+                    None,
+                    False,
+                ),
+                ("type", "type", str, "code", False, None, False),
+                (
+                    "variant",
+                    "variant",
+                    MolecularSequenceVariant,
+                    "MolecularSequenceVariant",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class MolecularSequenceQuality(backboneelement.BackboneElement):
     """ An set of value as quality of sequence.
@@ -204,23 +311,49 @@ class MolecularSequenceQuality(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(MolecularSequenceQuality, self).elementProperties()
-        js.extend([
-            ("end", "end", int, "integer", False, None, False),
-            ("fScore", "fScore", float, "decimal", False, None, False),
-            ("gtFP", "gtFP", float, "decimal", False, None, False),
-            ("method", "method", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("precision", "precision", float, "decimal", False, None, False),
-            ("queryFP", "queryFP", float, "decimal", False, None, False),
-            ("queryTP", "queryTP", float, "decimal", False, None, False),
-            ("recall", "recall", float, "decimal", False, None, False),
-            ("roc", "roc", MolecularSequenceQualityRoc, "MolecularSequenceQualityRoc", False, None, False),
-            ("score", "score", quantity.Quantity, "Quantity", False, None, False),
-            ("standardSequence", "standardSequence", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("start", "start", int, "integer", False, None, False),
-            ("truthFN", "truthFN", float, "decimal", False, None, False),
-            ("truthTP", "truthTP", float, "decimal", False, None, False),
-            ("type", "type", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                ("end", "end", int, "integer", False, None, False),
+                ("fScore", "fScore", float, "decimal", False, None, False),
+                ("gtFP", "gtFP", float, "decimal", False, None, False),
+                (
+                    "method",
+                    "method",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("precision", "precision", float, "decimal", False, None, False),
+                ("queryFP", "queryFP", float, "decimal", False, None, False),
+                ("queryTP", "queryTP", float, "decimal", False, None, False),
+                ("recall", "recall", float, "decimal", False, None, False),
+                (
+                    "roc",
+                    "roc",
+                    MolecularSequenceQualityRoc,
+                    "MolecularSequenceQualityRoc",
+                    False,
+                    None,
+                    False,
+                ),
+                ("score", "score", quantity.Quantity, "Quantity", False, None, False),
+                (
+                    "standardSequence",
+                    "standardSequence",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("start", "start", int, "integer", False, None, False),
+                ("truthFN", "truthFN", float, "decimal", False, None, False),
+                ("truthTP", "truthTP", float, "decimal", False, None, False),
+                ("type", "type", str, "code", False, None, True),
+            ]
+        )
         return js
 
 
@@ -269,19 +402,23 @@ class MolecularSequenceQualityRoc(backboneelement.BackboneElement):
         """ Sensitivity of the GQ score.
         List of `float` items. """
 
-        super(MolecularSequenceQualityRoc, self).__init__(jsondict=jsondict, strict=strict)
+        super(MolecularSequenceQualityRoc, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(MolecularSequenceQualityRoc, self).elementProperties()
-        js.extend([
-            ("fMeasure", "fMeasure", float, "decimal", True, None, False),
-            ("numFN", "numFN", int, "integer", True, None, False),
-            ("numFP", "numFP", int, "integer", True, None, False),
-            ("numTP", "numTP", int, "integer", True, None, False),
-            ("precision", "precision", float, "decimal", True, None, False),
-            ("score", "score", int, "integer", True, None, False),
-            ("sensitivity", "sensitivity", float, "decimal", True, None, False),
-        ])
+        js.extend(
+            [
+                ("fMeasure", "fMeasure", float, "decimal", True, None, False),
+                ("numFN", "numFN", int, "integer", True, None, False),
+                ("numFP", "numFP", int, "integer", True, None, False),
+                ("numTP", "numTP", int, "integer", True, None, False),
+                ("precision", "precision", float, "decimal", True, None, False),
+                ("score", "score", int, "integer", True, None, False),
+                ("sensitivity", "sensitivity", float, "decimal", True, None, False),
+            ]
+        )
         return js
 
 
@@ -339,21 +476,57 @@ class MolecularSequenceReferenceSeq(backboneelement.BackboneElement):
         """ Start position of the window on the  reference sequence.
         Type `int`. """
 
-        super(MolecularSequenceReferenceSeq, self).__init__(jsondict=jsondict, strict=strict)
+        super(MolecularSequenceReferenceSeq, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(MolecularSequenceReferenceSeq, self).elementProperties()
-        js.extend([
-            ("chromosome", "chromosome", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("genomeBuild", "genomeBuild", str, "string", False, None, False),
-            ("orientation", "orientation", str, "code", False, None, False),
-            ("referenceSeqId", "referenceSeqId", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("referenceSeqPointer", "referenceSeqPointer", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("referenceSeqString", "referenceSeqString", str, "string", False, None, False),
-            ("strand", "strand", str, "code", False, None, False),
-            ("windowEnd", "windowEnd", int, "integer", False, None, False),
-            ("windowStart", "windowStart", int, "integer", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "chromosome",
+                    "chromosome",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("genomeBuild", "genomeBuild", str, "string", False, None, False),
+                ("orientation", "orientation", str, "code", False, None, False),
+                (
+                    "referenceSeqId",
+                    "referenceSeqId",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "referenceSeqPointer",
+                    "referenceSeqPointer",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "referenceSeqString",
+                    "referenceSeqString",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                ("strand", "strand", str, "code", False, None, False),
+                ("windowEnd", "windowEnd", int, "integer", False, None, False),
+                ("windowStart", "windowStart", int, "integer", False, None, False),
+            ]
+        )
         return js
 
 
@@ -399,18 +572,22 @@ class MolecularSequenceRepository(backboneelement.BackboneElement):
         """ Id of the variantset that used to call for variantset in repository.
         Type `str`. """
 
-        super(MolecularSequenceRepository, self).__init__(jsondict=jsondict, strict=strict)
+        super(MolecularSequenceRepository, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(MolecularSequenceRepository, self).elementProperties()
-        js.extend([
-            ("datasetId", "datasetId", str, "string", False, None, False),
-            ("name", "name", str, "string", False, None, False),
-            ("readsetId", "readsetId", str, "string", False, None, False),
-            ("type", "type", str, "code", False, None, True),
-            ("url", "url", str, "uri", False, None, False),
-            ("variantsetId", "variantsetId", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                ("datasetId", "datasetId", str, "string", False, None, False),
+                ("name", "name", str, "string", False, None, False),
+                ("readsetId", "readsetId", str, "string", False, None, False),
+                ("type", "type", str, "code", False, None, True),
+                ("url", "url", str, "uri", False, None, False),
+                ("variantsetId", "variantsetId", str, "string", False, None, False),
+            ]
+        )
         return js
 
 
@@ -450,17 +627,45 @@ class MolecularSequenceStructureVariant(backboneelement.BackboneElement):
         """ Structural variant change type.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(MolecularSequenceStructureVariant, self).__init__(jsondict=jsondict, strict=strict)
+        super(MolecularSequenceStructureVariant, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(MolecularSequenceStructureVariant, self).elementProperties()
-        js.extend([
-            ("exact", "exact", bool, "boolean", False, None, False),
-            ("inner", "inner", MolecularSequenceStructureVariantInner, "MolecularSequenceStructureVariantInner", False, None, False),
-            ("length", "length", int, "integer", False, None, False),
-            ("outer", "outer", MolecularSequenceStructureVariantOuter, "MolecularSequenceStructureVariantOuter", False, None, False),
-            ("variantType", "variantType", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                ("exact", "exact", bool, "boolean", False, None, False),
+                (
+                    "inner",
+                    "inner",
+                    MolecularSequenceStructureVariantInner,
+                    "MolecularSequenceStructureVariantInner",
+                    False,
+                    None,
+                    False,
+                ),
+                ("length", "length", int, "integer", False, None, False),
+                (
+                    "outer",
+                    "outer",
+                    MolecularSequenceStructureVariantOuter,
+                    "MolecularSequenceStructureVariantOuter",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "variantType",
+                    "variantType",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -486,14 +691,18 @@ class MolecularSequenceStructureVariantInner(backboneelement.BackboneElement):
         """ Structural variant inner start.
         Type `int`. """
 
-        super(MolecularSequenceStructureVariantInner, self).__init__(jsondict=jsondict, strict=strict)
+        super(MolecularSequenceStructureVariantInner, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(MolecularSequenceStructureVariantInner, self).elementProperties()
-        js.extend([
-            ("end", "end", int, "integer", False, None, False),
-            ("start", "start", int, "integer", False, None, False),
-        ])
+        js.extend(
+            [
+                ("end", "end", int, "integer", False, None, False),
+                ("start", "start", int, "integer", False, None, False),
+            ]
+        )
         return js
 
 
@@ -519,14 +728,18 @@ class MolecularSequenceStructureVariantOuter(backboneelement.BackboneElement):
         """ Structural variant outer start.
         Type `int`. """
 
-        super(MolecularSequenceStructureVariantOuter, self).__init__(jsondict=jsondict, strict=strict)
+        super(MolecularSequenceStructureVariantOuter, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(MolecularSequenceStructureVariantOuter, self).elementProperties()
-        js.extend([
-            ("end", "end", int, "integer", False, None, False),
-            ("start", "start", int, "integer", False, None, False),
-        ])
+        js.extend(
+            [
+                ("end", "end", int, "integer", False, None, False),
+                ("start", "start", int, "integer", False, None, False),
+            ]
+        )
         return js
 
 
@@ -579,31 +792,48 @@ class MolecularSequenceVariant(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(MolecularSequenceVariant, self).elementProperties()
-        js.extend([
-            ("cigar", "cigar", str, "string", False, None, False),
-            ("end", "end", int, "integer", False, None, False),
-            ("observedAllele", "observedAllele", str, "string", False, None, False),
-            ("referenceAllele", "referenceAllele", str, "string", False, None, False),
-            ("start", "start", int, "integer", False, None, False),
-            ("variantPointer", "variantPointer", fhirreference.FHIRReference, "Reference", False, None, False),
-        ])
+        js.extend(
+            [
+                ("cigar", "cigar", str, "string", False, None, False),
+                ("end", "end", int, "integer", False, None, False),
+                ("observedAllele", "observedAllele", str, "string", False, None, False),
+                (
+                    "referenceAllele",
+                    "referenceAllele",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                ("start", "start", int, "integer", False, None, False),
+                (
+                    "variantPointer",
+                    "variantPointer",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import quantity
 except ImportError:
-    quantity = sys.modules[__package__ + '.quantity']
+    quantity = sys.modules[__package__ + ".quantity"]

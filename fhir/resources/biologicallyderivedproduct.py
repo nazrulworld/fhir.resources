@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class BiologicallyDerivedProduct(domainresource.DomainResource):
     """ A material substance originating from a biological entity.
@@ -72,27 +75,93 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
         """ Product storage.
         List of `BiologicallyDerivedProductStorage` items (represented as `dict` in JSON). """
 
-        super(BiologicallyDerivedProduct, self).__init__(jsondict=jsondict, strict=strict)
+        super(BiologicallyDerivedProduct, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(BiologicallyDerivedProduct, self).elementProperties()
-        js.extend([
-            ("collection", "collection", BiologicallyDerivedProductCollection, "BiologicallyDerivedProductCollection", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("manipulation", "manipulation", BiologicallyDerivedProductManipulation, "BiologicallyDerivedProductManipulation", False, None, False),
-            ("parent", "parent", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("processing", "processing", BiologicallyDerivedProductProcessing, "BiologicallyDerivedProductProcessing", True, None, False),
-            ("productCategory", "productCategory", str, "code", False, None, False),
-            ("productCode", "productCode", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("quantity", "quantity", int, "integer", False, None, False),
-            ("request", "request", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("status", "status", str, "code", False, None, False),
-            ("storage", "storage", BiologicallyDerivedProductStorage, "BiologicallyDerivedProductStorage", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "collection",
+                    "collection",
+                    BiologicallyDerivedProductCollection,
+                    "BiologicallyDerivedProductCollection",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "manipulation",
+                    "manipulation",
+                    BiologicallyDerivedProductManipulation,
+                    "BiologicallyDerivedProductManipulation",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "parent",
+                    "parent",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "processing",
+                    "processing",
+                    BiologicallyDerivedProductProcessing,
+                    "BiologicallyDerivedProductProcessing",
+                    True,
+                    None,
+                    False,
+                ),
+                ("productCategory", "productCategory", str, "code", False, None, False),
+                (
+                    "productCode",
+                    "productCode",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("quantity", "quantity", int, "integer", False, None, False),
+                (
+                    "request",
+                    "request",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, False),
+                (
+                    "storage",
+                    "storage",
+                    BiologicallyDerivedProductStorage,
+                    "BiologicallyDerivedProductStorage",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class BiologicallyDerivedProductCollection(backboneelement.BackboneElement):
     """ How this product was collected.
@@ -124,16 +193,52 @@ class BiologicallyDerivedProductCollection(backboneelement.BackboneElement):
         """ Who is product from.
         Type `FHIRReference` referencing `['Patient', 'Organization']` (represented as `dict` in JSON). """
 
-        super(BiologicallyDerivedProductCollection, self).__init__(jsondict=jsondict, strict=strict)
+        super(BiologicallyDerivedProductCollection, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(BiologicallyDerivedProductCollection, self).elementProperties()
-        js.extend([
-            ("collectedDateTime", "collectedDateTime", fhirdate.FHIRDate, "dateTime", False, "collected", False),
-            ("collectedPeriod", "collectedPeriod", period.Period, "Period", False, "collected", False),
-            ("collector", "collector", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("source", "source", fhirreference.FHIRReference, "Reference", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "collectedDateTime",
+                    "collectedDateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    "collected",
+                    False,
+                ),
+                (
+                    "collectedPeriod",
+                    "collectedPeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "collected",
+                    False,
+                ),
+                (
+                    "collector",
+                    "collector",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "source",
+                    "source",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -167,15 +272,35 @@ class BiologicallyDerivedProductManipulation(backboneelement.BackboneElement):
         """ Time of manipulation.
         Type `Period` (represented as `dict` in JSON). """
 
-        super(BiologicallyDerivedProductManipulation, self).__init__(jsondict=jsondict, strict=strict)
+        super(BiologicallyDerivedProductManipulation, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(BiologicallyDerivedProductManipulation, self).elementProperties()
-        js.extend([
-            ("description", "description", str, "string", False, None, False),
-            ("timeDateTime", "timeDateTime", fhirdate.FHIRDate, "dateTime", False, "time", False),
-            ("timePeriod", "timePeriod", period.Period, "Period", False, "time", False),
-        ])
+        js.extend(
+            [
+                ("description", "description", str, "string", False, None, False),
+                (
+                    "timeDateTime",
+                    "timeDateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    "time",
+                    False,
+                ),
+                (
+                    "timePeriod",
+                    "timePeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "time",
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -217,17 +342,53 @@ class BiologicallyDerivedProductProcessing(backboneelement.BackboneElement):
         """ Time of processing.
         Type `Period` (represented as `dict` in JSON). """
 
-        super(BiologicallyDerivedProductProcessing, self).__init__(jsondict=jsondict, strict=strict)
+        super(BiologicallyDerivedProductProcessing, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(BiologicallyDerivedProductProcessing, self).elementProperties()
-        js.extend([
-            ("additive", "additive", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("description", "description", str, "string", False, None, False),
-            ("procedure", "procedure", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("timeDateTime", "timeDateTime", fhirdate.FHIRDate, "dateTime", False, "time", False),
-            ("timePeriod", "timePeriod", period.Period, "Period", False, "time", False),
-        ])
+        js.extend(
+            [
+                (
+                    "additive",
+                    "additive",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("description", "description", str, "string", False, None, False),
+                (
+                    "procedure",
+                    "procedure",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "timeDateTime",
+                    "timeDateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    "time",
+                    False,
+                ),
+                (
+                    "timePeriod",
+                    "timePeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "time",
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -261,37 +422,40 @@ class BiologicallyDerivedProductStorage(backboneelement.BackboneElement):
         """ Storage temperature.
         Type `float`. """
 
-        super(BiologicallyDerivedProductStorage, self).__init__(jsondict=jsondict, strict=strict)
+        super(BiologicallyDerivedProductStorage, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(BiologicallyDerivedProductStorage, self).elementProperties()
-        js.extend([
-            ("description", "description", str, "string", False, None, False),
-            ("duration", "duration", period.Period, "Period", False, None, False),
-            ("scale", "scale", str, "code", False, None, False),
-            ("temperature", "temperature", float, "decimal", False, None, False),
-        ])
+        js.extend(
+            [
+                ("description", "description", str, "string", False, None, False),
+                ("duration", "duration", period.Period, "Period", False, None, False),
+                ("scale", "scale", str, "code", False, None, False),
+                ("temperature", "temperature", float, "decimal", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]

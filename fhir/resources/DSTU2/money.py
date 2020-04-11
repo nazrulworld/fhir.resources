@@ -7,6 +7,7 @@
 
 from . import quantity
 
+
 class Money(quantity.Quantity):
     """ An amount of money. With regard to precision, see [Decimal
     Precision](datatypes.html#precision).
@@ -15,9 +16,9 @@ class Money(quantity.Quantity):
     currency.  If system is present, it SHALL be ISO 4217 (system =
     "urn:iso:std:iso:4217" - currency).
     """
-    
+
     resource_name = "Money"
-    
+
     def __init__(self, jsondict=None, strict=True):
         """ Initialize all valid properties.
         
@@ -25,7 +26,5 @@ class Money(quantity.Quantity):
         :param dict jsondict: A JSON dictionary to use for initialization
         :param bool strict: If True (the default), invalid variables will raise a TypeError
         """
-        
+
         super(Money, self).__init__(jsondict=jsondict, strict=strict)
-
-

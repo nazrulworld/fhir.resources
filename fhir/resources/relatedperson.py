@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class RelatedPerson(domainresource.DomainResource):
     """ A person that is related to a patient, but who is not a direct target of
@@ -82,24 +85,80 @@ class RelatedPerson(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(RelatedPerson, self).elementProperties()
-        js.extend([
-            ("active", "active", bool, "boolean", False, None, False),
-            ("address", "address", address.Address, "Address", True, None, False),
-            ("birthDate", "birthDate", fhirdate.FHIRDate, "date", False, None, False),
-            ("communication", "communication", RelatedPersonCommunication, "RelatedPersonCommunication", True, None, False),
-            ("gender", "gender", str, "code", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("name", "name", humanname.HumanName, "HumanName", True, None, False),
-            ("patient", "patient", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("period", "period", period.Period, "Period", False, None, False),
-            ("photo", "photo", attachment.Attachment, "Attachment", True, None, False),
-            ("relationship", "relationship", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("telecom", "telecom", contactpoint.ContactPoint, "ContactPoint", True, None, False),
-        ])
+        js.extend(
+            [
+                ("active", "active", bool, "boolean", False, None, False),
+                ("address", "address", address.Address, "Address", True, None, False),
+                (
+                    "birthDate",
+                    "birthDate",
+                    fhirdate.FHIRDate,
+                    "date",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "communication",
+                    "communication",
+                    RelatedPersonCommunication,
+                    "RelatedPersonCommunication",
+                    True,
+                    None,
+                    False,
+                ),
+                ("gender", "gender", str, "code", False, None, False),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                ("name", "name", humanname.HumanName, "HumanName", True, None, False),
+                (
+                    "patient",
+                    "patient",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                ("period", "period", period.Period, "Period", False, None, False),
+                (
+                    "photo",
+                    "photo",
+                    attachment.Attachment,
+                    "Attachment",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "relationship",
+                    "relationship",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "telecom",
+                    "telecom",
+                    contactpoint.ContactPoint,
+                    "ContactPoint",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class RelatedPersonCommunication(backboneelement.BackboneElement):
     """ A language which may be used to communicate with about the patient's health.
@@ -124,51 +183,62 @@ class RelatedPersonCommunication(backboneelement.BackboneElement):
         """ Language preference indicator.
         Type `bool`. """
 
-        super(RelatedPersonCommunication, self).__init__(jsondict=jsondict, strict=strict)
+        super(RelatedPersonCommunication, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(RelatedPersonCommunication, self).elementProperties()
-        js.extend([
-            ("language", "language", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("preferred", "preferred", bool, "boolean", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "language",
+                    "language",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                ("preferred", "preferred", bool, "boolean", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import address
 except ImportError:
-    address = sys.modules[__package__ + '.address']
+    address = sys.modules[__package__ + ".address"]
 try:
     from . import attachment
 except ImportError:
-    attachment = sys.modules[__package__ + '.attachment']
+    attachment = sys.modules[__package__ + ".attachment"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import contactpoint
 except ImportError:
-    contactpoint = sys.modules[__package__ + '.contactpoint']
+    contactpoint = sys.modules[__package__ + ".contactpoint"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import humanname
 except ImportError:
-    humanname = sys.modules[__package__ + '.humanname']
+    humanname = sys.modules[__package__ + ".humanname"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]

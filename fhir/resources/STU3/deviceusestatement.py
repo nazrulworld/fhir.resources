@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
+import sys
+
 from . import domainresource
+
 
 class DeviceUseStatement(domainresource.DomainResource):
     """ Record of use of a device.
@@ -83,50 +86,139 @@ class DeviceUseStatement(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(DeviceUseStatement, self).elementProperties()
-        js.extend([
-            ("bodySite", "bodySite", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("device", "device", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("indication", "indication", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("note", "note", annotation.Annotation, "Annotation", True, None, False),
-            ("recordedOn", "recordedOn", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("source", "source", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("subject", "subject", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("timingDateTime", "timingDateTime", fhirdate.FHIRDate, "dateTime", False, "timing", False),
-            ("timingPeriod", "timingPeriod", period.Period, "Period", False, "timing", False),
-            ("timingTiming", "timingTiming", timing.Timing, "Timing", False, "timing", False),
-            ("whenUsed", "whenUsed", period.Period, "Period", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "bodySite",
+                    "bodySite",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "device",
+                    "device",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "indication",
+                    "indication",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "note",
+                    "note",
+                    annotation.Annotation,
+                    "Annotation",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "recordedOn",
+                    "recordedOn",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "source",
+                    "source",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, True),
+                (
+                    "subject",
+                    "subject",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "timingDateTime",
+                    "timingDateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    "timing",
+                    False,
+                ),
+                (
+                    "timingPeriod",
+                    "timingPeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "timing",
+                    False,
+                ),
+                (
+                    "timingTiming",
+                    "timingTiming",
+                    timing.Timing,
+                    "Timing",
+                    False,
+                    "timing",
+                    False,
+                ),
+                ("whenUsed", "whenUsed", period.Period, "Period", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import annotation
 except ImportError:
-    annotation = sys.modules[__package__ + '.annotation']
+    annotation = sys.modules[__package__ + ".annotation"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]
 try:
     from . import timing
 except ImportError:
-    timing = sys.modules[__package__ + '.timing']
+    timing = sys.modules[__package__ + ".timing"]

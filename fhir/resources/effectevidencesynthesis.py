@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class EffectEvidenceSynthesis(domainresource.DomainResource):
     """ A quantified estimate of effect based on a body of evidence.
@@ -166,45 +169,237 @@ class EffectEvidenceSynthesis(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(EffectEvidenceSynthesis, self).elementProperties()
-        js.extend([
-            ("approvalDate", "approvalDate", fhirdate.FHIRDate, "date", False, None, False),
-            ("author", "author", contactdetail.ContactDetail, "ContactDetail", True, None, False),
-            ("certainty", "certainty", EffectEvidenceSynthesisCertainty, "EffectEvidenceSynthesisCertainty", True, None, False),
-            ("contact", "contact", contactdetail.ContactDetail, "ContactDetail", True, None, False),
-            ("copyright", "copyright", str, "markdown", False, None, False),
-            ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("description", "description", str, "markdown", False, None, False),
-            ("editor", "editor", contactdetail.ContactDetail, "ContactDetail", True, None, False),
-            ("effectEstimate", "effectEstimate", EffectEvidenceSynthesisEffectEstimate, "EffectEvidenceSynthesisEffectEstimate", True, None, False),
-            ("effectivePeriod", "effectivePeriod", period.Period, "Period", False, None, False),
-            ("endorser", "endorser", contactdetail.ContactDetail, "ContactDetail", True, None, False),
-            ("exposure", "exposure", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("exposureAlternative", "exposureAlternative", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("jurisdiction", "jurisdiction", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("lastReviewDate", "lastReviewDate", fhirdate.FHIRDate, "date", False, None, False),
-            ("name", "name", str, "string", False, None, False),
-            ("note", "note", annotation.Annotation, "Annotation", True, None, False),
-            ("outcome", "outcome", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("population", "population", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("publisher", "publisher", str, "string", False, None, False),
-            ("relatedArtifact", "relatedArtifact", relatedartifact.RelatedArtifact, "RelatedArtifact", True, None, False),
-            ("resultsByExposure", "resultsByExposure", EffectEvidenceSynthesisResultsByExposure, "EffectEvidenceSynthesisResultsByExposure", True, None, False),
-            ("reviewer", "reviewer", contactdetail.ContactDetail, "ContactDetail", True, None, False),
-            ("sampleSize", "sampleSize", EffectEvidenceSynthesisSampleSize, "EffectEvidenceSynthesisSampleSize", False, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("studyType", "studyType", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("synthesisType", "synthesisType", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("title", "title", str, "string", False, None, False),
-            ("topic", "topic", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("url", "url", str, "uri", False, None, False),
-            ("useContext", "useContext", usagecontext.UsageContext, "UsageContext", True, None, False),
-            ("version", "version", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "approvalDate",
+                    "approvalDate",
+                    fhirdate.FHIRDate,
+                    "date",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "author",
+                    "author",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "certainty",
+                    "certainty",
+                    EffectEvidenceSynthesisCertainty,
+                    "EffectEvidenceSynthesisCertainty",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "contact",
+                    "contact",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                ("copyright", "copyright", str, "markdown", False, None, False),
+                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
+                ("description", "description", str, "markdown", False, None, False),
+                (
+                    "editor",
+                    "editor",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "effectEstimate",
+                    "effectEstimate",
+                    EffectEvidenceSynthesisEffectEstimate,
+                    "EffectEvidenceSynthesisEffectEstimate",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "effectivePeriod",
+                    "effectivePeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "endorser",
+                    "endorser",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "exposure",
+                    "exposure",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "exposureAlternative",
+                    "exposureAlternative",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "jurisdiction",
+                    "jurisdiction",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "lastReviewDate",
+                    "lastReviewDate",
+                    fhirdate.FHIRDate,
+                    "date",
+                    False,
+                    None,
+                    False,
+                ),
+                ("name", "name", str, "string", False, None, False),
+                (
+                    "note",
+                    "note",
+                    annotation.Annotation,
+                    "Annotation",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "outcome",
+                    "outcome",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "population",
+                    "population",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                ("publisher", "publisher", str, "string", False, None, False),
+                (
+                    "relatedArtifact",
+                    "relatedArtifact",
+                    relatedartifact.RelatedArtifact,
+                    "RelatedArtifact",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "resultsByExposure",
+                    "resultsByExposure",
+                    EffectEvidenceSynthesisResultsByExposure,
+                    "EffectEvidenceSynthesisResultsByExposure",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "reviewer",
+                    "reviewer",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "sampleSize",
+                    "sampleSize",
+                    EffectEvidenceSynthesisSampleSize,
+                    "EffectEvidenceSynthesisSampleSize",
+                    False,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, True),
+                (
+                    "studyType",
+                    "studyType",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "synthesisType",
+                    "synthesisType",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("title", "title", str, "string", False, None, False),
+                (
+                    "topic",
+                    "topic",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                ("url", "url", str, "uri", False, None, False),
+                (
+                    "useContext",
+                    "useContext",
+                    usagecontext.UsageContext,
+                    "UsageContext",
+                    True,
+                    None,
+                    False,
+                ),
+                ("version", "version", str, "string", False, None, False),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class EffectEvidenceSynthesisCertainty(backboneelement.BackboneElement):
     """ How certain is the effect.
@@ -234,19 +429,49 @@ class EffectEvidenceSynthesisCertainty(backboneelement.BackboneElement):
         """ Certainty rating.
         List of `CodeableConcept` items (represented as `dict` in JSON). """
 
-        super(EffectEvidenceSynthesisCertainty, self).__init__(jsondict=jsondict, strict=strict)
+        super(EffectEvidenceSynthesisCertainty, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(EffectEvidenceSynthesisCertainty, self).elementProperties()
-        js.extend([
-            ("certaintySubcomponent", "certaintySubcomponent", EffectEvidenceSynthesisCertaintyCertaintySubcomponent, "EffectEvidenceSynthesisCertaintyCertaintySubcomponent", True, None, False),
-            ("note", "note", annotation.Annotation, "Annotation", True, None, False),
-            ("rating", "rating", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "certaintySubcomponent",
+                    "certaintySubcomponent",
+                    EffectEvidenceSynthesisCertaintyCertaintySubcomponent,
+                    "EffectEvidenceSynthesisCertaintyCertaintySubcomponent",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "note",
+                    "note",
+                    annotation.Annotation,
+                    "Annotation",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "rating",
+                    "rating",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-class EffectEvidenceSynthesisCertaintyCertaintySubcomponent(backboneelement.BackboneElement):
+class EffectEvidenceSynthesisCertaintyCertaintySubcomponent(
+    backboneelement.BackboneElement
+):
     """ A component that contributes to the overall certainty.
 
     A description of a component of the overall certainty.
@@ -274,15 +499,45 @@ class EffectEvidenceSynthesisCertaintyCertaintySubcomponent(backboneelement.Back
         """ Type of subcomponent of certainty rating.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(EffectEvidenceSynthesisCertaintyCertaintySubcomponent, self).__init__(jsondict=jsondict, strict=strict)
+        super(EffectEvidenceSynthesisCertaintyCertaintySubcomponent, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
-        js = super(EffectEvidenceSynthesisCertaintyCertaintySubcomponent, self).elementProperties()
-        js.extend([
-            ("note", "note", annotation.Annotation, "Annotation", True, None, False),
-            ("rating", "rating", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js = super(
+            EffectEvidenceSynthesisCertaintyCertaintySubcomponent, self
+        ).elementProperties()
+        js.extend(
+            [
+                (
+                    "note",
+                    "note",
+                    annotation.Annotation,
+                    "Annotation",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "rating",
+                    "rating",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -326,22 +581,60 @@ class EffectEvidenceSynthesisEffectEstimate(backboneelement.BackboneElement):
         """ Variant exposure states.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(EffectEvidenceSynthesisEffectEstimate, self).__init__(jsondict=jsondict, strict=strict)
+        super(EffectEvidenceSynthesisEffectEstimate, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(EffectEvidenceSynthesisEffectEstimate, self).elementProperties()
-        js.extend([
-            ("description", "description", str, "string", False, None, False),
-            ("precisionEstimate", "precisionEstimate", EffectEvidenceSynthesisEffectEstimatePrecisionEstimate, "EffectEvidenceSynthesisEffectEstimatePrecisionEstimate", True, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("unitOfMeasure", "unitOfMeasure", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("value", "value", float, "decimal", False, None, False),
-            ("variantState", "variantState", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                ("description", "description", str, "string", False, None, False),
+                (
+                    "precisionEstimate",
+                    "precisionEstimate",
+                    EffectEvidenceSynthesisEffectEstimatePrecisionEstimate,
+                    "EffectEvidenceSynthesisEffectEstimatePrecisionEstimate",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "unitOfMeasure",
+                    "unitOfMeasure",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("value", "value", float, "decimal", False, None, False),
+                (
+                    "variantState",
+                    "variantState",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-class EffectEvidenceSynthesisEffectEstimatePrecisionEstimate(backboneelement.BackboneElement):
+class EffectEvidenceSynthesisEffectEstimatePrecisionEstimate(
+    backboneelement.BackboneElement
+):
     """ How precise the estimate is.
 
     A description of the precision of the estimate for the effect.
@@ -373,16 +666,30 @@ class EffectEvidenceSynthesisEffectEstimatePrecisionEstimate(backboneelement.Bac
         """ Type of precision estimate.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(EffectEvidenceSynthesisEffectEstimatePrecisionEstimate, self).__init__(jsondict=jsondict, strict=strict)
+        super(EffectEvidenceSynthesisEffectEstimatePrecisionEstimate, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
-        js = super(EffectEvidenceSynthesisEffectEstimatePrecisionEstimate, self).elementProperties()
-        js.extend([
-            ("from_fhir", "from", float, "decimal", False, None, False),
-            ("level", "level", float, "decimal", False, None, False),
-            ("to", "to", float, "decimal", False, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js = super(
+            EffectEvidenceSynthesisEffectEstimatePrecisionEstimate, self
+        ).elementProperties()
+        js.extend(
+            [
+                ("from_fhir", "from", float, "decimal", False, None, False),
+                ("level", "level", float, "decimal", False, None, False),
+                ("to", "to", float, "decimal", False, None, False),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -419,16 +726,36 @@ class EffectEvidenceSynthesisResultsByExposure(backboneelement.BackboneElement):
         """ Variant exposure states.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(EffectEvidenceSynthesisResultsByExposure, self).__init__(jsondict=jsondict, strict=strict)
+        super(EffectEvidenceSynthesisResultsByExposure, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(EffectEvidenceSynthesisResultsByExposure, self).elementProperties()
-        js.extend([
-            ("description", "description", str, "string", False, None, False),
-            ("exposureState", "exposureState", str, "code", False, None, False),
-            ("riskEvidenceSynthesis", "riskEvidenceSynthesis", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("variantState", "variantState", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                ("description", "description", str, "string", False, None, False),
+                ("exposureState", "exposureState", str, "code", False, None, False),
+                (
+                    "riskEvidenceSynthesis",
+                    "riskEvidenceSynthesis",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "variantState",
+                    "variantState",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -460,52 +787,71 @@ class EffectEvidenceSynthesisSampleSize(backboneelement.BackboneElement):
         """ How many studies?.
         Type `int`. """
 
-        super(EffectEvidenceSynthesisSampleSize, self).__init__(jsondict=jsondict, strict=strict)
+        super(EffectEvidenceSynthesisSampleSize, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(EffectEvidenceSynthesisSampleSize, self).elementProperties()
-        js.extend([
-            ("description", "description", str, "string", False, None, False),
-            ("numberOfParticipants", "numberOfParticipants", int, "integer", False, None, False),
-            ("numberOfStudies", "numberOfStudies", int, "integer", False, None, False),
-        ])
+        js.extend(
+            [
+                ("description", "description", str, "string", False, None, False),
+                (
+                    "numberOfParticipants",
+                    "numberOfParticipants",
+                    int,
+                    "integer",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "numberOfStudies",
+                    "numberOfStudies",
+                    int,
+                    "integer",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import annotation
 except ImportError:
-    annotation = sys.modules[__package__ + '.annotation']
+    annotation = sys.modules[__package__ + ".annotation"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import contactdetail
 except ImportError:
-    contactdetail = sys.modules[__package__ + '.contactdetail']
+    contactdetail = sys.modules[__package__ + ".contactdetail"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]
 try:
     from . import relatedartifact
 except ImportError:
-    relatedartifact = sys.modules[__package__ + '.relatedartifact']
+    relatedartifact = sys.modules[__package__ + ".relatedartifact"]
 try:
     from . import usagecontext
 except ImportError:
-    usagecontext = sys.modules[__package__ + '.usagecontext']
+    usagecontext = sys.modules[__package__ + ".usagecontext"]

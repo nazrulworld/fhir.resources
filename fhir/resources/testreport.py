@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class TestReport(domainresource.DomainResource):
     """ Describes the results of a TestScript execution.
@@ -83,24 +86,64 @@ class TestReport(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(TestReport, self).elementProperties()
-        js.extend([
-            ("identifier", "identifier", identifier.Identifier, "Identifier", False, None, False),
-            ("issued", "issued", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("name", "name", str, "string", False, None, False),
-            ("participant", "participant", TestReportParticipant, "TestReportParticipant", True, None, False),
-            ("result", "result", str, "code", False, None, True),
-            ("score", "score", float, "decimal", False, None, False),
-            ("setup", "setup", TestReportSetup, "TestReportSetup", False, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("teardown", "teardown", TestReportTeardown, "TestReportTeardown", False, None, False),
-            ("test", "test", TestReportTest, "TestReportTest", True, None, False),
-            ("testScript", "testScript", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("tester", "tester", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                ("issued", "issued", fhirdate.FHIRDate, "dateTime", False, None, False),
+                ("name", "name", str, "string", False, None, False),
+                (
+                    "participant",
+                    "participant",
+                    TestReportParticipant,
+                    "TestReportParticipant",
+                    True,
+                    None,
+                    False,
+                ),
+                ("result", "result", str, "code", False, None, True),
+                ("score", "score", float, "decimal", False, None, False),
+                (
+                    "setup",
+                    "setup",
+                    TestReportSetup,
+                    "TestReportSetup",
+                    False,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, True),
+                (
+                    "teardown",
+                    "teardown",
+                    TestReportTeardown,
+                    "TestReportTeardown",
+                    False,
+                    None,
+                    False,
+                ),
+                ("test", "test", TestReportTest, "TestReportTest", True, None, False),
+                (
+                    "testScript",
+                    "testScript",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                ("tester", "tester", str, "string", False, None, False),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class TestReportParticipant(backboneelement.BackboneElement):
     """ A participant in the test execution, either the execution engine, a client,
@@ -133,11 +176,13 @@ class TestReportParticipant(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(TestReportParticipant, self).elementProperties()
-        js.extend([
-            ("display", "display", str, "string", False, None, False),
-            ("type", "type", str, "code", False, None, True),
-            ("uri", "uri", str, "uri", False, None, True),
-        ])
+        js.extend(
+            [
+                ("display", "display", str, "string", False, None, False),
+                ("type", "type", str, "code", False, None, True),
+                ("uri", "uri", str, "uri", False, None, True),
+            ]
+        )
         return js
 
 
@@ -164,9 +209,19 @@ class TestReportSetup(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(TestReportSetup, self).elementProperties()
-        js.extend([
-            ("action", "action", TestReportSetupAction, "TestReportSetupAction", True, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "action",
+                    "action",
+                    TestReportSetupAction,
+                    "TestReportSetupAction",
+                    True,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -198,10 +253,28 @@ class TestReportSetupAction(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(TestReportSetupAction, self).elementProperties()
-        js.extend([
-            ("assert_fhir", "assert", TestReportSetupActionAssert, "TestReportSetupActionAssert", False, None, False),
-            ("operation", "operation", TestReportSetupActionOperation, "TestReportSetupActionOperation", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "assert_fhir",
+                    "assert",
+                    TestReportSetupActionAssert,
+                    "TestReportSetupActionAssert",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "operation",
+                    "operation",
+                    TestReportSetupActionOperation,
+                    "TestReportSetupActionOperation",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -233,15 +306,19 @@ class TestReportSetupActionAssert(backboneelement.BackboneElement):
         """ pass | skip | fail | warning | error.
         Type `str`. """
 
-        super(TestReportSetupActionAssert, self).__init__(jsondict=jsondict, strict=strict)
+        super(TestReportSetupActionAssert, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(TestReportSetupActionAssert, self).elementProperties()
-        js.extend([
-            ("detail", "detail", str, "string", False, None, False),
-            ("message", "message", str, "markdown", False, None, False),
-            ("result", "result", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                ("detail", "detail", str, "string", False, None, False),
+                ("message", "message", str, "markdown", False, None, False),
+                ("result", "result", str, "code", False, None, True),
+            ]
+        )
         return js
 
 
@@ -273,15 +350,19 @@ class TestReportSetupActionOperation(backboneelement.BackboneElement):
         """ pass | skip | fail | warning | error.
         Type `str`. """
 
-        super(TestReportSetupActionOperation, self).__init__(jsondict=jsondict, strict=strict)
+        super(TestReportSetupActionOperation, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(TestReportSetupActionOperation, self).elementProperties()
-        js.extend([
-            ("detail", "detail", str, "uri", False, None, False),
-            ("message", "message", str, "markdown", False, None, False),
-            ("result", "result", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                ("detail", "detail", str, "uri", False, None, False),
+                ("message", "message", str, "markdown", False, None, False),
+                ("result", "result", str, "code", False, None, True),
+            ]
+        )
         return js
 
 
@@ -310,9 +391,19 @@ class TestReportTeardown(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(TestReportTeardown, self).elementProperties()
-        js.extend([
-            ("action", "action", TestReportTeardownAction, "TestReportTeardownAction", True, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "action",
+                    "action",
+                    TestReportTeardownAction,
+                    "TestReportTeardownAction",
+                    True,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -340,9 +431,19 @@ class TestReportTeardownAction(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(TestReportTeardownAction, self).elementProperties()
-        js.extend([
-            ("operation", "operation", TestReportSetupActionOperation, "TestReportSetupActionOperation", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "operation",
+                    "operation",
+                    TestReportSetupActionOperation,
+                    "TestReportSetupActionOperation",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -376,11 +477,21 @@ class TestReportTest(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(TestReportTest, self).elementProperties()
-        js.extend([
-            ("action", "action", TestReportTestAction, "TestReportTestAction", True, None, True),
-            ("description", "description", str, "string", False, None, False),
-            ("name", "name", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "action",
+                    "action",
+                    TestReportTestAction,
+                    "TestReportTestAction",
+                    True,
+                    None,
+                    True,
+                ),
+                ("description", "description", str, "string", False, None, False),
+                ("name", "name", str, "string", False, None, False),
+            ]
+        )
         return js
 
 
@@ -412,23 +523,40 @@ class TestReportTestAction(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(TestReportTestAction, self).elementProperties()
-        js.extend([
-            ("assert_fhir", "assert", TestReportSetupActionAssert, "TestReportSetupActionAssert", False, None, False),
-            ("operation", "operation", TestReportSetupActionOperation, "TestReportSetupActionOperation", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "assert_fhir",
+                    "assert",
+                    TestReportSetupActionAssert,
+                    "TestReportSetupActionAssert",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "operation",
+                    "operation",
+                    TestReportSetupActionOperation,
+                    "TestReportSetupActionOperation",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]

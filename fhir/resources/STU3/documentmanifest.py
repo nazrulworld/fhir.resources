@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class DocumentManifest(domainresource.DomainResource):
     """ A list that defines a set of documents.
@@ -79,24 +82,96 @@ class DocumentManifest(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(DocumentManifest, self).elementProperties()
-        js.extend([
-            ("author", "author", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("content", "content", DocumentManifestContent, "DocumentManifestContent", True, None, True),
-            ("created", "created", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("description", "description", str, "string", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("masterIdentifier", "masterIdentifier", identifier.Identifier, "Identifier", False, None, False),
-            ("recipient", "recipient", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("related", "related", DocumentManifestRelated, "DocumentManifestRelated", True, None, False),
-            ("source", "source", str, "uri", False, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("subject", "subject", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "author",
+                    "author",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "content",
+                    "content",
+                    DocumentManifestContent,
+                    "DocumentManifestContent",
+                    True,
+                    None,
+                    True,
+                ),
+                (
+                    "created",
+                    "created",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                ("description", "description", str, "string", False, None, False),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "masterIdentifier",
+                    "masterIdentifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "recipient",
+                    "recipient",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "related",
+                    "related",
+                    DocumentManifestRelated,
+                    "DocumentManifestRelated",
+                    True,
+                    None,
+                    False,
+                ),
+                ("source", "source", str, "uri", False, None, False),
+                ("status", "status", str, "code", False, None, True),
+                (
+                    "subject",
+                    "subject",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class DocumentManifestContent(backboneelement.BackboneElement):
     """ The items included.
@@ -126,10 +201,28 @@ class DocumentManifestContent(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(DocumentManifestContent, self).elementProperties()
-        js.extend([
-            ("pAttachment", "pAttachment", attachment.Attachment, "Attachment", False, "p", True),
-            ("pReference", "pReference", fhirreference.FHIRReference, "Reference", False, "p", True),
-        ])
+        js.extend(
+            [
+                (
+                    "pAttachment",
+                    "pAttachment",
+                    attachment.Attachment,
+                    "Attachment",
+                    False,
+                    "p",
+                    True,
+                ),
+                (
+                    "pReference",
+                    "pReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "p",
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -161,31 +254,48 @@ class DocumentManifestRelated(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(DocumentManifestRelated, self).elementProperties()
-        js.extend([
-            ("identifier", "identifier", identifier.Identifier, "Identifier", False, None, False),
-            ("ref", "ref", fhirreference.FHIRReference, "Reference", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "ref",
+                    "ref",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import attachment
 except ImportError:
-    attachment = sys.modules[__package__ + '.attachment']
+    attachment = sys.modules[__package__ + ".attachment"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]

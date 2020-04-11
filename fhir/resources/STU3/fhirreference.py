@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """Subclassing FHIR's reference to add resolving capabilities"""
 import logging
+
 from . import reference
 
 logger = logging.getLogger(__name__)
@@ -20,7 +21,9 @@ class FHIRReference(reference.Reference):
         """
         owning_resource = self.owningResource()
         if owning_resource is None:
-            raise Exception("Cannot resolve reference without having an owner (which must be a `DomainResource`)")
+            raise Exception(
+                "Cannot resolve reference without having an owner (which must be a `DomainResource`)"
+            )
         if klass is None:
             raise Exception("Cannot resolve reference without knowing the class")
 
@@ -34,7 +37,11 @@ class FHIRReference(reference.Reference):
         if resolved is not None:
             if isinstance(resolved, klass):
                 return resolved
-            logger.warning("Referenced resource {} is not a {} but a {}".format(refid, klass, resolved.__class__))
+            logger.warning(
+                "Referenced resource {} is not a {} but a {}".format(
+                    refid, klass, resolved.__class__
+                )
+            )
             return None
 
         # not yet resolved, see if it's a contained resource
@@ -44,17 +51,21 @@ class FHIRReference(reference.Reference):
                     owning_resource.didResolveReference(refid, contained)
                     if isinstance(contained, klass):
                         return contained
-                    logger.warning("Contained resource {} is not a {} but a {}".format(refid, klass, contained.__class__))
+                    logger.warning(
+                        "Contained resource {} is not a {} but a {}".format(
+                            refid, klass, contained.__class__
+                        )
+                    )
                     return None
 
         # are we in a bundle?
-        ref_is_relative = '://' not in self.reference and 'urn:' != self.reference[:4]
+        ref_is_relative = "://" not in self.reference and "urn:" != self.reference[:4]
         bundle = self.owningBundle()
         while bundle is not None:
             if bundle.entry is not None:
                 fullUrl = self.reference
                 if ref_is_relative:
-                    base = bundle.server.base_uri if bundle.server else ''
+                    base = bundle.server.base_uri if bundle.server else ""
                     fullUrl = base + self.reference
 
                 for entry in bundle.entry:
@@ -62,7 +73,11 @@ class FHIRReference(reference.Reference):
                         found = entry.resource
                         if isinstance(found, klass):
                             return found
-                        logger.warning("Bundled resource {} is not a {} but a {}".format(refid, klass, found.__class__))
+                        logger.warning(
+                            "Bundled resource {} is not a {} but a {}".format(
+                                refid, klass, found.__class__
+                            )
+                        )
                         return None
             bundle = bundle.owningBundle()
 
@@ -73,8 +88,11 @@ class FHIRReference(reference.Reference):
 
         # TODO: instantiate server for absolute resource
         if server is None:
-            logger.warning("Not implemented: resolving absolute reference to resource {}"
-                .format(self.reference))
+            logger.warning(
+                "Not implemented: resolving absolute reference to resource {}".format(
+                    self.reference
+                )
+            )
             return None
 
         # fetch remote resource; unable to verify klass since we use klass.read_from()
@@ -85,7 +103,6 @@ class FHIRReference(reference.Reference):
     def processedReferenceIdentifier(self):
         """ Normalizes the reference-id.
         """
-        if self.reference and '#' == self.reference[0]:
+        if self.reference and "#" == self.reference[0]:
             return self.reference[1:]
         return self.reference
-

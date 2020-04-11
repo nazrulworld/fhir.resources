@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class MessageDefinition(domainresource.DomainResource):
     """ A resource that defines a type of message that can be exchanged between
@@ -125,35 +128,115 @@ class MessageDefinition(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(MessageDefinition, self).elementProperties()
-        js.extend([
-            ("allowedResponse", "allowedResponse", MessageDefinitionAllowedResponse, "MessageDefinitionAllowedResponse", True, None, False),
-            ("base", "base", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("category", "category", str, "code", False, None, False),
-            ("contact", "contact", contactdetail.ContactDetail, "ContactDetail", True, None, False),
-            ("copyright", "copyright", str, "markdown", False, None, False),
-            ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, True),
-            ("description", "description", str, "markdown", False, None, False),
-            ("event", "event", coding.Coding, "Coding", False, None, True),
-            ("experimental", "experimental", bool, "boolean", False, None, False),
-            ("focus", "focus", MessageDefinitionFocus, "MessageDefinitionFocus", True, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", False, None, False),
-            ("jurisdiction", "jurisdiction", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("name", "name", str, "string", False, None, False),
-            ("parent", "parent", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("publisher", "publisher", str, "string", False, None, False),
-            ("purpose", "purpose", str, "markdown", False, None, False),
-            ("replaces", "replaces", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("responseRequired", "responseRequired", bool, "boolean", False, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("title", "title", str, "string", False, None, False),
-            ("url", "url", str, "uri", False, None, False),
-            ("useContext", "useContext", usagecontext.UsageContext, "UsageContext", True, None, False),
-            ("version", "version", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "allowedResponse",
+                    "allowedResponse",
+                    MessageDefinitionAllowedResponse,
+                    "MessageDefinitionAllowedResponse",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "base",
+                    "base",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("category", "category", str, "code", False, None, False),
+                (
+                    "contact",
+                    "contact",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                ("copyright", "copyright", str, "markdown", False, None, False),
+                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, True),
+                ("description", "description", str, "markdown", False, None, False),
+                ("event", "event", coding.Coding, "Coding", False, None, True),
+                ("experimental", "experimental", bool, "boolean", False, None, False),
+                (
+                    "focus",
+                    "focus",
+                    MessageDefinitionFocus,
+                    "MessageDefinitionFocus",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "jurisdiction",
+                    "jurisdiction",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                ("name", "name", str, "string", False, None, False),
+                (
+                    "parent",
+                    "parent",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                ("publisher", "publisher", str, "string", False, None, False),
+                ("purpose", "purpose", str, "markdown", False, None, False),
+                (
+                    "replaces",
+                    "replaces",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "responseRequired",
+                    "responseRequired",
+                    bool,
+                    "boolean",
+                    False,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, True),
+                ("title", "title", str, "string", False, None, False),
+                ("url", "url", str, "uri", False, None, False),
+                (
+                    "useContext",
+                    "useContext",
+                    usagecontext.UsageContext,
+                    "UsageContext",
+                    True,
+                    None,
+                    False,
+                ),
+                ("version", "version", str, "string", False, None, False),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class MessageDefinitionAllowedResponse(backboneelement.BackboneElement):
     """ Responses to this message.
@@ -180,14 +263,26 @@ class MessageDefinitionAllowedResponse(backboneelement.BackboneElement):
         """ When should this response be used.
         Type `str`. """
 
-        super(MessageDefinitionAllowedResponse, self).__init__(jsondict=jsondict, strict=strict)
+        super(MessageDefinitionAllowedResponse, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(MessageDefinitionAllowedResponse, self).elementProperties()
-        js.extend([
-            ("message", "message", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("situation", "situation", str, "markdown", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "message",
+                    "message",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                ("situation", "situation", str, "markdown", False, None, False),
+            ]
+        )
         return js
 
 
@@ -229,41 +324,50 @@ class MessageDefinitionFocus(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(MessageDefinitionFocus, self).elementProperties()
-        js.extend([
-            ("code", "code", str, "code", False, None, True),
-            ("max", "max", str, "string", False, None, False),
-            ("min", "min", int, "unsignedInt", False, None, False),
-            ("profile", "profile", fhirreference.FHIRReference, "Reference", False, None, False),
-        ])
+        js.extend(
+            [
+                ("code", "code", str, "code", False, None, True),
+                ("max", "max", str, "string", False, None, False),
+                ("min", "min", int, "unsignedInt", False, None, False),
+                (
+                    "profile",
+                    "profile",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import coding
 except ImportError:
-    coding = sys.modules[__package__ + '.coding']
+    coding = sys.modules[__package__ + ".coding"]
 try:
     from . import contactdetail
 except ImportError:
-    contactdetail = sys.modules[__package__ + '.contactdetail']
+    contactdetail = sys.modules[__package__ + ".contactdetail"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import usagecontext
 except ImportError:
-    usagecontext = sys.modules[__package__ + '.usagecontext']
+    usagecontext = sys.modules[__package__ + ".usagecontext"]

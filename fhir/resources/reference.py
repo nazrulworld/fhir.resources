@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
+import sys
+
 from . import element
+
 
 class Reference(element.Element):
     """ A reference from one resource to another.
@@ -44,17 +47,26 @@ class Reference(element.Element):
 
     def elementProperties(self):
         js = super(Reference, self).elementProperties()
-        js.extend([
-            ("display", "display", str, "string", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", False, None, False),
-            ("reference", "reference", str, "string", False, None, False),
-            ("type", "type", str, "uri", False, None, False),
-        ])
+        js.extend(
+            [
+                ("display", "display", str, "string", False, None, False),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                ("reference", "reference", str, "string", False, None, False),
+                ("type", "type", str, "uri", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]

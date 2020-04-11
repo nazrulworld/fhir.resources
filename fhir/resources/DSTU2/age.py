@@ -7,6 +7,7 @@
 
 from . import quantity
 
+
 class Age(quantity.Quantity):
     """ A duration (length of time) with a UCUM code.
     
@@ -14,9 +15,9 @@ class Age(quantity.Quantity):
     time.  If system is present, it SHALL be UCUM.  If value is present, it
     SHALL be positive.
     """
-    
+
     resource_name = "Age"
-    
+
     def __init__(self, jsondict=None, strict=True):
         """ Initialize all valid properties.
         
@@ -24,7 +25,5 @@ class Age(quantity.Quantity):
         :param dict jsondict: A JSON dictionary to use for initialization
         :param bool strict: If True (the default), invalid variables will raise a TypeError
         """
-        
+
         super(Age, self).__init__(jsondict=jsondict, strict=strict)
-
-

@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class MedicationKnowledge(domainresource.DomainResource):
     """ Definition of Medication Knowledge.
@@ -120,34 +123,186 @@ class MedicationKnowledge(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(MedicationKnowledge, self).elementProperties()
-        js.extend([
-            ("administrationGuidelines", "administrationGuidelines", MedicationKnowledgeAdministrationGuidelines, "MedicationKnowledgeAdministrationGuidelines", True, None, False),
-            ("amount", "amount", quantity.Quantity, "Quantity", False, None, False),
-            ("associatedMedication", "associatedMedication", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("contraindication", "contraindication", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("cost", "cost", MedicationKnowledgeCost, "MedicationKnowledgeCost", True, None, False),
-            ("doseForm", "doseForm", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("drugCharacteristic", "drugCharacteristic", MedicationKnowledgeDrugCharacteristic, "MedicationKnowledgeDrugCharacteristic", True, None, False),
-            ("ingredient", "ingredient", MedicationKnowledgeIngredient, "MedicationKnowledgeIngredient", True, None, False),
-            ("intendedRoute", "intendedRoute", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("kinetics", "kinetics", MedicationKnowledgeKinetics, "MedicationKnowledgeKinetics", True, None, False),
-            ("manufacturer", "manufacturer", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("medicineClassification", "medicineClassification", MedicationKnowledgeMedicineClassification, "MedicationKnowledgeMedicineClassification", True, None, False),
-            ("monitoringProgram", "monitoringProgram", MedicationKnowledgeMonitoringProgram, "MedicationKnowledgeMonitoringProgram", True, None, False),
-            ("monograph", "monograph", MedicationKnowledgeMonograph, "MedicationKnowledgeMonograph", True, None, False),
-            ("packaging", "packaging", MedicationKnowledgePackaging, "MedicationKnowledgePackaging", False, None, False),
-            ("preparationInstruction", "preparationInstruction", str, "markdown", False, None, False),
-            ("productType", "productType", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("regulatory", "regulatory", MedicationKnowledgeRegulatory, "MedicationKnowledgeRegulatory", True, None, False),
-            ("relatedMedicationKnowledge", "relatedMedicationKnowledge", MedicationKnowledgeRelatedMedicationKnowledge, "MedicationKnowledgeRelatedMedicationKnowledge", True, None, False),
-            ("status", "status", str, "code", False, None, False),
-            ("synonym", "synonym", str, "string", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "administrationGuidelines",
+                    "administrationGuidelines",
+                    MedicationKnowledgeAdministrationGuidelines,
+                    "MedicationKnowledgeAdministrationGuidelines",
+                    True,
+                    None,
+                    False,
+                ),
+                ("amount", "amount", quantity.Quantity, "Quantity", False, None, False),
+                (
+                    "associatedMedication",
+                    "associatedMedication",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "contraindication",
+                    "contraindication",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "cost",
+                    "cost",
+                    MedicationKnowledgeCost,
+                    "MedicationKnowledgeCost",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "doseForm",
+                    "doseForm",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "drugCharacteristic",
+                    "drugCharacteristic",
+                    MedicationKnowledgeDrugCharacteristic,
+                    "MedicationKnowledgeDrugCharacteristic",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "ingredient",
+                    "ingredient",
+                    MedicationKnowledgeIngredient,
+                    "MedicationKnowledgeIngredient",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "intendedRoute",
+                    "intendedRoute",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "kinetics",
+                    "kinetics",
+                    MedicationKnowledgeKinetics,
+                    "MedicationKnowledgeKinetics",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "manufacturer",
+                    "manufacturer",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "medicineClassification",
+                    "medicineClassification",
+                    MedicationKnowledgeMedicineClassification,
+                    "MedicationKnowledgeMedicineClassification",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "monitoringProgram",
+                    "monitoringProgram",
+                    MedicationKnowledgeMonitoringProgram,
+                    "MedicationKnowledgeMonitoringProgram",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "monograph",
+                    "monograph",
+                    MedicationKnowledgeMonograph,
+                    "MedicationKnowledgeMonograph",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "packaging",
+                    "packaging",
+                    MedicationKnowledgePackaging,
+                    "MedicationKnowledgePackaging",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "preparationInstruction",
+                    "preparationInstruction",
+                    str,
+                    "markdown",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "productType",
+                    "productType",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "regulatory",
+                    "regulatory",
+                    MedicationKnowledgeRegulatory,
+                    "MedicationKnowledgeRegulatory",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "relatedMedicationKnowledge",
+                    "relatedMedicationKnowledge",
+                    MedicationKnowledgeRelatedMedicationKnowledge,
+                    "MedicationKnowledgeRelatedMedicationKnowledge",
+                    True,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, False),
+                ("synonym", "synonym", str, "string", True, None, False),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class MedicationKnowledgeAdministrationGuidelines(backboneelement.BackboneElement):
     """ Guidelines for administration of the medication.
@@ -184,20 +339,60 @@ class MedicationKnowledgeAdministrationGuidelines(backboneelement.BackboneElemen
         administration guidelines.
         List of `MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics` items (represented as `dict` in JSON). """
 
-        super(MedicationKnowledgeAdministrationGuidelines, self).__init__(jsondict=jsondict, strict=strict)
+        super(MedicationKnowledgeAdministrationGuidelines, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
-        js = super(MedicationKnowledgeAdministrationGuidelines, self).elementProperties()
-        js.extend([
-            ("dosage", "dosage", MedicationKnowledgeAdministrationGuidelinesDosage, "MedicationKnowledgeAdministrationGuidelinesDosage", True, None, False),
-            ("indicationCodeableConcept", "indicationCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "indication", False),
-            ("indicationReference", "indicationReference", fhirreference.FHIRReference, "Reference", False, "indication", False),
-            ("patientCharacteristics", "patientCharacteristics", MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics, "MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics", True, None, False),
-        ])
+        js = super(
+            MedicationKnowledgeAdministrationGuidelines, self
+        ).elementProperties()
+        js.extend(
+            [
+                (
+                    "dosage",
+                    "dosage",
+                    MedicationKnowledgeAdministrationGuidelinesDosage,
+                    "MedicationKnowledgeAdministrationGuidelinesDosage",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "indicationCodeableConcept",
+                    "indicationCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "indication",
+                    False,
+                ),
+                (
+                    "indicationReference",
+                    "indicationReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "indication",
+                    False,
+                ),
+                (
+                    "patientCharacteristics",
+                    "patientCharacteristics",
+                    MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics,
+                    "MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-class MedicationKnowledgeAdministrationGuidelinesDosage(backboneelement.BackboneElement):
+class MedicationKnowledgeAdministrationGuidelinesDosage(
+    backboneelement.BackboneElement
+):
     """ Dosage for the medication for the specific guidelines.
     """
 
@@ -219,18 +414,34 @@ class MedicationKnowledgeAdministrationGuidelinesDosage(backboneelement.Backbone
         """ Type of dosage.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(MedicationKnowledgeAdministrationGuidelinesDosage, self).__init__(jsondict=jsondict, strict=strict)
+        super(MedicationKnowledgeAdministrationGuidelinesDosage, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
-        js = super(MedicationKnowledgeAdministrationGuidelinesDosage, self).elementProperties()
-        js.extend([
-            ("dosage", "dosage", dosage.Dosage, "Dosage", True, None, True),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-        ])
+        js = super(
+            MedicationKnowledgeAdministrationGuidelinesDosage, self
+        ).elementProperties()
+        js.extend(
+            [
+                ("dosage", "dosage", dosage.Dosage, "Dosage", True, None, True),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
-class MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics(backboneelement.BackboneElement):
+class MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics(
+    backboneelement.BackboneElement
+):
     """ Characteristics of the patient that are relevant to the administration
     guidelines.
 
@@ -262,15 +473,37 @@ class MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics(backbone
         """ The specific characteristic.
         List of `str` items. """
 
-        super(MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics, self).__init__(jsondict=jsondict, strict=strict)
+        super(
+            MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics, self
+        ).__init__(jsondict=jsondict, strict=strict)
 
     def elementProperties(self):
-        js = super(MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics, self).elementProperties()
-        js.extend([
-            ("characteristicCodeableConcept", "characteristicCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "characteristic", True),
-            ("characteristicQuantity", "characteristicQuantity", quantity.Quantity, "Quantity", False, "characteristic", True),
-            ("value", "value", str, "string", True, None, False),
-        ])
+        js = super(
+            MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics, self
+        ).elementProperties()
+        js.extend(
+            [
+                (
+                    "characteristicCodeableConcept",
+                    "characteristicCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "characteristic",
+                    True,
+                ),
+                (
+                    "characteristicQuantity",
+                    "characteristicQuantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    "characteristic",
+                    True,
+                ),
+                ("value", "value", str, "string", True, None, False),
+            ]
+        )
         return js
 
 
@@ -306,11 +539,21 @@ class MedicationKnowledgeCost(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(MedicationKnowledgeCost, self).elementProperties()
-        js.extend([
-            ("cost", "cost", money.Money, "Money", False, None, True),
-            ("source", "source", str, "string", False, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-        ])
+        js.extend(
+            [
+                ("cost", "cost", money.Money, "Money", False, None, True),
+                ("source", "source", str, "string", False, None, False),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -351,17 +594,53 @@ class MedicationKnowledgeDrugCharacteristic(backboneelement.BackboneElement):
         """ Description of the characteristic.
         Type `str`. """
 
-        super(MedicationKnowledgeDrugCharacteristic, self).__init__(jsondict=jsondict, strict=strict)
+        super(MedicationKnowledgeDrugCharacteristic, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(MedicationKnowledgeDrugCharacteristic, self).elementProperties()
-        js.extend([
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("valueBase64Binary", "valueBase64Binary", str, "base64Binary", False, "value", False),
-            ("valueCodeableConcept", "valueCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "value", False),
-            ("valueQuantity", "valueQuantity", quantity.Quantity, "Quantity", False, "value", False),
-            ("valueString", "valueString", str, "string", False, "value", False),
-        ])
+        js.extend(
+            [
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "valueBase64Binary",
+                    "valueBase64Binary",
+                    str,
+                    "base64Binary",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueCodeableConcept",
+                    "valueCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueQuantity",
+                    "valueQuantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    "value",
+                    False,
+                ),
+                ("valueString", "valueString", str, "string", False, "value", False),
+            ]
+        )
         return js
 
 
@@ -397,16 +676,36 @@ class MedicationKnowledgeIngredient(backboneelement.BackboneElement):
         """ Quantity of ingredient present.
         Type `Ratio` (represented as `dict` in JSON). """
 
-        super(MedicationKnowledgeIngredient, self).__init__(jsondict=jsondict, strict=strict)
+        super(MedicationKnowledgeIngredient, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(MedicationKnowledgeIngredient, self).elementProperties()
-        js.extend([
-            ("isActive", "isActive", bool, "boolean", False, None, False),
-            ("itemCodeableConcept", "itemCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "item", True),
-            ("itemReference", "itemReference", fhirreference.FHIRReference, "Reference", False, "item", True),
-            ("strength", "strength", ratio.Ratio, "Ratio", False, None, False),
-        ])
+        js.extend(
+            [
+                ("isActive", "isActive", bool, "boolean", False, None, False),
+                (
+                    "itemCodeableConcept",
+                    "itemCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "item",
+                    True,
+                ),
+                (
+                    "itemReference",
+                    "itemReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "item",
+                    True,
+                ),
+                ("strength", "strength", ratio.Ratio, "Ratio", False, None, False),
+            ]
+        )
         return js
 
 
@@ -437,15 +736,43 @@ class MedicationKnowledgeKinetics(backboneelement.BackboneElement):
         """ The median lethal dose of a drug.
         List of `Quantity` items (represented as `dict` in JSON). """
 
-        super(MedicationKnowledgeKinetics, self).__init__(jsondict=jsondict, strict=strict)
+        super(MedicationKnowledgeKinetics, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(MedicationKnowledgeKinetics, self).elementProperties()
-        js.extend([
-            ("areaUnderCurve", "areaUnderCurve", quantity.Quantity, "Quantity", True, None, False),
-            ("halfLifePeriod", "halfLifePeriod", duration.Duration, "Duration", False, None, False),
-            ("lethalDose50", "lethalDose50", quantity.Quantity, "Quantity", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "areaUnderCurve",
+                    "areaUnderCurve",
+                    quantity.Quantity,
+                    "Quantity",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "halfLifePeriod",
+                    "halfLifePeriod",
+                    duration.Duration,
+                    "Duration",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "lethalDose50",
+                    "lethalDose50",
+                    quantity.Quantity,
+                    "Quantity",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -473,14 +800,34 @@ class MedicationKnowledgeMedicineClassification(backboneelement.BackboneElement)
         classification, therapeutic sub-classification).
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(MedicationKnowledgeMedicineClassification, self).__init__(jsondict=jsondict, strict=strict)
+        super(MedicationKnowledgeMedicineClassification, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(MedicationKnowledgeMedicineClassification, self).elementProperties()
-        js.extend([
-            ("classification", "classification", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "classification",
+                    "classification",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -508,14 +855,26 @@ class MedicationKnowledgeMonitoringProgram(backboneelement.BackboneElement):
         """ Type of program under which the medication is monitored.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(MedicationKnowledgeMonitoringProgram, self).__init__(jsondict=jsondict, strict=strict)
+        super(MedicationKnowledgeMonitoringProgram, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(MedicationKnowledgeMonitoringProgram, self).elementProperties()
-        js.extend([
-            ("name", "name", str, "string", False, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                ("name", "name", str, "string", False, None, False),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -541,14 +900,34 @@ class MedicationKnowledgeMonograph(backboneelement.BackboneElement):
         """ The category of medication document.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(MedicationKnowledgeMonograph, self).__init__(jsondict=jsondict, strict=strict)
+        super(MedicationKnowledgeMonograph, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(MedicationKnowledgeMonograph, self).elementProperties()
-        js.extend([
-            ("source", "source", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "source",
+                    "source",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -578,14 +957,34 @@ class MedicationKnowledgePackaging(backboneelement.BackboneElement):
         medication can be found in.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(MedicationKnowledgePackaging, self).__init__(jsondict=jsondict, strict=strict)
+        super(MedicationKnowledgePackaging, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(MedicationKnowledgePackaging, self).elementProperties()
-        js.extend([
-            ("quantity", "quantity", quantity.Quantity, "Quantity", False, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "quantity",
+                    "quantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -621,16 +1020,52 @@ class MedicationKnowledgeRegulatory(backboneelement.BackboneElement):
         a regulatory perspective.
         List of `MedicationKnowledgeRegulatorySubstitution` items (represented as `dict` in JSON). """
 
-        super(MedicationKnowledgeRegulatory, self).__init__(jsondict=jsondict, strict=strict)
+        super(MedicationKnowledgeRegulatory, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(MedicationKnowledgeRegulatory, self).elementProperties()
-        js.extend([
-            ("maxDispense", "maxDispense", MedicationKnowledgeRegulatoryMaxDispense, "MedicationKnowledgeRegulatoryMaxDispense", False, None, False),
-            ("regulatoryAuthority", "regulatoryAuthority", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("schedule", "schedule", MedicationKnowledgeRegulatorySchedule, "MedicationKnowledgeRegulatorySchedule", True, None, False),
-            ("substitution", "substitution", MedicationKnowledgeRegulatorySubstitution, "MedicationKnowledgeRegulatorySubstitution", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "maxDispense",
+                    "maxDispense",
+                    MedicationKnowledgeRegulatoryMaxDispense,
+                    "MedicationKnowledgeRegulatoryMaxDispense",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "regulatoryAuthority",
+                    "regulatoryAuthority",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "schedule",
+                    "schedule",
+                    MedicationKnowledgeRegulatorySchedule,
+                    "MedicationKnowledgeRegulatorySchedule",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "substitution",
+                    "substitution",
+                    MedicationKnowledgeRegulatorySubstitution,
+                    "MedicationKnowledgeRegulatorySubstitution",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -657,14 +1092,26 @@ class MedicationKnowledgeRegulatoryMaxDispense(backboneelement.BackboneElement):
         """ The maximum number of units of the medication that can be dispensed.
         Type `Quantity` (represented as `dict` in JSON). """
 
-        super(MedicationKnowledgeRegulatoryMaxDispense, self).__init__(jsondict=jsondict, strict=strict)
+        super(MedicationKnowledgeRegulatoryMaxDispense, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(MedicationKnowledgeRegulatoryMaxDispense, self).elementProperties()
-        js.extend([
-            ("period", "period", duration.Duration, "Duration", False, None, False),
-            ("quantity", "quantity", quantity.Quantity, "Quantity", False, None, True),
-        ])
+        js.extend(
+            [
+                ("period", "period", duration.Duration, "Duration", False, None, False),
+                (
+                    "quantity",
+                    "quantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -686,13 +1133,25 @@ class MedicationKnowledgeRegulatorySchedule(backboneelement.BackboneElement):
         """ Specifies the specific drug schedule.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(MedicationKnowledgeRegulatorySchedule, self).__init__(jsondict=jsondict, strict=strict)
+        super(MedicationKnowledgeRegulatorySchedule, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(MedicationKnowledgeRegulatorySchedule, self).elementProperties()
-        js.extend([
-            ("schedule", "schedule", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "schedule",
+                    "schedule",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -720,14 +1179,26 @@ class MedicationKnowledgeRegulatorySubstitution(backboneelement.BackboneElement)
         """ Specifies the type of substitution allowed.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(MedicationKnowledgeRegulatorySubstitution, self).__init__(jsondict=jsondict, strict=strict)
+        super(MedicationKnowledgeRegulatorySubstitution, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(MedicationKnowledgeRegulatorySubstitution, self).elementProperties()
-        js.extend([
-            ("allowed", "allowed", bool, "boolean", False, None, True),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-        ])
+        js.extend(
+            [
+                ("allowed", "allowed", bool, "boolean", False, None, True),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -755,43 +1226,64 @@ class MedicationKnowledgeRelatedMedicationKnowledge(backboneelement.BackboneElem
         """ Category of medicationKnowledge.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(MedicationKnowledgeRelatedMedicationKnowledge, self).__init__(jsondict=jsondict, strict=strict)
+        super(MedicationKnowledgeRelatedMedicationKnowledge, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
-        js = super(MedicationKnowledgeRelatedMedicationKnowledge, self).elementProperties()
-        js.extend([
-            ("reference", "reference", fhirreference.FHIRReference, "Reference", True, None, True),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-        ])
+        js = super(
+            MedicationKnowledgeRelatedMedicationKnowledge, self
+        ).elementProperties()
+        js.extend(
+            [
+                (
+                    "reference",
+                    "reference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    True,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import dosage
 except ImportError:
-    dosage = sys.modules[__package__ + '.dosage']
+    dosage = sys.modules[__package__ + ".dosage"]
 try:
     from . import duration
 except ImportError:
-    duration = sys.modules[__package__ + '.duration']
+    duration = sys.modules[__package__ + ".duration"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import money
 except ImportError:
-    money = sys.modules[__package__ + '.money']
+    money = sys.modules[__package__ + ".money"]
 try:
     from . import quantity
 except ImportError:
-    quantity = sys.modules[__package__ + '.quantity']
+    quantity = sys.modules[__package__ + ".quantity"]
 try:
     from . import ratio
 except ImportError:
-    ratio = sys.modules[__package__ + '.ratio']
+    ratio = sys.modules[__package__ + ".ratio"]

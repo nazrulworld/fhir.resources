@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class DeviceMetric(domainresource.DomainResource):
     """ Measurement, calculation or setting capability of a medical device.
@@ -72,22 +75,86 @@ class DeviceMetric(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(DeviceMetric, self).elementProperties()
-        js.extend([
-            ("calibration", "calibration", DeviceMetricCalibration, "DeviceMetricCalibration", True, None, False),
-            ("category", "category", str, "code", False, None, True),
-            ("color", "color", str, "code", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("measurementPeriod", "measurementPeriod", timing.Timing, "Timing", False, None, False),
-            ("operationalStatus", "operationalStatus", str, "code", False, None, False),
-            ("parent", "parent", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("source", "source", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("unit", "unit", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "calibration",
+                    "calibration",
+                    DeviceMetricCalibration,
+                    "DeviceMetricCalibration",
+                    True,
+                    None,
+                    False,
+                ),
+                ("category", "category", str, "code", False, None, True),
+                ("color", "color", str, "code", False, None, False),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "measurementPeriod",
+                    "measurementPeriod",
+                    timing.Timing,
+                    "Timing",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "operationalStatus",
+                    "operationalStatus",
+                    str,
+                    "code",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "parent",
+                    "parent",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "source",
+                    "source",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "unit",
+                    "unit",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class DeviceMetricCalibration(backboneelement.BackboneElement):
     """ Describes the calibrations that have been performed or that are required to
@@ -120,32 +187,33 @@ class DeviceMetricCalibration(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(DeviceMetricCalibration, self).elementProperties()
-        js.extend([
-            ("state", "state", str, "code", False, None, False),
-            ("time", "time", fhirdate.FHIRDate, "instant", False, None, False),
-            ("type", "type", str, "code", False, None, False),
-        ])
+        js.extend(
+            [
+                ("state", "state", str, "code", False, None, False),
+                ("time", "time", fhirdate.FHIRDate, "instant", False, None, False),
+                ("type", "type", str, "code", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import timing
 except ImportError:
-    timing = sys.modules[__package__ + '.timing']
+    timing = sys.modules[__package__ + ".timing"]

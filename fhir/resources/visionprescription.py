@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class VisionPrescription(domainresource.DomainResource):
     """ Prescription for vision correction products for a patient.
@@ -63,20 +66,76 @@ class VisionPrescription(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(VisionPrescription, self).elementProperties()
-        js.extend([
-            ("created", "created", fhirdate.FHIRDate, "dateTime", False, None, True),
-            ("dateWritten", "dateWritten", fhirdate.FHIRDate, "dateTime", False, None, True),
-            ("encounter", "encounter", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("lensSpecification", "lensSpecification", VisionPrescriptionLensSpecification, "VisionPrescriptionLensSpecification", True, None, True),
-            ("patient", "patient", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("prescriber", "prescriber", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("status", "status", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "created",
+                    "created",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "dateWritten",
+                    "dateWritten",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "encounter",
+                    "encounter",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "lensSpecification",
+                    "lensSpecification",
+                    VisionPrescriptionLensSpecification,
+                    "VisionPrescriptionLensSpecification",
+                    True,
+                    None,
+                    True,
+                ),
+                (
+                    "patient",
+                    "patient",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "prescriber",
+                    "prescriber",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                ("status", "status", str, "code", False, None, True),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class VisionPrescriptionLensSpecification(backboneelement.BackboneElement):
     """ Vision lens authorization.
@@ -151,26 +210,62 @@ class VisionPrescriptionLensSpecification(backboneelement.BackboneElement):
         """ Power of the lens.
         Type `float`. """
 
-        super(VisionPrescriptionLensSpecification, self).__init__(jsondict=jsondict, strict=strict)
+        super(VisionPrescriptionLensSpecification, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(VisionPrescriptionLensSpecification, self).elementProperties()
-        js.extend([
-            ("add", "add", float, "decimal", False, None, False),
-            ("axis", "axis", int, "integer", False, None, False),
-            ("backCurve", "backCurve", float, "decimal", False, None, False),
-            ("brand", "brand", str, "string", False, None, False),
-            ("color", "color", str, "string", False, None, False),
-            ("cylinder", "cylinder", float, "decimal", False, None, False),
-            ("diameter", "diameter", float, "decimal", False, None, False),
-            ("duration", "duration", quantity.Quantity, "Quantity", False, None, False),
-            ("eye", "eye", str, "code", False, None, True),
-            ("note", "note", annotation.Annotation, "Annotation", True, None, False),
-            ("power", "power", float, "decimal", False, None, False),
-            ("prism", "prism", VisionPrescriptionLensSpecificationPrism, "VisionPrescriptionLensSpecificationPrism", True, None, False),
-            ("product", "product", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("sphere", "sphere", float, "decimal", False, None, False),
-        ])
+        js.extend(
+            [
+                ("add", "add", float, "decimal", False, None, False),
+                ("axis", "axis", int, "integer", False, None, False),
+                ("backCurve", "backCurve", float, "decimal", False, None, False),
+                ("brand", "brand", str, "string", False, None, False),
+                ("color", "color", str, "string", False, None, False),
+                ("cylinder", "cylinder", float, "decimal", False, None, False),
+                ("diameter", "diameter", float, "decimal", False, None, False),
+                (
+                    "duration",
+                    "duration",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    None,
+                    False,
+                ),
+                ("eye", "eye", str, "code", False, None, True),
+                (
+                    "note",
+                    "note",
+                    annotation.Annotation,
+                    "Annotation",
+                    True,
+                    None,
+                    False,
+                ),
+                ("power", "power", float, "decimal", False, None, False),
+                (
+                    "prism",
+                    "prism",
+                    VisionPrescriptionLensSpecificationPrism,
+                    "VisionPrescriptionLensSpecificationPrism",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "product",
+                    "product",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                ("sphere", "sphere", float, "decimal", False, None, False),
+            ]
+        )
         return js
 
 
@@ -198,39 +293,42 @@ class VisionPrescriptionLensSpecificationPrism(backboneelement.BackboneElement):
         """ up | down | in | out.
         Type `str`. """
 
-        super(VisionPrescriptionLensSpecificationPrism, self).__init__(jsondict=jsondict, strict=strict)
+        super(VisionPrescriptionLensSpecificationPrism, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(VisionPrescriptionLensSpecificationPrism, self).elementProperties()
-        js.extend([
-            ("amount", "amount", float, "decimal", False, None, True),
-            ("base", "base", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                ("amount", "amount", float, "decimal", False, None, True),
+                ("base", "base", str, "code", False, None, True),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import annotation
 except ImportError:
-    annotation = sys.modules[__package__ + '.annotation']
+    annotation = sys.modules[__package__ + ".annotation"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import quantity
 except ImportError:
-    quantity = sys.modules[__package__ + '.quantity']
+    quantity = sys.modules[__package__ + ".quantity"]

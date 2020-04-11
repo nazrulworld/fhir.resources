@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class MedicinalProductPackaged(domainresource.DomainResource):
     """ A medicinal product in a container or package.
@@ -66,21 +69,85 @@ class MedicinalProductPackaged(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(MedicinalProductPackaged, self).elementProperties()
-        js.extend([
-            ("batchIdentifier", "batchIdentifier", MedicinalProductPackagedBatchIdentifier, "MedicinalProductPackagedBatchIdentifier", True, None, False),
-            ("description", "description", str, "string", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("legalStatusOfSupply", "legalStatusOfSupply", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("manufacturer", "manufacturer", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("marketingAuthorization", "marketingAuthorization", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("marketingStatus", "marketingStatus", marketingstatus.MarketingStatus, "MarketingStatus", True, None, False),
-            ("packageItem", "packageItem", MedicinalProductPackagedPackageItem, "MedicinalProductPackagedPackageItem", True, None, True),
-            ("subject", "subject", fhirreference.FHIRReference, "Reference", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "batchIdentifier",
+                    "batchIdentifier",
+                    MedicinalProductPackagedBatchIdentifier,
+                    "MedicinalProductPackagedBatchIdentifier",
+                    True,
+                    None,
+                    False,
+                ),
+                ("description", "description", str, "string", False, None, False),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "legalStatusOfSupply",
+                    "legalStatusOfSupply",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "manufacturer",
+                    "manufacturer",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "marketingAuthorization",
+                    "marketingAuthorization",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "marketingStatus",
+                    "marketingStatus",
+                    marketingstatus.MarketingStatus,
+                    "MarketingStatus",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "packageItem",
+                    "packageItem",
+                    MedicinalProductPackagedPackageItem,
+                    "MedicinalProductPackagedPackageItem",
+                    True,
+                    None,
+                    True,
+                ),
+                (
+                    "subject",
+                    "subject",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class MedicinalProductPackagedBatchIdentifier(backboneelement.BackboneElement):
     """ Batch numbering.
@@ -105,14 +172,34 @@ class MedicinalProductPackagedBatchIdentifier(backboneelement.BackboneElement):
         """ A number appearing on the outer packaging of a specific batch.
         Type `Identifier` (represented as `dict` in JSON). """
 
-        super(MedicinalProductPackagedBatchIdentifier, self).__init__(jsondict=jsondict, strict=strict)
+        super(MedicinalProductPackagedBatchIdentifier, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(MedicinalProductPackagedBatchIdentifier, self).elementProperties()
-        js.extend([
-            ("immediatePackaging", "immediatePackaging", identifier.Identifier, "Identifier", False, None, False),
-            ("outerPackaging", "outerPackaging", identifier.Identifier, "Identifier", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "immediatePackaging",
+                    "immediatePackaging",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "outerPackaging",
+                    "outerPackaging",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -181,53 +268,152 @@ class MedicinalProductPackagedPackageItem(backboneelement.BackboneElement):
         """ The physical type of the container of the medicine.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(MedicinalProductPackagedPackageItem, self).__init__(jsondict=jsondict, strict=strict)
+        super(MedicinalProductPackagedPackageItem, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(MedicinalProductPackagedPackageItem, self).elementProperties()
-        js.extend([
-            ("alternateMaterial", "alternateMaterial", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("device", "device", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("manufacturedItem", "manufacturedItem", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("manufacturer", "manufacturer", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("material", "material", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("otherCharacteristics", "otherCharacteristics", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("packageItem", "packageItem", MedicinalProductPackagedPackageItem, "MedicinalProductPackagedPackageItem", True, None, False),
-            ("physicalCharacteristics", "physicalCharacteristics", prodcharacteristic.ProdCharacteristic, "ProdCharacteristic", False, None, False),
-            ("quantity", "quantity", quantity.Quantity, "Quantity", False, None, True),
-            ("shelfLifeStorage", "shelfLifeStorage", productshelflife.ProductShelfLife, "ProductShelfLife", True, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "alternateMaterial",
+                    "alternateMaterial",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "device",
+                    "device",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "manufacturedItem",
+                    "manufacturedItem",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "manufacturer",
+                    "manufacturer",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "material",
+                    "material",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "otherCharacteristics",
+                    "otherCharacteristics",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "packageItem",
+                    "packageItem",
+                    MedicinalProductPackagedPackageItem,
+                    "MedicinalProductPackagedPackageItem",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "physicalCharacteristics",
+                    "physicalCharacteristics",
+                    prodcharacteristic.ProdCharacteristic,
+                    "ProdCharacteristic",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "quantity",
+                    "quantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "shelfLifeStorage",
+                    "shelfLifeStorage",
+                    productshelflife.ProductShelfLife,
+                    "ProductShelfLife",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import marketingstatus
 except ImportError:
-    marketingstatus = sys.modules[__package__ + '.marketingstatus']
+    marketingstatus = sys.modules[__package__ + ".marketingstatus"]
 try:
     from . import prodcharacteristic
 except ImportError:
-    prodcharacteristic = sys.modules[__package__ + '.prodcharacteristic']
+    prodcharacteristic = sys.modules[__package__ + ".prodcharacteristic"]
 try:
     from . import productshelflife
 except ImportError:
-    productshelflife = sys.modules[__package__ + '.productshelflife']
+    productshelflife = sys.modules[__package__ + ".productshelflife"]
 try:
     from . import quantity
 except ImportError:
-    quantity = sys.modules[__package__ + '.quantity']
+    quantity = sys.modules[__package__ + ".quantity"]

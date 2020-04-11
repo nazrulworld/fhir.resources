@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class PractitionerRole(domainresource.DomainResource):
     """ Roles/organizations the practitioner is associated with.
@@ -91,26 +94,122 @@ class PractitionerRole(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(PractitionerRole, self).elementProperties()
-        js.extend([
-            ("active", "active", bool, "boolean", False, None, False),
-            ("availabilityExceptions", "availabilityExceptions", str, "string", False, None, False),
-            ("availableTime", "availableTime", PractitionerRoleAvailableTime, "PractitionerRoleAvailableTime", True, None, False),
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("endpoint", "endpoint", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("healthcareService", "healthcareService", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("location", "location", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("notAvailable", "notAvailable", PractitionerRoleNotAvailable, "PractitionerRoleNotAvailable", True, None, False),
-            ("organization", "organization", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("period", "period", period.Period, "Period", False, None, False),
-            ("practitioner", "practitioner", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("specialty", "specialty", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("telecom", "telecom", contactpoint.ContactPoint, "ContactPoint", True, None, False),
-        ])
+        js.extend(
+            [
+                ("active", "active", bool, "boolean", False, None, False),
+                (
+                    "availabilityExceptions",
+                    "availabilityExceptions",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "availableTime",
+                    "availableTime",
+                    PractitionerRoleAvailableTime,
+                    "PractitionerRoleAvailableTime",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "endpoint",
+                    "endpoint",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "healthcareService",
+                    "healthcareService",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "location",
+                    "location",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "notAvailable",
+                    "notAvailable",
+                    PractitionerRoleNotAvailable,
+                    "PractitionerRoleNotAvailable",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "organization",
+                    "organization",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("period", "period", period.Period, "Period", False, None, False),
+                (
+                    "practitioner",
+                    "practitioner",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "specialty",
+                    "specialty",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "telecom",
+                    "telecom",
+                    contactpoint.ContactPoint,
+                    "ContactPoint",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class PractitionerRoleAvailableTime(backboneelement.BackboneElement):
     """ Times the Service Site is available.
@@ -145,16 +244,36 @@ class PractitionerRoleAvailableTime(backboneelement.BackboneElement):
         """ mon | tue | wed | thu | fri | sat | sun.
         List of `str` items. """
 
-        super(PractitionerRoleAvailableTime, self).__init__(jsondict=jsondict, strict=strict)
+        super(PractitionerRoleAvailableTime, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(PractitionerRoleAvailableTime, self).elementProperties()
-        js.extend([
-            ("allDay", "allDay", bool, "boolean", False, None, False),
-            ("availableEndTime", "availableEndTime", fhirdate.FHIRDate, "time", False, None, False),
-            ("availableStartTime", "availableStartTime", fhirdate.FHIRDate, "time", False, None, False),
-            ("daysOfWeek", "daysOfWeek", str, "code", True, None, False),
-        ])
+        js.extend(
+            [
+                ("allDay", "allDay", bool, "boolean", False, None, False),
+                (
+                    "availableEndTime",
+                    "availableEndTime",
+                    fhirdate.FHIRDate,
+                    "time",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "availableStartTime",
+                    "availableStartTime",
+                    fhirdate.FHIRDate,
+                    "time",
+                    False,
+                    None,
+                    False,
+                ),
+                ("daysOfWeek", "daysOfWeek", str, "code", True, None, False),
+            ]
+        )
         return js
 
 
@@ -183,39 +302,42 @@ class PractitionerRoleNotAvailable(backboneelement.BackboneElement):
         """ Service not available from this date.
         Type `Period` (represented as `dict` in JSON). """
 
-        super(PractitionerRoleNotAvailable, self).__init__(jsondict=jsondict, strict=strict)
+        super(PractitionerRoleNotAvailable, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(PractitionerRoleNotAvailable, self).elementProperties()
-        js.extend([
-            ("description", "description", str, "string", False, None, True),
-            ("during", "during", period.Period, "Period", False, None, False),
-        ])
+        js.extend(
+            [
+                ("description", "description", str, "string", False, None, True),
+                ("during", "during", period.Period, "Period", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import contactpoint
 except ImportError:
-    contactpoint = sys.modules[__package__ + '.contactpoint']
+    contactpoint = sys.modules[__package__ + ".contactpoint"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]

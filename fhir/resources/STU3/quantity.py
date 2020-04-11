@@ -10,6 +10,7 @@ Last updated: 2019-10-24T11:53:00+11:00
 
 from . import element
 
+
 class Quantity(element.Element):
     """ A measured or measurable amount.
 
@@ -52,13 +53,13 @@ class Quantity(element.Element):
 
     def elementProperties(self):
         js = super(Quantity, self).elementProperties()
-        js.extend([
-            ("code", "code", str, "code", False, None, False),
-            ("comparator", "comparator", str, "code", False, None, False),
-            ("system", "system", str, "uri", False, None, False),
-            ("unit", "unit", str, "string", False, None, False),
-            ("value", "value", float, "decimal", False, None, False),
-        ])
+        js.extend(
+            [
+                ("code", "code", str, "code", False, None, False),
+                ("comparator", "comparator", str, "code", False, None, False),
+                ("system", "system", str, "uri", False, None, False),
+                ("unit", "unit", str, "string", False, None, False),
+                ("value", "value", float, "decimal", False, None, False),
+            ]
+        )
         return js
-
-

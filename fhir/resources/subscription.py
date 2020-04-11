@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class Subscription(domainresource.DomainResource):
     """ Server push subscription criteria.
@@ -62,19 +65,35 @@ class Subscription(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(Subscription, self).elementProperties()
-        js.extend([
-            ("channel", "channel", SubscriptionChannel, "SubscriptionChannel", False, None, True),
-            ("contact", "contact", contactpoint.ContactPoint, "ContactPoint", True, None, False),
-            ("criteria", "criteria", str, "string", False, None, True),
-            ("end", "end", fhirdate.FHIRDate, "instant", False, None, False),
-            ("error", "error", str, "string", False, None, False),
-            ("reason", "reason", str, "string", False, None, True),
-            ("status", "status", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "channel",
+                    "channel",
+                    SubscriptionChannel,
+                    "SubscriptionChannel",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "contact",
+                    "contact",
+                    contactpoint.ContactPoint,
+                    "ContactPoint",
+                    True,
+                    None,
+                    False,
+                ),
+                ("criteria", "criteria", str, "string", False, None, True),
+                ("end", "end", fhirdate.FHIRDate, "instant", False, None, False),
+                ("error", "error", str, "string", False, None, False),
+                ("reason", "reason", str, "string", False, None, True),
+                ("status", "status", str, "code", False, None, True),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class SubscriptionChannel(backboneelement.BackboneElement):
     """ The channel on which to report matches to the criteria.
@@ -113,21 +132,22 @@ class SubscriptionChannel(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(SubscriptionChannel, self).elementProperties()
-        js.extend([
-            ("endpoint", "endpoint", str, "url", False, None, False),
-            ("header", "header", str, "string", True, None, False),
-            ("payload", "payload", str, "code", False, None, False),
-            ("type", "type", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                ("endpoint", "endpoint", str, "url", False, None, False),
+                ("header", "header", str, "string", True, None, False),
+                ("payload", "payload", str, "code", False, None, False),
+                ("type", "type", str, "code", False, None, True),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import contactpoint
 except ImportError:
-    contactpoint = sys.modules[__package__ + '.contactpoint']
+    contactpoint = sys.modules[__package__ + ".contactpoint"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]

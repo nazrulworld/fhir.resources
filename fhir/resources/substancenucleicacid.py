@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class SubstanceNucleicAcid(domainresource.DomainResource):
     """ Nucleic acids are defined by three distinct elements: the base, sugar and
@@ -62,17 +65,57 @@ class SubstanceNucleicAcid(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(SubstanceNucleicAcid, self).elementProperties()
-        js.extend([
-            ("areaOfHybridisation", "areaOfHybridisation", str, "string", False, None, False),
-            ("numberOfSubunits", "numberOfSubunits", int, "integer", False, None, False),
-            ("oligoNucleotideType", "oligoNucleotideType", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("sequenceType", "sequenceType", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("subunit", "subunit", SubstanceNucleicAcidSubunit, "SubstanceNucleicAcidSubunit", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "areaOfHybridisation",
+                    "areaOfHybridisation",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "numberOfSubunits",
+                    "numberOfSubunits",
+                    int,
+                    "integer",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "oligoNucleotideType",
+                    "oligoNucleotideType",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "sequenceType",
+                    "sequenceType",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "subunit",
+                    "subunit",
+                    SubstanceNucleicAcidSubunit,
+                    "SubstanceNucleicAcidSubunit",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class SubstanceNucleicAcidSubunit(backboneelement.BackboneElement):
     """ Subunits are listed in order of decreasing length; sequences of the same
@@ -136,20 +179,64 @@ class SubstanceNucleicAcidSubunit(backboneelement.BackboneElement):
         redundant.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(SubstanceNucleicAcidSubunit, self).__init__(jsondict=jsondict, strict=strict)
+        super(SubstanceNucleicAcidSubunit, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(SubstanceNucleicAcidSubunit, self).elementProperties()
-        js.extend([
-            ("fivePrime", "fivePrime", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("length", "length", int, "integer", False, None, False),
-            ("linkage", "linkage", SubstanceNucleicAcidSubunitLinkage, "SubstanceNucleicAcidSubunitLinkage", True, None, False),
-            ("sequence", "sequence", str, "string", False, None, False),
-            ("sequenceAttachment", "sequenceAttachment", attachment.Attachment, "Attachment", False, None, False),
-            ("subunit", "subunit", int, "integer", False, None, False),
-            ("sugar", "sugar", SubstanceNucleicAcidSubunitSugar, "SubstanceNucleicAcidSubunitSugar", True, None, False),
-            ("threePrime", "threePrime", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "fivePrime",
+                    "fivePrime",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("length", "length", int, "integer", False, None, False),
+                (
+                    "linkage",
+                    "linkage",
+                    SubstanceNucleicAcidSubunitLinkage,
+                    "SubstanceNucleicAcidSubunitLinkage",
+                    True,
+                    None,
+                    False,
+                ),
+                ("sequence", "sequence", str, "string", False, None, False),
+                (
+                    "sequenceAttachment",
+                    "sequenceAttachment",
+                    attachment.Attachment,
+                    "Attachment",
+                    False,
+                    None,
+                    False,
+                ),
+                ("subunit", "subunit", int, "integer", False, None, False),
+                (
+                    "sugar",
+                    "sugar",
+                    SubstanceNucleicAcidSubunitSugar,
+                    "SubstanceNucleicAcidSubunitSugar",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "threePrime",
+                    "threePrime",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -189,16 +276,28 @@ class SubstanceNucleicAcidSubunitLinkage(backboneelement.BackboneElement):
         """ Residues shall be captured as described in 5.3.6.8.3.
         Type `str`. """
 
-        super(SubstanceNucleicAcidSubunitLinkage, self).__init__(jsondict=jsondict, strict=strict)
+        super(SubstanceNucleicAcidSubunitLinkage, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(SubstanceNucleicAcidSubunitLinkage, self).elementProperties()
-        js.extend([
-            ("connectivity", "connectivity", str, "string", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", False, None, False),
-            ("name", "name", str, "string", False, None, False),
-            ("residueSite", "residueSite", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                ("connectivity", "connectivity", str, "string", False, None, False),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                ("name", "name", str, "string", False, None, False),
+                ("residueSite", "residueSite", str, "string", False, None, False),
+            ]
+        )
         return js
 
 
@@ -232,28 +331,39 @@ class SubstanceNucleicAcidSubunitSugar(backboneelement.BackboneElement):
         with the base sequences listed above.
         Type `str`. """
 
-        super(SubstanceNucleicAcidSubunitSugar, self).__init__(jsondict=jsondict, strict=strict)
+        super(SubstanceNucleicAcidSubunitSugar, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(SubstanceNucleicAcidSubunitSugar, self).elementProperties()
-        js.extend([
-            ("identifier", "identifier", identifier.Identifier, "Identifier", False, None, False),
-            ("name", "name", str, "string", False, None, False),
-            ("residueSite", "residueSite", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                ("name", "name", str, "string", False, None, False),
+                ("residueSite", "residueSite", str, "string", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import attachment
 except ImportError:
-    attachment = sys.modules[__package__ + '.attachment']
+    attachment = sys.modules[__package__ + ".attachment"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]

@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class CoverageEligibilityRequest(domainresource.DomainResource):
     """ CoverageEligibilityRequest resource.
@@ -90,31 +93,137 @@ class CoverageEligibilityRequest(domainresource.DomainResource):
         """ Supporting information.
         List of `CoverageEligibilityRequestSupportingInfo` items (represented as `dict` in JSON). """
 
-        super(CoverageEligibilityRequest, self).__init__(jsondict=jsondict, strict=strict)
+        super(CoverageEligibilityRequest, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(CoverageEligibilityRequest, self).elementProperties()
-        js.extend([
-            ("created", "created", fhirdate.FHIRDate, "dateTime", False, None, True),
-            ("enterer", "enterer", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("facility", "facility", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("insurance", "insurance", CoverageEligibilityRequestInsurance, "CoverageEligibilityRequestInsurance", True, None, False),
-            ("insurer", "insurer", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("item", "item", CoverageEligibilityRequestItem, "CoverageEligibilityRequestItem", True, None, False),
-            ("patient", "patient", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("priority", "priority", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("provider", "provider", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("purpose", "purpose", str, "code", True, None, True),
-            ("servicedDate", "servicedDate", fhirdate.FHIRDate, "date", False, "serviced", False),
-            ("servicedPeriod", "servicedPeriod", period.Period, "Period", False, "serviced", False),
-            ("status", "status", str, "code", False, None, True),
-            ("supportingInfo", "supportingInfo", CoverageEligibilityRequestSupportingInfo, "CoverageEligibilityRequestSupportingInfo", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "created",
+                    "created",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "enterer",
+                    "enterer",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "facility",
+                    "facility",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "insurance",
+                    "insurance",
+                    CoverageEligibilityRequestInsurance,
+                    "CoverageEligibilityRequestInsurance",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "insurer",
+                    "insurer",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "item",
+                    "item",
+                    CoverageEligibilityRequestItem,
+                    "CoverageEligibilityRequestItem",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "patient",
+                    "patient",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "priority",
+                    "priority",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "provider",
+                    "provider",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("purpose", "purpose", str, "code", True, None, True),
+                (
+                    "servicedDate",
+                    "servicedDate",
+                    fhirdate.FHIRDate,
+                    "date",
+                    False,
+                    "serviced",
+                    False,
+                ),
+                (
+                    "servicedPeriod",
+                    "servicedPeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "serviced",
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, True),
+                (
+                    "supportingInfo",
+                    "supportingInfo",
+                    CoverageEligibilityRequestSupportingInfo,
+                    "CoverageEligibilityRequestSupportingInfo",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class CoverageEligibilityRequestInsurance(backboneelement.BackboneElement):
     """ Patient insurance information.
@@ -145,15 +254,35 @@ class CoverageEligibilityRequestInsurance(backboneelement.BackboneElement):
         """ Applicable coverage.
         Type `bool`. """
 
-        super(CoverageEligibilityRequestInsurance, self).__init__(jsondict=jsondict, strict=strict)
+        super(CoverageEligibilityRequestInsurance, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(CoverageEligibilityRequestInsurance, self).elementProperties()
-        js.extend([
-            ("businessArrangement", "businessArrangement", str, "string", False, None, False),
-            ("coverage", "coverage", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("focal", "focal", bool, "boolean", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "businessArrangement",
+                    "businessArrangement",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "coverage",
+                    "coverage",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                ("focal", "focal", bool, "boolean", False, None, False),
+            ]
+        )
         return js
 
 
@@ -214,22 +343,98 @@ class CoverageEligibilityRequestItem(backboneelement.BackboneElement):
         """ Fee, charge or cost per item.
         Type `Money` (represented as `dict` in JSON). """
 
-        super(CoverageEligibilityRequestItem, self).__init__(jsondict=jsondict, strict=strict)
+        super(CoverageEligibilityRequestItem, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(CoverageEligibilityRequestItem, self).elementProperties()
-        js.extend([
-            ("category", "category", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("detail", "detail", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("diagnosis", "diagnosis", CoverageEligibilityRequestItemDiagnosis, "CoverageEligibilityRequestItemDiagnosis", True, None, False),
-            ("facility", "facility", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("modifier", "modifier", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("productOrService", "productOrService", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("provider", "provider", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("quantity", "quantity", quantity.Quantity, "Quantity", False, None, False),
-            ("supportingInfoSequence", "supportingInfoSequence", int, "positiveInt", True, None, False),
-            ("unitPrice", "unitPrice", money.Money, "Money", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "category",
+                    "category",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "detail",
+                    "detail",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "diagnosis",
+                    "diagnosis",
+                    CoverageEligibilityRequestItemDiagnosis,
+                    "CoverageEligibilityRequestItemDiagnosis",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "facility",
+                    "facility",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "modifier",
+                    "modifier",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "productOrService",
+                    "productOrService",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "provider",
+                    "provider",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "quantity",
+                    "quantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "supportingInfoSequence",
+                    "supportingInfoSequence",
+                    int,
+                    "positiveInt",
+                    True,
+                    None,
+                    False,
+                ),
+                ("unitPrice", "unitPrice", money.Money, "Money", False, None, False),
+            ]
+        )
         return js
 
 
@@ -257,14 +462,34 @@ class CoverageEligibilityRequestItemDiagnosis(backboneelement.BackboneElement):
         """ Nature of illness or problem.
         Type `FHIRReference` referencing `['Condition']` (represented as `dict` in JSON). """
 
-        super(CoverageEligibilityRequestItemDiagnosis, self).__init__(jsondict=jsondict, strict=strict)
+        super(CoverageEligibilityRequestItemDiagnosis, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(CoverageEligibilityRequestItemDiagnosis, self).elementProperties()
-        js.extend([
-            ("diagnosisCodeableConcept", "diagnosisCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "diagnosis", False),
-            ("diagnosisReference", "diagnosisReference", fhirreference.FHIRReference, "Reference", False, "diagnosis", False),
-        ])
+        js.extend(
+            [
+                (
+                    "diagnosisCodeableConcept",
+                    "diagnosisCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "diagnosis",
+                    False,
+                ),
+                (
+                    "diagnosisReference",
+                    "diagnosisReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "diagnosis",
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -297,44 +522,55 @@ class CoverageEligibilityRequestSupportingInfo(backboneelement.BackboneElement):
         """ Information instance identifier.
         Type `int`. """
 
-        super(CoverageEligibilityRequestSupportingInfo, self).__init__(jsondict=jsondict, strict=strict)
+        super(CoverageEligibilityRequestSupportingInfo, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(CoverageEligibilityRequestSupportingInfo, self).elementProperties()
-        js.extend([
-            ("appliesToAll", "appliesToAll", bool, "boolean", False, None, False),
-            ("information", "information", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("sequence", "sequence", int, "positiveInt", False, None, True),
-        ])
+        js.extend(
+            [
+                ("appliesToAll", "appliesToAll", bool, "boolean", False, None, False),
+                (
+                    "information",
+                    "information",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                ("sequence", "sequence", int, "positiveInt", False, None, True),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import money
 except ImportError:
-    money = sys.modules[__package__ + '.money']
+    money = sys.modules[__package__ + ".money"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]
 try:
     from . import quantity
 except ImportError:
-    quantity = sys.modules[__package__ + '.quantity']
+    quantity = sys.modules[__package__ + ".quantity"]

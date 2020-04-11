@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
+import sys
+
 from . import element
+
 
 class HumanName(element.Element):
     """ Name of a human - parts and usage.
@@ -58,20 +61,21 @@ class HumanName(element.Element):
 
     def elementProperties(self):
         js = super(HumanName, self).elementProperties()
-        js.extend([
-            ("family", "family", str, "string", False, None, False),
-            ("given", "given", str, "string", True, None, False),
-            ("period", "period", period.Period, "Period", False, None, False),
-            ("prefix", "prefix", str, "string", True, None, False),
-            ("suffix", "suffix", str, "string", True, None, False),
-            ("text", "text", str, "string", False, None, False),
-            ("use", "use", str, "code", False, None, False),
-        ])
+        js.extend(
+            [
+                ("family", "family", str, "string", False, None, False),
+                ("given", "given", str, "string", True, None, False),
+                ("period", "period", period.Period, "Period", False, None, False),
+                ("prefix", "prefix", str, "string", True, None, False),
+                ("suffix", "suffix", str, "string", True, None, False),
+                ("text", "text", str, "string", False, None, False),
+                ("use", "use", str, "code", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]

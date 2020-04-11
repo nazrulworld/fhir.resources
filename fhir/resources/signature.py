@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
+import sys
+
 from . import element
+
 
 class Signature(element.Element):
     """ A Signature - XML DigSig, JWS, Graphical image of signature, etc..
@@ -62,28 +65,45 @@ class Signature(element.Element):
 
     def elementProperties(self):
         js = super(Signature, self).elementProperties()
-        js.extend([
-            ("data", "data", str, "base64Binary", False, None, False),
-            ("onBehalfOf", "onBehalfOf", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("sigFormat", "sigFormat", str, "code", False, None, False),
-            ("targetFormat", "targetFormat", str, "code", False, None, False),
-            ("type", "type", coding.Coding, "Coding", True, None, True),
-            ("when", "when", fhirdate.FHIRDate, "instant", False, None, True),
-            ("who", "who", fhirreference.FHIRReference, "Reference", False, None, True),
-        ])
+        js.extend(
+            [
+                ("data", "data", str, "base64Binary", False, None, False),
+                (
+                    "onBehalfOf",
+                    "onBehalfOf",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("sigFormat", "sigFormat", str, "code", False, None, False),
+                ("targetFormat", "targetFormat", str, "code", False, None, False),
+                ("type", "type", coding.Coding, "Coding", True, None, True),
+                ("when", "when", fhirdate.FHIRDate, "instant", False, None, True),
+                (
+                    "who",
+                    "who",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import coding
 except ImportError:
-    coding = sys.modules[__package__ + '.coding']
+    coding = sys.modules[__package__ + ".coding"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]

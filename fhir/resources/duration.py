@@ -10,6 +10,7 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 
 from . import quantity
 
+
 class Duration(quantity.Quantity):
     """ A length of time.
     """
@@ -25,5 +26,3 @@ class Duration(quantity.Quantity):
         """
 
         super(Duration, self).__init__(jsondict=jsondict, strict=strict)
-
-

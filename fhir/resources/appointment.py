@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class Appointment(domainresource.DomainResource):
     """ A booking of a healthcare event among patient(s), practitioner(s), related
@@ -124,34 +127,162 @@ class Appointment(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(Appointment, self).elementProperties()
-        js.extend([
-            ("appointmentType", "appointmentType", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("basedOn", "basedOn", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("cancelationReason", "cancelationReason", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("comment", "comment", str, "string", False, None, False),
-            ("created", "created", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("description", "description", str, "string", False, None, False),
-            ("end", "end", fhirdate.FHIRDate, "instant", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("minutesDuration", "minutesDuration", int, "positiveInt", False, None, False),
-            ("participant", "participant", AppointmentParticipant, "AppointmentParticipant", True, None, True),
-            ("patientInstruction", "patientInstruction", str, "string", False, None, False),
-            ("priority", "priority", int, "unsignedInt", False, None, False),
-            ("reasonCode", "reasonCode", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("reasonReference", "reasonReference", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("requestedPeriod", "requestedPeriod", period.Period, "Period", True, None, False),
-            ("serviceCategory", "serviceCategory", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("serviceType", "serviceType", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("slot", "slot", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("specialty", "specialty", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("start", "start", fhirdate.FHIRDate, "instant", False, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("supportingInformation", "supportingInformation", fhirreference.FHIRReference, "Reference", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "appointmentType",
+                    "appointmentType",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "basedOn",
+                    "basedOn",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "cancelationReason",
+                    "cancelationReason",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("comment", "comment", str, "string", False, None, False),
+                (
+                    "created",
+                    "created",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                ("description", "description", str, "string", False, None, False),
+                ("end", "end", fhirdate.FHIRDate, "instant", False, None, False),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "minutesDuration",
+                    "minutesDuration",
+                    int,
+                    "positiveInt",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "participant",
+                    "participant",
+                    AppointmentParticipant,
+                    "AppointmentParticipant",
+                    True,
+                    None,
+                    True,
+                ),
+                (
+                    "patientInstruction",
+                    "patientInstruction",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                ("priority", "priority", int, "unsignedInt", False, None, False),
+                (
+                    "reasonCode",
+                    "reasonCode",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "reasonReference",
+                    "reasonReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "requestedPeriod",
+                    "requestedPeriod",
+                    period.Period,
+                    "Period",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "serviceCategory",
+                    "serviceCategory",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "serviceType",
+                    "serviceType",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "slot",
+                    "slot",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "specialty",
+                    "specialty",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                ("start", "start", fhirdate.FHIRDate, "instant", False, None, False),
+                ("status", "status", str, "code", False, None, True),
+                (
+                    "supportingInformation",
+                    "supportingInformation",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class AppointmentParticipant(backboneelement.BackboneElement):
     """ Participants involved in appointment.
@@ -193,34 +324,51 @@ class AppointmentParticipant(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(AppointmentParticipant, self).elementProperties()
-        js.extend([
-            ("actor", "actor", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("period", "period", period.Period, "Period", False, None, False),
-            ("required", "required", str, "code", False, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "actor",
+                    "actor",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("period", "period", period.Period, "Period", False, None, False),
+                ("required", "required", str, "code", False, None, False),
+                ("status", "status", str, "code", False, None, True),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]

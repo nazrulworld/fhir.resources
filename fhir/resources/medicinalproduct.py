@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class MedicinalProduct(domainresource.DomainResource):
     """ Detailed definition of a medicinal product, typically for uses other than
@@ -118,32 +121,184 @@ class MedicinalProduct(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(MedicinalProduct, self).elementProperties()
-        js.extend([
-            ("additionalMonitoringIndicator", "additionalMonitoringIndicator", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("attachedDocument", "attachedDocument", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("clinicalTrial", "clinicalTrial", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("combinedPharmaceuticalDoseForm", "combinedPharmaceuticalDoseForm", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("contact", "contact", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("crossReference", "crossReference", identifier.Identifier, "Identifier", True, None, False),
-            ("domain", "domain", coding.Coding, "Coding", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("legalStatusOfSupply", "legalStatusOfSupply", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("manufacturingBusinessOperation", "manufacturingBusinessOperation", MedicinalProductManufacturingBusinessOperation, "MedicinalProductManufacturingBusinessOperation", True, None, False),
-            ("marketingStatus", "marketingStatus", marketingstatus.MarketingStatus, "MarketingStatus", True, None, False),
-            ("masterFile", "masterFile", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("name", "name", MedicinalProductName, "MedicinalProductName", True, None, True),
-            ("packagedMedicinalProduct", "packagedMedicinalProduct", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("paediatricUseIndicator", "paediatricUseIndicator", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("pharmaceuticalProduct", "pharmaceuticalProduct", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("productClassification", "productClassification", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("specialDesignation", "specialDesignation", MedicinalProductSpecialDesignation, "MedicinalProductSpecialDesignation", True, None, False),
-            ("specialMeasures", "specialMeasures", str, "string", True, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "additionalMonitoringIndicator",
+                    "additionalMonitoringIndicator",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "attachedDocument",
+                    "attachedDocument",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "clinicalTrial",
+                    "clinicalTrial",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "combinedPharmaceuticalDoseForm",
+                    "combinedPharmaceuticalDoseForm",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "contact",
+                    "contact",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "crossReference",
+                    "crossReference",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                ("domain", "domain", coding.Coding, "Coding", False, None, False),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "legalStatusOfSupply",
+                    "legalStatusOfSupply",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "manufacturingBusinessOperation",
+                    "manufacturingBusinessOperation",
+                    MedicinalProductManufacturingBusinessOperation,
+                    "MedicinalProductManufacturingBusinessOperation",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "marketingStatus",
+                    "marketingStatus",
+                    marketingstatus.MarketingStatus,
+                    "MarketingStatus",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "masterFile",
+                    "masterFile",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "name",
+                    "name",
+                    MedicinalProductName,
+                    "MedicinalProductName",
+                    True,
+                    None,
+                    True,
+                ),
+                (
+                    "packagedMedicinalProduct",
+                    "packagedMedicinalProduct",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "paediatricUseIndicator",
+                    "paediatricUseIndicator",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "pharmaceuticalProduct",
+                    "pharmaceuticalProduct",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "productClassification",
+                    "productClassification",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "specialDesignation",
+                    "specialDesignation",
+                    MedicinalProductSpecialDesignation,
+                    "MedicinalProductSpecialDesignation",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "specialMeasures",
+                    "specialMeasures",
+                    str,
+                    "string",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class MedicinalProductManufacturingBusinessOperation(backboneelement.BackboneElement):
     """ An operation applied to the product, for manufacturing or adminsitrative
@@ -184,18 +339,72 @@ class MedicinalProductManufacturingBusinessOperation(backboneelement.BackboneEle
         """ A regulator which oversees the operation.
         Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
 
-        super(MedicinalProductManufacturingBusinessOperation, self).__init__(jsondict=jsondict, strict=strict)
+        super(MedicinalProductManufacturingBusinessOperation, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
-        js = super(MedicinalProductManufacturingBusinessOperation, self).elementProperties()
-        js.extend([
-            ("authorisationReferenceNumber", "authorisationReferenceNumber", identifier.Identifier, "Identifier", False, None, False),
-            ("confidentialityIndicator", "confidentialityIndicator", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("effectiveDate", "effectiveDate", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("manufacturer", "manufacturer", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("operationType", "operationType", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("regulator", "regulator", fhirreference.FHIRReference, "Reference", False, None, False),
-        ])
+        js = super(
+            MedicinalProductManufacturingBusinessOperation, self
+        ).elementProperties()
+        js.extend(
+            [
+                (
+                    "authorisationReferenceNumber",
+                    "authorisationReferenceNumber",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "confidentialityIndicator",
+                    "confidentialityIndicator",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "effectiveDate",
+                    "effectiveDate",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "manufacturer",
+                    "manufacturer",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "operationType",
+                    "operationType",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "regulator",
+                    "regulator",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -229,11 +438,29 @@ class MedicinalProductName(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(MedicinalProductName, self).elementProperties()
-        js.extend([
-            ("countryLanguage", "countryLanguage", MedicinalProductNameCountryLanguage, "MedicinalProductNameCountryLanguage", True, None, False),
-            ("namePart", "namePart", MedicinalProductNameNamePart, "MedicinalProductNameNamePart", True, None, False),
-            ("productName", "productName", str, "string", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "countryLanguage",
+                    "countryLanguage",
+                    MedicinalProductNameCountryLanguage,
+                    "MedicinalProductNameCountryLanguage",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "namePart",
+                    "namePart",
+                    MedicinalProductNameNamePart,
+                    "MedicinalProductNameNamePart",
+                    True,
+                    None,
+                    False,
+                ),
+                ("productName", "productName", str, "string", False, None, True),
+            ]
+        )
         return js
 
 
@@ -263,15 +490,43 @@ class MedicinalProductNameCountryLanguage(backboneelement.BackboneElement):
         """ Language code for this name.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(MedicinalProductNameCountryLanguage, self).__init__(jsondict=jsondict, strict=strict)
+        super(MedicinalProductNameCountryLanguage, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(MedicinalProductNameCountryLanguage, self).elementProperties()
-        js.extend([
-            ("country", "country", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("jurisdiction", "jurisdiction", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("language", "language", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "country",
+                    "country",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "jurisdiction",
+                    "jurisdiction",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "language",
+                    "language",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -297,14 +552,18 @@ class MedicinalProductNameNamePart(backboneelement.BackboneElement):
         """ Idenifying type for this part of the name (e.g. strength part).
         Type `Coding` (represented as `dict` in JSON). """
 
-        super(MedicinalProductNameNamePart, self).__init__(jsondict=jsondict, strict=strict)
+        super(MedicinalProductNameNamePart, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(MedicinalProductNameNamePart, self).elementProperties()
-        js.extend([
-            ("part", "part", str, "string", False, None, True),
-            ("type", "type", coding.Coding, "Coding", False, None, True),
-        ])
+        js.extend(
+            [
+                ("part", "part", str, "string", False, None, True),
+                ("type", "type", coding.Coding, "Coding", False, None, True),
+            ]
+        )
         return js
 
 
@@ -355,45 +614,104 @@ class MedicinalProductSpecialDesignation(backboneelement.BackboneElement):
         """ The type of special designation, e.g. orphan drug, minor use.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(MedicinalProductSpecialDesignation, self).__init__(jsondict=jsondict, strict=strict)
+        super(MedicinalProductSpecialDesignation, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(MedicinalProductSpecialDesignation, self).elementProperties()
-        js.extend([
-            ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("indicationCodeableConcept", "indicationCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "indication", False),
-            ("indicationReference", "indicationReference", fhirreference.FHIRReference, "Reference", False, "indication", False),
-            ("intendedUse", "intendedUse", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("species", "species", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("status", "status", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "indicationCodeableConcept",
+                    "indicationCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "indication",
+                    False,
+                ),
+                (
+                    "indicationReference",
+                    "indicationReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "indication",
+                    False,
+                ),
+                (
+                    "intendedUse",
+                    "intendedUse",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "species",
+                    "species",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "status",
+                    "status",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import coding
 except ImportError:
-    coding = sys.modules[__package__ + '.coding']
+    coding = sys.modules[__package__ + ".coding"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import marketingstatus
 except ImportError:
-    marketingstatus = sys.modules[__package__ + '.marketingstatus']
+    marketingstatus = sys.modules[__package__ + ".marketingstatus"]

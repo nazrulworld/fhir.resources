@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class ExpansionProfile(domainresource.DomainResource):
     """ Defines behaviour and contraints on the ValueSet Expansion operation.
@@ -126,35 +129,131 @@ class ExpansionProfile(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(ExpansionProfile, self).elementProperties()
-        js.extend([
-            ("activeOnly", "activeOnly", bool, "boolean", False, None, False),
-            ("contact", "contact", contactdetail.ContactDetail, "ContactDetail", True, None, False),
-            ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("description", "description", str, "markdown", False, None, False),
-            ("designation", "designation", ExpansionProfileDesignation, "ExpansionProfileDesignation", False, None, False),
-            ("displayLanguage", "displayLanguage", str, "code", False, None, False),
-            ("excludeNested", "excludeNested", bool, "boolean", False, None, False),
-            ("excludeNotForUI", "excludeNotForUI", bool, "boolean", False, None, False),
-            ("excludePostCoordinated", "excludePostCoordinated", bool, "boolean", False, None, False),
-            ("excludedSystem", "excludedSystem", ExpansionProfileExcludedSystem, "ExpansionProfileExcludedSystem", False, None, False),
-            ("experimental", "experimental", bool, "boolean", False, None, False),
-            ("fixedVersion", "fixedVersion", ExpansionProfileFixedVersion, "ExpansionProfileFixedVersion", True, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", False, None, False),
-            ("includeDefinition", "includeDefinition", bool, "boolean", False, None, False),
-            ("includeDesignations", "includeDesignations", bool, "boolean", False, None, False),
-            ("jurisdiction", "jurisdiction", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("limitedExpansion", "limitedExpansion", bool, "boolean", False, None, False),
-            ("name", "name", str, "string", False, None, False),
-            ("publisher", "publisher", str, "string", False, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("url", "url", str, "uri", False, None, False),
-            ("useContext", "useContext", usagecontext.UsageContext, "UsageContext", True, None, False),
-            ("version", "version", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                ("activeOnly", "activeOnly", bool, "boolean", False, None, False),
+                (
+                    "contact",
+                    "contact",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
+                ("description", "description", str, "markdown", False, None, False),
+                (
+                    "designation",
+                    "designation",
+                    ExpansionProfileDesignation,
+                    "ExpansionProfileDesignation",
+                    False,
+                    None,
+                    False,
+                ),
+                ("displayLanguage", "displayLanguage", str, "code", False, None, False),
+                ("excludeNested", "excludeNested", bool, "boolean", False, None, False),
+                (
+                    "excludeNotForUI",
+                    "excludeNotForUI",
+                    bool,
+                    "boolean",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "excludePostCoordinated",
+                    "excludePostCoordinated",
+                    bool,
+                    "boolean",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "excludedSystem",
+                    "excludedSystem",
+                    ExpansionProfileExcludedSystem,
+                    "ExpansionProfileExcludedSystem",
+                    False,
+                    None,
+                    False,
+                ),
+                ("experimental", "experimental", bool, "boolean", False, None, False),
+                (
+                    "fixedVersion",
+                    "fixedVersion",
+                    ExpansionProfileFixedVersion,
+                    "ExpansionProfileFixedVersion",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "includeDefinition",
+                    "includeDefinition",
+                    bool,
+                    "boolean",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "includeDesignations",
+                    "includeDesignations",
+                    bool,
+                    "boolean",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "jurisdiction",
+                    "jurisdiction",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "limitedExpansion",
+                    "limitedExpansion",
+                    bool,
+                    "boolean",
+                    False,
+                    None,
+                    False,
+                ),
+                ("name", "name", str, "string", False, None, False),
+                ("publisher", "publisher", str, "string", False, None, False),
+                ("status", "status", str, "code", False, None, True),
+                ("url", "url", str, "uri", False, None, False),
+                (
+                    "useContext",
+                    "useContext",
+                    usagecontext.UsageContext,
+                    "UsageContext",
+                    True,
+                    None,
+                    False,
+                ),
+                ("version", "version", str, "string", False, None, False),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class ExpansionProfileDesignation(backboneelement.BackboneElement):
     """ When the expansion profile imposes designation contraints.
@@ -181,14 +280,34 @@ class ExpansionProfileDesignation(backboneelement.BackboneElement):
         """ Designations to be included.
         Type `ExpansionProfileDesignationInclude` (represented as `dict` in JSON). """
 
-        super(ExpansionProfileDesignation, self).__init__(jsondict=jsondict, strict=strict)
+        super(ExpansionProfileDesignation, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ExpansionProfileDesignation, self).elementProperties()
-        js.extend([
-            ("exclude", "exclude", ExpansionProfileDesignationExclude, "ExpansionProfileDesignationExclude", False, None, False),
-            ("include", "include", ExpansionProfileDesignationInclude, "ExpansionProfileDesignationInclude", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "exclude",
+                    "exclude",
+                    ExpansionProfileDesignationExclude,
+                    "ExpansionProfileDesignationExclude",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "include",
+                    "include",
+                    ExpansionProfileDesignationInclude,
+                    "ExpansionProfileDesignationInclude",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -210,13 +329,25 @@ class ExpansionProfileDesignationExclude(backboneelement.BackboneElement):
         """ The designation to be excluded.
         List of `ExpansionProfileDesignationExcludeDesignation` items (represented as `dict` in JSON). """
 
-        super(ExpansionProfileDesignationExclude, self).__init__(jsondict=jsondict, strict=strict)
+        super(ExpansionProfileDesignationExclude, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ExpansionProfileDesignationExclude, self).elementProperties()
-        js.extend([
-            ("designation", "designation", ExpansionProfileDesignationExcludeDesignation, "ExpansionProfileDesignationExcludeDesignation", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "designation",
+                    "designation",
+                    ExpansionProfileDesignationExcludeDesignation,
+                    "ExpansionProfileDesignationExcludeDesignation",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -244,14 +375,20 @@ class ExpansionProfileDesignationExcludeDesignation(backboneelement.BackboneElem
         """ What kind of Designation to exclude.
         Type `Coding` (represented as `dict` in JSON). """
 
-        super(ExpansionProfileDesignationExcludeDesignation, self).__init__(jsondict=jsondict, strict=strict)
+        super(ExpansionProfileDesignationExcludeDesignation, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
-        js = super(ExpansionProfileDesignationExcludeDesignation, self).elementProperties()
-        js.extend([
-            ("language", "language", str, "code", False, None, False),
-            ("use", "use", coding.Coding, "Coding", False, None, False),
-        ])
+        js = super(
+            ExpansionProfileDesignationExcludeDesignation, self
+        ).elementProperties()
+        js.extend(
+            [
+                ("language", "language", str, "code", False, None, False),
+                ("use", "use", coding.Coding, "Coding", False, None, False),
+            ]
+        )
         return js
 
 
@@ -273,13 +410,25 @@ class ExpansionProfileDesignationInclude(backboneelement.BackboneElement):
         """ The designation to be included.
         List of `ExpansionProfileDesignationIncludeDesignation` items (represented as `dict` in JSON). """
 
-        super(ExpansionProfileDesignationInclude, self).__init__(jsondict=jsondict, strict=strict)
+        super(ExpansionProfileDesignationInclude, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ExpansionProfileDesignationInclude, self).elementProperties()
-        js.extend([
-            ("designation", "designation", ExpansionProfileDesignationIncludeDesignation, "ExpansionProfileDesignationIncludeDesignation", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "designation",
+                    "designation",
+                    ExpansionProfileDesignationIncludeDesignation,
+                    "ExpansionProfileDesignationIncludeDesignation",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -307,14 +456,20 @@ class ExpansionProfileDesignationIncludeDesignation(backboneelement.BackboneElem
         """ What kind of Designation to include.
         Type `Coding` (represented as `dict` in JSON). """
 
-        super(ExpansionProfileDesignationIncludeDesignation, self).__init__(jsondict=jsondict, strict=strict)
+        super(ExpansionProfileDesignationIncludeDesignation, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
-        js = super(ExpansionProfileDesignationIncludeDesignation, self).elementProperties()
-        js.extend([
-            ("language", "language", str, "code", False, None, False),
-            ("use", "use", coding.Coding, "Coding", False, None, False),
-        ])
+        js = super(
+            ExpansionProfileDesignationIncludeDesignation, self
+        ).elementProperties()
+        js.extend(
+            [
+                ("language", "language", str, "code", False, None, False),
+                ("use", "use", coding.Coding, "Coding", False, None, False),
+            ]
+        )
         return js
 
 
@@ -343,14 +498,18 @@ class ExpansionProfileExcludedSystem(backboneelement.BackboneElement):
         """ Specific version of the code system referred to.
         Type `str`. """
 
-        super(ExpansionProfileExcludedSystem, self).__init__(jsondict=jsondict, strict=strict)
+        super(ExpansionProfileExcludedSystem, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ExpansionProfileExcludedSystem, self).elementProperties()
-        js.extend([
-            ("system", "system", str, "uri", False, None, True),
-            ("version", "version", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                ("system", "system", str, "uri", False, None, True),
+                ("version", "version", str, "string", False, None, False),
+            ]
+        )
         return js
 
 
@@ -382,40 +541,43 @@ class ExpansionProfileFixedVersion(backboneelement.BackboneElement):
         """ Specific version of the code system referred to.
         Type `str`. """
 
-        super(ExpansionProfileFixedVersion, self).__init__(jsondict=jsondict, strict=strict)
+        super(ExpansionProfileFixedVersion, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(ExpansionProfileFixedVersion, self).elementProperties()
-        js.extend([
-            ("mode", "mode", str, "code", False, None, True),
-            ("system", "system", str, "uri", False, None, True),
-            ("version", "version", str, "string", False, None, True),
-        ])
+        js.extend(
+            [
+                ("mode", "mode", str, "code", False, None, True),
+                ("system", "system", str, "uri", False, None, True),
+                ("version", "version", str, "string", False, None, True),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import coding
 except ImportError:
-    coding = sys.modules[__package__ + '.coding']
+    coding = sys.modules[__package__ + ".coding"]
 try:
     from . import contactdetail
 except ImportError:
-    contactdetail = sys.modules[__package__ + '.contactdetail']
+    contactdetail = sys.modules[__package__ + ".contactdetail"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import usagecontext
 except ImportError:
-    usagecontext = sys.modules[__package__ + '.usagecontext']
+    usagecontext = sys.modules[__package__ + ".usagecontext"]

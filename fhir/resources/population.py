@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
+import sys
+
 from . import backboneelement
+
 
 class Population(backboneelement.BackboneElement):
     """ A definition of a set of people that apply to some clinically related
@@ -52,22 +55,55 @@ class Population(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(Population, self).elementProperties()
-        js.extend([
-            ("ageCodeableConcept", "ageCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "age", False),
-            ("ageRange", "ageRange", range.Range, "Range", False, "age", False),
-            ("gender", "gender", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("physiologicalCondition", "physiologicalCondition", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("race", "race", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "ageCodeableConcept",
+                    "ageCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "age",
+                    False,
+                ),
+                ("ageRange", "ageRange", range.Range, "Range", False, "age", False),
+                (
+                    "gender",
+                    "gender",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "physiologicalCondition",
+                    "physiologicalCondition",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "race",
+                    "race",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import range
 except ImportError:
-    range = sys.modules[__package__ + '.range']
+    range = sys.modules[__package__ + ".range"]

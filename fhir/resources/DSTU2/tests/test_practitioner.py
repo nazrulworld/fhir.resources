@@ -5,32 +5,33 @@
 #  2019, SMART Health IT.
 
 
-import os
 import io
-import unittest
 import json
+import os
+import unittest
+
 from . import practitioner
 from .fhirdate import FHIRDate
 
 
 class PractitionerTests(unittest.TestCase):
     def instantiate_from(self, filename):
-        datadir = os.environ.get('FHIR_UNITTEST_DATADIR') or ''
-        with io.open(os.path.join(datadir, filename), 'r', encoding='utf-8') as handle:
+        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
+        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
             js = json.load(handle)
             self.assertEqual("Practitioner", js["resourceType"])
         return practitioner.Practitioner(js)
-    
+
     def testPractitioner1(self):
         inst = self.instantiate_from("practitioner-example-f003-mv.json")
         self.assertIsNotNone(inst, "Must have instantiated a Practitioner instance")
         self.implPractitioner1(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Practitioner", js["resourceType"])
         inst2 = practitioner.Practitioner(js)
         self.implPractitioner1(inst2)
-    
+
     def implPractitioner1(self, inst):
         self.assertEqual(inst.address[0].city, "Amsterdam")
         self.assertEqual(inst.address[0].country, "NLD")
@@ -41,7 +42,9 @@ class PractitionerTests(unittest.TestCase):
         self.assertEqual(inst.birthDate.as_json(), "1963-07-01")
         self.assertEqual(inst.communication[0].coding[0].code, "nl")
         self.assertEqual(inst.communication[0].coding[0].display, "Dutch")
-        self.assertEqual(inst.communication[0].coding[0].system, "urn:oid:2.16.840.1.113883.6.121")
+        self.assertEqual(
+            inst.communication[0].coding[0].system, "urn:oid:2.16.840.1.113883.6.121"
+        )
         self.assertEqual(inst.gender, "male")
         self.assertEqual(inst.id, "f003")
         self.assertEqual(inst.identifier[0].system, "urn:oid:2.16.528.1.1007.3.1")
@@ -56,11 +59,20 @@ class PractitionerTests(unittest.TestCase):
         self.assertEqual(inst.name.use, "official")
         self.assertEqual(inst.practitionerRole[0].role.coding[0].code, "01.000")
         self.assertEqual(inst.practitionerRole[0].role.coding[0].display, "Arts")
-        self.assertEqual(inst.practitionerRole[0].role.coding[0].system, "urn:oid:2.16.840.1.113883.2.4.15.111")
+        self.assertEqual(
+            inst.practitionerRole[0].role.coding[0].system,
+            "urn:oid:2.16.840.1.113883.2.4.15.111",
+        )
         self.assertEqual(inst.practitionerRole[0].role.text, "Care role")
         self.assertEqual(inst.practitionerRole[0].specialty[0].coding[0].code, "01.011")
-        self.assertEqual(inst.practitionerRole[0].specialty[0].coding[0].display, "Cardiothoracal surgery")
-        self.assertEqual(inst.practitionerRole[0].specialty[0].coding[0].system, "urn:oid:2.16.840.1.113883.2.4.15.111")
+        self.assertEqual(
+            inst.practitionerRole[0].specialty[0].coding[0].display,
+            "Cardiothoracal surgery",
+        )
+        self.assertEqual(
+            inst.practitionerRole[0].specialty[0].coding[0].system,
+            "urn:oid:2.16.840.1.113883.2.4.15.111",
+        )
         self.assertEqual(inst.practitionerRole[0].specialty[0].text, "specialization")
         self.assertEqual(inst.telecom[0].system, "phone")
         self.assertEqual(inst.telecom[0].use, "work")
@@ -72,17 +84,17 @@ class PractitionerTests(unittest.TestCase):
         self.assertEqual(inst.telecom[2].use, "work")
         self.assertEqual(inst.telecom[2].value, "0205662948")
         self.assertEqual(inst.text.status, "generated")
-    
+
     def testPractitioner2(self):
         inst = self.instantiate_from("practitioner-example-f004-rb.json")
         self.assertIsNotNone(inst, "Must have instantiated a Practitioner instance")
         self.implPractitioner2(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Practitioner", js["resourceType"])
         inst2 = practitioner.Practitioner(js)
         self.implPractitioner2(inst2)
-    
+
     def implPractitioner2(self, inst):
         self.assertEqual(inst.address[0].city, "Amsterdam")
         self.assertEqual(inst.address[0].country, "NLD")
@@ -93,7 +105,9 @@ class PractitionerTests(unittest.TestCase):
         self.assertEqual(inst.birthDate.as_json(), "1980-02-04")
         self.assertEqual(inst.communication[0].coding[0].code, "nl")
         self.assertEqual(inst.communication[0].coding[0].display, "Netherlands")
-        self.assertEqual(inst.communication[0].coding[0].system, "urn:oid:2.16.840.1.113883.6.121")
+        self.assertEqual(
+            inst.communication[0].coding[0].system, "urn:oid:2.16.840.1.113883.6.121"
+        )
         self.assertEqual(inst.communication[0].text, "Language")
         self.assertEqual(inst.gender, "male")
         self.assertEqual(inst.id, "f004")
@@ -109,11 +123,20 @@ class PractitionerTests(unittest.TestCase):
         self.assertEqual(inst.name.use, "official")
         self.assertEqual(inst.practitionerRole[0].role.coding[0].code, "01.000")
         self.assertEqual(inst.practitionerRole[0].role.coding[0].display, "Arts")
-        self.assertEqual(inst.practitionerRole[0].role.coding[0].system, "urn:oid:2.16.840.1.113883.2.4.15.111")
+        self.assertEqual(
+            inst.practitionerRole[0].role.coding[0].system,
+            "urn:oid:2.16.840.1.113883.2.4.15.111",
+        )
         self.assertEqual(inst.practitionerRole[0].role.text, "Care role")
         self.assertEqual(inst.practitionerRole[0].specialty[0].coding[0].code, "01.018")
-        self.assertEqual(inst.practitionerRole[0].specialty[0].coding[0].display, "Ear-, Nose and Throat")
-        self.assertEqual(inst.practitionerRole[0].specialty[0].coding[0].system, "urn:oid:2.16.840.1.113883.2.4.15.111")
+        self.assertEqual(
+            inst.practitionerRole[0].specialty[0].coding[0].display,
+            "Ear-, Nose and Throat",
+        )
+        self.assertEqual(
+            inst.practitionerRole[0].specialty[0].coding[0].system,
+            "urn:oid:2.16.840.1.113883.2.4.15.111",
+        )
         self.assertEqual(inst.practitionerRole[0].specialty[0].text, "specialization")
         self.assertEqual(inst.telecom[0].system, "phone")
         self.assertEqual(inst.telecom[0].use, "work")
@@ -125,17 +148,17 @@ class PractitionerTests(unittest.TestCase):
         self.assertEqual(inst.telecom[2].use, "work")
         self.assertEqual(inst.telecom[2].value, "0205664440")
         self.assertEqual(inst.text.status, "generated")
-    
+
     def testPractitioner3(self):
         inst = self.instantiate_from("practitioner-example-f007-sh.json")
         self.assertIsNotNone(inst, "Must have instantiated a Practitioner instance")
         self.implPractitioner3(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Practitioner", js["resourceType"])
         inst2 = practitioner.Practitioner(js)
         self.implPractitioner3(inst2)
-    
+
     def implPractitioner3(self, inst):
         self.assertEqual(inst.address[0].city, "Den Burg")
         self.assertEqual(inst.address[0].country, "NLD")
@@ -158,11 +181,19 @@ class PractitionerTests(unittest.TestCase):
         self.assertEqual(inst.name.use, "official")
         self.assertEqual(inst.practitionerRole[0].role.coding[0].code, "01.000")
         self.assertEqual(inst.practitionerRole[0].role.coding[0].display, "Arts")
-        self.assertEqual(inst.practitionerRole[0].role.coding[0].system, "urn:oid:2.16.840.1.113883.2.4.15.111")
+        self.assertEqual(
+            inst.practitionerRole[0].role.coding[0].system,
+            "urn:oid:2.16.840.1.113883.2.4.15.111",
+        )
         self.assertEqual(inst.practitionerRole[0].role.text, "Care role")
         self.assertEqual(inst.practitionerRole[0].specialty[0].coding[0].code, "01.015")
-        self.assertEqual(inst.practitionerRole[0].specialty[0].coding[0].display, "Physician")
-        self.assertEqual(inst.practitionerRole[0].specialty[0].coding[0].system, "urn:oid:2.16.840.1.113883.2.4.15.111")
+        self.assertEqual(
+            inst.practitionerRole[0].specialty[0].coding[0].display, "Physician"
+        )
+        self.assertEqual(
+            inst.practitionerRole[0].specialty[0].coding[0].system,
+            "urn:oid:2.16.840.1.113883.2.4.15.111",
+        )
         self.assertEqual(inst.practitionerRole[0].specialty[0].text, "specialization")
         self.assertEqual(inst.telecom[0].system, "phone")
         self.assertEqual(inst.telecom[0].use, "work")
@@ -174,17 +205,17 @@ class PractitionerTests(unittest.TestCase):
         self.assertEqual(inst.telecom[2].use, "work")
         self.assertEqual(inst.telecom[2].value, "0205669283")
         self.assertEqual(inst.text.status, "generated")
-    
+
     def testPractitioner4(self):
         inst = self.instantiate_from("practitioner-example-f001-evdb.json")
         self.assertIsNotNone(inst, "Must have instantiated a Practitioner instance")
         self.implPractitioner4(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Practitioner", js["resourceType"])
         inst2 = practitioner.Practitioner(js)
         self.implPractitioner4(inst2)
-    
+
     def implPractitioner4(self, inst):
         self.assertEqual(inst.address[0].city, "Den Burg")
         self.assertEqual(inst.address[0].country, "NLD")
@@ -207,11 +238,20 @@ class PractitionerTests(unittest.TestCase):
         self.assertEqual(inst.name.use, "official")
         self.assertEqual(inst.practitionerRole[0].role.coding[0].code, "01.000")
         self.assertEqual(inst.practitionerRole[0].role.coding[0].display, "Arts")
-        self.assertEqual(inst.practitionerRole[0].role.coding[0].system, "urn:oid:2.16.840.1.113883.2.4.15.111")
+        self.assertEqual(
+            inst.practitionerRole[0].role.coding[0].system,
+            "urn:oid:2.16.840.1.113883.2.4.15.111",
+        )
         self.assertEqual(inst.practitionerRole[0].role.text, "Care role")
         self.assertEqual(inst.practitionerRole[0].specialty[0].coding[0].code, "01.018")
-        self.assertEqual(inst.practitionerRole[0].specialty[0].coding[0].display, "Ear-, Nose and Throat")
-        self.assertEqual(inst.practitionerRole[0].specialty[0].coding[0].system, "urn:oid:2.16.840.1.113883.2.4.15.111")
+        self.assertEqual(
+            inst.practitionerRole[0].specialty[0].coding[0].display,
+            "Ear-, Nose and Throat",
+        )
+        self.assertEqual(
+            inst.practitionerRole[0].specialty[0].coding[0].system,
+            "urn:oid:2.16.840.1.113883.2.4.15.111",
+        )
         self.assertEqual(inst.practitionerRole[0].specialty[0].text, "specialization")
         self.assertEqual(inst.telecom[0].system, "phone")
         self.assertEqual(inst.telecom[0].use, "work")
@@ -223,17 +263,17 @@ class PractitionerTests(unittest.TestCase):
         self.assertEqual(inst.telecom[2].use, "work")
         self.assertEqual(inst.telecom[2].value, "0205664440")
         self.assertEqual(inst.text.status, "generated")
-    
+
     def testPractitioner5(self):
         inst = self.instantiate_from("practitioner-example-f204-ce.json")
         self.assertIsNotNone(inst, "Must have instantiated a Practitioner instance")
         self.implPractitioner5(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Practitioner", js["resourceType"])
         inst2 = practitioner.Practitioner(js)
         self.implPractitioner5(inst2)
-    
+
     def implPractitioner5(self, inst):
         self.assertEqual(inst.address[0].city, "Den helder")
         self.assertEqual(inst.address[0].country, "NLD")
@@ -252,25 +292,34 @@ class PractitionerTests(unittest.TestCase):
         self.assertEqual(inst.name.use, "usual")
         self.assertEqual(inst.practitionerRole[0].role.coding[0].code, "224565004")
         self.assertEqual(inst.practitionerRole[0].role.coding[0].display, "Renal nurse")
-        self.assertEqual(inst.practitionerRole[0].role.coding[0].system, "http://snomed.info/sct")
-        self.assertEqual(inst.practitionerRole[0].specialty[0].coding[0].code, "9632001")
-        self.assertEqual(inst.practitionerRole[0].specialty[0].coding[0].display, "Nursing procedure")
-        self.assertEqual(inst.practitionerRole[0].specialty[0].coding[0].system, "http://snomed.info/sct")
+        self.assertEqual(
+            inst.practitionerRole[0].role.coding[0].system, "http://snomed.info/sct"
+        )
+        self.assertEqual(
+            inst.practitionerRole[0].specialty[0].coding[0].code, "9632001"
+        )
+        self.assertEqual(
+            inst.practitionerRole[0].specialty[0].coding[0].display, "Nursing procedure"
+        )
+        self.assertEqual(
+            inst.practitionerRole[0].specialty[0].coding[0].system,
+            "http://snomed.info/sct",
+        )
         self.assertEqual(inst.telecom[0].system, "phone")
         self.assertEqual(inst.telecom[0].use, "work")
         self.assertEqual(inst.telecom[0].value, "+31715262169")
         self.assertEqual(inst.text.status, "generated")
-    
+
     def testPractitioner6(self):
         inst = self.instantiate_from("practitioner-example-f202-lm.json")
         self.assertIsNotNone(inst, "Must have instantiated a Practitioner instance")
         self.implPractitioner6(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Practitioner", js["resourceType"])
         inst2 = practitioner.Practitioner(js)
         self.implPractitioner6(inst2)
-    
+
     def implPractitioner6(self, inst):
         self.assertTrue(inst.active)
         self.assertEqual(inst.address[0].city, "Den helder")
@@ -297,43 +346,56 @@ class PractitionerTests(unittest.TestCase):
         self.assertEqual(inst.name.text, "Luigi Maas")
         self.assertEqual(inst.name.use, "official")
         self.assertEqual(inst.practitionerRole[0].role.coding[0].code, "33526004")
-        self.assertEqual(inst.practitionerRole[0].role.coding[0].display, "Electronic laboratory reporting")
-        self.assertEqual(inst.practitionerRole[0].role.coding[0].system, "http://snomed.info/sct")
-        self.assertEqual(inst.practitionerRole[0].specialty[0].coding[0].code, "159285000")
-        self.assertEqual(inst.practitionerRole[0].specialty[0].coding[0].display, "Medical laboratory technician")
-        self.assertEqual(inst.practitionerRole[0].specialty[0].coding[0].system, "http://snomed.info/sct")
+        self.assertEqual(
+            inst.practitionerRole[0].role.coding[0].display,
+            "Electronic laboratory reporting",
+        )
+        self.assertEqual(
+            inst.practitionerRole[0].role.coding[0].system, "http://snomed.info/sct"
+        )
+        self.assertEqual(
+            inst.practitionerRole[0].specialty[0].coding[0].code, "159285000"
+        )
+        self.assertEqual(
+            inst.practitionerRole[0].specialty[0].coding[0].display,
+            "Medical laboratory technician",
+        )
+        self.assertEqual(
+            inst.practitionerRole[0].specialty[0].coding[0].system,
+            "http://snomed.info/sct",
+        )
         self.assertEqual(inst.telecom[0].system, "phone")
         self.assertEqual(inst.telecom[0].use, "work")
         self.assertEqual(inst.telecom[0].value, "+31715269111")
         self.assertEqual(inst.text.status, "generated")
-    
+
     def testPractitioner7(self):
         inst = self.instantiate_from("practitioner-example-xcda-author.json")
         self.assertIsNotNone(inst, "Must have instantiated a Practitioner instance")
         self.implPractitioner7(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Practitioner", js["resourceType"])
         inst2 = practitioner.Practitioner(js)
         self.implPractitioner7(inst2)
-    
+
     def implPractitioner7(self, inst):
         self.assertEqual(inst.id, "xcda-author")
         self.assertEqual(inst.name.family[0], "Hippocrates")
         self.assertEqual(inst.name.given[0], "Harold")
         self.assertEqual(inst.name.suffix[0], "MD")
         self.assertEqual(inst.text.status, "generated")
-    
+
     def testPractitioner8(self):
         inst = self.instantiate_from("practitioner-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a Practitioner instance")
         self.implPractitioner8(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Practitioner", js["resourceType"])
         inst2 = practitioner.Practitioner(js)
         self.implPractitioner8(inst2)
-    
+
     def implPractitioner8(self, inst):
         self.assertTrue(inst.active)
         self.assertEqual(inst.id, "example")
@@ -342,29 +404,39 @@ class PractitionerTests(unittest.TestCase):
         self.assertEqual(inst.name.family[0], "Careful")
         self.assertEqual(inst.name.given[0], "Adam")
         self.assertEqual(inst.name.prefix[0], "Dr")
-        self.assertEqual(inst.practitionerRole[0].period.end.date, FHIRDate("2012-03-31").date)
+        self.assertEqual(
+            inst.practitionerRole[0].period.end.date, FHIRDate("2012-03-31").date
+        )
         self.assertEqual(inst.practitionerRole[0].period.end.as_json(), "2012-03-31")
-        self.assertEqual(inst.practitionerRole[0].period.start.date, FHIRDate("2012-01-01").date)
+        self.assertEqual(
+            inst.practitionerRole[0].period.start.date, FHIRDate("2012-01-01").date
+        )
         self.assertEqual(inst.practitionerRole[0].period.start.as_json(), "2012-01-01")
         self.assertEqual(inst.practitionerRole[0].role.coding[0].code, "RP")
-        self.assertEqual(inst.practitionerRole[0].role.coding[0].system, "http://hl7.org/fhir/v2/0286")
+        self.assertEqual(
+            inst.practitionerRole[0].role.coding[0].system,
+            "http://hl7.org/fhir/v2/0286",
+        )
         self.assertEqual(inst.qualification[0].code.text, "Bachelor of Science")
-        self.assertEqual(inst.qualification[0].identifier[0].system, "http://example.org/UniversityIdentifier")
+        self.assertEqual(
+            inst.qualification[0].identifier[0].system,
+            "http://example.org/UniversityIdentifier",
+        )
         self.assertEqual(inst.qualification[0].identifier[0].value, "12345")
         self.assertEqual(inst.qualification[0].period.start.date, FHIRDate("1995").date)
         self.assertEqual(inst.qualification[0].period.start.as_json(), "1995")
         self.assertEqual(inst.text.status, "generated")
-    
+
     def testPractitioner9(self):
         inst = self.instantiate_from("practitioner-example-f005-al.json")
         self.assertIsNotNone(inst, "Must have instantiated a Practitioner instance")
         self.implPractitioner9(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Practitioner", js["resourceType"])
         inst2 = practitioner.Practitioner(js)
         self.implPractitioner9(inst2)
-    
+
     def implPractitioner9(self, inst):
         self.assertEqual(inst.address[0].city, "Amsterdam")
         self.assertEqual(inst.address[0].country, "NLD")
@@ -375,7 +447,9 @@ class PractitionerTests(unittest.TestCase):
         self.assertEqual(inst.birthDate.as_json(), "1959-03-11")
         self.assertEqual(inst.communication[0].coding[0].code, "fr")
         self.assertEqual(inst.communication[0].coding[0].display, "France")
-        self.assertEqual(inst.communication[0].coding[0].system, "urn:oid:2.16.840.1.113883.6.121")
+        self.assertEqual(
+            inst.communication[0].coding[0].system, "urn:oid:2.16.840.1.113883.6.121"
+        )
         self.assertEqual(inst.gender, "female")
         self.assertEqual(inst.id, "f005")
         self.assertEqual(inst.identifier[0].system, "urn:oid:2.16.528.1.1007.3.1")
@@ -391,11 +465,20 @@ class PractitionerTests(unittest.TestCase):
         self.assertEqual(inst.photo[0].contentType, "image/jpeg")
         self.assertEqual(inst.practitionerRole[0].role.coding[0].code, "01.000")
         self.assertEqual(inst.practitionerRole[0].role.coding[0].display, "Arts")
-        self.assertEqual(inst.practitionerRole[0].role.coding[0].system, "urn:oid:2.16.840.1.113883.2.4.15.111")
+        self.assertEqual(
+            inst.practitionerRole[0].role.coding[0].system,
+            "urn:oid:2.16.840.1.113883.2.4.15.111",
+        )
         self.assertEqual(inst.practitionerRole[0].role.text, "Care role")
         self.assertEqual(inst.practitionerRole[0].specialty[0].coding[0].code, "01.018")
-        self.assertEqual(inst.practitionerRole[0].specialty[0].coding[0].display, "Keel- neus- en oorarts")
-        self.assertEqual(inst.practitionerRole[0].specialty[0].coding[0].system, "urn:oid:2.16.840.1.113883.2.4.15.111")
+        self.assertEqual(
+            inst.practitionerRole[0].specialty[0].coding[0].display,
+            "Keel- neus- en oorarts",
+        )
+        self.assertEqual(
+            inst.practitionerRole[0].specialty[0].coding[0].system,
+            "urn:oid:2.16.840.1.113883.2.4.15.111",
+        )
         self.assertEqual(inst.practitionerRole[0].specialty[0].text, "specialization")
         self.assertEqual(inst.telecom[0].system, "phone")
         self.assertEqual(inst.telecom[0].use, "work")
@@ -407,20 +490,22 @@ class PractitionerTests(unittest.TestCase):
         self.assertEqual(inst.telecom[2].use, "work")
         self.assertEqual(inst.telecom[2].value, "0205668916")
         self.assertEqual(inst.text.status, "generated")
-    
+
     def testPractitioner10(self):
         inst = self.instantiate_from("practitioner-example-xcda1.json")
         self.assertIsNotNone(inst, "Must have instantiated a Practitioner instance")
         self.implPractitioner10(inst)
-        
+
         js = inst.as_json()
         self.assertEqual("Practitioner", js["resourceType"])
         inst2 = practitioner.Practitioner(js)
         self.implPractitioner10(inst2)
-    
+
     def implPractitioner10(self, inst):
         self.assertEqual(inst.id, "xcda1")
-        self.assertEqual(inst.identifier[0].system, "http://healthcare.example.org/identifiers/staff")
+        self.assertEqual(
+            inst.identifier[0].system, "http://healthcare.example.org/identifiers/staff"
+        )
         self.assertEqual(inst.identifier[0].use, "official")
         self.assertEqual(inst.identifier[0].value, "D234123")
         self.assertEqual(inst.name.family[0], "Dopplemeyer")
@@ -430,4 +515,3 @@ class PractitionerTests(unittest.TestCase):
         self.assertEqual(inst.telecom[0].system, "email")
         self.assertEqual(inst.telecom[0].value, "john.doe@healthcare.example.org")
         self.assertEqual(inst.text.status, "generated")
-

@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class MedicinalProductIngredient(domainresource.DomainResource):
     """ An ingredient of a manufactured item or pharmaceutical product.
@@ -48,22 +51,72 @@ class MedicinalProductIngredient(domainresource.DomainResource):
         """ The ingredient substance.
         Type `MedicinalProductIngredientSubstance` (represented as `dict` in JSON). """
 
-        super(MedicinalProductIngredient, self).__init__(jsondict=jsondict, strict=strict)
+        super(MedicinalProductIngredient, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(MedicinalProductIngredient, self).elementProperties()
-        js.extend([
-            ("allergenicIndicator", "allergenicIndicator", bool, "boolean", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", False, None, False),
-            ("manufacturer", "manufacturer", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("role", "role", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("specifiedSubstance", "specifiedSubstance", MedicinalProductIngredientSpecifiedSubstance, "MedicinalProductIngredientSpecifiedSubstance", True, None, False),
-            ("substance", "substance", MedicinalProductIngredientSubstance, "MedicinalProductIngredientSubstance", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "allergenicIndicator",
+                    "allergenicIndicator",
+                    bool,
+                    "boolean",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "manufacturer",
+                    "manufacturer",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "role",
+                    "role",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "specifiedSubstance",
+                    "specifiedSubstance",
+                    MedicinalProductIngredientSpecifiedSubstance,
+                    "MedicinalProductIngredientSpecifiedSubstance",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "substance",
+                    "substance",
+                    MedicinalProductIngredientSubstance,
+                    "MedicinalProductIngredientSubstance",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class MedicinalProductIngredientSpecifiedSubstance(backboneelement.BackboneElement):
     """ A specified substance that comprises this ingredient.
@@ -96,20 +149,60 @@ class MedicinalProductIngredientSpecifiedSubstance(backboneelement.BackboneEleme
         manufactured item or pharmaceutical product.
         List of `MedicinalProductIngredientSpecifiedSubstanceStrength` items (represented as `dict` in JSON). """
 
-        super(MedicinalProductIngredientSpecifiedSubstance, self).__init__(jsondict=jsondict, strict=strict)
+        super(MedicinalProductIngredientSpecifiedSubstance, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
-        js = super(MedicinalProductIngredientSpecifiedSubstance, self).elementProperties()
-        js.extend([
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("confidentiality", "confidentiality", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("group", "group", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("strength", "strength", MedicinalProductIngredientSpecifiedSubstanceStrength, "MedicinalProductIngredientSpecifiedSubstanceStrength", True, None, False),
-        ])
+        js = super(
+            MedicinalProductIngredientSpecifiedSubstance, self
+        ).elementProperties()
+        js.extend(
+            [
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "confidentiality",
+                    "confidentiality",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "group",
+                    "group",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "strength",
+                    "strength",
+                    MedicinalProductIngredientSpecifiedSubstanceStrength,
+                    "MedicinalProductIngredientSpecifiedSubstanceStrength",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-class MedicinalProductIngredientSpecifiedSubstanceStrength(backboneelement.BackboneElement):
+class MedicinalProductIngredientSpecifiedSubstanceStrength(
+    backboneelement.BackboneElement
+):
     """ Quantity of the substance or specified substance present in the
     manufactured item or pharmaceutical product.
     """
@@ -159,27 +252,93 @@ class MedicinalProductIngredientSpecifiedSubstanceStrength(backboneelement.Backb
         """ Strength expressed in terms of a reference substance.
         List of `MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength` items (represented as `dict` in JSON). """
 
-        super(MedicinalProductIngredientSpecifiedSubstanceStrength, self).__init__(jsondict=jsondict, strict=strict)
+        super(MedicinalProductIngredientSpecifiedSubstanceStrength, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
-        js = super(MedicinalProductIngredientSpecifiedSubstanceStrength, self).elementProperties()
-        js.extend([
-            ("concentration", "concentration", ratio.Ratio, "Ratio", False, None, False),
-            ("concentrationLowLimit", "concentrationLowLimit", ratio.Ratio, "Ratio", False, None, False),
-            ("country", "country", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("measurementPoint", "measurementPoint", str, "string", False, None, False),
-            ("presentation", "presentation", ratio.Ratio, "Ratio", False, None, True),
-            ("presentationLowLimit", "presentationLowLimit", ratio.Ratio, "Ratio", False, None, False),
-            ("referenceStrength", "referenceStrength", MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength, "MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength", True, None, False),
-        ])
+        js = super(
+            MedicinalProductIngredientSpecifiedSubstanceStrength, self
+        ).elementProperties()
+        js.extend(
+            [
+                (
+                    "concentration",
+                    "concentration",
+                    ratio.Ratio,
+                    "Ratio",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "concentrationLowLimit",
+                    "concentrationLowLimit",
+                    ratio.Ratio,
+                    "Ratio",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "country",
+                    "country",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "measurementPoint",
+                    "measurementPoint",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "presentation",
+                    "presentation",
+                    ratio.Ratio,
+                    "Ratio",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "presentationLowLimit",
+                    "presentationLowLimit",
+                    ratio.Ratio,
+                    "Ratio",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "referenceStrength",
+                    "referenceStrength",
+                    MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength,
+                    "MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-class MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength(backboneelement.BackboneElement):
+class MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength(
+    backboneelement.BackboneElement
+):
     """ Strength expressed in terms of a reference substance.
     """
 
-    resource_type = "MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength"
+    resource_type = (
+        "MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength"
+    )
 
     def __init__(self, jsondict=None, strict=True):
         """ Initialize all valid properties.
@@ -209,17 +368,55 @@ class MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength(back
         """ Relevant reference substance.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength, self).__init__(jsondict=jsondict, strict=strict)
+        super(
+            MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength, self
+        ).__init__(jsondict=jsondict, strict=strict)
 
     def elementProperties(self):
-        js = super(MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength, self).elementProperties()
-        js.extend([
-            ("country", "country", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("measurementPoint", "measurementPoint", str, "string", False, None, False),
-            ("strength", "strength", ratio.Ratio, "Ratio", False, None, True),
-            ("strengthLowLimit", "strengthLowLimit", ratio.Ratio, "Ratio", False, None, False),
-            ("substance", "substance", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js = super(
+            MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength, self
+        ).elementProperties()
+        js.extend(
+            [
+                (
+                    "country",
+                    "country",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "measurementPoint",
+                    "measurementPoint",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                ("strength", "strength", ratio.Ratio, "Ratio", False, None, True),
+                (
+                    "strengthLowLimit",
+                    "strengthLowLimit",
+                    ratio.Ratio,
+                    "Ratio",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "substance",
+                    "substance",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -246,31 +443,50 @@ class MedicinalProductIngredientSubstance(backboneelement.BackboneElement):
         manufactured item or pharmaceutical product.
         List of `MedicinalProductIngredientSpecifiedSubstanceStrength` items (represented as `dict` in JSON). """
 
-        super(MedicinalProductIngredientSubstance, self).__init__(jsondict=jsondict, strict=strict)
+        super(MedicinalProductIngredientSubstance, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(MedicinalProductIngredientSubstance, self).elementProperties()
-        js.extend([
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("strength", "strength", MedicinalProductIngredientSpecifiedSubstanceStrength, "MedicinalProductIngredientSpecifiedSubstanceStrength", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "strength",
+                    "strength",
+                    MedicinalProductIngredientSpecifiedSubstanceStrength,
+                    "MedicinalProductIngredientSpecifiedSubstanceStrength",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import ratio
 except ImportError:
-    ratio = sys.modules[__package__ + '.ratio']
+    ratio = sys.modules[__package__ + ".ratio"]

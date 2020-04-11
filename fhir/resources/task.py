@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class Task(domainresource.DomainResource):
     """ A task to be performed.
@@ -153,43 +156,235 @@ class Task(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(Task, self).elementProperties()
-        js.extend([
-            ("authoredOn", "authoredOn", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("basedOn", "basedOn", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("businessStatus", "businessStatus", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("description", "description", str, "string", False, None, False),
-            ("encounter", "encounter", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("executionPeriod", "executionPeriod", period.Period, "Period", False, None, False),
-            ("focus", "focus", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("for_fhir", "for", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("groupIdentifier", "groupIdentifier", identifier.Identifier, "Identifier", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("input", "input", TaskInput, "TaskInput", True, None, False),
-            ("instantiatesCanonical", "instantiatesCanonical", str, "canonical", False, None, False),
-            ("instantiatesUri", "instantiatesUri", str, "uri", False, None, False),
-            ("insurance", "insurance", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("intent", "intent", str, "code", False, None, True),
-            ("lastModified", "lastModified", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("location", "location", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("note", "note", annotation.Annotation, "Annotation", True, None, False),
-            ("output", "output", TaskOutput, "TaskOutput", True, None, False),
-            ("owner", "owner", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("partOf", "partOf", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("performerType", "performerType", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("priority", "priority", str, "code", False, None, False),
-            ("reasonCode", "reasonCode", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("reasonReference", "reasonReference", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("relevantHistory", "relevantHistory", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("requester", "requester", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("restriction", "restriction", TaskRestriction, "TaskRestriction", False, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("statusReason", "statusReason", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "authoredOn",
+                    "authoredOn",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "basedOn",
+                    "basedOn",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "businessStatus",
+                    "businessStatus",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("description", "description", str, "string", False, None, False),
+                (
+                    "encounter",
+                    "encounter",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "executionPeriod",
+                    "executionPeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "focus",
+                    "focus",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "for_fhir",
+                    "for",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "groupIdentifier",
+                    "groupIdentifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                ("input", "input", TaskInput, "TaskInput", True, None, False),
+                (
+                    "instantiatesCanonical",
+                    "instantiatesCanonical",
+                    str,
+                    "canonical",
+                    False,
+                    None,
+                    False,
+                ),
+                ("instantiatesUri", "instantiatesUri", str, "uri", False, None, False),
+                (
+                    "insurance",
+                    "insurance",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                ("intent", "intent", str, "code", False, None, True),
+                (
+                    "lastModified",
+                    "lastModified",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "location",
+                    "location",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "note",
+                    "note",
+                    annotation.Annotation,
+                    "Annotation",
+                    True,
+                    None,
+                    False,
+                ),
+                ("output", "output", TaskOutput, "TaskOutput", True, None, False),
+                (
+                    "owner",
+                    "owner",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "partOf",
+                    "partOf",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "performerType",
+                    "performerType",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                ("priority", "priority", str, "code", False, None, False),
+                (
+                    "reasonCode",
+                    "reasonCode",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "reasonReference",
+                    "reasonReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "relevantHistory",
+                    "relevantHistory",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "requester",
+                    "requester",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "restriction",
+                    "restriction",
+                    TaskRestriction,
+                    "TaskRestriction",
+                    False,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, True),
+                (
+                    "statusReason",
+                    "statusReason",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class TaskInput(backboneelement.BackboneElement):
     """ Information used to perform task.
@@ -415,59 +610,381 @@ class TaskInput(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(TaskInput, self).elementProperties()
-        js.extend([
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("valueAddress", "valueAddress", address.Address, "Address", False, "value", True),
-            ("valueAge", "valueAge", age.Age, "Age", False, "value", True),
-            ("valueAnnotation", "valueAnnotation", annotation.Annotation, "Annotation", False, "value", True),
-            ("valueAttachment", "valueAttachment", attachment.Attachment, "Attachment", False, "value", True),
-            ("valueBase64Binary", "valueBase64Binary", str, "base64Binary", False, "value", True),
-            ("valueBoolean", "valueBoolean", bool, "boolean", False, "value", True),
-            ("valueCanonical", "valueCanonical", str, "canonical", False, "value", True),
-            ("valueCode", "valueCode", str, "code", False, "value", True),
-            ("valueCodeableConcept", "valueCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "value", True),
-            ("valueCoding", "valueCoding", coding.Coding, "Coding", False, "value", True),
-            ("valueContactDetail", "valueContactDetail", contactdetail.ContactDetail, "ContactDetail", False, "value", True),
-            ("valueContactPoint", "valueContactPoint", contactpoint.ContactPoint, "ContactPoint", False, "value", True),
-            ("valueContributor", "valueContributor", contributor.Contributor, "Contributor", False, "value", True),
-            ("valueCount", "valueCount", count.Count, "Count", False, "value", True),
-            ("valueDataRequirement", "valueDataRequirement", datarequirement.DataRequirement, "DataRequirement", False, "value", True),
-            ("valueDate", "valueDate", fhirdate.FHIRDate, "date", False, "value", True),
-            ("valueDateTime", "valueDateTime", fhirdate.FHIRDate, "dateTime", False, "value", True),
-            ("valueDecimal", "valueDecimal", float, "decimal", False, "value", True),
-            ("valueDistance", "valueDistance", distance.Distance, "Distance", False, "value", True),
-            ("valueDosage", "valueDosage", dosage.Dosage, "Dosage", False, "value", True),
-            ("valueDuration", "valueDuration", duration.Duration, "Duration", False, "value", True),
-            ("valueExpression", "valueExpression", expression.Expression, "Expression", False, "value", True),
-            ("valueHumanName", "valueHumanName", humanname.HumanName, "HumanName", False, "value", True),
-            ("valueId", "valueId", str, "id", False, "value", True),
-            ("valueIdentifier", "valueIdentifier", identifier.Identifier, "Identifier", False, "value", True),
-            ("valueInstant", "valueInstant", fhirdate.FHIRDate, "instant", False, "value", True),
-            ("valueInteger", "valueInteger", int, "integer", False, "value", True),
-            ("valueMarkdown", "valueMarkdown", str, "markdown", False, "value", True),
-            ("valueMeta", "valueMeta", meta.Meta, "Meta", False, "value", True),
-            ("valueMoney", "valueMoney", money.Money, "Money", False, "value", True),
-            ("valueOid", "valueOid", str, "oid", False, "value", True),
-            ("valueParameterDefinition", "valueParameterDefinition", parameterdefinition.ParameterDefinition, "ParameterDefinition", False, "value", True),
-            ("valuePeriod", "valuePeriod", period.Period, "Period", False, "value", True),
-            ("valuePositiveInt", "valuePositiveInt", int, "positiveInt", False, "value", True),
-            ("valueQuantity", "valueQuantity", quantity.Quantity, "Quantity", False, "value", True),
-            ("valueRange", "valueRange", range.Range, "Range", False, "value", True),
-            ("valueRatio", "valueRatio", ratio.Ratio, "Ratio", False, "value", True),
-            ("valueReference", "valueReference", fhirreference.FHIRReference, "Reference", False, "value", True),
-            ("valueRelatedArtifact", "valueRelatedArtifact", relatedartifact.RelatedArtifact, "RelatedArtifact", False, "value", True),
-            ("valueSampledData", "valueSampledData", sampleddata.SampledData, "SampledData", False, "value", True),
-            ("valueSignature", "valueSignature", signature.Signature, "Signature", False, "value", True),
-            ("valueString", "valueString", str, "string", False, "value", True),
-            ("valueTime", "valueTime", fhirdate.FHIRDate, "time", False, "value", True),
-            ("valueTiming", "valueTiming", timing.Timing, "Timing", False, "value", True),
-            ("valueTriggerDefinition", "valueTriggerDefinition", triggerdefinition.TriggerDefinition, "TriggerDefinition", False, "value", True),
-            ("valueUnsignedInt", "valueUnsignedInt", int, "unsignedInt", False, "value", True),
-            ("valueUri", "valueUri", str, "uri", False, "value", True),
-            ("valueUrl", "valueUrl", str, "url", False, "value", True),
-            ("valueUsageContext", "valueUsageContext", usagecontext.UsageContext, "UsageContext", False, "value", True),
-            ("valueUuid", "valueUuid", str, "uuid", False, "value", True),
-        ])
+        js.extend(
+            [
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "valueAddress",
+                    "valueAddress",
+                    address.Address,
+                    "Address",
+                    False,
+                    "value",
+                    True,
+                ),
+                ("valueAge", "valueAge", age.Age, "Age", False, "value", True),
+                (
+                    "valueAnnotation",
+                    "valueAnnotation",
+                    annotation.Annotation,
+                    "Annotation",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueAttachment",
+                    "valueAttachment",
+                    attachment.Attachment,
+                    "Attachment",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueBase64Binary",
+                    "valueBase64Binary",
+                    str,
+                    "base64Binary",
+                    False,
+                    "value",
+                    True,
+                ),
+                ("valueBoolean", "valueBoolean", bool, "boolean", False, "value", True),
+                (
+                    "valueCanonical",
+                    "valueCanonical",
+                    str,
+                    "canonical",
+                    False,
+                    "value",
+                    True,
+                ),
+                ("valueCode", "valueCode", str, "code", False, "value", True),
+                (
+                    "valueCodeableConcept",
+                    "valueCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueCoding",
+                    "valueCoding",
+                    coding.Coding,
+                    "Coding",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueContactDetail",
+                    "valueContactDetail",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueContactPoint",
+                    "valueContactPoint",
+                    contactpoint.ContactPoint,
+                    "ContactPoint",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueContributor",
+                    "valueContributor",
+                    contributor.Contributor,
+                    "Contributor",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueCount",
+                    "valueCount",
+                    count.Count,
+                    "Count",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueDataRequirement",
+                    "valueDataRequirement",
+                    datarequirement.DataRequirement,
+                    "DataRequirement",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueDate",
+                    "valueDate",
+                    fhirdate.FHIRDate,
+                    "date",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueDateTime",
+                    "valueDateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueDecimal",
+                    "valueDecimal",
+                    float,
+                    "decimal",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueDistance",
+                    "valueDistance",
+                    distance.Distance,
+                    "Distance",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueDosage",
+                    "valueDosage",
+                    dosage.Dosage,
+                    "Dosage",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueDuration",
+                    "valueDuration",
+                    duration.Duration,
+                    "Duration",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueExpression",
+                    "valueExpression",
+                    expression.Expression,
+                    "Expression",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueHumanName",
+                    "valueHumanName",
+                    humanname.HumanName,
+                    "HumanName",
+                    False,
+                    "value",
+                    True,
+                ),
+                ("valueId", "valueId", str, "id", False, "value", True),
+                (
+                    "valueIdentifier",
+                    "valueIdentifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueInstant",
+                    "valueInstant",
+                    fhirdate.FHIRDate,
+                    "instant",
+                    False,
+                    "value",
+                    True,
+                ),
+                ("valueInteger", "valueInteger", int, "integer", False, "value", True),
+                (
+                    "valueMarkdown",
+                    "valueMarkdown",
+                    str,
+                    "markdown",
+                    False,
+                    "value",
+                    True,
+                ),
+                ("valueMeta", "valueMeta", meta.Meta, "Meta", False, "value", True),
+                (
+                    "valueMoney",
+                    "valueMoney",
+                    money.Money,
+                    "Money",
+                    False,
+                    "value",
+                    True,
+                ),
+                ("valueOid", "valueOid", str, "oid", False, "value", True),
+                (
+                    "valueParameterDefinition",
+                    "valueParameterDefinition",
+                    parameterdefinition.ParameterDefinition,
+                    "ParameterDefinition",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valuePeriod",
+                    "valuePeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valuePositiveInt",
+                    "valuePositiveInt",
+                    int,
+                    "positiveInt",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueQuantity",
+                    "valueQuantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueRange",
+                    "valueRange",
+                    range.Range,
+                    "Range",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueRatio",
+                    "valueRatio",
+                    ratio.Ratio,
+                    "Ratio",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueReference",
+                    "valueReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueRelatedArtifact",
+                    "valueRelatedArtifact",
+                    relatedartifact.RelatedArtifact,
+                    "RelatedArtifact",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueSampledData",
+                    "valueSampledData",
+                    sampleddata.SampledData,
+                    "SampledData",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueSignature",
+                    "valueSignature",
+                    signature.Signature,
+                    "Signature",
+                    False,
+                    "value",
+                    True,
+                ),
+                ("valueString", "valueString", str, "string", False, "value", True),
+                (
+                    "valueTime",
+                    "valueTime",
+                    fhirdate.FHIRDate,
+                    "time",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueTiming",
+                    "valueTiming",
+                    timing.Timing,
+                    "Timing",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueTriggerDefinition",
+                    "valueTriggerDefinition",
+                    triggerdefinition.TriggerDefinition,
+                    "TriggerDefinition",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueUnsignedInt",
+                    "valueUnsignedInt",
+                    int,
+                    "unsignedInt",
+                    False,
+                    "value",
+                    True,
+                ),
+                ("valueUri", "valueUri", str, "uri", False, "value", True),
+                ("valueUrl", "valueUrl", str, "url", False, "value", True),
+                (
+                    "valueUsageContext",
+                    "valueUsageContext",
+                    usagecontext.UsageContext,
+                    "UsageContext",
+                    False,
+                    "value",
+                    True,
+                ),
+                ("valueUuid", "valueUuid", str, "uuid", False, "value", True),
+            ]
+        )
         return js
 
 
@@ -695,59 +1212,381 @@ class TaskOutput(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(TaskOutput, self).elementProperties()
-        js.extend([
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("valueAddress", "valueAddress", address.Address, "Address", False, "value", True),
-            ("valueAge", "valueAge", age.Age, "Age", False, "value", True),
-            ("valueAnnotation", "valueAnnotation", annotation.Annotation, "Annotation", False, "value", True),
-            ("valueAttachment", "valueAttachment", attachment.Attachment, "Attachment", False, "value", True),
-            ("valueBase64Binary", "valueBase64Binary", str, "base64Binary", False, "value", True),
-            ("valueBoolean", "valueBoolean", bool, "boolean", False, "value", True),
-            ("valueCanonical", "valueCanonical", str, "canonical", False, "value", True),
-            ("valueCode", "valueCode", str, "code", False, "value", True),
-            ("valueCodeableConcept", "valueCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "value", True),
-            ("valueCoding", "valueCoding", coding.Coding, "Coding", False, "value", True),
-            ("valueContactDetail", "valueContactDetail", contactdetail.ContactDetail, "ContactDetail", False, "value", True),
-            ("valueContactPoint", "valueContactPoint", contactpoint.ContactPoint, "ContactPoint", False, "value", True),
-            ("valueContributor", "valueContributor", contributor.Contributor, "Contributor", False, "value", True),
-            ("valueCount", "valueCount", count.Count, "Count", False, "value", True),
-            ("valueDataRequirement", "valueDataRequirement", datarequirement.DataRequirement, "DataRequirement", False, "value", True),
-            ("valueDate", "valueDate", fhirdate.FHIRDate, "date", False, "value", True),
-            ("valueDateTime", "valueDateTime", fhirdate.FHIRDate, "dateTime", False, "value", True),
-            ("valueDecimal", "valueDecimal", float, "decimal", False, "value", True),
-            ("valueDistance", "valueDistance", distance.Distance, "Distance", False, "value", True),
-            ("valueDosage", "valueDosage", dosage.Dosage, "Dosage", False, "value", True),
-            ("valueDuration", "valueDuration", duration.Duration, "Duration", False, "value", True),
-            ("valueExpression", "valueExpression", expression.Expression, "Expression", False, "value", True),
-            ("valueHumanName", "valueHumanName", humanname.HumanName, "HumanName", False, "value", True),
-            ("valueId", "valueId", str, "id", False, "value", True),
-            ("valueIdentifier", "valueIdentifier", identifier.Identifier, "Identifier", False, "value", True),
-            ("valueInstant", "valueInstant", fhirdate.FHIRDate, "instant", False, "value", True),
-            ("valueInteger", "valueInteger", int, "integer", False, "value", True),
-            ("valueMarkdown", "valueMarkdown", str, "markdown", False, "value", True),
-            ("valueMeta", "valueMeta", meta.Meta, "Meta", False, "value", True),
-            ("valueMoney", "valueMoney", money.Money, "Money", False, "value", True),
-            ("valueOid", "valueOid", str, "oid", False, "value", True),
-            ("valueParameterDefinition", "valueParameterDefinition", parameterdefinition.ParameterDefinition, "ParameterDefinition", False, "value", True),
-            ("valuePeriod", "valuePeriod", period.Period, "Period", False, "value", True),
-            ("valuePositiveInt", "valuePositiveInt", int, "positiveInt", False, "value", True),
-            ("valueQuantity", "valueQuantity", quantity.Quantity, "Quantity", False, "value", True),
-            ("valueRange", "valueRange", range.Range, "Range", False, "value", True),
-            ("valueRatio", "valueRatio", ratio.Ratio, "Ratio", False, "value", True),
-            ("valueReference", "valueReference", fhirreference.FHIRReference, "Reference", False, "value", True),
-            ("valueRelatedArtifact", "valueRelatedArtifact", relatedartifact.RelatedArtifact, "RelatedArtifact", False, "value", True),
-            ("valueSampledData", "valueSampledData", sampleddata.SampledData, "SampledData", False, "value", True),
-            ("valueSignature", "valueSignature", signature.Signature, "Signature", False, "value", True),
-            ("valueString", "valueString", str, "string", False, "value", True),
-            ("valueTime", "valueTime", fhirdate.FHIRDate, "time", False, "value", True),
-            ("valueTiming", "valueTiming", timing.Timing, "Timing", False, "value", True),
-            ("valueTriggerDefinition", "valueTriggerDefinition", triggerdefinition.TriggerDefinition, "TriggerDefinition", False, "value", True),
-            ("valueUnsignedInt", "valueUnsignedInt", int, "unsignedInt", False, "value", True),
-            ("valueUri", "valueUri", str, "uri", False, "value", True),
-            ("valueUrl", "valueUrl", str, "url", False, "value", True),
-            ("valueUsageContext", "valueUsageContext", usagecontext.UsageContext, "UsageContext", False, "value", True),
-            ("valueUuid", "valueUuid", str, "uuid", False, "value", True),
-        ])
+        js.extend(
+            [
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "valueAddress",
+                    "valueAddress",
+                    address.Address,
+                    "Address",
+                    False,
+                    "value",
+                    True,
+                ),
+                ("valueAge", "valueAge", age.Age, "Age", False, "value", True),
+                (
+                    "valueAnnotation",
+                    "valueAnnotation",
+                    annotation.Annotation,
+                    "Annotation",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueAttachment",
+                    "valueAttachment",
+                    attachment.Attachment,
+                    "Attachment",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueBase64Binary",
+                    "valueBase64Binary",
+                    str,
+                    "base64Binary",
+                    False,
+                    "value",
+                    True,
+                ),
+                ("valueBoolean", "valueBoolean", bool, "boolean", False, "value", True),
+                (
+                    "valueCanonical",
+                    "valueCanonical",
+                    str,
+                    "canonical",
+                    False,
+                    "value",
+                    True,
+                ),
+                ("valueCode", "valueCode", str, "code", False, "value", True),
+                (
+                    "valueCodeableConcept",
+                    "valueCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueCoding",
+                    "valueCoding",
+                    coding.Coding,
+                    "Coding",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueContactDetail",
+                    "valueContactDetail",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueContactPoint",
+                    "valueContactPoint",
+                    contactpoint.ContactPoint,
+                    "ContactPoint",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueContributor",
+                    "valueContributor",
+                    contributor.Contributor,
+                    "Contributor",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueCount",
+                    "valueCount",
+                    count.Count,
+                    "Count",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueDataRequirement",
+                    "valueDataRequirement",
+                    datarequirement.DataRequirement,
+                    "DataRequirement",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueDate",
+                    "valueDate",
+                    fhirdate.FHIRDate,
+                    "date",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueDateTime",
+                    "valueDateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueDecimal",
+                    "valueDecimal",
+                    float,
+                    "decimal",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueDistance",
+                    "valueDistance",
+                    distance.Distance,
+                    "Distance",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueDosage",
+                    "valueDosage",
+                    dosage.Dosage,
+                    "Dosage",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueDuration",
+                    "valueDuration",
+                    duration.Duration,
+                    "Duration",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueExpression",
+                    "valueExpression",
+                    expression.Expression,
+                    "Expression",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueHumanName",
+                    "valueHumanName",
+                    humanname.HumanName,
+                    "HumanName",
+                    False,
+                    "value",
+                    True,
+                ),
+                ("valueId", "valueId", str, "id", False, "value", True),
+                (
+                    "valueIdentifier",
+                    "valueIdentifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueInstant",
+                    "valueInstant",
+                    fhirdate.FHIRDate,
+                    "instant",
+                    False,
+                    "value",
+                    True,
+                ),
+                ("valueInteger", "valueInteger", int, "integer", False, "value", True),
+                (
+                    "valueMarkdown",
+                    "valueMarkdown",
+                    str,
+                    "markdown",
+                    False,
+                    "value",
+                    True,
+                ),
+                ("valueMeta", "valueMeta", meta.Meta, "Meta", False, "value", True),
+                (
+                    "valueMoney",
+                    "valueMoney",
+                    money.Money,
+                    "Money",
+                    False,
+                    "value",
+                    True,
+                ),
+                ("valueOid", "valueOid", str, "oid", False, "value", True),
+                (
+                    "valueParameterDefinition",
+                    "valueParameterDefinition",
+                    parameterdefinition.ParameterDefinition,
+                    "ParameterDefinition",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valuePeriod",
+                    "valuePeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valuePositiveInt",
+                    "valuePositiveInt",
+                    int,
+                    "positiveInt",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueQuantity",
+                    "valueQuantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueRange",
+                    "valueRange",
+                    range.Range,
+                    "Range",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueRatio",
+                    "valueRatio",
+                    ratio.Ratio,
+                    "Ratio",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueReference",
+                    "valueReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueRelatedArtifact",
+                    "valueRelatedArtifact",
+                    relatedartifact.RelatedArtifact,
+                    "RelatedArtifact",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueSampledData",
+                    "valueSampledData",
+                    sampleddata.SampledData,
+                    "SampledData",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueSignature",
+                    "valueSignature",
+                    signature.Signature,
+                    "Signature",
+                    False,
+                    "value",
+                    True,
+                ),
+                ("valueString", "valueString", str, "string", False, "value", True),
+                (
+                    "valueTime",
+                    "valueTime",
+                    fhirdate.FHIRDate,
+                    "time",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueTiming",
+                    "valueTiming",
+                    timing.Timing,
+                    "Timing",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueTriggerDefinition",
+                    "valueTriggerDefinition",
+                    triggerdefinition.TriggerDefinition,
+                    "TriggerDefinition",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueUnsignedInt",
+                    "valueUnsignedInt",
+                    int,
+                    "unsignedInt",
+                    False,
+                    "value",
+                    True,
+                ),
+                ("valueUri", "valueUri", str, "uri", False, "value", True),
+                ("valueUrl", "valueUrl", str, "url", False, "value", True),
+                (
+                    "valueUsageContext",
+                    "valueUsageContext",
+                    usagecontext.UsageContext,
+                    "UsageContext",
+                    False,
+                    "value",
+                    True,
+                ),
+                ("valueUuid", "valueUuid", str, "uuid", False, "value", True),
+            ]
+        )
         return js
 
 
@@ -785,140 +1624,149 @@ class TaskRestriction(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(TaskRestriction, self).elementProperties()
-        js.extend([
-            ("period", "period", period.Period, "Period", False, None, False),
-            ("recipient", "recipient", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("repetitions", "repetitions", int, "positiveInt", False, None, False),
-        ])
+        js.extend(
+            [
+                ("period", "period", period.Period, "Period", False, None, False),
+                (
+                    "recipient",
+                    "recipient",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                ("repetitions", "repetitions", int, "positiveInt", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import address
 except ImportError:
-    address = sys.modules[__package__ + '.address']
+    address = sys.modules[__package__ + ".address"]
 try:
     from . import age
 except ImportError:
-    age = sys.modules[__package__ + '.age']
+    age = sys.modules[__package__ + ".age"]
 try:
     from . import annotation
 except ImportError:
-    annotation = sys.modules[__package__ + '.annotation']
+    annotation = sys.modules[__package__ + ".annotation"]
 try:
     from . import attachment
 except ImportError:
-    attachment = sys.modules[__package__ + '.attachment']
+    attachment = sys.modules[__package__ + ".attachment"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import coding
 except ImportError:
-    coding = sys.modules[__package__ + '.coding']
+    coding = sys.modules[__package__ + ".coding"]
 try:
     from . import contactdetail
 except ImportError:
-    contactdetail = sys.modules[__package__ + '.contactdetail']
+    contactdetail = sys.modules[__package__ + ".contactdetail"]
 try:
     from . import contactpoint
 except ImportError:
-    contactpoint = sys.modules[__package__ + '.contactpoint']
+    contactpoint = sys.modules[__package__ + ".contactpoint"]
 try:
     from . import contributor
 except ImportError:
-    contributor = sys.modules[__package__ + '.contributor']
+    contributor = sys.modules[__package__ + ".contributor"]
 try:
     from . import count
 except ImportError:
-    count = sys.modules[__package__ + '.count']
+    count = sys.modules[__package__ + ".count"]
 try:
     from . import datarequirement
 except ImportError:
-    datarequirement = sys.modules[__package__ + '.datarequirement']
+    datarequirement = sys.modules[__package__ + ".datarequirement"]
 try:
     from . import distance
 except ImportError:
-    distance = sys.modules[__package__ + '.distance']
+    distance = sys.modules[__package__ + ".distance"]
 try:
     from . import dosage
 except ImportError:
-    dosage = sys.modules[__package__ + '.dosage']
+    dosage = sys.modules[__package__ + ".dosage"]
 try:
     from . import duration
 except ImportError:
-    duration = sys.modules[__package__ + '.duration']
+    duration = sys.modules[__package__ + ".duration"]
 try:
     from . import expression
 except ImportError:
-    expression = sys.modules[__package__ + '.expression']
+    expression = sys.modules[__package__ + ".expression"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import humanname
 except ImportError:
-    humanname = sys.modules[__package__ + '.humanname']
+    humanname = sys.modules[__package__ + ".humanname"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import meta
 except ImportError:
-    meta = sys.modules[__package__ + '.meta']
+    meta = sys.modules[__package__ + ".meta"]
 try:
     from . import money
 except ImportError:
-    money = sys.modules[__package__ + '.money']
+    money = sys.modules[__package__ + ".money"]
 try:
     from . import parameterdefinition
 except ImportError:
-    parameterdefinition = sys.modules[__package__ + '.parameterdefinition']
+    parameterdefinition = sys.modules[__package__ + ".parameterdefinition"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]
 try:
     from . import quantity
 except ImportError:
-    quantity = sys.modules[__package__ + '.quantity']
+    quantity = sys.modules[__package__ + ".quantity"]
 try:
     from . import range
 except ImportError:
-    range = sys.modules[__package__ + '.range']
+    range = sys.modules[__package__ + ".range"]
 try:
     from . import ratio
 except ImportError:
-    ratio = sys.modules[__package__ + '.ratio']
+    ratio = sys.modules[__package__ + ".ratio"]
 try:
     from . import relatedartifact
 except ImportError:
-    relatedartifact = sys.modules[__package__ + '.relatedartifact']
+    relatedartifact = sys.modules[__package__ + ".relatedartifact"]
 try:
     from . import sampleddata
 except ImportError:
-    sampleddata = sys.modules[__package__ + '.sampleddata']
+    sampleddata = sys.modules[__package__ + ".sampleddata"]
 try:
     from . import signature
 except ImportError:
-    signature = sys.modules[__package__ + '.signature']
+    signature = sys.modules[__package__ + ".signature"]
 try:
     from . import timing
 except ImportError:
-    timing = sys.modules[__package__ + '.timing']
+    timing = sys.modules[__package__ + ".timing"]
 try:
     from . import triggerdefinition
 except ImportError:
-    triggerdefinition = sys.modules[__package__ + '.triggerdefinition']
+    triggerdefinition = sys.modules[__package__ + ".triggerdefinition"]
 try:
     from . import usagecontext
 except ImportError:
-    usagecontext = sys.modules[__package__ + '.usagecontext']
+    usagecontext = sys.modules[__package__ + ".usagecontext"]

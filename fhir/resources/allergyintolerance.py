@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class AllergyIntolerance(domainresource.DomainResource):
     """ Allergy or Intolerance (generally: Risk of adverse reaction to a substance).
@@ -111,32 +114,152 @@ class AllergyIntolerance(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(AllergyIntolerance, self).elementProperties()
-        js.extend([
-            ("asserter", "asserter", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("category", "category", str, "code", True, None, False),
-            ("clinicalStatus", "clinicalStatus", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("criticality", "criticality", str, "code", False, None, False),
-            ("encounter", "encounter", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("lastOccurrence", "lastOccurrence", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("note", "note", annotation.Annotation, "Annotation", True, None, False),
-            ("onsetAge", "onsetAge", age.Age, "Age", False, "onset", False),
-            ("onsetDateTime", "onsetDateTime", fhirdate.FHIRDate, "dateTime", False, "onset", False),
-            ("onsetPeriod", "onsetPeriod", period.Period, "Period", False, "onset", False),
-            ("onsetRange", "onsetRange", range.Range, "Range", False, "onset", False),
-            ("onsetString", "onsetString", str, "string", False, "onset", False),
-            ("patient", "patient", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("reaction", "reaction", AllergyIntoleranceReaction, "AllergyIntoleranceReaction", True, None, False),
-            ("recordedDate", "recordedDate", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("recorder", "recorder", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("type", "type", str, "code", False, None, False),
-            ("verificationStatus", "verificationStatus", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "asserter",
+                    "asserter",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("category", "category", str, "code", True, None, False),
+                (
+                    "clinicalStatus",
+                    "clinicalStatus",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("criticality", "criticality", str, "code", False, None, False),
+                (
+                    "encounter",
+                    "encounter",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "lastOccurrence",
+                    "lastOccurrence",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "note",
+                    "note",
+                    annotation.Annotation,
+                    "Annotation",
+                    True,
+                    None,
+                    False,
+                ),
+                ("onsetAge", "onsetAge", age.Age, "Age", False, "onset", False),
+                (
+                    "onsetDateTime",
+                    "onsetDateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    "onset",
+                    False,
+                ),
+                (
+                    "onsetPeriod",
+                    "onsetPeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "onset",
+                    False,
+                ),
+                (
+                    "onsetRange",
+                    "onsetRange",
+                    range.Range,
+                    "Range",
+                    False,
+                    "onset",
+                    False,
+                ),
+                ("onsetString", "onsetString", str, "string", False, "onset", False),
+                (
+                    "patient",
+                    "patient",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "reaction",
+                    "reaction",
+                    AllergyIntoleranceReaction,
+                    "AllergyIntoleranceReaction",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "recordedDate",
+                    "recordedDate",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "recorder",
+                    "recorder",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("type", "type", str, "code", False, None, False),
+                (
+                    "verificationStatus",
+                    "verificationStatus",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class AllergyIntoleranceReaction(backboneelement.BackboneElement):
     """ Adverse Reaction Events linked to exposure to substance.
@@ -184,52 +307,87 @@ class AllergyIntoleranceReaction(backboneelement.BackboneElement):
         responsible for event.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(AllergyIntoleranceReaction, self).__init__(jsondict=jsondict, strict=strict)
+        super(AllergyIntoleranceReaction, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(AllergyIntoleranceReaction, self).elementProperties()
-        js.extend([
-            ("description", "description", str, "string", False, None, False),
-            ("exposureRoute", "exposureRoute", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("manifestation", "manifestation", codeableconcept.CodeableConcept, "CodeableConcept", True, None, True),
-            ("note", "note", annotation.Annotation, "Annotation", True, None, False),
-            ("onset", "onset", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("severity", "severity", str, "code", False, None, False),
-            ("substance", "substance", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                ("description", "description", str, "string", False, None, False),
+                (
+                    "exposureRoute",
+                    "exposureRoute",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "manifestation",
+                    "manifestation",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    True,
+                ),
+                (
+                    "note",
+                    "note",
+                    annotation.Annotation,
+                    "Annotation",
+                    True,
+                    None,
+                    False,
+                ),
+                ("onset", "onset", fhirdate.FHIRDate, "dateTime", False, None, False),
+                ("severity", "severity", str, "code", False, None, False),
+                (
+                    "substance",
+                    "substance",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import age
 except ImportError:
-    age = sys.modules[__package__ + '.age']
+    age = sys.modules[__package__ + ".age"]
 try:
     from . import annotation
 except ImportError:
-    annotation = sys.modules[__package__ + '.annotation']
+    annotation = sys.modules[__package__ + ".annotation"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]
 try:
     from . import range
 except ImportError:
-    range = sys.modules[__package__ + '.range']
+    range = sys.modules[__package__ + ".range"]

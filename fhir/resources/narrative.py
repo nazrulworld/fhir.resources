@@ -10,6 +10,7 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 
 from . import element
 
+
 class Narrative(element.Element):
     """ Human-readable summary of the resource (essential clinical and business
     information).
@@ -40,10 +41,10 @@ class Narrative(element.Element):
 
     def elementProperties(self):
         js = super(Narrative, self).elementProperties()
-        js.extend([
-            ("div", "div", str, "xhtml", False, None, True),
-            ("status", "status", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                ("div", "div", str, "xhtml", False, None, True),
+                ("status", "status", str, "code", False, None, True),
+            ]
+        )
         return js
-
-

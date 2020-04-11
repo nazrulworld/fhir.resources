@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class Device(domainresource.DomainResource):
     """ Item used in healthcare.
@@ -141,38 +144,190 @@ class Device(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(Device, self).elementProperties()
-        js.extend([
-            ("contact", "contact", contactpoint.ContactPoint, "ContactPoint", True, None, False),
-            ("definition", "definition", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("deviceName", "deviceName", DeviceDeviceName, "DeviceDeviceName", True, None, False),
-            ("distinctIdentifier", "distinctIdentifier", str, "string", False, None, False),
-            ("expirationDate", "expirationDate", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("location", "location", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("lotNumber", "lotNumber", str, "string", False, None, False),
-            ("manufactureDate", "manufactureDate", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("manufacturer", "manufacturer", str, "string", False, None, False),
-            ("modelNumber", "modelNumber", str, "string", False, None, False),
-            ("note", "note", annotation.Annotation, "Annotation", True, None, False),
-            ("owner", "owner", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("parent", "parent", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("partNumber", "partNumber", str, "string", False, None, False),
-            ("patient", "patient", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("property", "property", DeviceProperty, "DeviceProperty", True, None, False),
-            ("safety", "safety", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("serialNumber", "serialNumber", str, "string", False, None, False),
-            ("specialization", "specialization", DeviceSpecialization, "DeviceSpecialization", True, None, False),
-            ("status", "status", str, "code", False, None, False),
-            ("statusReason", "statusReason", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("udiCarrier", "udiCarrier", DeviceUdiCarrier, "DeviceUdiCarrier", True, None, False),
-            ("url", "url", str, "uri", False, None, False),
-            ("version", "version", DeviceVersion, "DeviceVersion", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "contact",
+                    "contact",
+                    contactpoint.ContactPoint,
+                    "ContactPoint",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "definition",
+                    "definition",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "deviceName",
+                    "deviceName",
+                    DeviceDeviceName,
+                    "DeviceDeviceName",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "distinctIdentifier",
+                    "distinctIdentifier",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "expirationDate",
+                    "expirationDate",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "location",
+                    "location",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("lotNumber", "lotNumber", str, "string", False, None, False),
+                (
+                    "manufactureDate",
+                    "manufactureDate",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                ("manufacturer", "manufacturer", str, "string", False, None, False),
+                ("modelNumber", "modelNumber", str, "string", False, None, False),
+                (
+                    "note",
+                    "note",
+                    annotation.Annotation,
+                    "Annotation",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "owner",
+                    "owner",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "parent",
+                    "parent",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("partNumber", "partNumber", str, "string", False, None, False),
+                (
+                    "patient",
+                    "patient",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "property",
+                    "property",
+                    DeviceProperty,
+                    "DeviceProperty",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "safety",
+                    "safety",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                ("serialNumber", "serialNumber", str, "string", False, None, False),
+                (
+                    "specialization",
+                    "specialization",
+                    DeviceSpecialization,
+                    "DeviceSpecialization",
+                    True,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, False),
+                (
+                    "statusReason",
+                    "statusReason",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "udiCarrier",
+                    "udiCarrier",
+                    DeviceUdiCarrier,
+                    "DeviceUdiCarrier",
+                    True,
+                    None,
+                    False,
+                ),
+                ("url", "url", str, "uri", False, None, False),
+                (
+                    "version",
+                    "version",
+                    DeviceVersion,
+                    "DeviceVersion",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class DeviceDeviceName(backboneelement.BackboneElement):
     """ The name of the device as given by the manufacturer.
@@ -206,10 +361,12 @@ class DeviceDeviceName(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(DeviceDeviceName, self).elementProperties()
-        js.extend([
-            ("name", "name", str, "string", False, None, True),
-            ("type", "type", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                ("name", "name", str, "string", False, None, True),
+                ("type", "type", str, "code", False, None, True),
+            ]
+        )
         return js
 
 
@@ -245,11 +402,37 @@ class DeviceProperty(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(DeviceProperty, self).elementProperties()
-        js.extend([
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("valueCode", "valueCode", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("valueQuantity", "valueQuantity", quantity.Quantity, "Quantity", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "valueCode",
+                    "valueCode",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "valueQuantity",
+                    "valueQuantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -280,10 +463,20 @@ class DeviceSpecialization(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(DeviceSpecialization, self).elementProperties()
-        js.extend([
-            ("systemType", "systemType", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("version", "version", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "systemType",
+                    "systemType",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                ("version", "version", str, "string", False, None, False),
+            ]
+        )
         return js
 
 
@@ -334,14 +527,24 @@ class DeviceUdiCarrier(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(DeviceUdiCarrier, self).elementProperties()
-        js.extend([
-            ("carrierAIDC", "carrierAIDC", str, "base64Binary", False, None, False),
-            ("carrierHRF", "carrierHRF", str, "string", False, None, False),
-            ("deviceIdentifier", "deviceIdentifier", str, "string", False, None, False),
-            ("entryType", "entryType", str, "code", False, None, False),
-            ("issuer", "issuer", str, "uri", False, None, False),
-            ("jurisdiction", "jurisdiction", str, "uri", False, None, False),
-        ])
+        js.extend(
+            [
+                ("carrierAIDC", "carrierAIDC", str, "base64Binary", False, None, False),
+                ("carrierHRF", "carrierHRF", str, "string", False, None, False),
+                (
+                    "deviceIdentifier",
+                    "deviceIdentifier",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                ("entryType", "entryType", str, "code", False, None, False),
+                ("issuer", "issuer", str, "uri", False, None, False),
+                ("jurisdiction", "jurisdiction", str, "uri", False, None, False),
+            ]
+        )
         return js
 
 
@@ -375,40 +578,57 @@ class DeviceVersion(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(DeviceVersion, self).elementProperties()
-        js.extend([
-            ("component", "component", identifier.Identifier, "Identifier", False, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("value", "value", str, "string", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "component",
+                    "component",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("value", "value", str, "string", False, None, True),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import annotation
 except ImportError:
-    annotation = sys.modules[__package__ + '.annotation']
+    annotation = sys.modules[__package__ + ".annotation"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import contactpoint
 except ImportError:
-    contactpoint = sys.modules[__package__ + '.contactpoint']
+    contactpoint = sys.modules[__package__ + ".contactpoint"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import quantity
 except ImportError:
-    quantity = sys.modules[__package__ + '.quantity']
+    quantity = sys.modules[__package__ + ".quantity"]

@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class InsurancePlan(domainresource.DomainResource):
     """ Details of a Health Insurance product/plan provided by an organization.
@@ -84,26 +87,106 @@ class InsurancePlan(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(InsurancePlan, self).elementProperties()
-        js.extend([
-            ("administeredBy", "administeredBy", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("alias", "alias", str, "string", True, None, False),
-            ("contact", "contact", InsurancePlanContact, "InsurancePlanContact", True, None, False),
-            ("coverage", "coverage", InsurancePlanCoverage, "InsurancePlanCoverage", True, None, False),
-            ("coverageArea", "coverageArea", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("endpoint", "endpoint", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("name", "name", str, "string", False, None, False),
-            ("network", "network", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("ownedBy", "ownedBy", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("period", "period", period.Period, "Period", False, None, False),
-            ("plan", "plan", InsurancePlanPlan, "InsurancePlanPlan", True, None, False),
-            ("status", "status", str, "code", False, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "administeredBy",
+                    "administeredBy",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("alias", "alias", str, "string", True, None, False),
+                (
+                    "contact",
+                    "contact",
+                    InsurancePlanContact,
+                    "InsurancePlanContact",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "coverage",
+                    "coverage",
+                    InsurancePlanCoverage,
+                    "InsurancePlanCoverage",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "coverageArea",
+                    "coverageArea",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "endpoint",
+                    "endpoint",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                ("name", "name", str, "string", False, None, False),
+                (
+                    "network",
+                    "network",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "ownedBy",
+                    "ownedBy",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("period", "period", period.Period, "Period", False, None, False),
+                (
+                    "plan",
+                    "plan",
+                    InsurancePlanPlan,
+                    "InsurancePlanPlan",
+                    True,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, False),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class InsurancePlanContact(backboneelement.BackboneElement):
     """ Contact for the product.
@@ -141,12 +224,30 @@ class InsurancePlanContact(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(InsurancePlanContact, self).elementProperties()
-        js.extend([
-            ("address", "address", address.Address, "Address", False, None, False),
-            ("name", "name", humanname.HumanName, "HumanName", False, None, False),
-            ("purpose", "purpose", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("telecom", "telecom", contactpoint.ContactPoint, "ContactPoint", True, None, False),
-        ])
+        js.extend(
+            [
+                ("address", "address", address.Address, "Address", False, None, False),
+                ("name", "name", humanname.HumanName, "HumanName", False, None, False),
+                (
+                    "purpose",
+                    "purpose",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "telecom",
+                    "telecom",
+                    contactpoint.ContactPoint,
+                    "ContactPoint",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -182,11 +283,37 @@ class InsurancePlanCoverage(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(InsurancePlanCoverage, self).elementProperties()
-        js.extend([
-            ("benefit", "benefit", InsurancePlanCoverageBenefit, "InsurancePlanCoverageBenefit", True, None, True),
-            ("network", "network", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "benefit",
+                    "benefit",
+                    InsurancePlanCoverageBenefit,
+                    "InsurancePlanCoverageBenefit",
+                    True,
+                    None,
+                    True,
+                ),
+                (
+                    "network",
+                    "network",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -218,15 +345,35 @@ class InsurancePlanCoverageBenefit(backboneelement.BackboneElement):
         """ Type of benefit.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(InsurancePlanCoverageBenefit, self).__init__(jsondict=jsondict, strict=strict)
+        super(InsurancePlanCoverageBenefit, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(InsurancePlanCoverageBenefit, self).elementProperties()
-        js.extend([
-            ("limit", "limit", InsurancePlanCoverageBenefitLimit, "InsurancePlanCoverageBenefitLimit", True, None, False),
-            ("requirement", "requirement", str, "string", False, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "limit",
+                    "limit",
+                    InsurancePlanCoverageBenefitLimit,
+                    "InsurancePlanCoverageBenefitLimit",
+                    True,
+                    None,
+                    False,
+                ),
+                ("requirement", "requirement", str, "string", False, None, False),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -254,14 +401,26 @@ class InsurancePlanCoverageBenefitLimit(backboneelement.BackboneElement):
         """ Maximum value allowed.
         Type `Quantity` (represented as `dict` in JSON). """
 
-        super(InsurancePlanCoverageBenefitLimit, self).__init__(jsondict=jsondict, strict=strict)
+        super(InsurancePlanCoverageBenefitLimit, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(InsurancePlanCoverageBenefitLimit, self).elementProperties()
-        js.extend([
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("value", "value", quantity.Quantity, "Quantity", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                ("value", "value", quantity.Quantity, "Quantity", False, None, False),
+            ]
+        )
         return js
 
 
@@ -309,14 +468,64 @@ class InsurancePlanPlan(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(InsurancePlanPlan, self).elementProperties()
-        js.extend([
-            ("coverageArea", "coverageArea", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("generalCost", "generalCost", InsurancePlanPlanGeneralCost, "InsurancePlanPlanGeneralCost", True, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("network", "network", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("specificCost", "specificCost", InsurancePlanPlanSpecificCost, "InsurancePlanPlanSpecificCost", True, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "coverageArea",
+                    "coverageArea",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "generalCost",
+                    "generalCost",
+                    InsurancePlanPlanGeneralCost,
+                    "InsurancePlanPlanGeneralCost",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "network",
+                    "network",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "specificCost",
+                    "specificCost",
+                    InsurancePlanPlanSpecificCost,
+                    "InsurancePlanPlanSpecificCost",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -352,16 +561,28 @@ class InsurancePlanPlanGeneralCost(backboneelement.BackboneElement):
         """ Type of cost.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(InsurancePlanPlanGeneralCost, self).__init__(jsondict=jsondict, strict=strict)
+        super(InsurancePlanPlanGeneralCost, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(InsurancePlanPlanGeneralCost, self).elementProperties()
-        js.extend([
-            ("comment", "comment", str, "string", False, None, False),
-            ("cost", "cost", money.Money, "Money", False, None, False),
-            ("groupSize", "groupSize", int, "positiveInt", False, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                ("comment", "comment", str, "string", False, None, False),
+                ("cost", "cost", money.Money, "Money", False, None, False),
+                ("groupSize", "groupSize", int, "positiveInt", False, None, False),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -389,14 +610,34 @@ class InsurancePlanPlanSpecificCost(backboneelement.BackboneElement):
         """ General category of benefit.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(InsurancePlanPlanSpecificCost, self).__init__(jsondict=jsondict, strict=strict)
+        super(InsurancePlanPlanSpecificCost, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(InsurancePlanPlanSpecificCost, self).elementProperties()
-        js.extend([
-            ("benefit", "benefit", InsurancePlanPlanSpecificCostBenefit, "InsurancePlanPlanSpecificCostBenefit", True, None, False),
-            ("category", "category", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "benefit",
+                    "benefit",
+                    InsurancePlanPlanSpecificCostBenefit,
+                    "InsurancePlanPlanSpecificCostBenefit",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "category",
+                    "category",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -424,14 +665,34 @@ class InsurancePlanPlanSpecificCostBenefit(backboneelement.BackboneElement):
         """ Type of specific benefit.
         Type `CodeableConcept` (represented as `dict` in JSON). """
 
-        super(InsurancePlanPlanSpecificCostBenefit, self).__init__(jsondict=jsondict, strict=strict)
+        super(InsurancePlanPlanSpecificCostBenefit, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(InsurancePlanPlanSpecificCostBenefit, self).elementProperties()
-        js.extend([
-            ("cost", "cost", InsurancePlanPlanSpecificCostBenefitCost, "InsurancePlanPlanSpecificCostBenefitCost", True, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "cost",
+                    "cost",
+                    InsurancePlanPlanSpecificCostBenefitCost,
+                    "InsurancePlanPlanSpecificCostBenefitCost",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -467,53 +728,80 @@ class InsurancePlanPlanSpecificCostBenefitCost(backboneelement.BackboneElement):
         """ The actual cost value.
         Type `Quantity` (represented as `dict` in JSON). """
 
-        super(InsurancePlanPlanSpecificCostBenefitCost, self).__init__(jsondict=jsondict, strict=strict)
+        super(InsurancePlanPlanSpecificCostBenefitCost, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(InsurancePlanPlanSpecificCostBenefitCost, self).elementProperties()
-        js.extend([
-            ("applicability", "applicability", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("qualifiers", "qualifiers", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("value", "value", quantity.Quantity, "Quantity", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "applicability",
+                    "applicability",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "qualifiers",
+                    "qualifiers",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                ("value", "value", quantity.Quantity, "Quantity", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import address
 except ImportError:
-    address = sys.modules[__package__ + '.address']
+    address = sys.modules[__package__ + ".address"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import contactpoint
 except ImportError:
-    contactpoint = sys.modules[__package__ + '.contactpoint']
+    contactpoint = sys.modules[__package__ + ".contactpoint"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import humanname
 except ImportError:
-    humanname = sys.modules[__package__ + '.humanname']
+    humanname = sys.modules[__package__ + ".humanname"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import money
 except ImportError:
-    money = sys.modules[__package__ + '.money']
+    money = sys.modules[__package__ + ".money"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]
 try:
     from . import quantity
 except ImportError:
-    quantity = sys.modules[__package__ + '.quantity']
+    quantity = sys.modules[__package__ + ".quantity"]

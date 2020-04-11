@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
+import sys
+
 from . import element
+
 
 class Signature(element.Element):
     """ A digital Signature - XML DigSig, JWT, Graphical image of signature, etc..
@@ -65,29 +68,54 @@ class Signature(element.Element):
 
     def elementProperties(self):
         js = super(Signature, self).elementProperties()
-        js.extend([
-            ("blob", "blob", str, "base64Binary", False, None, False),
-            ("contentType", "contentType", str, "code", False, None, False),
-            ("onBehalfOfReference", "onBehalfOfReference", fhirreference.FHIRReference, "Reference", False, "onBehalfOf", False),
-            ("onBehalfOfUri", "onBehalfOfUri", str, "uri", False, "onBehalfOf", False),
-            ("type", "type", coding.Coding, "Coding", True, None, True),
-            ("when", "when", fhirdate.FHIRDate, "instant", False, None, True),
-            ("whoReference", "whoReference", fhirreference.FHIRReference, "Reference", False, "who", True),
-            ("whoUri", "whoUri", str, "uri", False, "who", True),
-        ])
+        js.extend(
+            [
+                ("blob", "blob", str, "base64Binary", False, None, False),
+                ("contentType", "contentType", str, "code", False, None, False),
+                (
+                    "onBehalfOfReference",
+                    "onBehalfOfReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "onBehalfOf",
+                    False,
+                ),
+                (
+                    "onBehalfOfUri",
+                    "onBehalfOfUri",
+                    str,
+                    "uri",
+                    False,
+                    "onBehalfOf",
+                    False,
+                ),
+                ("type", "type", coding.Coding, "Coding", True, None, True),
+                ("when", "when", fhirdate.FHIRDate, "instant", False, None, True),
+                (
+                    "whoReference",
+                    "whoReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "who",
+                    True,
+                ),
+                ("whoUri", "whoUri", str, "uri", False, "who", True),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import coding
 except ImportError:
-    coding = sys.modules[__package__ + '.coding']
+    coding = sys.modules[__package__ + ".coding"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]

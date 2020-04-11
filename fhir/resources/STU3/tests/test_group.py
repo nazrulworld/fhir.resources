@@ -7,22 +7,23 @@ Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
 
-import os
-import pytest
 import io
-import unittest
 import json
+import os
+import unittest
 
-from .fixtures import force_bytes
+import pytest
+
 from .. import group
 from ..fhirdate import FHIRDate
+from .fixtures import force_bytes
 
 
 @pytest.mark.usefixtures("base_settings")
 class GroupTests(unittest.TestCase):
     def instantiate_from(self, filename):
-        datadir = os.environ.get('FHIR_UNITTEST_DATADIR') or ''
-        with io.open(os.path.join(datadir, filename), 'r', encoding='utf-8') as handle:
+        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
+        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
             js = json.load(handle)
             self.assertEqual("Group", js["resourceType"])
         return group.Group(js)
@@ -39,15 +40,28 @@ class GroupTests(unittest.TestCase):
 
     def implGroup1(self, inst):
         self.assertTrue(inst.actual)
-        self.assertEqual(force_bytes(inst.characteristic[0].code.text), force_bytes("gender"))
+        self.assertEqual(
+            force_bytes(inst.characteristic[0].code.text), force_bytes("gender")
+        )
         self.assertFalse(inst.characteristic[0].exclude)
-        self.assertEqual(force_bytes(inst.characteristic[0].valueCodeableConcept.text), force_bytes("mixed"))
-        self.assertEqual(force_bytes(inst.characteristic[1].code.text), force_bytes("owner"))
+        self.assertEqual(
+            force_bytes(inst.characteristic[0].valueCodeableConcept.text),
+            force_bytes("mixed"),
+        )
+        self.assertEqual(
+            force_bytes(inst.characteristic[1].code.text), force_bytes("owner")
+        )
         self.assertFalse(inst.characteristic[1].exclude)
-        self.assertEqual(force_bytes(inst.characteristic[1].valueCodeableConcept.text), force_bytes("John Smith"))
+        self.assertEqual(
+            force_bytes(inst.characteristic[1].valueCodeableConcept.text),
+            force_bytes("John Smith"),
+        )
         self.assertEqual(force_bytes(inst.code.text), force_bytes("Horse"))
         self.assertEqual(force_bytes(inst.id), force_bytes("101"))
-        self.assertEqual(force_bytes(inst.identifier[0].system), force_bytes("http://someveterinarianclinic.org/fhir/NamingSystem/herds"))
+        self.assertEqual(
+            force_bytes(inst.identifier[0].system),
+            force_bytes("http://someveterinarianclinic.org/fhir/NamingSystem/herds"),
+        )
         self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("12345"))
         self.assertEqual(force_bytes(inst.name), force_bytes("John's herd"))
         self.assertEqual(inst.quantity, 25)
@@ -78,4 +92,3 @@ class GroupTests(unittest.TestCase):
         self.assertEqual(inst.member[3].period.start.as_json(), "2015-08-06")
         self.assertEqual(force_bytes(inst.text.status), force_bytes("additional"))
         self.assertEqual(force_bytes(inst.type), force_bytes("person"))
-

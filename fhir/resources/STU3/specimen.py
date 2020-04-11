@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class Specimen(domainresource.DomainResource):
     """ Sample for analysis.
@@ -79,24 +82,112 @@ class Specimen(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(Specimen, self).elementProperties()
-        js.extend([
-            ("accessionIdentifier", "accessionIdentifier", identifier.Identifier, "Identifier", False, None, False),
-            ("collection", "collection", SpecimenCollection, "SpecimenCollection", False, None, False),
-            ("container", "container", SpecimenContainer, "SpecimenContainer", True, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("note", "note", annotation.Annotation, "Annotation", True, None, False),
-            ("parent", "parent", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("processing", "processing", SpecimenProcessing, "SpecimenProcessing", True, None, False),
-            ("receivedTime", "receivedTime", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("request", "request", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("status", "status", str, "code", False, None, False),
-            ("subject", "subject", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "accessionIdentifier",
+                    "accessionIdentifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "collection",
+                    "collection",
+                    SpecimenCollection,
+                    "SpecimenCollection",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "container",
+                    "container",
+                    SpecimenContainer,
+                    "SpecimenContainer",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "note",
+                    "note",
+                    annotation.Annotation,
+                    "Annotation",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "parent",
+                    "parent",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "processing",
+                    "processing",
+                    SpecimenProcessing,
+                    "SpecimenProcessing",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "receivedTime",
+                    "receivedTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "request",
+                    "request",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, False),
+                (
+                    "subject",
+                    "subject",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class SpecimenCollection(backboneelement.BackboneElement):
     """ Collection details.
@@ -142,14 +233,64 @@ class SpecimenCollection(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(SpecimenCollection, self).elementProperties()
-        js.extend([
-            ("bodySite", "bodySite", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("collectedDateTime", "collectedDateTime", fhirdate.FHIRDate, "dateTime", False, "collected", False),
-            ("collectedPeriod", "collectedPeriod", period.Period, "Period", False, "collected", False),
-            ("collector", "collector", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("method", "method", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("quantity", "quantity", quantity.Quantity, "Quantity", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "bodySite",
+                    "bodySite",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "collectedDateTime",
+                    "collectedDateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    "collected",
+                    False,
+                ),
+                (
+                    "collectedPeriod",
+                    "collectedPeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "collected",
+                    False,
+                ),
+                (
+                    "collector",
+                    "collector",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "method",
+                    "method",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "quantity",
+                    "quantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -202,15 +343,65 @@ class SpecimenContainer(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(SpecimenContainer, self).elementProperties()
-        js.extend([
-            ("additiveCodeableConcept", "additiveCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "additive", False),
-            ("additiveReference", "additiveReference", fhirreference.FHIRReference, "Reference", False, "additive", False),
-            ("capacity", "capacity", quantity.Quantity, "Quantity", False, None, False),
-            ("description", "description", str, "string", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("specimenQuantity", "specimenQuantity", quantity.Quantity, "Quantity", False, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "additiveCodeableConcept",
+                    "additiveCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "additive",
+                    False,
+                ),
+                (
+                    "additiveReference",
+                    "additiveReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "additive",
+                    False,
+                ),
+                (
+                    "capacity",
+                    "capacity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    None,
+                    False,
+                ),
+                ("description", "description", str, "string", False, None, False),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "specimenQuantity",
+                    "specimenQuantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -254,42 +445,75 @@ class SpecimenProcessing(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(SpecimenProcessing, self).elementProperties()
-        js.extend([
-            ("additive", "additive", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("description", "description", str, "string", False, None, False),
-            ("procedure", "procedure", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("timeDateTime", "timeDateTime", fhirdate.FHIRDate, "dateTime", False, "time", False),
-            ("timePeriod", "timePeriod", period.Period, "Period", False, "time", False),
-        ])
+        js.extend(
+            [
+                (
+                    "additive",
+                    "additive",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                ("description", "description", str, "string", False, None, False),
+                (
+                    "procedure",
+                    "procedure",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "timeDateTime",
+                    "timeDateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    "time",
+                    False,
+                ),
+                (
+                    "timePeriod",
+                    "timePeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "time",
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import annotation
 except ImportError:
-    annotation = sys.modules[__package__ + '.annotation']
+    annotation = sys.modules[__package__ + ".annotation"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]
 try:
     from . import quantity
 except ImportError:
-    quantity = sys.modules[__package__ + '.quantity']
+    quantity = sys.modules[__package__ + ".quantity"]

@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class SubstanceProtein(domainresource.DomainResource):
     """ A SubstanceProtein is defined as a single unit of a linear amino acid
@@ -70,16 +73,48 @@ class SubstanceProtein(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(SubstanceProtein, self).elementProperties()
-        js.extend([
-            ("disulfideLinkage", "disulfideLinkage", str, "string", True, None, False),
-            ("numberOfSubunits", "numberOfSubunits", int, "integer", False, None, False),
-            ("sequenceType", "sequenceType", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("subunit", "subunit", SubstanceProteinSubunit, "SubstanceProteinSubunit", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "disulfideLinkage",
+                    "disulfideLinkage",
+                    str,
+                    "string",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "numberOfSubunits",
+                    "numberOfSubunits",
+                    int,
+                    "integer",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "sequenceType",
+                    "sequenceType",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "subunit",
+                    "subunit",
+                    SubstanceProteinSubunit,
+                    "SubstanceProteinSubunit",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class SubstanceProteinSubunit(backboneelement.BackboneElement):
     """ This subclause refers to the description of each subunit constituting the
@@ -158,29 +193,70 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(SubstanceProteinSubunit, self).elementProperties()
-        js.extend([
-            ("cTerminalModification", "cTerminalModification", str, "string", False, None, False),
-            ("cTerminalModificationId", "cTerminalModificationId", identifier.Identifier, "Identifier", False, None, False),
-            ("length", "length", int, "integer", False, None, False),
-            ("nTerminalModification", "nTerminalModification", str, "string", False, None, False),
-            ("nTerminalModificationId", "nTerminalModificationId", identifier.Identifier, "Identifier", False, None, False),
-            ("sequence", "sequence", str, "string", False, None, False),
-            ("sequenceAttachment", "sequenceAttachment", attachment.Attachment, "Attachment", False, None, False),
-            ("subunit", "subunit", int, "integer", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "cTerminalModification",
+                    "cTerminalModification",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "cTerminalModificationId",
+                    "cTerminalModificationId",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                ("length", "length", int, "integer", False, None, False),
+                (
+                    "nTerminalModification",
+                    "nTerminalModification",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "nTerminalModificationId",
+                    "nTerminalModificationId",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                ("sequence", "sequence", str, "string", False, None, False),
+                (
+                    "sequenceAttachment",
+                    "sequenceAttachment",
+                    attachment.Attachment,
+                    "Attachment",
+                    False,
+                    None,
+                    False,
+                ),
+                ("subunit", "subunit", int, "integer", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import attachment
 except ImportError:
-    attachment = sys.modules[__package__ + '.attachment']
+    attachment = sys.modules[__package__ + ".attachment"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]

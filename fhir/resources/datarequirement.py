@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
+import sys
+
 from . import element
+
 
 class DataRequirement(element.Element):
     """ Describes a required data item.
@@ -70,17 +73,59 @@ class DataRequirement(element.Element):
 
     def elementProperties(self):
         js = super(DataRequirement, self).elementProperties()
-        js.extend([
-            ("codeFilter", "codeFilter", DataRequirementCodeFilter, "DataRequirementCodeFilter", True, None, False),
-            ("dateFilter", "dateFilter", DataRequirementDateFilter, "DataRequirementDateFilter", True, None, False),
-            ("limit", "limit", int, "positiveInt", False, None, False),
-            ("mustSupport", "mustSupport", str, "string", True, None, False),
-            ("profile", "profile", str, "canonical", True, None, False),
-            ("sort", "sort", DataRequirementSort, "DataRequirementSort", True, None, False),
-            ("subjectCodeableConcept", "subjectCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "subject", False),
-            ("subjectReference", "subjectReference", fhirreference.FHIRReference, "Reference", False, "subject", False),
-            ("type", "type", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "codeFilter",
+                    "codeFilter",
+                    DataRequirementCodeFilter,
+                    "DataRequirementCodeFilter",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "dateFilter",
+                    "dateFilter",
+                    DataRequirementDateFilter,
+                    "DataRequirementDateFilter",
+                    True,
+                    None,
+                    False,
+                ),
+                ("limit", "limit", int, "positiveInt", False, None, False),
+                ("mustSupport", "mustSupport", str, "string", True, None, False),
+                ("profile", "profile", str, "canonical", True, None, False),
+                (
+                    "sort",
+                    "sort",
+                    DataRequirementSort,
+                    "DataRequirementSort",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "subjectCodeableConcept",
+                    "subjectCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "subject",
+                    False,
+                ),
+                (
+                    "subjectReference",
+                    "subjectReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "subject",
+                    False,
+                ),
+                ("type", "type", str, "code", False, None, True),
+            ]
+        )
         return js
 
 
@@ -119,16 +164,20 @@ class DataRequirementCodeFilter(element.Element):
         """ Valueset for the filter.
         Type `str` referencing `['ValueSet']`. """
 
-        super(DataRequirementCodeFilter, self).__init__(jsondict=jsondict, strict=strict)
+        super(DataRequirementCodeFilter, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(DataRequirementCodeFilter, self).elementProperties()
-        js.extend([
-            ("code", "code", coding.Coding, "Coding", True, None, False),
-            ("path", "path", str, "string", False, None, False),
-            ("searchParam", "searchParam", str, "string", False, None, False),
-            ("valueSet", "valueSet", str, "canonical", False, None, False),
-        ])
+        js.extend(
+            [
+                ("code", "code", coding.Coding, "Coding", True, None, False),
+                ("path", "path", str, "string", False, None, False),
+                ("searchParam", "searchParam", str, "string", False, None, False),
+                ("valueSet", "valueSet", str, "canonical", False, None, False),
+            ]
+        )
         return js
 
 
@@ -170,17 +219,45 @@ class DataRequirementDateFilter(element.Element):
         """ The value of the filter, as a Period, DateTime, or Duration value.
         Type `Period` (represented as `dict` in JSON). """
 
-        super(DataRequirementDateFilter, self).__init__(jsondict=jsondict, strict=strict)
+        super(DataRequirementDateFilter, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(DataRequirementDateFilter, self).elementProperties()
-        js.extend([
-            ("path", "path", str, "string", False, None, False),
-            ("searchParam", "searchParam", str, "string", False, None, False),
-            ("valueDateTime", "valueDateTime", fhirdate.FHIRDate, "dateTime", False, "value", False),
-            ("valueDuration", "valueDuration", duration.Duration, "Duration", False, "value", False),
-            ("valuePeriod", "valuePeriod", period.Period, "Period", False, "value", False),
-        ])
+        js.extend(
+            [
+                ("path", "path", str, "string", False, None, False),
+                ("searchParam", "searchParam", str, "string", False, None, False),
+                (
+                    "valueDateTime",
+                    "valueDateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valueDuration",
+                    "valueDuration",
+                    duration.Duration,
+                    "Duration",
+                    False,
+                    "value",
+                    False,
+                ),
+                (
+                    "valuePeriod",
+                    "valuePeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    "value",
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -212,35 +289,36 @@ class DataRequirementSort(element.Element):
 
     def elementProperties(self):
         js = super(DataRequirementSort, self).elementProperties()
-        js.extend([
-            ("direction", "direction", str, "code", False, None, True),
-            ("path", "path", str, "string", False, None, True),
-        ])
+        js.extend(
+            [
+                ("direction", "direction", str, "code", False, None, True),
+                ("path", "path", str, "string", False, None, True),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import coding
 except ImportError:
-    coding = sys.modules[__package__ + '.coding']
+    coding = sys.modules[__package__ + ".coding"]
 try:
     from . import duration
 except ImportError:
-    duration = sys.modules[__package__ + '.duration']
+    duration = sys.modules[__package__ + ".duration"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]

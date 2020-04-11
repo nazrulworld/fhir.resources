@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
+import sys
+
 from . import element
+
 
 class CodeableConcept(element.Element):
     """ Concept - reference to a terminology or just  text.
@@ -39,15 +42,16 @@ class CodeableConcept(element.Element):
 
     def elementProperties(self):
         js = super(CodeableConcept, self).elementProperties()
-        js.extend([
-            ("coding", "coding", coding.Coding, "Coding", True, None, False),
-            ("text", "text", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                ("coding", "coding", coding.Coding, "Coding", True, None, False),
+                ("text", "text", str, "string", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import coding
 except ImportError:
-    coding = sys.modules[__package__ + '.coding']
+    coding = sys.modules[__package__ + ".coding"]

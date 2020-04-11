@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class TestScript(domainresource.DomainResource):
     """ Describes a set of tests.
@@ -131,36 +134,132 @@ class TestScript(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(TestScript, self).elementProperties()
-        js.extend([
-            ("contact", "contact", contactdetail.ContactDetail, "ContactDetail", True, None, False),
-            ("copyright", "copyright", str, "markdown", False, None, False),
-            ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("description", "description", str, "markdown", False, None, False),
-            ("destination", "destination", TestScriptDestination, "TestScriptDestination", True, None, False),
-            ("experimental", "experimental", bool, "boolean", False, None, False),
-            ("fixture", "fixture", TestScriptFixture, "TestScriptFixture", True, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", False, None, False),
-            ("jurisdiction", "jurisdiction", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("metadata", "metadata", TestScriptMetadata, "TestScriptMetadata", False, None, False),
-            ("name", "name", str, "string", False, None, True),
-            ("origin", "origin", TestScriptOrigin, "TestScriptOrigin", True, None, False),
-            ("profile", "profile", fhirreference.FHIRReference, "Reference", True, None, False),
-            ("publisher", "publisher", str, "string", False, None, False),
-            ("purpose", "purpose", str, "markdown", False, None, False),
-            ("setup", "setup", TestScriptSetup, "TestScriptSetup", False, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("teardown", "teardown", TestScriptTeardown, "TestScriptTeardown", False, None, False),
-            ("test", "test", TestScriptTest, "TestScriptTest", True, None, False),
-            ("title", "title", str, "string", False, None, False),
-            ("url", "url", str, "uri", False, None, True),
-            ("useContext", "useContext", usagecontext.UsageContext, "UsageContext", True, None, False),
-            ("variable", "variable", TestScriptVariable, "TestScriptVariable", True, None, False),
-            ("version", "version", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "contact",
+                    "contact",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                ("copyright", "copyright", str, "markdown", False, None, False),
+                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
+                ("description", "description", str, "markdown", False, None, False),
+                (
+                    "destination",
+                    "destination",
+                    TestScriptDestination,
+                    "TestScriptDestination",
+                    True,
+                    None,
+                    False,
+                ),
+                ("experimental", "experimental", bool, "boolean", False, None, False),
+                (
+                    "fixture",
+                    "fixture",
+                    TestScriptFixture,
+                    "TestScriptFixture",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "jurisdiction",
+                    "jurisdiction",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "metadata",
+                    "metadata",
+                    TestScriptMetadata,
+                    "TestScriptMetadata",
+                    False,
+                    None,
+                    False,
+                ),
+                ("name", "name", str, "string", False, None, True),
+                (
+                    "origin",
+                    "origin",
+                    TestScriptOrigin,
+                    "TestScriptOrigin",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "profile",
+                    "profile",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    True,
+                    None,
+                    False,
+                ),
+                ("publisher", "publisher", str, "string", False, None, False),
+                ("purpose", "purpose", str, "markdown", False, None, False),
+                (
+                    "setup",
+                    "setup",
+                    TestScriptSetup,
+                    "TestScriptSetup",
+                    False,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, True),
+                (
+                    "teardown",
+                    "teardown",
+                    TestScriptTeardown,
+                    "TestScriptTeardown",
+                    False,
+                    None,
+                    False,
+                ),
+                ("test", "test", TestScriptTest, "TestScriptTest", True, None, False),
+                ("title", "title", str, "string", False, None, False),
+                ("url", "url", str, "uri", False, None, True),
+                (
+                    "useContext",
+                    "useContext",
+                    usagecontext.UsageContext,
+                    "UsageContext",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "variable",
+                    "variable",
+                    TestScriptVariable,
+                    "TestScriptVariable",
+                    True,
+                    None,
+                    False,
+                ),
+                ("version", "version", str, "string", False, None, False),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class TestScriptDestination(backboneelement.BackboneElement):
     """ An abstract server representing a destination or receiver in a message
@@ -193,10 +292,12 @@ class TestScriptDestination(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(TestScriptDestination, self).elementProperties()
-        js.extend([
-            ("index", "index", int, "integer", False, None, True),
-            ("profile", "profile", coding.Coding, "Coding", False, None, True),
-        ])
+        js.extend(
+            [
+                ("index", "index", int, "integer", False, None, True),
+                ("profile", "profile", coding.Coding, "Coding", False, None, True),
+            ]
+        )
         return js
 
 
@@ -233,11 +334,21 @@ class TestScriptFixture(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(TestScriptFixture, self).elementProperties()
-        js.extend([
-            ("autocreate", "autocreate", bool, "boolean", False, None, True),
-            ("autodelete", "autodelete", bool, "boolean", False, None, True),
-            ("resource", "resource", fhirreference.FHIRReference, "Reference", False, None, False),
-        ])
+        js.extend(
+            [
+                ("autocreate", "autocreate", bool, "boolean", False, None, True),
+                ("autodelete", "autodelete", bool, "boolean", False, None, True),
+                (
+                    "resource",
+                    "resource",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -272,10 +383,28 @@ class TestScriptMetadata(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(TestScriptMetadata, self).elementProperties()
-        js.extend([
-            ("capability", "capability", TestScriptMetadataCapability, "TestScriptMetadataCapability", True, None, True),
-            ("link", "link", TestScriptMetadataLink, "TestScriptMetadataLink", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "capability",
+                    "capability",
+                    TestScriptMetadataCapability,
+                    "TestScriptMetadataCapability",
+                    True,
+                    None,
+                    True,
+                ),
+                (
+                    "link",
+                    "link",
+                    TestScriptMetadataLink,
+                    "TestScriptMetadataLink",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -325,19 +454,23 @@ class TestScriptMetadataCapability(backboneelement.BackboneElement):
         """ Are the capabilities validated?.
         Type `bool`. """
 
-        super(TestScriptMetadataCapability, self).__init__(jsondict=jsondict, strict=strict)
+        super(TestScriptMetadataCapability, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(TestScriptMetadataCapability, self).elementProperties()
-        js.extend([
-            ("capabilities", "capabilities", str, "canonical", False, None, True),
-            ("description", "description", str, "string", False, None, False),
-            ("destination", "destination", int, "integer", False, None, False),
-            ("link", "link", str, "uri", True, None, False),
-            ("origin", "origin", int, "integer", True, None, False),
-            ("required", "required", bool, "boolean", False, None, True),
-            ("validated", "validated", bool, "boolean", False, None, True),
-        ])
+        js.extend(
+            [
+                ("capabilities", "capabilities", str, "canonical", False, None, True),
+                ("description", "description", str, "string", False, None, False),
+                ("destination", "destination", int, "integer", False, None, False),
+                ("link", "link", str, "uri", True, None, False),
+                ("origin", "origin", int, "integer", True, None, False),
+                ("required", "required", bool, "boolean", False, None, True),
+                ("validated", "validated", bool, "boolean", False, None, True),
+            ]
+        )
         return js
 
 
@@ -369,10 +502,12 @@ class TestScriptMetadataLink(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(TestScriptMetadataLink, self).elementProperties()
-        js.extend([
-            ("description", "description", str, "string", False, None, False),
-            ("url", "url", str, "uri", False, None, True),
-        ])
+        js.extend(
+            [
+                ("description", "description", str, "string", False, None, False),
+                ("url", "url", str, "uri", False, None, True),
+            ]
+        )
         return js
 
 
@@ -405,10 +540,12 @@ class TestScriptOrigin(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(TestScriptOrigin, self).elementProperties()
-        js.extend([
-            ("index", "index", int, "integer", False, None, True),
-            ("profile", "profile", coding.Coding, "Coding", False, None, True),
-        ])
+        js.extend(
+            [
+                ("index", "index", int, "integer", False, None, True),
+                ("profile", "profile", coding.Coding, "Coding", False, None, True),
+            ]
+        )
         return js
 
 
@@ -434,9 +571,19 @@ class TestScriptSetup(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(TestScriptSetup, self).elementProperties()
-        js.extend([
-            ("action", "action", TestScriptSetupAction, "TestScriptSetupAction", True, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "action",
+                    "action",
+                    TestScriptSetupAction,
+                    "TestScriptSetupAction",
+                    True,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -468,10 +615,28 @@ class TestScriptSetupAction(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(TestScriptSetupAction, self).elementProperties()
-        js.extend([
-            ("assert_fhir", "assert", TestScriptSetupActionAssert, "TestScriptSetupActionAssert", False, None, False),
-            ("operation", "operation", TestScriptSetupActionOperation, "TestScriptSetupActionOperation", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "assert_fhir",
+                    "assert",
+                    TestScriptSetupActionAssert,
+                    "TestScriptSetupActionAssert",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "operation",
+                    "operation",
+                    TestScriptSetupActionOperation,
+                    "TestScriptSetupActionOperation",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -583,34 +748,78 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
         """ Will this assert produce a warning only on error?.
         Type `bool`. """
 
-        super(TestScriptSetupActionAssert, self).__init__(jsondict=jsondict, strict=strict)
+        super(TestScriptSetupActionAssert, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(TestScriptSetupActionAssert, self).elementProperties()
-        js.extend([
-            ("compareToSourceExpression", "compareToSourceExpression", str, "string", False, None, False),
-            ("compareToSourceId", "compareToSourceId", str, "string", False, None, False),
-            ("compareToSourcePath", "compareToSourcePath", str, "string", False, None, False),
-            ("contentType", "contentType", str, "code", False, None, False),
-            ("description", "description", str, "string", False, None, False),
-            ("direction", "direction", str, "code", False, None, False),
-            ("expression", "expression", str, "string", False, None, False),
-            ("headerField", "headerField", str, "string", False, None, False),
-            ("label", "label", str, "string", False, None, False),
-            ("minimumId", "minimumId", str, "string", False, None, False),
-            ("navigationLinks", "navigationLinks", bool, "boolean", False, None, False),
-            ("operator", "operator", str, "code", False, None, False),
-            ("path", "path", str, "string", False, None, False),
-            ("requestMethod", "requestMethod", str, "code", False, None, False),
-            ("requestURL", "requestURL", str, "string", False, None, False),
-            ("resource", "resource", str, "code", False, None, False),
-            ("response", "response", str, "code", False, None, False),
-            ("responseCode", "responseCode", str, "string", False, None, False),
-            ("sourceId", "sourceId", str, "id", False, None, False),
-            ("validateProfileId", "validateProfileId", str, "id", False, None, False),
-            ("value", "value", str, "string", False, None, False),
-            ("warningOnly", "warningOnly", bool, "boolean", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "compareToSourceExpression",
+                    "compareToSourceExpression",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "compareToSourceId",
+                    "compareToSourceId",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "compareToSourcePath",
+                    "compareToSourcePath",
+                    str,
+                    "string",
+                    False,
+                    None,
+                    False,
+                ),
+                ("contentType", "contentType", str, "code", False, None, False),
+                ("description", "description", str, "string", False, None, False),
+                ("direction", "direction", str, "code", False, None, False),
+                ("expression", "expression", str, "string", False, None, False),
+                ("headerField", "headerField", str, "string", False, None, False),
+                ("label", "label", str, "string", False, None, False),
+                ("minimumId", "minimumId", str, "string", False, None, False),
+                (
+                    "navigationLinks",
+                    "navigationLinks",
+                    bool,
+                    "boolean",
+                    False,
+                    None,
+                    False,
+                ),
+                ("operator", "operator", str, "code", False, None, False),
+                ("path", "path", str, "string", False, None, False),
+                ("requestMethod", "requestMethod", str, "code", False, None, False),
+                ("requestURL", "requestURL", str, "string", False, None, False),
+                ("resource", "resource", str, "code", False, None, False),
+                ("response", "response", str, "code", False, None, False),
+                ("responseCode", "responseCode", str, "string", False, None, False),
+                ("sourceId", "sourceId", str, "id", False, None, False),
+                (
+                    "validateProfileId",
+                    "validateProfileId",
+                    str,
+                    "id",
+                    False,
+                    None,
+                    False,
+                ),
+                ("value", "value", str, "string", False, None, False),
+                ("warningOnly", "warningOnly", bool, "boolean", False, None, True),
+            ]
+        )
         return js
 
 
@@ -700,29 +909,49 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
         """ Request URL.
         Type `str`. """
 
-        super(TestScriptSetupActionOperation, self).__init__(jsondict=jsondict, strict=strict)
+        super(TestScriptSetupActionOperation, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(TestScriptSetupActionOperation, self).elementProperties()
-        js.extend([
-            ("accept", "accept", str, "code", False, None, False),
-            ("contentType", "contentType", str, "code", False, None, False),
-            ("description", "description", str, "string", False, None, False),
-            ("destination", "destination", int, "integer", False, None, False),
-            ("encodeRequestUrl", "encodeRequestUrl", bool, "boolean", False, None, True),
-            ("label", "label", str, "string", False, None, False),
-            ("method", "method", str, "code", False, None, False),
-            ("origin", "origin", int, "integer", False, None, False),
-            ("params", "params", str, "string", False, None, False),
-            ("requestHeader", "requestHeader", TestScriptSetupActionOperationRequestHeader, "TestScriptSetupActionOperationRequestHeader", True, None, False),
-            ("requestId", "requestId", str, "id", False, None, False),
-            ("resource", "resource", str, "code", False, None, False),
-            ("responseId", "responseId", str, "id", False, None, False),
-            ("sourceId", "sourceId", str, "id", False, None, False),
-            ("targetId", "targetId", str, "id", False, None, False),
-            ("type", "type", coding.Coding, "Coding", False, None, False),
-            ("url", "url", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                ("accept", "accept", str, "code", False, None, False),
+                ("contentType", "contentType", str, "code", False, None, False),
+                ("description", "description", str, "string", False, None, False),
+                ("destination", "destination", int, "integer", False, None, False),
+                (
+                    "encodeRequestUrl",
+                    "encodeRequestUrl",
+                    bool,
+                    "boolean",
+                    False,
+                    None,
+                    True,
+                ),
+                ("label", "label", str, "string", False, None, False),
+                ("method", "method", str, "code", False, None, False),
+                ("origin", "origin", int, "integer", False, None, False),
+                ("params", "params", str, "string", False, None, False),
+                (
+                    "requestHeader",
+                    "requestHeader",
+                    TestScriptSetupActionOperationRequestHeader,
+                    "TestScriptSetupActionOperationRequestHeader",
+                    True,
+                    None,
+                    False,
+                ),
+                ("requestId", "requestId", str, "id", False, None, False),
+                ("resource", "resource", str, "code", False, None, False),
+                ("responseId", "responseId", str, "id", False, None, False),
+                ("sourceId", "sourceId", str, "id", False, None, False),
+                ("targetId", "targetId", str, "id", False, None, False),
+                ("type", "type", coding.Coding, "Coding", False, None, False),
+                ("url", "url", str, "string", False, None, False),
+            ]
+        )
         return js
 
 
@@ -750,14 +979,20 @@ class TestScriptSetupActionOperationRequestHeader(backboneelement.BackboneElemen
         """ HTTP headerfield value.
         Type `str`. """
 
-        super(TestScriptSetupActionOperationRequestHeader, self).__init__(jsondict=jsondict, strict=strict)
+        super(TestScriptSetupActionOperationRequestHeader, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
-        js = super(TestScriptSetupActionOperationRequestHeader, self).elementProperties()
-        js.extend([
-            ("field", "field", str, "string", False, None, True),
-            ("value", "value", str, "string", False, None, True),
-        ])
+        js = super(
+            TestScriptSetupActionOperationRequestHeader, self
+        ).elementProperties()
+        js.extend(
+            [
+                ("field", "field", str, "string", False, None, True),
+                ("value", "value", str, "string", False, None, True),
+            ]
+        )
         return js
 
 
@@ -786,9 +1021,19 @@ class TestScriptTeardown(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(TestScriptTeardown, self).elementProperties()
-        js.extend([
-            ("action", "action", TestScriptTeardownAction, "TestScriptTeardownAction", True, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "action",
+                    "action",
+                    TestScriptTeardownAction,
+                    "TestScriptTeardownAction",
+                    True,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -816,9 +1061,19 @@ class TestScriptTeardownAction(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(TestScriptTeardownAction, self).elementProperties()
-        js.extend([
-            ("operation", "operation", TestScriptSetupActionOperation, "TestScriptSetupActionOperation", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "operation",
+                    "operation",
+                    TestScriptSetupActionOperation,
+                    "TestScriptSetupActionOperation",
+                    False,
+                    None,
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -852,11 +1107,21 @@ class TestScriptTest(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(TestScriptTest, self).elementProperties()
-        js.extend([
-            ("action", "action", TestScriptTestAction, "TestScriptTestAction", True, None, True),
-            ("description", "description", str, "string", False, None, False),
-            ("name", "name", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "action",
+                    "action",
+                    TestScriptTestAction,
+                    "TestScriptTestAction",
+                    True,
+                    None,
+                    True,
+                ),
+                ("description", "description", str, "string", False, None, False),
+                ("name", "name", str, "string", False, None, False),
+            ]
+        )
         return js
 
 
@@ -888,10 +1153,28 @@ class TestScriptTestAction(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(TestScriptTestAction, self).elementProperties()
-        js.extend([
-            ("assert_fhir", "assert", TestScriptSetupActionAssert, "TestScriptSetupActionAssert", False, None, False),
-            ("operation", "operation", TestScriptSetupActionOperation, "TestScriptSetupActionOperation", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "assert_fhir",
+                    "assert",
+                    TestScriptSetupActionAssert,
+                    "TestScriptSetupActionAssert",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "operation",
+                    "operation",
+                    TestScriptSetupActionOperation,
+                    "TestScriptSetupActionOperation",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -948,45 +1231,46 @@ class TestScriptVariable(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(TestScriptVariable, self).elementProperties()
-        js.extend([
-            ("defaultValue", "defaultValue", str, "string", False, None, False),
-            ("description", "description", str, "string", False, None, False),
-            ("expression", "expression", str, "string", False, None, False),
-            ("headerField", "headerField", str, "string", False, None, False),
-            ("hint", "hint", str, "string", False, None, False),
-            ("name", "name", str, "string", False, None, True),
-            ("path", "path", str, "string", False, None, False),
-            ("sourceId", "sourceId", str, "id", False, None, False),
-        ])
+        js.extend(
+            [
+                ("defaultValue", "defaultValue", str, "string", False, None, False),
+                ("description", "description", str, "string", False, None, False),
+                ("expression", "expression", str, "string", False, None, False),
+                ("headerField", "headerField", str, "string", False, None, False),
+                ("hint", "hint", str, "string", False, None, False),
+                ("name", "name", str, "string", False, None, True),
+                ("path", "path", str, "string", False, None, False),
+                ("sourceId", "sourceId", str, "id", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import coding
 except ImportError:
-    coding = sys.modules[__package__ + '.coding']
+    coding = sys.modules[__package__ + ".coding"]
 try:
     from . import contactdetail
 except ImportError:
-    contactdetail = sys.modules[__package__ + '.contactdetail']
+    contactdetail = sys.modules[__package__ + ".contactdetail"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import usagecontext
 except ImportError:
-    usagecontext = sys.modules[__package__ + '.usagecontext']
+    usagecontext = sys.modules[__package__ + ".usagecontext"]

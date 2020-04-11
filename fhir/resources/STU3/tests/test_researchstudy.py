@@ -7,22 +7,23 @@ Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
 
-import os
-import pytest
 import io
-import unittest
 import json
+import os
+import unittest
 
-from .fixtures import force_bytes
+import pytest
+
 from .. import researchstudy
 from ..fhirdate import FHIRDate
+from .fixtures import force_bytes
 
 
 @pytest.mark.usefixtures("base_settings")
 class ResearchStudyTests(unittest.TestCase):
     def instantiate_from(self, filename):
-        datadir = os.environ.get('FHIR_UNITTEST_DATADIR') or ''
-        with io.open(os.path.join(datadir, filename), 'r', encoding='utf-8') as handle:
+        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
+        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
             js = json.load(handle)
             self.assertEqual("ResearchStudy", js["resourceType"])
         return researchstudy.ResearchStudy(js)
@@ -40,6 +41,10 @@ class ResearchStudyTests(unittest.TestCase):
     def implResearchStudy1(self, inst):
         self.assertEqual(force_bytes(inst.id), force_bytes("example"))
         self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-        self.assertEqual(force_bytes(inst.text.div), force_bytes("<div xmlns=\"http://www.w3.org/1999/xhtml\">[Put rendering here]</div>"))
+        self.assertEqual(
+            force_bytes(inst.text.div),
+            force_bytes(
+                '<div xmlns="http://www.w3.org/1999/xhtml">[Put rendering here]</div>'
+            ),
+        )
         self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-

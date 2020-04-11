@@ -10,6 +10,7 @@ Last updated: 2019-10-24T11:53:00+11:00
 
 from . import element
 
+
 class Narrative(element.Element):
     """ A human-readable formatted text, including images.
     """
@@ -36,10 +37,10 @@ class Narrative(element.Element):
 
     def elementProperties(self):
         js = super(Narrative, self).elementProperties()
-        js.extend([
-            ("div", "div", str, "xhtml", False, None, True),
-            ("status", "status", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                ("div", "div", str, "xhtml", False, None, True),
+                ("status", "status", str, "code", False, None, True),
+            ]
+        )
         return js
-
-

@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class Questionnaire(domainresource.DomainResource):
     """ A structured set of questions.
@@ -122,34 +125,98 @@ class Questionnaire(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(Questionnaire, self).elementProperties()
-        js.extend([
-            ("approvalDate", "approvalDate", fhirdate.FHIRDate, "date", False, None, False),
-            ("code", "code", coding.Coding, "Coding", True, None, False),
-            ("contact", "contact", contactdetail.ContactDetail, "ContactDetail", True, None, False),
-            ("copyright", "copyright", str, "markdown", False, None, False),
-            ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("derivedFrom", "derivedFrom", str, "canonical", True, None, False),
-            ("description", "description", str, "markdown", False, None, False),
-            ("effectivePeriod", "effectivePeriod", period.Period, "Period", False, None, False),
-            ("experimental", "experimental", bool, "boolean", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("item", "item", QuestionnaireItem, "QuestionnaireItem", True, None, False),
-            ("jurisdiction", "jurisdiction", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("lastReviewDate", "lastReviewDate", fhirdate.FHIRDate, "date", False, None, False),
-            ("name", "name", str, "string", False, None, False),
-            ("publisher", "publisher", str, "string", False, None, False),
-            ("purpose", "purpose", str, "markdown", False, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("subjectType", "subjectType", str, "code", True, None, False),
-            ("title", "title", str, "string", False, None, False),
-            ("url", "url", str, "uri", False, None, False),
-            ("useContext", "useContext", usagecontext.UsageContext, "UsageContext", True, None, False),
-            ("version", "version", str, "string", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "approvalDate",
+                    "approvalDate",
+                    fhirdate.FHIRDate,
+                    "date",
+                    False,
+                    None,
+                    False,
+                ),
+                ("code", "code", coding.Coding, "Coding", True, None, False),
+                (
+                    "contact",
+                    "contact",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                ("copyright", "copyright", str, "markdown", False, None, False),
+                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
+                ("derivedFrom", "derivedFrom", str, "canonical", True, None, False),
+                ("description", "description", str, "markdown", False, None, False),
+                (
+                    "effectivePeriod",
+                    "effectivePeriod",
+                    period.Period,
+                    "Period",
+                    False,
+                    None,
+                    False,
+                ),
+                ("experimental", "experimental", bool, "boolean", False, None, False),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "item",
+                    "item",
+                    QuestionnaireItem,
+                    "QuestionnaireItem",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "jurisdiction",
+                    "jurisdiction",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "lastReviewDate",
+                    "lastReviewDate",
+                    fhirdate.FHIRDate,
+                    "date",
+                    False,
+                    None,
+                    False,
+                ),
+                ("name", "name", str, "string", False, None, False),
+                ("publisher", "publisher", str, "string", False, None, False),
+                ("purpose", "purpose", str, "markdown", False, None, False),
+                ("status", "status", str, "code", False, None, True),
+                ("subjectType", "subjectType", str, "code", True, None, False),
+                ("title", "title", str, "string", False, None, False),
+                ("url", "url", str, "uri", False, None, False),
+                (
+                    "useContext",
+                    "useContext",
+                    usagecontext.UsageContext,
+                    "UsageContext",
+                    True,
+                    None,
+                    False,
+                ),
+                ("version", "version", str, "string", False, None, False),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class QuestionnaireItem(backboneelement.BackboneElement):
     """ Questions and sections within the Questionnaire.
@@ -236,24 +303,66 @@ class QuestionnaireItem(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(QuestionnaireItem, self).elementProperties()
-        js.extend([
-            ("answerOption", "answerOption", QuestionnaireItemAnswerOption, "QuestionnaireItemAnswerOption", True, None, False),
-            ("answerValueSet", "answerValueSet", str, "canonical", False, None, False),
-            ("code", "code", coding.Coding, "Coding", True, None, False),
-            ("definition", "definition", str, "uri", False, None, False),
-            ("enableBehavior", "enableBehavior", str, "code", False, None, False),
-            ("enableWhen", "enableWhen", QuestionnaireItemEnableWhen, "QuestionnaireItemEnableWhen", True, None, False),
-            ("initial", "initial", QuestionnaireItemInitial, "QuestionnaireItemInitial", True, None, False),
-            ("item", "item", QuestionnaireItem, "QuestionnaireItem", True, None, False),
-            ("linkId", "linkId", str, "string", False, None, True),
-            ("maxLength", "maxLength", int, "integer", False, None, False),
-            ("prefix", "prefix", str, "string", False, None, False),
-            ("readOnly", "readOnly", bool, "boolean", False, None, False),
-            ("repeats", "repeats", bool, "boolean", False, None, False),
-            ("required", "required", bool, "boolean", False, None, False),
-            ("text", "text", str, "string", False, None, False),
-            ("type", "type", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "answerOption",
+                    "answerOption",
+                    QuestionnaireItemAnswerOption,
+                    "QuestionnaireItemAnswerOption",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "answerValueSet",
+                    "answerValueSet",
+                    str,
+                    "canonical",
+                    False,
+                    None,
+                    False,
+                ),
+                ("code", "code", coding.Coding, "Coding", True, None, False),
+                ("definition", "definition", str, "uri", False, None, False),
+                ("enableBehavior", "enableBehavior", str, "code", False, None, False),
+                (
+                    "enableWhen",
+                    "enableWhen",
+                    QuestionnaireItemEnableWhen,
+                    "QuestionnaireItemEnableWhen",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "initial",
+                    "initial",
+                    QuestionnaireItemInitial,
+                    "QuestionnaireItemInitial",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "item",
+                    "item",
+                    QuestionnaireItem,
+                    "QuestionnaireItem",
+                    True,
+                    None,
+                    False,
+                ),
+                ("linkId", "linkId", str, "string", False, None, True),
+                ("maxLength", "maxLength", int, "integer", False, None, False),
+                ("prefix", "prefix", str, "string", False, None, False),
+                ("readOnly", "readOnly", bool, "boolean", False, None, False),
+                ("repeats", "repeats", bool, "boolean", False, None, False),
+                ("required", "required", bool, "boolean", False, None, False),
+                ("text", "text", str, "string", False, None, False),
+                ("type", "type", str, "code", False, None, True),
+            ]
+        )
         return js
 
 
@@ -301,19 +410,63 @@ class QuestionnaireItemAnswerOption(backboneelement.BackboneElement):
         """ Answer value.
         Type `FHIRDate` (represented as `str` in JSON). """
 
-        super(QuestionnaireItemAnswerOption, self).__init__(jsondict=jsondict, strict=strict)
+        super(QuestionnaireItemAnswerOption, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(QuestionnaireItemAnswerOption, self).elementProperties()
-        js.extend([
-            ("initialSelected", "initialSelected", bool, "boolean", False, None, False),
-            ("valueCoding", "valueCoding", coding.Coding, "Coding", False, "value", True),
-            ("valueDate", "valueDate", fhirdate.FHIRDate, "date", False, "value", True),
-            ("valueInteger", "valueInteger", int, "integer", False, "value", True),
-            ("valueReference", "valueReference", fhirreference.FHIRReference, "Reference", False, "value", True),
-            ("valueString", "valueString", str, "string", False, "value", True),
-            ("valueTime", "valueTime", fhirdate.FHIRDate, "time", False, "value", True),
-        ])
+        js.extend(
+            [
+                (
+                    "initialSelected",
+                    "initialSelected",
+                    bool,
+                    "boolean",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "valueCoding",
+                    "valueCoding",
+                    coding.Coding,
+                    "Coding",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueDate",
+                    "valueDate",
+                    fhirdate.FHIRDate,
+                    "date",
+                    False,
+                    "value",
+                    True,
+                ),
+                ("valueInteger", "valueInteger", int, "integer", False, "value", True),
+                (
+                    "valueReference",
+                    "valueReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "value",
+                    True,
+                ),
+                ("valueString", "valueString", str, "string", False, "value", True),
+                (
+                    "valueTime",
+                    "valueTime",
+                    fhirdate.FHIRDate,
+                    "time",
+                    False,
+                    "value",
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -383,24 +536,100 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
         """ Question that determines whether item is enabled.
         Type `str`. """
 
-        super(QuestionnaireItemEnableWhen, self).__init__(jsondict=jsondict, strict=strict)
+        super(QuestionnaireItemEnableWhen, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(QuestionnaireItemEnableWhen, self).elementProperties()
-        js.extend([
-            ("answerBoolean", "answerBoolean", bool, "boolean", False, "answer", True),
-            ("answerCoding", "answerCoding", coding.Coding, "Coding", False, "answer", True),
-            ("answerDate", "answerDate", fhirdate.FHIRDate, "date", False, "answer", True),
-            ("answerDateTime", "answerDateTime", fhirdate.FHIRDate, "dateTime", False, "answer", True),
-            ("answerDecimal", "answerDecimal", float, "decimal", False, "answer", True),
-            ("answerInteger", "answerInteger", int, "integer", False, "answer", True),
-            ("answerQuantity", "answerQuantity", quantity.Quantity, "Quantity", False, "answer", True),
-            ("answerReference", "answerReference", fhirreference.FHIRReference, "Reference", False, "answer", True),
-            ("answerString", "answerString", str, "string", False, "answer", True),
-            ("answerTime", "answerTime", fhirdate.FHIRDate, "time", False, "answer", True),
-            ("operator", "operator", str, "code", False, None, True),
-            ("question", "question", str, "string", False, None, True),
-        ])
+        js.extend(
+            [
+                (
+                    "answerBoolean",
+                    "answerBoolean",
+                    bool,
+                    "boolean",
+                    False,
+                    "answer",
+                    True,
+                ),
+                (
+                    "answerCoding",
+                    "answerCoding",
+                    coding.Coding,
+                    "Coding",
+                    False,
+                    "answer",
+                    True,
+                ),
+                (
+                    "answerDate",
+                    "answerDate",
+                    fhirdate.FHIRDate,
+                    "date",
+                    False,
+                    "answer",
+                    True,
+                ),
+                (
+                    "answerDateTime",
+                    "answerDateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    "answer",
+                    True,
+                ),
+                (
+                    "answerDecimal",
+                    "answerDecimal",
+                    float,
+                    "decimal",
+                    False,
+                    "answer",
+                    True,
+                ),
+                (
+                    "answerInteger",
+                    "answerInteger",
+                    int,
+                    "integer",
+                    False,
+                    "answer",
+                    True,
+                ),
+                (
+                    "answerQuantity",
+                    "answerQuantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    "answer",
+                    True,
+                ),
+                (
+                    "answerReference",
+                    "answerReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "answer",
+                    True,
+                ),
+                ("answerString", "answerString", str, "string", False, "answer", True),
+                (
+                    "answerTime",
+                    "answerTime",
+                    fhirdate.FHIRDate,
+                    "time",
+                    False,
+                    "answer",
+                    True,
+                ),
+                ("operator", "operator", str, "code", False, None, True),
+                ("question", "question", str, "string", False, None, True),
+            ]
+        )
         return js
 
 
@@ -473,61 +702,126 @@ class QuestionnaireItemInitial(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(QuestionnaireItemInitial, self).elementProperties()
-        js.extend([
-            ("valueAttachment", "valueAttachment", attachment.Attachment, "Attachment", False, "value", True),
-            ("valueBoolean", "valueBoolean", bool, "boolean", False, "value", True),
-            ("valueCoding", "valueCoding", coding.Coding, "Coding", False, "value", True),
-            ("valueDate", "valueDate", fhirdate.FHIRDate, "date", False, "value", True),
-            ("valueDateTime", "valueDateTime", fhirdate.FHIRDate, "dateTime", False, "value", True),
-            ("valueDecimal", "valueDecimal", float, "decimal", False, "value", True),
-            ("valueInteger", "valueInteger", int, "integer", False, "value", True),
-            ("valueQuantity", "valueQuantity", quantity.Quantity, "Quantity", False, "value", True),
-            ("valueReference", "valueReference", fhirreference.FHIRReference, "Reference", False, "value", True),
-            ("valueString", "valueString", str, "string", False, "value", True),
-            ("valueTime", "valueTime", fhirdate.FHIRDate, "time", False, "value", True),
-            ("valueUri", "valueUri", str, "uri", False, "value", True),
-        ])
+        js.extend(
+            [
+                (
+                    "valueAttachment",
+                    "valueAttachment",
+                    attachment.Attachment,
+                    "Attachment",
+                    False,
+                    "value",
+                    True,
+                ),
+                ("valueBoolean", "valueBoolean", bool, "boolean", False, "value", True),
+                (
+                    "valueCoding",
+                    "valueCoding",
+                    coding.Coding,
+                    "Coding",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueDate",
+                    "valueDate",
+                    fhirdate.FHIRDate,
+                    "date",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueDateTime",
+                    "valueDateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueDecimal",
+                    "valueDecimal",
+                    float,
+                    "decimal",
+                    False,
+                    "value",
+                    True,
+                ),
+                ("valueInteger", "valueInteger", int, "integer", False, "value", True),
+                (
+                    "valueQuantity",
+                    "valueQuantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueReference",
+                    "valueReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "value",
+                    True,
+                ),
+                ("valueString", "valueString", str, "string", False, "value", True),
+                (
+                    "valueTime",
+                    "valueTime",
+                    fhirdate.FHIRDate,
+                    "time",
+                    False,
+                    "value",
+                    True,
+                ),
+                ("valueUri", "valueUri", str, "uri", False, "value", True),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import attachment
 except ImportError:
-    attachment = sys.modules[__package__ + '.attachment']
+    attachment = sys.modules[__package__ + ".attachment"]
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import coding
 except ImportError:
-    coding = sys.modules[__package__ + '.coding']
+    coding = sys.modules[__package__ + ".coding"]
 try:
     from . import contactdetail
 except ImportError:
-    contactdetail = sys.modules[__package__ + '.contactdetail']
+    contactdetail = sys.modules[__package__ + ".contactdetail"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]
 try:
     from . import quantity
 except ImportError:
-    quantity = sys.modules[__package__ + '.quantity']
+    quantity = sys.modules[__package__ + ".quantity"]
 try:
     from . import usagecontext
 except ImportError:
-    usagecontext = sys.modules[__package__ + '.usagecontext']
+    usagecontext = sys.modules[__package__ + ".usagecontext"]

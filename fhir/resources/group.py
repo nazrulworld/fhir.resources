@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class Group(domainresource.DomainResource):
     """ Group of multiple entities.
@@ -73,22 +76,54 @@ class Group(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(Group, self).elementProperties()
-        js.extend([
-            ("active", "active", bool, "boolean", False, None, False),
-            ("actual", "actual", bool, "boolean", False, None, True),
-            ("characteristic", "characteristic", GroupCharacteristic, "GroupCharacteristic", True, None, False),
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("managingEntity", "managingEntity", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("member", "member", GroupMember, "GroupMember", True, None, False),
-            ("name", "name", str, "string", False, None, False),
-            ("quantity", "quantity", int, "unsignedInt", False, None, False),
-            ("type", "type", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                ("active", "active", bool, "boolean", False, None, False),
+                ("actual", "actual", bool, "boolean", False, None, True),
+                (
+                    "characteristic",
+                    "characteristic",
+                    GroupCharacteristic,
+                    "GroupCharacteristic",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "managingEntity",
+                    "managingEntity",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("member", "member", GroupMember, "GroupMember", True, None, False),
+                ("name", "name", str, "string", False, None, False),
+                ("quantity", "quantity", int, "unsignedInt", False, None, False),
+                ("type", "type", str, "code", False, None, True),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class GroupCharacteristic(backboneelement.BackboneElement):
     """ Include / Exclude group members by Trait.
@@ -143,16 +178,58 @@ class GroupCharacteristic(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(GroupCharacteristic, self).elementProperties()
-        js.extend([
-            ("code", "code", codeableconcept.CodeableConcept, "CodeableConcept", False, None, True),
-            ("exclude", "exclude", bool, "boolean", False, None, True),
-            ("period", "period", period.Period, "Period", False, None, False),
-            ("valueBoolean", "valueBoolean", bool, "boolean", False, "value", True),
-            ("valueCodeableConcept", "valueCodeableConcept", codeableconcept.CodeableConcept, "CodeableConcept", False, "value", True),
-            ("valueQuantity", "valueQuantity", quantity.Quantity, "Quantity", False, "value", True),
-            ("valueRange", "valueRange", range.Range, "Range", False, "value", True),
-            ("valueReference", "valueReference", fhirreference.FHIRReference, "Reference", False, "value", True),
-        ])
+        js.extend(
+            [
+                (
+                    "code",
+                    "code",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    True,
+                ),
+                ("exclude", "exclude", bool, "boolean", False, None, True),
+                ("period", "period", period.Period, "Period", False, None, False),
+                ("valueBoolean", "valueBoolean", bool, "boolean", False, "value", True),
+                (
+                    "valueCodeableConcept",
+                    "valueCodeableConcept",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueQuantity",
+                    "valueQuantity",
+                    quantity.Quantity,
+                    "Quantity",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueRange",
+                    "valueRange",
+                    range.Range,
+                    "Range",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueReference",
+                    "valueReference",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    "value",
+                    True,
+                ),
+            ]
+        )
         return js
 
 
@@ -188,36 +265,45 @@ class GroupMember(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(GroupMember, self).elementProperties()
-        js.extend([
-            ("entity", "entity", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("inactive", "inactive", bool, "boolean", False, None, False),
-            ("period", "period", period.Period, "Period", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "entity",
+                    "entity",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                ("inactive", "inactive", bool, "boolean", False, None, False),
+                ("period", "period", period.Period, "Period", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]
 try:
     from . import quantity
 except ImportError:
-    quantity = sys.modules[__package__ + '.quantity']
+    quantity = sys.modules[__package__ + ".quantity"]
 try:
     from . import range
 except ImportError:
-    range = sys.modules[__package__ + '.range']
+    range = sys.modules[__package__ + ".range"]

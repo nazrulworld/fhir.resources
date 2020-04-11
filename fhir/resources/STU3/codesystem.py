@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class CodeSystem(domainresource.DomainResource):
     """ A set of codes drawn from one or more code systems.
@@ -132,37 +135,101 @@ class CodeSystem(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(CodeSystem, self).elementProperties()
-        js.extend([
-            ("caseSensitive", "caseSensitive", bool, "boolean", False, None, False),
-            ("compositional", "compositional", bool, "boolean", False, None, False),
-            ("concept", "concept", CodeSystemConcept, "CodeSystemConcept", True, None, False),
-            ("contact", "contact", contactdetail.ContactDetail, "ContactDetail", True, None, False),
-            ("content", "content", str, "code", False, None, True),
-            ("copyright", "copyright", str, "markdown", False, None, False),
-            ("count", "count", int, "unsignedInt", False, None, False),
-            ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("description", "description", str, "markdown", False, None, False),
-            ("experimental", "experimental", bool, "boolean", False, None, False),
-            ("filter", "filter", CodeSystemFilter, "CodeSystemFilter", True, None, False),
-            ("hierarchyMeaning", "hierarchyMeaning", str, "code", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", False, None, False),
-            ("jurisdiction", "jurisdiction", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("name", "name", str, "string", False, None, False),
-            ("property", "property", CodeSystemProperty, "CodeSystemProperty", True, None, False),
-            ("publisher", "publisher", str, "string", False, None, False),
-            ("purpose", "purpose", str, "markdown", False, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("title", "title", str, "string", False, None, False),
-            ("url", "url", str, "uri", False, None, False),
-            ("useContext", "useContext", usagecontext.UsageContext, "UsageContext", True, None, False),
-            ("valueSet", "valueSet", str, "uri", False, None, False),
-            ("version", "version", str, "string", False, None, False),
-            ("versionNeeded", "versionNeeded", bool, "boolean", False, None, False),
-        ])
+        js.extend(
+            [
+                ("caseSensitive", "caseSensitive", bool, "boolean", False, None, False),
+                ("compositional", "compositional", bool, "boolean", False, None, False),
+                (
+                    "concept",
+                    "concept",
+                    CodeSystemConcept,
+                    "CodeSystemConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "contact",
+                    "contact",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                ("content", "content", str, "code", False, None, True),
+                ("copyright", "copyright", str, "markdown", False, None, False),
+                ("count", "count", int, "unsignedInt", False, None, False),
+                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
+                ("description", "description", str, "markdown", False, None, False),
+                ("experimental", "experimental", bool, "boolean", False, None, False),
+                (
+                    "filter",
+                    "filter",
+                    CodeSystemFilter,
+                    "CodeSystemFilter",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "hierarchyMeaning",
+                    "hierarchyMeaning",
+                    str,
+                    "code",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "jurisdiction",
+                    "jurisdiction",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                ("name", "name", str, "string", False, None, False),
+                (
+                    "property",
+                    "property",
+                    CodeSystemProperty,
+                    "CodeSystemProperty",
+                    True,
+                    None,
+                    False,
+                ),
+                ("publisher", "publisher", str, "string", False, None, False),
+                ("purpose", "purpose", str, "markdown", False, None, False),
+                ("status", "status", str, "code", False, None, True),
+                ("title", "title", str, "string", False, None, False),
+                ("url", "url", str, "uri", False, None, False),
+                (
+                    "useContext",
+                    "useContext",
+                    usagecontext.UsageContext,
+                    "UsageContext",
+                    True,
+                    None,
+                    False,
+                ),
+                ("valueSet", "valueSet", str, "uri", False, None, False),
+                ("version", "version", str, "string", False, None, False),
+                ("versionNeeded", "versionNeeded", bool, "boolean", False, None, False),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class CodeSystemConcept(backboneelement.BackboneElement):
     """ Concepts in the code system.
@@ -210,14 +277,40 @@ class CodeSystemConcept(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(CodeSystemConcept, self).elementProperties()
-        js.extend([
-            ("code", "code", str, "code", False, None, True),
-            ("concept", "concept", CodeSystemConcept, "CodeSystemConcept", True, None, False),
-            ("definition", "definition", str, "string", False, None, False),
-            ("designation", "designation", CodeSystemConceptDesignation, "CodeSystemConceptDesignation", True, None, False),
-            ("display", "display", str, "string", False, None, False),
-            ("property", "property", CodeSystemConceptProperty, "CodeSystemConceptProperty", True, None, False),
-        ])
+        js.extend(
+            [
+                ("code", "code", str, "code", False, None, True),
+                (
+                    "concept",
+                    "concept",
+                    CodeSystemConcept,
+                    "CodeSystemConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                ("definition", "definition", str, "string", False, None, False),
+                (
+                    "designation",
+                    "designation",
+                    CodeSystemConceptDesignation,
+                    "CodeSystemConceptDesignation",
+                    True,
+                    None,
+                    False,
+                ),
+                ("display", "display", str, "string", False, None, False),
+                (
+                    "property",
+                    "property",
+                    CodeSystemConceptProperty,
+                    "CodeSystemConceptProperty",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
@@ -250,15 +343,19 @@ class CodeSystemConceptDesignation(backboneelement.BackboneElement):
         """ The text value for this designation.
         Type `str`. """
 
-        super(CodeSystemConceptDesignation, self).__init__(jsondict=jsondict, strict=strict)
+        super(CodeSystemConceptDesignation, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(CodeSystemConceptDesignation, self).elementProperties()
-        js.extend([
-            ("language", "language", str, "code", False, None, False),
-            ("use", "use", coding.Coding, "Coding", False, None, False),
-            ("value", "value", str, "string", False, None, True),
-        ])
+        js.extend(
+            [
+                ("language", "language", str, "code", False, None, False),
+                ("use", "use", coding.Coding, "Coding", False, None, False),
+                ("value", "value", str, "string", False, None, True),
+            ]
+        )
         return js
 
 
@@ -306,19 +403,39 @@ class CodeSystemConceptProperty(backboneelement.BackboneElement):
         """ Value of the property for this concept.
         Type `str`. """
 
-        super(CodeSystemConceptProperty, self).__init__(jsondict=jsondict, strict=strict)
+        super(CodeSystemConceptProperty, self).__init__(
+            jsondict=jsondict, strict=strict
+        )
 
     def elementProperties(self):
         js = super(CodeSystemConceptProperty, self).elementProperties()
-        js.extend([
-            ("code", "code", str, "code", False, None, True),
-            ("valueBoolean", "valueBoolean", bool, "boolean", False, "value", True),
-            ("valueCode", "valueCode", str, "code", False, "value", True),
-            ("valueCoding", "valueCoding", coding.Coding, "Coding", False, "value", True),
-            ("valueDateTime", "valueDateTime", fhirdate.FHIRDate, "dateTime", False, "value", True),
-            ("valueInteger", "valueInteger", int, "integer", False, "value", True),
-            ("valueString", "valueString", str, "string", False, "value", True),
-        ])
+        js.extend(
+            [
+                ("code", "code", str, "code", False, None, True),
+                ("valueBoolean", "valueBoolean", bool, "boolean", False, "value", True),
+                ("valueCode", "valueCode", str, "code", False, "value", True),
+                (
+                    "valueCoding",
+                    "valueCoding",
+                    coding.Coding,
+                    "Coding",
+                    False,
+                    "value",
+                    True,
+                ),
+                (
+                    "valueDateTime",
+                    "valueDateTime",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    "value",
+                    True,
+                ),
+                ("valueInteger", "valueInteger", int, "integer", False, "value", True),
+                ("valueString", "valueString", str, "string", False, "value", True),
+            ]
+        )
         return js
 
 
@@ -359,12 +476,14 @@ class CodeSystemFilter(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(CodeSystemFilter, self).elementProperties()
-        js.extend([
-            ("code", "code", str, "code", False, None, True),
-            ("description", "description", str, "string", False, None, False),
-            ("operator", "operator", str, "code", True, None, True),
-            ("value", "value", str, "string", False, None, True),
-        ])
+        js.extend(
+            [
+                ("code", "code", str, "code", False, None, True),
+                ("description", "description", str, "string", False, None, False),
+                ("operator", "operator", str, "code", True, None, True),
+                ("value", "value", str, "string", False, None, True),
+            ]
+        )
         return js
 
 
@@ -406,37 +525,38 @@ class CodeSystemProperty(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(CodeSystemProperty, self).elementProperties()
-        js.extend([
-            ("code", "code", str, "code", False, None, True),
-            ("description", "description", str, "string", False, None, False),
-            ("type", "type", str, "code", False, None, True),
-            ("uri", "uri", str, "uri", False, None, False),
-        ])
+        js.extend(
+            [
+                ("code", "code", str, "code", False, None, True),
+                ("description", "description", str, "string", False, None, False),
+                ("type", "type", str, "code", False, None, True),
+                ("uri", "uri", str, "uri", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import coding
 except ImportError:
-    coding = sys.modules[__package__ + '.coding']
+    coding = sys.modules[__package__ + ".coding"]
 try:
     from . import contactdetail
 except ImportError:
-    contactdetail = sys.modules[__package__ + '.contactdetail']
+    contactdetail = sys.modules[__package__ + ".contactdetail"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import usagecontext
 except ImportError:
-    usagecontext = sys.modules[__package__ + '.usagecontext']
+    usagecontext = sys.modules[__package__ + ".usagecontext"]

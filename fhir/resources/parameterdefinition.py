@@ -10,6 +10,7 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 
 from . import element
 
+
 class ParameterDefinition(element.Element):
     """ Definition of a parameter to a module.
 
@@ -61,15 +62,15 @@ class ParameterDefinition(element.Element):
 
     def elementProperties(self):
         js = super(ParameterDefinition, self).elementProperties()
-        js.extend([
-            ("documentation", "documentation", str, "string", False, None, False),
-            ("max", "max", str, "string", False, None, False),
-            ("min", "min", int, "integer", False, None, False),
-            ("name", "name", str, "code", False, None, False),
-            ("profile", "profile", str, "canonical", False, None, False),
-            ("type", "type", str, "code", False, None, True),
-            ("use", "use", str, "code", False, None, True),
-        ])
+        js.extend(
+            [
+                ("documentation", "documentation", str, "string", False, None, False),
+                ("max", "max", str, "string", False, None, False),
+                ("min", "min", int, "integer", False, None, False),
+                ("name", "name", str, "code", False, None, False),
+                ("profile", "profile", str, "canonical", False, None, False),
+                ("type", "type", str, "code", False, None, True),
+                ("use", "use", str, "code", False, None, True),
+            ]
+        )
         return js
-
-

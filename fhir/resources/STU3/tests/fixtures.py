@@ -5,11 +5,10 @@ import shutil
 import sys
 import tempfile
 import zipfile
+from os.path import dirname
 
 import pytest
 import six
-
-from os.path import dirname
 
 EXAMPLE_RESOURCES_URL = (
     "https://github.com/nazrulworld/fhir-parser/raw/"
@@ -17,7 +16,7 @@ EXAMPLE_RESOURCES_URL = (
     "3.0.1-examples-json.zip"
 )
 ROOT_PATH = dirname(dirname(dirname(dirname(dirname(os.path.abspath(__file__))))))
-CACHE_PATH = os.path.join(ROOT_PATH, '.cache', 'STU3')
+CACHE_PATH = os.path.join(ROOT_PATH, ".cache", "STU3")
 
 
 def force_bytes(string, encoding="utf8", errors="strict"):

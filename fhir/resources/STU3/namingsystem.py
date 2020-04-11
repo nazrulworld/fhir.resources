@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class NamingSystem(domainresource.DomainResource):
     """ System of unique identification.
@@ -88,26 +91,74 @@ class NamingSystem(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(NamingSystem, self).elementProperties()
-        js.extend([
-            ("contact", "contact", contactdetail.ContactDetail, "ContactDetail", True, None, False),
-            ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, True),
-            ("description", "description", str, "markdown", False, None, False),
-            ("jurisdiction", "jurisdiction", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("kind", "kind", str, "code", False, None, True),
-            ("name", "name", str, "string", False, None, True),
-            ("publisher", "publisher", str, "string", False, None, False),
-            ("replacedBy", "replacedBy", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("responsible", "responsible", str, "string", False, None, False),
-            ("status", "status", str, "code", False, None, True),
-            ("type", "type", codeableconcept.CodeableConcept, "CodeableConcept", False, None, False),
-            ("uniqueId", "uniqueId", NamingSystemUniqueId, "NamingSystemUniqueId", True, None, True),
-            ("usage", "usage", str, "string", False, None, False),
-            ("useContext", "useContext", usagecontext.UsageContext, "UsageContext", True, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "contact",
+                    "contact",
+                    contactdetail.ContactDetail,
+                    "ContactDetail",
+                    True,
+                    None,
+                    False,
+                ),
+                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, True),
+                ("description", "description", str, "markdown", False, None, False),
+                (
+                    "jurisdiction",
+                    "jurisdiction",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                ("kind", "kind", str, "code", False, None, True),
+                ("name", "name", str, "string", False, None, True),
+                ("publisher", "publisher", str, "string", False, None, False),
+                (
+                    "replacedBy",
+                    "replacedBy",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("responsible", "responsible", str, "string", False, None, False),
+                ("status", "status", str, "code", False, None, True),
+                (
+                    "type",
+                    "type",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "uniqueId",
+                    "uniqueId",
+                    NamingSystemUniqueId,
+                    "NamingSystemUniqueId",
+                    True,
+                    None,
+                    True,
+                ),
+                ("usage", "usage", str, "string", False, None, False),
+                (
+                    "useContext",
+                    "useContext",
+                    usagecontext.UsageContext,
+                    "UsageContext",
+                    True,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class NamingSystemUniqueId(backboneelement.BackboneElement):
     """ Unique identifiers used for system.
@@ -150,38 +201,39 @@ class NamingSystemUniqueId(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(NamingSystemUniqueId, self).elementProperties()
-        js.extend([
-            ("comment", "comment", str, "string", False, None, False),
-            ("period", "period", period.Period, "Period", False, None, False),
-            ("preferred", "preferred", bool, "boolean", False, None, False),
-            ("type", "type", str, "code", False, None, True),
-            ("value", "value", str, "string", False, None, True),
-        ])
+        js.extend(
+            [
+                ("comment", "comment", str, "string", False, None, False),
+                ("period", "period", period.Period, "Period", False, None, False),
+                ("preferred", "preferred", bool, "boolean", False, None, False),
+                ("type", "type", str, "code", False, None, True),
+                ("value", "value", str, "string", False, None, True),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import contactdetail
 except ImportError:
-    contactdetail = sys.modules[__package__ + '.contactdetail']
+    contactdetail = sys.modules[__package__ + ".contactdetail"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]
 try:
     from . import usagecontext
 except ImportError:
-    usagecontext = sys.modules[__package__ + '.usagecontext']
+    usagecontext = sys.modules[__package__ + ".usagecontext"]

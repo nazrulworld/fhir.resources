@@ -8,7 +8,10 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 
 
+import sys
+
 from . import domainresource
+
 
 class AppointmentResponse(domainresource.DomainResource):
     """ A reply to an appointment request for a patient and/or practitioner(s),
@@ -61,33 +64,74 @@ class AppointmentResponse(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(AppointmentResponse, self).elementProperties()
-        js.extend([
-            ("actor", "actor", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("appointment", "appointment", fhirreference.FHIRReference, "Reference", False, None, True),
-            ("comment", "comment", str, "string", False, None, False),
-            ("end", "end", fhirdate.FHIRDate, "instant", False, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("participantStatus", "participantStatus", str, "code", False, None, True),
-            ("participantType", "participantType", codeableconcept.CodeableConcept, "CodeableConcept", True, None, False),
-            ("start", "start", fhirdate.FHIRDate, "instant", False, None, False),
-        ])
+        js.extend(
+            [
+                (
+                    "actor",
+                    "actor",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "appointment",
+                    "appointment",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    True,
+                ),
+                ("comment", "comment", str, "string", False, None, False),
+                ("end", "end", fhirdate.FHIRDate, "instant", False, None, False),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                (
+                    "participantStatus",
+                    "participantStatus",
+                    str,
+                    "code",
+                    False,
+                    None,
+                    True,
+                ),
+                (
+                    "participantType",
+                    "participantType",
+                    codeableconcept.CodeableConcept,
+                    "CodeableConcept",
+                    True,
+                    None,
+                    False,
+                ),
+                ("start", "start", fhirdate.FHIRDate, "instant", False, None, False),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import codeableconcept
 except ImportError:
-    codeableconcept = sys.modules[__package__ + '.codeableconcept']
+    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]

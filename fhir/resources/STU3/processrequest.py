@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
-from . import domainresource
+import sys
+
+from . import backboneelement, domainresource
+
 
 class ProcessRequest(domainresource.DomainResource):
     """ Request to perform some action on or in regards to an existing resource.
@@ -91,27 +94,91 @@ class ProcessRequest(domainresource.DomainResource):
 
     def elementProperties(self):
         js = super(ProcessRequest, self).elementProperties()
-        js.extend([
-            ("action", "action", str, "code", False, None, False),
-            ("created", "created", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ("exclude", "exclude", str, "string", True, None, False),
-            ("identifier", "identifier", identifier.Identifier, "Identifier", True, None, False),
-            ("include", "include", str, "string", True, None, False),
-            ("item", "item", ProcessRequestItem, "ProcessRequestItem", True, None, False),
-            ("nullify", "nullify", bool, "boolean", False, None, False),
-            ("organization", "organization", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("period", "period", period.Period, "Period", False, None, False),
-            ("provider", "provider", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("reference", "reference", str, "string", False, None, False),
-            ("request", "request", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("response", "response", fhirreference.FHIRReference, "Reference", False, None, False),
-            ("status", "status", str, "code", False, None, False),
-            ("target", "target", fhirreference.FHIRReference, "Reference", False, None, False),
-        ])
+        js.extend(
+            [
+                ("action", "action", str, "code", False, None, False),
+                (
+                    "created",
+                    "created",
+                    fhirdate.FHIRDate,
+                    "dateTime",
+                    False,
+                    None,
+                    False,
+                ),
+                ("exclude", "exclude", str, "string", True, None, False),
+                (
+                    "identifier",
+                    "identifier",
+                    identifier.Identifier,
+                    "Identifier",
+                    True,
+                    None,
+                    False,
+                ),
+                ("include", "include", str, "string", True, None, False),
+                (
+                    "item",
+                    "item",
+                    ProcessRequestItem,
+                    "ProcessRequestItem",
+                    True,
+                    None,
+                    False,
+                ),
+                ("nullify", "nullify", bool, "boolean", False, None, False),
+                (
+                    "organization",
+                    "organization",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("period", "period", period.Period, "Period", False, None, False),
+                (
+                    "provider",
+                    "provider",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("reference", "reference", str, "string", False, None, False),
+                (
+                    "request",
+                    "request",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                (
+                    "response",
+                    "response",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+                ("status", "status", str, "code", False, None, False),
+                (
+                    "target",
+                    "target",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
-
-from . import backboneelement
 
 class ProcessRequestItem(backboneelement.BackboneElement):
     """ Items to re-adjudicate.
@@ -138,26 +205,25 @@ class ProcessRequestItem(backboneelement.BackboneElement):
 
     def elementProperties(self):
         js = super(ProcessRequestItem, self).elementProperties()
-        js.extend([
-            ("sequenceLinkId", "sequenceLinkId", int, "integer", False, None, True),
-        ])
+        js.extend(
+            [("sequenceLinkId", "sequenceLinkId", int, "integer", False, None, True),]
+        )
         return js
 
 
-import sys
 try:
     from . import fhirdate
 except ImportError:
-    fhirdate = sys.modules[__package__ + '.fhirdate']
+    fhirdate = sys.modules[__package__ + ".fhirdate"]
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]
 try:
     from . import identifier
 except ImportError:
-    identifier = sys.modules[__package__ + '.identifier']
+    identifier = sys.modules[__package__ + ".identifier"]
 try:
     from . import period
 except ImportError:
-    period = sys.modules[__package__ + '.period']
+    period = sys.modules[__package__ + ".period"]

@@ -8,7 +8,10 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 
 
+import sys
+
 from . import resource
+
 
 class Binary(resource.Resource):
     """ Pure binary content defined by a format other than FHIR.
@@ -43,16 +46,25 @@ class Binary(resource.Resource):
 
     def elementProperties(self):
         js = super(Binary, self).elementProperties()
-        js.extend([
-            ("content", "content", str, "base64Binary", False, None, True),
-            ("contentType", "contentType", str, "code", False, None, True),
-            ("securityContext", "securityContext", fhirreference.FHIRReference, "Reference", False, None, False),
-        ])
+        js.extend(
+            [
+                ("content", "content", str, "base64Binary", False, None, True),
+                ("contentType", "contentType", str, "code", False, None, True),
+                (
+                    "securityContext",
+                    "securityContext",
+                    fhirreference.FHIRReference,
+                    "Reference",
+                    False,
+                    None,
+                    False,
+                ),
+            ]
+        )
         return js
 
 
-import sys
 try:
     from . import fhirreference
 except ImportError:
-    fhirreference = sys.modules[__package__ + '.fhirreference']
+    fhirreference = sys.modules[__package__ + ".fhirreference"]

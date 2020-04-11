@@ -2,7 +2,7 @@
 History
 =======
 
-5.1.0 (unreleased)
+5.1.0 (2020-04-11)
 ------------------
 
 Improvements

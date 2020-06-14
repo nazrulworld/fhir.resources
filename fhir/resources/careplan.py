@@ -6,669 +6,424 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import Any, Dict
+from typing import List as ListType
 
+from pydantic import Field, root_validator
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class CarePlan(domainresource.DomainResource):
     """ Healthcare plan for patient or group.
-
     Describes the intention of how one or more practitioners intend to deliver
     care for a particular patient, group or community for a period of time,
     possibly limited to care for a specific condition or set of conditions.
     """
 
-    resource_type = "CarePlan"
+    resource_type = Field("CarePlan", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    activity: ListType[fhirtypes.CarePlanActivityType] = Field(
+        None,
+        alias="activity",
+        title="List of `CarePlanActivity` items (represented as `dict` in JSON)",
+        description="Action to occur as part of plan",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    addresses: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="addresses",
+        title="List of `Reference` items referencing `Condition` (represented as `dict` in JSON)",
+        description="Health issues this plan addresses",
+    )
 
-        self.activity = None
-        """ Action to occur as part of plan.
-        List of `CarePlanActivity` items (represented as `dict` in JSON). """
+    author: fhirtypes.ReferenceType = Field(
+        None,
+        alias="author",
+        title="Type `Reference` referencing `Patient, Practitioner, PractitionerRole, Device, RelatedPerson, Organization, CareTeam` (represented as `dict` in JSON)",
+        description="Who is the designated responsible party",
+    )
 
-        self.addresses = None
-        """ Health issues this plan addresses.
-        List of `FHIRReference` items referencing `['Condition']` (represented as `dict` in JSON). """
+    basedOn: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="basedOn",
+        title="List of `Reference` items referencing `CarePlan` (represented as `dict` in JSON)",
+        description="Fulfills CarePlan",
+    )
 
-        self.author = None
-        """ Who is the designated responsible party.
-        Type `FHIRReference` referencing `['Patient', 'Practitioner', 'PractitionerRole', 'Device', 'RelatedPerson', 'Organization', 'CareTeam']` (represented as `dict` in JSON). """
+    careTeam: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="careTeam",
+        title="List of `Reference` items referencing `CareTeam` (represented as `dict` in JSON)",
+        description="Who\u0027s involved in plan?",
+    )
 
-        self.basedOn = None
-        """ Fulfills CarePlan.
-        List of `FHIRReference` items referencing `['CarePlan']` (represented as `dict` in JSON). """
+    category: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="category",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Type of plan",
+    )
 
-        self.careTeam = None
-        """ Who's involved in plan?.
-        List of `FHIRReference` items referencing `['CareTeam']` (represented as `dict` in JSON). """
+    contributor: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="contributor",
+        title="List of `Reference` items referencing `Patient, Practitioner, PractitionerRole, Device, RelatedPerson, Organization, CareTeam` (represented as `dict` in JSON)",
+        description="Who provided the content of the care plan",
+    )
 
-        self.category = None
-        """ Type of plan.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    created: fhirtypes.DateTime = Field(
+        None,
+        alias="created",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Date record was first recorded",
+    )
 
-        self.contributor = None
-        """ Who provided the content of the care plan.
-        List of `FHIRReference` items referencing `['Patient', 'Practitioner', 'PractitionerRole', 'Device', 'RelatedPerson', 'Organization', 'CareTeam']` (represented as `dict` in JSON). """
+    description: fhirtypes.String = Field(
+        None,
+        alias="description",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Summary of nature of plan",
+    )
 
-        self.created = None
-        """ Date record was first recorded.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    encounter: fhirtypes.ReferenceType = Field(
+        None,
+        alias="encounter",
+        title="Type `Reference` referencing `Encounter` (represented as `dict` in JSON)",
+        description="Encounter created as part of",
+    )
 
-        self.description = None
-        """ Summary of nature of plan.
-        Type `str`. """
+    goal: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="goal",
+        title="List of `Reference` items referencing `Goal` (represented as `dict` in JSON)",
+        description="Desired outcome of plan",
+    )
 
-        self.encounter = None
-        """ Encounter created as part of.
-        Type `FHIRReference` referencing `['Encounter']` (represented as `dict` in JSON). """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="External Ids for this plan",
+    )
 
-        self.goal = None
-        """ Desired outcome of plan.
-        List of `FHIRReference` items referencing `['Goal']` (represented as `dict` in JSON). """
+    instantiatesCanonical: ListType[fhirtypes.Canonical] = Field(
+        None,
+        alias="instantiatesCanonical",
+        title="List of `Canonical` items referencing `PlanDefinition, Questionnaire, Measure, ActivityDefinition, OperationDefinition` (represented as `dict` in JSON)",
+        description="Instantiates FHIR protocol or definition",
+    )
 
-        self.identifier = None
-        """ External Ids for this plan.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    instantiatesUri: ListType[fhirtypes.Uri] = Field(
+        None,
+        alias="instantiatesUri",
+        title="List of `Uri` items (represented as `dict` in JSON)",
+        description="Instantiates external protocol or definition",
+    )
 
-        self.instantiatesCanonical = None
-        """ Instantiates FHIR protocol or definition.
-        List of `str` items referencing `['PlanDefinition', 'Questionnaire', 'Measure', 'ActivityDefinition', 'OperationDefinition']`. """
+    intent: fhirtypes.Code = Field(
+        ...,
+        alias="intent",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="proposal | plan | order | option",
+    )
 
-        self.instantiatesUri = None
-        """ Instantiates external protocol or definition.
-        List of `str` items. """
+    note: ListType[fhirtypes.AnnotationType] = Field(
+        None,
+        alias="note",
+        title="List of `Annotation` items (represented as `dict` in JSON)",
+        description="Comments about the plan",
+    )
 
-        self.intent = None
-        """ proposal | plan | order | option.
-        Type `str`. """
+    partOf: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="partOf",
+        title="List of `Reference` items referencing `CarePlan` (represented as `dict` in JSON)",
+        description="Part of referenced CarePlan",
+    )
 
-        self.note = None
-        """ Comments about the plan.
-        List of `Annotation` items (represented as `dict` in JSON). """
+    period: fhirtypes.PeriodType = Field(
+        None,
+        alias="period",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="Time period plan covers",
+    )
 
-        self.partOf = None
-        """ Part of referenced CarePlan.
-        List of `FHIRReference` items referencing `['CarePlan']` (represented as `dict` in JSON). """
+    replaces: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="replaces",
+        title="List of `Reference` items referencing `CarePlan` (represented as `dict` in JSON)",
+        description="CarePlan replaced by this CarePlan",
+    )
 
-        self.period = None
-        """ Time period plan covers.
-        Type `Period` (represented as `dict` in JSON). """
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="draft | active | on-hold | revoked | completed | entered-in-error | unknown",
+    )
 
-        self.replaces = None
-        """ CarePlan replaced by this CarePlan.
-        List of `FHIRReference` items referencing `['CarePlan']` (represented as `dict` in JSON). """
+    subject: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="subject",
+        title="Type `Reference` referencing `Patient, Group` (represented as `dict` in JSON)",
+        description="Who the care plan is for",
+    )
 
-        self.status = None
-        """ draft | active | on-hold | revoked | completed | entered-in-error |
-        unknown.
-        Type `str`. """
+    supportingInfo: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="supportingInfo",
+        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        description="Information considered as part of plan",
+    )
 
-        self.subject = None
-        """ Who the care plan is for.
-        Type `FHIRReference` referencing `['Patient', 'Group']` (represented as `dict` in JSON). """
-
-        self.supportingInfo = None
-        """ Information considered as part of plan.
-        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
-
-        self.title = None
-        """ Human-friendly name for the care plan.
-        Type `str`. """
-
-        super(CarePlan, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(CarePlan, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "activity",
-                    "activity",
-                    CarePlanActivity,
-                    "CarePlanActivity",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "addresses",
-                    "addresses",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "author",
-                    "author",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "basedOn",
-                    "basedOn",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "careTeam",
-                    "careTeam",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "category",
-                    "category",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "contributor",
-                    "contributor",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "created",
-                    "created",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    None,
-                    False,
-                ),
-                ("description", "description", str, "string", False, None, False),
-                (
-                    "encounter",
-                    "encounter",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "goal",
-                    "goal",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "instantiatesCanonical",
-                    "instantiatesCanonical",
-                    str,
-                    "canonical",
-                    True,
-                    None,
-                    False,
-                ),
-                ("instantiatesUri", "instantiatesUri", str, "uri", True, None, False),
-                ("intent", "intent", str, "code", False, None, True),
-                (
-                    "note",
-                    "note",
-                    annotation.Annotation,
-                    "Annotation",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "partOf",
-                    "partOf",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                ("period", "period", period.Period, "Period", False, None, False),
-                (
-                    "replaces",
-                    "replaces",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                ("status", "status", str, "code", False, None, True),
-                (
-                    "subject",
-                    "subject",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "supportingInfo",
-                    "supportingInfo",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                ("title", "title", str, "string", False, None, False),
-            ]
-        )
-        return js
+    title: fhirtypes.String = Field(
+        None,
+        alias="title",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Human-friendly name for the care plan",
+    )
 
 
 class CarePlanActivity(backboneelement.BackboneElement):
     """ Action to occur as part of plan.
-
     Identifies a planned action to occur as part of the plan.  For example, a
     medication to be used, lab tests to perform, self-monitoring, education,
     etc.
     """
 
-    resource_type = "CarePlanActivity"
+    resource_type = Field("CarePlanActivity", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    detail: fhirtypes.CarePlanActivityDetailType = Field(
+        None,
+        alias="detail",
+        title="Type `CarePlanActivityDetail` (represented as `dict` in JSON)",
+        description="In-line definition of activity",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    outcomeCodeableConcept: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="outcomeCodeableConcept",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Results of the activity",
+    )
 
-        self.detail = None
-        """ In-line definition of activity.
-        Type `CarePlanActivityDetail` (represented as `dict` in JSON). """
+    outcomeReference: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="outcomeReference",
+        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        description="Appointment, Encounter, Procedure, etc.",
+    )
 
-        self.outcomeCodeableConcept = None
-        """ Results of the activity.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    progress: ListType[fhirtypes.AnnotationType] = Field(
+        None,
+        alias="progress",
+        title="List of `Annotation` items (represented as `dict` in JSON)",
+        description="Comments about the activity status/progress",
+    )
 
-        self.outcomeReference = None
-        """ Appointment, Encounter, Procedure, etc..
-        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
-
-        self.progress = None
-        """ Comments about the activity status/progress.
-        List of `Annotation` items (represented as `dict` in JSON). """
-
-        self.reference = None
-        """ Activity details defined in specific resource.
-        Type `FHIRReference` referencing `['Appointment', 'CommunicationRequest', 'DeviceRequest', 'MedicationRequest', 'NutritionOrder', 'Task', 'ServiceRequest', 'VisionPrescription', 'RequestGroup']` (represented as `dict` in JSON). """
-
-        super(CarePlanActivity, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(CarePlanActivity, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "detail",
-                    "detail",
-                    CarePlanActivityDetail,
-                    "CarePlanActivityDetail",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "outcomeCodeableConcept",
-                    "outcomeCodeableConcept",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "outcomeReference",
-                    "outcomeReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "progress",
-                    "progress",
-                    annotation.Annotation,
-                    "Annotation",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "reference",
-                    "reference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    reference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="reference",
+        title="Type `Reference` referencing `Appointment, CommunicationRequest, DeviceRequest, MedicationRequest, NutritionOrder, Task, ServiceRequest, VisionPrescription, RequestGroup` (represented as `dict` in JSON)",
+        description="Activity details defined in specific resource",
+    )
 
 
 class CarePlanActivityDetail(backboneelement.BackboneElement):
     """ In-line definition of activity.
-
     A simple summary of a planned activity suitable for a general care plan
     system (e.g. form driven) that doesn't know about specific resources such
     as procedure etc.
     """
 
-    resource_type = "CarePlanActivityDetail"
+    resource_type = Field("CarePlanActivityDetail", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    code: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="code",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Detail type of activity",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    dailyAmount: fhirtypes.QuantityType = Field(
+        None,
+        alias="dailyAmount",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="How to consume/day?",
+    )
+
+    description: fhirtypes.String = Field(
+        None,
+        alias="description",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Extra info describing activity to perform",
+    )
+
+    doNotPerform: bool = Field(
+        None,
+        alias="doNotPerform",
+        title="Type `bool`",
+        description="If true, activity is prohibiting action",
+    )
+
+    goal: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="goal",
+        title="List of `Reference` items referencing `Goal` (represented as `dict` in JSON)",
+        description="Goals this activity relates to",
+    )
+
+    instantiatesCanonical: ListType[fhirtypes.Canonical] = Field(
+        None,
+        alias="instantiatesCanonical",
+        title="List of `Canonical` items referencing `PlanDefinition, ActivityDefinition, Questionnaire, Measure, OperationDefinition` (represented as `dict` in JSON)",
+        description="Instantiates FHIR protocol or definition",
+    )
+
+    instantiatesUri: ListType[fhirtypes.Uri] = Field(
+        None,
+        alias="instantiatesUri",
+        title="List of `Uri` items (represented as `dict` in JSON)",
+        description="Instantiates external protocol or definition",
+    )
+
+    kind: fhirtypes.Code = Field(
+        None,
+        alias="kind",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="Appointment | CommunicationRequest | DeviceRequest | MedicationRequest | NutritionOrder | Task | ServiceRequest | VisionPrescription",
+    )
+
+    location: fhirtypes.ReferenceType = Field(
+        None,
+        alias="location",
+        title="Type `Reference` referencing `Location` (represented as `dict` in JSON)",
+        description="Where it should happen",
+    )
+
+    performer: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="performer",
+        title="List of `Reference` items referencing `Practitioner, PractitionerRole, Organization, RelatedPerson, Patient, CareTeam, HealthcareService, Device` (represented as `dict` in JSON)",
+        description="Who will be responsible?",
+    )
+
+    productCodeableConcept: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="productCodeableConcept",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="What is to be administered/supplied",
+        one_of_many="product",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    productReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="productReference",
+        title="Type `Reference` referencing `Medication, Substance` (represented as `dict` in JSON)",
+        description="What is to be administered/supplied",
+        one_of_many="product",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    quantity: fhirtypes.QuantityType = Field(
+        None,
+        alias="quantity",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="How much to administer/supply/consume",
+    )
+
+    reasonCode: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="reasonCode",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Why activity should be done or why activity was prohibited",
+    )
+
+    reasonReference: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="reasonReference",
+        title="List of `Reference` items referencing `Condition, Observation, DiagnosticReport, DocumentReference` (represented as `dict` in JSON)",
+        description="Why activity is needed",
+    )
+
+    scheduledPeriod: fhirtypes.PeriodType = Field(
+        None,
+        alias="scheduledPeriod",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="When activity is to occur",
+        one_of_many="scheduled",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    scheduledString: fhirtypes.String = Field(
+        None,
+        alias="scheduledString",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="When activity is to occur",
+        one_of_many="scheduled",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    scheduledTiming: fhirtypes.TimingType = Field(
+        None,
+        alias="scheduledTiming",
+        title="Type `Timing` (represented as `dict` in JSON)",
+        description="When activity is to occur",
+        one_of_many="scheduled",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="not-started | scheduled | in-progress | on-hold | completed | cancelled | stopped | unknown | entered-in-error",
+    )
+
+    statusReason: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="statusReason",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Reason for current status",
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "product": ["productCodeableConcept", "productReference",],
+            "scheduled": ["scheduledPeriod", "scheduledString", "scheduledTiming",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.code = None
-        """ Detail type of activity.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.dailyAmount = None
-        """ How to consume/day?.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        self.description = None
-        """ Extra info describing activity to perform.
-        Type `str`. """
-
-        self.doNotPerform = None
-        """ If true, activity is prohibiting action.
-        Type `bool`. """
-
-        self.goal = None
-        """ Goals this activity relates to.
-        List of `FHIRReference` items referencing `['Goal']` (represented as `dict` in JSON). """
-
-        self.instantiatesCanonical = None
-        """ Instantiates FHIR protocol or definition.
-        List of `str` items referencing `['PlanDefinition', 'ActivityDefinition', 'Questionnaire', 'Measure', 'OperationDefinition']`. """
-
-        self.instantiatesUri = None
-        """ Instantiates external protocol or definition.
-        List of `str` items. """
-
-        self.kind = None
-        """ Appointment | CommunicationRequest | DeviceRequest |
-        MedicationRequest | NutritionOrder | Task | ServiceRequest |
-        VisionPrescription.
-        Type `str`. """
-
-        self.location = None
-        """ Where it should happen.
-        Type `FHIRReference` referencing `['Location']` (represented as `dict` in JSON). """
-
-        self.performer = None
-        """ Who will be responsible?.
-        List of `FHIRReference` items referencing `['Practitioner', 'PractitionerRole', 'Organization', 'RelatedPerson', 'Patient', 'CareTeam', 'HealthcareService', 'Device']` (represented as `dict` in JSON). """
-
-        self.productCodeableConcept = None
-        """ What is to be administered/supplied.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.productReference = None
-        """ What is to be administered/supplied.
-        Type `FHIRReference` referencing `['Medication', 'Substance']` (represented as `dict` in JSON). """
-
-        self.quantity = None
-        """ How much to administer/supply/consume.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        self.reasonCode = None
-        """ Why activity should be done or why activity was prohibited.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.reasonReference = None
-        """ Why activity is needed.
-        List of `FHIRReference` items referencing `['Condition', 'Observation', 'DiagnosticReport', 'DocumentReference']` (represented as `dict` in JSON). """
-
-        self.scheduledPeriod = None
-        """ When activity is to occur.
-        Type `Period` (represented as `dict` in JSON). """
-
-        self.scheduledString = None
-        """ When activity is to occur.
-        Type `str`. """
-
-        self.scheduledTiming = None
-        """ When activity is to occur.
-        Type `Timing` (represented as `dict` in JSON). """
-
-        self.status = None
-        """ not-started | scheduled | in-progress | on-hold | completed |
-        cancelled | stopped | unknown | entered-in-error.
-        Type `str`. """
-
-        self.statusReason = None
-        """ Reason for current status.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(CarePlanActivityDetail, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(CarePlanActivityDetail, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "code",
-                    "code",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "dailyAmount",
-                    "dailyAmount",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    None,
-                    False,
-                ),
-                ("description", "description", str, "string", False, None, False),
-                ("doNotPerform", "doNotPerform", bool, "boolean", False, None, False),
-                (
-                    "goal",
-                    "goal",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "instantiatesCanonical",
-                    "instantiatesCanonical",
-                    str,
-                    "canonical",
-                    True,
-                    None,
-                    False,
-                ),
-                ("instantiatesUri", "instantiatesUri", str, "uri", True, None, False),
-                ("kind", "kind", str, "code", False, None, False),
-                (
-                    "location",
-                    "location",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "performer",
-                    "performer",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "productCodeableConcept",
-                    "productCodeableConcept",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    "product",
-                    False,
-                ),
-                (
-                    "productReference",
-                    "productReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    "product",
-                    False,
-                ),
-                (
-                    "quantity",
-                    "quantity",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "reasonCode",
-                    "reasonCode",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "reasonReference",
-                    "reasonReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "scheduledPeriod",
-                    "scheduledPeriod",
-                    period.Period,
-                    "Period",
-                    False,
-                    "scheduled",
-                    False,
-                ),
-                (
-                    "scheduledString",
-                    "scheduledString",
-                    str,
-                    "string",
-                    False,
-                    "scheduled",
-                    False,
-                ),
-                (
-                    "scheduledTiming",
-                    "scheduledTiming",
-                    timing.Timing,
-                    "Timing",
-                    False,
-                    "scheduled",
-                    False,
-                ),
-                ("status", "status", str, "code", False, None, True),
-                (
-                    "statusReason",
-                    "statusReason",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import annotation
-except ImportError:
-    annotation = sys.modules[__package__ + ".annotation"]
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import period
-except ImportError:
-    period = sys.modules[__package__ + ".period"]
-try:
-    from . import quantity
-except ImportError:
-    quantity = sys.modules[__package__ + ".quantity"]
-try:
-    from . import timing
-except ImportError:
-    timing = sys.modules[__package__ + ".timing"]
+        return values

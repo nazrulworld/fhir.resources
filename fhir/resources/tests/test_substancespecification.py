@@ -6,204 +6,216 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import substancespecification
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class SubstanceSpecificationTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("SubstanceSpecification", js["resourceType"])
-        return substancespecification.SubstanceSpecification(js)
+def impl_substancespecification_1(inst):
+    assert inst.id == "example"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example</p></div>'
+    )
+    assert inst.text.status == "generated"
 
-    def testSubstanceSpecification1(self):
-        inst = self.instantiate_from("substancesourcematerial-example.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a SubstanceSpecification instance"
-        )
-        self.implSubstanceSpecification1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("SubstanceSpecification", js["resourceType"])
-        inst2 = substancespecification.SubstanceSpecification(js)
-        self.implSubstanceSpecification1(inst2)
+def test_substancespecification_1(base_settings):
+    """No. 1 tests collection for SubstanceSpecification.
+    Test File: substancesourcematerial-example.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "substancesourcematerial-example.json"
+    )
+    inst = substancespecification.SubstanceSpecification.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "SubstanceSpecification" == inst.resource_type
 
-    def implSubstanceSpecification1(self, inst):
-        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example</p></div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    impl_substancespecification_1(inst)
 
-    def testSubstanceSpecification2(self):
-        inst = self.instantiate_from("substanceprotein-example.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a SubstanceSpecification instance"
-        )
-        self.implSubstanceSpecification2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "SubstanceSpecification" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("SubstanceSpecification", js["resourceType"])
-        inst2 = substancespecification.SubstanceSpecification(js)
-        self.implSubstanceSpecification2(inst2)
+    inst2 = substancespecification.SubstanceSpecification(**data)
+    impl_substancespecification_1(inst2)
 
-    def implSubstanceSpecification2(self, inst):
-        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example</p></div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 
-    def testSubstanceSpecification3(self):
-        inst = self.instantiate_from("substancepolymer-example.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a SubstanceSpecification instance"
-        )
-        self.implSubstanceSpecification3(inst)
+def impl_substancespecification_2(inst):
+    assert inst.id == "example"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example</p></div>'
+    )
+    assert inst.text.status == "generated"
 
-        js = inst.as_json()
-        self.assertEqual("SubstanceSpecification", js["resourceType"])
-        inst2 = substancespecification.SubstanceSpecification(js)
-        self.implSubstanceSpecification3(inst2)
 
-    def implSubstanceSpecification3(self, inst):
-        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example</p></div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+def test_substancespecification_2(base_settings):
+    """No. 2 tests collection for SubstanceSpecification.
+    Test File: substanceprotein-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "substanceprotein-example.json"
+    inst = substancespecification.SubstanceSpecification.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "SubstanceSpecification" == inst.resource_type
 
-    def testSubstanceSpecification4(self):
-        inst = self.instantiate_from("substancespecification-example.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a SubstanceSpecification instance"
-        )
-        self.implSubstanceSpecification4(inst)
+    impl_substancespecification_2(inst)
 
-        js = inst.as_json()
-        self.assertEqual("SubstanceSpecification", js["resourceType"])
-        inst2 = substancespecification.SubstanceSpecification(js)
-        self.implSubstanceSpecification4(inst2)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "SubstanceSpecification" == data["resourceType"]
 
-    def implSubstanceSpecification4(self, inst):
-        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example</p></div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    inst2 = substancespecification.SubstanceSpecification(**data)
+    impl_substancespecification_2(inst2)
 
-    def testSubstanceSpecification5(self):
-        inst = self.instantiate_from("substancereferenceinformation-example.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a SubstanceSpecification instance"
-        )
-        self.implSubstanceSpecification5(inst)
 
-        js = inst.as_json()
-        self.assertEqual("SubstanceSpecification", js["resourceType"])
-        inst2 = substancespecification.SubstanceSpecification(js)
-        self.implSubstanceSpecification5(inst2)
+def impl_substancespecification_3(inst):
+    assert inst.id == "example"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example</p></div>'
+    )
+    assert inst.text.status == "generated"
 
-    def implSubstanceSpecification5(self, inst):
-        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example</p></div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 
-    def testSubstanceSpecification6(self):
-        inst = self.instantiate_from("substancenucleicacid-example.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a SubstanceSpecification instance"
-        )
-        self.implSubstanceSpecification6(inst)
+def test_substancespecification_3(base_settings):
+    """No. 3 tests collection for SubstanceSpecification.
+    Test File: substancepolymer-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "substancepolymer-example.json"
+    inst = substancespecification.SubstanceSpecification.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "SubstanceSpecification" == inst.resource_type
 
-        js = inst.as_json()
-        self.assertEqual("SubstanceSpecification", js["resourceType"])
-        inst2 = substancespecification.SubstanceSpecification(js)
-        self.implSubstanceSpecification6(inst2)
+    impl_substancespecification_3(inst)
 
-    def implSubstanceSpecification6(self, inst):
-        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example</p></div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "SubstanceSpecification" == data["resourceType"]
+
+    inst2 = substancespecification.SubstanceSpecification(**data)
+    impl_substancespecification_3(inst2)
+
+
+def impl_substancespecification_4(inst):
+    assert inst.id == "example"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example</p></div>'
+    )
+    assert inst.text.status == "generated"
+
+
+def test_substancespecification_4(base_settings):
+    """No. 4 tests collection for SubstanceSpecification.
+    Test File: substancespecification-example.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "substancespecification-example.json"
+    )
+    inst = substancespecification.SubstanceSpecification.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "SubstanceSpecification" == inst.resource_type
+
+    impl_substancespecification_4(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "SubstanceSpecification" == data["resourceType"]
+
+    inst2 = substancespecification.SubstanceSpecification(**data)
+    impl_substancespecification_4(inst2)
+
+
+def impl_substancespecification_5(inst):
+    assert inst.id == "example"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example</p></div>'
+    )
+    assert inst.text.status == "generated"
+
+
+def test_substancespecification_5(base_settings):
+    """No. 5 tests collection for SubstanceSpecification.
+    Test File: substancereferenceinformation-example.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"]
+        / "substancereferenceinformation-example.json"
+    )
+    inst = substancespecification.SubstanceSpecification.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "SubstanceSpecification" == inst.resource_type
+
+    impl_substancespecification_5(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "SubstanceSpecification" == data["resourceType"]
+
+    inst2 = substancespecification.SubstanceSpecification(**data)
+    impl_substancespecification_5(inst2)
+
+
+def impl_substancespecification_6(inst):
+    assert inst.id == "example"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example</p></div>'
+    )
+    assert inst.text.status == "generated"
+
+
+def test_substancespecification_6(base_settings):
+    """No. 6 tests collection for SubstanceSpecification.
+    Test File: substancenucleicacid-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "substancenucleicacid-example.json"
+    inst = substancespecification.SubstanceSpecification.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "SubstanceSpecification" == inst.resource_type
+
+    impl_substancespecification_6(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "SubstanceSpecification" == data["resourceType"]
+
+    inst2 = substancespecification.SubstanceSpecification(**data)
+    impl_substancespecification_6(inst2)

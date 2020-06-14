@@ -6,108 +6,87 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import imagingmanifest
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class ImagingManifestTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("ImagingManifest", js["resourceType"])
-        return imagingmanifest.ImagingManifest(js)
+def impl_imagingmanifest_1(inst):
+    assert inst.author.reference == "Practitioner/example"
+    assert inst.authoringTime == fhirtypes.DateTime.validate(
+        "2014-11-20T11:01:20-08:00"
+    )
+    assert (
+        inst.description
+        == "1 SC image (screen snapshot) and 2 CT images to share a chest CT exam"
+    )
+    assert inst.id == "example"
+    assert (
+        inst.identifier.value
+        == "urn:oid:2.16.124.113543.6003.189642796.63084.16748.2599092901"
+    )
+    assert inst.patient.reference == "Patient/dicom"
+    assert inst.study[0].endpoint[0].reference == "Endpoint/example-iid"
+    assert inst.study[0].endpoint[1].reference == "Endpoint/example-wadors"
+    assert inst.study[0].imagingStudy.reference == "ImagingStudy/example"
+    assert inst.study[0].series[0].endpoint[0].reference == "Endpoint/example-wadors"
+    assert (
+        inst.study[0].series[0].instance[0].sopClass
+        == "urn:oid:1.2.840.10008.5.1.4.1.1.7"
+    )
+    assert (
+        inst.study[0].series[0].instance[0].uid
+        == "urn:oid:2.16.124.113543.6003.189642796.63084.16748.2599092902"
+    )
+    assert (
+        inst.study[0].series[0].uid
+        == "urn:oid:2.16.124.113543.6003.189642796.63084.16750.2599092901"
+    )
+    assert (
+        inst.study[0].series[1].instance[0].sopClass
+        == "urn:oid:1.2.840.10008.5.1.4.1.1.2"
+    )
+    assert (
+        inst.study[0].series[1].instance[0].uid
+        == "urn:oid:2.16.124.113543.6003.189642796.63084.16748.2599092903"
+    )
+    assert (
+        inst.study[0].series[1].instance[1].sopClass
+        == "urn:oid:1.2.840.10008.5.1.4.1.1.2"
+    )
+    assert (
+        inst.study[0].series[1].instance[1].uid
+        == "urn:oid:2.16.124.113543.6003.189642796.63084.16748.2599092904"
+    )
+    assert (
+        inst.study[0].series[1].uid
+        == "urn:oid:2.16.124.113543.6003.189642796.63084.16750.2599092902"
+    )
+    assert (
+        inst.study[0].uid
+        == "urn:oid:2.16.124.113543.6003.189642796.63084.16749.2599092904"
+    )
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">A set of images to share accompanying an report document, including one SC image and two CT image</div>'
+    )
+    assert inst.text.status == "generated"
 
-    def testImagingManifest1(self):
-        inst = self.instantiate_from("imagingmanifest-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ImagingManifest instance")
-        self.implImagingManifest1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("ImagingManifest", js["resourceType"])
-        inst2 = imagingmanifest.ImagingManifest(js)
-        self.implImagingManifest1(inst2)
+def test_imagingmanifest_1(base_settings):
+    """No. 1 tests collection for ImagingManifest.
+    Test File: imagingmanifest-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "imagingmanifest-example.json"
+    inst = imagingmanifest.ImagingManifest.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ImagingManifest" == inst.resource_type
 
-    def implImagingManifest1(self, inst):
-        self.assertEqual(
-            inst.authoringTime.date, FHIRDate("2014-11-20T11:01:20-08:00").date
-        )
-        self.assertEqual(inst.authoringTime.as_json(), "2014-11-20T11:01:20-08:00")
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes(
-                "1 SC image (screen snapshot) and 2 CT images to share a chest CT exam"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(
-            force_bytes(inst.identifier.value),
-            force_bytes(
-                "urn:oid:2.16.124.113543.6003.189642796.63084.16748.2599092901"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.study[0].series[0].instance[0].sopClass),
-            force_bytes("urn:oid:1.2.840.10008.5.1.4.1.1.7"),
-        )
-        self.assertEqual(
-            force_bytes(inst.study[0].series[0].instance[0].uid),
-            force_bytes(
-                "urn:oid:2.16.124.113543.6003.189642796.63084.16748.2599092902"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.study[0].series[0].uid),
-            force_bytes(
-                "urn:oid:2.16.124.113543.6003.189642796.63084.16750.2599092901"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.study[0].series[1].instance[0].sopClass),
-            force_bytes("urn:oid:1.2.840.10008.5.1.4.1.1.2"),
-        )
-        self.assertEqual(
-            force_bytes(inst.study[0].series[1].instance[0].uid),
-            force_bytes(
-                "urn:oid:2.16.124.113543.6003.189642796.63084.16748.2599092903"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.study[0].series[1].instance[1].sopClass),
-            force_bytes("urn:oid:1.2.840.10008.5.1.4.1.1.2"),
-        )
-        self.assertEqual(
-            force_bytes(inst.study[0].series[1].instance[1].uid),
-            force_bytes(
-                "urn:oid:2.16.124.113543.6003.189642796.63084.16748.2599092904"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.study[0].series[1].uid),
-            force_bytes(
-                "urn:oid:2.16.124.113543.6003.189642796.63084.16750.2599092902"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.study[0].uid),
-            force_bytes(
-                "urn:oid:2.16.124.113543.6003.189642796.63084.16749.2599092904"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">A set of images to share accompanying an report document, including one SC image and two CT image</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    impl_imagingmanifest_1(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ImagingManifest" == data["resourceType"]
+
+    inst2 = imagingmanifest.ImagingManifest(**data)
+    impl_imagingmanifest_1(inst2)

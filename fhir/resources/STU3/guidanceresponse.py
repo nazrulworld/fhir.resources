@@ -6,243 +6,166 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from typing import Any, Dict
+from typing import List as ListType
 
+from pydantic import Field, root_validator
 
-import sys
-
-from . import domainresource
+from . import domainresource, fhirtypes
 
 
 class GuidanceResponse(domainresource.DomainResource):
     """ The formal response to a guidance request.
-
     A guidance response is the formal response to a guidance request, including
     any output parameters returned by the evaluation, as well as the
     description of any proposed actions to be taken.
     """
 
-    resource_type = "GuidanceResponse"
+    resource_type = Field("GuidanceResponse", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    context: fhirtypes.ReferenceType = Field(
+        None,
+        alias="context",
+        title="Type `Reference` referencing `Encounter, EpisodeOfCare` (represented as `dict` in JSON)",
+        description="Encounter or Episode during which the response was returned",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    dataRequirement: ListType[fhirtypes.DataRequirementType] = Field(
+        None,
+        alias="dataRequirement",
+        title="List of `DataRequirement` items (represented as `dict` in JSON)",
+        description="Additional required data",
+    )
+
+    evaluationMessage: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="evaluationMessage",
+        title="List of `Reference` items referencing `OperationOutcome` (represented as `dict` in JSON)",
+        description="Messages resulting from the evaluation of the artifact or artifacts",
+    )
+
+    identifier: fhirtypes.IdentifierType = Field(
+        None,
+        alias="identifier",
+        title="Type `Identifier` (represented as `dict` in JSON)",
+        description="Business identifier",
+    )
+
+    module: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="module",
+        title="Type `Reference` referencing `ServiceDefinition` (represented as `dict` in JSON)",
+        description="A reference to a knowledge module",
+    )
+
+    note: ListType[fhirtypes.AnnotationType] = Field(
+        None,
+        alias="note",
+        title="List of `Annotation` items (represented as `dict` in JSON)",
+        description="Additional notes about the response",
+    )
+
+    occurrenceDateTime: fhirtypes.DateTime = Field(
+        None,
+        alias="occurrenceDateTime",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="When the guidance response was processed",
+    )
+
+    outputParameters: fhirtypes.ReferenceType = Field(
+        None,
+        alias="outputParameters",
+        title="Type `Reference` referencing `Parameters` (represented as `dict` in JSON)",
+        description="The output parameters of the evaluation, if any",
+    )
+
+    performer: fhirtypes.ReferenceType = Field(
+        None,
+        alias="performer",
+        title="Type `Reference` referencing `Device` (represented as `dict` in JSON)",
+        description="Device returning the guidance",
+    )
+
+    reasonCodeableConcept: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="reasonCodeableConcept",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Reason for the response",
+        one_of_many="reason",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    reasonReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="reasonReference",
+        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        description="Reason for the response",
+        one_of_many="reason",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    requestId: fhirtypes.Id = Field(
+        None,
+        alias="requestId",
+        title="Type `Id` (represented as `dict` in JSON)",
+        description="The id of the request associated with this response, if any",
+    )
+
+    result: fhirtypes.ReferenceType = Field(
+        None,
+        alias="result",
+        title="Type `Reference` referencing `CarePlan, RequestGroup` (represented as `dict` in JSON)",
+        description="Proposed actions, if any",
+    )
+
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="success | data-requested | data-required | in-progress | failure | entered-in-error",
+    )
+
+    subject: fhirtypes.ReferenceType = Field(
+        None,
+        alias="subject",
+        title="Type `Reference` referencing `Patient, Group` (represented as `dict` in JSON)",
+        description="Patient the request was performed for",
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "reason": ["reasonCodeableConcept", "reasonReference",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.context = None
-        """ Encounter or Episode during which the response was returned.
-        Type `FHIRReference` referencing `['Encounter'], ['EpisodeOfCare']` (represented as `dict` in JSON). """
-
-        self.dataRequirement = None
-        """ Additional required data.
-        List of `DataRequirement` items (represented as `dict` in JSON). """
-
-        self.evaluationMessage = None
-        """ Messages resulting from the evaluation of the artifact or artifacts.
-        List of `FHIRReference` items referencing `['OperationOutcome']` (represented as `dict` in JSON). """
-
-        self.identifier = None
-        """ Business identifier.
-        Type `Identifier` (represented as `dict` in JSON). """
-
-        self.module = None
-        """ A reference to a knowledge module.
-        Type `FHIRReference` referencing `['ServiceDefinition']` (represented as `dict` in JSON). """
-
-        self.note = None
-        """ Additional notes about the response.
-        List of `Annotation` items (represented as `dict` in JSON). """
-
-        self.occurrenceDateTime = None
-        """ When the guidance response was processed.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.outputParameters = None
-        """ The output parameters of the evaluation, if any.
-        Type `FHIRReference` referencing `['Parameters']` (represented as `dict` in JSON). """
-
-        self.performer = None
-        """ Device returning the guidance.
-        Type `FHIRReference` referencing `['Device']` (represented as `dict` in JSON). """
-
-        self.reasonCodeableConcept = None
-        """ Reason for the response.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.reasonReference = None
-        """ Reason for the response.
-        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
-
-        self.requestId = None
-        """ The id of the request associated with this response, if any.
-        Type `str`. """
-
-        self.result = None
-        """ Proposed actions, if any.
-        Type `FHIRReference` referencing `['CarePlan'], ['RequestGroup']` (represented as `dict` in JSON). """
-
-        self.status = None
-        """ success | data-requested | data-required | in-progress | failure |
-        entered-in-error.
-        Type `str`. """
-
-        self.subject = None
-        """ Patient the request was performed for.
-        Type `FHIRReference` referencing `['Patient'], ['Group']` (represented as `dict` in JSON). """
-
-        super(GuidanceResponse, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(GuidanceResponse, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "context",
-                    "context",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "dataRequirement",
-                    "dataRequirement",
-                    datarequirement.DataRequirement,
-                    "DataRequirement",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "evaluationMessage",
-                    "evaluationMessage",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "module",
-                    "module",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "note",
-                    "note",
-                    annotation.Annotation,
-                    "Annotation",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "occurrenceDateTime",
-                    "occurrenceDateTime",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "outputParameters",
-                    "outputParameters",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "performer",
-                    "performer",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "reasonCodeableConcept",
-                    "reasonCodeableConcept",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    "reason",
-                    False,
-                ),
-                (
-                    "reasonReference",
-                    "reasonReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    "reason",
-                    False,
-                ),
-                ("requestId", "requestId", str, "id", False, None, False),
-                (
-                    "result",
-                    "result",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("status", "status", str, "code", False, None, True),
-                (
-                    "subject",
-                    "subject",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import annotation
-except ImportError:
-    annotation = sys.modules[__package__ + ".annotation"]
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import datarequirement
-except ImportError:
-    datarequirement = sys.modules[__package__ + ".datarequirement"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
+        return values

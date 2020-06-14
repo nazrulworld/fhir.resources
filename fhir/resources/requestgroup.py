@@ -6,697 +6,479 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import Any, Dict
+from typing import List as ListType
 
+from pydantic import Field, root_validator
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class RequestGroup(domainresource.DomainResource):
     """ A group of related requests.
-
     A group of related requests that can be used to capture intended activities
     that have inter-dependencies such as "give this medication after that one".
     """
 
-    resource_type = "RequestGroup"
+    resource_type = Field("RequestGroup", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    action: ListType[fhirtypes.RequestGroupActionType] = Field(
+        None,
+        alias="action",
+        title="List of `RequestGroupAction` items (represented as `dict` in JSON)",
+        description="Proposed actions, if any",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    author: fhirtypes.ReferenceType = Field(
+        None,
+        alias="author",
+        title="Type `Reference` referencing `Device, Practitioner, PractitionerRole` (represented as `dict` in JSON)",
+        description="Device or practitioner that authored the request group",
+    )
 
-        self.action = None
-        """ Proposed actions, if any.
-        List of `RequestGroupAction` items (represented as `dict` in JSON). """
+    authoredOn: fhirtypes.DateTime = Field(
+        None,
+        alias="authoredOn",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="When the request group was authored",
+    )
 
-        self.author = None
-        """ Device or practitioner that authored the request group.
-        Type `FHIRReference` referencing `['Device', 'Practitioner', 'PractitionerRole']` (represented as `dict` in JSON). """
+    basedOn: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="basedOn",
+        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        description="Fulfills plan, proposal, or order",
+    )
 
-        self.authoredOn = None
-        """ When the request group was authored.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    code: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="code",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="What\u0027s being requested/ordered",
+    )
 
-        self.basedOn = None
-        """ Fulfills plan, proposal, or order.
-        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
+    encounter: fhirtypes.ReferenceType = Field(
+        None,
+        alias="encounter",
+        title="Type `Reference` referencing `Encounter` (represented as `dict` in JSON)",
+        description="Created as part of",
+    )
 
-        self.code = None
-        """ What's being requested/ordered.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    groupIdentifier: fhirtypes.IdentifierType = Field(
+        None,
+        alias="groupIdentifier",
+        title="Type `Identifier` (represented as `dict` in JSON)",
+        description="Composite request this is part of",
+    )
 
-        self.encounter = None
-        """ Created as part of.
-        Type `FHIRReference` referencing `['Encounter']` (represented as `dict` in JSON). """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Business identifier",
+    )
 
-        self.groupIdentifier = None
-        """ Composite request this is part of.
-        Type `Identifier` (represented as `dict` in JSON). """
+    instantiatesCanonical: ListType[fhirtypes.Canonical] = Field(
+        None,
+        alias="instantiatesCanonical",
+        title="List of `Canonical` items (represented as `dict` in JSON)",
+        description="Instantiates FHIR protocol or definition",
+    )
 
-        self.identifier = None
-        """ Business identifier.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    instantiatesUri: ListType[fhirtypes.Uri] = Field(
+        None,
+        alias="instantiatesUri",
+        title="List of `Uri` items (represented as `dict` in JSON)",
+        description="Instantiates external protocol or definition",
+    )
 
-        self.instantiatesCanonical = None
-        """ Instantiates FHIR protocol or definition.
-        List of `str` items. """
+    intent: fhirtypes.Code = Field(
+        ...,
+        alias="intent",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="proposal | plan | directive | order | original-order | reflex-order | filler-order | instance-order | option",
+    )
 
-        self.instantiatesUri = None
-        """ Instantiates external protocol or definition.
-        List of `str` items. """
+    note: ListType[fhirtypes.AnnotationType] = Field(
+        None,
+        alias="note",
+        title="List of `Annotation` items (represented as `dict` in JSON)",
+        description="Additional notes about the response",
+    )
 
-        self.intent = None
-        """ proposal | plan | directive | order | original-order | reflex-order
-        | filler-order | instance-order | option.
-        Type `str`. """
+    priority: fhirtypes.Code = Field(
+        None,
+        alias="priority",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="routine | urgent | asap | stat",
+    )
 
-        self.note = None
-        """ Additional notes about the response.
-        List of `Annotation` items (represented as `dict` in JSON). """
+    reasonCode: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="reasonCode",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Why the request group is needed",
+    )
 
-        self.priority = None
-        """ routine | urgent | asap | stat.
-        Type `str`. """
+    reasonReference: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="reasonReference",
+        title="List of `Reference` items referencing `Condition, Observation, DiagnosticReport, DocumentReference` (represented as `dict` in JSON)",
+        description="Why the request group is needed",
+    )
 
-        self.reasonCode = None
-        """ Why the request group is needed.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    replaces: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="replaces",
+        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        description="Request(s) replaced by this request",
+    )
 
-        self.reasonReference = None
-        """ Why the request group is needed.
-        List of `FHIRReference` items referencing `['Condition', 'Observation', 'DiagnosticReport', 'DocumentReference']` (represented as `dict` in JSON). """
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="draft | active | on-hold | revoked | completed | entered-in-error | unknown",
+    )
 
-        self.replaces = None
-        """ Request(s) replaced by this request.
-        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
-
-        self.status = None
-        """ draft | active | on-hold | revoked | completed | entered-in-error |
-        unknown.
-        Type `str`. """
-
-        self.subject = None
-        """ Who the request group is about.
-        Type `FHIRReference` referencing `['Patient', 'Group']` (represented as `dict` in JSON). """
-
-        super(RequestGroup, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(RequestGroup, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "action",
-                    "action",
-                    RequestGroupAction,
-                    "RequestGroupAction",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "author",
-                    "author",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "authoredOn",
-                    "authoredOn",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "basedOn",
-                    "basedOn",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "code",
-                    "code",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "encounter",
-                    "encounter",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "groupIdentifier",
-                    "groupIdentifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "instantiatesCanonical",
-                    "instantiatesCanonical",
-                    str,
-                    "canonical",
-                    True,
-                    None,
-                    False,
-                ),
-                ("instantiatesUri", "instantiatesUri", str, "uri", True, None, False),
-                ("intent", "intent", str, "code", False, None, True),
-                (
-                    "note",
-                    "note",
-                    annotation.Annotation,
-                    "Annotation",
-                    True,
-                    None,
-                    False,
-                ),
-                ("priority", "priority", str, "code", False, None, False),
-                (
-                    "reasonCode",
-                    "reasonCode",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "reasonReference",
-                    "reasonReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "replaces",
-                    "replaces",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                ("status", "status", str, "code", False, None, True),
-                (
-                    "subject",
-                    "subject",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    subject: fhirtypes.ReferenceType = Field(
+        None,
+        alias="subject",
+        title="Type `Reference` referencing `Patient, Group` (represented as `dict` in JSON)",
+        description="Who the request group is about",
+    )
 
 
 class RequestGroupAction(backboneelement.BackboneElement):
     """ Proposed actions, if any.
-
     The actions, if any, produced by the evaluation of the artifact.
     """
 
-    resource_type = "RequestGroupAction"
+    resource_type = Field("RequestGroupAction", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    action: ListType[fhirtypes.RequestGroupActionType] = Field(
+        None,
+        alias="action",
+        title="List of `RequestGroupAction` items (represented as `dict` in JSON)",
+        description="Sub action",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    cardinalityBehavior: fhirtypes.Code = Field(
+        None,
+        alias="cardinalityBehavior",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="single | multiple",
+    )
+
+    code: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="code",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Code representing the meaning of the action or sub-actions",
+    )
+
+    condition: ListType[fhirtypes.RequestGroupActionConditionType] = Field(
+        None,
+        alias="condition",
+        title="List of `RequestGroupActionCondition` items (represented as `dict` in JSON)",
+        description="Whether or not the action is applicable",
+    )
+
+    description: fhirtypes.String = Field(
+        None,
+        alias="description",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Short description of the action",
+    )
+
+    documentation: ListType[fhirtypes.RelatedArtifactType] = Field(
+        None,
+        alias="documentation",
+        title="List of `RelatedArtifact` items (represented as `dict` in JSON)",
+        description="Supporting documentation for the intended performer of the action",
+    )
+
+    groupingBehavior: fhirtypes.Code = Field(
+        None,
+        alias="groupingBehavior",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="visual-group | logical-group | sentence-group",
+    )
+
+    participant: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="participant",
+        title="List of `Reference` items referencing `Patient, Practitioner, PractitionerRole, RelatedPerson, Device` (represented as `dict` in JSON)",
+        description="Who should perform the action",
+    )
+
+    precheckBehavior: fhirtypes.Code = Field(
+        None,
+        alias="precheckBehavior",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="yes | no",
+    )
+
+    prefix: fhirtypes.String = Field(
+        None,
+        alias="prefix",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="User-visible prefix for the action (e.g. 1. or A.)",
+    )
+
+    priority: fhirtypes.Code = Field(
+        None,
+        alias="priority",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="routine | urgent | asap | stat",
+    )
+
+    relatedAction: ListType[fhirtypes.RequestGroupActionRelatedActionType] = Field(
+        None,
+        alias="relatedAction",
+        title="List of `RequestGroupActionRelatedAction` items (represented as `dict` in JSON)",
+        description="Relationship to another action",
+    )
+
+    requiredBehavior: fhirtypes.Code = Field(
+        None,
+        alias="requiredBehavior",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="must | could | must-unless-documented",
+    )
+
+    resource: fhirtypes.ReferenceType = Field(
+        None,
+        alias="resource",
+        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        description="The target of the action",
+    )
+
+    selectionBehavior: fhirtypes.Code = Field(
+        None,
+        alias="selectionBehavior",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="any | all | all-or-none | exactly-one | at-most-one | one-or-more",
+    )
+
+    textEquivalent: fhirtypes.String = Field(
+        None,
+        alias="textEquivalent",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Static text equivalent of the action, used if the dynamic aspects cannot be interpreted by the receiving system",
+    )
+
+    timingAge: fhirtypes.AgeType = Field(
+        None,
+        alias="timingAge",
+        title="Type `Age` (represented as `dict` in JSON)",
+        description="When the action should take place",
+        one_of_many="timing",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    timingDateTime: fhirtypes.DateTime = Field(
+        None,
+        alias="timingDateTime",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="When the action should take place",
+        one_of_many="timing",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    timingDuration: fhirtypes.DurationType = Field(
+        None,
+        alias="timingDuration",
+        title="Type `Duration` (represented as `dict` in JSON)",
+        description="When the action should take place",
+        one_of_many="timing",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    timingPeriod: fhirtypes.PeriodType = Field(
+        None,
+        alias="timingPeriod",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="When the action should take place",
+        one_of_many="timing",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    timingRange: fhirtypes.RangeType = Field(
+        None,
+        alias="timingRange",
+        title="Type `Range` (represented as `dict` in JSON)",
+        description="When the action should take place",
+        one_of_many="timing",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    timingTiming: fhirtypes.TimingType = Field(
+        None,
+        alias="timingTiming",
+        title="Type `Timing` (represented as `dict` in JSON)",
+        description="When the action should take place",
+        one_of_many="timing",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    title: fhirtypes.String = Field(
+        None,
+        alias="title",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="User-visible title",
+    )
+
+    type: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="create | update | remove | fire-event",
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "timing": [
+                "timingAge",
+                "timingDateTime",
+                "timingDuration",
+                "timingPeriod",
+                "timingRange",
+                "timingTiming",
+            ],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.action = None
-        """ Sub action.
-        List of `RequestGroupAction` items (represented as `dict` in JSON). """
-
-        self.cardinalityBehavior = None
-        """ single | multiple.
-        Type `str`. """
-
-        self.code = None
-        """ Code representing the meaning of the action or sub-actions.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.condition = None
-        """ Whether or not the action is applicable.
-        List of `RequestGroupActionCondition` items (represented as `dict` in JSON). """
-
-        self.description = None
-        """ Short description of the action.
-        Type `str`. """
-
-        self.documentation = None
-        """ Supporting documentation for the intended performer of the action.
-        List of `RelatedArtifact` items (represented as `dict` in JSON). """
-
-        self.groupingBehavior = None
-        """ visual-group | logical-group | sentence-group.
-        Type `str`. """
-
-        self.participant = None
-        """ Who should perform the action.
-        List of `FHIRReference` items referencing `['Patient', 'Practitioner', 'PractitionerRole', 'RelatedPerson', 'Device']` (represented as `dict` in JSON). """
-
-        self.precheckBehavior = None
-        """ yes | no.
-        Type `str`. """
-
-        self.prefix = None
-        """ User-visible prefix for the action (e.g. 1. or A.).
-        Type `str`. """
-
-        self.priority = None
-        """ routine | urgent | asap | stat.
-        Type `str`. """
-
-        self.relatedAction = None
-        """ Relationship to another action.
-        List of `RequestGroupActionRelatedAction` items (represented as `dict` in JSON). """
-
-        self.requiredBehavior = None
-        """ must | could | must-unless-documented.
-        Type `str`. """
-
-        self.resource = None
-        """ The target of the action.
-        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
-
-        self.selectionBehavior = None
-        """ any | all | all-or-none | exactly-one | at-most-one | one-or-more.
-        Type `str`. """
-
-        self.textEquivalent = None
-        """ Static text equivalent of the action, used if the dynamic aspects
-        cannot be interpreted by the receiving system.
-        Type `str`. """
-
-        self.timingAge = None
-        """ When the action should take place.
-        Type `Age` (represented as `dict` in JSON). """
-
-        self.timingDateTime = None
-        """ When the action should take place.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.timingDuration = None
-        """ When the action should take place.
-        Type `Duration` (represented as `dict` in JSON). """
-
-        self.timingPeriod = None
-        """ When the action should take place.
-        Type `Period` (represented as `dict` in JSON). """
-
-        self.timingRange = None
-        """ When the action should take place.
-        Type `Range` (represented as `dict` in JSON). """
-
-        self.timingTiming = None
-        """ When the action should take place.
-        Type `Timing` (represented as `dict` in JSON). """
-
-        self.title = None
-        """ User-visible title.
-        Type `str`. """
-
-        self.type = None
-        """ create | update | remove | fire-event.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(RequestGroupAction, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(RequestGroupAction, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "action",
-                    "action",
-                    RequestGroupAction,
-                    "RequestGroupAction",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "cardinalityBehavior",
-                    "cardinalityBehavior",
-                    str,
-                    "code",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "code",
-                    "code",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "condition",
-                    "condition",
-                    RequestGroupActionCondition,
-                    "RequestGroupActionCondition",
-                    True,
-                    None,
-                    False,
-                ),
-                ("description", "description", str, "string", False, None, False),
-                (
-                    "documentation",
-                    "documentation",
-                    relatedartifact.RelatedArtifact,
-                    "RelatedArtifact",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "groupingBehavior",
-                    "groupingBehavior",
-                    str,
-                    "code",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "participant",
-                    "participant",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "precheckBehavior",
-                    "precheckBehavior",
-                    str,
-                    "code",
-                    False,
-                    None,
-                    False,
-                ),
-                ("prefix", "prefix", str, "string", False, None, False),
-                ("priority", "priority", str, "code", False, None, False),
-                (
-                    "relatedAction",
-                    "relatedAction",
-                    RequestGroupActionRelatedAction,
-                    "RequestGroupActionRelatedAction",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "requiredBehavior",
-                    "requiredBehavior",
-                    str,
-                    "code",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "resource",
-                    "resource",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "selectionBehavior",
-                    "selectionBehavior",
-                    str,
-                    "code",
-                    False,
-                    None,
-                    False,
-                ),
-                ("textEquivalent", "textEquivalent", str, "string", False, None, False),
-                ("timingAge", "timingAge", age.Age, "Age", False, "timing", False),
-                (
-                    "timingDateTime",
-                    "timingDateTime",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    "timing",
-                    False,
-                ),
-                (
-                    "timingDuration",
-                    "timingDuration",
-                    duration.Duration,
-                    "Duration",
-                    False,
-                    "timing",
-                    False,
-                ),
-                (
-                    "timingPeriod",
-                    "timingPeriod",
-                    period.Period,
-                    "Period",
-                    False,
-                    "timing",
-                    False,
-                ),
-                (
-                    "timingRange",
-                    "timingRange",
-                    range.Range,
-                    "Range",
-                    False,
-                    "timing",
-                    False,
-                ),
-                (
-                    "timingTiming",
-                    "timingTiming",
-                    timing.Timing,
-                    "Timing",
-                    False,
-                    "timing",
-                    False,
-                ),
-                ("title", "title", str, "string", False, None, False),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+        return values
 
 
 class RequestGroupActionCondition(backboneelement.BackboneElement):
     """ Whether or not the action is applicable.
-
     An expression that describes applicability criteria, or start/stop
     conditions for the action.
     """
 
-    resource_type = "RequestGroupActionCondition"
+    resource_type = Field("RequestGroupActionCondition", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    expression: fhirtypes.ExpressionType = Field(
+        None,
+        alias="expression",
+        title="Type `Expression` (represented as `dict` in JSON)",
+        description="Boolean-valued expression",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.expression = None
-        """ Boolean-valued expression.
-        Type `Expression` (represented as `dict` in JSON). """
-
-        self.kind = None
-        """ applicability | start | stop.
-        Type `str`. """
-
-        super(RequestGroupActionCondition, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(RequestGroupActionCondition, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "expression",
-                    "expression",
-                    expression.Expression,
-                    "Expression",
-                    False,
-                    None,
-                    False,
-                ),
-                ("kind", "kind", str, "code", False, None, True),
-            ]
-        )
-        return js
+    kind: fhirtypes.Code = Field(
+        ...,
+        alias="kind",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="applicability | start | stop",
+    )
 
 
 class RequestGroupActionRelatedAction(backboneelement.BackboneElement):
     """ Relationship to another action.
-
     A relationship to another action such as "before" or "30-60 minutes after
     start of".
     """
 
-    resource_type = "RequestGroupActionRelatedAction"
+    resource_type = Field("RequestGroupActionRelatedAction", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    actionId: fhirtypes.Id = Field(
+        ...,
+        alias="actionId",
+        title="Type `Id` (represented as `dict` in JSON)",
+        description="What action this is related to",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    offsetDuration: fhirtypes.DurationType = Field(
+        None,
+        alias="offsetDuration",
+        title="Type `Duration` (represented as `dict` in JSON)",
+        description="Time offset for the relationship",
+        one_of_many="offset",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    offsetRange: fhirtypes.RangeType = Field(
+        None,
+        alias="offsetRange",
+        title="Type `Range` (represented as `dict` in JSON)",
+        description="Time offset for the relationship",
+        one_of_many="offset",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    relationship: fhirtypes.Code = Field(
+        ...,
+        alias="relationship",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="before-start | before | before-end | concurrent-with-start | concurrent | concurrent-with-end | after-start | after | after-end",
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "offset": ["offsetDuration", "offsetRange",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.actionId = None
-        """ What action this is related to.
-        Type `str`. """
-
-        self.offsetDuration = None
-        """ Time offset for the relationship.
-        Type `Duration` (represented as `dict` in JSON). """
-
-        self.offsetRange = None
-        """ Time offset for the relationship.
-        Type `Range` (represented as `dict` in JSON). """
-
-        self.relationship = None
-        """ before-start | before | before-end | concurrent-with-start |
-        concurrent | concurrent-with-end | after-start | after | after-end.
-        Type `str`. """
-
-        super(RequestGroupActionRelatedAction, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(RequestGroupActionRelatedAction, self).elementProperties()
-        js.extend(
-            [
-                ("actionId", "actionId", str, "id", False, None, True),
-                (
-                    "offsetDuration",
-                    "offsetDuration",
-                    duration.Duration,
-                    "Duration",
-                    False,
-                    "offset",
-                    False,
-                ),
-                (
-                    "offsetRange",
-                    "offsetRange",
-                    range.Range,
-                    "Range",
-                    False,
-                    "offset",
-                    False,
-                ),
-                ("relationship", "relationship", str, "code", False, None, True),
-            ]
-        )
-        return js
-
-
-try:
-    from . import age
-except ImportError:
-    age = sys.modules[__package__ + ".age"]
-try:
-    from . import annotation
-except ImportError:
-    annotation = sys.modules[__package__ + ".annotation"]
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import duration
-except ImportError:
-    duration = sys.modules[__package__ + ".duration"]
-try:
-    from . import expression
-except ImportError:
-    expression = sys.modules[__package__ + ".expression"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import period
-except ImportError:
-    period = sys.modules[__package__ + ".period"]
-try:
-    from . import range
-except ImportError:
-    range = sys.modules[__package__ + ".range"]
-try:
-    from . import relatedartifact
-except ImportError:
-    relatedartifact = sys.modules[__package__ + ".relatedartifact"]
-try:
-    from . import timing
-except ImportError:
-    timing = sys.modules[__package__ + ".timing"]
+        return values

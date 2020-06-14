@@ -6,11 +6,11 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import Any, Dict
 
+from pydantic import Field, root_validator
 
-import sys
-
-from . import backboneelement, element
+from . import backboneelement, element, fhirtypes
 
 
 class SubstanceAmount(backboneelement.BackboneElement):
@@ -23,167 +23,111 @@ class SubstanceAmount(backboneelement.BackboneElement):
     ID.
     """
 
-    resource_type = "SubstanceAmount"
+    resource_type = Field("SubstanceAmount", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    amountQuantity: fhirtypes.QuantityType = Field(
+        None,
+        alias="amountQuantity",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="Used to capture quantitative values for a variety of elements. If only limits are given, the arithmetic mean would be the average. If only a single definite value for a given element is given, it would be captured in this field",
+        one_of_many="amount",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    amountRange: fhirtypes.RangeType = Field(
+        None,
+        alias="amountRange",
+        title="Type `Range` (represented as `dict` in JSON)",
+        description="Used to capture quantitative values for a variety of elements. If only limits are given, the arithmetic mean would be the average. If only a single definite value for a given element is given, it would be captured in this field",
+        one_of_many="amount",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    amountString: fhirtypes.String = Field(
+        None,
+        alias="amountString",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Used to capture quantitative values for a variety of elements. If only limits are given, the arithmetic mean would be the average. If only a single definite value for a given element is given, it would be captured in this field",
+        one_of_many="amount",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    amountText: fhirtypes.String = Field(
+        None,
+        alias="amountText",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="A textual comment on a numeric value",
+    )
+
+    amountType: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="amountType",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Most elements that require a quantitative value will also have a field called amount type. Amount type should always be specified because the actual value of the amount is often dependent on it. EXAMPLE: In capturing the actual relative amounts of substances or molecular fragments it is essential to indicate whether the amount refers to a mole ratio or weight ratio. For any given element an effort should be made to use same the amount type for all related definitional elements",
+    )
+
+    referenceRange: fhirtypes.SubstanceAmountReferenceRangeType = Field(
+        None,
+        alias="referenceRange",
+        title="Type `SubstanceAmountReferenceRange` (represented as `dict` in JSON)",
+        description="Reference range of possible or expected values",
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "amount": ["amountQuantity", "amountRange", "amountString",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.amountQuantity = None
-        """ Used to capture quantitative values for a variety of elements. If
-        only limits are given, the arithmetic mean would be the average. If
-        only a single definite value for a given element is given, it would
-        be captured in this field.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        self.amountRange = None
-        """ Used to capture quantitative values for a variety of elements. If
-        only limits are given, the arithmetic mean would be the average. If
-        only a single definite value for a given element is given, it would
-        be captured in this field.
-        Type `Range` (represented as `dict` in JSON). """
-
-        self.amountString = None
-        """ Used to capture quantitative values for a variety of elements. If
-        only limits are given, the arithmetic mean would be the average. If
-        only a single definite value for a given element is given, it would
-        be captured in this field.
-        Type `str`. """
-
-        self.amountText = None
-        """ A textual comment on a numeric value.
-        Type `str`. """
-
-        self.amountType = None
-        """ Most elements that require a quantitative value will also have a
-        field called amount type. Amount type should always be specified
-        because the actual value of the amount is often dependent on it.
-        EXAMPLE: In capturing the actual relative amounts of substances or
-        molecular fragments it is essential to indicate whether the amount
-        refers to a mole ratio or weight ratio. For any given element an
-        effort should be made to use same the amount type for all related
-        definitional elements.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.referenceRange = None
-        """ Reference range of possible or expected values.
-        Type `SubstanceAmountReferenceRange` (represented as `dict` in JSON). """
-
-        super(SubstanceAmount, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(SubstanceAmount, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "amountQuantity",
-                    "amountQuantity",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    "amount",
-                    False,
-                ),
-                (
-                    "amountRange",
-                    "amountRange",
-                    range.Range,
-                    "Range",
-                    False,
-                    "amount",
-                    False,
-                ),
-                ("amountString", "amountString", str, "string", False, "amount", False),
-                ("amountText", "amountText", str, "string", False, None, False),
-                (
-                    "amountType",
-                    "amountType",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "referenceRange",
-                    "referenceRange",
-                    SubstanceAmountReferenceRange,
-                    "SubstanceAmountReferenceRange",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+        return values
 
 
 class SubstanceAmountReferenceRange(element.Element):
     """ Reference range of possible or expected values.
     """
 
-    resource_type = "SubstanceAmountReferenceRange"
+    resource_type = Field("SubstanceAmountReferenceRange", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    highLimit: fhirtypes.QuantityType = Field(
+        None,
+        alias="highLimit",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="Upper limit possible or expected",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.highLimit = None
-        """ Upper limit possible or expected.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        self.lowLimit = None
-        """ Lower limit possible or expected.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        super(SubstanceAmountReferenceRange, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(SubstanceAmountReferenceRange, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "highLimit",
-                    "highLimit",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "lowLimit",
-                    "lowLimit",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import quantity
-except ImportError:
-    quantity = sys.modules[__package__ + ".quantity"]
-try:
-    from . import range
-except ImportError:
-    range = sys.modules[__package__ + ".range"]
+    lowLimit: fhirtypes.QuantityType = Field(
+        None,
+        alias="lowLimit",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="Lower limit possible or expected",
+    )

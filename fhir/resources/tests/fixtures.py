@@ -1,36 +1,22 @@
 import hashlib
 import io
 import os
+import pathlib
 import shutil
 import sys
 import tempfile
 import zipfile
 from os.path import dirname
 
-import pytest
-import six
+import pytest  # type: ignore
 
 EXAMPLE_RESOURCES_URL = (
-    "https://github.com/nazrulworld/fhir-parser/raw/"
-    "master/archives/HL7/FHIR/R4/"
+    "https://github.com/nazrulworld/hl7-archives/raw/"
+    "0.1.0/FHIR/R4/"
     "4.0.1-examples-json.zip"
 )
 ROOT_PATH = dirname(dirname(dirname(dirname(os.path.abspath(__file__)))))
 CACHE_PATH = os.path.join(ROOT_PATH, ".cache")
-
-
-def force_bytes(string, encoding="utf8", errors="strict"):
-
-    if isinstance(string, bytes):
-        if encoding == "utf8":
-            return string
-        else:
-            return string.decode("utf8", errors).encode(encoding, errors)
-
-    if not isinstance(string, six.string_types):
-        return string
-
-    return string.encode(encoding, errors)
 
 
 def download_and_store(url, path):
@@ -88,8 +74,13 @@ def base_settings():
     with zipfile.ZipFile(example_data_file_location) as z:
         z.extractall(temp_data_dir)
 
+    zip_dir_name = pathlib.Path(EXAMPLE_RESOURCES_URL).name[:-4]
     if "FHIR_UNITTEST_DATADIR" not in os.environ:
-        os.environ.setdefault("FHIR_UNITTEST_DATADIR", temp_data_dir)
+        os.environ.setdefault(
+            "FHIR_UNITTEST_DATADIR", os.path.join(temp_data_dir, zip_dir_name)
+        )
+
+    settings["unittest_data_dir"] = pathlib.Path(os.environ["FHIR_UNITTEST_DATADIR"])
 
     yield settings
 

@@ -6,143 +6,74 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import domainresource
+from . import domainresource, fhirtypes
 
 
 class BodyStructure(domainresource.DomainResource):
     """ Specific and identified anatomical structure.
-
     Record details about an anatomical structure.  This resource may be used
     when a coded concept does not provide the necessary detail needed for the
     use case.
     """
 
-    resource_type = "BodyStructure"
+    resource_type = Field("BodyStructure", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    active: bool = Field(
+        None,
+        alias="active",
+        title="Type `bool`",
+        description="Whether this record is in active use",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    description: fhirtypes.String = Field(
+        None,
+        alias="description",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Text description",
+    )
 
-        self.active = None
-        """ Whether this record is in active use.
-        Type `bool`. """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Bodystructure identifier",
+    )
 
-        self.description = None
-        """ Text description.
-        Type `str`. """
+    image: ListType[fhirtypes.AttachmentType] = Field(
+        None,
+        alias="image",
+        title="List of `Attachment` items (represented as `dict` in JSON)",
+        description="Attached images",
+    )
 
-        self.identifier = None
-        """ Bodystructure identifier.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    location: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="location",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Body site",
+    )
 
-        self.image = None
-        """ Attached images.
-        List of `Attachment` items (represented as `dict` in JSON). """
+    locationQualifier: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="locationQualifier",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Body site modifier",
+    )
 
-        self.location = None
-        """ Body site.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    morphology: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="morphology",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Kind of Structure",
+    )
 
-        self.locationQualifier = None
-        """ Body site modifier.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.morphology = None
-        """ Kind of Structure.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.patient = None
-        """ Who this is about.
-        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
-
-        super(BodyStructure, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(BodyStructure, self).elementProperties()
-        js.extend(
-            [
-                ("active", "active", bool, "boolean", False, None, False),
-                ("description", "description", str, "string", False, None, False),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "image",
-                    "image",
-                    attachment.Attachment,
-                    "Attachment",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "location",
-                    "location",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "locationQualifier",
-                    "locationQualifier",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "morphology",
-                    "morphology",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "patient",
-                    "patient",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import attachment
-except ImportError:
-    attachment = sys.modules[__package__ + ".attachment"]
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
+    patient: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="patient",
+        title="Type `Reference` referencing `Patient` (represented as `dict` in JSON)",
+        description="Who this is about",
+    )

@@ -6,239 +6,166 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class DataElement(domainresource.DomainResource):
     """ Resource data element.
-
     The formal description of a single piece of information that can be
     gathered and reported.
     """
 
-    resource_type = "DataElement"
+    resource_type = Field("DataElement", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    contact: ListType[fhirtypes.ContactDetailType] = Field(
+        None,
+        alias="contact",
+        title="List of `ContactDetail` items (represented as `dict` in JSON)",
+        description="Contact details for the publisher",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    copyright: fhirtypes.Markdown = Field(
+        None,
+        alias="copyright",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Use and/or publishing restrictions",
+    )
 
-        self.contact = None
-        """ Contact details for the publisher.
-        List of `ContactDetail` items (represented as `dict` in JSON). """
+    date: fhirtypes.DateTime = Field(
+        None,
+        alias="date",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Date this was last changed",
+    )
 
-        self.copyright = None
-        """ Use and/or publishing restrictions.
-        Type `str`. """
+    element: ListType[fhirtypes.ElementDefinitionType] = Field(
+        ...,
+        alias="element",
+        title="List of `ElementDefinition` items (represented as `dict` in JSON)",
+        description="Definition of element",
+    )
 
-        self.date = None
-        """ Date this was last changed.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    experimental: bool = Field(
+        None,
+        alias="experimental",
+        title="Type `bool`",
+        description="For testing purposes, not real usage",
+    )
 
-        self.element = None
-        """ Definition of element.
-        List of `ElementDefinition` items (represented as `dict` in JSON). """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Additional identifier for the data element",
+    )
 
-        self.experimental = None
-        """ For testing purposes, not real usage.
-        Type `bool`. """
+    jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="jurisdiction",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Intended jurisdiction for data element (if applicable)",
+    )
 
-        self.identifier = None
-        """ Additional identifier for the data element.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    mapping: ListType[fhirtypes.DataElementMappingType] = Field(
+        None,
+        alias="mapping",
+        title="List of `DataElementMapping` items (represented as `dict` in JSON)",
+        description="External specification mapped to",
+    )
 
-        self.jurisdiction = None
-        """ Intended jurisdiction for data element (if applicable).
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    name: fhirtypes.String = Field(
+        None,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name for this data element (computer friendly)",
+    )
 
-        self.mapping = None
-        """ External specification mapped to.
-        List of `DataElementMapping` items (represented as `dict` in JSON). """
+    publisher: fhirtypes.String = Field(
+        None,
+        alias="publisher",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name of the publisher (organization or individual)",
+    )
 
-        self.name = None
-        """ Name for this data element (computer friendly).
-        Type `str`. """
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="draft | active | retired | unknown",
+    )
 
-        self.publisher = None
-        """ Name of the publisher (organization or individual).
-        Type `str`. """
+    stringency: fhirtypes.Code = Field(
+        None,
+        alias="stringency",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="comparable | fully-specified | equivalent | convertable | scaleable | flexible",
+    )
 
-        self.status = None
-        """ draft | active | retired | unknown.
-        Type `str`. """
+    title: fhirtypes.String = Field(
+        None,
+        alias="title",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name for this data element (human friendly)",
+    )
 
-        self.stringency = None
-        """ comparable | fully-specified | equivalent | convertable | scaleable
-        | flexible.
-        Type `str`. """
+    url: fhirtypes.Uri = Field(
+        None,
+        alias="url",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Logical URI to reference this data element (globally unique)",
+    )
 
-        self.title = None
-        """ Name for this data element (human friendly).
-        Type `str`. """
+    useContext: ListType[fhirtypes.UsageContextType] = Field(
+        None,
+        alias="useContext",
+        title="List of `UsageContext` items (represented as `dict` in JSON)",
+        description="Context the content is intended to support",
+    )
 
-        self.url = None
-        """ Logical URI to reference this data element (globally unique).
-        Type `str`. """
-
-        self.useContext = None
-        """ Context the content is intended to support.
-        List of `UsageContext` items (represented as `dict` in JSON). """
-
-        self.version = None
-        """ Business version of the data element.
-        Type `str`. """
-
-        super(DataElement, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(DataElement, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "contact",
-                    "contact",
-                    contactdetail.ContactDetail,
-                    "ContactDetail",
-                    True,
-                    None,
-                    False,
-                ),
-                ("copyright", "copyright", str, "markdown", False, None, False),
-                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-                (
-                    "element",
-                    "element",
-                    elementdefinition.ElementDefinition,
-                    "ElementDefinition",
-                    True,
-                    None,
-                    True,
-                ),
-                ("experimental", "experimental", bool, "boolean", False, None, False),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "jurisdiction",
-                    "jurisdiction",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "mapping",
-                    "mapping",
-                    DataElementMapping,
-                    "DataElementMapping",
-                    True,
-                    None,
-                    False,
-                ),
-                ("name", "name", str, "string", False, None, False),
-                ("publisher", "publisher", str, "string", False, None, False),
-                ("status", "status", str, "code", False, None, True),
-                ("stringency", "stringency", str, "code", False, None, False),
-                ("title", "title", str, "string", False, None, False),
-                ("url", "url", str, "uri", False, None, False),
-                (
-                    "useContext",
-                    "useContext",
-                    usagecontext.UsageContext,
-                    "UsageContext",
-                    True,
-                    None,
-                    False,
-                ),
-                ("version", "version", str, "string", False, None, False),
-            ]
-        )
-        return js
+    version: fhirtypes.String = Field(
+        None,
+        alias="version",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Business version of the data element",
+    )
 
 
 class DataElementMapping(backboneelement.BackboneElement):
     """ External specification mapped to.
-
     Identifies a specification (other than a terminology) that the elements
     which make up the DataElement have some correspondence with.
     """
 
-    resource_type = "DataElementMapping"
+    resource_type = Field("DataElementMapping", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    comment: fhirtypes.String = Field(
+        None,
+        alias="comment",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Versions, issues, scope limitations, etc.",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    identity: fhirtypes.Id = Field(
+        ...,
+        alias="identity",
+        title="Type `Id` (represented as `dict` in JSON)",
+        description="Internal id when this mapping is used",
+    )
 
-        self.comment = None
-        """ Versions, issues, scope limitations, etc..
-        Type `str`. """
+    name: fhirtypes.String = Field(
+        None,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Names what this mapping refers to",
+    )
 
-        self.identity = None
-        """ Internal id when this mapping is used.
-        Type `str`. """
-
-        self.name = None
-        """ Names what this mapping refers to.
-        Type `str`. """
-
-        self.uri = None
-        """ Identifies what this mapping refers to.
-        Type `str`. """
-
-        super(DataElementMapping, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(DataElementMapping, self).elementProperties()
-        js.extend(
-            [
-                ("comment", "comment", str, "string", False, None, False),
-                ("identity", "identity", str, "id", False, None, True),
-                ("name", "name", str, "string", False, None, False),
-                ("uri", "uri", str, "uri", False, None, False),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import contactdetail
-except ImportError:
-    contactdetail = sys.modules[__package__ + ".contactdetail"]
-try:
-    from . import elementdefinition
-except ImportError:
-    elementdefinition = sys.modules[__package__ + ".elementdefinition"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import usagecontext
-except ImportError:
-    usagecontext = sys.modules[__package__ + ".usagecontext"]
+    uri: fhirtypes.Uri = Field(
+        None,
+        alias="uri",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Identifies what this mapping refers to",
+    )

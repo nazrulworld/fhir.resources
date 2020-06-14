@@ -6,204 +6,146 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import bodystructure
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class BodyStructureTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("BodyStructure", js["resourceType"])
-        return bodystructure.BodyStructure(js)
+def impl_bodystructure_1(inst):
+    assert inst.description == "EDD 1/1/2017 confirmation by LMP"
+    assert inst.id == "fetus"
+    assert (
+        inst.identifier[0].system == "http://goodhealth.org/bodystructure/identifiers"
+    )
+    assert inst.identifier[0].value == "12345"
+    assert inst.location.coding[0].code == "83418008"
+    assert inst.location.coding[0].display == "Entire fetus (body structure)"
+    assert inst.location.coding[0].system == "http://snomed.info/sct"
+    assert inst.location.text == "Fetus"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.patient.reference == "Patient/example"
+    assert inst.text.status == "generated"
 
-    def testBodyStructure1(self):
-        inst = self.instantiate_from("bodystructure-example-fetus.json")
-        self.assertIsNotNone(inst, "Must have instantiated a BodyStructure instance")
-        self.implBodyStructure1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("BodyStructure", js["resourceType"])
-        inst2 = bodystructure.BodyStructure(js)
-        self.implBodyStructure1(inst2)
+def test_bodystructure_1(base_settings):
+    """No. 1 tests collection for BodyStructure.
+    Test File: bodystructure-example-fetus.json
+    """
+    filename = base_settings["unittest_data_dir"] / "bodystructure-example-fetus.json"
+    inst = bodystructure.BodyStructure.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "BodyStructure" == inst.resource_type
 
-    def implBodyStructure1(self, inst):
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes("EDD 1/1/2017 confirmation by LMP"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("fetus"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://goodhealth.org/bodystructure/identifiers"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("12345"))
-        self.assertEqual(
-            force_bytes(inst.location.coding[0].code), force_bytes("83418008")
-        )
-        self.assertEqual(
-            force_bytes(inst.location.coding[0].display),
-            force_bytes("Entire fetus (body structure)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.location.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.location.text), force_bytes("Fetus"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    impl_bodystructure_1(inst)
 
-    def testBodyStructure2(self):
-        inst = self.instantiate_from("bodystructure-example-tumor.json")
-        self.assertIsNotNone(inst, "Must have instantiated a BodyStructure instance")
-        self.implBodyStructure2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "BodyStructure" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("BodyStructure", js["resourceType"])
-        inst2 = bodystructure.BodyStructure(js)
-        self.implBodyStructure2(inst2)
+    inst2 = bodystructure.BodyStructure(**data)
+    impl_bodystructure_1(inst2)
 
-    def implBodyStructure2(self, inst):
-        self.assertEqual(
-            force_bytes(inst.description), force_bytes("7 cm maximum diameter")
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("tumor"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://goodhealth.org/bodystructure/identifiers"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("12345"))
-        self.assertEqual(
-            force_bytes(inst.image[0].contentType), force_bytes("application/dicom")
-        )
-        self.assertEqual(
-            force_bytes(inst.image[0].url),
-            force_bytes(
-                "http://imaging.acme.com/wado/server?requestType=WADO&amp;wado_details"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.location.coding[0].code), force_bytes("78961009")
-        )
-        self.assertEqual(
-            force_bytes(inst.location.coding[0].display),
-            force_bytes("Splenic structure (body structure)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.location.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.location.text), force_bytes("Spleen"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.morphology.coding[0].code), force_bytes("4147007")
-        )
-        self.assertEqual(
-            force_bytes(inst.morphology.coding[0].display),
-            force_bytes("Mass (morphologic abnormality)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.morphology.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.morphology.text), force_bytes("Splenic mass"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 
-    def testBodyStructure3(self):
-        inst = self.instantiate_from("bodystructure-example-skin-patch.json")
-        self.assertIsNotNone(inst, "Must have instantiated a BodyStructure instance")
-        self.implBodyStructure3(inst)
+def impl_bodystructure_2(inst):
+    assert inst.description == "7 cm maximum diameter"
+    assert inst.id == "tumor"
+    assert (
+        inst.identifier[0].system == "http://goodhealth.org/bodystructure/identifiers"
+    )
+    assert inst.identifier[0].value == "12345"
+    assert inst.image[0].contentType == "application/dicom"
+    assert (
+        inst.image[0].url
+        == "http://imaging.acme.com/wado/server?requestType=WADO&amp;wado_details"
+    )
+    assert inst.location.coding[0].code == "78961009"
+    assert inst.location.coding[0].display == "Splenic structure (body structure)"
+    assert inst.location.coding[0].system == "http://snomed.info/sct"
+    assert inst.location.text == "Spleen"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.morphology.coding[0].code == "4147007"
+    assert inst.morphology.coding[0].display == "Mass (morphologic abnormality)"
+    assert inst.morphology.coding[0].system == "http://snomed.info/sct"
+    assert inst.morphology.text == "Splenic mass"
+    assert inst.patient.reference == "Patient/example"
+    assert inst.text.status == "generated"
 
-        js = inst.as_json()
-        self.assertEqual("BodyStructure", js["resourceType"])
-        inst2 = bodystructure.BodyStructure(js)
-        self.implBodyStructure3(inst2)
 
-    def implBodyStructure3(self, inst):
-        self.assertFalse(inst.active)
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes("inner surface (volar) of the left forearm"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("skin-patch"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://goodhealth.org/bodystructure/identifiers"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("12345"))
-        self.assertEqual(
-            force_bytes(inst.location.coding[0].code), force_bytes("14975008")
-        )
-        self.assertEqual(
-            force_bytes(inst.location.coding[0].display), force_bytes("Forearm")
-        )
-        self.assertEqual(
-            force_bytes(inst.location.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.location.text), force_bytes("Forearm"))
-        self.assertEqual(
-            force_bytes(inst.locationQualifier[0].coding[0].code),
-            force_bytes("419161000"),
-        )
-        self.assertEqual(
-            force_bytes(inst.locationQualifier[0].coding[0].display),
-            force_bytes("Unilateral left"),
-        )
-        self.assertEqual(
-            force_bytes(inst.locationQualifier[0].coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.locationQualifier[0].text), force_bytes("Left")
-        )
-        self.assertEqual(
-            force_bytes(inst.locationQualifier[1].coding[0].code),
-            force_bytes("263929005"),
-        )
-        self.assertEqual(
-            force_bytes(inst.locationQualifier[1].coding[0].display),
-            force_bytes("Volar"),
-        )
-        self.assertEqual(
-            force_bytes(inst.locationQualifier[1].coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.locationQualifier[1].text), force_bytes("Volar")
-        )
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.morphology.text), force_bytes("Skin patch"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+def test_bodystructure_2(base_settings):
+    """No. 2 tests collection for BodyStructure.
+    Test File: bodystructure-example-tumor.json
+    """
+    filename = base_settings["unittest_data_dir"] / "bodystructure-example-tumor.json"
+    inst = bodystructure.BodyStructure.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "BodyStructure" == inst.resource_type
+
+    impl_bodystructure_2(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "BodyStructure" == data["resourceType"]
+
+    inst2 = bodystructure.BodyStructure(**data)
+    impl_bodystructure_2(inst2)
+
+
+def impl_bodystructure_3(inst):
+    assert inst.active is False
+    assert inst.description == "inner surface (volar) of the left forearm"
+    assert inst.id == "skin-patch"
+    assert (
+        inst.identifier[0].system == "http://goodhealth.org/bodystructure/identifiers"
+    )
+    assert inst.identifier[0].value == "12345"
+    assert inst.location.coding[0].code == "14975008"
+    assert inst.location.coding[0].display == "Forearm"
+    assert inst.location.coding[0].system == "http://snomed.info/sct"
+    assert inst.location.text == "Forearm"
+    assert inst.locationQualifier[0].coding[0].code == "419161000"
+    assert inst.locationQualifier[0].coding[0].display == "Unilateral left"
+    assert inst.locationQualifier[0].coding[0].system == "http://snomed.info/sct"
+    assert inst.locationQualifier[0].text == "Left"
+    assert inst.locationQualifier[1].coding[0].code == "263929005"
+    assert inst.locationQualifier[1].coding[0].display == "Volar"
+    assert inst.locationQualifier[1].coding[0].system == "http://snomed.info/sct"
+    assert inst.locationQualifier[1].text == "Volar"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.morphology.text == "Skin patch"
+    assert inst.patient.reference == "Patient/example"
+    assert inst.text.status == "generated"
+
+
+def test_bodystructure_3(base_settings):
+    """No. 3 tests collection for BodyStructure.
+    Test File: bodystructure-example-skin-patch.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "bodystructure-example-skin-patch.json"
+    )
+    inst = bodystructure.BodyStructure.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "BodyStructure" == inst.resource_type
+
+    impl_bodystructure_3(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "BodyStructure" == data["resourceType"]
+
+    inst2 = bodystructure.BodyStructure(**data)
+    impl_bodystructure_3(inst2)

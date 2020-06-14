@@ -6,86 +6,64 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic import Field
 
-
-import sys
-
-from . import element
+from . import element, fhirtypes
 
 
 class RelatedArtifact(element.Element):
     """ Related artifacts for a knowledge resource.
-
     Related artifacts such as additional documentation, justification, or
     bibliographic references.
     """
 
-    resource_type = "RelatedArtifact"
+    resource_type = Field("RelatedArtifact", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    citation: fhirtypes.Markdown = Field(
+        None,
+        alias="citation",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Bibliographic citation for the artifact",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    display: fhirtypes.String = Field(
+        None,
+        alias="display",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Brief description of the related artifact",
+    )
 
-        self.citation = None
-        """ Bibliographic citation for the artifact.
-        Type `str`. """
+    document: fhirtypes.AttachmentType = Field(
+        None,
+        alias="document",
+        title="Type `Attachment` (represented as `dict` in JSON)",
+        description="What document is being referenced",
+    )
 
-        self.display = None
-        """ Brief description of the related artifact.
-        Type `str`. """
+    label: fhirtypes.String = Field(
+        None,
+        alias="label",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Short label",
+    )
 
-        self.document = None
-        """ What document is being referenced.
-        Type `Attachment` (represented as `dict` in JSON). """
+    resource: fhirtypes.Canonical = Field(
+        None,
+        alias="resource",
+        title="Type `Canonical` referencing `Resource` (represented as `dict` in JSON)",
+        description="What resource is being referenced",
+    )
 
-        self.label = None
-        """ Short label.
-        Type `str`. """
+    type: fhirtypes.Code = Field(
+        ...,
+        alias="type",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="documentation | justification | citation | predecessor | successor | derived-from | depends-on | composed-of",
+    )
 
-        self.resource = None
-        """ What resource is being referenced.
-        Type `str` referencing `['Resource']`. """
-
-        self.type = None
-        """ documentation | justification | citation | predecessor | successor
-        | derived-from | depends-on | composed-of.
-        Type `str`. """
-
-        self.url = None
-        """ Where the artifact can be accessed.
-        Type `str`. """
-
-        super(RelatedArtifact, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(RelatedArtifact, self).elementProperties()
-        js.extend(
-            [
-                ("citation", "citation", str, "markdown", False, None, False),
-                ("display", "display", str, "string", False, None, False),
-                (
-                    "document",
-                    "document",
-                    attachment.Attachment,
-                    "Attachment",
-                    False,
-                    None,
-                    False,
-                ),
-                ("label", "label", str, "string", False, None, False),
-                ("resource", "resource", str, "canonical", False, None, False),
-                ("type", "type", str, "code", False, None, True),
-                ("url", "url", str, "url", False, None, False),
-            ]
-        )
-        return js
-
-
-try:
-    from . import attachment
-except ImportError:
-    attachment = sys.modules[__package__ + ".attachment"]
+    url: fhirtypes.Url = Field(
+        None,
+        alias="url",
+        title="Type `Url` (represented as `dict` in JSON)",
+        description="Where the artifact can be accessed",
+    )

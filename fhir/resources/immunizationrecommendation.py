@@ -6,358 +6,236 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import Any, Dict
+from typing import List as ListType
 
+from pydantic import Field, root_validator
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class ImmunizationRecommendation(domainresource.DomainResource):
     """ Guidance or advice relating to an immunization.
-
     A patient's point-in-time set of recommendations (i.e. forecasting)
     according to a published schedule with optional supporting justification.
     """
 
-    resource_type = "ImmunizationRecommendation"
+    resource_type = Field("ImmunizationRecommendation", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    authority: fhirtypes.ReferenceType = Field(
+        None,
+        alias="authority",
+        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        description="Who is responsible for protocol",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    date: fhirtypes.DateTime = Field(
+        ...,
+        alias="date",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Date recommendation(s) created",
+    )
 
-        self.authority = None
-        """ Who is responsible for protocol.
-        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Business identifier",
+    )
 
-        self.date = None
-        """ Date recommendation(s) created.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    patient: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="patient",
+        title="Type `Reference` referencing `Patient` (represented as `dict` in JSON)",
+        description="Who this profile is for",
+    )
 
-        self.identifier = None
-        """ Business identifier.
-        List of `Identifier` items (represented as `dict` in JSON). """
-
-        self.patient = None
-        """ Who this profile is for.
-        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
-
-        self.recommendation = None
-        """ Vaccine administration recommendations.
-        List of `ImmunizationRecommendationRecommendation` items (represented as `dict` in JSON). """
-
-        super(ImmunizationRecommendation, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ImmunizationRecommendation, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "authority",
-                    "authority",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, True),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "patient",
-                    "patient",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "recommendation",
-                    "recommendation",
-                    ImmunizationRecommendationRecommendation,
-                    "ImmunizationRecommendationRecommendation",
-                    True,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
+    recommendation: ListType[
+        fhirtypes.ImmunizationRecommendationRecommendationType
+    ] = Field(
+        ...,
+        alias="recommendation",
+        title="List of `ImmunizationRecommendationRecommendation` items (represented as `dict` in JSON)",
+        description="Vaccine administration recommendations",
+    )
 
 
 class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
     """ Vaccine administration recommendations.
     """
 
-    resource_type = "ImmunizationRecommendationRecommendation"
+    resource_type = Field("ImmunizationRecommendationRecommendation", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    contraindicatedVaccineCode: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="contraindicatedVaccineCode",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Vaccine which is contraindicated to fulfill the recommendation",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    dateCriterion: ListType[
+        fhirtypes.ImmunizationRecommendationRecommendationDateCriterionType
+    ] = Field(
+        None,
+        alias="dateCriterion",
+        title="List of `ImmunizationRecommendationRecommendationDateCriterion` items (represented as `dict` in JSON)",
+        description="Dates governing proposed immunization",
+    )
+
+    description: fhirtypes.String = Field(
+        None,
+        alias="description",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Protocol details",
+    )
+
+    doseNumberPositiveInt: fhirtypes.PositiveInt = Field(
+        None,
+        alias="doseNumberPositiveInt",
+        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        description="Recommended dose number within series",
+        one_of_many="doseNumber",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    doseNumberString: fhirtypes.String = Field(
+        None,
+        alias="doseNumberString",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Recommended dose number within series",
+        one_of_many="doseNumber",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    forecastReason: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="forecastReason",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Vaccine administration status reason",
+    )
+
+    forecastStatus: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="forecastStatus",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Vaccine recommendation status",
+    )
+
+    series: fhirtypes.String = Field(
+        None,
+        alias="series",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name of vaccination series",
+    )
+
+    seriesDosesPositiveInt: fhirtypes.PositiveInt = Field(
+        None,
+        alias="seriesDosesPositiveInt",
+        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        description="Recommended number of doses for immunity",
+        one_of_many="seriesDoses",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    seriesDosesString: fhirtypes.String = Field(
+        None,
+        alias="seriesDosesString",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Recommended number of doses for immunity",
+        one_of_many="seriesDoses",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    supportingImmunization: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="supportingImmunization",
+        title="List of `Reference` items referencing `Immunization, ImmunizationEvaluation` (represented as `dict` in JSON)",
+        description="Past immunizations supporting recommendation",
+    )
+
+    supportingPatientInformation: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="supportingPatientInformation",
+        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        description="Patient observations supporting recommendation",
+    )
+
+    targetDisease: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="targetDisease",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Disease to be immunized against",
+    )
+
+    vaccineCode: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="vaccineCode",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Vaccine  or vaccine group recommendation applies to",
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "doseNumber": ["doseNumberPositiveInt", "doseNumberString",],
+            "seriesDoses": ["seriesDosesPositiveInt", "seriesDosesString",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.contraindicatedVaccineCode = None
-        """ Vaccine which is contraindicated to fulfill the recommendation.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.dateCriterion = None
-        """ Dates governing proposed immunization.
-        List of `ImmunizationRecommendationRecommendationDateCriterion` items (represented as `dict` in JSON). """
-
-        self.description = None
-        """ Protocol details.
-        Type `str`. """
-
-        self.doseNumberPositiveInt = None
-        """ Recommended dose number within series.
-        Type `int`. """
-
-        self.doseNumberString = None
-        """ Recommended dose number within series.
-        Type `str`. """
-
-        self.forecastReason = None
-        """ Vaccine administration status reason.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.forecastStatus = None
-        """ Vaccine recommendation status.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.series = None
-        """ Name of vaccination series.
-        Type `str`. """
-
-        self.seriesDosesPositiveInt = None
-        """ Recommended number of doses for immunity.
-        Type `int`. """
-
-        self.seriesDosesString = None
-        """ Recommended number of doses for immunity.
-        Type `str`. """
-
-        self.supportingImmunization = None
-        """ Past immunizations supporting recommendation.
-        List of `FHIRReference` items referencing `['Immunization', 'ImmunizationEvaluation']` (represented as `dict` in JSON). """
-
-        self.supportingPatientInformation = None
-        """ Patient observations supporting recommendation.
-        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
-
-        self.targetDisease = None
-        """ Disease to be immunized against.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.vaccineCode = None
-        """ Vaccine  or vaccine group recommendation applies to.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        super(ImmunizationRecommendationRecommendation, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ImmunizationRecommendationRecommendation, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "contraindicatedVaccineCode",
-                    "contraindicatedVaccineCode",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "dateCriterion",
-                    "dateCriterion",
-                    ImmunizationRecommendationRecommendationDateCriterion,
-                    "ImmunizationRecommendationRecommendationDateCriterion",
-                    True,
-                    None,
-                    False,
-                ),
-                ("description", "description", str, "string", False, None, False),
-                (
-                    "doseNumberPositiveInt",
-                    "doseNumberPositiveInt",
-                    int,
-                    "positiveInt",
-                    False,
-                    "doseNumber",
-                    False,
-                ),
-                (
-                    "doseNumberString",
-                    "doseNumberString",
-                    str,
-                    "string",
-                    False,
-                    "doseNumber",
-                    False,
-                ),
-                (
-                    "forecastReason",
-                    "forecastReason",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "forecastStatus",
-                    "forecastStatus",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                ("series", "series", str, "string", False, None, False),
-                (
-                    "seriesDosesPositiveInt",
-                    "seriesDosesPositiveInt",
-                    int,
-                    "positiveInt",
-                    False,
-                    "seriesDoses",
-                    False,
-                ),
-                (
-                    "seriesDosesString",
-                    "seriesDosesString",
-                    str,
-                    "string",
-                    False,
-                    "seriesDoses",
-                    False,
-                ),
-                (
-                    "supportingImmunization",
-                    "supportingImmunization",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "supportingPatientInformation",
-                    "supportingPatientInformation",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "targetDisease",
-                    "targetDisease",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "vaccineCode",
-                    "vaccineCode",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+        return values
 
 
 class ImmunizationRecommendationRecommendationDateCriterion(
     backboneelement.BackboneElement
 ):
     """ Dates governing proposed immunization.
-
     Vaccine date recommendations.  For example, earliest date to administer,
     latest date to administer, etc.
     """
 
-    resource_type = "ImmunizationRecommendationRecommendationDateCriterion"
+    resource_type = Field(
+        "ImmunizationRecommendationRecommendationDateCriterion", const=True
+    )
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    code: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="code",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Type of date",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.code = None
-        """ Type of date.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.value = None
-        """ Recommended date.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        super(ImmunizationRecommendationRecommendationDateCriterion, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(
-            ImmunizationRecommendationRecommendationDateCriterion, self
-        ).elementProperties()
-        js.extend(
-            [
-                (
-                    "code",
-                    "code",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                ("value", "value", fhirdate.FHIRDate, "dateTime", False, None, True),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
+    value: fhirtypes.DateTime = Field(
+        ...,
+        alias="value",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Recommended date",
+    )

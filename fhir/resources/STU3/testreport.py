@@ -6,143 +6,103 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class TestReport(domainresource.DomainResource):
     """ Describes the results of a TestScript execution.
-
     A summary of information based on the results of executing a TestScript.
     """
 
-    resource_type = "TestReport"
+    resource_type = Field("TestReport", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    identifier: fhirtypes.IdentifierType = Field(
+        None,
+        alias="identifier",
+        title="Type `Identifier` (represented as `dict` in JSON)",
+        description="External identifier",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    issued: fhirtypes.DateTime = Field(
+        None,
+        alias="issued",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="When the TestScript was executed and this TestReport was generated",
+    )
 
-        self.identifier = None
-        """ External identifier.
-        Type `Identifier` (represented as `dict` in JSON). """
+    name: fhirtypes.String = Field(
+        None,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Informal name of the executed TestScript",
+    )
 
-        self.issued = None
-        """ When the TestScript was executed and this TestReport was generated.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    participant: ListType[fhirtypes.TestReportParticipantType] = Field(
+        None,
+        alias="participant",
+        title="List of `TestReportParticipant` items (represented as `dict` in JSON)",
+        description="A participant in the test execution, either the execution engine, a client, or a server",
+    )
 
-        self.name = None
-        """ Informal name of the executed TestScript.
-        Type `str`. """
+    result: fhirtypes.Code = Field(
+        ...,
+        alias="result",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="pass | fail | pending",
+    )
 
-        self.participant = None
-        """ A participant in the test execution, either the execution engine, a
-        client, or a server.
-        List of `TestReportParticipant` items (represented as `dict` in JSON). """
+    score: fhirtypes.Decimal = Field(
+        None,
+        alias="score",
+        title="Type `Decimal` (represented as `dict` in JSON)",
+        description="The final score (percentage of tests passed) resulting from the execution of the TestScript",
+    )
 
-        self.result = None
-        """ pass | fail | pending.
-        Type `str`. """
+    setup: fhirtypes.TestReportSetupType = Field(
+        None,
+        alias="setup",
+        title="Type `TestReportSetup` (represented as `dict` in JSON)",
+        description="The results of the series of required setup operations before the tests were executed",
+    )
 
-        self.score = None
-        """ The final score (percentage of tests passed) resulting from the
-        execution of the TestScript.
-        Type `float`. """
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="completed | in-progress | waiting | stopped | entered-in-error",
+    )
 
-        self.setup = None
-        """ The results of the series of required setup operations before the
-        tests were executed.
-        Type `TestReportSetup` (represented as `dict` in JSON). """
+    teardown: fhirtypes.TestReportTeardownType = Field(
+        None,
+        alias="teardown",
+        title="Type `TestReportTeardown` (represented as `dict` in JSON)",
+        description="The results of running the series of required clean up steps",
+    )
 
-        self.status = None
-        """ completed | in-progress | waiting | stopped | entered-in-error.
-        Type `str`. """
+    test: ListType[fhirtypes.TestReportTestType] = Field(
+        None,
+        alias="test",
+        title="List of `TestReportTest` items (represented as `dict` in JSON)",
+        description="A test executed from the test script",
+    )
 
-        self.teardown = None
-        """ The results of running the series of required clean up steps.
-        Type `TestReportTeardown` (represented as `dict` in JSON). """
+    testScript: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="testScript",
+        title="Type `Reference` referencing `TestScript` (represented as `dict` in JSON)",
+        description="Reference to the  version-specific TestScript that was executed to produce this TestReport",
+    )
 
-        self.test = None
-        """ A test executed from the test script.
-        List of `TestReportTest` items (represented as `dict` in JSON). """
-
-        self.testScript = None
-        """ Reference to the  version-specific TestScript that was executed to
-        produce this TestReport.
-        Type `FHIRReference` referencing `['TestScript']` (represented as `dict` in JSON). """
-
-        self.tester = None
-        """ Name of the tester producing this report (Organization or
-        individual).
-        Type `str`. """
-
-        super(TestReport, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(TestReport, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    False,
-                    None,
-                    False,
-                ),
-                ("issued", "issued", fhirdate.FHIRDate, "dateTime", False, None, False),
-                ("name", "name", str, "string", False, None, False),
-                (
-                    "participant",
-                    "participant",
-                    TestReportParticipant,
-                    "TestReportParticipant",
-                    True,
-                    None,
-                    False,
-                ),
-                ("result", "result", str, "code", False, None, True),
-                ("score", "score", float, "decimal", False, None, False),
-                (
-                    "setup",
-                    "setup",
-                    TestReportSetup,
-                    "TestReportSetup",
-                    False,
-                    None,
-                    False,
-                ),
-                ("status", "status", str, "code", False, None, True),
-                (
-                    "teardown",
-                    "teardown",
-                    TestReportTeardown,
-                    "TestReportTeardown",
-                    False,
-                    None,
-                    False,
-                ),
-                ("test", "test", TestReportTest, "TestReportTest", True, None, False),
-                (
-                    "testScript",
-                    "testScript",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                ("tester", "tester", str, "string", False, None, False),
-            ]
-        )
-        return js
+    tester: fhirtypes.String = Field(
+        None,
+        alias="tester",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name of the tester producing this report (Organization or individual)",
+    )
 
 
 class TestReportParticipant(backboneelement.BackboneElement):
@@ -150,40 +110,28 @@ class TestReportParticipant(backboneelement.BackboneElement):
     or a server.
     """
 
-    resource_type = "TestReportParticipant"
+    resource_type = Field("TestReportParticipant", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    display: fhirtypes.String = Field(
+        None,
+        alias="display",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="The display name of the participant",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    type: fhirtypes.Code = Field(
+        ...,
+        alias="type",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="test-engine | client | server",
+    )
 
-        self.display = None
-        """ The display name of the participant.
-        Type `str`. """
-
-        self.type = None
-        """ test-engine | client | server.
-        Type `str`. """
-
-        self.uri = None
-        """ The uri of the participant. An absolute URL is preferred.
-        Type `str`. """
-
-        super(TestReportParticipant, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(TestReportParticipant, self).elementProperties()
-        js.extend(
-            [
-                ("display", "display", str, "string", False, None, False),
-                ("type", "type", str, "code", False, None, True),
-                ("uri", "uri", str, "uri", False, None, True),
-            ]
-        )
-        return js
+    uri: fhirtypes.Uri = Field(
+        ...,
+        alias="uri",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="The uri of the participant. An absolute URL is preferred",
+    )
 
 
 class TestReportSetup(backboneelement.BackboneElement):
@@ -191,372 +139,172 @@ class TestReportSetup(backboneelement.BackboneElement):
     were executed.
     """
 
-    resource_type = "TestReportSetup"
+    resource_type = Field("TestReportSetup", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
-
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.action = None
-        """ A setup operation or assert that was executed.
-        List of `TestReportSetupAction` items (represented as `dict` in JSON). """
-
-        super(TestReportSetup, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(TestReportSetup, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "action",
-                    "action",
-                    TestReportSetupAction,
-                    "TestReportSetupAction",
-                    True,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
+    action: ListType[fhirtypes.TestReportSetupActionType] = Field(
+        ...,
+        alias="action",
+        title="List of `TestReportSetupAction` items (represented as `dict` in JSON)",
+        description="A setup operation or assert that was executed",
+    )
 
 
 class TestReportSetupAction(backboneelement.BackboneElement):
     """ A setup operation or assert that was executed.
-
     Action would contain either an operation or an assertion.
     """
 
-    resource_type = "TestReportSetupAction"
+    resource_type = Field("TestReportSetupAction", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    assert_fhir: fhirtypes.TestReportSetupActionAssertType = Field(
+        None,
+        alias="assert",
+        title="Type `TestReportSetupActionAssert` (represented as `dict` in JSON)",
+        description="The assertion to perform",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.assert_fhir = None
-        """ The assertion to perform.
-        Type `TestReportSetupActionAssert` (represented as `dict` in JSON). """
-
-        self.operation = None
-        """ The operation to perform.
-        Type `TestReportSetupActionOperation` (represented as `dict` in JSON). """
-
-        super(TestReportSetupAction, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(TestReportSetupAction, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "assert_fhir",
-                    "assert",
-                    TestReportSetupActionAssert,
-                    "TestReportSetupActionAssert",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "operation",
-                    "operation",
-                    TestReportSetupActionOperation,
-                    "TestReportSetupActionOperation",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    operation: fhirtypes.TestReportSetupActionOperationType = Field(
+        None,
+        alias="operation",
+        title="Type `TestReportSetupActionOperation` (represented as `dict` in JSON)",
+        description="The operation to perform",
+    )
 
 
 class TestReportSetupActionAssert(backboneelement.BackboneElement):
     """ The assertion to perform.
-
     The results of the assertion performed on the previous operations.
     """
 
-    resource_type = "TestReportSetupActionAssert"
+    resource_type = Field("TestReportSetupActionAssert", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    detail: fhirtypes.String = Field(
+        None,
+        alias="detail",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="A link to further details on the result",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    message: fhirtypes.Markdown = Field(
+        None,
+        alias="message",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="A message associated with the result",
+    )
 
-        self.detail = None
-        """ A link to further details on the result.
-        Type `str`. """
-
-        self.message = None
-        """ A message associated with the result.
-        Type `str`. """
-
-        self.result = None
-        """ pass | skip | fail | warning | error.
-        Type `str`. """
-
-        super(TestReportSetupActionAssert, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(TestReportSetupActionAssert, self).elementProperties()
-        js.extend(
-            [
-                ("detail", "detail", str, "string", False, None, False),
-                ("message", "message", str, "markdown", False, None, False),
-                ("result", "result", str, "code", False, None, True),
-            ]
-        )
-        return js
+    result: fhirtypes.Code = Field(
+        ...,
+        alias="result",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="pass | skip | fail | warning | error",
+    )
 
 
 class TestReportSetupActionOperation(backboneelement.BackboneElement):
     """ The operation to perform.
-
     The operation performed.
     """
 
-    resource_type = "TestReportSetupActionOperation"
+    resource_type = Field("TestReportSetupActionOperation", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    detail: fhirtypes.Uri = Field(
+        None,
+        alias="detail",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="A link to further details on the result",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    message: fhirtypes.Markdown = Field(
+        None,
+        alias="message",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="A message associated with the result",
+    )
 
-        self.detail = None
-        """ A link to further details on the result.
-        Type `str`. """
-
-        self.message = None
-        """ A message associated with the result.
-        Type `str`. """
-
-        self.result = None
-        """ pass | skip | fail | warning | error.
-        Type `str`. """
-
-        super(TestReportSetupActionOperation, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(TestReportSetupActionOperation, self).elementProperties()
-        js.extend(
-            [
-                ("detail", "detail", str, "uri", False, None, False),
-                ("message", "message", str, "markdown", False, None, False),
-                ("result", "result", str, "code", False, None, True),
-            ]
-        )
-        return js
+    result: fhirtypes.Code = Field(
+        ...,
+        alias="result",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="pass | skip | fail | warning | error",
+    )
 
 
 class TestReportTeardown(backboneelement.BackboneElement):
     """ The results of running the series of required clean up steps.
-
     The results of the series of operations required to clean up after the all
     the tests were executed (successfully or otherwise).
     """
 
-    resource_type = "TestReportTeardown"
+    resource_type = Field("TestReportTeardown", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
-
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.action = None
-        """ One or more teardown operations performed.
-        List of `TestReportTeardownAction` items (represented as `dict` in JSON). """
-
-        super(TestReportTeardown, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(TestReportTeardown, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "action",
-                    "action",
-                    TestReportTeardownAction,
-                    "TestReportTeardownAction",
-                    True,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
+    action: ListType[fhirtypes.TestReportTeardownActionType] = Field(
+        ...,
+        alias="action",
+        title="List of `TestReportTeardownAction` items (represented as `dict` in JSON)",
+        description="One or more teardown operations performed",
+    )
 
 
 class TestReportTeardownAction(backboneelement.BackboneElement):
     """ One or more teardown operations performed.
-
     The teardown action will only contain an operation.
     """
 
-    resource_type = "TestReportTeardownAction"
+    resource_type = Field("TestReportTeardownAction", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
-
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.operation = None
-        """ The teardown operation performed.
-        Type `TestReportSetupActionOperation` (represented as `dict` in JSON). """
-
-        super(TestReportTeardownAction, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(TestReportTeardownAction, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "operation",
-                    "operation",
-                    TestReportSetupActionOperation,
-                    "TestReportSetupActionOperation",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
+    operation: fhirtypes.TestReportSetupActionOperationType = Field(
+        ...,
+        alias="operation",
+        title="Type `TestReportSetupActionOperation` (represented as `dict` in JSON)",
+        description="The teardown operation performed",
+    )
 
 
 class TestReportTest(backboneelement.BackboneElement):
     """ A test executed from the test script.
     """
 
-    resource_type = "TestReportTest"
+    resource_type = Field("TestReportTest", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    action: ListType[fhirtypes.TestReportTestActionType] = Field(
+        ...,
+        alias="action",
+        title="List of `TestReportTestAction` items (represented as `dict` in JSON)",
+        description="A test operation or assert that was performed",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    description: fhirtypes.String = Field(
+        None,
+        alias="description",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Tracking/reporting short description of the test",
+    )
 
-        self.action = None
-        """ A test operation or assert that was performed.
-        List of `TestReportTestAction` items (represented as `dict` in JSON). """
-
-        self.description = None
-        """ Tracking/reporting short description of the test.
-        Type `str`. """
-
-        self.name = None
-        """ Tracking/logging name of this test.
-        Type `str`. """
-
-        super(TestReportTest, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(TestReportTest, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "action",
-                    "action",
-                    TestReportTestAction,
-                    "TestReportTestAction",
-                    True,
-                    None,
-                    True,
-                ),
-                ("description", "description", str, "string", False, None, False),
-                ("name", "name", str, "string", False, None, False),
-            ]
-        )
-        return js
+    name: fhirtypes.String = Field(
+        None,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Tracking/logging name of this test",
+    )
 
 
 class TestReportTestAction(backboneelement.BackboneElement):
     """ A test operation or assert that was performed.
-
     Action would contain either an operation or an assertion.
     """
 
-    resource_type = "TestReportTestAction"
+    resource_type = Field("TestReportTestAction", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    assert_fhir: fhirtypes.TestReportSetupActionAssertType = Field(
+        None,
+        alias="assert",
+        title="Type `TestReportSetupActionAssert` (represented as `dict` in JSON)",
+        description="The assertion performed",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.assert_fhir = None
-        """ The assertion performed.
-        Type `TestReportSetupActionAssert` (represented as `dict` in JSON). """
-
-        self.operation = None
-        """ The operation performed.
-        Type `TestReportSetupActionOperation` (represented as `dict` in JSON). """
-
-        super(TestReportTestAction, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(TestReportTestAction, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "assert_fhir",
-                    "assert",
-                    TestReportSetupActionAssert,
-                    "TestReportSetupActionAssert",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "operation",
-                    "operation",
-                    TestReportSetupActionOperation,
-                    "TestReportSetupActionOperation",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
+    operation: fhirtypes.TestReportSetupActionOperationType = Field(
+        None,
+        alias="operation",
+        title="Type `TestReportSetupActionOperation` (represented as `dict` in JSON)",
+        description="The operation performed",
+    )

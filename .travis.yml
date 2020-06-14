@@ -1,17 +1,9 @@
 # Config file for automatic testing at travis-ci.org
+os: linux
 dist: xenial
 language: python
-sudo: required
-matrix:
+jobs:
   include:
-    - name: Python 2.7
-      python: 2.7
-      env: python_version=2.7
-
-    - name: Python 3.5
-      python: 3.5
-      env: python_version=3.5
-
     - name: Python 3.6
       python: 3.6
       env: python_version=3.6
@@ -19,19 +11,33 @@ matrix:
     - name: Python 3.7
       python: 3.7
       env: python_version=3.7
+
+    - name: Python 3.8
+      python: 3.8
+      env: python_version=3.8
+
+    - name: Python 3.9
+      python: 3.9-dev
+      env: python_version=3.9-dev
+
   allow_failures:
-    - python: 2.7
+    - python: 3.9-dev
 
 cache:
   directories:
     - eggs
 install:
-  - pip install -e .[test]
+  - pip install -U pip
+  - pip install -e .[all]
   - pip install codecov
   - sleep 1
 script:
   - git submodule update --init --recursive
   - make clean
+  - make lint
+  - mypy fhirspec.py
+  - isort -c fhir/resources
+  - black --check --verbose fhir/resources/
   - pytest fhir/resources/STU3/tests
   - pytest -s --cov=fhir/resources/tests -s --tb=native -v --cov-report term-missing --cov-append fhir/resources/tests
 after_success:

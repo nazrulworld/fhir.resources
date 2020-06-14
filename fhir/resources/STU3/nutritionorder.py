@@ -6,697 +6,397 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from typing import Any, Dict
+from typing import List as ListType
 
+from pydantic import Field, root_validator
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class NutritionOrder(domainresource.DomainResource):
     """ Diet, formula or nutritional supplement request.
-
     A request to supply a diet, formula feeding (enteral) or oral nutritional
     supplement to a patient/resident.
     """
 
-    resource_type = "NutritionOrder"
+    resource_type = Field("NutritionOrder", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    allergyIntolerance: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="allergyIntolerance",
+        title="List of `Reference` items referencing `AllergyIntolerance` (represented as `dict` in JSON)",
+        description="List of the patient\u0027s food and nutrition-related allergies and intolerances",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    dateTime: fhirtypes.DateTime = Field(
+        ...,
+        alias="dateTime",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Date and time the nutrition order was requested",
+    )
 
-        self.allergyIntolerance = None
-        """ List of the patient's food and nutrition-related allergies and
-        intolerances.
-        List of `FHIRReference` items referencing `['AllergyIntolerance']` (represented as `dict` in JSON). """
+    encounter: fhirtypes.ReferenceType = Field(
+        None,
+        alias="encounter",
+        title="Type `Reference` referencing `Encounter` (represented as `dict` in JSON)",
+        description="The encounter associated with this nutrition order",
+    )
 
-        self.dateTime = None
-        """ Date and time the nutrition order was requested.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    enteralFormula: fhirtypes.NutritionOrderEnteralFormulaType = Field(
+        None,
+        alias="enteralFormula",
+        title="Type `NutritionOrderEnteralFormula` (represented as `dict` in JSON)",
+        description="Enteral formula components",
+    )
 
-        self.encounter = None
-        """ The encounter associated with this nutrition order.
-        Type `FHIRReference` referencing `['Encounter']` (represented as `dict` in JSON). """
+    excludeFoodModifier: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="excludeFoodModifier",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Order-specific modifier about the type of food that should not be given",
+    )
 
-        self.enteralFormula = None
-        """ Enteral formula components.
-        Type `NutritionOrderEnteralFormula` (represented as `dict` in JSON). """
+    foodPreferenceModifier: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="foodPreferenceModifier",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Order-specific modifier about the type of food that should be given",
+    )
 
-        self.excludeFoodModifier = None
-        """ Order-specific modifier about the type of food that should not be
-        given.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Identifiers assigned to this order",
+    )
 
-        self.foodPreferenceModifier = None
-        """ Order-specific modifier about the type of food that should be given.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    oralDiet: fhirtypes.NutritionOrderOralDietType = Field(
+        None,
+        alias="oralDiet",
+        title="Type `NutritionOrderOralDiet` (represented as `dict` in JSON)",
+        description="Oral diet components",
+    )
 
-        self.identifier = None
-        """ Identifiers assigned to this order.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    orderer: fhirtypes.ReferenceType = Field(
+        None,
+        alias="orderer",
+        title="Type `Reference` referencing `Practitioner` (represented as `dict` in JSON)",
+        description="Who ordered the diet, formula or nutritional supplement",
+    )
 
-        self.oralDiet = None
-        """ Oral diet components.
-        Type `NutritionOrderOralDiet` (represented as `dict` in JSON). """
+    patient: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="patient",
+        title="Type `Reference` referencing `Patient` (represented as `dict` in JSON)",
+        description="The person who requires the diet, formula or nutritional supplement",
+    )
 
-        self.orderer = None
-        """ Who ordered the diet, formula or nutritional supplement.
-        Type `FHIRReference` referencing `['Practitioner']` (represented as `dict` in JSON). """
+    status: fhirtypes.Code = Field(
+        None,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="proposed | draft | planned | requested | active | on-hold | completed | cancelled | entered-in-error",
+    )
 
-        self.patient = None
-        """ The person who requires the diet, formula or nutritional supplement.
-        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
-
-        self.status = None
-        """ proposed | draft | planned | requested | active | on-hold |
-        completed | cancelled | entered-in-error.
-        Type `str`. """
-
-        self.supplement = None
-        """ Supplement components.
-        List of `NutritionOrderSupplement` items (represented as `dict` in JSON). """
-
-        super(NutritionOrder, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(NutritionOrder, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "allergyIntolerance",
-                    "allergyIntolerance",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "dateTime",
-                    "dateTime",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "encounter",
-                    "encounter",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "enteralFormula",
-                    "enteralFormula",
-                    NutritionOrderEnteralFormula,
-                    "NutritionOrderEnteralFormula",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "excludeFoodModifier",
-                    "excludeFoodModifier",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "foodPreferenceModifier",
-                    "foodPreferenceModifier",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "oralDiet",
-                    "oralDiet",
-                    NutritionOrderOralDiet,
-                    "NutritionOrderOralDiet",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "orderer",
-                    "orderer",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "patient",
-                    "patient",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                ("status", "status", str, "code", False, None, False),
-                (
-                    "supplement",
-                    "supplement",
-                    NutritionOrderSupplement,
-                    "NutritionOrderSupplement",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    supplement: ListType[fhirtypes.NutritionOrderSupplementType] = Field(
+        None,
+        alias="supplement",
+        title="List of `NutritionOrderSupplement` items (represented as `dict` in JSON)",
+        description="Supplement components",
+    )
 
 
 class NutritionOrderEnteralFormula(backboneelement.BackboneElement):
     """ Enteral formula components.
-
     Feeding provided through the gastrointestinal tract via a tube, catheter,
     or stoma that delivers nutrition distal to the oral cavity.
     """
 
-    resource_type = "NutritionOrderEnteralFormula"
+    resource_type = Field("NutritionOrderEnteralFormula", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    additiveProductName: fhirtypes.String = Field(
+        None,
+        alias="additiveProductName",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Product or brand name of the modular additive",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    additiveType: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="additiveType",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Type of modular component to add to the feeding",
+    )
 
-        self.additiveProductName = None
-        """ Product or brand name of the modular additive.
-        Type `str`. """
+    administration: ListType[
+        fhirtypes.NutritionOrderEnteralFormulaAdministrationType
+    ] = Field(
+        None,
+        alias="administration",
+        title="List of `NutritionOrderEnteralFormulaAdministration` items (represented as `dict` in JSON)",
+        description="Formula feeding instruction as structured data",
+    )
 
-        self.additiveType = None
-        """ Type of modular component to add to the feeding.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    administrationInstruction: fhirtypes.String = Field(
+        None,
+        alias="administrationInstruction",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Formula feeding instructions expressed as text",
+    )
 
-        self.administration = None
-        """ Formula feeding instruction as structured data.
-        List of `NutritionOrderEnteralFormulaAdministration` items (represented as `dict` in JSON). """
+    baseFormulaProductName: fhirtypes.String = Field(
+        None,
+        alias="baseFormulaProductName",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Product or brand name of the enteral or infant formula",
+    )
 
-        self.administrationInstruction = None
-        """ Formula feeding instructions expressed as text.
-        Type `str`. """
+    baseFormulaType: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="baseFormulaType",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Type of enteral or infant formula",
+    )
 
-        self.baseFormulaProductName = None
-        """ Product or brand name of the enteral or infant formula.
-        Type `str`. """
+    caloricDensity: fhirtypes.QuantityType = Field(
+        None,
+        alias="caloricDensity",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="Amount of energy per specified volume that is required",
+    )
 
-        self.baseFormulaType = None
-        """ Type of enteral or infant formula.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    maxVolumeToDeliver: fhirtypes.QuantityType = Field(
+        None,
+        alias="maxVolumeToDeliver",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="Upper limit on formula volume per unit of time",
+    )
 
-        self.caloricDensity = None
-        """ Amount of energy per specified volume that is required.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        self.maxVolumeToDeliver = None
-        """ Upper limit on formula volume per unit of time.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        self.routeofAdministration = None
-        """ How the formula should enter the patient's gastrointestinal tract.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(NutritionOrderEnteralFormula, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(NutritionOrderEnteralFormula, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "additiveProductName",
-                    "additiveProductName",
-                    str,
-                    "string",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "additiveType",
-                    "additiveType",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "administration",
-                    "administration",
-                    NutritionOrderEnteralFormulaAdministration,
-                    "NutritionOrderEnteralFormulaAdministration",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "administrationInstruction",
-                    "administrationInstruction",
-                    str,
-                    "string",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "baseFormulaProductName",
-                    "baseFormulaProductName",
-                    str,
-                    "string",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "baseFormulaType",
-                    "baseFormulaType",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "caloricDensity",
-                    "caloricDensity",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "maxVolumeToDeliver",
-                    "maxVolumeToDeliver",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "routeofAdministration",
-                    "routeofAdministration",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    routeofAdministration: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="routeofAdministration",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="How the formula should enter the patient\u0027s gastrointestinal tract",
+    )
 
 
 class NutritionOrderEnteralFormulaAdministration(backboneelement.BackboneElement):
     """ Formula feeding instruction as structured data.
-
     Formula administration instructions as structured data.  This repeating
     structure allows for changing the administration rate or volume over time
     for both bolus and continuous feeding.  An example of this would be an
     instruction to increase the rate of continuous feeding every 2 hours.
     """
 
-    resource_type = "NutritionOrderEnteralFormulaAdministration"
+    resource_type = Field("NutritionOrderEnteralFormulaAdministration", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    quantity: fhirtypes.QuantityType = Field(
+        None,
+        alias="quantity",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="The volume of formula to provide",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    rateQuantity: fhirtypes.QuantityType = Field(
+        None,
+        alias="rateQuantity",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="Speed with which the formula is provided per period of time",
+        one_of_many="rate",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    rateRatio: fhirtypes.RatioType = Field(
+        None,
+        alias="rateRatio",
+        title="Type `Ratio` (represented as `dict` in JSON)",
+        description="Speed with which the formula is provided per period of time",
+        one_of_many="rate",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    schedule: fhirtypes.TimingType = Field(
+        None,
+        alias="schedule",
+        title="Type `Timing` (represented as `dict` in JSON)",
+        description="Scheduled frequency of enteral feeding",
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "rate": ["rateQuantity", "rateRatio",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.quantity = None
-        """ The volume of formula to provide.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        self.rateQuantity = None
-        """ Speed with which the formula is provided per period of time.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        self.rateRatio = None
-        """ Speed with which the formula is provided per period of time.
-        Type `Ratio` (represented as `dict` in JSON). """
-
-        self.schedule = None
-        """ Scheduled frequency of enteral feeding.
-        Type `Timing` (represented as `dict` in JSON). """
-
-        super(NutritionOrderEnteralFormulaAdministration, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(NutritionOrderEnteralFormulaAdministration, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "quantity",
-                    "quantity",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "rateQuantity",
-                    "rateQuantity",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    "rate",
-                    False,
-                ),
-                ("rateRatio", "rateRatio", ratio.Ratio, "Ratio", False, "rate", False),
-                ("schedule", "schedule", timing.Timing, "Timing", False, None, False),
-            ]
-        )
-        return js
+        return values
 
 
 class NutritionOrderOralDiet(backboneelement.BackboneElement):
     """ Oral diet components.
-
     Diet given orally in contrast to enteral (tube) feeding.
     """
 
-    resource_type = "NutritionOrderOralDiet"
+    resource_type = Field("NutritionOrderOralDiet", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    fluidConsistencyType: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="fluidConsistencyType",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="The required consistency of fluids and liquids provided to the patient",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    instruction: fhirtypes.String = Field(
+        None,
+        alias="instruction",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Instructions or additional information about the oral diet",
+    )
 
-        self.fluidConsistencyType = None
-        """ The required consistency of fluids and liquids provided to the
-        patient.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    nutrient: ListType[fhirtypes.NutritionOrderOralDietNutrientType] = Field(
+        None,
+        alias="nutrient",
+        title="List of `NutritionOrderOralDietNutrient` items (represented as `dict` in JSON)",
+        description="Required  nutrient modifications",
+    )
 
-        self.instruction = None
-        """ Instructions or additional information about the oral diet.
-        Type `str`. """
+    schedule: ListType[fhirtypes.TimingType] = Field(
+        None,
+        alias="schedule",
+        title="List of `Timing` items (represented as `dict` in JSON)",
+        description="Scheduled frequency of diet",
+    )
 
-        self.nutrient = None
-        """ Required  nutrient modifications.
-        List of `NutritionOrderOralDietNutrient` items (represented as `dict` in JSON). """
+    texture: ListType[fhirtypes.NutritionOrderOralDietTextureType] = Field(
+        None,
+        alias="texture",
+        title="List of `NutritionOrderOralDietTexture` items (represented as `dict` in JSON)",
+        description="Required  texture modifications",
+    )
 
-        self.schedule = None
-        """ Scheduled frequency of diet.
-        List of `Timing` items (represented as `dict` in JSON). """
-
-        self.texture = None
-        """ Required  texture modifications.
-        List of `NutritionOrderOralDietTexture` items (represented as `dict` in JSON). """
-
-        self.type = None
-        """ Type of oral diet or diet restrictions that describe what can be
-        consumed orally.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        super(NutritionOrderOralDiet, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(NutritionOrderOralDiet, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "fluidConsistencyType",
-                    "fluidConsistencyType",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                ("instruction", "instruction", str, "string", False, None, False),
-                (
-                    "nutrient",
-                    "nutrient",
-                    NutritionOrderOralDietNutrient,
-                    "NutritionOrderOralDietNutrient",
-                    True,
-                    None,
-                    False,
-                ),
-                ("schedule", "schedule", timing.Timing, "Timing", True, None, False),
-                (
-                    "texture",
-                    "texture",
-                    NutritionOrderOralDietTexture,
-                    "NutritionOrderOralDietTexture",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    type: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="type",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Type of oral diet or diet restrictions that describe what can be consumed orally",
+    )
 
 
 class NutritionOrderOralDietNutrient(backboneelement.BackboneElement):
     """ Required  nutrient modifications.
-
     Class that defines the quantity and type of nutrient modifications (for
     example carbohydrate, fiber or sodium) required for the oral diet.
     """
 
-    resource_type = "NutritionOrderOralDietNutrient"
+    resource_type = Field("NutritionOrderOralDietNutrient", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    amount: fhirtypes.QuantityType = Field(
+        None,
+        alias="amount",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="Quantity of the specified nutrient",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.amount = None
-        """ Quantity of the specified nutrient.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        self.modifier = None
-        """ Type of nutrient that is being modified.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(NutritionOrderOralDietNutrient, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(NutritionOrderOralDietNutrient, self).elementProperties()
-        js.extend(
-            [
-                ("amount", "amount", quantity.Quantity, "Quantity", False, None, False),
-                (
-                    "modifier",
-                    "modifier",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    modifier: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="modifier",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Type of nutrient that is being modified",
+    )
 
 
 class NutritionOrderOralDietTexture(backboneelement.BackboneElement):
     """ Required  texture modifications.
-
     Class that describes any texture modifications required for the patient to
     safely consume various types of solid foods.
     """
 
-    resource_type = "NutritionOrderOralDietTexture"
+    resource_type = Field("NutritionOrderOralDietTexture", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    foodType: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="foodType",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Concepts that are used to identify an entity that is ingested for nutritional purposes",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.foodType = None
-        """ Concepts that are used to identify an entity that is ingested for
-        nutritional purposes.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.modifier = None
-        """ Code to indicate how to alter the texture of the foods, e.g. pureed.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(NutritionOrderOralDietTexture, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(NutritionOrderOralDietTexture, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "foodType",
-                    "foodType",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "modifier",
-                    "modifier",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    modifier: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="modifier",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Code to indicate how to alter the texture of the foods, e.g. pureed",
+    )
 
 
 class NutritionOrderSupplement(backboneelement.BackboneElement):
     """ Supplement components.
-
     Oral nutritional products given in order to add further nutritional value
     to the patient's diet.
     """
 
-    resource_type = "NutritionOrderSupplement"
+    resource_type = Field("NutritionOrderSupplement", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    instruction: fhirtypes.String = Field(
+        None,
+        alias="instruction",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Instructions or additional information about the oral supplement",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    productName: fhirtypes.String = Field(
+        None,
+        alias="productName",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Product or brand name of the nutritional supplement",
+    )
 
-        self.instruction = None
-        """ Instructions or additional information about the oral supplement.
-        Type `str`. """
+    quantity: fhirtypes.QuantityType = Field(
+        None,
+        alias="quantity",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="Amount of the nutritional supplement",
+    )
 
-        self.productName = None
-        """ Product or brand name of the nutritional supplement.
-        Type `str`. """
+    schedule: ListType[fhirtypes.TimingType] = Field(
+        None,
+        alias="schedule",
+        title="List of `Timing` items (represented as `dict` in JSON)",
+        description="Scheduled frequency of supplement",
+    )
 
-        self.quantity = None
-        """ Amount of the nutritional supplement.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        self.schedule = None
-        """ Scheduled frequency of supplement.
-        List of `Timing` items (represented as `dict` in JSON). """
-
-        self.type = None
-        """ Type of supplement product requested.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(NutritionOrderSupplement, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(NutritionOrderSupplement, self).elementProperties()
-        js.extend(
-            [
-                ("instruction", "instruction", str, "string", False, None, False),
-                ("productName", "productName", str, "string", False, None, False),
-                (
-                    "quantity",
-                    "quantity",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    None,
-                    False,
-                ),
-                ("schedule", "schedule", timing.Timing, "Timing", True, None, False),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import quantity
-except ImportError:
-    quantity = sys.modules[__package__ + ".quantity"]
-try:
-    from . import ratio
-except ImportError:
-    ratio = sys.modules[__package__ + ".ratio"]
-try:
-    from . import timing
-except ImportError:
-    timing = sys.modules[__package__ + ".timing"]
+    type: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Type of supplement product requested",
+    )

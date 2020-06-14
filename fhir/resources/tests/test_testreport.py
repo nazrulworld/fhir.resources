@@ -6,253 +6,156 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import testreport
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class TestReportTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("TestReport", js["resourceType"])
-        return testreport.TestReport(js)
+def impl_testreport_1(inst):
+    assert inst.id == "testreport-example"
+    assert inst.identifier.system == "urn:ietf:rfc:3986"
+    assert inst.identifier.value == "urn:oid:1.3.6.1.4.1.21367.2005.3.7.9878"
+    assert inst.issued == fhirtypes.DateTime.validate("2016-10-07T08:25:34-05:00")
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.name == "TestReport Example for TestScript Example"
+    assert inst.participant[0].display == "Crucible"
+    assert inst.participant[0].type == "test-engine"
+    assert inst.participant[0].uri == "http://projectcrucible.org"
+    assert inst.participant[1].display == "HealthIntersections STU3"
+    assert inst.participant[1].type == "server"
+    assert inst.participant[1].uri == "http://fhir3.healthintersections.com.au/open"
+    assert inst.result == "pass"
+    assert float(inst.score) == float(100.0)
+    assert (
+        inst.setup.action[0].operation.detail
+        == "http://projectcrucible.org/permalink/1"
+    )
+    assert inst.setup.action[0].operation.message == "DELETE Patient"
+    assert inst.setup.action[0].operation.result == "pass"
+    assert (
+        inst.setup.action[1].assert_fhir.detail
+        == "http://projectcrucible.org/permalink/1"
+    )
+    assert inst.setup.action[1].assert_fhir.message == "HTTP 204"
+    assert inst.setup.action[1].assert_fhir.result == "pass"
+    assert (
+        inst.setup.action[2].operation.detail
+        == "http://projectcrucible.org/permalink/1"
+    )
+    assert (
+        inst.setup.action[2].operation.message == "POST Patient/fixture-patient-create"
+    )
+    assert inst.setup.action[2].operation.result == "pass"
+    assert (
+        inst.setup.action[3].assert_fhir.detail
+        == "http://projectcrucible.org/permalink/1"
+    )
+    assert inst.setup.action[3].assert_fhir.message == "HTTP 201"
+    assert inst.setup.action[3].assert_fhir.result == "pass"
+    assert inst.status == "completed"
+    assert (
+        inst.teardown.action[0].operation.detail
+        == "http://projectcrucible.org/permalink/3"
+    )
+    assert (
+        inst.teardown.action[0].operation.message
+        == "DELETE Patient/fixture-patient-create."
+    )
+    assert inst.teardown.action[0].operation.result == "pass"
+    assert inst.testScript.reference == "TestScript/testscript-example"
+    assert (
+        inst.test[0].action[0].operation.detail
+        == "http://projectcrucible.org/permalink/2"
+    )
+    assert (
+        inst.test[0].action[0].operation.message == "GET Patient/fixture-patient-create"
+    )
+    assert inst.test[0].action[0].operation.result == "pass"
+    assert (
+        inst.test[0].action[1].assert_fhir.detail
+        == "http://projectcrucible.org/permalink/2"
+    )
+    assert inst.test[0].action[1].assert_fhir.message == "HTTP 200"
+    assert inst.test[0].action[1].assert_fhir.result == "pass"
+    assert (
+        inst.test[0].action[2].assert_fhir.detail
+        == "http://projectcrucible.org/permalink/2"
+    )
+    assert inst.test[0].action[2].assert_fhir.message == "Last-Modified Present"
+    assert inst.test[0].action[2].assert_fhir.result == "pass"
+    assert (
+        inst.test[0].action[3].assert_fhir.detail
+        == "http://projectcrucible.org/permalink/2"
+    )
+    assert inst.test[0].action[3].assert_fhir.message == "Response is Patient"
+    assert inst.test[0].action[3].assert_fhir.result == "pass"
+    assert (
+        inst.test[0].action[4].assert_fhir.detail
+        == "http://projectcrucible.org/permalink/2"
+    )
+    assert inst.test[0].action[4].assert_fhir.message == "Response validates"
+    assert inst.test[0].action[4].assert_fhir.result == "pass"
+    assert (
+        inst.test[0].action[5].assert_fhir.detail
+        == "http://projectcrucible.org/permalink/2"
+    )
+    assert (
+        inst.test[0].action[5].assert_fhir.message == "Patient.name.family 'Chalmers'"
+    )
+    assert inst.test[0].action[5].assert_fhir.result == "pass"
+    assert (
+        inst.test[0].action[6].assert_fhir.detail
+        == "http://projectcrucible.org/permalink/2"
+    )
+    assert inst.test[0].action[6].assert_fhir.message == "Patient.name.given 'Peter'"
+    assert inst.test[0].action[6].assert_fhir.result == "pass"
+    assert (
+        inst.test[0].action[7].assert_fhir.detail
+        == "http://projectcrucible.org/permalink/2"
+    )
+    assert (
+        inst.test[0].action[7].assert_fhir.message == "Patient.name.family 'Chalmers'"
+    )
+    assert inst.test[0].action[7].assert_fhir.result == "pass"
+    assert (
+        inst.test[0].action[8].assert_fhir.detail
+        == "http://projectcrucible.org/permalink/2"
+    )
+    assert (
+        inst.test[0].action[8].assert_fhir.message == "Patient.name.family 'Chalmers'"
+    )
+    assert inst.test[0].action[8].assert_fhir.result == "pass"
+    assert (
+        inst.test[0].action[9].assert_fhir.detail
+        == "http://projectcrucible.org/permalink/2"
+    )
+    assert inst.test[0].action[9].assert_fhir.message == "Patient expected values."
+    assert inst.test[0].action[9].assert_fhir.result == "pass"
+    assert inst.test[0].description == "Read a Patient and validate response."
+    assert inst.test[0].id == "01-ReadPatient"
+    assert inst.test[0].name == "Read Patient"
+    assert inst.tester == "HL7 Execution Engine"
+    assert inst.text.status == "generated"
 
-    def testTestReport1(self):
-        inst = self.instantiate_from("testreport-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a TestReport instance")
-        self.implTestReport1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("TestReport", js["resourceType"])
-        inst2 = testreport.TestReport(js)
-        self.implTestReport1(inst2)
+def test_testreport_1(base_settings):
+    """No. 1 tests collection for TestReport.
+    Test File: testreport-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "testreport-example.json"
+    inst = testreport.TestReport.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "TestReport" == inst.resource_type
 
-    def implTestReport1(self, inst):
-        self.assertEqual(force_bytes(inst.id), force_bytes("testreport-example"))
-        self.assertEqual(
-            force_bytes(inst.identifier.system), force_bytes("urn:ietf:rfc:3986")
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier.value),
-            force_bytes("urn:oid:1.3.6.1.4.1.21367.2005.3.7.9878"),
-        )
-        self.assertEqual(inst.issued.date, FHIRDate("2016-10-07T08:25:34-05:00").date)
-        self.assertEqual(inst.issued.as_json(), "2016-10-07T08:25:34-05:00")
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.name),
-            force_bytes("TestReport Example for TestScript Example"),
-        )
-        self.assertEqual(
-            force_bytes(inst.participant[0].display), force_bytes("Crucible")
-        )
-        self.assertEqual(
-            force_bytes(inst.participant[0].type), force_bytes("test-engine")
-        )
-        self.assertEqual(
-            force_bytes(inst.participant[0].uri),
-            force_bytes("http://projectcrucible.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.participant[1].display),
-            force_bytes("HealthIntersections STU3"),
-        )
-        self.assertEqual(force_bytes(inst.participant[1].type), force_bytes("server"))
-        self.assertEqual(
-            force_bytes(inst.participant[1].uri),
-            force_bytes("http://fhir3.healthintersections.com.au/open"),
-        )
-        self.assertEqual(force_bytes(inst.result), force_bytes("pass"))
-        self.assertEqual(inst.score, 100.0)
-        self.assertEqual(
-            force_bytes(inst.setup.action[0].operation.detail),
-            force_bytes("http://projectcrucible.org/permalink/1"),
-        )
-        self.assertEqual(
-            force_bytes(inst.setup.action[0].operation.message),
-            force_bytes("DELETE Patient"),
-        )
-        self.assertEqual(
-            force_bytes(inst.setup.action[0].operation.result), force_bytes("pass")
-        )
-        self.assertEqual(
-            force_bytes(inst.setup.action[1].assert_fhir.detail),
-            force_bytes("http://projectcrucible.org/permalink/1"),
-        )
-        self.assertEqual(
-            force_bytes(inst.setup.action[1].assert_fhir.message),
-            force_bytes("HTTP 204"),
-        )
-        self.assertEqual(
-            force_bytes(inst.setup.action[1].assert_fhir.result), force_bytes("pass")
-        )
-        self.assertEqual(
-            force_bytes(inst.setup.action[2].operation.detail),
-            force_bytes("http://projectcrucible.org/permalink/1"),
-        )
-        self.assertEqual(
-            force_bytes(inst.setup.action[2].operation.message),
-            force_bytes("POST Patient/fixture-patient-create"),
-        )
-        self.assertEqual(
-            force_bytes(inst.setup.action[2].operation.result), force_bytes("pass")
-        )
-        self.assertEqual(
-            force_bytes(inst.setup.action[3].assert_fhir.detail),
-            force_bytes("http://projectcrucible.org/permalink/1"),
-        )
-        self.assertEqual(
-            force_bytes(inst.setup.action[3].assert_fhir.message),
-            force_bytes("HTTP 201"),
-        )
-        self.assertEqual(
-            force_bytes(inst.setup.action[3].assert_fhir.result), force_bytes("pass")
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("completed"))
-        self.assertEqual(
-            force_bytes(inst.teardown.action[0].operation.detail),
-            force_bytes("http://projectcrucible.org/permalink/3"),
-        )
-        self.assertEqual(
-            force_bytes(inst.teardown.action[0].operation.message),
-            force_bytes("DELETE Patient/fixture-patient-create."),
-        )
-        self.assertEqual(
-            force_bytes(inst.teardown.action[0].operation.result), force_bytes("pass")
-        )
-        self.assertEqual(
-            force_bytes(inst.test[0].action[0].operation.detail),
-            force_bytes("http://projectcrucible.org/permalink/2"),
-        )
-        self.assertEqual(
-            force_bytes(inst.test[0].action[0].operation.message),
-            force_bytes("GET Patient/fixture-patient-create"),
-        )
-        self.assertEqual(
-            force_bytes(inst.test[0].action[0].operation.result), force_bytes("pass")
-        )
-        self.assertEqual(
-            force_bytes(inst.test[0].action[1].assert_fhir.detail),
-            force_bytes("http://projectcrucible.org/permalink/2"),
-        )
-        self.assertEqual(
-            force_bytes(inst.test[0].action[1].assert_fhir.message),
-            force_bytes("HTTP 200"),
-        )
-        self.assertEqual(
-            force_bytes(inst.test[0].action[1].assert_fhir.result), force_bytes("pass")
-        )
-        self.assertEqual(
-            force_bytes(inst.test[0].action[2].assert_fhir.detail),
-            force_bytes("http://projectcrucible.org/permalink/2"),
-        )
-        self.assertEqual(
-            force_bytes(inst.test[0].action[2].assert_fhir.message),
-            force_bytes("Last-Modified Present"),
-        )
-        self.assertEqual(
-            force_bytes(inst.test[0].action[2].assert_fhir.result), force_bytes("pass")
-        )
-        self.assertEqual(
-            force_bytes(inst.test[0].action[3].assert_fhir.detail),
-            force_bytes("http://projectcrucible.org/permalink/2"),
-        )
-        self.assertEqual(
-            force_bytes(inst.test[0].action[3].assert_fhir.message),
-            force_bytes("Response is Patient"),
-        )
-        self.assertEqual(
-            force_bytes(inst.test[0].action[3].assert_fhir.result), force_bytes("pass")
-        )
-        self.assertEqual(
-            force_bytes(inst.test[0].action[4].assert_fhir.detail),
-            force_bytes("http://projectcrucible.org/permalink/2"),
-        )
-        self.assertEqual(
-            force_bytes(inst.test[0].action[4].assert_fhir.message),
-            force_bytes("Response validates"),
-        )
-        self.assertEqual(
-            force_bytes(inst.test[0].action[4].assert_fhir.result), force_bytes("pass")
-        )
-        self.assertEqual(
-            force_bytes(inst.test[0].action[5].assert_fhir.detail),
-            force_bytes("http://projectcrucible.org/permalink/2"),
-        )
-        self.assertEqual(
-            force_bytes(inst.test[0].action[5].assert_fhir.message),
-            force_bytes("Patient.name.family 'Chalmers'"),
-        )
-        self.assertEqual(
-            force_bytes(inst.test[0].action[5].assert_fhir.result), force_bytes("pass")
-        )
-        self.assertEqual(
-            force_bytes(inst.test[0].action[6].assert_fhir.detail),
-            force_bytes("http://projectcrucible.org/permalink/2"),
-        )
-        self.assertEqual(
-            force_bytes(inst.test[0].action[6].assert_fhir.message),
-            force_bytes("Patient.name.given 'Peter'"),
-        )
-        self.assertEqual(
-            force_bytes(inst.test[0].action[6].assert_fhir.result), force_bytes("pass")
-        )
-        self.assertEqual(
-            force_bytes(inst.test[0].action[7].assert_fhir.detail),
-            force_bytes("http://projectcrucible.org/permalink/2"),
-        )
-        self.assertEqual(
-            force_bytes(inst.test[0].action[7].assert_fhir.message),
-            force_bytes("Patient.name.family 'Chalmers'"),
-        )
-        self.assertEqual(
-            force_bytes(inst.test[0].action[7].assert_fhir.result), force_bytes("pass")
-        )
-        self.assertEqual(
-            force_bytes(inst.test[0].action[8].assert_fhir.detail),
-            force_bytes("http://projectcrucible.org/permalink/2"),
-        )
-        self.assertEqual(
-            force_bytes(inst.test[0].action[8].assert_fhir.message),
-            force_bytes("Patient.name.family 'Chalmers'"),
-        )
-        self.assertEqual(
-            force_bytes(inst.test[0].action[8].assert_fhir.result), force_bytes("pass")
-        )
-        self.assertEqual(
-            force_bytes(inst.test[0].action[9].assert_fhir.detail),
-            force_bytes("http://projectcrucible.org/permalink/2"),
-        )
-        self.assertEqual(
-            force_bytes(inst.test[0].action[9].assert_fhir.message),
-            force_bytes("Patient expected values."),
-        )
-        self.assertEqual(
-            force_bytes(inst.test[0].action[9].assert_fhir.result), force_bytes("pass")
-        )
-        self.assertEqual(
-            force_bytes(inst.test[0].description),
-            force_bytes("Read a Patient and validate response."),
-        )
-        self.assertEqual(force_bytes(inst.test[0].id), force_bytes("01-ReadPatient"))
-        self.assertEqual(force_bytes(inst.test[0].name), force_bytes("Read Patient"))
-        self.assertEqual(force_bytes(inst.tester), force_bytes("HL7 Execution Engine"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    impl_testreport_1(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "TestReport" == data["resourceType"]
+
+    inst2 = testreport.TestReport(**data)
+    impl_testreport_1(inst2)

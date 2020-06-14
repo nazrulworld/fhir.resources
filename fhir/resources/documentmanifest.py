@@ -6,239 +6,123 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class DocumentManifest(domainresource.DomainResource):
     """ A list that defines a set of documents.
-
     A collection of documents compiled for a purpose together with metadata
     that applies to the collection.
     """
 
-    resource_type = "DocumentManifest"
+    resource_type = Field("DocumentManifest", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    author: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="author",
+        title="List of `Reference` items referencing `Practitioner, PractitionerRole, Organization, Device, Patient, RelatedPerson` (represented as `dict` in JSON)",
+        description="Who and/or what authored the DocumentManifest",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    content: ListType[fhirtypes.ReferenceType] = Field(
+        ...,
+        alias="content",
+        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        description="Items in manifest",
+    )
 
-        self.author = None
-        """ Who and/or what authored the DocumentManifest.
-        List of `FHIRReference` items referencing `['Practitioner', 'PractitionerRole', 'Organization', 'Device', 'Patient', 'RelatedPerson']` (represented as `dict` in JSON). """
+    created: fhirtypes.DateTime = Field(
+        None,
+        alias="created",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="When this document manifest created",
+    )
 
-        self.content = None
-        """ Items in manifest.
-        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
+    description: fhirtypes.String = Field(
+        None,
+        alias="description",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Human-readable description (title)",
+    )
 
-        self.created = None
-        """ When this document manifest created.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Other identifiers for the manifest",
+    )
 
-        self.description = None
-        """ Human-readable description (title).
-        Type `str`. """
+    masterIdentifier: fhirtypes.IdentifierType = Field(
+        None,
+        alias="masterIdentifier",
+        title="Type `Identifier` (represented as `dict` in JSON)",
+        description="Unique Identifier for the set of documents",
+    )
 
-        self.identifier = None
-        """ Other identifiers for the manifest.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    recipient: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="recipient",
+        title="List of `Reference` items referencing `Patient, Practitioner, PractitionerRole, RelatedPerson, Organization` (represented as `dict` in JSON)",
+        description="Intended to get notified about this set of documents",
+    )
 
-        self.masterIdentifier = None
-        """ Unique Identifier for the set of documents.
-        Type `Identifier` (represented as `dict` in JSON). """
+    related: ListType[fhirtypes.DocumentManifestRelatedType] = Field(
+        None,
+        alias="related",
+        title="List of `DocumentManifestRelated` items (represented as `dict` in JSON)",
+        description="Related things",
+    )
 
-        self.recipient = None
-        """ Intended to get notified about this set of documents.
-        List of `FHIRReference` items referencing `['Patient', 'Practitioner', 'PractitionerRole', 'RelatedPerson', 'Organization']` (represented as `dict` in JSON). """
+    source: fhirtypes.Uri = Field(
+        None,
+        alias="source",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="The source system/application/software",
+    )
 
-        self.related = None
-        """ Related things.
-        List of `DocumentManifestRelated` items (represented as `dict` in JSON). """
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="current | superseded | entered-in-error",
+    )
 
-        self.source = None
-        """ The source system/application/software.
-        Type `str`. """
+    subject: fhirtypes.ReferenceType = Field(
+        None,
+        alias="subject",
+        title="Type `Reference` referencing `Patient, Practitioner, Group, Device` (represented as `dict` in JSON)",
+        description="The subject of the set of documents",
+    )
 
-        self.status = None
-        """ current | superseded | entered-in-error.
-        Type `str`. """
-
-        self.subject = None
-        """ The subject of the set of documents.
-        Type `FHIRReference` referencing `['Patient', 'Practitioner', 'Group', 'Device']` (represented as `dict` in JSON). """
-
-        self.type = None
-        """ Kind of document set.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(DocumentManifest, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(DocumentManifest, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "author",
-                    "author",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "content",
-                    "content",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    True,
-                ),
-                (
-                    "created",
-                    "created",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    None,
-                    False,
-                ),
-                ("description", "description", str, "string", False, None, False),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "masterIdentifier",
-                    "masterIdentifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "recipient",
-                    "recipient",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "related",
-                    "related",
-                    DocumentManifestRelated,
-                    "DocumentManifestRelated",
-                    True,
-                    None,
-                    False,
-                ),
-                ("source", "source", str, "uri", False, None, False),
-                ("status", "status", str, "code", False, None, True),
-                (
-                    "subject",
-                    "subject",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    type: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Kind of document set",
+    )
 
 
 class DocumentManifestRelated(backboneelement.BackboneElement):
     """ Related things.
-
     Related identifiers or resources associated with the DocumentManifest.
     """
 
-    resource_type = "DocumentManifestRelated"
+    resource_type = Field("DocumentManifestRelated", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    identifier: fhirtypes.IdentifierType = Field(
+        None,
+        alias="identifier",
+        title="Type `Identifier` (represented as `dict` in JSON)",
+        description="Identifiers of things that are related",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.identifier = None
-        """ Identifiers of things that are related.
-        Type `Identifier` (represented as `dict` in JSON). """
-
-        self.ref = None
-        """ Related Resource.
-        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
-
-        super(DocumentManifestRelated, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(DocumentManifestRelated, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "ref",
-                    "ref",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
+    ref: fhirtypes.ReferenceType = Field(
+        None,
+        alias="ref",
+        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        description="Related Resource",
+    )

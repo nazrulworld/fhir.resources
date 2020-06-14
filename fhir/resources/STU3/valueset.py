@@ -6,740 +6,557 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from typing import Any, Dict
+from typing import List as ListType
 
+from pydantic import Field, root_validator
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class ValueSet(domainresource.DomainResource):
     """ A set of codes drawn from one or more code systems.
-
     A value set specifies a set of codes drawn from one or more code systems.
     """
 
-    resource_type = "ValueSet"
+    resource_type = Field("ValueSet", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    compose: fhirtypes.ValueSetComposeType = Field(
+        None,
+        alias="compose",
+        title="Type `ValueSetCompose` (represented as `dict` in JSON)",
+        description="Definition of the content of the value set (CLD)",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    contact: ListType[fhirtypes.ContactDetailType] = Field(
+        None,
+        alias="contact",
+        title="List of `ContactDetail` items (represented as `dict` in JSON)",
+        description="Contact details for the publisher",
+    )
 
-        self.compose = None
-        """ Definition of the content of the value set (CLD).
-        Type `ValueSetCompose` (represented as `dict` in JSON). """
+    copyright: fhirtypes.Markdown = Field(
+        None,
+        alias="copyright",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Use and/or publishing restrictions",
+    )
 
-        self.contact = None
-        """ Contact details for the publisher.
-        List of `ContactDetail` items (represented as `dict` in JSON). """
+    date: fhirtypes.DateTime = Field(
+        None,
+        alias="date",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Date this was last changed",
+    )
 
-        self.copyright = None
-        """ Use and/or publishing restrictions.
-        Type `str`. """
+    description: fhirtypes.Markdown = Field(
+        None,
+        alias="description",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Natural language description of the value set",
+    )
 
-        self.date = None
-        """ Date this was last changed.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    expansion: fhirtypes.ValueSetExpansionType = Field(
+        None,
+        alias="expansion",
+        title="Type `ValueSetExpansion` (represented as `dict` in JSON)",
+        description='Used when the value set is "expanded"',
+    )
 
-        self.description = None
-        """ Natural language description of the value set.
-        Type `str`. """
+    experimental: bool = Field(
+        None,
+        alias="experimental",
+        title="Type `bool`",
+        description="For testing purposes, not real usage",
+    )
 
-        self.expansion = None
-        """ Used when the value set is "expanded".
-        Type `ValueSetExpansion` (represented as `dict` in JSON). """
+    extensible: bool = Field(
+        None,
+        alias="extensible",
+        title="Type `bool`",
+        description="Whether this is intended to be used with an extensible binding",
+    )
 
-        self.experimental = None
-        """ For testing purposes, not real usage.
-        Type `bool`. """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Additional identifier for the value set",
+    )
 
-        self.extensible = None
-        """ Whether this is intended to be used with an extensible binding.
-        Type `bool`. """
+    immutable: bool = Field(
+        None,
+        alias="immutable",
+        title="Type `bool`",
+        description="Indicates whether or not any change to the content logical definition may occur",
+    )
 
-        self.identifier = None
-        """ Additional identifier for the value set.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="jurisdiction",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Intended jurisdiction for value set (if applicable)",
+    )
 
-        self.immutable = None
-        """ Indicates whether or not any change to the content logical
-        definition may occur.
-        Type `bool`. """
+    name: fhirtypes.String = Field(
+        None,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name for this value set (computer friendly)",
+    )
 
-        self.jurisdiction = None
-        """ Intended jurisdiction for value set (if applicable).
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    publisher: fhirtypes.String = Field(
+        None,
+        alias="publisher",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name of the publisher (organization or individual)",
+    )
 
-        self.name = None
-        """ Name for this value set (computer friendly).
-        Type `str`. """
+    purpose: fhirtypes.Markdown = Field(
+        None,
+        alias="purpose",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Why this value set is defined",
+    )
 
-        self.publisher = None
-        """ Name of the publisher (organization or individual).
-        Type `str`. """
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="draft | active | retired | unknown",
+    )
 
-        self.purpose = None
-        """ Why this value set is defined.
-        Type `str`. """
+    title: fhirtypes.String = Field(
+        None,
+        alias="title",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name for this value set (human friendly)",
+    )
 
-        self.status = None
-        """ draft | active | retired | unknown.
-        Type `str`. """
+    url: fhirtypes.Uri = Field(
+        None,
+        alias="url",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Logical URI to reference this value set (globally unique)",
+    )
 
-        self.title = None
-        """ Name for this value set (human friendly).
-        Type `str`. """
+    useContext: ListType[fhirtypes.UsageContextType] = Field(
+        None,
+        alias="useContext",
+        title="List of `UsageContext` items (represented as `dict` in JSON)",
+        description="Context the content is intended to support",
+    )
 
-        self.url = None
-        """ Logical URI to reference this value set (globally unique).
-        Type `str`. """
-
-        self.useContext = None
-        """ Context the content is intended to support.
-        List of `UsageContext` items (represented as `dict` in JSON). """
-
-        self.version = None
-        """ Business version of the value set.
-        Type `str`. """
-
-        super(ValueSet, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ValueSet, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "compose",
-                    "compose",
-                    ValueSetCompose,
-                    "ValueSetCompose",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "contact",
-                    "contact",
-                    contactdetail.ContactDetail,
-                    "ContactDetail",
-                    True,
-                    None,
-                    False,
-                ),
-                ("copyright", "copyright", str, "markdown", False, None, False),
-                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-                ("description", "description", str, "markdown", False, None, False),
-                (
-                    "expansion",
-                    "expansion",
-                    ValueSetExpansion,
-                    "ValueSetExpansion",
-                    False,
-                    None,
-                    False,
-                ),
-                ("experimental", "experimental", bool, "boolean", False, None, False),
-                ("extensible", "extensible", bool, "boolean", False, None, False),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                ("immutable", "immutable", bool, "boolean", False, None, False),
-                (
-                    "jurisdiction",
-                    "jurisdiction",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                ("name", "name", str, "string", False, None, False),
-                ("publisher", "publisher", str, "string", False, None, False),
-                ("purpose", "purpose", str, "markdown", False, None, False),
-                ("status", "status", str, "code", False, None, True),
-                ("title", "title", str, "string", False, None, False),
-                ("url", "url", str, "uri", False, None, False),
-                (
-                    "useContext",
-                    "useContext",
-                    usagecontext.UsageContext,
-                    "UsageContext",
-                    True,
-                    None,
-                    False,
-                ),
-                ("version", "version", str, "string", False, None, False),
-            ]
-        )
-        return js
+    version: fhirtypes.String = Field(
+        None,
+        alias="version",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Business version of the value set",
+    )
 
 
 class ValueSetCompose(backboneelement.BackboneElement):
     """ Definition of the content of the value set (CLD).
-
     A set of criteria that define the content logical definition of the value
     set by including or excluding codes from outside this value set. This I
     also known as the "Content Logical Definition" (CLD).
     """
 
-    resource_type = "ValueSetCompose"
+    resource_type = Field("ValueSetCompose", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    exclude: ListType[fhirtypes.ValueSetComposeIncludeType] = Field(
+        None,
+        alias="exclude",
+        title="List of `ValueSetComposeInclude` items (represented as `dict` in JSON)",
+        description="Explicitly exclude codes from a code system or other value sets",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    inactive: bool = Field(
+        None,
+        alias="inactive",
+        title="Type `bool`",
+        description="Whether inactive codes are in the value set",
+    )
 
-        self.exclude = None
-        """ Explicitly exclude codes from a code system or other value sets.
-        List of `ValueSetComposeInclude` items (represented as `dict` in JSON). """
+    include: ListType[fhirtypes.ValueSetComposeIncludeType] = Field(
+        ...,
+        alias="include",
+        title="List of `ValueSetComposeInclude` items (represented as `dict` in JSON)",
+        description="Include one or more codes from a code system or other value set(s)",
+    )
 
-        self.inactive = None
-        """ Whether inactive codes are in the value set.
-        Type `bool`. """
-
-        self.include = None
-        """ Include one or more codes from a code system or other value set(s).
-        List of `ValueSetComposeInclude` items (represented as `dict` in JSON). """
-
-        self.lockedDate = None
-        """ Fixed date for version-less references (transitive).
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        super(ValueSetCompose, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ValueSetCompose, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "exclude",
-                    "exclude",
-                    ValueSetComposeInclude,
-                    "ValueSetComposeInclude",
-                    True,
-                    None,
-                    False,
-                ),
-                ("inactive", "inactive", bool, "boolean", False, None, False),
-                (
-                    "include",
-                    "include",
-                    ValueSetComposeInclude,
-                    "ValueSetComposeInclude",
-                    True,
-                    None,
-                    True,
-                ),
-                (
-                    "lockedDate",
-                    "lockedDate",
-                    fhirdate.FHIRDate,
-                    "date",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    lockedDate: fhirtypes.Date = Field(
+        None,
+        alias="lockedDate",
+        title="Type `Date` (represented as `dict` in JSON)",
+        description="Fixed date for version-less references (transitive)",
+    )
 
 
 class ValueSetComposeInclude(backboneelement.BackboneElement):
     """ Include one or more codes from a code system or other value set(s).
     """
 
-    resource_type = "ValueSetComposeInclude"
+    resource_type = Field("ValueSetComposeInclude", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    concept: ListType[fhirtypes.ValueSetComposeIncludeConceptType] = Field(
+        None,
+        alias="concept",
+        title="List of `ValueSetComposeIncludeConcept` items (represented as `dict` in JSON)",
+        description="A concept defined in the system",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    filter: ListType[fhirtypes.ValueSetComposeIncludeFilterType] = Field(
+        None,
+        alias="filter",
+        title="List of `ValueSetComposeIncludeFilter` items (represented as `dict` in JSON)",
+        description="Select codes/concepts by their properties (including relationships)",
+    )
 
-        self.concept = None
-        """ A concept defined in the system.
-        List of `ValueSetComposeIncludeConcept` items (represented as `dict` in JSON). """
+    system: fhirtypes.Uri = Field(
+        None,
+        alias="system",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="The system the codes come from",
+    )
 
-        self.filter = None
-        """ Select codes/concepts by their properties (including relationships).
-        List of `ValueSetComposeIncludeFilter` items (represented as `dict` in JSON). """
+    valueSet: ListType[fhirtypes.Uri] = Field(
+        None,
+        alias="valueSet",
+        title="List of `Uri` items (represented as `dict` in JSON)",
+        description="Select only contents included in this value set",
+    )
 
-        self.system = None
-        """ The system the codes come from.
-        Type `str`. """
-
-        self.valueSet = None
-        """ Select only contents included in this value set.
-        List of `str` items. """
-
-        self.version = None
-        """ Specific version of the code system referred to.
-        Type `str`. """
-
-        super(ValueSetComposeInclude, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ValueSetComposeInclude, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "concept",
-                    "concept",
-                    ValueSetComposeIncludeConcept,
-                    "ValueSetComposeIncludeConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "filter",
-                    "filter",
-                    ValueSetComposeIncludeFilter,
-                    "ValueSetComposeIncludeFilter",
-                    True,
-                    None,
-                    False,
-                ),
-                ("system", "system", str, "uri", False, None, False),
-                ("valueSet", "valueSet", str, "uri", True, None, False),
-                ("version", "version", str, "string", False, None, False),
-            ]
-        )
-        return js
+    version: fhirtypes.String = Field(
+        None,
+        alias="version",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Specific version of the code system referred to",
+    )
 
 
 class ValueSetComposeIncludeConcept(backboneelement.BackboneElement):
     """ A concept defined in the system.
-
     Specifies a concept to be included or excluded.
     """
 
-    resource_type = "ValueSetComposeIncludeConcept"
+    resource_type = Field("ValueSetComposeIncludeConcept", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    code: fhirtypes.Code = Field(
+        ...,
+        alias="code",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="Code or expression from system",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    designation: ListType[
+        fhirtypes.ValueSetComposeIncludeConceptDesignationType
+    ] = Field(
+        None,
+        alias="designation",
+        title="List of `ValueSetComposeIncludeConceptDesignation` items (represented as `dict` in JSON)",
+        description="Additional representations for this concept",
+    )
 
-        self.code = None
-        """ Code or expression from system.
-        Type `str`. """
-
-        self.designation = None
-        """ Additional representations for this concept.
-        List of `ValueSetComposeIncludeConceptDesignation` items (represented as `dict` in JSON). """
-
-        self.display = None
-        """ Text to display for this code for this value set in this valueset.
-        Type `str`. """
-
-        super(ValueSetComposeIncludeConcept, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ValueSetComposeIncludeConcept, self).elementProperties()
-        js.extend(
-            [
-                ("code", "code", str, "code", False, None, True),
-                (
-                    "designation",
-                    "designation",
-                    ValueSetComposeIncludeConceptDesignation,
-                    "ValueSetComposeIncludeConceptDesignation",
-                    True,
-                    None,
-                    False,
-                ),
-                ("display", "display", str, "string", False, None, False),
-            ]
-        )
-        return js
+    display: fhirtypes.String = Field(
+        None,
+        alias="display",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Text to display for this code for this value set in this valueset",
+    )
 
 
 class ValueSetComposeIncludeConceptDesignation(backboneelement.BackboneElement):
     """ Additional representations for this concept.
-
     Additional representations for this concept when used in this value set -
     other languages, aliases, specialized purposes, used for particular
     purposes, etc.
     """
 
-    resource_type = "ValueSetComposeIncludeConceptDesignation"
+    resource_type = Field("ValueSetComposeIncludeConceptDesignation", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    language: fhirtypes.Code = Field(
+        None,
+        alias="language",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="Human language of the designation",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    use: fhirtypes.CodingType = Field(
+        None,
+        alias="use",
+        title="Type `Coding` (represented as `dict` in JSON)",
+        description="Details how this designation would be used",
+    )
 
-        self.language = None
-        """ Human language of the designation.
-        Type `str`. """
-
-        self.use = None
-        """ Details how this designation would be used.
-        Type `Coding` (represented as `dict` in JSON). """
-
-        self.value = None
-        """ The text value for this designation.
-        Type `str`. """
-
-        super(ValueSetComposeIncludeConceptDesignation, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ValueSetComposeIncludeConceptDesignation, self).elementProperties()
-        js.extend(
-            [
-                ("language", "language", str, "code", False, None, False),
-                ("use", "use", coding.Coding, "Coding", False, None, False),
-                ("value", "value", str, "string", False, None, True),
-            ]
-        )
-        return js
+    value: fhirtypes.String = Field(
+        ...,
+        alias="value",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="The text value for this designation",
+    )
 
 
 class ValueSetComposeIncludeFilter(backboneelement.BackboneElement):
     """ Select codes/concepts by their properties (including relationships).
-
     Select concepts by specify a matching criteria based on the properties
     (including relationships) defined by the system. If multiple filters are
     specified, they SHALL all be true.
     """
 
-    resource_type = "ValueSetComposeIncludeFilter"
+    resource_type = Field("ValueSetComposeIncludeFilter", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    op: fhirtypes.Code = Field(
+        ...,
+        alias="op",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="= | is-a | descendent-of | is-not-a | regex | in | not-in | generalizes | exists",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    property: fhirtypes.Code = Field(
+        ...,
+        alias="property",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="A property defined by the code system",
+    )
 
-        self.op = None
-        """ = | is-a | descendent-of | is-not-a | regex | in | not-in |
-        generalizes | exists.
-        Type `str`. """
-
-        self.property = None
-        """ A property defined by the code system.
-        Type `str`. """
-
-        self.value = None
-        """ Code from the system, or regex criteria, or boolean value for
-        exists.
-        Type `str`. """
-
-        super(ValueSetComposeIncludeFilter, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ValueSetComposeIncludeFilter, self).elementProperties()
-        js.extend(
-            [
-                ("op", "op", str, "code", False, None, True),
-                ("property", "property", str, "code", False, None, True),
-                ("value", "value", str, "code", False, None, True),
-            ]
-        )
-        return js
+    value: fhirtypes.Code = Field(
+        ...,
+        alias="value",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="Code from the system, or regex criteria, or boolean value for exists",
+    )
 
 
 class ValueSetExpansion(backboneelement.BackboneElement):
     """ Used when the value set is "expanded".
-
     A value set can also be "expanded", where the value set is turned into a
     simple collection of enumerated codes. This element holds the expansion, if
     it has been performed.
     """
 
-    resource_type = "ValueSetExpansion"
+    resource_type = Field("ValueSetExpansion", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    contains: ListType[fhirtypes.ValueSetExpansionContainsType] = Field(
+        None,
+        alias="contains",
+        title="List of `ValueSetExpansionContains` items (represented as `dict` in JSON)",
+        description="Codes in the value set",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    identifier: fhirtypes.Uri = Field(
+        ...,
+        alias="identifier",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Uniquely identifies this expansion",
+    )
 
-        self.contains = None
-        """ Codes in the value set.
-        List of `ValueSetExpansionContains` items (represented as `dict` in JSON). """
+    offset: fhirtypes.Integer = Field(
+        None,
+        alias="offset",
+        title="Type `Integer` (represented as `dict` in JSON)",
+        description="Offset at which this resource starts",
+    )
 
-        self.identifier = None
-        """ Uniquely identifies this expansion.
-        Type `str`. """
+    parameter: ListType[fhirtypes.ValueSetExpansionParameterType] = Field(
+        None,
+        alias="parameter",
+        title="List of `ValueSetExpansionParameter` items (represented as `dict` in JSON)",
+        description="Parameter that controlled the expansion process",
+    )
 
-        self.offset = None
-        """ Offset at which this resource starts.
-        Type `int`. """
+    timestamp: fhirtypes.DateTime = Field(
+        ...,
+        alias="timestamp",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Time ValueSet expansion happened",
+    )
 
-        self.parameter = None
-        """ Parameter that controlled the expansion process.
-        List of `ValueSetExpansionParameter` items (represented as `dict` in JSON). """
-
-        self.timestamp = None
-        """ Time ValueSet expansion happened.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.total = None
-        """ Total number of codes in the expansion.
-        Type `int`. """
-
-        super(ValueSetExpansion, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ValueSetExpansion, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "contains",
-                    "contains",
-                    ValueSetExpansionContains,
-                    "ValueSetExpansionContains",
-                    True,
-                    None,
-                    False,
-                ),
-                ("identifier", "identifier", str, "uri", False, None, True),
-                ("offset", "offset", int, "integer", False, None, False),
-                (
-                    "parameter",
-                    "parameter",
-                    ValueSetExpansionParameter,
-                    "ValueSetExpansionParameter",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "timestamp",
-                    "timestamp",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    None,
-                    True,
-                ),
-                ("total", "total", int, "integer", False, None, False),
-            ]
-        )
-        return js
+    total: fhirtypes.Integer = Field(
+        None,
+        alias="total",
+        title="Type `Integer` (represented as `dict` in JSON)",
+        description="Total number of codes in the expansion",
+    )
 
 
 class ValueSetExpansionContains(backboneelement.BackboneElement):
     """ Codes in the value set.
-
     The codes that are contained in the value set expansion.
     """
 
-    resource_type = "ValueSetExpansionContains"
+    resource_type = Field("ValueSetExpansionContains", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    abstract: bool = Field(
+        None,
+        alias="abstract",
+        title="Type `bool`",
+        description="If user cannot select this entry",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    code: fhirtypes.Code = Field(
+        None,
+        alias="code",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="Code - if blank, this is not a selectable code",
+    )
 
-        self.abstract = None
-        """ If user cannot select this entry.
-        Type `bool`. """
+    contains: ListType[fhirtypes.ValueSetExpansionContainsType] = Field(
+        None,
+        alias="contains",
+        title="List of `ValueSetExpansionContains` items (represented as `dict` in JSON)",
+        description="Codes contained under this entry",
+    )
 
-        self.code = None
-        """ Code - if blank, this is not a selectable code.
-        Type `str`. """
+    designation: ListType[
+        fhirtypes.ValueSetComposeIncludeConceptDesignationType
+    ] = Field(
+        None,
+        alias="designation",
+        title="List of `ValueSetComposeIncludeConceptDesignation` items (represented as `dict` in JSON)",
+        description="Additional representations for this item",
+    )
 
-        self.contains = None
-        """ Codes contained under this entry.
-        List of `ValueSetExpansionContains` items (represented as `dict` in JSON). """
+    display: fhirtypes.String = Field(
+        None,
+        alias="display",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="User display for the concept",
+    )
 
-        self.designation = None
-        """ Additional representations for this item.
-        List of `ValueSetComposeIncludeConceptDesignation` items (represented as `dict` in JSON). """
+    inactive: bool = Field(
+        None,
+        alias="inactive",
+        title="Type `bool`",
+        description="If concept is inactive in the code system",
+    )
 
-        self.display = None
-        """ User display for the concept.
-        Type `str`. """
+    system: fhirtypes.Uri = Field(
+        None,
+        alias="system",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="System value for the code",
+    )
 
-        self.inactive = None
-        """ If concept is inactive in the code system.
-        Type `bool`. """
-
-        self.system = None
-        """ System value for the code.
-        Type `str`. """
-
-        self.version = None
-        """ Version in which this code/display is defined.
-        Type `str`. """
-
-        super(ValueSetExpansionContains, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ValueSetExpansionContains, self).elementProperties()
-        js.extend(
-            [
-                ("abstract", "abstract", bool, "boolean", False, None, False),
-                ("code", "code", str, "code", False, None, False),
-                (
-                    "contains",
-                    "contains",
-                    ValueSetExpansionContains,
-                    "ValueSetExpansionContains",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "designation",
-                    "designation",
-                    ValueSetComposeIncludeConceptDesignation,
-                    "ValueSetComposeIncludeConceptDesignation",
-                    True,
-                    None,
-                    False,
-                ),
-                ("display", "display", str, "string", False, None, False),
-                ("inactive", "inactive", bool, "boolean", False, None, False),
-                ("system", "system", str, "uri", False, None, False),
-                ("version", "version", str, "string", False, None, False),
-            ]
-        )
-        return js
+    version: fhirtypes.String = Field(
+        None,
+        alias="version",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Version in which this code/display is defined",
+    )
 
 
 class ValueSetExpansionParameter(backboneelement.BackboneElement):
     """ Parameter that controlled the expansion process.
-
     A parameter that controlled the expansion process. These parameters may be
     used by users of expanded value sets to check whether the expansion is
     suitable for a particular purpose, or to pick the correct expansion.
     """
 
-    resource_type = "ValueSetExpansionParameter"
+    resource_type = Field("ValueSetExpansionParameter", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    name: fhirtypes.String = Field(
+        ...,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name as assigned by the server",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    valueBoolean: bool = Field(
+        None,
+        alias="valueBoolean",
+        title="Type `bool`",
+        description="Value of the named parameter",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    valueCode: fhirtypes.Code = Field(
+        None,
+        alias="valueCode",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="Value of the named parameter",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    valueDecimal: fhirtypes.Decimal = Field(
+        None,
+        alias="valueDecimal",
+        title="Type `Decimal` (represented as `dict` in JSON)",
+        description="Value of the named parameter",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    valueInteger: fhirtypes.Integer = Field(
+        None,
+        alias="valueInteger",
+        title="Type `Integer` (represented as `dict` in JSON)",
+        description="Value of the named parameter",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    valueString: fhirtypes.String = Field(
+        None,
+        alias="valueString",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Value of the named parameter",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    valueUri: fhirtypes.Uri = Field(
+        None,
+        alias="valueUri",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Value of the named parameter",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "value": [
+                "valueBoolean",
+                "valueCode",
+                "valueDecimal",
+                "valueInteger",
+                "valueString",
+                "valueUri",
+            ],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.name = None
-        """ Name as assigned by the server.
-        Type `str`. """
-
-        self.valueBoolean = None
-        """ Value of the named parameter.
-        Type `bool`. """
-
-        self.valueCode = None
-        """ Value of the named parameter.
-        Type `str`. """
-
-        self.valueDecimal = None
-        """ Value of the named parameter.
-        Type `float`. """
-
-        self.valueInteger = None
-        """ Value of the named parameter.
-        Type `int`. """
-
-        self.valueString = None
-        """ Value of the named parameter.
-        Type `str`. """
-
-        self.valueUri = None
-        """ Value of the named parameter.
-        Type `str`. """
-
-        super(ValueSetExpansionParameter, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ValueSetExpansionParameter, self).elementProperties()
-        js.extend(
-            [
-                ("name", "name", str, "string", False, None, True),
-                (
-                    "valueBoolean",
-                    "valueBoolean",
-                    bool,
-                    "boolean",
-                    False,
-                    "value",
-                    False,
-                ),
-                ("valueCode", "valueCode", str, "code", False, "value", False),
-                (
-                    "valueDecimal",
-                    "valueDecimal",
-                    float,
-                    "decimal",
-                    False,
-                    "value",
-                    False,
-                ),
-                ("valueInteger", "valueInteger", int, "integer", False, "value", False),
-                ("valueString", "valueString", str, "string", False, "value", False),
-                ("valueUri", "valueUri", str, "uri", False, "value", False),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import coding
-except ImportError:
-    coding = sys.modules[__package__ + ".coding"]
-try:
-    from . import contactdetail
-except ImportError:
-    contactdetail = sys.modules[__package__ + ".contactdetail"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import usagecontext
-except ImportError:
-    usagecontext = sys.modules[__package__ + ".usagecontext"]
+        return values

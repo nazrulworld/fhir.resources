@@ -6,302 +6,270 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import relatedperson
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class RelatedPersonTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("RelatedPerson", js["resourceType"])
-        return relatedperson.RelatedPerson(js)
+def impl_relatedperson_1(inst):
+    assert inst.address[0].city == "PleasantVille"
+    assert inst.address[0].line[0] == "534 Erewhon St"
+    assert inst.address[0].postalCode == "3999"
+    assert inst.address[0].state == "Vic"
+    assert inst.address[0].use == "home"
+    assert inst.gender == "male"
+    assert inst.id == "peter"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.name[0].family == "Chalmers"
+    assert inst.name[0].given[0] == "Peter"
+    assert inst.name[0].given[1] == "James"
+    assert inst.name[0].use == "official"
+    assert inst.patient.reference == "Patient/animal"
+    assert inst.period.start == fhirtypes.DateTime.validate("2012-03-11")
+    assert inst.photo[0].contentType == "image/jpeg"
+    assert inst.photo[0].url == "http://example.com/Binary/f012"
+    assert inst.relationship[0].coding[0].code == "C"
+    assert (
+        inst.relationship[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v2-0131"
+    )
+    assert inst.telecom[0].system == "phone"
+    assert inst.telecom[0].use == "work"
+    assert inst.telecom[0].value == "(03) 5555 6473"
+    assert inst.text.status == "generated"
 
-    def testRelatedPerson1(self):
-        inst = self.instantiate_from("relatedperson-example-peter.json")
-        self.assertIsNotNone(inst, "Must have instantiated a RelatedPerson instance")
-        self.implRelatedPerson1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("RelatedPerson", js["resourceType"])
-        inst2 = relatedperson.RelatedPerson(js)
-        self.implRelatedPerson1(inst2)
+def test_relatedperson_1(base_settings):
+    """No. 1 tests collection for RelatedPerson.
+    Test File: relatedperson-example-peter.json
+    """
+    filename = base_settings["unittest_data_dir"] / "relatedperson-example-peter.json"
+    inst = relatedperson.RelatedPerson.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "RelatedPerson" == inst.resource_type
 
-    def implRelatedPerson1(self, inst):
-        self.assertEqual(
-            force_bytes(inst.address[0].city), force_bytes("PleasantVille")
-        )
-        self.assertEqual(
-            force_bytes(inst.address[0].line[0]), force_bytes("534 Erewhon St")
-        )
-        self.assertEqual(force_bytes(inst.address[0].postalCode), force_bytes("3999"))
-        self.assertEqual(force_bytes(inst.address[0].state), force_bytes("Vic"))
-        self.assertEqual(force_bytes(inst.address[0].use), force_bytes("home"))
-        self.assertEqual(force_bytes(inst.gender), force_bytes("male"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("peter"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.name[0].family), force_bytes("Chalmers"))
-        self.assertEqual(force_bytes(inst.name[0].given[0]), force_bytes("Peter"))
-        self.assertEqual(force_bytes(inst.name[0].given[1]), force_bytes("James"))
-        self.assertEqual(force_bytes(inst.name[0].use), force_bytes("official"))
-        self.assertEqual(inst.period.start.date, FHIRDate("2012-03-11").date)
-        self.assertEqual(inst.period.start.as_json(), "2012-03-11")
-        self.assertEqual(
-            force_bytes(inst.photo[0].contentType), force_bytes("image/jpeg")
-        )
-        self.assertEqual(force_bytes(inst.photo[0].url), force_bytes("Binary/f012"))
-        self.assertEqual(
-            force_bytes(inst.relationship[0].coding[0].code), force_bytes("C")
-        )
-        self.assertEqual(
-            force_bytes(inst.relationship[0].coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v2-0131"),
-        )
-        self.assertEqual(force_bytes(inst.telecom[0].system), force_bytes("phone"))
-        self.assertEqual(force_bytes(inst.telecom[0].use), force_bytes("work"))
-        self.assertEqual(
-            force_bytes(inst.telecom[0].value), force_bytes("(03) 5555 6473")
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    impl_relatedperson_1(inst)
 
-    def testRelatedPerson2(self):
-        inst = self.instantiate_from("relatedperson-example-f001-sarah.json")
-        self.assertIsNotNone(inst, "Must have instantiated a RelatedPerson instance")
-        self.implRelatedPerson2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "RelatedPerson" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("RelatedPerson", js["resourceType"])
-        inst2 = relatedperson.RelatedPerson(js)
-        self.implRelatedPerson2(inst2)
+    inst2 = relatedperson.RelatedPerson(**data)
+    impl_relatedperson_1(inst2)
 
-    def implRelatedPerson2(self, inst):
-        self.assertEqual(force_bytes(inst.gender), force_bytes("female"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("f001"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("urn:oid:2.16.840.1.113883.2.4.6.3"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].type.text), force_bytes("BSN"))
-        self.assertEqual(force_bytes(inst.identifier[0].use), force_bytes("official"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.name[0].family), force_bytes("Abels"))
-        self.assertEqual(force_bytes(inst.name[0].given[0]), force_bytes("Sarah"))
-        self.assertEqual(force_bytes(inst.name[0].use), force_bytes("usual"))
-        self.assertEqual(
-            force_bytes(inst.relationship[0].coding[0].code), force_bytes("SIGOTHR")
-        )
-        self.assertEqual(
-            force_bytes(inst.relationship[0].coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-RoleCode"),
-        )
-        self.assertEqual(force_bytes(inst.telecom[0].system), force_bytes("phone"))
-        self.assertEqual(force_bytes(inst.telecom[0].use), force_bytes("mobile"))
-        self.assertEqual(force_bytes(inst.telecom[0].value), force_bytes("0690383372"))
-        self.assertEqual(force_bytes(inst.telecom[1].system), force_bytes("email"))
-        self.assertEqual(force_bytes(inst.telecom[1].use), force_bytes("home"))
-        self.assertEqual(
-            force_bytes(inst.telecom[1].value), force_bytes("s.abels@kpn.nl")
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 
-    def testRelatedPerson3(self):
-        inst = self.instantiate_from("relatedperson-example-newborn-mom.json")
-        self.assertIsNotNone(inst, "Must have instantiated a RelatedPerson instance")
-        self.implRelatedPerson3(inst)
+def impl_relatedperson_2(inst):
+    assert inst.gender == "female"
+    assert inst.id == "f001"
+    assert inst.identifier[0].system == "urn:oid:2.16.840.1.113883.2.4.6.3"
+    assert inst.identifier[0].type.text == "BSN"
+    assert inst.identifier[0].use == "official"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.name[0].family == "Abels"
+    assert inst.name[0].given[0] == "Sarah"
+    assert inst.name[0].use == "usual"
+    assert inst.patient.reference == "Patient/f001"
+    assert inst.relationship[0].coding[0].code == "SIGOTHR"
+    assert (
+        inst.relationship[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
+    )
+    assert inst.telecom[0].system == "phone"
+    assert inst.telecom[0].use == "mobile"
+    assert inst.telecom[0].value == "0690383372"
+    assert inst.telecom[1].system == "email"
+    assert inst.telecom[1].use == "home"
+    assert inst.telecom[1].value == "s.abels@kpn.nl"
+    assert inst.text.status == "generated"
 
-        js = inst.as_json()
-        self.assertEqual("RelatedPerson", js["resourceType"])
-        inst2 = relatedperson.RelatedPerson(js)
-        self.implRelatedPerson3(inst2)
 
-    def implRelatedPerson3(self, inst):
-        self.assertTrue(inst.active)
-        self.assertEqual(
-            force_bytes(inst.address[0].line[0]), force_bytes("2222 Home Street")
-        )
-        self.assertEqual(force_bytes(inst.address[0].use), force_bytes("home"))
-        self.assertEqual(inst.birthDate.date, FHIRDate("1973-05-31").date)
-        self.assertEqual(inst.birthDate.as_json(), "1973-05-31")
-        self.assertEqual(force_bytes(inst.gender), force_bytes("female"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("newborn-mom"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://hl7.org/fhir/sid/us-ssn"),
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].type.coding[0].code), force_bytes("SS")
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].type.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v2-0203"),
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].value), force_bytes("444222222")
-        )
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.name[0].family), force_bytes("Everywoman"))
-        self.assertEqual(force_bytes(inst.name[0].given[0]), force_bytes("Eve"))
-        self.assertEqual(force_bytes(inst.name[0].use), force_bytes("official"))
-        self.assertEqual(
-            force_bytes(inst.relationship[0].coding[0].code), force_bytes("NMTH")
-        )
-        self.assertEqual(
-            force_bytes(inst.relationship[0].coding[0].display),
-            force_bytes("natural mother"),
-        )
-        self.assertEqual(
-            force_bytes(inst.relationship[0].coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-RoleCode"),
-        )
-        self.assertEqual(
-            force_bytes(inst.relationship[0].text), force_bytes("Natural Mother")
-        )
-        self.assertEqual(force_bytes(inst.telecom[0].system), force_bytes("phone"))
-        self.assertEqual(force_bytes(inst.telecom[0].use), force_bytes("work"))
-        self.assertEqual(
-            force_bytes(inst.telecom[0].value), force_bytes("555-555-2003")
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+def test_relatedperson_2(base_settings):
+    """No. 2 tests collection for RelatedPerson.
+    Test File: relatedperson-example-f001-sarah.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "relatedperson-example-f001-sarah.json"
+    )
+    inst = relatedperson.RelatedPerson.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "RelatedPerson" == inst.resource_type
 
-    def testRelatedPerson4(self):
-        inst = self.instantiate_from("relatedperson-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a RelatedPerson instance")
-        self.implRelatedPerson4(inst)
+    impl_relatedperson_2(inst)
 
-        js = inst.as_json()
-        self.assertEqual("RelatedPerson", js["resourceType"])
-        inst2 = relatedperson.RelatedPerson(js)
-        self.implRelatedPerson4(inst2)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "RelatedPerson" == data["resourceType"]
 
-    def implRelatedPerson4(self, inst):
-        self.assertTrue(inst.active)
-        self.assertEqual(force_bytes(inst.address[0].city), force_bytes("Paris"))
-        self.assertEqual(force_bytes(inst.address[0].country), force_bytes("FRA"))
-        self.assertEqual(
-            force_bytes(inst.address[0].line[0]),
-            force_bytes("43, Place du Marché Sainte Catherine"),
-        )
-        self.assertEqual(force_bytes(inst.address[0].postalCode), force_bytes("75004"))
-        self.assertEqual(force_bytes(inst.gender), force_bytes("female"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("benedicte"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system), force_bytes("urn:oid:1.2.250.1.61")
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].type.text), force_bytes("INSEE")
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].use), force_bytes("usual"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].value), force_bytes("272117510400399")
-        )
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.name[0].family), force_bytes("du Marché"))
-        self.assertEqual(force_bytes(inst.name[0].given[0]), force_bytes("Bénédicte"))
-        self.assertEqual(
-            force_bytes(inst.photo[0].contentType), force_bytes("image/jpeg")
-        )
-        self.assertEqual(force_bytes(inst.photo[0].url), force_bytes("Binary/f016"))
-        self.assertEqual(
-            force_bytes(inst.relationship[0].coding[0].code), force_bytes("N")
-        )
-        self.assertEqual(
-            force_bytes(inst.relationship[0].coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v2-0131"),
-        )
-        self.assertEqual(
-            force_bytes(inst.relationship[0].coding[1].code), force_bytes("WIFE")
-        )
-        self.assertEqual(
-            force_bytes(inst.relationship[0].coding[1].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-RoleCode"),
-        )
-        self.assertEqual(force_bytes(inst.telecom[0].system), force_bytes("phone"))
-        self.assertEqual(
-            force_bytes(inst.telecom[0].value), force_bytes("+33 (237) 998327")
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    inst2 = relatedperson.RelatedPerson(**data)
+    impl_relatedperson_2(inst2)
 
-    def testRelatedPerson5(self):
-        inst = self.instantiate_from("relatedperson-example-f002-ariadne.json")
-        self.assertIsNotNone(inst, "Must have instantiated a RelatedPerson instance")
-        self.implRelatedPerson5(inst)
 
-        js = inst.as_json()
-        self.assertEqual("RelatedPerson", js["resourceType"])
-        inst2 = relatedperson.RelatedPerson(js)
-        self.implRelatedPerson5(inst2)
+def impl_relatedperson_3(inst):
+    assert inst.active is True
+    assert inst.address[0].line[0] == "2222 Home Street"
+    assert inst.address[0].use == "home"
+    assert inst.birthDate == fhirtypes.Date.validate("1973-05-31")
+    assert inst.gender == "female"
+    assert inst.id == "newborn-mom"
+    assert inst.identifier[0].system == "http://hl7.org/fhir/sid/us-ssn"
+    assert inst.identifier[0].type.coding[0].code == "SS"
+    assert (
+        inst.identifier[0].type.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v2-0203"
+    )
+    assert inst.identifier[0].value == "444222222"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.name[0].family == "Everywoman"
+    assert inst.name[0].given[0] == "Eve"
+    assert inst.name[0].use == "official"
+    assert inst.patient.reference == "Patient/newborn"
+    assert inst.relationship[0].coding[0].code == "NMTH"
+    assert inst.relationship[0].coding[0].display == "natural mother"
+    assert (
+        inst.relationship[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
+    )
+    assert inst.relationship[0].text == "Natural Mother"
+    assert inst.telecom[0].system == "phone"
+    assert inst.telecom[0].use == "work"
+    assert inst.telecom[0].value == "555-555-2003"
+    assert inst.text.status == "generated"
 
-    def implRelatedPerson5(self, inst):
-        self.assertEqual(inst.birthDate.date, FHIRDate("1963").date)
-        self.assertEqual(inst.birthDate.as_json(), "1963")
-        self.assertEqual(force_bytes(inst.gender), force_bytes("female"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("f002"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.name[0].text), force_bytes("Ariadne Bor-Jansma")
-        )
-        self.assertEqual(force_bytes(inst.name[0].use), force_bytes("usual"))
-        self.assertEqual(inst.period.start.date, FHIRDate("1975").date)
-        self.assertEqual(inst.period.start.as_json(), "1975")
-        self.assertEqual(
-            force_bytes(inst.photo[0].contentType), force_bytes("image/jpeg")
-        )
-        self.assertEqual(
-            force_bytes(inst.relationship[0].coding[0].code), force_bytes("SIGOTHR")
-        )
-        self.assertEqual(
-            force_bytes(inst.relationship[0].coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-RoleCode"),
-        )
-        self.assertEqual(force_bytes(inst.telecom[0].system), force_bytes("phone"))
-        self.assertEqual(force_bytes(inst.telecom[0].use), force_bytes("home"))
-        self.assertEqual(
-            force_bytes(inst.telecom[0].value), force_bytes("+31201234567")
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+
+def test_relatedperson_3(base_settings):
+    """No. 3 tests collection for RelatedPerson.
+    Test File: relatedperson-example-newborn-mom.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "relatedperson-example-newborn-mom.json"
+    )
+    inst = relatedperson.RelatedPerson.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "RelatedPerson" == inst.resource_type
+
+    impl_relatedperson_3(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "RelatedPerson" == data["resourceType"]
+
+    inst2 = relatedperson.RelatedPerson(**data)
+    impl_relatedperson_3(inst2)
+
+
+def impl_relatedperson_4(inst):
+    assert inst.active is True
+    assert inst.address[0].city == "Paris"
+    assert inst.address[0].country == "FRA"
+    assert inst.address[0].line[0] == "43, Place du Marché Sainte Catherine"
+    assert inst.address[0].postalCode == "75004"
+    assert inst.gender == "female"
+    assert inst.id == "benedicte"
+    assert inst.identifier[0].system == "urn:oid:1.2.250.1.61"
+    assert inst.identifier[0].type.text == "INSEE"
+    assert inst.identifier[0].use == "usual"
+    assert inst.identifier[0].value == "272117510400399"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.name[0].family == "du Marché"
+    assert inst.name[0].given[0] == "Bénédicte"
+    assert inst.patient.reference == "Patient/example"
+    assert inst.photo[0].contentType == "image/jpeg"
+    assert inst.photo[0].url == "https://example.com/Binary/f016"
+    assert inst.relationship[0].coding[0].code == "N"
+    assert (
+        inst.relationship[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v2-0131"
+    )
+    assert inst.relationship[0].coding[1].code == "WIFE"
+    assert (
+        inst.relationship[0].coding[1].system
+        == "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
+    )
+    assert inst.telecom[0].system == "phone"
+    assert inst.telecom[0].value == "+33 (237) 998327"
+    assert inst.text.status == "generated"
+
+
+def test_relatedperson_4(base_settings):
+    """No. 4 tests collection for RelatedPerson.
+    Test File: relatedperson-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "relatedperson-example.json"
+    inst = relatedperson.RelatedPerson.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "RelatedPerson" == inst.resource_type
+
+    impl_relatedperson_4(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "RelatedPerson" == data["resourceType"]
+
+    inst2 = relatedperson.RelatedPerson(**data)
+    impl_relatedperson_4(inst2)
+
+
+def impl_relatedperson_5(inst):
+    assert inst.birthDate == fhirtypes.Date.validate("1963")
+    assert inst.gender == "female"
+    assert inst.id == "f002"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.name[0].text == "Ariadne Bor-Jansma"
+    assert inst.name[0].use == "usual"
+    assert inst.patient.reference == "Patient/f201"
+    assert inst.period.start == fhirtypes.DateTime.validate("1975")
+    assert inst.photo[0].contentType == "image/jpeg"
+    assert inst.relationship[0].coding[0].code == "SIGOTHR"
+    assert (
+        inst.relationship[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
+    )
+    assert inst.telecom[0].system == "phone"
+    assert inst.telecom[0].use == "home"
+    assert inst.telecom[0].value == "+31201234567"
+    assert inst.text.status == "generated"
+
+
+def test_relatedperson_5(base_settings):
+    """No. 5 tests collection for RelatedPerson.
+    Test File: relatedperson-example-f002-ariadne.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "relatedperson-example-f002-ariadne.json"
+    )
+    inst = relatedperson.RelatedPerson.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "RelatedPerson" == inst.resource_type
+
+    impl_relatedperson_5(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "RelatedPerson" == data["resourceType"]
+
+    inst2 = relatedperson.RelatedPerson(**data)
+    impl_relatedperson_5(inst2)

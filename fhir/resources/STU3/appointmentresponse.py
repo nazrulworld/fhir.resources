@@ -6,11 +6,11 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import domainresource
+from . import domainresource, fhirtypes
 
 
 class AppointmentResponse(domainresource.DomainResource):
@@ -18,121 +18,60 @@ class AppointmentResponse(domainresource.DomainResource):
     such as a confirmation or rejection.
     """
 
-    resource_type = "AppointmentResponse"
+    resource_type = Field("AppointmentResponse", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    actor: fhirtypes.ReferenceType = Field(
+        None,
+        alias="actor",
+        title="Type `Reference` referencing `Patient, Practitioner, RelatedPerson, Device, HealthcareService, Location` (represented as `dict` in JSON)",
+        description="Person, Location/HealthcareService or Device",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    appointment: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="appointment",
+        title="Type `Reference` referencing `Appointment` (represented as `dict` in JSON)",
+        description="Appointment this response relates to",
+    )
 
-        self.actor = None
-        """ Person, Location/HealthcareService or Device.
-        Type `FHIRReference` referencing `['Patient'], ['Practitioner'], ['RelatedPerson'], ['Device'], ['HealthcareService'], ['Location']` (represented as `dict` in JSON). """
+    comment: fhirtypes.String = Field(
+        None,
+        alias="comment",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Additional comments",
+    )
 
-        self.appointment = None
-        """ Appointment this response relates to.
-        Type `FHIRReference` referencing `['Appointment']` (represented as `dict` in JSON). """
+    end: fhirtypes.Instant = Field(
+        None,
+        alias="end",
+        title="Type `Instant` (represented as `dict` in JSON)",
+        description="Time from appointment, or requested new end time",
+    )
 
-        self.comment = None
-        """ Additional comments.
-        Type `str`. """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="External Ids for this item",
+    )
 
-        self.end = None
-        """ Time from appointment, or requested new end time.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    participantStatus: fhirtypes.Code = Field(
+        ...,
+        alias="participantStatus",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="accepted | declined | tentative | in-process | completed | needs-action | entered-in-error",
+    )
 
-        self.identifier = None
-        """ External Ids for this item.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    participantType: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="participantType",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Role of participant in the appointment",
+    )
 
-        self.participantStatus = None
-        """ accepted | declined | tentative | in-process | completed | needs-
-        action | entered-in-error.
-        Type `str`. """
-
-        self.participantType = None
-        """ Role of participant in the appointment.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.start = None
-        """ Time from appointment, or requested new start time.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        super(AppointmentResponse, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(AppointmentResponse, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "actor",
-                    "actor",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "appointment",
-                    "appointment",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                ("comment", "comment", str, "string", False, None, False),
-                ("end", "end", fhirdate.FHIRDate, "instant", False, None, False),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "participantStatus",
-                    "participantStatus",
-                    str,
-                    "code",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "participantType",
-                    "participantType",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                ("start", "start", fhirdate.FHIRDate, "instant", False, None, False),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
+    start: fhirtypes.Instant = Field(
+        None,
+        alias="start",
+        title="Type `Instant` (represented as `dict` in JSON)",
+        description="Time from appointment, or requested new start time",
+    )

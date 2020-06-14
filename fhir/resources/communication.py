@@ -6,397 +6,253 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import Any, Dict
+from typing import List as ListType
 
+from pydantic import Field, root_validator
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class Communication(domainresource.DomainResource):
     """ A record of information transmitted from a sender to a receiver.
-
     An occurrence of information being transmitted; e.g. an alert that was sent
     to a responsible provider, a public health agency that was notified about a
     reportable condition.
     """
 
-    resource_type = "Communication"
+    resource_type = Field("Communication", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    about: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="about",
+        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        description="Resources that pertain to this communication",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    basedOn: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="basedOn",
+        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        description="Request fulfilled by this communication",
+    )
 
-        self.about = None
-        """ Resources that pertain to this communication.
-        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
+    category: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="category",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Message category",
+    )
 
-        self.basedOn = None
-        """ Request fulfilled by this communication.
-        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
+    encounter: fhirtypes.ReferenceType = Field(
+        None,
+        alias="encounter",
+        title="Type `Reference` referencing `Encounter` (represented as `dict` in JSON)",
+        description="Encounter created as part of",
+    )
 
-        self.category = None
-        """ Message category.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Unique identifier",
+    )
 
-        self.encounter = None
-        """ Encounter created as part of.
-        Type `FHIRReference` referencing `['Encounter']` (represented as `dict` in JSON). """
+    inResponseTo: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="inResponseTo",
+        title="List of `Reference` items referencing `Communication` (represented as `dict` in JSON)",
+        description="Reply to",
+    )
 
-        self.identifier = None
-        """ Unique identifier.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    instantiatesCanonical: ListType[fhirtypes.Canonical] = Field(
+        None,
+        alias="instantiatesCanonical",
+        title="List of `Canonical` items referencing `PlanDefinition, ActivityDefinition, Measure, OperationDefinition, Questionnaire` (represented as `dict` in JSON)",
+        description="Instantiates FHIR protocol or definition",
+    )
 
-        self.inResponseTo = None
-        """ Reply to.
-        List of `FHIRReference` items referencing `['Communication']` (represented as `dict` in JSON). """
+    instantiatesUri: ListType[fhirtypes.Uri] = Field(
+        None,
+        alias="instantiatesUri",
+        title="List of `Uri` items (represented as `dict` in JSON)",
+        description="Instantiates external protocol or definition",
+    )
 
-        self.instantiatesCanonical = None
-        """ Instantiates FHIR protocol or definition.
-        List of `str` items referencing `['PlanDefinition', 'ActivityDefinition', 'Measure', 'OperationDefinition', 'Questionnaire']`. """
+    medium: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="medium",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="A channel of communication",
+    )
 
-        self.instantiatesUri = None
-        """ Instantiates external protocol or definition.
-        List of `str` items. """
+    note: ListType[fhirtypes.AnnotationType] = Field(
+        None,
+        alias="note",
+        title="List of `Annotation` items (represented as `dict` in JSON)",
+        description="Comments made about the communication",
+    )
 
-        self.medium = None
-        """ A channel of communication.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    partOf: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="partOf",
+        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        description="Part of this action",
+    )
 
-        self.note = None
-        """ Comments made about the communication.
-        List of `Annotation` items (represented as `dict` in JSON). """
+    payload: ListType[fhirtypes.CommunicationPayloadType] = Field(
+        None,
+        alias="payload",
+        title="List of `CommunicationPayload` items (represented as `dict` in JSON)",
+        description="Message payload",
+    )
 
-        self.partOf = None
-        """ Part of this action.
-        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
+    priority: fhirtypes.Code = Field(
+        None,
+        alias="priority",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="routine | urgent | asap | stat",
+    )
 
-        self.payload = None
-        """ Message payload.
-        List of `CommunicationPayload` items (represented as `dict` in JSON). """
+    reasonCode: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="reasonCode",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Indication for message",
+    )
 
-        self.priority = None
-        """ routine | urgent | asap | stat.
-        Type `str`. """
+    reasonReference: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="reasonReference",
+        title="List of `Reference` items referencing `Condition, Observation, DiagnosticReport, DocumentReference` (represented as `dict` in JSON)",
+        description="Why was communication done?",
+    )
 
-        self.reasonCode = None
-        """ Indication for message.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    received: fhirtypes.DateTime = Field(
+        None,
+        alias="received",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="When received",
+    )
 
-        self.reasonReference = None
-        """ Why was communication done?.
-        List of `FHIRReference` items referencing `['Condition', 'Observation', 'DiagnosticReport', 'DocumentReference']` (represented as `dict` in JSON). """
+    recipient: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="recipient",
+        title="List of `Reference` items referencing `Device, Organization, Patient, Practitioner, PractitionerRole, RelatedPerson, Group, CareTeam, HealthcareService` (represented as `dict` in JSON)",
+        description="Message recipient",
+    )
 
-        self.received = None
-        """ When received.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    sender: fhirtypes.ReferenceType = Field(
+        None,
+        alias="sender",
+        title="Type `Reference` referencing `Device, Organization, Patient, Practitioner, PractitionerRole, RelatedPerson, HealthcareService` (represented as `dict` in JSON)",
+        description="Message sender",
+    )
 
-        self.recipient = None
-        """ Message recipient.
-        List of `FHIRReference` items referencing `['Device', 'Organization', 'Patient', 'Practitioner', 'PractitionerRole', 'RelatedPerson', 'Group', 'CareTeam', 'HealthcareService']` (represented as `dict` in JSON). """
+    sent: fhirtypes.DateTime = Field(
+        None,
+        alias="sent",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="When sent",
+    )
 
-        self.sender = None
-        """ Message sender.
-        Type `FHIRReference` referencing `['Device', 'Organization', 'Patient', 'Practitioner', 'PractitionerRole', 'RelatedPerson', 'HealthcareService']` (represented as `dict` in JSON). """
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="preparation | in-progress | not-done | on-hold | stopped | completed | entered-in-error | unknown",
+    )
 
-        self.sent = None
-        """ When sent.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    statusReason: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="statusReason",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Reason for current status",
+    )
 
-        self.status = None
-        """ preparation | in-progress | not-done | on-hold | stopped |
-        completed | entered-in-error | unknown.
-        Type `str`. """
+    subject: fhirtypes.ReferenceType = Field(
+        None,
+        alias="subject",
+        title="Type `Reference` referencing `Patient, Group` (represented as `dict` in JSON)",
+        description="Focus of message",
+    )
 
-        self.statusReason = None
-        """ Reason for current status.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.subject = None
-        """ Focus of message.
-        Type `FHIRReference` referencing `['Patient', 'Group']` (represented as `dict` in JSON). """
-
-        self.topic = None
-        """ Description of the purpose/content.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(Communication, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(Communication, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "about",
-                    "about",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "basedOn",
-                    "basedOn",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "category",
-                    "category",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "encounter",
-                    "encounter",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "inResponseTo",
-                    "inResponseTo",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "instantiatesCanonical",
-                    "instantiatesCanonical",
-                    str,
-                    "canonical",
-                    True,
-                    None,
-                    False,
-                ),
-                ("instantiatesUri", "instantiatesUri", str, "uri", True, None, False),
-                (
-                    "medium",
-                    "medium",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "note",
-                    "note",
-                    annotation.Annotation,
-                    "Annotation",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "partOf",
-                    "partOf",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "payload",
-                    "payload",
-                    CommunicationPayload,
-                    "CommunicationPayload",
-                    True,
-                    None,
-                    False,
-                ),
-                ("priority", "priority", str, "code", False, None, False),
-                (
-                    "reasonCode",
-                    "reasonCode",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "reasonReference",
-                    "reasonReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "received",
-                    "received",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "recipient",
-                    "recipient",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "sender",
-                    "sender",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("sent", "sent", fhirdate.FHIRDate, "dateTime", False, None, False),
-                ("status", "status", str, "code", False, None, True),
-                (
-                    "statusReason",
-                    "statusReason",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "subject",
-                    "subject",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "topic",
-                    "topic",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    topic: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="topic",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Description of the purpose/content",
+    )
 
 
 class CommunicationPayload(backboneelement.BackboneElement):
     """ Message payload.
-
     Text, attachment(s), or resource(s) that was communicated to the recipient.
     """
 
-    resource_type = "CommunicationPayload"
+    resource_type = Field("CommunicationPayload", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    contentAttachment: fhirtypes.AttachmentType = Field(
+        None,
+        alias="contentAttachment",
+        title="Type `Attachment` (represented as `dict` in JSON)",
+        description="Message part content",
+        one_of_many="content",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    contentReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="contentReference",
+        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        description="Message part content",
+        one_of_many="content",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    contentString: fhirtypes.String = Field(
+        None,
+        alias="contentString",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Message part content",
+        one_of_many="content",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "content": ["contentAttachment", "contentReference", "contentString",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.contentAttachment = None
-        """ Message part content.
-        Type `Attachment` (represented as `dict` in JSON). """
-
-        self.contentReference = None
-        """ Message part content.
-        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
-
-        self.contentString = None
-        """ Message part content.
-        Type `str`. """
-
-        super(CommunicationPayload, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(CommunicationPayload, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "contentAttachment",
-                    "contentAttachment",
-                    attachment.Attachment,
-                    "Attachment",
-                    False,
-                    "content",
-                    True,
-                ),
-                (
-                    "contentReference",
-                    "contentReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    "content",
-                    True,
-                ),
-                (
-                    "contentString",
-                    "contentString",
-                    str,
-                    "string",
-                    False,
-                    "content",
-                    True,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import annotation
-except ImportError:
-    annotation = sys.modules[__package__ + ".annotation"]
-try:
-    from . import attachment
-except ImportError:
-    attachment = sys.modules[__package__ + ".attachment"]
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
+        return values

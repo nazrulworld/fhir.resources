@@ -6,383 +6,196 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class SubstancePolymer(domainresource.DomainResource):
     """ Todo.
     """
 
-    resource_type = "SubstancePolymer"
+    resource_type = Field("SubstancePolymer", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    class_fhir: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="class",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Todo",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    copolymerConnectivity: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="copolymerConnectivity",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Todo",
+    )
 
-        self.class_fhir = None
-        """ Todo.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    geometry: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="geometry",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Todo",
+    )
 
-        self.copolymerConnectivity = None
-        """ Todo.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    modification: ListType[fhirtypes.String] = Field(
+        None,
+        alias="modification",
+        title="List of `String` items (represented as `dict` in JSON)",
+        description="Todo",
+    )
 
-        self.geometry = None
-        """ Todo.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    monomerSet: ListType[fhirtypes.SubstancePolymerMonomerSetType] = Field(
+        None,
+        alias="monomerSet",
+        title="List of `SubstancePolymerMonomerSet` items (represented as `dict` in JSON)",
+        description="Todo",
+    )
 
-        self.modification = None
-        """ Todo.
-        List of `str` items. """
-
-        self.monomerSet = None
-        """ Todo.
-        List of `SubstancePolymerMonomerSet` items (represented as `dict` in JSON). """
-
-        self.repeat = None
-        """ Todo.
-        List of `SubstancePolymerRepeat` items (represented as `dict` in JSON). """
-
-        super(SubstancePolymer, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(SubstancePolymer, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "class_fhir",
-                    "class",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "copolymerConnectivity",
-                    "copolymerConnectivity",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "geometry",
-                    "geometry",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("modification", "modification", str, "string", True, None, False),
-                (
-                    "monomerSet",
-                    "monomerSet",
-                    SubstancePolymerMonomerSet,
-                    "SubstancePolymerMonomerSet",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "repeat",
-                    "repeat",
-                    SubstancePolymerRepeat,
-                    "SubstancePolymerRepeat",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    repeat: ListType[fhirtypes.SubstancePolymerRepeatType] = Field(
+        None,
+        alias="repeat",
+        title="List of `SubstancePolymerRepeat` items (represented as `dict` in JSON)",
+        description="Todo",
+    )
 
 
 class SubstancePolymerMonomerSet(backboneelement.BackboneElement):
     """ Todo.
     """
 
-    resource_type = "SubstancePolymerMonomerSet"
+    resource_type = Field("SubstancePolymerMonomerSet", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    ratioType: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="ratioType",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Todo",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.ratioType = None
-        """ Todo.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.startingMaterial = None
-        """ Todo.
-        List of `SubstancePolymerMonomerSetStartingMaterial` items (represented as `dict` in JSON). """
-
-        super(SubstancePolymerMonomerSet, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(SubstancePolymerMonomerSet, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "ratioType",
-                    "ratioType",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "startingMaterial",
-                    "startingMaterial",
-                    SubstancePolymerMonomerSetStartingMaterial,
-                    "SubstancePolymerMonomerSetStartingMaterial",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    startingMaterial: ListType[
+        fhirtypes.SubstancePolymerMonomerSetStartingMaterialType
+    ] = Field(
+        None,
+        alias="startingMaterial",
+        title="List of `SubstancePolymerMonomerSetStartingMaterial` items (represented as `dict` in JSON)",
+        description="Todo",
+    )
 
 
 class SubstancePolymerMonomerSetStartingMaterial(backboneelement.BackboneElement):
     """ Todo.
     """
 
-    resource_type = "SubstancePolymerMonomerSetStartingMaterial"
+    resource_type = Field("SubstancePolymerMonomerSetStartingMaterial", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    amount: fhirtypes.SubstanceAmountType = Field(
+        None,
+        alias="amount",
+        title="Type `SubstanceAmount` (represented as `dict` in JSON)",
+        description="Todo",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    isDefining: bool = Field(
+        None, alias="isDefining", title="Type `bool`", description="Todo",
+    )
 
-        self.amount = None
-        """ Todo.
-        Type `SubstanceAmount` (represented as `dict` in JSON). """
+    material: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="material",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Todo",
+    )
 
-        self.isDefining = None
-        """ Todo.
-        Type `bool`. """
-
-        self.material = None
-        """ Todo.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.type = None
-        """ Todo.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(SubstancePolymerMonomerSetStartingMaterial, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(SubstancePolymerMonomerSetStartingMaterial, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "amount",
-                    "amount",
-                    substanceamount.SubstanceAmount,
-                    "SubstanceAmount",
-                    False,
-                    None,
-                    False,
-                ),
-                ("isDefining", "isDefining", bool, "boolean", False, None, False),
-                (
-                    "material",
-                    "material",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    type: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Todo",
+    )
 
 
 class SubstancePolymerRepeat(backboneelement.BackboneElement):
     """ Todo.
     """
 
-    resource_type = "SubstancePolymerRepeat"
+    resource_type = Field("SubstancePolymerRepeat", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    averageMolecularFormula: fhirtypes.String = Field(
+        None,
+        alias="averageMolecularFormula",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Todo",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    numberOfUnits: fhirtypes.Integer = Field(
+        None,
+        alias="numberOfUnits",
+        title="Type `Integer` (represented as `dict` in JSON)",
+        description="Todo",
+    )
 
-        self.averageMolecularFormula = None
-        """ Todo.
-        Type `str`. """
+    repeatUnit: ListType[fhirtypes.SubstancePolymerRepeatRepeatUnitType] = Field(
+        None,
+        alias="repeatUnit",
+        title="List of `SubstancePolymerRepeatRepeatUnit` items (represented as `dict` in JSON)",
+        description="Todo",
+    )
 
-        self.numberOfUnits = None
-        """ Todo.
-        Type `int`. """
-
-        self.repeatUnit = None
-        """ Todo.
-        List of `SubstancePolymerRepeatRepeatUnit` items (represented as `dict` in JSON). """
-
-        self.repeatUnitAmountType = None
-        """ Todo.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(SubstancePolymerRepeat, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(SubstancePolymerRepeat, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "averageMolecularFormula",
-                    "averageMolecularFormula",
-                    str,
-                    "string",
-                    False,
-                    None,
-                    False,
-                ),
-                ("numberOfUnits", "numberOfUnits", int, "integer", False, None, False),
-                (
-                    "repeatUnit",
-                    "repeatUnit",
-                    SubstancePolymerRepeatRepeatUnit,
-                    "SubstancePolymerRepeatRepeatUnit",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "repeatUnitAmountType",
-                    "repeatUnitAmountType",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    repeatUnitAmountType: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="repeatUnitAmountType",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Todo",
+    )
 
 
 class SubstancePolymerRepeatRepeatUnit(backboneelement.BackboneElement):
     """ Todo.
     """
 
-    resource_type = "SubstancePolymerRepeatRepeatUnit"
+    resource_type = Field("SubstancePolymerRepeatRepeatUnit", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    amount: fhirtypes.SubstanceAmountType = Field(
+        None,
+        alias="amount",
+        title="Type `SubstanceAmount` (represented as `dict` in JSON)",
+        description="Todo",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    degreeOfPolymerisation: ListType[
+        fhirtypes.SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisationType
+    ] = Field(
+        None,
+        alias="degreeOfPolymerisation",
+        title="List of `SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation` items (represented as `dict` in JSON)",
+        description="Todo",
+    )
 
-        self.amount = None
-        """ Todo.
-        Type `SubstanceAmount` (represented as `dict` in JSON). """
+    orientationOfPolymerisation: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="orientationOfPolymerisation",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Todo",
+    )
 
-        self.degreeOfPolymerisation = None
-        """ Todo.
-        List of `SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation` items (represented as `dict` in JSON). """
+    repeatUnit: fhirtypes.String = Field(
+        None,
+        alias="repeatUnit",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Todo",
+    )
 
-        self.orientationOfPolymerisation = None
-        """ Todo.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.repeatUnit = None
-        """ Todo.
-        Type `str`. """
-
-        self.structuralRepresentation = None
-        """ Todo.
-        List of `SubstancePolymerRepeatRepeatUnitStructuralRepresentation` items (represented as `dict` in JSON). """
-
-        super(SubstancePolymerRepeatRepeatUnit, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(SubstancePolymerRepeatRepeatUnit, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "amount",
-                    "amount",
-                    substanceamount.SubstanceAmount,
-                    "SubstanceAmount",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "degreeOfPolymerisation",
-                    "degreeOfPolymerisation",
-                    SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation,
-                    "SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "orientationOfPolymerisation",
-                    "orientationOfPolymerisation",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("repeatUnit", "repeatUnit", str, "string", False, None, False),
-                (
-                    "structuralRepresentation",
-                    "structuralRepresentation",
-                    SubstancePolymerRepeatRepeatUnitStructuralRepresentation,
-                    "SubstancePolymerRepeatRepeatUnitStructuralRepresentation",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    structuralRepresentation: ListType[
+        fhirtypes.SubstancePolymerRepeatRepeatUnitStructuralRepresentationType
+    ] = Field(
+        None,
+        alias="structuralRepresentation",
+        title="List of `SubstancePolymerRepeatRepeatUnitStructuralRepresentation` items (represented as `dict` in JSON)",
+        description="Todo",
+    )
 
 
 class SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation(
@@ -391,55 +204,23 @@ class SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation(
     """ Todo.
     """
 
-    resource_type = "SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation"
+    resource_type = Field(
+        "SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation", const=True
+    )
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    amount: fhirtypes.SubstanceAmountType = Field(
+        None,
+        alias="amount",
+        title="Type `SubstanceAmount` (represented as `dict` in JSON)",
+        description="Todo",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.amount = None
-        """ Todo.
-        Type `SubstanceAmount` (represented as `dict` in JSON). """
-
-        self.degree = None
-        """ Todo.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(
-            SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation, self
-        ).elementProperties()
-        js.extend(
-            [
-                (
-                    "amount",
-                    "amount",
-                    substanceamount.SubstanceAmount,
-                    "SubstanceAmount",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "degree",
-                    "degree",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    degree: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="degree",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Todo",
+    )
 
 
 class SubstancePolymerRepeatRepeatUnitStructuralRepresentation(
@@ -448,71 +229,27 @@ class SubstancePolymerRepeatRepeatUnitStructuralRepresentation(
     """ Todo.
     """
 
-    resource_type = "SubstancePolymerRepeatRepeatUnitStructuralRepresentation"
+    resource_type = Field(
+        "SubstancePolymerRepeatRepeatUnitStructuralRepresentation", const=True
+    )
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    attachment: fhirtypes.AttachmentType = Field(
+        None,
+        alias="attachment",
+        title="Type `Attachment` (represented as `dict` in JSON)",
+        description="Todo",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    representation: fhirtypes.String = Field(
+        None,
+        alias="representation",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Todo",
+    )
 
-        self.attachment = None
-        """ Todo.
-        Type `Attachment` (represented as `dict` in JSON). """
-
-        self.representation = None
-        """ Todo.
-        Type `str`. """
-
-        self.type = None
-        """ Todo.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(SubstancePolymerRepeatRepeatUnitStructuralRepresentation, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(
-            SubstancePolymerRepeatRepeatUnitStructuralRepresentation, self
-        ).elementProperties()
-        js.extend(
-            [
-                (
-                    "attachment",
-                    "attachment",
-                    attachment.Attachment,
-                    "Attachment",
-                    False,
-                    None,
-                    False,
-                ),
-                ("representation", "representation", str, "string", False, None, False),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import attachment
-except ImportError:
-    attachment = sys.modules[__package__ + ".attachment"]
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import substanceamount
-except ImportError:
-    substanceamount = sys.modules[__package__ + ".substanceamount"]
+    type: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Todo",
+    )

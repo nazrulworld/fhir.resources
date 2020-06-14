@@ -6,310 +6,222 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class Coverage(domainresource.DomainResource):
     """ Insurance or medical plan or a payment agreement.
-
     Financial instrument which may be used to reimburse or pay for health care
     products and services.
     """
 
-    resource_type = "Coverage"
+    resource_type = Field("Coverage", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    beneficiary: fhirtypes.ReferenceType = Field(
+        None,
+        alias="beneficiary",
+        title="Type `Reference` referencing `Patient` (represented as `dict` in JSON)",
+        description="Plan Beneficiary",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    contract: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="contract",
+        title="List of `Reference` items referencing `Contract` (represented as `dict` in JSON)",
+        description="Contract details",
+    )
 
-        self.beneficiary = None
-        """ Plan Beneficiary.
-        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
+    dependent: fhirtypes.String = Field(
+        None,
+        alias="dependent",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Dependent number",
+    )
 
-        self.contract = None
-        """ Contract details.
-        List of `FHIRReference` items referencing `['Contract']` (represented as `dict` in JSON). """
+    grouping: fhirtypes.CoverageGroupingType = Field(
+        None,
+        alias="grouping",
+        title="Type `CoverageGrouping` (represented as `dict` in JSON)",
+        description="Additional coverage classifications",
+    )
 
-        self.dependent = None
-        """ Dependent number.
-        Type `str`. """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="The primary coverage ID",
+    )
 
-        self.grouping = None
-        """ Additional coverage classifications.
-        Type `CoverageGrouping` (represented as `dict` in JSON). """
+    network: fhirtypes.String = Field(
+        None,
+        alias="network",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Insurer network",
+    )
 
-        self.identifier = None
-        """ The primary coverage ID.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    order: fhirtypes.PositiveInt = Field(
+        None,
+        alias="order",
+        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        description="Relative order of the coverage",
+    )
 
-        self.network = None
-        """ Insurer network.
-        Type `str`. """
+    payor: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="payor",
+        title="List of `Reference` items referencing `Organization, Patient, RelatedPerson` (represented as `dict` in JSON)",
+        description="Identifier for the plan or agreement issuer",
+    )
 
-        self.order = None
-        """ Relative order of the coverage.
-        Type `int`. """
+    period: fhirtypes.PeriodType = Field(
+        None,
+        alias="period",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="Coverage start and end dates",
+    )
 
-        self.payor = None
-        """ Identifier for the plan or agreement issuer.
-        List of `FHIRReference` items referencing `['Organization'], ['Patient'], ['RelatedPerson']` (represented as `dict` in JSON). """
+    policyHolder: fhirtypes.ReferenceType = Field(
+        None,
+        alias="policyHolder",
+        title="Type `Reference` referencing `Patient, RelatedPerson, Organization` (represented as `dict` in JSON)",
+        description="Owner of the policy",
+    )
 
-        self.period = None
-        """ Coverage start and end dates.
-        Type `Period` (represented as `dict` in JSON). """
+    relationship: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="relationship",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Beneficiary relationship to the Subscriber",
+    )
 
-        self.policyHolder = None
-        """ Owner of the policy.
-        Type `FHIRReference` referencing `['Patient'], ['RelatedPerson'], ['Organization']` (represented as `dict` in JSON). """
+    sequence: fhirtypes.String = Field(
+        None,
+        alias="sequence",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="The plan instance or sequence counter",
+    )
 
-        self.relationship = None
-        """ Beneficiary relationship to the Subscriber.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    status: fhirtypes.Code = Field(
+        None,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="active | cancelled | draft | entered-in-error",
+    )
 
-        self.sequence = None
-        """ The plan instance or sequence counter.
-        Type `str`. """
+    subscriber: fhirtypes.ReferenceType = Field(
+        None,
+        alias="subscriber",
+        title="Type `Reference` referencing `Patient, RelatedPerson` (represented as `dict` in JSON)",
+        description="Subscriber to the policy",
+    )
 
-        self.status = None
-        """ active | cancelled | draft | entered-in-error.
-        Type `str`. """
+    subscriberId: fhirtypes.String = Field(
+        None,
+        alias="subscriberId",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="ID assigned to the Subscriber",
+    )
 
-        self.subscriber = None
-        """ Subscriber to the policy.
-        Type `FHIRReference` referencing `['Patient'], ['RelatedPerson']` (represented as `dict` in JSON). """
-
-        self.subscriberId = None
-        """ ID assigned to the Subscriber.
-        Type `str`. """
-
-        self.type = None
-        """ Type of coverage such as medical or accident.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(Coverage, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(Coverage, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "beneficiary",
-                    "beneficiary",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "contract",
-                    "contract",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                ("dependent", "dependent", str, "string", False, None, False),
-                (
-                    "grouping",
-                    "grouping",
-                    CoverageGrouping,
-                    "CoverageGrouping",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                ("network", "network", str, "string", False, None, False),
-                ("order", "order", int, "positiveInt", False, None, False),
-                (
-                    "payor",
-                    "payor",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                ("period", "period", period.Period, "Period", False, None, False),
-                (
-                    "policyHolder",
-                    "policyHolder",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "relationship",
-                    "relationship",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("sequence", "sequence", str, "string", False, None, False),
-                ("status", "status", str, "code", False, None, False),
-                (
-                    "subscriber",
-                    "subscriber",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("subscriberId", "subscriberId", str, "string", False, None, False),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    type: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Type of coverage such as medical or accident",
+    )
 
 
 class CoverageGrouping(backboneelement.BackboneElement):
     """ Additional coverage classifications.
-
     A suite of underwrite specific classifiers, for example may be used to
     identify a class of coverage or employer group, Policy, Plan.
     """
 
-    resource_type = "CoverageGrouping"
+    resource_type = Field("CoverageGrouping", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    classDisplay: fhirtypes.String = Field(
+        None,
+        alias="classDisplay",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Display text for the class",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    class_fhir: fhirtypes.String = Field(
+        None,
+        alias="class",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="An identifier for the class",
+    )
 
-        self.classDisplay = None
-        """ Display text for the class.
-        Type `str`. """
+    group: fhirtypes.String = Field(
+        None,
+        alias="group",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="An identifier for the group",
+    )
 
-        self.class_fhir = None
-        """ An identifier for the class.
-        Type `str`. """
+    groupDisplay: fhirtypes.String = Field(
+        None,
+        alias="groupDisplay",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Display text for an identifier for the group",
+    )
 
-        self.group = None
-        """ An identifier for the group.
-        Type `str`. """
+    plan: fhirtypes.String = Field(
+        None,
+        alias="plan",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="An identifier for the plan",
+    )
 
-        self.groupDisplay = None
-        """ Display text for an identifier for the group.
-        Type `str`. """
+    planDisplay: fhirtypes.String = Field(
+        None,
+        alias="planDisplay",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Display text for the plan",
+    )
 
-        self.plan = None
-        """ An identifier for the plan.
-        Type `str`. """
+    subClass: fhirtypes.String = Field(
+        None,
+        alias="subClass",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="An identifier for the subsection of the class",
+    )
 
-        self.planDisplay = None
-        """ Display text for the plan.
-        Type `str`. """
+    subClassDisplay: fhirtypes.String = Field(
+        None,
+        alias="subClassDisplay",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Display text for the subsection of the subclass",
+    )
 
-        self.subClass = None
-        """ An identifier for the subsection of the class.
-        Type `str`. """
+    subGroup: fhirtypes.String = Field(
+        None,
+        alias="subGroup",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="An identifier for the subsection of the group",
+    )
 
-        self.subClassDisplay = None
-        """ Display text for the subsection of the subclass.
-        Type `str`. """
+    subGroupDisplay: fhirtypes.String = Field(
+        None,
+        alias="subGroupDisplay",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Display text for the subsection of the group",
+    )
 
-        self.subGroup = None
-        """ An identifier for the subsection of the group.
-        Type `str`. """
+    subPlan: fhirtypes.String = Field(
+        None,
+        alias="subPlan",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="An identifier for the subsection of the plan",
+    )
 
-        self.subGroupDisplay = None
-        """ Display text for the subsection of the group.
-        Type `str`. """
-
-        self.subPlan = None
-        """ An identifier for the subsection of the plan.
-        Type `str`. """
-
-        self.subPlanDisplay = None
-        """ Display text for the subsection of the plan.
-        Type `str`. """
-
-        super(CoverageGrouping, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(CoverageGrouping, self).elementProperties()
-        js.extend(
-            [
-                ("classDisplay", "classDisplay", str, "string", False, None, False),
-                ("class_fhir", "class", str, "string", False, None, False),
-                ("group", "group", str, "string", False, None, False),
-                ("groupDisplay", "groupDisplay", str, "string", False, None, False),
-                ("plan", "plan", str, "string", False, None, False),
-                ("planDisplay", "planDisplay", str, "string", False, None, False),
-                ("subClass", "subClass", str, "string", False, None, False),
-                (
-                    "subClassDisplay",
-                    "subClassDisplay",
-                    str,
-                    "string",
-                    False,
-                    None,
-                    False,
-                ),
-                ("subGroup", "subGroup", str, "string", False, None, False),
-                (
-                    "subGroupDisplay",
-                    "subGroupDisplay",
-                    str,
-                    "string",
-                    False,
-                    None,
-                    False,
-                ),
-                ("subPlan", "subPlan", str, "string", False, None, False),
-                ("subPlanDisplay", "subPlanDisplay", str, "string", False, None, False),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import period
-except ImportError:
-    period = sys.modules[__package__ + ".period"]
+    subPlanDisplay: fhirtypes.String = Field(
+        None,
+        alias="subPlanDisplay",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Display text for the subsection of the plan",
+    )

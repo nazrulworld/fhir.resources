@@ -6,163 +6,92 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import domainresource
+from . import domainresource, fhirtypes
 
 
 class Slot(domainresource.DomainResource):
     """ A slot of time on a schedule that may be available for booking appointments.
     """
 
-    resource_type = "Slot"
+    resource_type = Field("Slot", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    appointmentType: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="appointmentType",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The style of appointment or patient that may be booked in the slot (not service type)",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    comment: fhirtypes.String = Field(
+        None,
+        alias="comment",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Comments on the slot to describe any extended information. Such as custom constraints on the slot",
+    )
 
-        self.appointmentType = None
-        """ The style of appointment or patient that may be booked in the slot
-        (not service type).
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    end: fhirtypes.Instant = Field(
+        ...,
+        alias="end",
+        title="Type `Instant` (represented as `dict` in JSON)",
+        description="Date/Time that the slot is to conclude",
+    )
 
-        self.comment = None
-        """ Comments on the slot to describe any extended information. Such as
-        custom constraints on the slot.
-        Type `str`. """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="External Ids for this item",
+    )
 
-        self.end = None
-        """ Date/Time that the slot is to conclude.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    overbooked: bool = Field(
+        None,
+        alias="overbooked",
+        title="Type `bool`",
+        description="This slot has already been overbooked, appointments are unlikely to be accepted for this time",
+    )
 
-        self.identifier = None
-        """ External Ids for this item.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    schedule: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="schedule",
+        title="Type `Reference` referencing `Schedule` (represented as `dict` in JSON)",
+        description="The schedule resource that this slot defines an interval of status information",
+    )
 
-        self.overbooked = None
-        """ This slot has already been overbooked, appointments are unlikely to
-        be accepted for this time.
-        Type `bool`. """
+    serviceCategory: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="serviceCategory",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="A broad categorisation of the service that is to be performed during this appointment",
+    )
 
-        self.schedule = None
-        """ The schedule resource that this slot defines an interval of status
-        information.
-        Type `FHIRReference` referencing `['Schedule']` (represented as `dict` in JSON). """
+    serviceType: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="serviceType",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="The type of appointments that can be booked into this slot (ideally this would be an identifiable service - which is at a location, rather than the location itself). If provided then this overrides the value provided on the availability resource",
+    )
 
-        self.serviceCategory = None
-        """ A broad categorisation of the service that is to be performed
-        during this appointment.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    specialty: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="specialty",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="The specialty of a practitioner that would be required to perform the service requested in this appointment",
+    )
 
-        self.serviceType = None
-        """ The type of appointments that can be booked into this slot (ideally
-        this would be an identifiable service - which is at a location,
-        rather than the location itself). If provided then this overrides
-        the value provided on the availability resource.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    start: fhirtypes.Instant = Field(
+        ...,
+        alias="start",
+        title="Type `Instant` (represented as `dict` in JSON)",
+        description="Date/Time that the slot is to begin",
+    )
 
-        self.specialty = None
-        """ The specialty of a practitioner that would be required to perform
-        the service requested in this appointment.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.start = None
-        """ Date/Time that the slot is to begin.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.status = None
-        """ busy | free | busy-unavailable | busy-tentative | entered-in-error.
-        Type `str`. """
-
-        super(Slot, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(Slot, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "appointmentType",
-                    "appointmentType",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("comment", "comment", str, "string", False, None, False),
-                ("end", "end", fhirdate.FHIRDate, "instant", False, None, True),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                ("overbooked", "overbooked", bool, "boolean", False, None, False),
-                (
-                    "schedule",
-                    "schedule",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "serviceCategory",
-                    "serviceCategory",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "serviceType",
-                    "serviceType",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "specialty",
-                    "specialty",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                ("start", "start", fhirdate.FHIRDate, "instant", False, None, True),
-                ("status", "status", str, "code", False, None, True),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="busy | free | busy-unavailable | busy-tentative | entered-in-error",
+    )

@@ -6,520 +6,303 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from typing import Any, Dict
+from typing import List as ListType
 
+from pydantic import Field, root_validator
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class Procedure(domainresource.DomainResource):
     """ An action that is being or was performed on a patient.
-
     An action that is or was performed on a patient. This can be a physical
     intervention like an operation, or less invasive like counseling or
     hypnotherapy.
     """
 
-    resource_type = "Procedure"
+    resource_type = Field("Procedure", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    basedOn: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="basedOn",
+        title="List of `Reference` items referencing `CarePlan, ProcedureRequest, ReferralRequest` (represented as `dict` in JSON)",
+        description="A request for this procedure",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    bodySite: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="bodySite",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Target body sites",
+    )
+
+    category: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="category",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Classification of the procedure",
+    )
+
+    code: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="code",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Identification of the procedure",
+    )
+
+    complication: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="complication",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Complication following the procedure",
+    )
+
+    complicationDetail: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="complicationDetail",
+        title="List of `Reference` items referencing `Condition` (represented as `dict` in JSON)",
+        description="A condition that\u00a0is a result of the procedure",
+    )
+
+    context: fhirtypes.ReferenceType = Field(
+        None,
+        alias="context",
+        title="Type `Reference` referencing `Encounter, EpisodeOfCare` (represented as `dict` in JSON)",
+        description="Encounter or episode associated with the procedure",
+    )
+
+    definition: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="definition",
+        title="List of `Reference` items referencing `PlanDefinition, ActivityDefinition, HealthcareService` (represented as `dict` in JSON)",
+        description="Instantiates protocol or definition",
+    )
+
+    focalDevice: ListType[fhirtypes.ProcedureFocalDeviceType] = Field(
+        None,
+        alias="focalDevice",
+        title="List of `ProcedureFocalDevice` items (represented as `dict` in JSON)",
+        description="Device changed in procedure",
+    )
+
+    followUp: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="followUp",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Instructions for follow up",
+    )
+
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="External Identifiers for this procedure",
+    )
+
+    location: fhirtypes.ReferenceType = Field(
+        None,
+        alias="location",
+        title="Type `Reference` referencing `Location` (represented as `dict` in JSON)",
+        description="Where the procedure happened",
+    )
+
+    notDone: bool = Field(
+        None,
+        alias="notDone",
+        title="Type `bool`",
+        description="True if procedure was not performed as scheduled",
+    )
+
+    notDoneReason: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="notDoneReason",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Reason procedure was not performed",
+    )
+
+    note: ListType[fhirtypes.AnnotationType] = Field(
+        None,
+        alias="note",
+        title="List of `Annotation` items (represented as `dict` in JSON)",
+        description="Additional information about the procedure",
+    )
+
+    outcome: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="outcome",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The result of procedure",
+    )
+
+    partOf: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="partOf",
+        title="List of `Reference` items referencing `Procedure, Observation, MedicationAdministration` (represented as `dict` in JSON)",
+        description="Part of referenced event",
+    )
+
+    performedDateTime: fhirtypes.DateTime = Field(
+        None,
+        alias="performedDateTime",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Date/Period the procedure was performed",
+        one_of_many="performed",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    performedPeriod: fhirtypes.PeriodType = Field(
+        None,
+        alias="performedPeriod",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="Date/Period the procedure was performed",
+        one_of_many="performed",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    performer: ListType[fhirtypes.ProcedurePerformerType] = Field(
+        None,
+        alias="performer",
+        title="List of `ProcedurePerformer` items (represented as `dict` in JSON)",
+        description="The people who performed the procedure",
+    )
+
+    reasonCode: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="reasonCode",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Coded reason procedure performed",
+    )
+
+    reasonReference: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="reasonReference",
+        title="List of `Reference` items referencing `Condition, Observation` (represented as `dict` in JSON)",
+        description="Condition that is the reason the procedure performed",
+    )
+
+    report: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="report",
+        title="List of `Reference` items referencing `DiagnosticReport` (represented as `dict` in JSON)",
+        description="Any report resulting from the procedure",
+    )
+
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="preparation | in-progress | suspended | aborted | completed | entered-in-error | unknown",
+    )
+
+    subject: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="subject",
+        title="Type `Reference` referencing `Patient, Group` (represented as `dict` in JSON)",
+        description="Who the procedure was performed on",
+    )
+
+    usedCode: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="usedCode",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Coded items used during the procedure",
+    )
+
+    usedReference: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="usedReference",
+        title="List of `Reference` items referencing `Device, Medication, Substance` (represented as `dict` in JSON)",
+        description="Items used during procedure",
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "performed": ["performedDateTime", "performedPeriod",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.basedOn = None
-        """ A request for this procedure.
-        List of `FHIRReference` items referencing `['CarePlan'], ['ProcedureRequest'], ['ReferralRequest']` (represented as `dict` in JSON). """
-
-        self.bodySite = None
-        """ Target body sites.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.category = None
-        """ Classification of the procedure.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.code = None
-        """ Identification of the procedure.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.complication = None
-        """ Complication following the procedure.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.complicationDetail = None
-        """ A condition that is a result of the procedure.
-        List of `FHIRReference` items referencing `['Condition']` (represented as `dict` in JSON). """
-
-        self.context = None
-        """ Encounter or episode associated with the procedure.
-        Type `FHIRReference` referencing `['Encounter'], ['EpisodeOfCare']` (represented as `dict` in JSON). """
-
-        self.definition = None
-        """ Instantiates protocol or definition.
-        List of `FHIRReference` items referencing `['PlanDefinition'], ['ActivityDefinition'], ['HealthcareService']` (represented as `dict` in JSON). """
-
-        self.focalDevice = None
-        """ Device changed in procedure.
-        List of `ProcedureFocalDevice` items (represented as `dict` in JSON). """
-
-        self.followUp = None
-        """ Instructions for follow up.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.identifier = None
-        """ External Identifiers for this procedure.
-        List of `Identifier` items (represented as `dict` in JSON). """
-
-        self.location = None
-        """ Where the procedure happened.
-        Type `FHIRReference` referencing `['Location']` (represented as `dict` in JSON). """
-
-        self.notDone = None
-        """ True if procedure was not performed as scheduled.
-        Type `bool`. """
-
-        self.notDoneReason = None
-        """ Reason procedure was not performed.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.note = None
-        """ Additional information about the procedure.
-        List of `Annotation` items (represented as `dict` in JSON). """
-
-        self.outcome = None
-        """ The result of procedure.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.partOf = None
-        """ Part of referenced event.
-        List of `FHIRReference` items referencing `['Procedure'], ['Observation'], ['MedicationAdministration']` (represented as `dict` in JSON). """
-
-        self.performedDateTime = None
-        """ Date/Period the procedure was performed.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.performedPeriod = None
-        """ Date/Period the procedure was performed.
-        Type `Period` (represented as `dict` in JSON). """
-
-        self.performer = None
-        """ The people who performed the procedure.
-        List of `ProcedurePerformer` items (represented as `dict` in JSON). """
-
-        self.reasonCode = None
-        """ Coded reason procedure performed.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.reasonReference = None
-        """ Condition that is the reason the procedure performed.
-        List of `FHIRReference` items referencing `['Condition'], ['Observation']` (represented as `dict` in JSON). """
-
-        self.report = None
-        """ Any report resulting from the procedure.
-        List of `FHIRReference` items referencing `['DiagnosticReport']` (represented as `dict` in JSON). """
-
-        self.status = None
-        """ preparation | in-progress | suspended | aborted | completed |
-        entered-in-error | unknown.
-        Type `str`. """
-
-        self.subject = None
-        """ Who the procedure was performed on.
-        Type `FHIRReference` referencing `['Patient'], ['Group']` (represented as `dict` in JSON). """
-
-        self.usedCode = None
-        """ Coded items used during the procedure.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.usedReference = None
-        """ Items used during procedure.
-        List of `FHIRReference` items referencing `['Device'], ['Medication'], ['Substance']` (represented as `dict` in JSON). """
-
-        super(Procedure, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(Procedure, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "basedOn",
-                    "basedOn",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "bodySite",
-                    "bodySite",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "category",
-                    "category",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "code",
-                    "code",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "complication",
-                    "complication",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "complicationDetail",
-                    "complicationDetail",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "context",
-                    "context",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "definition",
-                    "definition",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "focalDevice",
-                    "focalDevice",
-                    ProcedureFocalDevice,
-                    "ProcedureFocalDevice",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "followUp",
-                    "followUp",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "location",
-                    "location",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("notDone", "notDone", bool, "boolean", False, None, False),
-                (
-                    "notDoneReason",
-                    "notDoneReason",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "note",
-                    "note",
-                    annotation.Annotation,
-                    "Annotation",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "outcome",
-                    "outcome",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "partOf",
-                    "partOf",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "performedDateTime",
-                    "performedDateTime",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    "performed",
-                    False,
-                ),
-                (
-                    "performedPeriod",
-                    "performedPeriod",
-                    period.Period,
-                    "Period",
-                    False,
-                    "performed",
-                    False,
-                ),
-                (
-                    "performer",
-                    "performer",
-                    ProcedurePerformer,
-                    "ProcedurePerformer",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "reasonCode",
-                    "reasonCode",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "reasonReference",
-                    "reasonReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "report",
-                    "report",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                ("status", "status", str, "code", False, None, True),
-                (
-                    "subject",
-                    "subject",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "usedCode",
-                    "usedCode",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "usedReference",
-                    "usedReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+        return values
 
 
 class ProcedureFocalDevice(backboneelement.BackboneElement):
     """ Device changed in procedure.
-
     A device that is implanted, removed or otherwise manipulated (calibration,
     battery replacement, fitting a prosthesis, attaching a wound-vac, etc.) as
     a focal portion of the Procedure.
     """
 
-    resource_type = "ProcedureFocalDevice"
+    resource_type = Field("ProcedureFocalDevice", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    action: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="action",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Kind of change to device",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.action = None
-        """ Kind of change to device.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.manipulated = None
-        """ Device that was changed.
-        Type `FHIRReference` referencing `['Device']` (represented as `dict` in JSON). """
-
-        super(ProcedureFocalDevice, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ProcedureFocalDevice, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "action",
-                    "action",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "manipulated",
-                    "manipulated",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
+    manipulated: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="manipulated",
+        title="Type `Reference` referencing `Device` (represented as `dict` in JSON)",
+        description="Device that was changed",
+    )
 
 
 class ProcedurePerformer(backboneelement.BackboneElement):
     """ The people who performed the procedure.
-
     Limited to 'real' people rather than equipment.
     """
 
-    resource_type = "ProcedurePerformer"
+    resource_type = Field("ProcedurePerformer", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    actor: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="actor",
+        title="Type `Reference` referencing `Practitioner, Organization, Patient, RelatedPerson, Device` (represented as `dict` in JSON)",
+        description="The reference to the practitioner",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    onBehalfOf: fhirtypes.ReferenceType = Field(
+        None,
+        alias="onBehalfOf",
+        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        description="Organization the device or practitioner was acting for",
+    )
 
-        self.actor = None
-        """ The reference to the practitioner.
-        Type `FHIRReference` referencing `['Practitioner'], ['Organization'], ['Patient'], ['RelatedPerson'], ['Device']` (represented as `dict` in JSON). """
-
-        self.onBehalfOf = None
-        """ Organization the device or practitioner was acting for.
-        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
-
-        self.role = None
-        """ The role the actor was in.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(ProcedurePerformer, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ProcedurePerformer, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "actor",
-                    "actor",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "onBehalfOf",
-                    "onBehalfOf",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "role",
-                    "role",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import annotation
-except ImportError:
-    annotation = sys.modules[__package__ + ".annotation"]
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import period
-except ImportError:
-    period = sys.modules[__package__ + ".period"]
+    role: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="role",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The role the actor was in",
+    )

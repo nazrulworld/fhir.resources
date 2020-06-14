@@ -6,89 +6,82 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import group
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class GroupTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("Group", js["resourceType"])
-        return group.Group(js)
+def impl_group_1(inst):
+    assert inst.actual is True
+    assert inst.characteristic[0].code.text == "gender"
+    assert inst.characteristic[0].exclude is False
+    assert inst.characteristic[0].valueCodeableConcept.text == "mixed"
+    assert inst.characteristic[1].code.text == "owner"
+    assert inst.characteristic[1].exclude is False
+    assert inst.characteristic[1].valueCodeableConcept.text == "John Smith"
+    assert inst.code.text == "Horse"
+    assert inst.id == "101"
+    assert (
+        inst.identifier[0].system
+        == "http://someveterinarianclinic.org/fhir/NamingSystem/herds"
+    )
+    assert inst.identifier[0].value == "12345"
+    assert inst.name == "John's herd"
+    assert inst.quantity == 25
+    assert inst.text.status == "additional"
+    assert inst.type == "animal"
 
-    def testGroup1(self):
-        inst = self.instantiate_from("group-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Group instance")
-        self.implGroup1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("Group", js["resourceType"])
-        inst2 = group.Group(js)
-        self.implGroup1(inst2)
+def test_group_1(base_settings):
+    """No. 1 tests collection for Group.
+    Test File: group-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "group-example.json"
+    inst = group.Group.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Group" == inst.resource_type
 
-    def implGroup1(self, inst):
-        self.assertTrue(inst.actual)
-        self.assertEqual(
-            force_bytes(inst.characteristic[0].code.text), force_bytes("gender")
-        )
-        self.assertFalse(inst.characteristic[0].exclude)
-        self.assertEqual(
-            force_bytes(inst.characteristic[0].valueCodeableConcept.text),
-            force_bytes("mixed"),
-        )
-        self.assertEqual(
-            force_bytes(inst.characteristic[1].code.text), force_bytes("owner")
-        )
-        self.assertFalse(inst.characteristic[1].exclude)
-        self.assertEqual(
-            force_bytes(inst.characteristic[1].valueCodeableConcept.text),
-            force_bytes("John Smith"),
-        )
-        self.assertEqual(force_bytes(inst.code.text), force_bytes("Horse"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("101"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://someveterinarianclinic.org/fhir/NamingSystem/herds"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("12345"))
-        self.assertEqual(force_bytes(inst.name), force_bytes("John's herd"))
-        self.assertEqual(inst.quantity, 25)
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("additional"))
-        self.assertEqual(force_bytes(inst.type), force_bytes("animal"))
+    impl_group_1(inst)
 
-    def testGroup2(self):
-        inst = self.instantiate_from("group-example-member.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Group instance")
-        self.implGroup2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Group" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("Group", js["resourceType"])
-        inst2 = group.Group(js)
-        self.implGroup2(inst2)
+    inst2 = group.Group(**data)
+    impl_group_1(inst2)
 
-    def implGroup2(self, inst):
-        self.assertTrue(inst.actual)
-        self.assertEqual(force_bytes(inst.id), force_bytes("102"))
-        self.assertEqual(inst.member[0].period.start.date, FHIRDate("2014-10-08").date)
-        self.assertEqual(inst.member[0].period.start.as_json(), "2014-10-08")
-        self.assertTrue(inst.member[1].inactive)
-        self.assertEqual(inst.member[1].period.start.date, FHIRDate("2015-04-02").date)
-        self.assertEqual(inst.member[1].period.start.as_json(), "2015-04-02")
-        self.assertEqual(inst.member[2].period.start.date, FHIRDate("2015-08-06").date)
-        self.assertEqual(inst.member[2].period.start.as_json(), "2015-08-06")
-        self.assertEqual(inst.member[3].period.start.date, FHIRDate("2015-08-06").date)
-        self.assertEqual(inst.member[3].period.start.as_json(), "2015-08-06")
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("additional"))
-        self.assertEqual(force_bytes(inst.type), force_bytes("person"))
+
+def impl_group_2(inst):
+    assert inst.actual is True
+    assert inst.id == "102"
+    assert inst.member[0].entity.reference == "Patient/pat1"
+    assert inst.member[0].period.start == fhirtypes.DateTime.validate("2014-10-08")
+    assert inst.member[1].entity.reference == "Patient/pat2"
+    assert inst.member[1].inactive is True
+    assert inst.member[1].period.start == fhirtypes.DateTime.validate("2015-04-02")
+    assert inst.member[2].entity.reference == "Patient/pat3"
+    assert inst.member[2].period.start == fhirtypes.DateTime.validate("2015-08-06")
+    assert inst.member[3].entity.reference == "Patient/pat4"
+    assert inst.member[3].period.start == fhirtypes.DateTime.validate("2015-08-06")
+    assert inst.text.status == "additional"
+    assert inst.type == "person"
+
+
+def test_group_2(base_settings):
+    """No. 2 tests collection for Group.
+    Test File: group-example-member.json
+    """
+    filename = base_settings["unittest_data_dir"] / "group-example-member.json"
+    inst = group.Group.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Group" == inst.resource_type
+
+    impl_group_2(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Group" == data["resourceType"]
+
+    inst2 = group.Group(**data)
+    impl_group_2(inst2)

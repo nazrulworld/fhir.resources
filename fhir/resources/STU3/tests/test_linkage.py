@@ -6,40 +6,41 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import linkage
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class LinkageTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("Linkage", js["resourceType"])
-        return linkage.Linkage(js)
+def impl_linkage_1(inst):
+    assert inst.author.reference == "Practitioner/f201"
+    assert inst.id == "example"
+    assert (
+        inst.item[0].resource.display == "Severe burn of left ear (Date: 24-May 2012)"
+    )
+    assert inst.item[0].resource.reference == "Condition/example"
+    assert inst.item[0].type == "source"
+    assert (
+        inst.item[1].resource.display == "Severe burn of left ear (Date: 24-May 2012)"
+    )
+    assert inst.item[1].resource.reference == "Condition/condition-example"
+    assert inst.item[1].type == "alternate"
+    assert inst.text.status == "generated"
 
-    def testLinkage1(self):
-        inst = self.instantiate_from("linkage-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Linkage instance")
-        self.implLinkage1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("Linkage", js["resourceType"])
-        inst2 = linkage.Linkage(js)
-        self.implLinkage1(inst2)
+def test_linkage_1(base_settings):
+    """No. 1 tests collection for Linkage.
+    Test File: linkage-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "linkage-example.json"
+    inst = linkage.Linkage.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Linkage" == inst.resource_type
 
-    def implLinkage1(self, inst):
-        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(force_bytes(inst.item[0].type), force_bytes("source"))
-        self.assertEqual(force_bytes(inst.item[1].type), force_bytes("alternate"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    impl_linkage_1(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Linkage" == data["resourceType"]
+
+    inst2 = linkage.Linkage(**data)
+    impl_linkage_1(inst2)

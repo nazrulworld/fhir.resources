@@ -6,150 +6,115 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import immunizationevaluation
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class ImmunizationEvaluationTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("ImmunizationEvaluation", js["resourceType"])
-        return immunizationevaluation.ImmunizationEvaluation(js)
+def impl_immunizationevaluation_1(inst):
+    assert inst.authority.reference == "Organization/hl7"
+    assert inst.date == fhirtypes.DateTime.validate("2013-01-10T11:15:33+10:00")
+    assert inst.doseNumberPositiveInt == 1
+    assert inst.doseStatus.coding[0].code == "valid"
+    assert inst.doseStatus.coding[0].display == "Valid"
+    assert (
+        inst.doseStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status"
+    )
+    assert inst.id == "example"
+    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert inst.identifier[0].value == "urn:oid:1.3.6.1.4.1.21367.2005.3.7.1234"
+    assert inst.immunizationEvent.reference == "Immunization/example"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.patient.reference == "Patient/example"
+    assert inst.series == "Vaccination Series 1"
+    assert inst.seriesDosesPositiveInt == 3
+    assert inst.status == "completed"
+    assert inst.targetDisease.coding[0].code == "1857005"
+    assert inst.targetDisease.coding[0].system == "http://snomed.info/sct"
+    assert inst.text.status == "generated"
 
-    def testImmunizationEvaluation1(self):
-        inst = self.instantiate_from("immunizationevaluation-example.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a ImmunizationEvaluation instance"
-        )
-        self.implImmunizationEvaluation1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("ImmunizationEvaluation", js["resourceType"])
-        inst2 = immunizationevaluation.ImmunizationEvaluation(js)
-        self.implImmunizationEvaluation1(inst2)
+def test_immunizationevaluation_1(base_settings):
+    """No. 1 tests collection for ImmunizationEvaluation.
+    Test File: immunizationevaluation-example.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "immunizationevaluation-example.json"
+    )
+    inst = immunizationevaluation.ImmunizationEvaluation.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ImmunizationEvaluation" == inst.resource_type
 
-    def implImmunizationEvaluation1(self, inst):
-        self.assertEqual(inst.date.date, FHIRDate("2013-01-10").date)
-        self.assertEqual(inst.date.as_json(), "2013-01-10")
-        self.assertEqual(inst.doseNumberPositiveInt, 1)
-        self.assertEqual(
-            force_bytes(inst.doseStatus.coding[0].code), force_bytes("valid")
-        )
-        self.assertEqual(
-            force_bytes(inst.doseStatus.coding[0].display), force_bytes("Valid")
-        )
-        self.assertEqual(
-            force_bytes(inst.doseStatus.coding[0].system),
-            force_bytes(
-                "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system), force_bytes("urn:ietf:rfc:3986")
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].value),
-            force_bytes("urn:oid:1.3.6.1.4.1.21367.2005.3.7.1234"),
-        )
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.series), force_bytes("Vaccination Series 1"))
-        self.assertEqual(inst.seriesDosesPositiveInt, 3)
-        self.assertEqual(force_bytes(inst.status), force_bytes("completed"))
-        self.assertEqual(
-            force_bytes(inst.targetDisease.coding[0].code), force_bytes("1857005")
-        )
-        self.assertEqual(
-            force_bytes(inst.targetDisease.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    impl_immunizationevaluation_1(inst)
 
-    def testImmunizationEvaluation2(self):
-        inst = self.instantiate_from("immunizationevaluation-example-notvalid.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a ImmunizationEvaluation instance"
-        )
-        self.implImmunizationEvaluation2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ImmunizationEvaluation" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("ImmunizationEvaluation", js["resourceType"])
-        inst2 = immunizationevaluation.ImmunizationEvaluation(js)
-        self.implImmunizationEvaluation2(inst2)
+    inst2 = immunizationevaluation.ImmunizationEvaluation(**data)
+    impl_immunizationevaluation_1(inst2)
 
-    def implImmunizationEvaluation2(self, inst):
-        self.assertEqual(inst.date.date, FHIRDate("2013-01-10").date)
-        self.assertEqual(inst.date.as_json(), "2013-01-10")
-        self.assertEqual(inst.doseNumberPositiveInt, 2)
-        self.assertEqual(
-            force_bytes(inst.doseStatus.coding[0].code), force_bytes("notvalid")
-        )
-        self.assertEqual(
-            force_bytes(inst.doseStatus.coding[0].display), force_bytes("Not Valid")
-        )
-        self.assertEqual(
-            force_bytes(inst.doseStatus.coding[0].system),
-            force_bytes(
-                "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.doseStatusReason[0].coding[0].code),
-            force_bytes("outsidesched"),
-        )
-        self.assertEqual(
-            force_bytes(inst.doseStatusReason[0].coding[0].display),
-            force_bytes("Administered outside recommended schedule"),
-        )
-        self.assertEqual(
-            force_bytes(inst.doseStatusReason[0].coding[0].system),
-            force_bytes(
-                "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status-reason"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("notValid"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system), force_bytes("urn:ietf:rfc:3986")
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].value),
-            force_bytes("urn:oid:1.3.6.1.4.1.21367.2005.3.7.1234"),
-        )
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.series), force_bytes("Vaccination Series 1"))
-        self.assertEqual(inst.seriesDosesPositiveInt, 3)
-        self.assertEqual(force_bytes(inst.status), force_bytes("completed"))
-        self.assertEqual(
-            force_bytes(inst.targetDisease.coding[0].code), force_bytes("1857005")
-        )
-        self.assertEqual(
-            force_bytes(inst.targetDisease.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+
+def impl_immunizationevaluation_2(inst):
+    assert inst.authority.reference == "Organization/hl7"
+    assert inst.date == fhirtypes.DateTime.validate("2013-01-10T11:15:33+10:00")
+    assert inst.doseNumberPositiveInt == 2
+    assert inst.doseStatus.coding[0].code == "notvalid"
+    assert inst.doseStatus.coding[0].display == "Not Valid"
+    assert (
+        inst.doseStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status"
+    )
+    assert inst.doseStatusReason[0].coding[0].code == "outsidesched"
+    assert (
+        inst.doseStatusReason[0].coding[0].display
+        == "Administered outside recommended schedule"
+    )
+    assert (
+        inst.doseStatusReason[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status-reason"
+    )
+    assert inst.id == "notValid"
+    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert inst.identifier[0].value == "urn:oid:1.3.6.1.4.1.21367.2005.3.7.1234"
+    assert inst.immunizationEvent.reference == "Immunization/example"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.patient.reference == "Patient/example"
+    assert inst.series == "Vaccination Series 1"
+    assert inst.seriesDosesPositiveInt == 3
+    assert inst.status == "completed"
+    assert inst.targetDisease.coding[0].code == "1857005"
+    assert inst.targetDisease.coding[0].system == "http://snomed.info/sct"
+    assert inst.text.status == "generated"
+
+
+def test_immunizationevaluation_2(base_settings):
+    """No. 2 tests collection for ImmunizationEvaluation.
+    Test File: immunizationevaluation-example-notvalid.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"]
+        / "immunizationevaluation-example-notvalid.json"
+    )
+    inst = immunizationevaluation.ImmunizationEvaluation.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ImmunizationEvaluation" == inst.resource_type
+
+    impl_immunizationevaluation_2(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ImmunizationEvaluation" == data["resourceType"]
+
+    inst2 = immunizationevaluation.ImmunizationEvaluation(**data)
+    impl_immunizationevaluation_2(inst2)

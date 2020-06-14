@@ -6,16 +6,15 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class ResearchStudy(domainresource.DomainResource):
     """ Investigation to increase healthcare-related patient-independent knowledge.
-
     A process where a researcher or organization plans and then executes a
     series of steps intended to increase the field of healthcare-related
     knowledge.  This includes studies of safety, efficacy, comparative
@@ -24,429 +23,226 @@ class ResearchStudy(domainresource.DomainResource):
     involves the gathering of information about human or animal subjects.
     """
 
-    resource_type = "ResearchStudy"
+    resource_type = Field("ResearchStudy", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    arm: ListType[fhirtypes.ResearchStudyArmType] = Field(
+        None,
+        alias="arm",
+        title="List of `ResearchStudyArm` items (represented as `dict` in JSON)",
+        description="Defined path through the study for a subject",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    category: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="category",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Classifications for the study",
+    )
 
-        self.arm = None
-        """ Defined path through the study for a subject.
-        List of `ResearchStudyArm` items (represented as `dict` in JSON). """
+    condition: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="condition",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Condition being studied",
+    )
 
-        self.category = None
-        """ Classifications for the study.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    contact: ListType[fhirtypes.ContactDetailType] = Field(
+        None,
+        alias="contact",
+        title="List of `ContactDetail` items (represented as `dict` in JSON)",
+        description="Contact details for the study",
+    )
 
-        self.condition = None
-        """ Condition being studied.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    description: fhirtypes.Markdown = Field(
+        None,
+        alias="description",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="What this is study doing",
+    )
 
-        self.contact = None
-        """ Contact details for the study.
-        List of `ContactDetail` items (represented as `dict` in JSON). """
+    enrollment: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="enrollment",
+        title="List of `Reference` items referencing `Group` (represented as `dict` in JSON)",
+        description="Inclusion \u0026 exclusion criteria",
+    )
 
-        self.description = None
-        """ What this is study doing.
-        Type `str`. """
+    focus: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="focus",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Drugs, devices, etc. under study",
+    )
 
-        self.enrollment = None
-        """ Inclusion & exclusion criteria.
-        List of `FHIRReference` items referencing `['Group']` (represented as `dict` in JSON). """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Business Identifier for study",
+    )
 
-        self.focus = None
-        """ Drugs, devices, etc. under study.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    keyword: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="keyword",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Used to search for the study",
+    )
 
-        self.identifier = None
-        """ Business Identifier for study.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    location: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="location",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Geographic region(s) for study",
+    )
 
-        self.keyword = None
-        """ Used to search for the study.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    note: ListType[fhirtypes.AnnotationType] = Field(
+        None,
+        alias="note",
+        title="List of `Annotation` items (represented as `dict` in JSON)",
+        description="Comments made about the study",
+    )
 
-        self.location = None
-        """ Geographic region(s) for study.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    objective: ListType[fhirtypes.ResearchStudyObjectiveType] = Field(
+        None,
+        alias="objective",
+        title="List of `ResearchStudyObjective` items (represented as `dict` in JSON)",
+        description="A goal for the study",
+    )
 
-        self.note = None
-        """ Comments made about the study.
-        List of `Annotation` items (represented as `dict` in JSON). """
+    partOf: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="partOf",
+        title="List of `Reference` items referencing `ResearchStudy` (represented as `dict` in JSON)",
+        description="Part of larger study",
+    )
 
-        self.objective = None
-        """ A goal for the study.
-        List of `ResearchStudyObjective` items (represented as `dict` in JSON). """
+    period: fhirtypes.PeriodType = Field(
+        None,
+        alias="period",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="When the study began and ended",
+    )
 
-        self.partOf = None
-        """ Part of larger study.
-        List of `FHIRReference` items referencing `['ResearchStudy']` (represented as `dict` in JSON). """
+    phase: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="phase",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="n-a | early-phase-1 | phase-1 | phase-1-phase-2 | phase-2 | phase-2-phase-3 | phase-3 | phase-4",
+    )
 
-        self.period = None
-        """ When the study began and ended.
-        Type `Period` (represented as `dict` in JSON). """
+    primaryPurposeType: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="primaryPurposeType",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="treatment | prevention | diagnostic | supportive-care | screening | health-services-research | basic-science | device-feasibility",
+    )
 
-        self.phase = None
-        """ n-a | early-phase-1 | phase-1 | phase-1-phase-2 | phase-2 |
-        phase-2-phase-3 | phase-3 | phase-4.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    principalInvestigator: fhirtypes.ReferenceType = Field(
+        None,
+        alias="principalInvestigator",
+        title="Type `Reference` referencing `Practitioner, PractitionerRole` (represented as `dict` in JSON)",
+        description="Researcher who oversees multiple aspects of the study",
+    )
 
-        self.primaryPurposeType = None
-        """ treatment | prevention | diagnostic | supportive-care | screening |
-        health-services-research | basic-science | device-feasibility.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    protocol: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="protocol",
+        title="List of `Reference` items referencing `PlanDefinition` (represented as `dict` in JSON)",
+        description="Steps followed in executing study",
+    )
 
-        self.principalInvestigator = None
-        """ Researcher who oversees multiple aspects of the study.
-        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole']` (represented as `dict` in JSON). """
+    reasonStopped: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="reasonStopped",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="accrual-goal-met | closed-due-to-toxicity | closed-due-to-lack-of-study-progress | temporarily-closed-per-study-design",
+    )
 
-        self.protocol = None
-        """ Steps followed in executing study.
-        List of `FHIRReference` items referencing `['PlanDefinition']` (represented as `dict` in JSON). """
+    relatedArtifact: ListType[fhirtypes.RelatedArtifactType] = Field(
+        None,
+        alias="relatedArtifact",
+        title="List of `RelatedArtifact` items (represented as `dict` in JSON)",
+        description="References and dependencies",
+    )
 
-        self.reasonStopped = None
-        """ accrual-goal-met | closed-due-to-toxicity | closed-due-to-lack-of-
-        study-progress | temporarily-closed-per-study-design.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    site: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="site",
+        title="List of `Reference` items referencing `Location` (represented as `dict` in JSON)",
+        description="Facility where study activities are conducted",
+    )
 
-        self.relatedArtifact = None
-        """ References and dependencies.
-        List of `RelatedArtifact` items (represented as `dict` in JSON). """
+    sponsor: fhirtypes.ReferenceType = Field(
+        None,
+        alias="sponsor",
+        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        description="Organization that initiates and is legally responsible for the study",
+    )
 
-        self.site = None
-        """ Facility where study activities are conducted.
-        List of `FHIRReference` items referencing `['Location']` (represented as `dict` in JSON). """
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="active | administratively-completed | approved | closed-to-accrual | closed-to-accrual-and-intervention | completed | disapproved | in-review | temporarily-closed-to-accrual | temporarily-closed-to-accrual-and-intervention | withdrawn",
+    )
 
-        self.sponsor = None
-        """ Organization that initiates and is legally responsible for the
-        study.
-        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
-
-        self.status = None
-        """ active | administratively-completed | approved | closed-to-accrual
-        | closed-to-accrual-and-intervention | completed | disapproved |
-        in-review | temporarily-closed-to-accrual | temporarily-closed-to-
-        accrual-and-intervention | withdrawn.
-        Type `str`. """
-
-        self.title = None
-        """ Name for this study.
-        Type `str`. """
-
-        super(ResearchStudy, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ResearchStudy, self).elementProperties()
-        js.extend(
-            [
-                ("arm", "arm", ResearchStudyArm, "ResearchStudyArm", True, None, False),
-                (
-                    "category",
-                    "category",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "condition",
-                    "condition",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "contact",
-                    "contact",
-                    contactdetail.ContactDetail,
-                    "ContactDetail",
-                    True,
-                    None,
-                    False,
-                ),
-                ("description", "description", str, "markdown", False, None, False),
-                (
-                    "enrollment",
-                    "enrollment",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "focus",
-                    "focus",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "keyword",
-                    "keyword",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "location",
-                    "location",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "note",
-                    "note",
-                    annotation.Annotation,
-                    "Annotation",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "objective",
-                    "objective",
-                    ResearchStudyObjective,
-                    "ResearchStudyObjective",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "partOf",
-                    "partOf",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                ("period", "period", period.Period, "Period", False, None, False),
-                (
-                    "phase",
-                    "phase",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "primaryPurposeType",
-                    "primaryPurposeType",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "principalInvestigator",
-                    "principalInvestigator",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "protocol",
-                    "protocol",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "reasonStopped",
-                    "reasonStopped",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "relatedArtifact",
-                    "relatedArtifact",
-                    relatedartifact.RelatedArtifact,
-                    "RelatedArtifact",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "site",
-                    "site",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "sponsor",
-                    "sponsor",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("status", "status", str, "code", False, None, True),
-                ("title", "title", str, "string", False, None, False),
-            ]
-        )
-        return js
+    title: fhirtypes.String = Field(
+        None,
+        alias="title",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name for this study",
+    )
 
 
 class ResearchStudyArm(backboneelement.BackboneElement):
     """ Defined path through the study for a subject.
-
     Describes an expected sequence of events for one of the participants of a
     study.  E.g. Exposure to drug A, wash-out, exposure to drug B, wash-out,
     follow-up.
     """
 
-    resource_type = "ResearchStudyArm"
+    resource_type = Field("ResearchStudyArm", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    description: fhirtypes.String = Field(
+        None,
+        alias="description",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Short explanation of study path",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    name: fhirtypes.String = Field(
+        ...,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Label for study arm",
+    )
 
-        self.description = None
-        """ Short explanation of study path.
-        Type `str`. """
-
-        self.name = None
-        """ Label for study arm.
-        Type `str`. """
-
-        self.type = None
-        """ Categorization of study arm.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(ResearchStudyArm, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ResearchStudyArm, self).elementProperties()
-        js.extend(
-            [
-                ("description", "description", str, "string", False, None, False),
-                ("name", "name", str, "string", False, None, True),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    type: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Categorization of study arm",
+    )
 
 
 class ResearchStudyObjective(backboneelement.BackboneElement):
     """ A goal for the study.
-
     A goal that the study is aiming to achieve in terms of a scientific
     question to be answered by the analysis of data collected during the study.
     """
 
-    resource_type = "ResearchStudyObjective"
+    resource_type = Field("ResearchStudyObjective", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    name: fhirtypes.String = Field(
+        None,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Label for the objective",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.name = None
-        """ Label for the objective.
-        Type `str`. """
-
-        self.type = None
-        """ primary | secondary | exploratory.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(ResearchStudyObjective, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ResearchStudyObjective, self).elementProperties()
-        js.extend(
-            [
-                ("name", "name", str, "string", False, None, False),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import annotation
-except ImportError:
-    annotation = sys.modules[__package__ + ".annotation"]
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import contactdetail
-except ImportError:
-    contactdetail = sys.modules[__package__ + ".contactdetail"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import period
-except ImportError:
-    period = sys.modules[__package__ + ".period"]
-try:
-    from . import relatedartifact
-except ImportError:
-    relatedartifact = sys.modules[__package__ + ".relatedartifact"]
+    type: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="primary | secondary | exploratory",
+    )

@@ -6,59 +6,44 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import catalogentry
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class CatalogEntryTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("CatalogEntry", js["resourceType"])
-        return catalogentry.CatalogEntry(js)
+def impl_catalogentry_1(inst):
+    assert inst.id == "example"
+    assert inst.identifier[0].system == "http://example.com/identifier"
+    assert inst.identifier[0].value == "123"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.orderable is True
+    assert inst.referencedItem.reference == "Medication/123"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">[Put rendering here]</div>'
+    )
+    assert inst.text.status == "generated"
+    assert inst.type.text == "Medication"
 
-    def testCatalogEntry1(self):
-        inst = self.instantiate_from("catalogentry-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a CatalogEntry instance")
-        self.implCatalogEntry1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("CatalogEntry", js["resourceType"])
-        inst2 = catalogentry.CatalogEntry(js)
-        self.implCatalogEntry1(inst2)
+def test_catalogentry_1(base_settings):
+    """No. 1 tests collection for CatalogEntry.
+    Test File: catalogentry-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "catalogentry-example.json"
+    inst = catalogentry.CatalogEntry.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "CatalogEntry" == inst.resource_type
 
-    def implCatalogEntry1(self, inst):
-        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://example.com/identifier"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("123"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertTrue(inst.orderable)
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">[Put rendering here]</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type.text), force_bytes("Medication"))
+    impl_catalogentry_1(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "CatalogEntry" == data["resourceType"]
+
+    inst2 = catalogentry.CatalogEntry(**data)
+    impl_catalogentry_1(inst2)

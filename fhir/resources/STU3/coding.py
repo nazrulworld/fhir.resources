@@ -6,56 +6,48 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic import Field
 
-
-from . import element
+from . import element, fhirtypes
 
 
 class Coding(element.Element):
     """ A reference to a code defined by a terminology system.
     """
 
-    resource_type = "Coding"
+    resource_type = Field("Coding", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    code: fhirtypes.Code = Field(
+        None,
+        alias="code",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="Symbol in syntax defined by the system",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    display: fhirtypes.String = Field(
+        None,
+        alias="display",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Representation defined by the system",
+    )
 
-        self.code = None
-        """ Symbol in syntax defined by the system.
-        Type `str`. """
+    system: fhirtypes.Uri = Field(
+        None,
+        alias="system",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Identity of the terminology system",
+    )
 
-        self.display = None
-        """ Representation defined by the system.
-        Type `str`. """
+    userSelected: bool = Field(
+        None,
+        alias="userSelected",
+        title="Type `bool`",
+        description="If this coding was chosen directly by the user",
+    )
 
-        self.system = None
-        """ Identity of the terminology system.
-        Type `str`. """
-
-        self.userSelected = None
-        """ If this coding was chosen directly by the user.
-        Type `bool`. """
-
-        self.version = None
-        """ Version of the system - if relevant.
-        Type `str`. """
-
-        super(Coding, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(Coding, self).elementProperties()
-        js.extend(
-            [
-                ("code", "code", str, "code", False, None, False),
-                ("display", "display", str, "string", False, None, False),
-                ("system", "system", str, "uri", False, None, False),
-                ("userSelected", "userSelected", bool, "boolean", False, None, False),
-                ("version", "version", str, "string", False, None, False),
-            ]
-        )
-        return js
+    version: fhirtypes.String = Field(
+        None,
+        alias="version",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Version of the system - if relevant",
+    )

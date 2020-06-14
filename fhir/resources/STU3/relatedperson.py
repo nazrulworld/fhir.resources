@@ -6,179 +6,96 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import domainresource
+from . import domainresource, fhirtypes
 
 
 class RelatedPerson(domainresource.DomainResource):
     """ An person that is related to a patient, but who is not a direct target of
     care.
-
     Information about a person that is involved in the care for a patient, but
     who is not the target of healthcare, nor has a formal responsibility in the
     care process.
     """
 
-    resource_type = "RelatedPerson"
+    resource_type = Field("RelatedPerson", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    active: bool = Field(
+        None,
+        alias="active",
+        title="Type `bool`",
+        description="Whether this related person\u0027s record is in active use",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    address: ListType[fhirtypes.AddressType] = Field(
+        None,
+        alias="address",
+        title="List of `Address` items (represented as `dict` in JSON)",
+        description="Address where the related person can be contacted or visited",
+    )
 
-        self.active = None
-        """ Whether this related person's record is in active use.
-        Type `bool`. """
+    birthDate: fhirtypes.Date = Field(
+        None,
+        alias="birthDate",
+        title="Type `Date` (represented as `dict` in JSON)",
+        description="The date on which the related person was born",
+    )
 
-        self.address = None
-        """ Address where the related person can be contacted or visited.
-        List of `Address` items (represented as `dict` in JSON). """
+    gender: fhirtypes.Code = Field(
+        None,
+        alias="gender",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="male | female | other | unknown",
+    )
 
-        self.birthDate = None
-        """ The date on which the related person was born.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="A human identifier for this person",
+    )
 
-        self.gender = None
-        """ male | female | other | unknown.
-        Type `str`. """
+    name: ListType[fhirtypes.HumanNameType] = Field(
+        None,
+        alias="name",
+        title="List of `HumanName` items (represented as `dict` in JSON)",
+        description="A name associated with the person",
+    )
 
-        self.identifier = None
-        """ A human identifier for this person.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    patient: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="patient",
+        title="Type `Reference` referencing `Patient` (represented as `dict` in JSON)",
+        description="The patient this person is related to",
+    )
 
-        self.name = None
-        """ A name associated with the person.
-        List of `HumanName` items (represented as `dict` in JSON). """
+    period: fhirtypes.PeriodType = Field(
+        None,
+        alias="period",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="Period of time that this relationship is considered valid",
+    )
 
-        self.patient = None
-        """ The patient this person is related to.
-        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
+    photo: ListType[fhirtypes.AttachmentType] = Field(
+        None,
+        alias="photo",
+        title="List of `Attachment` items (represented as `dict` in JSON)",
+        description="Image of the person",
+    )
 
-        self.period = None
-        """ Period of time that this relationship is considered valid.
-        Type `Period` (represented as `dict` in JSON). """
+    relationship: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="relationship",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The nature of the relationship",
+    )
 
-        self.photo = None
-        """ Image of the person.
-        List of `Attachment` items (represented as `dict` in JSON). """
-
-        self.relationship = None
-        """ The nature of the relationship.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.telecom = None
-        """ A contact detail for the person.
-        List of `ContactPoint` items (represented as `dict` in JSON). """
-
-        super(RelatedPerson, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(RelatedPerson, self).elementProperties()
-        js.extend(
-            [
-                ("active", "active", bool, "boolean", False, None, False),
-                ("address", "address", address.Address, "Address", True, None, False),
-                (
-                    "birthDate",
-                    "birthDate",
-                    fhirdate.FHIRDate,
-                    "date",
-                    False,
-                    None,
-                    False,
-                ),
-                ("gender", "gender", str, "code", False, None, False),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                ("name", "name", humanname.HumanName, "HumanName", True, None, False),
-                (
-                    "patient",
-                    "patient",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                ("period", "period", period.Period, "Period", False, None, False),
-                (
-                    "photo",
-                    "photo",
-                    attachment.Attachment,
-                    "Attachment",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "relationship",
-                    "relationship",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "telecom",
-                    "telecom",
-                    contactpoint.ContactPoint,
-                    "ContactPoint",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import address
-except ImportError:
-    address = sys.modules[__package__ + ".address"]
-try:
-    from . import attachment
-except ImportError:
-    attachment = sys.modules[__package__ + ".attachment"]
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import contactpoint
-except ImportError:
-    contactpoint = sys.modules[__package__ + ".contactpoint"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import humanname
-except ImportError:
-    humanname = sys.modules[__package__ + ".humanname"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import period
-except ImportError:
-    period = sys.modules[__package__ + ".period"]
+    telecom: ListType[fhirtypes.ContactPointType] = Field(
+        None,
+        alias="telecom",
+        title="List of `ContactPoint` items (represented as `dict` in JSON)",
+        description="A contact detail for the person",
+    )

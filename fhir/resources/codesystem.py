@@ -6,579 +6,482 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import Any, Dict
+from typing import List as ListType
 
+from pydantic import Field, root_validator
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class CodeSystem(domainresource.DomainResource):
     """ Declares the existence of and describes a code system or code system
     supplement.
-
     The CodeSystem resource is used to declare the existence of and describe a
     code system or code system supplement and its key properties, and
     optionally define a part or all of its content.
     """
 
-    resource_type = "CodeSystem"
+    resource_type = Field("CodeSystem", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    caseSensitive: bool = Field(
+        None,
+        alias="caseSensitive",
+        title="Type `bool`",
+        description="If code comparison is case sensitive",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    compositional: bool = Field(
+        None,
+        alias="compositional",
+        title="Type `bool`",
+        description="If code system defines a compositional grammar",
+    )
 
-        self.caseSensitive = None
-        """ If code comparison is case sensitive.
-        Type `bool`. """
+    concept: ListType[fhirtypes.CodeSystemConceptType] = Field(
+        None,
+        alias="concept",
+        title="List of `CodeSystemConcept` items (represented as `dict` in JSON)",
+        description="Concepts in the code system",
+    )
 
-        self.compositional = None
-        """ If code system defines a compositional grammar.
-        Type `bool`. """
+    contact: ListType[fhirtypes.ContactDetailType] = Field(
+        None,
+        alias="contact",
+        title="List of `ContactDetail` items (represented as `dict` in JSON)",
+        description="Contact details for the publisher",
+    )
 
-        self.concept = None
-        """ Concepts in the code system.
-        List of `CodeSystemConcept` items (represented as `dict` in JSON). """
+    content: fhirtypes.Code = Field(
+        ...,
+        alias="content",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="not-present | example | fragment | complete | supplement",
+    )
 
-        self.contact = None
-        """ Contact details for the publisher.
-        List of `ContactDetail` items (represented as `dict` in JSON). """
+    copyright: fhirtypes.Markdown = Field(
+        None,
+        alias="copyright",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Use and/or publishing restrictions",
+    )
 
-        self.content = None
-        """ not-present | example | fragment | complete | supplement.
-        Type `str`. """
+    count: fhirtypes.UnsignedInt = Field(
+        None,
+        alias="count",
+        title="Type `UnsignedInt` (represented as `dict` in JSON)",
+        description="Total concepts in the code system",
+    )
 
-        self.copyright = None
-        """ Use and/or publishing restrictions.
-        Type `str`. """
+    date: fhirtypes.DateTime = Field(
+        None,
+        alias="date",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Date last changed",
+    )
 
-        self.count = None
-        """ Total concepts in the code system.
-        Type `int`. """
+    description: fhirtypes.Markdown = Field(
+        None,
+        alias="description",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Natural language description of the code system",
+    )
 
-        self.date = None
-        """ Date last changed.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    experimental: bool = Field(
+        None,
+        alias="experimental",
+        title="Type `bool`",
+        description="For testing purposes, not real usage",
+    )
 
-        self.description = None
-        """ Natural language description of the code system.
-        Type `str`. """
+    filter: ListType[fhirtypes.CodeSystemFilterType] = Field(
+        None,
+        alias="filter",
+        title="List of `CodeSystemFilter` items (represented as `dict` in JSON)",
+        description="Filter that can be used in a value set",
+    )
 
-        self.experimental = None
-        """ For testing purposes, not real usage.
-        Type `bool`. """
+    hierarchyMeaning: fhirtypes.Code = Field(
+        None,
+        alias="hierarchyMeaning",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="grouped-by | is-a | part-of | classified-with",
+    )
 
-        self.filter = None
-        """ Filter that can be used in a value set.
-        List of `CodeSystemFilter` items (represented as `dict` in JSON). """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Additional identifier for the code system (business identifier)",
+    )
 
-        self.hierarchyMeaning = None
-        """ grouped-by | is-a | part-of | classified-with.
-        Type `str`. """
+    jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="jurisdiction",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Intended jurisdiction for code system (if applicable)",
+    )
 
-        self.identifier = None
-        """ Additional identifier for the code system (business identifier).
-        List of `Identifier` items (represented as `dict` in JSON). """
+    name: fhirtypes.String = Field(
+        None,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name for this code system (computer friendly)",
+    )
 
-        self.jurisdiction = None
-        """ Intended jurisdiction for code system (if applicable).
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    property: ListType[fhirtypes.CodeSystemPropertyType] = Field(
+        None,
+        alias="property",
+        title="List of `CodeSystemProperty` items (represented as `dict` in JSON)",
+        description="Additional information supplied about each concept",
+    )
 
-        self.name = None
-        """ Name for this code system (computer friendly).
-        Type `str`. """
+    publisher: fhirtypes.String = Field(
+        None,
+        alias="publisher",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name of the publisher (organization or individual)",
+    )
 
-        self.property = None
-        """ Additional information supplied about each concept.
-        List of `CodeSystemProperty` items (represented as `dict` in JSON). """
+    purpose: fhirtypes.Markdown = Field(
+        None,
+        alias="purpose",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Why this code system is defined",
+    )
 
-        self.publisher = None
-        """ Name of the publisher (organization or individual).
-        Type `str`. """
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="draft | active | retired | unknown",
+    )
 
-        self.purpose = None
-        """ Why this code system is defined.
-        Type `str`. """
+    supplements: fhirtypes.Canonical = Field(
+        None,
+        alias="supplements",
+        title="Type `Canonical` referencing `CodeSystem` (represented as `dict` in JSON)",
+        description="Canonical URL of Code System this adds designations and properties to",
+    )
 
-        self.status = None
-        """ draft | active | retired | unknown.
-        Type `str`. """
+    title: fhirtypes.String = Field(
+        None,
+        alias="title",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name for this code system (human friendly)",
+    )
 
-        self.supplements = None
-        """ Canonical URL of Code System this adds designations and properties
-        to.
-        Type `str` referencing `['CodeSystem']`. """
+    url: fhirtypes.Uri = Field(
+        None,
+        alias="url",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Canonical identifier for this code system, represented as a URI (globally unique) (Coding.system)",
+    )
 
-        self.title = None
-        """ Name for this code system (human friendly).
-        Type `str`. """
+    useContext: ListType[fhirtypes.UsageContextType] = Field(
+        None,
+        alias="useContext",
+        title="List of `UsageContext` items (represented as `dict` in JSON)",
+        description="The context that the content is intended to support",
+    )
 
-        self.url = None
-        """ Canonical identifier for this code system, represented as a URI
-        (globally unique) (Coding.system).
-        Type `str`. """
+    valueSet: fhirtypes.Canonical = Field(
+        None,
+        alias="valueSet",
+        title="Type `Canonical` referencing `ValueSet` (represented as `dict` in JSON)",
+        description="Canonical reference to the value set with entire code system",
+    )
 
-        self.useContext = None
-        """ The context that the content is intended to support.
-        List of `UsageContext` items (represented as `dict` in JSON). """
+    version: fhirtypes.String = Field(
+        None,
+        alias="version",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Business version of the code system (Coding.version)",
+    )
 
-        self.valueSet = None
-        """ Canonical reference to the value set with entire code system.
-        Type `str` referencing `['ValueSet']`. """
-
-        self.version = None
-        """ Business version of the code system (Coding.version).
-        Type `str`. """
-
-        self.versionNeeded = None
-        """ If definitions are not stable.
-        Type `bool`. """
-
-        super(CodeSystem, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(CodeSystem, self).elementProperties()
-        js.extend(
-            [
-                ("caseSensitive", "caseSensitive", bool, "boolean", False, None, False),
-                ("compositional", "compositional", bool, "boolean", False, None, False),
-                (
-                    "concept",
-                    "concept",
-                    CodeSystemConcept,
-                    "CodeSystemConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "contact",
-                    "contact",
-                    contactdetail.ContactDetail,
-                    "ContactDetail",
-                    True,
-                    None,
-                    False,
-                ),
-                ("content", "content", str, "code", False, None, True),
-                ("copyright", "copyright", str, "markdown", False, None, False),
-                ("count", "count", int, "unsignedInt", False, None, False),
-                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-                ("description", "description", str, "markdown", False, None, False),
-                ("experimental", "experimental", bool, "boolean", False, None, False),
-                (
-                    "filter",
-                    "filter",
-                    CodeSystemFilter,
-                    "CodeSystemFilter",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "hierarchyMeaning",
-                    "hierarchyMeaning",
-                    str,
-                    "code",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "jurisdiction",
-                    "jurisdiction",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                ("name", "name", str, "string", False, None, False),
-                (
-                    "property",
-                    "property",
-                    CodeSystemProperty,
-                    "CodeSystemProperty",
-                    True,
-                    None,
-                    False,
-                ),
-                ("publisher", "publisher", str, "string", False, None, False),
-                ("purpose", "purpose", str, "markdown", False, None, False),
-                ("status", "status", str, "code", False, None, True),
-                ("supplements", "supplements", str, "canonical", False, None, False),
-                ("title", "title", str, "string", False, None, False),
-                ("url", "url", str, "uri", False, None, False),
-                (
-                    "useContext",
-                    "useContext",
-                    usagecontext.UsageContext,
-                    "UsageContext",
-                    True,
-                    None,
-                    False,
-                ),
-                ("valueSet", "valueSet", str, "canonical", False, None, False),
-                ("version", "version", str, "string", False, None, False),
-                ("versionNeeded", "versionNeeded", bool, "boolean", False, None, False),
-            ]
-        )
-        return js
+    versionNeeded: bool = Field(
+        None,
+        alias="versionNeeded",
+        title="Type `bool`",
+        description="If definitions are not stable",
+    )
 
 
 class CodeSystemConcept(backboneelement.BackboneElement):
     """ Concepts in the code system.
-
     Concepts that are in the code system. The concept definitions are
     inherently hierarchical, but the definitions must be consulted to determine
     what the meanings of the hierarchical relationships are.
     """
 
-    resource_type = "CodeSystemConcept"
+    resource_type = Field("CodeSystemConcept", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    code: fhirtypes.Code = Field(
+        ...,
+        alias="code",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="Code that identifies concept",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    concept: ListType[fhirtypes.CodeSystemConceptType] = Field(
+        None,
+        alias="concept",
+        title="List of `CodeSystemConcept` items (represented as `dict` in JSON)",
+        description="Child Concepts (is-a/contains/categorizes)",
+    )
 
-        self.code = None
-        """ Code that identifies concept.
-        Type `str`. """
+    definition: fhirtypes.String = Field(
+        None,
+        alias="definition",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Formal definition",
+    )
 
-        self.concept = None
-        """ Child Concepts (is-a/contains/categorizes).
-        List of `CodeSystemConcept` items (represented as `dict` in JSON). """
+    designation: ListType[fhirtypes.CodeSystemConceptDesignationType] = Field(
+        None,
+        alias="designation",
+        title="List of `CodeSystemConceptDesignation` items (represented as `dict` in JSON)",
+        description="Additional representations for the concept",
+    )
 
-        self.definition = None
-        """ Formal definition.
-        Type `str`. """
+    display: fhirtypes.String = Field(
+        None,
+        alias="display",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Text to display to the user",
+    )
 
-        self.designation = None
-        """ Additional representations for the concept.
-        List of `CodeSystemConceptDesignation` items (represented as `dict` in JSON). """
-
-        self.display = None
-        """ Text to display to the user.
-        Type `str`. """
-
-        self.property = None
-        """ Property value for the concept.
-        List of `CodeSystemConceptProperty` items (represented as `dict` in JSON). """
-
-        super(CodeSystemConcept, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(CodeSystemConcept, self).elementProperties()
-        js.extend(
-            [
-                ("code", "code", str, "code", False, None, True),
-                (
-                    "concept",
-                    "concept",
-                    CodeSystemConcept,
-                    "CodeSystemConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                ("definition", "definition", str, "string", False, None, False),
-                (
-                    "designation",
-                    "designation",
-                    CodeSystemConceptDesignation,
-                    "CodeSystemConceptDesignation",
-                    True,
-                    None,
-                    False,
-                ),
-                ("display", "display", str, "string", False, None, False),
-                (
-                    "property",
-                    "property",
-                    CodeSystemConceptProperty,
-                    "CodeSystemConceptProperty",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    property: ListType[fhirtypes.CodeSystemConceptPropertyType] = Field(
+        None,
+        alias="property",
+        title="List of `CodeSystemConceptProperty` items (represented as `dict` in JSON)",
+        description="Property value for the concept",
+    )
 
 
 class CodeSystemConceptDesignation(backboneelement.BackboneElement):
     """ Additional representations for the concept.
-
     Additional representations for the concept - other languages, aliases,
     specialized purposes, used for particular purposes, etc.
     """
 
-    resource_type = "CodeSystemConceptDesignation"
+    resource_type = Field("CodeSystemConceptDesignation", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    language: fhirtypes.Code = Field(
+        None,
+        alias="language",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="Human language of the designation",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    use: fhirtypes.CodingType = Field(
+        None,
+        alias="use",
+        title="Type `Coding` (represented as `dict` in JSON)",
+        description="Details how this designation would be used",
+    )
 
-        self.language = None
-        """ Human language of the designation.
-        Type `str`. """
-
-        self.use = None
-        """ Details how this designation would be used.
-        Type `Coding` (represented as `dict` in JSON). """
-
-        self.value = None
-        """ The text value for this designation.
-        Type `str`. """
-
-        super(CodeSystemConceptDesignation, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(CodeSystemConceptDesignation, self).elementProperties()
-        js.extend(
-            [
-                ("language", "language", str, "code", False, None, False),
-                ("use", "use", coding.Coding, "Coding", False, None, False),
-                ("value", "value", str, "string", False, None, True),
-            ]
-        )
-        return js
+    value: fhirtypes.String = Field(
+        ...,
+        alias="value",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="The text value for this designation",
+    )
 
 
 class CodeSystemConceptProperty(backboneelement.BackboneElement):
     """ Property value for the concept.
-
     A property value for this concept.
     """
 
-    resource_type = "CodeSystemConceptProperty"
+    resource_type = Field("CodeSystemConceptProperty", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    code: fhirtypes.Code = Field(
+        ...,
+        alias="code",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="Reference to CodeSystem.property.code",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    valueBoolean: bool = Field(
+        None,
+        alias="valueBoolean",
+        title="Type `bool`",
+        description="Value of the property for this concept",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    valueCode: fhirtypes.Code = Field(
+        None,
+        alias="valueCode",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="Value of the property for this concept",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    valueCoding: fhirtypes.CodingType = Field(
+        None,
+        alias="valueCoding",
+        title="Type `Coding` (represented as `dict` in JSON)",
+        description="Value of the property for this concept",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    valueDateTime: fhirtypes.DateTime = Field(
+        None,
+        alias="valueDateTime",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Value of the property for this concept",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    valueDecimal: fhirtypes.Decimal = Field(
+        None,
+        alias="valueDecimal",
+        title="Type `Decimal` (represented as `dict` in JSON)",
+        description="Value of the property for this concept",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    valueInteger: fhirtypes.Integer = Field(
+        None,
+        alias="valueInteger",
+        title="Type `Integer` (represented as `dict` in JSON)",
+        description="Value of the property for this concept",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    valueString: fhirtypes.String = Field(
+        None,
+        alias="valueString",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Value of the property for this concept",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "value": [
+                "valueBoolean",
+                "valueCode",
+                "valueCoding",
+                "valueDateTime",
+                "valueDecimal",
+                "valueInteger",
+                "valueString",
+            ],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.code = None
-        """ Reference to CodeSystem.property.code.
-        Type `str`. """
-
-        self.valueBoolean = None
-        """ Value of the property for this concept.
-        Type `bool`. """
-
-        self.valueCode = None
-        """ Value of the property for this concept.
-        Type `str`. """
-
-        self.valueCoding = None
-        """ Value of the property for this concept.
-        Type `Coding` (represented as `dict` in JSON). """
-
-        self.valueDateTime = None
-        """ Value of the property for this concept.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.valueDecimal = None
-        """ Value of the property for this concept.
-        Type `float`. """
-
-        self.valueInteger = None
-        """ Value of the property for this concept.
-        Type `int`. """
-
-        self.valueString = None
-        """ Value of the property for this concept.
-        Type `str`. """
-
-        super(CodeSystemConceptProperty, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(CodeSystemConceptProperty, self).elementProperties()
-        js.extend(
-            [
-                ("code", "code", str, "code", False, None, True),
-                ("valueBoolean", "valueBoolean", bool, "boolean", False, "value", True),
-                ("valueCode", "valueCode", str, "code", False, "value", True),
-                (
-                    "valueCoding",
-                    "valueCoding",
-                    coding.Coding,
-                    "Coding",
-                    False,
-                    "value",
-                    True,
-                ),
-                (
-                    "valueDateTime",
-                    "valueDateTime",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    "value",
-                    True,
-                ),
-                (
-                    "valueDecimal",
-                    "valueDecimal",
-                    float,
-                    "decimal",
-                    False,
-                    "value",
-                    True,
-                ),
-                ("valueInteger", "valueInteger", int, "integer", False, "value", True),
-                ("valueString", "valueString", str, "string", False, "value", True),
-            ]
-        )
-        return js
+        return values
 
 
 class CodeSystemFilter(backboneelement.BackboneElement):
     """ Filter that can be used in a value set.
-
     A filter that can be used in a value set compose statement when selecting
     concepts using a filter.
     """
 
-    resource_type = "CodeSystemFilter"
+    resource_type = Field("CodeSystemFilter", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    code: fhirtypes.Code = Field(
+        ...,
+        alias="code",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="Code that identifies the filter",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    description: fhirtypes.String = Field(
+        None,
+        alias="description",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="How or why the filter is used",
+    )
 
-        self.code = None
-        """ Code that identifies the filter.
-        Type `str`. """
+    operator: ListType[fhirtypes.Code] = Field(
+        ...,
+        alias="operator",
+        title="List of `Code` items (represented as `dict` in JSON)",
+        description="= | is-a | descendent-of | is-not-a | regex | in | not-in | generalizes | exists",
+    )
 
-        self.description = None
-        """ How or why the filter is used.
-        Type `str`. """
-
-        self.operator = None
-        """ = | is-a | descendent-of | is-not-a | regex | in | not-in |
-        generalizes | exists.
-        List of `str` items. """
-
-        self.value = None
-        """ What to use for the value.
-        Type `str`. """
-
-        super(CodeSystemFilter, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(CodeSystemFilter, self).elementProperties()
-        js.extend(
-            [
-                ("code", "code", str, "code", False, None, True),
-                ("description", "description", str, "string", False, None, False),
-                ("operator", "operator", str, "code", True, None, True),
-                ("value", "value", str, "string", False, None, True),
-            ]
-        )
-        return js
+    value: fhirtypes.String = Field(
+        ...,
+        alias="value",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="What to use for the value",
+    )
 
 
 class CodeSystemProperty(backboneelement.BackboneElement):
     """ Additional information supplied about each concept.
-
     A property defines an additional slot through which additional information
     can be provided about a concept.
     """
 
-    resource_type = "CodeSystemProperty"
+    resource_type = Field("CodeSystemProperty", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    code: fhirtypes.Code = Field(
+        ...,
+        alias="code",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="Identifies the property on the concepts, and when referred to in operations",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    description: fhirtypes.String = Field(
+        None,
+        alias="description",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Why the property is defined, and/or what it conveys",
+    )
 
-        self.code = None
-        """ Identifies the property on the concepts, and when referred to in
-        operations.
-        Type `str`. """
+    type: fhirtypes.Code = Field(
+        ...,
+        alias="type",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="code | Coding | string | integer | boolean | dateTime | decimal",
+    )
 
-        self.description = None
-        """ Why the property is defined, and/or what it conveys.
-        Type `str`. """
-
-        self.type = None
-        """ code | Coding | string | integer | boolean | dateTime | decimal.
-        Type `str`. """
-
-        self.uri = None
-        """ Formal identifier for the property.
-        Type `str`. """
-
-        super(CodeSystemProperty, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(CodeSystemProperty, self).elementProperties()
-        js.extend(
-            [
-                ("code", "code", str, "code", False, None, True),
-                ("description", "description", str, "string", False, None, False),
-                ("type", "type", str, "code", False, None, True),
-                ("uri", "uri", str, "uri", False, None, False),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import coding
-except ImportError:
-    coding = sys.modules[__package__ + ".coding"]
-try:
-    from . import contactdetail
-except ImportError:
-    contactdetail = sys.modules[__package__ + ".contactdetail"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import usagecontext
-except ImportError:
-    usagecontext = sys.modules[__package__ + ".usagecontext"]
+    uri: fhirtypes.Uri = Field(
+        None,
+        alias="uri",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Formal identifier for the property",
+    )

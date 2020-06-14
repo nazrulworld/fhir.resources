@@ -6,1064 +6,595 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import conceptmap
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class ConceptMapTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("ConceptMap", js["resourceType"])
-        return conceptmap.ConceptMap(js)
+def impl_conceptmap_1(inst):
+    assert inst.contact[0].telecom[0].system == "url"
+    assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
+    assert inst.contact[0].telecom[1].system == "email"
+    assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
+    assert inst.date == fhirtypes.DateTime.validate("2017-04-19T07:44:43+10:00")
+    assert inst.group[0].element[0].code == "home"
+    assert inst.group[0].element[0].target[0].code == "H"
+    assert inst.group[0].element[0].target[0].equivalence == "equal"
+    assert inst.group[0].element[1].code == "work"
+    assert inst.group[0].element[1].target[0].code == "WP"
+    assert inst.group[0].element[1].target[0].equivalence == "equal"
+    assert inst.group[0].element[2].code == "temp"
+    assert inst.group[0].element[2].target[0].code == "TMP"
+    assert inst.group[0].element[2].target[0].equivalence == "equal"
+    assert inst.group[0].element[3].code == "old"
+    assert inst.group[0].element[3].target[0].code == "OLD"
+    assert inst.group[0].element[3].target[0].comment == "Bad or Old"
+    assert inst.group[0].element[3].target[0].equivalence == "narrower"
+    assert inst.group[0].element[3].target[1].code == "BAD"
+    assert inst.group[0].element[3].target[1].comment == "Bad or Old"
+    assert inst.group[0].element[3].target[1].equivalence == "narrower"
+    assert inst.group[0].source == "http://hl7.org/fhir/address-use"
+    assert inst.group[0].target == "http://hl7.org/fhir/v3/AddressUse"
+    assert inst.id == "cm-address-use-v3"
+    assert inst.name == "v3 map for AddressUse"
+    assert inst.publisher == "HL7 (FHIR Project)"
+    assert inst.sourceReference.reference == "http://hl7.org/fhir/ValueSet/address-use"
+    assert inst.status == "draft"
+    assert (
+        inst.targetReference.reference == "http://hl7.org/fhir/ValueSet/v3-AddressUse"
+    )
+    assert inst.text.status == "generated"
+    assert inst.url == "http://hl7.org/fhir/ConceptMap/cm-address-use-v3"
 
-    def testConceptMap1(self):
-        inst = self.instantiate_from("cm-address-use-v3.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ConceptMap instance")
-        self.implConceptMap1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("ConceptMap", js["resourceType"])
-        inst2 = conceptmap.ConceptMap(js)
-        self.implConceptMap1(inst2)
+def test_conceptmap_1(base_settings):
+    """No. 1 tests collection for ConceptMap.
+    Test File: cm-address-use-v3.json
+    """
+    filename = base_settings["unittest_data_dir"] / "cm-address-use-v3.json"
+    inst = conceptmap.ConceptMap.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ConceptMap" == inst.resource_type
 
-    def implConceptMap1(self, inst):
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].system), force_bytes("url")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].value),
-            force_bytes("http://hl7.org/fhir"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[1].system), force_bytes("email")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[1].value),
-            force_bytes("fhir@lists.hl7.org"),
-        )
-        self.assertEqual(inst.date.date, FHIRDate("2017-04-19T07:44:43+10:00").date)
-        self.assertEqual(inst.date.as_json(), "2017-04-19T07:44:43+10:00")
-        self.assertEqual(
-            force_bytes(inst.group[0].element[0].code), force_bytes("home")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[0].target[0].code), force_bytes("H")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[0].target[0].equivalence),
-            force_bytes("equal"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[1].code), force_bytes("work")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[1].target[0].code), force_bytes("WP")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[1].target[0].equivalence),
-            force_bytes("equal"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[2].code), force_bytes("temp")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[2].target[0].code), force_bytes("TMP")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[2].target[0].equivalence),
-            force_bytes("equal"),
-        )
-        self.assertEqual(force_bytes(inst.group[0].element[3].code), force_bytes("old"))
-        self.assertEqual(
-            force_bytes(inst.group[0].element[3].target[0].code), force_bytes("OLD")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[3].target[0].comment),
-            force_bytes("Bad or Old"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[3].target[0].equivalence),
-            force_bytes("narrower"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[3].target[1].code), force_bytes("BAD")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[3].target[1].comment),
-            force_bytes("Bad or Old"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[3].target[1].equivalence),
-            force_bytes("narrower"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].source),
-            force_bytes("http://hl7.org/fhir/address-use"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].target),
-            force_bytes("http://hl7.org/fhir/v3/AddressUse"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("cm-address-use-v3"))
-        self.assertEqual(force_bytes(inst.name), force_bytes("v3 map for AddressUse"))
-        self.assertEqual(force_bytes(inst.publisher), force_bytes("HL7 (FHIR Project)"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.url),
-            force_bytes("http://hl7.org/fhir/ConceptMap/cm-address-use-v3"),
-        )
+    impl_conceptmap_1(inst)
 
-    def testConceptMap2(self):
-        inst = self.instantiate_from("cm-medication-admin-status-v3.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ConceptMap instance")
-        self.implConceptMap2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ConceptMap" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("ConceptMap", js["resourceType"])
-        inst2 = conceptmap.ConceptMap(js)
-        self.implConceptMap2(inst2)
+    inst2 = conceptmap.ConceptMap(**data)
+    impl_conceptmap_1(inst2)
 
-    def implConceptMap2(self, inst):
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].system), force_bytes("url")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].value),
-            force_bytes("http://hl7.org/fhir"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[1].system), force_bytes("email")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[1].value),
-            force_bytes("fhir@lists.hl7.org"),
-        )
-        self.assertEqual(inst.date.date, FHIRDate("2017-04-19T07:44:43+10:00").date)
-        self.assertEqual(inst.date.as_json(), "2017-04-19T07:44:43+10:00")
-        self.assertEqual(
-            force_bytes(inst.group[0].element[0].code), force_bytes("in-progress")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[0].target[0].code), force_bytes("active")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[0].target[0].equivalence),
-            force_bytes("equal"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[1].code), force_bytes("on-hold")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[1].target[0].code),
-            force_bytes("suspended"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[1].target[0].equivalence),
-            force_bytes("equal"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[2].code), force_bytes("completed")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[2].target[0].code),
-            force_bytes("completed"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[2].target[0].equivalence),
-            force_bytes("equal"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[3].code), force_bytes("entered-in-error")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[3].target[0].code),
-            force_bytes("nullified"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[3].target[0].equivalence),
-            force_bytes("equal"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[4].code), force_bytes("stopped")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[4].target[0].code), force_bytes("aborted")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[4].target[0].equivalence),
-            force_bytes("equal"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].source),
-            force_bytes("http://hl7.org/fhir/medication-admin-status"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].target),
-            force_bytes("http://hl7.org/fhir/v3/ActStatus"),
-        )
-        self.assertEqual(
-            force_bytes(inst.id), force_bytes("cm-medication-admin-status-v3")
-        )
-        self.assertEqual(
-            force_bytes(inst.name),
-            force_bytes("v3 map for MedicationAdministrationStatus"),
-        )
-        self.assertEqual(force_bytes(inst.publisher), force_bytes("HL7 (FHIR Project)"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.url),
-            force_bytes("http://hl7.org/fhir/ConceptMap/cm-medication-admin-status-v3"),
-        )
 
-    def testConceptMap3(self):
-        inst = self.instantiate_from("cm-medication-request-status-v3.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ConceptMap instance")
-        self.implConceptMap3(inst)
+def impl_conceptmap_2(inst):
+    assert inst.contact[0].telecom[0].system == "url"
+    assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
+    assert inst.contact[0].telecom[1].system == "email"
+    assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
+    assert inst.date == fhirtypes.DateTime.validate("2017-04-19T07:44:43+10:00")
+    assert inst.group[0].element[0].code == "in-progress"
+    assert inst.group[0].element[0].target[0].code == "active"
+    assert inst.group[0].element[0].target[0].equivalence == "equal"
+    assert inst.group[0].element[1].code == "on-hold"
+    assert inst.group[0].element[1].target[0].code == "suspended"
+    assert inst.group[0].element[1].target[0].equivalence == "equal"
+    assert inst.group[0].element[2].code == "completed"
+    assert inst.group[0].element[2].target[0].code == "completed"
+    assert inst.group[0].element[2].target[0].equivalence == "equal"
+    assert inst.group[0].element[3].code == "entered-in-error"
+    assert inst.group[0].element[3].target[0].code == "nullified"
+    assert inst.group[0].element[3].target[0].equivalence == "equal"
+    assert inst.group[0].element[4].code == "stopped"
+    assert inst.group[0].element[4].target[0].code == "aborted"
+    assert inst.group[0].element[4].target[0].equivalence == "equal"
+    assert inst.group[0].source == "http://hl7.org/fhir/medication-admin-status"
+    assert inst.group[0].target == "http://hl7.org/fhir/v3/ActStatus"
+    assert inst.id == "cm-medication-admin-status-v3"
+    assert inst.name == "v3 map for MedicationAdministrationStatus"
+    assert inst.publisher == "HL7 (FHIR Project)"
+    assert (
+        inst.sourceReference.reference
+        == "http://hl7.org/fhir/ValueSet/medication-admin-status"
+    )
+    assert inst.status == "draft"
+    assert inst.targetReference.reference == "http://hl7.org/fhir/ValueSet/v3-ActStatus"
+    assert inst.text.status == "generated"
+    assert inst.url == "http://hl7.org/fhir/ConceptMap/cm-medication-admin-status-v3"
 
-        js = inst.as_json()
-        self.assertEqual("ConceptMap", js["resourceType"])
-        inst2 = conceptmap.ConceptMap(js)
-        self.implConceptMap3(inst2)
 
-    def implConceptMap3(self, inst):
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].system), force_bytes("url")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].value),
-            force_bytes("http://hl7.org/fhir"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[1].system), force_bytes("email")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[1].value),
-            force_bytes("fhir@lists.hl7.org"),
-        )
-        self.assertEqual(inst.date.date, FHIRDate("2017-04-19T07:44:43+10:00").date)
-        self.assertEqual(inst.date.as_json(), "2017-04-19T07:44:43+10:00")
-        self.assertEqual(
-            force_bytes(inst.group[0].element[0].code), force_bytes("active")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[0].target[0].code), force_bytes("active")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[0].target[0].equivalence),
-            force_bytes("equal"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[1].code), force_bytes("on-hold")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[1].target[0].code),
-            force_bytes("suspended"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[1].target[0].equivalence),
-            force_bytes("equal"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[2].code), force_bytes("cancelled")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[2].target[0].code),
-            force_bytes("cancelled"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[2].target[0].equivalence),
-            force_bytes("equal"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[3].code), force_bytes("completed")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[3].target[0].code),
-            force_bytes("completed"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[3].target[0].equivalence),
-            force_bytes("equal"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[4].code), force_bytes("entered-in-error")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[4].target[0].code),
-            force_bytes("nullified"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[4].target[0].equivalence),
-            force_bytes("equal"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[5].code), force_bytes("stopped")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[5].target[0].code), force_bytes("aborted")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[5].target[0].equivalence),
-            force_bytes("equal"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[6].code), force_bytes("draft")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[6].target[0].code), force_bytes("new")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[6].target[0].equivalence),
-            force_bytes("equal"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].source),
-            force_bytes("http://hl7.org/fhir/medication-request-status"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].target),
-            force_bytes("http://hl7.org/fhir/v3/ActStatus"),
-        )
-        self.assertEqual(
-            force_bytes(inst.id), force_bytes("cm-medication-request-status-v3")
-        )
-        self.assertEqual(
-            force_bytes(inst.name), force_bytes("v3 map for MedicationRequestStatus")
-        )
-        self.assertEqual(force_bytes(inst.publisher), force_bytes("HL7 (FHIR Project)"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.url),
-            force_bytes(
-                "http://hl7.org/fhir/ConceptMap/cm-medication-request-status-v3"
-            ),
-        )
+def test_conceptmap_2(base_settings):
+    """No. 2 tests collection for ConceptMap.
+    Test File: cm-medication-admin-status-v3.json
+    """
+    filename = base_settings["unittest_data_dir"] / "cm-medication-admin-status-v3.json"
+    inst = conceptmap.ConceptMap.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ConceptMap" == inst.resource_type
 
-    def testConceptMap4(self):
-        inst = self.instantiate_from("cm-observation-relationshiptypes-v3.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ConceptMap instance")
-        self.implConceptMap4(inst)
+    impl_conceptmap_2(inst)
 
-        js = inst.as_json()
-        self.assertEqual("ConceptMap", js["resourceType"])
-        inst2 = conceptmap.ConceptMap(js)
-        self.implConceptMap4(inst2)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ConceptMap" == data["resourceType"]
 
-    def implConceptMap4(self, inst):
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].system), force_bytes("url")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].value),
-            force_bytes("http://hl7.org/fhir"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[1].system), force_bytes("email")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[1].value),
-            force_bytes("fhir@lists.hl7.org"),
-        )
-        self.assertEqual(inst.date.date, FHIRDate("2017-04-19T07:44:43+10:00").date)
-        self.assertEqual(inst.date.as_json(), "2017-04-19T07:44:43+10:00")
-        self.assertEqual(
-            force_bytes(inst.group[0].element[0].code), force_bytes("has-member")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[0].target[0].code), force_bytes("MBR")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[0].target[0].equivalence),
-            force_bytes("equal"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[1].code), force_bytes("derived-from")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[1].target[0].code), force_bytes("DRIV")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[1].target[0].equivalence),
-            force_bytes("equal"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[2].code), force_bytes("sequel-to")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[2].target[0].code), force_bytes("SEQL")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[2].target[0].equivalence),
-            force_bytes("equal"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[3].code), force_bytes("replaces")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[3].target[0].code), force_bytes("RPLC")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[3].target[0].equivalence),
-            force_bytes("equal"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[4].code), force_bytes("qualified-by")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[4].target[0].code), force_bytes("QUALF")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[4].target[0].equivalence),
-            force_bytes("equal"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[5].code), force_bytes("interfered-by")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[5].target[0].code), force_bytes("INTF")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[5].target[0].equivalence),
-            force_bytes("equal"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].source),
-            force_bytes("http://hl7.org/fhir/observation-relationshiptypes"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].target),
-            force_bytes("http://hl7.org/fhir/v3/ActRelationshipType"),
-        )
-        self.assertEqual(
-            force_bytes(inst.id), force_bytes("cm-observation-relationshiptypes-v3")
-        )
-        self.assertEqual(
-            force_bytes(inst.name),
-            force_bytes("v3 map for ObservationRelationshipType"),
-        )
-        self.assertEqual(force_bytes(inst.publisher), force_bytes("HL7 (FHIR Project)"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.url),
-            force_bytes(
-                "http://hl7.org/fhir/ConceptMap/cm-observation-relationshiptypes-v3"
-            ),
-        )
+    inst2 = conceptmap.ConceptMap(**data)
+    impl_conceptmap_2(inst2)
 
-    def testConceptMap5(self):
-        inst = self.instantiate_from("cm-composition-status-v3.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ConceptMap instance")
-        self.implConceptMap5(inst)
 
-        js = inst.as_json()
-        self.assertEqual("ConceptMap", js["resourceType"])
-        inst2 = conceptmap.ConceptMap(js)
-        self.implConceptMap5(inst2)
+def impl_conceptmap_3(inst):
+    assert inst.contact[0].telecom[0].system == "url"
+    assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
+    assert inst.contact[0].telecom[1].system == "email"
+    assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
+    assert inst.date == fhirtypes.DateTime.validate("2017-04-19T07:44:43+10:00")
+    assert inst.group[0].element[0].code == "active"
+    assert inst.group[0].element[0].target[0].code == "active"
+    assert inst.group[0].element[0].target[0].equivalence == "equal"
+    assert inst.group[0].element[1].code == "on-hold"
+    assert inst.group[0].element[1].target[0].code == "suspended"
+    assert inst.group[0].element[1].target[0].equivalence == "equal"
+    assert inst.group[0].element[2].code == "cancelled"
+    assert inst.group[0].element[2].target[0].code == "cancelled"
+    assert inst.group[0].element[2].target[0].equivalence == "equal"
+    assert inst.group[0].element[3].code == "completed"
+    assert inst.group[0].element[3].target[0].code == "completed"
+    assert inst.group[0].element[3].target[0].equivalence == "equal"
+    assert inst.group[0].element[4].code == "entered-in-error"
+    assert inst.group[0].element[4].target[0].code == "nullified"
+    assert inst.group[0].element[4].target[0].equivalence == "equal"
+    assert inst.group[0].element[5].code == "stopped"
+    assert inst.group[0].element[5].target[0].code == "aborted"
+    assert inst.group[0].element[5].target[0].equivalence == "equal"
+    assert inst.group[0].element[6].code == "draft"
+    assert inst.group[0].element[6].target[0].code == "new"
+    assert inst.group[0].element[6].target[0].equivalence == "equal"
+    assert inst.group[0].source == "http://hl7.org/fhir/medication-request-status"
+    assert inst.group[0].target == "http://hl7.org/fhir/v3/ActStatus"
+    assert inst.id == "cm-medication-request-status-v3"
+    assert inst.name == "v3 map for MedicationRequestStatus"
+    assert inst.publisher == "HL7 (FHIR Project)"
+    assert (
+        inst.sourceReference.reference
+        == "http://hl7.org/fhir/ValueSet/medication-request-status"
+    )
+    assert inst.status == "draft"
+    assert inst.targetReference.reference == "http://hl7.org/fhir/ValueSet/v3-ActStatus"
+    assert inst.text.status == "generated"
+    assert inst.url == "http://hl7.org/fhir/ConceptMap/cm-medication-request-status-v3"
 
-    def implConceptMap5(self, inst):
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].system), force_bytes("url")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].value),
-            force_bytes("http://hl7.org/fhir"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[1].system), force_bytes("email")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[1].value),
-            force_bytes("fhir@lists.hl7.org"),
-        )
-        self.assertEqual(inst.date.date, FHIRDate("2017-04-19T07:44:43+10:00").date)
-        self.assertEqual(inst.date.as_json(), "2017-04-19T07:44:43+10:00")
-        self.assertEqual(
-            force_bytes(inst.group[0].element[0].code), force_bytes("preliminary")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[0].target[0].code), force_bytes("active")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[0].target[0].equivalence),
-            force_bytes("equivalent"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[1].code), force_bytes("final")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[1].target[0].code),
-            force_bytes("completed"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[1].target[0].equivalence),
-            force_bytes("wider"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[2].code), force_bytes("amended")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[2].target[0].code),
-            force_bytes("completed"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[2].target[0].equivalence),
-            force_bytes("wider"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[3].code), force_bytes("entered-in-error")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[3].target[0].code),
-            force_bytes("nullified"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[3].target[0].equivalence),
-            force_bytes("equivalent"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].source),
-            force_bytes("http://hl7.org/fhir/composition-status"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].target),
-            force_bytes("http://hl7.org/fhir/v3/ActStatus"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("cm-composition-status-v3"))
-        self.assertEqual(
-            force_bytes(inst.name), force_bytes("v3 map for CompositionStatus")
-        )
-        self.assertEqual(force_bytes(inst.publisher), force_bytes("HL7 (FHIR Project)"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.url),
-            force_bytes("http://hl7.org/fhir/ConceptMap/cm-composition-status-v3"),
-        )
 
-    def testConceptMap6(self):
-        inst = self.instantiate_from("cm-contact-point-use-v2.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ConceptMap instance")
-        self.implConceptMap6(inst)
+def test_conceptmap_3(base_settings):
+    """No. 3 tests collection for ConceptMap.
+    Test File: cm-medication-request-status-v3.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "cm-medication-request-status-v3.json"
+    )
+    inst = conceptmap.ConceptMap.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ConceptMap" == inst.resource_type
 
-        js = inst.as_json()
-        self.assertEqual("ConceptMap", js["resourceType"])
-        inst2 = conceptmap.ConceptMap(js)
-        self.implConceptMap6(inst2)
+    impl_conceptmap_3(inst)
 
-    def implConceptMap6(self, inst):
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].system), force_bytes("url")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].value),
-            force_bytes("http://hl7.org/fhir"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[1].system), force_bytes("email")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[1].value),
-            force_bytes("fhir@lists.hl7.org"),
-        )
-        self.assertEqual(inst.date.date, FHIRDate("2017-04-19T07:44:43+10:00").date)
-        self.assertEqual(inst.date.as_json(), "2017-04-19T07:44:43+10:00")
-        self.assertEqual(
-            force_bytes(inst.group[0].element[0].code), force_bytes("home")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[0].target[0].code), force_bytes("PRN")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[0].target[0].equivalence),
-            force_bytes("wider"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[0].target[1].code), force_bytes("ORN")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[0].target[1].equivalence),
-            force_bytes("wider"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[0].target[2].code), force_bytes("VHN")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[0].target[2].equivalence),
-            force_bytes("wider"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[1].code), force_bytes("work")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[1].target[0].code), force_bytes("WPN")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[1].target[0].equivalence),
-            force_bytes("equivalent"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[2].code), force_bytes("mobile")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[2].target[0].code), force_bytes("PRS")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[2].target[0].equivalence),
-            force_bytes("equivalent"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].source),
-            force_bytes("http://hl7.org/fhir/contact-point-use"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].target),
-            force_bytes("http://hl7.org/fhir/v2/0201"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("cm-contact-point-use-v2"))
-        self.assertEqual(
-            force_bytes(inst.name), force_bytes("v2 map for ContactPointUse")
-        )
-        self.assertEqual(force_bytes(inst.publisher), force_bytes("HL7 (FHIR Project)"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.url),
-            force_bytes("http://hl7.org/fhir/ConceptMap/cm-contact-point-use-v2"),
-        )
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ConceptMap" == data["resourceType"]
 
-    def testConceptMap7(self):
-        inst = self.instantiate_from("cm-contact-point-use-v3.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ConceptMap instance")
-        self.implConceptMap7(inst)
+    inst2 = conceptmap.ConceptMap(**data)
+    impl_conceptmap_3(inst2)
 
-        js = inst.as_json()
-        self.assertEqual("ConceptMap", js["resourceType"])
-        inst2 = conceptmap.ConceptMap(js)
-        self.implConceptMap7(inst2)
 
-    def implConceptMap7(self, inst):
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].system), force_bytes("url")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].value),
-            force_bytes("http://hl7.org/fhir"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[1].system), force_bytes("email")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[1].value),
-            force_bytes("fhir@lists.hl7.org"),
-        )
-        self.assertEqual(inst.date.date, FHIRDate("2017-04-19T07:44:43+10:00").date)
-        self.assertEqual(inst.date.as_json(), "2017-04-19T07:44:43+10:00")
-        self.assertEqual(
-            force_bytes(inst.group[0].element[0].code), force_bytes("home")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[0].target[0].code), force_bytes("H")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[0].target[0].equivalence),
-            force_bytes("equal"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[1].code), force_bytes("work")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[1].target[0].code), force_bytes("WP")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[1].target[0].equivalence),
-            force_bytes("equal"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[2].code), force_bytes("temp")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[2].target[0].code), force_bytes("TMP")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[2].target[0].equivalence),
-            force_bytes("equal"),
-        )
-        self.assertEqual(force_bytes(inst.group[0].element[3].code), force_bytes("old"))
-        self.assertEqual(
-            force_bytes(inst.group[0].element[3].target[0].code), force_bytes("OLD")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[3].target[0].comment),
-            force_bytes("Old and Bad"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[3].target[0].equivalence),
-            force_bytes("narrower"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[3].target[1].code), force_bytes("BAD")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[3].target[1].comment),
-            force_bytes("Old and Bad"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[3].target[1].equivalence),
-            force_bytes("narrower"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[4].code), force_bytes("mobile")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[4].target[0].code), force_bytes("MC")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[4].target[0].equivalence),
-            force_bytes("equal"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].source),
-            force_bytes("http://hl7.org/fhir/contact-point-use"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].target),
-            force_bytes("http://hl7.org/fhir/v3/AddressUse"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("cm-contact-point-use-v3"))
-        self.assertEqual(
-            force_bytes(inst.name), force_bytes("v3 map for ContactPointUse")
-        )
-        self.assertEqual(force_bytes(inst.publisher), force_bytes("HL7 (FHIR Project)"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.url),
-            force_bytes("http://hl7.org/fhir/ConceptMap/cm-contact-point-use-v3"),
-        )
+def impl_conceptmap_4(inst):
+    assert inst.contact[0].telecom[0].system == "url"
+    assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
+    assert inst.contact[0].telecom[1].system == "email"
+    assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
+    assert inst.date == fhirtypes.DateTime.validate("2017-04-19T07:44:43+10:00")
+    assert inst.group[0].element[0].code == "has-member"
+    assert inst.group[0].element[0].target[0].code == "MBR"
+    assert inst.group[0].element[0].target[0].equivalence == "equal"
+    assert inst.group[0].element[1].code == "derived-from"
+    assert inst.group[0].element[1].target[0].code == "DRIV"
+    assert inst.group[0].element[1].target[0].equivalence == "equal"
+    assert inst.group[0].element[2].code == "sequel-to"
+    assert inst.group[0].element[2].target[0].code == "SEQL"
+    assert inst.group[0].element[2].target[0].equivalence == "equal"
+    assert inst.group[0].element[3].code == "replaces"
+    assert inst.group[0].element[3].target[0].code == "RPLC"
+    assert inst.group[0].element[3].target[0].equivalence == "equal"
+    assert inst.group[0].element[4].code == "qualified-by"
+    assert inst.group[0].element[4].target[0].code == "QUALF"
+    assert inst.group[0].element[4].target[0].equivalence == "equal"
+    assert inst.group[0].element[5].code == "interfered-by"
+    assert inst.group[0].element[5].target[0].code == "INTF"
+    assert inst.group[0].element[5].target[0].equivalence == "equal"
+    assert inst.group[0].source == "http://hl7.org/fhir/observation-relationshiptypes"
+    assert inst.group[0].target == "http://hl7.org/fhir/v3/ActRelationshipType"
+    assert inst.id == "cm-observation-relationshiptypes-v3"
+    assert inst.name == "v3 map for ObservationRelationshipType"
+    assert inst.publisher == "HL7 (FHIR Project)"
+    assert (
+        inst.sourceReference.reference
+        == "http://hl7.org/fhir/ValueSet/observation-relationshiptypes"
+    )
+    assert inst.status == "draft"
+    assert (
+        inst.targetReference.reference
+        == "http://hl7.org/fhir/ValueSet/v3-ActRelationshipType"
+    )
+    assert inst.text.status == "generated"
+    assert (
+        inst.url == "http://hl7.org/fhir/ConceptMap/cm-observation-relationshiptypes-v3"
+    )
 
-    def testConceptMap8(self):
-        inst = self.instantiate_from("cm-address-use-v2.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ConceptMap instance")
-        self.implConceptMap8(inst)
 
-        js = inst.as_json()
-        self.assertEqual("ConceptMap", js["resourceType"])
-        inst2 = conceptmap.ConceptMap(js)
-        self.implConceptMap8(inst2)
+def test_conceptmap_4(base_settings):
+    """No. 4 tests collection for ConceptMap.
+    Test File: cm-observation-relationshiptypes-v3.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "cm-observation-relationshiptypes-v3.json"
+    )
+    inst = conceptmap.ConceptMap.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ConceptMap" == inst.resource_type
 
-    def implConceptMap8(self, inst):
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].system), force_bytes("url")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].value),
-            force_bytes("http://hl7.org/fhir"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[1].system), force_bytes("email")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[1].value),
-            force_bytes("fhir@lists.hl7.org"),
-        )
-        self.assertEqual(inst.date.date, FHIRDate("2017-04-19T07:44:43+10:00").date)
-        self.assertEqual(inst.date.as_json(), "2017-04-19T07:44:43+10:00")
-        self.assertEqual(
-            force_bytes(inst.group[0].element[0].code), force_bytes("home")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[0].target[0].code), force_bytes("H")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[0].target[0].equivalence),
-            force_bytes("equivalent"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[1].code), force_bytes("work")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[1].target[0].code), force_bytes("O")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[1].target[0].equivalence),
-            force_bytes("equivalent"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[2].code), force_bytes("temp")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[2].target[0].code), force_bytes("C")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[2].target[0].equivalence),
-            force_bytes("equivalent"),
-        )
-        self.assertEqual(force_bytes(inst.group[0].element[3].code), force_bytes("old"))
-        self.assertEqual(
-            force_bytes(inst.group[0].element[3].target[0].code), force_bytes("BA")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[3].target[0].comment),
-            force_bytes("unclear about old addresses"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[3].target[0].equivalence),
-            force_bytes("wider"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].source),
-            force_bytes("http://hl7.org/fhir/address-use"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].target),
-            force_bytes("http://hl7.org/fhir/v2/0190"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("cm-address-use-v2"))
-        self.assertEqual(force_bytes(inst.name), force_bytes("v2 map for AddressUse"))
-        self.assertEqual(force_bytes(inst.publisher), force_bytes("HL7 (FHIR Project)"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.url),
-            force_bytes("http://hl7.org/fhir/ConceptMap/cm-address-use-v2"),
-        )
+    impl_conceptmap_4(inst)
 
-    def testConceptMap9(self):
-        inst = self.instantiate_from("cm-detectedissue-severity-v3.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ConceptMap instance")
-        self.implConceptMap9(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ConceptMap" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("ConceptMap", js["resourceType"])
-        inst2 = conceptmap.ConceptMap(js)
-        self.implConceptMap9(inst2)
+    inst2 = conceptmap.ConceptMap(**data)
+    impl_conceptmap_4(inst2)
 
-    def implConceptMap9(self, inst):
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].system), force_bytes("url")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].value),
-            force_bytes("http://hl7.org/fhir"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[1].system), force_bytes("email")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[1].value),
-            force_bytes("fhir@lists.hl7.org"),
-        )
-        self.assertEqual(inst.date.date, FHIRDate("2017-04-19T07:44:43+10:00").date)
-        self.assertEqual(inst.date.as_json(), "2017-04-19T07:44:43+10:00")
-        self.assertEqual(
-            force_bytes(inst.group[0].element[0].code), force_bytes("high")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[0].target[0].code), force_bytes("H")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[0].target[0].equivalence),
-            force_bytes("equal"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[1].code), force_bytes("moderate")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[1].target[0].code), force_bytes("M")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[1].target[0].equivalence),
-            force_bytes("equal"),
-        )
-        self.assertEqual(force_bytes(inst.group[0].element[2].code), force_bytes("low"))
-        self.assertEqual(
-            force_bytes(inst.group[0].element[2].target[0].code), force_bytes("L")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[2].target[0].equivalence),
-            force_bytes("equal"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].source),
-            force_bytes("http://hl7.org/fhir/detectedissue-severity"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].target),
-            force_bytes("http://hl7.org/fhir/v3/ObservationValue"),
-        )
-        self.assertEqual(
-            force_bytes(inst.id), force_bytes("cm-detectedissue-severity-v3")
-        )
-        self.assertEqual(
-            force_bytes(inst.name), force_bytes("v3 map for DetectedIssueSeverity")
-        )
-        self.assertEqual(force_bytes(inst.publisher), force_bytes("HL7 (FHIR Project)"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.url),
-            force_bytes("http://hl7.org/fhir/ConceptMap/cm-detectedissue-severity-v3"),
-        )
 
-    def testConceptMap10(self):
-        inst = self.instantiate_from("conceptmap-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ConceptMap instance")
-        self.implConceptMap10(inst)
+def impl_conceptmap_5(inst):
+    assert inst.contact[0].telecom[0].system == "url"
+    assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
+    assert inst.contact[0].telecom[1].system == "email"
+    assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
+    assert inst.date == fhirtypes.DateTime.validate("2017-04-19T07:44:43+10:00")
+    assert inst.group[0].element[0].code == "preliminary"
+    assert inst.group[0].element[0].target[0].code == "active"
+    assert inst.group[0].element[0].target[0].equivalence == "equivalent"
+    assert inst.group[0].element[1].code == "final"
+    assert inst.group[0].element[1].target[0].code == "completed"
+    assert inst.group[0].element[1].target[0].equivalence == "wider"
+    assert inst.group[0].element[2].code == "amended"
+    assert inst.group[0].element[2].target[0].code == "completed"
+    assert inst.group[0].element[2].target[0].equivalence == "wider"
+    assert inst.group[0].element[3].code == "entered-in-error"
+    assert inst.group[0].element[3].target[0].code == "nullified"
+    assert inst.group[0].element[3].target[0].equivalence == "equivalent"
+    assert inst.group[0].source == "http://hl7.org/fhir/composition-status"
+    assert inst.group[0].target == "http://hl7.org/fhir/v3/ActStatus"
+    assert inst.id == "cm-composition-status-v3"
+    assert inst.name == "v3 map for CompositionStatus"
+    assert inst.publisher == "HL7 (FHIR Project)"
+    assert (
+        inst.sourceReference.reference
+        == "http://hl7.org/fhir/ValueSet/composition-status"
+    )
+    assert inst.status == "draft"
+    assert inst.targetReference.reference == "http://hl7.org/fhir/ValueSet/v3-ActStatus"
+    assert inst.text.status == "generated"
+    assert inst.url == "http://hl7.org/fhir/ConceptMap/cm-composition-status-v3"
 
-        js = inst.as_json()
-        self.assertEqual("ConceptMap", js["resourceType"])
-        inst2 = conceptmap.ConceptMap(js)
-        self.implConceptMap10(inst2)
 
-    def implConceptMap10(self, inst):
-        self.assertEqual(
-            force_bytes(inst.contact[0].name),
-            force_bytes("FHIR project team (example)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].system), force_bytes("url")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].value),
-            force_bytes("http://hl7.org/fhir"),
-        )
-        self.assertEqual(force_bytes(inst.copyright), force_bytes("Creative Commons 0"))
-        self.assertEqual(inst.date.date, FHIRDate("2012-06-13").date)
-        self.assertEqual(inst.date.as_json(), "2012-06-13")
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes(
-                "A mapping between the FHIR and HL7 v3 AddressUse Code systems"
-            ),
-        )
-        self.assertTrue(inst.experimental)
-        self.assertEqual(
-            force_bytes(inst.group[0].element[0].code), force_bytes("home")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[0].display), force_bytes("home")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[0].target[0].code), force_bytes("H")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[0].target[0].display), force_bytes("home")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[1].code), force_bytes("work")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[1].display), force_bytes("work")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[1].target[0].code), force_bytes("WP")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[1].target[0].display),
-            force_bytes("work place"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[2].code), force_bytes("temp")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[2].display), force_bytes("temp")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[2].target[0].code), force_bytes("TMP")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[2].target[0].display),
-            force_bytes("temporary address"),
-        )
-        self.assertEqual(force_bytes(inst.group[0].element[3].code), force_bytes("old"))
-        self.assertEqual(
-            force_bytes(inst.group[0].element[3].display), force_bytes("old")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[3].target[0].code), force_bytes("BAD")
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[3].target[0].comment),
-            force_bytes(
-                "In the HL7 v3 AD, old is handled by the usablePeriod element, but you have to provide a time, there's no simple equivalent of flagging an address as old"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[3].target[0].display),
-            force_bytes("bad address"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].element[3].target[0].equivalence),
-            force_bytes("disjoint"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].source),
-            force_bytes("http://hl7.org/fhir/address-use"),
-        )
-        self.assertEqual(
-            force_bytes(inst.group[0].target),
-            force_bytes("http://hl7.org/fhir/v3/AddressUse"),
-        )
-        self.assertEqual(force_bytes(inst.group[0].unmapped.code), force_bytes("temp"))
-        self.assertEqual(
-            force_bytes(inst.group[0].unmapped.display), force_bytes("temp")
-        )
-        self.assertEqual(force_bytes(inst.group[0].unmapped.mode), force_bytes("fixed"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("101"))
-        self.assertEqual(
-            force_bytes(inst.identifier.system), force_bytes("urn:ietf:rfc:3986")
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier.value),
-            force_bytes("urn:uuid:53cd62ee-033e-414c-9f58-3ca97b5ffc3b"),
-        )
-        self.assertEqual(force_bytes(inst.name), force_bytes("FHIR-v3-Address-Use"))
-        self.assertEqual(force_bytes(inst.publisher), force_bytes("HL7, Inc"))
-        self.assertEqual(
-            force_bytes(inst.purpose),
-            force_bytes("To help implementers map from HL7 v3/CDA to FHIR"),
-        )
-        self.assertEqual(
-            force_bytes(inst.sourceUri),
-            force_bytes("http://hl7.org/fhir/ValueSet/address-use"),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-        self.assertEqual(
-            force_bytes(inst.targetUri),
-            force_bytes("http://hl7.org/fhir/ValueSet/v3-AddressUse"),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.title), force_bytes("FHIR/v3 Address Use Mapping")
-        )
-        self.assertEqual(
-            force_bytes(inst.url), force_bytes("http://hl7.org/fhir/ConceptMap/101")
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[0].code.code), force_bytes("venue")
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[0].code.system),
-            force_bytes("http://hl7.org/fhir/usage-context-type"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[0].valueCodeableConcept.text),
-            force_bytes("for CDA Usage"),
-        )
-        self.assertEqual(force_bytes(inst.version), force_bytes("20120613"))
+def test_conceptmap_5(base_settings):
+    """No. 5 tests collection for ConceptMap.
+    Test File: cm-composition-status-v3.json
+    """
+    filename = base_settings["unittest_data_dir"] / "cm-composition-status-v3.json"
+    inst = conceptmap.ConceptMap.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ConceptMap" == inst.resource_type
+
+    impl_conceptmap_5(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ConceptMap" == data["resourceType"]
+
+    inst2 = conceptmap.ConceptMap(**data)
+    impl_conceptmap_5(inst2)
+
+
+def impl_conceptmap_6(inst):
+    assert inst.contact[0].telecom[0].system == "url"
+    assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
+    assert inst.contact[0].telecom[1].system == "email"
+    assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
+    assert inst.date == fhirtypes.DateTime.validate("2017-04-19T07:44:43+10:00")
+    assert inst.group[0].element[0].code == "home"
+    assert inst.group[0].element[0].target[0].code == "PRN"
+    assert inst.group[0].element[0].target[0].equivalence == "wider"
+    assert inst.group[0].element[0].target[1].code == "ORN"
+    assert inst.group[0].element[0].target[1].equivalence == "wider"
+    assert inst.group[0].element[0].target[2].code == "VHN"
+    assert inst.group[0].element[0].target[2].equivalence == "wider"
+    assert inst.group[0].element[1].code == "work"
+    assert inst.group[0].element[1].target[0].code == "WPN"
+    assert inst.group[0].element[1].target[0].equivalence == "equivalent"
+    assert inst.group[0].element[2].code == "mobile"
+    assert inst.group[0].element[2].target[0].code == "PRS"
+    assert inst.group[0].element[2].target[0].equivalence == "equivalent"
+    assert inst.group[0].source == "http://hl7.org/fhir/contact-point-use"
+    assert inst.group[0].target == "http://hl7.org/fhir/v2/0201"
+    assert inst.id == "cm-contact-point-use-v2"
+    assert inst.name == "v2 map for ContactPointUse"
+    assert inst.publisher == "HL7 (FHIR Project)"
+    assert (
+        inst.sourceReference.reference
+        == "http://hl7.org/fhir/ValueSet/contact-point-use"
+    )
+    assert inst.status == "draft"
+    assert inst.targetReference.reference == "http://hl7.org/fhir/ValueSet/v2-0201"
+    assert inst.text.status == "generated"
+    assert inst.url == "http://hl7.org/fhir/ConceptMap/cm-contact-point-use-v2"
+
+
+def test_conceptmap_6(base_settings):
+    """No. 6 tests collection for ConceptMap.
+    Test File: cm-contact-point-use-v2.json
+    """
+    filename = base_settings["unittest_data_dir"] / "cm-contact-point-use-v2.json"
+    inst = conceptmap.ConceptMap.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ConceptMap" == inst.resource_type
+
+    impl_conceptmap_6(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ConceptMap" == data["resourceType"]
+
+    inst2 = conceptmap.ConceptMap(**data)
+    impl_conceptmap_6(inst2)
+
+
+def impl_conceptmap_7(inst):
+    assert inst.contact[0].telecom[0].system == "url"
+    assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
+    assert inst.contact[0].telecom[1].system == "email"
+    assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
+    assert inst.date == fhirtypes.DateTime.validate("2017-04-19T07:44:43+10:00")
+    assert inst.group[0].element[0].code == "home"
+    assert inst.group[0].element[0].target[0].code == "H"
+    assert inst.group[0].element[0].target[0].equivalence == "equal"
+    assert inst.group[0].element[1].code == "work"
+    assert inst.group[0].element[1].target[0].code == "WP"
+    assert inst.group[0].element[1].target[0].equivalence == "equal"
+    assert inst.group[0].element[2].code == "temp"
+    assert inst.group[0].element[2].target[0].code == "TMP"
+    assert inst.group[0].element[2].target[0].equivalence == "equal"
+    assert inst.group[0].element[3].code == "old"
+    assert inst.group[0].element[3].target[0].code == "OLD"
+    assert inst.group[0].element[3].target[0].comment == "Old and Bad"
+    assert inst.group[0].element[3].target[0].equivalence == "narrower"
+    assert inst.group[0].element[3].target[1].code == "BAD"
+    assert inst.group[0].element[3].target[1].comment == "Old and Bad"
+    assert inst.group[0].element[3].target[1].equivalence == "narrower"
+    assert inst.group[0].element[4].code == "mobile"
+    assert inst.group[0].element[4].target[0].code == "MC"
+    assert inst.group[0].element[4].target[0].equivalence == "equal"
+    assert inst.group[0].source == "http://hl7.org/fhir/contact-point-use"
+    assert inst.group[0].target == "http://hl7.org/fhir/v3/AddressUse"
+    assert inst.id == "cm-contact-point-use-v3"
+    assert inst.name == "v3 map for ContactPointUse"
+    assert inst.publisher == "HL7 (FHIR Project)"
+    assert (
+        inst.sourceReference.reference
+        == "http://hl7.org/fhir/ValueSet/contact-point-use"
+    )
+    assert inst.status == "draft"
+    assert (
+        inst.targetReference.reference == "http://hl7.org/fhir/ValueSet/v3-AddressUse"
+    )
+    assert inst.text.status == "generated"
+    assert inst.url == "http://hl7.org/fhir/ConceptMap/cm-contact-point-use-v3"
+
+
+def test_conceptmap_7(base_settings):
+    """No. 7 tests collection for ConceptMap.
+    Test File: cm-contact-point-use-v3.json
+    """
+    filename = base_settings["unittest_data_dir"] / "cm-contact-point-use-v3.json"
+    inst = conceptmap.ConceptMap.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ConceptMap" == inst.resource_type
+
+    impl_conceptmap_7(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ConceptMap" == data["resourceType"]
+
+    inst2 = conceptmap.ConceptMap(**data)
+    impl_conceptmap_7(inst2)
+
+
+def impl_conceptmap_8(inst):
+    assert inst.contact[0].telecom[0].system == "url"
+    assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
+    assert inst.contact[0].telecom[1].system == "email"
+    assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
+    assert inst.date == fhirtypes.DateTime.validate("2017-04-19T07:44:43+10:00")
+    assert inst.group[0].element[0].code == "home"
+    assert inst.group[0].element[0].target[0].code == "H"
+    assert inst.group[0].element[0].target[0].equivalence == "equivalent"
+    assert inst.group[0].element[1].code == "work"
+    assert inst.group[0].element[1].target[0].code == "O"
+    assert inst.group[0].element[1].target[0].equivalence == "equivalent"
+    assert inst.group[0].element[2].code == "temp"
+    assert inst.group[0].element[2].target[0].code == "C"
+    assert inst.group[0].element[2].target[0].equivalence == "equivalent"
+    assert inst.group[0].element[3].code == "old"
+    assert inst.group[0].element[3].target[0].code == "BA"
+    assert inst.group[0].element[3].target[0].comment == "unclear about old addresses"
+    assert inst.group[0].element[3].target[0].equivalence == "wider"
+    assert inst.group[0].source == "http://hl7.org/fhir/address-use"
+    assert inst.group[0].target == "http://hl7.org/fhir/v2/0190"
+    assert inst.id == "cm-address-use-v2"
+    assert inst.name == "v2 map for AddressUse"
+    assert inst.publisher == "HL7 (FHIR Project)"
+    assert inst.sourceReference.reference == "http://hl7.org/fhir/ValueSet/address-use"
+    assert inst.status == "draft"
+    assert inst.targetReference.reference == "http://hl7.org/fhir/ValueSet/v2-0190"
+    assert inst.text.status == "generated"
+    assert inst.url == "http://hl7.org/fhir/ConceptMap/cm-address-use-v2"
+
+
+def test_conceptmap_8(base_settings):
+    """No. 8 tests collection for ConceptMap.
+    Test File: cm-address-use-v2.json
+    """
+    filename = base_settings["unittest_data_dir"] / "cm-address-use-v2.json"
+    inst = conceptmap.ConceptMap.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ConceptMap" == inst.resource_type
+
+    impl_conceptmap_8(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ConceptMap" == data["resourceType"]
+
+    inst2 = conceptmap.ConceptMap(**data)
+    impl_conceptmap_8(inst2)
+
+
+def impl_conceptmap_9(inst):
+    assert inst.contact[0].telecom[0].system == "url"
+    assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
+    assert inst.contact[0].telecom[1].system == "email"
+    assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
+    assert inst.date == fhirtypes.DateTime.validate("2017-04-19T07:44:43+10:00")
+    assert inst.group[0].element[0].code == "high"
+    assert inst.group[0].element[0].target[0].code == "H"
+    assert inst.group[0].element[0].target[0].equivalence == "equal"
+    assert inst.group[0].element[1].code == "moderate"
+    assert inst.group[0].element[1].target[0].code == "M"
+    assert inst.group[0].element[1].target[0].equivalence == "equal"
+    assert inst.group[0].element[2].code == "low"
+    assert inst.group[0].element[2].target[0].code == "L"
+    assert inst.group[0].element[2].target[0].equivalence == "equal"
+    assert inst.group[0].source == "http://hl7.org/fhir/detectedissue-severity"
+    assert inst.group[0].target == "http://hl7.org/fhir/v3/ObservationValue"
+    assert inst.id == "cm-detectedissue-severity-v3"
+    assert inst.name == "v3 map for DetectedIssueSeverity"
+    assert inst.publisher == "HL7 (FHIR Project)"
+    assert (
+        inst.sourceReference.reference
+        == "http://hl7.org/fhir/ValueSet/detectedissue-severity"
+    )
+    assert inst.status == "draft"
+    assert (
+        inst.targetReference.reference
+        == "http://hl7.org/fhir/ValueSet/v3-SeverityObservation"
+    )
+    assert inst.text.status == "generated"
+    assert inst.url == "http://hl7.org/fhir/ConceptMap/cm-detectedissue-severity-v3"
+
+
+def test_conceptmap_9(base_settings):
+    """No. 9 tests collection for ConceptMap.
+    Test File: cm-detectedissue-severity-v3.json
+    """
+    filename = base_settings["unittest_data_dir"] / "cm-detectedissue-severity-v3.json"
+    inst = conceptmap.ConceptMap.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ConceptMap" == inst.resource_type
+
+    impl_conceptmap_9(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ConceptMap" == data["resourceType"]
+
+    inst2 = conceptmap.ConceptMap(**data)
+    impl_conceptmap_9(inst2)
+
+
+def impl_conceptmap_10(inst):
+    assert inst.contact[0].name == "FHIR project team (example)"
+    assert inst.contact[0].telecom[0].system == "url"
+    assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
+    assert inst.copyright == "Creative Commons 0"
+    assert inst.date == fhirtypes.DateTime.validate("2012-06-13")
+    assert (
+        inst.description
+        == "A mapping between the FHIR and HL7 v3 AddressUse Code systems"
+    )
+    assert inst.experimental is True
+    assert inst.group[0].element[0].code == "home"
+    assert inst.group[0].element[0].display == "home"
+    assert inst.group[0].element[0].target[0].code == "H"
+    assert inst.group[0].element[0].target[0].display == "home"
+    assert inst.group[0].element[1].code == "work"
+    assert inst.group[0].element[1].display == "work"
+    assert inst.group[0].element[1].target[0].code == "WP"
+    assert inst.group[0].element[1].target[0].display == "work place"
+    assert inst.group[0].element[2].code == "temp"
+    assert inst.group[0].element[2].display == "temp"
+    assert inst.group[0].element[2].target[0].code == "TMP"
+    assert inst.group[0].element[2].target[0].display == "temporary address"
+    assert inst.group[0].element[3].code == "old"
+    assert inst.group[0].element[3].display == "old"
+    assert inst.group[0].element[3].target[0].code == "BAD"
+    assert (
+        inst.group[0].element[3].target[0].comment
+        == "In the HL7 v3 AD, old is handled by the usablePeriod element, but you have to provide a time, there's no simple equivalent of flagging an address as old"
+    )
+    assert inst.group[0].element[3].target[0].display == "bad address"
+    assert inst.group[0].element[3].target[0].equivalence == "disjoint"
+    assert inst.group[0].source == "http://hl7.org/fhir/address-use"
+    assert inst.group[0].target == "http://hl7.org/fhir/v3/AddressUse"
+    assert inst.group[0].unmapped.code == "temp"
+    assert inst.group[0].unmapped.display == "temp"
+    assert inst.group[0].unmapped.mode == "fixed"
+    assert inst.id == "101"
+    assert inst.identifier.system == "urn:ietf:rfc:3986"
+    assert inst.identifier.value == "urn:uuid:53cd62ee-033e-414c-9f58-3ca97b5ffc3b"
+    assert inst.name == "FHIR-v3-Address-Use"
+    assert inst.publisher == "HL7, Inc"
+    assert inst.purpose == "To help implementers map from HL7 v3/CDA to FHIR"
+    assert inst.sourceUri == "http://hl7.org/fhir/ValueSet/address-use"
+    assert inst.status == "draft"
+    assert inst.targetUri == "http://hl7.org/fhir/ValueSet/v3-AddressUse"
+    assert inst.text.status == "generated"
+    assert inst.title == "FHIR/v3 Address Use Mapping"
+    assert inst.url == "http://hl7.org/fhir/ConceptMap/101"
+    assert inst.useContext[0].code.code == "venue"
+    assert inst.useContext[0].code.system == "http://hl7.org/fhir/usage-context-type"
+    assert inst.useContext[0].valueCodeableConcept.text == "for CDA Usage"
+    assert inst.version == "20120613"
+
+
+def test_conceptmap_10(base_settings):
+    """No. 10 tests collection for ConceptMap.
+    Test File: conceptmap-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "conceptmap-example.json"
+    inst = conceptmap.ConceptMap.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ConceptMap" == inst.resource_type
+
+    impl_conceptmap_10(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ConceptMap" == data["resourceType"]
+
+    inst2 = conceptmap.ConceptMap(**data)
+    impl_conceptmap_10(inst2)

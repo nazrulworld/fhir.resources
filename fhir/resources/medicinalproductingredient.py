@@ -6,198 +6,99 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class MedicinalProductIngredient(domainresource.DomainResource):
     """ An ingredient of a manufactured item or pharmaceutical product.
     """
 
-    resource_type = "MedicinalProductIngredient"
+    resource_type = Field("MedicinalProductIngredient", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    allergenicIndicator: bool = Field(
+        None,
+        alias="allergenicIndicator",
+        title="Type `bool`",
+        description="If the ingredient is a known or suspected allergen",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    identifier: fhirtypes.IdentifierType = Field(
+        None,
+        alias="identifier",
+        title="Type `Identifier` (represented as `dict` in JSON)",
+        description="Identifier for the ingredient",
+    )
 
-        self.allergenicIndicator = None
-        """ If the ingredient is a known or suspected allergen.
-        Type `bool`. """
+    manufacturer: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="manufacturer",
+        title="List of `Reference` items referencing `Organization` (represented as `dict` in JSON)",
+        description="Manufacturer of this Ingredient",
+    )
 
-        self.identifier = None
-        """ Identifier for the ingredient.
-        Type `Identifier` (represented as `dict` in JSON). """
+    role: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="role",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Ingredient role e.g. Active ingredient, excipient",
+    )
 
-        self.manufacturer = None
-        """ Manufacturer of this Ingredient.
-        List of `FHIRReference` items referencing `['Organization']` (represented as `dict` in JSON). """
+    specifiedSubstance: ListType[
+        fhirtypes.MedicinalProductIngredientSpecifiedSubstanceType
+    ] = Field(
+        None,
+        alias="specifiedSubstance",
+        title="List of `MedicinalProductIngredientSpecifiedSubstance` items (represented as `dict` in JSON)",
+        description="A specified substance that comprises this ingredient",
+    )
 
-        self.role = None
-        """ Ingredient role e.g. Active ingredient, excipient.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.specifiedSubstance = None
-        """ A specified substance that comprises this ingredient.
-        List of `MedicinalProductIngredientSpecifiedSubstance` items (represented as `dict` in JSON). """
-
-        self.substance = None
-        """ The ingredient substance.
-        Type `MedicinalProductIngredientSubstance` (represented as `dict` in JSON). """
-
-        super(MedicinalProductIngredient, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(MedicinalProductIngredient, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "allergenicIndicator",
-                    "allergenicIndicator",
-                    bool,
-                    "boolean",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "manufacturer",
-                    "manufacturer",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "role",
-                    "role",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "specifiedSubstance",
-                    "specifiedSubstance",
-                    MedicinalProductIngredientSpecifiedSubstance,
-                    "MedicinalProductIngredientSpecifiedSubstance",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "substance",
-                    "substance",
-                    MedicinalProductIngredientSubstance,
-                    "MedicinalProductIngredientSubstance",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    substance: fhirtypes.MedicinalProductIngredientSubstanceType = Field(
+        None,
+        alias="substance",
+        title="Type `MedicinalProductIngredientSubstance` (represented as `dict` in JSON)",
+        description="The ingredient substance",
+    )
 
 
 class MedicinalProductIngredientSpecifiedSubstance(backboneelement.BackboneElement):
     """ A specified substance that comprises this ingredient.
     """
 
-    resource_type = "MedicinalProductIngredientSpecifiedSubstance"
+    resource_type = Field("MedicinalProductIngredientSpecifiedSubstance", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    code: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="code",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The specified substance",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    confidentiality: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="confidentiality",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Confidentiality level of the specified substance as the ingredient",
+    )
 
-        self.code = None
-        """ The specified substance.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    group: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="group",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The group of specified substance, e.g. group 1 to 4",
+    )
 
-        self.confidentiality = None
-        """ Confidentiality level of the specified substance as the ingredient.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.group = None
-        """ The group of specified substance, e.g. group 1 to 4.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.strength = None
-        """ Quantity of the substance or specified substance present in the
-        manufactured item or pharmaceutical product.
-        List of `MedicinalProductIngredientSpecifiedSubstanceStrength` items (represented as `dict` in JSON). """
-
-        super(MedicinalProductIngredientSpecifiedSubstance, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(
-            MedicinalProductIngredientSpecifiedSubstance, self
-        ).elementProperties()
-        js.extend(
-            [
-                (
-                    "code",
-                    "code",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "confidentiality",
-                    "confidentiality",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "group",
-                    "group",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "strength",
-                    "strength",
-                    MedicinalProductIngredientSpecifiedSubstanceStrength,
-                    "MedicinalProductIngredientSpecifiedSubstanceStrength",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    strength: ListType[
+        fhirtypes.MedicinalProductIngredientSpecifiedSubstanceStrengthType
+    ] = Field(
+        None,
+        alias="strength",
+        title="List of `MedicinalProductIngredientSpecifiedSubstanceStrength` items (represented as `dict` in JSON)",
+        description="Quantity of the substance or specified substance present in the manufactured item or pharmaceutical product",
+    )
 
 
 class MedicinalProductIngredientSpecifiedSubstanceStrength(
@@ -207,127 +108,60 @@ class MedicinalProductIngredientSpecifiedSubstanceStrength(
     manufactured item or pharmaceutical product.
     """
 
-    resource_type = "MedicinalProductIngredientSpecifiedSubstanceStrength"
+    resource_type = Field(
+        "MedicinalProductIngredientSpecifiedSubstanceStrength", const=True
+    )
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    concentration: fhirtypes.RatioType = Field(
+        None,
+        alias="concentration",
+        title="Type `Ratio` (represented as `dict` in JSON)",
+        description="The strength per unitary volume (or mass)",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    concentrationLowLimit: fhirtypes.RatioType = Field(
+        None,
+        alias="concentrationLowLimit",
+        title="Type `Ratio` (represented as `dict` in JSON)",
+        description="A lower limit for the strength per unitary volume (or mass), for when there is a range. The concentration attribute then becomes the upper limit",
+    )
 
-        self.concentration = None
-        """ The strength per unitary volume (or mass).
-        Type `Ratio` (represented as `dict` in JSON). """
+    country: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="country",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="The country or countries for which the strength range applies",
+    )
 
-        self.concentrationLowLimit = None
-        """ A lower limit for the strength per unitary volume (or mass), for
-        when there is a range. The concentration attribute then becomes the
-        upper limit.
-        Type `Ratio` (represented as `dict` in JSON). """
+    measurementPoint: fhirtypes.String = Field(
+        None,
+        alias="measurementPoint",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="For when strength is measured at a particular point or distance",
+    )
 
-        self.country = None
-        """ The country or countries for which the strength range applies.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    presentation: fhirtypes.RatioType = Field(
+        ...,
+        alias="presentation",
+        title="Type `Ratio` (represented as `dict` in JSON)",
+        description="The quantity of substance in the unit of presentation, or in the volume (or mass) of the single pharmaceutical product or manufactured item",
+    )
 
-        self.measurementPoint = None
-        """ For when strength is measured at a particular point or distance.
-        Type `str`. """
+    presentationLowLimit: fhirtypes.RatioType = Field(
+        None,
+        alias="presentationLowLimit",
+        title="Type `Ratio` (represented as `dict` in JSON)",
+        description="A lower limit for the quantity of substance in the unit of presentation. For use when there is a range of strengths, this is the lower limit, with the presentation attribute becoming the upper limit",
+    )
 
-        self.presentation = None
-        """ The quantity of substance in the unit of presentation, or in the
-        volume (or mass) of the single pharmaceutical product or
-        manufactured item.
-        Type `Ratio` (represented as `dict` in JSON). """
-
-        self.presentationLowLimit = None
-        """ A lower limit for the quantity of substance in the unit of
-        presentation. For use when there is a range of strengths, this is
-        the lower limit, with the presentation attribute becoming the upper
-        limit.
-        Type `Ratio` (represented as `dict` in JSON). """
-
-        self.referenceStrength = None
-        """ Strength expressed in terms of a reference substance.
-        List of `MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength` items (represented as `dict` in JSON). """
-
-        super(MedicinalProductIngredientSpecifiedSubstanceStrength, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(
-            MedicinalProductIngredientSpecifiedSubstanceStrength, self
-        ).elementProperties()
-        js.extend(
-            [
-                (
-                    "concentration",
-                    "concentration",
-                    ratio.Ratio,
-                    "Ratio",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "concentrationLowLimit",
-                    "concentrationLowLimit",
-                    ratio.Ratio,
-                    "Ratio",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "country",
-                    "country",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "measurementPoint",
-                    "measurementPoint",
-                    str,
-                    "string",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "presentation",
-                    "presentation",
-                    ratio.Ratio,
-                    "Ratio",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "presentationLowLimit",
-                    "presentationLowLimit",
-                    ratio.Ratio,
-                    "Ratio",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "referenceStrength",
-                    "referenceStrength",
-                    MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength,
-                    "MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    referenceStrength: ListType[
+        fhirtypes.MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrengthType
+    ] = Field(
+        None,
+        alias="referenceStrength",
+        title="List of `MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength` items (represented as `dict` in JSON)",
+        description="Strength expressed in terms of a reference substance",
+    )
 
 
 class MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength(
@@ -336,157 +170,65 @@ class MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength(
     """ Strength expressed in terms of a reference substance.
     """
 
-    resource_type = (
-        "MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength"
+    resource_type = Field(
+        "MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength",
+        const=True,
     )
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    country: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="country",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="The country or countries for which the strength range applies",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    measurementPoint: fhirtypes.String = Field(
+        None,
+        alias="measurementPoint",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="For when strength is measured at a particular point or distance",
+    )
 
-        self.country = None
-        """ The country or countries for which the strength range applies.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    strength: fhirtypes.RatioType = Field(
+        ...,
+        alias="strength",
+        title="Type `Ratio` (represented as `dict` in JSON)",
+        description="Strength expressed in terms of a reference substance",
+    )
 
-        self.measurementPoint = None
-        """ For when strength is measured at a particular point or distance.
-        Type `str`. """
+    strengthLowLimit: fhirtypes.RatioType = Field(
+        None,
+        alias="strengthLowLimit",
+        title="Type `Ratio` (represented as `dict` in JSON)",
+        description="Strength expressed in terms of a reference substance",
+    )
 
-        self.strength = None
-        """ Strength expressed in terms of a reference substance.
-        Type `Ratio` (represented as `dict` in JSON). """
-
-        self.strengthLowLimit = None
-        """ Strength expressed in terms of a reference substance.
-        Type `Ratio` (represented as `dict` in JSON). """
-
-        self.substance = None
-        """ Relevant reference substance.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(
-            MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength, self
-        ).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(
-            MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength, self
-        ).elementProperties()
-        js.extend(
-            [
-                (
-                    "country",
-                    "country",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "measurementPoint",
-                    "measurementPoint",
-                    str,
-                    "string",
-                    False,
-                    None,
-                    False,
-                ),
-                ("strength", "strength", ratio.Ratio, "Ratio", False, None, True),
-                (
-                    "strengthLowLimit",
-                    "strengthLowLimit",
-                    ratio.Ratio,
-                    "Ratio",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "substance",
-                    "substance",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    substance: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="substance",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Relevant reference substance",
+    )
 
 
 class MedicinalProductIngredientSubstance(backboneelement.BackboneElement):
     """ The ingredient substance.
     """
 
-    resource_type = "MedicinalProductIngredientSubstance"
+    resource_type = Field("MedicinalProductIngredientSubstance", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    code: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="code",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The ingredient substance",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.code = None
-        """ The ingredient substance.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.strength = None
-        """ Quantity of the substance or specified substance present in the
-        manufactured item or pharmaceutical product.
-        List of `MedicinalProductIngredientSpecifiedSubstanceStrength` items (represented as `dict` in JSON). """
-
-        super(MedicinalProductIngredientSubstance, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(MedicinalProductIngredientSubstance, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "code",
-                    "code",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "strength",
-                    "strength",
-                    MedicinalProductIngredientSpecifiedSubstanceStrength,
-                    "MedicinalProductIngredientSpecifiedSubstanceStrength",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import ratio
-except ImportError:
-    ratio = sys.modules[__package__ + ".ratio"]
+    strength: ListType[
+        fhirtypes.MedicinalProductIngredientSpecifiedSubstanceStrengthType
+    ] = Field(
+        None,
+        alias="strength",
+        title="List of `MedicinalProductIngredientSpecifiedSubstanceStrength` items (represented as `dict` in JSON)",
+        description="Quantity of the substance or specified substance present in the manufactured item or pharmaceutical product",
+    )

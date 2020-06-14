@@ -6,380 +6,336 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import diagnosticreport
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class DiagnosticReportTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("DiagnosticReport", js["resourceType"])
-        return diagnosticreport.DiagnosticReport(js)
+def impl_diagnosticreport_1(inst):
+    assert inst.category[0].coding[0].code == "394914008"
+    assert inst.category[0].coding[0].display == "Radiology"
+    assert inst.category[0].coding[0].system == "http://snomed.info/sct"
+    assert inst.category[0].coding[1].code == "RAD"
+    assert (
+        inst.category[0].coding[1].system
+        == "http://terminology.hl7.org/CodeSystem/v2-0074"
+    )
+    assert inst.code.coding[0].code == "45036003"
+    assert inst.code.coding[0].display == "Ultrasonography of abdomen"
+    assert inst.code.coding[0].system == "http://snomed.info/sct"
+    assert inst.code.text == "Abdominal Ultrasound"
+    assert inst.conclusion == "Unremarkable study"
+    assert inst.effectiveDateTime == fhirtypes.DateTime.validate(
+        "2012-12-01T12:00:00+01:00"
+    )
+    assert inst.id == "ultrasound"
+    assert inst.issued == fhirtypes.Instant.validate("2012-12-01T12:00:00+01:00")
+    assert inst.media[0].comment == "A comment about the image"
+    assert inst.media[0].link.display == "WADO example image"
+    assert (
+        inst.media[0].link.reference
+        == "Media/1.2.840.11361907579238403408700.3.1.04.19970327150033"
+    )
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.performer[0].reference == "Practitioner/example"
+    assert inst.status == "final"
+    assert inst.subject.reference == "Patient/example"
+    assert inst.text.status == "generated"
 
-    def testDiagnosticReport1(self):
-        inst = self.instantiate_from("diagnosticreport-example-ultrasound.json")
-        self.assertIsNotNone(inst, "Must have instantiated a DiagnosticReport instance")
-        self.implDiagnosticReport1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("DiagnosticReport", js["resourceType"])
-        inst2 = diagnosticreport.DiagnosticReport(js)
-        self.implDiagnosticReport1(inst2)
+def test_diagnosticreport_1(base_settings):
+    """No. 1 tests collection for DiagnosticReport.
+    Test File: diagnosticreport-example-ultrasound.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "diagnosticreport-example-ultrasound.json"
+    )
+    inst = diagnosticreport.DiagnosticReport.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "DiagnosticReport" == inst.resource_type
 
-    def implDiagnosticReport1(self, inst):
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].code), force_bytes("394914008")
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].display), force_bytes("Radiology")
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[1].code), force_bytes("RAD")
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[1].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v2-0074"),
-        )
-        self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("45036003"))
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].display),
-            force_bytes("Ultrasonography of abdomen"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.text), force_bytes("Abdominal Ultrasound")
-        )
-        self.assertEqual(
-            force_bytes(inst.conclusion), force_bytes("Unremarkable study")
-        )
-        self.assertEqual(
-            inst.effectiveDateTime.date, FHIRDate("2012-12-01T12:00:00+01:00").date
-        )
-        self.assertEqual(inst.effectiveDateTime.as_json(), "2012-12-01T12:00:00+01:00")
-        self.assertEqual(force_bytes(inst.id), force_bytes("ultrasound"))
-        self.assertEqual(inst.issued.date, FHIRDate("2012-12-01T12:00:00+01:00").date)
-        self.assertEqual(inst.issued.as_json(), "2012-12-01T12:00:00+01:00")
-        self.assertEqual(
-            force_bytes(inst.media[0].comment), force_bytes("A comment about the image")
-        )
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("final"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    impl_diagnosticreport_1(inst)
 
-    def testDiagnosticReport2(self):
-        inst = self.instantiate_from("diagnosticreport-example-f201-brainct.json")
-        self.assertIsNotNone(inst, "Must have instantiated a DiagnosticReport instance")
-        self.implDiagnosticReport2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "DiagnosticReport" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("DiagnosticReport", js["resourceType"])
-        inst2 = diagnosticreport.DiagnosticReport(js)
-        self.implDiagnosticReport2(inst2)
+    inst2 = diagnosticreport.DiagnosticReport(**data)
+    impl_diagnosticreport_1(inst2)
 
-    def implDiagnosticReport2(self, inst):
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].code), force_bytes("394914008")
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].display), force_bytes("Radiology")
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[1].code), force_bytes("RAD")
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[1].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v2-0074"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].code), force_bytes("429858000")
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].display),
-            force_bytes("Computed tomography (CT) of head and neck"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.code.text), force_bytes("CT of head-neck"))
-        self.assertEqual(
-            force_bytes(inst.conclusion),
-            force_bytes("CT brains: large tumor sphenoid/clivus."),
-        )
-        self.assertEqual(
-            force_bytes(inst.conclusionCode[0].coding[0].code), force_bytes("188340000")
-        )
-        self.assertEqual(
-            force_bytes(inst.conclusionCode[0].coding[0].display),
-            force_bytes("Malignant tumor of craniopharyngeal duct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.conclusionCode[0].coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            inst.effectiveDateTime.date, FHIRDate("2012-12-01T12:00:00+01:00").date
-        )
-        self.assertEqual(inst.effectiveDateTime.as_json(), "2012-12-01T12:00:00+01:00")
-        self.assertEqual(force_bytes(inst.id), force_bytes("f201"))
-        self.assertEqual(inst.issued.date, FHIRDate("2012-12-01T12:00:00+01:00").date)
-        self.assertEqual(inst.issued.as_json(), "2012-12-01T12:00:00+01:00")
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("final"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 
-    def testDiagnosticReport3(self):
-        inst = self.instantiate_from("diagnosticreport-example-papsmear.json")
-        self.assertIsNotNone(inst, "Must have instantiated a DiagnosticReport instance")
-        self.implDiagnosticReport3(inst)
+def impl_diagnosticreport_2(inst):
+    assert inst.category[0].coding[0].code == "394914008"
+    assert inst.category[0].coding[0].display == "Radiology"
+    assert inst.category[0].coding[0].system == "http://snomed.info/sct"
+    assert inst.category[0].coding[1].code == "RAD"
+    assert (
+        inst.category[0].coding[1].system
+        == "http://terminology.hl7.org/CodeSystem/v2-0074"
+    )
+    assert inst.code.coding[0].code == "429858000"
+    assert inst.code.coding[0].display == "Computed tomography (CT) of head and neck"
+    assert inst.code.coding[0].system == "http://snomed.info/sct"
+    assert inst.code.text == "CT of head-neck"
+    assert inst.conclusion == "CT brains: large tumor sphenoid/clivus."
+    assert inst.conclusionCode[0].coding[0].code == "188340000"
+    assert (
+        inst.conclusionCode[0].coding[0].display
+        == "Malignant tumor of craniopharyngeal duct"
+    )
+    assert inst.conclusionCode[0].coding[0].system == "http://snomed.info/sct"
+    assert inst.effectiveDateTime == fhirtypes.DateTime.validate(
+        "2012-12-01T12:00:00+01:00"
+    )
+    assert inst.id == "f201"
+    assert inst.imagingStudy[0].display == "HEAD and NECK CT DICOM imaging study"
+    assert inst.issued == fhirtypes.Instant.validate("2012-12-01T12:00:00+01:00")
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.performer[0].display == "Blijdorp MC"
+    assert inst.performer[0].reference == "Organization/f203"
+    assert inst.status == "final"
+    assert inst.subject.display == "Roel"
+    assert inst.subject.reference == "Patient/f201"
+    assert inst.text.status == "generated"
 
-        js = inst.as_json()
-        self.assertEqual("DiagnosticReport", js["resourceType"])
-        inst2 = diagnosticreport.DiagnosticReport(js)
-        self.implDiagnosticReport3(inst2)
 
-    def implDiagnosticReport3(self, inst):
-        self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("47527-7"))
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system), force_bytes("http://loinc.org")
-        )
-        self.assertEqual(
-            inst.effectiveDateTime.date, FHIRDate("2013-02-11T10:33:33+11:00").date
-        )
-        self.assertEqual(inst.effectiveDateTime.as_json(), "2013-02-11T10:33:33+11:00")
-        self.assertEqual(force_bytes(inst.id), force_bytes("pap"))
-        self.assertEqual(inst.issued.date, FHIRDate("2013-02-13T11:45:33+11:00").date)
-        self.assertEqual(inst.issued.as_json(), "2013-02-13T11:45:33+11:00")
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("final"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("additional"))
+def test_diagnosticreport_2(base_settings):
+    """No. 2 tests collection for DiagnosticReport.
+    Test File: diagnosticreport-example-f201-brainct.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"]
+        / "diagnosticreport-example-f201-brainct.json"
+    )
+    inst = diagnosticreport.DiagnosticReport.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "DiagnosticReport" == inst.resource_type
 
-    def testDiagnosticReport4(self):
-        inst = self.instantiate_from("diagnosticreport-example-gingival-mass.json")
-        self.assertIsNotNone(inst, "Must have instantiated a DiagnosticReport instance")
-        self.implDiagnosticReport4(inst)
+    impl_diagnosticreport_2(inst)
 
-        js = inst.as_json()
-        self.assertEqual("DiagnosticReport", js["resourceType"])
-        inst2 = diagnosticreport.DiagnosticReport(js)
-        self.implDiagnosticReport4(inst2)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "DiagnosticReport" == data["resourceType"]
 
-    def implDiagnosticReport4(self, inst):
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].code), force_bytes("PAT")
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].display),
-            force_bytes("Pathology (gross & histopath, not surgical)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v2-0074"),
-        )
-        self.assertEqual(force_bytes(inst.category[0].text), force_bytes("Pathology"))
-        self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("4503"))
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].display),
-            force_bytes(
-                "Biopsy without Microscopic Description (1 Site/Lesion)-Standard"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system),
-            force_bytes("https://www.acmeonline.com"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.text),
-            force_bytes(
-                "Biopsy without Microscopic Description (1 Site/Lesion)-Standard"
-            ),
-        )
-        self.assertEqual(inst.effectiveDateTime.date, FHIRDate("2017-03-02").date)
-        self.assertEqual(inst.effectiveDateTime.as_json(), "2017-03-02")
-        self.assertEqual(force_bytes(inst.id), force_bytes("gingival-mass"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("https://www.acmeonline.com"),
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].value), force_bytes("P73456090")
-        )
-        self.assertEqual(inst.issued.date, FHIRDate("2017-03-15T08:13:08Z").date)
-        self.assertEqual(inst.issued.as_json(), "2017-03-15T08:13:08Z")
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.presentedForm[0].contentType),
-            force_bytes("application/pdf"),
-        )
-        self.assertEqual(force_bytes(inst.presentedForm[0].language), force_bytes("en"))
-        self.assertEqual(
-            force_bytes(inst.presentedForm[0].title),
-            force_bytes(
-                "LAB ID: P73456090 MAX JONES Biopsy without Microscopic Description (1 Site/Lesion)-Standard"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("final"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    inst2 = diagnosticreport.DiagnosticReport(**data)
+    impl_diagnosticreport_2(inst2)
 
-    def testDiagnosticReport5(self):
-        inst = self.instantiate_from("diagnosticreport-example-pgx.json")
-        self.assertIsNotNone(inst, "Must have instantiated a DiagnosticReport instance")
-        self.implDiagnosticReport5(inst)
 
-        js = inst.as_json()
-        self.assertEqual("DiagnosticReport", js["resourceType"])
-        inst2 = diagnosticreport.DiagnosticReport(js)
-        self.implDiagnosticReport5(inst2)
+def impl_diagnosticreport_3(inst):
+    assert inst.code.coding[0].code == "47527-7"
+    assert inst.code.coding[0].system == "http://loinc.org"
+    assert inst.effectiveDateTime == fhirtypes.DateTime.validate(
+        "2013-02-11T10:33:33+11:00"
+    )
+    assert inst.id == "pap"
+    assert inst.issued == fhirtypes.Instant.validate("2013-02-13T11:45:33+11:00")
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.performer[0].reference == "Practitioner/example"
+    assert inst.status == "final"
+    assert inst.subject.reference == "Patient/b248b1b2-1686-4b94-9936-37d7a5f94b51"
+    assert inst.text.status == "additional"
 
-    def implDiagnosticReport5(self, inst):
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].code), force_bytes("PGxReport")
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].display),
-            force_bytes("Pharmacogenetics Report"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system),
-            force_bytes("https://system/PGxReport"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.text), force_bytes("Pharmacogenetics Report")
-        )
-        self.assertEqual(
-            inst.effectiveDateTime.date, FHIRDate("2016-10-15T12:34:56+11:00").date
-        )
-        self.assertEqual(inst.effectiveDateTime.as_json(), "2016-10-15T12:34:56+11:00")
-        self.assertEqual(force_bytes(inst.id), force_bytes("example-pgx"))
-        self.assertEqual(inst.issued.date, FHIRDate("2016-10-20T14:00:05+11:00").date)
-        self.assertEqual(inst.issued.as_json(), "2016-10-20T14:00:05+11:00")
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.presentedForm[0].contentType),
-            force_bytes("application/pdf"),
-        )
-        self.assertEqual(
-            inst.presentedForm[0].creation.date,
-            FHIRDate("2016-10-20T20:00:00+11:00").date,
-        )
-        self.assertEqual(
-            inst.presentedForm[0].creation.as_json(), "2016-10-20T20:00:00+11:00"
-        )
-        self.assertEqual(
-            force_bytes(inst.presentedForm[0].data),
-            force_bytes("cGRmSW5CYXNlNjRCaW5hcnk="),
-        )
-        self.assertEqual(
-            force_bytes(inst.presentedForm[0].hash),
-            force_bytes("571ef9c5655840f324e679072ed62b1b95eef8a0"),
-        )
-        self.assertEqual(force_bytes(inst.presentedForm[0].language), force_bytes("en"))
-        self.assertEqual(
-            force_bytes(inst.presentedForm[0].title),
-            force_bytes("Pharmacogenetics Report"),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("final"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 
-    def testDiagnosticReport6(self):
-        inst = self.instantiate_from("diagnosticreport-example-dxa.json")
-        self.assertIsNotNone(inst, "Must have instantiated a DiagnosticReport instance")
-        self.implDiagnosticReport6(inst)
+def test_diagnosticreport_3(base_settings):
+    """No. 3 tests collection for DiagnosticReport.
+    Test File: diagnosticreport-example-papsmear.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "diagnosticreport-example-papsmear.json"
+    )
+    inst = diagnosticreport.DiagnosticReport.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "DiagnosticReport" == inst.resource_type
 
-        js = inst.as_json()
-        self.assertEqual("DiagnosticReport", js["resourceType"])
-        inst2 = diagnosticreport.DiagnosticReport(js)
-        self.implDiagnosticReport6(inst2)
+    impl_diagnosticreport_3(inst)
 
-    def implDiagnosticReport6(self, inst):
-        self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("38269-7"))
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system), force_bytes("http://loinc.org")
-        )
-        self.assertEqual(
-            force_bytes(inst.code.text), force_bytes("DXA BONE DENSITOMETRY")
-        )
-        self.assertEqual(
-            force_bytes(inst.conclusionCode[0].coding[0].code), force_bytes("391040000")
-        )
-        self.assertEqual(
-            force_bytes(inst.conclusionCode[0].coding[0].display),
-            force_bytes("At risk of osteoporotic fracture"),
-        )
-        self.assertEqual(
-            force_bytes(inst.conclusionCode[0].coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(inst.effectiveDateTime.date, FHIRDate("2008-06-17").date)
-        self.assertEqual(inst.effectiveDateTime.as_json(), "2008-06-17")
-        self.assertEqual(force_bytes(inst.id), force_bytes("102"))
-        self.assertEqual(inst.issued.date, FHIRDate("2008-06-18T09:23:00+10:00").date)
-        self.assertEqual(inst.issued.as_json(), "2008-06-18T09:23:00+10:00")
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("final"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "DiagnosticReport" == data["resourceType"]
+
+    inst2 = diagnosticreport.DiagnosticReport(**data)
+    impl_diagnosticreport_3(inst2)
+
+
+def impl_diagnosticreport_4(inst):
+    assert inst.category[0].coding[0].code == "PAT"
+    assert (
+        inst.category[0].coding[0].display
+        == "Pathology (gross & histopath, not surgical)"
+    )
+    assert (
+        inst.category[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v2-0074"
+    )
+    assert inst.category[0].text == "Pathology"
+    assert inst.code.coding[0].code == "4503"
+    assert (
+        inst.code.coding[0].display
+        == "Biopsy without Microscopic Description (1 Site/Lesion)-Standard"
+    )
+    assert inst.code.coding[0].system == "https://www.acmeonline.com"
+    assert (
+        inst.code.text
+        == "Biopsy without Microscopic Description (1 Site/Lesion)-Standard"
+    )
+    assert inst.effectiveDateTime == fhirtypes.DateTime.validate(
+        "2017-03-02T09:23:00+10:00"
+    )
+    assert inst.id == "gingival-mass"
+    assert inst.identifier[0].system == "https://www.acmeonline.com"
+    assert inst.identifier[0].value == "P73456090"
+    assert inst.issued == fhirtypes.Instant.validate("2017-03-15T08:13:08Z")
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.performer[0].display == "Acme Animal Labs"
+    assert inst.presentedForm[0].contentType == "application/pdf"
+    assert inst.presentedForm[0].language == "en"
+    assert (
+        inst.presentedForm[0].title
+        == "LAB ID: P73456090 MAX JONES Biopsy without Microscopic Description (1 Site/Lesion)-Standard"
+    )
+    assert inst.status == "final"
+    assert inst.subject.display == "Max Jones"
+    assert inst.text.status == "generated"
+
+
+def test_diagnosticreport_4(base_settings):
+    """No. 4 tests collection for DiagnosticReport.
+    Test File: diagnosticreport-example-gingival-mass.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"]
+        / "diagnosticreport-example-gingival-mass.json"
+    )
+    inst = diagnosticreport.DiagnosticReport.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "DiagnosticReport" == inst.resource_type
+
+    impl_diagnosticreport_4(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "DiagnosticReport" == data["resourceType"]
+
+    inst2 = diagnosticreport.DiagnosticReport(**data)
+    impl_diagnosticreport_4(inst2)
+
+
+def impl_diagnosticreport_5(inst):
+    assert inst.basedOn[0].reference == "ServiceRequest/example-pgx"
+    assert inst.code.coding[0].code == "PGxReport"
+    assert inst.code.coding[0].display == "Pharmacogenetics Report"
+    assert inst.code.coding[0].system == "https://system/PGxReport"
+    assert inst.code.text == "Pharmacogenetics Report"
+    assert inst.effectiveDateTime == fhirtypes.DateTime.validate(
+        "2016-10-15T12:34:56+11:00"
+    )
+    assert inst.id == "example-pgx"
+    assert inst.issued == fhirtypes.Instant.validate("2016-10-20T14:00:05+11:00")
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.performer[0].reference == "Organization/4829"
+    assert inst.presentedForm[0].contentType == "application/pdf"
+    assert inst.presentedForm[0].creation == fhirtypes.DateTime.validate(
+        "2016-10-20T20:00:00+11:00"
+    )
+    # Don't know how to create unit test for "presentedForm[0].data", which is a Base64Binary
+    # Don't know how to create unit test for "presentedForm[0].hash", which is a Base64Binary
+    assert inst.presentedForm[0].language == "en"
+    assert inst.presentedForm[0].title == "Pharmacogenetics Report"
+    assert inst.result[0].reference == "Observation/example-phenotype"
+    assert inst.status == "final"
+    assert inst.subject.display == "Bob Smith"
+    assert inst.subject.reference == "Patient/899962"
+    assert inst.text.status == "generated"
+
+
+def test_diagnosticreport_5(base_settings):
+    """No. 5 tests collection for DiagnosticReport.
+    Test File: diagnosticreport-example-pgx.json
+    """
+    filename = base_settings["unittest_data_dir"] / "diagnosticreport-example-pgx.json"
+    inst = diagnosticreport.DiagnosticReport.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "DiagnosticReport" == inst.resource_type
+
+    impl_diagnosticreport_5(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "DiagnosticReport" == data["resourceType"]
+
+    inst2 = diagnosticreport.DiagnosticReport(**data)
+    impl_diagnosticreport_5(inst2)
+
+
+def impl_diagnosticreport_6(inst):
+    assert inst.code.coding[0].code == "38269-7"
+    assert inst.code.coding[0].system == "http://loinc.org"
+    assert inst.code.text == "DXA BONE DENSITOMETRY"
+    assert inst.conclusionCode[0].coding[0].code == "391040000"
+    assert (
+        inst.conclusionCode[0].coding[0].display == "At risk of osteoporotic fracture"
+    )
+    assert inst.conclusionCode[0].coding[0].system == "http://snomed.info/sct"
+    assert inst.effectiveDateTime == fhirtypes.DateTime.validate(
+        "2008-06-17T09:23:00+10:00"
+    )
+    assert inst.id == "102"
+    assert inst.issued == fhirtypes.Instant.validate("2008-06-18T09:23:00+10:00")
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.performer[0].display == "Dr Henry Seven"
+    assert (
+        inst.performer[0].reference
+        == "Practitioner/3ad0687e-f477-468c-afd5-fcc2bf897809"
+    )
+    assert inst.result[0].reference == "Observation/bmd"
+    assert inst.status == "final"
+    assert inst.subject.reference == "Patient/pat2"
+    assert inst.text.status == "generated"
+
+
+def test_diagnosticreport_6(base_settings):
+    """No. 6 tests collection for DiagnosticReport.
+    Test File: diagnosticreport-example-dxa.json
+    """
+    filename = base_settings["unittest_data_dir"] / "diagnosticreport-example-dxa.json"
+    inst = diagnosticreport.DiagnosticReport.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "DiagnosticReport" == inst.resource_type
+
+    impl_diagnosticreport_6(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "DiagnosticReport" == data["resourceType"]
+
+    inst2 = diagnosticreport.DiagnosticReport(**data)
+    impl_diagnosticreport_6(inst2)

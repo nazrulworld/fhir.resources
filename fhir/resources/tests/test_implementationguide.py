@@ -6,167 +6,95 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import implementationguide
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class ImplementationGuideTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("ImplementationGuide", js["resourceType"])
-        return implementationguide.ImplementationGuide(js)
+def impl_implementationguide_1(inst):
+    assert inst.contact[0].name == "ONC"
+    assert inst.contact[0].telecom[0].system == "url"
+    assert inst.contact[0].telecom[0].value == "http://www.healthit.gov"
+    assert inst.contact[1].name == "HL7"
+    assert inst.contact[1].telecom[0].system == "url"
+    assert inst.contact[1].telecom[0].value == "http://hl7.org/fhir"
+    assert inst.copyright == "Published by ONC under the standard FHIR license (CC0)"
+    assert inst.date == fhirtypes.DateTime.validate("2015-01-01T11:15:33+10:00")
+    assert (
+        inst.definition.grouping[0].description
+        == "Base package (not broken up into multiple packages)"
+    )
+    assert inst.definition.grouping[0].name == "test"
+    assert inst.definition.page.generation == "html"
+    assert inst.definition.page.nameUrl == "http://example.com/patient-example.html"
+    assert inst.definition.page.page[0].generation == "html"
+    assert inst.definition.page.page[0].nameUrl == "http://example.com/list.html"
+    assert inst.definition.page.page[0].title == "Value Set Page"
+    assert inst.definition.page.title == "Example Patient Page"
+    assert inst.definition.parameter[0].code == "apply"
+    assert inst.definition.parameter[0].value == "version"
+    assert (
+        inst.definition.resource[0].description
+        == "A test example to show how an implementation guide works"
+    )
+    assert (
+        inst.definition.resource[0].exampleCanonical
+        == "http://hl7.org/fhir/us/core/StructureDefinition/patient"
+    )
+    assert inst.definition.resource[0].name == "Test Example"
+    assert inst.definition.resource[0].reference.reference == "Patient/test"
+    assert inst.dependsOn[0].uri == "http://hl7.org/fhir/ImplementationGuide/uscore"
+    assert inst.experimental is False
+    assert inst.fhirVersion[0] == "4.0.1"
+    assert (
+        inst.global_fhir[0].profile
+        == "http://hl7.org/fhir/us/core/StructureDefinition/patient"
+    )
+    assert inst.global_fhir[0].type == "Patient"
+    assert inst.id == "example"
+    assert inst.jurisdiction[0].coding[0].code == "US"
+    assert inst.jurisdiction[0].coding[0].system == "urn:iso:std:iso:3166"
+    assert inst.license == "CC0-1.0"
+    assert inst.manifest.image[0] == "fhir.png"
+    assert inst.manifest.other[0] == "fhir.css"
+    assert inst.manifest.page[0].anchor[0] == "patient-test"
+    assert inst.manifest.page[0].anchor[1] == "tx"
+    assert inst.manifest.page[0].anchor[2] == "uml"
+    assert inst.manifest.page[0].name == "patient-test.html"
+    assert inst.manifest.page[0].title == "Test Patient Example"
+    assert inst.manifest.rendering == "http://hl7.org/fhir/us/daf"
+    assert (
+        inst.manifest.resource[0].exampleCanonical
+        == "http://hl7.org/fhir/us/core/StructureDefinition/patient"
+    )
+    assert inst.manifest.resource[0].reference.reference == "Patient/test"
+    assert (
+        inst.manifest.resource[0].relativePath
+        == "https://example.com/patient-test.html#patient-test"
+    )
+    assert inst.name == "Data Access Framework (DAF)"
+    assert inst.packageId == "hl7.fhir.us.daf"
+    assert inst.publisher == "ONC / HL7 Joint project"
+    assert inst.status == "draft"
+    assert inst.text.status == "generated"
+    assert inst.url == "http://hl7.org/fhir/us/daf"
+    assert inst.version == "0"
 
-    def testImplementationGuide1(self):
-        inst = self.instantiate_from("implementationguide-example.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a ImplementationGuide instance"
-        )
-        self.implImplementationGuide1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("ImplementationGuide", js["resourceType"])
-        inst2 = implementationguide.ImplementationGuide(js)
-        self.implImplementationGuide1(inst2)
+def test_implementationguide_1(base_settings):
+    """No. 1 tests collection for ImplementationGuide.
+    Test File: implementationguide-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "implementationguide-example.json"
+    inst = implementationguide.ImplementationGuide.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ImplementationGuide" == inst.resource_type
 
-    def implImplementationGuide1(self, inst):
-        self.assertEqual(force_bytes(inst.contact[0].name), force_bytes("ONC"))
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].system), force_bytes("url")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].value),
-            force_bytes("http://www.healthit.gov"),
-        )
-        self.assertEqual(force_bytes(inst.contact[1].name), force_bytes("HL7"))
-        self.assertEqual(
-            force_bytes(inst.contact[1].telecom[0].system), force_bytes("url")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[1].telecom[0].value),
-            force_bytes("http://hl7.org/fhir"),
-        )
-        self.assertEqual(
-            force_bytes(inst.copyright),
-            force_bytes("Published by ONC under the standard FHIR license (CC0)"),
-        )
-        self.assertEqual(inst.date.date, FHIRDate("2015-01-01").date)
-        self.assertEqual(inst.date.as_json(), "2015-01-01")
-        self.assertEqual(
-            force_bytes(inst.definition.grouping[0].description),
-            force_bytes("Base package (not broken up into multiple packages)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.definition.grouping[0].name), force_bytes("test")
-        )
-        self.assertEqual(
-            force_bytes(inst.definition.page.generation), force_bytes("html")
-        )
-        self.assertEqual(
-            force_bytes(inst.definition.page.nameUrl),
-            force_bytes("patient-example.html"),
-        )
-        self.assertEqual(
-            force_bytes(inst.definition.page.page[0].generation), force_bytes("html")
-        )
-        self.assertEqual(
-            force_bytes(inst.definition.page.page[0].nameUrl), force_bytes("list.html")
-        )
-        self.assertEqual(
-            force_bytes(inst.definition.page.page[0].title),
-            force_bytes("Value Set Page"),
-        )
-        self.assertEqual(
-            force_bytes(inst.definition.page.title), force_bytes("Example Patient Page")
-        )
-        self.assertEqual(
-            force_bytes(inst.definition.parameter[0].code), force_bytes("apply")
-        )
-        self.assertEqual(
-            force_bytes(inst.definition.parameter[0].value), force_bytes("version")
-        )
-        self.assertEqual(
-            force_bytes(inst.definition.resource[0].description),
-            force_bytes("A test example to show how an implementation guide works"),
-        )
-        self.assertEqual(
-            force_bytes(inst.definition.resource[0].exampleCanonical),
-            force_bytes("http://hl7.org/fhir/us/core/StructureDefinition/patient"),
-        )
-        self.assertEqual(
-            force_bytes(inst.definition.resource[0].name), force_bytes("Test Example")
-        )
-        self.assertEqual(
-            force_bytes(inst.dependsOn[0].uri),
-            force_bytes("http://hl7.org/fhir/ImplementationGuide/uscore"),
-        )
-        self.assertFalse(inst.experimental)
-        self.assertEqual(force_bytes(inst.fhirVersion[0]), force_bytes("4.0.1"))
-        self.assertEqual(
-            force_bytes(inst.global_fhir[0].profile),
-            force_bytes("http://hl7.org/fhir/us/core/StructureDefinition/patient"),
-        )
-        self.assertEqual(force_bytes(inst.global_fhir[0].type), force_bytes("Patient"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(
-            force_bytes(inst.jurisdiction[0].coding[0].code), force_bytes("US")
-        )
-        self.assertEqual(
-            force_bytes(inst.jurisdiction[0].coding[0].system),
-            force_bytes("urn:iso:std:iso:3166"),
-        )
-        self.assertEqual(force_bytes(inst.license), force_bytes("CC0-1.0"))
-        self.assertEqual(force_bytes(inst.manifest.image[0]), force_bytes("fhir.png"))
-        self.assertEqual(force_bytes(inst.manifest.other[0]), force_bytes("fhir.css"))
-        self.assertEqual(
-            force_bytes(inst.manifest.page[0].anchor[0]), force_bytes("patient-test")
-        )
-        self.assertEqual(
-            force_bytes(inst.manifest.page[0].anchor[1]), force_bytes("tx")
-        )
-        self.assertEqual(
-            force_bytes(inst.manifest.page[0].anchor[2]), force_bytes("uml")
-        )
-        self.assertEqual(
-            force_bytes(inst.manifest.page[0].name), force_bytes("patient-test.html")
-        )
-        self.assertEqual(
-            force_bytes(inst.manifest.page[0].title),
-            force_bytes("Test Patient Example"),
-        )
-        self.assertEqual(
-            force_bytes(inst.manifest.rendering),
-            force_bytes("http://hl7.org/fhir/us/daf"),
-        )
-        self.assertEqual(
-            force_bytes(inst.manifest.resource[0].exampleCanonical),
-            force_bytes("http://hl7.org/fhir/us/core/StructureDefinition/patient"),
-        )
-        self.assertEqual(
-            force_bytes(inst.manifest.resource[0].relativePath),
-            force_bytes("patient-test.html#patient-test"),
-        )
-        self.assertEqual(
-            force_bytes(inst.name), force_bytes("Data Access Framework (DAF)")
-        )
-        self.assertEqual(force_bytes(inst.packageId), force_bytes("hl7.fhir.us.daf"))
-        self.assertEqual(
-            force_bytes(inst.publisher), force_bytes("ONC / HL7 Joint project")
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.url), force_bytes("http://hl7.org/fhir/us/daf")
-        )
-        self.assertEqual(force_bytes(inst.version), force_bytes("0"))
+    impl_implementationguide_1(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ImplementationGuide" == data["resourceType"]
+
+    inst2 = implementationguide.ImplementationGuide(**data)
+    impl_implementationguide_1(inst2)

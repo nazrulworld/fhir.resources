@@ -6,51 +6,28 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic import Field
 
-
-import sys
-
-from . import element
+from . import element, fhirtypes
 
 
 class Period(element.Element):
     """ Time range defined by start and end date/time.
-
     A time period defined by a start and end date and optionally time.
     """
 
-    resource_type = "Period"
+    resource_type = Field("Period", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    end: fhirtypes.DateTime = Field(
+        None,
+        alias="end",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="End time with inclusive boundary, if not ongoing",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.end = None
-        """ End time with inclusive boundary, if not ongoing.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.start = None
-        """ Starting time with inclusive boundary.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        super(Period, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(Period, self).elementProperties()
-        js.extend(
-            [
-                ("end", "end", fhirdate.FHIRDate, "dateTime", False, None, False),
-                ("start", "start", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ]
-        )
-        return js
-
-
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
+    start: fhirtypes.DateTime = Field(
+        None,
+        alias="start",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Starting time with inclusive boundary",
+    )

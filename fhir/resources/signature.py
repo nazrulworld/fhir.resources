@@ -6,16 +6,15 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import element
+from . import element, fhirtypes
 
 
 class Signature(element.Element):
     """ A Signature - XML DigSig, JWS, Graphical image of signature, etc..
-
     A signature along with supporting context. The signature may be a digital
     signature that is cryptographic in nature, or some other signature
     acceptable to the domain. This other signature may be as simple as a
@@ -23,87 +22,53 @@ class Signature(element.Element):
     ceremony Different signature approaches have different utilities.
     """
 
-    resource_type = "Signature"
+    resource_type = Field("Signature", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    data: fhirtypes.Base64Binary = Field(
+        None,
+        alias="data",
+        title="Type `Base64Binary` (represented as `dict` in JSON)",
+        description="The actual signature content (XML DigSig. JWS, picture, etc.)",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    onBehalfOf: fhirtypes.ReferenceType = Field(
+        None,
+        alias="onBehalfOf",
+        title="Type `Reference` referencing `Practitioner, PractitionerRole, RelatedPerson, Patient, Device, Organization` (represented as `dict` in JSON)",
+        description="The party represented",
+    )
 
-        self.data = None
-        """ The actual signature content (XML DigSig. JWS, picture, etc.).
-        Type `str`. """
+    sigFormat: fhirtypes.Code = Field(
+        None,
+        alias="sigFormat",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="The technical format of the signature",
+    )
 
-        self.onBehalfOf = None
-        """ The party represented.
-        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'RelatedPerson', 'Patient', 'Device', 'Organization']` (represented as `dict` in JSON). """
+    targetFormat: fhirtypes.Code = Field(
+        None,
+        alias="targetFormat",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="The technical format of the signed resources",
+    )
 
-        self.sigFormat = None
-        """ The technical format of the signature.
-        Type `str`. """
+    type: ListType[fhirtypes.CodingType] = Field(
+        ...,
+        alias="type",
+        title="List of `Coding` items (represented as `dict` in JSON)",
+        description="Indication of the reason the entity signed the object(s)",
+    )
 
-        self.targetFormat = None
-        """ The technical format of the signed resources.
-        Type `str`. """
+    when: fhirtypes.Instant = Field(
+        ...,
+        alias="when",
+        title="Type `Instant` (represented as `dict` in JSON)",
+        description="When the signature was created",
+    )
 
-        self.type = None
-        """ Indication of the reason the entity signed the object(s).
-        List of `Coding` items (represented as `dict` in JSON). """
-
-        self.when = None
-        """ When the signature was created.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.who = None
-        """ Who signed.
-        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'RelatedPerson', 'Patient', 'Device', 'Organization']` (represented as `dict` in JSON). """
-
-        super(Signature, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(Signature, self).elementProperties()
-        js.extend(
-            [
-                ("data", "data", str, "base64Binary", False, None, False),
-                (
-                    "onBehalfOf",
-                    "onBehalfOf",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("sigFormat", "sigFormat", str, "code", False, None, False),
-                ("targetFormat", "targetFormat", str, "code", False, None, False),
-                ("type", "type", coding.Coding, "Coding", True, None, True),
-                ("when", "when", fhirdate.FHIRDate, "instant", False, None, True),
-                (
-                    "who",
-                    "who",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import coding
-except ImportError:
-    coding = sys.modules[__package__ + ".coding"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
+    who: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="who",
+        title="Type `Reference` referencing `Practitioner, PractitionerRole, RelatedPerson, Patient, Device, Organization` (represented as `dict` in JSON)",
+        description="Who signed",
+    )

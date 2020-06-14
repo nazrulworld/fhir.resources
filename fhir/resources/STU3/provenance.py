@@ -6,16 +6,16 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from typing import Any, Dict
+from typing import List as ListType
 
+from pydantic import Field, root_validator
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class Provenance(domainresource.DomainResource):
     """ Who, What, When for a set of resources.
-
     Provenance of a resource is a record that describes entities and processes
     involved in producing and delivering or otherwise influencing that
     resource. Provenance provides a critical foundation for assessing
@@ -28,322 +28,258 @@ class Provenance(domainresource.DomainResource):
     impact security, privacy, and trust policies.
     """
 
-    resource_type = "Provenance"
+    resource_type = Field("Provenance", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    activity: fhirtypes.CodingType = Field(
+        None,
+        alias="activity",
+        title="Type `Coding` (represented as `dict` in JSON)",
+        description="Activity that occurred",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    agent: ListType[fhirtypes.ProvenanceAgentType] = Field(
+        ...,
+        alias="agent",
+        title="List of `ProvenanceAgent` items (represented as `dict` in JSON)",
+        description="Actor involved",
+    )
 
-        self.activity = None
-        """ Activity that occurred.
-        Type `Coding` (represented as `dict` in JSON). """
+    entity: ListType[fhirtypes.ProvenanceEntityType] = Field(
+        None,
+        alias="entity",
+        title="List of `ProvenanceEntity` items (represented as `dict` in JSON)",
+        description="An entity used in this activity",
+    )
 
-        self.agent = None
-        """ Actor involved.
-        List of `ProvenanceAgent` items (represented as `dict` in JSON). """
+    location: fhirtypes.ReferenceType = Field(
+        None,
+        alias="location",
+        title="Type `Reference` referencing `Location` (represented as `dict` in JSON)",
+        description="Where the activity occurred, if relevant",
+    )
 
-        self.entity = None
-        """ An entity used in this activity.
-        List of `ProvenanceEntity` items (represented as `dict` in JSON). """
+    period: fhirtypes.PeriodType = Field(
+        None,
+        alias="period",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="When the activity occurred",
+    )
 
-        self.location = None
-        """ Where the activity occurred, if relevant.
-        Type `FHIRReference` referencing `['Location']` (represented as `dict` in JSON). """
+    policy: ListType[fhirtypes.Uri] = Field(
+        None,
+        alias="policy",
+        title="List of `Uri` items (represented as `dict` in JSON)",
+        description="Policy or plan the activity was defined by",
+    )
 
-        self.period = None
-        """ When the activity occurred.
-        Type `Period` (represented as `dict` in JSON). """
+    reason: ListType[fhirtypes.CodingType] = Field(
+        None,
+        alias="reason",
+        title="List of `Coding` items (represented as `dict` in JSON)",
+        description="Reason the activity is occurring",
+    )
 
-        self.policy = None
-        """ Policy or plan the activity was defined by.
-        List of `str` items. """
+    recorded: fhirtypes.Instant = Field(
+        ...,
+        alias="recorded",
+        title="Type `Instant` (represented as `dict` in JSON)",
+        description="When the activity was recorded / updated",
+    )
 
-        self.reason = None
-        """ Reason the activity is occurring.
-        List of `Coding` items (represented as `dict` in JSON). """
+    signature: ListType[fhirtypes.SignatureType] = Field(
+        None,
+        alias="signature",
+        title="List of `Signature` items (represented as `dict` in JSON)",
+        description="Signature on target",
+    )
 
-        self.recorded = None
-        """ When the activity was recorded / updated.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.signature = None
-        """ Signature on target.
-        List of `Signature` items (represented as `dict` in JSON). """
-
-        self.target = None
-        """ Target Reference(s) (usually version specific).
-        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
-
-        super(Provenance, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(Provenance, self).elementProperties()
-        js.extend(
-            [
-                ("activity", "activity", coding.Coding, "Coding", False, None, False),
-                (
-                    "agent",
-                    "agent",
-                    ProvenanceAgent,
-                    "ProvenanceAgent",
-                    True,
-                    None,
-                    True,
-                ),
-                (
-                    "entity",
-                    "entity",
-                    ProvenanceEntity,
-                    "ProvenanceEntity",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "location",
-                    "location",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("period", "period", period.Period, "Period", False, None, False),
-                ("policy", "policy", str, "uri", True, None, False),
-                ("reason", "reason", coding.Coding, "Coding", True, None, False),
-                (
-                    "recorded",
-                    "recorded",
-                    fhirdate.FHIRDate,
-                    "instant",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "signature",
-                    "signature",
-                    signature.Signature,
-                    "Signature",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "target",
-                    "target",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
+    target: ListType[fhirtypes.ReferenceType] = Field(
+        ...,
+        alias="target",
+        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        description="Target Reference(s) (usually version specific)",
+    )
 
 
 class ProvenanceAgent(backboneelement.BackboneElement):
     """ Actor involved.
-
     An actor taking a role in an activity  for which it can be assigned some
     degree of responsibility for the activity taking place.
     """
 
-    resource_type = "ProvenanceAgent"
+    resource_type = Field("ProvenanceAgent", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    onBehalfOfReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="onBehalfOfReference",
+        title="Type `Reference` referencing `Practitioner, RelatedPerson, Patient, Device, Organization` (represented as `dict` in JSON)",
+        description="Who the agent is representing",
+        one_of_many="onBehalfOf",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    onBehalfOfUri: fhirtypes.Uri = Field(
+        None,
+        alias="onBehalfOfUri",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Who the agent is representing",
+        one_of_many="onBehalfOf",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    relatedAgentType: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="relatedAgentType",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Type of relationship between agents",
+    )
+
+    role: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="role",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="What the agents role was",
+    )
+
+    whoReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="whoReference",
+        title="Type `Reference` referencing `Practitioner, RelatedPerson, Patient, Device, Organization` (represented as `dict` in JSON)",
+        description="Who participated",
+        one_of_many="who",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    whoUri: fhirtypes.Uri = Field(
+        None,
+        alias="whoUri",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Who participated",
+        one_of_many="who",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "onBehalfOf": ["onBehalfOfReference", "onBehalfOfUri",],
+            "who": ["whoReference", "whoUri",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.onBehalfOfReference = None
-        """ Who the agent is representing.
-        Type `FHIRReference` referencing `['Practitioner'], ['RelatedPerson'], ['Patient'], ['Device'], ['Organization']` (represented as `dict` in JSON). """
-
-        self.onBehalfOfUri = None
-        """ Who the agent is representing.
-        Type `str`. """
-
-        self.relatedAgentType = None
-        """ Type of relationship between agents.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.role = None
-        """ What the agents role was.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.whoReference = None
-        """ Who participated.
-        Type `FHIRReference` referencing `['Practitioner'], ['RelatedPerson'], ['Patient'], ['Device'], ['Organization']` (represented as `dict` in JSON). """
-
-        self.whoUri = None
-        """ Who participated.
-        Type `str`. """
-
-        super(ProvenanceAgent, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ProvenanceAgent, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "onBehalfOfReference",
-                    "onBehalfOfReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    "onBehalfOf",
-                    False,
-                ),
-                (
-                    "onBehalfOfUri",
-                    "onBehalfOfUri",
-                    str,
-                    "uri",
-                    False,
-                    "onBehalfOf",
-                    False,
-                ),
-                (
-                    "relatedAgentType",
-                    "relatedAgentType",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "role",
-                    "role",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "whoReference",
-                    "whoReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    "who",
-                    True,
-                ),
-                ("whoUri", "whoUri", str, "uri", False, "who", True),
-            ]
-        )
-        return js
+        return values
 
 
 class ProvenanceEntity(backboneelement.BackboneElement):
     """ An entity used in this activity.
     """
 
-    resource_type = "ProvenanceEntity"
+    resource_type = Field("ProvenanceEntity", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    agent: ListType[fhirtypes.ProvenanceAgentType] = Field(
+        None,
+        alias="agent",
+        title="List of `ProvenanceAgent` items (represented as `dict` in JSON)",
+        description="Entity is attributed to this agent",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    role: fhirtypes.Code = Field(
+        ...,
+        alias="role",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="derivation | revision | quotation | source | removal",
+    )
+
+    whatIdentifier: fhirtypes.IdentifierType = Field(
+        None,
+        alias="whatIdentifier",
+        title="Type `Identifier` (represented as `dict` in JSON)",
+        description="Identity of entity",
+        one_of_many="what",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    whatReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="whatReference",
+        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        description="Identity of entity",
+        one_of_many="what",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    whatUri: fhirtypes.Uri = Field(
+        None,
+        alias="whatUri",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Identity of entity",
+        one_of_many="what",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "what": ["whatIdentifier", "whatReference", "whatUri",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.agent = None
-        """ Entity is attributed to this agent.
-        List of `ProvenanceAgent` items (represented as `dict` in JSON). """
-
-        self.role = None
-        """ derivation | revision | quotation | source | removal.
-        Type `str`. """
-
-        self.whatIdentifier = None
-        """ Identity of entity.
-        Type `Identifier` (represented as `dict` in JSON). """
-
-        self.whatReference = None
-        """ Identity of entity.
-        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
-
-        self.whatUri = None
-        """ Identity of entity.
-        Type `str`. """
-
-        super(ProvenanceEntity, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ProvenanceEntity, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "agent",
-                    "agent",
-                    ProvenanceAgent,
-                    "ProvenanceAgent",
-                    True,
-                    None,
-                    False,
-                ),
-                ("role", "role", str, "code", False, None, True),
-                (
-                    "whatIdentifier",
-                    "whatIdentifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    False,
-                    "what",
-                    True,
-                ),
-                (
-                    "whatReference",
-                    "whatReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    "what",
-                    True,
-                ),
-                ("whatUri", "whatUri", str, "uri", False, "what", True),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import coding
-except ImportError:
-    coding = sys.modules[__package__ + ".coding"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import period
-except ImportError:
-    period = sys.modules[__package__ + ".period"]
-try:
-    from . import signature
-except ImportError:
-    signature = sys.modules[__package__ + ".signature"]
+        return values

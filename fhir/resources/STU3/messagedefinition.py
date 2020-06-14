@@ -6,368 +6,241 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class MessageDefinition(domainresource.DomainResource):
     """ A resource that defines a type of message that can be exchanged between
     systems.
-
     Defines the characteristics of a message that can be shared between
     systems, including the type of event that initiates the message, the
     content to be transmitted and what response(s), if any, are permitted.
     """
 
-    resource_type = "MessageDefinition"
+    resource_type = Field("MessageDefinition", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    allowedResponse: ListType[fhirtypes.MessageDefinitionAllowedResponseType] = Field(
+        None,
+        alias="allowedResponse",
+        title="List of `MessageDefinitionAllowedResponse` items (represented as `dict` in JSON)",
+        description="Responses to this message",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    base: fhirtypes.ReferenceType = Field(
+        None,
+        alias="base",
+        title="Type `Reference` referencing `MessageDefinition` (represented as `dict` in JSON)",
+        description="Definition this one is based on",
+    )
 
-        self.allowedResponse = None
-        """ Responses to this message.
-        List of `MessageDefinitionAllowedResponse` items (represented as `dict` in JSON). """
+    category: fhirtypes.Code = Field(
+        None,
+        alias="category",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="Consequence | Currency | Notification",
+    )
 
-        self.base = None
-        """ Definition this one is based on.
-        Type `FHIRReference` referencing `['MessageDefinition']` (represented as `dict` in JSON). """
+    contact: ListType[fhirtypes.ContactDetailType] = Field(
+        None,
+        alias="contact",
+        title="List of `ContactDetail` items (represented as `dict` in JSON)",
+        description="Contact details for the publisher",
+    )
 
-        self.category = None
-        """ Consequence | Currency | Notification.
-        Type `str`. """
+    copyright: fhirtypes.Markdown = Field(
+        None,
+        alias="copyright",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Use and/or publishing restrictions",
+    )
 
-        self.contact = None
-        """ Contact details for the publisher.
-        List of `ContactDetail` items (represented as `dict` in JSON). """
+    date: fhirtypes.DateTime = Field(
+        ...,
+        alias="date",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Date this was last changed",
+    )
 
-        self.copyright = None
-        """ Use and/or publishing restrictions.
-        Type `str`. """
+    description: fhirtypes.Markdown = Field(
+        None,
+        alias="description",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Natural language description of the message definition",
+    )
 
-        self.date = None
-        """ Date this was last changed.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    event: fhirtypes.CodingType = Field(
+        ...,
+        alias="event",
+        title="Type `Coding` (represented as `dict` in JSON)",
+        description="Event type",
+    )
 
-        self.description = None
-        """ Natural language description of the message definition.
-        Type `str`. """
+    experimental: bool = Field(
+        None,
+        alias="experimental",
+        title="Type `bool`",
+        description="For testing purposes, not real usage",
+    )
 
-        self.event = None
-        """ Event type.
-        Type `Coding` (represented as `dict` in JSON). """
+    focus: ListType[fhirtypes.MessageDefinitionFocusType] = Field(
+        None,
+        alias="focus",
+        title="List of `MessageDefinitionFocus` items (represented as `dict` in JSON)",
+        description="Resource(s) that are the subject of the event",
+    )
 
-        self.experimental = None
-        """ For testing purposes, not real usage.
-        Type `bool`. """
+    identifier: fhirtypes.IdentifierType = Field(
+        None,
+        alias="identifier",
+        title="Type `Identifier` (represented as `dict` in JSON)",
+        description="Additional identifier for the message definition",
+    )
 
-        self.focus = None
-        """ Resource(s) that are the subject of the event.
-        List of `MessageDefinitionFocus` items (represented as `dict` in JSON). """
+    jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="jurisdiction",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Intended jurisdiction for message definition (if applicable)",
+    )
 
-        self.identifier = None
-        """ Additional identifier for the message definition.
-        Type `Identifier` (represented as `dict` in JSON). """
+    name: fhirtypes.String = Field(
+        None,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name for this message definition (computer friendly)",
+    )
 
-        self.jurisdiction = None
-        """ Intended jurisdiction for message definition (if applicable).
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    parent: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="parent",
+        title="List of `Reference` items referencing `ActivityDefinition, PlanDefinition` (represented as `dict` in JSON)",
+        description="Protocol/workflow this is part of",
+    )
 
-        self.name = None
-        """ Name for this message definition (computer friendly).
-        Type `str`. """
+    publisher: fhirtypes.String = Field(
+        None,
+        alias="publisher",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name of the publisher (organization or individual)",
+    )
 
-        self.parent = None
-        """ Protocol/workflow this is part of.
-        List of `FHIRReference` items referencing `['ActivityDefinition'], ['PlanDefinition']` (represented as `dict` in JSON). """
+    purpose: fhirtypes.Markdown = Field(
+        None,
+        alias="purpose",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Why this message definition is defined",
+    )
 
-        self.publisher = None
-        """ Name of the publisher (organization or individual).
-        Type `str`. """
+    replaces: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="replaces",
+        title="List of `Reference` items referencing `MessageDefinition` (represented as `dict` in JSON)",
+        description="Takes the place of",
+    )
 
-        self.purpose = None
-        """ Why this message definition is defined.
-        Type `str`. """
+    responseRequired: bool = Field(
+        None,
+        alias="responseRequired",
+        title="Type `bool`",
+        description="Is a response required?",
+    )
 
-        self.replaces = None
-        """ Takes the place of.
-        List of `FHIRReference` items referencing `['MessageDefinition']` (represented as `dict` in JSON). """
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="draft | active | retired | unknown",
+    )
 
-        self.responseRequired = None
-        """ Is a response required?.
-        Type `bool`. """
+    title: fhirtypes.String = Field(
+        None,
+        alias="title",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name for this message definition (human friendly)",
+    )
 
-        self.status = None
-        """ draft | active | retired | unknown.
-        Type `str`. """
+    url: fhirtypes.Uri = Field(
+        None,
+        alias="url",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Logical URI to reference this message definition (globally unique)",
+    )
 
-        self.title = None
-        """ Name for this message definition (human friendly).
-        Type `str`. """
+    useContext: ListType[fhirtypes.UsageContextType] = Field(
+        None,
+        alias="useContext",
+        title="List of `UsageContext` items (represented as `dict` in JSON)",
+        description="Context the content is intended to support",
+    )
 
-        self.url = None
-        """ Logical URI to reference this message definition (globally unique).
-        Type `str`. """
-
-        self.useContext = None
-        """ Context the content is intended to support.
-        List of `UsageContext` items (represented as `dict` in JSON). """
-
-        self.version = None
-        """ Business version of the message definition.
-        Type `str`. """
-
-        super(MessageDefinition, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(MessageDefinition, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "allowedResponse",
-                    "allowedResponse",
-                    MessageDefinitionAllowedResponse,
-                    "MessageDefinitionAllowedResponse",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "base",
-                    "base",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("category", "category", str, "code", False, None, False),
-                (
-                    "contact",
-                    "contact",
-                    contactdetail.ContactDetail,
-                    "ContactDetail",
-                    True,
-                    None,
-                    False,
-                ),
-                ("copyright", "copyright", str, "markdown", False, None, False),
-                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, True),
-                ("description", "description", str, "markdown", False, None, False),
-                ("event", "event", coding.Coding, "Coding", False, None, True),
-                ("experimental", "experimental", bool, "boolean", False, None, False),
-                (
-                    "focus",
-                    "focus",
-                    MessageDefinitionFocus,
-                    "MessageDefinitionFocus",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "jurisdiction",
-                    "jurisdiction",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                ("name", "name", str, "string", False, None, False),
-                (
-                    "parent",
-                    "parent",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                ("publisher", "publisher", str, "string", False, None, False),
-                ("purpose", "purpose", str, "markdown", False, None, False),
-                (
-                    "replaces",
-                    "replaces",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "responseRequired",
-                    "responseRequired",
-                    bool,
-                    "boolean",
-                    False,
-                    None,
-                    False,
-                ),
-                ("status", "status", str, "code", False, None, True),
-                ("title", "title", str, "string", False, None, False),
-                ("url", "url", str, "uri", False, None, False),
-                (
-                    "useContext",
-                    "useContext",
-                    usagecontext.UsageContext,
-                    "UsageContext",
-                    True,
-                    None,
-                    False,
-                ),
-                ("version", "version", str, "string", False, None, False),
-            ]
-        )
-        return js
+    version: fhirtypes.String = Field(
+        None,
+        alias="version",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Business version of the message definition",
+    )
 
 
 class MessageDefinitionAllowedResponse(backboneelement.BackboneElement):
     """ Responses to this message.
-
     Indicates what types of messages may be sent as an application-level
     response to this message.
     """
 
-    resource_type = "MessageDefinitionAllowedResponse"
+    resource_type = Field("MessageDefinitionAllowedResponse", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    message: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="message",
+        title="Type `Reference` referencing `MessageDefinition` (represented as `dict` in JSON)",
+        description="Reference to allowed message definition response",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.message = None
-        """ Reference to allowed message definition response.
-        Type `FHIRReference` referencing `['MessageDefinition']` (represented as `dict` in JSON). """
-
-        self.situation = None
-        """ When should this response be used.
-        Type `str`. """
-
-        super(MessageDefinitionAllowedResponse, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(MessageDefinitionAllowedResponse, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "message",
-                    "message",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                ("situation", "situation", str, "markdown", False, None, False),
-            ]
-        )
-        return js
+    situation: fhirtypes.Markdown = Field(
+        None,
+        alias="situation",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="When should this response be used",
+    )
 
 
 class MessageDefinitionFocus(backboneelement.BackboneElement):
     """ Resource(s) that are the subject of the event.
-
     Identifies the resource (or resources) that are being addressed by the
     event.  For example, the Encounter for an admit message or two Account
     records for a merge.
     """
 
-    resource_type = "MessageDefinitionFocus"
+    resource_type = Field("MessageDefinitionFocus", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    code: fhirtypes.Code = Field(
+        ...,
+        alias="code",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="Type of resource",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    max: fhirtypes.String = Field(
+        None,
+        alias="max",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Maximum number of focuses of this type",
+    )
 
-        self.code = None
-        """ Type of resource.
-        Type `str`. """
+    min: fhirtypes.UnsignedInt = Field(
+        None,
+        alias="min",
+        title="Type `UnsignedInt` (represented as `dict` in JSON)",
+        description="Minimum number of focuses of this type",
+    )
 
-        self.max = None
-        """ Maximum number of focuses of this type.
-        Type `str`. """
-
-        self.min = None
-        """ Minimum number of focuses of this type.
-        Type `int`. """
-
-        self.profile = None
-        """ Profile that must be adhered to by focus.
-        Type `FHIRReference` referencing `['StructureDefinition']` (represented as `dict` in JSON). """
-
-        super(MessageDefinitionFocus, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(MessageDefinitionFocus, self).elementProperties()
-        js.extend(
-            [
-                ("code", "code", str, "code", False, None, True),
-                ("max", "max", str, "string", False, None, False),
-                ("min", "min", int, "unsignedInt", False, None, False),
-                (
-                    "profile",
-                    "profile",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import coding
-except ImportError:
-    coding = sys.modules[__package__ + ".coding"]
-try:
-    from . import contactdetail
-except ImportError:
-    contactdetail = sys.modules[__package__ + ".contactdetail"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import usagecontext
-except ImportError:
-    usagecontext = sys.modules[__package__ + ".usagecontext"]
+    profile: fhirtypes.ReferenceType = Field(
+        None,
+        alias="profile",
+        title="Type `Reference` referencing `StructureDefinition` (represented as `dict` in JSON)",
+        description="Profile that must be adhered to by focus",
+    )

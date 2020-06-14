@@ -6,669 +6,430 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class Measure(domainresource.DomainResource):
     """ A quality measure definition.
-
     The Measure resource provides the definition of a quality measure.
     """
 
-    resource_type = "Measure"
+    resource_type = Field("Measure", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    approvalDate: fhirtypes.Date = Field(
+        None,
+        alias="approvalDate",
+        title="Type `Date` (represented as `dict` in JSON)",
+        description="When the measure was approved by publisher",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    clinicalRecommendationStatement: fhirtypes.Markdown = Field(
+        None,
+        alias="clinicalRecommendationStatement",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Summary of clinical guidelines",
+    )
 
-        self.approvalDate = None
-        """ When the measure was approved by publisher.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    compositeScoring: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="compositeScoring",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="opportunity | all-or-nothing | linear | weighted",
+    )
 
-        self.clinicalRecommendationStatement = None
-        """ Summary of clinical guidelines.
-        Type `str`. """
+    contact: ListType[fhirtypes.ContactDetailType] = Field(
+        None,
+        alias="contact",
+        title="List of `ContactDetail` items (represented as `dict` in JSON)",
+        description="Contact details for the publisher",
+    )
 
-        self.compositeScoring = None
-        """ opportunity | all-or-nothing | linear | weighted.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    contributor: ListType[fhirtypes.ContributorType] = Field(
+        None,
+        alias="contributor",
+        title="List of `Contributor` items (represented as `dict` in JSON)",
+        description="A content contributor",
+    )
 
-        self.contact = None
-        """ Contact details for the publisher.
-        List of `ContactDetail` items (represented as `dict` in JSON). """
+    copyright: fhirtypes.Markdown = Field(
+        None,
+        alias="copyright",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Use and/or publishing restrictions",
+    )
 
-        self.contributor = None
-        """ A content contributor.
-        List of `Contributor` items (represented as `dict` in JSON). """
+    date: fhirtypes.DateTime = Field(
+        None,
+        alias="date",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Date this was last changed",
+    )
 
-        self.copyright = None
-        """ Use and/or publishing restrictions.
-        Type `str`. """
+    definition: ListType[fhirtypes.Markdown] = Field(
+        None,
+        alias="definition",
+        title="List of `Markdown` items (represented as `dict` in JSON)",
+        description="Defined terms used in the measure documentation",
+    )
 
-        self.date = None
-        """ Date this was last changed.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    description: fhirtypes.Markdown = Field(
+        None,
+        alias="description",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Natural language description of the measure",
+    )
 
-        self.definition = None
-        """ Defined terms used in the measure documentation.
-        List of `str` items. """
+    disclaimer: fhirtypes.Markdown = Field(
+        None,
+        alias="disclaimer",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Disclaimer for use of the measure or its referenced content",
+    )
 
-        self.description = None
-        """ Natural language description of the measure.
-        Type `str`. """
+    effectivePeriod: fhirtypes.PeriodType = Field(
+        None,
+        alias="effectivePeriod",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="When the measure is expected to be used",
+    )
 
-        self.disclaimer = None
-        """ Disclaimer for use of the measure or its referenced content.
-        Type `str`. """
+    experimental: bool = Field(
+        None,
+        alias="experimental",
+        title="Type `bool`",
+        description="For testing purposes, not real usage",
+    )
 
-        self.effectivePeriod = None
-        """ When the measure is expected to be used.
-        Type `Period` (represented as `dict` in JSON). """
+    group: ListType[fhirtypes.MeasureGroupType] = Field(
+        None,
+        alias="group",
+        title="List of `MeasureGroup` items (represented as `dict` in JSON)",
+        description="Population criteria group",
+    )
 
-        self.experimental = None
-        """ For testing purposes, not real usage.
-        Type `bool`. """
+    guidance: fhirtypes.Markdown = Field(
+        None,
+        alias="guidance",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Additional guidance for implementers",
+    )
 
-        self.group = None
-        """ Population criteria group.
-        List of `MeasureGroup` items (represented as `dict` in JSON). """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Additional identifier for the measure",
+    )
 
-        self.guidance = None
-        """ Additional guidance for implementers.
-        Type `str`. """
+    improvementNotation: fhirtypes.String = Field(
+        None,
+        alias="improvementNotation",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Improvement notation for the measure, e.g. higher score indicates better quality",
+    )
 
-        self.identifier = None
-        """ Additional identifier for the measure.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="jurisdiction",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Intended jurisdiction for measure (if applicable)",
+    )
 
-        self.improvementNotation = None
-        """ Improvement notation for the measure, e.g. higher score indicates
-        better quality.
-        Type `str`. """
+    lastReviewDate: fhirtypes.Date = Field(
+        None,
+        alias="lastReviewDate",
+        title="Type `Date` (represented as `dict` in JSON)",
+        description="When the measure was last reviewed",
+    )
 
-        self.jurisdiction = None
-        """ Intended jurisdiction for measure (if applicable).
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    library: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="library",
+        title="List of `Reference` items referencing `Library` (represented as `dict` in JSON)",
+        description="Logic used by the measure",
+    )
 
-        self.lastReviewDate = None
-        """ When the measure was last reviewed.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    name: fhirtypes.String = Field(
+        None,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name for this measure (computer friendly)",
+    )
 
-        self.library = None
-        """ Logic used by the measure.
-        List of `FHIRReference` items referencing `['Library']` (represented as `dict` in JSON). """
+    publisher: fhirtypes.String = Field(
+        None,
+        alias="publisher",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name of the publisher (organization or individual)",
+    )
 
-        self.name = None
-        """ Name for this measure (computer friendly).
-        Type `str`. """
+    purpose: fhirtypes.Markdown = Field(
+        None,
+        alias="purpose",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Why this measure is defined",
+    )
 
-        self.publisher = None
-        """ Name of the publisher (organization or individual).
-        Type `str`. """
+    rateAggregation: fhirtypes.String = Field(
+        None,
+        alias="rateAggregation",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="How is rate aggregation performed for this measure",
+    )
 
-        self.purpose = None
-        """ Why this measure is defined.
-        Type `str`. """
+    rationale: fhirtypes.Markdown = Field(
+        None,
+        alias="rationale",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Why does this measure exist",
+    )
 
-        self.rateAggregation = None
-        """ How is rate aggregation performed for this measure.
-        Type `str`. """
+    relatedArtifact: ListType[fhirtypes.RelatedArtifactType] = Field(
+        None,
+        alias="relatedArtifact",
+        title="List of `RelatedArtifact` items (represented as `dict` in JSON)",
+        description="Additional documentation, citations, etc",
+    )
 
-        self.rationale = None
-        """ Why does this measure exist.
-        Type `str`. """
+    riskAdjustment: fhirtypes.String = Field(
+        None,
+        alias="riskAdjustment",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="How is risk adjustment applied for this measure",
+    )
 
-        self.relatedArtifact = None
-        """ Additional documentation, citations, etc.
-        List of `RelatedArtifact` items (represented as `dict` in JSON). """
+    scoring: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="scoring",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="proportion | ratio | continuous-variable | cohort",
+    )
 
-        self.riskAdjustment = None
-        """ How is risk adjustment applied for this measure.
-        Type `str`. """
+    set: fhirtypes.String = Field(
+        None,
+        alias="set",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="The measure set, e.g. Preventive Care and Screening",
+    )
 
-        self.scoring = None
-        """ proportion | ratio | continuous-variable | cohort.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="draft | active | retired | unknown",
+    )
 
-        self.set = None
-        """ The measure set, e.g. Preventive Care and Screening.
-        Type `str`. """
+    supplementalData: ListType[fhirtypes.MeasureSupplementalDataType] = Field(
+        None,
+        alias="supplementalData",
+        title="List of `MeasureSupplementalData` items (represented as `dict` in JSON)",
+        description="What other data should be reported with the measure",
+    )
 
-        self.status = None
-        """ draft | active | retired | unknown.
-        Type `str`. """
+    title: fhirtypes.String = Field(
+        None,
+        alias="title",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name for this measure (human friendly)",
+    )
 
-        self.supplementalData = None
-        """ What other data should be reported with the measure.
-        List of `MeasureSupplementalData` items (represented as `dict` in JSON). """
+    topic: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="topic",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="E.g. Education, Treatment, Assessment, etc",
+    )
 
-        self.title = None
-        """ Name for this measure (human friendly).
-        Type `str`. """
+    type: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="type",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="process | outcome | structure | patient-reported-outcome | composite",
+    )
 
-        self.topic = None
-        """ E.g. Education, Treatment, Assessment, etc.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    url: fhirtypes.Uri = Field(
+        None,
+        alias="url",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Logical URI to reference this measure (globally unique)",
+    )
 
-        self.type = None
-        """ process | outcome | structure | patient-reported-outcome |
-        composite.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    usage: fhirtypes.String = Field(
+        None,
+        alias="usage",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Describes the clinical usage of the measure",
+    )
 
-        self.url = None
-        """ Logical URI to reference this measure (globally unique).
-        Type `str`. """
+    useContext: ListType[fhirtypes.UsageContextType] = Field(
+        None,
+        alias="useContext",
+        title="List of `UsageContext` items (represented as `dict` in JSON)",
+        description="Context the content is intended to support",
+    )
 
-        self.usage = None
-        """ Describes the clinical usage of the measure.
-        Type `str`. """
-
-        self.useContext = None
-        """ Context the content is intended to support.
-        List of `UsageContext` items (represented as `dict` in JSON). """
-
-        self.version = None
-        """ Business version of the measure.
-        Type `str`. """
-
-        super(Measure, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(Measure, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "approvalDate",
-                    "approvalDate",
-                    fhirdate.FHIRDate,
-                    "date",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "clinicalRecommendationStatement",
-                    "clinicalRecommendationStatement",
-                    str,
-                    "markdown",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "compositeScoring",
-                    "compositeScoring",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "contact",
-                    "contact",
-                    contactdetail.ContactDetail,
-                    "ContactDetail",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "contributor",
-                    "contributor",
-                    contributor.Contributor,
-                    "Contributor",
-                    True,
-                    None,
-                    False,
-                ),
-                ("copyright", "copyright", str, "markdown", False, None, False),
-                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-                ("definition", "definition", str, "markdown", True, None, False),
-                ("description", "description", str, "markdown", False, None, False),
-                ("disclaimer", "disclaimer", str, "markdown", False, None, False),
-                (
-                    "effectivePeriod",
-                    "effectivePeriod",
-                    period.Period,
-                    "Period",
-                    False,
-                    None,
-                    False,
-                ),
-                ("experimental", "experimental", bool, "boolean", False, None, False),
-                ("group", "group", MeasureGroup, "MeasureGroup", True, None, False),
-                ("guidance", "guidance", str, "markdown", False, None, False),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "improvementNotation",
-                    "improvementNotation",
-                    str,
-                    "string",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "jurisdiction",
-                    "jurisdiction",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "lastReviewDate",
-                    "lastReviewDate",
-                    fhirdate.FHIRDate,
-                    "date",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "library",
-                    "library",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                ("name", "name", str, "string", False, None, False),
-                ("publisher", "publisher", str, "string", False, None, False),
-                ("purpose", "purpose", str, "markdown", False, None, False),
-                (
-                    "rateAggregation",
-                    "rateAggregation",
-                    str,
-                    "string",
-                    False,
-                    None,
-                    False,
-                ),
-                ("rationale", "rationale", str, "markdown", False, None, False),
-                (
-                    "relatedArtifact",
-                    "relatedArtifact",
-                    relatedartifact.RelatedArtifact,
-                    "RelatedArtifact",
-                    True,
-                    None,
-                    False,
-                ),
-                ("riskAdjustment", "riskAdjustment", str, "string", False, None, False),
-                (
-                    "scoring",
-                    "scoring",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("set", "set", str, "string", False, None, False),
-                ("status", "status", str, "code", False, None, True),
-                (
-                    "supplementalData",
-                    "supplementalData",
-                    MeasureSupplementalData,
-                    "MeasureSupplementalData",
-                    True,
-                    None,
-                    False,
-                ),
-                ("title", "title", str, "string", False, None, False),
-                (
-                    "topic",
-                    "topic",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                ("url", "url", str, "uri", False, None, False),
-                ("usage", "usage", str, "string", False, None, False),
-                (
-                    "useContext",
-                    "useContext",
-                    usagecontext.UsageContext,
-                    "UsageContext",
-                    True,
-                    None,
-                    False,
-                ),
-                ("version", "version", str, "string", False, None, False),
-            ]
-        )
-        return js
+    version: fhirtypes.String = Field(
+        None,
+        alias="version",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Business version of the measure",
+    )
 
 
 class MeasureGroup(backboneelement.BackboneElement):
     """ Population criteria group.
-
     A group of population criteria for the measure.
     """
 
-    resource_type = "MeasureGroup"
+    resource_type = Field("MeasureGroup", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    description: fhirtypes.String = Field(
+        None,
+        alias="description",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Summary description",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    identifier: fhirtypes.IdentifierType = Field(
+        ...,
+        alias="identifier",
+        title="Type `Identifier` (represented as `dict` in JSON)",
+        description="Unique identifier",
+    )
 
-        self.description = None
-        """ Summary description.
-        Type `str`. """
+    name: fhirtypes.String = Field(
+        None,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Short name",
+    )
 
-        self.identifier = None
-        """ Unique identifier.
-        Type `Identifier` (represented as `dict` in JSON). """
+    population: ListType[fhirtypes.MeasureGroupPopulationType] = Field(
+        None,
+        alias="population",
+        title="List of `MeasureGroupPopulation` items (represented as `dict` in JSON)",
+        description="Population criteria",
+    )
 
-        self.name = None
-        """ Short name.
-        Type `str`. """
-
-        self.population = None
-        """ Population criteria.
-        List of `MeasureGroupPopulation` items (represented as `dict` in JSON). """
-
-        self.stratifier = None
-        """ Stratifier criteria for the measure.
-        List of `MeasureGroupStratifier` items (represented as `dict` in JSON). """
-
-        super(MeasureGroup, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(MeasureGroup, self).elementProperties()
-        js.extend(
-            [
-                ("description", "description", str, "string", False, None, False),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    False,
-                    None,
-                    True,
-                ),
-                ("name", "name", str, "string", False, None, False),
-                (
-                    "population",
-                    "population",
-                    MeasureGroupPopulation,
-                    "MeasureGroupPopulation",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "stratifier",
-                    "stratifier",
-                    MeasureGroupStratifier,
-                    "MeasureGroupStratifier",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    stratifier: ListType[fhirtypes.MeasureGroupStratifierType] = Field(
+        None,
+        alias="stratifier",
+        title="List of `MeasureGroupStratifier` items (represented as `dict` in JSON)",
+        description="Stratifier criteria for the measure",
+    )
 
 
 class MeasureGroupPopulation(backboneelement.BackboneElement):
     """ Population criteria.
-
     A population criteria for the measure.
     """
 
-    resource_type = "MeasureGroupPopulation"
+    resource_type = Field("MeasureGroupPopulation", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    code: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="code",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="initial-population | numerator | numerator-exclusion | denominator | denominator-exclusion | denominator-exception | measure-population | measure-population-exclusion | measure-observation",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    criteria: fhirtypes.String = Field(
+        ...,
+        alias="criteria",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="The name of a valid referenced CQL expression (may be namespaced) that defines this population criteria",
+    )
 
-        self.code = None
-        """ initial-population | numerator | numerator-exclusion | denominator
-        | denominator-exclusion | denominator-exception | measure-
-        population | measure-population-exclusion | measure-observation.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    description: fhirtypes.String = Field(
+        None,
+        alias="description",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="The human readable description of this population criteria",
+    )
 
-        self.criteria = None
-        """ The name of a valid referenced CQL expression (may be namespaced)
-        that defines this population criteria.
-        Type `str`. """
+    identifier: fhirtypes.IdentifierType = Field(
+        None,
+        alias="identifier",
+        title="Type `Identifier` (represented as `dict` in JSON)",
+        description="Unique identifier",
+    )
 
-        self.description = None
-        """ The human readable description of this population criteria.
-        Type `str`. """
-
-        self.identifier = None
-        """ Unique identifier.
-        Type `Identifier` (represented as `dict` in JSON). """
-
-        self.name = None
-        """ Short name.
-        Type `str`. """
-
-        super(MeasureGroupPopulation, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(MeasureGroupPopulation, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "code",
-                    "code",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("criteria", "criteria", str, "string", False, None, True),
-                ("description", "description", str, "string", False, None, False),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    False,
-                    None,
-                    False,
-                ),
-                ("name", "name", str, "string", False, None, False),
-            ]
-        )
-        return js
+    name: fhirtypes.String = Field(
+        None,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Short name",
+    )
 
 
 class MeasureGroupStratifier(backboneelement.BackboneElement):
     """ Stratifier criteria for the measure.
-
     The stratifier criteria for the measure report, specified as either the
     name of a valid CQL expression defined within a referenced library, or a
     valid FHIR Resource Path.
     """
 
-    resource_type = "MeasureGroupStratifier"
+    resource_type = Field("MeasureGroupStratifier", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    criteria: fhirtypes.String = Field(
+        None,
+        alias="criteria",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="How the measure should be stratified",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    identifier: fhirtypes.IdentifierType = Field(
+        None,
+        alias="identifier",
+        title="Type `Identifier` (represented as `dict` in JSON)",
+        description="The identifier for the stratifier used to coordinate the reported data back to this stratifier",
+    )
 
-        self.criteria = None
-        """ How the measure should be stratified.
-        Type `str`. """
-
-        self.identifier = None
-        """ The identifier for the stratifier used to coordinate the reported
-        data back to this stratifier.
-        Type `Identifier` (represented as `dict` in JSON). """
-
-        self.path = None
-        """ Path to the stratifier.
-        Type `str`. """
-
-        super(MeasureGroupStratifier, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(MeasureGroupStratifier, self).elementProperties()
-        js.extend(
-            [
-                ("criteria", "criteria", str, "string", False, None, False),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    False,
-                    None,
-                    False,
-                ),
-                ("path", "path", str, "string", False, None, False),
-            ]
-        )
-        return js
+    path: fhirtypes.String = Field(
+        None,
+        alias="path",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Path to the stratifier",
+    )
 
 
 class MeasureSupplementalData(backboneelement.BackboneElement):
     """ What other data should be reported with the measure.
-
     The supplemental data criteria for the measure report, specified as either
     the name of a valid CQL expression within a referenced library, or a valid
     FHIR Resource Path.
     """
 
-    resource_type = "MeasureSupplementalData"
+    resource_type = Field("MeasureSupplementalData", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    criteria: fhirtypes.String = Field(
+        None,
+        alias="criteria",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Expression describing additional data to be reported",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    identifier: fhirtypes.IdentifierType = Field(
+        None,
+        alias="identifier",
+        title="Type `Identifier` (represented as `dict` in JSON)",
+        description="Identifier, unique within the measure",
+    )
 
-        self.criteria = None
-        """ Expression describing additional data to be reported.
-        Type `str`. """
+    path: fhirtypes.String = Field(
+        None,
+        alias="path",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Path to the supplemental data element",
+    )
 
-        self.identifier = None
-        """ Identifier, unique within the measure.
-        Type `Identifier` (represented as `dict` in JSON). """
-
-        self.path = None
-        """ Path to the supplemental data element.
-        Type `str`. """
-
-        self.usage = None
-        """ supplemental-data | risk-adjustment-factor.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        super(MeasureSupplementalData, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(MeasureSupplementalData, self).elementProperties()
-        js.extend(
-            [
-                ("criteria", "criteria", str, "string", False, None, False),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    False,
-                    None,
-                    False,
-                ),
-                ("path", "path", str, "string", False, None, False),
-                (
-                    "usage",
-                    "usage",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import contactdetail
-except ImportError:
-    contactdetail = sys.modules[__package__ + ".contactdetail"]
-try:
-    from . import contributor
-except ImportError:
-    contributor = sys.modules[__package__ + ".contributor"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import period
-except ImportError:
-    period = sys.modules[__package__ + ".period"]
-try:
-    from . import relatedartifact
-except ImportError:
-    relatedartifact = sys.modules[__package__ + ".relatedartifact"]
-try:
-    from . import usagecontext
-except ImportError:
-    usagecontext = sys.modules[__package__ + ".usagecontext"]
+    usage: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="usage",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="supplemental-data | risk-adjustment-factor",
+    )

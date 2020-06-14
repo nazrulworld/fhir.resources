@@ -11,7 +11,7 @@ with open("README.rst") as readme_file:
 with open("HISTORY.rst") as history_file:
     history = history_file.read()
 
-requirements = ["isodate"]
+requirements = ["pydantic['email']"]
 
 setup_requirements = ["pytest-runner"]
 
@@ -23,8 +23,11 @@ development_requirements = [
     "requests==2.23.0",
     "colorlog==2.10.0",
     "certifi",
+    "flake8",
+    "flake8-isort",
     "isort",
     "black",
+    "mypy",
     "zest-releaser[recommended]"
 ]
 
@@ -37,13 +40,19 @@ setup(
         "Intended Audience :: Developers",
         "License :: OSI Approved :: BSD License",
         "Natural Language :: English",
-        "Programming Language :: Python :: 2",
-        "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.4",
-        "Programming Language :: Python :: 3.5",
+        "Programming Language :: Python :: 3 :: Only",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Intended Audience :: Developers",
+        "Intended Audience :: Education",
+        "Intended Audience :: Healthcare Industry",
+        "Intended Audience :: Information Technology",
+        "Intended Audience :: Science/Research",
+        "Operating System :: OS Independent",
+        "Typing :: Typed"
     ],
     description="FHIR Resources as Model Class",
     install_requires=requirements,
@@ -62,6 +71,7 @@ setup(
         "all": (test_requirements + setup_requirements + development_requirements)
     },
     url="https://github.com/nazrulworld/fhir.resources",
-    version="5.1.1.dev0",
+    version="6.0.0.dev0",
     zip_safe=False,
+    python_requires='>=3.6',
 )

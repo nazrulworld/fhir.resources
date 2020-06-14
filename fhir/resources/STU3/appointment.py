@@ -6,11 +6,11 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class Appointment(domainresource.DomainResource):
@@ -19,326 +19,180 @@ class Appointment(domainresource.DomainResource):
     or more Encounter(s).
     """
 
-    resource_type = "Appointment"
+    resource_type = Field("Appointment", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    appointmentType: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="appointmentType",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The style of appointment or patient that has been booked in the slot (not service type)",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    comment: fhirtypes.String = Field(
+        None,
+        alias="comment",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Additional comments",
+    )
 
-        self.appointmentType = None
-        """ The style of appointment or patient that has been booked in the
-        slot (not service type).
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    created: fhirtypes.DateTime = Field(
+        None,
+        alias="created",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="The date that this appointment was initially created",
+    )
 
-        self.comment = None
-        """ Additional comments.
-        Type `str`. """
+    description: fhirtypes.String = Field(
+        None,
+        alias="description",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Shown on a subject line in a meeting request, or appointment list",
+    )
 
-        self.created = None
-        """ The date that this appointment was initially created.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    end: fhirtypes.Instant = Field(
+        None,
+        alias="end",
+        title="Type `Instant` (represented as `dict` in JSON)",
+        description="When appointment is to conclude",
+    )
 
-        self.description = None
-        """ Shown on a subject line in a meeting request, or appointment list.
-        Type `str`. """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="External Ids for this item",
+    )
 
-        self.end = None
-        """ When appointment is to conclude.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    incomingReferral: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="incomingReferral",
+        title="List of `Reference` items referencing `ReferralRequest` (represented as `dict` in JSON)",
+        description="The ReferralRequest provided as information to allocate to the Encounter",
+    )
 
-        self.identifier = None
-        """ External Ids for this item.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    indication: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="indication",
+        title="List of `Reference` items referencing `Condition, Procedure` (represented as `dict` in JSON)",
+        description="Reason the appointment is to takes place (resource)",
+    )
 
-        self.incomingReferral = None
-        """ The ReferralRequest provided as information to allocate to the
-        Encounter.
-        List of `FHIRReference` items referencing `['ReferralRequest']` (represented as `dict` in JSON). """
+    minutesDuration: fhirtypes.PositiveInt = Field(
+        None,
+        alias="minutesDuration",
+        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        description="Can be less than start/end (e.g. estimate)",
+    )
 
-        self.indication = None
-        """ Reason the appointment is to takes place (resource).
-        List of `FHIRReference` items referencing `['Condition'], ['Procedure']` (represented as `dict` in JSON). """
+    participant: ListType[fhirtypes.AppointmentParticipantType] = Field(
+        ...,
+        alias="participant",
+        title="List of `AppointmentParticipant` items (represented as `dict` in JSON)",
+        description="Participants involved in appointment",
+    )
 
-        self.minutesDuration = None
-        """ Can be less than start/end (e.g. estimate).
-        Type `int`. """
+    priority: fhirtypes.UnsignedInt = Field(
+        None,
+        alias="priority",
+        title="Type `UnsignedInt` (represented as `dict` in JSON)",
+        description="Used to make informed decisions if needing to re-prioritize",
+    )
 
-        self.participant = None
-        """ Participants involved in appointment.
-        List of `AppointmentParticipant` items (represented as `dict` in JSON). """
+    reason: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="reason",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Reason this appointment is scheduled",
+    )
 
-        self.priority = None
-        """ Used to make informed decisions if needing to re-prioritize.
-        Type `int`. """
+    requestedPeriod: ListType[fhirtypes.PeriodType] = Field(
+        None,
+        alias="requestedPeriod",
+        title="List of `Period` items (represented as `dict` in JSON)",
+        description="Potential date/time interval(s) requested to allocate the appointment within",
+    )
 
-        self.reason = None
-        """ Reason this appointment is scheduled.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    serviceCategory: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="serviceCategory",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="A broad categorisation of the service that is to be performed during this appointment",
+    )
 
-        self.requestedPeriod = None
-        """ Potential date/time interval(s) requested to allocate the
-        appointment within.
-        List of `Period` items (represented as `dict` in JSON). """
+    serviceType: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="serviceType",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="The specific service that is to be performed during this appointment",
+    )
 
-        self.serviceCategory = None
-        """ A broad categorisation of the service that is to be performed
-        during this appointment.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    slot: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="slot",
+        title="List of `Reference` items referencing `Slot` (represented as `dict` in JSON)",
+        description="The slots that this appointment is filling",
+    )
 
-        self.serviceType = None
-        """ The specific service that is to be performed during this
-        appointment.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    specialty: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="specialty",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="The specialty of a practitioner that would be required to perform the service requested in this appointment",
+    )
 
-        self.slot = None
-        """ The slots that this appointment is filling.
-        List of `FHIRReference` items referencing `['Slot']` (represented as `dict` in JSON). """
+    start: fhirtypes.Instant = Field(
+        None,
+        alias="start",
+        title="Type `Instant` (represented as `dict` in JSON)",
+        description="When appointment is to take place",
+    )
 
-        self.specialty = None
-        """ The specialty of a practitioner that would be required to perform
-        the service requested in this appointment.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="proposed | pending | booked | arrived | fulfilled | cancelled | noshow | entered-in-error",
+    )
 
-        self.start = None
-        """ When appointment is to take place.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.status = None
-        """ proposed | pending | booked | arrived | fulfilled | cancelled |
-        noshow | entered-in-error.
-        Type `str`. """
-
-        self.supportingInformation = None
-        """ Additional information to support the appointment.
-        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
-
-        super(Appointment, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(Appointment, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "appointmentType",
-                    "appointmentType",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("comment", "comment", str, "string", False, None, False),
-                (
-                    "created",
-                    "created",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    None,
-                    False,
-                ),
-                ("description", "description", str, "string", False, None, False),
-                ("end", "end", fhirdate.FHIRDate, "instant", False, None, False),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "incomingReferral",
-                    "incomingReferral",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "indication",
-                    "indication",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "minutesDuration",
-                    "minutesDuration",
-                    int,
-                    "positiveInt",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "participant",
-                    "participant",
-                    AppointmentParticipant,
-                    "AppointmentParticipant",
-                    True,
-                    None,
-                    True,
-                ),
-                ("priority", "priority", int, "unsignedInt", False, None, False),
-                (
-                    "reason",
-                    "reason",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "requestedPeriod",
-                    "requestedPeriod",
-                    period.Period,
-                    "Period",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "serviceCategory",
-                    "serviceCategory",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "serviceType",
-                    "serviceType",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "slot",
-                    "slot",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "specialty",
-                    "specialty",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                ("start", "start", fhirdate.FHIRDate, "instant", False, None, False),
-                ("status", "status", str, "code", False, None, True),
-                (
-                    "supportingInformation",
-                    "supportingInformation",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    supportingInformation: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="supportingInformation",
+        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        description="Additional information to support the appointment",
+    )
 
 
 class AppointmentParticipant(backboneelement.BackboneElement):
     """ Participants involved in appointment.
-
     List of participants involved in the appointment.
     """
 
-    resource_type = "AppointmentParticipant"
+    resource_type = Field("AppointmentParticipant", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    actor: fhirtypes.ReferenceType = Field(
+        None,
+        alias="actor",
+        title="Type `Reference` referencing `Patient, Practitioner, RelatedPerson, Device, HealthcareService, Location` (represented as `dict` in JSON)",
+        description="Person, Location/HealthcareService or Device",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    required: fhirtypes.Code = Field(
+        None,
+        alias="required",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="required | optional | information-only",
+    )
 
-        self.actor = None
-        """ Person, Location/HealthcareService or Device.
-        Type `FHIRReference` referencing `['Patient'], ['Practitioner'], ['RelatedPerson'], ['Device'], ['HealthcareService'], ['Location']` (represented as `dict` in JSON). """
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="accepted | declined | tentative | needs-action",
+    )
 
-        self.required = None
-        """ required | optional | information-only.
-        Type `str`. """
-
-        self.status = None
-        """ accepted | declined | tentative | needs-action.
-        Type `str`. """
-
-        self.type = None
-        """ Role of participant in the appointment.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        super(AppointmentParticipant, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(AppointmentParticipant, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "actor",
-                    "actor",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("required", "required", str, "code", False, None, False),
-                ("status", "status", str, "code", False, None, True),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import period
-except ImportError:
-    period = sys.modules[__package__ + ".period"]
+    type: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="type",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Role of participant in the appointment",
+    )

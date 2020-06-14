@@ -6,566 +6,466 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import contract
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class ContractTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("Contract", js["resourceType"])
-        return contract.Contract(js)
+def impl_contract_1(inst):
+    assert inst.authority[0].display == "Canada Infoway"
+    assert inst.authority[0].reference == "Organization/Infoway"
+    assert inst.domain[0].display == "Canada Infoway"
+    assert inst.domain[0].reference == "Location/Infoway"
+    assert (
+        inst.friendly[0].contentAttachment.title
+        == "The terms of the consent in friendly consumer speak."
+    )
+    assert inst.id == "pcd-example-notOrg"
+    assert inst.issued == fhirtypes.DateTime.validate("2015-11-18")
+    assert (
+        inst.legal[0].contentAttachment.title
+        == "The terms of the consent in lawyer speak."
+    )
+    assert inst.subType[0].coding[0].code == "Opt-In"
+    assert inst.subType[0].coding[0].display == "Default Authorization with exceptions."
+    assert (
+        inst.subType[0].coding[0].system
+        == "http://www.infoway-inforoute.ca.org/Consent-subtype-codes"
+    )
+    assert inst.subject[0].display == "P. van de Heuvel"
+    assert inst.subject[0].reference == "Patient/f001"
+    assert (
+        inst.term[0].text
+        == "Withhold this order and any results or related objects from any provider."
+    )
+    assert inst.term[0].topic[0].display == "Good Health Clinic"
+    assert inst.term[0].topic[0].reference == "Organization/2.16.840.1.113883.19.5"
+    assert inst.term[0].type.coding[0].code == "withhold-from"
+    assert (
+        inst.term[0].type.coding[0].display
+        == "Withhold all data from specified actor entity."
+    )
+    assert (
+        inst.term[0].type.coding[0].system
+        == "http://example.org/fhir/consent-term-type-codes"
+    )
+    assert inst.text.status == "generated"
+    assert inst.type.coding[0].code == "57016-8"
+    assert inst.type.coding[0].system == "http://loinc.org"
 
-    def testContract1(self):
-        inst = self.instantiate_from("pcd-example-notOrg.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Contract instance")
-        self.implContract1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("Contract", js["resourceType"])
-        inst2 = contract.Contract(js)
-        self.implContract1(inst2)
+def test_contract_1(base_settings):
+    """No. 1 tests collection for Contract.
+    Test File: pcd-example-notOrg.json
+    """
+    filename = base_settings["unittest_data_dir"] / "pcd-example-notOrg.json"
+    inst = contract.Contract.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Contract" == inst.resource_type
 
-    def implContract1(self, inst):
-        self.assertEqual(
-            force_bytes(inst.friendly[0].contentAttachment.title),
-            force_bytes("The terms of the consent in friendly consumer speak."),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("pcd-example-notOrg"))
-        self.assertEqual(inst.issued.date, FHIRDate("2015-11-18").date)
-        self.assertEqual(inst.issued.as_json(), "2015-11-18")
-        self.assertEqual(
-            force_bytes(inst.legal[0].contentAttachment.title),
-            force_bytes("The terms of the consent in lawyer speak."),
-        )
-        self.assertEqual(
-            force_bytes(inst.subType[0].coding[0].code), force_bytes("Opt-In")
-        )
-        self.assertEqual(
-            force_bytes(inst.subType[0].coding[0].display),
-            force_bytes("Default Authorization with exceptions."),
-        )
-        self.assertEqual(
-            force_bytes(inst.subType[0].coding[0].system),
-            force_bytes("http://www.infoway-inforoute.ca.org/Consent-subtype-codes"),
-        )
-        self.assertEqual(
-            force_bytes(inst.term[0].text),
-            force_bytes(
-                "Withhold this order and any results or related objects from any provider."
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.term[0].type.coding[0].code), force_bytes("withhold-from")
-        )
-        self.assertEqual(
-            force_bytes(inst.term[0].type.coding[0].display),
-            force_bytes("Withhold all data from specified actor entity."),
-        )
-        self.assertEqual(
-            force_bytes(inst.term[0].type.coding[0].system),
-            force_bytes("http://example.org/fhir/consent-term-type-codes"),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type.coding[0].code), force_bytes("57016-8"))
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].system), force_bytes("http://loinc.org")
-        )
+    impl_contract_1(inst)
 
-    def testContract2(self):
-        inst = self.instantiate_from("contract-example-42cfr-part2.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Contract instance")
-        self.implContract2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Contract" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("Contract", js["resourceType"])
-        inst2 = contract.Contract(js)
-        self.implContract2(inst2)
+    inst2 = contract.Contract(**data)
+    impl_contract_1(inst2)
 
-    def implContract2(self, inst):
-        self.assertEqual(
-            force_bytes(inst.agent[0].role[0].coding[0].code), force_bytes("IR")
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[0].role[0].coding[0].display),
-            force_bytes("Recipient"),
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[0].role[0].coding[0].system),
-            force_bytes("http://org.mdhhs.fhir.consent-actor-type"),
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[0].role[0].text),
-            force_bytes("Recipient of restricted health information"),
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[1].role[0].coding[0].code), force_bytes("IS")
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[1].role[0].coding[0].display), force_bytes("Sender")
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[1].role[0].coding[0].system),
-            force_bytes("http://org.mdhhs.fhir.consent-actor-type"),
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[1].role[0].text),
-            force_bytes("Sender of restricted health information"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("C-2121"))
-        self.assertEqual(inst.issued.date, FHIRDate("2031-11-01T21:18:27-04:00").date)
-        self.assertEqual(inst.issued.as_json(), "2031-11-01T21:18:27-04:00")
-        self.assertEqual(
-            force_bytes(inst.legal[0].contentAttachment.contentType),
-            force_bytes("application/pdf"),
-        )
-        self.assertEqual(
-            force_bytes(inst.legal[0].contentAttachment.language), force_bytes("en-US")
-        )
-        self.assertEqual(
-            force_bytes(inst.legal[0].contentAttachment.title),
-            force_bytes("MDHHS-5515 Consent To Share Your Health Information"),
-        )
-        self.assertEqual(
-            force_bytes(inst.legal[0].contentAttachment.url),
-            force_bytes("http://org.mihin.ecms/ConsentDirective-2121"),
-        )
-        self.assertEqual(
-            inst.meta.lastUpdated.date, FHIRDate("2016-07-19T18:18:42.108-04:00").date
-        )
-        self.assertEqual(
-            inst.meta.lastUpdated.as_json(), "2016-07-19T18:18:42.108-04:00"
-        )
-        self.assertEqual(force_bytes(inst.meta.versionId), force_bytes("1"))
-        self.assertEqual(force_bytes(inst.securityLabel[0].code), force_bytes("R"))
-        self.assertEqual(
-            force_bytes(inst.securityLabel[0].display), force_bytes("Restricted")
-        )
-        self.assertEqual(
-            force_bytes(inst.securityLabel[0].system),
-            force_bytes("http://hl7.org/fhir/v3/Confidentiality"),
-        )
-        self.assertEqual(force_bytes(inst.securityLabel[1].code), force_bytes("ETH"))
-        self.assertEqual(
-            force_bytes(inst.securityLabel[1].display),
-            force_bytes("substance abuse information sensitivity"),
-        )
-        self.assertEqual(
-            force_bytes(inst.securityLabel[1].system),
-            force_bytes("http://hl7.org/fhir/v3/ActCode"),
-        )
-        self.assertEqual(
-            force_bytes(inst.securityLabel[2].code), force_bytes("42CFRPart2")
-        )
-        self.assertEqual(
-            force_bytes(inst.securityLabel[2].system),
-            force_bytes("http://hl7.org/fhir/v3/ActCode"),
-        )
-        self.assertEqual(force_bytes(inst.securityLabel[3].code), force_bytes("TREAT"))
-        self.assertEqual(
-            force_bytes(inst.securityLabel[3].display), force_bytes("treatment")
-        )
-        self.assertEqual(
-            force_bytes(inst.securityLabel[3].system),
-            force_bytes("http://hl7.org/fhir/v3/ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.securityLabel[4].code), force_bytes("HPAYMT"))
-        self.assertEqual(
-            force_bytes(inst.securityLabel[4].display),
-            force_bytes("healthcare payment"),
-        )
-        self.assertEqual(
-            force_bytes(inst.securityLabel[4].system),
-            force_bytes("http://hl7.org/fhir/v3/ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.securityLabel[5].code), force_bytes("HOPERAT")
-        )
-        self.assertEqual(
-            force_bytes(inst.securityLabel[5].display),
-            force_bytes("healthcare operations"),
-        )
-        self.assertEqual(
-            force_bytes(inst.securityLabel[5].system),
-            force_bytes("http://hl7.org/fhir/v3/ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.securityLabel[6].code), force_bytes("PERSISTLABEL")
-        )
-        self.assertEqual(
-            force_bytes(inst.securityLabel[6].display),
-            force_bytes("persist security label"),
-        )
-        self.assertEqual(
-            force_bytes(inst.securityLabel[6].system),
-            force_bytes("http://hl7.org/fhir/v3/ActCode"),
-        )
-        self.assertEqual(
-            force_bytes(inst.securityLabel[7].code), force_bytes("PRIVMARK")
-        )
-        self.assertEqual(
-            force_bytes(inst.securityLabel[7].display), force_bytes("privacy mark")
-        )
-        self.assertEqual(
-            force_bytes(inst.securityLabel[7].system),
-            force_bytes("http://hl7.org/fhir/v3/ActCode"),
-        )
-        self.assertEqual(
-            force_bytes(inst.securityLabel[8].code), force_bytes("NORDSCLCD")
-        )
-        self.assertEqual(
-            force_bytes(inst.securityLabel[8].display),
-            force_bytes("no redisclosure without consent directive"),
-        )
-        self.assertEqual(
-            force_bytes(inst.securityLabel[8].system),
-            force_bytes("http://hl7.org/fhir/v3/ActCode"),
-        )
-        self.assertEqual(
-            force_bytes(inst.signer[0].signature[0].type[0].code),
-            force_bytes("1.2.840.10065.1.12.1.1"),
-        )
-        self.assertEqual(
-            force_bytes(inst.signer[0].signature[0].type[0].system),
-            force_bytes("urn:iso-astm:E1762-95:2013"),
-        )
-        self.assertEqual(
-            inst.signer[0].signature[0].when.date,
-            FHIRDate("2017-02-08T10:57:34+01:00").date,
-        )
-        self.assertEqual(
-            inst.signer[0].signature[0].when.as_json(), "2017-02-08T10:57:34+01:00"
-        )
-        self.assertEqual(force_bytes(inst.signer[0].type.code), force_bytes("SELF"))
-        self.assertEqual(
-            force_bytes(inst.signer[0].type.system),
-            force_bytes("http://org.mdhhs.fhir.consent-signer-type"),
-        )
-        self.assertEqual(
-            force_bytes(inst.subType[0].coding[0].code), force_bytes("MDHHS-5515")
-        )
-        self.assertEqual(
-            force_bytes(inst.subType[0].coding[0].display),
-            force_bytes(
-                "Michigan MDHHS-5515 Consent to Share Behavioral Health Information for Care Coordination Purposes"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.subType[0].coding[0].system),
-            force_bytes("http://hl7.org/fhir/consentcategorycodes"),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type.coding[0].code), force_bytes("OPTIN"))
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].system),
-            force_bytes("http://org.mdhhs.fhir.consentdirective-type"),
-        )
-        self.assertEqual(
-            force_bytes(inst.type.text), force_bytes("Opt-in consent directive")
-        )
 
-    def testContract3(self):
-        inst = self.instantiate_from("pcd-example-notLabs.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Contract instance")
-        self.implContract3(inst)
+def impl_contract_2(inst):
+    assert inst.agent[0].actor.display == "VA Ann Arbor Healthcare System"
+    assert inst.agent[0].actor.reference == "Organization/f001"
+    assert inst.agent[0].role[0].coding[0].code == "IR"
+    assert inst.agent[0].role[0].coding[0].display == "Recipient"
+    assert (
+        inst.agent[0].role[0].coding[0].system
+        == "http://org.mdhhs.fhir.consent-actor-type"
+    )
+    assert inst.agent[0].role[0].text == "Recipient of restricted health information"
+    assert inst.agent[1].actor.display == "Community Mental Health Clinic"
+    assert inst.agent[1].actor.reference == "Organization/2"
+    assert inst.agent[1].role[0].coding[0].code == "IS"
+    assert inst.agent[1].role[0].coding[0].display == "Sender"
+    assert (
+        inst.agent[1].role[0].coding[0].system
+        == "http://org.mdhhs.fhir.consent-actor-type"
+    )
+    assert inst.agent[1].role[0].text == "Sender of restricted health information"
+    assert inst.id == "C-2121"
+    assert inst.issued == fhirtypes.DateTime.validate("2031-11-01T21:18:27-04:00")
+    assert inst.legal[0].contentAttachment.contentType == "application/pdf"
+    assert inst.legal[0].contentAttachment.language == "en-US"
+    assert (
+        inst.legal[0].contentAttachment.title
+        == "MDHHS-5515 Consent To Share Your Health Information"
+    )
+    assert (
+        inst.legal[0].contentAttachment.url
+        == "http://org.mihin.ecms/ConsentDirective-2121"
+    )
+    assert inst.meta.lastUpdated == fhirtypes.Instant.validate(
+        "2016-07-19T18:18:42.108-04:00"
+    )
+    assert inst.meta.versionId == "1"
+    assert inst.securityLabel[0].code == "R"
+    assert inst.securityLabel[0].display == "Restricted"
+    assert inst.securityLabel[0].system == "http://hl7.org/fhir/v3/Confidentiality"
+    assert inst.securityLabel[1].code == "ETH"
+    assert inst.securityLabel[1].display == "substance abuse information sensitivity"
+    assert inst.securityLabel[1].system == "http://hl7.org/fhir/v3/ActCode"
+    assert inst.securityLabel[2].code == "42CFRPart2"
+    assert inst.securityLabel[2].system == "http://hl7.org/fhir/v3/ActCode"
+    assert inst.securityLabel[3].code == "TREAT"
+    assert inst.securityLabel[3].display == "treatment"
+    assert inst.securityLabel[3].system == "http://hl7.org/fhir/v3/ActReason"
+    assert inst.securityLabel[4].code == "HPAYMT"
+    assert inst.securityLabel[4].display == "healthcare payment"
+    assert inst.securityLabel[4].system == "http://hl7.org/fhir/v3/ActReason"
+    assert inst.securityLabel[5].code == "HOPERAT"
+    assert inst.securityLabel[5].display == "healthcare operations"
+    assert inst.securityLabel[5].system == "http://hl7.org/fhir/v3/ActReason"
+    assert inst.securityLabel[6].code == "PERSISTLABEL"
+    assert inst.securityLabel[6].display == "persist security label"
+    assert inst.securityLabel[6].system == "http://hl7.org/fhir/v3/ActCode"
+    assert inst.securityLabel[7].code == "PRIVMARK"
+    assert inst.securityLabel[7].display == "privacy mark"
+    assert inst.securityLabel[7].system == "http://hl7.org/fhir/v3/ActCode"
+    assert inst.securityLabel[8].code == "NORDSCLCD"
+    assert inst.securityLabel[8].display == "no redisclosure without consent directive"
+    assert inst.securityLabel[8].system == "http://hl7.org/fhir/v3/ActCode"
+    assert inst.signer[0].party.display == "Alice Recruit"
+    assert inst.signer[0].party.reference == "Patient/f201"
+    assert inst.signer[0].signature[0].type[0].code == "1.2.840.10065.1.12.1.1"
+    assert inst.signer[0].signature[0].type[0].system == "urn:iso-astm:E1762-95:2013"
+    assert inst.signer[0].signature[0].when == fhirtypes.Instant.validate(
+        "2017-02-08T10:57:34+01:00"
+    )
+    assert inst.signer[0].signature[0].whoReference.reference == "Patient/f201"
+    assert inst.signer[0].type.code == "SELF"
+    assert inst.signer[0].type.system == "http://org.mdhhs.fhir.consent-signer-type"
+    assert inst.subType[0].coding[0].code == "MDHHS-5515"
+    assert (
+        inst.subType[0].coding[0].display
+        == "Michigan MDHHS-5515 Consent to Share Behavioral Health Information for Care Coordination Purposes"
+    )
+    assert (
+        inst.subType[0].coding[0].system == "http://hl7.org/fhir/consentcategorycodes"
+    )
+    assert inst.subject[0].reference == "Patient/f201"
+    assert inst.text.status == "generated"
+    assert inst.type.coding[0].code == "OPTIN"
+    assert inst.type.coding[0].system == "http://org.mdhhs.fhir.consentdirective-type"
+    assert inst.type.text == "Opt-in consent directive"
 
-        js = inst.as_json()
-        self.assertEqual("Contract", js["resourceType"])
-        inst2 = contract.Contract(js)
-        self.implContract3(inst2)
 
-    def implContract3(self, inst):
-        self.assertEqual(
-            force_bytes(inst.friendly[0].contentAttachment.title),
-            force_bytes("The terms of the consent in friendly consumer speak."),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("pcd-example-notLabs"))
-        self.assertEqual(inst.issued.date, FHIRDate("2014-08-17").date)
-        self.assertEqual(inst.issued.as_json(), "2014-08-17")
-        self.assertEqual(
-            force_bytes(inst.legal[0].contentAttachment.title),
-            force_bytes("The terms of the consent in lawyer speak."),
-        )
-        self.assertEqual(
-            force_bytes(inst.subType[0].coding[0].code), force_bytes("Opt-In")
-        )
-        self.assertEqual(
-            force_bytes(inst.subType[0].coding[0].display),
-            force_bytes("Default Authorization with exceptions."),
-        )
-        self.assertEqual(
-            force_bytes(inst.subType[0].coding[0].system),
-            force_bytes("http://www.infoway-inforoute.ca.org/Consent-subtype-codes"),
-        )
-        self.assertEqual(
-            force_bytes(inst.term[0].subType.coding[0].code),
-            force_bytes("ProcedureRequest"),
-        )
-        self.assertEqual(
-            force_bytes(inst.term[0].subType.coding[0].system),
-            force_bytes("http://hl7.org/fhir/resource-types"),
-        )
-        self.assertEqual(
-            force_bytes(inst.term[0].text),
-            force_bytes("Withhold orders from any provider."),
-        )
-        self.assertEqual(
-            force_bytes(inst.term[0].type.coding[0].code),
-            force_bytes("withhold-object-type"),
-        )
-        self.assertEqual(
-            force_bytes(inst.term[0].type.coding[0].system),
-            force_bytes("http://example.org/fhir/consent-term-type-codes"),
-        )
-        self.assertEqual(
-            force_bytes(inst.term[1].subType.coding[0].code),
-            force_bytes("DiagnosticReport"),
-        )
-        self.assertEqual(
-            force_bytes(inst.term[1].subType.coding[0].system),
-            force_bytes("http://hl7.org/fhir/resource-types"),
-        )
-        self.assertEqual(
-            force_bytes(inst.term[1].text),
-            force_bytes("Withhold order results from any provider."),
-        )
-        self.assertEqual(
-            force_bytes(inst.term[1].type.coding[0].code),
-            force_bytes("withhold-object-type"),
-        )
-        self.assertEqual(
-            force_bytes(inst.term[1].type.coding[0].system),
-            force_bytes("http://example.org/fhir/consent-term-type-codes"),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type.coding[0].code), force_bytes("57016-8"))
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].system), force_bytes("http://loinc.org")
-        )
+def test_contract_2(base_settings):
+    """No. 2 tests collection for Contract.
+    Test File: contract-example-42cfr-part2.json
+    """
+    filename = base_settings["unittest_data_dir"] / "contract-example-42cfr-part2.json"
+    inst = contract.Contract.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Contract" == inst.resource_type
 
-    def testContract4(self):
-        inst = self.instantiate_from("pcd-example-notThem.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Contract instance")
-        self.implContract4(inst)
+    impl_contract_2(inst)
 
-        js = inst.as_json()
-        self.assertEqual("Contract", js["resourceType"])
-        inst2 = contract.Contract(js)
-        self.implContract4(inst2)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Contract" == data["resourceType"]
 
-    def implContract4(self, inst):
-        self.assertEqual(
-            force_bytes(inst.friendly[0].contentAttachment.title),
-            force_bytes("The terms of the consent in friendly consumer speak."),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("pcd-example-notThem"))
-        self.assertEqual(inst.issued.date, FHIRDate("2015-11-18").date)
-        self.assertEqual(inst.issued.as_json(), "2015-11-18")
-        self.assertEqual(
-            force_bytes(inst.legal[0].contentAttachment.title),
-            force_bytes("The terms of the consent in lawyer speak."),
-        )
-        self.assertEqual(
-            force_bytes(inst.signer[0].signature[0].type[0].code),
-            force_bytes("1.2.840.10065.1.12.1.1"),
-        )
-        self.assertEqual(
-            force_bytes(inst.signer[0].signature[0].type[0].system),
-            force_bytes("urn:iso-astm:E1762-95:2013"),
-        )
-        self.assertEqual(
-            inst.signer[0].signature[0].when.date,
-            FHIRDate("2013-06-08T10:57:34-07:00").date,
-        )
-        self.assertEqual(
-            inst.signer[0].signature[0].when.as_json(), "2013-06-08T10:57:34-07:00"
-        )
-        self.assertEqual(force_bytes(inst.signer[0].type.code), force_bytes("COVPTY"))
-        self.assertEqual(
-            force_bytes(inst.signer[0].type.system),
-            force_bytes("http://www.hl7.org/fhir/contractsignertypecodes"),
-        )
-        self.assertEqual(
-            force_bytes(inst.subType[0].coding[0].code), force_bytes("Opt-In")
-        )
-        self.assertEqual(
-            force_bytes(inst.subType[0].coding[0].display),
-            force_bytes("Default Authorization with exceptions."),
-        )
-        self.assertEqual(
-            force_bytes(inst.subType[0].coding[0].system),
-            force_bytes("http://www.infoway-inforoute.ca.org/Consent-subtype-codes"),
-        )
-        self.assertEqual(
-            force_bytes(inst.term[0].text),
-            force_bytes(
-                "Withhold this order and any results or related objects from specified nurse provider."
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.term[0].type.coding[0].code), force_bytes("withhold-from")
-        )
-        self.assertEqual(
-            force_bytes(inst.term[0].type.coding[0].display),
-            force_bytes("Withhold all data from specified actor entity."),
-        )
-        self.assertEqual(
-            force_bytes(inst.term[0].type.coding[0].system),
-            force_bytes("http://example.org/fhir/consent-term-type-codes"),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type.coding[0].code), force_bytes("57016-8"))
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].system), force_bytes("http://loinc.org")
-        )
+    inst2 = contract.Contract(**data)
+    impl_contract_2(inst2)
 
-    def testContract5(self):
-        inst = self.instantiate_from("pcd-example-notAuthor.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Contract instance")
-        self.implContract5(inst)
 
-        js = inst.as_json()
-        self.assertEqual("Contract", js["resourceType"])
-        inst2 = contract.Contract(js)
-        self.implContract5(inst2)
+def impl_contract_3(inst):
+    assert inst.authority[0].display == "Canada Infoway"
+    assert inst.authority[0].reference == "Organization/Infoway"
+    assert inst.domain[0].display == "Canada Infoway"
+    assert inst.domain[0].reference == "Location/Infoway"
+    assert (
+        inst.friendly[0].contentAttachment.title
+        == "The terms of the consent in friendly consumer speak."
+    )
+    assert inst.id == "pcd-example-notLabs"
+    assert inst.issued == fhirtypes.DateTime.validate("2014-08-17")
+    assert (
+        inst.legal[0].contentAttachment.title
+        == "The terms of the consent in lawyer speak."
+    )
+    assert inst.subType[0].coding[0].code == "Opt-In"
+    assert inst.subType[0].coding[0].display == "Default Authorization with exceptions."
+    assert (
+        inst.subType[0].coding[0].system
+        == "http://www.infoway-inforoute.ca.org/Consent-subtype-codes"
+    )
+    assert inst.subject[0].display == "P. van de Heuvel"
+    assert inst.subject[0].reference == "Patient/f001"
+    assert inst.term[0].subType.coding[0].code == "ProcedureRequest"
+    assert inst.term[0].subType.coding[0].system == "http://hl7.org/fhir/resource-types"
+    assert inst.term[0].text == "Withhold orders from any provider."
+    assert inst.term[0].type.coding[0].code == "withhold-object-type"
+    assert (
+        inst.term[0].type.coding[0].system
+        == "http://example.org/fhir/consent-term-type-codes"
+    )
+    assert inst.term[1].subType.coding[0].code == "DiagnosticReport"
+    assert inst.term[1].subType.coding[0].system == "http://hl7.org/fhir/resource-types"
+    assert inst.term[1].text == "Withhold order results from any provider."
+    assert inst.term[1].type.coding[0].code == "withhold-object-type"
+    assert (
+        inst.term[1].type.coding[0].system
+        == "http://example.org/fhir/consent-term-type-codes"
+    )
+    assert inst.text.status == "generated"
+    assert inst.type.coding[0].code == "57016-8"
+    assert inst.type.coding[0].system == "http://loinc.org"
 
-    def implContract5(self, inst):
-        self.assertEqual(
-            force_bytes(inst.friendly[0].contentAttachment.title),
-            force_bytes("The terms of the consent in friendly consumer speak."),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("pcd-example-notAuthor"))
-        self.assertEqual(inst.issued.date, FHIRDate("2015-11-18").date)
-        self.assertEqual(inst.issued.as_json(), "2015-11-18")
-        self.assertEqual(
-            force_bytes(inst.legal[0].contentAttachment.title),
-            force_bytes("The terms of the consent in lawyer speak."),
-        )
-        self.assertEqual(
-            force_bytes(inst.subType[0].coding[0].code), force_bytes("Opt-In")
-        )
-        self.assertEqual(
-            force_bytes(inst.subType[0].coding[0].display),
-            force_bytes("Default Authorization with exceptions."),
-        )
-        self.assertEqual(
-            force_bytes(inst.subType[0].coding[0].system),
-            force_bytes("http://www.infoway-inforoute.ca.org/Consent-subtype-codes"),
-        )
-        self.assertEqual(
-            force_bytes(inst.term[0].text),
-            force_bytes("Withhold all data authored by Good Health provider."),
-        )
-        self.assertEqual(
-            force_bytes(inst.term[0].type.coding[0].code),
-            force_bytes("withhold-authored-by"),
-        )
-        self.assertEqual(
-            force_bytes(inst.term[0].type.coding[0].display),
-            force_bytes("Withhold all data authored by specified actor entity."),
-        )
-        self.assertEqual(
-            force_bytes(inst.term[0].type.coding[0].system),
-            force_bytes("http://example.org/fhir/consent-term-type-codes"),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type.coding[0].code), force_bytes("57016-8"))
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].system), force_bytes("http://loinc.org")
-        )
 
-    def testContract6(self):
-        inst = self.instantiate_from("contract-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Contract instance")
-        self.implContract6(inst)
+def test_contract_3(base_settings):
+    """No. 3 tests collection for Contract.
+    Test File: pcd-example-notLabs.json
+    """
+    filename = base_settings["unittest_data_dir"] / "pcd-example-notLabs.json"
+    inst = contract.Contract.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Contract" == inst.resource_type
 
-        js = inst.as_json()
-        self.assertEqual("Contract", js["resourceType"])
-        inst2 = contract.Contract(js)
-        self.implContract6(inst2)
+    impl_contract_3(inst)
 
-    def implContract6(self, inst):
-        self.assertEqual(force_bytes(inst.id), force_bytes("C-123"))
-        self.assertEqual(
-            force_bytes(inst.identifier.system),
-            force_bytes("http://happyvalley.com/contract"),
-        )
-        self.assertEqual(force_bytes(inst.identifier.value), force_bytes("12347"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the contract</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Contract" == data["resourceType"]
 
-    def testContract7(self):
-        inst = self.instantiate_from("pcd-example-notThis.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Contract instance")
-        self.implContract7(inst)
+    inst2 = contract.Contract(**data)
+    impl_contract_3(inst2)
 
-        js = inst.as_json()
-        self.assertEqual("Contract", js["resourceType"])
-        inst2 = contract.Contract(js)
-        self.implContract7(inst2)
 
-    def implContract7(self, inst):
-        self.assertEqual(
-            force_bytes(inst.friendly[0].contentAttachment.title),
-            force_bytes("The terms of the consent in friendly consumer speak."),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("pcd-example-notThis"))
-        self.assertEqual(inst.issued.date, FHIRDate("2015-11-18").date)
-        self.assertEqual(inst.issued.as_json(), "2015-11-18")
-        self.assertEqual(
-            force_bytes(inst.legal[0].contentAttachment.title),
-            force_bytes("The terms of the consent in lawyer speak."),
-        )
-        self.assertEqual(
-            force_bytes(inst.subType[0].coding[0].code), force_bytes("Opt-In")
-        )
-        self.assertEqual(
-            force_bytes(inst.subType[0].coding[0].display),
-            force_bytes("Default Authorization with exceptions."),
-        )
-        self.assertEqual(
-            force_bytes(inst.subType[0].coding[0].system),
-            force_bytes("http://www.infoway-inforoute.ca.org/Consent-subtype-codes"),
-        )
-        self.assertEqual(
-            force_bytes(inst.term[0].text),
-            force_bytes(
-                "Withhold this order and any results or related objects from any provider."
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.term[0].type.coding[0].code),
-            force_bytes("withhold-identified-object-and-related"),
-        )
-        self.assertEqual(
-            force_bytes(inst.term[0].type.coding[0].display),
-            force_bytes(
-                "Withhold the identified object and any other resources that are related to this object."
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.term[0].type.coding[0].system),
-            force_bytes("http://example.org/fhir/consent-term-type-codes"),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type.coding[0].code), force_bytes("57016-8"))
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].system), force_bytes("http://loinc.org")
-        )
+def impl_contract_4(inst):
+    assert inst.agent[0].actor.reference == "Patient/f001"
+    assert inst.authority[0].display == "Canada Infoway"
+    assert inst.authority[0].reference == "Organization/2"
+    assert inst.domain[0].display == "Canada Infoway"
+    assert inst.domain[0].reference == "Location/ukp"
+    assert (
+        inst.friendly[0].contentAttachment.title
+        == "The terms of the consent in friendly consumer speak."
+    )
+    assert inst.id == "pcd-example-notThem"
+    assert inst.issued == fhirtypes.DateTime.validate("2015-11-18")
+    assert (
+        inst.legal[0].contentAttachment.title
+        == "The terms of the consent in lawyer speak."
+    )
+    assert inst.signer[0].party.reference == "Patient/f001"
+    assert inst.signer[0].signature[0].type[0].code == "1.2.840.10065.1.12.1.1"
+    assert inst.signer[0].signature[0].type[0].system == "urn:iso-astm:E1762-95:2013"
+    assert inst.signer[0].signature[0].when == fhirtypes.Instant.validate(
+        "2013-06-08T10:57:34-07:00"
+    )
+    assert inst.signer[0].signature[0].whoReference.reference == "Patient/f001"
+    assert inst.signer[0].type.code == "COVPTY"
+    assert (
+        inst.signer[0].type.system == "http://www.hl7.org/fhir/contractsignertypecodes"
+    )
+    assert inst.subType[0].coding[0].code == "Opt-In"
+    assert inst.subType[0].coding[0].display == "Default Authorization with exceptions."
+    assert (
+        inst.subType[0].coding[0].system
+        == "http://www.infoway-inforoute.ca.org/Consent-subtype-codes"
+    )
+    assert inst.subject[0].display == "P. van de Heuvel"
+    assert inst.subject[0].reference == "Patient/f001"
+    assert (
+        inst.term[0].text
+        == "Withhold this order and any results or related objects from specified nurse provider."
+    )
+    assert inst.term[0].topic[0].display == "Fictive Nurse"
+    assert inst.term[0].topic[0].reference == "Practitioner/f204"
+    assert inst.term[0].type.coding[0].code == "withhold-from"
+    assert (
+        inst.term[0].type.coding[0].display
+        == "Withhold all data from specified actor entity."
+    )
+    assert (
+        inst.term[0].type.coding[0].system
+        == "http://example.org/fhir/consent-term-type-codes"
+    )
+    assert inst.text.status == "generated"
+    assert inst.type.coding[0].code == "57016-8"
+    assert inst.type.coding[0].system == "http://loinc.org"
+
+
+def test_contract_4(base_settings):
+    """No. 4 tests collection for Contract.
+    Test File: pcd-example-notThem.json
+    """
+    filename = base_settings["unittest_data_dir"] / "pcd-example-notThem.json"
+    inst = contract.Contract.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Contract" == inst.resource_type
+
+    impl_contract_4(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Contract" == data["resourceType"]
+
+    inst2 = contract.Contract(**data)
+    impl_contract_4(inst2)
+
+
+def impl_contract_5(inst):
+    assert inst.authority[0].display == "Canada Infoway"
+    assert inst.authority[0].reference == "Organization/Infoway"
+    assert inst.domain[0].display == "Canada Infoway"
+    assert inst.domain[0].reference == "Location/Infoway"
+    assert (
+        inst.friendly[0].contentAttachment.title
+        == "The terms of the consent in friendly consumer speak."
+    )
+    assert inst.id == "pcd-example-notAuthor"
+    assert inst.issued == fhirtypes.DateTime.validate("2015-11-18")
+    assert (
+        inst.legal[0].contentAttachment.title
+        == "The terms of the consent in lawyer speak."
+    )
+    assert inst.subType[0].coding[0].code == "Opt-In"
+    assert inst.subType[0].coding[0].display == "Default Authorization with exceptions."
+    assert (
+        inst.subType[0].coding[0].system
+        == "http://www.infoway-inforoute.ca.org/Consent-subtype-codes"
+    )
+    assert inst.subject[0].display == "P. van de Heuvel"
+    assert inst.subject[0].reference == "Patient/f001"
+    assert inst.term[0].text == "Withhold all data authored by Good Health provider."
+    assert inst.term[0].topic[0].display == "Good Health Clinic"
+    assert inst.term[0].topic[0].reference == "Organization/2.16.840.1.113883.19.5"
+    assert inst.term[0].type.coding[0].code == "withhold-authored-by"
+    assert (
+        inst.term[0].type.coding[0].display
+        == "Withhold all data authored by specified actor entity."
+    )
+    assert (
+        inst.term[0].type.coding[0].system
+        == "http://example.org/fhir/consent-term-type-codes"
+    )
+    assert inst.text.status == "generated"
+    assert inst.type.coding[0].code == "57016-8"
+    assert inst.type.coding[0].system == "http://loinc.org"
+
+
+def test_contract_5(base_settings):
+    """No. 5 tests collection for Contract.
+    Test File: pcd-example-notAuthor.json
+    """
+    filename = base_settings["unittest_data_dir"] / "pcd-example-notAuthor.json"
+    inst = contract.Contract.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Contract" == inst.resource_type
+
+    impl_contract_5(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Contract" == data["resourceType"]
+
+    inst2 = contract.Contract(**data)
+    impl_contract_5(inst2)
+
+
+def impl_contract_6(inst):
+    assert inst.id == "C-123"
+    assert inst.identifier.system == "http://happyvalley.com/contract"
+    assert inst.identifier.value == "12347"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the contract</div>'
+    )
+    assert inst.text.status == "generated"
+
+
+def test_contract_6(base_settings):
+    """No. 6 tests collection for Contract.
+    Test File: contract-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "contract-example.json"
+    inst = contract.Contract.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Contract" == inst.resource_type
+
+    impl_contract_6(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Contract" == data["resourceType"]
+
+    inst2 = contract.Contract(**data)
+    impl_contract_6(inst2)
+
+
+def impl_contract_7(inst):
+    assert inst.authority[0].display == "Canada Infoway"
+    assert inst.authority[0].reference == "Organization/Infoway"
+    assert inst.domain[0].display == "Canada Infoway"
+    assert inst.domain[0].reference == "Location/Infoway"
+    assert (
+        inst.friendly[0].contentAttachment.title
+        == "The terms of the consent in friendly consumer speak."
+    )
+    assert inst.id == "pcd-example-notThis"
+    assert inst.issued == fhirtypes.DateTime.validate("2015-11-18")
+    assert (
+        inst.legal[0].contentAttachment.title
+        == "The terms of the consent in lawyer speak."
+    )
+    assert inst.subType[0].coding[0].code == "Opt-In"
+    assert inst.subType[0].coding[0].display == "Default Authorization with exceptions."
+    assert (
+        inst.subType[0].coding[0].system
+        == "http://www.infoway-inforoute.ca.org/Consent-subtype-codes"
+    )
+    assert inst.subject[0].display == "P. van de Heuvel"
+    assert inst.subject[0].reference == "Patient/f001"
+    assert (
+        inst.term[0].text
+        == "Withhold this order and any results or related objects from any provider."
+    )
+    assert inst.term[0].topic[0].reference == "ProcedureRequest/example-lipid"
+    assert inst.term[0].type.coding[0].code == "withhold-identified-object-and-related"
+    assert (
+        inst.term[0].type.coding[0].display
+        == "Withhold the identified object and any other resources that are related to this object."
+    )
+    assert (
+        inst.term[0].type.coding[0].system
+        == "http://example.org/fhir/consent-term-type-codes"
+    )
+    assert inst.text.status == "generated"
+    assert inst.type.coding[0].code == "57016-8"
+    assert inst.type.coding[0].system == "http://loinc.org"
+
+
+def test_contract_7(base_settings):
+    """No. 7 tests collection for Contract.
+    Test File: pcd-example-notThis.json
+    """
+    filename = base_settings["unittest_data_dir"] / "pcd-example-notThis.json"
+    inst = contract.Contract.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Contract" == inst.resource_type
+
+    impl_contract_7(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Contract" == data["resourceType"]
+
+    inst2 = contract.Contract(**data)
+    impl_contract_7(inst2)

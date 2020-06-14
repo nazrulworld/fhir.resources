@@ -6,329 +6,204 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class VisionPrescription(domainresource.DomainResource):
     """ Prescription for vision correction products for a patient.
-
     An authorization for the provision of glasses and/or contact lenses to a
     patient.
     """
 
-    resource_type = "VisionPrescription"
+    resource_type = Field("VisionPrescription", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    created: fhirtypes.DateTime = Field(
+        ...,
+        alias="created",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Response creation date",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    dateWritten: fhirtypes.DateTime = Field(
+        ...,
+        alias="dateWritten",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="When prescription was authorized",
+    )
 
-        self.created = None
-        """ Response creation date.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    encounter: fhirtypes.ReferenceType = Field(
+        None,
+        alias="encounter",
+        title="Type `Reference` referencing `Encounter` (represented as `dict` in JSON)",
+        description="Created during encounter / admission / stay",
+    )
 
-        self.dateWritten = None
-        """ When prescription was authorized.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Business Identifier for vision prescription",
+    )
 
-        self.encounter = None
-        """ Created during encounter / admission / stay.
-        Type `FHIRReference` referencing `['Encounter']` (represented as `dict` in JSON). """
+    lensSpecification: ListType[
+        fhirtypes.VisionPrescriptionLensSpecificationType
+    ] = Field(
+        ...,
+        alias="lensSpecification",
+        title="List of `VisionPrescriptionLensSpecification` items (represented as `dict` in JSON)",
+        description="Vision lens authorization",
+    )
 
-        self.identifier = None
-        """ Business Identifier for vision prescription.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    patient: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="patient",
+        title="Type `Reference` referencing `Patient` (represented as `dict` in JSON)",
+        description="Who prescription is for",
+    )
 
-        self.lensSpecification = None
-        """ Vision lens authorization.
-        List of `VisionPrescriptionLensSpecification` items (represented as `dict` in JSON). """
+    prescriber: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="prescriber",
+        title="Type `Reference` referencing `Practitioner, PractitionerRole` (represented as `dict` in JSON)",
+        description="Who authorized the vision prescription",
+    )
 
-        self.patient = None
-        """ Who prescription is for.
-        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
-
-        self.prescriber = None
-        """ Who authorized the vision prescription.
-        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole']` (represented as `dict` in JSON). """
-
-        self.status = None
-        """ active | cancelled | draft | entered-in-error.
-        Type `str`. """
-
-        super(VisionPrescription, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(VisionPrescription, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "created",
-                    "created",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "dateWritten",
-                    "dateWritten",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "encounter",
-                    "encounter",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "lensSpecification",
-                    "lensSpecification",
-                    VisionPrescriptionLensSpecification,
-                    "VisionPrescriptionLensSpecification",
-                    True,
-                    None,
-                    True,
-                ),
-                (
-                    "patient",
-                    "patient",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "prescriber",
-                    "prescriber",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                ("status", "status", str, "code", False, None, True),
-            ]
-        )
-        return js
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="active | cancelled | draft | entered-in-error",
+    )
 
 
 class VisionPrescriptionLensSpecification(backboneelement.BackboneElement):
     """ Vision lens authorization.
-
     Contain the details of  the individual lens specifications and serves as
     the authorization for the fullfillment by certified professionals.
     """
 
-    resource_type = "VisionPrescriptionLensSpecification"
+    resource_type = Field("VisionPrescriptionLensSpecification", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    add: fhirtypes.Decimal = Field(
+        None,
+        alias="add",
+        title="Type `Decimal` (represented as `dict` in JSON)",
+        description="Added power for multifocal levels",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    axis: fhirtypes.Integer = Field(
+        None,
+        alias="axis",
+        title="Type `Integer` (represented as `dict` in JSON)",
+        description="Lens meridian which contain no power for astigmatism",
+    )
 
-        self.add = None
-        """ Added power for multifocal levels.
-        Type `float`. """
+    backCurve: fhirtypes.Decimal = Field(
+        None,
+        alias="backCurve",
+        title="Type `Decimal` (represented as `dict` in JSON)",
+        description="Contact lens back curvature",
+    )
 
-        self.axis = None
-        """ Lens meridian which contain no power for astigmatism.
-        Type `int`. """
+    brand: fhirtypes.String = Field(
+        None,
+        alias="brand",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Brand required",
+    )
 
-        self.backCurve = None
-        """ Contact lens back curvature.
-        Type `float`. """
+    color: fhirtypes.String = Field(
+        None,
+        alias="color",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Color required",
+    )
 
-        self.brand = None
-        """ Brand required.
-        Type `str`. """
+    cylinder: fhirtypes.Decimal = Field(
+        None,
+        alias="cylinder",
+        title="Type `Decimal` (represented as `dict` in JSON)",
+        description="Lens power for astigmatism",
+    )
 
-        self.color = None
-        """ Color required.
-        Type `str`. """
+    diameter: fhirtypes.Decimal = Field(
+        None,
+        alias="diameter",
+        title="Type `Decimal` (represented as `dict` in JSON)",
+        description="Contact lens diameter",
+    )
 
-        self.cylinder = None
-        """ Lens power for astigmatism.
-        Type `float`. """
+    duration: fhirtypes.QuantityType = Field(
+        None,
+        alias="duration",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="Lens wear duration",
+    )
 
-        self.diameter = None
-        """ Contact lens diameter.
-        Type `float`. """
+    eye: fhirtypes.Code = Field(
+        ...,
+        alias="eye",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="right | left",
+    )
 
-        self.duration = None
-        """ Lens wear duration.
-        Type `Quantity` (represented as `dict` in JSON). """
+    note: ListType[fhirtypes.AnnotationType] = Field(
+        None,
+        alias="note",
+        title="List of `Annotation` items (represented as `dict` in JSON)",
+        description="Notes for coatings",
+    )
 
-        self.eye = None
-        """ right | left.
-        Type `str`. """
+    power: fhirtypes.Decimal = Field(
+        None,
+        alias="power",
+        title="Type `Decimal` (represented as `dict` in JSON)",
+        description="Contact lens power",
+    )
 
-        self.note = None
-        """ Notes for coatings.
-        List of `Annotation` items (represented as `dict` in JSON). """
+    prism: ListType[fhirtypes.VisionPrescriptionLensSpecificationPrismType] = Field(
+        None,
+        alias="prism",
+        title="List of `VisionPrescriptionLensSpecificationPrism` items (represented as `dict` in JSON)",
+        description="Eye alignment compensation",
+    )
 
-        self.power = None
-        """ Contact lens power.
-        Type `float`. """
+    product: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="product",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Product to be supplied",
+    )
 
-        self.prism = None
-        """ Eye alignment compensation.
-        List of `VisionPrescriptionLensSpecificationPrism` items (represented as `dict` in JSON). """
-
-        self.product = None
-        """ Product to be supplied.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.sphere = None
-        """ Power of the lens.
-        Type `float`. """
-
-        super(VisionPrescriptionLensSpecification, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(VisionPrescriptionLensSpecification, self).elementProperties()
-        js.extend(
-            [
-                ("add", "add", float, "decimal", False, None, False),
-                ("axis", "axis", int, "integer", False, None, False),
-                ("backCurve", "backCurve", float, "decimal", False, None, False),
-                ("brand", "brand", str, "string", False, None, False),
-                ("color", "color", str, "string", False, None, False),
-                ("cylinder", "cylinder", float, "decimal", False, None, False),
-                ("diameter", "diameter", float, "decimal", False, None, False),
-                (
-                    "duration",
-                    "duration",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    None,
-                    False,
-                ),
-                ("eye", "eye", str, "code", False, None, True),
-                (
-                    "note",
-                    "note",
-                    annotation.Annotation,
-                    "Annotation",
-                    True,
-                    None,
-                    False,
-                ),
-                ("power", "power", float, "decimal", False, None, False),
-                (
-                    "prism",
-                    "prism",
-                    VisionPrescriptionLensSpecificationPrism,
-                    "VisionPrescriptionLensSpecificationPrism",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "product",
-                    "product",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                ("sphere", "sphere", float, "decimal", False, None, False),
-            ]
-        )
-        return js
+    sphere: fhirtypes.Decimal = Field(
+        None,
+        alias="sphere",
+        title="Type `Decimal` (represented as `dict` in JSON)",
+        description="Power of the lens",
+    )
 
 
 class VisionPrescriptionLensSpecificationPrism(backboneelement.BackboneElement):
     """ Eye alignment compensation.
-
     Allows for adjustment on two axis.
     """
 
-    resource_type = "VisionPrescriptionLensSpecificationPrism"
+    resource_type = Field("VisionPrescriptionLensSpecificationPrism", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    amount: fhirtypes.Decimal = Field(
+        ...,
+        alias="amount",
+        title="Type `Decimal` (represented as `dict` in JSON)",
+        description="Amount of adjustment",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.amount = None
-        """ Amount of adjustment.
-        Type `float`. """
-
-        self.base = None
-        """ up | down | in | out.
-        Type `str`. """
-
-        super(VisionPrescriptionLensSpecificationPrism, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(VisionPrescriptionLensSpecificationPrism, self).elementProperties()
-        js.extend(
-            [
-                ("amount", "amount", float, "decimal", False, None, True),
-                ("base", "base", str, "code", False, None, True),
-            ]
-        )
-        return js
-
-
-try:
-    from . import annotation
-except ImportError:
-    annotation = sys.modules[__package__ + ".annotation"]
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import quantity
-except ImportError:
-    quantity = sys.modules[__package__ + ".quantity"]
+    base: fhirtypes.Code = Field(
+        ...,
+        alias="base",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="up | down | in | out",
+    )

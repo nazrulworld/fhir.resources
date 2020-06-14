@@ -6,501 +6,369 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import Any, Dict
+from typing import List as ListType
 
+from pydantic import Field, root_validator
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class Contract(domainresource.DomainResource):
     """ Legal Agreement.
-
     Legally enforceable, formally recorded unilateral or bilateral directive
     i.e., a policy or agreement.
     """
 
-    resource_type = "Contract"
+    resource_type = Field("Contract", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    alias: ListType[fhirtypes.String] = Field(
+        None,
+        alias="alias",
+        title="List of `String` items (represented as `dict` in JSON)",
+        description="Acronym or short name",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    applies: fhirtypes.PeriodType = Field(
+        None,
+        alias="applies",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="Effective time",
+    )
+
+    author: fhirtypes.ReferenceType = Field(
+        None,
+        alias="author",
+        title="Type `Reference` referencing `Patient, Practitioner, PractitionerRole, Organization` (represented as `dict` in JSON)",
+        description="Source of Contract",
+    )
+
+    authority: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="authority",
+        title="List of `Reference` items referencing `Organization` (represented as `dict` in JSON)",
+        description="Authority under which this Contract has standing",
+    )
+
+    contentDefinition: fhirtypes.ContractContentDefinitionType = Field(
+        None,
+        alias="contentDefinition",
+        title="Type `ContractContentDefinition` (represented as `dict` in JSON)",
+        description="Contract precursor content",
+    )
+
+    contentDerivative: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="contentDerivative",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Content derived from the basal information",
+    )
+
+    domain: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="domain",
+        title="List of `Reference` items referencing `Location` (represented as `dict` in JSON)",
+        description="A sphere of control governed by an authoritative jurisdiction, organization, or person",
+    )
+
+    expirationType: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="expirationType",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Contract cessation cause",
+    )
+
+    friendly: ListType[fhirtypes.ContractFriendlyType] = Field(
+        None,
+        alias="friendly",
+        title="List of `ContractFriendly` items (represented as `dict` in JSON)",
+        description="Contract Friendly Language",
+    )
+
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Contract number",
+    )
+
+    instantiatesCanonical: fhirtypes.ReferenceType = Field(
+        None,
+        alias="instantiatesCanonical",
+        title="Type `Reference` referencing `Contract` (represented as `dict` in JSON)",
+        description="Source Contract Definition",
+    )
+
+    instantiatesUri: fhirtypes.Uri = Field(
+        None,
+        alias="instantiatesUri",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="External Contract Definition",
+    )
+
+    issued: fhirtypes.DateTime = Field(
+        None,
+        alias="issued",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="When this Contract was issued",
+    )
+
+    legal: ListType[fhirtypes.ContractLegalType] = Field(
+        None,
+        alias="legal",
+        title="List of `ContractLegal` items (represented as `dict` in JSON)",
+        description="Contract Legal Language",
+    )
+
+    legalState: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="legalState",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Negotiation status",
+    )
+
+    legallyBindingAttachment: fhirtypes.AttachmentType = Field(
+        None,
+        alias="legallyBindingAttachment",
+        title="Type `Attachment` (represented as `dict` in JSON)",
+        description="Binding Contract",
+        one_of_many="legallyBinding",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    legallyBindingReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="legallyBindingReference",
+        title="Type `Reference` referencing `Composition, DocumentReference, QuestionnaireResponse, Contract` (represented as `dict` in JSON)",
+        description="Binding Contract",
+        one_of_many="legallyBinding",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    name: fhirtypes.String = Field(
+        None,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Computer friendly designation",
+    )
+
+    relevantHistory: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="relevantHistory",
+        title="List of `Reference` items referencing `Provenance` (represented as `dict` in JSON)",
+        description="Key event in Contract History",
+    )
+
+    rule: ListType[fhirtypes.ContractRuleType] = Field(
+        None,
+        alias="rule",
+        title="List of `ContractRule` items (represented as `dict` in JSON)",
+        description="Computable Contract Language",
+    )
+
+    scope: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="scope",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Range of Legal Concerns",
+    )
+
+    signer: ListType[fhirtypes.ContractSignerType] = Field(
+        None,
+        alias="signer",
+        title="List of `ContractSigner` items (represented as `dict` in JSON)",
+        description="Contract Signatory",
+    )
+
+    site: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="site",
+        title="List of `Reference` items referencing `Location` (represented as `dict` in JSON)",
+        description="Specific Location",
+    )
+
+    status: fhirtypes.Code = Field(
+        None,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="amended | appended | cancelled | disputed | entered-in-error | executable | executed | negotiable | offered | policy | rejected | renewed | revoked | resolved | terminated",
+    )
+
+    subType: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="subType",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Subtype within the context of type",
+    )
+
+    subject: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="subject",
+        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        description="Contract Target Entity",
+    )
+
+    subtitle: fhirtypes.String = Field(
+        None,
+        alias="subtitle",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Subordinate Friendly name",
+    )
+
+    supportingInfo: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="supportingInfo",
+        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        description="Extra Information",
+    )
+
+    term: ListType[fhirtypes.ContractTermType] = Field(
+        None,
+        alias="term",
+        title="List of `ContractTerm` items (represented as `dict` in JSON)",
+        description="Contract Term List",
+    )
+
+    title: fhirtypes.String = Field(
+        None,
+        alias="title",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Human Friendly name",
+    )
+
+    topicCodeableConcept: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="topicCodeableConcept",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Focus of contract interest",
+        one_of_many="topic",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    topicReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="topicReference",
+        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        description="Focus of contract interest",
+        one_of_many="topic",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    type: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Legal instrument category",
+    )
+
+    url: fhirtypes.Uri = Field(
+        None,
+        alias="url",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Basal definition",
+    )
+
+    version: fhirtypes.String = Field(
+        None,
+        alias="version",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Business edition",
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "legallyBinding": ["legallyBindingAttachment", "legallyBindingReference",],
+            "topic": ["topicCodeableConcept", "topicReference",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.alias = None
-        """ Acronym or short name.
-        List of `str` items. """
-
-        self.applies = None
-        """ Effective time.
-        Type `Period` (represented as `dict` in JSON). """
-
-        self.author = None
-        """ Source of Contract.
-        Type `FHIRReference` referencing `['Patient', 'Practitioner', 'PractitionerRole', 'Organization']` (represented as `dict` in JSON). """
-
-        self.authority = None
-        """ Authority under which this Contract has standing.
-        List of `FHIRReference` items referencing `['Organization']` (represented as `dict` in JSON). """
-
-        self.contentDefinition = None
-        """ Contract precursor content.
-        Type `ContractContentDefinition` (represented as `dict` in JSON). """
-
-        self.contentDerivative = None
-        """ Content derived from the basal information.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.domain = None
-        """ A sphere of control governed by an authoritative jurisdiction,
-        organization, or person.
-        List of `FHIRReference` items referencing `['Location']` (represented as `dict` in JSON). """
-
-        self.expirationType = None
-        """ Contract cessation cause.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.friendly = None
-        """ Contract Friendly Language.
-        List of `ContractFriendly` items (represented as `dict` in JSON). """
-
-        self.identifier = None
-        """ Contract number.
-        List of `Identifier` items (represented as `dict` in JSON). """
-
-        self.instantiatesCanonical = None
-        """ Source Contract Definition.
-        Type `FHIRReference` referencing `['Contract']` (represented as `dict` in JSON). """
-
-        self.instantiatesUri = None
-        """ External Contract Definition.
-        Type `str`. """
-
-        self.issued = None
-        """ When this Contract was issued.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.legal = None
-        """ Contract Legal Language.
-        List of `ContractLegal` items (represented as `dict` in JSON). """
-
-        self.legalState = None
-        """ Negotiation status.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.legallyBindingAttachment = None
-        """ Binding Contract.
-        Type `Attachment` (represented as `dict` in JSON). """
-
-        self.legallyBindingReference = None
-        """ Binding Contract.
-        Type `FHIRReference` referencing `['Composition', 'DocumentReference', 'QuestionnaireResponse', 'Contract']` (represented as `dict` in JSON). """
-
-        self.name = None
-        """ Computer friendly designation.
-        Type `str`. """
-
-        self.relevantHistory = None
-        """ Key event in Contract History.
-        List of `FHIRReference` items referencing `['Provenance']` (represented as `dict` in JSON). """
-
-        self.rule = None
-        """ Computable Contract Language.
-        List of `ContractRule` items (represented as `dict` in JSON). """
-
-        self.scope = None
-        """ Range of Legal Concerns.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.signer = None
-        """ Contract Signatory.
-        List of `ContractSigner` items (represented as `dict` in JSON). """
-
-        self.site = None
-        """ Specific Location.
-        List of `FHIRReference` items referencing `['Location']` (represented as `dict` in JSON). """
-
-        self.status = None
-        """ amended | appended | cancelled | disputed | entered-in-error |
-        executable | executed | negotiable | offered | policy | rejected |
-        renewed | revoked | resolved | terminated.
-        Type `str`. """
-
-        self.subType = None
-        """ Subtype within the context of type.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.subject = None
-        """ Contract Target Entity.
-        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
-
-        self.subtitle = None
-        """ Subordinate Friendly name.
-        Type `str`. """
-
-        self.supportingInfo = None
-        """ Extra Information.
-        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
-
-        self.term = None
-        """ Contract Term List.
-        List of `ContractTerm` items (represented as `dict` in JSON). """
-
-        self.title = None
-        """ Human Friendly name.
-        Type `str`. """
-
-        self.topicCodeableConcept = None
-        """ Focus of contract interest.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.topicReference = None
-        """ Focus of contract interest.
-        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
-
-        self.type = None
-        """ Legal instrument category.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.url = None
-        """ Basal definition.
-        Type `str`. """
-
-        self.version = None
-        """ Business edition.
-        Type `str`. """
-
-        super(Contract, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(Contract, self).elementProperties()
-        js.extend(
-            [
-                ("alias", "alias", str, "string", True, None, False),
-                ("applies", "applies", period.Period, "Period", False, None, False),
-                (
-                    "author",
-                    "author",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "authority",
-                    "authority",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "contentDefinition",
-                    "contentDefinition",
-                    ContractContentDefinition,
-                    "ContractContentDefinition",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "contentDerivative",
-                    "contentDerivative",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "domain",
-                    "domain",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "expirationType",
-                    "expirationType",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "friendly",
-                    "friendly",
-                    ContractFriendly,
-                    "ContractFriendly",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "instantiatesCanonical",
-                    "instantiatesCanonical",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("instantiatesUri", "instantiatesUri", str, "uri", False, None, False),
-                ("issued", "issued", fhirdate.FHIRDate, "dateTime", False, None, False),
-                ("legal", "legal", ContractLegal, "ContractLegal", True, None, False),
-                (
-                    "legalState",
-                    "legalState",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "legallyBindingAttachment",
-                    "legallyBindingAttachment",
-                    attachment.Attachment,
-                    "Attachment",
-                    False,
-                    "legallyBinding",
-                    False,
-                ),
-                (
-                    "legallyBindingReference",
-                    "legallyBindingReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    "legallyBinding",
-                    False,
-                ),
-                ("name", "name", str, "string", False, None, False),
-                (
-                    "relevantHistory",
-                    "relevantHistory",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                ("rule", "rule", ContractRule, "ContractRule", True, None, False),
-                (
-                    "scope",
-                    "scope",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "signer",
-                    "signer",
-                    ContractSigner,
-                    "ContractSigner",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "site",
-                    "site",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                ("status", "status", str, "code", False, None, False),
-                (
-                    "subType",
-                    "subType",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "subject",
-                    "subject",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                ("subtitle", "subtitle", str, "string", False, None, False),
-                (
-                    "supportingInfo",
-                    "supportingInfo",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                ("term", "term", ContractTerm, "ContractTerm", True, None, False),
-                ("title", "title", str, "string", False, None, False),
-                (
-                    "topicCodeableConcept",
-                    "topicCodeableConcept",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    "topic",
-                    False,
-                ),
-                (
-                    "topicReference",
-                    "topicReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    "topic",
-                    False,
-                ),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("url", "url", str, "uri", False, None, False),
-                ("version", "version", str, "string", False, None, False),
-            ]
-        )
-        return js
+        return values
 
 
 class ContractContentDefinition(backboneelement.BackboneElement):
     """ Contract precursor content.
-
     Precusory content developed with a focus and intent of supporting the
     formation a Contract instance, which may be associated with and
     transformable into a Contract.
     """
 
-    resource_type = "ContractContentDefinition"
+    resource_type = Field("ContractContentDefinition", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    copyright: fhirtypes.Markdown = Field(
+        None,
+        alias="copyright",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Publication Ownership",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    publicationDate: fhirtypes.DateTime = Field(
+        None,
+        alias="publicationDate",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="When published",
+    )
 
-        self.copyright = None
-        """ Publication Ownership.
-        Type `str`. """
+    publicationStatus: fhirtypes.Code = Field(
+        ...,
+        alias="publicationStatus",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="amended | appended | cancelled | disputed | entered-in-error | executable | executed | negotiable | offered | policy | rejected | renewed | revoked | resolved | terminated",
+    )
 
-        self.publicationDate = None
-        """ When published.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    publisher: fhirtypes.ReferenceType = Field(
+        None,
+        alias="publisher",
+        title="Type `Reference` referencing `Practitioner, PractitionerRole, Organization` (represented as `dict` in JSON)",
+        description="Publisher Entity",
+    )
 
-        self.publicationStatus = None
-        """ amended | appended | cancelled | disputed | entered-in-error |
-        executable | executed | negotiable | offered | policy | rejected |
-        renewed | revoked | resolved | terminated.
-        Type `str`. """
+    subType: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="subType",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Detailed Content Type Definition",
+    )
 
-        self.publisher = None
-        """ Publisher Entity.
-        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'Organization']` (represented as `dict` in JSON). """
-
-        self.subType = None
-        """ Detailed Content Type Definition.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.type = None
-        """ Content structure and use.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(ContractContentDefinition, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ContractContentDefinition, self).elementProperties()
-        js.extend(
-            [
-                ("copyright", "copyright", str, "markdown", False, None, False),
-                (
-                    "publicationDate",
-                    "publicationDate",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "publicationStatus",
-                    "publicationStatus",
-                    str,
-                    "code",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "publisher",
-                    "publisher",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "subType",
-                    "subType",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
+    type: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Content structure and use",
+    )
 
 
 class ContractFriendly(backboneelement.BackboneElement):
     """ Contract Friendly Language.
-
     The "patient friendly language" versionof the Contract in whole or in
     parts. "Patient friendly language" means the representation of the Contract
     and Contract Provisions in a manner that is readily accessible and
@@ -510,1579 +378,1197 @@ class ContractFriendly(backboneelement.BackboneElement):
     implication of the agreement.
     """
 
-    resource_type = "ContractFriendly"
+    resource_type = Field("ContractFriendly", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    contentAttachment: fhirtypes.AttachmentType = Field(
+        None,
+        alias="contentAttachment",
+        title="Type `Attachment` (represented as `dict` in JSON)",
+        description="Easily comprehended representation of this Contract",
+        one_of_many="content",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    contentReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="contentReference",
+        title="Type `Reference` referencing `Composition, DocumentReference, QuestionnaireResponse` (represented as `dict` in JSON)",
+        description="Easily comprehended representation of this Contract",
+        one_of_many="content",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "content": ["contentAttachment", "contentReference",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.contentAttachment = None
-        """ Easily comprehended representation of this Contract.
-        Type `Attachment` (represented as `dict` in JSON). """
-
-        self.contentReference = None
-        """ Easily comprehended representation of this Contract.
-        Type `FHIRReference` referencing `['Composition', 'DocumentReference', 'QuestionnaireResponse']` (represented as `dict` in JSON). """
-
-        super(ContractFriendly, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ContractFriendly, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "contentAttachment",
-                    "contentAttachment",
-                    attachment.Attachment,
-                    "Attachment",
-                    False,
-                    "content",
-                    True,
-                ),
-                (
-                    "contentReference",
-                    "contentReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    "content",
-                    True,
-                ),
-            ]
-        )
-        return js
+        return values
 
 
 class ContractLegal(backboneelement.BackboneElement):
     """ Contract Legal Language.
-
     List of Legal expressions or representations of this Contract.
     """
 
-    resource_type = "ContractLegal"
+    resource_type = Field("ContractLegal", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    contentAttachment: fhirtypes.AttachmentType = Field(
+        None,
+        alias="contentAttachment",
+        title="Type `Attachment` (represented as `dict` in JSON)",
+        description="Contract Legal Text",
+        one_of_many="content",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    contentReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="contentReference",
+        title="Type `Reference` referencing `Composition, DocumentReference, QuestionnaireResponse` (represented as `dict` in JSON)",
+        description="Contract Legal Text",
+        one_of_many="content",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "content": ["contentAttachment", "contentReference",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.contentAttachment = None
-        """ Contract Legal Text.
-        Type `Attachment` (represented as `dict` in JSON). """
-
-        self.contentReference = None
-        """ Contract Legal Text.
-        Type `FHIRReference` referencing `['Composition', 'DocumentReference', 'QuestionnaireResponse']` (represented as `dict` in JSON). """
-
-        super(ContractLegal, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ContractLegal, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "contentAttachment",
-                    "contentAttachment",
-                    attachment.Attachment,
-                    "Attachment",
-                    False,
-                    "content",
-                    True,
-                ),
-                (
-                    "contentReference",
-                    "contentReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    "content",
-                    True,
-                ),
-            ]
-        )
-        return js
+        return values
 
 
 class ContractRule(backboneelement.BackboneElement):
     """ Computable Contract Language.
-
     List of Computable Policy Rule Language Representations of this Contract.
     """
 
-    resource_type = "ContractRule"
+    resource_type = Field("ContractRule", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    contentAttachment: fhirtypes.AttachmentType = Field(
+        None,
+        alias="contentAttachment",
+        title="Type `Attachment` (represented as `dict` in JSON)",
+        description="Computable Contract Rules",
+        one_of_many="content",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    contentReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="contentReference",
+        title="Type `Reference` referencing `DocumentReference` (represented as `dict` in JSON)",
+        description="Computable Contract Rules",
+        one_of_many="content",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "content": ["contentAttachment", "contentReference",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.contentAttachment = None
-        """ Computable Contract Rules.
-        Type `Attachment` (represented as `dict` in JSON). """
-
-        self.contentReference = None
-        """ Computable Contract Rules.
-        Type `FHIRReference` referencing `['DocumentReference']` (represented as `dict` in JSON). """
-
-        super(ContractRule, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ContractRule, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "contentAttachment",
-                    "contentAttachment",
-                    attachment.Attachment,
-                    "Attachment",
-                    False,
-                    "content",
-                    True,
-                ),
-                (
-                    "contentReference",
-                    "contentReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    "content",
-                    True,
-                ),
-            ]
-        )
-        return js
+        return values
 
 
 class ContractSigner(backboneelement.BackboneElement):
     """ Contract Signatory.
-
     Parties with legal standing in the Contract, including the principal
     parties, the grantor(s) and grantee(s), which are any person or
     organization bound by the contract, and any ancillary parties, which
     facilitate the execution of the contract such as a notary or witness.
     """
 
-    resource_type = "ContractSigner"
+    resource_type = Field("ContractSigner", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    party: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="party",
+        title="Type `Reference` referencing `Organization, Patient, Practitioner, PractitionerRole, RelatedPerson` (represented as `dict` in JSON)",
+        description="Contract Signatory Party",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    signature: ListType[fhirtypes.SignatureType] = Field(
+        ...,
+        alias="signature",
+        title="List of `Signature` items (represented as `dict` in JSON)",
+        description="Contract Documentation Signature",
+    )
 
-        self.party = None
-        """ Contract Signatory Party.
-        Type `FHIRReference` referencing `['Organization', 'Patient', 'Practitioner', 'PractitionerRole', 'RelatedPerson']` (represented as `dict` in JSON). """
-
-        self.signature = None
-        """ Contract Documentation Signature.
-        List of `Signature` items (represented as `dict` in JSON). """
-
-        self.type = None
-        """ Contract Signatory Role.
-        Type `Coding` (represented as `dict` in JSON). """
-
-        super(ContractSigner, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ContractSigner, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "party",
-                    "party",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "signature",
-                    "signature",
-                    signature.Signature,
-                    "Signature",
-                    True,
-                    None,
-                    True,
-                ),
-                ("type", "type", coding.Coding, "Coding", False, None, True),
-            ]
-        )
-        return js
+    type: fhirtypes.CodingType = Field(
+        ...,
+        alias="type",
+        title="Type `Coding` (represented as `dict` in JSON)",
+        description="Contract Signatory Role",
+    )
 
 
 class ContractTerm(backboneelement.BackboneElement):
     """ Contract Term List.
-
     One or more Contract Provisions, which may be related and conveyed as a
     group, and may contain nested groups.
     """
 
-    resource_type = "ContractTerm"
+    resource_type = Field("ContractTerm", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    action: ListType[fhirtypes.ContractTermActionType] = Field(
+        None,
+        alias="action",
+        title="List of `ContractTermAction` items (represented as `dict` in JSON)",
+        description="Entity being ascribed responsibility",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    applies: fhirtypes.PeriodType = Field(
+        None,
+        alias="applies",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="Contract Term Effective Time",
+    )
+
+    asset: ListType[fhirtypes.ContractTermAssetType] = Field(
+        None,
+        alias="asset",
+        title="List of `ContractTermAsset` items (represented as `dict` in JSON)",
+        description="Contract Term Asset List",
+    )
+
+    group: ListType[fhirtypes.ContractTermType] = Field(
+        None,
+        alias="group",
+        title="List of `ContractTerm` items (represented as `dict` in JSON)",
+        description="Nested Contract Term Group",
+    )
+
+    identifier: fhirtypes.IdentifierType = Field(
+        None,
+        alias="identifier",
+        title="Type `Identifier` (represented as `dict` in JSON)",
+        description="Contract Term Number",
+    )
+
+    issued: fhirtypes.DateTime = Field(
+        None,
+        alias="issued",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Contract Term Issue Date Time",
+    )
+
+    offer: fhirtypes.ContractTermOfferType = Field(
+        ...,
+        alias="offer",
+        title="Type `ContractTermOffer` (represented as `dict` in JSON)",
+        description="Context of the Contract term",
+    )
+
+    securityLabel: ListType[fhirtypes.ContractTermSecurityLabelType] = Field(
+        None,
+        alias="securityLabel",
+        title="List of `ContractTermSecurityLabel` items (represented as `dict` in JSON)",
+        description="Protection for the Term",
+    )
+
+    subType: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="subType",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Contract Term Type specific classification",
+    )
+
+    text: fhirtypes.String = Field(
+        None,
+        alias="text",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Term Statement",
+    )
+
+    topicCodeableConcept: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="topicCodeableConcept",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Term Concern",
+        one_of_many="topic",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    topicReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="topicReference",
+        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        description="Term Concern",
+        one_of_many="topic",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    type: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Contract Term Type or Form",
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "topic": ["topicCodeableConcept", "topicReference",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.action = None
-        """ Entity being ascribed responsibility.
-        List of `ContractTermAction` items (represented as `dict` in JSON). """
-
-        self.applies = None
-        """ Contract Term Effective Time.
-        Type `Period` (represented as `dict` in JSON). """
-
-        self.asset = None
-        """ Contract Term Asset List.
-        List of `ContractTermAsset` items (represented as `dict` in JSON). """
-
-        self.group = None
-        """ Nested Contract Term Group.
-        List of `ContractTerm` items (represented as `dict` in JSON). """
-
-        self.identifier = None
-        """ Contract Term Number.
-        Type `Identifier` (represented as `dict` in JSON). """
-
-        self.issued = None
-        """ Contract Term Issue Date Time.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.offer = None
-        """ Context of the Contract term.
-        Type `ContractTermOffer` (represented as `dict` in JSON). """
-
-        self.securityLabel = None
-        """ Protection for the Term.
-        List of `ContractTermSecurityLabel` items (represented as `dict` in JSON). """
-
-        self.subType = None
-        """ Contract Term Type specific classification.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.text = None
-        """ Term Statement.
-        Type `str`. """
-
-        self.topicCodeableConcept = None
-        """ Term Concern.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.topicReference = None
-        """ Term Concern.
-        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
-
-        self.type = None
-        """ Contract Term Type or Form.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(ContractTerm, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ContractTerm, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "action",
-                    "action",
-                    ContractTermAction,
-                    "ContractTermAction",
-                    True,
-                    None,
-                    False,
-                ),
-                ("applies", "applies", period.Period, "Period", False, None, False),
-                (
-                    "asset",
-                    "asset",
-                    ContractTermAsset,
-                    "ContractTermAsset",
-                    True,
-                    None,
-                    False,
-                ),
-                ("group", "group", ContractTerm, "ContractTerm", True, None, False),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    False,
-                    None,
-                    False,
-                ),
-                ("issued", "issued", fhirdate.FHIRDate, "dateTime", False, None, False),
-                (
-                    "offer",
-                    "offer",
-                    ContractTermOffer,
-                    "ContractTermOffer",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "securityLabel",
-                    "securityLabel",
-                    ContractTermSecurityLabel,
-                    "ContractTermSecurityLabel",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "subType",
-                    "subType",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("text", "text", str, "string", False, None, False),
-                (
-                    "topicCodeableConcept",
-                    "topicCodeableConcept",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    "topic",
-                    False,
-                ),
-                (
-                    "topicReference",
-                    "topicReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    "topic",
-                    False,
-                ),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+        return values
 
 
 class ContractTermAction(backboneelement.BackboneElement):
     """ Entity being ascribed responsibility.
-
     An actor taking a role in an activity for which it can be assigned some
     degree of responsibility for the activity taking place.
     """
 
-    resource_type = "ContractTermAction"
+    resource_type = Field("ContractTermAction", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    context: fhirtypes.ReferenceType = Field(
+        None,
+        alias="context",
+        title="Type `Reference` referencing `Encounter, EpisodeOfCare` (represented as `dict` in JSON)",
+        description="Episode associated with action",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    contextLinkId: ListType[fhirtypes.String] = Field(
+        None,
+        alias="contextLinkId",
+        title="List of `String` items (represented as `dict` in JSON)",
+        description="Pointer to specific item",
+    )
+
+    doNotPerform: bool = Field(
+        None,
+        alias="doNotPerform",
+        title="Type `bool`",
+        description="True if the term prohibits the  action",
+    )
+
+    intent: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="intent",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Purpose for the Contract Term Action",
+    )
+
+    linkId: ListType[fhirtypes.String] = Field(
+        None,
+        alias="linkId",
+        title="List of `String` items (represented as `dict` in JSON)",
+        description="Pointer to specific item",
+    )
+
+    note: ListType[fhirtypes.AnnotationType] = Field(
+        None,
+        alias="note",
+        title="List of `Annotation` items (represented as `dict` in JSON)",
+        description="Comments about the action",
+    )
+
+    occurrenceDateTime: fhirtypes.DateTime = Field(
+        None,
+        alias="occurrenceDateTime",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="When action happens",
+        one_of_many="occurrence",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    occurrencePeriod: fhirtypes.PeriodType = Field(
+        None,
+        alias="occurrencePeriod",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="When action happens",
+        one_of_many="occurrence",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    occurrenceTiming: fhirtypes.TimingType = Field(
+        None,
+        alias="occurrenceTiming",
+        title="Type `Timing` (represented as `dict` in JSON)",
+        description="When action happens",
+        one_of_many="occurrence",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    performer: fhirtypes.ReferenceType = Field(
+        None,
+        alias="performer",
+        title="Type `Reference` referencing `RelatedPerson, Patient, Practitioner, PractitionerRole, CareTeam, Device, Substance, Organization, Location` (represented as `dict` in JSON)",
+        description="Actor that wil execute (or not) the action",
+    )
+
+    performerLinkId: ListType[fhirtypes.String] = Field(
+        None,
+        alias="performerLinkId",
+        title="List of `String` items (represented as `dict` in JSON)",
+        description="Pointer to specific item",
+    )
+
+    performerRole: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="performerRole",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Competency of the performer",
+    )
+
+    performerType: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="performerType",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Kind of service performer",
+    )
+
+    reason: ListType[fhirtypes.String] = Field(
+        None,
+        alias="reason",
+        title="List of `String` items (represented as `dict` in JSON)",
+        description="Why action is to be performed",
+    )
+
+    reasonCode: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="reasonCode",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Why is action (not) needed?",
+    )
+
+    reasonLinkId: ListType[fhirtypes.String] = Field(
+        None,
+        alias="reasonLinkId",
+        title="List of `String` items (represented as `dict` in JSON)",
+        description="Pointer to specific item",
+    )
+
+    reasonReference: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="reasonReference",
+        title="List of `Reference` items referencing `Condition, Observation, DiagnosticReport, DocumentReference, Questionnaire, QuestionnaireResponse` (represented as `dict` in JSON)",
+        description="Why is action (not) needed?",
+    )
+
+    requester: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="requester",
+        title="List of `Reference` items referencing `Patient, RelatedPerson, Practitioner, PractitionerRole, Device, Group, Organization` (represented as `dict` in JSON)",
+        description="Who asked for action",
+    )
+
+    requesterLinkId: ListType[fhirtypes.String] = Field(
+        None,
+        alias="requesterLinkId",
+        title="List of `String` items (represented as `dict` in JSON)",
+        description="Pointer to specific item",
+    )
+
+    securityLabelNumber: ListType[fhirtypes.UnsignedInt] = Field(
+        None,
+        alias="securityLabelNumber",
+        title="List of `UnsignedInt` items (represented as `dict` in JSON)",
+        description="Action restriction numbers",
+    )
+
+    status: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="status",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="State of the action",
+    )
+
+    subject: ListType[fhirtypes.ContractTermActionSubjectType] = Field(
+        None,
+        alias="subject",
+        title="List of `ContractTermActionSubject` items (represented as `dict` in JSON)",
+        description="Entity of the action",
+    )
+
+    type: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Type or form of the action",
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "occurrence": [
+                "occurrenceDateTime",
+                "occurrencePeriod",
+                "occurrenceTiming",
+            ],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.context = None
-        """ Episode associated with action.
-        Type `FHIRReference` referencing `['Encounter', 'EpisodeOfCare']` (represented as `dict` in JSON). """
-
-        self.contextLinkId = None
-        """ Pointer to specific item.
-        List of `str` items. """
-
-        self.doNotPerform = None
-        """ True if the term prohibits the  action.
-        Type `bool`. """
-
-        self.intent = None
-        """ Purpose for the Contract Term Action.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.linkId = None
-        """ Pointer to specific item.
-        List of `str` items. """
-
-        self.note = None
-        """ Comments about the action.
-        List of `Annotation` items (represented as `dict` in JSON). """
-
-        self.occurrenceDateTime = None
-        """ When action happens.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.occurrencePeriod = None
-        """ When action happens.
-        Type `Period` (represented as `dict` in JSON). """
-
-        self.occurrenceTiming = None
-        """ When action happens.
-        Type `Timing` (represented as `dict` in JSON). """
-
-        self.performer = None
-        """ Actor that wil execute (or not) the action.
-        Type `FHIRReference` referencing `['RelatedPerson', 'Patient', 'Practitioner', 'PractitionerRole', 'CareTeam', 'Device', 'Substance', 'Organization', 'Location']` (represented as `dict` in JSON). """
-
-        self.performerLinkId = None
-        """ Pointer to specific item.
-        List of `str` items. """
-
-        self.performerRole = None
-        """ Competency of the performer.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.performerType = None
-        """ Kind of service performer.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.reason = None
-        """ Why action is to be performed.
-        List of `str` items. """
-
-        self.reasonCode = None
-        """ Why is action (not) needed?.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.reasonLinkId = None
-        """ Pointer to specific item.
-        List of `str` items. """
-
-        self.reasonReference = None
-        """ Why is action (not) needed?.
-        List of `FHIRReference` items referencing `['Condition', 'Observation', 'DiagnosticReport', 'DocumentReference', 'Questionnaire', 'QuestionnaireResponse']` (represented as `dict` in JSON). """
-
-        self.requester = None
-        """ Who asked for action.
-        List of `FHIRReference` items referencing `['Patient', 'RelatedPerson', 'Practitioner', 'PractitionerRole', 'Device', 'Group', 'Organization']` (represented as `dict` in JSON). """
-
-        self.requesterLinkId = None
-        """ Pointer to specific item.
-        List of `str` items. """
-
-        self.securityLabelNumber = None
-        """ Action restriction numbers.
-        List of `int` items. """
-
-        self.status = None
-        """ State of the action.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.subject = None
-        """ Entity of the action.
-        List of `ContractTermActionSubject` items (represented as `dict` in JSON). """
-
-        self.type = None
-        """ Type or form of the action.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(ContractTermAction, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ContractTermAction, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "context",
-                    "context",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("contextLinkId", "contextLinkId", str, "string", True, None, False),
-                ("doNotPerform", "doNotPerform", bool, "boolean", False, None, False),
-                (
-                    "intent",
-                    "intent",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                ("linkId", "linkId", str, "string", True, None, False),
-                (
-                    "note",
-                    "note",
-                    annotation.Annotation,
-                    "Annotation",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "occurrenceDateTime",
-                    "occurrenceDateTime",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    "occurrence",
-                    False,
-                ),
-                (
-                    "occurrencePeriod",
-                    "occurrencePeriod",
-                    period.Period,
-                    "Period",
-                    False,
-                    "occurrence",
-                    False,
-                ),
-                (
-                    "occurrenceTiming",
-                    "occurrenceTiming",
-                    timing.Timing,
-                    "Timing",
-                    False,
-                    "occurrence",
-                    False,
-                ),
-                (
-                    "performer",
-                    "performer",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "performerLinkId",
-                    "performerLinkId",
-                    str,
-                    "string",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "performerRole",
-                    "performerRole",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "performerType",
-                    "performerType",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                ("reason", "reason", str, "string", True, None, False),
-                (
-                    "reasonCode",
-                    "reasonCode",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                ("reasonLinkId", "reasonLinkId", str, "string", True, None, False),
-                (
-                    "reasonReference",
-                    "reasonReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "requester",
-                    "requester",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "requesterLinkId",
-                    "requesterLinkId",
-                    str,
-                    "string",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "securityLabelNumber",
-                    "securityLabelNumber",
-                    int,
-                    "unsignedInt",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "status",
-                    "status",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "subject",
-                    "subject",
-                    ContractTermActionSubject,
-                    "ContractTermActionSubject",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
+        return values
 
 
 class ContractTermActionSubject(backboneelement.BackboneElement):
     """ Entity of the action.
     """
 
-    resource_type = "ContractTermActionSubject"
+    resource_type = Field("ContractTermActionSubject", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    reference: ListType[fhirtypes.ReferenceType] = Field(
+        ...,
+        alias="reference",
+        title="List of `Reference` items referencing `Patient, RelatedPerson, Practitioner, PractitionerRole, Device, Group, Organization` (represented as `dict` in JSON)",
+        description="Entity of the action",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.reference = None
-        """ Entity of the action.
-        List of `FHIRReference` items referencing `['Patient', 'RelatedPerson', 'Practitioner', 'PractitionerRole', 'Device', 'Group', 'Organization']` (represented as `dict` in JSON). """
-
-        self.role = None
-        """ Role type of the agent.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(ContractTermActionSubject, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ContractTermActionSubject, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "reference",
-                    "reference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    True,
-                ),
-                (
-                    "role",
-                    "role",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    role: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="role",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Role type of the agent",
+    )
 
 
 class ContractTermAsset(backboneelement.BackboneElement):
     """ Contract Term Asset List.
     """
 
-    resource_type = "ContractTermAsset"
+    resource_type = Field("ContractTermAsset", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    answer: ListType[fhirtypes.ContractTermOfferAnswerType] = Field(
+        None,
+        alias="answer",
+        title="List of `ContractTermOfferAnswer` items (represented as `dict` in JSON)",
+        description="Response to assets",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    condition: fhirtypes.String = Field(
+        None,
+        alias="condition",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Quality desctiption of asset",
+    )
 
-        self.answer = None
-        """ Response to assets.
-        List of `ContractTermOfferAnswer` items (represented as `dict` in JSON). """
+    context: ListType[fhirtypes.ContractTermAssetContextType] = Field(
+        None,
+        alias="context",
+        title="List of `ContractTermAssetContext` items (represented as `dict` in JSON)",
+        description="Circumstance of the asset",
+    )
 
-        self.condition = None
-        """ Quality desctiption of asset.
-        Type `str`. """
+    linkId: ListType[fhirtypes.String] = Field(
+        None,
+        alias="linkId",
+        title="List of `String` items (represented as `dict` in JSON)",
+        description="Pointer to asset text",
+    )
 
-        self.context = None
-        """ Circumstance of the asset.
-        List of `ContractTermAssetContext` items (represented as `dict` in JSON). """
+    period: ListType[fhirtypes.PeriodType] = Field(
+        None,
+        alias="period",
+        title="List of `Period` items (represented as `dict` in JSON)",
+        description="Time period of the asset",
+    )
 
-        self.linkId = None
-        """ Pointer to asset text.
-        List of `str` items. """
+    periodType: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="periodType",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Asset availability types",
+    )
 
-        self.period = None
-        """ Time period of the asset.
-        List of `Period` items (represented as `dict` in JSON). """
+    relationship: fhirtypes.CodingType = Field(
+        None,
+        alias="relationship",
+        title="Type `Coding` (represented as `dict` in JSON)",
+        description="Kinship of the asset",
+    )
 
-        self.periodType = None
-        """ Asset availability types.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    scope: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="scope",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Range of asset",
+    )
 
-        self.relationship = None
-        """ Kinship of the asset.
-        Type `Coding` (represented as `dict` in JSON). """
+    securityLabelNumber: ListType[fhirtypes.UnsignedInt] = Field(
+        None,
+        alias="securityLabelNumber",
+        title="List of `UnsignedInt` items (represented as `dict` in JSON)",
+        description="Asset restriction numbers",
+    )
 
-        self.scope = None
-        """ Range of asset.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    subtype: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="subtype",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Asset sub-category",
+    )
 
-        self.securityLabelNumber = None
-        """ Asset restriction numbers.
-        List of `int` items. """
+    text: fhirtypes.String = Field(
+        None,
+        alias="text",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Asset clause or question text",
+    )
 
-        self.subtype = None
-        """ Asset sub-category.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    type: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="type",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Asset category",
+    )
 
-        self.text = None
-        """ Asset clause or question text.
-        Type `str`. """
+    typeReference: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="typeReference",
+        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        description="Associated entities",
+    )
 
-        self.type = None
-        """ Asset category.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    usePeriod: ListType[fhirtypes.PeriodType] = Field(
+        None,
+        alias="usePeriod",
+        title="List of `Period` items (represented as `dict` in JSON)",
+        description="Time period",
+    )
 
-        self.typeReference = None
-        """ Associated entities.
-        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
-
-        self.usePeriod = None
-        """ Time period.
-        List of `Period` items (represented as `dict` in JSON). """
-
-        self.valuedItem = None
-        """ Contract Valued Item List.
-        List of `ContractTermAssetValuedItem` items (represented as `dict` in JSON). """
-
-        super(ContractTermAsset, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ContractTermAsset, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "answer",
-                    "answer",
-                    ContractTermOfferAnswer,
-                    "ContractTermOfferAnswer",
-                    True,
-                    None,
-                    False,
-                ),
-                ("condition", "condition", str, "string", False, None, False),
-                (
-                    "context",
-                    "context",
-                    ContractTermAssetContext,
-                    "ContractTermAssetContext",
-                    True,
-                    None,
-                    False,
-                ),
-                ("linkId", "linkId", str, "string", True, None, False),
-                ("period", "period", period.Period, "Period", True, None, False),
-                (
-                    "periodType",
-                    "periodType",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "relationship",
-                    "relationship",
-                    coding.Coding,
-                    "Coding",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "scope",
-                    "scope",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "securityLabelNumber",
-                    "securityLabelNumber",
-                    int,
-                    "unsignedInt",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "subtype",
-                    "subtype",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                ("text", "text", str, "string", False, None, False),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "typeReference",
-                    "typeReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                ("usePeriod", "usePeriod", period.Period, "Period", True, None, False),
-                (
-                    "valuedItem",
-                    "valuedItem",
-                    ContractTermAssetValuedItem,
-                    "ContractTermAssetValuedItem",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    valuedItem: ListType[fhirtypes.ContractTermAssetValuedItemType] = Field(
+        None,
+        alias="valuedItem",
+        title="List of `ContractTermAssetValuedItem` items (represented as `dict` in JSON)",
+        description="Contract Valued Item List",
+    )
 
 
 class ContractTermAssetContext(backboneelement.BackboneElement):
     """ Circumstance of the asset.
     """
 
-    resource_type = "ContractTermAssetContext"
+    resource_type = Field("ContractTermAssetContext", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    code: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="code",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Codeable asset context",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    reference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="reference",
+        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        description="Creator,custodian or owner",
+    )
 
-        self.code = None
-        """ Codeable asset context.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.reference = None
-        """ Creator,custodian or owner.
-        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
-
-        self.text = None
-        """ Context description.
-        Type `str`. """
-
-        super(ContractTermAssetContext, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ContractTermAssetContext, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "code",
-                    "code",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "reference",
-                    "reference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("text", "text", str, "string", False, None, False),
-            ]
-        )
-        return js
+    text: fhirtypes.String = Field(
+        None,
+        alias="text",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Context description",
+    )
 
 
 class ContractTermAssetValuedItem(backboneelement.BackboneElement):
     """ Contract Valued Item List.
     """
 
-    resource_type = "ContractTermAssetValuedItem"
+    resource_type = Field("ContractTermAssetValuedItem", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    effectiveTime: fhirtypes.DateTime = Field(
+        None,
+        alias="effectiveTime",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Contract Valued Item Effective Tiem",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    entityCodeableConcept: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="entityCodeableConcept",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Contract Valued Item Type",
+        one_of_many="entity",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    entityReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="entityReference",
+        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        description="Contract Valued Item Type",
+        one_of_many="entity",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    factor: fhirtypes.Decimal = Field(
+        None,
+        alias="factor",
+        title="Type `Decimal` (represented as `dict` in JSON)",
+        description="Contract Valued Item Price Scaling Factor",
+    )
+
+    identifier: fhirtypes.IdentifierType = Field(
+        None,
+        alias="identifier",
+        title="Type `Identifier` (represented as `dict` in JSON)",
+        description="Contract Valued Item Number",
+    )
+
+    linkId: ListType[fhirtypes.String] = Field(
+        None,
+        alias="linkId",
+        title="List of `String` items (represented as `dict` in JSON)",
+        description="Pointer to specific item",
+    )
+
+    net: fhirtypes.MoneyType = Field(
+        None,
+        alias="net",
+        title="Type `Money` (represented as `dict` in JSON)",
+        description="Total Contract Valued Item Value",
+    )
+
+    payment: fhirtypes.String = Field(
+        None,
+        alias="payment",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Terms of valuation",
+    )
+
+    paymentDate: fhirtypes.DateTime = Field(
+        None,
+        alias="paymentDate",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="When payment is due",
+    )
+
+    points: fhirtypes.Decimal = Field(
+        None,
+        alias="points",
+        title="Type `Decimal` (represented as `dict` in JSON)",
+        description="Contract Valued Item Difficulty Scaling Factor",
+    )
+
+    quantity: fhirtypes.QuantityType = Field(
+        None,
+        alias="quantity",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="Count of Contract Valued Items",
+    )
+
+    recipient: fhirtypes.ReferenceType = Field(
+        None,
+        alias="recipient",
+        title="Type `Reference` referencing `Organization, Patient, Practitioner, PractitionerRole, RelatedPerson` (represented as `dict` in JSON)",
+        description="Who will receive payment",
+    )
+
+    responsible: fhirtypes.ReferenceType = Field(
+        None,
+        alias="responsible",
+        title="Type `Reference` referencing `Organization, Patient, Practitioner, PractitionerRole, RelatedPerson` (represented as `dict` in JSON)",
+        description="Who will make payment",
+    )
+
+    securityLabelNumber: ListType[fhirtypes.UnsignedInt] = Field(
+        None,
+        alias="securityLabelNumber",
+        title="List of `UnsignedInt` items (represented as `dict` in JSON)",
+        description="Security Labels that define affected terms",
+    )
+
+    unitPrice: fhirtypes.MoneyType = Field(
+        None,
+        alias="unitPrice",
+        title="Type `Money` (represented as `dict` in JSON)",
+        description="Contract Valued Item fee, charge, or cost",
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "entity": ["entityCodeableConcept", "entityReference",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.effectiveTime = None
-        """ Contract Valued Item Effective Tiem.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.entityCodeableConcept = None
-        """ Contract Valued Item Type.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.entityReference = None
-        """ Contract Valued Item Type.
-        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
-
-        self.factor = None
-        """ Contract Valued Item Price Scaling Factor.
-        Type `float`. """
-
-        self.identifier = None
-        """ Contract Valued Item Number.
-        Type `Identifier` (represented as `dict` in JSON). """
-
-        self.linkId = None
-        """ Pointer to specific item.
-        List of `str` items. """
-
-        self.net = None
-        """ Total Contract Valued Item Value.
-        Type `Money` (represented as `dict` in JSON). """
-
-        self.payment = None
-        """ Terms of valuation.
-        Type `str`. """
-
-        self.paymentDate = None
-        """ When payment is due.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.points = None
-        """ Contract Valued Item Difficulty Scaling Factor.
-        Type `float`. """
-
-        self.quantity = None
-        """ Count of Contract Valued Items.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        self.recipient = None
-        """ Who will receive payment.
-        Type `FHIRReference` referencing `['Organization', 'Patient', 'Practitioner', 'PractitionerRole', 'RelatedPerson']` (represented as `dict` in JSON). """
-
-        self.responsible = None
-        """ Who will make payment.
-        Type `FHIRReference` referencing `['Organization', 'Patient', 'Practitioner', 'PractitionerRole', 'RelatedPerson']` (represented as `dict` in JSON). """
-
-        self.securityLabelNumber = None
-        """ Security Labels that define affected terms.
-        List of `int` items. """
-
-        self.unitPrice = None
-        """ Contract Valued Item fee, charge, or cost.
-        Type `Money` (represented as `dict` in JSON). """
-
-        super(ContractTermAssetValuedItem, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ContractTermAssetValuedItem, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "effectiveTime",
-                    "effectiveTime",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "entityCodeableConcept",
-                    "entityCodeableConcept",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    "entity",
-                    False,
-                ),
-                (
-                    "entityReference",
-                    "entityReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    "entity",
-                    False,
-                ),
-                ("factor", "factor", float, "decimal", False, None, False),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    False,
-                    None,
-                    False,
-                ),
-                ("linkId", "linkId", str, "string", True, None, False),
-                ("net", "net", money.Money, "Money", False, None, False),
-                ("payment", "payment", str, "string", False, None, False),
-                (
-                    "paymentDate",
-                    "paymentDate",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    None,
-                    False,
-                ),
-                ("points", "points", float, "decimal", False, None, False),
-                (
-                    "quantity",
-                    "quantity",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "recipient",
-                    "recipient",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "responsible",
-                    "responsible",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "securityLabelNumber",
-                    "securityLabelNumber",
-                    int,
-                    "unsignedInt",
-                    True,
-                    None,
-                    False,
-                ),
-                ("unitPrice", "unitPrice", money.Money, "Money", False, None, False),
-            ]
-        )
-        return js
+        return values
 
 
 class ContractTermOffer(backboneelement.BackboneElement):
     """ Context of the Contract term.
-
     The matter of concern in the context of this provision of the agrement.
     """
 
-    resource_type = "ContractTermOffer"
+    resource_type = Field("ContractTermOffer", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    answer: ListType[fhirtypes.ContractTermOfferAnswerType] = Field(
+        None,
+        alias="answer",
+        title="List of `ContractTermOfferAnswer` items (represented as `dict` in JSON)",
+        description="Response to offer text",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    decision: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="decision",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Accepting party choice",
+    )
 
-        self.answer = None
-        """ Response to offer text.
-        List of `ContractTermOfferAnswer` items (represented as `dict` in JSON). """
+    decisionMode: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="decisionMode",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="How decision is conveyed",
+    )
 
-        self.decision = None
-        """ Accepting party choice.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Offer business ID",
+    )
 
-        self.decisionMode = None
-        """ How decision is conveyed.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    linkId: ListType[fhirtypes.String] = Field(
+        None,
+        alias="linkId",
+        title="List of `String` items (represented as `dict` in JSON)",
+        description="Pointer to text",
+    )
 
-        self.identifier = None
-        """ Offer business ID.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    party: ListType[fhirtypes.ContractTermOfferPartyType] = Field(
+        None,
+        alias="party",
+        title="List of `ContractTermOfferParty` items (represented as `dict` in JSON)",
+        description="Offer Recipient",
+    )
 
-        self.linkId = None
-        """ Pointer to text.
-        List of `str` items. """
+    securityLabelNumber: ListType[fhirtypes.UnsignedInt] = Field(
+        None,
+        alias="securityLabelNumber",
+        title="List of `UnsignedInt` items (represented as `dict` in JSON)",
+        description="Offer restriction numbers",
+    )
 
-        self.party = None
-        """ Offer Recipient.
-        List of `ContractTermOfferParty` items (represented as `dict` in JSON). """
+    text: fhirtypes.String = Field(
+        None,
+        alias="text",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Human readable offer text",
+    )
 
-        self.securityLabelNumber = None
-        """ Offer restriction numbers.
-        List of `int` items. """
+    topic: fhirtypes.ReferenceType = Field(
+        None,
+        alias="topic",
+        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        description="Negotiable offer asset",
+    )
 
-        self.text = None
-        """ Human readable offer text.
-        Type `str`. """
-
-        self.topic = None
-        """ Negotiable offer asset.
-        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
-
-        self.type = None
-        """ Contract Offer Type or Form.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(ContractTermOffer, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ContractTermOffer, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "answer",
-                    "answer",
-                    ContractTermOfferAnswer,
-                    "ContractTermOfferAnswer",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "decision",
-                    "decision",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "decisionMode",
-                    "decisionMode",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                ("linkId", "linkId", str, "string", True, None, False),
-                (
-                    "party",
-                    "party",
-                    ContractTermOfferParty,
-                    "ContractTermOfferParty",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "securityLabelNumber",
-                    "securityLabelNumber",
-                    int,
-                    "unsignedInt",
-                    True,
-                    None,
-                    False,
-                ),
-                ("text", "text", str, "string", False, None, False),
-                (
-                    "topic",
-                    "topic",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    type: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Contract Offer Type or Form",
+    )
 
 
 class ContractTermOfferAnswer(backboneelement.BackboneElement):
     """ Response to offer text.
     """
 
-    resource_type = "ContractTermOfferAnswer"
+    resource_type = Field("ContractTermOfferAnswer", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    valueAttachment: fhirtypes.AttachmentType = Field(
+        None,
+        alias="valueAttachment",
+        title="Type `Attachment` (represented as `dict` in JSON)",
+        description="The actual answer response",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    valueBoolean: bool = Field(
+        None,
+        alias="valueBoolean",
+        title="Type `bool`",
+        description="The actual answer response",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    valueCoding: fhirtypes.CodingType = Field(
+        None,
+        alias="valueCoding",
+        title="Type `Coding` (represented as `dict` in JSON)",
+        description="The actual answer response",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    valueDate: fhirtypes.Date = Field(
+        None,
+        alias="valueDate",
+        title="Type `Date` (represented as `dict` in JSON)",
+        description="The actual answer response",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    valueDateTime: fhirtypes.DateTime = Field(
+        None,
+        alias="valueDateTime",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="The actual answer response",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    valueDecimal: fhirtypes.Decimal = Field(
+        None,
+        alias="valueDecimal",
+        title="Type `Decimal` (represented as `dict` in JSON)",
+        description="The actual answer response",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    valueInteger: fhirtypes.Integer = Field(
+        None,
+        alias="valueInteger",
+        title="Type `Integer` (represented as `dict` in JSON)",
+        description="The actual answer response",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    valueQuantity: fhirtypes.QuantityType = Field(
+        None,
+        alias="valueQuantity",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="The actual answer response",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    valueReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="valueReference",
+        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        description="The actual answer response",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    valueString: fhirtypes.String = Field(
+        None,
+        alias="valueString",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="The actual answer response",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    valueTime: fhirtypes.Time = Field(
+        None,
+        alias="valueTime",
+        title="Type `Time` (represented as `dict` in JSON)",
+        description="The actual answer response",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    valueUri: fhirtypes.Uri = Field(
+        None,
+        alias="valueUri",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="The actual answer response",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "value": [
+                "valueAttachment",
+                "valueBoolean",
+                "valueCoding",
+                "valueDate",
+                "valueDateTime",
+                "valueDecimal",
+                "valueInteger",
+                "valueQuantity",
+                "valueReference",
+                "valueString",
+                "valueTime",
+                "valueUri",
+            ],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.valueAttachment = None
-        """ The actual answer response.
-        Type `Attachment` (represented as `dict` in JSON). """
-
-        self.valueBoolean = None
-        """ The actual answer response.
-        Type `bool`. """
-
-        self.valueCoding = None
-        """ The actual answer response.
-        Type `Coding` (represented as `dict` in JSON). """
-
-        self.valueDate = None
-        """ The actual answer response.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.valueDateTime = None
-        """ The actual answer response.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.valueDecimal = None
-        """ The actual answer response.
-        Type `float`. """
-
-        self.valueInteger = None
-        """ The actual answer response.
-        Type `int`. """
-
-        self.valueQuantity = None
-        """ The actual answer response.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        self.valueReference = None
-        """ The actual answer response.
-        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
-
-        self.valueString = None
-        """ The actual answer response.
-        Type `str`. """
-
-        self.valueTime = None
-        """ The actual answer response.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.valueUri = None
-        """ The actual answer response.
-        Type `str`. """
-
-        super(ContractTermOfferAnswer, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ContractTermOfferAnswer, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "valueAttachment",
-                    "valueAttachment",
-                    attachment.Attachment,
-                    "Attachment",
-                    False,
-                    "value",
-                    True,
-                ),
-                ("valueBoolean", "valueBoolean", bool, "boolean", False, "value", True),
-                (
-                    "valueCoding",
-                    "valueCoding",
-                    coding.Coding,
-                    "Coding",
-                    False,
-                    "value",
-                    True,
-                ),
-                (
-                    "valueDate",
-                    "valueDate",
-                    fhirdate.FHIRDate,
-                    "date",
-                    False,
-                    "value",
-                    True,
-                ),
-                (
-                    "valueDateTime",
-                    "valueDateTime",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    "value",
-                    True,
-                ),
-                (
-                    "valueDecimal",
-                    "valueDecimal",
-                    float,
-                    "decimal",
-                    False,
-                    "value",
-                    True,
-                ),
-                ("valueInteger", "valueInteger", int, "integer", False, "value", True),
-                (
-                    "valueQuantity",
-                    "valueQuantity",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    "value",
-                    True,
-                ),
-                (
-                    "valueReference",
-                    "valueReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    "value",
-                    True,
-                ),
-                ("valueString", "valueString", str, "string", False, "value", True),
-                (
-                    "valueTime",
-                    "valueTime",
-                    fhirdate.FHIRDate,
-                    "time",
-                    False,
-                    "value",
-                    True,
-                ),
-                ("valueUri", "valueUri", str, "uri", False, "value", True),
-            ]
-        )
-        return js
+        return values
 
 
 class ContractTermOfferParty(backboneelement.BackboneElement):
     """ Offer Recipient.
     """
 
-    resource_type = "ContractTermOfferParty"
+    resource_type = Field("ContractTermOfferParty", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    reference: ListType[fhirtypes.ReferenceType] = Field(
+        ...,
+        alias="reference",
+        title="List of `Reference` items referencing `Patient, RelatedPerson, Practitioner, PractitionerRole, Device, Group, Organization` (represented as `dict` in JSON)",
+        description="Referenced entity",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.reference = None
-        """ Referenced entity.
-        List of `FHIRReference` items referencing `['Patient', 'RelatedPerson', 'Practitioner', 'PractitionerRole', 'Device', 'Group', 'Organization']` (represented as `dict` in JSON). """
-
-        self.role = None
-        """ Participant engagement type.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(ContractTermOfferParty, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ContractTermOfferParty, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "reference",
-                    "reference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    True,
-                ),
-                (
-                    "role",
-                    "role",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
+    role: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="role",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Participant engagement type",
+    )
 
 
 class ContractTermSecurityLabel(backboneelement.BackboneElement):
     """ Protection for the Term.
-
     Security labels that protect the handling of information about the term and
     its elements, which may be specifically identified..
     """
 
-    resource_type = "ContractTermSecurityLabel"
+    resource_type = Field("ContractTermSecurityLabel", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    category: ListType[fhirtypes.CodingType] = Field(
+        None,
+        alias="category",
+        title="List of `Coding` items (represented as `dict` in JSON)",
+        description="Applicable Policy",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    classification: fhirtypes.CodingType = Field(
+        ...,
+        alias="classification",
+        title="Type `Coding` (represented as `dict` in JSON)",
+        description="Confidentiality Protection",
+    )
 
-        self.category = None
-        """ Applicable Policy.
-        List of `Coding` items (represented as `dict` in JSON). """
+    control: ListType[fhirtypes.CodingType] = Field(
+        None,
+        alias="control",
+        title="List of `Coding` items (represented as `dict` in JSON)",
+        description="Handling Instructions",
+    )
 
-        self.classification = None
-        """ Confidentiality Protection.
-        Type `Coding` (represented as `dict` in JSON). """
-
-        self.control = None
-        """ Handling Instructions.
-        List of `Coding` items (represented as `dict` in JSON). """
-
-        self.number = None
-        """ Link to Security Labels.
-        List of `int` items. """
-
-        super(ContractTermSecurityLabel, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ContractTermSecurityLabel, self).elementProperties()
-        js.extend(
-            [
-                ("category", "category", coding.Coding, "Coding", True, None, False),
-                (
-                    "classification",
-                    "classification",
-                    coding.Coding,
-                    "Coding",
-                    False,
-                    None,
-                    True,
-                ),
-                ("control", "control", coding.Coding, "Coding", True, None, False),
-                ("number", "number", int, "unsignedInt", True, None, False),
-            ]
-        )
-        return js
-
-
-try:
-    from . import annotation
-except ImportError:
-    annotation = sys.modules[__package__ + ".annotation"]
-try:
-    from . import attachment
-except ImportError:
-    attachment = sys.modules[__package__ + ".attachment"]
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import coding
-except ImportError:
-    coding = sys.modules[__package__ + ".coding"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import money
-except ImportError:
-    money = sys.modules[__package__ + ".money"]
-try:
-    from . import period
-except ImportError:
-    period = sys.modules[__package__ + ".period"]
-try:
-    from . import quantity
-except ImportError:
-    quantity = sys.modules[__package__ + ".quantity"]
-try:
-    from . import signature
-except ImportError:
-    signature = sys.modules[__package__ + ".signature"]
-try:
-    from . import timing
-except ImportError:
-    timing = sys.modules[__package__ + ".timing"]
+    number: ListType[fhirtypes.UnsignedInt] = Field(
+        None,
+        alias="number",
+        title="List of `UnsignedInt` items (represented as `dict` in JSON)",
+        description="Link to Security Labels",
+    )

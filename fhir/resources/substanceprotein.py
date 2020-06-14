@@ -6,11 +6,11 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class SubstanceProtein(domainresource.DomainResource):
@@ -24,96 +24,35 @@ class SubstanceProtein(domainresource.DomainResource):
     recombinant vaccines, and immunomodulators.
     """
 
-    resource_type = "SubstanceProtein"
+    resource_type = Field("SubstanceProtein", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    disulfideLinkage: ListType[fhirtypes.String] = Field(
+        None,
+        alias="disulfideLinkage",
+        title="List of `String` items (represented as `dict` in JSON)",
+        description="The disulphide bond between two cysteine residues either on the same subunit or on two different subunits shall be described. The position of the disulfide bonds in the SubstanceProtein shall be listed in increasing order of subunit number and position within subunit followed by the abbreviation of the amino acids involved. The disulfide linkage positions shall actually contain the amino acid Cysteine at the respective positions",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    numberOfSubunits: fhirtypes.Integer = Field(
+        None,
+        alias="numberOfSubunits",
+        title="Type `Integer` (represented as `dict` in JSON)",
+        description="Number of linear sequences of amino acids linked through peptide bonds. The number of subunits constituting the SubstanceProtein shall be described. It is possible that the number of subunits can be variable",
+    )
 
-        self.disulfideLinkage = None
-        """ The disulphide bond between two cysteine residues either on the
-        same subunit or on two different subunits shall be described. The
-        position of the disulfide bonds in the SubstanceProtein shall be
-        listed in increasing order of subunit number and position within
-        subunit followed by the abbreviation of the amino acids involved.
-        The disulfide linkage positions shall actually contain the amino
-        acid Cysteine at the respective positions.
-        List of `str` items. """
+    sequenceType: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="sequenceType",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The SubstanceProtein descriptive elements will only be used when a complete or partial amino acid sequence is available or derivable from a nucleic acid sequence",
+    )
 
-        self.numberOfSubunits = None
-        """ Number of linear sequences of amino acids linked through peptide
-        bonds. The number of subunits constituting the SubstanceProtein
-        shall be described. It is possible that the number of subunits can
-        be variable.
-        Type `int`. """
-
-        self.sequenceType = None
-        """ The SubstanceProtein descriptive elements will only be used when a
-        complete or partial amino acid sequence is available or derivable
-        from a nucleic acid sequence.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.subunit = None
-        """ This subclause refers to the description of each subunit
-        constituting the SubstanceProtein. A subunit is a linear sequence
-        of amino acids linked through peptide bonds. The Subunit
-        information shall be provided when the finished SubstanceProtein is
-        a complex of multiple sequences; subunits are not used to delineate
-        domains within a single sequence. Subunits are listed in order of
-        decreasing length; sequences of the same length will be ordered by
-        decreasing molecular weight; subunits that have identical sequences
-        will be repeated multiple times.
-        List of `SubstanceProteinSubunit` items (represented as `dict` in JSON). """
-
-        super(SubstanceProtein, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(SubstanceProtein, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "disulfideLinkage",
-                    "disulfideLinkage",
-                    str,
-                    "string",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "numberOfSubunits",
-                    "numberOfSubunits",
-                    int,
-                    "integer",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "sequenceType",
-                    "sequenceType",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "subunit",
-                    "subunit",
-                    SubstanceProteinSubunit,
-                    "SubstanceProteinSubunit",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    subunit: ListType[fhirtypes.SubstanceProteinSubunitType] = Field(
+        None,
+        alias="subunit",
+        title="List of `SubstanceProteinSubunit` items (represented as `dict` in JSON)",
+        description="This subclause refers to the description of each subunit constituting the SubstanceProtein. A subunit is a linear sequence of amino acids linked through peptide bonds. The Subunit information shall be provided when the finished SubstanceProtein is a complex of multiple sequences; subunits are not used to delineate domains within a single sequence. Subunits are listed in order of decreasing length; sequences of the same length will be ordered by decreasing molecular weight; subunits that have identical sequences will be repeated multiple times",
+    )
 
 
 class SubstanceProteinSubunit(backboneelement.BackboneElement):
@@ -127,136 +66,60 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
     be repeated multiple times.
     """
 
-    resource_type = "SubstanceProteinSubunit"
+    resource_type = Field("SubstanceProteinSubunit", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    cTerminalModification: fhirtypes.String = Field(
+        None,
+        alias="cTerminalModification",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="The modification at the C-terminal shall be specified",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    cTerminalModificationId: fhirtypes.IdentifierType = Field(
+        None,
+        alias="cTerminalModificationId",
+        title="Type `Identifier` (represented as `dict` in JSON)",
+        description="Unique identifier for molecular fragment modification based on the ISO 11238 Substance ID",
+    )
 
-        self.cTerminalModification = None
-        """ The modification at the C-terminal shall be specified.
-        Type `str`. """
+    length: fhirtypes.Integer = Field(
+        None,
+        alias="length",
+        title="Type `Integer` (represented as `dict` in JSON)",
+        description="Length of linear sequences of amino acids contained in the subunit",
+    )
 
-        self.cTerminalModificationId = None
-        """ Unique identifier for molecular fragment modification based on the
-        ISO 11238 Substance ID.
-        Type `Identifier` (represented as `dict` in JSON). """
+    nTerminalModification: fhirtypes.String = Field(
+        None,
+        alias="nTerminalModification",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="The name of the fragment modified at the N-terminal of the SubstanceProtein shall be specified",
+    )
 
-        self.length = None
-        """ Length of linear sequences of amino acids contained in the subunit.
-        Type `int`. """
+    nTerminalModificationId: fhirtypes.IdentifierType = Field(
+        None,
+        alias="nTerminalModificationId",
+        title="Type `Identifier` (represented as `dict` in JSON)",
+        description="Unique identifier for molecular fragment modification based on the ISO 11238 Substance ID",
+    )
 
-        self.nTerminalModification = None
-        """ The name of the fragment modified at the N-terminal of the
-        SubstanceProtein shall be specified.
-        Type `str`. """
+    sequence: fhirtypes.String = Field(
+        None,
+        alias="sequence",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="The sequence information shall be provided enumerating the amino acids from N- to C-terminal end using standard single-letter amino acid codes. Uppercase shall be used for L-amino acids and lowercase for D-amino acids. Transcribed SubstanceProteins will always be described using the translated sequence; for synthetic peptide containing amino acids that are not represented with a single letter code an X should be used within the sequence. The modified amino acids will be distinguished by their position in the sequence",
+    )
 
-        self.nTerminalModificationId = None
-        """ Unique identifier for molecular fragment modification based on the
-        ISO 11238 Substance ID.
-        Type `Identifier` (represented as `dict` in JSON). """
+    sequenceAttachment: fhirtypes.AttachmentType = Field(
+        None,
+        alias="sequenceAttachment",
+        title="Type `Attachment` (represented as `dict` in JSON)",
+        description="The sequence information shall be provided enumerating the amino acids from N- to C-terminal end using standard single-letter amino acid codes. Uppercase shall be used for L-amino acids and lowercase for D-amino acids. Transcribed SubstanceProteins will always be described using the translated sequence; for synthetic peptide containing amino acids that are not represented with a single letter code an X should be used within the sequence. The modified amino acids will be distinguished by their position in the sequence",
+    )
 
-        self.sequence = None
-        """ The sequence information shall be provided enumerating the amino
-        acids from N- to C-terminal end using standard single-letter amino
-        acid codes. Uppercase shall be used for L-amino acids and lowercase
-        for D-amino acids. Transcribed SubstanceProteins will always be
-        described using the translated sequence; for synthetic peptide
-        containing amino acids that are not represented with a single
-        letter code an X should be used within the sequence. The modified
-        amino acids will be distinguished by their position in the sequence.
-        Type `str`. """
-
-        self.sequenceAttachment = None
-        """ The sequence information shall be provided enumerating the amino
-        acids from N- to C-terminal end using standard single-letter amino
-        acid codes. Uppercase shall be used for L-amino acids and lowercase
-        for D-amino acids. Transcribed SubstanceProteins will always be
-        described using the translated sequence; for synthetic peptide
-        containing amino acids that are not represented with a single
-        letter code an X should be used within the sequence. The modified
-        amino acids will be distinguished by their position in the sequence.
-        Type `Attachment` (represented as `dict` in JSON). """
-
-        self.subunit = None
-        """ Index of primary sequences of amino acids linked through peptide
-        bonds in order of decreasing length. Sequences of the same length
-        will be ordered by molecular weight. Subunits that have identical
-        sequences will be repeated and have sequential subscripts.
-        Type `int`. """
-
-        super(SubstanceProteinSubunit, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(SubstanceProteinSubunit, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "cTerminalModification",
-                    "cTerminalModification",
-                    str,
-                    "string",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "cTerminalModificationId",
-                    "cTerminalModificationId",
-                    identifier.Identifier,
-                    "Identifier",
-                    False,
-                    None,
-                    False,
-                ),
-                ("length", "length", int, "integer", False, None, False),
-                (
-                    "nTerminalModification",
-                    "nTerminalModification",
-                    str,
-                    "string",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "nTerminalModificationId",
-                    "nTerminalModificationId",
-                    identifier.Identifier,
-                    "Identifier",
-                    False,
-                    None,
-                    False,
-                ),
-                ("sequence", "sequence", str, "string", False, None, False),
-                (
-                    "sequenceAttachment",
-                    "sequenceAttachment",
-                    attachment.Attachment,
-                    "Attachment",
-                    False,
-                    None,
-                    False,
-                ),
-                ("subunit", "subunit", int, "integer", False, None, False),
-            ]
-        )
-        return js
-
-
-try:
-    from . import attachment
-except ImportError:
-    attachment = sys.modules[__package__ + ".attachment"]
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
+    subunit: fhirtypes.Integer = Field(
+        None,
+        alias="subunit",
+        title="Type `Integer` (represented as `dict` in JSON)",
+        description="Index of primary sequences of amino acids linked through peptide bonds in order of decreasing length. Sequences of the same length will be ordered by molecular weight. Subunits that have identical sequences will be repeated and have sequential subscripts",
+    )

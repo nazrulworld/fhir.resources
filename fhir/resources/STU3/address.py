@@ -6,17 +6,16 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import element
+from . import element, fhirtypes
 
 
 class Address(element.Element):
     """ An address expressed using postal conventions (as opposed to GPS or other
     location definition formats).
-
     An address expressed using postal conventions (as opposed to GPS or other
     location definition formats).  This data type may be used to convey
     addresses for use in delivering mail as well as for visiting locations
@@ -24,78 +23,74 @@ class Address(element.Element):
     address formats defined around the world.
     """
 
-    resource_type = "Address"
+    resource_type = Field("Address", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    city: fhirtypes.String = Field(
+        None,
+        alias="city",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name of city, town etc.",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    country: fhirtypes.String = Field(
+        None,
+        alias="country",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Country (e.g. can be ISO 3166 2 or 3 letter code)",
+    )
 
-        self.city = None
-        """ Name of city, town etc..
-        Type `str`. """
+    district: fhirtypes.String = Field(
+        None,
+        alias="district",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="District name (aka county)",
+    )
 
-        self.country = None
-        """ Country (e.g. can be ISO 3166 2 or 3 letter code).
-        Type `str`. """
+    line: ListType[fhirtypes.String] = Field(
+        None,
+        alias="line",
+        title="List of `String` items (represented as `dict` in JSON)",
+        description="Street name, number, direction \u0026 P.O. Box etc.",
+    )
 
-        self.district = None
-        """ District name (aka county).
-        Type `str`. """
+    period: fhirtypes.PeriodType = Field(
+        None,
+        alias="period",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="Time period when address was/is in use",
+    )
 
-        self.line = None
-        """ Street name, number, direction & P.O. Box etc..
-        List of `str` items. """
+    postalCode: fhirtypes.String = Field(
+        None,
+        alias="postalCode",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Postal code for area",
+    )
 
-        self.period = None
-        """ Time period when address was/is in use.
-        Type `Period` (represented as `dict` in JSON). """
+    state: fhirtypes.String = Field(
+        None,
+        alias="state",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Sub-unit of country (abbreviations ok)",
+    )
 
-        self.postalCode = None
-        """ Postal code for area.
-        Type `str`. """
+    text: fhirtypes.String = Field(
+        None,
+        alias="text",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Text representation of the address",
+    )
 
-        self.state = None
-        """ Sub-unit of country (abbreviations ok).
-        Type `str`. """
+    type: fhirtypes.Code = Field(
+        None,
+        alias="type",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="postal | physical | both",
+    )
 
-        self.text = None
-        """ Text representation of the address.
-        Type `str`. """
-
-        self.type = None
-        """ postal | physical | both.
-        Type `str`. """
-
-        self.use = None
-        """ home | work | temp | old - purpose of this address.
-        Type `str`. """
-
-        super(Address, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(Address, self).elementProperties()
-        js.extend(
-            [
-                ("city", "city", str, "string", False, None, False),
-                ("country", "country", str, "string", False, None, False),
-                ("district", "district", str, "string", False, None, False),
-                ("line", "line", str, "string", True, None, False),
-                ("period", "period", period.Period, "Period", False, None, False),
-                ("postalCode", "postalCode", str, "string", False, None, False),
-                ("state", "state", str, "string", False, None, False),
-                ("text", "text", str, "string", False, None, False),
-                ("type", "type", str, "code", False, None, False),
-                ("use", "use", str, "code", False, None, False),
-            ]
-        )
-        return js
-
-
-try:
-    from . import period
-except ImportError:
-    period = sys.modules[__package__ + ".period"]
+    use: fhirtypes.Code = Field(
+        None,
+        alias="use",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="home | work | temp | old - purpose of this address",
+    )

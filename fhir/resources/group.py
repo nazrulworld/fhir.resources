@@ -6,304 +6,235 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import Any, Dict
+from typing import List as ListType
 
+from pydantic import Field, root_validator
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class Group(domainresource.DomainResource):
     """ Group of multiple entities.
-
     Represents a defined collection of entities that may be discussed or acted
     upon collectively but which are not expected to act collectively, and are
     not formally or legally recognized; i.e. a collection of entities that
     isn't an Organization.
     """
 
-    resource_type = "Group"
+    resource_type = Field("Group", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    active: bool = Field(
+        None,
+        alias="active",
+        title="Type `bool`",
+        description="Whether this group\u0027s record is in active use",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    actual: bool = Field(
+        ..., alias="actual", title="Type `bool`", description="Descriptive or actual",
+    )
 
-        self.active = None
-        """ Whether this group's record is in active use.
-        Type `bool`. """
+    characteristic: ListType[fhirtypes.GroupCharacteristicType] = Field(
+        None,
+        alias="characteristic",
+        title="List of `GroupCharacteristic` items (represented as `dict` in JSON)",
+        description="Include / Exclude group members by Trait",
+    )
 
-        self.actual = None
-        """ Descriptive or actual.
-        Type `bool`. """
+    code: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="code",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Kind of Group members",
+    )
 
-        self.characteristic = None
-        """ Include / Exclude group members by Trait.
-        List of `GroupCharacteristic` items (represented as `dict` in JSON). """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Unique id",
+    )
 
-        self.code = None
-        """ Kind of Group members.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    managingEntity: fhirtypes.ReferenceType = Field(
+        None,
+        alias="managingEntity",
+        title="Type `Reference` referencing `Organization, RelatedPerson, Practitioner, PractitionerRole` (represented as `dict` in JSON)",
+        description="Entity that is the custodian of the Group\u0027s definition",
+    )
 
-        self.identifier = None
-        """ Unique id.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    member: ListType[fhirtypes.GroupMemberType] = Field(
+        None,
+        alias="member",
+        title="List of `GroupMember` items (represented as `dict` in JSON)",
+        description="Who or what is in group",
+    )
 
-        self.managingEntity = None
-        """ Entity that is the custodian of the Group's definition.
-        Type `FHIRReference` referencing `['Organization', 'RelatedPerson', 'Practitioner', 'PractitionerRole']` (represented as `dict` in JSON). """
+    name: fhirtypes.String = Field(
+        None,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Label for Group",
+    )
 
-        self.member = None
-        """ Who or what is in group.
-        List of `GroupMember` items (represented as `dict` in JSON). """
+    quantity: fhirtypes.UnsignedInt = Field(
+        None,
+        alias="quantity",
+        title="Type `UnsignedInt` (represented as `dict` in JSON)",
+        description="Number of members",
+    )
 
-        self.name = None
-        """ Label for Group.
-        Type `str`. """
-
-        self.quantity = None
-        """ Number of members.
-        Type `int`. """
-
-        self.type = None
-        """ person | animal | practitioner | device | medication | substance.
-        Type `str`. """
-
-        super(Group, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(Group, self).elementProperties()
-        js.extend(
-            [
-                ("active", "active", bool, "boolean", False, None, False),
-                ("actual", "actual", bool, "boolean", False, None, True),
-                (
-                    "characteristic",
-                    "characteristic",
-                    GroupCharacteristic,
-                    "GroupCharacteristic",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "code",
-                    "code",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "managingEntity",
-                    "managingEntity",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("member", "member", GroupMember, "GroupMember", True, None, False),
-                ("name", "name", str, "string", False, None, False),
-                ("quantity", "quantity", int, "unsignedInt", False, None, False),
-                ("type", "type", str, "code", False, None, True),
-            ]
-        )
-        return js
+    type: fhirtypes.Code = Field(
+        ...,
+        alias="type",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="person | animal | practitioner | device | medication | substance",
+    )
 
 
 class GroupCharacteristic(backboneelement.BackboneElement):
     """ Include / Exclude group members by Trait.
-
     Identifies traits whose presence r absence is shared by members of the
     group.
     """
 
-    resource_type = "GroupCharacteristic"
+    resource_type = Field("GroupCharacteristic", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    code: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="code",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Kind of characteristic",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    exclude: bool = Field(
+        ...,
+        alias="exclude",
+        title="Type `bool`",
+        description="Group includes or excludes",
+    )
+
+    period: fhirtypes.PeriodType = Field(
+        None,
+        alias="period",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="Period over which characteristic is tested",
+    )
+
+    valueBoolean: bool = Field(
+        None,
+        alias="valueBoolean",
+        title="Type `bool`",
+        description="Value held by characteristic",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    valueCodeableConcept: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="valueCodeableConcept",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Value held by characteristic",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    valueQuantity: fhirtypes.QuantityType = Field(
+        None,
+        alias="valueQuantity",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="Value held by characteristic",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    valueRange: fhirtypes.RangeType = Field(
+        None,
+        alias="valueRange",
+        title="Type `Range` (represented as `dict` in JSON)",
+        description="Value held by characteristic",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    valueReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="valueReference",
+        title="Type `Reference` (represented as `dict` in JSON)",
+        description="Value held by characteristic",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "value": [
+                "valueBoolean",
+                "valueCodeableConcept",
+                "valueQuantity",
+                "valueRange",
+                "valueReference",
+            ],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.code = None
-        """ Kind of characteristic.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.exclude = None
-        """ Group includes or excludes.
-        Type `bool`. """
-
-        self.period = None
-        """ Period over which characteristic is tested.
-        Type `Period` (represented as `dict` in JSON). """
-
-        self.valueBoolean = None
-        """ Value held by characteristic.
-        Type `bool`. """
-
-        self.valueCodeableConcept = None
-        """ Value held by characteristic.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.valueQuantity = None
-        """ Value held by characteristic.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        self.valueRange = None
-        """ Value held by characteristic.
-        Type `Range` (represented as `dict` in JSON). """
-
-        self.valueReference = None
-        """ Value held by characteristic.
-        Type `FHIRReference` (represented as `dict` in JSON). """
-
-        super(GroupCharacteristic, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(GroupCharacteristic, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "code",
-                    "code",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                ("exclude", "exclude", bool, "boolean", False, None, True),
-                ("period", "period", period.Period, "Period", False, None, False),
-                ("valueBoolean", "valueBoolean", bool, "boolean", False, "value", True),
-                (
-                    "valueCodeableConcept",
-                    "valueCodeableConcept",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    "value",
-                    True,
-                ),
-                (
-                    "valueQuantity",
-                    "valueQuantity",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    "value",
-                    True,
-                ),
-                (
-                    "valueRange",
-                    "valueRange",
-                    range.Range,
-                    "Range",
-                    False,
-                    "value",
-                    True,
-                ),
-                (
-                    "valueReference",
-                    "valueReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    "value",
-                    True,
-                ),
-            ]
-        )
-        return js
+        return values
 
 
 class GroupMember(backboneelement.BackboneElement):
     """ Who or what is in group.
-
     Identifies the resource instances that are members of the group.
     """
 
-    resource_type = "GroupMember"
+    resource_type = Field("GroupMember", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    entity: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="entity",
+        title="Type `Reference` referencing `Patient, Practitioner, PractitionerRole, Device, Medication, Substance, Group` (represented as `dict` in JSON)",
+        description="Reference to the group member",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    inactive: bool = Field(
+        None,
+        alias="inactive",
+        title="Type `bool`",
+        description="If member is no longer in group",
+    )
 
-        self.entity = None
-        """ Reference to the group member.
-        Type `FHIRReference` referencing `['Patient', 'Practitioner', 'PractitionerRole', 'Device', 'Medication', 'Substance', 'Group']` (represented as `dict` in JSON). """
-
-        self.inactive = None
-        """ If member is no longer in group.
-        Type `bool`. """
-
-        self.period = None
-        """ Period member belonged to the group.
-        Type `Period` (represented as `dict` in JSON). """
-
-        super(GroupMember, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(GroupMember, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "entity",
-                    "entity",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                ("inactive", "inactive", bool, "boolean", False, None, False),
-                ("period", "period", period.Period, "Period", False, None, False),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import period
-except ImportError:
-    period = sys.modules[__package__ + ".period"]
-try:
-    from . import quantity
-except ImportError:
-    quantity = sys.modules[__package__ + ".quantity"]
-try:
-    from . import range
-except ImportError:
-    range = sys.modules[__package__ + ".range"]
+    period: fhirtypes.PeriodType = Field(
+        None,
+        alias="period",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="Period member belonged to the group",
+    )

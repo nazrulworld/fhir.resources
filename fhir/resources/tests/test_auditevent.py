@@ -6,1062 +6,858 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import auditevent
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class AuditEventTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("AuditEvent", js["resourceType"])
-        return auditevent.AuditEvent(js)
+def impl_auditevent_1(inst):
+    assert inst.action == "E"
+    assert inst.agent[0].altId == "601847123"
+    assert inst.agent[0].name == "Grahame Grieve"
+    assert inst.agent[0].requestor is True
+    assert inst.agent[0].type.coding[0].code == "humanuser"
+    assert inst.agent[0].type.coding[0].display == "human user"
+    assert (
+        inst.agent[0].type.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/extra-security-role-type"
+    )
+    assert inst.agent[0].who.identifier.value == "95"
+    assert inst.agent[1].altId == "6580"
+    assert inst.agent[1].network.address == "Workstation1.ehr.familyclinic.com"
+    assert inst.agent[1].network.type == "1"
+    assert inst.agent[1].requestor is False
+    assert inst.agent[1].type.coding[0].code == "110153"
+    assert inst.agent[1].type.coding[0].display == "Source Role ID"
+    assert (
+        inst.agent[1].type.coding[0].system
+        == "http://dicom.nema.org/resources/ontology/DCM"
+    )
+    assert inst.agent[1].who.identifier.system == "urn:oid:2.16.840.1.113883.4.2"
+    assert inst.agent[1].who.identifier.value == "2.16.840.1.113883.4.2"
+    # Don't know how to create unit test for "entity[0].query", which is a Base64Binary
+    assert inst.entity[0].role.code == "24"
+    assert inst.entity[0].role.display == "Query"
+    assert (
+        inst.entity[0].role.system
+        == "http://terminology.hl7.org/CodeSystem/object-role"
+    )
+    assert inst.entity[0].type.code == "2"
+    assert inst.entity[0].type.display == "System Object"
+    assert (
+        inst.entity[0].type.system
+        == "http://terminology.hl7.org/CodeSystem/audit-entity-type"
+    )
+    assert inst.id == "example-search"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.outcome == "0"
+    assert inst.recorded == fhirtypes.Instant.validate("2015-08-22T23:42:24Z")
+    assert inst.source.observer.display == "hl7connect.healthintersections.com.au"
+    assert inst.source.site == "Cloud"
+    assert inst.source.type[0].code == "3"
+    assert inst.source.type[0].display == "Web Server"
+    assert (
+        inst.source.type[0].system
+        == "http://terminology.hl7.org/CodeSystem/security-source-type"
+    )
+    assert inst.subtype[0].code == "search"
+    assert inst.subtype[0].display == "search"
+    assert inst.subtype[0].system == "http://hl7.org/fhir/restful-interaction"
+    assert inst.text.status == "generated"
+    assert inst.type.code == "rest"
+    assert inst.type.display == "Restful Operation"
+    assert inst.type.system == "http://terminology.hl7.org/CodeSystem/audit-event-type"
 
-    def testAuditEvent1(self):
-        inst = self.instantiate_from("audit-event-example-search.json")
-        self.assertIsNotNone(inst, "Must have instantiated a AuditEvent instance")
-        self.implAuditEvent1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("AuditEvent", js["resourceType"])
-        inst2 = auditevent.AuditEvent(js)
-        self.implAuditEvent1(inst2)
+def test_auditevent_1(base_settings):
+    """No. 1 tests collection for AuditEvent.
+    Test File: audit-event-example-search.json
+    """
+    filename = base_settings["unittest_data_dir"] / "audit-event-example-search.json"
+    inst = auditevent.AuditEvent.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "AuditEvent" == inst.resource_type
 
-    def implAuditEvent1(self, inst):
-        self.assertEqual(force_bytes(inst.action), force_bytes("E"))
-        self.assertEqual(force_bytes(inst.agent[0].altId), force_bytes("601847123"))
-        self.assertEqual(force_bytes(inst.agent[0].name), force_bytes("Grahame Grieve"))
-        self.assertTrue(inst.agent[0].requestor)
-        self.assertEqual(
-            force_bytes(inst.agent[0].type.coding[0].code), force_bytes("humanuser")
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[0].type.coding[0].display), force_bytes("human user")
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[0].type.coding[0].system),
-            force_bytes(
-                "http://terminology.hl7.org/CodeSystem/extra-security-role-type"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.agent[1].altId), force_bytes("6580"))
-        self.assertEqual(
-            force_bytes(inst.agent[1].network.address),
-            force_bytes("Workstation1.ehr.familyclinic.com"),
-        )
-        self.assertEqual(force_bytes(inst.agent[1].network.type), force_bytes("1"))
-        self.assertFalse(inst.agent[1].requestor)
-        self.assertEqual(
-            force_bytes(inst.agent[1].type.coding[0].code), force_bytes("110153")
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[1].type.coding[0].display),
-            force_bytes("Source Role ID"),
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[1].type.coding[0].system),
-            force_bytes("http://dicom.nema.org/resources/ontology/DCM"),
-        )
-        self.assertEqual(
-            force_bytes(inst.entity[0].query),
-            force_bytes(
-                "aHR0cDovL2ZoaXItZGV2LmhlYWx0aGludGVyc2VjdGlvbnMuY29tLmF1L29wZW4vRW5jb3VudGVyP3BhcnRpY2lwYW50PTEz"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.entity[0].role.code), force_bytes("24"))
-        self.assertEqual(force_bytes(inst.entity[0].role.display), force_bytes("Query"))
-        self.assertEqual(
-            force_bytes(inst.entity[0].role.system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/object-role"),
-        )
-        self.assertEqual(force_bytes(inst.entity[0].type.code), force_bytes("2"))
-        self.assertEqual(
-            force_bytes(inst.entity[0].type.display), force_bytes("System Object")
-        )
-        self.assertEqual(
-            force_bytes(inst.entity[0].type.system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/audit-entity-type"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("example-search"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.outcome), force_bytes("0"))
-        self.assertEqual(inst.recorded.date, FHIRDate("2015-08-22T23:42:24Z").date)
-        self.assertEqual(inst.recorded.as_json(), "2015-08-22T23:42:24Z")
-        self.assertEqual(force_bytes(inst.source.site), force_bytes("Cloud"))
-        self.assertEqual(force_bytes(inst.source.type[0].code), force_bytes("3"))
-        self.assertEqual(
-            force_bytes(inst.source.type[0].display), force_bytes("Web Server")
-        )
-        self.assertEqual(
-            force_bytes(inst.source.type[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/security-source-type"),
-        )
-        self.assertEqual(force_bytes(inst.subtype[0].code), force_bytes("search"))
-        self.assertEqual(force_bytes(inst.subtype[0].display), force_bytes("search"))
-        self.assertEqual(
-            force_bytes(inst.subtype[0].system),
-            force_bytes("http://hl7.org/fhir/restful-interaction"),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type.code), force_bytes("rest"))
-        self.assertEqual(
-            force_bytes(inst.type.display), force_bytes("Restful Operation")
-        )
-        self.assertEqual(
-            force_bytes(inst.type.system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/audit-event-type"),
-        )
+    impl_auditevent_1(inst)
 
-    def testAuditEvent2(self):
-        inst = self.instantiate_from("audit-event-example-logout.json")
-        self.assertIsNotNone(inst, "Must have instantiated a AuditEvent instance")
-        self.implAuditEvent2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "AuditEvent" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("AuditEvent", js["resourceType"])
-        inst2 = auditevent.AuditEvent(js)
-        self.implAuditEvent2(inst2)
+    inst2 = auditevent.AuditEvent(**data)
+    impl_auditevent_1(inst2)
 
-    def implAuditEvent2(self, inst):
-        self.assertEqual(force_bytes(inst.action), force_bytes("E"))
-        self.assertEqual(force_bytes(inst.agent[0].altId), force_bytes("601847123"))
-        self.assertEqual(force_bytes(inst.agent[0].name), force_bytes("Grahame Grieve"))
-        self.assertEqual(
-            force_bytes(inst.agent[0].network.address), force_bytes("127.0.0.1")
-        )
-        self.assertEqual(force_bytes(inst.agent[0].network.type), force_bytes("2"))
-        self.assertTrue(inst.agent[0].requestor)
-        self.assertEqual(
-            force_bytes(inst.agent[0].type.coding[0].code), force_bytes("humanuser")
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[0].type.coding[0].display), force_bytes("human user")
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[0].type.coding[0].system),
-            force_bytes(
-                "http://terminology.hl7.org/CodeSystem/extra-security-role-type"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.agent[1].altId), force_bytes("6580"))
-        self.assertEqual(
-            force_bytes(inst.agent[1].network.address),
-            force_bytes("Workstation1.ehr.familyclinic.com"),
-        )
-        self.assertEqual(force_bytes(inst.agent[1].network.type), force_bytes("1"))
-        self.assertFalse(inst.agent[1].requestor)
-        self.assertEqual(
-            force_bytes(inst.agent[1].type.coding[0].code), force_bytes("110153")
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[1].type.coding[0].display),
-            force_bytes("Source Role ID"),
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[1].type.coding[0].system),
-            force_bytes("http://dicom.nema.org/resources/ontology/DCM"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("example-logout"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.outcome), force_bytes("0"))
-        self.assertEqual(inst.recorded.date, FHIRDate("2013-06-20T23:46:41Z").date)
-        self.assertEqual(inst.recorded.as_json(), "2013-06-20T23:46:41Z")
-        self.assertEqual(force_bytes(inst.source.site), force_bytes("Cloud"))
-        self.assertEqual(force_bytes(inst.source.type[0].code), force_bytes("3"))
-        self.assertEqual(
-            force_bytes(inst.source.type[0].display), force_bytes("Web Server")
-        )
-        self.assertEqual(
-            force_bytes(inst.source.type[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/security-source-type"),
-        )
-        self.assertEqual(force_bytes(inst.subtype[0].code), force_bytes("110123"))
-        self.assertEqual(force_bytes(inst.subtype[0].display), force_bytes("Logout"))
-        self.assertEqual(
-            force_bytes(inst.subtype[0].system),
-            force_bytes("http://dicom.nema.org/resources/ontology/DCM"),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type.code), force_bytes("110114"))
-        self.assertEqual(
-            force_bytes(inst.type.display), force_bytes("User Authentication")
-        )
-        self.assertEqual(
-            force_bytes(inst.type.system),
-            force_bytes("http://dicom.nema.org/resources/ontology/DCM"),
-        )
 
-    def testAuditEvent3(self):
-        inst = self.instantiate_from("audit-event-example-vread.json")
-        self.assertIsNotNone(inst, "Must have instantiated a AuditEvent instance")
-        self.implAuditEvent3(inst)
+def impl_auditevent_2(inst):
+    assert inst.action == "E"
+    assert inst.agent[0].altId == "601847123"
+    assert inst.agent[0].name == "Grahame Grieve"
+    assert inst.agent[0].network.address == "127.0.0.1"
+    assert inst.agent[0].network.type == "2"
+    assert inst.agent[0].requestor is True
+    assert inst.agent[0].type.coding[0].code == "humanuser"
+    assert inst.agent[0].type.coding[0].display == "human user"
+    assert (
+        inst.agent[0].type.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/extra-security-role-type"
+    )
+    assert inst.agent[0].who.identifier.value == "95"
+    assert inst.agent[1].altId == "6580"
+    assert inst.agent[1].network.address == "Workstation1.ehr.familyclinic.com"
+    assert inst.agent[1].network.type == "1"
+    assert inst.agent[1].requestor is False
+    assert inst.agent[1].type.coding[0].code == "110153"
+    assert inst.agent[1].type.coding[0].display == "Source Role ID"
+    assert (
+        inst.agent[1].type.coding[0].system
+        == "http://dicom.nema.org/resources/ontology/DCM"
+    )
+    assert inst.agent[1].who.identifier.system == "urn:oid:2.16.840.1.113883.4.2"
+    assert inst.agent[1].who.identifier.value == "2.16.840.1.113883.4.2"
+    assert inst.id == "example-logout"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.outcome == "0"
+    assert inst.recorded == fhirtypes.Instant.validate("2013-06-20T23:46:41Z")
+    assert (
+        inst.source.observer.identifier.value == "hl7connect.healthintersections.com.au"
+    )
+    assert inst.source.site == "Cloud"
+    assert inst.source.type[0].code == "3"
+    assert inst.source.type[0].display == "Web Server"
+    assert (
+        inst.source.type[0].system
+        == "http://terminology.hl7.org/CodeSystem/security-source-type"
+    )
+    assert inst.subtype[0].code == "110123"
+    assert inst.subtype[0].display == "Logout"
+    assert inst.subtype[0].system == "http://dicom.nema.org/resources/ontology/DCM"
+    assert inst.text.status == "generated"
+    assert inst.type.code == "110114"
+    assert inst.type.display == "User Authentication"
+    assert inst.type.system == "http://dicom.nema.org/resources/ontology/DCM"
 
-        js = inst.as_json()
-        self.assertEqual("AuditEvent", js["resourceType"])
-        inst2 = auditevent.AuditEvent(js)
-        self.implAuditEvent3(inst2)
 
-    def implAuditEvent3(self, inst):
-        self.assertEqual(force_bytes(inst.action), force_bytes("R"))
-        self.assertEqual(force_bytes(inst.agent[0].altId), force_bytes("601847123"))
-        self.assertEqual(force_bytes(inst.agent[0].name), force_bytes("Grahame Grieve"))
-        self.assertTrue(inst.agent[0].requestor)
-        self.assertEqual(
-            force_bytes(inst.agent[0].type.coding[0].code), force_bytes("humanuser")
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[0].type.coding[0].display), force_bytes("human user")
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[0].type.coding[0].system),
-            force_bytes(
-                "http://terminology.hl7.org/CodeSystem/extra-security-role-type"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.agent[1].altId), force_bytes("6580"))
-        self.assertEqual(
-            force_bytes(inst.agent[1].network.address),
-            force_bytes("Workstation1.ehr.familyclinic.com"),
-        )
-        self.assertEqual(force_bytes(inst.agent[1].network.type), force_bytes("1"))
-        self.assertFalse(inst.agent[1].requestor)
-        self.assertEqual(
-            force_bytes(inst.agent[1].type.coding[0].code), force_bytes("110153")
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[1].type.coding[0].display),
-            force_bytes("Source Role ID"),
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[1].type.coding[0].system),
-            force_bytes("http://dicom.nema.org/resources/ontology/DCM"),
-        )
-        self.assertEqual(force_bytes(inst.entity[0].lifecycle.code), force_bytes("6"))
-        self.assertEqual(
-            force_bytes(inst.entity[0].lifecycle.display), force_bytes("Access / Use")
-        )
-        self.assertEqual(
-            force_bytes(inst.entity[0].lifecycle.system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/dicom-audit-lifecycle"),
-        )
-        self.assertEqual(force_bytes(inst.entity[0].type.code), force_bytes("2"))
-        self.assertEqual(
-            force_bytes(inst.entity[0].type.display), force_bytes("System Object")
-        )
-        self.assertEqual(
-            force_bytes(inst.entity[0].type.system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/audit-entity-type"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("example-rest"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.outcome), force_bytes("0"))
-        self.assertEqual(inst.recorded.date, FHIRDate("2013-06-20T23:42:24Z").date)
-        self.assertEqual(inst.recorded.as_json(), "2013-06-20T23:42:24Z")
-        self.assertEqual(force_bytes(inst.source.site), force_bytes("Cloud"))
-        self.assertEqual(force_bytes(inst.source.type[0].code), force_bytes("3"))
-        self.assertEqual(
-            force_bytes(inst.source.type[0].display), force_bytes("Web Server")
-        )
-        self.assertEqual(
-            force_bytes(inst.source.type[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/security-source-type"),
-        )
-        self.assertEqual(force_bytes(inst.subtype[0].code), force_bytes("vread"))
-        self.assertEqual(force_bytes(inst.subtype[0].display), force_bytes("vread"))
-        self.assertEqual(
-            force_bytes(inst.subtype[0].system),
-            force_bytes("http://hl7.org/fhir/restful-interaction"),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type.code), force_bytes("rest"))
-        self.assertEqual(
-            force_bytes(inst.type.display), force_bytes("Restful Operation")
-        )
-        self.assertEqual(
-            force_bytes(inst.type.system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/audit-event-type"),
-        )
+def test_auditevent_2(base_settings):
+    """No. 2 tests collection for AuditEvent.
+    Test File: audit-event-example-logout.json
+    """
+    filename = base_settings["unittest_data_dir"] / "audit-event-example-logout.json"
+    inst = auditevent.AuditEvent.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "AuditEvent" == inst.resource_type
 
-    def testAuditEvent4(self):
-        inst = self.instantiate_from("audit-event-example-media.json")
-        self.assertIsNotNone(inst, "Must have instantiated a AuditEvent instance")
-        self.implAuditEvent4(inst)
+    impl_auditevent_2(inst)
 
-        js = inst.as_json()
-        self.assertEqual("AuditEvent", js["resourceType"])
-        inst2 = auditevent.AuditEvent(js)
-        self.implAuditEvent4(inst2)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "AuditEvent" == data["resourceType"]
 
-    def implAuditEvent4(self, inst):
-        self.assertEqual(force_bytes(inst.action), force_bytes("R"))
-        self.assertFalse(inst.agent[0].requestor)
-        self.assertEqual(
-            force_bytes(inst.agent[0].type.coding[0].code), force_bytes("110153")
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[0].type.coding[0].display),
-            force_bytes("Source Role ID"),
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[0].type.coding[0].system),
-            force_bytes("http://dicom.nema.org/resources/ontology/DCM"),
-        )
-        self.assertEqual(force_bytes(inst.agent[1].altId), force_bytes("601847123"))
-        self.assertEqual(force_bytes(inst.agent[1].name), force_bytes("Grahame Grieve"))
-        self.assertTrue(inst.agent[1].requestor)
-        self.assertEqual(
-            force_bytes(inst.agent[1].type.coding[0].code), force_bytes("humanuser")
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[1].type.coding[0].display), force_bytes("human user")
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[1].type.coding[0].system),
-            force_bytes(
-                "http://terminology.hl7.org/CodeSystem/extra-security-role-type"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.agent[2].media.code), force_bytes("110033"))
-        self.assertEqual(force_bytes(inst.agent[2].media.display), force_bytes("DVD"))
-        self.assertEqual(
-            force_bytes(inst.agent[2].media.system),
-            force_bytes("http://dicom.nema.org/resources/ontology/DCM"),
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[2].name), force_bytes("Media title: Hello World")
-        )
-        self.assertFalse(inst.agent[2].requestor)
-        self.assertEqual(
-            force_bytes(inst.agent[2].type.coding[0].code), force_bytes("110154")
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[2].type.coding[0].display),
-            force_bytes("Destination Media"),
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[2].type.coding[0].system),
-            force_bytes("http://dicom.nema.org/resources/ontology/DCM"),
-        )
-        self.assertEqual(force_bytes(inst.entity[0].role.code), force_bytes("1"))
-        self.assertEqual(
-            force_bytes(inst.entity[0].role.display), force_bytes("Patient")
-        )
-        self.assertEqual(
-            force_bytes(inst.entity[0].role.system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/object-role"),
-        )
-        self.assertEqual(force_bytes(inst.entity[0].type.code), force_bytes("1"))
-        self.assertEqual(
-            force_bytes(inst.entity[0].type.display), force_bytes("Person")
-        )
-        self.assertEqual(
-            force_bytes(inst.entity[0].type.system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/audit-entity-type"),
-        )
-        self.assertEqual(force_bytes(inst.entity[1].role.code), force_bytes("20"))
-        self.assertEqual(force_bytes(inst.entity[1].role.display), force_bytes("Job"))
-        self.assertEqual(
-            force_bytes(inst.entity[1].role.system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/object-role"),
-        )
-        self.assertEqual(force_bytes(inst.entity[1].type.code), force_bytes("2"))
-        self.assertEqual(
-            force_bytes(inst.entity[1].type.display), force_bytes("System Object")
-        )
-        self.assertEqual(
-            force_bytes(inst.entity[1].type.system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/audit-entity-type"),
-        )
-        self.assertEqual(force_bytes(inst.entity[2].type.code), force_bytes("2"))
-        self.assertEqual(
-            force_bytes(inst.entity[2].type.display), force_bytes("System Object")
-        )
-        self.assertEqual(
-            force_bytes(inst.entity[2].type.system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/audit-entity-type"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("example-media"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.outcome), force_bytes("0"))
-        self.assertEqual(inst.recorded.date, FHIRDate("2015-08-27T23:42:24Z").date)
-        self.assertEqual(inst.recorded.as_json(), "2015-08-27T23:42:24Z")
-        self.assertEqual(force_bytes(inst.subtype[0].code), force_bytes("ITI-32"))
-        self.assertEqual(
-            force_bytes(inst.subtype[0].display),
-            force_bytes("Distribute Document Set on Media"),
-        )
-        self.assertEqual(
-            force_bytes(inst.subtype[0].system),
-            force_bytes("urn:oid:1.3.6.1.4.1.19376.1.2"),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type.code), force_bytes("110106"))
-        self.assertEqual(force_bytes(inst.type.display), force_bytes("Export"))
-        self.assertEqual(
-            force_bytes(inst.type.system),
-            force_bytes("http://dicom.nema.org/resources/ontology/DCM"),
-        )
+    inst2 = auditevent.AuditEvent(**data)
+    impl_auditevent_2(inst2)
 
-    def testAuditEvent5(self):
-        inst = self.instantiate_from("audit-event-example-login.json")
-        self.assertIsNotNone(inst, "Must have instantiated a AuditEvent instance")
-        self.implAuditEvent5(inst)
 
-        js = inst.as_json()
-        self.assertEqual("AuditEvent", js["resourceType"])
-        inst2 = auditevent.AuditEvent(js)
-        self.implAuditEvent5(inst2)
+def impl_auditevent_3(inst):
+    assert inst.action == "R"
+    assert inst.agent[0].altId == "601847123"
+    assert inst.agent[0].name == "Grahame Grieve"
+    assert inst.agent[0].requestor is True
+    assert inst.agent[0].type.coding[0].code == "humanuser"
+    assert inst.agent[0].type.coding[0].display == "human user"
+    assert (
+        inst.agent[0].type.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/extra-security-role-type"
+    )
+    assert inst.agent[0].who.identifier.value == "95"
+    assert inst.agent[1].altId == "6580"
+    assert inst.agent[1].network.address == "Workstation1.ehr.familyclinic.com"
+    assert inst.agent[1].network.type == "1"
+    assert inst.agent[1].requestor is False
+    assert inst.agent[1].type.coding[0].code == "110153"
+    assert inst.agent[1].type.coding[0].display == "Source Role ID"
+    assert (
+        inst.agent[1].type.coding[0].system
+        == "http://dicom.nema.org/resources/ontology/DCM"
+    )
+    assert inst.agent[1].who.identifier.system == "urn:oid:2.16.840.1.113883.4.2"
+    assert inst.agent[1].who.identifier.value == "2.16.840.1.113883.4.2"
+    assert inst.entity[0].lifecycle.code == "6"
+    assert inst.entity[0].lifecycle.display == "Access / Use"
+    assert (
+        inst.entity[0].lifecycle.system
+        == "http://terminology.hl7.org/CodeSystem/dicom-audit-lifecycle"
+    )
+    assert inst.entity[0].type.code == "2"
+    assert inst.entity[0].type.display == "System Object"
+    assert (
+        inst.entity[0].type.system
+        == "http://terminology.hl7.org/CodeSystem/audit-entity-type"
+    )
+    assert inst.entity[0].what.reference == "Patient/example/_history/1"
+    assert inst.id == "example-rest"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.outcome == "0"
+    assert inst.recorded == fhirtypes.Instant.validate("2013-06-20T23:42:24Z")
+    assert (
+        inst.source.observer.identifier.value == "hl7connect.healthintersections.com.au"
+    )
+    assert inst.source.site == "Cloud"
+    assert inst.source.type[0].code == "3"
+    assert inst.source.type[0].display == "Web Server"
+    assert (
+        inst.source.type[0].system
+        == "http://terminology.hl7.org/CodeSystem/security-source-type"
+    )
+    assert inst.subtype[0].code == "vread"
+    assert inst.subtype[0].display == "vread"
+    assert inst.subtype[0].system == "http://hl7.org/fhir/restful-interaction"
+    assert inst.text.status == "generated"
+    assert inst.type.code == "rest"
+    assert inst.type.display == "Restful Operation"
+    assert inst.type.system == "http://terminology.hl7.org/CodeSystem/audit-event-type"
 
-    def implAuditEvent5(self, inst):
-        self.assertEqual(force_bytes(inst.action), force_bytes("E"))
-        self.assertEqual(force_bytes(inst.agent[0].altId), force_bytes("601847123"))
-        self.assertEqual(force_bytes(inst.agent[0].name), force_bytes("Grahame Grieve"))
-        self.assertEqual(
-            force_bytes(inst.agent[0].network.address), force_bytes("127.0.0.1")
-        )
-        self.assertEqual(force_bytes(inst.agent[0].network.type), force_bytes("2"))
-        self.assertTrue(inst.agent[0].requestor)
-        self.assertEqual(
-            force_bytes(inst.agent[0].type.coding[0].code), force_bytes("humanuser")
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[0].type.coding[0].display), force_bytes("human user")
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[0].type.coding[0].system),
-            force_bytes(
-                "http://terminology.hl7.org/CodeSystem/extra-security-role-type"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.agent[1].altId), force_bytes("6580"))
-        self.assertEqual(
-            force_bytes(inst.agent[1].network.address),
-            force_bytes("Workstation1.ehr.familyclinic.com"),
-        )
-        self.assertEqual(force_bytes(inst.agent[1].network.type), force_bytes("1"))
-        self.assertFalse(inst.agent[1].requestor)
-        self.assertEqual(
-            force_bytes(inst.agent[1].type.coding[0].code), force_bytes("110153")
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[1].type.coding[0].display),
-            force_bytes("Source Role ID"),
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[1].type.coding[0].system),
-            force_bytes("http://dicom.nema.org/resources/ontology/DCM"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("example-login"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.outcome), force_bytes("0"))
-        self.assertEqual(inst.recorded.date, FHIRDate("2013-06-20T23:41:23Z").date)
-        self.assertEqual(inst.recorded.as_json(), "2013-06-20T23:41:23Z")
-        self.assertEqual(force_bytes(inst.source.site), force_bytes("Cloud"))
-        self.assertEqual(force_bytes(inst.source.type[0].code), force_bytes("3"))
-        self.assertEqual(
-            force_bytes(inst.source.type[0].display), force_bytes("Web Server")
-        )
-        self.assertEqual(
-            force_bytes(inst.source.type[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/security-source-type"),
-        )
-        self.assertEqual(force_bytes(inst.subtype[0].code), force_bytes("110122"))
-        self.assertEqual(force_bytes(inst.subtype[0].display), force_bytes("Login"))
-        self.assertEqual(
-            force_bytes(inst.subtype[0].system),
-            force_bytes("http://dicom.nema.org/resources/ontology/DCM"),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type.code), force_bytes("110114"))
-        self.assertEqual(
-            force_bytes(inst.type.display), force_bytes("User Authentication")
-        )
-        self.assertEqual(
-            force_bytes(inst.type.system),
-            force_bytes("http://dicom.nema.org/resources/ontology/DCM"),
-        )
 
-    def testAuditEvent6(self):
-        inst = self.instantiate_from("audit-event-example-pixQuery.json")
-        self.assertIsNotNone(inst, "Must have instantiated a AuditEvent instance")
-        self.implAuditEvent6(inst)
+def test_auditevent_3(base_settings):
+    """No. 3 tests collection for AuditEvent.
+    Test File: audit-event-example-vread.json
+    """
+    filename = base_settings["unittest_data_dir"] / "audit-event-example-vread.json"
+    inst = auditevent.AuditEvent.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "AuditEvent" == inst.resource_type
 
-        js = inst.as_json()
-        self.assertEqual("AuditEvent", js["resourceType"])
-        inst2 = auditevent.AuditEvent(js)
-        self.implAuditEvent6(inst2)
+    impl_auditevent_3(inst)
 
-    def implAuditEvent6(self, inst):
-        self.assertEqual(force_bytes(inst.action), force_bytes("E"))
-        self.assertEqual(force_bytes(inst.agent[0].altId), force_bytes("6580"))
-        self.assertEqual(
-            force_bytes(inst.agent[0].network.address),
-            force_bytes("Workstation1.ehr.familyclinic.com"),
-        )
-        self.assertEqual(force_bytes(inst.agent[0].network.type), force_bytes("1"))
-        self.assertFalse(inst.agent[0].requestor)
-        self.assertEqual(
-            force_bytes(inst.agent[0].type.coding[0].code), force_bytes("110153")
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[0].type.coding[0].display),
-            force_bytes("Source Role ID"),
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[0].type.coding[0].system),
-            force_bytes("http://dicom.nema.org/resources/ontology/DCM"),
-        )
-        self.assertEqual(force_bytes(inst.agent[1].altId), force_bytes("601847123"))
-        self.assertEqual(force_bytes(inst.agent[1].name), force_bytes("Grahame Grieve"))
-        self.assertTrue(inst.agent[1].requestor)
-        self.assertEqual(
-            force_bytes(inst.agent[1].type.coding[0].code), force_bytes("humanuser")
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[1].type.coding[0].display), force_bytes("human user")
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[1].type.coding[0].system),
-            force_bytes(
-                "http://terminology.hl7.org/CodeSystem/extra-security-role-type"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.entity[0].role.code), force_bytes("1"))
-        self.assertEqual(
-            force_bytes(inst.entity[0].role.display), force_bytes("Patient")
-        )
-        self.assertEqual(
-            force_bytes(inst.entity[0].role.system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/object-role"),
-        )
-        self.assertEqual(force_bytes(inst.entity[0].type.code), force_bytes("1"))
-        self.assertEqual(
-            force_bytes(inst.entity[0].type.display), force_bytes("Person")
-        )
-        self.assertEqual(
-            force_bytes(inst.entity[0].type.system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/audit-entity-type"),
-        )
-        self.assertEqual(
-            force_bytes(inst.entity[1].detail[0].type), force_bytes("MSH-10")
-        )
-        self.assertEqual(
-            force_bytes(inst.entity[1].detail[0].valueBase64Binary),
-            force_bytes("MS4yLjg0MC4xMTQzNTAuMS4xMy4wLjEuNy4xLjE="),
-        )
-        self.assertEqual(force_bytes(inst.entity[1].role.code), force_bytes("24"))
-        self.assertEqual(force_bytes(inst.entity[1].role.display), force_bytes("Query"))
-        self.assertEqual(
-            force_bytes(inst.entity[1].role.system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/object-role"),
-        )
-        self.assertEqual(force_bytes(inst.entity[1].type.code), force_bytes("2"))
-        self.assertEqual(
-            force_bytes(inst.entity[1].type.display), force_bytes("System Object")
-        )
-        self.assertEqual(
-            force_bytes(inst.entity[1].type.system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/audit-entity-type"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("example-pixQuery"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.outcome), force_bytes("0"))
-        self.assertEqual(inst.recorded.date, FHIRDate("2015-08-26T23:42:24Z").date)
-        self.assertEqual(inst.recorded.as_json(), "2015-08-26T23:42:24Z")
-        self.assertEqual(force_bytes(inst.subtype[0].code), force_bytes("ITI-9"))
-        self.assertEqual(force_bytes(inst.subtype[0].display), force_bytes("PIX Query"))
-        self.assertEqual(
-            force_bytes(inst.subtype[0].system),
-            force_bytes("urn:oid:1.3.6.1.4.1.19376.1.2"),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type.code), force_bytes("110112"))
-        self.assertEqual(force_bytes(inst.type.display), force_bytes("Query"))
-        self.assertEqual(
-            force_bytes(inst.type.system),
-            force_bytes("http://dicom.nema.org/resources/ontology/DCM"),
-        )
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "AuditEvent" == data["resourceType"]
 
-    def testAuditEvent7(self):
-        inst = self.instantiate_from("auditevent-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a AuditEvent instance")
-        self.implAuditEvent7(inst)
+    inst2 = auditevent.AuditEvent(**data)
+    impl_auditevent_3(inst2)
 
-        js = inst.as_json()
-        self.assertEqual("AuditEvent", js["resourceType"])
-        inst2 = auditevent.AuditEvent(js)
-        self.implAuditEvent7(inst2)
 
-    def implAuditEvent7(self, inst):
-        self.assertEqual(force_bytes(inst.action), force_bytes("E"))
-        self.assertEqual(
-            force_bytes(inst.agent[0].network.address), force_bytes("127.0.0.1")
-        )
-        self.assertEqual(force_bytes(inst.agent[0].network.type), force_bytes("2"))
-        self.assertFalse(inst.agent[0].requestor)
-        self.assertEqual(
-            force_bytes(inst.agent[0].role[0].text), force_bytes("Service User (Logon)")
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[0].type.coding[0].code), force_bytes("humanuser")
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[0].type.coding[0].display), force_bytes("human user")
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[0].type.coding[0].system),
-            force_bytes(
-                "http://terminology.hl7.org/CodeSystem/extra-security-role-type"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.agent[1].altId), force_bytes("6580"))
-        self.assertEqual(
-            force_bytes(inst.agent[1].network.address),
-            force_bytes("Workstation1.ehr.familyclinic.com"),
-        )
-        self.assertEqual(force_bytes(inst.agent[1].network.type), force_bytes("1"))
-        self.assertFalse(inst.agent[1].requestor)
-        self.assertEqual(
-            force_bytes(inst.agent[1].type.coding[0].code), force_bytes("110153")
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[1].type.coding[0].display),
-            force_bytes("Source Role ID"),
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[1].type.coding[0].system),
-            force_bytes("http://dicom.nema.org/resources/ontology/DCM"),
-        )
-        self.assertEqual(force_bytes(inst.entity[0].lifecycle.code), force_bytes("6"))
-        self.assertEqual(
-            force_bytes(inst.entity[0].lifecycle.display), force_bytes("Access / Use")
-        )
-        self.assertEqual(
-            force_bytes(inst.entity[0].lifecycle.system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/dicom-audit-lifecycle"),
-        )
-        self.assertEqual(
-            force_bytes(inst.entity[0].name), force_bytes("Grahame's Laptop")
-        )
-        self.assertEqual(force_bytes(inst.entity[0].role.code), force_bytes("4"))
-        self.assertEqual(
-            force_bytes(inst.entity[0].role.display), force_bytes("Domain Resource")
-        )
-        self.assertEqual(
-            force_bytes(inst.entity[0].role.system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/object-role"),
-        )
-        self.assertEqual(force_bytes(inst.entity[0].type.code), force_bytes("4"))
-        self.assertEqual(force_bytes(inst.entity[0].type.display), force_bytes("Other"))
-        self.assertEqual(
-            force_bytes(inst.entity[0].type.system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/audit-entity-type"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.outcome), force_bytes("0"))
-        self.assertEqual(inst.recorded.date, FHIRDate("2012-10-25T22:04:27+11:00").date)
-        self.assertEqual(inst.recorded.as_json(), "2012-10-25T22:04:27+11:00")
-        self.assertEqual(force_bytes(inst.source.site), force_bytes("Development"))
-        self.assertEqual(force_bytes(inst.source.type[0].code), force_bytes("110122"))
-        self.assertEqual(force_bytes(inst.source.type[0].display), force_bytes("Login"))
-        self.assertEqual(
-            force_bytes(inst.source.type[0].system),
-            force_bytes("http://dicom.nema.org/resources/ontology/DCM"),
-        )
-        self.assertEqual(force_bytes(inst.subtype[0].code), force_bytes("110120"))
-        self.assertEqual(
-            force_bytes(inst.subtype[0].display), force_bytes("Application Start")
-        )
-        self.assertEqual(
-            force_bytes(inst.subtype[0].system),
-            force_bytes("http://dicom.nema.org/resources/ontology/DCM"),
-        )
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">Application Start for under service login &quot;Grahame&quot; (id: Grahame\'s Test HL7Connect)</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type.code), force_bytes("110100"))
-        self.assertEqual(
-            force_bytes(inst.type.display), force_bytes("Application Activity")
-        )
-        self.assertEqual(
-            force_bytes(inst.type.system),
-            force_bytes("http://dicom.nema.org/resources/ontology/DCM"),
-        )
+def impl_auditevent_4(inst):
+    assert inst.action == "R"
+    assert inst.agent[0].requestor is False
+    assert inst.agent[0].type.coding[0].code == "110153"
+    assert inst.agent[0].type.coding[0].display == "Source Role ID"
+    assert (
+        inst.agent[0].type.coding[0].system
+        == "http://dicom.nema.org/resources/ontology/DCM"
+    )
+    assert inst.agent[0].who.display == "ExportToMedia.app"
+    assert inst.agent[1].altId == "601847123"
+    assert inst.agent[1].name == "Grahame Grieve"
+    assert inst.agent[1].requestor is True
+    assert inst.agent[1].type.coding[0].code == "humanuser"
+    assert inst.agent[1].type.coding[0].display == "human user"
+    assert (
+        inst.agent[1].type.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/extra-security-role-type"
+    )
+    assert inst.agent[1].who.identifier.value == "95"
+    assert inst.agent[2].media.code == "110033"
+    assert inst.agent[2].media.display == "DVD"
+    assert inst.agent[2].media.system == "http://dicom.nema.org/resources/ontology/DCM"
+    assert inst.agent[2].name == "Media title: Hello World"
+    assert inst.agent[2].requestor is False
+    assert inst.agent[2].type.coding[0].code == "110154"
+    assert inst.agent[2].type.coding[0].display == "Destination Media"
+    assert (
+        inst.agent[2].type.coding[0].system
+        == "http://dicom.nema.org/resources/ontology/DCM"
+    )
+    assert inst.entity[0].role.code == "1"
+    assert inst.entity[0].role.display == "Patient"
+    assert (
+        inst.entity[0].role.system
+        == "http://terminology.hl7.org/CodeSystem/object-role"
+    )
+    assert inst.entity[0].type.code == "1"
+    assert inst.entity[0].type.display == "Person"
+    assert (
+        inst.entity[0].type.system
+        == "http://terminology.hl7.org/CodeSystem/audit-entity-type"
+    )
+    assert (
+        inst.entity[0].what.identifier.value
+        == "e3cdfc81a0d24bd^^^&2.16.840.1.113883.4.2&ISO"
+    )
+    assert inst.entity[1].role.code == "20"
+    assert inst.entity[1].role.display == "Job"
+    assert (
+        inst.entity[1].role.system
+        == "http://terminology.hl7.org/CodeSystem/object-role"
+    )
+    assert inst.entity[1].type.code == "2"
+    assert inst.entity[1].type.display == "System Object"
+    assert (
+        inst.entity[1].type.system
+        == "http://terminology.hl7.org/CodeSystem/audit-entity-type"
+    )
+    assert inst.entity[1].what.identifier.type.coding[0].code == "IHE XDS Metadata"
+    assert (
+        inst.entity[1].what.identifier.type.coding[0].display
+        == "submission set classificationNode"
+    )
+    assert (
+        inst.entity[1].what.identifier.type.coding[0].system
+        == "urn:uuid:a54d6aa5-d40d-43f9-88c5-b4633d873bdd"
+    )
+    assert (
+        inst.entity[1].what.identifier.value
+        == "e3cdfc81a0d24bd^^^&2.16.840.1.113883.4.2&ISO"
+    )
+    assert inst.entity[2].type.code == "2"
+    assert inst.entity[2].type.display == "System Object"
+    assert (
+        inst.entity[2].type.system
+        == "http://terminology.hl7.org/CodeSystem/audit-entity-type"
+    )
+    assert inst.entity[2].what.reference == "DocumentManifest/example"
+    assert inst.id == "example-media"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.outcome == "0"
+    assert inst.recorded == fhirtypes.Instant.validate("2015-08-27T23:42:24Z")
+    assert inst.source.observer.display == "hl7connect.healthintersections.com.au"
+    assert inst.subtype[0].code == "ITI-32"
+    assert inst.subtype[0].display == "Distribute Document Set on Media"
+    assert inst.subtype[0].system == "urn:oid:1.3.6.1.4.1.19376.1.2"
+    assert inst.text.status == "generated"
+    assert inst.type.code == "110106"
+    assert inst.type.display == "Export"
+    assert inst.type.system == "http://dicom.nema.org/resources/ontology/DCM"
 
-    def testAuditEvent8(self):
-        inst = self.instantiate_from("auditevent-example-disclosure.json")
-        self.assertIsNotNone(inst, "Must have instantiated a AuditEvent instance")
-        self.implAuditEvent8(inst)
 
-        js = inst.as_json()
-        self.assertEqual("AuditEvent", js["resourceType"])
-        inst2 = auditevent.AuditEvent(js)
-        self.implAuditEvent8(inst2)
+def test_auditevent_4(base_settings):
+    """No. 4 tests collection for AuditEvent.
+    Test File: audit-event-example-media.json
+    """
+    filename = base_settings["unittest_data_dir"] / "audit-event-example-media.json"
+    inst = auditevent.AuditEvent.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "AuditEvent" == inst.resource_type
 
-    def implAuditEvent8(self, inst):
-        self.assertEqual(force_bytes(inst.action), force_bytes("R"))
-        self.assertEqual(force_bytes(inst.agent[0].altId), force_bytes("notMe"))
-        self.assertEqual(
-            force_bytes(inst.agent[0].name),
-            force_bytes("That guy everyone wishes would be caught"),
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[0].network.address), force_bytes("custodian.net")
-        )
-        self.assertEqual(force_bytes(inst.agent[0].network.type), force_bytes("1"))
-        self.assertEqual(
-            force_bytes(inst.agent[0].policy[0]), force_bytes("http://consent.com/yes")
-        )
-        self.assertTrue(inst.agent[0].requestor)
-        self.assertEqual(
-            force_bytes(inst.agent[0].type.coding[0].code), force_bytes("110153")
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[0].type.coding[0].display),
-            force_bytes("Source Role ID"),
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[0].type.coding[0].system),
-            force_bytes("http://dicom.nema.org/resources/ontology/DCM"),
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[1].network.address), force_bytes("marketing.land")
-        )
-        self.assertEqual(force_bytes(inst.agent[1].network.type), force_bytes("1"))
-        self.assertEqual(
-            force_bytes(inst.agent[1].purposeOfUse[0].coding[0].code),
-            force_bytes("HMARKT"),
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[1].purposeOfUse[0].coding[0].display),
-            force_bytes("healthcare marketing"),
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[1].purposeOfUse[0].coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertFalse(inst.agent[1].requestor)
-        self.assertEqual(
-            force_bytes(inst.agent[1].type.coding[0].code), force_bytes("110152")
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[1].type.coding[0].display),
-            force_bytes("Destination Role ID"),
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[1].type.coding[0].system),
-            force_bytes("http://dicom.nema.org/resources/ontology/DCM"),
-        )
-        self.assertEqual(force_bytes(inst.entity[0].role.code), force_bytes("1"))
-        self.assertEqual(
-            force_bytes(inst.entity[0].role.display), force_bytes("Patient")
-        )
-        self.assertEqual(
-            force_bytes(inst.entity[0].role.system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/object-role"),
-        )
-        self.assertEqual(force_bytes(inst.entity[0].type.code), force_bytes("1"))
-        self.assertEqual(
-            force_bytes(inst.entity[0].type.display), force_bytes("Person")
-        )
-        self.assertEqual(
-            force_bytes(inst.entity[0].type.system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/audit-entity-type"),
-        )
-        self.assertEqual(
-            force_bytes(inst.entity[1].description),
-            force_bytes("data about Everthing important"),
-        )
-        self.assertEqual(force_bytes(inst.entity[1].lifecycle.code), force_bytes("11"))
-        self.assertEqual(
-            force_bytes(inst.entity[1].lifecycle.display), force_bytes("Disclosure")
-        )
-        self.assertEqual(
-            force_bytes(inst.entity[1].lifecycle.system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/dicom-audit-lifecycle"),
-        )
-        self.assertEqual(force_bytes(inst.entity[1].name), force_bytes("Namne of What"))
-        self.assertEqual(force_bytes(inst.entity[1].role.code), force_bytes("4"))
-        self.assertEqual(
-            force_bytes(inst.entity[1].role.display), force_bytes("Domain Resource")
-        )
-        self.assertEqual(
-            force_bytes(inst.entity[1].role.system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/object-role"),
-        )
-        self.assertEqual(
-            force_bytes(inst.entity[1].securityLabel[0].code), force_bytes("V")
-        )
-        self.assertEqual(
-            force_bytes(inst.entity[1].securityLabel[0].display),
-            force_bytes("very restricted"),
-        )
-        self.assertEqual(
-            force_bytes(inst.entity[1].securityLabel[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-Confidentiality"),
-        )
-        self.assertEqual(
-            force_bytes(inst.entity[1].securityLabel[1].code), force_bytes("STD")
-        )
-        self.assertEqual(
-            force_bytes(inst.entity[1].securityLabel[1].display),
-            force_bytes("sexually transmitted disease information sensitivity"),
-        )
-        self.assertEqual(
-            force_bytes(inst.entity[1].securityLabel[1].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActCode"),
-        )
-        self.assertEqual(
-            force_bytes(inst.entity[1].securityLabel[2].code), force_bytes("DELAU")
-        )
-        self.assertEqual(
-            force_bytes(inst.entity[1].securityLabel[2].display),
-            force_bytes("delete after use"),
-        )
-        self.assertEqual(
-            force_bytes(inst.entity[1].securityLabel[2].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActCode"),
-        )
-        self.assertEqual(force_bytes(inst.entity[1].type.code), force_bytes("2"))
-        self.assertEqual(
-            force_bytes(inst.entity[1].type.display), force_bytes("System Object")
-        )
-        self.assertEqual(
-            force_bytes(inst.entity[1].type.system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/audit-entity-type"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("example-disclosure"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.outcome), force_bytes("0"))
-        self.assertEqual(
-            force_bytes(inst.outcomeDesc), force_bytes("Successful  Disclosure")
-        )
-        self.assertEqual(
-            force_bytes(inst.purposeOfEvent[0].coding[0].code), force_bytes("HMARKT")
-        )
-        self.assertEqual(
-            force_bytes(inst.purposeOfEvent[0].coding[0].display),
-            force_bytes("healthcare marketing"),
-        )
-        self.assertEqual(
-            force_bytes(inst.purposeOfEvent[0].coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(inst.recorded.date, FHIRDate("2013-09-22T00:08:00Z").date)
-        self.assertEqual(inst.recorded.as_json(), "2013-09-22T00:08:00Z")
-        self.assertEqual(force_bytes(inst.source.site), force_bytes("Watcher"))
-        self.assertEqual(force_bytes(inst.source.type[0].code), force_bytes("4"))
-        self.assertEqual(
-            force_bytes(inst.source.type[0].display), force_bytes("Application Server")
-        )
-        self.assertEqual(
-            force_bytes(inst.source.type[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/security-source-type"),
-        )
-        self.assertEqual(force_bytes(inst.subtype[0].code), force_bytes("Disclosure"))
-        self.assertEqual(
-            force_bytes(inst.subtype[0].display), force_bytes("HIPAA disclosure")
-        )
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">Disclosure by some idiot, for marketing reasons, to places unknown, of a Poor Sap, data about Everthing important.</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type.code), force_bytes("110106"))
-        self.assertEqual(force_bytes(inst.type.display), force_bytes("Export"))
-        self.assertEqual(
-            force_bytes(inst.type.system),
-            force_bytes("http://dicom.nema.org/resources/ontology/DCM"),
-        )
+    impl_auditevent_4(inst)
 
-    def testAuditEvent9(self):
-        inst = self.instantiate_from("auditevent-example-error.json")
-        self.assertIsNotNone(inst, "Must have instantiated a AuditEvent instance")
-        self.implAuditEvent9(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "AuditEvent" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("AuditEvent", js["resourceType"])
-        inst2 = auditevent.AuditEvent(js)
-        self.implAuditEvent9(inst2)
+    inst2 = auditevent.AuditEvent(**data)
+    impl_auditevent_4(inst2)
 
-    def implAuditEvent9(self, inst):
-        self.assertEqual(force_bytes(inst.action), force_bytes("C"))
-        self.assertEqual(force_bytes(inst.agent[0].altId), force_bytes("601847123"))
-        self.assertEqual(force_bytes(inst.agent[0].name), force_bytes("Grahame Grieve"))
-        self.assertTrue(inst.agent[0].requestor)
-        self.assertEqual(
-            force_bytes(inst.agent[0].type.coding[0].code), force_bytes("humanuser")
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[0].type.coding[0].display), force_bytes("human user")
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[0].type.coding[0].system),
-            force_bytes(
-                "http://terminology.hl7.org/CodeSystem/extra-security-role-type"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.agent[1].altId), force_bytes("6580"))
-        self.assertEqual(
-            force_bytes(inst.agent[1].network.address),
-            force_bytes("Workstation1.ehr.familyclinic.com"),
-        )
-        self.assertEqual(force_bytes(inst.agent[1].network.type), force_bytes("1"))
-        self.assertFalse(inst.agent[1].requestor)
-        self.assertEqual(
-            force_bytes(inst.agent[1].type.coding[0].code), force_bytes("110153")
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[1].type.coding[0].display),
-            force_bytes("Source Role ID"),
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[1].type.coding[0].system),
-            force_bytes("http://dicom.nema.org/resources/ontology/DCM"),
-        )
-        self.assertEqual(force_bytes(inst.contained[0].id), force_bytes("o1"))
-        self.assertEqual(
-            force_bytes(inst.entity[0].detail[0].type),
-            force_bytes("requested transaction"),
-        )
-        self.assertEqual(
-            force_bytes(inst.entity[0].detail[0].valueString),
-            force_bytes("http POST ..... "),
-        )
-        self.assertEqual(force_bytes(inst.entity[0].type.code), force_bytes("2"))
-        self.assertEqual(
-            force_bytes(inst.entity[0].type.display), force_bytes("System Object")
-        )
-        self.assertEqual(
-            force_bytes(inst.entity[0].type.system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/audit-entity-type"),
-        )
-        self.assertEqual(
-            force_bytes(inst.entity[1].description), force_bytes("transaction failed")
-        )
-        self.assertEqual(
-            force_bytes(inst.entity[1].type.code), force_bytes("OperationOutcome")
-        )
-        self.assertEqual(
-            force_bytes(inst.entity[1].type.display), force_bytes("OperationOutcome")
-        )
-        self.assertEqual(
-            force_bytes(inst.entity[1].type.system),
-            force_bytes("http://hl7.org/fhir/resource-types"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("example-error"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.outcome), force_bytes("8"))
-        self.assertEqual(
-            force_bytes(inst.outcomeDesc),
-            force_bytes(
-                "Invalid request to create an Operation resource on the Patient endpoint."
-            ),
-        )
-        self.assertEqual(inst.recorded.date, FHIRDate("2017-09-07T23:42:24Z").date)
-        self.assertEqual(inst.recorded.as_json(), "2017-09-07T23:42:24Z")
-        self.assertEqual(force_bytes(inst.source.site), force_bytes("Cloud"))
-        self.assertEqual(force_bytes(inst.source.type[0].code), force_bytes("3"))
-        self.assertEqual(
-            force_bytes(inst.source.type[0].display), force_bytes("Web Server")
-        )
-        self.assertEqual(
-            force_bytes(inst.source.type[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/security-source-type"),
-        )
-        self.assertEqual(force_bytes(inst.subtype[0].code), force_bytes("create"))
-        self.assertEqual(force_bytes(inst.subtype[0].display), force_bytes("create"))
-        self.assertEqual(
-            force_bytes(inst.subtype[0].system),
-            force_bytes("http://hl7.org/fhir/restful-interaction"),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type.code), force_bytes("rest"))
-        self.assertEqual(
-            force_bytes(inst.type.display), force_bytes("Restful Operation")
-        )
-        self.assertEqual(
-            force_bytes(inst.type.system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/audit-event-type"),
-        )
+
+def impl_auditevent_5(inst):
+    assert inst.action == "E"
+    assert inst.agent[0].altId == "601847123"
+    assert inst.agent[0].name == "Grahame Grieve"
+    assert inst.agent[0].network.address == "127.0.0.1"
+    assert inst.agent[0].network.type == "2"
+    assert inst.agent[0].requestor is True
+    assert inst.agent[0].type.coding[0].code == "humanuser"
+    assert inst.agent[0].type.coding[0].display == "human user"
+    assert (
+        inst.agent[0].type.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/extra-security-role-type"
+    )
+    assert inst.agent[0].who.identifier.value == "95"
+    assert inst.agent[1].altId == "6580"
+    assert inst.agent[1].network.address == "Workstation1.ehr.familyclinic.com"
+    assert inst.agent[1].network.type == "1"
+    assert inst.agent[1].requestor is False
+    assert inst.agent[1].type.coding[0].code == "110153"
+    assert inst.agent[1].type.coding[0].display == "Source Role ID"
+    assert (
+        inst.agent[1].type.coding[0].system
+        == "http://dicom.nema.org/resources/ontology/DCM"
+    )
+    assert inst.agent[1].who.identifier.system == "urn:oid:2.16.840.1.113883.4.2"
+    assert inst.agent[1].who.identifier.value == "2.16.840.1.113883.4.2"
+    assert inst.id == "example-login"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.outcome == "0"
+    assert inst.recorded == fhirtypes.Instant.validate("2013-06-20T23:41:23Z")
+    assert (
+        inst.source.observer.identifier.value == "hl7connect.healthintersections.com.au"
+    )
+    assert inst.source.site == "Cloud"
+    assert inst.source.type[0].code == "3"
+    assert inst.source.type[0].display == "Web Server"
+    assert (
+        inst.source.type[0].system
+        == "http://terminology.hl7.org/CodeSystem/security-source-type"
+    )
+    assert inst.subtype[0].code == "110122"
+    assert inst.subtype[0].display == "Login"
+    assert inst.subtype[0].system == "http://dicom.nema.org/resources/ontology/DCM"
+    assert inst.text.status == "generated"
+    assert inst.type.code == "110114"
+    assert inst.type.display == "User Authentication"
+    assert inst.type.system == "http://dicom.nema.org/resources/ontology/DCM"
+
+
+def test_auditevent_5(base_settings):
+    """No. 5 tests collection for AuditEvent.
+    Test File: audit-event-example-login.json
+    """
+    filename = base_settings["unittest_data_dir"] / "audit-event-example-login.json"
+    inst = auditevent.AuditEvent.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "AuditEvent" == inst.resource_type
+
+    impl_auditevent_5(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "AuditEvent" == data["resourceType"]
+
+    inst2 = auditevent.AuditEvent(**data)
+    impl_auditevent_5(inst2)
+
+
+def impl_auditevent_6(inst):
+    assert inst.action == "E"
+    assert inst.agent[0].altId == "6580"
+    assert inst.agent[0].network.address == "Workstation1.ehr.familyclinic.com"
+    assert inst.agent[0].network.type == "1"
+    assert inst.agent[0].requestor is False
+    assert inst.agent[0].type.coding[0].code == "110153"
+    assert inst.agent[0].type.coding[0].display == "Source Role ID"
+    assert (
+        inst.agent[0].type.coding[0].system
+        == "http://dicom.nema.org/resources/ontology/DCM"
+    )
+    assert inst.agent[0].who.identifier.system == "urn:oid:2.16.840.1.113883.4.2"
+    assert inst.agent[0].who.identifier.value == "2.16.840.1.113883.4.2"
+    assert inst.agent[1].altId == "601847123"
+    assert inst.agent[1].name == "Grahame Grieve"
+    assert inst.agent[1].requestor is True
+    assert inst.agent[1].type.coding[0].code == "humanuser"
+    assert inst.agent[1].type.coding[0].display == "human user"
+    assert (
+        inst.agent[1].type.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/extra-security-role-type"
+    )
+    assert inst.agent[1].who.identifier.value == "95"
+    assert inst.entity[0].role.code == "1"
+    assert inst.entity[0].role.display == "Patient"
+    assert (
+        inst.entity[0].role.system
+        == "http://terminology.hl7.org/CodeSystem/object-role"
+    )
+    assert inst.entity[0].type.code == "1"
+    assert inst.entity[0].type.display == "Person"
+    assert (
+        inst.entity[0].type.system
+        == "http://terminology.hl7.org/CodeSystem/audit-entity-type"
+    )
+    assert (
+        inst.entity[0].what.identifier.value
+        == "e3cdfc81a0d24bd^^^&2.16.840.1.113883.4.2&ISO"
+    )
+    assert inst.entity[1].detail[0].type == "MSH-10"
+    # Don't know how to create unit test for "entity[1].detail[0].valueBase64Binary", which is a Base64Binary
+    assert inst.entity[1].role.code == "24"
+    assert inst.entity[1].role.display == "Query"
+    assert (
+        inst.entity[1].role.system
+        == "http://terminology.hl7.org/CodeSystem/object-role"
+    )
+    assert inst.entity[1].type.code == "2"
+    assert inst.entity[1].type.display == "System Object"
+    assert (
+        inst.entity[1].type.system
+        == "http://terminology.hl7.org/CodeSystem/audit-entity-type"
+    )
+    assert inst.id == "example-pixQuery"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.outcome == "0"
+    assert inst.recorded == fhirtypes.Instant.validate("2015-08-26T23:42:24Z")
+    assert inst.source.observer.display == "hl7connect.healthintersections.com.au"
+    assert inst.subtype[0].code == "ITI-9"
+    assert inst.subtype[0].display == "PIX Query"
+    assert inst.subtype[0].system == "urn:oid:1.3.6.1.4.1.19376.1.2"
+    assert inst.text.status == "generated"
+    assert inst.type.code == "110112"
+    assert inst.type.display == "Query"
+    assert inst.type.system == "http://dicom.nema.org/resources/ontology/DCM"
+
+
+def test_auditevent_6(base_settings):
+    """No. 6 tests collection for AuditEvent.
+    Test File: audit-event-example-pixQuery.json
+    """
+    filename = base_settings["unittest_data_dir"] / "audit-event-example-pixQuery.json"
+    inst = auditevent.AuditEvent.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "AuditEvent" == inst.resource_type
+
+    impl_auditevent_6(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "AuditEvent" == data["resourceType"]
+
+    inst2 = auditevent.AuditEvent(**data)
+    impl_auditevent_6(inst2)
+
+
+def impl_auditevent_7(inst):
+    assert inst.action == "E"
+    assert inst.agent[0].network.address == "127.0.0.1"
+    assert inst.agent[0].network.type == "2"
+    assert inst.agent[0].requestor is False
+    assert inst.agent[0].role[0].text == "Service User (Logon)"
+    assert inst.agent[0].type.coding[0].code == "humanuser"
+    assert inst.agent[0].type.coding[0].display == "human user"
+    assert (
+        inst.agent[0].type.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/extra-security-role-type"
+    )
+    assert inst.agent[0].who.identifier.value == "Grahame"
+    assert inst.agent[1].altId == "6580"
+    assert inst.agent[1].network.address == "Workstation1.ehr.familyclinic.com"
+    assert inst.agent[1].network.type == "1"
+    assert inst.agent[1].requestor is False
+    assert inst.agent[1].type.coding[0].code == "110153"
+    assert inst.agent[1].type.coding[0].display == "Source Role ID"
+    assert (
+        inst.agent[1].type.coding[0].system
+        == "http://dicom.nema.org/resources/ontology/DCM"
+    )
+    assert inst.agent[1].who.identifier.system == "urn:oid:2.16.840.1.113883.4.2"
+    assert inst.agent[1].who.identifier.value == "2.16.840.1.113883.4.2"
+    assert inst.entity[0].lifecycle.code == "6"
+    assert inst.entity[0].lifecycle.display == "Access / Use"
+    assert (
+        inst.entity[0].lifecycle.system
+        == "http://terminology.hl7.org/CodeSystem/dicom-audit-lifecycle"
+    )
+    assert inst.entity[0].name == "Grahame's Laptop"
+    assert inst.entity[0].role.code == "4"
+    assert inst.entity[0].role.display == "Domain Resource"
+    assert (
+        inst.entity[0].role.system
+        == "http://terminology.hl7.org/CodeSystem/object-role"
+    )
+    assert inst.entity[0].type.code == "4"
+    assert inst.entity[0].type.display == "Other"
+    assert (
+        inst.entity[0].type.system
+        == "http://terminology.hl7.org/CodeSystem/audit-entity-type"
+    )
+    assert inst.entity[0].what.identifier.type.coding[0].code == "SNO"
+    assert (
+        inst.entity[0].what.identifier.type.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v2-0203"
+    )
+    assert inst.entity[0].what.identifier.type.text == "Dell Serial Number"
+    assert inst.entity[0].what.identifier.value == "ABCDEF"
+    assert inst.id == "example"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.outcome == "0"
+    assert inst.recorded == fhirtypes.Instant.validate("2012-10-25T22:04:27+11:00")
+    assert inst.source.observer.display == "Grahame's Laptop"
+    assert inst.source.site == "Development"
+    assert inst.source.type[0].code == "110122"
+    assert inst.source.type[0].display == "Login"
+    assert inst.source.type[0].system == "http://dicom.nema.org/resources/ontology/DCM"
+    assert inst.subtype[0].code == "110120"
+    assert inst.subtype[0].display == "Application Start"
+    assert inst.subtype[0].system == "http://dicom.nema.org/resources/ontology/DCM"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">Application Start for under service login &quot;Grahame&quot; (id: Grahame\'s Test HL7Connect)</div>'
+    )
+    assert inst.text.status == "generated"
+    assert inst.type.code == "110100"
+    assert inst.type.display == "Application Activity"
+    assert inst.type.system == "http://dicom.nema.org/resources/ontology/DCM"
+
+
+def test_auditevent_7(base_settings):
+    """No. 7 tests collection for AuditEvent.
+    Test File: auditevent-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "auditevent-example.json"
+    inst = auditevent.AuditEvent.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "AuditEvent" == inst.resource_type
+
+    impl_auditevent_7(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "AuditEvent" == data["resourceType"]
+
+    inst2 = auditevent.AuditEvent(**data)
+    impl_auditevent_7(inst2)
+
+
+def impl_auditevent_8(inst):
+    assert inst.action == "R"
+    assert inst.agent[0].altId == "notMe"
+    assert inst.agent[0].location.reference == "Location/1"
+    assert inst.agent[0].name == "That guy everyone wishes would be caught"
+    assert inst.agent[0].network.address == "custodian.net"
+    assert inst.agent[0].network.type == "1"
+    assert inst.agent[0].policy[0] == "http://consent.com/yes"
+    assert inst.agent[0].requestor is True
+    assert inst.agent[0].type.coding[0].code == "110153"
+    assert inst.agent[0].type.coding[0].display == "Source Role ID"
+    assert (
+        inst.agent[0].type.coding[0].system
+        == "http://dicom.nema.org/resources/ontology/DCM"
+    )
+    assert inst.agent[0].who.identifier.value == "SomeIdiot@nowhere"
+    assert inst.agent[1].network.address == "marketing.land"
+    assert inst.agent[1].network.type == "1"
+    assert inst.agent[1].purposeOfUse[0].coding[0].code == "HMARKT"
+    assert inst.agent[1].purposeOfUse[0].coding[0].display == "healthcare marketing"
+    assert (
+        inst.agent[1].purposeOfUse[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.agent[1].requestor is False
+    assert inst.agent[1].type.coding[0].code == "110152"
+    assert inst.agent[1].type.coding[0].display == "Destination Role ID"
+    assert (
+        inst.agent[1].type.coding[0].system
+        == "http://dicom.nema.org/resources/ontology/DCM"
+    )
+    assert inst.agent[1].who.display == "Where"
+    assert inst.agent[1].who.reference == "Practitioner/example"
+    assert inst.entity[0].role.code == "1"
+    assert inst.entity[0].role.display == "Patient"
+    assert (
+        inst.entity[0].role.system
+        == "http://terminology.hl7.org/CodeSystem/object-role"
+    )
+    assert inst.entity[0].type.code == "1"
+    assert inst.entity[0].type.display == "Person"
+    assert (
+        inst.entity[0].type.system
+        == "http://terminology.hl7.org/CodeSystem/audit-entity-type"
+    )
+    assert inst.entity[0].what.reference == "Patient/example"
+    assert inst.entity[1].description == "data about Everthing important"
+    assert inst.entity[1].lifecycle.code == "11"
+    assert inst.entity[1].lifecycle.display == "Disclosure"
+    assert (
+        inst.entity[1].lifecycle.system
+        == "http://terminology.hl7.org/CodeSystem/dicom-audit-lifecycle"
+    )
+    assert inst.entity[1].name == "Namne of What"
+    assert inst.entity[1].role.code == "4"
+    assert inst.entity[1].role.display == "Domain Resource"
+    assert (
+        inst.entity[1].role.system
+        == "http://terminology.hl7.org/CodeSystem/object-role"
+    )
+    assert inst.entity[1].securityLabel[0].code == "V"
+    assert inst.entity[1].securityLabel[0].display == "very restricted"
+    assert (
+        inst.entity[1].securityLabel[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-Confidentiality"
+    )
+    assert inst.entity[1].securityLabel[1].code == "STD"
+    assert (
+        inst.entity[1].securityLabel[1].display
+        == "sexually transmitted disease information sensitivity"
+    )
+    assert (
+        inst.entity[1].securityLabel[1].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+    )
+    assert inst.entity[1].securityLabel[2].code == "DELAU"
+    assert inst.entity[1].securityLabel[2].display == "delete after use"
+    assert (
+        inst.entity[1].securityLabel[2].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+    )
+    assert inst.entity[1].type.code == "2"
+    assert inst.entity[1].type.display == "System Object"
+    assert (
+        inst.entity[1].type.system
+        == "http://terminology.hl7.org/CodeSystem/audit-entity-type"
+    )
+    assert inst.entity[1].what.identifier.value == "What.id"
+    assert inst.entity[1].what.reference == "Patient/example/_history/1"
+    assert inst.id == "example-disclosure"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.outcome == "0"
+    assert inst.outcomeDesc == "Successful  Disclosure"
+    assert inst.purposeOfEvent[0].coding[0].code == "HMARKT"
+    assert inst.purposeOfEvent[0].coding[0].display == "healthcare marketing"
+    assert (
+        inst.purposeOfEvent[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.recorded == fhirtypes.Instant.validate("2013-09-22T00:08:00Z")
+    assert (
+        inst.source.observer.display == "Watchers Accounting of Disclosures Application"
+    )
+    assert inst.source.site == "Watcher"
+    assert inst.source.type[0].code == "4"
+    assert inst.source.type[0].display == "Application Server"
+    assert (
+        inst.source.type[0].system
+        == "http://terminology.hl7.org/CodeSystem/security-source-type"
+    )
+    assert inst.subtype[0].code == "Disclosure"
+    assert inst.subtype[0].display == "HIPAA disclosure"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">Disclosure by some idiot, for marketing reasons, to places unknown, of a Poor Sap, data about Everthing important.</div>'
+    )
+    assert inst.text.status == "generated"
+    assert inst.type.code == "110106"
+    assert inst.type.display == "Export"
+    assert inst.type.system == "http://dicom.nema.org/resources/ontology/DCM"
+
+
+def test_auditevent_8(base_settings):
+    """No. 8 tests collection for AuditEvent.
+    Test File: auditevent-example-disclosure.json
+    """
+    filename = base_settings["unittest_data_dir"] / "auditevent-example-disclosure.json"
+    inst = auditevent.AuditEvent.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "AuditEvent" == inst.resource_type
+
+    impl_auditevent_8(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "AuditEvent" == data["resourceType"]
+
+    inst2 = auditevent.AuditEvent(**data)
+    impl_auditevent_8(inst2)
+
+
+def impl_auditevent_9(inst):
+    assert inst.action == "C"
+    assert inst.agent[0].altId == "601847123"
+    assert inst.agent[0].name == "Grahame Grieve"
+    assert inst.agent[0].requestor is True
+    assert inst.agent[0].type.coding[0].code == "humanuser"
+    assert inst.agent[0].type.coding[0].display == "human user"
+    assert (
+        inst.agent[0].type.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/extra-security-role-type"
+    )
+    assert inst.agent[0].who.identifier.value == "95"
+    assert inst.agent[1].altId == "6580"
+    assert inst.agent[1].network.address == "Workstation1.ehr.familyclinic.com"
+    assert inst.agent[1].network.type == "1"
+    assert inst.agent[1].requestor is False
+    assert inst.agent[1].type.coding[0].code == "110153"
+    assert inst.agent[1].type.coding[0].display == "Source Role ID"
+    assert (
+        inst.agent[1].type.coding[0].system
+        == "http://dicom.nema.org/resources/ontology/DCM"
+    )
+    assert inst.agent[1].who.identifier.system == "urn:oid:2.16.840.1.113883.4.2"
+    assert inst.agent[1].who.identifier.value == "2.16.840.1.113883.4.2"
+    assert inst.contained[0].id == "o1"
+    assert inst.entity[0].detail[0].type == "requested transaction"
+    assert inst.entity[0].detail[0].valueString == "http POST ..... "
+    assert inst.entity[0].type.code == "2"
+    assert inst.entity[0].type.display == "System Object"
+    assert (
+        inst.entity[0].type.system
+        == "http://terminology.hl7.org/CodeSystem/audit-entity-type"
+    )
+    assert inst.entity[1].description == "transaction failed"
+    assert inst.entity[1].type.code == "OperationOutcome"
+    assert inst.entity[1].type.display == "OperationOutcome"
+    assert inst.entity[1].type.system == "http://hl7.org/fhir/resource-types"
+    assert inst.entity[1].what.reference == "#o1"
+    assert inst.id == "example-error"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.outcome == "8"
+    assert (
+        inst.outcomeDesc
+        == "Invalid request to create an Operation resource on the Patient endpoint."
+    )
+    assert inst.recorded == fhirtypes.Instant.validate("2017-09-07T23:42:24Z")
+    assert (
+        inst.source.observer.identifier.value == "hl7connect.healthintersections.com.au"
+    )
+    assert inst.source.site == "Cloud"
+    assert inst.source.type[0].code == "3"
+    assert inst.source.type[0].display == "Web Server"
+    assert (
+        inst.source.type[0].system
+        == "http://terminology.hl7.org/CodeSystem/security-source-type"
+    )
+    assert inst.subtype[0].code == "create"
+    assert inst.subtype[0].display == "create"
+    assert inst.subtype[0].system == "http://hl7.org/fhir/restful-interaction"
+    assert inst.text.status == "generated"
+    assert inst.type.code == "rest"
+    assert inst.type.display == "Restful Operation"
+    assert inst.type.system == "http://terminology.hl7.org/CodeSystem/audit-event-type"
+
+
+def test_auditevent_9(base_settings):
+    """No. 9 tests collection for AuditEvent.
+    Test File: auditevent-example-error.json
+    """
+    filename = base_settings["unittest_data_dir"] / "auditevent-example-error.json"
+    inst = auditevent.AuditEvent.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "AuditEvent" == inst.resource_type
+
+    impl_auditevent_9(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "AuditEvent" == data["resourceType"]
+
+    inst2 = auditevent.AuditEvent(**data)
+    impl_auditevent_9(inst2)

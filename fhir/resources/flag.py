@@ -6,142 +6,73 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import domainresource
+from . import domainresource, fhirtypes
 
 
 class Flag(domainresource.DomainResource):
     """ Key information to flag to healthcare providers.
-
     Prospective warnings of potential issues when providing care to the
     patient.
     """
 
-    resource_type = "Flag"
+    resource_type = Field("Flag", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    author: fhirtypes.ReferenceType = Field(
+        None,
+        alias="author",
+        title="Type `Reference` referencing `Device, Organization, Patient, Practitioner, PractitionerRole` (represented as `dict` in JSON)",
+        description="Flag creator",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    category: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="category",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Clinical, administrative, etc.",
+    )
 
-        self.author = None
-        """ Flag creator.
-        Type `FHIRReference` referencing `['Device', 'Organization', 'Patient', 'Practitioner', 'PractitionerRole']` (represented as `dict` in JSON). """
+    code: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="code",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Coded or textual message to display to user",
+    )
 
-        self.category = None
-        """ Clinical, administrative, etc..
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    encounter: fhirtypes.ReferenceType = Field(
+        None,
+        alias="encounter",
+        title="Type `Reference` referencing `Encounter` (represented as `dict` in JSON)",
+        description="Alert relevant during encounter",
+    )
 
-        self.code = None
-        """ Coded or textual message to display to user.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Business identifier",
+    )
 
-        self.encounter = None
-        """ Alert relevant during encounter.
-        Type `FHIRReference` referencing `['Encounter']` (represented as `dict` in JSON). """
+    period: fhirtypes.PeriodType = Field(
+        None,
+        alias="period",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="Time period when flag is active",
+    )
 
-        self.identifier = None
-        """ Business identifier.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="active | inactive | entered-in-error",
+    )
 
-        self.period = None
-        """ Time period when flag is active.
-        Type `Period` (represented as `dict` in JSON). """
-
-        self.status = None
-        """ active | inactive | entered-in-error.
-        Type `str`. """
-
-        self.subject = None
-        """ Who/What is flag about?.
-        Type `FHIRReference` referencing `['Patient', 'Location', 'Group', 'Organization', 'Practitioner', 'PlanDefinition', 'Medication', 'Procedure']` (represented as `dict` in JSON). """
-
-        super(Flag, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(Flag, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "author",
-                    "author",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "category",
-                    "category",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "code",
-                    "code",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "encounter",
-                    "encounter",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                ("period", "period", period.Period, "Period", False, None, False),
-                ("status", "status", str, "code", False, None, True),
-                (
-                    "subject",
-                    "subject",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import period
-except ImportError:
-    period = sys.modules[__package__ + ".period"]
+    subject: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="subject",
+        title="Type `Reference` referencing `Patient, Location, Group, Organization, Practitioner, PlanDefinition, Medication, Procedure` (represented as `dict` in JSON)",
+        description="Who/What is flag about?",
+    )

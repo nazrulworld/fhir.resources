@@ -6,178 +6,141 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import visionprescription
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class VisionPrescriptionTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("VisionPrescription", js["resourceType"])
-        return visionprescription.VisionPrescription(js)
+def impl_visionprescription_1(inst):
+    assert inst.dateWritten == fhirtypes.DateTime.validate("2014-06-15")
+    assert float(inst.dispense[0].add) == float(1.75)
+    assert inst.dispense[0].axis == 160
+    assert float(inst.dispense[0].backCurve) == float(8.7)
+    assert inst.dispense[0].brand == "OphthaGuard"
+    assert inst.dispense[0].color == "green"
+    assert float(inst.dispense[0].cylinder) == float(-2.25)
+    assert float(inst.dispense[0].diameter) == float(14.0)
+    assert inst.dispense[0].duration.code == "month"
+    assert inst.dispense[0].duration.system == "http://unitsofmeasure.org"
+    assert inst.dispense[0].duration.unit == "month"
+    assert float(inst.dispense[0].duration.value) == float(1)
+    assert inst.dispense[0].eye == "right"
+    assert (
+        inst.dispense[0].note[0].text == "Shade treatment for extreme light sensitivity"
+    )
+    assert float(inst.dispense[0].power) == float(-2.75)
+    assert inst.dispense[0].product.coding[0].code == "contact"
+    assert (
+        inst.dispense[0].product.coding[0].system
+        == "http://hl7.org/fhir/ex-visionprescriptionproduct"
+    )
+    assert float(inst.dispense[1].add) == float(1.75)
+    assert inst.dispense[1].axis == 160
+    assert float(inst.dispense[1].backCurve) == float(8.7)
+    assert inst.dispense[1].brand == "OphthaGuard"
+    assert inst.dispense[1].color == "green"
+    assert float(inst.dispense[1].cylinder) == float(-3.5)
+    assert float(inst.dispense[1].diameter) == float(14.0)
+    assert inst.dispense[1].duration.code == "month"
+    assert inst.dispense[1].duration.system == "http://unitsofmeasure.org"
+    assert inst.dispense[1].duration.unit == "month"
+    assert float(inst.dispense[1].duration.value) == float(1)
+    assert inst.dispense[1].eye == "left"
+    assert (
+        inst.dispense[1].note[0].text == "Shade treatment for extreme light sensitivity"
+    )
+    assert float(inst.dispense[1].power) == float(-2.75)
+    assert inst.dispense[1].product.coding[0].code == "contact"
+    assert (
+        inst.dispense[1].product.coding[0].system
+        == "http://hl7.org/fhir/ex-visionprescriptionproduct"
+    )
+    assert inst.encounter.reference == "Encounter/f001"
+    assert inst.id == "33124"
+    assert inst.identifier[0].system == "http://www.happysight.com/prescription"
+    assert inst.identifier[0].value == "15014"
+    assert inst.patient.reference == "Patient/example"
+    assert inst.prescriber.reference == "Practitioner/example"
+    assert inst.reasonCodeableConcept.coding[0].code == "myopia"
+    assert (
+        inst.reasonCodeableConcept.coding[0].system
+        == "http://samplevisionreasoncodes.com"
+    )
+    assert inst.status == "active"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">Sample Contract Lens prescription</div>'
+    )
+    assert inst.text.status == "generated"
 
-    def testVisionPrescription1(self):
-        inst = self.instantiate_from("visionprescription-example-1.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a VisionPrescription instance"
-        )
-        self.implVisionPrescription1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("VisionPrescription", js["resourceType"])
-        inst2 = visionprescription.VisionPrescription(js)
-        self.implVisionPrescription1(inst2)
+def test_visionprescription_1(base_settings):
+    """No. 1 tests collection for VisionPrescription.
+    Test File: visionprescription-example-1.json
+    """
+    filename = base_settings["unittest_data_dir"] / "visionprescription-example-1.json"
+    inst = visionprescription.VisionPrescription.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "VisionPrescription" == inst.resource_type
 
-    def implVisionPrescription1(self, inst):
-        self.assertEqual(inst.dateWritten.date, FHIRDate("2014-06-15").date)
-        self.assertEqual(inst.dateWritten.as_json(), "2014-06-15")
-        self.assertEqual(inst.dispense[0].add, 1.75)
-        self.assertEqual(inst.dispense[0].axis, 160)
-        self.assertEqual(inst.dispense[0].backCurve, 8.7)
-        self.assertEqual(
-            force_bytes(inst.dispense[0].brand), force_bytes("OphthaGuard")
-        )
-        self.assertEqual(force_bytes(inst.dispense[0].color), force_bytes("green"))
-        self.assertEqual(inst.dispense[0].cylinder, -2.25)
-        self.assertEqual(inst.dispense[0].diameter, 14.0)
-        self.assertEqual(
-            force_bytes(inst.dispense[0].duration.code), force_bytes("month")
-        )
-        self.assertEqual(
-            force_bytes(inst.dispense[0].duration.system),
-            force_bytes("http://unitsofmeasure.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.dispense[0].duration.unit), force_bytes("month")
-        )
-        self.assertEqual(inst.dispense[0].duration.value, 1)
-        self.assertEqual(force_bytes(inst.dispense[0].eye), force_bytes("right"))
-        self.assertEqual(
-            force_bytes(inst.dispense[0].note[0].text),
-            force_bytes("Shade treatment for extreme light sensitivity"),
-        )
-        self.assertEqual(inst.dispense[0].power, -2.75)
-        self.assertEqual(
-            force_bytes(inst.dispense[0].product.coding[0].code), force_bytes("contact")
-        )
-        self.assertEqual(
-            force_bytes(inst.dispense[0].product.coding[0].system),
-            force_bytes("http://hl7.org/fhir/ex-visionprescriptionproduct"),
-        )
-        self.assertEqual(inst.dispense[1].add, 1.75)
-        self.assertEqual(inst.dispense[1].axis, 160)
-        self.assertEqual(inst.dispense[1].backCurve, 8.7)
-        self.assertEqual(
-            force_bytes(inst.dispense[1].brand), force_bytes("OphthaGuard")
-        )
-        self.assertEqual(force_bytes(inst.dispense[1].color), force_bytes("green"))
-        self.assertEqual(inst.dispense[1].cylinder, -3.5)
-        self.assertEqual(inst.dispense[1].diameter, 14.0)
-        self.assertEqual(
-            force_bytes(inst.dispense[1].duration.code), force_bytes("month")
-        )
-        self.assertEqual(
-            force_bytes(inst.dispense[1].duration.system),
-            force_bytes("http://unitsofmeasure.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.dispense[1].duration.unit), force_bytes("month")
-        )
-        self.assertEqual(inst.dispense[1].duration.value, 1)
-        self.assertEqual(force_bytes(inst.dispense[1].eye), force_bytes("left"))
-        self.assertEqual(
-            force_bytes(inst.dispense[1].note[0].text),
-            force_bytes("Shade treatment for extreme light sensitivity"),
-        )
-        self.assertEqual(inst.dispense[1].power, -2.75)
-        self.assertEqual(
-            force_bytes(inst.dispense[1].product.coding[0].code), force_bytes("contact")
-        )
-        self.assertEqual(
-            force_bytes(inst.dispense[1].product.coding[0].system),
-            force_bytes("http://hl7.org/fhir/ex-visionprescriptionproduct"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("33124"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://www.happysight.com/prescription"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("15014"))
-        self.assertEqual(
-            force_bytes(inst.reasonCodeableConcept.coding[0].code),
-            force_bytes("myopia"),
-        )
-        self.assertEqual(
-            force_bytes(inst.reasonCodeableConcept.coding[0].system),
-            force_bytes("http://samplevisionreasoncodes.com"),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">Sample Contract Lens prescription</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    impl_visionprescription_1(inst)
 
-    def testVisionPrescription2(self):
-        inst = self.instantiate_from("visionprescription-example.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a VisionPrescription instance"
-        )
-        self.implVisionPrescription2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "VisionPrescription" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("VisionPrescription", js["resourceType"])
-        inst2 = visionprescription.VisionPrescription(js)
-        self.implVisionPrescription2(inst2)
+    inst2 = visionprescription.VisionPrescription(**data)
+    impl_visionprescription_1(inst2)
 
-    def implVisionPrescription2(self, inst):
-        self.assertEqual(inst.dateWritten.date, FHIRDate("2014-06-15").date)
-        self.assertEqual(inst.dateWritten.as_json(), "2014-06-15")
-        self.assertEqual(inst.dispense[0].add, 2.0)
-        self.assertEqual(force_bytes(inst.dispense[0].base), force_bytes("down"))
-        self.assertEqual(force_bytes(inst.dispense[0].eye), force_bytes("right"))
-        self.assertEqual(inst.dispense[0].prism, 0.5)
-        self.assertEqual(
-            force_bytes(inst.dispense[0].product.coding[0].code), force_bytes("lens")
-        )
-        self.assertEqual(
-            force_bytes(inst.dispense[0].product.coding[0].system),
-            force_bytes("http://hl7.org/fhir/ex-visionprescriptionproduct"),
-        )
-        self.assertEqual(inst.dispense[0].sphere, -2.0)
-        self.assertEqual(inst.dispense[1].add, 2.0)
-        self.assertEqual(inst.dispense[1].axis, 180)
-        self.assertEqual(force_bytes(inst.dispense[1].base), force_bytes("up"))
-        self.assertEqual(inst.dispense[1].cylinder, -0.5)
-        self.assertEqual(force_bytes(inst.dispense[1].eye), force_bytes("left"))
-        self.assertEqual(inst.dispense[1].prism, 0.5)
-        self.assertEqual(
-            force_bytes(inst.dispense[1].product.coding[0].code), force_bytes("lens")
-        )
-        self.assertEqual(
-            force_bytes(inst.dispense[1].product.coding[0].system),
-            force_bytes("http://hl7.org/fhir/ex-visionprescriptionproduct"),
-        )
-        self.assertEqual(inst.dispense[1].sphere, -1.0)
-        self.assertEqual(force_bytes(inst.id), force_bytes("33123"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://www.happysight.com/prescription"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("15013"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+
+def impl_visionprescription_2(inst):
+    assert inst.dateWritten == fhirtypes.DateTime.validate("2014-06-15")
+    assert float(inst.dispense[0].add) == float(2.0)
+    assert inst.dispense[0].base == "down"
+    assert inst.dispense[0].eye == "right"
+    assert float(inst.dispense[0].prism) == float(0.5)
+    assert inst.dispense[0].product.coding[0].code == "lens"
+    assert (
+        inst.dispense[0].product.coding[0].system
+        == "http://hl7.org/fhir/ex-visionprescriptionproduct"
+    )
+    assert float(inst.dispense[0].sphere) == float(-2.0)
+    assert float(inst.dispense[1].add) == float(2.0)
+    assert inst.dispense[1].axis == 180
+    assert inst.dispense[1].base == "up"
+    assert float(inst.dispense[1].cylinder) == float(-0.5)
+    assert inst.dispense[1].eye == "left"
+    assert float(inst.dispense[1].prism) == float(0.5)
+    assert inst.dispense[1].product.coding[0].code == "lens"
+    assert (
+        inst.dispense[1].product.coding[0].system
+        == "http://hl7.org/fhir/ex-visionprescriptionproduct"
+    )
+    assert float(inst.dispense[1].sphere) == float(-1.0)
+    assert inst.id == "33123"
+    assert inst.identifier[0].system == "http://www.happysight.com/prescription"
+    assert inst.identifier[0].value == "15013"
+    assert inst.patient.reference == "Patient/example"
+    assert inst.prescriber.reference == "Practitioner/example"
+    assert inst.status == "active"
+    assert inst.text.status == "generated"
+
+
+def test_visionprescription_2(base_settings):
+    """No. 2 tests collection for VisionPrescription.
+    Test File: visionprescription-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "visionprescription-example.json"
+    inst = visionprescription.VisionPrescription.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "VisionPrescription" == inst.resource_type
+
+    impl_visionprescription_2(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "VisionPrescription" == data["resourceType"]
+
+    inst2 = visionprescription.VisionPrescription(**data)
+    impl_visionprescription_2(inst2)

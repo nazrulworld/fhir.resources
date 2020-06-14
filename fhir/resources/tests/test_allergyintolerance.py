@@ -6,523 +6,365 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import allergyintolerance
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class AllergyIntoleranceTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("AllergyIntolerance", js["resourceType"])
-        return allergyintolerance.AllergyIntolerance(js)
+def impl_allergyintolerance_1(inst):
+    assert inst.clinicalStatus.coding[0].code == "active"
+    assert inst.clinicalStatus.coding[0].display == "Active"
+    assert (
+        inst.clinicalStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical"
+    )
+    assert inst.code.coding[0].code == "716184000"
+    assert inst.code.coding[0].display == "No Known Latex Allergy (situation)"
+    assert inst.code.coding[0].system == "http://snomed.info/sct"
+    assert inst.code.text == "No Known Latex Allergy"
+    assert inst.id == "nkla"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.patient.reference == "Patient/example"
+    assert inst.recordedDate == fhirtypes.DateTime.validate("2015-08-06T15:37:31-06:00")
+    assert inst.recorder.reference == "Practitioner/example"
+    assert inst.text.status == "generated"
+    assert inst.verificationStatus.coding[0].code == "confirmed"
+    assert inst.verificationStatus.coding[0].display == "Confirmed"
+    assert (
+        inst.verificationStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification"
+    )
 
-    def testAllergyIntolerance1(self):
-        inst = self.instantiate_from("allergyintolerance-nkla.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a AllergyIntolerance instance"
-        )
-        self.implAllergyIntolerance1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("AllergyIntolerance", js["resourceType"])
-        inst2 = allergyintolerance.AllergyIntolerance(js)
-        self.implAllergyIntolerance1(inst2)
+def test_allergyintolerance_1(base_settings):
+    """No. 1 tests collection for AllergyIntolerance.
+    Test File: allergyintolerance-nkla.json
+    """
+    filename = base_settings["unittest_data_dir"] / "allergyintolerance-nkla.json"
+    inst = allergyintolerance.AllergyIntolerance.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "AllergyIntolerance" == inst.resource_type
 
-    def implAllergyIntolerance1(self, inst):
-        self.assertEqual(
-            force_bytes(inst.clinicalStatus.coding[0].code), force_bytes("active")
-        )
-        self.assertEqual(
-            force_bytes(inst.clinicalStatus.coding[0].display), force_bytes("Active")
-        )
-        self.assertEqual(
-            force_bytes(inst.clinicalStatus.coding[0].system),
-            force_bytes(
-                "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].code), force_bytes("716184000")
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].display),
-            force_bytes("No Known Latex Allergy (situation)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.text), force_bytes("No Known Latex Allergy")
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("nkla"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            inst.recordedDate.date, FHIRDate("2015-08-06T15:37:31-06:00").date
-        )
-        self.assertEqual(inst.recordedDate.as_json(), "2015-08-06T15:37:31-06:00")
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.verificationStatus.coding[0].code),
-            force_bytes("confirmed"),
-        )
-        self.assertEqual(
-            force_bytes(inst.verificationStatus.coding[0].display),
-            force_bytes("Confirmed"),
-        )
-        self.assertEqual(
-            force_bytes(inst.verificationStatus.coding[0].system),
-            force_bytes(
-                "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification"
-            ),
-        )
+    impl_allergyintolerance_1(inst)
 
-    def testAllergyIntolerance2(self):
-        inst = self.instantiate_from("allergyintolerance-example.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a AllergyIntolerance instance"
-        )
-        self.implAllergyIntolerance2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "AllergyIntolerance" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("AllergyIntolerance", js["resourceType"])
-        inst2 = allergyintolerance.AllergyIntolerance(js)
-        self.implAllergyIntolerance2(inst2)
+    inst2 = allergyintolerance.AllergyIntolerance(**data)
+    impl_allergyintolerance_1(inst2)
 
-    def implAllergyIntolerance2(self, inst):
-        self.assertEqual(force_bytes(inst.category[0]), force_bytes("food"))
-        self.assertEqual(
-            force_bytes(inst.clinicalStatus.coding[0].code), force_bytes("active")
-        )
-        self.assertEqual(
-            force_bytes(inst.clinicalStatus.coding[0].display), force_bytes("Active")
-        )
-        self.assertEqual(
-            force_bytes(inst.clinicalStatus.coding[0].system),
-            force_bytes(
-                "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].code), force_bytes("227493005")
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].display), force_bytes("Cashew nuts")
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.criticality), force_bytes("high"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://acme.com/ids/patients/risks"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("49476534"))
-        self.assertEqual(inst.lastOccurrence.date, FHIRDate("2012-06").date)
-        self.assertEqual(inst.lastOccurrence.as_json(), "2012-06")
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.note[0].text),
-            force_bytes(
-                "The criticality is high becasue of the observed anaphylactic reaction when challenged with cashew extract."
-            ),
-        )
-        self.assertEqual(inst.onsetDateTime.date, FHIRDate("2004").date)
-        self.assertEqual(inst.onsetDateTime.as_json(), "2004")
-        self.assertEqual(
-            force_bytes(inst.reaction[0].description),
-            force_bytes(
-                "Challenge Protocol. Severe reaction to subcutaneous cashew extract. Epinephrine administered"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.reaction[0].exposureRoute.coding[0].code),
-            force_bytes("34206005"),
-        )
-        self.assertEqual(
-            force_bytes(inst.reaction[0].exposureRoute.coding[0].display),
-            force_bytes("Subcutaneous route"),
-        )
-        self.assertEqual(
-            force_bytes(inst.reaction[0].exposureRoute.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.reaction[0].manifestation[0].coding[0].code),
-            force_bytes("39579001"),
-        )
-        self.assertEqual(
-            force_bytes(inst.reaction[0].manifestation[0].coding[0].display),
-            force_bytes("Anaphylactic reaction"),
-        )
-        self.assertEqual(
-            force_bytes(inst.reaction[0].manifestation[0].coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(inst.reaction[0].onset.date, FHIRDate("2012-06-12").date)
-        self.assertEqual(inst.reaction[0].onset.as_json(), "2012-06-12")
-        self.assertEqual(force_bytes(inst.reaction[0].severity), force_bytes("severe"))
-        self.assertEqual(
-            force_bytes(inst.reaction[0].substance.coding[0].code),
-            force_bytes("1160593"),
-        )
-        self.assertEqual(
-            force_bytes(inst.reaction[0].substance.coding[0].display),
-            force_bytes("cashew nut allergenic extract Injectable Product"),
-        )
-        self.assertEqual(
-            force_bytes(inst.reaction[0].substance.coding[0].system),
-            force_bytes("http://www.nlm.nih.gov/research/umls/rxnorm"),
-        )
-        self.assertEqual(
-            force_bytes(inst.reaction[1].manifestation[0].coding[0].code),
-            force_bytes("64305001"),
-        )
-        self.assertEqual(
-            force_bytes(inst.reaction[1].manifestation[0].coding[0].display),
-            force_bytes("Urticaria"),
-        )
-        self.assertEqual(
-            force_bytes(inst.reaction[1].manifestation[0].coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.reaction[1].note[0].text),
-            force_bytes(
-                "The patient reports that the onset of urticaria was within 15 minutes of eating cashews."
-            ),
-        )
-        self.assertEqual(inst.reaction[1].onset.date, FHIRDate("2004").date)
-        self.assertEqual(inst.reaction[1].onset.as_json(), "2004")
-        self.assertEqual(
-            force_bytes(inst.reaction[1].severity), force_bytes("moderate")
-        )
-        self.assertEqual(
-            inst.recordedDate.date, FHIRDate("2014-10-09T14:58:00+11:00").date
-        )
-        self.assertEqual(inst.recordedDate.as_json(), "2014-10-09T14:58:00+11:00")
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type), force_bytes("allergy"))
-        self.assertEqual(
-            force_bytes(inst.verificationStatus.coding[0].code),
-            force_bytes("confirmed"),
-        )
-        self.assertEqual(
-            force_bytes(inst.verificationStatus.coding[0].display),
-            force_bytes("Confirmed"),
-        )
-        self.assertEqual(
-            force_bytes(inst.verificationStatus.coding[0].system),
-            force_bytes(
-                "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification"
-            ),
-        )
 
-    def testAllergyIntolerance3(self):
-        inst = self.instantiate_from("allergyintolerance-nka.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a AllergyIntolerance instance"
-        )
-        self.implAllergyIntolerance3(inst)
+def impl_allergyintolerance_2(inst):
+    assert inst.asserter.reference == "Patient/example"
+    assert inst.category[0] == "food"
+    assert inst.clinicalStatus.coding[0].code == "active"
+    assert inst.clinicalStatus.coding[0].display == "Active"
+    assert (
+        inst.clinicalStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical"
+    )
+    assert inst.code.coding[0].code == "227493005"
+    assert inst.code.coding[0].display == "Cashew nuts"
+    assert inst.code.coding[0].system == "http://snomed.info/sct"
+    assert inst.criticality == "high"
+    assert inst.id == "example"
+    assert inst.identifier[0].system == "http://acme.com/ids/patients/risks"
+    assert inst.identifier[0].value == "49476534"
+    assert inst.lastOccurrence == fhirtypes.DateTime.validate(
+        "2012-06-12T12:09:24+00:06"
+    )
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert (
+        inst.note[0].text
+        == "The criticality is high becasue of the observed anaphylactic reaction when challenged with cashew extract."
+    )
+    assert inst.onsetDateTime == fhirtypes.DateTime.validate(
+        "2004-10-09T12:09:24+00:06"
+    )
+    assert inst.patient.reference == "Patient/example"
+    assert (
+        inst.reaction[0].description
+        == "Challenge Protocol. Severe reaction to subcutaneous cashew extract. Epinephrine administered"
+    )
+    assert inst.reaction[0].exposureRoute.coding[0].code == "34206005"
+    assert inst.reaction[0].exposureRoute.coding[0].display == "Subcutaneous route"
+    assert inst.reaction[0].exposureRoute.coding[0].system == "http://snomed.info/sct"
+    assert inst.reaction[0].manifestation[0].coding[0].code == "39579001"
+    assert (
+        inst.reaction[0].manifestation[0].coding[0].display == "Anaphylactic reaction"
+    )
+    assert (
+        inst.reaction[0].manifestation[0].coding[0].system == "http://snomed.info/sct"
+    )
+    assert inst.reaction[0].onset == fhirtypes.DateTime.validate(
+        "2012-06-12T11:15:33+10:00"
+    )
+    assert inst.reaction[0].severity == "severe"
+    assert inst.reaction[0].substance.coding[0].code == "1160593"
+    assert (
+        inst.reaction[0].substance.coding[0].display
+        == "cashew nut allergenic extract Injectable Product"
+    )
+    assert (
+        inst.reaction[0].substance.coding[0].system
+        == "http://www.nlm.nih.gov/research/umls/rxnorm"
+    )
+    assert inst.reaction[1].manifestation[0].coding[0].code == "64305001"
+    assert inst.reaction[1].manifestation[0].coding[0].display == "Urticaria"
+    assert (
+        inst.reaction[1].manifestation[0].coding[0].system == "http://snomed.info/sct"
+    )
+    assert (
+        inst.reaction[1].note[0].text
+        == "The patient reports that the onset of urticaria was within 15 minutes of eating cashews."
+    )
+    assert inst.reaction[1].onset == fhirtypes.DateTime.validate(
+        "2004-06-12T11:15:33+10:00"
+    )
+    assert inst.reaction[1].severity == "moderate"
+    assert inst.recordedDate == fhirtypes.DateTime.validate("2014-10-09T14:58:00+11:00")
+    assert inst.recorder.reference == "Practitioner/example"
+    assert inst.text.status == "generated"
+    assert inst.type == "allergy"
+    assert inst.verificationStatus.coding[0].code == "confirmed"
+    assert inst.verificationStatus.coding[0].display == "Confirmed"
+    assert (
+        inst.verificationStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification"
+    )
 
-        js = inst.as_json()
-        self.assertEqual("AllergyIntolerance", js["resourceType"])
-        inst2 = allergyintolerance.AllergyIntolerance(js)
-        self.implAllergyIntolerance3(inst2)
 
-    def implAllergyIntolerance3(self, inst):
-        self.assertEqual(
-            force_bytes(inst.clinicalStatus.coding[0].code), force_bytes("active")
-        )
-        self.assertEqual(
-            force_bytes(inst.clinicalStatus.coding[0].display), force_bytes("Active")
-        )
-        self.assertEqual(
-            force_bytes(inst.clinicalStatus.coding[0].system),
-            force_bytes(
-                "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].code), force_bytes("716186003")
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].display),
-            force_bytes("No Known Allergy (situation)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.code.text), force_bytes("NKA"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("nka"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            inst.recordedDate.date, FHIRDate("2015-08-06T15:37:31-06:00").date
-        )
-        self.assertEqual(inst.recordedDate.as_json(), "2015-08-06T15:37:31-06:00")
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.verificationStatus.coding[0].code),
-            force_bytes("confirmed"),
-        )
-        self.assertEqual(
-            force_bytes(inst.verificationStatus.coding[0].display),
-            force_bytes("Confirmed"),
-        )
-        self.assertEqual(
-            force_bytes(inst.verificationStatus.coding[0].system),
-            force_bytes(
-                "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification"
-            ),
-        )
+def test_allergyintolerance_2(base_settings):
+    """No. 2 tests collection for AllergyIntolerance.
+    Test File: allergyintolerance-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "allergyintolerance-example.json"
+    inst = allergyintolerance.AllergyIntolerance.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "AllergyIntolerance" == inst.resource_type
 
-    def testAllergyIntolerance4(self):
-        inst = self.instantiate_from("allergyintolerance-medication.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a AllergyIntolerance instance"
-        )
-        self.implAllergyIntolerance4(inst)
+    impl_allergyintolerance_2(inst)
 
-        js = inst.as_json()
-        self.assertEqual("AllergyIntolerance", js["resourceType"])
-        inst2 = allergyintolerance.AllergyIntolerance(js)
-        self.implAllergyIntolerance4(inst2)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "AllergyIntolerance" == data["resourceType"]
 
-    def implAllergyIntolerance4(self, inst):
-        self.assertEqual(force_bytes(inst.category[0]), force_bytes("medication"))
-        self.assertEqual(
-            force_bytes(inst.clinicalStatus.coding[0].code), force_bytes("active")
-        )
-        self.assertEqual(
-            force_bytes(inst.clinicalStatus.coding[0].display), force_bytes("Active")
-        )
-        self.assertEqual(
-            force_bytes(inst.clinicalStatus.coding[0].system),
-            force_bytes(
-                "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("7980"))
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].display), force_bytes("Penicillin G")
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system),
-            force_bytes("http://www.nlm.nih.gov/research/umls/rxnorm"),
-        )
-        self.assertEqual(force_bytes(inst.criticality), force_bytes("high"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("medication"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.reaction[0].manifestation[0].coding[0].code),
-            force_bytes("247472004"),
-        )
-        self.assertEqual(
-            force_bytes(inst.reaction[0].manifestation[0].coding[0].display),
-            force_bytes("Hives"),
-        )
-        self.assertEqual(
-            force_bytes(inst.reaction[0].manifestation[0].coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(inst.recordedDate.date, FHIRDate("2010-03-01").date)
-        self.assertEqual(inst.recordedDate.as_json(), "2010-03-01")
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.verificationStatus.coding[0].code),
-            force_bytes("unconfirmed"),
-        )
-        self.assertEqual(
-            force_bytes(inst.verificationStatus.coding[0].display),
-            force_bytes("Unconfirmed"),
-        )
-        self.assertEqual(
-            force_bytes(inst.verificationStatus.coding[0].system),
-            force_bytes(
-                "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification"
-            ),
-        )
+    inst2 = allergyintolerance.AllergyIntolerance(**data)
+    impl_allergyintolerance_2(inst2)
 
-    def testAllergyIntolerance5(self):
-        inst = self.instantiate_from("allergyintolerance-fishallergy.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a AllergyIntolerance instance"
-        )
-        self.implAllergyIntolerance5(inst)
 
-        js = inst.as_json()
-        self.assertEqual("AllergyIntolerance", js["resourceType"])
-        inst2 = allergyintolerance.AllergyIntolerance(js)
-        self.implAllergyIntolerance5(inst2)
+def impl_allergyintolerance_3(inst):
+    assert inst.clinicalStatus.coding[0].code == "active"
+    assert inst.clinicalStatus.coding[0].display == "Active"
+    assert (
+        inst.clinicalStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical"
+    )
+    assert inst.code.coding[0].code == "716186003"
+    assert inst.code.coding[0].display == "No Known Allergy (situation)"
+    assert inst.code.coding[0].system == "http://snomed.info/sct"
+    assert inst.code.text == "NKA"
+    assert inst.id == "nka"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.patient.reference == "Patient/mom"
+    assert inst.recordedDate == fhirtypes.DateTime.validate("2015-08-06T15:37:31-06:00")
+    assert inst.recorder.reference == "Practitioner/example"
+    assert inst.text.status == "generated"
+    assert inst.verificationStatus.coding[0].code == "confirmed"
+    assert inst.verificationStatus.coding[0].display == "Confirmed"
+    assert (
+        inst.verificationStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification"
+    )
 
-    def implAllergyIntolerance5(self, inst):
-        self.assertEqual(force_bytes(inst.category[0]), force_bytes("food"))
-        self.assertEqual(
-            force_bytes(inst.clinicalStatus.coding[0].code), force_bytes("active")
-        )
-        self.assertEqual(
-            force_bytes(inst.clinicalStatus.coding[0].display), force_bytes("Active")
-        )
-        self.assertEqual(
-            force_bytes(inst.clinicalStatus.coding[0].system),
-            force_bytes(
-                "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].code), force_bytes("227037002")
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].display),
-            force_bytes("Fish - dietary (substance)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.text),
-            force_bytes("Allergic to fresh fish. Tolerates canned fish"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("fishallergy"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://acme.com/ids/patients/risks"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("49476535"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            inst.recordedDate.date, FHIRDate("2015-08-06T15:37:31-06:00").date
-        )
-        self.assertEqual(inst.recordedDate.as_json(), "2015-08-06T15:37:31-06:00")
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("additional"))
-        self.assertEqual(
-            force_bytes(inst.verificationStatus.coding[0].code),
-            force_bytes("confirmed"),
-        )
-        self.assertEqual(
-            force_bytes(inst.verificationStatus.coding[0].display),
-            force_bytes("Confirmed"),
-        )
-        self.assertEqual(
-            force_bytes(inst.verificationStatus.coding[0].system),
-            force_bytes(
-                "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification"
-            ),
-        )
 
-    def testAllergyIntolerance6(self):
-        inst = self.instantiate_from("allergyintolerance-nkda.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a AllergyIntolerance instance"
-        )
-        self.implAllergyIntolerance6(inst)
+def test_allergyintolerance_3(base_settings):
+    """No. 3 tests collection for AllergyIntolerance.
+    Test File: allergyintolerance-nka.json
+    """
+    filename = base_settings["unittest_data_dir"] / "allergyintolerance-nka.json"
+    inst = allergyintolerance.AllergyIntolerance.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "AllergyIntolerance" == inst.resource_type
 
-        js = inst.as_json()
-        self.assertEqual("AllergyIntolerance", js["resourceType"])
-        inst2 = allergyintolerance.AllergyIntolerance(js)
-        self.implAllergyIntolerance6(inst2)
+    impl_allergyintolerance_3(inst)
 
-    def implAllergyIntolerance6(self, inst):
-        self.assertEqual(
-            force_bytes(inst.clinicalStatus.coding[0].code), force_bytes("active")
-        )
-        self.assertEqual(
-            force_bytes(inst.clinicalStatus.coding[0].display), force_bytes("Active")
-        )
-        self.assertEqual(
-            force_bytes(inst.clinicalStatus.coding[0].system),
-            force_bytes(
-                "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].code), force_bytes("409137002")
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].display),
-            force_bytes("No Known Drug Allergy (situation)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.code.text), force_bytes("NKDA"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("nkda"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            inst.recordedDate.date, FHIRDate("2015-08-06T15:37:31-06:00").date
-        )
-        self.assertEqual(inst.recordedDate.as_json(), "2015-08-06T15:37:31-06:00")
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.verificationStatus.coding[0].code),
-            force_bytes("confirmed"),
-        )
-        self.assertEqual(
-            force_bytes(inst.verificationStatus.coding[0].display),
-            force_bytes("Confirmed"),
-        )
-        self.assertEqual(
-            force_bytes(inst.verificationStatus.coding[0].system),
-            force_bytes(
-                "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification"
-            ),
-        )
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "AllergyIntolerance" == data["resourceType"]
+
+    inst2 = allergyintolerance.AllergyIntolerance(**data)
+    impl_allergyintolerance_3(inst2)
+
+
+def impl_allergyintolerance_4(inst):
+    assert inst.category[0] == "medication"
+    assert inst.clinicalStatus.coding[0].code == "active"
+    assert inst.clinicalStatus.coding[0].display == "Active"
+    assert (
+        inst.clinicalStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical"
+    )
+    assert inst.code.coding[0].code == "7980"
+    assert inst.code.coding[0].display == "Penicillin G"
+    assert inst.code.coding[0].system == "http://www.nlm.nih.gov/research/umls/rxnorm"
+    assert inst.criticality == "high"
+    assert inst.id == "medication"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.patient.reference == "Patient/example"
+    assert inst.reaction[0].manifestation[0].coding[0].code == "247472004"
+    assert inst.reaction[0].manifestation[0].coding[0].display == "Hives"
+    assert (
+        inst.reaction[0].manifestation[0].coding[0].system == "http://snomed.info/sct"
+    )
+    assert inst.recordedDate == fhirtypes.DateTime.validate("2010-03-01T12:09:24+00:06")
+    assert inst.recorder.reference == "Practitioner/13"
+    assert inst.text.status == "generated"
+    assert inst.verificationStatus.coding[0].code == "unconfirmed"
+    assert inst.verificationStatus.coding[0].display == "Unconfirmed"
+    assert (
+        inst.verificationStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification"
+    )
+
+
+def test_allergyintolerance_4(base_settings):
+    """No. 4 tests collection for AllergyIntolerance.
+    Test File: allergyintolerance-medication.json
+    """
+    filename = base_settings["unittest_data_dir"] / "allergyintolerance-medication.json"
+    inst = allergyintolerance.AllergyIntolerance.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "AllergyIntolerance" == inst.resource_type
+
+    impl_allergyintolerance_4(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "AllergyIntolerance" == data["resourceType"]
+
+    inst2 = allergyintolerance.AllergyIntolerance(**data)
+    impl_allergyintolerance_4(inst2)
+
+
+def impl_allergyintolerance_5(inst):
+    assert inst.category[0] == "food"
+    assert inst.clinicalStatus.coding[0].code == "active"
+    assert inst.clinicalStatus.coding[0].display == "Active"
+    assert (
+        inst.clinicalStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical"
+    )
+    assert inst.code.coding[0].code == "227037002"
+    assert inst.code.coding[0].display == "Fish - dietary (substance)"
+    assert inst.code.coding[0].system == "http://snomed.info/sct"
+    assert inst.code.text == "Allergic to fresh fish. Tolerates canned fish"
+    assert inst.id == "fishallergy"
+    assert inst.identifier[0].system == "http://acme.com/ids/patients/risks"
+    assert inst.identifier[0].value == "49476535"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.patient.reference == "Patient/example"
+    assert inst.recordedDate == fhirtypes.DateTime.validate("2015-08-06T15:37:31-06:00")
+    assert inst.recorder.reference == "Practitioner/example"
+    assert inst.text.status == "additional"
+    assert inst.verificationStatus.coding[0].code == "confirmed"
+    assert inst.verificationStatus.coding[0].display == "Confirmed"
+    assert (
+        inst.verificationStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification"
+    )
+
+
+def test_allergyintolerance_5(base_settings):
+    """No. 5 tests collection for AllergyIntolerance.
+    Test File: allergyintolerance-fishallergy.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "allergyintolerance-fishallergy.json"
+    )
+    inst = allergyintolerance.AllergyIntolerance.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "AllergyIntolerance" == inst.resource_type
+
+    impl_allergyintolerance_5(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "AllergyIntolerance" == data["resourceType"]
+
+    inst2 = allergyintolerance.AllergyIntolerance(**data)
+    impl_allergyintolerance_5(inst2)
+
+
+def impl_allergyintolerance_6(inst):
+    assert inst.clinicalStatus.coding[0].code == "active"
+    assert inst.clinicalStatus.coding[0].display == "Active"
+    assert (
+        inst.clinicalStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical"
+    )
+    assert inst.code.coding[0].code == "409137002"
+    assert inst.code.coding[0].display == "No Known Drug Allergy (situation)"
+    assert inst.code.coding[0].system == "http://snomed.info/sct"
+    assert inst.code.text == "NKDA"
+    assert inst.id == "nkda"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.patient.reference == "Patient/mom"
+    assert inst.recordedDate == fhirtypes.DateTime.validate("2015-08-06T15:37:31-06:00")
+    assert inst.recorder.reference == "Practitioner/example"
+    assert inst.text.status == "generated"
+    assert inst.verificationStatus.coding[0].code == "confirmed"
+    assert inst.verificationStatus.coding[0].display == "Confirmed"
+    assert (
+        inst.verificationStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification"
+    )
+
+
+def test_allergyintolerance_6(base_settings):
+    """No. 6 tests collection for AllergyIntolerance.
+    Test File: allergyintolerance-nkda.json
+    """
+    filename = base_settings["unittest_data_dir"] / "allergyintolerance-nkda.json"
+    inst = allergyintolerance.AllergyIntolerance.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "AllergyIntolerance" == inst.resource_type
+
+    impl_allergyintolerance_6(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "AllergyIntolerance" == data["resourceType"]
+
+    inst2 = allergyintolerance.AllergyIntolerance(**data)
+    impl_allergyintolerance_6(inst2)

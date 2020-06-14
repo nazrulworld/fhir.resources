@@ -6,391 +6,297 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import Any, Dict
+from typing import List as ListType
 
+from pydantic import Field, root_validator
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class RiskAssessment(domainresource.DomainResource):
     """ Potential outcomes for a subject with likelihood.
-
     An assessment of the likely outcome(s) for a patient or other subject as
     well as the likelihood of each outcome.
     """
 
-    resource_type = "RiskAssessment"
+    resource_type = Field("RiskAssessment", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    basedOn: fhirtypes.ReferenceType = Field(
+        None,
+        alias="basedOn",
+        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        description="Request fulfilled by this assessment",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    basis: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="basis",
+        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        description="Information used in assessment",
+    )
+
+    code: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="code",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Type of assessment",
+    )
+
+    condition: fhirtypes.ReferenceType = Field(
+        None,
+        alias="condition",
+        title="Type `Reference` referencing `Condition` (represented as `dict` in JSON)",
+        description="Condition assessed",
+    )
+
+    encounter: fhirtypes.ReferenceType = Field(
+        None,
+        alias="encounter",
+        title="Type `Reference` referencing `Encounter` (represented as `dict` in JSON)",
+        description="Where was assessment performed?",
+    )
+
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Unique identifier for the assessment",
+    )
+
+    method: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="method",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Evaluation mechanism",
+    )
+
+    mitigation: fhirtypes.String = Field(
+        None,
+        alias="mitigation",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="How to reduce risk",
+    )
+
+    note: ListType[fhirtypes.AnnotationType] = Field(
+        None,
+        alias="note",
+        title="List of `Annotation` items (represented as `dict` in JSON)",
+        description="Comments on the risk assessment",
+    )
+
+    occurrenceDateTime: fhirtypes.DateTime = Field(
+        None,
+        alias="occurrenceDateTime",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="When was assessment made?",
+        one_of_many="occurrence",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    occurrencePeriod: fhirtypes.PeriodType = Field(
+        None,
+        alias="occurrencePeriod",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="When was assessment made?",
+        one_of_many="occurrence",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    parent: fhirtypes.ReferenceType = Field(
+        None,
+        alias="parent",
+        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        description="Part of this occurrence",
+    )
+
+    performer: fhirtypes.ReferenceType = Field(
+        None,
+        alias="performer",
+        title="Type `Reference` referencing `Practitioner, PractitionerRole, Device` (represented as `dict` in JSON)",
+        description="Who did assessment?",
+    )
+
+    prediction: ListType[fhirtypes.RiskAssessmentPredictionType] = Field(
+        None,
+        alias="prediction",
+        title="List of `RiskAssessmentPrediction` items (represented as `dict` in JSON)",
+        description="Outcome predicted",
+    )
+
+    reasonCode: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="reasonCode",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Why the assessment was necessary?",
+    )
+
+    reasonReference: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="reasonReference",
+        title="List of `Reference` items referencing `Condition, Observation, DiagnosticReport, DocumentReference` (represented as `dict` in JSON)",
+        description="Why the assessment was necessary?",
+    )
+
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="registered | preliminary | final | amended +",
+    )
+
+    subject: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="subject",
+        title="Type `Reference` referencing `Patient, Group` (represented as `dict` in JSON)",
+        description="Who/what does assessment apply to?",
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "occurrence": ["occurrenceDateTime", "occurrencePeriod",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.basedOn = None
-        """ Request fulfilled by this assessment.
-        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
-
-        self.basis = None
-        """ Information used in assessment.
-        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
-
-        self.code = None
-        """ Type of assessment.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.condition = None
-        """ Condition assessed.
-        Type `FHIRReference` referencing `['Condition']` (represented as `dict` in JSON). """
-
-        self.encounter = None
-        """ Where was assessment performed?.
-        Type `FHIRReference` referencing `['Encounter']` (represented as `dict` in JSON). """
-
-        self.identifier = None
-        """ Unique identifier for the assessment.
-        List of `Identifier` items (represented as `dict` in JSON). """
-
-        self.method = None
-        """ Evaluation mechanism.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.mitigation = None
-        """ How to reduce risk.
-        Type `str`. """
-
-        self.note = None
-        """ Comments on the risk assessment.
-        List of `Annotation` items (represented as `dict` in JSON). """
-
-        self.occurrenceDateTime = None
-        """ When was assessment made?.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.occurrencePeriod = None
-        """ When was assessment made?.
-        Type `Period` (represented as `dict` in JSON). """
-
-        self.parent = None
-        """ Part of this occurrence.
-        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
-
-        self.performer = None
-        """ Who did assessment?.
-        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'Device']` (represented as `dict` in JSON). """
-
-        self.prediction = None
-        """ Outcome predicted.
-        List of `RiskAssessmentPrediction` items (represented as `dict` in JSON). """
-
-        self.reasonCode = None
-        """ Why the assessment was necessary?.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.reasonReference = None
-        """ Why the assessment was necessary?.
-        List of `FHIRReference` items referencing `['Condition', 'Observation', 'DiagnosticReport', 'DocumentReference']` (represented as `dict` in JSON). """
-
-        self.status = None
-        """ registered | preliminary | final | amended +.
-        Type `str`. """
-
-        self.subject = None
-        """ Who/what does assessment apply to?.
-        Type `FHIRReference` referencing `['Patient', 'Group']` (represented as `dict` in JSON). """
-
-        super(RiskAssessment, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(RiskAssessment, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "basedOn",
-                    "basedOn",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "basis",
-                    "basis",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "code",
-                    "code",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "condition",
-                    "condition",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "encounter",
-                    "encounter",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "method",
-                    "method",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("mitigation", "mitigation", str, "string", False, None, False),
-                (
-                    "note",
-                    "note",
-                    annotation.Annotation,
-                    "Annotation",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "occurrenceDateTime",
-                    "occurrenceDateTime",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    "occurrence",
-                    False,
-                ),
-                (
-                    "occurrencePeriod",
-                    "occurrencePeriod",
-                    period.Period,
-                    "Period",
-                    False,
-                    "occurrence",
-                    False,
-                ),
-                (
-                    "parent",
-                    "parent",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "performer",
-                    "performer",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "prediction",
-                    "prediction",
-                    RiskAssessmentPrediction,
-                    "RiskAssessmentPrediction",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "reasonCode",
-                    "reasonCode",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "reasonReference",
-                    "reasonReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                ("status", "status", str, "code", False, None, True),
-                (
-                    "subject",
-                    "subject",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
+        return values
 
 
 class RiskAssessmentPrediction(backboneelement.BackboneElement):
     """ Outcome predicted.
-
     Describes the expected outcome for the subject.
     """
 
-    resource_type = "RiskAssessmentPrediction"
+    resource_type = Field("RiskAssessmentPrediction", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    outcome: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="outcome",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Possible outcome for the subject",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    probabilityDecimal: fhirtypes.Decimal = Field(
+        None,
+        alias="probabilityDecimal",
+        title="Type `Decimal` (represented as `dict` in JSON)",
+        description="Likelihood of specified outcome",
+        one_of_many="probability",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    probabilityRange: fhirtypes.RangeType = Field(
+        None,
+        alias="probabilityRange",
+        title="Type `Range` (represented as `dict` in JSON)",
+        description="Likelihood of specified outcome",
+        one_of_many="probability",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    qualitativeRisk: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="qualitativeRisk",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Likelihood of specified outcome as a qualitative value",
+    )
+
+    rationale: fhirtypes.String = Field(
+        None,
+        alias="rationale",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Explanation of prediction",
+    )
+
+    relativeRisk: fhirtypes.Decimal = Field(
+        None,
+        alias="relativeRisk",
+        title="Type `Decimal` (represented as `dict` in JSON)",
+        description="Relative likelihood",
+    )
+
+    whenPeriod: fhirtypes.PeriodType = Field(
+        None,
+        alias="whenPeriod",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="Timeframe or age range",
+        one_of_many="when",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    whenRange: fhirtypes.RangeType = Field(
+        None,
+        alias="whenRange",
+        title="Type `Range` (represented as `dict` in JSON)",
+        description="Timeframe or age range",
+        one_of_many="when",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "probability": ["probabilityDecimal", "probabilityRange",],
+            "when": ["whenPeriod", "whenRange",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.outcome = None
-        """ Possible outcome for the subject.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.probabilityDecimal = None
-        """ Likelihood of specified outcome.
-        Type `float`. """
-
-        self.probabilityRange = None
-        """ Likelihood of specified outcome.
-        Type `Range` (represented as `dict` in JSON). """
-
-        self.qualitativeRisk = None
-        """ Likelihood of specified outcome as a qualitative value.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.rationale = None
-        """ Explanation of prediction.
-        Type `str`. """
-
-        self.relativeRisk = None
-        """ Relative likelihood.
-        Type `float`. """
-
-        self.whenPeriod = None
-        """ Timeframe or age range.
-        Type `Period` (represented as `dict` in JSON). """
-
-        self.whenRange = None
-        """ Timeframe or age range.
-        Type `Range` (represented as `dict` in JSON). """
-
-        super(RiskAssessmentPrediction, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(RiskAssessmentPrediction, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "outcome",
-                    "outcome",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "probabilityDecimal",
-                    "probabilityDecimal",
-                    float,
-                    "decimal",
-                    False,
-                    "probability",
-                    False,
-                ),
-                (
-                    "probabilityRange",
-                    "probabilityRange",
-                    range.Range,
-                    "Range",
-                    False,
-                    "probability",
-                    False,
-                ),
-                (
-                    "qualitativeRisk",
-                    "qualitativeRisk",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("rationale", "rationale", str, "string", False, None, False),
-                ("relativeRisk", "relativeRisk", float, "decimal", False, None, False),
-                (
-                    "whenPeriod",
-                    "whenPeriod",
-                    period.Period,
-                    "Period",
-                    False,
-                    "when",
-                    False,
-                ),
-                ("whenRange", "whenRange", range.Range, "Range", False, "when", False),
-            ]
-        )
-        return js
-
-
-try:
-    from . import annotation
-except ImportError:
-    annotation = sys.modules[__package__ + ".annotation"]
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import period
-except ImportError:
-    period = sys.modules[__package__ + ".period"]
-try:
-    from . import range
-except ImportError:
-    range = sys.modules[__package__ + ".range"]
+        return values

@@ -6,17 +6,16 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class ImagingStudy(domainresource.DomainResource):
     """ A set of images produced in single study (one or more series of references
     images).
-
     Representation of the content produced in a DICOM imaging study. A study
     comprises a set of series, each of which includes a set of Service-Object
     Pair Instances (SOP Instances - images or other data) acquired or produced
@@ -24,532 +23,295 @@ class ImagingStudy(domainresource.DomainResource):
     ultrasound), but a study may have multiple series of different modalities.
     """
 
-    resource_type = "ImagingStudy"
+    resource_type = Field("ImagingStudy", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    basedOn: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="basedOn",
+        title="List of `Reference` items referencing `CarePlan, ServiceRequest, Appointment, AppointmentResponse, Task` (represented as `dict` in JSON)",
+        description="Request fulfilled",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    description: fhirtypes.String = Field(
+        None,
+        alias="description",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Institution-generated description",
+    )
 
-        self.basedOn = None
-        """ Request fulfilled.
-        List of `FHIRReference` items referencing `['CarePlan', 'ServiceRequest', 'Appointment', 'AppointmentResponse', 'Task']` (represented as `dict` in JSON). """
+    encounter: fhirtypes.ReferenceType = Field(
+        None,
+        alias="encounter",
+        title="Type `Reference` referencing `Encounter` (represented as `dict` in JSON)",
+        description="Encounter with which this imaging study is associated",
+    )
 
-        self.description = None
-        """ Institution-generated description.
-        Type `str`. """
+    endpoint: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="endpoint",
+        title="List of `Reference` items referencing `Endpoint` (represented as `dict` in JSON)",
+        description="Study access endpoint",
+    )
 
-        self.encounter = None
-        """ Encounter with which this imaging study is associated.
-        Type `FHIRReference` referencing `['Encounter']` (represented as `dict` in JSON). """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Identifiers for the whole study",
+    )
 
-        self.endpoint = None
-        """ Study access endpoint.
-        List of `FHIRReference` items referencing `['Endpoint']` (represented as `dict` in JSON). """
+    interpreter: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="interpreter",
+        title="List of `Reference` items referencing `Practitioner, PractitionerRole` (represented as `dict` in JSON)",
+        description="Who interpreted images",
+    )
 
-        self.identifier = None
-        """ Identifiers for the whole study.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    location: fhirtypes.ReferenceType = Field(
+        None,
+        alias="location",
+        title="Type `Reference` referencing `Location` (represented as `dict` in JSON)",
+        description="Where ImagingStudy occurred",
+    )
 
-        self.interpreter = None
-        """ Who interpreted images.
-        List of `FHIRReference` items referencing `['Practitioner', 'PractitionerRole']` (represented as `dict` in JSON). """
+    modality: ListType[fhirtypes.CodingType] = Field(
+        None,
+        alias="modality",
+        title="List of `Coding` items (represented as `dict` in JSON)",
+        description="All series modality if actual acquisition modalities",
+    )
 
-        self.location = None
-        """ Where ImagingStudy occurred.
-        Type `FHIRReference` referencing `['Location']` (represented as `dict` in JSON). """
+    note: ListType[fhirtypes.AnnotationType] = Field(
+        None,
+        alias="note",
+        title="List of `Annotation` items (represented as `dict` in JSON)",
+        description="User-defined comments",
+    )
 
-        self.modality = None
-        """ All series modality if actual acquisition modalities.
-        List of `Coding` items (represented as `dict` in JSON). """
+    numberOfInstances: fhirtypes.UnsignedInt = Field(
+        None,
+        alias="numberOfInstances",
+        title="Type `UnsignedInt` (represented as `dict` in JSON)",
+        description="Number of Study Related Instances",
+    )
 
-        self.note = None
-        """ User-defined comments.
-        List of `Annotation` items (represented as `dict` in JSON). """
+    numberOfSeries: fhirtypes.UnsignedInt = Field(
+        None,
+        alias="numberOfSeries",
+        title="Type `UnsignedInt` (represented as `dict` in JSON)",
+        description="Number of Study Related Series",
+    )
 
-        self.numberOfInstances = None
-        """ Number of Study Related Instances.
-        Type `int`. """
+    procedureCode: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="procedureCode",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="The performed procedure code",
+    )
 
-        self.numberOfSeries = None
-        """ Number of Study Related Series.
-        Type `int`. """
+    procedureReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="procedureReference",
+        title="Type `Reference` referencing `Procedure` (represented as `dict` in JSON)",
+        description="The performed Procedure reference",
+    )
 
-        self.procedureCode = None
-        """ The performed procedure code.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    reasonCode: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="reasonCode",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Why the study was requested",
+    )
 
-        self.procedureReference = None
-        """ The performed Procedure reference.
-        Type `FHIRReference` referencing `['Procedure']` (represented as `dict` in JSON). """
+    reasonReference: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="reasonReference",
+        title="List of `Reference` items referencing `Condition, Observation, Media, DiagnosticReport, DocumentReference` (represented as `dict` in JSON)",
+        description="Why was study performed",
+    )
 
-        self.reasonCode = None
-        """ Why the study was requested.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    referrer: fhirtypes.ReferenceType = Field(
+        None,
+        alias="referrer",
+        title="Type `Reference` referencing `Practitioner, PractitionerRole` (represented as `dict` in JSON)",
+        description="Referring physician",
+    )
 
-        self.reasonReference = None
-        """ Why was study performed.
-        List of `FHIRReference` items referencing `['Condition', 'Observation', 'Media', 'DiagnosticReport', 'DocumentReference']` (represented as `dict` in JSON). """
+    series: ListType[fhirtypes.ImagingStudySeriesType] = Field(
+        None,
+        alias="series",
+        title="List of `ImagingStudySeries` items (represented as `dict` in JSON)",
+        description="Each study has one or more series of instances",
+    )
 
-        self.referrer = None
-        """ Referring physician.
-        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole']` (represented as `dict` in JSON). """
+    started: fhirtypes.DateTime = Field(
+        None,
+        alias="started",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="When the study was started",
+    )
 
-        self.series = None
-        """ Each study has one or more series of instances.
-        List of `ImagingStudySeries` items (represented as `dict` in JSON). """
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="registered | available | cancelled | entered-in-error | unknown",
+    )
 
-        self.started = None
-        """ When the study was started.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.status = None
-        """ registered | available | cancelled | entered-in-error | unknown.
-        Type `str`. """
-
-        self.subject = None
-        """ Who or what is the subject of the study.
-        Type `FHIRReference` referencing `['Patient', 'Device', 'Group']` (represented as `dict` in JSON). """
-
-        super(ImagingStudy, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ImagingStudy, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "basedOn",
-                    "basedOn",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                ("description", "description", str, "string", False, None, False),
-                (
-                    "encounter",
-                    "encounter",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "endpoint",
-                    "endpoint",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "interpreter",
-                    "interpreter",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "location",
-                    "location",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("modality", "modality", coding.Coding, "Coding", True, None, False),
-                (
-                    "note",
-                    "note",
-                    annotation.Annotation,
-                    "Annotation",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "numberOfInstances",
-                    "numberOfInstances",
-                    int,
-                    "unsignedInt",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "numberOfSeries",
-                    "numberOfSeries",
-                    int,
-                    "unsignedInt",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "procedureCode",
-                    "procedureCode",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "procedureReference",
-                    "procedureReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "reasonCode",
-                    "reasonCode",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "reasonReference",
-                    "reasonReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "referrer",
-                    "referrer",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "series",
-                    "series",
-                    ImagingStudySeries,
-                    "ImagingStudySeries",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "started",
-                    "started",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    None,
-                    False,
-                ),
-                ("status", "status", str, "code", False, None, True),
-                (
-                    "subject",
-                    "subject",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
+    subject: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="subject",
+        title="Type `Reference` referencing `Patient, Device, Group` (represented as `dict` in JSON)",
+        description="Who or what is the subject of the study",
+    )
 
 
 class ImagingStudySeries(backboneelement.BackboneElement):
     """ Each study has one or more series of instances.
-
     Each study has one or more series of images or other content.
     """
 
-    resource_type = "ImagingStudySeries"
+    resource_type = Field("ImagingStudySeries", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    bodySite: fhirtypes.CodingType = Field(
+        None,
+        alias="bodySite",
+        title="Type `Coding` (represented as `dict` in JSON)",
+        description="Body part examined",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    description: fhirtypes.String = Field(
+        None,
+        alias="description",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="A short human readable summary of the series",
+    )
 
-        self.bodySite = None
-        """ Body part examined.
-        Type `Coding` (represented as `dict` in JSON). """
+    endpoint: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="endpoint",
+        title="List of `Reference` items referencing `Endpoint` (represented as `dict` in JSON)",
+        description="Series access endpoint",
+    )
 
-        self.description = None
-        """ A short human readable summary of the series.
-        Type `str`. """
+    instance: ListType[fhirtypes.ImagingStudySeriesInstanceType] = Field(
+        None,
+        alias="instance",
+        title="List of `ImagingStudySeriesInstance` items (represented as `dict` in JSON)",
+        description="A single SOP instance from the series",
+    )
 
-        self.endpoint = None
-        """ Series access endpoint.
-        List of `FHIRReference` items referencing `['Endpoint']` (represented as `dict` in JSON). """
+    laterality: fhirtypes.CodingType = Field(
+        None,
+        alias="laterality",
+        title="Type `Coding` (represented as `dict` in JSON)",
+        description="Body part laterality",
+    )
 
-        self.instance = None
-        """ A single SOP instance from the series.
-        List of `ImagingStudySeriesInstance` items (represented as `dict` in JSON). """
+    modality: fhirtypes.CodingType = Field(
+        ...,
+        alias="modality",
+        title="Type `Coding` (represented as `dict` in JSON)",
+        description="The modality of the instances in the series",
+    )
 
-        self.laterality = None
-        """ Body part laterality.
-        Type `Coding` (represented as `dict` in JSON). """
+    number: fhirtypes.UnsignedInt = Field(
+        None,
+        alias="number",
+        title="Type `UnsignedInt` (represented as `dict` in JSON)",
+        description="Numeric identifier of this series",
+    )
 
-        self.modality = None
-        """ The modality of the instances in the series.
-        Type `Coding` (represented as `dict` in JSON). """
+    numberOfInstances: fhirtypes.UnsignedInt = Field(
+        None,
+        alias="numberOfInstances",
+        title="Type `UnsignedInt` (represented as `dict` in JSON)",
+        description="Number of Series Related Instances",
+    )
 
-        self.number = None
-        """ Numeric identifier of this series.
-        Type `int`. """
+    performer: ListType[fhirtypes.ImagingStudySeriesPerformerType] = Field(
+        None,
+        alias="performer",
+        title="List of `ImagingStudySeriesPerformer` items (represented as `dict` in JSON)",
+        description="Who performed the series",
+    )
 
-        self.numberOfInstances = None
-        """ Number of Series Related Instances.
-        Type `int`. """
+    specimen: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="specimen",
+        title="List of `Reference` items referencing `Specimen` (represented as `dict` in JSON)",
+        description="Specimen imaged",
+    )
 
-        self.performer = None
-        """ Who performed the series.
-        List of `ImagingStudySeriesPerformer` items (represented as `dict` in JSON). """
+    started: fhirtypes.DateTime = Field(
+        None,
+        alias="started",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="When the series started",
+    )
 
-        self.specimen = None
-        """ Specimen imaged.
-        List of `FHIRReference` items referencing `['Specimen']` (represented as `dict` in JSON). """
-
-        self.started = None
-        """ When the series started.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.uid = None
-        """ DICOM Series Instance UID for the series.
-        Type `str`. """
-
-        super(ImagingStudySeries, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ImagingStudySeries, self).elementProperties()
-        js.extend(
-            [
-                ("bodySite", "bodySite", coding.Coding, "Coding", False, None, False),
-                ("description", "description", str, "string", False, None, False),
-                (
-                    "endpoint",
-                    "endpoint",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "instance",
-                    "instance",
-                    ImagingStudySeriesInstance,
-                    "ImagingStudySeriesInstance",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "laterality",
-                    "laterality",
-                    coding.Coding,
-                    "Coding",
-                    False,
-                    None,
-                    False,
-                ),
-                ("modality", "modality", coding.Coding, "Coding", False, None, True),
-                ("number", "number", int, "unsignedInt", False, None, False),
-                (
-                    "numberOfInstances",
-                    "numberOfInstances",
-                    int,
-                    "unsignedInt",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "performer",
-                    "performer",
-                    ImagingStudySeriesPerformer,
-                    "ImagingStudySeriesPerformer",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "specimen",
-                    "specimen",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "started",
-                    "started",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    None,
-                    False,
-                ),
-                ("uid", "uid", str, "id", False, None, True),
-            ]
-        )
-        return js
+    uid: fhirtypes.Id = Field(
+        ...,
+        alias="uid",
+        title="Type `Id` (represented as `dict` in JSON)",
+        description="DICOM Series Instance UID for the series",
+    )
 
 
 class ImagingStudySeriesInstance(backboneelement.BackboneElement):
     """ A single SOP instance from the series.
-
     A single SOP instance within the series, e.g. an image, or presentation
     state.
     """
 
-    resource_type = "ImagingStudySeriesInstance"
+    resource_type = Field("ImagingStudySeriesInstance", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    number: fhirtypes.UnsignedInt = Field(
+        None,
+        alias="number",
+        title="Type `UnsignedInt` (represented as `dict` in JSON)",
+        description="The number of this instance in the series",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    sopClass: fhirtypes.CodingType = Field(
+        ...,
+        alias="sopClass",
+        title="Type `Coding` (represented as `dict` in JSON)",
+        description="DICOM class type",
+    )
 
-        self.number = None
-        """ The number of this instance in the series.
-        Type `int`. """
+    title: fhirtypes.String = Field(
+        None,
+        alias="title",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Description of instance",
+    )
 
-        self.sopClass = None
-        """ DICOM class type.
-        Type `Coding` (represented as `dict` in JSON). """
-
-        self.title = None
-        """ Description of instance.
-        Type `str`. """
-
-        self.uid = None
-        """ DICOM SOP Instance UID.
-        Type `str`. """
-
-        super(ImagingStudySeriesInstance, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ImagingStudySeriesInstance, self).elementProperties()
-        js.extend(
-            [
-                ("number", "number", int, "unsignedInt", False, None, False),
-                ("sopClass", "sopClass", coding.Coding, "Coding", False, None, True),
-                ("title", "title", str, "string", False, None, False),
-                ("uid", "uid", str, "id", False, None, True),
-            ]
-        )
-        return js
+    uid: fhirtypes.Id = Field(
+        ...,
+        alias="uid",
+        title="Type `Id` (represented as `dict` in JSON)",
+        description="DICOM SOP Instance UID",
+    )
 
 
 class ImagingStudySeriesPerformer(backboneelement.BackboneElement):
     """ Who performed the series.
-
     Indicates who or what performed the series and how they were involved.
     """
 
-    resource_type = "ImagingStudySeriesPerformer"
+    resource_type = Field("ImagingStudySeriesPerformer", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    actor: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="actor",
+        title="Type `Reference` referencing `Practitioner, PractitionerRole, Organization, CareTeam, Patient, Device, RelatedPerson` (represented as `dict` in JSON)",
+        description="Who performed the series",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.actor = None
-        """ Who performed the series.
-        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'Organization', 'CareTeam', 'Patient', 'Device', 'RelatedPerson']` (represented as `dict` in JSON). """
-
-        self.function = None
-        """ Type of performance.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(ImagingStudySeriesPerformer, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ImagingStudySeriesPerformer, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "actor",
-                    "actor",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "function",
-                    "function",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import annotation
-except ImportError:
-    annotation = sys.modules[__package__ + ".annotation"]
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import coding
-except ImportError:
-    coding = sys.modules[__package__ + ".coding"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
+    function: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="function",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Type of performance",
+    )

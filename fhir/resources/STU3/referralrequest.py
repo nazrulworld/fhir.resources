@@ -6,400 +6,252 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from typing import Any, Dict
+from typing import List as ListType
 
+from pydantic import Field, root_validator
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class ReferralRequest(domainresource.DomainResource):
     """ A request for referral or transfer of care.
-
     Used to record and send details about a request for referral service or
     transfer of a patient to the care of another provider or provider
     organization.
     """
 
-    resource_type = "ReferralRequest"
+    resource_type = Field("ReferralRequest", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    authoredOn: fhirtypes.DateTime = Field(
+        None,
+        alias="authoredOn",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Date of creation/activation",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    basedOn: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="basedOn",
+        title="List of `Reference` items referencing `ReferralRequest, CarePlan, ProcedureRequest` (represented as `dict` in JSON)",
+        description="Request fulfilled by this request",
+    )
+
+    context: fhirtypes.ReferenceType = Field(
+        None,
+        alias="context",
+        title="Type `Reference` referencing `Encounter, EpisodeOfCare` (represented as `dict` in JSON)",
+        description="Originating encounter",
+    )
+
+    definition: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="definition",
+        title="List of `Reference` items referencing `ActivityDefinition, PlanDefinition` (represented as `dict` in JSON)",
+        description="Instantiates protocol or definition",
+    )
+
+    description: fhirtypes.String = Field(
+        None,
+        alias="description",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="A textual description of the referral",
+    )
+
+    groupIdentifier: fhirtypes.IdentifierType = Field(
+        None,
+        alias="groupIdentifier",
+        title="Type `Identifier` (represented as `dict` in JSON)",
+        description="Composite request this is part of",
+    )
+
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Business identifier",
+    )
+
+    intent: fhirtypes.Code = Field(
+        ...,
+        alias="intent",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="proposal | plan | order",
+    )
+
+    note: ListType[fhirtypes.AnnotationType] = Field(
+        None,
+        alias="note",
+        title="List of `Annotation` items (represented as `dict` in JSON)",
+        description="Comments made about referral request",
+    )
+
+    occurrenceDateTime: fhirtypes.DateTime = Field(
+        None,
+        alias="occurrenceDateTime",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="When the service(s) requested in the referral should occur",
+        one_of_many="occurrence",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    occurrencePeriod: fhirtypes.PeriodType = Field(
+        None,
+        alias="occurrencePeriod",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="When the service(s) requested in the referral should occur",
+        one_of_many="occurrence",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    priority: fhirtypes.Code = Field(
+        None,
+        alias="priority",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="Urgency of referral / transfer of care request",
+    )
+
+    reasonCode: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="reasonCode",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Reason for referral / transfer of care request",
+    )
+
+    reasonReference: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="reasonReference",
+        title="List of `Reference` items referencing `Condition, Observation` (represented as `dict` in JSON)",
+        description="Why is service needed?",
+    )
+
+    recipient: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="recipient",
+        title="List of `Reference` items referencing `Practitioner, Organization, HealthcareService` (represented as `dict` in JSON)",
+        description="Receiver of referral / transfer of care request",
+    )
+
+    relevantHistory: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="relevantHistory",
+        title="List of `Reference` items referencing `Provenance` (represented as `dict` in JSON)",
+        description="Key events in history of request",
+    )
+
+    replaces: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="replaces",
+        title="List of `Reference` items referencing `ReferralRequest` (represented as `dict` in JSON)",
+        description="Request(s) replaced by this request",
+    )
+
+    requester: fhirtypes.ReferralRequestRequesterType = Field(
+        None,
+        alias="requester",
+        title="Type `ReferralRequestRequester` (represented as `dict` in JSON)",
+        description="Who/what is requesting service",
+    )
+
+    serviceRequested: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="serviceRequested",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Actions requested as part of the referral",
+    )
+
+    specialty: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="specialty",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The clinical specialty (discipline) that the referral is requested for",
+    )
+
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="draft | active | suspended | cancelled | completed | entered-in-error | unknown",
+    )
+
+    subject: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="subject",
+        title="Type `Reference` referencing `Patient, Group` (represented as `dict` in JSON)",
+        description="Patient referred to care or transfer",
+    )
+
+    supportingInfo: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="supportingInfo",
+        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        description="Additonal information to support referral or transfer of care request",
+    )
+
+    type: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Referral/Transition of care request type",
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "occurrence": ["occurrenceDateTime", "occurrencePeriod",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.authoredOn = None
-        """ Date of creation/activation.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.basedOn = None
-        """ Request fulfilled by this request.
-        List of `FHIRReference` items referencing `['ReferralRequest'], ['CarePlan'], ['ProcedureRequest']` (represented as `dict` in JSON). """
-
-        self.context = None
-        """ Originating encounter.
-        Type `FHIRReference` referencing `['Encounter'], ['EpisodeOfCare']` (represented as `dict` in JSON). """
-
-        self.definition = None
-        """ Instantiates protocol or definition.
-        List of `FHIRReference` items referencing `['ActivityDefinition'], ['PlanDefinition']` (represented as `dict` in JSON). """
-
-        self.description = None
-        """ A textual description of the referral.
-        Type `str`. """
-
-        self.groupIdentifier = None
-        """ Composite request this is part of.
-        Type `Identifier` (represented as `dict` in JSON). """
-
-        self.identifier = None
-        """ Business identifier.
-        List of `Identifier` items (represented as `dict` in JSON). """
-
-        self.intent = None
-        """ proposal | plan | order.
-        Type `str`. """
-
-        self.note = None
-        """ Comments made about referral request.
-        List of `Annotation` items (represented as `dict` in JSON). """
-
-        self.occurrenceDateTime = None
-        """ When the service(s) requested in the referral should occur.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.occurrencePeriod = None
-        """ When the service(s) requested in the referral should occur.
-        Type `Period` (represented as `dict` in JSON). """
-
-        self.priority = None
-        """ Urgency of referral / transfer of care request.
-        Type `str`. """
-
-        self.reasonCode = None
-        """ Reason for referral / transfer of care request.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.reasonReference = None
-        """ Why is service needed?.
-        List of `FHIRReference` items referencing `['Condition'], ['Observation']` (represented as `dict` in JSON). """
-
-        self.recipient = None
-        """ Receiver of referral / transfer of care request.
-        List of `FHIRReference` items referencing `['Practitioner'], ['Organization'], ['HealthcareService']` (represented as `dict` in JSON). """
-
-        self.relevantHistory = None
-        """ Key events in history of request.
-        List of `FHIRReference` items referencing `['Provenance']` (represented as `dict` in JSON). """
-
-        self.replaces = None
-        """ Request(s) replaced by this request.
-        List of `FHIRReference` items referencing `['ReferralRequest']` (represented as `dict` in JSON). """
-
-        self.requester = None
-        """ Who/what is requesting service.
-        Type `ReferralRequestRequester` (represented as `dict` in JSON). """
-
-        self.serviceRequested = None
-        """ Actions requested as part of the referral.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.specialty = None
-        """ The clinical specialty (discipline) that the referral is requested
-        for.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.status = None
-        """ draft | active | suspended | cancelled | completed | entered-in-
-        error | unknown.
-        Type `str`. """
-
-        self.subject = None
-        """ Patient referred to care or transfer.
-        Type `FHIRReference` referencing `['Patient'], ['Group']` (represented as `dict` in JSON). """
-
-        self.supportingInfo = None
-        """ Additonal information to support referral or transfer of care
-        request.
-        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
-
-        self.type = None
-        """ Referral/Transition of care request type.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(ReferralRequest, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ReferralRequest, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "authoredOn",
-                    "authoredOn",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "basedOn",
-                    "basedOn",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "context",
-                    "context",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "definition",
-                    "definition",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                ("description", "description", str, "string", False, None, False),
-                (
-                    "groupIdentifier",
-                    "groupIdentifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                ("intent", "intent", str, "code", False, None, True),
-                (
-                    "note",
-                    "note",
-                    annotation.Annotation,
-                    "Annotation",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "occurrenceDateTime",
-                    "occurrenceDateTime",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    "occurrence",
-                    False,
-                ),
-                (
-                    "occurrencePeriod",
-                    "occurrencePeriod",
-                    period.Period,
-                    "Period",
-                    False,
-                    "occurrence",
-                    False,
-                ),
-                ("priority", "priority", str, "code", False, None, False),
-                (
-                    "reasonCode",
-                    "reasonCode",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "reasonReference",
-                    "reasonReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "recipient",
-                    "recipient",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "relevantHistory",
-                    "relevantHistory",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "replaces",
-                    "replaces",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "requester",
-                    "requester",
-                    ReferralRequestRequester,
-                    "ReferralRequestRequester",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "serviceRequested",
-                    "serviceRequested",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "specialty",
-                    "specialty",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("status", "status", str, "code", False, None, True),
-                (
-                    "subject",
-                    "subject",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "supportingInfo",
-                    "supportingInfo",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+        return values
 
 
 class ReferralRequestRequester(backboneelement.BackboneElement):
     """ Who/what is requesting service.
-
     The individual who initiated the request and has responsibility for its
     activation.
     """
 
-    resource_type = "ReferralRequestRequester"
+    resource_type = Field("ReferralRequestRequester", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    agent: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="agent",
+        title="Type `Reference` referencing `Practitioner, Organization, Patient, RelatedPerson, Device` (represented as `dict` in JSON)",
+        description="Individual making the request",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.agent = None
-        """ Individual making the request.
-        Type `FHIRReference` referencing `['Practitioner'], ['Organization'], ['Patient'], ['RelatedPerson'], ['Device']` (represented as `dict` in JSON). """
-
-        self.onBehalfOf = None
-        """ Organization agent is acting for.
-        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
-
-        super(ReferralRequestRequester, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ReferralRequestRequester, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "agent",
-                    "agent",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "onBehalfOf",
-                    "onBehalfOf",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import annotation
-except ImportError:
-    annotation = sys.modules[__package__ + ".annotation"]
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import period
-except ImportError:
-    period = sys.modules[__package__ + ".period"]
+    onBehalfOf: fhirtypes.ReferenceType = Field(
+        None,
+        alias="onBehalfOf",
+        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        description="Organization agent is acting for",
+    )

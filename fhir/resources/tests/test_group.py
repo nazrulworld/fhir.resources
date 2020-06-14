@@ -6,208 +6,187 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import group
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class GroupTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("Group", js["resourceType"])
-        return group.Group(js)
+def impl_group_1(inst):
+    assert inst.actual is True
+    assert inst.characteristic[0].code.text == "gender"
+    assert inst.characteristic[0].exclude is False
+    assert inst.characteristic[0].valueCodeableConcept.text == "mixed"
+    assert inst.characteristic[1].code.text == "owner"
+    assert inst.characteristic[1].exclude is False
+    assert inst.characteristic[1].valueCodeableConcept.text == "John Smith"
+    assert inst.code.text == "Horse"
+    assert inst.id == "101"
+    assert (
+        inst.identifier[0].system
+        == "http://someveterinarianclinic.org/fhir/NamingSystem/herds"
+    )
+    assert inst.identifier[0].value == "12345"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.name == "John's herd"
+    assert inst.quantity == 25
+    assert inst.text.status == "additional"
+    assert inst.type == "animal"
 
-    def testGroup1(self):
-        inst = self.instantiate_from("group-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Group instance")
-        self.implGroup1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("Group", js["resourceType"])
-        inst2 = group.Group(js)
-        self.implGroup1(inst2)
+def test_group_1(base_settings):
+    """No. 1 tests collection for Group.
+    Test File: group-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "group-example.json"
+    inst = group.Group.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Group" == inst.resource_type
 
-    def implGroup1(self, inst):
-        self.assertTrue(inst.actual)
-        self.assertEqual(
-            force_bytes(inst.characteristic[0].code.text), force_bytes("gender")
-        )
-        self.assertFalse(inst.characteristic[0].exclude)
-        self.assertEqual(
-            force_bytes(inst.characteristic[0].valueCodeableConcept.text),
-            force_bytes("mixed"),
-        )
-        self.assertEqual(
-            force_bytes(inst.characteristic[1].code.text), force_bytes("owner")
-        )
-        self.assertFalse(inst.characteristic[1].exclude)
-        self.assertEqual(
-            force_bytes(inst.characteristic[1].valueCodeableConcept.text),
-            force_bytes("John Smith"),
-        )
-        self.assertEqual(force_bytes(inst.code.text), force_bytes("Horse"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("101"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://someveterinarianclinic.org/fhir/NamingSystem/herds"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("12345"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.name), force_bytes("John's herd"))
-        self.assertEqual(inst.quantity, 25)
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("additional"))
-        self.assertEqual(force_bytes(inst.type), force_bytes("animal"))
+    impl_group_1(inst)
 
-    def testGroup2(self):
-        inst = self.instantiate_from("group-example-member.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Group instance")
-        self.implGroup2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Group" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("Group", js["resourceType"])
-        inst2 = group.Group(js)
-        self.implGroup2(inst2)
+    inst2 = group.Group(**data)
+    impl_group_1(inst2)
 
-    def implGroup2(self, inst):
-        self.assertTrue(inst.actual)
-        self.assertEqual(force_bytes(inst.id), force_bytes("102"))
-        self.assertEqual(inst.member[0].period.start.date, FHIRDate("2014-10-08").date)
-        self.assertEqual(inst.member[0].period.start.as_json(), "2014-10-08")
-        self.assertTrue(inst.member[1].inactive)
-        self.assertEqual(inst.member[1].period.start.date, FHIRDate("2015-04-02").date)
-        self.assertEqual(inst.member[1].period.start.as_json(), "2015-04-02")
-        self.assertEqual(inst.member[2].period.start.date, FHIRDate("2015-08-06").date)
-        self.assertEqual(inst.member[2].period.start.as_json(), "2015-08-06")
-        self.assertEqual(inst.member[3].period.start.date, FHIRDate("2015-08-06").date)
-        self.assertEqual(inst.member[3].period.start.as_json(), "2015-08-06")
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("additional"))
-        self.assertEqual(force_bytes(inst.type), force_bytes("person"))
 
-    def testGroup3(self):
-        inst = self.instantiate_from("group-example-patientlist.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Group instance")
-        self.implGroup3(inst)
+def impl_group_2(inst):
+    assert inst.actual is True
+    assert inst.id == "102"
+    assert inst.member[0].entity.reference == "Patient/pat1"
+    assert inst.member[0].period.start == fhirtypes.DateTime.validate(
+        "2014-10-08T09:23:00+10:00"
+    )
+    assert inst.member[1].entity.reference == "Patient/pat2"
+    assert inst.member[1].inactive is True
+    assert inst.member[1].period.start == fhirtypes.DateTime.validate(
+        "2015-04-02T09:23:00+10:00"
+    )
+    assert inst.member[2].entity.reference == "Patient/pat3"
+    assert inst.member[2].period.start == fhirtypes.DateTime.validate(
+        "2015-08-06T09:23:00+10:00"
+    )
+    assert inst.member[3].entity.reference == "Patient/pat4"
+    assert inst.member[3].period.start == fhirtypes.DateTime.validate(
+        "2015-08-06T09:23:00+10:00"
+    )
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.text.status == "additional"
+    assert inst.type == "person"
 
-        js = inst.as_json()
-        self.assertEqual("Group", js["resourceType"])
-        inst2 = group.Group(js)
-        self.implGroup3(inst2)
 
-    def implGroup3(self, inst):
-        self.assertTrue(inst.actual)
-        self.assertEqual(
-            force_bytes(inst.characteristic[0].code.coding[0].code),
-            force_bytes("attributed-to"),
-        )
-        self.assertEqual(
-            force_bytes(inst.characteristic[0].code.coding[0].system),
-            force_bytes("http://example.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.characteristic[0].code.text),
-            force_bytes("Patients primarily attributed to"),
-        )
-        self.assertFalse(inst.characteristic[0].exclude)
-        self.assertEqual(force_bytes(inst.id), force_bytes("example-patientlist"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("additional"))
-        self.assertEqual(force_bytes(inst.type), force_bytes("person"))
+def test_group_2(base_settings):
+    """No. 2 tests collection for Group.
+    Test File: group-example-member.json
+    """
+    filename = base_settings["unittest_data_dir"] / "group-example-member.json"
+    inst = group.Group.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Group" == inst.resource_type
 
-    def testGroup4(self):
-        inst = self.instantiate_from("group-example-herd1.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Group instance")
-        self.implGroup4(inst)
+    impl_group_2(inst)
 
-        js = inst.as_json()
-        self.assertEqual("Group", js["resourceType"])
-        inst2 = group.Group(js)
-        self.implGroup4(inst2)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Group" == data["resourceType"]
 
-    def implGroup4(self, inst):
-        self.assertTrue(inst.active)
-        self.assertTrue(inst.actual)
-        self.assertEqual(
-            force_bytes(inst.characteristic[0].code.text), force_bytes("gender")
-        )
-        self.assertFalse(inst.characteristic[0].exclude)
-        self.assertEqual(
-            force_bytes(inst.characteristic[0].valueCodeableConcept.text),
-            force_bytes("female"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].code), force_bytes("388393002")
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].display),
-            force_bytes("Genus Sus (organism)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.code.coding[1].code), force_bytes("POR"))
-        self.assertEqual(
-            force_bytes(inst.code.coding[1].display), force_bytes("porcine")
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[1].system),
-            force_bytes("https://www.aphis.usda.gov"),
-        )
-        self.assertEqual(force_bytes(inst.code.text), force_bytes("Porcine"))
-        self.assertEqual(
-            force_bytes(inst.extension[0].url),
-            force_bytes("http://example.org/fhir/StructureDefinition/owner"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("herd1"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("https://vetmed.iastate.edu/vdl"),
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].value), force_bytes("20171120-1234")
-        )
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.name), force_bytes("Breeding herd"))
-        self.assertEqual(inst.quantity, 2500)
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type), force_bytes("animal"))
+    inst2 = group.Group(**data)
+    impl_group_2(inst2)
+
+
+def impl_group_3(inst):
+    assert inst.actual is True
+    assert inst.characteristic[0].code.coding[0].code == "attributed-to"
+    assert inst.characteristic[0].code.coding[0].system == "http://example.org"
+    assert inst.characteristic[0].code.text == "Patients primarily attributed to"
+    assert inst.characteristic[0].exclude is False
+    assert inst.characteristic[0].valueReference.reference == "Practitioner/123"
+    assert inst.id == "example-patientlist"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.text.status == "additional"
+    assert inst.type == "person"
+
+
+def test_group_3(base_settings):
+    """No. 3 tests collection for Group.
+    Test File: group-example-patientlist.json
+    """
+    filename = base_settings["unittest_data_dir"] / "group-example-patientlist.json"
+    inst = group.Group.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Group" == inst.resource_type
+
+    impl_group_3(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Group" == data["resourceType"]
+
+    inst2 = group.Group(**data)
+    impl_group_3(inst2)
+
+
+def impl_group_4(inst):
+    assert inst.active is True
+    assert inst.actual is True
+    assert inst.characteristic[0].code.text == "gender"
+    assert inst.characteristic[0].exclude is False
+    assert inst.characteristic[0].valueCodeableConcept.text == "female"
+    assert inst.code.coding[0].code == "388393002"
+    assert inst.code.coding[0].display == "Genus Sus (organism)"
+    assert inst.code.coding[0].system == "http://snomed.info/sct"
+    assert inst.code.coding[1].code == "POR"
+    assert inst.code.coding[1].display == "porcine"
+    assert inst.code.coding[1].system == "https://www.aphis.usda.gov"
+    assert inst.code.text == "Porcine"
+    assert inst.extension[0].url == "http://example.org/fhir/StructureDefinition/owner"
+    assert inst.extension[0].valueReference.display == "Peter Chalmers"
+    assert inst.extension[0].valueReference.reference == "RelatedPerson/peter"
+    assert inst.id == "herd1"
+    assert inst.identifier[0].system == "https://vetmed.iastate.edu/vdl"
+    assert inst.identifier[0].value == "20171120-1234"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.name == "Breeding herd"
+    assert inst.quantity == 2500
+    assert inst.text.status == "generated"
+    assert inst.type == "animal"
+
+
+def test_group_4(base_settings):
+    """No. 4 tests collection for Group.
+    Test File: group-example-herd1.json
+    """
+    filename = base_settings["unittest_data_dir"] / "group-example-herd1.json"
+    inst = group.Group.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Group" == inst.resource_type
+
+    impl_group_4(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Group" == data["resourceType"]
+
+    inst2 = group.Group(**data)
+    impl_group_4(inst2)

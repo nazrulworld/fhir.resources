@@ -6,70 +6,47 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import adverseevent
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class AdverseEventTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("AdverseEvent", js["resourceType"])
-        return adverseevent.AdverseEvent(js)
+def impl_adverseevent_1(inst):
+    assert inst.category == "AE"
+    assert inst.date == fhirtypes.DateTime.validate("2017-01-29T12:34:56+00:00")
+    assert inst.description == "This was a mild rash on the left forearm"
+    assert inst.id == "example"
+    assert inst.identifier.system == "http://acme.com/ids/patients/risks"
+    assert inst.identifier.value == "49476534"
+    assert inst.recorder.reference == "Practitioner/example"
+    assert inst.seriousness.coding[0].code == "Mild"
+    assert inst.seriousness.coding[0].display == "Mild"
+    assert (
+        inst.seriousness.coding[0].system
+        == "http://hl7.org/fhir/adverse-event-seriousness"
+    )
+    assert inst.subject.reference == "Patient/example"
+    assert inst.suspectEntity[0].instance.reference == "Medication/example"
+    assert inst.text.status == "generated"
+    assert inst.type.coding[0].code == "304386008"
+    assert inst.type.coding[0].display == "O/E - itchy rash"
+    assert inst.type.coding[0].system == "http://snomed.info/sct"
 
-    def testAdverseEvent1(self):
-        inst = self.instantiate_from("adverseevent-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a AdverseEvent instance")
-        self.implAdverseEvent1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("AdverseEvent", js["resourceType"])
-        inst2 = adverseevent.AdverseEvent(js)
-        self.implAdverseEvent1(inst2)
+def test_adverseevent_1(base_settings):
+    """No. 1 tests collection for AdverseEvent.
+    Test File: adverseevent-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "adverseevent-example.json"
+    inst = adverseevent.AdverseEvent.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "AdverseEvent" == inst.resource_type
 
-    def implAdverseEvent1(self, inst):
-        self.assertEqual(force_bytes(inst.category), force_bytes("AE"))
-        self.assertEqual(inst.date.date, FHIRDate("2017-01-29T12:34:56+00:00").date)
-        self.assertEqual(inst.date.as_json(), "2017-01-29T12:34:56+00:00")
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes("This was a mild rash on the left forearm"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(
-            force_bytes(inst.identifier.system),
-            force_bytes("http://acme.com/ids/patients/risks"),
-        )
-        self.assertEqual(force_bytes(inst.identifier.value), force_bytes("49476534"))
-        self.assertEqual(
-            force_bytes(inst.seriousness.coding[0].code), force_bytes("Mild")
-        )
-        self.assertEqual(
-            force_bytes(inst.seriousness.coding[0].display), force_bytes("Mild")
-        )
-        self.assertEqual(
-            force_bytes(inst.seriousness.coding[0].system),
-            force_bytes("http://hl7.org/fhir/adverse-event-seriousness"),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].code), force_bytes("304386008")
-        )
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].display), force_bytes("O/E - itchy rash")
-        )
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
+    impl_adverseevent_1(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "AdverseEvent" == data["resourceType"]
+
+    inst2 = adverseevent.AdverseEvent(**data)
+    impl_adverseevent_1(inst2)

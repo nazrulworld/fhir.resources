@@ -6,85 +6,60 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import element
+from . import element, fhirtypes
 
 
 class Meta(element.Element):
     """ Metadata about a resource.
-
     The metadata about a resource. This is content in the resource that is
     maintained by the infrastructure. Changes to the content might not always
     be associated with version changes to the resource.
     """
 
-    resource_type = "Meta"
+    resource_type = Field("Meta", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    lastUpdated: fhirtypes.Instant = Field(
+        None,
+        alias="lastUpdated",
+        title="Type `Instant` (represented as `dict` in JSON)",
+        description="When the resource version last changed",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    profile: ListType[fhirtypes.Canonical] = Field(
+        None,
+        alias="profile",
+        title="List of `Canonical` items referencing `StructureDefinition` (represented as `dict` in JSON)",
+        description="Profiles this resource claims to conform to",
+    )
 
-        self.lastUpdated = None
-        """ When the resource version last changed.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    security: ListType[fhirtypes.CodingType] = Field(
+        None,
+        alias="security",
+        title="List of `Coding` items (represented as `dict` in JSON)",
+        description="Security Labels applied to this resource",
+    )
 
-        self.profile = None
-        """ Profiles this resource claims to conform to.
-        List of `str` items referencing `['StructureDefinition']`. """
+    source: fhirtypes.Uri = Field(
+        None,
+        alias="source",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Identifies where the resource comes from",
+    )
 
-        self.security = None
-        """ Security Labels applied to this resource.
-        List of `Coding` items (represented as `dict` in JSON). """
+    tag: ListType[fhirtypes.CodingType] = Field(
+        None,
+        alias="tag",
+        title="List of `Coding` items (represented as `dict` in JSON)",
+        description="Tags applied to this resource",
+    )
 
-        self.source = None
-        """ Identifies where the resource comes from.
-        Type `str`. """
-
-        self.tag = None
-        """ Tags applied to this resource.
-        List of `Coding` items (represented as `dict` in JSON). """
-
-        self.versionId = None
-        """ Version specific identifier.
-        Type `str`. """
-
-        super(Meta, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(Meta, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "lastUpdated",
-                    "lastUpdated",
-                    fhirdate.FHIRDate,
-                    "instant",
-                    False,
-                    None,
-                    False,
-                ),
-                ("profile", "profile", str, "canonical", True, None, False),
-                ("security", "security", coding.Coding, "Coding", True, None, False),
-                ("source", "source", str, "uri", False, None, False),
-                ("tag", "tag", coding.Coding, "Coding", True, None, False),
-                ("versionId", "versionId", str, "id", False, None, False),
-            ]
-        )
-        return js
-
-
-try:
-    from . import coding
-except ImportError:
-    coding = sys.modules[__package__ + ".coding"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
+    versionId: fhirtypes.Id = Field(
+        None,
+        alias="versionId",
+        title="Type `Id` (represented as `dict` in JSON)",
+        description="Version specific identifier",
+    )

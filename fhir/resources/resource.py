@@ -6,61 +6,42 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic import Field
+
+from . import fhirresourcemodel, fhirtypes
 
 
-import sys
-
-from . import fhirabstractresource
-
-
-class Resource(fhirabstractresource.FHIRAbstractResource):
+class Resource(fhirresourcemodel.FHIRResourceModel):
     """ Base Resource.
-
     This is the base resource type for everything.
     """
 
-    resource_type = "Resource"
+    resource_type = Field("Resource", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    id: fhirtypes.String = Field(
+        None,
+        alias="id",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Logical id of this artifact",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    implicitRules: fhirtypes.Uri = Field(
+        None,
+        alias="implicitRules",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="A set of rules under which this content was created",
+    )
 
-        self.id = None
-        """ Logical id of this artifact.
-        Type `str`. """
+    language: fhirtypes.Code = Field(
+        None,
+        alias="language",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="Language of the resource content",
+    )
 
-        self.implicitRules = None
-        """ A set of rules under which this content was created.
-        Type `str`. """
-
-        self.language = None
-        """ Language of the resource content.
-        Type `str`. """
-
-        self.meta = None
-        """ Metadata about the resource.
-        Type `Meta` (represented as `dict` in JSON). """
-
-        super(Resource, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(Resource, self).elementProperties()
-        js.extend(
-            [
-                ("id", "id", str, "string", False, None, False),
-                ("implicitRules", "implicitRules", str, "uri", False, None, False),
-                ("language", "language", str, "code", False, None, False),
-                ("meta", "meta", meta.Meta, "Meta", False, None, False),
-            ]
-        )
-        return js
-
-
-try:
-    from . import meta
-except ImportError:
-    meta = sys.modules[__package__ + ".meta"]
+    meta: fhirtypes.MetaType = Field(
+        None,
+        alias="meta",
+        title="Type `Meta` (represented as `dict` in JSON)",
+        description="Metadata about the resource",
+    )

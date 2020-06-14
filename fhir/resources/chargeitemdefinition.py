@@ -6,17 +6,16 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class ChargeItemDefinition(domainresource.DomainResource):
     """ Definition of properties and rules about how the price and the
     applicability of a ChargeItem can be determined.
-
     The ChargeItemDefinition resource provides the properties that apply to the
     (billing) codes necessary to calculate costs and prices. The properties may
     differ largely depending on type and realm, therefore this resource gives
@@ -24,337 +23,227 @@ class ChargeItemDefinition(domainresource.DomainResource):
     system.
     """
 
-    resource_type = "ChargeItemDefinition"
+    resource_type = Field("ChargeItemDefinition", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    applicability: ListType[fhirtypes.ChargeItemDefinitionApplicabilityType] = Field(
+        None,
+        alias="applicability",
+        title="List of `ChargeItemDefinitionApplicability` items (represented as `dict` in JSON)",
+        description="Whether or not the billing code is applicable",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    approvalDate: fhirtypes.Date = Field(
+        None,
+        alias="approvalDate",
+        title="Type `Date` (represented as `dict` in JSON)",
+        description="When the charge item definition was approved by publisher",
+    )
 
-        self.applicability = None
-        """ Whether or not the billing code is applicable.
-        List of `ChargeItemDefinitionApplicability` items (represented as `dict` in JSON). """
+    code: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="code",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Billing codes or product types this definition applies to",
+    )
 
-        self.approvalDate = None
-        """ When the charge item definition was approved by publisher.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    contact: ListType[fhirtypes.ContactDetailType] = Field(
+        None,
+        alias="contact",
+        title="List of `ContactDetail` items (represented as `dict` in JSON)",
+        description="Contact details for the publisher",
+    )
 
-        self.code = None
-        """ Billing codes or product types this definition applies to.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    copyright: fhirtypes.Markdown = Field(
+        None,
+        alias="copyright",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Use and/or publishing restrictions",
+    )
 
-        self.contact = None
-        """ Contact details for the publisher.
-        List of `ContactDetail` items (represented as `dict` in JSON). """
+    date: fhirtypes.DateTime = Field(
+        None,
+        alias="date",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Date last changed",
+    )
 
-        self.copyright = None
-        """ Use and/or publishing restrictions.
-        Type `str`. """
+    derivedFromUri: ListType[fhirtypes.Uri] = Field(
+        None,
+        alias="derivedFromUri",
+        title="List of `Uri` items (represented as `dict` in JSON)",
+        description="Underlying externally-defined charge item definition",
+    )
 
-        self.date = None
-        """ Date last changed.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    description: fhirtypes.Markdown = Field(
+        None,
+        alias="description",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Natural language description of the charge item definition",
+    )
 
-        self.derivedFromUri = None
-        """ Underlying externally-defined charge item definition.
-        List of `str` items. """
+    effectivePeriod: fhirtypes.PeriodType = Field(
+        None,
+        alias="effectivePeriod",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="When the charge item definition is expected to be used",
+    )
 
-        self.description = None
-        """ Natural language description of the charge item definition.
-        Type `str`. """
+    experimental: bool = Field(
+        None,
+        alias="experimental",
+        title="Type `bool`",
+        description="For testing purposes, not real usage",
+    )
 
-        self.effectivePeriod = None
-        """ When the charge item definition is expected to be used.
-        Type `Period` (represented as `dict` in JSON). """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Additional identifier for the charge item definition",
+    )
 
-        self.experimental = None
-        """ For testing purposes, not real usage.
-        Type `bool`. """
+    instance: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="instance",
+        title="List of `Reference` items referencing `Medication, Substance, Device` (represented as `dict` in JSON)",
+        description="Instances this definition applies to",
+    )
 
-        self.identifier = None
-        """ Additional identifier for the charge item definition.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="jurisdiction",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Intended jurisdiction for charge item definition (if applicable)",
+    )
 
-        self.instance = None
-        """ Instances this definition applies to.
-        List of `FHIRReference` items referencing `['Medication', 'Substance', 'Device']` (represented as `dict` in JSON). """
+    lastReviewDate: fhirtypes.Date = Field(
+        None,
+        alias="lastReviewDate",
+        title="Type `Date` (represented as `dict` in JSON)",
+        description="When the charge item definition was last reviewed",
+    )
 
-        self.jurisdiction = None
-        """ Intended jurisdiction for charge item definition (if applicable).
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    partOf: ListType[fhirtypes.Canonical] = Field(
+        None,
+        alias="partOf",
+        title="List of `Canonical` items referencing `ChargeItemDefinition` (represented as `dict` in JSON)",
+        description="A larger definition of which this particular definition is a component or step",
+    )
 
-        self.lastReviewDate = None
-        """ When the charge item definition was last reviewed.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    propertyGroup: ListType[fhirtypes.ChargeItemDefinitionPropertyGroupType] = Field(
+        None,
+        alias="propertyGroup",
+        title="List of `ChargeItemDefinitionPropertyGroup` items (represented as `dict` in JSON)",
+        description="Group of properties which are applicable under the same conditions",
+    )
 
-        self.partOf = None
-        """ A larger definition of which this particular definition is a
-        component or step.
-        List of `str` items referencing `['ChargeItemDefinition']`. """
+    publisher: fhirtypes.String = Field(
+        None,
+        alias="publisher",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name of the publisher (organization or individual)",
+    )
 
-        self.propertyGroup = None
-        """ Group of properties which are applicable under the same conditions.
-        List of `ChargeItemDefinitionPropertyGroup` items (represented as `dict` in JSON). """
+    replaces: ListType[fhirtypes.Canonical] = Field(
+        None,
+        alias="replaces",
+        title="List of `Canonical` items referencing `ChargeItemDefinition` (represented as `dict` in JSON)",
+        description="Completed or terminated request(s) whose function is taken by this new request",
+    )
 
-        self.publisher = None
-        """ Name of the publisher (organization or individual).
-        Type `str`. """
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="draft | active | retired | unknown",
+    )
 
-        self.replaces = None
-        """ Completed or terminated request(s) whose function is taken by this
-        new request.
-        List of `str` items referencing `['ChargeItemDefinition']`. """
+    title: fhirtypes.String = Field(
+        None,
+        alias="title",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name for this charge item definition (human friendly)",
+    )
 
-        self.status = None
-        """ draft | active | retired | unknown.
-        Type `str`. """
+    url: fhirtypes.Uri = Field(
+        ...,
+        alias="url",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Canonical identifier for this charge item definition, represented as a URI (globally unique)",
+    )
 
-        self.title = None
-        """ Name for this charge item definition (human friendly).
-        Type `str`. """
+    useContext: ListType[fhirtypes.UsageContextType] = Field(
+        None,
+        alias="useContext",
+        title="List of `UsageContext` items (represented as `dict` in JSON)",
+        description="The context that the content is intended to support",
+    )
 
-        self.url = None
-        """ Canonical identifier for this charge item definition, represented
-        as a URI (globally unique).
-        Type `str`. """
-
-        self.useContext = None
-        """ The context that the content is intended to support.
-        List of `UsageContext` items (represented as `dict` in JSON). """
-
-        self.version = None
-        """ Business version of the charge item definition.
-        Type `str`. """
-
-        super(ChargeItemDefinition, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ChargeItemDefinition, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "applicability",
-                    "applicability",
-                    ChargeItemDefinitionApplicability,
-                    "ChargeItemDefinitionApplicability",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "approvalDate",
-                    "approvalDate",
-                    fhirdate.FHIRDate,
-                    "date",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "code",
-                    "code",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "contact",
-                    "contact",
-                    contactdetail.ContactDetail,
-                    "ContactDetail",
-                    True,
-                    None,
-                    False,
-                ),
-                ("copyright", "copyright", str, "markdown", False, None, False),
-                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-                ("derivedFromUri", "derivedFromUri", str, "uri", True, None, False),
-                ("description", "description", str, "markdown", False, None, False),
-                (
-                    "effectivePeriod",
-                    "effectivePeriod",
-                    period.Period,
-                    "Period",
-                    False,
-                    None,
-                    False,
-                ),
-                ("experimental", "experimental", bool, "boolean", False, None, False),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "instance",
-                    "instance",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "jurisdiction",
-                    "jurisdiction",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "lastReviewDate",
-                    "lastReviewDate",
-                    fhirdate.FHIRDate,
-                    "date",
-                    False,
-                    None,
-                    False,
-                ),
-                ("partOf", "partOf", str, "canonical", True, None, False),
-                (
-                    "propertyGroup",
-                    "propertyGroup",
-                    ChargeItemDefinitionPropertyGroup,
-                    "ChargeItemDefinitionPropertyGroup",
-                    True,
-                    None,
-                    False,
-                ),
-                ("publisher", "publisher", str, "string", False, None, False),
-                ("replaces", "replaces", str, "canonical", True, None, False),
-                ("status", "status", str, "code", False, None, True),
-                ("title", "title", str, "string", False, None, False),
-                ("url", "url", str, "uri", False, None, True),
-                (
-                    "useContext",
-                    "useContext",
-                    usagecontext.UsageContext,
-                    "UsageContext",
-                    True,
-                    None,
-                    False,
-                ),
-                ("version", "version", str, "string", False, None, False),
-            ]
-        )
-        return js
+    version: fhirtypes.String = Field(
+        None,
+        alias="version",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Business version of the charge item definition",
+    )
 
 
 class ChargeItemDefinitionApplicability(backboneelement.BackboneElement):
     """ Whether or not the billing code is applicable.
-
     Expressions that describe applicability criteria for the billing code.
     """
 
-    resource_type = "ChargeItemDefinitionApplicability"
+    resource_type = Field("ChargeItemDefinitionApplicability", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    description: fhirtypes.String = Field(
+        None,
+        alias="description",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Natural language description of the condition",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    expression: fhirtypes.String = Field(
+        None,
+        alias="expression",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Boolean-valued expression",
+    )
 
-        self.description = None
-        """ Natural language description of the condition.
-        Type `str`. """
-
-        self.expression = None
-        """ Boolean-valued expression.
-        Type `str`. """
-
-        self.language = None
-        """ Language of the expression.
-        Type `str`. """
-
-        super(ChargeItemDefinitionApplicability, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ChargeItemDefinitionApplicability, self).elementProperties()
-        js.extend(
-            [
-                ("description", "description", str, "string", False, None, False),
-                ("expression", "expression", str, "string", False, None, False),
-                ("language", "language", str, "string", False, None, False),
-            ]
-        )
-        return js
+    language: fhirtypes.String = Field(
+        None,
+        alias="language",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Language of the expression",
+    )
 
 
 class ChargeItemDefinitionPropertyGroup(backboneelement.BackboneElement):
     """ Group of properties which are applicable under the same conditions.
-
     Group of properties which are applicable under the same conditions. If no
     applicability rules are established for the group, then all properties
     always apply.
     """
 
-    resource_type = "ChargeItemDefinitionPropertyGroup"
+    resource_type = Field("ChargeItemDefinitionPropertyGroup", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    applicability: ListType[fhirtypes.ChargeItemDefinitionApplicabilityType] = Field(
+        None,
+        alias="applicability",
+        title="List of `ChargeItemDefinitionApplicability` items (represented as `dict` in JSON)",
+        description="Conditions under which the priceComponent is applicable",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.applicability = None
-        """ Conditions under which the priceComponent is applicable.
-        List of `ChargeItemDefinitionApplicability` items (represented as `dict` in JSON). """
-
-        self.priceComponent = None
-        """ Components of total line item price.
-        List of `ChargeItemDefinitionPropertyGroupPriceComponent` items (represented as `dict` in JSON). """
-
-        super(ChargeItemDefinitionPropertyGroup, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ChargeItemDefinitionPropertyGroup, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "applicability",
-                    "applicability",
-                    ChargeItemDefinitionApplicability,
-                    "ChargeItemDefinitionApplicability",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "priceComponent",
-                    "priceComponent",
-                    ChargeItemDefinitionPropertyGroupPriceComponent,
-                    "ChargeItemDefinitionPropertyGroupPriceComponent",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    priceComponent: ListType[
+        fhirtypes.ChargeItemDefinitionPropertyGroupPriceComponentType
+    ] = Field(
+        None,
+        alias="priceComponent",
+        title="List of `ChargeItemDefinitionPropertyGroupPriceComponent` items (represented as `dict` in JSON)",
+        description="Components of total line item price",
+    )
 
 
 class ChargeItemDefinitionPropertyGroupPriceComponent(backboneelement.BackboneElement):
     """ Components of total line item price.
-
     The price for a ChargeItem may be calculated as a base price with
     surcharges/deductions that apply in certain conditions. A
     ChargeItemDefinition resource that defines the prices, factors and
@@ -363,88 +252,32 @@ class ChargeItemDefinitionPropertyGroupPriceComponent(backboneelement.BackboneEl
     of the Invoice of how the prices have been calculated.
     """
 
-    resource_type = "ChargeItemDefinitionPropertyGroupPriceComponent"
+    resource_type = Field("ChargeItemDefinitionPropertyGroupPriceComponent", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    amount: fhirtypes.MoneyType = Field(
+        None,
+        alias="amount",
+        title="Type `Money` (represented as `dict` in JSON)",
+        description="Monetary amount associated with this component",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    code: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="code",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Code identifying the specific component",
+    )
 
-        self.amount = None
-        """ Monetary amount associated with this component.
-        Type `Money` (represented as `dict` in JSON). """
+    factor: fhirtypes.Decimal = Field(
+        None,
+        alias="factor",
+        title="Type `Decimal` (represented as `dict` in JSON)",
+        description="Factor used for calculating this component",
+    )
 
-        self.code = None
-        """ Code identifying the specific component.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.factor = None
-        """ Factor used for calculating this component.
-        Type `float`. """
-
-        self.type = None
-        """ base | surcharge | deduction | discount | tax | informational.
-        Type `str`. """
-
-        super(ChargeItemDefinitionPropertyGroupPriceComponent, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(
-            ChargeItemDefinitionPropertyGroupPriceComponent, self
-        ).elementProperties()
-        js.extend(
-            [
-                ("amount", "amount", money.Money, "Money", False, None, False),
-                (
-                    "code",
-                    "code",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("factor", "factor", float, "decimal", False, None, False),
-                ("type", "type", str, "code", False, None, True),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import contactdetail
-except ImportError:
-    contactdetail = sys.modules[__package__ + ".contactdetail"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import money
-except ImportError:
-    money = sys.modules[__package__ + ".money"]
-try:
-    from . import period
-except ImportError:
-    period = sys.modules[__package__ + ".period"]
-try:
-    from . import usagecontext
-except ImportError:
-    usagecontext = sys.modules[__package__ + ".usagecontext"]
+    type: fhirtypes.Code = Field(
+        ...,
+        alias="type",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="base | surcharge | deduction | discount | tax | informational",
+    )

@@ -6,201 +6,104 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class MedicinalProductPackaged(domainresource.DomainResource):
     """ A medicinal product in a container or package.
     """
 
-    resource_type = "MedicinalProductPackaged"
+    resource_type = Field("MedicinalProductPackaged", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    batchIdentifier: ListType[
+        fhirtypes.MedicinalProductPackagedBatchIdentifierType
+    ] = Field(
+        None,
+        alias="batchIdentifier",
+        title="List of `MedicinalProductPackagedBatchIdentifier` items (represented as `dict` in JSON)",
+        description="Batch numbering",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    description: fhirtypes.String = Field(
+        None,
+        alias="description",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Textual description",
+    )
 
-        self.batchIdentifier = None
-        """ Batch numbering.
-        List of `MedicinalProductPackagedBatchIdentifier` items (represented as `dict` in JSON). """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Unique identifier",
+    )
 
-        self.description = None
-        """ Textual description.
-        Type `str`. """
+    legalStatusOfSupply: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="legalStatusOfSupply",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The legal status of supply of the medicinal product as classified by the regulator",
+    )
 
-        self.identifier = None
-        """ Unique identifier.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    manufacturer: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="manufacturer",
+        title="List of `Reference` items referencing `Organization` (represented as `dict` in JSON)",
+        description="Manufacturer of this Package Item",
+    )
 
-        self.legalStatusOfSupply = None
-        """ The legal status of supply of the medicinal product as classified
-        by the regulator.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    marketingAuthorization: fhirtypes.ReferenceType = Field(
+        None,
+        alias="marketingAuthorization",
+        title="Type `Reference` referencing `MedicinalProductAuthorization` (represented as `dict` in JSON)",
+        description="Manufacturer of this Package Item",
+    )
 
-        self.manufacturer = None
-        """ Manufacturer of this Package Item.
-        List of `FHIRReference` items referencing `['Organization']` (represented as `dict` in JSON). """
+    marketingStatus: ListType[fhirtypes.MarketingStatusType] = Field(
+        None,
+        alias="marketingStatus",
+        title="List of `MarketingStatus` items (represented as `dict` in JSON)",
+        description="Marketing information",
+    )
 
-        self.marketingAuthorization = None
-        """ Manufacturer of this Package Item.
-        Type `FHIRReference` referencing `['MedicinalProductAuthorization']` (represented as `dict` in JSON). """
+    packageItem: ListType[fhirtypes.MedicinalProductPackagedPackageItemType] = Field(
+        ...,
+        alias="packageItem",
+        title="List of `MedicinalProductPackagedPackageItem` items (represented as `dict` in JSON)",
+        description="A packaging item, as a contained for medicine, possibly with other packaging items within",
+    )
 
-        self.marketingStatus = None
-        """ Marketing information.
-        List of `MarketingStatus` items (represented as `dict` in JSON). """
-
-        self.packageItem = None
-        """ A packaging item, as a contained for medicine, possibly with other
-        packaging items within.
-        List of `MedicinalProductPackagedPackageItem` items (represented as `dict` in JSON). """
-
-        self.subject = None
-        """ The product with this is a pack for.
-        List of `FHIRReference` items referencing `['MedicinalProduct']` (represented as `dict` in JSON). """
-
-        super(MedicinalProductPackaged, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(MedicinalProductPackaged, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "batchIdentifier",
-                    "batchIdentifier",
-                    MedicinalProductPackagedBatchIdentifier,
-                    "MedicinalProductPackagedBatchIdentifier",
-                    True,
-                    None,
-                    False,
-                ),
-                ("description", "description", str, "string", False, None, False),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "legalStatusOfSupply",
-                    "legalStatusOfSupply",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "manufacturer",
-                    "manufacturer",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "marketingAuthorization",
-                    "marketingAuthorization",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "marketingStatus",
-                    "marketingStatus",
-                    marketingstatus.MarketingStatus,
-                    "MarketingStatus",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "packageItem",
-                    "packageItem",
-                    MedicinalProductPackagedPackageItem,
-                    "MedicinalProductPackagedPackageItem",
-                    True,
-                    None,
-                    True,
-                ),
-                (
-                    "subject",
-                    "subject",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    subject: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="subject",
+        title="List of `Reference` items referencing `MedicinalProduct` (represented as `dict` in JSON)",
+        description="The product with this is a pack for",
+    )
 
 
 class MedicinalProductPackagedBatchIdentifier(backboneelement.BackboneElement):
     """ Batch numbering.
     """
 
-    resource_type = "MedicinalProductPackagedBatchIdentifier"
+    resource_type = Field("MedicinalProductPackagedBatchIdentifier", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    immediatePackaging: fhirtypes.IdentifierType = Field(
+        None,
+        alias="immediatePackaging",
+        title="Type `Identifier` (represented as `dict` in JSON)",
+        description="A number appearing on the immediate packaging (and not the outer packaging)",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.immediatePackaging = None
-        """ A number appearing on the immediate packaging (and not the outer
-        packaging).
-        Type `Identifier` (represented as `dict` in JSON). """
-
-        self.outerPackaging = None
-        """ A number appearing on the outer packaging of a specific batch.
-        Type `Identifier` (represented as `dict` in JSON). """
-
-        super(MedicinalProductPackagedBatchIdentifier, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(MedicinalProductPackagedBatchIdentifier, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "immediatePackaging",
-                    "immediatePackaging",
-                    identifier.Identifier,
-                    "Identifier",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "outerPackaging",
-                    "outerPackaging",
-                    identifier.Identifier,
-                    "Identifier",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
+    outerPackaging: fhirtypes.IdentifierType = Field(
+        ...,
+        alias="outerPackaging",
+        title="Type `Identifier` (represented as `dict` in JSON)",
+        description="A number appearing on the outer packaging of a specific batch",
+    )
 
 
 class MedicinalProductPackagedPackageItem(backboneelement.BackboneElement):
@@ -208,212 +111,88 @@ class MedicinalProductPackagedPackageItem(backboneelement.BackboneElement):
     packaging items within.
     """
 
-    resource_type = "MedicinalProductPackagedPackageItem"
+    resource_type = Field("MedicinalProductPackagedPackageItem", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    alternateMaterial: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="alternateMaterial",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="A possible alternate material for the packaging",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    device: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="device",
+        title="List of `Reference` items referencing `DeviceDefinition` (represented as `dict` in JSON)",
+        description="A device accompanying a medicinal product",
+    )
 
-        self.alternateMaterial = None
-        """ A possible alternate material for the packaging.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Including possibly Data Carrier Identifier",
+    )
 
-        self.device = None
-        """ A device accompanying a medicinal product.
-        List of `FHIRReference` items referencing `['DeviceDefinition']` (represented as `dict` in JSON). """
+    manufacturedItem: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="manufacturedItem",
+        title="List of `Reference` items referencing `MedicinalProductManufactured` (represented as `dict` in JSON)",
+        description="The manufactured item as contained in the packaged medicinal product",
+    )
 
-        self.identifier = None
-        """ Including possibly Data Carrier Identifier.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    manufacturer: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="manufacturer",
+        title="List of `Reference` items referencing `Organization` (represented as `dict` in JSON)",
+        description="Manufacturer of this Package Item",
+    )
 
-        self.manufacturedItem = None
-        """ The manufactured item as contained in the packaged medicinal
-        product.
-        List of `FHIRReference` items referencing `['MedicinalProductManufactured']` (represented as `dict` in JSON). """
+    material: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="material",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Material type of the package item",
+    )
 
-        self.manufacturer = None
-        """ Manufacturer of this Package Item.
-        List of `FHIRReference` items referencing `['Organization']` (represented as `dict` in JSON). """
+    otherCharacteristics: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="otherCharacteristics",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Other codeable characteristics",
+    )
 
-        self.material = None
-        """ Material type of the package item.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    packageItem: ListType[fhirtypes.MedicinalProductPackagedPackageItemType] = Field(
+        None,
+        alias="packageItem",
+        title="List of `MedicinalProductPackagedPackageItem` items (represented as `dict` in JSON)",
+        description="Allows containers within containers",
+    )
 
-        self.otherCharacteristics = None
-        """ Other codeable characteristics.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    physicalCharacteristics: fhirtypes.ProdCharacteristicType = Field(
+        None,
+        alias="physicalCharacteristics",
+        title="Type `ProdCharacteristic` (represented as `dict` in JSON)",
+        description="Dimensions, color etc.",
+    )
 
-        self.packageItem = None
-        """ Allows containers within containers.
-        List of `MedicinalProductPackagedPackageItem` items (represented as `dict` in JSON). """
+    quantity: fhirtypes.QuantityType = Field(
+        ...,
+        alias="quantity",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="The quantity of this package in the medicinal product, at the current level of packaging. The outermost is always 1",
+    )
 
-        self.physicalCharacteristics = None
-        """ Dimensions, color etc..
-        Type `ProdCharacteristic` (represented as `dict` in JSON). """
+    shelfLifeStorage: ListType[fhirtypes.ProductShelfLifeType] = Field(
+        None,
+        alias="shelfLifeStorage",
+        title="List of `ProductShelfLife` items (represented as `dict` in JSON)",
+        description="Shelf Life and storage information",
+    )
 
-        self.quantity = None
-        """ The quantity of this package in the medicinal product, at the
-        current level of packaging. The outermost is always 1.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        self.shelfLifeStorage = None
-        """ Shelf Life and storage information.
-        List of `ProductShelfLife` items (represented as `dict` in JSON). """
-
-        self.type = None
-        """ The physical type of the container of the medicine.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(MedicinalProductPackagedPackageItem, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(MedicinalProductPackagedPackageItem, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "alternateMaterial",
-                    "alternateMaterial",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "device",
-                    "device",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "manufacturedItem",
-                    "manufacturedItem",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "manufacturer",
-                    "manufacturer",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "material",
-                    "material",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "otherCharacteristics",
-                    "otherCharacteristics",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "packageItem",
-                    "packageItem",
-                    MedicinalProductPackagedPackageItem,
-                    "MedicinalProductPackagedPackageItem",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "physicalCharacteristics",
-                    "physicalCharacteristics",
-                    prodcharacteristic.ProdCharacteristic,
-                    "ProdCharacteristic",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "quantity",
-                    "quantity",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "shelfLifeStorage",
-                    "shelfLifeStorage",
-                    productshelflife.ProductShelfLife,
-                    "ProductShelfLife",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import marketingstatus
-except ImportError:
-    marketingstatus = sys.modules[__package__ + ".marketingstatus"]
-try:
-    from . import prodcharacteristic
-except ImportError:
-    prodcharacteristic = sys.modules[__package__ + ".prodcharacteristic"]
-try:
-    from . import productshelflife
-except ImportError:
-    productshelflife = sys.modules[__package__ + ".productshelflife"]
-try:
-    from . import quantity
-except ImportError:
-    quantity = sys.modules[__package__ + ".quantity"]
+    type: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The physical type of the container of the medicine",
+    )

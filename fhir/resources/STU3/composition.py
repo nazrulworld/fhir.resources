@@ -6,17 +6,17 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from typing import Any, Dict
+from typing import List as ListType
 
+from pydantic import Field, root_validator
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class Composition(domainresource.DomainResource):
     """ A set of resources composed into a single coherent clinical statement with
     clinical attestation.
-
     A set of healthcare-related information that is assembled together into a
     single logical document that provides a single coherent statement of
     meaning, establishes its own context and that has clinical attestation with
@@ -26,486 +26,304 @@ class Composition(domainresource.DomainResource):
     the first resource contained.
     """
 
-    resource_type = "Composition"
+    resource_type = Field("Composition", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    attester: ListType[fhirtypes.CompositionAttesterType] = Field(
+        None,
+        alias="attester",
+        title="List of `CompositionAttester` items (represented as `dict` in JSON)",
+        description="Attests to accuracy of composition",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    author: ListType[fhirtypes.ReferenceType] = Field(
+        ...,
+        alias="author",
+        title="List of `Reference` items referencing `Practitioner, Device, Patient, RelatedPerson` (represented as `dict` in JSON)",
+        description="Who and/or what authored the composition",
+    )
 
-        self.attester = None
-        """ Attests to accuracy of composition.
-        List of `CompositionAttester` items (represented as `dict` in JSON). """
+    class_fhir: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="class",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Categorization of Composition",
+    )
 
-        self.author = None
-        """ Who and/or what authored the composition.
-        List of `FHIRReference` items referencing `['Practitioner'], ['Device'], ['Patient'], ['RelatedPerson']` (represented as `dict` in JSON). """
+    confidentiality: fhirtypes.Code = Field(
+        None,
+        alias="confidentiality",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="As defined by affinity domain",
+    )
 
-        self.class_fhir = None
-        """ Categorization of Composition.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    custodian: fhirtypes.ReferenceType = Field(
+        None,
+        alias="custodian",
+        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        description="Organization which maintains the composition",
+    )
 
-        self.confidentiality = None
-        """ As defined by affinity domain.
-        Type `str`. """
+    date: fhirtypes.DateTime = Field(
+        ...,
+        alias="date",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Composition editing time",
+    )
 
-        self.custodian = None
-        """ Organization which maintains the composition.
-        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
+    encounter: fhirtypes.ReferenceType = Field(
+        None,
+        alias="encounter",
+        title="Type `Reference` referencing `Encounter` (represented as `dict` in JSON)",
+        description="Context of the Composition",
+    )
 
-        self.date = None
-        """ Composition editing time.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    event: ListType[fhirtypes.CompositionEventType] = Field(
+        None,
+        alias="event",
+        title="List of `CompositionEvent` items (represented as `dict` in JSON)",
+        description="The clinical service(s) being documented",
+    )
 
-        self.encounter = None
-        """ Context of the Composition.
-        Type `FHIRReference` referencing `['Encounter']` (represented as `dict` in JSON). """
+    identifier: fhirtypes.IdentifierType = Field(
+        None,
+        alias="identifier",
+        title="Type `Identifier` (represented as `dict` in JSON)",
+        description="Logical identifier of composition (version-independent)",
+    )
 
-        self.event = None
-        """ The clinical service(s) being documented.
-        List of `CompositionEvent` items (represented as `dict` in JSON). """
+    relatesTo: ListType[fhirtypes.CompositionRelatesToType] = Field(
+        None,
+        alias="relatesTo",
+        title="List of `CompositionRelatesTo` items (represented as `dict` in JSON)",
+        description="Relationships to other compositions/documents",
+    )
 
-        self.identifier = None
-        """ Logical identifier of composition (version-independent).
-        Type `Identifier` (represented as `dict` in JSON). """
+    section: ListType[fhirtypes.CompositionSectionType] = Field(
+        None,
+        alias="section",
+        title="List of `CompositionSection` items (represented as `dict` in JSON)",
+        description="Composition is broken into sections",
+    )
 
-        self.relatesTo = None
-        """ Relationships to other compositions/documents.
-        List of `CompositionRelatesTo` items (represented as `dict` in JSON). """
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="preliminary | final | amended | entered-in-error",
+    )
 
-        self.section = None
-        """ Composition is broken into sections.
-        List of `CompositionSection` items (represented as `dict` in JSON). """
+    subject: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="subject",
+        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        description="Who and/or what the composition is about",
+    )
 
-        self.status = None
-        """ preliminary | final | amended | entered-in-error.
-        Type `str`. """
+    title: fhirtypes.String = Field(
+        ...,
+        alias="title",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Human Readable name/title",
+    )
 
-        self.subject = None
-        """ Who and/or what the composition is about.
-        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
-
-        self.title = None
-        """ Human Readable name/title.
-        Type `str`. """
-
-        self.type = None
-        """ Kind of composition (LOINC if possible).
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(Composition, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(Composition, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "attester",
-                    "attester",
-                    CompositionAttester,
-                    "CompositionAttester",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "author",
-                    "author",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    True,
-                ),
-                (
-                    "class_fhir",
-                    "class",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("confidentiality", "confidentiality", str, "code", False, None, False),
-                (
-                    "custodian",
-                    "custodian",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, True),
-                (
-                    "encounter",
-                    "encounter",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "event",
-                    "event",
-                    CompositionEvent,
-                    "CompositionEvent",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "relatesTo",
-                    "relatesTo",
-                    CompositionRelatesTo,
-                    "CompositionRelatesTo",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "section",
-                    "section",
-                    CompositionSection,
-                    "CompositionSection",
-                    True,
-                    None,
-                    False,
-                ),
-                ("status", "status", str, "code", False, None, True),
-                (
-                    "subject",
-                    "subject",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                ("title", "title", str, "string", False, None, True),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
+    type: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Kind of composition (LOINC if possible)",
+    )
 
 
 class CompositionAttester(backboneelement.BackboneElement):
     """ Attests to accuracy of composition.
-
     A participant who has attested to the accuracy of the composition/document.
     """
 
-    resource_type = "CompositionAttester"
+    resource_type = Field("CompositionAttester", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    mode: ListType[fhirtypes.Code] = Field(
+        ...,
+        alias="mode",
+        title="List of `Code` items (represented as `dict` in JSON)",
+        description="personal | professional | legal | official",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    party: fhirtypes.ReferenceType = Field(
+        None,
+        alias="party",
+        title="Type `Reference` referencing `Patient, Practitioner, Organization` (represented as `dict` in JSON)",
+        description="Who attested the composition",
+    )
 
-        self.mode = None
-        """ personal | professional | legal | official.
-        List of `str` items. """
-
-        self.party = None
-        """ Who attested the composition.
-        Type `FHIRReference` referencing `['Patient'], ['Practitioner'], ['Organization']` (represented as `dict` in JSON). """
-
-        self.time = None
-        """ When the composition was attested.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        super(CompositionAttester, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(CompositionAttester, self).elementProperties()
-        js.extend(
-            [
-                ("mode", "mode", str, "code", True, None, True),
-                (
-                    "party",
-                    "party",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("time", "time", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ]
-        )
-        return js
+    time: fhirtypes.DateTime = Field(
+        None,
+        alias="time",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="When the composition was attested",
+    )
 
 
 class CompositionEvent(backboneelement.BackboneElement):
     """ The clinical service(s) being documented.
-
     The clinical service, such as a colonoscopy or an appendectomy, being
     documented.
     """
 
-    resource_type = "CompositionEvent"
+    resource_type = Field("CompositionEvent", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    code: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="code",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Code(s) that apply to the event being documented",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    detail: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="detail",
+        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        description="The event(s) being documented",
+    )
 
-        self.code = None
-        """ Code(s) that apply to the event being documented.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.detail = None
-        """ The event(s) being documented.
-        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
-
-        self.period = None
-        """ The period covered by the documentation.
-        Type `Period` (represented as `dict` in JSON). """
-
-        super(CompositionEvent, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(CompositionEvent, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "code",
-                    "code",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "detail",
-                    "detail",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                ("period", "period", period.Period, "Period", False, None, False),
-            ]
-        )
-        return js
+    period: fhirtypes.PeriodType = Field(
+        None,
+        alias="period",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="The period covered by the documentation",
+    )
 
 
 class CompositionRelatesTo(backboneelement.BackboneElement):
     """ Relationships to other compositions/documents.
-
     Relationships that this composition has with other compositions or
     documents that already exist.
     """
 
-    resource_type = "CompositionRelatesTo"
+    resource_type = Field("CompositionRelatesTo", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    code: fhirtypes.Code = Field(
+        ...,
+        alias="code",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="replaces | transforms | signs | appends",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    targetIdentifier: fhirtypes.IdentifierType = Field(
+        None,
+        alias="targetIdentifier",
+        title="Type `Identifier` (represented as `dict` in JSON)",
+        description="Target of the relationship",
+        one_of_many="target",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    targetReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="targetReference",
+        title="Type `Reference` referencing `Composition` (represented as `dict` in JSON)",
+        description="Target of the relationship",
+        one_of_many="target",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "target": ["targetIdentifier", "targetReference",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.code = None
-        """ replaces | transforms | signs | appends.
-        Type `str`. """
-
-        self.targetIdentifier = None
-        """ Target of the relationship.
-        Type `Identifier` (represented as `dict` in JSON). """
-
-        self.targetReference = None
-        """ Target of the relationship.
-        Type `FHIRReference` referencing `['Composition']` (represented as `dict` in JSON). """
-
-        super(CompositionRelatesTo, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(CompositionRelatesTo, self).elementProperties()
-        js.extend(
-            [
-                ("code", "code", str, "code", False, None, True),
-                (
-                    "targetIdentifier",
-                    "targetIdentifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    False,
-                    "target",
-                    True,
-                ),
-                (
-                    "targetReference",
-                    "targetReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    "target",
-                    True,
-                ),
-            ]
-        )
-        return js
+        return values
 
 
 class CompositionSection(backboneelement.BackboneElement):
     """ Composition is broken into sections.
-
     The root of the sections that make up the composition.
     """
 
-    resource_type = "CompositionSection"
+    resource_type = Field("CompositionSection", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    code: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="code",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Classification of section (recommended)",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    emptyReason: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="emptyReason",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Why the section is empty",
+    )
 
-        self.code = None
-        """ Classification of section (recommended).
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    entry: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="entry",
+        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        description="A reference to data that supports this section",
+    )
 
-        self.emptyReason = None
-        """ Why the section is empty.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    mode: fhirtypes.Code = Field(
+        None,
+        alias="mode",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="working | snapshot | changes",
+    )
 
-        self.entry = None
-        """ A reference to data that supports this section.
-        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
+    orderedBy: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="orderedBy",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Order of section entries",
+    )
 
-        self.mode = None
-        """ working | snapshot | changes.
-        Type `str`. """
+    section: ListType[fhirtypes.CompositionSectionType] = Field(
+        None,
+        alias="section",
+        title="List of `CompositionSection` items (represented as `dict` in JSON)",
+        description="Nested Section",
+    )
 
-        self.orderedBy = None
-        """ Order of section entries.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    text: fhirtypes.NarrativeType = Field(
+        None,
+        alias="text",
+        title="Type `Narrative` (represented as `dict` in JSON)",
+        description="Text summary of the section, for human interpretation",
+    )
 
-        self.section = None
-        """ Nested Section.
-        List of `CompositionSection` items (represented as `dict` in JSON). """
-
-        self.text = None
-        """ Text summary of the section, for human interpretation.
-        Type `Narrative` (represented as `dict` in JSON). """
-
-        self.title = None
-        """ Label for section (e.g. for ToC).
-        Type `str`. """
-
-        super(CompositionSection, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(CompositionSection, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "code",
-                    "code",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "emptyReason",
-                    "emptyReason",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "entry",
-                    "entry",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                ("mode", "mode", str, "code", False, None, False),
-                (
-                    "orderedBy",
-                    "orderedBy",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "section",
-                    "section",
-                    CompositionSection,
-                    "CompositionSection",
-                    True,
-                    None,
-                    False,
-                ),
-                ("text", "text", narrative.Narrative, "Narrative", False, None, False),
-                ("title", "title", str, "string", False, None, False),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import narrative
-except ImportError:
-    narrative = sys.modules[__package__ + ".narrative"]
-try:
-    from . import period
-except ImportError:
-    period = sys.modules[__package__ + ".period"]
+    title: fhirtypes.String = Field(
+        None,
+        alias="title",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Label for section (e.g. for ToC)",
+    )

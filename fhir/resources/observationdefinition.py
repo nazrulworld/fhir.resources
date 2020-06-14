@@ -6,403 +6,211 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class ObservationDefinition(domainresource.DomainResource):
     """ Definition of an observation.
-
     Set of definitional characteristics for a kind of observation or
     measurement produced or consumed by an orderable health care service.
     """
 
-    resource_type = "ObservationDefinition"
+    resource_type = Field("ObservationDefinition", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    abnormalCodedValueSet: fhirtypes.ReferenceType = Field(
+        None,
+        alias="abnormalCodedValueSet",
+        title="Type `Reference` referencing `ValueSet` (represented as `dict` in JSON)",
+        description="Value set of abnormal coded values for the observations conforming to this ObservationDefinition",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    category: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="category",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Category of observation",
+    )
 
-        self.abnormalCodedValueSet = None
-        """ Value set of abnormal coded values for the observations conforming
-        to this ObservationDefinition.
-        Type `FHIRReference` referencing `['ValueSet']` (represented as `dict` in JSON). """
+    code: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="code",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Type of observation (code / type)",
+    )
 
-        self.category = None
-        """ Category of observation.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    criticalCodedValueSet: fhirtypes.ReferenceType = Field(
+        None,
+        alias="criticalCodedValueSet",
+        title="Type `Reference` referencing `ValueSet` (represented as `dict` in JSON)",
+        description="Value set of critical coded values for the observations conforming to this ObservationDefinition",
+    )
 
-        self.code = None
-        """ Type of observation (code / type).
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Business identifier for this ObservationDefinition instance",
+    )
 
-        self.criticalCodedValueSet = None
-        """ Value set of critical coded values for the observations conforming
-        to this ObservationDefinition.
-        Type `FHIRReference` referencing `['ValueSet']` (represented as `dict` in JSON). """
+    method: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="method",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Method used to produce the observation",
+    )
 
-        self.identifier = None
-        """ Business identifier for this ObservationDefinition instance.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    multipleResultsAllowed: bool = Field(
+        None,
+        alias="multipleResultsAllowed",
+        title="Type `bool`",
+        description="Multiple results allowed",
+    )
 
-        self.method = None
-        """ Method used to produce the observation.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    normalCodedValueSet: fhirtypes.ReferenceType = Field(
+        None,
+        alias="normalCodedValueSet",
+        title="Type `Reference` referencing `ValueSet` (represented as `dict` in JSON)",
+        description="Value set of normal coded values for the observations conforming to this ObservationDefinition",
+    )
 
-        self.multipleResultsAllowed = None
-        """ Multiple results allowed.
-        Type `bool`. """
+    permittedDataType: ListType[fhirtypes.Code] = Field(
+        None,
+        alias="permittedDataType",
+        title="List of `Code` items (represented as `dict` in JSON)",
+        description="Quantity | CodeableConcept | string | boolean | integer | Range | Ratio | SampledData | time | dateTime | Period",
+    )
 
-        self.normalCodedValueSet = None
-        """ Value set of normal coded values for the observations conforming to
-        this ObservationDefinition.
-        Type `FHIRReference` referencing `['ValueSet']` (represented as `dict` in JSON). """
+    preferredReportName: fhirtypes.String = Field(
+        None,
+        alias="preferredReportName",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Preferred report name",
+    )
 
-        self.permittedDataType = None
-        """ Quantity | CodeableConcept | string | boolean | integer | Range |
-        Ratio | SampledData | time | dateTime | Period.
-        List of `str` items. """
+    qualifiedInterval: ListType[
+        fhirtypes.ObservationDefinitionQualifiedIntervalType
+    ] = Field(
+        None,
+        alias="qualifiedInterval",
+        title="List of `ObservationDefinitionQualifiedInterval` items (represented as `dict` in JSON)",
+        description="Qualified range for continuous and ordinal observation results",
+    )
 
-        self.preferredReportName = None
-        """ Preferred report name.
-        Type `str`. """
+    quantitativeDetails: fhirtypes.ObservationDefinitionQuantitativeDetailsType = Field(
+        None,
+        alias="quantitativeDetails",
+        title="Type `ObservationDefinitionQuantitativeDetails` (represented as `dict` in JSON)",
+        description="Characteristics of quantitative results",
+    )
 
-        self.qualifiedInterval = None
-        """ Qualified range for continuous and ordinal observation results.
-        List of `ObservationDefinitionQualifiedInterval` items (represented as `dict` in JSON). """
-
-        self.quantitativeDetails = None
-        """ Characteristics of quantitative results.
-        Type `ObservationDefinitionQuantitativeDetails` (represented as `dict` in JSON). """
-
-        self.validCodedValueSet = None
-        """ Value set of valid coded values for the observations conforming to
-        this ObservationDefinition.
-        Type `FHIRReference` referencing `['ValueSet']` (represented as `dict` in JSON). """
-
-        super(ObservationDefinition, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ObservationDefinition, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "abnormalCodedValueSet",
-                    "abnormalCodedValueSet",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "category",
-                    "category",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "code",
-                    "code",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "criticalCodedValueSet",
-                    "criticalCodedValueSet",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "method",
-                    "method",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "multipleResultsAllowed",
-                    "multipleResultsAllowed",
-                    bool,
-                    "boolean",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "normalCodedValueSet",
-                    "normalCodedValueSet",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "permittedDataType",
-                    "permittedDataType",
-                    str,
-                    "code",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "preferredReportName",
-                    "preferredReportName",
-                    str,
-                    "string",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "qualifiedInterval",
-                    "qualifiedInterval",
-                    ObservationDefinitionQualifiedInterval,
-                    "ObservationDefinitionQualifiedInterval",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "quantitativeDetails",
-                    "quantitativeDetails",
-                    ObservationDefinitionQuantitativeDetails,
-                    "ObservationDefinitionQuantitativeDetails",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "validCodedValueSet",
-                    "validCodedValueSet",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    validCodedValueSet: fhirtypes.ReferenceType = Field(
+        None,
+        alias="validCodedValueSet",
+        title="Type `Reference` referencing `ValueSet` (represented as `dict` in JSON)",
+        description="Value set of valid coded values for the observations conforming to this ObservationDefinition",
+    )
 
 
 class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
     """ Qualified range for continuous and ordinal observation results.
-
     Multiple  ranges of results qualified by different contexts for ordinal or
     continuous observations conforming to this ObservationDefinition.
     """
 
-    resource_type = "ObservationDefinitionQualifiedInterval"
+    resource_type = Field("ObservationDefinitionQualifiedInterval", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    age: fhirtypes.RangeType = Field(
+        None,
+        alias="age",
+        title="Type `Range` (represented as `dict` in JSON)",
+        description="Applicable age range, if relevant",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    appliesTo: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="appliesTo",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Targetted population of the range",
+    )
 
-        self.age = None
-        """ Applicable age range, if relevant.
-        Type `Range` (represented as `dict` in JSON). """
+    category: fhirtypes.Code = Field(
+        None,
+        alias="category",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="reference | critical | absolute",
+    )
 
-        self.appliesTo = None
-        """ Targetted population of the range.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    condition: fhirtypes.String = Field(
+        None,
+        alias="condition",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Condition associated with the reference range",
+    )
 
-        self.category = None
-        """ reference | critical | absolute.
-        Type `str`. """
+    context: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="context",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Range context qualifier",
+    )
 
-        self.condition = None
-        """ Condition associated with the reference range.
-        Type `str`. """
+    gender: fhirtypes.Code = Field(
+        None,
+        alias="gender",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="male | female | other | unknown",
+    )
 
-        self.context = None
-        """ Range context qualifier.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    gestationalAge: fhirtypes.RangeType = Field(
+        None,
+        alias="gestationalAge",
+        title="Type `Range` (represented as `dict` in JSON)",
+        description="Applicable gestational age range, if relevant",
+    )
 
-        self.gender = None
-        """ male | female | other | unknown.
-        Type `str`. """
-
-        self.gestationalAge = None
-        """ Applicable gestational age range, if relevant.
-        Type `Range` (represented as `dict` in JSON). """
-
-        self.range = None
-        """ The interval itself, for continuous or ordinal observations.
-        Type `Range` (represented as `dict` in JSON). """
-
-        super(ObservationDefinitionQualifiedInterval, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ObservationDefinitionQualifiedInterval, self).elementProperties()
-        js.extend(
-            [
-                ("age", "age", range.Range, "Range", False, None, False),
-                (
-                    "appliesTo",
-                    "appliesTo",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                ("category", "category", str, "code", False, None, False),
-                ("condition", "condition", str, "string", False, None, False),
-                (
-                    "context",
-                    "context",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("gender", "gender", str, "code", False, None, False),
-                (
-                    "gestationalAge",
-                    "gestationalAge",
-                    range.Range,
-                    "Range",
-                    False,
-                    None,
-                    False,
-                ),
-                ("range", "range", range.Range, "Range", False, None, False),
-            ]
-        )
-        return js
+    range: fhirtypes.RangeType = Field(
+        None,
+        alias="range",
+        title="Type `Range` (represented as `dict` in JSON)",
+        description="The interval itself, for continuous or ordinal observations",
+    )
 
 
 class ObservationDefinitionQuantitativeDetails(backboneelement.BackboneElement):
     """ Characteristics of quantitative results.
-
     Characteristics for quantitative results of this observation.
     """
 
-    resource_type = "ObservationDefinitionQuantitativeDetails"
+    resource_type = Field("ObservationDefinitionQuantitativeDetails", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    conversionFactor: fhirtypes.Decimal = Field(
+        None,
+        alias="conversionFactor",
+        title="Type `Decimal` (represented as `dict` in JSON)",
+        description="SI to Customary unit conversion factor",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    customaryUnit: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="customaryUnit",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Customary unit for quantitative results",
+    )
 
-        self.conversionFactor = None
-        """ SI to Customary unit conversion factor.
-        Type `float`. """
+    decimalPrecision: fhirtypes.Integer = Field(
+        None,
+        alias="decimalPrecision",
+        title="Type `Integer` (represented as `dict` in JSON)",
+        description="Decimal precision of observation quantitative results",
+    )
 
-        self.customaryUnit = None
-        """ Customary unit for quantitative results.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.decimalPrecision = None
-        """ Decimal precision of observation quantitative results.
-        Type `int`. """
-
-        self.unit = None
-        """ SI unit for quantitative results.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(ObservationDefinitionQuantitativeDetails, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ObservationDefinitionQuantitativeDetails, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "conversionFactor",
-                    "conversionFactor",
-                    float,
-                    "decimal",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "customaryUnit",
-                    "customaryUnit",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "decimalPrecision",
-                    "decimalPrecision",
-                    int,
-                    "integer",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "unit",
-                    "unit",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import range
-except ImportError:
-    range = sys.modules[__package__ + ".range"]
+    unit: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="unit",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="SI unit for quantitative results",
+    )

@@ -6,240 +6,168 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import chargeitemdefinition
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class ChargeItemDefinitionTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("ChargeItemDefinition", js["resourceType"])
-        return chargeitemdefinition.ChargeItemDefinition(js)
+def impl_chargeitemdefinition_1(inst):
+    assert (
+        inst.applicability[0].description
+        == "Verify ChargeItem pertains to Device 12345"
+    )
+    assert (
+        inst.applicability[0].expression
+        == "%context.service.suppliedItem='Device/12345'"
+    )
+    assert inst.applicability[0].language == "text/fhirpath"
+    assert inst.description == "Financial details for  custom made device"
+    assert inst.id == "device"
+    assert inst.instance[0].reference == "Device/12345"
+    assert inst.propertyGroup[0].priceComponent[0].amount.currency == "EUR"
+    assert float(inst.propertyGroup[0].priceComponent[0].amount.value) == float(67.44)
+    assert inst.propertyGroup[0].priceComponent[0].code.coding[0].code == "VK"
+    assert (
+        inst.propertyGroup[0].priceComponent[0].code.coding[0].display
+        == "Verkaufspreis (netto)"
+    )
+    assert (
+        inst.propertyGroup[0].priceComponent[0].code.coding[0].system
+        == "http://fhir.de/CodeSystem/billing-attributes"
+    )
+    assert inst.propertyGroup[0].priceComponent[0].type == "base"
+    assert inst.propertyGroup[1].applicability[0].description == "Gültigkeit Steuersatz"
+    assert (
+        inst.propertyGroup[1].applicability[0].expression
+        == "%context.occurenceDateTime > '2018-04-01'"
+    )
+    assert inst.propertyGroup[1].applicability[0].language == "text/fhirpath"
+    assert inst.propertyGroup[1].priceComponent[0].code.coding[0].code == "MWST"
+    assert (
+        inst.propertyGroup[1].priceComponent[0].code.coding[0].display
+        == "Mehrwersteuersatz"
+    )
+    assert (
+        inst.propertyGroup[1].priceComponent[0].code.coding[0].system
+        == "http://fhir.de/CodeSystem/billing-attributes"
+    )
+    assert float(inst.propertyGroup[1].priceComponent[0].factor) == float(1.19)
+    assert inst.propertyGroup[1].priceComponent[0].type == "tax"
+    assert inst.propertyGroup[2].applicability[0].description == "Gültigkeit Steuersatz"
+    assert (
+        inst.propertyGroup[2].applicability[0].expression
+        == "%context.occurenceDateTime <= '2018-04-01'"
+    )
+    assert inst.propertyGroup[2].applicability[0].language == "text/fhirpath"
+    assert inst.propertyGroup[2].priceComponent[0].code.coding[0].code == "MWST"
+    assert (
+        inst.propertyGroup[2].priceComponent[0].code.coding[0].display
+        == "Mehrwersteuersatz"
+    )
+    assert (
+        inst.propertyGroup[2].priceComponent[0].code.coding[0].system
+        == "http://fhir.de/CodeSystem/billing-attributes"
+    )
+    assert float(inst.propertyGroup[2].priceComponent[0].factor) == float(1.07)
+    assert inst.propertyGroup[2].priceComponent[0].type == "tax"
+    assert inst.status == "active"
+    assert inst.text.status == "generated"
+    assert inst.url == "http://sap.org/ChargeItemDefinition/device-123"
 
-    def testChargeItemDefinition1(self):
-        inst = self.instantiate_from("chargeitemdefinition-device-example.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a ChargeItemDefinition instance"
-        )
-        self.implChargeItemDefinition1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("ChargeItemDefinition", js["resourceType"])
-        inst2 = chargeitemdefinition.ChargeItemDefinition(js)
-        self.implChargeItemDefinition1(inst2)
+def test_chargeitemdefinition_1(base_settings):
+    """No. 1 tests collection for ChargeItemDefinition.
+    Test File: chargeitemdefinition-device-example.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "chargeitemdefinition-device-example.json"
+    )
+    inst = chargeitemdefinition.ChargeItemDefinition.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ChargeItemDefinition" == inst.resource_type
 
-    def implChargeItemDefinition1(self, inst):
-        self.assertEqual(
-            force_bytes(inst.applicability[0].description),
-            force_bytes("Verify ChargeItem pertains to Device 12345"),
-        )
-        self.assertEqual(
-            force_bytes(inst.applicability[0].expression),
-            force_bytes("%context.service.suppliedItem='Device/12345'"),
-        )
-        self.assertEqual(
-            force_bytes(inst.applicability[0].language), force_bytes("text/fhirpath")
-        )
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes("Financial details for  custom made device"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("device"))
-        self.assertEqual(
-            force_bytes(inst.propertyGroup[0].priceComponent[0].amount.currency),
-            force_bytes("EUR"),
-        )
-        self.assertEqual(inst.propertyGroup[0].priceComponent[0].amount.value, 67.44)
-        self.assertEqual(
-            force_bytes(inst.propertyGroup[0].priceComponent[0].code.coding[0].code),
-            force_bytes("VK"),
-        )
-        self.assertEqual(
-            force_bytes(inst.propertyGroup[0].priceComponent[0].code.coding[0].display),
-            force_bytes("Verkaufspreis (netto)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.propertyGroup[0].priceComponent[0].code.coding[0].system),
-            force_bytes("http://fhir.de/CodeSystem/billing-attributes"),
-        )
-        self.assertEqual(
-            force_bytes(inst.propertyGroup[0].priceComponent[0].type),
-            force_bytes("base"),
-        )
-        self.assertEqual(
-            force_bytes(inst.propertyGroup[1].applicability[0].description),
-            force_bytes("Gültigkeit Steuersatz"),
-        )
-        self.assertEqual(
-            force_bytes(inst.propertyGroup[1].applicability[0].expression),
-            force_bytes("%context.occurenceDateTime > '2018-04-01'"),
-        )
-        self.assertEqual(
-            force_bytes(inst.propertyGroup[1].applicability[0].language),
-            force_bytes("text/fhirpath"),
-        )
-        self.assertEqual(
-            force_bytes(inst.propertyGroup[1].priceComponent[0].code.coding[0].code),
-            force_bytes("MWST"),
-        )
-        self.assertEqual(
-            force_bytes(inst.propertyGroup[1].priceComponent[0].code.coding[0].display),
-            force_bytes("Mehrwersteuersatz"),
-        )
-        self.assertEqual(
-            force_bytes(inst.propertyGroup[1].priceComponent[0].code.coding[0].system),
-            force_bytes("http://fhir.de/CodeSystem/billing-attributes"),
-        )
-        self.assertEqual(inst.propertyGroup[1].priceComponent[0].factor, 1.19)
-        self.assertEqual(
-            force_bytes(inst.propertyGroup[1].priceComponent[0].type),
-            force_bytes("tax"),
-        )
-        self.assertEqual(
-            force_bytes(inst.propertyGroup[2].applicability[0].description),
-            force_bytes("Gültigkeit Steuersatz"),
-        )
-        self.assertEqual(
-            force_bytes(inst.propertyGroup[2].applicability[0].expression),
-            force_bytes("%context.occurenceDateTime <= '2018-04-01'"),
-        )
-        self.assertEqual(
-            force_bytes(inst.propertyGroup[2].applicability[0].language),
-            force_bytes("text/fhirpath"),
-        )
-        self.assertEqual(
-            force_bytes(inst.propertyGroup[2].priceComponent[0].code.coding[0].code),
-            force_bytes("MWST"),
-        )
-        self.assertEqual(
-            force_bytes(inst.propertyGroup[2].priceComponent[0].code.coding[0].display),
-            force_bytes("Mehrwersteuersatz"),
-        )
-        self.assertEqual(
-            force_bytes(inst.propertyGroup[2].priceComponent[0].code.coding[0].system),
-            force_bytes("http://fhir.de/CodeSystem/billing-attributes"),
-        )
-        self.assertEqual(inst.propertyGroup[2].priceComponent[0].factor, 1.07)
-        self.assertEqual(
-            force_bytes(inst.propertyGroup[2].priceComponent[0].type),
-            force_bytes("tax"),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.url),
-            force_bytes("http://sap.org/ChargeItemDefinition/device-123"),
-        )
+    impl_chargeitemdefinition_1(inst)
 
-    def testChargeItemDefinition2(self):
-        inst = self.instantiate_from("chargeitemdefinition-ebm-example.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a ChargeItemDefinition instance"
-        )
-        self.implChargeItemDefinition2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ChargeItemDefinition" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("ChargeItemDefinition", js["resourceType"])
-        inst2 = chargeitemdefinition.ChargeItemDefinition(js)
-        self.implChargeItemDefinition2(inst2)
+    inst2 = chargeitemdefinition.ChargeItemDefinition(**data)
+    impl_chargeitemdefinition_1(inst2)
 
-    def implChargeItemDefinition2(self, inst):
-        self.assertEqual(
-            force_bytes(inst.applicability[0].description),
-            force_bytes("Excludes billing code 13250 for same Encounter"),
-        )
-        self.assertEqual(
-            force_bytes(inst.applicability[0].expression),
-            force_bytes("[some CQL expression]"),
-        )
-        self.assertEqual(
-            force_bytes(inst.applicability[0].language), force_bytes("text/cql")
-        )
-        self.assertEqual(
-            force_bytes(inst.applicability[1].description),
-            force_bytes("Applies only once per Encounter"),
-        )
-        self.assertEqual(
-            force_bytes(inst.applicability[1].expression),
-            force_bytes("[some CQL expression]"),
-        )
-        self.assertEqual(
-            force_bytes(inst.applicability[1].language), force_bytes("text/CQL")
-        )
-        self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("30110"))
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].display),
-            force_bytes("Allergologiediagnostik I"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system),
-            force_bytes("http://fhir.de/CodingSystem/kbv/ebm"),
-        )
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes(
-                "Allergologisch-diagnostischer Komplex zur Diagnostik und/oder zum Ausschluss einer (Kontakt-)Allergie vom Spättyp (Typ IV), einschl. Kosten"
-            ),
-        )
-        self.assertEqual(inst.effectivePeriod.end.date, FHIRDate("2018-06-30").date)
-        self.assertEqual(inst.effectivePeriod.end.as_json(), "2018-06-30")
-        self.assertEqual(inst.effectivePeriod.start.date, FHIRDate("2018-04-01").date)
-        self.assertEqual(inst.effectivePeriod.start.as_json(), "2018-04-01")
-        self.assertEqual(force_bytes(inst.id), force_bytes("ebm"))
-        self.assertEqual(
-            force_bytes(inst.propertyGroup[0].priceComponent[0].amount.currency),
-            force_bytes("EUR"),
-        )
-        self.assertEqual(inst.propertyGroup[0].priceComponent[0].amount.value, 67.44)
-        self.assertEqual(
-            force_bytes(inst.propertyGroup[0].priceComponent[0].code.coding[0].code),
-            force_bytes("gesamt-euro"),
-        )
-        self.assertEqual(
-            force_bytes(inst.propertyGroup[0].priceComponent[0].code.coding[0].display),
-            force_bytes("Gesamt (Euro)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.propertyGroup[0].priceComponent[0].code.coding[0].system),
-            force_bytes("http://fhir.de/CodeSystem/kbv/ebm-attribute"),
-        )
-        self.assertEqual(
-            force_bytes(inst.propertyGroup[0].priceComponent[0].type),
-            force_bytes("base"),
-        )
-        self.assertEqual(
-            force_bytes(inst.propertyGroup[0].priceComponent[1].code.coding[0].code),
-            force_bytes("gesamt-punkte"),
-        )
-        self.assertEqual(
-            force_bytes(inst.propertyGroup[0].priceComponent[1].code.coding[0].display),
-            force_bytes("Gesamt (Punkte)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.propertyGroup[0].priceComponent[1].code.coding[0].system),
-            force_bytes("http://fhir.de/CodeSystem/kbv/ebm-attribute"),
-        )
-        self.assertEqual(inst.propertyGroup[0].priceComponent[1].factor, 633)
-        self.assertEqual(
-            force_bytes(inst.propertyGroup[0].priceComponent[1].type),
-            force_bytes("informational"),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.url),
-            force_bytes("http://fhir.de/ChargeItemDefinition/kbv/ebm-30110"),
-        )
-        self.assertEqual(force_bytes(inst.version), force_bytes("2-2018"))
+
+def impl_chargeitemdefinition_2(inst):
+    assert (
+        inst.applicability[0].description
+        == "Excludes billing code 13250 for same Encounter"
+    )
+    assert inst.applicability[0].expression == "[some CQL expression]"
+    assert inst.applicability[0].language == "text/cql"
+    assert inst.applicability[1].description == "Applies only once per Encounter"
+    assert inst.applicability[1].expression == "[some CQL expression]"
+    assert inst.applicability[1].language == "text/CQL"
+    assert inst.code.coding[0].code == "30110"
+    assert inst.code.coding[0].display == "Allergologiediagnostik I"
+    assert inst.code.coding[0].system == "http://fhir.de/CodingSystem/kbv/ebm"
+    assert (
+        inst.description
+        == "Allergologisch-diagnostischer Komplex zur Diagnostik und/oder zum Ausschluss einer (Kontakt-)Allergie vom Spättyp (Typ IV), einschl. Kosten"
+    )
+    assert inst.effectivePeriod.end == fhirtypes.DateTime.validate(
+        "2018-06-30T11:15:33+10:00"
+    )
+    assert inst.effectivePeriod.start == fhirtypes.DateTime.validate(
+        "2018-04-01T11:15:33+10:00"
+    )
+    assert inst.id == "ebm"
+    assert inst.propertyGroup[0].priceComponent[0].amount.currency == "EUR"
+    assert float(inst.propertyGroup[0].priceComponent[0].amount.value) == float(67.44)
+    assert inst.propertyGroup[0].priceComponent[0].code.coding[0].code == "gesamt-euro"
+    assert (
+        inst.propertyGroup[0].priceComponent[0].code.coding[0].display
+        == "Gesamt (Euro)"
+    )
+    assert (
+        inst.propertyGroup[0].priceComponent[0].code.coding[0].system
+        == "http://fhir.de/CodeSystem/kbv/ebm-attribute"
+    )
+    assert inst.propertyGroup[0].priceComponent[0].type == "base"
+    assert (
+        inst.propertyGroup[0].priceComponent[1].code.coding[0].code == "gesamt-punkte"
+    )
+    assert (
+        inst.propertyGroup[0].priceComponent[1].code.coding[0].display
+        == "Gesamt (Punkte)"
+    )
+    assert (
+        inst.propertyGroup[0].priceComponent[1].code.coding[0].system
+        == "http://fhir.de/CodeSystem/kbv/ebm-attribute"
+    )
+    assert float(inst.propertyGroup[0].priceComponent[1].factor) == float(633)
+    assert inst.propertyGroup[0].priceComponent[1].type == "informational"
+    assert inst.status == "active"
+    assert inst.text.status == "generated"
+    assert inst.url == "http://fhir.de/ChargeItemDefinition/kbv/ebm-30110"
+    assert inst.version == "2-2018"
+
+
+def test_chargeitemdefinition_2(base_settings):
+    """No. 2 tests collection for ChargeItemDefinition.
+    Test File: chargeitemdefinition-ebm-example.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "chargeitemdefinition-ebm-example.json"
+    )
+    inst = chargeitemdefinition.ChargeItemDefinition.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ChargeItemDefinition" == inst.resource_type
+
+    impl_chargeitemdefinition_2(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ChargeItemDefinition" == data["resourceType"]
+
+    inst2 = chargeitemdefinition.ChargeItemDefinition(**data)
+    impl_chargeitemdefinition_2(inst2)

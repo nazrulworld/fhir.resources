@@ -6,228 +6,242 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import operationoutcome
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class OperationOutcomeTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("OperationOutcome", js["resourceType"])
-        return operationoutcome.OperationOutcome(js)
+def impl_operationoutcome_1(inst):
+    assert inst.id == "validationfail"
+    assert inst.issue[0].code == "structure"
+    assert (
+        inst.issue[0].details.text
+        == 'Error parsing resource XML (Unknown Content "label"'
+    )
+    assert inst.issue[0].expression[0] == "Patient.identifier"
+    assert inst.issue[0].location[0] == "/f:Patient/f:identifier"
+    assert inst.issue[0].severity == "error"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.text.status == "generated"
 
-    def testOperationOutcome1(self):
-        inst = self.instantiate_from("operationoutcome-example-validationfail.json")
-        self.assertIsNotNone(inst, "Must have instantiated a OperationOutcome instance")
-        self.implOperationOutcome1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("OperationOutcome", js["resourceType"])
-        inst2 = operationoutcome.OperationOutcome(js)
-        self.implOperationOutcome1(inst2)
+def test_operationoutcome_1(base_settings):
+    """No. 1 tests collection for OperationOutcome.
+    Test File: operationoutcome-example-validationfail.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"]
+        / "operationoutcome-example-validationfail.json"
+    )
+    inst = operationoutcome.OperationOutcome.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "OperationOutcome" == inst.resource_type
 
-    def implOperationOutcome1(self, inst):
-        self.assertEqual(force_bytes(inst.id), force_bytes("validationfail"))
-        self.assertEqual(force_bytes(inst.issue[0].code), force_bytes("structure"))
-        self.assertEqual(
-            force_bytes(inst.issue[0].details.text),
-            force_bytes('Error parsing resource XML (Unknown Content "label"'),
-        )
-        self.assertEqual(
-            force_bytes(inst.issue[0].expression[0]), force_bytes("Patient.identifier")
-        )
-        self.assertEqual(
-            force_bytes(inst.issue[0].location[0]),
-            force_bytes("/f:Patient/f:identifier"),
-        )
-        self.assertEqual(force_bytes(inst.issue[0].severity), force_bytes("error"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    impl_operationoutcome_1(inst)
 
-    def testOperationOutcome2(self):
-        inst = self.instantiate_from("operationoutcome-example-break-the-glass.json")
-        self.assertIsNotNone(inst, "Must have instantiated a OperationOutcome instance")
-        self.implOperationOutcome2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "OperationOutcome" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("OperationOutcome", js["resourceType"])
-        inst2 = operationoutcome.OperationOutcome(js)
-        self.implOperationOutcome2(inst2)
+    inst2 = operationoutcome.OperationOutcome(**data)
+    impl_operationoutcome_1(inst2)
 
-    def implOperationOutcome2(self, inst):
-        self.assertEqual(force_bytes(inst.id), force_bytes("break-the-glass"))
-        self.assertEqual(force_bytes(inst.issue[0].code), force_bytes("suppressed"))
-        self.assertEqual(
-            force_bytes(inst.issue[0].details.coding[0].code), force_bytes("ETREAT")
-        )
-        self.assertEqual(
-            force_bytes(inst.issue[0].details.coding[0].display),
-            force_bytes("Emergency Treatment"),
-        )
-        self.assertEqual(
-            force_bytes(inst.issue[0].details.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.issue[0].details.text),
-            force_bytes(
-                "Additional information may be available using the Break-The-Glass Protocol"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.issue[0].severity), force_bytes("information")
-        )
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 
-    def testOperationOutcome3(self):
-        inst = self.instantiate_from("operationoutcome-example-searchfail.json")
-        self.assertIsNotNone(inst, "Must have instantiated a OperationOutcome instance")
-        self.implOperationOutcome3(inst)
+def impl_operationoutcome_2(inst):
+    assert inst.id == "break-the-glass"
+    assert inst.issue[0].code == "suppressed"
+    assert inst.issue[0].details.coding[0].code == "ETREAT"
+    assert inst.issue[0].details.coding[0].display == "Emergency Treatment"
+    assert (
+        inst.issue[0].details.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert (
+        inst.issue[0].details.text
+        == "Additional information may be available using the Break-The-Glass Protocol"
+    )
+    assert inst.issue[0].severity == "information"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.text.status == "generated"
 
-        js = inst.as_json()
-        self.assertEqual("OperationOutcome", js["resourceType"])
-        inst2 = operationoutcome.OperationOutcome(js)
-        self.implOperationOutcome3(inst2)
 
-    def implOperationOutcome3(self, inst):
-        self.assertEqual(force_bytes(inst.id), force_bytes("searchfail"))
-        self.assertEqual(force_bytes(inst.issue[0].code), force_bytes("code-invalid"))
-        self.assertEqual(
-            force_bytes(inst.issue[0].details.text),
-            force_bytes(
-                'The "name" parameter has the modifier "exact" which is not supported by this server'
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.issue[0].location[0]), force_bytes("http.name:exact")
-        )
-        self.assertEqual(force_bytes(inst.issue[0].severity), force_bytes("fatal"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+def test_operationoutcome_2(base_settings):
+    """No. 2 tests collection for OperationOutcome.
+    Test File: operationoutcome-example-break-the-glass.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"]
+        / "operationoutcome-example-break-the-glass.json"
+    )
+    inst = operationoutcome.OperationOutcome.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "OperationOutcome" == inst.resource_type
 
-    def testOperationOutcome4(self):
-        inst = self.instantiate_from("operationoutcome-example-exception.json")
-        self.assertIsNotNone(inst, "Must have instantiated a OperationOutcome instance")
-        self.implOperationOutcome4(inst)
+    impl_operationoutcome_2(inst)
 
-        js = inst.as_json()
-        self.assertEqual("OperationOutcome", js["resourceType"])
-        inst2 = operationoutcome.OperationOutcome(js)
-        self.implOperationOutcome4(inst2)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "OperationOutcome" == data["resourceType"]
 
-    def implOperationOutcome4(self, inst):
-        self.assertEqual(force_bytes(inst.id), force_bytes("exception"))
-        self.assertEqual(force_bytes(inst.issue[0].code), force_bytes("exception"))
-        self.assertEqual(
-            force_bytes(inst.issue[0].details.text),
-            force_bytes("SQL Link Communication Error (dbx = 34234)"),
-        )
-        self.assertEqual(force_bytes(inst.issue[0].severity), force_bytes("error"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    inst2 = operationoutcome.OperationOutcome(**data)
+    impl_operationoutcome_2(inst2)
 
-    def testOperationOutcome5(self):
-        inst = self.instantiate_from("operationoutcome-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a OperationOutcome instance")
-        self.implOperationOutcome5(inst)
 
-        js = inst.as_json()
-        self.assertEqual("OperationOutcome", js["resourceType"])
-        inst2 = operationoutcome.OperationOutcome(js)
-        self.implOperationOutcome5(inst2)
+def impl_operationoutcome_3(inst):
+    assert inst.id == "searchfail"
+    assert inst.issue[0].code == "code-invalid"
+    assert (
+        inst.issue[0].details.text
+        == 'The "name" parameter has the modifier "exact" which is not supported by this server'
+    )
+    assert inst.issue[0].location[0] == "http.name:exact"
+    assert inst.issue[0].severity == "fatal"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.text.status == "generated"
 
-    def implOperationOutcome5(self, inst):
-        self.assertEqual(force_bytes(inst.id), force_bytes("101"))
-        self.assertEqual(force_bytes(inst.issue[0].code), force_bytes("code-invalid"))
-        self.assertEqual(
-            force_bytes(inst.issue[0].details.text),
-            force_bytes('The code "W" is not known and not legal in this context'),
-        )
-        self.assertEqual(
-            force_bytes(inst.issue[0].diagnostics),
-            force_bytes("Acme.Interop.FHIRProcessors.Patient.processGender line 2453"),
-        )
-        self.assertEqual(
-            force_bytes(inst.issue[0].expression[0]), force_bytes("Patient.gender")
-        )
-        self.assertEqual(
-            force_bytes(inst.issue[0].location[0]), force_bytes("/f:Patient/f:gender")
-        )
-        self.assertEqual(force_bytes(inst.issue[0].severity), force_bytes("error"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 
-    def testOperationOutcome6(self):
-        inst = self.instantiate_from("operationoutcome-example-allok.json")
-        self.assertIsNotNone(inst, "Must have instantiated a OperationOutcome instance")
-        self.implOperationOutcome6(inst)
+def test_operationoutcome_3(base_settings):
+    """No. 3 tests collection for OperationOutcome.
+    Test File: operationoutcome-example-searchfail.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "operationoutcome-example-searchfail.json"
+    )
+    inst = operationoutcome.OperationOutcome.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "OperationOutcome" == inst.resource_type
 
-        js = inst.as_json()
-        self.assertEqual("OperationOutcome", js["resourceType"])
-        inst2 = operationoutcome.OperationOutcome(js)
-        self.implOperationOutcome6(inst2)
+    impl_operationoutcome_3(inst)
 
-    def implOperationOutcome6(self, inst):
-        self.assertEqual(force_bytes(inst.id), force_bytes("allok"))
-        self.assertEqual(force_bytes(inst.issue[0].code), force_bytes("informational"))
-        self.assertEqual(force_bytes(inst.issue[0].details.text), force_bytes("All OK"))
-        self.assertEqual(
-            force_bytes(inst.issue[0].severity), force_bytes("information")
-        )
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "OperationOutcome" == data["resourceType"]
+
+    inst2 = operationoutcome.OperationOutcome(**data)
+    impl_operationoutcome_3(inst2)
+
+
+def impl_operationoutcome_4(inst):
+    assert inst.id == "exception"
+    assert inst.issue[0].code == "exception"
+    assert inst.issue[0].details.text == "SQL Link Communication Error (dbx = 34234)"
+    assert inst.issue[0].severity == "error"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.text.status == "generated"
+
+
+def test_operationoutcome_4(base_settings):
+    """No. 4 tests collection for OperationOutcome.
+    Test File: operationoutcome-example-exception.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "operationoutcome-example-exception.json"
+    )
+    inst = operationoutcome.OperationOutcome.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "OperationOutcome" == inst.resource_type
+
+    impl_operationoutcome_4(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "OperationOutcome" == data["resourceType"]
+
+    inst2 = operationoutcome.OperationOutcome(**data)
+    impl_operationoutcome_4(inst2)
+
+
+def impl_operationoutcome_5(inst):
+    assert inst.id == "101"
+    assert inst.issue[0].code == "code-invalid"
+    assert (
+        inst.issue[0].details.text
+        == 'The code "W" is not known and not legal in this context'
+    )
+    assert (
+        inst.issue[0].diagnostics
+        == "Acme.Interop.FHIRProcessors.Patient.processGender line 2453"
+    )
+    assert inst.issue[0].expression[0] == "Patient.gender"
+    assert inst.issue[0].location[0] == "/f:Patient/f:gender"
+    assert inst.issue[0].severity == "error"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.text.status == "generated"
+
+
+def test_operationoutcome_5(base_settings):
+    """No. 5 tests collection for OperationOutcome.
+    Test File: operationoutcome-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "operationoutcome-example.json"
+    inst = operationoutcome.OperationOutcome.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "OperationOutcome" == inst.resource_type
+
+    impl_operationoutcome_5(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "OperationOutcome" == data["resourceType"]
+
+    inst2 = operationoutcome.OperationOutcome(**data)
+    impl_operationoutcome_5(inst2)
+
+
+def impl_operationoutcome_6(inst):
+    assert inst.id == "allok"
+    assert inst.issue[0].code == "informational"
+    assert inst.issue[0].details.text == "All OK"
+    assert inst.issue[0].severity == "information"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.text.status == "generated"
+
+
+def test_operationoutcome_6(base_settings):
+    """No. 6 tests collection for OperationOutcome.
+    Test File: operationoutcome-example-allok.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "operationoutcome-example-allok.json"
+    )
+    inst = operationoutcome.OperationOutcome.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "OperationOutcome" == inst.resource_type
+
+    impl_operationoutcome_6(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "OperationOutcome" == data["resourceType"]
+
+    inst2 = operationoutcome.OperationOutcome(**data)
+    impl_operationoutcome_6(inst2)

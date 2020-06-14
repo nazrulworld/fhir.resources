@@ -6,316 +6,313 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import person
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class PersonTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("Person", js["resourceType"])
-        return person.Person(js)
+def impl_person_1(inst):
+    assert inst.active is True
+    assert inst.address[0].city == "Sandusky"
+    assert inst.address[0].country == "USA"
+    assert inst.address[0].line[0] == "2086 College St"
+    assert inst.address[0].postalCode == "44870"
+    assert inst.address[0].state == "OH"
+    assert inst.address[0].use == "home"
+    assert inst.birthDate == fhirtypes.Date.validate("1974-03-07")
+    assert inst.gender == "female"
+    assert inst.id == "pp"
+    assert inst.identifier[0].assigner.display == "Ohio Bureau of Motor Vehicles"
+    assert inst.identifier[0].period.start == fhirtypes.DateTime.validate(
+        "2041-09-23T11:15:33+10:00"
+    )
+    assert inst.identifier[0].system == "urn:oid:2.16.840.1.113883.4.3.39"
+    assert inst.identifier[0].type.coding[0].code == "DL"
+    assert (
+        inst.identifier[0].type.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v2-0203"
+    )
+    assert inst.identifier[0].type.text == "Ohio driver license"
+    assert inst.identifier[0].use == "official"
+    assert inst.identifier[0].value == "TL545786"
+    assert inst.link[0].assurance == "level3"
+    assert inst.link[0].target.display == "Eve Everywoman"
+    assert inst.link[0].target.reference == "http://www.goodhealth.com/Patient/98574"
+    assert inst.link[1].assurance == "level2"
+    assert inst.link[1].target.display == "Eve Marie Everywoman"
+    assert inst.link[1].target.reference == "http://www.acme-medical.com/Patient/ab34d"
+    assert inst.managingOrganization.display == "Goodhealth Patient Portal"
+    assert (
+        inst.managingOrganization.reference
+        == "http://www.goodhealth.com/Organization/12"
+    )
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.name[0].family == "Everywoman"
+    assert inst.name[0].given[0] == "Eve"
+    assert inst.name[0].given[1] == "Marie"
+    assert inst.name[0].use == "official"
+    assert inst.telecom[0].system == "phone"
+    assert inst.telecom[0].use == "home"
+    assert inst.telecom[0].value == "(621)-479-9743"
+    assert inst.text.status == "generated"
 
-    def testPerson1(self):
-        inst = self.instantiate_from("person-patient-portal.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Person instance")
-        self.implPerson1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("Person", js["resourceType"])
-        inst2 = person.Person(js)
-        self.implPerson1(inst2)
+def test_person_1(base_settings):
+    """No. 1 tests collection for Person.
+    Test File: person-patient-portal.json
+    """
+    filename = base_settings["unittest_data_dir"] / "person-patient-portal.json"
+    inst = person.Person.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Person" == inst.resource_type
 
-    def implPerson1(self, inst):
-        self.assertTrue(inst.active)
-        self.assertEqual(force_bytes(inst.address[0].city), force_bytes("Sandusky"))
-        self.assertEqual(force_bytes(inst.address[0].country), force_bytes("USA"))
-        self.assertEqual(
-            force_bytes(inst.address[0].line[0]), force_bytes("2086 College St")
-        )
-        self.assertEqual(force_bytes(inst.address[0].postalCode), force_bytes("44870"))
-        self.assertEqual(force_bytes(inst.address[0].state), force_bytes("OH"))
-        self.assertEqual(force_bytes(inst.address[0].use), force_bytes("home"))
-        self.assertEqual(inst.birthDate.date, FHIRDate("1974-03-07").date)
-        self.assertEqual(inst.birthDate.as_json(), "1974-03-07")
-        self.assertEqual(force_bytes(inst.gender), force_bytes("female"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("pp"))
-        self.assertEqual(
-            inst.identifier[0].period.start.date, FHIRDate("2041-09-23").date
-        )
-        self.assertEqual(inst.identifier[0].period.start.as_json(), "2041-09-23")
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("urn:oid:2.16.840.1.113883.4.3.39"),
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].type.coding[0].code), force_bytes("DL")
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].type.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v2-0203"),
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].type.text),
-            force_bytes("Ohio driver license"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].use), force_bytes("official"))
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("TL545786"))
-        self.assertEqual(force_bytes(inst.link[0].assurance), force_bytes("level3"))
-        self.assertEqual(force_bytes(inst.link[1].assurance), force_bytes("level2"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.name[0].family), force_bytes("Everywoman"))
-        self.assertEqual(force_bytes(inst.name[0].given[0]), force_bytes("Eve"))
-        self.assertEqual(force_bytes(inst.name[0].given[1]), force_bytes("Marie"))
-        self.assertEqual(force_bytes(inst.name[0].use), force_bytes("official"))
-        self.assertEqual(force_bytes(inst.telecom[0].system), force_bytes("phone"))
-        self.assertEqual(force_bytes(inst.telecom[0].use), force_bytes("home"))
-        self.assertEqual(
-            force_bytes(inst.telecom[0].value), force_bytes("(621)-479-9743")
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    impl_person_1(inst)
 
-    def testPerson2(self):
-        inst = self.instantiate_from("person-example-f002-ariadne.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Person instance")
-        self.implPerson2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Person" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("Person", js["resourceType"])
-        inst2 = person.Person(js)
-        self.implPerson2(inst2)
+    inst2 = person.Person(**data)
+    impl_person_1(inst2)
 
-    def implPerson2(self, inst):
-        self.assertTrue(inst.active)
-        self.assertEqual(inst.birthDate.date, FHIRDate("1963").date)
-        self.assertEqual(inst.birthDate.as_json(), "1963")
-        self.assertEqual(force_bytes(inst.gender), force_bytes("female"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("f002"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.name[0].text), force_bytes("Ariadne Bor-Jansma")
-        )
-        self.assertEqual(force_bytes(inst.name[0].use), force_bytes("usual"))
-        self.assertEqual(force_bytes(inst.photo.contentType), force_bytes("image/jpeg"))
-        self.assertEqual(force_bytes(inst.telecom[0].system), force_bytes("phone"))
-        self.assertEqual(force_bytes(inst.telecom[0].use), force_bytes("home"))
-        self.assertEqual(
-            force_bytes(inst.telecom[0].value), force_bytes("+31201234567")
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 
-    def testPerson3(self):
-        inst = self.instantiate_from("person-provider-directory.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Person instance")
-        self.implPerson3(inst)
+def impl_person_2(inst):
+    assert inst.active is True
+    assert inst.birthDate == fhirtypes.Date.validate("1963")
+    assert inst.gender == "female"
+    assert inst.id == "f002"
+    assert inst.link[0].target.display == "Ariadne Bor-Jansma"
+    assert inst.link[0].target.reference == "RelatedPerson/f002"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.name[0].text == "Ariadne Bor-Jansma"
+    assert inst.name[0].use == "usual"
+    assert inst.photo.contentType == "image/jpeg"
+    assert inst.telecom[0].system == "phone"
+    assert inst.telecom[0].use == "home"
+    assert inst.telecom[0].value == "+31201234567"
+    assert inst.text.status == "generated"
 
-        js = inst.as_json()
-        self.assertEqual("Person", js["resourceType"])
-        inst2 = person.Person(js)
-        self.implPerson3(inst2)
 
-    def implPerson3(self, inst):
-        self.assertTrue(inst.active)
-        self.assertEqual(force_bytes(inst.address[0].city), force_bytes("Northfield"))
-        self.assertEqual(
-            force_bytes(inst.address[0].line[0]), force_bytes("1003 Healthcare Drive")
-        )
-        self.assertEqual(force_bytes(inst.address[0].state), force_bytes("MN"))
-        self.assertEqual(force_bytes(inst.address[0].use), force_bytes("home"))
-        self.assertEqual(inst.birthDate.date, FHIRDate("1959-04-22").date)
-        self.assertEqual(inst.birthDate.as_json(), "1959-04-22")
-        self.assertEqual(force_bytes(inst.gender), force_bytes("male"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("pd"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://hl7.org/fhir/sid/us-ssn"),
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].type.coding[0].code), force_bytes("SS")
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].type.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v2-0203"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].use), force_bytes("official"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].value), force_bytes("444444444")
-        )
-        self.assertEqual(force_bytes(inst.link[0].assurance), force_bytes("level2"))
-        self.assertEqual(force_bytes(inst.link[1].assurance), force_bytes("level2"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.name[0].family), force_bytes("Hippocrates"))
-        self.assertEqual(force_bytes(inst.name[0].given[0]), force_bytes("Harold"))
-        self.assertEqual(force_bytes(inst.name[0].use), force_bytes("official"))
-        self.assertEqual(force_bytes(inst.telecom[0].system), force_bytes("phone"))
-        self.assertEqual(force_bytes(inst.telecom[0].use), force_bytes("work"))
-        self.assertEqual(
-            force_bytes(inst.telecom[0].value), force_bytes("555-555-1003")
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+def test_person_2(base_settings):
+    """No. 2 tests collection for Person.
+    Test File: person-example-f002-ariadne.json
+    """
+    filename = base_settings["unittest_data_dir"] / "person-example-f002-ariadne.json"
+    inst = person.Person.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Person" == inst.resource_type
 
-    def testPerson4(self):
-        inst = self.instantiate_from("person-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Person instance")
-        self.implPerson4(inst)
+    impl_person_2(inst)
 
-        js = inst.as_json()
-        self.assertEqual("Person", js["resourceType"])
-        inst2 = person.Person(js)
-        self.implPerson4(inst2)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Person" == data["resourceType"]
 
-    def implPerson4(self, inst):
-        self.assertTrue(inst.active)
-        self.assertEqual(
-            force_bytes(inst.address[0].city), force_bytes("PleasantVille")
-        )
-        self.assertEqual(
-            force_bytes(inst.address[0].line[0]), force_bytes("534 Erewhon St")
-        )
-        self.assertEqual(force_bytes(inst.address[0].postalCode), force_bytes("3999"))
-        self.assertEqual(force_bytes(inst.address[0].state), force_bytes("Vic"))
-        self.assertEqual(force_bytes(inst.address[0].use), force_bytes("home"))
-        self.assertEqual(inst.birthDate.date, FHIRDate("1974-12-25").date)
-        self.assertEqual(inst.birthDate.as_json(), "1974-12-25")
-        self.assertEqual(force_bytes(inst.gender), force_bytes("male"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(
-            inst.identifier[0].period.start.date, FHIRDate("2001-05-06").date
-        )
-        self.assertEqual(inst.identifier[0].period.start.as_json(), "2001-05-06")
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("urn:oid:1.2.36.146.595.217.0.1"),
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].type.coding[0].code), force_bytes("MR")
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].type.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v2-0203"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].use), force_bytes("usual"))
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("12345"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.name[0].family), force_bytes("Chalmers"))
-        self.assertEqual(force_bytes(inst.name[0].given[0]), force_bytes("Peter"))
-        self.assertEqual(force_bytes(inst.name[0].given[1]), force_bytes("James"))
-        self.assertEqual(force_bytes(inst.name[0].use), force_bytes("official"))
-        self.assertEqual(force_bytes(inst.name[1].given[0]), force_bytes("Jim"))
-        self.assertEqual(force_bytes(inst.name[1].use), force_bytes("usual"))
-        self.assertEqual(force_bytes(inst.telecom[0].use), force_bytes("home"))
-        self.assertEqual(force_bytes(inst.telecom[1].system), force_bytes("phone"))
-        self.assertEqual(force_bytes(inst.telecom[1].use), force_bytes("work"))
-        self.assertEqual(
-            force_bytes(inst.telecom[1].value), force_bytes("(03) 5555 6473")
-        )
-        self.assertEqual(force_bytes(inst.telecom[2].system), force_bytes("email"))
-        self.assertEqual(force_bytes(inst.telecom[2].use), force_bytes("home"))
-        self.assertEqual(
-            force_bytes(inst.telecom[2].value), force_bytes("Jim@example.org")
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    inst2 = person.Person(**data)
+    impl_person_2(inst2)
 
-    def testPerson5(self):
-        inst = self.instantiate_from("person-grahame.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Person instance")
-        self.implPerson5(inst)
 
-        js = inst.as_json()
-        self.assertEqual("Person", js["resourceType"])
-        inst2 = person.Person(js)
-        self.implPerson5(inst2)
+def impl_person_3(inst):
+    assert inst.active is True
+    assert inst.address[0].city == "Northfield"
+    assert inst.address[0].line[0] == "1003 Healthcare Drive"
+    assert inst.address[0].state == "MN"
+    assert inst.address[0].use == "home"
+    assert inst.birthDate == fhirtypes.Date.validate("1959-04-22")
+    assert inst.gender == "male"
+    assert inst.id == "pd"
+    assert inst.identifier[0].system == "http://hl7.org/fhir/sid/us-ssn"
+    assert inst.identifier[0].type.coding[0].code == "SS"
+    assert (
+        inst.identifier[0].type.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v2-0203"
+    )
+    assert inst.identifier[0].use == "official"
+    assert inst.identifier[0].value == "444444444"
+    assert inst.link[0].assurance == "level2"
+    assert inst.link[0].target.display == "Dr. Harold Hippocrates"
+    assert (
+        inst.link[0].target.reference == "http://www.goodhealth.com/Practitioner/98574"
+    )
+    assert inst.link[1].assurance == "level2"
+    assert inst.link[1].target.display == "Harold Hippocrates, MD"
+    assert (
+        inst.link[1].target.reference
+        == "http://www.acme-medical.com/Practitioner/ab34d"
+    )
+    assert (
+        inst.managingOrganization.display == "Northfield Regional Physician Directory"
+    )
+    assert (
+        inst.managingOrganization.reference
+        == "http://www.northfield-regional.com/Organization/2"
+    )
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.name[0].family == "Hippocrates"
+    assert inst.name[0].given[0] == "Harold"
+    assert inst.name[0].use == "official"
+    assert inst.telecom[0].system == "phone"
+    assert inst.telecom[0].use == "work"
+    assert inst.telecom[0].value == "555-555-1003"
+    assert inst.text.status == "generated"
 
-    def implPerson5(self, inst):
-        self.assertTrue(inst.active)
-        self.assertEqual(
-            force_bytes(inst.address[0].city), force_bytes("PleasantVille")
-        )
-        self.assertEqual(
-            force_bytes(inst.address[0].line[0]), force_bytes("534 Erewhon St")
-        )
-        self.assertEqual(force_bytes(inst.address[0].postalCode), force_bytes("3999"))
-        self.assertEqual(force_bytes(inst.address[0].state), force_bytes("Vic"))
-        self.assertEqual(force_bytes(inst.address[0].use), force_bytes("home"))
-        self.assertEqual(inst.birthDate.date, FHIRDate("1974-12-25").date)
-        self.assertEqual(inst.birthDate.as_json(), "1974-12-25")
-        self.assertEqual(force_bytes(inst.gender), force_bytes("male"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("grahame"))
-        self.assertEqual(
-            inst.identifier[0].period.start.date, FHIRDate("2001-05-06").date
-        )
-        self.assertEqual(inst.identifier[0].period.start.as_json(), "2001-05-06")
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("urn:oid:1.2.36.146.595.217.0.1"),
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].type.coding[0].code), force_bytes("MR")
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].type.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v2-0203"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].use), force_bytes("usual"))
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("12345"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.name[0].family), force_bytes("Chalmers"))
-        self.assertEqual(force_bytes(inst.name[0].given[0]), force_bytes("Peter"))
-        self.assertEqual(force_bytes(inst.name[0].given[1]), force_bytes("James"))
-        self.assertEqual(force_bytes(inst.name[0].use), force_bytes("official"))
-        self.assertEqual(force_bytes(inst.name[1].given[0]), force_bytes("Jim"))
-        self.assertEqual(force_bytes(inst.name[1].use), force_bytes("usual"))
-        self.assertEqual(force_bytes(inst.telecom[0].use), force_bytes("home"))
-        self.assertEqual(force_bytes(inst.telecom[1].system), force_bytes("phone"))
-        self.assertEqual(force_bytes(inst.telecom[1].use), force_bytes("work"))
-        self.assertEqual(
-            force_bytes(inst.telecom[1].value), force_bytes("(03) 5555 6473")
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+
+def test_person_3(base_settings):
+    """No. 3 tests collection for Person.
+    Test File: person-provider-directory.json
+    """
+    filename = base_settings["unittest_data_dir"] / "person-provider-directory.json"
+    inst = person.Person.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Person" == inst.resource_type
+
+    impl_person_3(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Person" == data["resourceType"]
+
+    inst2 = person.Person(**data)
+    impl_person_3(inst2)
+
+
+def impl_person_4(inst):
+    assert inst.active is True
+    assert inst.address[0].city == "PleasantVille"
+    assert inst.address[0].line[0] == "534 Erewhon St"
+    assert inst.address[0].postalCode == "3999"
+    assert inst.address[0].state == "Vic"
+    assert inst.address[0].use == "home"
+    assert inst.birthDate == fhirtypes.Date.validate("1974-12-25")
+    assert inst.gender == "male"
+    assert inst.id == "example"
+    assert inst.identifier[0].assigner.display == "Acme Healthcare"
+    assert inst.identifier[0].period.start == fhirtypes.DateTime.validate(
+        "2001-05-06T11:15:33+10:00"
+    )
+    assert inst.identifier[0].system == "urn:oid:1.2.36.146.595.217.0.1"
+    assert inst.identifier[0].type.coding[0].code == "MR"
+    assert (
+        inst.identifier[0].type.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v2-0203"
+    )
+    assert inst.identifier[0].use == "usual"
+    assert inst.identifier[0].value == "12345"
+    assert inst.link[0].target.display == "Peter Chalmers"
+    assert inst.link[0].target.reference == "RelatedPerson/peter"
+    assert inst.link[1].target.display == "Peter Chalmers"
+    assert inst.link[1].target.reference == "Patient/example"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.name[0].family == "Chalmers"
+    assert inst.name[0].given[0] == "Peter"
+    assert inst.name[0].given[1] == "James"
+    assert inst.name[0].use == "official"
+    assert inst.name[1].given[0] == "Jim"
+    assert inst.name[1].use == "usual"
+    assert inst.telecom[0].use == "home"
+    assert inst.telecom[1].system == "phone"
+    assert inst.telecom[1].use == "work"
+    assert inst.telecom[1].value == "(03) 5555 6473"
+    assert inst.telecom[2].system == "email"
+    assert inst.telecom[2].use == "home"
+    assert inst.telecom[2].value == "Jim@example.org"
+    assert inst.text.status == "generated"
+
+
+def test_person_4(base_settings):
+    """No. 4 tests collection for Person.
+    Test File: person-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "person-example.json"
+    inst = person.Person.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Person" == inst.resource_type
+
+    impl_person_4(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Person" == data["resourceType"]
+
+    inst2 = person.Person(**data)
+    impl_person_4(inst2)
+
+
+def impl_person_5(inst):
+    assert inst.active is True
+    assert inst.address[0].city == "PleasantVille"
+    assert inst.address[0].line[0] == "534 Erewhon St"
+    assert inst.address[0].postalCode == "3999"
+    assert inst.address[0].state == "Vic"
+    assert inst.address[0].use == "home"
+    assert inst.birthDate == fhirtypes.Date.validate("1974-12-25")
+    assert inst.gender == "male"
+    assert inst.id == "grahame"
+    assert inst.identifier[0].assigner.display == "Acme Healthcare"
+    assert inst.identifier[0].period.start == fhirtypes.DateTime.validate(
+        "2001-05-06T11:15:33+10:00"
+    )
+    assert inst.identifier[0].system == "urn:oid:1.2.36.146.595.217.0.1"
+    assert inst.identifier[0].type.coding[0].code == "MR"
+    assert (
+        inst.identifier[0].type.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v2-0203"
+    )
+    assert inst.identifier[0].use == "usual"
+    assert inst.identifier[0].value == "12345"
+    assert inst.managingOrganization.reference == "Organization/1"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.name[0].family == "Chalmers"
+    assert inst.name[0].given[0] == "Peter"
+    assert inst.name[0].given[1] == "James"
+    assert inst.name[0].use == "official"
+    assert inst.name[1].given[0] == "Jim"
+    assert inst.name[1].use == "usual"
+    assert inst.telecom[0].use == "home"
+    assert inst.telecom[1].system == "phone"
+    assert inst.telecom[1].use == "work"
+    assert inst.telecom[1].value == "(03) 5555 6473"
+    assert inst.text.status == "generated"
+
+
+def test_person_5(base_settings):
+    """No. 5 tests collection for Person.
+    Test File: person-grahame.json
+    """
+    filename = base_settings["unittest_data_dir"] / "person-grahame.json"
+    inst = person.Person.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Person" == inst.resource_type
+
+    impl_person_5(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Person" == data["resourceType"]
+
+    inst2 = person.Person(**data)
+    impl_person_5(inst2)

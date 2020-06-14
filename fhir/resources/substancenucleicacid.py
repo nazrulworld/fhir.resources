@@ -6,11 +6,11 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class SubstanceNucleicAcid(domainresource.DomainResource):
@@ -20,101 +20,42 @@ class SubstanceNucleicAcid(domainresource.DomainResource):
     direction.
     """
 
-    resource_type = "SubstanceNucleicAcid"
+    resource_type = Field("SubstanceNucleicAcid", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    areaOfHybridisation: fhirtypes.String = Field(
+        None,
+        alias="areaOfHybridisation",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="The area of hybridisation shall be described if applicable for double stranded RNA or DNA. The number associated with the subunit followed by the number associated to the residue shall be specified in increasing order. The underscore \u201c\u201d shall be used as separator as follows: \u201cSubunitnumber Residue\u201d",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    numberOfSubunits: fhirtypes.Integer = Field(
+        None,
+        alias="numberOfSubunits",
+        title="Type `Integer` (represented as `dict` in JSON)",
+        description="The number of linear sequences of nucleotides linked through phosphodiester bonds shall be described. Subunits would be strands of nucleic acids that are tightly associated typically through Watson-Crick base pairing. NOTE: If not specified in the reference source, the assumption is that there is 1 subunit",
+    )
 
-        self.areaOfHybridisation = None
-        """ The area of hybridisation shall be described if applicable for
-        double stranded RNA or DNA. The number associated with the subunit
-        followed by the number associated to the residue shall be specified
-        in increasing order. The underscore “” shall be used as separator
-        as follows: “Subunitnumber Residue”.
-        Type `str`. """
+    oligoNucleotideType: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="oligoNucleotideType",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="(TBC)",
+    )
 
-        self.numberOfSubunits = None
-        """ The number of linear sequences of nucleotides linked through
-        phosphodiester bonds shall be described. Subunits would be strands
-        of nucleic acids that are tightly associated typically through
-        Watson-Crick base pairing. NOTE: If not specified in the reference
-        source, the assumption is that there is 1 subunit.
-        Type `int`. """
+    sequenceType: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="sequenceType",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The type of the sequence shall be specified based on a controlled vocabulary",
+    )
 
-        self.oligoNucleotideType = None
-        """ (TBC).
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.sequenceType = None
-        """ The type of the sequence shall be specified based on a controlled
-        vocabulary.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.subunit = None
-        """ Subunits are listed in order of decreasing length; sequences of the
-        same length will be ordered by molecular weight; subunits that have
-        identical sequences will be repeated multiple times.
-        List of `SubstanceNucleicAcidSubunit` items (represented as `dict` in JSON). """
-
-        super(SubstanceNucleicAcid, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(SubstanceNucleicAcid, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "areaOfHybridisation",
-                    "areaOfHybridisation",
-                    str,
-                    "string",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "numberOfSubunits",
-                    "numberOfSubunits",
-                    int,
-                    "integer",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "oligoNucleotideType",
-                    "oligoNucleotideType",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "sequenceType",
-                    "sequenceType",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "subunit",
-                    "subunit",
-                    SubstanceNucleicAcidSubunit,
-                    "SubstanceNucleicAcidSubunit",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    subunit: ListType[fhirtypes.SubstanceNucleicAcidSubunitType] = Field(
+        None,
+        alias="subunit",
+        title="List of `SubstanceNucleicAcidSubunit` items (represented as `dict` in JSON)",
+        description="Subunits are listed in order of decreasing length; sequences of the same length will be ordered by molecular weight; subunits that have identical sequences will be repeated multiple times",
+    )
 
 
 class SubstanceNucleicAcidSubunit(backboneelement.BackboneElement):
@@ -123,247 +64,123 @@ class SubstanceNucleicAcidSubunit(backboneelement.BackboneElement):
     sequences will be repeated multiple times.
     """
 
-    resource_type = "SubstanceNucleicAcidSubunit"
+    resource_type = Field("SubstanceNucleicAcidSubunit", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    fivePrime: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="fivePrime",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The nucleotide present at the 5\u2019 terminal shall be specified based on a controlled vocabulary. Since the sequence is represented from the 5\u0027 to the 3\u0027 end, the 5\u2019 prime nucleotide is the letter at the first position in the sequence. A separate representation would be redundant",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    length: fhirtypes.Integer = Field(
+        None,
+        alias="length",
+        title="Type `Integer` (represented as `dict` in JSON)",
+        description="The length of the sequence shall be captured",
+    )
 
-        self.fivePrime = None
-        """ The nucleotide present at the 5’ terminal shall be specified based
-        on a controlled vocabulary. Since the sequence is represented from
-        the 5' to the 3' end, the 5’ prime nucleotide is the letter at the
-        first position in the sequence. A separate representation would be
-        redundant.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    linkage: ListType[fhirtypes.SubstanceNucleicAcidSubunitLinkageType] = Field(
+        None,
+        alias="linkage",
+        title="List of `SubstanceNucleicAcidSubunitLinkage` items (represented as `dict` in JSON)",
+        description="The linkages between sugar residues will also be captured",
+    )
 
-        self.length = None
-        """ The length of the sequence shall be captured.
-        Type `int`. """
+    sequence: fhirtypes.String = Field(
+        None,
+        alias="sequence",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Actual nucleotide sequence notation from 5\u0027 to 3\u0027 end using standard single letter codes. In addition to the base sequence, sugar and type of phosphate or non-phosphate linkage should also be captured",
+    )
 
-        self.linkage = None
-        """ The linkages between sugar residues will also be captured.
-        List of `SubstanceNucleicAcidSubunitLinkage` items (represented as `dict` in JSON). """
+    sequenceAttachment: fhirtypes.AttachmentType = Field(
+        None,
+        alias="sequenceAttachment",
+        title="Type `Attachment` (represented as `dict` in JSON)",
+        description="(TBC)",
+    )
 
-        self.sequence = None
-        """ Actual nucleotide sequence notation from 5' to 3' end using
-        standard single letter codes. In addition to the base sequence,
-        sugar and type of phosphate or non-phosphate linkage should also be
-        captured.
-        Type `str`. """
+    subunit: fhirtypes.Integer = Field(
+        None,
+        alias="subunit",
+        title="Type `Integer` (represented as `dict` in JSON)",
+        description="Index of linear sequences of nucleic acids in order of decreasing length. Sequences of the same length will be ordered by molecular weight. Subunits that have identical sequences will be repeated and have sequential subscripts",
+    )
 
-        self.sequenceAttachment = None
-        """ (TBC).
-        Type `Attachment` (represented as `dict` in JSON). """
+    sugar: ListType[fhirtypes.SubstanceNucleicAcidSubunitSugarType] = Field(
+        None,
+        alias="sugar",
+        title="List of `SubstanceNucleicAcidSubunitSugar` items (represented as `dict` in JSON)",
+        description="5.3.6.8.1 Sugar ID (Mandatory)",
+    )
 
-        self.subunit = None
-        """ Index of linear sequences of nucleic acids in order of decreasing
-        length. Sequences of the same length will be ordered by molecular
-        weight. Subunits that have identical sequences will be repeated and
-        have sequential subscripts.
-        Type `int`. """
-
-        self.sugar = None
-        """ 5.3.6.8.1 Sugar ID (Mandatory).
-        List of `SubstanceNucleicAcidSubunitSugar` items (represented as `dict` in JSON). """
-
-        self.threePrime = None
-        """ The nucleotide present at the 3’ terminal shall be specified based
-        on a controlled vocabulary. Since the sequence is represented from
-        the 5' to the 3' end, the 5’ prime nucleotide is the letter at the
-        last position in the sequence. A separate representation would be
-        redundant.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(SubstanceNucleicAcidSubunit, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(SubstanceNucleicAcidSubunit, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "fivePrime",
-                    "fivePrime",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("length", "length", int, "integer", False, None, False),
-                (
-                    "linkage",
-                    "linkage",
-                    SubstanceNucleicAcidSubunitLinkage,
-                    "SubstanceNucleicAcidSubunitLinkage",
-                    True,
-                    None,
-                    False,
-                ),
-                ("sequence", "sequence", str, "string", False, None, False),
-                (
-                    "sequenceAttachment",
-                    "sequenceAttachment",
-                    attachment.Attachment,
-                    "Attachment",
-                    False,
-                    None,
-                    False,
-                ),
-                ("subunit", "subunit", int, "integer", False, None, False),
-                (
-                    "sugar",
-                    "sugar",
-                    SubstanceNucleicAcidSubunitSugar,
-                    "SubstanceNucleicAcidSubunitSugar",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "threePrime",
-                    "threePrime",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    threePrime: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="threePrime",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The nucleotide present at the 3\u2019 terminal shall be specified based on a controlled vocabulary. Since the sequence is represented from the 5\u0027 to the 3\u0027 end, the 5\u2019 prime nucleotide is the letter at the last position in the sequence. A separate representation would be redundant",
+    )
 
 
 class SubstanceNucleicAcidSubunitLinkage(backboneelement.BackboneElement):
     """ The linkages between sugar residues will also be captured.
     """
 
-    resource_type = "SubstanceNucleicAcidSubunitLinkage"
+    resource_type = Field("SubstanceNucleicAcidSubunitLinkage", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    connectivity: fhirtypes.String = Field(
+        None,
+        alias="connectivity",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="The entity that links the sugar residues together should also be captured for nearly all naturally occurring nucleic acid the linkage is a phosphate group. For many synthetic oligonucleotides phosphorothioate linkages are often seen. Linkage connectivity is assumed to be 3\u2019-5\u2019. If the linkage is either 3\u2019-3\u2019 or 5\u2019-5\u2019 this should be specified",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    identifier: fhirtypes.IdentifierType = Field(
+        None,
+        alias="identifier",
+        title="Type `Identifier` (represented as `dict` in JSON)",
+        description="Each linkage will be registered as a fragment and have an ID",
+    )
 
-        self.connectivity = None
-        """ The entity that links the sugar residues together should also be
-        captured for nearly all naturally occurring nucleic acid the
-        linkage is a phosphate group. For many synthetic oligonucleotides
-        phosphorothioate linkages are often seen. Linkage connectivity is
-        assumed to be 3’-5’. If the linkage is either 3’-3’ or 5’-5’ this
-        should be specified.
-        Type `str`. """
+    name: fhirtypes.String = Field(
+        None,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Each linkage will be registered as a fragment and have at least one name. A single name shall be assigned to each linkage",
+    )
 
-        self.identifier = None
-        """ Each linkage will be registered as a fragment and have an ID.
-        Type `Identifier` (represented as `dict` in JSON). """
-
-        self.name = None
-        """ Each linkage will be registered as a fragment and have at least one
-        name. A single name shall be assigned to each linkage.
-        Type `str`. """
-
-        self.residueSite = None
-        """ Residues shall be captured as described in 5.3.6.8.3.
-        Type `str`. """
-
-        super(SubstanceNucleicAcidSubunitLinkage, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(SubstanceNucleicAcidSubunitLinkage, self).elementProperties()
-        js.extend(
-            [
-                ("connectivity", "connectivity", str, "string", False, None, False),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    False,
-                    None,
-                    False,
-                ),
-                ("name", "name", str, "string", False, None, False),
-                ("residueSite", "residueSite", str, "string", False, None, False),
-            ]
-        )
-        return js
+    residueSite: fhirtypes.String = Field(
+        None,
+        alias="residueSite",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Residues shall be captured as described in 5.3.6.8.3",
+    )
 
 
 class SubstanceNucleicAcidSubunitSugar(backboneelement.BackboneElement):
     """ 5.3.6.8.1 Sugar ID (Mandatory).
     """
 
-    resource_type = "SubstanceNucleicAcidSubunitSugar"
+    resource_type = Field("SubstanceNucleicAcidSubunitSugar", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    identifier: fhirtypes.IdentifierType = Field(
+        None,
+        alias="identifier",
+        title="Type `Identifier` (represented as `dict` in JSON)",
+        description="The Substance ID of the sugar or sugar-like component that make up the nucleotide",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    name: fhirtypes.String = Field(
+        None,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="The name of the sugar or sugar-like component that make up the nucleotide",
+    )
 
-        self.identifier = None
-        """ The Substance ID of the sugar or sugar-like component that make up
-        the nucleotide.
-        Type `Identifier` (represented as `dict` in JSON). """
-
-        self.name = None
-        """ The name of the sugar or sugar-like component that make up the
-        nucleotide.
-        Type `str`. """
-
-        self.residueSite = None
-        """ The residues that contain a given sugar will be captured. The order
-        of given residues will be captured in the 5‘-3‘direction consistent
-        with the base sequences listed above.
-        Type `str`. """
-
-        super(SubstanceNucleicAcidSubunitSugar, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(SubstanceNucleicAcidSubunitSugar, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    False,
-                    None,
-                    False,
-                ),
-                ("name", "name", str, "string", False, None, False),
-                ("residueSite", "residueSite", str, "string", False, None, False),
-            ]
-        )
-        return js
-
-
-try:
-    from . import attachment
-except ImportError:
-    attachment = sys.modules[__package__ + ".attachment"]
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
+    residueSite: fhirtypes.String = Field(
+        None,
+        alias="residueSite",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="The residues that contain a given sugar will be captured. The order of given residues will be captured in the 5\u2018-3\u2018direction consistent with the base sequences listed above",
+    )

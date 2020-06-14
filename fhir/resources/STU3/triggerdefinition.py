@@ -6,129 +6,116 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from typing import Any, Dict
 
+from pydantic import Field, root_validator
 
-import sys
-
-from . import element
+from . import element, fhirtypes
 
 
 class TriggerDefinition(element.Element):
     """ Defines an expected trigger for a module.
-
     A description of a triggering event.
     """
 
-    resource_type = "TriggerDefinition"
+    resource_type = Field("TriggerDefinition", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    eventData: fhirtypes.DataRequirementType = Field(
+        None,
+        alias="eventData",
+        title="Type `DataRequirement` (represented as `dict` in JSON)",
+        description="Triggering data of the event",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    eventName: fhirtypes.String = Field(
+        None,
+        alias="eventName",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Triggering event name",
+    )
+
+    eventTimingDate: fhirtypes.Date = Field(
+        None,
+        alias="eventTimingDate",
+        title="Type `Date` (represented as `dict` in JSON)",
+        description="Timing of the event",
+        one_of_many="eventTiming",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    eventTimingDateTime: fhirtypes.DateTime = Field(
+        None,
+        alias="eventTimingDateTime",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Timing of the event",
+        one_of_many="eventTiming",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    eventTimingReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="eventTimingReference",
+        title="Type `Reference` referencing `Schedule` (represented as `dict` in JSON)",
+        description="Timing of the event",
+        one_of_many="eventTiming",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    eventTimingTiming: fhirtypes.TimingType = Field(
+        None,
+        alias="eventTimingTiming",
+        title="Type `Timing` (represented as `dict` in JSON)",
+        description="Timing of the event",
+        one_of_many="eventTiming",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    type: fhirtypes.Code = Field(
+        ...,
+        alias="type",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="named-event | periodic | data-added | data-modified | data-removed | data-accessed | data-access-ended",
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "eventTiming": [
+                "eventTimingDate",
+                "eventTimingDateTime",
+                "eventTimingReference",
+                "eventTimingTiming",
+            ],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.eventData = None
-        """ Triggering data of the event.
-        Type `DataRequirement` (represented as `dict` in JSON). """
-
-        self.eventName = None
-        """ Triggering event name.
-        Type `str`. """
-
-        self.eventTimingDate = None
-        """ Timing of the event.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.eventTimingDateTime = None
-        """ Timing of the event.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.eventTimingReference = None
-        """ Timing of the event.
-        Type `FHIRReference` referencing `['Schedule']` (represented as `dict` in JSON). """
-
-        self.eventTimingTiming = None
-        """ Timing of the event.
-        Type `Timing` (represented as `dict` in JSON). """
-
-        self.type = None
-        """ named-event | periodic | data-added | data-modified | data-removed
-        | data-accessed | data-access-ended.
-        Type `str`. """
-
-        super(TriggerDefinition, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(TriggerDefinition, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "eventData",
-                    "eventData",
-                    datarequirement.DataRequirement,
-                    "DataRequirement",
-                    False,
-                    None,
-                    False,
-                ),
-                ("eventName", "eventName", str, "string", False, None, False),
-                (
-                    "eventTimingDate",
-                    "eventTimingDate",
-                    fhirdate.FHIRDate,
-                    "date",
-                    False,
-                    "eventTiming",
-                    False,
-                ),
-                (
-                    "eventTimingDateTime",
-                    "eventTimingDateTime",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    "eventTiming",
-                    False,
-                ),
-                (
-                    "eventTimingReference",
-                    "eventTimingReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    "eventTiming",
-                    False,
-                ),
-                (
-                    "eventTimingTiming",
-                    "eventTimingTiming",
-                    timing.Timing,
-                    "Timing",
-                    False,
-                    "eventTiming",
-                    False,
-                ),
-                ("type", "type", str, "code", False, None, True),
-            ]
-        )
-        return js
-
-
-try:
-    from . import datarequirement
-except ImportError:
-    datarequirement = sys.modules[__package__ + ".datarequirement"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import timing
-except ImportError:
-    timing = sys.modules[__package__ + ".timing"]
+        return values

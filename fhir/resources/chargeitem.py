@@ -6,17 +6,17 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import Any, Dict
+from typing import List as ListType
 
+from pydantic import Field, root_validator
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class ChargeItem(domainresource.DomainResource):
     """ Item containing charge code(s) associated with the provision of healthcare
     provider products.
-
     The resource ChargeItem describes the provision of healthcare provider
     products for a certain patient, therefore referring not only to the
     product, but containing in addition details of the provision, like date,
@@ -25,467 +25,282 @@ class ChargeItem(domainresource.DomainResource):
     allocation.
     """
 
-    resource_type = "ChargeItem"
+    resource_type = Field("ChargeItem", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    account: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="account",
+        title="List of `Reference` items referencing `Account` (represented as `dict` in JSON)",
+        description="Account to place this charge",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    bodysite: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="bodysite",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Anatomical location, if relevant",
+    )
+
+    code: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="code",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="A code that identifies the charge, like a billing code",
+    )
+
+    context: fhirtypes.ReferenceType = Field(
+        None,
+        alias="context",
+        title="Type `Reference` referencing `Encounter, EpisodeOfCare` (represented as `dict` in JSON)",
+        description="Encounter / Episode associated with event",
+    )
+
+    costCenter: fhirtypes.ReferenceType = Field(
+        None,
+        alias="costCenter",
+        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        description="Organization that has ownership of the (potential, future) revenue",
+    )
+
+    definitionCanonical: ListType[fhirtypes.Canonical] = Field(
+        None,
+        alias="definitionCanonical",
+        title="List of `Canonical` items referencing `ChargeItemDefinition` (represented as `dict` in JSON)",
+        description="Resource defining the code of this ChargeItem",
+    )
+
+    definitionUri: ListType[fhirtypes.Uri] = Field(
+        None,
+        alias="definitionUri",
+        title="List of `Uri` items (represented as `dict` in JSON)",
+        description="Defining information about the code of this charge item",
+    )
+
+    enteredDate: fhirtypes.DateTime = Field(
+        None,
+        alias="enteredDate",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Date the charge item was entered",
+    )
+
+    enterer: fhirtypes.ReferenceType = Field(
+        None,
+        alias="enterer",
+        title="Type `Reference` referencing `Practitioner, PractitionerRole, Organization, Patient, Device, RelatedPerson` (represented as `dict` in JSON)",
+        description="Individual who was entering",
+    )
+
+    factorOverride: fhirtypes.Decimal = Field(
+        None,
+        alias="factorOverride",
+        title="Type `Decimal` (represented as `dict` in JSON)",
+        description="Factor overriding the associated rules",
+    )
+
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Business Identifier for item",
+    )
+
+    note: ListType[fhirtypes.AnnotationType] = Field(
+        None,
+        alias="note",
+        title="List of `Annotation` items (represented as `dict` in JSON)",
+        description="Comments made about the ChargeItem",
+    )
+
+    occurrenceDateTime: fhirtypes.DateTime = Field(
+        None,
+        alias="occurrenceDateTime",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="When the charged service was applied",
+        one_of_many="occurrence",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    occurrencePeriod: fhirtypes.PeriodType = Field(
+        None,
+        alias="occurrencePeriod",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="When the charged service was applied",
+        one_of_many="occurrence",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    occurrenceTiming: fhirtypes.TimingType = Field(
+        None,
+        alias="occurrenceTiming",
+        title="Type `Timing` (represented as `dict` in JSON)",
+        description="When the charged service was applied",
+        one_of_many="occurrence",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    overrideReason: fhirtypes.String = Field(
+        None,
+        alias="overrideReason",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Reason for overriding the list price/factor",
+    )
+
+    partOf: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="partOf",
+        title="List of `Reference` items referencing `ChargeItem` (represented as `dict` in JSON)",
+        description="Part of referenced ChargeItem",
+    )
+
+    performer: ListType[fhirtypes.ChargeItemPerformerType] = Field(
+        None,
+        alias="performer",
+        title="List of `ChargeItemPerformer` items (represented as `dict` in JSON)",
+        description="Who performed charged service",
+    )
+
+    performingOrganization: fhirtypes.ReferenceType = Field(
+        None,
+        alias="performingOrganization",
+        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        description="Organization providing the charged service",
+    )
+
+    priceOverride: fhirtypes.MoneyType = Field(
+        None,
+        alias="priceOverride",
+        title="Type `Money` (represented as `dict` in JSON)",
+        description="Price overriding the associated rules",
+    )
+
+    productCodeableConcept: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="productCodeableConcept",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Product charged",
+        one_of_many="product",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    productReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="productReference",
+        title="Type `Reference` referencing `Device, Medication, Substance` (represented as `dict` in JSON)",
+        description="Product charged",
+        one_of_many="product",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    quantity: fhirtypes.QuantityType = Field(
+        None,
+        alias="quantity",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="Quantity of which the charge item has been serviced",
+    )
+
+    reason: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="reason",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Why was the charged  service rendered?",
+    )
+
+    requestingOrganization: fhirtypes.ReferenceType = Field(
+        None,
+        alias="requestingOrganization",
+        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        description="Organization requesting the charged service",
+    )
+
+    service: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="service",
+        title="List of `Reference` items referencing `DiagnosticReport, ImagingStudy, Immunization, MedicationAdministration, MedicationDispense, Observation, Procedure, SupplyDelivery` (represented as `dict` in JSON)",
+        description="Which rendered service is being charged?",
+    )
+
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="planned | billable | not-billable | aborted | billed | entered-in-error | unknown",
+    )
+
+    subject: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="subject",
+        title="Type `Reference` referencing `Patient, Group` (represented as `dict` in JSON)",
+        description="Individual service was done for/to",
+    )
+
+    supportingInformation: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="supportingInformation",
+        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        description="Further information supporting this charge",
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "occurrence": [
+                "occurrenceDateTime",
+                "occurrencePeriod",
+                "occurrenceTiming",
+            ],
+            "product": ["productCodeableConcept", "productReference",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.account = None
-        """ Account to place this charge.
-        List of `FHIRReference` items referencing `['Account']` (represented as `dict` in JSON). """
-
-        self.bodysite = None
-        """ Anatomical location, if relevant.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.code = None
-        """ A code that identifies the charge, like a billing code.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.context = None
-        """ Encounter / Episode associated with event.
-        Type `FHIRReference` referencing `['Encounter', 'EpisodeOfCare']` (represented as `dict` in JSON). """
-
-        self.costCenter = None
-        """ Organization that has ownership of the (potential, future) revenue.
-        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
-
-        self.definitionCanonical = None
-        """ Resource defining the code of this ChargeItem.
-        List of `str` items referencing `['ChargeItemDefinition']`. """
-
-        self.definitionUri = None
-        """ Defining information about the code of this charge item.
-        List of `str` items. """
-
-        self.enteredDate = None
-        """ Date the charge item was entered.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.enterer = None
-        """ Individual who was entering.
-        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'Organization', 'Patient', 'Device', 'RelatedPerson']` (represented as `dict` in JSON). """
-
-        self.factorOverride = None
-        """ Factor overriding the associated rules.
-        Type `float`. """
-
-        self.identifier = None
-        """ Business Identifier for item.
-        List of `Identifier` items (represented as `dict` in JSON). """
-
-        self.note = None
-        """ Comments made about the ChargeItem.
-        List of `Annotation` items (represented as `dict` in JSON). """
-
-        self.occurrenceDateTime = None
-        """ When the charged service was applied.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.occurrencePeriod = None
-        """ When the charged service was applied.
-        Type `Period` (represented as `dict` in JSON). """
-
-        self.occurrenceTiming = None
-        """ When the charged service was applied.
-        Type `Timing` (represented as `dict` in JSON). """
-
-        self.overrideReason = None
-        """ Reason for overriding the list price/factor.
-        Type `str`. """
-
-        self.partOf = None
-        """ Part of referenced ChargeItem.
-        List of `FHIRReference` items referencing `['ChargeItem']` (represented as `dict` in JSON). """
-
-        self.performer = None
-        """ Who performed charged service.
-        List of `ChargeItemPerformer` items (represented as `dict` in JSON). """
-
-        self.performingOrganization = None
-        """ Organization providing the charged service.
-        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
-
-        self.priceOverride = None
-        """ Price overriding the associated rules.
-        Type `Money` (represented as `dict` in JSON). """
-
-        self.productCodeableConcept = None
-        """ Product charged.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.productReference = None
-        """ Product charged.
-        Type `FHIRReference` referencing `['Device', 'Medication', 'Substance']` (represented as `dict` in JSON). """
-
-        self.quantity = None
-        """ Quantity of which the charge item has been serviced.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        self.reason = None
-        """ Why was the charged  service rendered?.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.requestingOrganization = None
-        """ Organization requesting the charged service.
-        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
-
-        self.service = None
-        """ Which rendered service is being charged?.
-        List of `FHIRReference` items referencing `['DiagnosticReport', 'ImagingStudy', 'Immunization', 'MedicationAdministration', 'MedicationDispense', 'Observation', 'Procedure', 'SupplyDelivery']` (represented as `dict` in JSON). """
-
-        self.status = None
-        """ planned | billable | not-billable | aborted | billed | entered-in-
-        error | unknown.
-        Type `str`. """
-
-        self.subject = None
-        """ Individual service was done for/to.
-        Type `FHIRReference` referencing `['Patient', 'Group']` (represented as `dict` in JSON). """
-
-        self.supportingInformation = None
-        """ Further information supporting this charge.
-        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
-
-        super(ChargeItem, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ChargeItem, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "account",
-                    "account",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "bodysite",
-                    "bodysite",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "code",
-                    "code",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "context",
-                    "context",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "costCenter",
-                    "costCenter",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "definitionCanonical",
-                    "definitionCanonical",
-                    str,
-                    "canonical",
-                    True,
-                    None,
-                    False,
-                ),
-                ("definitionUri", "definitionUri", str, "uri", True, None, False),
-                (
-                    "enteredDate",
-                    "enteredDate",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "enterer",
-                    "enterer",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "factorOverride",
-                    "factorOverride",
-                    float,
-                    "decimal",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "note",
-                    "note",
-                    annotation.Annotation,
-                    "Annotation",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "occurrenceDateTime",
-                    "occurrenceDateTime",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    "occurrence",
-                    False,
-                ),
-                (
-                    "occurrencePeriod",
-                    "occurrencePeriod",
-                    period.Period,
-                    "Period",
-                    False,
-                    "occurrence",
-                    False,
-                ),
-                (
-                    "occurrenceTiming",
-                    "occurrenceTiming",
-                    timing.Timing,
-                    "Timing",
-                    False,
-                    "occurrence",
-                    False,
-                ),
-                ("overrideReason", "overrideReason", str, "string", False, None, False),
-                (
-                    "partOf",
-                    "partOf",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "performer",
-                    "performer",
-                    ChargeItemPerformer,
-                    "ChargeItemPerformer",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "performingOrganization",
-                    "performingOrganization",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "priceOverride",
-                    "priceOverride",
-                    money.Money,
-                    "Money",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "productCodeableConcept",
-                    "productCodeableConcept",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    "product",
-                    False,
-                ),
-                (
-                    "productReference",
-                    "productReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    "product",
-                    False,
-                ),
-                (
-                    "quantity",
-                    "quantity",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "reason",
-                    "reason",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "requestingOrganization",
-                    "requestingOrganization",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "service",
-                    "service",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                ("status", "status", str, "code", False, None, True),
-                (
-                    "subject",
-                    "subject",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "supportingInformation",
-                    "supportingInformation",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+        return values
 
 
 class ChargeItemPerformer(backboneelement.BackboneElement):
     """ Who performed charged service.
-
     Indicates who or what performed or participated in the charged service.
     """
 
-    resource_type = "ChargeItemPerformer"
+    resource_type = Field("ChargeItemPerformer", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    actor: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="actor",
+        title="Type `Reference` referencing `Practitioner, PractitionerRole, Organization, CareTeam, Patient, Device, RelatedPerson` (represented as `dict` in JSON)",
+        description="Individual who was performing",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.actor = None
-        """ Individual who was performing.
-        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'Organization', 'CareTeam', 'Patient', 'Device', 'RelatedPerson']` (represented as `dict` in JSON). """
-
-        self.function = None
-        """ What type of performance was done.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(ChargeItemPerformer, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ChargeItemPerformer, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "actor",
-                    "actor",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "function",
-                    "function",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import annotation
-except ImportError:
-    annotation = sys.modules[__package__ + ".annotation"]
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import money
-except ImportError:
-    money = sys.modules[__package__ + ".money"]
-try:
-    from . import period
-except ImportError:
-    period = sys.modules[__package__ + ".period"]
-try:
-    from . import quantity
-except ImportError:
-    quantity = sys.modules[__package__ + ".quantity"]
-try:
-    from . import timing
-except ImportError:
-    timing = sys.modules[__package__ + ".timing"]
+    function: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="function",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="What type of performance was done",
+    )

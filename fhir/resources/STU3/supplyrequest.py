@@ -6,363 +6,269 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from typing import Any, Dict
+from typing import List as ListType
 
+from pydantic import Field, root_validator
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class SupplyRequest(domainresource.DomainResource):
     """ Request for a medication, substance or device.
-
     A record of a request for a medication, substance or device used in the
     healthcare setting.
     """
 
-    resource_type = "SupplyRequest"
+    resource_type = Field("SupplyRequest", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    authoredOn: fhirtypes.DateTime = Field(
+        None,
+        alias="authoredOn",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="When the request was made",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    category: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="category",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The kind of supply (central, non-stock, etc.)",
+    )
+
+    deliverFrom: fhirtypes.ReferenceType = Field(
+        None,
+        alias="deliverFrom",
+        title="Type `Reference` referencing `Organization, Location` (represented as `dict` in JSON)",
+        description="The origin of the supply",
+    )
+
+    deliverTo: fhirtypes.ReferenceType = Field(
+        None,
+        alias="deliverTo",
+        title="Type `Reference` referencing `Organization, Location, Patient` (represented as `dict` in JSON)",
+        description="The destination of the supply",
+    )
+
+    identifier: fhirtypes.IdentifierType = Field(
+        None,
+        alias="identifier",
+        title="Type `Identifier` (represented as `dict` in JSON)",
+        description="Unique identifier",
+    )
+
+    occurrenceDateTime: fhirtypes.DateTime = Field(
+        None,
+        alias="occurrenceDateTime",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="When the request should be fulfilled",
+        one_of_many="occurrence",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    occurrencePeriod: fhirtypes.PeriodType = Field(
+        None,
+        alias="occurrencePeriod",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="When the request should be fulfilled",
+        one_of_many="occurrence",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    occurrenceTiming: fhirtypes.TimingType = Field(
+        None,
+        alias="occurrenceTiming",
+        title="Type `Timing` (represented as `dict` in JSON)",
+        description="When the request should be fulfilled",
+        one_of_many="occurrence",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    orderedItem: fhirtypes.SupplyRequestOrderedItemType = Field(
+        None,
+        alias="orderedItem",
+        title="Type `SupplyRequestOrderedItem` (represented as `dict` in JSON)",
+        description="The item being requested",
+    )
+
+    priority: fhirtypes.Code = Field(
+        None,
+        alias="priority",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="routine | urgent | asap | stat",
+    )
+
+    reasonCodeableConcept: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="reasonCodeableConcept",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Why the supply item was requested",
+        one_of_many="reason",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    reasonReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="reasonReference",
+        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        description="Why the supply item was requested",
+        one_of_many="reason",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    requester: fhirtypes.SupplyRequestRequesterType = Field(
+        None,
+        alias="requester",
+        title="Type `SupplyRequestRequester` (represented as `dict` in JSON)",
+        description="Who/what is requesting service",
+    )
+
+    status: fhirtypes.Code = Field(
+        None,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="draft | active | suspended +",
+    )
+
+    supplier: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="supplier",
+        title="List of `Reference` items referencing `Organization` (represented as `dict` in JSON)",
+        description="Who is intended to fulfill the request",
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "occurrence": [
+                "occurrenceDateTime",
+                "occurrencePeriod",
+                "occurrenceTiming",
+            ],
+            "reason": ["reasonCodeableConcept", "reasonReference",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.authoredOn = None
-        """ When the request was made.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.category = None
-        """ The kind of supply (central, non-stock, etc.).
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.deliverFrom = None
-        """ The origin of the supply.
-        Type `FHIRReference` referencing `['Organization'], ['Location']` (represented as `dict` in JSON). """
-
-        self.deliverTo = None
-        """ The destination of the supply.
-        Type `FHIRReference` referencing `['Organization'], ['Location'], ['Patient']` (represented as `dict` in JSON). """
-
-        self.identifier = None
-        """ Unique identifier.
-        Type `Identifier` (represented as `dict` in JSON). """
-
-        self.occurrenceDateTime = None
-        """ When the request should be fulfilled.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.occurrencePeriod = None
-        """ When the request should be fulfilled.
-        Type `Period` (represented as `dict` in JSON). """
-
-        self.occurrenceTiming = None
-        """ When the request should be fulfilled.
-        Type `Timing` (represented as `dict` in JSON). """
-
-        self.orderedItem = None
-        """ The item being requested.
-        Type `SupplyRequestOrderedItem` (represented as `dict` in JSON). """
-
-        self.priority = None
-        """ routine | urgent | asap | stat.
-        Type `str`. """
-
-        self.reasonCodeableConcept = None
-        """ Why the supply item was requested.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.reasonReference = None
-        """ Why the supply item was requested.
-        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
-
-        self.requester = None
-        """ Who/what is requesting service.
-        Type `SupplyRequestRequester` (represented as `dict` in JSON). """
-
-        self.status = None
-        """ draft | active | suspended +.
-        Type `str`. """
-
-        self.supplier = None
-        """ Who is intended to fulfill the request.
-        List of `FHIRReference` items referencing `['Organization']` (represented as `dict` in JSON). """
-
-        super(SupplyRequest, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(SupplyRequest, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "authoredOn",
-                    "authoredOn",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "category",
-                    "category",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "deliverFrom",
-                    "deliverFrom",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "deliverTo",
-                    "deliverTo",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "occurrenceDateTime",
-                    "occurrenceDateTime",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    "occurrence",
-                    False,
-                ),
-                (
-                    "occurrencePeriod",
-                    "occurrencePeriod",
-                    period.Period,
-                    "Period",
-                    False,
-                    "occurrence",
-                    False,
-                ),
-                (
-                    "occurrenceTiming",
-                    "occurrenceTiming",
-                    timing.Timing,
-                    "Timing",
-                    False,
-                    "occurrence",
-                    False,
-                ),
-                (
-                    "orderedItem",
-                    "orderedItem",
-                    SupplyRequestOrderedItem,
-                    "SupplyRequestOrderedItem",
-                    False,
-                    None,
-                    False,
-                ),
-                ("priority", "priority", str, "code", False, None, False),
-                (
-                    "reasonCodeableConcept",
-                    "reasonCodeableConcept",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    "reason",
-                    False,
-                ),
-                (
-                    "reasonReference",
-                    "reasonReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    "reason",
-                    False,
-                ),
-                (
-                    "requester",
-                    "requester",
-                    SupplyRequestRequester,
-                    "SupplyRequestRequester",
-                    False,
-                    None,
-                    False,
-                ),
-                ("status", "status", str, "code", False, None, False),
-                (
-                    "supplier",
-                    "supplier",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+        return values
 
 
 class SupplyRequestOrderedItem(backboneelement.BackboneElement):
     """ The item being requested.
     """
 
-    resource_type = "SupplyRequestOrderedItem"
+    resource_type = Field("SupplyRequestOrderedItem", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    itemCodeableConcept: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="itemCodeableConcept",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Medication, Substance, or Device requested to be supplied",
+        one_of_many="item",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    itemReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="itemReference",
+        title="Type `Reference` referencing `Medication, Substance, Device` (represented as `dict` in JSON)",
+        description="Medication, Substance, or Device requested to be supplied",
+        one_of_many="item",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    quantity: fhirtypes.QuantityType = Field(
+        ...,
+        alias="quantity",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="The requested amount of the item indicated",
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "item": ["itemCodeableConcept", "itemReference",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.itemCodeableConcept = None
-        """ Medication, Substance, or Device requested to be supplied.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.itemReference = None
-        """ Medication, Substance, or Device requested to be supplied.
-        Type `FHIRReference` referencing `['Medication'], ['Substance'], ['Device']` (represented as `dict` in JSON). """
-
-        self.quantity = None
-        """ The requested amount of the item indicated.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        super(SupplyRequestOrderedItem, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(SupplyRequestOrderedItem, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "itemCodeableConcept",
-                    "itemCodeableConcept",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    "item",
-                    False,
-                ),
-                (
-                    "itemReference",
-                    "itemReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    "item",
-                    False,
-                ),
-                (
-                    "quantity",
-                    "quantity",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
+        return values
 
 
 class SupplyRequestRequester(backboneelement.BackboneElement):
     """ Who/what is requesting service.
-
     The individual who initiated the request and has responsibility for its
     activation.
     """
 
-    resource_type = "SupplyRequestRequester"
+    resource_type = Field("SupplyRequestRequester", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    agent: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="agent",
+        title="Type `Reference` referencing `Practitioner, Organization, Patient, RelatedPerson, Device` (represented as `dict` in JSON)",
+        description="Individual making the request",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.agent = None
-        """ Individual making the request.
-        Type `FHIRReference` referencing `['Practitioner'], ['Organization'], ['Patient'], ['RelatedPerson'], ['Device']` (represented as `dict` in JSON). """
-
-        self.onBehalfOf = None
-        """ Organization agent is acting for.
-        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
-
-        super(SupplyRequestRequester, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(SupplyRequestRequester, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "agent",
-                    "agent",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "onBehalfOf",
-                    "onBehalfOf",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import period
-except ImportError:
-    period = sys.modules[__package__ + ".period"]
-try:
-    from . import quantity
-except ImportError:
-    quantity = sys.modules[__package__ + ".quantity"]
-try:
-    from . import timing
-except ImportError:
-    timing = sys.modules[__package__ + ".timing"]
+    onBehalfOf: fhirtypes.ReferenceType = Field(
+        None,
+        alias="onBehalfOf",
+        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        description="Organization agent is acting for",
+    )

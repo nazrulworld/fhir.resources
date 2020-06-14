@@ -6,240 +6,179 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import basic
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class BasicTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("Basic", js["resourceType"])
-        return basic.Basic(js)
+def impl_basic_1(inst):
+    assert inst.code.coding[0].code == "UMLCLASSMODEL"
+    assert (
+        inst.code.coding[0].system
+        == "http://example.org/do-not-use/fhir-codes#resourceTypes"
+    )
+    assert inst.extension[0].extension[0].url == "name"
+    assert inst.extension[0].extension[0].valueString == "Class1"
+    assert inst.extension[0].extension[1].extension[0].url == "name"
+    assert inst.extension[0].extension[1].extension[0].valueString == "attribute1"
+    assert inst.extension[0].extension[1].extension[1].url == "minOccurs"
+    assert inst.extension[0].extension[1].extension[1].valueInteger == 1
+    assert inst.extension[0].extension[1].extension[2].url == "maxOccurs"
+    assert inst.extension[0].extension[1].extension[2].valueCode == "*"
+    assert inst.extension[0].extension[1].url == "attribute"
+    assert inst.extension[0].extension[2].extension[0].url == "name"
+    assert inst.extension[0].extension[2].extension[0].valueString == "attribute2"
+    assert inst.extension[0].extension[2].extension[1].url == "minOccurs"
+    assert inst.extension[0].extension[2].extension[1].valueInteger == 0
+    assert inst.extension[0].extension[2].extension[2].url == "maxOccurs"
+    assert inst.extension[0].extension[2].extension[2].valueInteger == 1
+    assert inst.extension[0].extension[2].url == "attribute"
+    assert (
+        inst.extension[0].url
+        == "http://example.org/do-not-use/fhir-extensions/UMLclass"
+    )
+    assert inst.id == "classModel"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.text.status == "generated"
 
-    def testBasic1(self):
-        inst = self.instantiate_from("basic-example2.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Basic instance")
-        self.implBasic1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("Basic", js["resourceType"])
-        inst2 = basic.Basic(js)
-        self.implBasic1(inst2)
+def test_basic_1(base_settings):
+    """No. 1 tests collection for Basic.
+    Test File: basic-example2.json
+    """
+    filename = base_settings["unittest_data_dir"] / "basic-example2.json"
+    inst = basic.Basic.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Basic" == inst.resource_type
 
-    def implBasic1(self, inst):
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].code), force_bytes("UMLCLASSMODEL")
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system),
-            force_bytes("http://example.org/do-not-use/fhir-codes#resourceTypes"),
-        )
-        self.assertEqual(
-            force_bytes(inst.extension[0].extension[0].url), force_bytes("name")
-        )
-        self.assertEqual(
-            force_bytes(inst.extension[0].extension[0].valueString),
-            force_bytes("Class1"),
-        )
-        self.assertEqual(
-            force_bytes(inst.extension[0].extension[1].extension[0].url),
-            force_bytes("name"),
-        )
-        self.assertEqual(
-            force_bytes(inst.extension[0].extension[1].extension[0].valueString),
-            force_bytes("attribute1"),
-        )
-        self.assertEqual(
-            force_bytes(inst.extension[0].extension[1].extension[1].url),
-            force_bytes("minOccurs"),
-        )
-        self.assertEqual(inst.extension[0].extension[1].extension[1].valueInteger, 1)
-        self.assertEqual(
-            force_bytes(inst.extension[0].extension[1].extension[2].url),
-            force_bytes("maxOccurs"),
-        )
-        self.assertEqual(
-            force_bytes(inst.extension[0].extension[1].extension[2].valueCode),
-            force_bytes("*"),
-        )
-        self.assertEqual(
-            force_bytes(inst.extension[0].extension[1].url), force_bytes("attribute")
-        )
-        self.assertEqual(
-            force_bytes(inst.extension[0].extension[2].extension[0].url),
-            force_bytes("name"),
-        )
-        self.assertEqual(
-            force_bytes(inst.extension[0].extension[2].extension[0].valueString),
-            force_bytes("attribute2"),
-        )
-        self.assertEqual(
-            force_bytes(inst.extension[0].extension[2].extension[1].url),
-            force_bytes("minOccurs"),
-        )
-        self.assertEqual(inst.extension[0].extension[2].extension[1].valueInteger, 0)
-        self.assertEqual(
-            force_bytes(inst.extension[0].extension[2].extension[2].url),
-            force_bytes("maxOccurs"),
-        )
-        self.assertEqual(inst.extension[0].extension[2].extension[2].valueInteger, 1)
-        self.assertEqual(
-            force_bytes(inst.extension[0].extension[2].url), force_bytes("attribute")
-        )
-        self.assertEqual(
-            force_bytes(inst.extension[0].url),
-            force_bytes("http://example.org/do-not-use/fhir-extensions/UMLclass"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("classModel"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    impl_basic_1(inst)
 
-    def testBasic2(self):
-        inst = self.instantiate_from("basic-example-narrative.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Basic instance")
-        self.implBasic2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Basic" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("Basic", js["resourceType"])
-        inst2 = basic.Basic(js)
-        self.implBasic2(inst2)
+    inst2 = basic.Basic(**data)
+    impl_basic_1(inst2)
 
-    def implBasic2(self, inst):
-        self.assertEqual(
-            force_bytes(inst.code.text), force_bytes("Example Narrative Tester")
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("basic-example-narrative"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("additional"))
 
-    def testBasic3(self):
-        inst = self.instantiate_from("basic-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Basic instance")
-        self.implBasic3(inst)
+def impl_basic_2(inst):
+    assert inst.code.text == "Example Narrative Tester"
+    assert inst.id == "basic-example-narrative"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.text.status == "additional"
 
-        js = inst.as_json()
-        self.assertEqual("Basic", js["resourceType"])
-        inst2 = basic.Basic(js)
-        self.implBasic3(inst2)
 
-    def implBasic3(self, inst):
-        self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("referral"))
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/basic-resource-type"),
-        )
-        self.assertEqual(inst.created.date, FHIRDate("2013-05-14").date)
-        self.assertEqual(inst.created.as_json(), "2013-05-14")
-        self.assertEqual(
-            force_bytes(inst.extension[0].url),
-            force_bytes(
-                "http://example.org/do-not-use/fhir-extensions/referral#requestingPractitioner"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.extension[1].url),
-            force_bytes("http://example.org/do-not-use/fhir-extensions/referral#notes"),
-        )
-        self.assertEqual(
-            force_bytes(inst.extension[1].valueString),
-            force_bytes(
-                "The patient had fever peaks over the last couple of days. He is worried about these peaks."
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.extension[2].url),
-            force_bytes(
-                "http://example.org/do-not-use/fhir-extensions/referral#fulfillingEncounter"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("referral"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://goodhealth.org/basic/identifiers"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("19283746"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.modifierExtension[0].url),
-            force_bytes(
-                "http://example.org/do-not-use/fhir-extensions/referral#referredForService"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.modifierExtension[0].valueCodeableConcept.coding[0].code),
-            force_bytes("11429006"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.modifierExtension[0].valueCodeableConcept.coding[0].display
-            ),
-            force_bytes("Consultation"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.modifierExtension[0].valueCodeableConcept.coding[0].system
-            ),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.modifierExtension[1].url),
-            force_bytes(
-                "http://example.org/do-not-use/fhir-extensions/referral#targetDate"
-            ),
-        )
-        self.assertEqual(
-            inst.modifierExtension[1].valuePeriod.end.date, FHIRDate("2013-04-15").date
-        )
-        self.assertEqual(
-            inst.modifierExtension[1].valuePeriod.end.as_json(), "2013-04-15"
-        )
-        self.assertEqual(
-            inst.modifierExtension[1].valuePeriod.start.date,
-            FHIRDate("2013-04-01").date,
-        )
-        self.assertEqual(
-            inst.modifierExtension[1].valuePeriod.start.as_json(), "2013-04-01"
-        )
-        self.assertEqual(
-            force_bytes(inst.modifierExtension[2].url),
-            force_bytes(
-                "http://example.org/do-not-use/fhir-extensions/referral#status"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.modifierExtension[2].valueCode), force_bytes("complete")
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+def test_basic_2(base_settings):
+    """No. 2 tests collection for Basic.
+    Test File: basic-example-narrative.json
+    """
+    filename = base_settings["unittest_data_dir"] / "basic-example-narrative.json"
+    inst = basic.Basic.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Basic" == inst.resource_type
+
+    impl_basic_2(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Basic" == data["resourceType"]
+
+    inst2 = basic.Basic(**data)
+    impl_basic_2(inst2)
+
+
+def impl_basic_3(inst):
+    assert inst.author.reference == "Practitioner/example"
+    assert inst.code.coding[0].code == "referral"
+    assert (
+        inst.code.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/basic-resource-type"
+    )
+    assert inst.created == fhirtypes.Date.validate("2013-05-14")
+    assert (
+        inst.extension[0].url
+        == "http://example.org/do-not-use/fhir-extensions/referral#requestingPractitioner"
+    )
+    assert inst.extension[0].valueReference.display == "Dokter Bronsig"
+    assert inst.extension[0].valueReference.reference == "Practitioner/f201"
+    assert (
+        inst.extension[1].url
+        == "http://example.org/do-not-use/fhir-extensions/referral#notes"
+    )
+    assert (
+        inst.extension[1].valueString
+        == "The patient had fever peaks over the last couple of days. He is worried about these peaks."
+    )
+    assert (
+        inst.extension[2].url
+        == "http://example.org/do-not-use/fhir-extensions/referral#fulfillingEncounter"
+    )
+    assert inst.extension[2].valueReference.reference == "Encounter/f201"
+    assert inst.id == "referral"
+    assert inst.identifier[0].system == "http://goodhealth.org/basic/identifiers"
+    assert inst.identifier[0].value == "19283746"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert (
+        inst.modifierExtension[0].url
+        == "http://example.org/do-not-use/fhir-extensions/referral#referredForService"
+    )
+    assert inst.modifierExtension[0].valueCodeableConcept.coding[0].code == "11429006"
+    assert (
+        inst.modifierExtension[0].valueCodeableConcept.coding[0].display
+        == "Consultation"
+    )
+    assert (
+        inst.modifierExtension[0].valueCodeableConcept.coding[0].system
+        == "http://snomed.info/sct"
+    )
+    assert (
+        inst.modifierExtension[1].url
+        == "http://example.org/do-not-use/fhir-extensions/referral#targetDate"
+    )
+    assert inst.modifierExtension[1].valuePeriod.end == fhirtypes.DateTime.validate(
+        "2013-04-15T11:15:33+10:00"
+    )
+    assert inst.modifierExtension[1].valuePeriod.start == fhirtypes.DateTime.validate(
+        "2013-04-01T11:15:33+10:00"
+    )
+    assert (
+        inst.modifierExtension[2].url
+        == "http://example.org/do-not-use/fhir-extensions/referral#status"
+    )
+    assert inst.modifierExtension[2].valueCode == "complete"
+    assert inst.subject.display == "Roel"
+    assert inst.subject.reference == "Patient/f201"
+    assert inst.text.status == "generated"
+
+
+def test_basic_3(base_settings):
+    """No. 3 tests collection for Basic.
+    Test File: basic-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "basic-example.json"
+    inst = basic.Basic.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Basic" == inst.resource_type
+
+    impl_basic_3(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Basic" == data["resourceType"]
+
+    inst2 = basic.Basic(**data)
+    impl_basic_3(inst2)

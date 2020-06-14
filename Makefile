@@ -51,10 +51,10 @@ clean-test: ## remove test and coverage artifacts
 	rm -fr .pytest_cache
 
 lint: ## check style with flake8
-	flake8 fhir.resources tests
+	flake8 fhir/resources
 
 test: ## run tests quickly with the default Python
-	py.test fhir/resources/tests
+	pytest fhir/resources/tests
 
 test-all: ## run tests on every Python version with tox
 	tox
@@ -78,3 +78,7 @@ install: clean ## install the package to the active Python's site-packages
 
 generate-resources:
 	cd script && python generate.py
+
+style-all:
+	isort -rc fhir/resources
+	black fhir/resources

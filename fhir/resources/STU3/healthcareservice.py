@@ -6,443 +6,242 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class HealthcareService(domainresource.DomainResource):
     """ The details of a healthcare service available at a location.
     """
 
-    resource_type = "HealthcareService"
+    resource_type = Field("HealthcareService", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    active: bool = Field(
+        None,
+        alias="active",
+        title="Type `bool`",
+        description="Whether this healthcareservice is in active use",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    appointmentRequired: bool = Field(
+        None,
+        alias="appointmentRequired",
+        title="Type `bool`",
+        description="If an appointment is required for access to this service",
+    )
 
-        self.active = None
-        """ Whether this healthcareservice is in active use.
-        Type `bool`. """
+    availabilityExceptions: fhirtypes.String = Field(
+        None,
+        alias="availabilityExceptions",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Description of availability exceptions",
+    )
 
-        self.appointmentRequired = None
-        """ If an appointment is required for access to this service.
-        Type `bool`. """
+    availableTime: ListType[fhirtypes.HealthcareServiceAvailableTimeType] = Field(
+        None,
+        alias="availableTime",
+        title="List of `HealthcareServiceAvailableTime` items (represented as `dict` in JSON)",
+        description="Times the Service Site is available",
+    )
 
-        self.availabilityExceptions = None
-        """ Description of availability exceptions.
-        Type `str`. """
+    category: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="category",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Broad category of service being performed or delivered",
+    )
 
-        self.availableTime = None
-        """ Times the Service Site is available.
-        List of `HealthcareServiceAvailableTime` items (represented as `dict` in JSON). """
+    characteristic: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="characteristic",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Collection of characteristics (attributes)",
+    )
 
-        self.category = None
-        """ Broad category of service being performed or delivered.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    comment: fhirtypes.String = Field(
+        None,
+        alias="comment",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Additional description and/or any specific issues not covered elsewhere",
+    )
 
-        self.characteristic = None
-        """ Collection of characteristics (attributes).
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    coverageArea: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="coverageArea",
+        title="List of `Reference` items referencing `Location` (represented as `dict` in JSON)",
+        description="Location(s) service is inteded for/available to",
+    )
 
-        self.comment = None
-        """ Additional description and/or any specific issues not covered
-        elsewhere.
-        Type `str`. """
+    eligibility: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="eligibility",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Specific eligibility requirements required to use the service",
+    )
 
-        self.coverageArea = None
-        """ Location(s) service is inteded for/available to.
-        List of `FHIRReference` items referencing `['Location']` (represented as `dict` in JSON). """
+    eligibilityNote: fhirtypes.String = Field(
+        None,
+        alias="eligibilityNote",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Describes the eligibility conditions for the service",
+    )
 
-        self.eligibility = None
-        """ Specific eligibility requirements required to use the service.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    endpoint: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="endpoint",
+        title="List of `Reference` items referencing `Endpoint` (represented as `dict` in JSON)",
+        description="Technical endpoints providing access to services operated for the location",
+    )
 
-        self.eligibilityNote = None
-        """ Describes the eligibility conditions for the service.
-        Type `str`. """
+    extraDetails: fhirtypes.String = Field(
+        None,
+        alias="extraDetails",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Extra details about the service that can\u0027t be placed in the other fields",
+    )
 
-        self.endpoint = None
-        """ Technical endpoints providing access to services operated for the
-        location.
-        List of `FHIRReference` items referencing `['Endpoint']` (represented as `dict` in JSON). """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="External identifiers for this item",
+    )
 
-        self.extraDetails = None
-        """ Extra details about the service that can't be placed in the other
-        fields.
-        Type `str`. """
+    location: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="location",
+        title="List of `Reference` items referencing `Location` (represented as `dict` in JSON)",
+        description="Location(s) where service may be provided",
+    )
 
-        self.identifier = None
-        """ External identifiers for this item.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    name: fhirtypes.String = Field(
+        None,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Description of service as presented to a consumer while searching",
+    )
 
-        self.location = None
-        """ Location(s) where service may be provided.
-        List of `FHIRReference` items referencing `['Location']` (represented as `dict` in JSON). """
+    notAvailable: ListType[fhirtypes.HealthcareServiceNotAvailableType] = Field(
+        None,
+        alias="notAvailable",
+        title="List of `HealthcareServiceNotAvailable` items (represented as `dict` in JSON)",
+        description="Not available during this time due to provided reason",
+    )
 
-        self.name = None
-        """ Description of service as presented to a consumer while searching.
-        Type `str`. """
+    photo: fhirtypes.AttachmentType = Field(
+        None,
+        alias="photo",
+        title="Type `Attachment` (represented as `dict` in JSON)",
+        description="Facilitates quick identification of the service",
+    )
 
-        self.notAvailable = None
-        """ Not available during this time due to provided reason.
-        List of `HealthcareServiceNotAvailable` items (represented as `dict` in JSON). """
+    programName: ListType[fhirtypes.String] = Field(
+        None,
+        alias="programName",
+        title="List of `String` items (represented as `dict` in JSON)",
+        description="Program Names that categorize the service",
+    )
 
-        self.photo = None
-        """ Facilitates quick identification of the service.
-        Type `Attachment` (represented as `dict` in JSON). """
+    providedBy: fhirtypes.ReferenceType = Field(
+        None,
+        alias="providedBy",
+        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        description="Organization that provides this service",
+    )
 
-        self.programName = None
-        """ Program Names that categorize the service.
-        List of `str` items. """
+    referralMethod: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="referralMethod",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Ways that the service accepts referrals",
+    )
 
-        self.providedBy = None
-        """ Organization that provides this service.
-        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
+    serviceProvisionCode: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="serviceProvisionCode",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Conditions under which service is available/offered",
+    )
 
-        self.referralMethod = None
-        """ Ways that the service accepts referrals.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    specialty: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="specialty",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Specialties handled by the HealthcareService",
+    )
 
-        self.serviceProvisionCode = None
-        """ Conditions under which service is available/offered.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    telecom: ListType[fhirtypes.ContactPointType] = Field(
+        None,
+        alias="telecom",
+        title="List of `ContactPoint` items (represented as `dict` in JSON)",
+        description="Contacts related to the healthcare service",
+    )
 
-        self.specialty = None
-        """ Specialties handled by the HealthcareService.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.telecom = None
-        """ Contacts related to the healthcare service.
-        List of `ContactPoint` items (represented as `dict` in JSON). """
-
-        self.type = None
-        """ Type of service that may be delivered or performed.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        super(HealthcareService, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(HealthcareService, self).elementProperties()
-        js.extend(
-            [
-                ("active", "active", bool, "boolean", False, None, False),
-                (
-                    "appointmentRequired",
-                    "appointmentRequired",
-                    bool,
-                    "boolean",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "availabilityExceptions",
-                    "availabilityExceptions",
-                    str,
-                    "string",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "availableTime",
-                    "availableTime",
-                    HealthcareServiceAvailableTime,
-                    "HealthcareServiceAvailableTime",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "category",
-                    "category",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "characteristic",
-                    "characteristic",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                ("comment", "comment", str, "string", False, None, False),
-                (
-                    "coverageArea",
-                    "coverageArea",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "eligibility",
-                    "eligibility",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "eligibilityNote",
-                    "eligibilityNote",
-                    str,
-                    "string",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "endpoint",
-                    "endpoint",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                ("extraDetails", "extraDetails", str, "string", False, None, False),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "location",
-                    "location",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                ("name", "name", str, "string", False, None, False),
-                (
-                    "notAvailable",
-                    "notAvailable",
-                    HealthcareServiceNotAvailable,
-                    "HealthcareServiceNotAvailable",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "photo",
-                    "photo",
-                    attachment.Attachment,
-                    "Attachment",
-                    False,
-                    None,
-                    False,
-                ),
-                ("programName", "programName", str, "string", True, None, False),
-                (
-                    "providedBy",
-                    "providedBy",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "referralMethod",
-                    "referralMethod",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "serviceProvisionCode",
-                    "serviceProvisionCode",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "specialty",
-                    "specialty",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "telecom",
-                    "telecom",
-                    contactpoint.ContactPoint,
-                    "ContactPoint",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    type: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="type",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Type of service that may be delivered or performed",
+    )
 
 
 class HealthcareServiceAvailableTime(backboneelement.BackboneElement):
     """ Times the Service Site is available.
-
     A collection of times that the Service Site is available.
     """
 
-    resource_type = "HealthcareServiceAvailableTime"
+    resource_type = Field("HealthcareServiceAvailableTime", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    allDay: bool = Field(
+        None,
+        alias="allDay",
+        title="Type `bool`",
+        description="Always available? e.g. 24 hour service",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    availableEndTime: fhirtypes.Time = Field(
+        None,
+        alias="availableEndTime",
+        title="Type `Time` (represented as `dict` in JSON)",
+        description="Closing time of day (ignored if allDay = true)",
+    )
 
-        self.allDay = None
-        """ Always available? e.g. 24 hour service.
-        Type `bool`. """
+    availableStartTime: fhirtypes.Time = Field(
+        None,
+        alias="availableStartTime",
+        title="Type `Time` (represented as `dict` in JSON)",
+        description="Opening time of day (ignored if allDay = true)",
+    )
 
-        self.availableEndTime = None
-        """ Closing time of day (ignored if allDay = true).
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.availableStartTime = None
-        """ Opening time of day (ignored if allDay = true).
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.daysOfWeek = None
-        """ mon | tue | wed | thu | fri | sat | sun.
-        List of `str` items. """
-
-        super(HealthcareServiceAvailableTime, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(HealthcareServiceAvailableTime, self).elementProperties()
-        js.extend(
-            [
-                ("allDay", "allDay", bool, "boolean", False, None, False),
-                (
-                    "availableEndTime",
-                    "availableEndTime",
-                    fhirdate.FHIRDate,
-                    "time",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "availableStartTime",
-                    "availableStartTime",
-                    fhirdate.FHIRDate,
-                    "time",
-                    False,
-                    None,
-                    False,
-                ),
-                ("daysOfWeek", "daysOfWeek", str, "code", True, None, False),
-            ]
-        )
-        return js
+    daysOfWeek: ListType[fhirtypes.Code] = Field(
+        None,
+        alias="daysOfWeek",
+        title="List of `Code` items (represented as `dict` in JSON)",
+        description="mon | tue | wed | thu | fri | sat | sun",
+    )
 
 
 class HealthcareServiceNotAvailable(backboneelement.BackboneElement):
     """ Not available during this time due to provided reason.
-
     The HealthcareService is not available during this period of time due to
     the provided reason.
     """
 
-    resource_type = "HealthcareServiceNotAvailable"
+    resource_type = Field("HealthcareServiceNotAvailable", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    description: fhirtypes.String = Field(
+        ...,
+        alias="description",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Reason presented to the user explaining why time not available",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.description = None
-        """ Reason presented to the user explaining why time not available.
-        Type `str`. """
-
-        self.during = None
-        """ Service not availablefrom this date.
-        Type `Period` (represented as `dict` in JSON). """
-
-        super(HealthcareServiceNotAvailable, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(HealthcareServiceNotAvailable, self).elementProperties()
-        js.extend(
-            [
-                ("description", "description", str, "string", False, None, True),
-                ("during", "during", period.Period, "Period", False, None, False),
-            ]
-        )
-        return js
-
-
-try:
-    from . import attachment
-except ImportError:
-    attachment = sys.modules[__package__ + ".attachment"]
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import contactpoint
-except ImportError:
-    contactpoint = sys.modules[__package__ + ".contactpoint"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import period
-except ImportError:
-    period = sys.modules[__package__ + ".period"]
+    during: fhirtypes.PeriodType = Field(
+        None,
+        alias="during",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="Service not availablefrom this date",
+    )

@@ -6,251 +6,166 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import Any, Dict
+from typing import List as ListType
 
+from pydantic import Field, root_validator
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class Substance(domainresource.DomainResource):
     """ A homogeneous material with a definite composition.
     """
 
-    resource_type = "Substance"
+    resource_type = Field("Substance", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    category: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="category",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="What class/type of substance this is",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    code: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="code",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="What substance this is",
+    )
 
-        self.category = None
-        """ What class/type of substance this is.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    description: fhirtypes.String = Field(
+        None,
+        alias="description",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Textual description of the substance, comments",
+    )
 
-        self.code = None
-        """ What substance this is.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Unique identifier",
+    )
 
-        self.description = None
-        """ Textual description of the substance, comments.
-        Type `str`. """
+    ingredient: ListType[fhirtypes.SubstanceIngredientType] = Field(
+        None,
+        alias="ingredient",
+        title="List of `SubstanceIngredient` items (represented as `dict` in JSON)",
+        description="Composition information about the substance",
+    )
 
-        self.identifier = None
-        """ Unique identifier.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    instance: ListType[fhirtypes.SubstanceInstanceType] = Field(
+        None,
+        alias="instance",
+        title="List of `SubstanceInstance` items (represented as `dict` in JSON)",
+        description="If this describes a specific package/container of the substance",
+    )
 
-        self.ingredient = None
-        """ Composition information about the substance.
-        List of `SubstanceIngredient` items (represented as `dict` in JSON). """
-
-        self.instance = None
-        """ If this describes a specific package/container of the substance.
-        List of `SubstanceInstance` items (represented as `dict` in JSON). """
-
-        self.status = None
-        """ active | inactive | entered-in-error.
-        Type `str`. """
-
-        super(Substance, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(Substance, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "category",
-                    "category",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "code",
-                    "code",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                ("description", "description", str, "string", False, None, False),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "ingredient",
-                    "ingredient",
-                    SubstanceIngredient,
-                    "SubstanceIngredient",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "instance",
-                    "instance",
-                    SubstanceInstance,
-                    "SubstanceInstance",
-                    True,
-                    None,
-                    False,
-                ),
-                ("status", "status", str, "code", False, None, False),
-            ]
-        )
-        return js
+    status: fhirtypes.Code = Field(
+        None,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="active | inactive | entered-in-error",
+    )
 
 
 class SubstanceIngredient(backboneelement.BackboneElement):
     """ Composition information about the substance.
-
     A substance can be composed of other substances.
     """
 
-    resource_type = "SubstanceIngredient"
+    resource_type = Field("SubstanceIngredient", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    quantity: fhirtypes.RatioType = Field(
+        None,
+        alias="quantity",
+        title="Type `Ratio` (represented as `dict` in JSON)",
+        description="Optional amount (concentration)",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    substanceCodeableConcept: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="substanceCodeableConcept",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="A component of the substance",
+        one_of_many="substance",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    substanceReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="substanceReference",
+        title="Type `Reference` referencing `Substance` (represented as `dict` in JSON)",
+        description="A component of the substance",
+        one_of_many="substance",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "substance": ["substanceCodeableConcept", "substanceReference",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.quantity = None
-        """ Optional amount (concentration).
-        Type `Ratio` (represented as `dict` in JSON). """
-
-        self.substanceCodeableConcept = None
-        """ A component of the substance.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.substanceReference = None
-        """ A component of the substance.
-        Type `FHIRReference` referencing `['Substance']` (represented as `dict` in JSON). """
-
-        super(SubstanceIngredient, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(SubstanceIngredient, self).elementProperties()
-        js.extend(
-            [
-                ("quantity", "quantity", ratio.Ratio, "Ratio", False, None, False),
-                (
-                    "substanceCodeableConcept",
-                    "substanceCodeableConcept",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    "substance",
-                    True,
-                ),
-                (
-                    "substanceReference",
-                    "substanceReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    "substance",
-                    True,
-                ),
-            ]
-        )
-        return js
+        return values
 
 
 class SubstanceInstance(backboneelement.BackboneElement):
     """ If this describes a specific package/container of the substance.
-
     Substance may be used to describe a kind of substance, or a specific
     package/container of the substance: an instance.
     """
 
-    resource_type = "SubstanceInstance"
+    resource_type = Field("SubstanceInstance", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    expiry: fhirtypes.DateTime = Field(
+        None,
+        alias="expiry",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="When no longer valid to use",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    identifier: fhirtypes.IdentifierType = Field(
+        None,
+        alias="identifier",
+        title="Type `Identifier` (represented as `dict` in JSON)",
+        description="Identifier of the package/container",
+    )
 
-        self.expiry = None
-        """ When no longer valid to use.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.identifier = None
-        """ Identifier of the package/container.
-        Type `Identifier` (represented as `dict` in JSON). """
-
-        self.quantity = None
-        """ Amount of substance in the package.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        super(SubstanceInstance, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(SubstanceInstance, self).elementProperties()
-        js.extend(
-            [
-                ("expiry", "expiry", fhirdate.FHIRDate, "dateTime", False, None, False),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "quantity",
-                    "quantity",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import quantity
-except ImportError:
-    quantity = sys.modules[__package__ + ".quantity"]
-try:
-    from . import ratio
-except ImportError:
-    ratio = sys.modules[__package__ + ".ratio"]
+    quantity: fhirtypes.QuantityType = Field(
+        None,
+        alias="quantity",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="Amount of substance in the package",
+    )

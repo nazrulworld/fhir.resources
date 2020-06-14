@@ -6,312 +6,208 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import Any, Dict
+from typing import List as ListType
 
+from pydantic import Field, root_validator
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class DetectedIssue(domainresource.DomainResource):
     """ Clinical issue with action.
-
     Indicates an actual or potential clinical issue with or between one or more
     active or proposed clinical actions for a patient; e.g. Drug-drug
     interaction, Ineffective treatment frequency, Procedure-condition conflict,
     etc.
     """
 
-    resource_type = "DetectedIssue"
+    resource_type = Field("DetectedIssue", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    author: fhirtypes.ReferenceType = Field(
+        None,
+        alias="author",
+        title="Type `Reference` referencing `Practitioner, PractitionerRole, Device` (represented as `dict` in JSON)",
+        description="The provider or device that identified the issue",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    code: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="code",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Issue Category, e.g. drug-drug, duplicate therapy, etc.",
+    )
+
+    detail: fhirtypes.String = Field(
+        None,
+        alias="detail",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Description and context",
+    )
+
+    evidence: ListType[fhirtypes.DetectedIssueEvidenceType] = Field(
+        None,
+        alias="evidence",
+        title="List of `DetectedIssueEvidence` items (represented as `dict` in JSON)",
+        description="Supporting evidence",
+    )
+
+    identifiedDateTime: fhirtypes.DateTime = Field(
+        None,
+        alias="identifiedDateTime",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="When identified",
+        one_of_many="identified",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    identifiedPeriod: fhirtypes.PeriodType = Field(
+        None,
+        alias="identifiedPeriod",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="When identified",
+        one_of_many="identified",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Unique id for the detected issue",
+    )
+
+    implicated: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="implicated",
+        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        description="Problem resource",
+    )
+
+    mitigation: ListType[fhirtypes.DetectedIssueMitigationType] = Field(
+        None,
+        alias="mitigation",
+        title="List of `DetectedIssueMitigation` items (represented as `dict` in JSON)",
+        description="Step taken to address",
+    )
+
+    patient: fhirtypes.ReferenceType = Field(
+        None,
+        alias="patient",
+        title="Type `Reference` referencing `Patient` (represented as `dict` in JSON)",
+        description="Associated patient",
+    )
+
+    reference: fhirtypes.Uri = Field(
+        None,
+        alias="reference",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Authority for issue",
+    )
+
+    severity: fhirtypes.Code = Field(
+        None,
+        alias="severity",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="high | moderate | low",
+    )
+
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="registered | preliminary | final | amended +",
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "identified": ["identifiedDateTime", "identifiedPeriod",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.author = None
-        """ The provider or device that identified the issue.
-        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'Device']` (represented as `dict` in JSON). """
-
-        self.code = None
-        """ Issue Category, e.g. drug-drug, duplicate therapy, etc..
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.detail = None
-        """ Description and context.
-        Type `str`. """
-
-        self.evidence = None
-        """ Supporting evidence.
-        List of `DetectedIssueEvidence` items (represented as `dict` in JSON). """
-
-        self.identifiedDateTime = None
-        """ When identified.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.identifiedPeriod = None
-        """ When identified.
-        Type `Period` (represented as `dict` in JSON). """
-
-        self.identifier = None
-        """ Unique id for the detected issue.
-        List of `Identifier` items (represented as `dict` in JSON). """
-
-        self.implicated = None
-        """ Problem resource.
-        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
-
-        self.mitigation = None
-        """ Step taken to address.
-        List of `DetectedIssueMitigation` items (represented as `dict` in JSON). """
-
-        self.patient = None
-        """ Associated patient.
-        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
-
-        self.reference = None
-        """ Authority for issue.
-        Type `str`. """
-
-        self.severity = None
-        """ high | moderate | low.
-        Type `str`. """
-
-        self.status = None
-        """ registered | preliminary | final | amended +.
-        Type `str`. """
-
-        super(DetectedIssue, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(DetectedIssue, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "author",
-                    "author",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "code",
-                    "code",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("detail", "detail", str, "string", False, None, False),
-                (
-                    "evidence",
-                    "evidence",
-                    DetectedIssueEvidence,
-                    "DetectedIssueEvidence",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "identifiedDateTime",
-                    "identifiedDateTime",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    "identified",
-                    False,
-                ),
-                (
-                    "identifiedPeriod",
-                    "identifiedPeriod",
-                    period.Period,
-                    "Period",
-                    False,
-                    "identified",
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "implicated",
-                    "implicated",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "mitigation",
-                    "mitigation",
-                    DetectedIssueMitigation,
-                    "DetectedIssueMitigation",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "patient",
-                    "patient",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("reference", "reference", str, "uri", False, None, False),
-                ("severity", "severity", str, "code", False, None, False),
-                ("status", "status", str, "code", False, None, True),
-            ]
-        )
-        return js
+        return values
 
 
 class DetectedIssueEvidence(backboneelement.BackboneElement):
     """ Supporting evidence.
-
     Supporting evidence or manifestations that provide the basis for
     identifying the detected issue such as a GuidanceResponse or MeasureReport.
     """
 
-    resource_type = "DetectedIssueEvidence"
+    resource_type = Field("DetectedIssueEvidence", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    code: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="code",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Manifestation",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.code = None
-        """ Manifestation.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.detail = None
-        """ Supporting information.
-        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
-
-        super(DetectedIssueEvidence, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(DetectedIssueEvidence, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "code",
-                    "code",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "detail",
-                    "detail",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    detail: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="detail",
+        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        description="Supporting information",
+    )
 
 
 class DetectedIssueMitigation(backboneelement.BackboneElement):
     """ Step taken to address.
-
     Indicates an action that has been taken or is committed to reduce or
     eliminate the likelihood of the risk identified by the detected issue from
     manifesting.  Can also reflect an observation of known mitigating factors
     that may reduce/eliminate the need for any action.
     """
 
-    resource_type = "DetectedIssueMitigation"
+    resource_type = Field("DetectedIssueMitigation", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    action: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="action",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="What mitigation?",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    author: fhirtypes.ReferenceType = Field(
+        None,
+        alias="author",
+        title="Type `Reference` referencing `Practitioner, PractitionerRole` (represented as `dict` in JSON)",
+        description="Who is committing?",
+    )
 
-        self.action = None
-        """ What mitigation?.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.author = None
-        """ Who is committing?.
-        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole']` (represented as `dict` in JSON). """
-
-        self.date = None
-        """ Date committed.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        super(DetectedIssueMitigation, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(DetectedIssueMitigation, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "action",
-                    "action",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "author",
-                    "author",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import period
-except ImportError:
-    period = sys.modules[__package__ + ".period"]
+    date: fhirtypes.DateTime = Field(
+        None,
+        alias="date",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Date committed",
+    )

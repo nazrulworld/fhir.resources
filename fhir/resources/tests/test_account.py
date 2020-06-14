@@ -6,141 +6,128 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import account
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class AccountTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("Account", js["resourceType"])
-        return account.Account(js)
+def impl_account_1(inst):
+    assert inst.coverage[0].coverage.reference == "Coverage/7546D"
+    assert inst.coverage[0].priority == 1
+    assert inst.description == "Hospital charges"
+    assert inst.id == "example"
+    assert inst.identifier[0].system == "urn:oid:0.1.2.3.4.5.6.7"
+    assert inst.identifier[0].value == "654321"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.name == "HACC Funded Billing for Peter James Chalmers"
+    assert inst.owner.reference == "Organization/hl7"
+    assert inst.servicePeriod.end == fhirtypes.DateTime.validate(
+        "2016-06-30T12:09:24+00:06"
+    )
+    assert inst.servicePeriod.start == fhirtypes.DateTime.validate(
+        "2016-01-01T12:09:24+00:06"
+    )
+    assert inst.status == "active"
+    assert inst.subject[0].display == "Peter James Chalmers"
+    assert inst.subject[0].reference == "Patient/example"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">HACC Funded Billing for Peter James Chalmers</div>'
+    )
+    assert inst.text.status == "generated"
+    assert inst.type.coding[0].code == "PBILLACCT"
+    assert inst.type.coding[0].display == "patient billing account"
+    assert (
+        inst.type.coding[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+    )
+    assert inst.type.text == "patient"
 
-    def testAccount1(self):
-        inst = self.instantiate_from("account-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Account instance")
-        self.implAccount1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("Account", js["resourceType"])
-        inst2 = account.Account(js)
-        self.implAccount1(inst2)
+def test_account_1(base_settings):
+    """No. 1 tests collection for Account.
+    Test File: account-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "account-example.json"
+    inst = account.Account.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Account" == inst.resource_type
 
-    def implAccount1(self, inst):
-        self.assertEqual(inst.coverage[0].priority, 1)
-        self.assertEqual(force_bytes(inst.description), force_bytes("Hospital charges"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("urn:oid:0.1.2.3.4.5.6.7"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("654321"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.name),
-            force_bytes("HACC Funded Billing for Peter James Chalmers"),
-        )
-        self.assertEqual(inst.servicePeriod.end.date, FHIRDate("2016-06-30").date)
-        self.assertEqual(inst.servicePeriod.end.as_json(), "2016-06-30")
-        self.assertEqual(inst.servicePeriod.start.date, FHIRDate("2016-01-01").date)
-        self.assertEqual(inst.servicePeriod.start.as_json(), "2016-01-01")
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">HACC Funded Billing for Peter James Chalmers</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].code), force_bytes("PBILLACCT")
-        )
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].display),
-            force_bytes("patient billing account"),
-        )
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActCode"),
-        )
-        self.assertEqual(force_bytes(inst.type.text), force_bytes("patient"))
+    impl_account_1(inst)
 
-    def testAccount2(self):
-        inst = self.instantiate_from("account-example-with-guarantor.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Account instance")
-        self.implAccount2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Account" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("Account", js["resourceType"])
-        inst2 = account.Account(js)
-        self.implAccount2(inst2)
+    inst2 = account.Account(**data)
+    impl_account_1(inst2)
 
-    def implAccount2(self, inst):
-        self.assertEqual(inst.coverage[0].priority, 1)
-        self.assertEqual(inst.coverage[1].priority, 2)
-        self.assertEqual(force_bytes(inst.description), force_bytes("Hospital charges"))
-        self.assertFalse(inst.guarantor[0].onHold)
-        self.assertEqual(
-            inst.guarantor[0].period.start.date, FHIRDate("2016-01-01").date
-        )
-        self.assertEqual(inst.guarantor[0].period.start.as_json(), "2016-01-01")
-        self.assertEqual(force_bytes(inst.id), force_bytes("ewg"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("urn:oid:0.1.2.3.4.5.6.7"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("654321"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.name), force_bytes("Inpatient: Peter James Chalmers")
-        )
-        self.assertEqual(inst.servicePeriod.end.date, FHIRDate("2016-06-30").date)
-        self.assertEqual(inst.servicePeriod.end.as_json(), "2016-06-30")
-        self.assertEqual(inst.servicePeriod.start.date, FHIRDate("2016-01-01").date)
-        self.assertEqual(inst.servicePeriod.start.as_json(), "2016-01-01")
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">Inpatient Admission for Peter James Chalmers Account</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].code), force_bytes("PBILLACCT")
-        )
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].display),
-            force_bytes("patient billing account"),
-        )
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActCode"),
-        )
-        self.assertEqual(force_bytes(inst.type.text), force_bytes("patient"))
+
+def impl_account_2(inst):
+    assert inst.coverage[0].coverage.reference == "Coverage/9876B1"
+    assert inst.coverage[0].priority == 1
+    assert inst.coverage[1].coverage.reference == "Coverage/7546D"
+    assert inst.coverage[1].priority == 2
+    assert inst.description == "Hospital charges"
+    assert inst.guarantor[0].onHold is False
+    assert inst.guarantor[0].party.display == "Bénédicte du Marché"
+    assert inst.guarantor[0].party.reference == "RelatedPerson/benedicte"
+    assert inst.guarantor[0].period.start == fhirtypes.DateTime.validate(
+        "2016-01-01T12:09:24+00:06"
+    )
+    assert inst.id == "ewg"
+    assert inst.identifier[0].system == "urn:oid:0.1.2.3.4.5.6.7"
+    assert inst.identifier[0].value == "654321"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.name == "Inpatient: Peter James Chalmers"
+    assert inst.owner.display == "Burgers University Medical Center"
+    assert inst.owner.reference == "Organization/f001"
+    assert inst.servicePeriod.end == fhirtypes.DateTime.validate(
+        "2016-06-30T12:09:24+00:06"
+    )
+    assert inst.servicePeriod.start == fhirtypes.DateTime.validate(
+        "2016-01-01T12:09:24+00:06"
+    )
+    assert inst.status == "active"
+    assert inst.subject[0].display == "Peter James Chalmers"
+    assert inst.subject[0].reference == "Patient/example"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">Inpatient Admission for Peter James Chalmers Account</div>'
+    )
+    assert inst.text.status == "generated"
+    assert inst.type.coding[0].code == "PBILLACCT"
+    assert inst.type.coding[0].display == "patient billing account"
+    assert (
+        inst.type.coding[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+    )
+    assert inst.type.text == "patient"
+
+
+def test_account_2(base_settings):
+    """No. 2 tests collection for Account.
+    Test File: account-example-with-guarantor.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "account-example-with-guarantor.json"
+    )
+    inst = account.Account.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Account" == inst.resource_type
+
+    impl_account_2(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Account" == data["resourceType"]
+
+    inst2 = account.Account(**data)
+    impl_account_2(inst2)

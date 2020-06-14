@@ -6,146 +6,73 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import domainresource
+from . import domainresource, fhirtypes
 
 
 class EnrollmentRequest(domainresource.DomainResource):
     """ Enrollment request.
-
     This resource provides the insurance enrollment details to the insurer
     regarding a specified coverage.
     """
 
-    resource_type = "EnrollmentRequest"
+    resource_type = Field("EnrollmentRequest", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    coverage: fhirtypes.ReferenceType = Field(
+        None,
+        alias="coverage",
+        title="Type `Reference` referencing `Coverage` (represented as `dict` in JSON)",
+        description="Insurance information",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    created: fhirtypes.DateTime = Field(
+        None,
+        alias="created",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Creation date",
+    )
 
-        self.coverage = None
-        """ Insurance information.
-        Type `FHIRReference` referencing `['Coverage']` (represented as `dict` in JSON). """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Business Identifier",
+    )
 
-        self.created = None
-        """ Creation date.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    insurer: fhirtypes.ReferenceType = Field(
+        None,
+        alias="insurer",
+        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        description="Target",
+    )
 
-        self.identifier = None
-        """ Business Identifier.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    organization: fhirtypes.ReferenceType = Field(
+        None,
+        alias="organization",
+        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        description="Responsible organization",
+    )
 
-        self.insurer = None
-        """ Target.
-        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
+    provider: fhirtypes.ReferenceType = Field(
+        None,
+        alias="provider",
+        title="Type `Reference` referencing `Practitioner` (represented as `dict` in JSON)",
+        description="Responsible practitioner",
+    )
 
-        self.organization = None
-        """ Responsible organization.
-        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
+    status: fhirtypes.Code = Field(
+        None,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="active | cancelled | draft | entered-in-error",
+    )
 
-        self.provider = None
-        """ Responsible practitioner.
-        Type `FHIRReference` referencing `['Practitioner']` (represented as `dict` in JSON). """
-
-        self.status = None
-        """ active | cancelled | draft | entered-in-error.
-        Type `str`. """
-
-        self.subject = None
-        """ The subject of the Products and Services.
-        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
-
-        super(EnrollmentRequest, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(EnrollmentRequest, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "coverage",
-                    "coverage",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "created",
-                    "created",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "insurer",
-                    "insurer",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "organization",
-                    "organization",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "provider",
-                    "provider",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("status", "status", str, "code", False, None, False),
-                (
-                    "subject",
-                    "subject",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
+    subject: fhirtypes.ReferenceType = Field(
+        None,
+        alias="subject",
+        title="Type `Reference` referencing `Patient` (represented as `dict` in JSON)",
+        description="The subject of the Products and Services",
+    )

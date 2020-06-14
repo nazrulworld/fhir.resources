@@ -6,126 +6,115 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import coverageeligibilityrequest
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class CoverageEligibilityRequestTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("CoverageEligibilityRequest", js["resourceType"])
-        return coverageeligibilityrequest.CoverageEligibilityRequest(js)
+def impl_coverageeligibilityrequest_1(inst):
+    assert inst.created == fhirtypes.DateTime.validate("2014-08-16T11:15:33+10:00")
+    assert inst.id == "52345"
+    assert (
+        inst.identifier[0].system == "http://happyvalley.com/coverageelegibilityrequest"
+    )
+    assert inst.identifier[0].value == "52345"
+    assert inst.insurance[0].coverage.reference == "Coverage/9876B1"
+    assert inst.insurance[0].focal is True
+    assert inst.insurer.reference == "Organization/2"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.patient.reference == "Patient/pat1"
+    assert inst.priority.coding[0].code == "normal"
+    assert inst.provider.reference == "Organization/1"
+    assert inst.purpose[0] == "validation"
+    assert inst.status == "active"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the CoverageEligibilityRequest</div>'
+    )
+    assert inst.text.status == "generated"
 
-    def testCoverageEligibilityRequest1(self):
-        inst = self.instantiate_from("coverageeligibilityrequest-example.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a CoverageEligibilityRequest instance"
-        )
-        self.implCoverageEligibilityRequest1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("CoverageEligibilityRequest", js["resourceType"])
-        inst2 = coverageeligibilityrequest.CoverageEligibilityRequest(js)
-        self.implCoverageEligibilityRequest1(inst2)
+def test_coverageeligibilityrequest_1(base_settings):
+    """No. 1 tests collection for CoverageEligibilityRequest.
+    Test File: coverageeligibilityrequest-example.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "coverageeligibilityrequest-example.json"
+    )
+    inst = coverageeligibilityrequest.CoverageEligibilityRequest.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "CoverageEligibilityRequest" == inst.resource_type
 
-    def implCoverageEligibilityRequest1(self, inst):
-        self.assertEqual(inst.created.date, FHIRDate("2014-08-16").date)
-        self.assertEqual(inst.created.as_json(), "2014-08-16")
-        self.assertEqual(force_bytes(inst.id), force_bytes("52345"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://happyvalley.com/coverageelegibilityrequest"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("52345"))
-        self.assertTrue(inst.insurance[0].focal)
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.priority.coding[0].code), force_bytes("normal")
-        )
-        self.assertEqual(force_bytes(inst.purpose[0]), force_bytes("validation"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the CoverageEligibilityRequest</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    impl_coverageeligibilityrequest_1(inst)
 
-    def testCoverageEligibilityRequest2(self):
-        inst = self.instantiate_from("coverageeligibilityrequest-example-2.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a CoverageEligibilityRequest instance"
-        )
-        self.implCoverageEligibilityRequest2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "CoverageEligibilityRequest" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("CoverageEligibilityRequest", js["resourceType"])
-        inst2 = coverageeligibilityrequest.CoverageEligibilityRequest(js)
-        self.implCoverageEligibilityRequest2(inst2)
+    inst2 = coverageeligibilityrequest.CoverageEligibilityRequest(**data)
+    impl_coverageeligibilityrequest_1(inst2)
 
-    def implCoverageEligibilityRequest2(self, inst):
-        self.assertEqual(inst.created.date, FHIRDate("2014-08-16").date)
-        self.assertEqual(inst.created.as_json(), "2014-08-16")
-        self.assertEqual(force_bytes(inst.id), force_bytes("52346"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://happyvalley.com/coverageelegibilityrequest"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("52346"))
-        self.assertEqual(
-            force_bytes(inst.insurance[0].businessArrangement), force_bytes("NB8742")
-        )
-        self.assertEqual(
-            force_bytes(inst.item[0].category.coding[0].code), force_bytes("69")
-        )
-        self.assertEqual(
-            force_bytes(inst.item[0].category.coding[0].display),
-            force_bytes("Maternity"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[0].category.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/ex-benefitcategory"),
-        )
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.priority.coding[0].code), force_bytes("normal")
-        )
-        self.assertEqual(force_bytes(inst.purpose[0]), force_bytes("validation"))
-        self.assertEqual(force_bytes(inst.purpose[1]), force_bytes("benefits"))
-        self.assertEqual(inst.servicedDate.date, FHIRDate("2014-09-17").date)
-        self.assertEqual(inst.servicedDate.as_json(), "2014-09-17")
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the CoverageEligibilityRequest</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+
+def impl_coverageeligibilityrequest_2(inst):
+    assert inst.created == fhirtypes.DateTime.validate("2014-08-16T11:15:33+10:00")
+    assert inst.enterer.identifier.system == "http://happyvalleyclinic.com/staff"
+    assert inst.enterer.identifier.value == "14"
+    assert inst.facility.identifier.system == "http://statecliniclicensor.com/clinicid"
+    assert inst.facility.identifier.value == "G35B9"
+    assert inst.id == "52346"
+    assert (
+        inst.identifier[0].system == "http://happyvalley.com/coverageelegibilityrequest"
+    )
+    assert inst.identifier[0].value == "52346"
+    assert inst.insurance[0].businessArrangement == "NB8742"
+    assert inst.insurance[0].coverage.reference == "Coverage/9876B1"
+    assert inst.insurer.reference == "Organization/2"
+    assert inst.item[0].category.coding[0].code == "69"
+    assert inst.item[0].category.coding[0].display == "Maternity"
+    assert (
+        inst.item[0].category.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/ex-benefitcategory"
+    )
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.patient.reference == "Patient/pat1"
+    assert inst.priority.coding[0].code == "normal"
+    assert inst.provider.reference == "Organization/1"
+    assert inst.purpose[0] == "validation"
+    assert inst.purpose[1] == "benefits"
+    assert inst.servicedDate == fhirtypes.Date.validate("2014-09-17")
+    assert inst.status == "active"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the CoverageEligibilityRequest</div>'
+    )
+    assert inst.text.status == "generated"
+
+
+def test_coverageeligibilityrequest_2(base_settings):
+    """No. 2 tests collection for CoverageEligibilityRequest.
+    Test File: coverageeligibilityrequest-example-2.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "coverageeligibilityrequest-example-2.json"
+    )
+    inst = coverageeligibilityrequest.CoverageEligibilityRequest.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "CoverageEligibilityRequest" == inst.resource_type
+
+    impl_coverageeligibilityrequest_2(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "CoverageEligibilityRequest" == data["resourceType"]
+
+    inst2 = coverageeligibilityrequest.CoverageEligibilityRequest(**data)
+    impl_coverageeligibilityrequest_2(inst2)

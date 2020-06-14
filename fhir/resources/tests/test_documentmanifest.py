@@ -6,137 +6,108 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import documentmanifest
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class DocumentManifestTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("DocumentManifest", js["resourceType"])
-        return documentmanifest.DocumentManifest(js)
+def impl_documentmanifest_1(inst):
+    assert inst.author[0].reference == "#a1"
+    assert inst.contained[0].id == "a1"
+    assert inst.content[0].reference == "DocumentReference/example"
+    assert inst.created == fhirtypes.DateTime.validate("2004-12-25T23:50:50-05:00")
+    assert inst.description == "Physical"
+    assert inst.id == "example"
+    assert inst.identifier[0].system == "http://example.org/documents"
+    assert inst.identifier[0].value == "23425234234-2347"
+    assert inst.masterIdentifier.system == "http://example.org/documents"
+    assert inst.masterIdentifier.value == "23425234234-2346"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.recipient[0].reference == "Practitioner/xcda1"
+    assert inst.related[0].identifier.system == "http://example.org/documents"
+    assert inst.related[0].identifier.value == "23425234234-9999"
+    assert inst.related[0].ref.reference == "DocumentReference/example"
+    assert inst.source == "urn:oid:1.3.6.1.4.1.21367.2009.1.2.1"
+    assert inst.status == "current"
+    assert inst.subject.reference == "Patient/xcda"
+    assert inst.text.div == '<div xmlns="http://www.w3.org/1999/xhtml">Text</div>'
+    assert inst.text.status == "generated"
+    assert inst.type.text == "History and Physical"
 
-    def testDocumentManifest1(self):
-        inst = self.instantiate_from("documentmanifest-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a DocumentManifest instance")
-        self.implDocumentManifest1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("DocumentManifest", js["resourceType"])
-        inst2 = documentmanifest.DocumentManifest(js)
-        self.implDocumentManifest1(inst2)
+def test_documentmanifest_1(base_settings):
+    """No. 1 tests collection for DocumentManifest.
+    Test File: documentmanifest-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "documentmanifest-example.json"
+    inst = documentmanifest.DocumentManifest.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "DocumentManifest" == inst.resource_type
 
-    def implDocumentManifest1(self, inst):
-        self.assertEqual(force_bytes(inst.contained[0].id), force_bytes("a1"))
-        self.assertEqual(inst.created.date, FHIRDate("2004-12-25T23:50:50-05:00").date)
-        self.assertEqual(inst.created.as_json(), "2004-12-25T23:50:50-05:00")
-        self.assertEqual(force_bytes(inst.description), force_bytes("Physical"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://example.org/documents"),
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].value), force_bytes("23425234234-2347")
-        )
-        self.assertEqual(
-            force_bytes(inst.masterIdentifier.system),
-            force_bytes("http://example.org/documents"),
-        )
-        self.assertEqual(
-            force_bytes(inst.masterIdentifier.value), force_bytes("23425234234-2346")
-        )
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.related[0].identifier.system),
-            force_bytes("http://example.org/documents"),
-        )
-        self.assertEqual(
-            force_bytes(inst.related[0].identifier.value),
-            force_bytes("23425234234-9999"),
-        )
-        self.assertEqual(
-            force_bytes(inst.source),
-            force_bytes("urn:oid:1.3.6.1.4.1.21367.2009.1.2.1"),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("current"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes('<div xmlns="http://www.w3.org/1999/xhtml">Text</div>'),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.type.text), force_bytes("History and Physical")
-        )
+    impl_documentmanifest_1(inst)
 
-    def testDocumentManifest2(self):
-        inst = self.instantiate_from("documentmanifest-fm-attachment.json")
-        self.assertIsNotNone(inst, "Must have instantiated a DocumentManifest instance")
-        self.implDocumentManifest2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "DocumentManifest" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("DocumentManifest", js["resourceType"])
-        inst2 = documentmanifest.DocumentManifest(js)
-        self.implDocumentManifest2(inst2)
+    inst2 = documentmanifest.DocumentManifest(**data)
+    impl_documentmanifest_1(inst2)
 
-    def implDocumentManifest2(self, inst):
-        self.assertEqual(force_bytes(inst.contained[0].id), force_bytes("org-1"))
-        self.assertEqual(force_bytes(inst.contained[1].id), force_bytes("a1"))
-        self.assertEqual(force_bytes(inst.contained[2].id), force_bytes("a2"))
-        self.assertEqual(inst.created.date, FHIRDate("2014-09-21T11:50:23-05:00").date)
-        self.assertEqual(inst.created.as_json(), "2014-09-21T11:50:23-05:00")
-        self.assertEqual(force_bytes(inst.id), force_bytes("654789"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://happyvalley.com/supportingdocumentation"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("52345"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.related[0].identifier.system),
-            force_bytes("http://happyvalley.com/claim"),
-        )
-        self.assertEqual(
-            force_bytes(inst.related[0].identifier.value), force_bytes("12345")
-        )
-        self.assertEqual(
-            force_bytes(inst.related[1].identifier.system),
-            force_bytes("http://www.BenefitsInc.com/fhir/remittance"),
-        )
-        self.assertEqual(
-            force_bytes(inst.related[1].identifier.value), force_bytes("R3500")
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("current"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">A Financial Management Attachment example</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+
+def impl_documentmanifest_2(inst):
+    assert inst.contained[0].id == "org-1"
+    assert inst.contained[1].id == "a1"
+    assert inst.contained[2].id == "a2"
+    assert inst.content[0].reference == "#a1"
+    assert inst.content[1].reference == "#a2"
+    assert inst.content[2].reference == "DocumentReference/example"
+    assert inst.content[3].reference == "DiagnosticReport/f001"
+    assert inst.created == fhirtypes.DateTime.validate("2014-09-21T11:50:23-05:00")
+    assert inst.id == "654789"
+    assert inst.identifier[0].system == "http://happyvalley.com/supportingdocumentation"
+    assert inst.identifier[0].value == "52345"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.recipient[0].reference == "#org-1"
+    assert inst.related[0].identifier.system == "http://happyvalley.com/claim"
+    assert inst.related[0].identifier.value == "12345"
+    assert (
+        inst.related[1].identifier.system
+        == "http://www.BenefitsInc.com/fhir/remittance"
+    )
+    assert inst.related[1].identifier.value == "R3500"
+    assert inst.status == "current"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">A Financial Management Attachment example</div>'
+    )
+    assert inst.text.status == "generated"
+
+
+def test_documentmanifest_2(base_settings):
+    """No. 2 tests collection for DocumentManifest.
+    Test File: documentmanifest-fm-attachment.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "documentmanifest-fm-attachment.json"
+    )
+    inst = documentmanifest.DocumentManifest.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "DocumentManifest" == inst.resource_type
+
+    impl_documentmanifest_2(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "DocumentManifest" == data["resourceType"]
+
+    inst2 = documentmanifest.DocumentManifest(**data)
+    impl_documentmanifest_2(inst2)

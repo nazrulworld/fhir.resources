@@ -6,367 +6,322 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import location
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class LocationTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("Location", js["resourceType"])
-        return location.Location(js)
+def impl_location_1(inst):
+    assert inst.address.city == "Den Burg"
+    assert inst.address.country == "NLD"
+    assert inst.address.line[0] == "Galapagosweg 91, Building A"
+    assert inst.address.postalCode == "9105 PZ"
+    assert inst.address.use == "work"
+    assert (
+        inst.description
+        == "Second floor of the Old South Wing, formerly in use by Psychiatry"
+    )
+    assert inst.endpoint[0].reference == "Endpoint/example"
+    assert (
+        inst.extension[0].url
+        == "http://hl7.org/fhir/StructureDefinition/location-alias"
+    )
+    assert (
+        inst.extension[0].valueString
+        == "Burgers University Medical Center, South Wing, second floor"
+    )
+    assert (
+        inst.extension[1].url
+        == "http://hl7.org/fhir/StructureDefinition/location-alias"
+    )
+    assert inst.extension[1].valueString == "BU MC, SW, F2"
+    assert inst.id == "1"
+    assert inst.identifier[0].value == "B1-S.F2"
+    assert inst.managingOrganization.reference == "Organization/f001"
+    assert inst.mode == "instance"
+    assert inst.name == "South Wing, second floor"
+    assert inst.physicalType.coding[0].code == "wi"
+    assert inst.physicalType.coding[0].display == "Wing"
+    assert (
+        inst.physicalType.coding[0].system
+        == "http://hl7.org/fhir/location-physical-type"
+    )
+    assert float(inst.position.altitude) == float(0)
+    assert float(inst.position.latitude) == float(42.25475478)
+    assert float(inst.position.longitude) == float(-83.6945691)
+    assert inst.status == "active"
+    assert inst.telecom[0].system == "phone"
+    assert inst.telecom[0].use == "work"
+    assert inst.telecom[0].value == "2328"
+    assert inst.telecom[1].system == "fax"
+    assert inst.telecom[1].use == "work"
+    assert inst.telecom[1].value == "2329"
+    assert inst.telecom[2].system == "email"
+    assert inst.telecom[2].value == "second wing admissions"
+    assert inst.telecom[3].system == "url"
+    assert inst.telecom[3].use == "work"
+    assert inst.telecom[3].value == "http://sampleorg.com/southwing"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">Burgers UMC, South Wing, second floor</div>'
+    )
+    assert inst.text.status == "generated"
 
-    def testLocation1(self):
-        inst = self.instantiate_from("location-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Location instance")
-        self.implLocation1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("Location", js["resourceType"])
-        inst2 = location.Location(js)
-        self.implLocation1(inst2)
+def test_location_1(base_settings):
+    """No. 1 tests collection for Location.
+    Test File: location-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "location-example.json"
+    inst = location.Location.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Location" == inst.resource_type
 
-    def implLocation1(self, inst):
-        self.assertEqual(force_bytes(inst.address.city), force_bytes("Den Burg"))
-        self.assertEqual(force_bytes(inst.address.country), force_bytes("NLD"))
-        self.assertEqual(
-            force_bytes(inst.address.line[0]),
-            force_bytes("Galapagosweg 91, Building A"),
-        )
-        self.assertEqual(force_bytes(inst.address.postalCode), force_bytes("9105 PZ"))
-        self.assertEqual(force_bytes(inst.address.use), force_bytes("work"))
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes(
-                "Second floor of the Old South Wing, formerly in use by Psychiatry"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.extension[0].url),
-            force_bytes("http://hl7.org/fhir/StructureDefinition/location-alias"),
-        )
-        self.assertEqual(
-            force_bytes(inst.extension[0].valueString),
-            force_bytes("Burgers University Medical Center, South Wing, second floor"),
-        )
-        self.assertEqual(
-            force_bytes(inst.extension[1].url),
-            force_bytes("http://hl7.org/fhir/StructureDefinition/location-alias"),
-        )
-        self.assertEqual(
-            force_bytes(inst.extension[1].valueString), force_bytes("BU MC, SW, F2")
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("1"))
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("B1-S.F2"))
-        self.assertEqual(force_bytes(inst.mode), force_bytes("instance"))
-        self.assertEqual(
-            force_bytes(inst.name), force_bytes("South Wing, second floor")
-        )
-        self.assertEqual(
-            force_bytes(inst.physicalType.coding[0].code), force_bytes("wi")
-        )
-        self.assertEqual(
-            force_bytes(inst.physicalType.coding[0].display), force_bytes("Wing")
-        )
-        self.assertEqual(
-            force_bytes(inst.physicalType.coding[0].system),
-            force_bytes("http://hl7.org/fhir/location-physical-type"),
-        )
-        self.assertEqual(inst.position.altitude, 0)
-        self.assertEqual(inst.position.latitude, 42.25475478)
-        self.assertEqual(inst.position.longitude, -83.6945691)
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(force_bytes(inst.telecom[0].system), force_bytes("phone"))
-        self.assertEqual(force_bytes(inst.telecom[0].use), force_bytes("work"))
-        self.assertEqual(force_bytes(inst.telecom[0].value), force_bytes("2328"))
-        self.assertEqual(force_bytes(inst.telecom[1].system), force_bytes("fax"))
-        self.assertEqual(force_bytes(inst.telecom[1].use), force_bytes("work"))
-        self.assertEqual(force_bytes(inst.telecom[1].value), force_bytes("2329"))
-        self.assertEqual(force_bytes(inst.telecom[2].system), force_bytes("email"))
-        self.assertEqual(
-            force_bytes(inst.telecom[2].value), force_bytes("second wing admissions")
-        )
-        self.assertEqual(force_bytes(inst.telecom[3].system), force_bytes("url"))
-        self.assertEqual(force_bytes(inst.telecom[3].use), force_bytes("work"))
-        self.assertEqual(
-            force_bytes(inst.telecom[3].value),
-            force_bytes("http://sampleorg.com/southwing"),
-        )
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">Burgers UMC, South Wing, second floor</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    impl_location_1(inst)
 
-    def testLocation2(self):
-        inst = self.instantiate_from("location-example-room.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Location instance")
-        self.implLocation2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Location" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("Location", js["resourceType"])
-        inst2 = location.Location(js)
-        self.implLocation2(inst2)
+    inst2 = location.Location(**data)
+    impl_location_1(inst2)
 
-    def implLocation2(self, inst):
-        self.assertEqual(force_bytes(inst.alias[0]), force_bytes("South Wing OR 5"))
-        self.assertEqual(force_bytes(inst.alias[1]), force_bytes("Main Wing OR 2"))
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes(
-                "Old South Wing, Neuro Radiology Operation Room 1 on second floor"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("2"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].value), force_bytes("B1-S.F2.1.00")
-        )
-        self.assertEqual(force_bytes(inst.mode), force_bytes("instance"))
-        self.assertEqual(force_bytes(inst.name), force_bytes("South Wing Neuro OR 1"))
-        self.assertEqual(force_bytes(inst.operationalStatus.code), force_bytes("H"))
-        self.assertEqual(
-            force_bytes(inst.operationalStatus.display), force_bytes("Housekeeping")
-        )
-        self.assertEqual(
-            force_bytes(inst.operationalStatus.system),
-            force_bytes("http://hl7.org/fhir/v2/0116"),
-        )
-        self.assertEqual(
-            force_bytes(inst.physicalType.coding[0].code), force_bytes("ro")
-        )
-        self.assertEqual(
-            force_bytes(inst.physicalType.coding[0].display), force_bytes("Room")
-        )
-        self.assertEqual(
-            force_bytes(inst.physicalType.coding[0].system),
-            force_bytes("http://hl7.org/fhir/location-physical-type"),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("suspended"))
-        self.assertEqual(force_bytes(inst.telecom[0].system), force_bytes("phone"))
-        self.assertEqual(force_bytes(inst.telecom[0].value), force_bytes("2329"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">Burgers UMC, South Wing, second floor, Neuro Radiology Operation Room 1</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type.coding[0].code), force_bytes("RNEU"))
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].display), force_bytes("Neuroradiology unit")
-        )
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].system),
-            force_bytes("http://hl7.org/fhir/v3/RoleCode"),
-        )
 
-    def testLocation3(self):
-        inst = self.instantiate_from("location-example-ambulance.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Location instance")
-        self.implLocation3(inst)
+def impl_location_2(inst):
+    assert inst.alias[0] == "South Wing OR 5"
+    assert inst.alias[1] == "Main Wing OR 2"
+    assert (
+        inst.description
+        == "Old South Wing, Neuro Radiology Operation Room 1 on second floor"
+    )
+    assert inst.id == "2"
+    assert inst.identifier[0].value == "B1-S.F2.1.00"
+    assert inst.managingOrganization.reference == "Organization/f001"
+    assert inst.mode == "instance"
+    assert inst.name == "South Wing Neuro OR 1"
+    assert inst.operationalStatus.code == "H"
+    assert inst.operationalStatus.display == "Housekeeping"
+    assert inst.operationalStatus.system == "http://hl7.org/fhir/v2/0116"
+    assert inst.partOf.reference == "Location/1"
+    assert inst.physicalType.coding[0].code == "ro"
+    assert inst.physicalType.coding[0].display == "Room"
+    assert (
+        inst.physicalType.coding[0].system
+        == "http://hl7.org/fhir/location-physical-type"
+    )
+    assert inst.status == "suspended"
+    assert inst.telecom[0].system == "phone"
+    assert inst.telecom[0].value == "2329"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">Burgers UMC, South Wing, second floor, Neuro Radiology Operation Room 1</div>'
+    )
+    assert inst.text.status == "generated"
+    assert inst.type.coding[0].code == "RNEU"
+    assert inst.type.coding[0].display == "Neuroradiology unit"
+    assert inst.type.coding[0].system == "http://hl7.org/fhir/v3/RoleCode"
 
-        js = inst.as_json()
-        self.assertEqual("Location", js["resourceType"])
-        inst2 = location.Location(js)
-        self.implLocation3(inst2)
 
-    def implLocation3(self, inst):
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes("Ambulance provided by Burgers University Medical Center"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("amb"))
-        self.assertEqual(force_bytes(inst.mode), force_bytes("kind"))
-        self.assertEqual(force_bytes(inst.name), force_bytes("BUMC Ambulance"))
-        self.assertEqual(
-            force_bytes(inst.physicalType.coding[0].code), force_bytes("ve")
-        )
-        self.assertEqual(
-            force_bytes(inst.physicalType.coding[0].display), force_bytes("Vehicle")
-        )
-        self.assertEqual(
-            force_bytes(inst.physicalType.coding[0].system),
-            force_bytes("http://hl7.org/fhir/location-physical-type"),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(force_bytes(inst.telecom[0].system), force_bytes("phone"))
-        self.assertEqual(force_bytes(inst.telecom[0].use), force_bytes("mobile"))
-        self.assertEqual(force_bytes(inst.telecom[0].value), force_bytes("2329"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">Mobile Clinic</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type.coding[0].code), force_bytes("AMB"))
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].display), force_bytes("Ambulance")
-        )
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].system),
-            force_bytes("http://hl7.org/fhir/v3/RoleCode"),
-        )
+def test_location_2(base_settings):
+    """No. 2 tests collection for Location.
+    Test File: location-example-room.json
+    """
+    filename = base_settings["unittest_data_dir"] / "location-example-room.json"
+    inst = location.Location.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Location" == inst.resource_type
 
-    def testLocation4(self):
-        inst = self.instantiate_from("location-example-ukpharmacy.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Location instance")
-        self.implLocation4(inst)
+    impl_location_2(inst)
 
-        js = inst.as_json()
-        self.assertEqual("Location", js["resourceType"])
-        inst2 = location.Location(js)
-        self.implLocation4(inst2)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Location" == data["resourceType"]
 
-    def implLocation4(self, inst):
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes(
-                "All Pharmacies in the United Kingdom covered by the National Pharmacy Association"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("ukp"))
-        self.assertEqual(force_bytes(inst.mode), force_bytes("kind"))
-        self.assertEqual(force_bytes(inst.name), force_bytes("UK Pharmacies"))
-        self.assertEqual(
-            force_bytes(inst.physicalType.coding[0].code), force_bytes("jdn")
-        )
-        self.assertEqual(
-            force_bytes(inst.physicalType.coding[0].display),
-            force_bytes("Jurisdiction"),
-        )
-        self.assertEqual(
-            force_bytes(inst.physicalType.coding[0].system),
-            force_bytes("http://hl7.org/fhir/location-physical-type"),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">UK Pharmacies</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type.coding[0].code), force_bytes("PHARM"))
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].display), force_bytes("Pharmacy")
-        )
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].system),
-            force_bytes("http://hl7.org/fhir/v3/RoleCode"),
-        )
+    inst2 = location.Location(**data)
+    impl_location_2(inst2)
 
-    def testLocation5(self):
-        inst = self.instantiate_from("location-example-patients-home.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Location instance")
-        self.implLocation5(inst)
 
-        js = inst.as_json()
-        self.assertEqual("Location", js["resourceType"])
-        inst2 = location.Location(js)
-        self.implLocation5(inst2)
+def impl_location_3(inst):
+    assert inst.description == "Ambulance provided by Burgers University Medical Center"
+    assert inst.id == "amb"
+    assert inst.managingOrganization.reference == "Organization/f001"
+    assert inst.mode == "kind"
+    assert inst.name == "BUMC Ambulance"
+    assert inst.physicalType.coding[0].code == "ve"
+    assert inst.physicalType.coding[0].display == "Vehicle"
+    assert (
+        inst.physicalType.coding[0].system
+        == "http://hl7.org/fhir/location-physical-type"
+    )
+    assert inst.status == "active"
+    assert inst.telecom[0].system == "phone"
+    assert inst.telecom[0].use == "mobile"
+    assert inst.telecom[0].value == "2329"
+    assert (
+        inst.text.div == '<div xmlns="http://www.w3.org/1999/xhtml">Mobile Clinic</div>'
+    )
+    assert inst.text.status == "generated"
+    assert inst.type.coding[0].code == "AMB"
+    assert inst.type.coding[0].display == "Ambulance"
+    assert inst.type.coding[0].system == "http://hl7.org/fhir/v3/RoleCode"
 
-    def implLocation5(self, inst):
-        self.assertEqual(force_bytes(inst.description), force_bytes("Patient's Home"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("ph"))
-        self.assertEqual(force_bytes(inst.mode), force_bytes("kind"))
-        self.assertEqual(force_bytes(inst.name), force_bytes("Patient's Home"))
-        self.assertEqual(
-            force_bytes(inst.physicalType.coding[0].code), force_bytes("ho")
-        )
-        self.assertEqual(
-            force_bytes(inst.physicalType.coding[0].display), force_bytes("House")
-        )
-        self.assertEqual(
-            force_bytes(inst.physicalType.coding[0].system),
-            force_bytes("http://hl7.org/fhir/location-physical-type"),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">Patient\'s Home</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type.coding[0].code), force_bytes("PTRES"))
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].display), force_bytes("Patient's Residence")
-        )
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].system),
-            force_bytes("http://hl7.org/fhir/v3/RoleCode"),
-        )
 
-    def testLocation6(self):
-        inst = self.instantiate_from("location-example-hl7hq.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Location instance")
-        self.implLocation6(inst)
+def test_location_3(base_settings):
+    """No. 3 tests collection for Location.
+    Test File: location-example-ambulance.json
+    """
+    filename = base_settings["unittest_data_dir"] / "location-example-ambulance.json"
+    inst = location.Location.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Location" == inst.resource_type
 
-        js = inst.as_json()
-        self.assertEqual("Location", js["resourceType"])
-        inst2 = location.Location(js)
-        self.implLocation6(inst2)
+    impl_location_3(inst)
 
-    def implLocation6(self, inst):
-        self.assertEqual(force_bytes(inst.address.city), force_bytes("Ann Arbor"))
-        self.assertEqual(force_bytes(inst.address.country), force_bytes("USA"))
-        self.assertEqual(
-            force_bytes(inst.address.line[0]),
-            force_bytes("3300 Washtenaw Avenue, Suite 227"),
-        )
-        self.assertEqual(force_bytes(inst.address.postalCode), force_bytes("48104"))
-        self.assertEqual(force_bytes(inst.address.state), force_bytes("MI"))
-        self.assertEqual(force_bytes(inst.description), force_bytes("HL7 Headquarters"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("hl7"))
-        self.assertEqual(force_bytes(inst.mode), force_bytes("instance"))
-        self.assertEqual(
-            force_bytes(inst.name), force_bytes("Health Level Seven International")
-        )
-        self.assertEqual(
-            force_bytes(inst.physicalType.coding[0].code), force_bytes("bu")
-        )
-        self.assertEqual(
-            force_bytes(inst.physicalType.coding[0].display), force_bytes("Building")
-        )
-        self.assertEqual(
-            force_bytes(inst.physicalType.coding[0].system),
-            force_bytes("http://hl7.org/fhir/location-physical-type"),
-        )
-        self.assertEqual(inst.position.latitude, -83.69471)
-        self.assertEqual(inst.position.longitude, 42.2565)
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(force_bytes(inst.telecom[0].system), force_bytes("phone"))
-        self.assertEqual(
-            force_bytes(inst.telecom[0].value), force_bytes("(+1) 734-677-7777")
-        )
-        self.assertEqual(force_bytes(inst.telecom[1].system), force_bytes("fax"))
-        self.assertEqual(
-            force_bytes(inst.telecom[1].value), force_bytes("(+1) 734-677-6622")
-        )
-        self.assertEqual(force_bytes(inst.telecom[2].system), force_bytes("email"))
-        self.assertEqual(force_bytes(inst.telecom[2].value), force_bytes("hq@HL7.org"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type.coding[0].code), force_bytes("SLEEP"))
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].display),
-            force_bytes("Sleep disorders unit"),
-        )
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].system),
-            force_bytes("http://hl7.org/fhir/v3/RoleCode"),
-        )
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Location" == data["resourceType"]
+
+    inst2 = location.Location(**data)
+    impl_location_3(inst2)
+
+
+def impl_location_4(inst):
+    assert (
+        inst.description
+        == "All Pharmacies in the United Kingdom covered by the National Pharmacy Association"
+    )
+    assert inst.id == "ukp"
+    assert inst.mode == "kind"
+    assert inst.name == "UK Pharmacies"
+    assert inst.physicalType.coding[0].code == "jdn"
+    assert inst.physicalType.coding[0].display == "Jurisdiction"
+    assert (
+        inst.physicalType.coding[0].system
+        == "http://hl7.org/fhir/location-physical-type"
+    )
+    assert inst.status == "active"
+    assert (
+        inst.text.div == '<div xmlns="http://www.w3.org/1999/xhtml">UK Pharmacies</div>'
+    )
+    assert inst.text.status == "generated"
+    assert inst.type.coding[0].code == "PHARM"
+    assert inst.type.coding[0].display == "Pharmacy"
+    assert inst.type.coding[0].system == "http://hl7.org/fhir/v3/RoleCode"
+
+
+def test_location_4(base_settings):
+    """No. 4 tests collection for Location.
+    Test File: location-example-ukpharmacy.json
+    """
+    filename = base_settings["unittest_data_dir"] / "location-example-ukpharmacy.json"
+    inst = location.Location.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Location" == inst.resource_type
+
+    impl_location_4(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Location" == data["resourceType"]
+
+    inst2 = location.Location(**data)
+    impl_location_4(inst2)
+
+
+def impl_location_5(inst):
+    assert inst.description == "Patient's Home"
+    assert inst.id == "ph"
+    assert inst.managingOrganization.reference == "Organization/f001"
+    assert inst.mode == "kind"
+    assert inst.name == "Patient's Home"
+    assert inst.physicalType.coding[0].code == "ho"
+    assert inst.physicalType.coding[0].display == "House"
+    assert (
+        inst.physicalType.coding[0].system
+        == "http://hl7.org/fhir/location-physical-type"
+    )
+    assert inst.status == "active"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">Patient\'s Home</div>'
+    )
+    assert inst.text.status == "generated"
+    assert inst.type.coding[0].code == "PTRES"
+    assert inst.type.coding[0].display == "Patient's Residence"
+    assert inst.type.coding[0].system == "http://hl7.org/fhir/v3/RoleCode"
+
+
+def test_location_5(base_settings):
+    """No. 5 tests collection for Location.
+    Test File: location-example-patients-home.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "location-example-patients-home.json"
+    )
+    inst = location.Location.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Location" == inst.resource_type
+
+    impl_location_5(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Location" == data["resourceType"]
+
+    inst2 = location.Location(**data)
+    impl_location_5(inst2)
+
+
+def impl_location_6(inst):
+    assert inst.address.city == "Ann Arbor"
+    assert inst.address.country == "USA"
+    assert inst.address.line[0] == "3300 Washtenaw Avenue, Suite 227"
+    assert inst.address.postalCode == "48104"
+    assert inst.address.state == "MI"
+    assert inst.description == "HL7 Headquarters"
+    assert inst.id == "hl7"
+    assert inst.mode == "instance"
+    assert inst.name == "Health Level Seven International"
+    assert inst.physicalType.coding[0].code == "bu"
+    assert inst.physicalType.coding[0].display == "Building"
+    assert (
+        inst.physicalType.coding[0].system
+        == "http://hl7.org/fhir/location-physical-type"
+    )
+    assert float(inst.position.latitude) == float(-83.69471)
+    assert float(inst.position.longitude) == float(42.2565)
+    assert inst.status == "active"
+    assert inst.telecom[0].system == "phone"
+    assert inst.telecom[0].value == "(+1) 734-677-7777"
+    assert inst.telecom[1].system == "fax"
+    assert inst.telecom[1].value == "(+1) 734-677-6622"
+    assert inst.telecom[2].system == "email"
+    assert inst.telecom[2].value == "hq@HL7.org"
+    assert inst.text.status == "generated"
+    assert inst.type.coding[0].code == "SLEEP"
+    assert inst.type.coding[0].display == "Sleep disorders unit"
+    assert inst.type.coding[0].system == "http://hl7.org/fhir/v3/RoleCode"
+
+
+def test_location_6(base_settings):
+    """No. 6 tests collection for Location.
+    Test File: location-example-hl7hq.json
+    """
+    filename = base_settings["unittest_data_dir"] / "location-example-hl7hq.json"
+    inst = location.Location.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Location" == inst.resource_type
+
+    impl_location_6(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Location" == data["resourceType"]
+
+    inst2 = location.Location(**data)
+    impl_location_6(inst2)

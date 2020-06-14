@@ -6,240 +6,184 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import communication
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class CommunicationTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("Communication", js["resourceType"])
-        return communication.Communication(js)
+def impl_communication_1(inst):
+    assert inst.category[0].coding[0].code == "SolicitedAttachment"
+    assert inst.category[0].coding[0].system == "http://acme.org/messagetypes"
+    assert inst.id == "fm-attachment"
+    assert inst.identifier[0].system == "http://www.providerco.com/communication"
+    assert inst.identifier[0].value == "12345"
+    assert inst.payload[0].contentAttachment.contentType == "application/pdf"
+    assert inst.payload[0].contentAttachment.creation == fhirtypes.DateTime.validate(
+        "2010-02-01T11:50:23-05:00"
+    )
+    # Don't know how to create unit test for "payload[0].contentAttachment.data", which is a Base64Binary
+    assert inst.payload[0].contentAttachment.title == "accident notes 20100201.pdf"
+    assert inst.payload[1].contentAttachment.contentType == "application/pdf"
+    assert inst.payload[1].contentAttachment.creation == fhirtypes.DateTime.validate(
+        "2010-02-01T10:57:34+01:00"
+    )
+    # Don't know how to create unit test for "payload[1].contentAttachment.hash", which is a Base64Binary
+    assert inst.payload[1].contentAttachment.size == 104274
+    assert (
+        inst.payload[1].contentAttachment.url == "http://happyvalley.com/docs/AB12345"
+    )
+    assert inst.recipient[0].identifier.system == "http://www.jurisdiction.com/insurer"
+    assert inst.recipient[0].identifier.value == "123456"
+    assert (
+        inst.sender.identifier.system == "http://www.jurisdiction.com/provideroffices"
+    )
+    assert inst.sender.identifier.value == "3456"
+    assert inst.sent == fhirtypes.DateTime.validate("2016-06-12T18:01:10-08:00")
+    assert inst.status == "completed"
+    assert inst.subject.reference == "Patient/1"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">Attachment which is unsolicited</div>'
+    )
+    assert inst.text.status == "generated"
+    assert inst.topic[0].identifier.system == "http://happyvalley.com/claim"
+    assert inst.topic[0].identifier.value == "12345"
+    assert (
+        inst.topic[1].identifier.system
+        == "http://www.BenefitsInc.com/fhir/claimresponse"
+    )
+    assert inst.topic[1].identifier.value == "R3500"
 
-    def testCommunication1(self):
-        inst = self.instantiate_from("communication-example-fm-attachment.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Communication instance")
-        self.implCommunication1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("Communication", js["resourceType"])
-        inst2 = communication.Communication(js)
-        self.implCommunication1(inst2)
+def test_communication_1(base_settings):
+    """No. 1 tests collection for Communication.
+    Test File: communication-example-fm-attachment.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "communication-example-fm-attachment.json"
+    )
+    inst = communication.Communication.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Communication" == inst.resource_type
 
-    def implCommunication1(self, inst):
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].code),
-            force_bytes("SolicitedAttachment"),
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].system),
-            force_bytes("http://acme.org/messagetypes"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("fm-attachment"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://www.providerco.com/communication"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("12345"))
-        self.assertEqual(
-            force_bytes(inst.payload[0].contentAttachment.contentType),
-            force_bytes("application/pdf"),
-        )
-        self.assertEqual(
-            inst.payload[0].contentAttachment.creation.date,
-            FHIRDate("2010-02-01T11:50:23-05:00").date,
-        )
-        self.assertEqual(
-            inst.payload[0].contentAttachment.creation.as_json(),
-            "2010-02-01T11:50:23-05:00",
-        )
-        self.assertEqual(
-            force_bytes(inst.payload[0].contentAttachment.data), force_bytes("SGVsbG8=")
-        )
-        self.assertEqual(
-            force_bytes(inst.payload[0].contentAttachment.title),
-            force_bytes("accident notes 20100201.pdf"),
-        )
-        self.assertEqual(
-            force_bytes(inst.payload[1].contentAttachment.contentType),
-            force_bytes("application/pdf"),
-        )
-        self.assertEqual(
-            inst.payload[1].contentAttachment.creation.date,
-            FHIRDate("2010-02-01T10:57:34+01:00").date,
-        )
-        self.assertEqual(
-            inst.payload[1].contentAttachment.creation.as_json(),
-            "2010-02-01T10:57:34+01:00",
-        )
-        self.assertEqual(
-            force_bytes(inst.payload[1].contentAttachment.hash),
-            force_bytes("SGVsbG8gdGhlcmU="),
-        )
-        self.assertEqual(inst.payload[1].contentAttachment.size, 104274)
-        self.assertEqual(
-            force_bytes(inst.payload[1].contentAttachment.url),
-            force_bytes("http://happyvalley.com/docs/AB12345"),
-        )
-        self.assertEqual(inst.sent.date, FHIRDate("2016-06-12T18:01:10-08:00").date)
-        self.assertEqual(inst.sent.as_json(), "2016-06-12T18:01:10-08:00")
-        self.assertEqual(force_bytes(inst.status), force_bytes("completed"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">Attachment which is unsolicited</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    impl_communication_1(inst)
 
-    def testCommunication2(self):
-        inst = self.instantiate_from(
-            "communication-example-fm-solicited-attachment.json"
-        )
-        self.assertIsNotNone(inst, "Must have instantiated a Communication instance")
-        self.implCommunication2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Communication" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("Communication", js["resourceType"])
-        inst2 = communication.Communication(js)
-        self.implCommunication2(inst2)
+    inst2 = communication.Communication(**data)
+    impl_communication_1(inst2)
 
-    def implCommunication2(self, inst):
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].code),
-            force_bytes("SolicitedAttachment"),
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].system),
-            force_bytes("http://acme.org/messagetypes"),
-        )
-        self.assertEqual(force_bytes(inst.contained[0].id), force_bytes("provider"))
-        self.assertEqual(force_bytes(inst.contained[1].id), force_bytes("payor"))
-        self.assertEqual(force_bytes(inst.contained[2].id), force_bytes("request"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("fm-solicited"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://www.providerco.com/communication"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("12345"))
-        self.assertEqual(
-            force_bytes(inst.payload[0].contentAttachment.contentType),
-            force_bytes("application/pdf"),
-        )
-        self.assertEqual(
-            inst.payload[0].contentAttachment.creation.date,
-            FHIRDate("2010-02-01T11:50:23-05:00").date,
-        )
-        self.assertEqual(
-            inst.payload[0].contentAttachment.creation.as_json(),
-            "2010-02-01T11:50:23-05:00",
-        )
-        self.assertEqual(
-            force_bytes(inst.payload[0].contentAttachment.data), force_bytes("SGVsbG8=")
-        )
-        self.assertEqual(
-            force_bytes(inst.payload[0].contentAttachment.title),
-            force_bytes("accident notes 20100201.pdf"),
-        )
-        self.assertEqual(
-            force_bytes(inst.payload[1].contentAttachment.contentType),
-            force_bytes("application/pdf"),
-        )
-        self.assertEqual(
-            inst.payload[1].contentAttachment.creation.date,
-            FHIRDate("2010-02-01T10:57:34+01:00").date,
-        )
-        self.assertEqual(
-            inst.payload[1].contentAttachment.creation.as_json(),
-            "2010-02-01T10:57:34+01:00",
-        )
-        self.assertEqual(
-            force_bytes(inst.payload[1].contentAttachment.hash),
-            force_bytes("SGVsbG8gdGhlcmU="),
-        )
-        self.assertEqual(inst.payload[1].contentAttachment.size, 104274)
-        self.assertEqual(
-            force_bytes(inst.payload[1].contentAttachment.url),
-            force_bytes("http://happyvalley.com/docs/AB12345"),
-        )
-        self.assertEqual(inst.sent.date, FHIRDate("2016-06-12T18:01:10-08:00").date)
-        self.assertEqual(inst.sent.as_json(), "2016-06-12T18:01:10-08:00")
-        self.assertEqual(force_bytes(inst.status), force_bytes("completed"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">Attachment in response to a Request</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 
-    def testCommunication3(self):
-        inst = self.instantiate_from("communication-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Communication instance")
-        self.implCommunication3(inst)
+def impl_communication_2(inst):
+    assert inst.basedOn[0].reference == "#request"
+    assert inst.category[0].coding[0].code == "SolicitedAttachment"
+    assert inst.category[0].coding[0].system == "http://acme.org/messagetypes"
+    assert inst.contained[0].id == "provider"
+    assert inst.contained[1].id == "payor"
+    assert inst.contained[2].id == "request"
+    assert inst.id == "fm-solicited"
+    assert inst.identifier[0].system == "http://www.providerco.com/communication"
+    assert inst.identifier[0].value == "12345"
+    assert inst.payload[0].contentAttachment.contentType == "application/pdf"
+    assert inst.payload[0].contentAttachment.creation == fhirtypes.DateTime.validate(
+        "2010-02-01T11:50:23-05:00"
+    )
+    # Don't know how to create unit test for "payload[0].contentAttachment.data", which is a Base64Binary
+    assert inst.payload[0].contentAttachment.title == "accident notes 20100201.pdf"
+    assert inst.payload[1].contentAttachment.contentType == "application/pdf"
+    assert inst.payload[1].contentAttachment.creation == fhirtypes.DateTime.validate(
+        "2010-02-01T10:57:34+01:00"
+    )
+    # Don't know how to create unit test for "payload[1].contentAttachment.hash", which is a Base64Binary
+    assert inst.payload[1].contentAttachment.size == 104274
+    assert (
+        inst.payload[1].contentAttachment.url == "http://happyvalley.com/docs/AB12345"
+    )
+    assert inst.recipient[0].reference == "#payor"
+    assert inst.sender.reference == "#provider"
+    assert inst.sent == fhirtypes.DateTime.validate("2016-06-12T18:01:10-08:00")
+    assert inst.status == "completed"
+    assert inst.subject.reference == "Patient/1"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">Attachment in response to a Request</div>'
+    )
+    assert inst.text.status == "generated"
 
-        js = inst.as_json()
-        self.assertEqual("Communication", js["resourceType"])
-        inst2 = communication.Communication(js)
-        self.implCommunication3(inst2)
 
-    def implCommunication3(self, inst):
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].code), force_bytes("Alert")
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].system),
-            force_bytes("http://acme.org/messagetypes"),
-        )
-        self.assertEqual(force_bytes(inst.category[0].text), force_bytes("Alert"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system), force_bytes("urn:oid:1.3.4.5.6.7")
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].type.text), force_bytes("Paging System")
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].value), force_bytes("2345678901")
-        )
-        self.assertEqual(
-            force_bytes(inst.medium[0].coding[0].code), force_bytes("WRITTEN")
-        )
-        self.assertEqual(
-            force_bytes(inst.medium[0].coding[0].display), force_bytes("written")
-        )
-        self.assertEqual(
-            force_bytes(inst.medium[0].coding[0].system),
-            force_bytes("http://hl7.org/fhir/v3/ParticipationMode"),
-        )
-        self.assertEqual(force_bytes(inst.medium[0].text), force_bytes("written"))
-        self.assertEqual(
-            force_bytes(inst.payload[0].contentString),
-            force_bytes(
-                "Patient 1 has a very high serum potassium value (7.2 mmol/L on 2014-Dec-12 at 5:55 pm)"
-            ),
-        )
-        self.assertEqual(inst.received.date, FHIRDate("2014-12-12T18:01:11-08:00").date)
-        self.assertEqual(inst.received.as_json(), "2014-12-12T18:01:11-08:00")
-        self.assertEqual(inst.sent.date, FHIRDate("2014-12-12T18:01:10-08:00").date)
-        self.assertEqual(inst.sent.as_json(), "2014-12-12T18:01:10-08:00")
-        self.assertEqual(force_bytes(inst.status), force_bytes("completed"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">Patient has very high serum potassium</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+def test_communication_2(base_settings):
+    """No. 2 tests collection for Communication.
+    Test File: communication-example-fm-solicited-attachment.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"]
+        / "communication-example-fm-solicited-attachment.json"
+    )
+    inst = communication.Communication.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Communication" == inst.resource_type
+
+    impl_communication_2(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Communication" == data["resourceType"]
+
+    inst2 = communication.Communication(**data)
+    impl_communication_2(inst2)
+
+
+def impl_communication_3(inst):
+    assert inst.category[0].coding[0].code == "Alert"
+    assert inst.category[0].coding[0].system == "http://acme.org/messagetypes"
+    assert inst.category[0].text == "Alert"
+    assert inst.context.reference == "Encounter/example"
+    assert inst.definition[0].display == "Hyperkalemia"
+    assert inst.id == "example"
+    assert inst.identifier[0].system == "urn:oid:1.3.4.5.6.7"
+    assert inst.identifier[0].type.text == "Paging System"
+    assert inst.identifier[0].value == "2345678901"
+    assert inst.medium[0].coding[0].code == "WRITTEN"
+    assert inst.medium[0].coding[0].display == "written"
+    assert inst.medium[0].coding[0].system == "http://hl7.org/fhir/v3/ParticipationMode"
+    assert inst.medium[0].text == "written"
+    assert inst.partOf[0].display == "Serum Potassium Observation"
+    assert (
+        inst.payload[0].contentString
+        == "Patient 1 has a very high serum potassium value (7.2 mmol/L on 2014-Dec-12 at 5:55 pm)"
+    )
+    assert inst.payload[1].contentReference.display == "Serum Potassium Observation"
+    assert inst.received == fhirtypes.DateTime.validate("2014-12-12T18:01:11-08:00")
+    assert inst.recipient[0].reference == "Practitioner/example"
+    assert inst.sender.reference == "Device/f001"
+    assert inst.sent == fhirtypes.DateTime.validate("2014-12-12T18:01:10-08:00")
+    assert inst.status == "completed"
+    assert inst.subject.reference == "Patient/example"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">Patient has very high serum potassium</div>'
+    )
+    assert inst.text.status == "generated"
+
+
+def test_communication_3(base_settings):
+    """No. 3 tests collection for Communication.
+    Test File: communication-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "communication-example.json"
+    inst = communication.Communication.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Communication" == inst.resource_type
+
+    impl_communication_3(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Communication" == data["resourceType"]
+
+    inst2 = communication.Communication(**data)
+    impl_communication_3(inst2)

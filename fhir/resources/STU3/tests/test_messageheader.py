@@ -6,78 +6,52 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import messageheader
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class MessageHeaderTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("MessageHeader", js["resourceType"])
-        return messageheader.MessageHeader(js)
+def impl_messageheader_1(inst):
+    assert inst.author.reference == "Practitioner/example"
+    assert inst.destination[0].endpoint == "llp:10.11.12.14:5432"
+    assert inst.destination[0].name == "Acme Message Gateway"
+    assert inst.destination[0].target.reference == "Device/example"
+    assert inst.enterer.reference == "Practitioner/example"
+    assert inst.event.code == "admin-notify"
+    assert inst.event.system == "http://hl7.org/fhir/message-events"
+    assert inst.focus[0].reference == "Patient/example"
+    assert inst.id == "1cbdfb97-5859-48a4-8301-d54eab818d68"
+    assert inst.reason.coding[0].code == "admit"
+    assert (
+        inst.reason.coding[0].system == "http://hl7.org/fhir/message-reasons-encounter"
+    )
+    assert inst.response.code == "ok"
+    assert inst.response.identifier == "5015fe84-8e76-4526-89d8-44b322e8d4fb"
+    assert inst.sender.reference == "Organization/1"
+    assert inst.source.contact.system == "phone"
+    assert inst.source.contact.value == "+1 (555) 123 4567"
+    assert inst.source.endpoint == "llp:10.11.12.13:5432"
+    assert inst.source.name == "Acme Central Patient Registry"
+    assert inst.source.software == "FooBar Patient Manager"
+    assert inst.source.version == "3.1.45.AABB"
+    assert inst.text.status == "generated"
+    assert inst.timestamp == fhirtypes.Instant.validate("2012-01-04T09:10:14Z")
 
-    def testMessageHeader1(self):
-        inst = self.instantiate_from("messageheader-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a MessageHeader instance")
-        self.implMessageHeader1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("MessageHeader", js["resourceType"])
-        inst2 = messageheader.MessageHeader(js)
-        self.implMessageHeader1(inst2)
+def test_messageheader_1(base_settings):
+    """No. 1 tests collection for MessageHeader.
+    Test File: messageheader-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "messageheader-example.json"
+    inst = messageheader.MessageHeader.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "MessageHeader" == inst.resource_type
 
-    def implMessageHeader1(self, inst):
-        self.assertEqual(
-            force_bytes(inst.destination[0].endpoint),
-            force_bytes("llp:10.11.12.14:5432"),
-        )
-        self.assertEqual(
-            force_bytes(inst.destination[0].name), force_bytes("Acme Message Gateway")
-        )
-        self.assertEqual(force_bytes(inst.event.code), force_bytes("admin-notify"))
-        self.assertEqual(
-            force_bytes(inst.event.system),
-            force_bytes("http://hl7.org/fhir/message-events"),
-        )
-        self.assertEqual(
-            force_bytes(inst.id), force_bytes("1cbdfb97-5859-48a4-8301-d54eab818d68")
-        )
-        self.assertEqual(force_bytes(inst.reason.coding[0].code), force_bytes("admit"))
-        self.assertEqual(
-            force_bytes(inst.reason.coding[0].system),
-            force_bytes("http://hl7.org/fhir/message-reasons-encounter"),
-        )
-        self.assertEqual(force_bytes(inst.response.code), force_bytes("ok"))
-        self.assertEqual(
-            force_bytes(inst.response.identifier),
-            force_bytes("5015fe84-8e76-4526-89d8-44b322e8d4fb"),
-        )
-        self.assertEqual(force_bytes(inst.source.contact.system), force_bytes("phone"))
-        self.assertEqual(
-            force_bytes(inst.source.contact.value), force_bytes("+1 (555) 123 4567")
-        )
-        self.assertEqual(
-            force_bytes(inst.source.endpoint), force_bytes("llp:10.11.12.13:5432")
-        )
-        self.assertEqual(
-            force_bytes(inst.source.name), force_bytes("Acme Central Patient Registry")
-        )
-        self.assertEqual(
-            force_bytes(inst.source.software), force_bytes("FooBar Patient Manager")
-        )
-        self.assertEqual(force_bytes(inst.source.version), force_bytes("3.1.45.AABB"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(inst.timestamp.date, FHIRDate("2012-01-04T09:10:14Z").date)
-        self.assertEqual(inst.timestamp.as_json(), "2012-01-04T09:10:14Z")
+    impl_messageheader_1(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "MessageHeader" == data["resourceType"]
+
+    inst2 = messageheader.MessageHeader(**data)
+    impl_messageheader_1(inst2)

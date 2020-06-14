@@ -1,6 +1,6 @@
-=================================
-FHIR® Resources (R4, STU3, DSTU2)
-=================================
+==========================
+FHIR® Resources (R4, STU3)
+==========================
 
 
 .. image:: https://img.shields.io/pypi/v/fhir.resources.svg
@@ -25,8 +25,8 @@ FHIR® Resources (R4, STU3, DSTU2)
 
 
 
-All `FHIR Resources <https://www.hl7.org/fhir/resourcelist.html>`_ are available as python class with built-in
-initial validation, exporter as json value.
+Powered by pydantic_, all `FHIR Resources <https://www.hl7.org/fhir/resourcelist.html>`_ are available as python class with built-in
+data validation, with mini validation framework included.
 
 * Provides ``Resource Factory`` class (see example 4) to create resource object in more convenient way.
 * Previous version of FHIR® Resources are available.
@@ -139,6 +139,7 @@ This package skeleton was created with Cookiecutter_ and the `audreyr/cookiecutt
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter
 .. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
 .. _`fhir-parser`: https://github.com/nazrulworld/fhir-parser
+.. _`pydantic`: https://pydantic-docs.helpmanual.io/r
 
 © Copyright HL7® logo, FHIR® logo and the flaming fire are registered trademarks
 owned by `Health Level Seven International <https://www.hl7.org/legal/trademarks.cfm?ref=https://pypi.org/project/fhir-resources/>`_

@@ -6,368 +6,228 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class Device(domainresource.DomainResource):
     """ Item used in healthcare.
-
     A type of a manufactured item that is used in the provision of healthcare
     without being substantially changed through that activity. The device may
     be a medical or non-medical device.
     """
 
-    resource_type = "Device"
+    resource_type = Field("Device", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    contact: ListType[fhirtypes.ContactPointType] = Field(
+        None,
+        alias="contact",
+        title="List of `ContactPoint` items (represented as `dict` in JSON)",
+        description="Details for human/organization for support",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    definition: fhirtypes.ReferenceType = Field(
+        None,
+        alias="definition",
+        title="Type `Reference` referencing `DeviceDefinition` (represented as `dict` in JSON)",
+        description="The reference to the definition for the device",
+    )
 
-        self.contact = None
-        """ Details for human/organization for support.
-        List of `ContactPoint` items (represented as `dict` in JSON). """
+    deviceName: ListType[fhirtypes.DeviceDeviceNameType] = Field(
+        None,
+        alias="deviceName",
+        title="List of `DeviceDeviceName` items (represented as `dict` in JSON)",
+        description="The name of the device as given by the manufacturer",
+    )
 
-        self.definition = None
-        """ The reference to the definition for the device.
-        Type `FHIRReference` referencing `['DeviceDefinition']` (represented as `dict` in JSON). """
+    distinctIdentifier: fhirtypes.String = Field(
+        None,
+        alias="distinctIdentifier",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="The distinct identification string",
+    )
 
-        self.deviceName = None
-        """ The name of the device as given by the manufacturer.
-        List of `DeviceDeviceName` items (represented as `dict` in JSON). """
+    expirationDate: fhirtypes.DateTime = Field(
+        None,
+        alias="expirationDate",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Date and time of expiry of this device (if applicable)",
+    )
 
-        self.distinctIdentifier = None
-        """ The distinct identification string.
-        Type `str`. """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Instance identifier",
+    )
 
-        self.expirationDate = None
-        """ Date and time of expiry of this device (if applicable).
-        Type `FHIRDate` (represented as `str` in JSON). """
+    location: fhirtypes.ReferenceType = Field(
+        None,
+        alias="location",
+        title="Type `Reference` referencing `Location` (represented as `dict` in JSON)",
+        description="Where the device is found",
+    )
 
-        self.identifier = None
-        """ Instance identifier.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    lotNumber: fhirtypes.String = Field(
+        None,
+        alias="lotNumber",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Lot number of manufacture",
+    )
 
-        self.location = None
-        """ Where the device is found.
-        Type `FHIRReference` referencing `['Location']` (represented as `dict` in JSON). """
+    manufactureDate: fhirtypes.DateTime = Field(
+        None,
+        alias="manufactureDate",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Date when the device was made",
+    )
 
-        self.lotNumber = None
-        """ Lot number of manufacture.
-        Type `str`. """
+    manufacturer: fhirtypes.String = Field(
+        None,
+        alias="manufacturer",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name of device manufacturer",
+    )
 
-        self.manufactureDate = None
-        """ Date when the device was made.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    modelNumber: fhirtypes.String = Field(
+        None,
+        alias="modelNumber",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="The model number for the device",
+    )
 
-        self.manufacturer = None
-        """ Name of device manufacturer.
-        Type `str`. """
+    note: ListType[fhirtypes.AnnotationType] = Field(
+        None,
+        alias="note",
+        title="List of `Annotation` items (represented as `dict` in JSON)",
+        description="Device notes and comments",
+    )
 
-        self.modelNumber = None
-        """ The model number for the device.
-        Type `str`. """
+    owner: fhirtypes.ReferenceType = Field(
+        None,
+        alias="owner",
+        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        description="Organization responsible for device",
+    )
 
-        self.note = None
-        """ Device notes and comments.
-        List of `Annotation` items (represented as `dict` in JSON). """
+    parent: fhirtypes.ReferenceType = Field(
+        None,
+        alias="parent",
+        title="Type `Reference` referencing `Device` (represented as `dict` in JSON)",
+        description="The parent device",
+    )
 
-        self.owner = None
-        """ Organization responsible for device.
-        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
+    partNumber: fhirtypes.String = Field(
+        None,
+        alias="partNumber",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="The part number of the device",
+    )
 
-        self.parent = None
-        """ The parent device.
-        Type `FHIRReference` referencing `['Device']` (represented as `dict` in JSON). """
+    patient: fhirtypes.ReferenceType = Field(
+        None,
+        alias="patient",
+        title="Type `Reference` referencing `Patient` (represented as `dict` in JSON)",
+        description="Patient to whom Device is affixed",
+    )
 
-        self.partNumber = None
-        """ The part number of the device.
-        Type `str`. """
+    property: ListType[fhirtypes.DevicePropertyType] = Field(
+        None,
+        alias="property",
+        title="List of `DeviceProperty` items (represented as `dict` in JSON)",
+        description="The actual configuration settings of a device as it actually operates, e.g., regulation status, time properties",
+    )
 
-        self.patient = None
-        """ Patient to whom Device is affixed.
-        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
+    safety: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="safety",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Safety Characteristics of Device",
+    )
 
-        self.property = None
-        """ The actual configuration settings of a device as it actually
-        operates, e.g., regulation status, time properties.
-        List of `DeviceProperty` items (represented as `dict` in JSON). """
+    serialNumber: fhirtypes.String = Field(
+        None,
+        alias="serialNumber",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Serial number assigned by the manufacturer",
+    )
 
-        self.safety = None
-        """ Safety Characteristics of Device.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    specialization: ListType[fhirtypes.DeviceSpecializationType] = Field(
+        None,
+        alias="specialization",
+        title="List of `DeviceSpecialization` items (represented as `dict` in JSON)",
+        description="The capabilities supported on a  device, the standards to which the device conforms for a particular purpose, and used for the communication",
+    )
 
-        self.serialNumber = None
-        """ Serial number assigned by the manufacturer.
-        Type `str`. """
+    status: fhirtypes.Code = Field(
+        None,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="active | inactive | entered-in-error | unknown",
+    )
 
-        self.specialization = None
-        """ The capabilities supported on a  device, the standards to which the
-        device conforms for a particular purpose, and used for the
-        communication.
-        List of `DeviceSpecialization` items (represented as `dict` in JSON). """
+    statusReason: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="statusReason",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="online | paused | standby | offline | not-ready | transduc-discon | hw-discon | off",
+    )
 
-        self.status = None
-        """ active | inactive | entered-in-error | unknown.
-        Type `str`. """
+    type: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The kind or type of device",
+    )
 
-        self.statusReason = None
-        """ online | paused | standby | offline | not-ready | transduc-discon |
-        hw-discon | off.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    udiCarrier: ListType[fhirtypes.DeviceUdiCarrierType] = Field(
+        None,
+        alias="udiCarrier",
+        title="List of `DeviceUdiCarrier` items (represented as `dict` in JSON)",
+        description="Unique Device Identifier (UDI) Barcode string",
+    )
 
-        self.type = None
-        """ The kind or type of device.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    url: fhirtypes.Uri = Field(
+        None,
+        alias="url",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Network address to contact device",
+    )
 
-        self.udiCarrier = None
-        """ Unique Device Identifier (UDI) Barcode string.
-        List of `DeviceUdiCarrier` items (represented as `dict` in JSON). """
-
-        self.url = None
-        """ Network address to contact device.
-        Type `str`. """
-
-        self.version = None
-        """ The actual design of the device or software version running on the
-        device.
-        List of `DeviceVersion` items (represented as `dict` in JSON). """
-
-        super(Device, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(Device, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "contact",
-                    "contact",
-                    contactpoint.ContactPoint,
-                    "ContactPoint",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "definition",
-                    "definition",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "deviceName",
-                    "deviceName",
-                    DeviceDeviceName,
-                    "DeviceDeviceName",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "distinctIdentifier",
-                    "distinctIdentifier",
-                    str,
-                    "string",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "expirationDate",
-                    "expirationDate",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "location",
-                    "location",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("lotNumber", "lotNumber", str, "string", False, None, False),
-                (
-                    "manufactureDate",
-                    "manufactureDate",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    None,
-                    False,
-                ),
-                ("manufacturer", "manufacturer", str, "string", False, None, False),
-                ("modelNumber", "modelNumber", str, "string", False, None, False),
-                (
-                    "note",
-                    "note",
-                    annotation.Annotation,
-                    "Annotation",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "owner",
-                    "owner",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "parent",
-                    "parent",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("partNumber", "partNumber", str, "string", False, None, False),
-                (
-                    "patient",
-                    "patient",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "property",
-                    "property",
-                    DeviceProperty,
-                    "DeviceProperty",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "safety",
-                    "safety",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                ("serialNumber", "serialNumber", str, "string", False, None, False),
-                (
-                    "specialization",
-                    "specialization",
-                    DeviceSpecialization,
-                    "DeviceSpecialization",
-                    True,
-                    None,
-                    False,
-                ),
-                ("status", "status", str, "code", False, None, False),
-                (
-                    "statusReason",
-                    "statusReason",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "udiCarrier",
-                    "udiCarrier",
-                    DeviceUdiCarrier,
-                    "DeviceUdiCarrier",
-                    True,
-                    None,
-                    False,
-                ),
-                ("url", "url", str, "uri", False, None, False),
-                (
-                    "version",
-                    "version",
-                    DeviceVersion,
-                    "DeviceVersion",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    version: ListType[fhirtypes.DeviceVersionType] = Field(
+        None,
+        alias="version",
+        title="List of `DeviceVersion` items (represented as `dict` in JSON)",
+        description="The actual design of the device or software version running on the device",
+    )
 
 
 class DeviceDeviceName(backboneelement.BackboneElement):
     """ The name of the device as given by the manufacturer.
-
     This represents the manufacturer's name of the device as provided by the
     device, from a UDI label, or by a person describing the Device.  This
     typically would be used when a person provides the name(s) or when the
     device represents one of the names available from DeviceDefinition.
     """
 
-    resource_type = "DeviceDeviceName"
+    resource_type = Field("DeviceDeviceName", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    name: fhirtypes.String = Field(
+        ...,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="The name of the device",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.name = None
-        """ The name of the device.
-        Type `str`. """
-
-        self.type = None
-        """ udi-label-name | user-friendly-name | patient-reported-name |
-        manufacturer-name | model-name | other.
-        Type `str`. """
-
-        super(DeviceDeviceName, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(DeviceDeviceName, self).elementProperties()
-        js.extend(
-            [
-                ("name", "name", str, "string", False, None, True),
-                ("type", "type", str, "code", False, None, True),
-            ]
-        )
-        return js
+    type: fhirtypes.Code = Field(
+        ...,
+        alias="type",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="udi-label-name | user-friendly-name | patient-reported-name | manufacturer-name | model-name | other",
+    )
 
 
 class DeviceProperty(backboneelement.BackboneElement):
@@ -375,65 +235,28 @@ class DeviceProperty(backboneelement.BackboneElement):
     e.g., regulation status, time properties.
     """
 
-    resource_type = "DeviceProperty"
+    resource_type = Field("DeviceProperty", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    type: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Code that specifies the property DeviceDefinitionPropetyCode (Extensible)",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    valueCode: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="valueCode",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Property value as a code, e.g., NTP4 (synced to NTP)",
+    )
 
-        self.type = None
-        """ Code that specifies the property DeviceDefinitionPropetyCode
-        (Extensible).
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.valueCode = None
-        """ Property value as a code, e.g., NTP4 (synced to NTP).
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.valueQuantity = None
-        """ Property value as a quantity.
-        List of `Quantity` items (represented as `dict` in JSON). """
-
-        super(DeviceProperty, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(DeviceProperty, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "valueCode",
-                    "valueCode",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "valueQuantity",
-                    "valueQuantity",
-                    quantity.Quantity,
-                    "Quantity",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    valueQuantity: ListType[fhirtypes.QuantityType] = Field(
+        None,
+        alias="valueQuantity",
+        title="List of `Quantity` items (represented as `dict` in JSON)",
+        description="Property value as a quantity",
+    )
 
 
 class DeviceSpecialization(backboneelement.BackboneElement):
@@ -441,194 +264,99 @@ class DeviceSpecialization(backboneelement.BackboneElement):
     conforms for a particular purpose, and used for the communication.
     """
 
-    resource_type = "DeviceSpecialization"
+    resource_type = Field("DeviceSpecialization", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    systemType: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="systemType",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The standard that is used to operate and communicate",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.systemType = None
-        """ The standard that is used to operate and communicate.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.version = None
-        """ The version of the standard that is used to operate and communicate.
-        Type `str`. """
-
-        super(DeviceSpecialization, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(DeviceSpecialization, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "systemType",
-                    "systemType",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                ("version", "version", str, "string", False, None, False),
-            ]
-        )
-        return js
+    version: fhirtypes.String = Field(
+        None,
+        alias="version",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="The version of the standard that is used to operate and communicate",
+    )
 
 
 class DeviceUdiCarrier(backboneelement.BackboneElement):
     """ Unique Device Identifier (UDI) Barcode string.
-
     Unique device identifier (UDI) assigned to device label or package.  Note
     that the Device may include multiple udiCarriers as it either may include
     just the udiCarrier for the jurisdiction it is sold, or for multiple
     jurisdictions it could have been sold.
     """
 
-    resource_type = "DeviceUdiCarrier"
+    resource_type = Field("DeviceUdiCarrier", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    carrierAIDC: fhirtypes.Base64Binary = Field(
+        None,
+        alias="carrierAIDC",
+        title="Type `Base64Binary` (represented as `dict` in JSON)",
+        description="UDI Machine Readable Barcode String",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    carrierHRF: fhirtypes.String = Field(
+        None,
+        alias="carrierHRF",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="UDI Human Readable Barcode String",
+    )
 
-        self.carrierAIDC = None
-        """ UDI Machine Readable Barcode String.
-        Type `str`. """
+    deviceIdentifier: fhirtypes.String = Field(
+        None,
+        alias="deviceIdentifier",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Mandatory fixed portion of UDI",
+    )
 
-        self.carrierHRF = None
-        """ UDI Human Readable Barcode String.
-        Type `str`. """
+    entryType: fhirtypes.Code = Field(
+        None,
+        alias="entryType",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="barcode | rfid | manual +",
+    )
 
-        self.deviceIdentifier = None
-        """ Mandatory fixed portion of UDI.
-        Type `str`. """
+    issuer: fhirtypes.Uri = Field(
+        None,
+        alias="issuer",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="UDI Issuing Organization",
+    )
 
-        self.entryType = None
-        """ barcode | rfid | manual +.
-        Type `str`. """
-
-        self.issuer = None
-        """ UDI Issuing Organization.
-        Type `str`. """
-
-        self.jurisdiction = None
-        """ Regional UDI authority.
-        Type `str`. """
-
-        super(DeviceUdiCarrier, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(DeviceUdiCarrier, self).elementProperties()
-        js.extend(
-            [
-                ("carrierAIDC", "carrierAIDC", str, "base64Binary", False, None, False),
-                ("carrierHRF", "carrierHRF", str, "string", False, None, False),
-                (
-                    "deviceIdentifier",
-                    "deviceIdentifier",
-                    str,
-                    "string",
-                    False,
-                    None,
-                    False,
-                ),
-                ("entryType", "entryType", str, "code", False, None, False),
-                ("issuer", "issuer", str, "uri", False, None, False),
-                ("jurisdiction", "jurisdiction", str, "uri", False, None, False),
-            ]
-        )
-        return js
+    jurisdiction: fhirtypes.Uri = Field(
+        None,
+        alias="jurisdiction",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Regional UDI authority",
+    )
 
 
 class DeviceVersion(backboneelement.BackboneElement):
     """ The actual design of the device or software version running on the device.
     """
 
-    resource_type = "DeviceVersion"
+    resource_type = Field("DeviceVersion", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    component: fhirtypes.IdentifierType = Field(
+        None,
+        alias="component",
+        title="Type `Identifier` (represented as `dict` in JSON)",
+        description="A single component of the device version",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    type: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The type of the device version",
+    )
 
-        self.component = None
-        """ A single component of the device version.
-        Type `Identifier` (represented as `dict` in JSON). """
-
-        self.type = None
-        """ The type of the device version.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.value = None
-        """ The version text.
-        Type `str`. """
-
-        super(DeviceVersion, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(DeviceVersion, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "component",
-                    "component",
-                    identifier.Identifier,
-                    "Identifier",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("value", "value", str, "string", False, None, True),
-            ]
-        )
-        return js
-
-
-try:
-    from . import annotation
-except ImportError:
-    annotation = sys.modules[__package__ + ".annotation"]
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import contactpoint
-except ImportError:
-    contactpoint = sys.modules[__package__ + ".contactpoint"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import quantity
-except ImportError:
-    quantity = sys.modules[__package__ + ".quantity"]
+    value: fhirtypes.String = Field(
+        ...,
+        alias="value",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="The version text",
+    )

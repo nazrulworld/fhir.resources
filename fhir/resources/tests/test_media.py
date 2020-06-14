@@ -6,271 +6,229 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import media
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class MediaTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("Media", js["resourceType"])
-        return media.Media(js)
+def impl_media_1(inst):
+    assert inst.content.contentType == "image/gif"
+    assert inst.content.creation == fhirtypes.DateTime.validate(
+        "2009-09-03T11:15:33+10:00"
+    )
+    assert inst.content.id == "a1"
+    assert inst.createdDateTime == fhirtypes.DateTime.validate(
+        "2017-12-17T11:15:33+10:00"
+    )
+    assert inst.device.display == "Acme Camera"
+    assert inst.frames == 1
+    assert inst.height == 145
+    assert inst.id == "example"
+    assert inst.issued == fhirtypes.Instant.validate("2017-12-17T14:56:18Z")
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.modality.coding[0].code == "diagram"
+    assert (
+        inst.modality.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/media-modality"
+    )
+    assert inst.operator.reference == "Practitioner/xcda-author"
+    assert inst.status == "completed"
+    assert inst.subject.reference == "Patient/xcda"
+    assert inst.text.status == "generated"
+    assert inst.type.coding[0].code == "image"
+    assert inst.type.coding[0].display == "Image"
+    assert (
+        inst.type.coding[0].system == "http://terminology.hl7.org/CodeSystem/media-type"
+    )
+    assert inst.width == 126
 
-    def testMedia1(self):
-        inst = self.instantiate_from("media-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Media instance")
-        self.implMedia1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("Media", js["resourceType"])
-        inst2 = media.Media(js)
-        self.implMedia1(inst2)
+def test_media_1(base_settings):
+    """No. 1 tests collection for Media.
+    Test File: media-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "media-example.json"
+    inst = media.Media.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Media" == inst.resource_type
 
-    def implMedia1(self, inst):
-        self.assertEqual(
-            force_bytes(inst.content.contentType), force_bytes("image/gif")
-        )
-        self.assertEqual(inst.content.creation.date, FHIRDate("2009-09-03").date)
-        self.assertEqual(inst.content.creation.as_json(), "2009-09-03")
-        self.assertEqual(force_bytes(inst.content.id), force_bytes("a1"))
-        self.assertEqual(inst.createdDateTime.date, FHIRDate("2017-12-17").date)
-        self.assertEqual(inst.createdDateTime.as_json(), "2017-12-17")
-        self.assertEqual(inst.frames, 1)
-        self.assertEqual(inst.height, 145)
-        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(inst.issued.date, FHIRDate("2017-12-17T14:56:18Z").date)
-        self.assertEqual(inst.issued.as_json(), "2017-12-17T14:56:18Z")
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.modality.coding[0].code), force_bytes("diagram")
-        )
-        self.assertEqual(
-            force_bytes(inst.modality.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/media-modality"),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("completed"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type.coding[0].code), force_bytes("image"))
-        self.assertEqual(force_bytes(inst.type.coding[0].display), force_bytes("Image"))
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/media-type"),
-        )
-        self.assertEqual(inst.width, 126)
+    impl_media_1(inst)
 
-    def testMedia2(self):
-        inst = self.instantiate_from("media-example-dicom.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Media instance")
-        self.implMedia2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Media" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("Media", js["resourceType"])
-        inst2 = media.Media(js)
-        self.implMedia2(inst2)
+    inst2 = media.Media(**data)
+    impl_media_1(inst2)
 
-    def implMedia2(self, inst):
-        self.assertEqual(
-            force_bytes(inst.content.contentType), force_bytes("application/dicom")
-        )
-        self.assertEqual(
-            force_bytes(inst.extension[0].url),
-            force_bytes("http://nema.org/fhir/extensions#0002-0010"),
-        )
-        self.assertEqual(
-            force_bytes(inst.extension[0].valueUri),
-            force_bytes("urn:oid:1.2.840.10008.1.2.1"),
-        )
-        self.assertEqual(inst.height, 480)
-        self.assertEqual(
-            force_bytes(inst.id),
-            force_bytes("1.2.840.11361907579238403408700.3.1.04.19970327150033"),
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system), force_bytes("urn:dicom:uid")
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].type.text), force_bytes("InstanceUID")
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].use), force_bytes("official"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].value),
-            force_bytes(
-                "urn:oid:1.2.840.11361907579238403408700.3.1.04.19970327150033"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[1].system),
-            force_bytes("http://acme-imaging.com/accession/2012"),
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[1].type.text), force_bytes("accessionNo")
-        )
-        self.assertEqual(force_bytes(inst.identifier[1].value), force_bytes("1234567"))
-        self.assertEqual(
-            force_bytes(inst.identifier[2].system), force_bytes("urn:dicom:uid")
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[2].type.text), force_bytes("studyId")
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[2].value),
-            force_bytes("urn:oid:1.2.840.113619.2.21.848.34082.0.538976288.3"),
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[3].system), force_bytes("urn:dicom:uid")
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[3].type.text), force_bytes("seriesId")
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[3].value),
-            force_bytes("urn:oid:1.2.840.113619.2.21.3408.700.0.757923840.3.0"),
-        )
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.modality.coding[0].code), force_bytes("US"))
-        self.assertEqual(
-            force_bytes(inst.modality.coding[0].system),
-            force_bytes("http://dicom.nema.org/resources/ontology/DCM"),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("completed"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.view.coding[0].code), force_bytes("399067008")
-        )
-        self.assertEqual(
-            force_bytes(inst.view.coding[0].display), force_bytes("Lateral projection")
-        )
-        self.assertEqual(
-            force_bytes(inst.view.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(inst.width, 640)
 
-    def testMedia3(self):
-        inst = self.instantiate_from("media-example-xray.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Media instance")
-        self.implMedia3(inst)
+def impl_media_2(inst):
+    assert inst.content.contentType == "application/dicom"
+    assert inst.device.display == "G.E. Medical Systems"
+    assert inst.extension[0].url == "http://nema.org/fhir/extensions#0002-0010"
+    assert inst.extension[0].valueUri == "urn:oid:1.2.840.10008.1.2.1"
+    assert inst.height == 480
+    assert inst.id == "1.2.840.11361907579238403408700.3.1.04.19970327150033"
+    assert inst.identifier[0].system == "urn:dicom:uid"
+    assert inst.identifier[0].type.text == "InstanceUID"
+    assert inst.identifier[0].use == "official"
+    assert (
+        inst.identifier[0].value
+        == "urn:oid:1.2.840.11361907579238403408700.3.1.04.19970327150033"
+    )
+    assert inst.identifier[1].system == "http://acme-imaging.com/accession/2012"
+    assert inst.identifier[1].type.text == "accessionNo"
+    assert inst.identifier[1].value == "1234567"
+    assert inst.identifier[2].system == "urn:dicom:uid"
+    assert inst.identifier[2].type.text == "studyId"
+    assert (
+        inst.identifier[2].value
+        == "urn:oid:1.2.840.113619.2.21.848.34082.0.538976288.3"
+    )
+    assert inst.identifier[3].system == "urn:dicom:uid"
+    assert inst.identifier[3].type.text == "seriesId"
+    assert (
+        inst.identifier[3].value
+        == "urn:oid:1.2.840.113619.2.21.3408.700.0.757923840.3.0"
+    )
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.modality.coding[0].code == "US"
+    assert (
+        inst.modality.coding[0].system == "http://dicom.nema.org/resources/ontology/DCM"
+    )
+    assert inst.status == "completed"
+    assert inst.subject.reference == "Patient/example"
+    assert inst.text.status == "generated"
+    assert inst.view.coding[0].code == "399067008"
+    assert inst.view.coding[0].display == "Lateral projection"
+    assert inst.view.coding[0].system == "http://snomed.info/sct"
+    assert inst.width == 640
 
-        js = inst.as_json()
-        self.assertEqual("Media", js["resourceType"])
-        inst2 = media.Media(js)
-        self.implMedia3(inst2)
 
-    def implMedia3(self, inst):
-        self.assertEqual(
-            force_bytes(inst.bodySite.coding[0].code), force_bytes("85151006")
-        )
-        self.assertEqual(
-            force_bytes(inst.bodySite.coding[0].display),
-            force_bytes("Structure of left hand (body structure)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.bodySite.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.content.contentType), force_bytes("image/jpeg")
-        )
-        self.assertEqual(inst.content.creation.date, FHIRDate("2016-03-15").date)
-        self.assertEqual(inst.content.creation.as_json(), "2016-03-15")
-        self.assertEqual(force_bytes(inst.content.id), force_bytes("a1"))
-        self.assertEqual(
-            force_bytes(inst.content.url),
-            force_bytes("http://someimagingcenter.org/fhir/Binary/A12345"),
-        )
-        self.assertEqual(inst.createdDateTime.date, FHIRDate("2016-03-15").date)
-        self.assertEqual(inst.createdDateTime.as_json(), "2016-03-15")
-        self.assertEqual(inst.height, 432)
-        self.assertEqual(force_bytes(inst.id), force_bytes("xray"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.modality.coding[0].code), force_bytes("39714003")
-        )
-        self.assertEqual(
-            force_bytes(inst.modality.coding[0].display),
-            force_bytes("Skeletal X-ray of wrist and hand"),
-        )
-        self.assertEqual(
-            force_bytes(inst.modality.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("completed"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">Xray of left hand for Patient Henry Levin (MRN 12345) 2016-03-15</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(inst.width, 640)
+def test_media_2(base_settings):
+    """No. 2 tests collection for Media.
+    Test File: media-example-dicom.json
+    """
+    filename = base_settings["unittest_data_dir"] / "media-example-dicom.json"
+    inst = media.Media.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Media" == inst.resource_type
 
-    def testMedia4(self):
-        inst = self.instantiate_from("media-example-sound.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Media instance")
-        self.implMedia4(inst)
+    impl_media_2(inst)
 
-        js = inst.as_json()
-        self.assertEqual("Media", js["resourceType"])
-        inst2 = media.Media(js)
-        self.implMedia4(inst2)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Media" == data["resourceType"]
 
-    def implMedia4(self, inst):
-        self.assertEqual(
-            force_bytes(inst.content.contentType), force_bytes("audio/mpeg")
-        )
-        self.assertEqual(
-            force_bytes(inst.content.data),
-            force_bytes("dG9vIGJpZyB0b28gaW5jbHVkZSB0aGUgd2hvbGU="),
-        )
-        self.assertEqual(force_bytes(inst.content.id), force_bytes("a1"))
-        self.assertEqual(inst.duration, 65)
-        self.assertEqual(force_bytes(inst.id), force_bytes("sound"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("completed"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">Sound recording of speech example for Patient Henry Levin (MRN 12345):<br/><img src="#11" alt="diagram"/></div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    inst2 = media.Media(**data)
+    impl_media_2(inst2)
+
+
+def impl_media_3(inst):
+    assert inst.basedOn[0].identifier.assigner.display == "XYZ Medical Clinic"
+    assert (
+        inst.basedOn[0].identifier.system
+        == "http://someclinic.org/fhir/NamingSystem/imaging-orders"
+    )
+    assert inst.basedOn[0].identifier.value == "111222"
+    assert inst.bodySite.coding[0].code == "85151006"
+    assert inst.bodySite.coding[0].display == "Structure of left hand (body structure)"
+    assert inst.bodySite.coding[0].system == "http://snomed.info/sct"
+    assert inst.content.contentType == "image/jpeg"
+    assert inst.content.creation == fhirtypes.DateTime.validate(
+        "2016-03-15T11:15:33+10:00"
+    )
+    assert inst.content.id == "a1"
+    assert inst.content.url == "http://someimagingcenter.org/fhir/Binary/A12345"
+    assert inst.createdDateTime == fhirtypes.DateTime.validate(
+        "2016-03-15T11:15:33+10:00"
+    )
+    assert inst.encounter.reference == "Encounter/example"
+    assert inst.height == 432
+    assert inst.id == "xray"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.modality.coding[0].code == "39714003"
+    assert inst.modality.coding[0].display == "Skeletal X-ray of wrist and hand"
+    assert inst.modality.coding[0].system == "http://snomed.info/sct"
+    assert inst.status == "completed"
+    assert inst.subject.reference == "Patient/example"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">Xray of left hand for Patient Henry Levin (MRN 12345) 2016-03-15</div>'
+    )
+    assert inst.text.status == "generated"
+    assert inst.width == 640
+
+
+def test_media_3(base_settings):
+    """No. 3 tests collection for Media.
+    Test File: media-example-xray.json
+    """
+    filename = base_settings["unittest_data_dir"] / "media-example-xray.json"
+    inst = media.Media.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Media" == inst.resource_type
+
+    impl_media_3(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Media" == data["resourceType"]
+
+    inst2 = media.Media(**data)
+    impl_media_3(inst2)
+
+
+def impl_media_4(inst):
+    assert inst.content.contentType == "audio/mpeg"
+    # Don't know how to create unit test for "content.data", which is a Base64Binary
+    assert inst.content.id == "a1"
+    assert float(inst.duration) == float(65)
+    assert inst.id == "sound"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.operator.reference == "Practitioner/xcda-author"
+    assert inst.status == "completed"
+    assert inst.subject.reference == "Patient/xcda"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">Sound recording of speech example for Patient Henry Levin (MRN 12345):<br/><img src="#11" alt="diagram"/></div>'
+    )
+    assert inst.text.status == "generated"
+
+
+def test_media_4(base_settings):
+    """No. 4 tests collection for Media.
+    Test File: media-example-sound.json
+    """
+    filename = base_settings["unittest_data_dir"] / "media-example-sound.json"
+    inst = media.Media.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Media" == inst.resource_type
+
+    impl_media_4(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Media" == data["resourceType"]
+
+    inst2 = media.Media(**data)
+    impl_media_4(inst2)

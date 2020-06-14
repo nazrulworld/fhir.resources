@@ -6,257 +6,153 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class Location(domainresource.DomainResource):
     """ Details and position information for a physical place.
-
     Details and position information for a physical place where services are
     provided  and resources and participants may be stored, found, contained or
     accommodated.
     """
 
-    resource_type = "Location"
+    resource_type = Field("Location", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    address: fhirtypes.AddressType = Field(
+        None,
+        alias="address",
+        title="Type `Address` (represented as `dict` in JSON)",
+        description="Physical location",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    alias: ListType[fhirtypes.String] = Field(
+        None,
+        alias="alias",
+        title="List of `String` items (represented as `dict` in JSON)",
+        description="A list of\u00a0alternate names that the location is known as, or was known as in the past",
+    )
 
-        self.address = None
-        """ Physical location.
-        Type `Address` (represented as `dict` in JSON). """
+    description: fhirtypes.String = Field(
+        None,
+        alias="description",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Additional details about the location that could be displayed as further information to identify the location beyond its name",
+    )
 
-        self.alias = None
-        """ A list of alternate names that the location is known as, or was
-        known as in the past.
-        List of `str` items. """
+    endpoint: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="endpoint",
+        title="List of `Reference` items referencing `Endpoint` (represented as `dict` in JSON)",
+        description="Technical endpoints providing access to services operated for the location",
+    )
 
-        self.description = None
-        """ Additional details about the location that could be displayed as
-        further information to identify the location beyond its name.
-        Type `str`. """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Unique code or number identifying the location to its users",
+    )
 
-        self.endpoint = None
-        """ Technical endpoints providing access to services operated for the
-        location.
-        List of `FHIRReference` items referencing `['Endpoint']` (represented as `dict` in JSON). """
+    managingOrganization: fhirtypes.ReferenceType = Field(
+        None,
+        alias="managingOrganization",
+        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        description="Organization responsible for provisioning and upkeep",
+    )
 
-        self.identifier = None
-        """ Unique code or number identifying the location to its users.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    mode: fhirtypes.Code = Field(
+        None,
+        alias="mode",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="instance | kind",
+    )
 
-        self.managingOrganization = None
-        """ Organization responsible for provisioning and upkeep.
-        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
+    name: fhirtypes.String = Field(
+        None,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name of the location as used by humans",
+    )
 
-        self.mode = None
-        """ instance | kind.
-        Type `str`. """
+    operationalStatus: fhirtypes.CodingType = Field(
+        None,
+        alias="operationalStatus",
+        title="Type `Coding` (represented as `dict` in JSON)",
+        description="The Operational status of the location (typically only for a bed/room)",
+    )
 
-        self.name = None
-        """ Name of the location as used by humans.
-        Type `str`. """
+    partOf: fhirtypes.ReferenceType = Field(
+        None,
+        alias="partOf",
+        title="Type `Reference` referencing `Location` (represented as `dict` in JSON)",
+        description="Another Location this one is physically part of",
+    )
 
-        self.operationalStatus = None
-        """ The Operational status of the location (typically only for a
-        bed/room).
-        Type `Coding` (represented as `dict` in JSON). """
+    physicalType: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="physicalType",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Physical form of the location",
+    )
 
-        self.partOf = None
-        """ Another Location this one is physically part of.
-        Type `FHIRReference` referencing `['Location']` (represented as `dict` in JSON). """
+    position: fhirtypes.LocationPositionType = Field(
+        None,
+        alias="position",
+        title="Type `LocationPosition` (represented as `dict` in JSON)",
+        description="The absolute geographic location",
+    )
 
-        self.physicalType = None
-        """ Physical form of the location.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    status: fhirtypes.Code = Field(
+        None,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="active | suspended | inactive",
+    )
 
-        self.position = None
-        """ The absolute geographic location.
-        Type `LocationPosition` (represented as `dict` in JSON). """
+    telecom: ListType[fhirtypes.ContactPointType] = Field(
+        None,
+        alias="telecom",
+        title="List of `ContactPoint` items (represented as `dict` in JSON)",
+        description="Contact details of the location",
+    )
 
-        self.status = None
-        """ active | suspended | inactive.
-        Type `str`. """
-
-        self.telecom = None
-        """ Contact details of the location.
-        List of `ContactPoint` items (represented as `dict` in JSON). """
-
-        self.type = None
-        """ Type of function performed.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(Location, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(Location, self).elementProperties()
-        js.extend(
-            [
-                ("address", "address", address.Address, "Address", False, None, False),
-                ("alias", "alias", str, "string", True, None, False),
-                ("description", "description", str, "string", False, None, False),
-                (
-                    "endpoint",
-                    "endpoint",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "managingOrganization",
-                    "managingOrganization",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("mode", "mode", str, "code", False, None, False),
-                ("name", "name", str, "string", False, None, False),
-                (
-                    "operationalStatus",
-                    "operationalStatus",
-                    coding.Coding,
-                    "Coding",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "partOf",
-                    "partOf",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "physicalType",
-                    "physicalType",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "position",
-                    "position",
-                    LocationPosition,
-                    "LocationPosition",
-                    False,
-                    None,
-                    False,
-                ),
-                ("status", "status", str, "code", False, None, False),
-                (
-                    "telecom",
-                    "telecom",
-                    contactpoint.ContactPoint,
-                    "ContactPoint",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    type: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Type of function performed",
+    )
 
 
 class LocationPosition(backboneelement.BackboneElement):
     """ The absolute geographic location.
-
     The absolute geographic location of the Location, expressed using the WGS84
     datum (This is the same co-ordinate system used in KML).
     """
 
-    resource_type = "LocationPosition"
+    resource_type = Field("LocationPosition", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    altitude: fhirtypes.Decimal = Field(
+        None,
+        alias="altitude",
+        title="Type `Decimal` (represented as `dict` in JSON)",
+        description="Altitude with WGS84 datum",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    latitude: fhirtypes.Decimal = Field(
+        ...,
+        alias="latitude",
+        title="Type `Decimal` (represented as `dict` in JSON)",
+        description="Latitude with WGS84 datum",
+    )
 
-        self.altitude = None
-        """ Altitude with WGS84 datum.
-        Type `float`. """
-
-        self.latitude = None
-        """ Latitude with WGS84 datum.
-        Type `float`. """
-
-        self.longitude = None
-        """ Longitude with WGS84 datum.
-        Type `float`. """
-
-        super(LocationPosition, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(LocationPosition, self).elementProperties()
-        js.extend(
-            [
-                ("altitude", "altitude", float, "decimal", False, None, False),
-                ("latitude", "latitude", float, "decimal", False, None, True),
-                ("longitude", "longitude", float, "decimal", False, None, True),
-            ]
-        )
-        return js
-
-
-try:
-    from . import address
-except ImportError:
-    address = sys.modules[__package__ + ".address"]
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import coding
-except ImportError:
-    coding = sys.modules[__package__ + ".coding"]
-try:
-    from . import contactpoint
-except ImportError:
-    contactpoint = sys.modules[__package__ + ".contactpoint"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
+    longitude: fhirtypes.Decimal = Field(
+        ...,
+        alias="longitude",
+        title="Type `Decimal` (represented as `dict` in JSON)",
+        description="Longitude with WGS84 datum",
+    )

@@ -6,234 +6,199 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import coverage
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class CoverageTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("Coverage", js["resourceType"])
-        return coverage.Coverage(js)
+def impl_coverage_1(inst):
+    assert inst.beneficiary.reference == "Patient/5"
+    assert inst.contract[0].reference == "Contract/563818"
+    assert inst.dependent == "1"
+    assert inst.grouping.group == "WESTAIR"
+    assert inst.grouping.groupDisplay == "Western Airlines"
+    assert inst.grouping.plan == "WESTAIR"
+    assert inst.grouping.planDisplay == "Western Airlines"
+    assert inst.grouping.subPlan == "D15C9"
+    assert inst.grouping.subPlanDisplay == "Platinum"
+    assert inst.id == "7546D"
+    assert inst.identifier[0].system == "http://xyz.com/codes/identifier"
+    assert inst.identifier[0].value == "AB98761"
+    assert inst.network == "5"
+    assert inst.order == 2
+    assert inst.payor[0].reference == "Organization/2"
+    assert inst.period.end == fhirtypes.DateTime.validate("2012-03-17")
+    assert inst.period.start == fhirtypes.DateTime.validate("2011-03-17")
+    assert inst.relationship.coding[0].code == "self"
+    assert inst.status == "active"
+    assert inst.subscriber.reference == "Patient/5"
+    assert inst.subscriberId == "AB9876"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the coverage</div>'
+    )
+    assert inst.text.status == "generated"
+    assert inst.type.coding[0].code == "EHCPOL"
+    assert inst.type.coding[0].display == "extended healthcare"
+    assert inst.type.coding[0].system == "http://hl7.org/fhir/v3/ActCode"
 
-    def testCoverage1(self):
-        inst = self.instantiate_from("coverage-example-2.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Coverage instance")
-        self.implCoverage1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("Coverage", js["resourceType"])
-        inst2 = coverage.Coverage(js)
-        self.implCoverage1(inst2)
+def test_coverage_1(base_settings):
+    """No. 1 tests collection for Coverage.
+    Test File: coverage-example-2.json
+    """
+    filename = base_settings["unittest_data_dir"] / "coverage-example-2.json"
+    inst = coverage.Coverage.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Coverage" == inst.resource_type
 
-    def implCoverage1(self, inst):
-        self.assertEqual(force_bytes(inst.dependent), force_bytes("1"))
-        self.assertEqual(force_bytes(inst.grouping.group), force_bytes("WESTAIR"))
-        self.assertEqual(
-            force_bytes(inst.grouping.groupDisplay), force_bytes("Western Airlines")
-        )
-        self.assertEqual(force_bytes(inst.grouping.plan), force_bytes("WESTAIR"))
-        self.assertEqual(
-            force_bytes(inst.grouping.planDisplay), force_bytes("Western Airlines")
-        )
-        self.assertEqual(force_bytes(inst.grouping.subPlan), force_bytes("D15C9"))
-        self.assertEqual(
-            force_bytes(inst.grouping.subPlanDisplay), force_bytes("Platinum")
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("7546D"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://xyz.com/codes/identifier"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("AB98761"))
-        self.assertEqual(force_bytes(inst.network), force_bytes("5"))
-        self.assertEqual(inst.order, 2)
-        self.assertEqual(inst.period.end.date, FHIRDate("2012-03-17").date)
-        self.assertEqual(inst.period.end.as_json(), "2012-03-17")
-        self.assertEqual(inst.period.start.date, FHIRDate("2011-03-17").date)
-        self.assertEqual(inst.period.start.as_json(), "2011-03-17")
-        self.assertEqual(
-            force_bytes(inst.relationship.coding[0].code), force_bytes("self")
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(force_bytes(inst.subscriberId), force_bytes("AB9876"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the coverage</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type.coding[0].code), force_bytes("EHCPOL"))
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].display), force_bytes("extended healthcare")
-        )
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].system),
-            force_bytes("http://hl7.org/fhir/v3/ActCode"),
-        )
+    impl_coverage_1(inst)
 
-    def testCoverage2(self):
-        inst = self.instantiate_from("coverage-example-selfpay.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Coverage instance")
-        self.implCoverage2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Coverage" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("Coverage", js["resourceType"])
-        inst2 = coverage.Coverage(js)
-        self.implCoverage2(inst2)
+    inst2 = coverage.Coverage(**data)
+    impl_coverage_1(inst2)
 
-    def implCoverage2(self, inst):
-        self.assertEqual(force_bytes(inst.id), force_bytes("SP1234"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://hospitalx.com/selfpayagreement"),
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].value), force_bytes("SP12345678")
-        )
-        self.assertEqual(inst.period.end.date, FHIRDate("2012-03-17").date)
-        self.assertEqual(inst.period.end.as_json(), "2012-03-17")
-        self.assertEqual(
-            force_bytes(inst.relationship.coding[0].code), force_bytes("self")
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of a Self Pay Agreement.</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type.coding[0].code), force_bytes("pay"))
-        self.assertEqual(force_bytes(inst.type.coding[0].display), force_bytes("PAY"))
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].system),
-            force_bytes("http://hl7.org/fhir/coverage-selfpay"),
-        )
 
-    def testCoverage3(self):
-        inst = self.instantiate_from("coverage-example-ehic.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Coverage instance")
-        self.implCoverage3(inst)
+def impl_coverage_2(inst):
+    assert inst.beneficiary.reference == "Patient/5"
+    assert inst.id == "SP1234"
+    assert inst.identifier[0].system == "http://hospitalx.com/selfpayagreement"
+    assert inst.identifier[0].value == "SP12345678"
+    assert inst.payor[0].reference == "Patient/5"
+    assert inst.period.end == fhirtypes.DateTime.validate("2012-03-17")
+    assert inst.relationship.coding[0].code == "self"
+    assert inst.status == "active"
+    assert inst.subscriber.reference == "Patient/5"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of a Self Pay Agreement.</div>'
+    )
+    assert inst.text.status == "generated"
+    assert inst.type.coding[0].code == "pay"
+    assert inst.type.coding[0].display == "PAY"
+    assert inst.type.coding[0].system == "http://hl7.org/fhir/coverage-selfpay"
 
-        js = inst.as_json()
-        self.assertEqual("Coverage", js["resourceType"])
-        inst2 = coverage.Coverage(js)
-        self.implCoverage3(inst2)
 
-    def implCoverage3(self, inst):
-        self.assertEqual(force_bytes(inst.id), force_bytes("7547E"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://ehic.com/insurer/123456789/member"),
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].value), force_bytes("A123456780")
-        )
-        self.assertEqual(inst.period.end.date, FHIRDate("2012-03-17").date)
-        self.assertEqual(inst.period.end.as_json(), "2012-03-17")
-        self.assertEqual(
-            force_bytes(inst.relationship.coding[0].code), force_bytes("self")
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the European Health Insurance Card</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type.coding[0].code), force_bytes("EHCPOL"))
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].display), force_bytes("extended healthcare")
-        )
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].system),
-            force_bytes("http://hl7.org/fhir/v3/ActCode"),
-        )
+def test_coverage_2(base_settings):
+    """No. 2 tests collection for Coverage.
+    Test File: coverage-example-selfpay.json
+    """
+    filename = base_settings["unittest_data_dir"] / "coverage-example-selfpay.json"
+    inst = coverage.Coverage.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Coverage" == inst.resource_type
 
-    def testCoverage4(self):
-        inst = self.instantiate_from("coverage-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Coverage instance")
-        self.implCoverage4(inst)
+    impl_coverage_2(inst)
 
-        js = inst.as_json()
-        self.assertEqual("Coverage", js["resourceType"])
-        inst2 = coverage.Coverage(js)
-        self.implCoverage4(inst2)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Coverage" == data["resourceType"]
 
-    def implCoverage4(self, inst):
-        self.assertEqual(force_bytes(inst.dependent), force_bytes("0"))
-        self.assertEqual(
-            force_bytes(inst.grouping.classDisplay),
-            force_bytes("Silver: Family Plan spouse only"),
-        )
-        self.assertEqual(force_bytes(inst.grouping.class_fhir), force_bytes("SILVER"))
-        self.assertEqual(force_bytes(inst.grouping.group), force_bytes("CBI35"))
-        self.assertEqual(
-            force_bytes(inst.grouping.groupDisplay),
-            force_bytes("Corporate Baker's Inc. Local #35"),
-        )
-        self.assertEqual(force_bytes(inst.grouping.plan), force_bytes("B37FC"))
-        self.assertEqual(
-            force_bytes(inst.grouping.planDisplay),
-            force_bytes("Full Coverage: Medical, Dental, Pharmacy, Vision, EHC"),
-        )
-        self.assertEqual(force_bytes(inst.grouping.subClass), force_bytes("Tier2"))
-        self.assertEqual(
-            force_bytes(inst.grouping.subClassDisplay),
-            force_bytes("Low deductable, max $20 copay"),
-        )
-        self.assertEqual(force_bytes(inst.grouping.subGroup), force_bytes("123"))
-        self.assertEqual(
-            force_bytes(inst.grouping.subGroupDisplay),
-            force_bytes("Trainee Part-time Benefits"),
-        )
-        self.assertEqual(force_bytes(inst.grouping.subPlan), force_bytes("P7"))
-        self.assertEqual(
-            force_bytes(inst.grouping.subPlanDisplay),
-            force_bytes("Includes afterlife benefits"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("9876B1"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://benefitsinc.com/certificate"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("12345"))
-        self.assertEqual(inst.period.end.date, FHIRDate("2012-05-23").date)
-        self.assertEqual(inst.period.end.as_json(), "2012-05-23")
-        self.assertEqual(inst.period.start.date, FHIRDate("2011-05-23").date)
-        self.assertEqual(inst.period.start.as_json(), "2011-05-23")
-        self.assertEqual(
-            force_bytes(inst.relationship.coding[0].code), force_bytes("self")
-        )
-        self.assertEqual(force_bytes(inst.sequence), force_bytes("9"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the coverage</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type.coding[0].code), force_bytes("EHCPOL"))
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].display), force_bytes("extended healthcare")
-        )
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].system),
-            force_bytes("http://hl7.org/fhir/v3/ActCode"),
-        )
+    inst2 = coverage.Coverage(**data)
+    impl_coverage_2(inst2)
+
+
+def impl_coverage_3(inst):
+    assert inst.beneficiary.reference == "Patient/5"
+    assert inst.id == "7547E"
+    assert inst.identifier[0].system == "http://ehic.com/insurer/123456789/member"
+    assert inst.identifier[0].value == "A123456780"
+    assert inst.payor[0].identifier.system == "http://ehic.com/insurer"
+    assert inst.payor[0].identifier.value == "123456789"
+    assert inst.period.end == fhirtypes.DateTime.validate("2012-03-17")
+    assert inst.relationship.coding[0].code == "self"
+    assert inst.status == "active"
+    assert inst.subscriber.reference == "Patient/5"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the European Health Insurance Card</div>'
+    )
+    assert inst.text.status == "generated"
+    assert inst.type.coding[0].code == "EHCPOL"
+    assert inst.type.coding[0].display == "extended healthcare"
+    assert inst.type.coding[0].system == "http://hl7.org/fhir/v3/ActCode"
+
+
+def test_coverage_3(base_settings):
+    """No. 3 tests collection for Coverage.
+    Test File: coverage-example-ehic.json
+    """
+    filename = base_settings["unittest_data_dir"] / "coverage-example-ehic.json"
+    inst = coverage.Coverage.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Coverage" == inst.resource_type
+
+    impl_coverage_3(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Coverage" == data["resourceType"]
+
+    inst2 = coverage.Coverage(**data)
+    impl_coverage_3(inst2)
+
+
+def impl_coverage_4(inst):
+    assert inst.beneficiary.reference == "Patient/4"
+    assert inst.dependent == "0"
+    assert inst.grouping.classDisplay == "Silver: Family Plan spouse only"
+    assert inst.grouping.class_fhir == "SILVER"
+    assert inst.grouping.group == "CBI35"
+    assert inst.grouping.groupDisplay == "Corporate Baker's Inc. Local #35"
+    assert inst.grouping.plan == "B37FC"
+    assert (
+        inst.grouping.planDisplay
+        == "Full Coverage: Medical, Dental, Pharmacy, Vision, EHC"
+    )
+    assert inst.grouping.subClass == "Tier2"
+    assert inst.grouping.subClassDisplay == "Low deductable, max $20 copay"
+    assert inst.grouping.subGroup == "123"
+    assert inst.grouping.subGroupDisplay == "Trainee Part-time Benefits"
+    assert inst.grouping.subPlan == "P7"
+    assert inst.grouping.subPlanDisplay == "Includes afterlife benefits"
+    assert inst.id == "9876B1"
+    assert inst.identifier[0].system == "http://benefitsinc.com/certificate"
+    assert inst.identifier[0].value == "12345"
+    assert inst.payor[0].reference == "Organization/2"
+    assert inst.period.end == fhirtypes.DateTime.validate("2012-05-23")
+    assert inst.period.start == fhirtypes.DateTime.validate("2011-05-23")
+    assert (
+        inst.policyHolder.reference == "http://benefitsinc.com/FHIR/Organization/CBI35"
+    )
+    assert inst.relationship.coding[0].code == "self"
+    assert inst.sequence == "9"
+    assert inst.status == "active"
+    assert inst.subscriber.reference == "Patient/4"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the coverage</div>'
+    )
+    assert inst.text.status == "generated"
+    assert inst.type.coding[0].code == "EHCPOL"
+    assert inst.type.coding[0].display == "extended healthcare"
+    assert inst.type.coding[0].system == "http://hl7.org/fhir/v3/ActCode"
+
+
+def test_coverage_4(base_settings):
+    """No. 4 tests collection for Coverage.
+    Test File: coverage-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "coverage-example.json"
+    inst = coverage.Coverage.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Coverage" == inst.resource_type
+
+    impl_coverage_4(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Coverage" == data["resourceType"]
+
+    inst2 = coverage.Coverage(**data)
+    impl_coverage_4(inst2)

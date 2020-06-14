@@ -6,280 +6,146 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class CareTeam(domainresource.DomainResource):
     """ Planned participants in the coordination and delivery of care for a patient
     or group.
-
     The Care Team includes all the people and organizations who plan to
     participate in the coordination and delivery of care for a patient.
     """
 
-    resource_type = "CareTeam"
+    resource_type = Field("CareTeam", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    category: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="category",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Type of team",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    encounter: fhirtypes.ReferenceType = Field(
+        None,
+        alias="encounter",
+        title="Type `Reference` referencing `Encounter` (represented as `dict` in JSON)",
+        description="Encounter created as part of",
+    )
 
-        self.category = None
-        """ Type of team.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="External Ids for this team",
+    )
 
-        self.encounter = None
-        """ Encounter created as part of.
-        Type `FHIRReference` referencing `['Encounter']` (represented as `dict` in JSON). """
+    managingOrganization: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="managingOrganization",
+        title="List of `Reference` items referencing `Organization` (represented as `dict` in JSON)",
+        description="Organization responsible for the care team",
+    )
 
-        self.identifier = None
-        """ External Ids for this team.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    name: fhirtypes.String = Field(
+        None,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name of the team, such as crisis assessment team",
+    )
 
-        self.managingOrganization = None
-        """ Organization responsible for the care team.
-        List of `FHIRReference` items referencing `['Organization']` (represented as `dict` in JSON). """
+    note: ListType[fhirtypes.AnnotationType] = Field(
+        None,
+        alias="note",
+        title="List of `Annotation` items (represented as `dict` in JSON)",
+        description="Comments made about the CareTeam",
+    )
 
-        self.name = None
-        """ Name of the team, such as crisis assessment team.
-        Type `str`. """
+    participant: ListType[fhirtypes.CareTeamParticipantType] = Field(
+        None,
+        alias="participant",
+        title="List of `CareTeamParticipant` items (represented as `dict` in JSON)",
+        description="Members of the team",
+    )
 
-        self.note = None
-        """ Comments made about the CareTeam.
-        List of `Annotation` items (represented as `dict` in JSON). """
+    period: fhirtypes.PeriodType = Field(
+        None,
+        alias="period",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="Time period team covers",
+    )
 
-        self.participant = None
-        """ Members of the team.
-        List of `CareTeamParticipant` items (represented as `dict` in JSON). """
+    reasonCode: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="reasonCode",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Why the care team exists",
+    )
 
-        self.period = None
-        """ Time period team covers.
-        Type `Period` (represented as `dict` in JSON). """
+    reasonReference: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="reasonReference",
+        title="List of `Reference` items referencing `Condition` (represented as `dict` in JSON)",
+        description="Why the care team exists",
+    )
 
-        self.reasonCode = None
-        """ Why the care team exists.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    status: fhirtypes.Code = Field(
+        None,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="proposed | active | suspended | inactive | entered-in-error",
+    )
 
-        self.reasonReference = None
-        """ Why the care team exists.
-        List of `FHIRReference` items referencing `['Condition']` (represented as `dict` in JSON). """
+    subject: fhirtypes.ReferenceType = Field(
+        None,
+        alias="subject",
+        title="Type `Reference` referencing `Patient, Group` (represented as `dict` in JSON)",
+        description="Who care team is for",
+    )
 
-        self.status = None
-        """ proposed | active | suspended | inactive | entered-in-error.
-        Type `str`. """
-
-        self.subject = None
-        """ Who care team is for.
-        Type `FHIRReference` referencing `['Patient', 'Group']` (represented as `dict` in JSON). """
-
-        self.telecom = None
-        """ A contact detail for the care team (that applies to all members).
-        List of `ContactPoint` items (represented as `dict` in JSON). """
-
-        super(CareTeam, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(CareTeam, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "category",
-                    "category",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "encounter",
-                    "encounter",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "managingOrganization",
-                    "managingOrganization",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                ("name", "name", str, "string", False, None, False),
-                (
-                    "note",
-                    "note",
-                    annotation.Annotation,
-                    "Annotation",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "participant",
-                    "participant",
-                    CareTeamParticipant,
-                    "CareTeamParticipant",
-                    True,
-                    None,
-                    False,
-                ),
-                ("period", "period", period.Period, "Period", False, None, False),
-                (
-                    "reasonCode",
-                    "reasonCode",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "reasonReference",
-                    "reasonReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                ("status", "status", str, "code", False, None, False),
-                (
-                    "subject",
-                    "subject",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "telecom",
-                    "telecom",
-                    contactpoint.ContactPoint,
-                    "ContactPoint",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    telecom: ListType[fhirtypes.ContactPointType] = Field(
+        None,
+        alias="telecom",
+        title="List of `ContactPoint` items (represented as `dict` in JSON)",
+        description="A contact detail for the care team (that applies to all members)",
+    )
 
 
 class CareTeamParticipant(backboneelement.BackboneElement):
     """ Members of the team.
-
     Identifies all people and organizations who are expected to be involved in
     the care team.
     """
 
-    resource_type = "CareTeamParticipant"
+    resource_type = Field("CareTeamParticipant", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    member: fhirtypes.ReferenceType = Field(
+        None,
+        alias="member",
+        title="Type `Reference` referencing `Practitioner, PractitionerRole, RelatedPerson, Patient, Organization, CareTeam` (represented as `dict` in JSON)",
+        description="Who is involved",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    onBehalfOf: fhirtypes.ReferenceType = Field(
+        None,
+        alias="onBehalfOf",
+        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        description="Organization of the practitioner",
+    )
 
-        self.member = None
-        """ Who is involved.
-        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'RelatedPerson', 'Patient', 'Organization', 'CareTeam']` (represented as `dict` in JSON). """
+    period: fhirtypes.PeriodType = Field(
+        None,
+        alias="period",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="Time period of participant",
+    )
 
-        self.onBehalfOf = None
-        """ Organization of the practitioner.
-        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
-
-        self.period = None
-        """ Time period of participant.
-        Type `Period` (represented as `dict` in JSON). """
-
-        self.role = None
-        """ Type of involvement.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        super(CareTeamParticipant, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(CareTeamParticipant, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "member",
-                    "member",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "onBehalfOf",
-                    "onBehalfOf",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("period", "period", period.Period, "Period", False, None, False),
-                (
-                    "role",
-                    "role",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import annotation
-except ImportError:
-    annotation = sys.modules[__package__ + ".annotation"]
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import contactpoint
-except ImportError:
-    contactpoint = sys.modules[__package__ + ".contactpoint"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import period
-except ImportError:
-    period = sys.modules[__package__ + ".period"]
+    role: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="role",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Type of involvement",
+    )

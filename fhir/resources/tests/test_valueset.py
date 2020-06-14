@@ -6,968 +6,673 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import valueset
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class ValueSetTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("ValueSet", js["resourceType"])
-        return valueset.ValueSet(js)
+def impl_valueset_1(inst):
+    assert (
+        inst.compose.include[0].system
+        == "http://terminology.hl7.org/CodeSystem/device-status-reason"
+    )
+    assert inst.contact[0].telecom[0].system == "url"
+    assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
+    assert inst.contact[0].telecom[1].system == "email"
+    assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
+    assert inst.date == fhirtypes.DateTime.validate("2019-11-01T09:29:23+11:00")
+    assert inst.description == "The availability status reason of the device."
+    assert inst.experimental is False
+    assert (
+        inst.extension[0].url
+        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+    )
+    assert inst.extension[0].valueCode == "oo"
+    assert (
+        inst.extension[1].url
+        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+    )
+    assert inst.extension[1].valueCode == "trial-use"
+    assert (
+        inst.extension[2].url
+        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    )
+    assert inst.extension[2].valueInteger == 2
+    assert inst.id == "device-status-reason"
+    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.3.1081"
+    assert inst.immutable is True
+    assert inst.meta.lastUpdated == fhirtypes.Instant.validate(
+        "2019-11-01T09:29:23.356+11:00"
+    )
+    assert (
+        inst.meta.profile[0]
+        == "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    )
+    assert inst.name == "FHIRDeviceStatusReason"
+    assert inst.publisher == "HL7 (FHIR Project)"
+    assert inst.status == "draft"
+    assert inst.text.status == "generated"
+    assert inst.title == "FHIRDeviceStatusReason"
+    assert inst.url == "http://hl7.org/fhir/ValueSet/device-status-reason"
+    assert inst.version == "4.0.1"
 
-    def testValueSet1(self):
-        inst = self.instantiate_from("valueset-device-status-reason.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ValueSet instance")
-        self.implValueSet1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("ValueSet", js["resourceType"])
-        inst2 = valueset.ValueSet(js)
-        self.implValueSet1(inst2)
+def test_valueset_1(base_settings):
+    """No. 1 tests collection for ValueSet.
+    Test File: valueset-device-status-reason.json
+    """
+    filename = base_settings["unittest_data_dir"] / "valueset-device-status-reason.json"
+    inst = valueset.ValueSet.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ValueSet" == inst.resource_type
 
-    def implValueSet1(self, inst):
-        self.assertEqual(
-            force_bytes(inst.compose.include[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/device-status-reason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].system), force_bytes("url")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].value),
-            force_bytes("http://hl7.org/fhir"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[1].system), force_bytes("email")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[1].value),
-            force_bytes("fhir@lists.hl7.org"),
-        )
-        self.assertEqual(inst.date.date, FHIRDate("2019-11-01T09:29:23+11:00").date)
-        self.assertEqual(inst.date.as_json(), "2019-11-01T09:29:23+11:00")
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes("The availability status reason of the device."),
-        )
-        self.assertFalse(inst.experimental)
-        self.assertEqual(
-            force_bytes(inst.extension[0].url),
-            force_bytes(
-                "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.extension[0].valueCode), force_bytes("oo"))
-        self.assertEqual(
-            force_bytes(inst.extension[1].url),
-            force_bytes(
-                "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.extension[1].valueCode), force_bytes("trial-use")
-        )
-        self.assertEqual(
-            force_bytes(inst.extension[2].url),
-            force_bytes(
-                "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
-            ),
-        )
-        self.assertEqual(inst.extension[2].valueInteger, 2)
-        self.assertEqual(force_bytes(inst.id), force_bytes("device-status-reason"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system), force_bytes("urn:ietf:rfc:3986")
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].value),
-            force_bytes("urn:oid:2.16.840.1.113883.4.642.3.1081"),
-        )
-        self.assertTrue(inst.immutable)
-        self.assertEqual(
-            inst.meta.lastUpdated.date, FHIRDate("2019-11-01T09:29:23.356+11:00").date
-        )
-        self.assertEqual(
-            inst.meta.lastUpdated.as_json(), "2019-11-01T09:29:23.356+11:00"
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.profile[0]),
-            force_bytes("http://hl7.org/fhir/StructureDefinition/shareablevalueset"),
-        )
-        self.assertEqual(force_bytes(inst.name), force_bytes("FHIRDeviceStatusReason"))
-        self.assertEqual(force_bytes(inst.publisher), force_bytes("HL7 (FHIR Project)"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.title), force_bytes("FHIRDeviceStatusReason"))
-        self.assertEqual(
-            force_bytes(inst.url),
-            force_bytes("http://hl7.org/fhir/ValueSet/device-status-reason"),
-        )
-        self.assertEqual(force_bytes(inst.version), force_bytes("4.0.1"))
+    impl_valueset_1(inst)
 
-    def testValueSet2(self):
-        inst = self.instantiate_from("valueset-definition-resource-types.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ValueSet instance")
-        self.implValueSet2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ValueSet" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("ValueSet", js["resourceType"])
-        inst2 = valueset.ValueSet(js)
-        self.implValueSet2(inst2)
+    inst2 = valueset.ValueSet(**data)
+    impl_valueset_1(inst2)
 
-    def implValueSet2(self, inst):
-        self.assertEqual(
-            force_bytes(inst.compose.include[0].system),
-            force_bytes("http://hl7.org/fhir/definition-resource-types"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].system), force_bytes("url")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].value),
-            force_bytes("http://hl7.org/fhir"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[1].system), force_bytes("email")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[1].value),
-            force_bytes("fhir@lists.hl7.org"),
-        )
-        self.assertEqual(inst.date.date, FHIRDate("2019-11-01T09:29:23+11:00").date)
-        self.assertEqual(inst.date.as_json(), "2019-11-01T09:29:23+11:00")
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes(
-                "A list of all the definition resource types defined in this version of the FHIR specification."
-            ),
-        )
-        self.assertFalse(inst.experimental)
-        self.assertEqual(
-            force_bytes(inst.extension[0].url),
-            force_bytes(
-                "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.extension[0].valueCode), force_bytes("vocab"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("definition-resource-types"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system), force_bytes("urn:ietf:rfc:3986")
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].value),
-            force_bytes("urn:oid:2.16.840.1.113883.4.642.3.1056"),
-        )
-        self.assertTrue(inst.immutable)
-        self.assertEqual(
-            inst.meta.lastUpdated.date, FHIRDate("2019-11-01T09:29:23.356+11:00").date
-        )
-        self.assertEqual(
-            inst.meta.lastUpdated.as_json(), "2019-11-01T09:29:23.356+11:00"
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.profile[0]),
-            force_bytes("http://hl7.org/fhir/StructureDefinition/shareablevalueset"),
-        )
-        self.assertEqual(force_bytes(inst.name), force_bytes("DefinitionResourceType"))
-        self.assertEqual(force_bytes(inst.publisher), force_bytes("HL7 (FHIR Project)"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.title), force_bytes("DefinitionResourceType"))
-        self.assertEqual(
-            force_bytes(inst.url),
-            force_bytes("http://hl7.org/fhir/ValueSet/definition-resource-types"),
-        )
-        self.assertEqual(force_bytes(inst.version), force_bytes("4.0.1"))
 
-    def testValueSet3(self):
-        inst = self.instantiate_from("valueset-bodystructure-relative-location.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ValueSet instance")
-        self.implValueSet3(inst)
+def impl_valueset_2(inst):
+    assert (
+        inst.compose.include[0].system
+        == "http://hl7.org/fhir/definition-resource-types"
+    )
+    assert inst.contact[0].telecom[0].system == "url"
+    assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
+    assert inst.contact[0].telecom[1].system == "email"
+    assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
+    assert inst.date == fhirtypes.DateTime.validate("2019-11-01T09:29:23+11:00")
+    assert (
+        inst.description
+        == "A list of all the definition resource types defined in this version of the FHIR specification."
+    )
+    assert inst.experimental is False
+    assert (
+        inst.extension[0].url
+        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+    )
+    assert inst.extension[0].valueCode == "vocab"
+    assert inst.id == "definition-resource-types"
+    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.3.1056"
+    assert inst.immutable is True
+    assert inst.meta.lastUpdated == fhirtypes.Instant.validate(
+        "2019-11-01T09:29:23.356+11:00"
+    )
+    assert (
+        inst.meta.profile[0]
+        == "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    )
+    assert inst.name == "DefinitionResourceType"
+    assert inst.publisher == "HL7 (FHIR Project)"
+    assert inst.status == "draft"
+    assert inst.text.status == "generated"
+    assert inst.title == "DefinitionResourceType"
+    assert inst.url == "http://hl7.org/fhir/ValueSet/definition-resource-types"
+    assert inst.version == "4.0.1"
 
-        js = inst.as_json()
-        self.assertEqual("ValueSet", js["resourceType"])
-        inst2 = valueset.ValueSet(js)
-        self.implValueSet3(inst2)
 
-    def implValueSet3(self, inst):
-        self.assertEqual(
-            force_bytes(inst.compose.include[0].concept[0].code),
-            force_bytes("419161000"),
-        )
-        self.assertEqual(
-            force_bytes(inst.compose.include[0].concept[0].display),
-            force_bytes("Unilateral left"),
-        )
-        self.assertEqual(
-            force_bytes(inst.compose.include[0].concept[1].code),
-            force_bytes("419465000"),
-        )
-        self.assertEqual(
-            force_bytes(inst.compose.include[0].concept[1].display),
-            force_bytes("Unilateral right"),
-        )
-        self.assertEqual(
-            force_bytes(inst.compose.include[0].concept[2].code),
-            force_bytes("51440002"),
-        )
-        self.assertEqual(
-            force_bytes(inst.compose.include[0].concept[2].display),
-            force_bytes("Bilateral"),
-        )
-        self.assertEqual(
-            force_bytes(inst.compose.include[0].concept[3].code),
-            force_bytes("261183002"),
-        )
-        self.assertEqual(
-            force_bytes(inst.compose.include[0].concept[3].display),
-            force_bytes("Upper"),
-        )
-        self.assertEqual(
-            force_bytes(inst.compose.include[0].concept[4].code),
-            force_bytes("261122009"),
-        )
-        self.assertEqual(
-            force_bytes(inst.compose.include[0].concept[4].display),
-            force_bytes("Lower"),
-        )
-        self.assertEqual(
-            force_bytes(inst.compose.include[0].concept[5].code),
-            force_bytes("255561001"),
-        )
-        self.assertEqual(
-            force_bytes(inst.compose.include[0].concept[5].display),
-            force_bytes("Medial"),
-        )
-        self.assertEqual(
-            force_bytes(inst.compose.include[0].concept[6].code),
-            force_bytes("49370004"),
-        )
-        self.assertEqual(
-            force_bytes(inst.compose.include[0].concept[6].display),
-            force_bytes("Lateral"),
-        )
-        self.assertEqual(
-            force_bytes(inst.compose.include[0].concept[7].code),
-            force_bytes("264217000"),
-        )
-        self.assertEqual(
-            force_bytes(inst.compose.include[0].concept[7].display),
-            force_bytes("Superior"),
-        )
-        self.assertEqual(
-            force_bytes(inst.compose.include[0].concept[8].code),
-            force_bytes("261089000"),
-        )
-        self.assertEqual(
-            force_bytes(inst.compose.include[0].concept[8].display),
-            force_bytes("Inferior"),
-        )
-        self.assertEqual(
-            force_bytes(inst.compose.include[0].concept[9].code),
-            force_bytes("255551008"),
-        )
-        self.assertEqual(
-            force_bytes(inst.compose.include[0].concept[9].display),
-            force_bytes("Posterior"),
-        )
-        self.assertEqual(
-            force_bytes(inst.compose.include[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].system), force_bytes("url")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].value),
-            force_bytes("http://hl7.org/fhir"),
-        )
-        self.assertEqual(inst.date.date, FHIRDate("2019-11-01T09:29:23+11:00").date)
-        self.assertEqual(inst.date.as_json(), "2019-11-01T09:29:23+11:00")
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes("SNOMED-CT concepts modifying the anatomic location"),
-        )
-        self.assertFalse(inst.experimental)
-        self.assertEqual(
-            force_bytes(inst.extension[0].url),
-            force_bytes(
-                "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.extension[0].valueCode), force_bytes("oo"))
-        self.assertEqual(
-            force_bytes(inst.extension[1].url),
-            force_bytes(
-                "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.extension[1].valueCode), force_bytes("draft"))
-        self.assertEqual(
-            force_bytes(inst.extension[2].url),
-            force_bytes(
-                "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
-            ),
-        )
-        self.assertEqual(inst.extension[2].valueInteger, 1)
-        self.assertEqual(
-            force_bytes(inst.id), force_bytes("bodystructure-relative-location")
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system), force_bytes("urn:ietf:rfc:3986")
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].value),
-            force_bytes("urn:oid:2.16.840.1.113883.4.642.3.140"),
-        )
-        self.assertEqual(
-            inst.meta.lastUpdated.date, FHIRDate("2019-11-01T09:29:23.356+11:00").date
-        )
-        self.assertEqual(
-            inst.meta.lastUpdated.as_json(), "2019-11-01T09:29:23.356+11:00"
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.profile[0]),
-            force_bytes("http://hl7.org/fhir/StructureDefinition/shareablevalueset"),
-        )
-        self.assertEqual(
-            force_bytes(inst.name), force_bytes("BodystructureLocationQualifier")
-        )
-        self.assertEqual(
-            force_bytes(inst.publisher), force_bytes("Order and Observation Workgroup")
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.title), force_bytes("Bodystructure Location Qualifier")
-        )
-        self.assertEqual(
-            force_bytes(inst.url),
-            force_bytes("http://hl7.org/fhir/ValueSet/bodystructure-relative-location"),
-        )
-        self.assertEqual(force_bytes(inst.version), force_bytes("4.0.1"))
+def test_valueset_2(base_settings):
+    """No. 2 tests collection for ValueSet.
+    Test File: valueset-definition-resource-types.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "valueset-definition-resource-types.json"
+    )
+    inst = valueset.ValueSet.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ValueSet" == inst.resource_type
 
-    def testValueSet4(self):
-        inst = self.instantiate_from("valueset-encounter-status.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ValueSet instance")
-        self.implValueSet4(inst)
+    impl_valueset_2(inst)
 
-        js = inst.as_json()
-        self.assertEqual("ValueSet", js["resourceType"])
-        inst2 = valueset.ValueSet(js)
-        self.implValueSet4(inst2)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ValueSet" == data["resourceType"]
 
-    def implValueSet4(self, inst):
-        self.assertEqual(
-            force_bytes(inst.compose.include[0].system),
-            force_bytes("http://hl7.org/fhir/encounter-status"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].system), force_bytes("url")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].value),
-            force_bytes("http://hl7.org/fhir"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[1].system), force_bytes("email")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[1].value),
-            force_bytes("fhir@lists.hl7.org"),
-        )
-        self.assertEqual(inst.date.date, FHIRDate("2019-11-01T09:29:23+11:00").date)
-        self.assertEqual(inst.date.as_json(), "2019-11-01T09:29:23+11:00")
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes("Current state of the encounter."),
-        )
-        self.assertFalse(inst.experimental)
-        self.assertEqual(
-            force_bytes(inst.extension[0].url),
-            force_bytes(
-                "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.extension[0].valueCode), force_bytes("pa"))
-        self.assertEqual(
-            force_bytes(inst.extension[1].url),
-            force_bytes(
-                "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.extension[1].valueCode), force_bytes("trial-use")
-        )
-        self.assertEqual(
-            force_bytes(inst.extension[2].url),
-            force_bytes(
-                "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
-            ),
-        )
-        self.assertEqual(inst.extension[2].valueInteger, 2)
-        self.assertEqual(force_bytes(inst.id), force_bytes("encounter-status"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system), force_bytes("urn:ietf:rfc:3986")
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].value),
-            force_bytes("urn:oid:2.16.840.1.113883.4.642.3.246"),
-        )
-        self.assertTrue(inst.immutable)
-        self.assertEqual(
-            inst.meta.lastUpdated.date, FHIRDate("2019-11-01T09:29:23.356+11:00").date
-        )
-        self.assertEqual(
-            inst.meta.lastUpdated.as_json(), "2019-11-01T09:29:23.356+11:00"
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.profile[0]),
-            force_bytes("http://hl7.org/fhir/StructureDefinition/shareablevalueset"),
-        )
-        self.assertEqual(force_bytes(inst.name), force_bytes("EncounterStatus"))
-        self.assertEqual(force_bytes(inst.publisher), force_bytes("HL7 (FHIR Project)"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.title), force_bytes("EncounterStatus"))
-        self.assertEqual(
-            force_bytes(inst.url),
-            force_bytes("http://hl7.org/fhir/ValueSet/encounter-status"),
-        )
-        self.assertEqual(force_bytes(inst.version), force_bytes("4.0.1"))
+    inst2 = valueset.ValueSet(**data)
+    impl_valueset_2(inst2)
 
-    def testValueSet5(self):
-        inst = self.instantiate_from("valueset-consent-scope.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ValueSet instance")
-        self.implValueSet5(inst)
 
-        js = inst.as_json()
-        self.assertEqual("ValueSet", js["resourceType"])
-        inst2 = valueset.ValueSet(js)
-        self.implValueSet5(inst2)
+def impl_valueset_3(inst):
+    assert inst.compose.include[0].concept[0].code == "419161000"
+    assert inst.compose.include[0].concept[0].display == "Unilateral left"
+    assert inst.compose.include[0].concept[1].code == "419465000"
+    assert inst.compose.include[0].concept[1].display == "Unilateral right"
+    assert inst.compose.include[0].concept[2].code == "51440002"
+    assert inst.compose.include[0].concept[2].display == "Bilateral"
+    assert inst.compose.include[0].concept[3].code == "261183002"
+    assert inst.compose.include[0].concept[3].display == "Upper"
+    assert inst.compose.include[0].concept[4].code == "261122009"
+    assert inst.compose.include[0].concept[4].display == "Lower"
+    assert inst.compose.include[0].concept[5].code == "255561001"
+    assert inst.compose.include[0].concept[5].display == "Medial"
+    assert inst.compose.include[0].concept[6].code == "49370004"
+    assert inst.compose.include[0].concept[6].display == "Lateral"
+    assert inst.compose.include[0].concept[7].code == "264217000"
+    assert inst.compose.include[0].concept[7].display == "Superior"
+    assert inst.compose.include[0].concept[8].code == "261089000"
+    assert inst.compose.include[0].concept[8].display == "Inferior"
+    assert inst.compose.include[0].concept[9].code == "255551008"
+    assert inst.compose.include[0].concept[9].display == "Posterior"
+    assert inst.compose.include[0].system == "http://snomed.info/sct"
+    assert inst.contact[0].telecom[0].system == "url"
+    assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
+    assert inst.date == fhirtypes.DateTime.validate("2019-11-01T09:29:23+11:00")
+    assert inst.description == "SNOMED-CT concepts modifying the anatomic location"
+    assert inst.experimental is False
+    assert (
+        inst.extension[0].url
+        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+    )
+    assert inst.extension[0].valueCode == "oo"
+    assert (
+        inst.extension[1].url
+        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+    )
+    assert inst.extension[1].valueCode == "draft"
+    assert (
+        inst.extension[2].url
+        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    )
+    assert inst.extension[2].valueInteger == 1
+    assert inst.id == "bodystructure-relative-location"
+    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.3.140"
+    assert inst.meta.lastUpdated == fhirtypes.Instant.validate(
+        "2019-11-01T09:29:23.356+11:00"
+    )
+    assert (
+        inst.meta.profile[0]
+        == "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    )
+    assert inst.name == "BodystructureLocationQualifier"
+    assert inst.publisher == "Order and Observation Workgroup"
+    assert inst.status == "draft"
+    assert inst.text.status == "generated"
+    assert inst.title == "Bodystructure Location Qualifier"
+    assert inst.url == "http://hl7.org/fhir/ValueSet/bodystructure-relative-location"
+    assert inst.version == "4.0.1"
 
-    def implValueSet5(self, inst):
-        self.assertEqual(
-            force_bytes(inst.compose.include[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/consentscope"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].system), force_bytes("url")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].value),
-            force_bytes("http://hl7.org/fhir"),
-        )
-        self.assertEqual(
-            force_bytes(inst.copyright), force_bytes("This is an example set.")
-        )
-        self.assertEqual(inst.date.date, FHIRDate("2019-11-01T09:29:23+11:00").date)
-        self.assertEqual(inst.date.as_json(), "2019-11-01T09:29:23+11:00")
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes("This value set includes the four Consent scope codes."),
-        )
-        self.assertFalse(inst.experimental)
-        self.assertEqual(
-            force_bytes(inst.extension[0].url),
-            force_bytes(
-                "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.extension[0].valueCode), force_bytes("cbcc"))
-        self.assertEqual(
-            force_bytes(inst.extension[1].url),
-            force_bytes(
-                "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.extension[1].valueCode), force_bytes("trial-use")
-        )
-        self.assertEqual(
-            force_bytes(inst.extension[2].url),
-            force_bytes(
-                "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
-            ),
-        )
-        self.assertEqual(inst.extension[2].valueInteger, 2)
-        self.assertEqual(force_bytes(inst.id), force_bytes("consent-scope"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system), force_bytes("urn:ietf:rfc:3986")
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].value),
-            force_bytes("urn:oid:2.16.840.1.113883.4.642.3.761"),
-        )
-        self.assertTrue(inst.immutable)
-        self.assertEqual(
-            inst.meta.lastUpdated.date, FHIRDate("2019-11-01T09:29:23.356+11:00").date
-        )
-        self.assertEqual(
-            inst.meta.lastUpdated.as_json(), "2019-11-01T09:29:23.356+11:00"
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.profile[0]),
-            force_bytes("http://hl7.org/fhir/StructureDefinition/shareablevalueset"),
-        )
-        self.assertEqual(force_bytes(inst.name), force_bytes("ConsentScopeCodes"))
-        self.assertEqual(force_bytes(inst.publisher), force_bytes("CBCC"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.title), force_bytes("Consent Scope Codes"))
-        self.assertEqual(
-            force_bytes(inst.url),
-            force_bytes("http://hl7.org/fhir/ValueSet/consent-scope"),
-        )
-        self.assertEqual(force_bytes(inst.version), force_bytes("4.0.1"))
 
-    def testValueSet6(self):
-        inst = self.instantiate_from("valueset-report-status-codes.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ValueSet instance")
-        self.implValueSet6(inst)
+def test_valueset_3(base_settings):
+    """No. 3 tests collection for ValueSet.
+    Test File: valueset-bodystructure-relative-location.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"]
+        / "valueset-bodystructure-relative-location.json"
+    )
+    inst = valueset.ValueSet.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ValueSet" == inst.resource_type
 
-        js = inst.as_json()
-        self.assertEqual("ValueSet", js["resourceType"])
-        inst2 = valueset.ValueSet(js)
-        self.implValueSet6(inst2)
+    impl_valueset_3(inst)
 
-    def implValueSet6(self, inst):
-        self.assertEqual(
-            force_bytes(inst.compose.include[0].system),
-            force_bytes("http://hl7.org/fhir/report-status-codes"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].system), force_bytes("url")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].value),
-            force_bytes("http://hl7.org/fhir"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[1].system), force_bytes("email")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[1].value),
-            force_bytes("fhir@lists.hl7.org"),
-        )
-        self.assertEqual(inst.date.date, FHIRDate("2019-11-01T09:29:23+11:00").date)
-        self.assertEqual(inst.date.as_json(), "2019-11-01T09:29:23+11:00")
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes("The current status of the test report."),
-        )
-        self.assertFalse(inst.experimental)
-        self.assertEqual(
-            force_bytes(inst.extension[0].url),
-            force_bytes(
-                "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.extension[0].valueCode), force_bytes("fhir"))
-        self.assertEqual(
-            force_bytes(inst.extension[1].url),
-            force_bytes(
-                "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.extension[1].valueCode), force_bytes("trial-use")
-        )
-        self.assertEqual(
-            force_bytes(inst.extension[2].url),
-            force_bytes(
-                "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
-            ),
-        )
-        self.assertEqual(inst.extension[2].valueInteger, 0)
-        self.assertEqual(force_bytes(inst.id), force_bytes("report-status-codes"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system), force_bytes("urn:ietf:rfc:3986")
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].value),
-            force_bytes("urn:oid:2.16.840.1.113883.4.642.3.724"),
-        )
-        self.assertTrue(inst.immutable)
-        self.assertEqual(
-            inst.meta.lastUpdated.date, FHIRDate("2019-11-01T09:29:23.356+11:00").date
-        )
-        self.assertEqual(
-            inst.meta.lastUpdated.as_json(), "2019-11-01T09:29:23.356+11:00"
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.profile[0]),
-            force_bytes("http://hl7.org/fhir/StructureDefinition/shareablevalueset"),
-        )
-        self.assertEqual(force_bytes(inst.name), force_bytes("TestReportStatus"))
-        self.assertEqual(force_bytes(inst.publisher), force_bytes("HL7 (FHIR Project)"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.title), force_bytes("TestReportStatus"))
-        self.assertEqual(
-            force_bytes(inst.url),
-            force_bytes("http://hl7.org/fhir/ValueSet/report-status-codes"),
-        )
-        self.assertEqual(force_bytes(inst.version), force_bytes("4.0.1"))
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ValueSet" == data["resourceType"]
 
-    def testValueSet7(self):
-        inst = self.instantiate_from("valueset-note-type.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ValueSet instance")
-        self.implValueSet7(inst)
+    inst2 = valueset.ValueSet(**data)
+    impl_valueset_3(inst2)
 
-        js = inst.as_json()
-        self.assertEqual("ValueSet", js["resourceType"])
-        inst2 = valueset.ValueSet(js)
-        self.implValueSet7(inst2)
 
-    def implValueSet7(self, inst):
-        self.assertEqual(
-            force_bytes(inst.compose.include[0].system),
-            force_bytes("http://hl7.org/fhir/note-type"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].system), force_bytes("url")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].value),
-            force_bytes("http://hl7.org/fhir"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[1].system), force_bytes("email")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[1].value),
-            force_bytes("fhir@lists.hl7.org"),
-        )
-        self.assertEqual(inst.date.date, FHIRDate("2019-11-01T09:29:23+11:00").date)
-        self.assertEqual(inst.date.as_json(), "2019-11-01T09:29:23+11:00")
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes("The presentation types of notes."),
-        )
-        self.assertFalse(inst.experimental)
-        self.assertEqual(
-            force_bytes(inst.extension[0].url),
-            force_bytes(
-                "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.extension[0].valueCode), force_bytes("fm"))
-        self.assertEqual(
-            force_bytes(inst.extension[1].url),
-            force_bytes(
-                "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.extension[1].valueCode), force_bytes("trial-use")
-        )
-        self.assertEqual(
-            force_bytes(inst.extension[2].url),
-            force_bytes(
-                "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
-            ),
-        )
-        self.assertEqual(inst.extension[2].valueInteger, 2)
-        self.assertEqual(force_bytes(inst.id), force_bytes("note-type"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system), force_bytes("urn:ietf:rfc:3986")
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].value),
-            force_bytes("urn:oid:2.16.840.1.113883.4.642.3.15"),
-        )
-        self.assertTrue(inst.immutable)
-        self.assertEqual(
-            inst.meta.lastUpdated.date, FHIRDate("2019-11-01T09:29:23.356+11:00").date
-        )
-        self.assertEqual(
-            inst.meta.lastUpdated.as_json(), "2019-11-01T09:29:23.356+11:00"
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.profile[0]),
-            force_bytes("http://hl7.org/fhir/StructureDefinition/shareablevalueset"),
-        )
-        self.assertEqual(force_bytes(inst.name), force_bytes("NoteType"))
-        self.assertEqual(force_bytes(inst.publisher), force_bytes("HL7 (FHIR Project)"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.title), force_bytes("NoteType"))
-        self.assertEqual(
-            force_bytes(inst.url), force_bytes("http://hl7.org/fhir/ValueSet/note-type")
-        )
-        self.assertEqual(force_bytes(inst.version), force_bytes("4.0.1"))
+def impl_valueset_4(inst):
+    assert inst.compose.include[0].system == "http://hl7.org/fhir/encounter-status"
+    assert inst.contact[0].telecom[0].system == "url"
+    assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
+    assert inst.contact[0].telecom[1].system == "email"
+    assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
+    assert inst.date == fhirtypes.DateTime.validate("2019-11-01T09:29:23+11:00")
+    assert inst.description == "Current state of the encounter."
+    assert inst.experimental is False
+    assert (
+        inst.extension[0].url
+        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+    )
+    assert inst.extension[0].valueCode == "pa"
+    assert (
+        inst.extension[1].url
+        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+    )
+    assert inst.extension[1].valueCode == "trial-use"
+    assert (
+        inst.extension[2].url
+        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    )
+    assert inst.extension[2].valueInteger == 2
+    assert inst.id == "encounter-status"
+    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.3.246"
+    assert inst.immutable is True
+    assert inst.meta.lastUpdated == fhirtypes.Instant.validate(
+        "2019-11-01T09:29:23.356+11:00"
+    )
+    assert (
+        inst.meta.profile[0]
+        == "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    )
+    assert inst.name == "EncounterStatus"
+    assert inst.publisher == "HL7 (FHIR Project)"
+    assert inst.status == "draft"
+    assert inst.text.status == "generated"
+    assert inst.title == "EncounterStatus"
+    assert inst.url == "http://hl7.org/fhir/ValueSet/encounter-status"
+    assert inst.version == "4.0.1"
 
-    def testValueSet8(self):
-        inst = self.instantiate_from("valueset-sequence-quality-method.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ValueSet instance")
-        self.implValueSet8(inst)
 
-        js = inst.as_json()
-        self.assertEqual("ValueSet", js["resourceType"])
-        inst2 = valueset.ValueSet(js)
-        self.implValueSet8(inst2)
+def test_valueset_4(base_settings):
+    """No. 4 tests collection for ValueSet.
+    Test File: valueset-encounter-status.json
+    """
+    filename = base_settings["unittest_data_dir"] / "valueset-encounter-status.json"
+    inst = valueset.ValueSet.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ValueSet" == inst.resource_type
 
-    def implValueSet8(self, inst):
-        self.assertEqual(
-            force_bytes(inst.compose.include[0].system),
-            force_bytes("https://precision.fda.gov/apps/"),
-        )
-        self.assertEqual(
-            force_bytes(inst.compose.include[1].system),
-            force_bytes("https://precision.fda.gov/jobs/"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].system), force_bytes("url")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].value),
-            force_bytes("http://hl7.org/fhir"),
-        )
-        self.assertEqual(inst.date.date, FHIRDate("2019-11-01T09:29:23+11:00").date)
-        self.assertEqual(inst.date.as_json(), "2019-11-01T09:29:23+11:00")
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes("This value set includes sequence quality method"),
-        )
-        self.assertFalse(inst.experimental)
-        self.assertEqual(
-            force_bytes(inst.extension[0].url),
-            force_bytes(
-                "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.extension[0].valueCode), force_bytes("cg"))
-        self.assertEqual(
-            force_bytes(inst.extension[1].url),
-            force_bytes(
-                "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.extension[1].valueCode), force_bytes("draft"))
-        self.assertEqual(
-            force_bytes(inst.extension[2].url),
-            force_bytes(
-                "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
-            ),
-        )
-        self.assertEqual(inst.extension[2].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.id), force_bytes("sequence-quality-method"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system), force_bytes("urn:ietf:rfc:3986")
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].value),
-            force_bytes("urn:oid:2.16.840.1.113883.4.642.3.223"),
-        )
-        self.assertEqual(
-            inst.meta.lastUpdated.date, FHIRDate("2019-11-01T09:29:23.356+11:00").date
-        )
-        self.assertEqual(
-            inst.meta.lastUpdated.as_json(), "2019-11-01T09:29:23.356+11:00"
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.profile[0]),
-            force_bytes("http://hl7.org/fhir/StructureDefinition/shareablevalueset"),
-        )
-        self.assertEqual(force_bytes(inst.name), force_bytes("FDA-Method"))
-        self.assertEqual(force_bytes(inst.publisher), force_bytes("FHIR Project team"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.title), force_bytes("F d a- method"))
-        self.assertEqual(
-            force_bytes(inst.url),
-            force_bytes("http://hl7.org/fhir/ValueSet/sequence-quality-method"),
-        )
-        self.assertEqual(force_bytes(inst.version), force_bytes("4.0.1"))
+    impl_valueset_4(inst)
 
-    def testValueSet9(self):
-        inst = self.instantiate_from("valueset-issue-severity.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ValueSet instance")
-        self.implValueSet9(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ValueSet" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("ValueSet", js["resourceType"])
-        inst2 = valueset.ValueSet(js)
-        self.implValueSet9(inst2)
+    inst2 = valueset.ValueSet(**data)
+    impl_valueset_4(inst2)
 
-    def implValueSet9(self, inst):
-        self.assertEqual(
-            force_bytes(inst.compose.include[0].system),
-            force_bytes("http://hl7.org/fhir/issue-severity"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].system), force_bytes("url")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].value),
-            force_bytes("http://hl7.org/fhir"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[1].system), force_bytes("email")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[1].value),
-            force_bytes("fhir@lists.hl7.org"),
-        )
-        self.assertEqual(inst.date.date, FHIRDate("2019-11-01T09:29:23+11:00").date)
-        self.assertEqual(inst.date.as_json(), "2019-11-01T09:29:23+11:00")
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes("How the issue affects the success of the action."),
-        )
-        self.assertFalse(inst.experimental)
-        self.assertEqual(
-            force_bytes(inst.extension[0].url),
-            force_bytes(
-                "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.extension[0].valueCode), force_bytes("fhir"))
-        self.assertEqual(
-            force_bytes(inst.extension[1].url),
-            force_bytes(
-                "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.extension[1].valueCode), force_bytes("normative")
-        )
-        self.assertEqual(
-            force_bytes(inst.extension[2].url),
-            force_bytes(
-                "http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.extension[2].valueCode), force_bytes("4.0.0"))
-        self.assertEqual(
-            force_bytes(inst.extension[3].url),
-            force_bytes(
-                "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
-            ),
-        )
-        self.assertEqual(inst.extension[3].valueInteger, 5)
-        self.assertEqual(force_bytes(inst.id), force_bytes("issue-severity"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system), force_bytes("urn:ietf:rfc:3986")
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].value),
-            force_bytes("urn:oid:2.16.840.1.113883.4.642.3.408"),
-        )
-        self.assertTrue(inst.immutable)
-        self.assertEqual(
-            inst.meta.lastUpdated.date, FHIRDate("2019-11-01T09:29:23.356+11:00").date
-        )
-        self.assertEqual(
-            inst.meta.lastUpdated.as_json(), "2019-11-01T09:29:23.356+11:00"
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.profile[0]),
-            force_bytes("http://hl7.org/fhir/StructureDefinition/shareablevalueset"),
-        )
-        self.assertEqual(force_bytes(inst.name), force_bytes("IssueSeverity"))
-        self.assertEqual(force_bytes(inst.publisher), force_bytes("HL7 (FHIR Project)"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.title), force_bytes("IssueSeverity"))
-        self.assertEqual(
-            force_bytes(inst.url),
-            force_bytes("http://hl7.org/fhir/ValueSet/issue-severity"),
-        )
-        self.assertEqual(force_bytes(inst.version), force_bytes("4.0.1"))
 
-    def testValueSet10(self):
-        inst = self.instantiate_from("valueset-sequence-referenceSeq.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ValueSet instance")
-        self.implValueSet10(inst)
+def impl_valueset_5(inst):
+    assert (
+        inst.compose.include[0].system
+        == "http://terminology.hl7.org/CodeSystem/consentscope"
+    )
+    assert inst.contact[0].telecom[0].system == "url"
+    assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
+    assert inst.copyright == "This is an example set."
+    assert inst.date == fhirtypes.DateTime.validate("2019-11-01T09:29:23+11:00")
+    assert inst.description == "This value set includes the four Consent scope codes."
+    assert inst.experimental is False
+    assert (
+        inst.extension[0].url
+        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+    )
+    assert inst.extension[0].valueCode == "cbcc"
+    assert (
+        inst.extension[1].url
+        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+    )
+    assert inst.extension[1].valueCode == "trial-use"
+    assert (
+        inst.extension[2].url
+        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    )
+    assert inst.extension[2].valueInteger == 2
+    assert inst.id == "consent-scope"
+    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.3.761"
+    assert inst.immutable is True
+    assert inst.meta.lastUpdated == fhirtypes.Instant.validate(
+        "2019-11-01T09:29:23.356+11:00"
+    )
+    assert (
+        inst.meta.profile[0]
+        == "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    )
+    assert inst.name == "ConsentScopeCodes"
+    assert inst.publisher == "CBCC"
+    assert inst.status == "draft"
+    assert inst.text.status == "generated"
+    assert inst.title == "Consent Scope Codes"
+    assert inst.url == "http://hl7.org/fhir/ValueSet/consent-scope"
+    assert inst.version == "4.0.1"
 
-        js = inst.as_json()
-        self.assertEqual("ValueSet", js["resourceType"])
-        inst2 = valueset.ValueSet(js)
-        self.implValueSet10(inst2)
 
-    def implValueSet10(self, inst):
-        self.assertEqual(
-            force_bytes(inst.compose.include[0].system),
-            force_bytes("http://www.ensembl.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.compose.include[1].system),
-            force_bytes("http://www.ncbi.nlm.nih.gov/nuccore"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].system), force_bytes("url")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].value),
-            force_bytes("http://hl7.org/fhir"),
-        )
-        self.assertEqual(inst.date.date, FHIRDate("2019-11-01T09:29:23+11:00").date)
-        self.assertEqual(inst.date.as_json(), "2019-11-01T09:29:23+11:00")
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes("This value set includes all Reference codes"),
-        )
-        self.assertFalse(inst.experimental)
-        self.assertEqual(
-            force_bytes(inst.extension[0].url),
-            force_bytes(
-                "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.extension[0].valueCode), force_bytes("cg"))
-        self.assertEqual(
-            force_bytes(inst.extension[1].url),
-            force_bytes(
-                "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.extension[1].valueCode), force_bytes("draft"))
-        self.assertEqual(
-            force_bytes(inst.extension[2].url),
-            force_bytes(
-                "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
-            ),
-        )
-        self.assertEqual(inst.extension[2].valueInteger, 1)
-        self.assertEqual(force_bytes(inst.id), force_bytes("sequence-referenceSeq"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system), force_bytes("urn:ietf:rfc:3986")
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].value),
-            force_bytes("urn:oid:2.16.840.1.113883.4.642.3.221"),
-        )
-        self.assertEqual(
-            inst.meta.lastUpdated.date, FHIRDate("2019-11-01T09:29:23.356+11:00").date
-        )
-        self.assertEqual(
-            inst.meta.lastUpdated.as_json(), "2019-11-01T09:29:23.356+11:00"
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.profile[0]),
-            force_bytes("http://hl7.org/fhir/StructureDefinition/shareablevalueset"),
-        )
-        self.assertEqual(force_bytes(inst.name), force_bytes("ENSEMBL"))
-        self.assertEqual(force_bytes(inst.publisher), force_bytes("FHIR Project team"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.title), force_bytes("E n s e m b l"))
-        self.assertEqual(
-            force_bytes(inst.url),
-            force_bytes("http://hl7.org/fhir/ValueSet/sequence-referenceSeq"),
-        )
-        self.assertEqual(force_bytes(inst.version), force_bytes("4.0.1"))
+def test_valueset_5(base_settings):
+    """No. 5 tests collection for ValueSet.
+    Test File: valueset-consent-scope.json
+    """
+    filename = base_settings["unittest_data_dir"] / "valueset-consent-scope.json"
+    inst = valueset.ValueSet.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ValueSet" == inst.resource_type
+
+    impl_valueset_5(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ValueSet" == data["resourceType"]
+
+    inst2 = valueset.ValueSet(**data)
+    impl_valueset_5(inst2)
+
+
+def impl_valueset_6(inst):
+    assert inst.compose.include[0].system == "http://hl7.org/fhir/report-status-codes"
+    assert inst.contact[0].telecom[0].system == "url"
+    assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
+    assert inst.contact[0].telecom[1].system == "email"
+    assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
+    assert inst.date == fhirtypes.DateTime.validate("2019-11-01T09:29:23+11:00")
+    assert inst.description == "The current status of the test report."
+    assert inst.experimental is False
+    assert (
+        inst.extension[0].url
+        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+    )
+    assert inst.extension[0].valueCode == "fhir"
+    assert (
+        inst.extension[1].url
+        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+    )
+    assert inst.extension[1].valueCode == "trial-use"
+    assert (
+        inst.extension[2].url
+        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    )
+    assert inst.extension[2].valueInteger == 0
+    assert inst.id == "report-status-codes"
+    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.3.724"
+    assert inst.immutable is True
+    assert inst.meta.lastUpdated == fhirtypes.Instant.validate(
+        "2019-11-01T09:29:23.356+11:00"
+    )
+    assert (
+        inst.meta.profile[0]
+        == "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    )
+    assert inst.name == "TestReportStatus"
+    assert inst.publisher == "HL7 (FHIR Project)"
+    assert inst.status == "draft"
+    assert inst.text.status == "generated"
+    assert inst.title == "TestReportStatus"
+    assert inst.url == "http://hl7.org/fhir/ValueSet/report-status-codes"
+    assert inst.version == "4.0.1"
+
+
+def test_valueset_6(base_settings):
+    """No. 6 tests collection for ValueSet.
+    Test File: valueset-report-status-codes.json
+    """
+    filename = base_settings["unittest_data_dir"] / "valueset-report-status-codes.json"
+    inst = valueset.ValueSet.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ValueSet" == inst.resource_type
+
+    impl_valueset_6(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ValueSet" == data["resourceType"]
+
+    inst2 = valueset.ValueSet(**data)
+    impl_valueset_6(inst2)
+
+
+def impl_valueset_7(inst):
+    assert inst.compose.include[0].system == "http://hl7.org/fhir/note-type"
+    assert inst.contact[0].telecom[0].system == "url"
+    assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
+    assert inst.contact[0].telecom[1].system == "email"
+    assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
+    assert inst.date == fhirtypes.DateTime.validate("2019-11-01T09:29:23+11:00")
+    assert inst.description == "The presentation types of notes."
+    assert inst.experimental is False
+    assert (
+        inst.extension[0].url
+        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+    )
+    assert inst.extension[0].valueCode == "fm"
+    assert (
+        inst.extension[1].url
+        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+    )
+    assert inst.extension[1].valueCode == "trial-use"
+    assert (
+        inst.extension[2].url
+        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    )
+    assert inst.extension[2].valueInteger == 2
+    assert inst.id == "note-type"
+    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.3.15"
+    assert inst.immutable is True
+    assert inst.meta.lastUpdated == fhirtypes.Instant.validate(
+        "2019-11-01T09:29:23.356+11:00"
+    )
+    assert (
+        inst.meta.profile[0]
+        == "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    )
+    assert inst.name == "NoteType"
+    assert inst.publisher == "HL7 (FHIR Project)"
+    assert inst.status == "draft"
+    assert inst.text.status == "generated"
+    assert inst.title == "NoteType"
+    assert inst.url == "http://hl7.org/fhir/ValueSet/note-type"
+    assert inst.version == "4.0.1"
+
+
+def test_valueset_7(base_settings):
+    """No. 7 tests collection for ValueSet.
+    Test File: valueset-note-type.json
+    """
+    filename = base_settings["unittest_data_dir"] / "valueset-note-type.json"
+    inst = valueset.ValueSet.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ValueSet" == inst.resource_type
+
+    impl_valueset_7(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ValueSet" == data["resourceType"]
+
+    inst2 = valueset.ValueSet(**data)
+    impl_valueset_7(inst2)
+
+
+def impl_valueset_8(inst):
+    assert inst.compose.include[0].system == "https://precision.fda.gov/apps/"
+    assert inst.compose.include[1].system == "https://precision.fda.gov/jobs/"
+    assert inst.contact[0].telecom[0].system == "url"
+    assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
+    assert inst.date == fhirtypes.DateTime.validate("2019-11-01T09:29:23+11:00")
+    assert inst.description == "This value set includes sequence quality method"
+    assert inst.experimental is False
+    assert (
+        inst.extension[0].url
+        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+    )
+    assert inst.extension[0].valueCode == "cg"
+    assert (
+        inst.extension[1].url
+        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+    )
+    assert inst.extension[1].valueCode == "draft"
+    assert (
+        inst.extension[2].url
+        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    )
+    assert inst.extension[2].valueInteger == 1
+    assert inst.id == "sequence-quality-method"
+    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.3.223"
+    assert inst.meta.lastUpdated == fhirtypes.Instant.validate(
+        "2019-11-01T09:29:23.356+11:00"
+    )
+    assert (
+        inst.meta.profile[0]
+        == "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    )
+    assert inst.name == "FDA-Method"
+    assert inst.publisher == "FHIR Project team"
+    assert inst.status == "draft"
+    assert inst.text.status == "generated"
+    assert inst.title == "F d a- method"
+    assert inst.url == "http://hl7.org/fhir/ValueSet/sequence-quality-method"
+    assert inst.version == "4.0.1"
+
+
+def test_valueset_8(base_settings):
+    """No. 8 tests collection for ValueSet.
+    Test File: valueset-sequence-quality-method.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "valueset-sequence-quality-method.json"
+    )
+    inst = valueset.ValueSet.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ValueSet" == inst.resource_type
+
+    impl_valueset_8(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ValueSet" == data["resourceType"]
+
+    inst2 = valueset.ValueSet(**data)
+    impl_valueset_8(inst2)
+
+
+def impl_valueset_9(inst):
+    assert inst.compose.include[0].system == "http://hl7.org/fhir/issue-severity"
+    assert inst.contact[0].telecom[0].system == "url"
+    assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
+    assert inst.contact[0].telecom[1].system == "email"
+    assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
+    assert inst.date == fhirtypes.DateTime.validate("2019-11-01T09:29:23+11:00")
+    assert inst.description == "How the issue affects the success of the action."
+    assert inst.experimental is False
+    assert (
+        inst.extension[0].url
+        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+    )
+    assert inst.extension[0].valueCode == "fhir"
+    assert (
+        inst.extension[1].url
+        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+    )
+    assert inst.extension[1].valueCode == "normative"
+    assert (
+        inst.extension[2].url
+        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version"
+    )
+    assert inst.extension[2].valueCode == "4.0.0"
+    assert (
+        inst.extension[3].url
+        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    )
+    assert inst.extension[3].valueInteger == 5
+    assert inst.id == "issue-severity"
+    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.3.408"
+    assert inst.immutable is True
+    assert inst.meta.lastUpdated == fhirtypes.Instant.validate(
+        "2019-11-01T09:29:23.356+11:00"
+    )
+    assert (
+        inst.meta.profile[0]
+        == "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    )
+    assert inst.name == "IssueSeverity"
+    assert inst.publisher == "HL7 (FHIR Project)"
+    assert inst.status == "active"
+    assert inst.text.status == "generated"
+    assert inst.title == "IssueSeverity"
+    assert inst.url == "http://hl7.org/fhir/ValueSet/issue-severity"
+    assert inst.version == "4.0.1"
+
+
+def test_valueset_9(base_settings):
+    """No. 9 tests collection for ValueSet.
+    Test File: valueset-issue-severity.json
+    """
+    filename = base_settings["unittest_data_dir"] / "valueset-issue-severity.json"
+    inst = valueset.ValueSet.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ValueSet" == inst.resource_type
+
+    impl_valueset_9(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ValueSet" == data["resourceType"]
+
+    inst2 = valueset.ValueSet(**data)
+    impl_valueset_9(inst2)
+
+
+def impl_valueset_10(inst):
+    assert inst.compose.include[0].system == "http://www.ensembl.org"
+    assert inst.compose.include[1].system == "http://www.ncbi.nlm.nih.gov/nuccore"
+    assert inst.contact[0].telecom[0].system == "url"
+    assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
+    assert inst.date == fhirtypes.DateTime.validate("2019-11-01T09:29:23+11:00")
+    assert inst.description == "This value set includes all Reference codes"
+    assert inst.experimental is False
+    assert (
+        inst.extension[0].url
+        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+    )
+    assert inst.extension[0].valueCode == "cg"
+    assert (
+        inst.extension[1].url
+        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+    )
+    assert inst.extension[1].valueCode == "draft"
+    assert (
+        inst.extension[2].url
+        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    )
+    assert inst.extension[2].valueInteger == 1
+    assert inst.id == "sequence-referenceSeq"
+    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.3.221"
+    assert inst.meta.lastUpdated == fhirtypes.Instant.validate(
+        "2019-11-01T09:29:23.356+11:00"
+    )
+    assert (
+        inst.meta.profile[0]
+        == "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    )
+    assert inst.name == "ENSEMBL"
+    assert inst.publisher == "FHIR Project team"
+    assert inst.status == "draft"
+    assert inst.text.status == "generated"
+    assert inst.title == "E n s e m b l"
+    assert inst.url == "http://hl7.org/fhir/ValueSet/sequence-referenceSeq"
+    assert inst.version == "4.0.1"
+
+
+def test_valueset_10(base_settings):
+    """No. 10 tests collection for ValueSet.
+    Test File: valueset-sequence-referenceSeq.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "valueset-sequence-referenceSeq.json"
+    )
+    inst = valueset.ValueSet.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ValueSet" == inst.resource_type
+
+    impl_valueset_10(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ValueSet" == data["resourceType"]
+
+    inst2 = valueset.ValueSet(**data)
+    impl_valueset_10(inst2)

@@ -6,82 +6,57 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import medicinalproductundesirableeffect
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class MedicinalProductUndesirableEffectTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("MedicinalProductUndesirableEffect", js["resourceType"])
-        return medicinalproductundesirableeffect.MedicinalProductUndesirableEffect(js)
+def impl_medicinalproductundesirableeffect_1(inst):
+    assert inst.classification.coding[0].code == "Bloodandlymphaticsystemdisorders"
+    assert (
+        inst.classification.coding[0].system
+        == "http://ema.europa.eu/example/symptom-condition-effectclassification"
+    )
+    assert inst.frequencyOfOccurrence.coding[0].code == "Common"
+    assert (
+        inst.frequencyOfOccurrence.coding[0].system
+        == "http://ema.europa.eu/example/frequencyofoccurrence"
+    )
+    assert inst.id == "example"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.symptomConditionEffect.coding[0].code == "Anaemia"
+    assert (
+        inst.symptomConditionEffect.coding[0].system
+        == "http://ema.europa.eu/example/undesirableeffectassymptom-condition-effect"
+    )
+    assert (
+        inst.symptomConditionEffect.text
+        == "Prevention of\\nVTE in adult\\npatients who have\\nundergone\\nelective hip or\\nknee replacement\\nsurgery (VTEp)"
+    )
+    assert inst.text.status == "generated"
 
-    def testMedicinalProductUndesirableEffect1(self):
-        inst = self.instantiate_from("medicinalproductundesirableeffect-example.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a MedicinalProductUndesirableEffect instance"
-        )
-        self.implMedicinalProductUndesirableEffect1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("MedicinalProductUndesirableEffect", js["resourceType"])
-        inst2 = medicinalproductundesirableeffect.MedicinalProductUndesirableEffect(js)
-        self.implMedicinalProductUndesirableEffect1(inst2)
+def test_medicinalproductundesirableeffect_1(base_settings):
+    """No. 1 tests collection for MedicinalProductUndesirableEffect.
+    Test File: medicinalproductundesirableeffect-example.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"]
+        / "medicinalproductundesirableeffect-example.json"
+    )
+    inst = medicinalproductundesirableeffect.MedicinalProductUndesirableEffect.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "MedicinalProductUndesirableEffect" == inst.resource_type
 
-    def implMedicinalProductUndesirableEffect1(self, inst):
-        self.assertEqual(
-            force_bytes(inst.classification.coding[0].code),
-            force_bytes("Bloodandlymphaticsystemdisorders"),
-        )
-        self.assertEqual(
-            force_bytes(inst.classification.coding[0].system),
-            force_bytes(
-                "http://ema.europa.eu/example/symptom-condition-effectclassification"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.frequencyOfOccurrence.coding[0].code),
-            force_bytes("Common"),
-        )
-        self.assertEqual(
-            force_bytes(inst.frequencyOfOccurrence.coding[0].system),
-            force_bytes("http://ema.europa.eu/example/frequencyofoccurrence"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.symptomConditionEffect.coding[0].code),
-            force_bytes("Anaemia"),
-        )
-        self.assertEqual(
-            force_bytes(inst.symptomConditionEffect.coding[0].system),
-            force_bytes(
-                "http://ema.europa.eu/example/undesirableeffectassymptom-condition-effect"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.symptomConditionEffect.text),
-            force_bytes(
-                "Prevention of\\nVTE in adult\\npatients who have\\nundergone\\nelective hip or\\nknee replacement\\nsurgery (VTEp)"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    impl_medicinalproductundesirableeffect_1(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "MedicinalProductUndesirableEffect" == data["resourceType"]
+
+    inst2 = medicinalproductundesirableeffect.MedicinalProductUndesirableEffect(**data)
+    impl_medicinalproductundesirableeffect_1(inst2)

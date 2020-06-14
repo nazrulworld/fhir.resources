@@ -6,75 +6,49 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import eventdefinition
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class EventDefinitionTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("EventDefinition", js["resourceType"])
-        return eventdefinition.EventDefinition(js)
+def impl_eventdefinition_1(inst):
+    assert inst.id == "example"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.purpose == "Monitor all admissions to Emergency"
+    assert inst.status == "draft"
+    assert inst.text.status == "generated"
+    assert (
+        inst.trigger[0].condition.description
+        == "Encounter Location = emergency (active/completed encounters, current or previous)"
+    )
+    assert (
+        inst.trigger[0].condition.expression
+        == "(this | %previous).location.where(location = 'Location/emergency' and status in {'active', 'completed'}).exists()"
+    )
+    assert inst.trigger[0].condition.language == "text/fhirpath"
+    assert inst.trigger[0].data[0].type == "Encounter"
+    assert inst.trigger[0].name == "monitor-emergency-admissions"
+    assert inst.trigger[0].type == "named-event"
 
-    def testEventDefinition1(self):
-        inst = self.instantiate_from("eventdefinition-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a EventDefinition instance")
-        self.implEventDefinition1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("EventDefinition", js["resourceType"])
-        inst2 = eventdefinition.EventDefinition(js)
-        self.implEventDefinition1(inst2)
+def test_eventdefinition_1(base_settings):
+    """No. 1 tests collection for EventDefinition.
+    Test File: eventdefinition-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "eventdefinition-example.json"
+    inst = eventdefinition.EventDefinition.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "EventDefinition" == inst.resource_type
 
-    def implEventDefinition1(self, inst):
-        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.purpose),
-            force_bytes("Monitor all admissions to Emergency"),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.trigger[0].condition.description),
-            force_bytes(
-                "Encounter Location = emergency (active/completed encounters, current or previous)"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.trigger[0].condition.expression),
-            force_bytes(
-                "(this | %previous).location.where(location = 'Location/emergency' and status in {'active', 'completed'}).exists()"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.trigger[0].condition.language),
-            force_bytes("text/fhirpath"),
-        )
-        self.assertEqual(
-            force_bytes(inst.trigger[0].data[0].type), force_bytes("Encounter")
-        )
-        self.assertEqual(
-            force_bytes(inst.trigger[0].name),
-            force_bytes("monitor-emergency-admissions"),
-        )
-        self.assertEqual(force_bytes(inst.trigger[0].type), force_bytes("named-event"))
+    impl_eventdefinition_1(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "EventDefinition" == data["resourceType"]
+
+    inst2 = eventdefinition.EventDefinition(**data)
+    impl_eventdefinition_1(inst2)

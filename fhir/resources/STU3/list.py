@@ -6,249 +6,143 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class List(domainresource.DomainResource):
     """ Information summarized from a list of other resources.
-
     A set of information summarized from a list of other resources.
     """
 
-    resource_type = "List"
+    resource_type = Field("List", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    code: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="code",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="What the purpose of this list is",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    date: fhirtypes.DateTime = Field(
+        None,
+        alias="date",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="When the list was prepared",
+    )
 
-        self.code = None
-        """ What the purpose of this list is.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    emptyReason: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="emptyReason",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Why list is empty",
+    )
 
-        self.date = None
-        """ When the list was prepared.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    encounter: fhirtypes.ReferenceType = Field(
+        None,
+        alias="encounter",
+        title="Type `Reference` referencing `Encounter` (represented as `dict` in JSON)",
+        description="Context in which list created",
+    )
 
-        self.emptyReason = None
-        """ Why list is empty.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    entry: ListType[fhirtypes.ListEntryType] = Field(
+        None,
+        alias="entry",
+        title="List of `ListEntry` items (represented as `dict` in JSON)",
+        description="Entries in the list",
+    )
 
-        self.encounter = None
-        """ Context in which list created.
-        Type `FHIRReference` referencing `['Encounter']` (represented as `dict` in JSON). """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Business identifier",
+    )
 
-        self.entry = None
-        """ Entries in the list.
-        List of `ListEntry` items (represented as `dict` in JSON). """
+    mode: fhirtypes.Code = Field(
+        ...,
+        alias="mode",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="working | snapshot | changes",
+    )
 
-        self.identifier = None
-        """ Business identifier.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    note: ListType[fhirtypes.AnnotationType] = Field(
+        None,
+        alias="note",
+        title="List of `Annotation` items (represented as `dict` in JSON)",
+        description="Comments about the list",
+    )
 
-        self.mode = None
-        """ working | snapshot | changes.
-        Type `str`. """
+    orderedBy: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="orderedBy",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="What order the list has",
+    )
 
-        self.note = None
-        """ Comments about the list.
-        List of `Annotation` items (represented as `dict` in JSON). """
+    source: fhirtypes.ReferenceType = Field(
+        None,
+        alias="source",
+        title="Type `Reference` referencing `Practitioner, Patient, Device` (represented as `dict` in JSON)",
+        description="Who and/or what defined the list contents (aka Author)",
+    )
 
-        self.orderedBy = None
-        """ What order the list has.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="current | retired | entered-in-error",
+    )
 
-        self.source = None
-        """ Who and/or what defined the list contents (aka Author).
-        Type `FHIRReference` referencing `['Practitioner'], ['Patient'], ['Device']` (represented as `dict` in JSON). """
+    subject: fhirtypes.ReferenceType = Field(
+        None,
+        alias="subject",
+        title="Type `Reference` referencing `Patient, Group, Device, Location` (represented as `dict` in JSON)",
+        description="If all resources have the same subject",
+    )
 
-        self.status = None
-        """ current | retired | entered-in-error.
-        Type `str`. """
-
-        self.subject = None
-        """ If all resources have the same subject.
-        Type `FHIRReference` referencing `['Patient'], ['Group'], ['Device'], ['Location']` (represented as `dict` in JSON). """
-
-        self.title = None
-        """ Descriptive name for the list.
-        Type `str`. """
-
-        super(List, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(List, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "code",
-                    "code",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-                (
-                    "emptyReason",
-                    "emptyReason",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "encounter",
-                    "encounter",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("entry", "entry", ListEntry, "ListEntry", True, None, False),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                ("mode", "mode", str, "code", False, None, True),
-                (
-                    "note",
-                    "note",
-                    annotation.Annotation,
-                    "Annotation",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "orderedBy",
-                    "orderedBy",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "source",
-                    "source",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("status", "status", str, "code", False, None, True),
-                (
-                    "subject",
-                    "subject",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("title", "title", str, "string", False, None, False),
-            ]
-        )
-        return js
+    title: fhirtypes.String = Field(
+        None,
+        alias="title",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Descriptive name for the list",
+    )
 
 
 class ListEntry(backboneelement.BackboneElement):
     """ Entries in the list.
-
     Entries in this list.
     """
 
-    resource_type = "ListEntry"
+    resource_type = Field("ListEntry", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    date: fhirtypes.DateTime = Field(
+        None,
+        alias="date",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="When item added to list",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    deleted: bool = Field(
+        None,
+        alias="deleted",
+        title="Type `bool`",
+        description="If this item is actually marked as deleted",
+    )
 
-        self.date = None
-        """ When item added to list.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    flag: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="flag",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Status/Workflow information about this item",
+    )
 
-        self.deleted = None
-        """ If this item is actually marked as deleted.
-        Type `bool`. """
-
-        self.flag = None
-        """ Status/Workflow information about this item.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.item = None
-        """ Actual entry.
-        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
-
-        super(ListEntry, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ListEntry, self).elementProperties()
-        js.extend(
-            [
-                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-                ("deleted", "deleted", bool, "boolean", False, None, False),
-                (
-                    "flag",
-                    "flag",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "item",
-                    "item",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import annotation
-except ImportError:
-    annotation = sys.modules[__package__ + ".annotation"]
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
+    item: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="item",
+        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        description="Actual entry",
+    )

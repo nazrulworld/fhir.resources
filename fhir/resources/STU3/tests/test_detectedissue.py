@@ -6,155 +6,166 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import detectedissue
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class DetectedIssueTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("DetectedIssue", js["resourceType"])
-        return detectedissue.DetectedIssue(js)
+def impl_detectedissue_1(inst):
+    assert inst.id == "allergy"
+    assert inst.status == "final"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">[Put rendering here]</div>'
+    )
+    assert inst.text.status == "generated"
 
-    def testDetectedIssue1(self):
-        inst = self.instantiate_from("detectedissue-example-allergy.json")
-        self.assertIsNotNone(inst, "Must have instantiated a DetectedIssue instance")
-        self.implDetectedIssue1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("DetectedIssue", js["resourceType"])
-        inst2 = detectedissue.DetectedIssue(js)
-        self.implDetectedIssue1(inst2)
+def test_detectedissue_1(base_settings):
+    """No. 1 tests collection for DetectedIssue.
+    Test File: detectedissue-example-allergy.json
+    """
+    filename = base_settings["unittest_data_dir"] / "detectedissue-example-allergy.json"
+    inst = detectedissue.DetectedIssue.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "DetectedIssue" == inst.resource_type
 
-    def implDetectedIssue1(self, inst):
-        self.assertEqual(force_bytes(inst.id), force_bytes("allergy"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("final"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">[Put rendering here]</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    impl_detectedissue_1(inst)
 
-    def testDetectedIssue2(self):
-        inst = self.instantiate_from("detectedissue-example-dup.json")
-        self.assertIsNotNone(inst, "Must have instantiated a DetectedIssue instance")
-        self.implDetectedIssue2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "DetectedIssue" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("DetectedIssue", js["resourceType"])
-        inst2 = detectedissue.DetectedIssue(js)
-        self.implDetectedIssue2(inst2)
+    inst2 = detectedissue.DetectedIssue(**data)
+    impl_detectedissue_1(inst2)
 
-    def implDetectedIssue2(self, inst):
-        self.assertEqual(
-            force_bytes(inst.category.coding[0].code), force_bytes("DUPTHPY")
-        )
-        self.assertEqual(
-            force_bytes(inst.category.coding[0].display),
-            force_bytes("Duplicate Therapy Alert"),
-        )
-        self.assertEqual(
-            force_bytes(inst.category.coding[0].system),
-            force_bytes("http://hl7.org/fhir/v3/ActCode"),
-        )
-        self.assertEqual(inst.date.date, FHIRDate("2013-05-08").date)
-        self.assertEqual(inst.date.as_json(), "2013-05-08")
-        self.assertEqual(
-            force_bytes(inst.detail),
-            force_bytes("Similar test was performed within the past 14 days"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("duplicate"))
-        self.assertEqual(
-            force_bytes(inst.identifier.system), force_bytes("http://example.org")
-        )
-        self.assertEqual(force_bytes(inst.identifier.use), force_bytes("official"))
-        self.assertEqual(force_bytes(inst.identifier.value), force_bytes("12345"))
-        self.assertEqual(
-            force_bytes(inst.reference),
-            force_bytes(
-                "http://www.tmhp.com/RadiologyClinicalDecisionSupport/2011/CHEST%20IMAGING%20GUIDELINES%202011.pdf"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("final"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 
-    def testDetectedIssue3(self):
-        inst = self.instantiate_from("detectedissue-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a DetectedIssue instance")
-        self.implDetectedIssue3(inst)
+def impl_detectedissue_2(inst):
+    assert inst.author.reference == "Device/software"
+    assert inst.category.coding[0].code == "DUPTHPY"
+    assert inst.category.coding[0].display == "Duplicate Therapy Alert"
+    assert inst.category.coding[0].system == "http://hl7.org/fhir/v3/ActCode"
+    assert inst.date == fhirtypes.DateTime.validate("2013-05-08")
+    assert inst.detail == "Similar test was performed within the past 14 days"
+    assert inst.id == "duplicate"
+    assert inst.identifier.system == "http://example.org"
+    assert inst.identifier.use == "official"
+    assert inst.identifier.value == "12345"
+    assert (
+        inst.implicated[0].display
+        == "Chest CT - ordered May 8, 2013 by Dr. Adam Careful"
+    )
+    assert inst.implicated[0].reference == "ProcedureRequest/di"
+    assert (
+        inst.implicated[1].display
+        == "Image 1 from Series 3: CT Images on Patient MINT (MINT1234) taken at 1-Jan 2011 01:20 AM"
+    )
+    assert inst.implicated[1].reference == "ImagingStudy/example"
+    assert inst.patient.reference == "Patient/dicom"
+    assert (
+        inst.reference
+        == "http://www.tmhp.com/RadiologyClinicalDecisionSupport/2011/CHEST%20IMAGING%20GUIDELINES%202011.pdf"
+    )
+    assert inst.status == "final"
+    assert inst.text.status == "generated"
 
-        js = inst.as_json()
-        self.assertEqual("DetectedIssue", js["resourceType"])
-        inst2 = detectedissue.DetectedIssue(js)
-        self.implDetectedIssue3(inst2)
 
-    def implDetectedIssue3(self, inst):
-        self.assertEqual(force_bytes(inst.category.coding[0].code), force_bytes("DRG"))
-        self.assertEqual(
-            force_bytes(inst.category.coding[0].display),
-            force_bytes("Drug Interaction Alert"),
-        )
-        self.assertEqual(
-            force_bytes(inst.category.coding[0].system),
-            force_bytes("http://hl7.org/fhir/v3/ActCode"),
-        )
-        self.assertEqual(inst.date.date, FHIRDate("2014-01-05").date)
-        self.assertEqual(inst.date.as_json(), "2014-01-05")
-        self.assertEqual(force_bytes(inst.id), force_bytes("ddi"))
-        self.assertEqual(
-            force_bytes(inst.mitigation[0].action.coding[0].code), force_bytes("13")
-        )
-        self.assertEqual(
-            force_bytes(inst.mitigation[0].action.coding[0].display),
-            force_bytes("Stopped Concurrent Therapy"),
-        )
-        self.assertEqual(
-            force_bytes(inst.mitigation[0].action.coding[0].system),
-            force_bytes("http://hl7.org/fhir/v3/ActCode"),
-        )
-        self.assertEqual(
-            force_bytes(inst.mitigation[0].action.text),
-            force_bytes(
-                "Asked patient to discontinue regular use of Tylenol and to consult with clinician if they need to resume to allow appropriate INR monitoring"
-            ),
-        )
-        self.assertEqual(inst.mitigation[0].date.date, FHIRDate("2014-01-05").date)
-        self.assertEqual(inst.mitigation[0].date.as_json(), "2014-01-05")
-        self.assertEqual(force_bytes(inst.severity), force_bytes("high"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("final"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+def test_detectedissue_2(base_settings):
+    """No. 2 tests collection for DetectedIssue.
+    Test File: detectedissue-example-dup.json
+    """
+    filename = base_settings["unittest_data_dir"] / "detectedissue-example-dup.json"
+    inst = detectedissue.DetectedIssue.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "DetectedIssue" == inst.resource_type
 
-    def testDetectedIssue4(self):
-        inst = self.instantiate_from("detectedissue-example-lab.json")
-        self.assertIsNotNone(inst, "Must have instantiated a DetectedIssue instance")
-        self.implDetectedIssue4(inst)
+    impl_detectedissue_2(inst)
 
-        js = inst.as_json()
-        self.assertEqual("DetectedIssue", js["resourceType"])
-        inst2 = detectedissue.DetectedIssue(js)
-        self.implDetectedIssue4(inst2)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "DetectedIssue" == data["resourceType"]
 
-    def implDetectedIssue4(self, inst):
-        self.assertEqual(force_bytes(inst.id), force_bytes("lab"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("final"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">[Put rendering here]</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    inst2 = detectedissue.DetectedIssue(**data)
+    impl_detectedissue_2(inst2)
+
+
+def impl_detectedissue_3(inst):
+    assert inst.author.reference == "Device/software"
+    assert inst.category.coding[0].code == "DRG"
+    assert inst.category.coding[0].display == "Drug Interaction Alert"
+    assert inst.category.coding[0].system == "http://hl7.org/fhir/v3/ActCode"
+    assert inst.date == fhirtypes.DateTime.validate("2014-01-05")
+    assert inst.id == "ddi"
+    assert (
+        inst.implicated[0].display
+        == "500 mg Acetaminophen tablet 1/day, PRN since 2010"
+    )
+    assert inst.implicated[0].reference == "MedicationStatement/example001"
+    assert inst.implicated[1].display == "Warfarin 1 MG TAB prescribed Jan. 15, 2015"
+    assert inst.implicated[1].reference == "MedicationRequest/medrx0331"
+    assert inst.mitigation[0].action.coding[0].code == "13"
+    assert inst.mitigation[0].action.coding[0].display == "Stopped Concurrent Therapy"
+    assert (
+        inst.mitigation[0].action.coding[0].system == "http://hl7.org/fhir/v3/ActCode"
+    )
+    assert (
+        inst.mitigation[0].action.text
+        == "Asked patient to discontinue regular use of Tylenol and to consult with clinician if they need to resume to allow appropriate INR monitoring"
+    )
+    assert inst.mitigation[0].author.display == "Dr. Adam Careful"
+    assert inst.mitigation[0].author.reference == "Practitioner/example"
+    assert inst.mitigation[0].date == fhirtypes.DateTime.validate("2014-01-05")
+    assert inst.severity == "high"
+    assert inst.status == "final"
+    assert inst.text.status == "generated"
+
+
+def test_detectedissue_3(base_settings):
+    """No. 3 tests collection for DetectedIssue.
+    Test File: detectedissue-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "detectedissue-example.json"
+    inst = detectedissue.DetectedIssue.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "DetectedIssue" == inst.resource_type
+
+    impl_detectedissue_3(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "DetectedIssue" == data["resourceType"]
+
+    inst2 = detectedissue.DetectedIssue(**data)
+    impl_detectedissue_3(inst2)
+
+
+def impl_detectedissue_4(inst):
+    assert inst.id == "lab"
+    assert inst.status == "final"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">[Put rendering here]</div>'
+    )
+    assert inst.text.status == "generated"
+
+
+def test_detectedissue_4(base_settings):
+    """No. 4 tests collection for DetectedIssue.
+    Test File: detectedissue-example-lab.json
+    """
+    filename = base_settings["unittest_data_dir"] / "detectedissue-example-lab.json"
+    inst = detectedissue.DetectedIssue.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "DetectedIssue" == inst.resource_type
+
+    impl_detectedissue_4(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "DetectedIssue" == data["resourceType"]
+
+    inst2 = detectedissue.DetectedIssue(**data)
+    impl_detectedissue_4(inst2)

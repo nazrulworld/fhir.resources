@@ -6,875 +6,651 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import condition
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class ConditionTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("Condition", js["resourceType"])
-        return condition.Condition(js)
+def impl_condition_1(inst):
+    assert inst.asserter.display == "P. van de Heuvel"
+    assert inst.asserter.reference == "Patient/f001"
+    assert inst.bodySite[0].coding[0].code == "280193007"
+    assert inst.bodySite[0].coding[0].display == "Entire retropharyngeal area"
+    assert inst.bodySite[0].coding[0].system == "http://snomed.info/sct"
+    assert inst.category[0].coding[0].code == "439401001"
+    assert inst.category[0].coding[0].display == "diagnosis"
+    assert inst.category[0].coding[0].system == "http://snomed.info/sct"
+    assert inst.clinicalStatus.coding[0].code == "active"
+    assert (
+        inst.clinicalStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-clinical"
+    )
+    assert inst.code.coding[0].code == "18099001"
+    assert inst.code.coding[0].display == "Retropharyngeal abscess"
+    assert inst.code.coding[0].system == "http://snomed.info/sct"
+    assert inst.encounter.reference == "Encounter/f003"
+    assert inst.evidence[0].code[0].coding[0].code == "169068008"
+    assert inst.evidence[0].code[0].coding[0].display == "CT of neck"
+    assert inst.evidence[0].code[0].coding[0].system == "http://snomed.info/sct"
+    assert inst.id == "f003"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.onsetDateTime == fhirtypes.DateTime.validate(
+        "2012-02-27T12:09:24+00:06"
+    )
+    assert inst.recordedDate == fhirtypes.DateTime.validate("2012-02-20T12:09:24+00:06")
+    assert inst.severity.coding[0].code == "371923003"
+    assert inst.severity.coding[0].display == "Mild to moderate"
+    assert inst.severity.coding[0].system == "http://snomed.info/sct"
+    assert inst.subject.display == "P. van de Heuvel"
+    assert inst.subject.reference == "Patient/f001"
+    assert inst.text.status == "generated"
+    assert inst.verificationStatus.coding[0].code == "confirmed"
+    assert (
+        inst.verificationStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-ver-status"
+    )
 
-    def testCondition1(self):
-        inst = self.instantiate_from("condition-example-f003-abscess.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Condition instance")
-        self.implCondition1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("Condition", js["resourceType"])
-        inst2 = condition.Condition(js)
-        self.implCondition1(inst2)
+def test_condition_1(base_settings):
+    """No. 1 tests collection for Condition.
+    Test File: condition-example-f003-abscess.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "condition-example-f003-abscess.json"
+    )
+    inst = condition.Condition.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Condition" == inst.resource_type
 
-    def implCondition1(self, inst):
-        self.assertEqual(
-            force_bytes(inst.bodySite[0].coding[0].code), force_bytes("280193007")
-        )
-        self.assertEqual(
-            force_bytes(inst.bodySite[0].coding[0].display),
-            force_bytes("Entire retropharyngeal area"),
-        )
-        self.assertEqual(
-            force_bytes(inst.bodySite[0].coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].code), force_bytes("439401001")
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].display), force_bytes("diagnosis")
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.clinicalStatus.coding[0].code), force_bytes("active")
-        )
-        self.assertEqual(
-            force_bytes(inst.clinicalStatus.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/condition-clinical"),
-        )
-        self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("18099001"))
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].display),
-            force_bytes("Retropharyngeal abscess"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.evidence[0].code[0].coding[0].code),
-            force_bytes("169068008"),
-        )
-        self.assertEqual(
-            force_bytes(inst.evidence[0].code[0].coding[0].display),
-            force_bytes("CT of neck"),
-        )
-        self.assertEqual(
-            force_bytes(inst.evidence[0].code[0].coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("f003"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(inst.onsetDateTime.date, FHIRDate("2012-02-27").date)
-        self.assertEqual(inst.onsetDateTime.as_json(), "2012-02-27")
-        self.assertEqual(inst.recordedDate.date, FHIRDate("2012-02-20").date)
-        self.assertEqual(inst.recordedDate.as_json(), "2012-02-20")
-        self.assertEqual(
-            force_bytes(inst.severity.coding[0].code), force_bytes("371923003")
-        )
-        self.assertEqual(
-            force_bytes(inst.severity.coding[0].display),
-            force_bytes("Mild to moderate"),
-        )
-        self.assertEqual(
-            force_bytes(inst.severity.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.verificationStatus.coding[0].code),
-            force_bytes("confirmed"),
-        )
-        self.assertEqual(
-            force_bytes(inst.verificationStatus.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/condition-ver-status"),
-        )
+    impl_condition_1(inst)
 
-    def testCondition2(self):
-        inst = self.instantiate_from("condition-example-f203-sepsis.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Condition instance")
-        self.implCondition2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Condition" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("Condition", js["resourceType"])
-        inst2 = condition.Condition(js)
-        self.implCondition2(inst2)
+    inst2 = condition.Condition(**data)
+    impl_condition_1(inst2)
 
-    def implCondition2(self, inst):
-        self.assertEqual(
-            force_bytes(inst.bodySite[0].coding[0].code), force_bytes("281158006")
-        )
-        self.assertEqual(
-            force_bytes(inst.bodySite[0].coding[0].display),
-            force_bytes("Pulmonary vascular structure"),
-        )
-        self.assertEqual(
-            force_bytes(inst.bodySite[0].coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].code), force_bytes("55607006")
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].display), force_bytes("Problem")
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[1].code),
-            force_bytes("problem-list-item"),
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[1].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/condition-category"),
-        )
-        self.assertEqual(
-            force_bytes(inst.clinicalStatus.coding[0].code), force_bytes("active")
-        )
-        self.assertEqual(
-            force_bytes(inst.clinicalStatus.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/condition-clinical"),
-        )
-        self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("10001005"))
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].display), force_bytes("Bacterial sepsis")
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("f203"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(inst.onsetDateTime.date, FHIRDate("2013-03-08").date)
-        self.assertEqual(inst.onsetDateTime.as_json(), "2013-03-08")
-        self.assertEqual(inst.recordedDate.date, FHIRDate("2013-03-11").date)
-        self.assertEqual(inst.recordedDate.as_json(), "2013-03-11")
-        self.assertEqual(
-            force_bytes(inst.severity.coding[0].code), force_bytes("371924009")
-        )
-        self.assertEqual(
-            force_bytes(inst.severity.coding[0].display),
-            force_bytes("Moderate to severe"),
-        )
-        self.assertEqual(
-            force_bytes(inst.severity.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.verificationStatus.coding[0].code),
-            force_bytes("confirmed"),
-        )
-        self.assertEqual(
-            force_bytes(inst.verificationStatus.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/condition-ver-status"),
-        )
 
-    def testCondition3(self):
-        inst = self.instantiate_from("condition-example-stroke.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Condition instance")
-        self.implCondition3(inst)
+def impl_condition_2(inst):
+    assert inst.asserter.reference == "Practitioner/f201"
+    assert inst.bodySite[0].coding[0].code == "281158006"
+    assert inst.bodySite[0].coding[0].display == "Pulmonary vascular structure"
+    assert inst.bodySite[0].coding[0].system == "http://snomed.info/sct"
+    assert inst.category[0].coding[0].code == "55607006"
+    assert inst.category[0].coding[0].display == "Problem"
+    assert inst.category[0].coding[0].system == "http://snomed.info/sct"
+    assert inst.category[0].coding[1].code == "problem-list-item"
+    assert (
+        inst.category[0].coding[1].system
+        == "http://terminology.hl7.org/CodeSystem/condition-category"
+    )
+    assert inst.clinicalStatus.coding[0].code == "active"
+    assert (
+        inst.clinicalStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-clinical"
+    )
+    assert inst.code.coding[0].code == "10001005"
+    assert inst.code.coding[0].display == "Bacterial sepsis"
+    assert inst.code.coding[0].system == "http://snomed.info/sct"
+    assert inst.encounter.display == "Roel's encounter on March elevanth"
+    assert inst.encounter.reference == "Encounter/f203"
+    assert inst.evidence[0].detail[0].display == "Diagnostic report for Roel's sepsis"
+    assert inst.evidence[0].detail[0].reference == "DiagnosticReport/f202"
+    assert inst.id == "f203"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.onsetDateTime == fhirtypes.DateTime.validate(
+        "2013-03-08T12:09:24+00:06"
+    )
+    assert inst.recordedDate == fhirtypes.DateTime.validate("2013-03-11T12:09:24+00:06")
+    assert inst.severity.coding[0].code == "371924009"
+    assert inst.severity.coding[0].display == "Moderate to severe"
+    assert inst.severity.coding[0].system == "http://snomed.info/sct"
+    assert inst.subject.display == "Roel"
+    assert inst.subject.reference == "Patient/f201"
+    assert inst.text.status == "generated"
+    assert inst.verificationStatus.coding[0].code == "confirmed"
+    assert (
+        inst.verificationStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-ver-status"
+    )
 
-        js = inst.as_json()
-        self.assertEqual("Condition", js["resourceType"])
-        inst2 = condition.Condition(js)
-        self.implCondition3(inst2)
 
-    def implCondition3(self, inst):
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].code),
-            force_bytes("encounter-diagnosis"),
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].display),
-            force_bytes("Encounter Diagnosis"),
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/condition-category"),
-        )
-        self.assertEqual(
-            force_bytes(inst.clinicalStatus.coding[0].code), force_bytes("active")
-        )
-        self.assertEqual(
-            force_bytes(inst.clinicalStatus.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/condition-clinical"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].code), force_bytes("422504002")
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].display),
-            force_bytes("Ischemic stroke (disorder)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.code.text), force_bytes("Stroke"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("stroke"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(inst.onsetDateTime.date, FHIRDate("2010-07-18").date)
-        self.assertEqual(inst.onsetDateTime.as_json(), "2010-07-18")
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">Ischemic stroke, July 18, 2010</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.verificationStatus.coding[0].code),
-            force_bytes("confirmed"),
-        )
-        self.assertEqual(
-            force_bytes(inst.verificationStatus.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/condition-ver-status"),
-        )
+def test_condition_2(base_settings):
+    """No. 2 tests collection for Condition.
+    Test File: condition-example-f203-sepsis.json
+    """
+    filename = base_settings["unittest_data_dir"] / "condition-example-f203-sepsis.json"
+    inst = condition.Condition.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Condition" == inst.resource_type
 
-    def testCondition4(self):
-        inst = self.instantiate_from("condition-example-family-history.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Condition instance")
-        self.implCondition4(inst)
+    impl_condition_2(inst)
 
-        js = inst.as_json()
-        self.assertEqual("Condition", js["resourceType"])
-        inst2 = condition.Condition(js)
-        self.implCondition4(inst2)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Condition" == data["resourceType"]
 
-    def implCondition4(self, inst):
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].code),
-            force_bytes("problem-list-item"),
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].display),
-            force_bytes("Problem List Item"),
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/condition-category"),
-        )
-        self.assertEqual(
-            force_bytes(inst.clinicalStatus.coding[0].code), force_bytes("active")
-        )
-        self.assertEqual(
-            force_bytes(inst.clinicalStatus.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/condition-clinical"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].code), force_bytes("312824007")
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].display),
-            force_bytes("Family history of cancer of colon"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("family-history"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">Family history of cancer of colon</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    inst2 = condition.Condition(**data)
+    impl_condition_2(inst2)
 
-    def testCondition5(self):
-        inst = self.instantiate_from("condition-example-f002-lung.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Condition instance")
-        self.implCondition5(inst)
 
-        js = inst.as_json()
-        self.assertEqual("Condition", js["resourceType"])
-        inst2 = condition.Condition(js)
-        self.implCondition5(inst2)
+def impl_condition_3(inst):
+    assert inst.category[0].coding[0].code == "encounter-diagnosis"
+    assert inst.category[0].coding[0].display == "Encounter Diagnosis"
+    assert (
+        inst.category[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-category"
+    )
+    assert inst.clinicalStatus.coding[0].code == "active"
+    assert (
+        inst.clinicalStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-clinical"
+    )
+    assert inst.code.coding[0].code == "422504002"
+    assert inst.code.coding[0].display == "Ischemic stroke (disorder)"
+    assert inst.code.coding[0].system == "http://snomed.info/sct"
+    assert inst.code.text == "Stroke"
+    assert inst.id == "stroke"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.onsetDateTime == fhirtypes.DateTime.validate(
+        "2010-07-18T12:09:24+00:06"
+    )
+    assert inst.subject.reference == "Patient/example"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">Ischemic stroke, July 18, 2010</div>'
+    )
+    assert inst.text.status == "generated"
+    assert inst.verificationStatus.coding[0].code == "confirmed"
+    assert (
+        inst.verificationStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-ver-status"
+    )
 
-    def implCondition5(self, inst):
-        self.assertEqual(
-            force_bytes(inst.bodySite[0].coding[0].code), force_bytes("51185008")
-        )
-        self.assertEqual(
-            force_bytes(inst.bodySite[0].coding[0].display), force_bytes("Thorax")
-        )
-        self.assertEqual(
-            force_bytes(inst.bodySite[0].coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].code), force_bytes("439401001")
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].display), force_bytes("diagnosis")
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.clinicalStatus.coding[0].code), force_bytes("active")
-        )
-        self.assertEqual(
-            force_bytes(inst.clinicalStatus.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/condition-clinical"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].code), force_bytes("254637007")
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].display),
-            force_bytes("NSCLC - Non-small cell lung cancer"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.evidence[0].code[0].coding[0].code),
-            force_bytes("169069000"),
-        )
-        self.assertEqual(
-            force_bytes(inst.evidence[0].code[0].coding[0].display),
-            force_bytes("CT of thorax"),
-        )
-        self.assertEqual(
-            force_bytes(inst.evidence[0].code[0].coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("f002"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(inst.onsetDateTime.date, FHIRDate("2011-05-05").date)
-        self.assertEqual(inst.onsetDateTime.as_json(), "2011-05-05")
-        self.assertEqual(inst.recordedDate.date, FHIRDate("2012-06-03").date)
-        self.assertEqual(inst.recordedDate.as_json(), "2012-06-03")
-        self.assertEqual(
-            force_bytes(inst.severity.coding[0].code), force_bytes("24484000")
-        )
-        self.assertEqual(
-            force_bytes(inst.severity.coding[0].display), force_bytes("Severe")
-        )
-        self.assertEqual(
-            force_bytes(inst.severity.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.stage[0].summary.coding[0].code), force_bytes("258219007")
-        )
-        self.assertEqual(
-            force_bytes(inst.stage[0].summary.coding[0].display),
-            force_bytes("stage II"),
-        )
-        self.assertEqual(
-            force_bytes(inst.stage[0].summary.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.stage[0].type.coding[0].code), force_bytes("260998006")
-        )
-        self.assertEqual(
-            force_bytes(inst.stage[0].type.coding[0].display),
-            force_bytes("Clinical staging (qualifier value)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.stage[0].type.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.verificationStatus.coding[0].code),
-            force_bytes("confirmed"),
-        )
-        self.assertEqual(
-            force_bytes(inst.verificationStatus.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/condition-ver-status"),
-        )
 
-    def testCondition6(self):
-        inst = self.instantiate_from("condition-example-f205-infection.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Condition instance")
-        self.implCondition6(inst)
+def test_condition_3(base_settings):
+    """No. 3 tests collection for Condition.
+    Test File: condition-example-stroke.json
+    """
+    filename = base_settings["unittest_data_dir"] / "condition-example-stroke.json"
+    inst = condition.Condition.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Condition" == inst.resource_type
 
-        js = inst.as_json()
-        self.assertEqual("Condition", js["resourceType"])
-        inst2 = condition.Condition(js)
-        self.implCondition6(inst2)
+    impl_condition_3(inst)
 
-    def implCondition6(self, inst):
-        self.assertEqual(
-            force_bytes(inst.clinicalStatus.coding[0].code), force_bytes("active")
-        )
-        self.assertEqual(
-            force_bytes(inst.clinicalStatus.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/condition-clinical"),
-        )
-        self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("87628006"))
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].display),
-            force_bytes("Bacterial infectious disease"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("f205"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(inst.recordedDate.date, FHIRDate("2013-04-04").date)
-        self.assertEqual(inst.recordedDate.as_json(), "2013-04-04")
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.verificationStatus.coding[0].code),
-            force_bytes("differential"),
-        )
-        self.assertEqual(
-            force_bytes(inst.verificationStatus.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/condition-ver-status"),
-        )
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Condition" == data["resourceType"]
 
-    def testCondition7(self):
-        inst = self.instantiate_from("condition-example-f204-renal.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Condition instance")
-        self.implCondition7(inst)
+    inst2 = condition.Condition(**data)
+    impl_condition_3(inst2)
 
-        js = inst.as_json()
-        self.assertEqual("Condition", js["resourceType"])
-        inst2 = condition.Condition(js)
-        self.implCondition7(inst2)
 
-    def implCondition7(self, inst):
-        self.assertEqual(inst.abatementDateTime.date, FHIRDate("2013-03-20").date)
-        self.assertEqual(inst.abatementDateTime.as_json(), "2013-03-20")
-        self.assertEqual(
-            force_bytes(inst.bodySite[0].coding[0].code), force_bytes("181414000")
-        )
-        self.assertEqual(
-            force_bytes(inst.bodySite[0].coding[0].display), force_bytes("Kidney")
-        )
-        self.assertEqual(
-            force_bytes(inst.bodySite[0].coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].code), force_bytes("55607006")
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].display), force_bytes("Problem")
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[1].code),
-            force_bytes("problem-list-item"),
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[1].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/condition-category"),
-        )
-        self.assertEqual(
-            force_bytes(inst.clinicalStatus.coding[0].code), force_bytes("inactive")
-        )
-        self.assertEqual(
-            force_bytes(inst.clinicalStatus.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/condition-clinical"),
-        )
-        self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("36225005"))
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].display),
-            force_bytes("Acute renal insufficiency specified as due to procedure"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("f204"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.note[0].text), force_bytes("The patient is anuric.")
-        )
-        self.assertEqual(inst.onsetDateTime.date, FHIRDate("2013-03-11").date)
-        self.assertEqual(inst.onsetDateTime.as_json(), "2013-03-11")
-        self.assertEqual(inst.recordedDate.date, FHIRDate("2013-03-11").date)
-        self.assertEqual(inst.recordedDate.as_json(), "2013-03-11")
-        self.assertEqual(
-            force_bytes(inst.severity.coding[0].code), force_bytes("24484000")
-        )
-        self.assertEqual(
-            force_bytes(inst.severity.coding[0].display), force_bytes("Severe")
-        )
-        self.assertEqual(
-            force_bytes(inst.severity.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.stage[0].summary.coding[0].code), force_bytes("14803004")
-        )
-        self.assertEqual(
-            force_bytes(inst.stage[0].summary.coding[0].display),
-            force_bytes("Temporary"),
-        )
-        self.assertEqual(
-            force_bytes(inst.stage[0].summary.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.verificationStatus.coding[0].code),
-            force_bytes("differential"),
-        )
-        self.assertEqual(
-            force_bytes(inst.verificationStatus.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/condition-ver-status"),
-        )
+def impl_condition_4(inst):
+    assert inst.category[0].coding[0].code == "problem-list-item"
+    assert inst.category[0].coding[0].display == "Problem List Item"
+    assert (
+        inst.category[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-category"
+    )
+    assert inst.clinicalStatus.coding[0].code == "active"
+    assert (
+        inst.clinicalStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-clinical"
+    )
+    assert inst.code.coding[0].code == "312824007"
+    assert inst.code.coding[0].display == "Family history of cancer of colon"
+    assert inst.code.coding[0].system == "http://snomed.info/sct"
+    assert inst.id == "family-history"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.subject.reference == "Patient/example"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">Family history of cancer of colon</div>'
+    )
+    assert inst.text.status == "generated"
 
-    def testCondition8(self):
-        inst = self.instantiate_from("condition-example2.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Condition instance")
-        self.implCondition8(inst)
 
-        js = inst.as_json()
-        self.assertEqual("Condition", js["resourceType"])
-        inst2 = condition.Condition(js)
-        self.implCondition8(inst2)
+def test_condition_4(base_settings):
+    """No. 4 tests collection for Condition.
+    Test File: condition-example-family-history.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "condition-example-family-history.json"
+    )
+    inst = condition.Condition.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Condition" == inst.resource_type
 
-    def implCondition8(self, inst):
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].code),
-            force_bytes("problem-list-item"),
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].display),
-            force_bytes("Problem List Item"),
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/condition-category"),
-        )
-        self.assertEqual(
-            force_bytes(inst.clinicalStatus.coding[0].code), force_bytes("active")
-        )
-        self.assertEqual(
-            force_bytes(inst.clinicalStatus.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/condition-clinical"),
-        )
-        self.assertEqual(force_bytes(inst.code.text), force_bytes("Asthma"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("example2"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.onsetString), force_bytes("approximately November 2012")
-        )
-        self.assertEqual(
-            force_bytes(inst.severity.coding[0].code), force_bytes("255604002")
-        )
-        self.assertEqual(
-            force_bytes(inst.severity.coding[0].display), force_bytes("Mild")
-        )
-        self.assertEqual(
-            force_bytes(inst.severity.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">Mild Asthma (Date: 12-Nov 2012)</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.verificationStatus.coding[0].code),
-            force_bytes("confirmed"),
-        )
-        self.assertEqual(
-            force_bytes(inst.verificationStatus.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/condition-ver-status"),
-        )
+    impl_condition_4(inst)
 
-    def testCondition9(self):
-        inst = self.instantiate_from("condition-example-f202-malignancy.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Condition instance")
-        self.implCondition9(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Condition" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("Condition", js["resourceType"])
-        inst2 = condition.Condition(js)
-        self.implCondition9(inst2)
+    inst2 = condition.Condition(**data)
+    impl_condition_4(inst2)
 
-    def implCondition9(self, inst):
-        self.assertEqual(force_bytes(inst.abatementAge.code), force_bytes("a"))
-        self.assertEqual(
-            force_bytes(inst.abatementAge.system),
-            force_bytes("http://unitsofmeasure.org"),
-        )
-        self.assertEqual(force_bytes(inst.abatementAge.unit), force_bytes("years"))
-        self.assertEqual(inst.abatementAge.value, 54)
-        self.assertEqual(
-            force_bytes(inst.bodySite[0].coding[0].code), force_bytes("361355005")
-        )
-        self.assertEqual(
-            force_bytes(inst.bodySite[0].coding[0].display),
-            force_bytes("Entire head and neck"),
-        )
-        self.assertEqual(
-            force_bytes(inst.bodySite[0].coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].code),
-            force_bytes("encounter-diagnosis"),
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/condition-category"),
-        )
-        self.assertEqual(
-            force_bytes(inst.clinicalStatus.coding[0].code), force_bytes("resolved")
-        )
-        self.assertEqual(
-            force_bytes(inst.clinicalStatus.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/condition-clinical"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].code), force_bytes("363346000")
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].display),
-            force_bytes("Malignant neoplastic disease"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("f202"))
-        self.assertEqual(force_bytes(inst.meta.security[0].code), force_bytes("TBOO"))
-        self.assertEqual(
-            force_bytes(inst.meta.security[0].display), force_bytes("taboo")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.security[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActCode"),
-        )
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.onsetAge.code), force_bytes("a"))
-        self.assertEqual(
-            force_bytes(inst.onsetAge.system), force_bytes("http://unitsofmeasure.org")
-        )
-        self.assertEqual(force_bytes(inst.onsetAge.unit), force_bytes("years"))
-        self.assertEqual(inst.onsetAge.value, 52)
-        self.assertEqual(inst.recordedDate.date, FHIRDate("2012-12-01").date)
-        self.assertEqual(inst.recordedDate.as_json(), "2012-12-01")
-        self.assertEqual(
-            force_bytes(inst.severity.coding[0].code), force_bytes("24484000")
-        )
-        self.assertEqual(
-            force_bytes(inst.severity.coding[0].display), force_bytes("Severe")
-        )
-        self.assertEqual(
-            force_bytes(inst.severity.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.verificationStatus.coding[0].code),
-            force_bytes("confirmed"),
-        )
-        self.assertEqual(
-            force_bytes(inst.verificationStatus.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/condition-ver-status"),
-        )
 
-    def testCondition10(self):
-        inst = self.instantiate_from("condition-example-f201-fever.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Condition instance")
-        self.implCondition10(inst)
+def impl_condition_5(inst):
+    assert inst.asserter.display == "P. van de Heuvel"
+    assert inst.asserter.reference == "Patient/f001"
+    assert inst.bodySite[0].coding[0].code == "51185008"
+    assert inst.bodySite[0].coding[0].display == "Thorax"
+    assert inst.bodySite[0].coding[0].system == "http://snomed.info/sct"
+    assert inst.category[0].coding[0].code == "439401001"
+    assert inst.category[0].coding[0].display == "diagnosis"
+    assert inst.category[0].coding[0].system == "http://snomed.info/sct"
+    assert inst.clinicalStatus.coding[0].code == "active"
+    assert (
+        inst.clinicalStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-clinical"
+    )
+    assert inst.code.coding[0].code == "254637007"
+    assert inst.code.coding[0].display == "NSCLC - Non-small cell lung cancer"
+    assert inst.code.coding[0].system == "http://snomed.info/sct"
+    assert inst.encounter.reference == "Encounter/f002"
+    assert inst.evidence[0].code[0].coding[0].code == "169069000"
+    assert inst.evidence[0].code[0].coding[0].display == "CT of thorax"
+    assert inst.evidence[0].code[0].coding[0].system == "http://snomed.info/sct"
+    assert inst.id == "f002"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.onsetDateTime == fhirtypes.DateTime.validate(
+        "2011-05-05T12:09:24+00:06"
+    )
+    assert inst.recordedDate == fhirtypes.DateTime.validate("2012-06-03T12:09:24+00:06")
+    assert inst.severity.coding[0].code == "24484000"
+    assert inst.severity.coding[0].display == "Severe"
+    assert inst.severity.coding[0].system == "http://snomed.info/sct"
+    assert inst.stage[0].summary.coding[0].code == "258219007"
+    assert inst.stage[0].summary.coding[0].display == "stage II"
+    assert inst.stage[0].summary.coding[0].system == "http://snomed.info/sct"
+    assert inst.stage[0].type.coding[0].code == "260998006"
+    assert inst.stage[0].type.coding[0].display == "Clinical staging (qualifier value)"
+    assert inst.stage[0].type.coding[0].system == "http://snomed.info/sct"
+    assert inst.subject.display == "P. van de Heuvel"
+    assert inst.subject.reference == "Patient/f001"
+    assert inst.text.status == "generated"
+    assert inst.verificationStatus.coding[0].code == "confirmed"
+    assert (
+        inst.verificationStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-ver-status"
+    )
 
-        js = inst.as_json()
-        self.assertEqual("Condition", js["resourceType"])
-        inst2 = condition.Condition(js)
-        self.implCondition10(inst2)
 
-    def implCondition10(self, inst):
-        self.assertEqual(
-            force_bytes(inst.abatementString), force_bytes("around April 9, 2013")
-        )
-        self.assertEqual(
-            force_bytes(inst.bodySite[0].coding[0].code), force_bytes("38266002")
-        )
-        self.assertEqual(
-            force_bytes(inst.bodySite[0].coding[0].display),
-            force_bytes("Entire body as a whole"),
-        )
-        self.assertEqual(
-            force_bytes(inst.bodySite[0].coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].code), force_bytes("55607006")
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].display), force_bytes("Problem")
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[1].code),
-            force_bytes("problem-list-item"),
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[1].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/condition-category"),
-        )
-        self.assertEqual(
-            force_bytes(inst.clinicalStatus.coding[0].code), force_bytes("resolved")
-        )
-        self.assertEqual(
-            force_bytes(inst.clinicalStatus.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/condition-clinical"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].code), force_bytes("386661006")
-        )
-        self.assertEqual(force_bytes(inst.code.coding[0].display), force_bytes("Fever"))
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.evidence[0].code[0].coding[0].code),
-            force_bytes("258710007"),
-        )
-        self.assertEqual(
-            force_bytes(inst.evidence[0].code[0].coding[0].display),
-            force_bytes("degrees C"),
-        )
-        self.assertEqual(
-            force_bytes(inst.evidence[0].code[0].coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("f201"))
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("12345"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(inst.onsetDateTime.date, FHIRDate("2013-04-02").date)
-        self.assertEqual(inst.onsetDateTime.as_json(), "2013-04-02")
-        self.assertEqual(inst.recordedDate.date, FHIRDate("2013-04-04").date)
-        self.assertEqual(inst.recordedDate.as_json(), "2013-04-04")
-        self.assertEqual(
-            force_bytes(inst.severity.coding[0].code), force_bytes("255604002")
-        )
-        self.assertEqual(
-            force_bytes(inst.severity.coding[0].display), force_bytes("Mild")
-        )
-        self.assertEqual(
-            force_bytes(inst.severity.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.verificationStatus.coding[0].code),
-            force_bytes("confirmed"),
-        )
-        self.assertEqual(
-            force_bytes(inst.verificationStatus.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/condition-ver-status"),
-        )
+def test_condition_5(base_settings):
+    """No. 5 tests collection for Condition.
+    Test File: condition-example-f002-lung.json
+    """
+    filename = base_settings["unittest_data_dir"] / "condition-example-f002-lung.json"
+    inst = condition.Condition.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Condition" == inst.resource_type
+
+    impl_condition_5(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Condition" == data["resourceType"]
+
+    inst2 = condition.Condition(**data)
+    impl_condition_5(inst2)
+
+
+def impl_condition_6(inst):
+    assert inst.asserter.reference == "Practitioner/f201"
+    assert inst.clinicalStatus.coding[0].code == "active"
+    assert (
+        inst.clinicalStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-clinical"
+    )
+    assert inst.code.coding[0].code == "87628006"
+    assert inst.code.coding[0].display == "Bacterial infectious disease"
+    assert inst.code.coding[0].system == "http://snomed.info/sct"
+    assert inst.id == "f205"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.recordedDate == fhirtypes.DateTime.validate("2013-04-04T12:09:24+00:06")
+    assert inst.subject.display == "Roel"
+    assert inst.subject.reference == "Patient/f201"
+    assert inst.text.status == "generated"
+    assert inst.verificationStatus.coding[0].code == "differential"
+    assert (
+        inst.verificationStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-ver-status"
+    )
+
+
+def test_condition_6(base_settings):
+    """No. 6 tests collection for Condition.
+    Test File: condition-example-f205-infection.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "condition-example-f205-infection.json"
+    )
+    inst = condition.Condition.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Condition" == inst.resource_type
+
+    impl_condition_6(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Condition" == data["resourceType"]
+
+    inst2 = condition.Condition(**data)
+    impl_condition_6(inst2)
+
+
+def impl_condition_7(inst):
+    assert inst.abatementDateTime == fhirtypes.DateTime.validate(
+        "2013-03-20T12:09:24+00:06"
+    )
+    assert inst.asserter.reference == "Practitioner/f201"
+    assert inst.bodySite[0].coding[0].code == "181414000"
+    assert inst.bodySite[0].coding[0].display == "Kidney"
+    assert inst.bodySite[0].coding[0].system == "http://snomed.info/sct"
+    assert inst.category[0].coding[0].code == "55607006"
+    assert inst.category[0].coding[0].display == "Problem"
+    assert inst.category[0].coding[0].system == "http://snomed.info/sct"
+    assert inst.category[0].coding[1].code == "problem-list-item"
+    assert (
+        inst.category[0].coding[1].system
+        == "http://terminology.hl7.org/CodeSystem/condition-category"
+    )
+    assert inst.clinicalStatus.coding[0].code == "inactive"
+    assert (
+        inst.clinicalStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-clinical"
+    )
+    assert inst.code.coding[0].code == "36225005"
+    assert (
+        inst.code.coding[0].display
+        == "Acute renal insufficiency specified as due to procedure"
+    )
+    assert inst.code.coding[0].system == "http://snomed.info/sct"
+    assert inst.encounter.display == "Roel's encounter on March elevanth"
+    assert inst.encounter.reference == "Encounter/f203"
+    assert inst.id == "f204"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.note[0].text == "The patient is anuric."
+    assert inst.onsetDateTime == fhirtypes.DateTime.validate(
+        "2013-03-11T12:09:24+00:06"
+    )
+    assert inst.recordedDate == fhirtypes.DateTime.validate("2013-03-11T12:09:24+00:06")
+    assert inst.severity.coding[0].code == "24484000"
+    assert inst.severity.coding[0].display == "Severe"
+    assert inst.severity.coding[0].system == "http://snomed.info/sct"
+    assert inst.stage[0].assessment[0].display == "Genetic analysis master panel"
+    assert inst.stage[0].summary.coding[0].code == "14803004"
+    assert inst.stage[0].summary.coding[0].display == "Temporary"
+    assert inst.stage[0].summary.coding[0].system == "http://snomed.info/sct"
+    assert inst.subject.display == "Roel"
+    assert inst.subject.reference == "Patient/f201"
+    assert inst.text.status == "generated"
+    assert inst.verificationStatus.coding[0].code == "differential"
+    assert (
+        inst.verificationStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-ver-status"
+    )
+
+
+def test_condition_7(base_settings):
+    """No. 7 tests collection for Condition.
+    Test File: condition-example-f204-renal.json
+    """
+    filename = base_settings["unittest_data_dir"] / "condition-example-f204-renal.json"
+    inst = condition.Condition.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Condition" == inst.resource_type
+
+    impl_condition_7(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Condition" == data["resourceType"]
+
+    inst2 = condition.Condition(**data)
+    impl_condition_7(inst2)
+
+
+def impl_condition_8(inst):
+    assert inst.category[0].coding[0].code == "problem-list-item"
+    assert inst.category[0].coding[0].display == "Problem List Item"
+    assert (
+        inst.category[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-category"
+    )
+    assert inst.clinicalStatus.coding[0].code == "active"
+    assert (
+        inst.clinicalStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-clinical"
+    )
+    assert inst.code.text == "Asthma"
+    assert inst.id == "example2"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.onsetString == "approximately November 2012"
+    assert inst.severity.coding[0].code == "255604002"
+    assert inst.severity.coding[0].display == "Mild"
+    assert inst.severity.coding[0].system == "http://snomed.info/sct"
+    assert inst.subject.reference == "Patient/example"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">Mild Asthma (Date: 12-Nov 2012)</div>'
+    )
+    assert inst.text.status == "generated"
+    assert inst.verificationStatus.coding[0].code == "confirmed"
+    assert (
+        inst.verificationStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-ver-status"
+    )
+
+
+def test_condition_8(base_settings):
+    """No. 8 tests collection for Condition.
+    Test File: condition-example2.json
+    """
+    filename = base_settings["unittest_data_dir"] / "condition-example2.json"
+    inst = condition.Condition.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Condition" == inst.resource_type
+
+    impl_condition_8(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Condition" == data["resourceType"]
+
+    inst2 = condition.Condition(**data)
+    impl_condition_8(inst2)
+
+
+def impl_condition_9(inst):
+    assert inst.abatementAge.code == "a"
+    assert inst.abatementAge.system == "http://unitsofmeasure.org"
+    assert inst.abatementAge.unit == "years"
+    assert float(inst.abatementAge.value) == float(54)
+    assert inst.bodySite[0].coding[0].code == "361355005"
+    assert inst.bodySite[0].coding[0].display == "Entire head and neck"
+    assert inst.bodySite[0].coding[0].system == "http://snomed.info/sct"
+    assert inst.category[0].coding[0].code == "encounter-diagnosis"
+    assert (
+        inst.category[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-category"
+    )
+    assert inst.clinicalStatus.coding[0].code == "resolved"
+    assert (
+        inst.clinicalStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-clinical"
+    )
+    assert inst.code.coding[0].code == "363346000"
+    assert inst.code.coding[0].display == "Malignant neoplastic disease"
+    assert inst.code.coding[0].system == "http://snomed.info/sct"
+    assert (
+        inst.evidence[0].detail[0].display
+        == "Erasmus' diagnostic report of Roel's tumor"
+    )
+    assert inst.evidence[0].detail[0].reference == "DiagnosticReport/f201"
+    assert inst.id == "f202"
+    assert inst.meta.security[0].code == "TBOO"
+    assert inst.meta.security[0].display == "taboo"
+    assert (
+        inst.meta.security[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+    )
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.onsetAge.code == "a"
+    assert inst.onsetAge.system == "http://unitsofmeasure.org"
+    assert inst.onsetAge.unit == "years"
+    assert float(inst.onsetAge.value) == float(52)
+    assert inst.recordedDate == fhirtypes.DateTime.validate("2012-12-01T12:09:24+00:06")
+    assert inst.severity.coding[0].code == "24484000"
+    assert inst.severity.coding[0].display == "Severe"
+    assert inst.severity.coding[0].system == "http://snomed.info/sct"
+    assert inst.subject.display == "Roel"
+    assert inst.subject.reference == "Patient/f201"
+    assert inst.text.status == "generated"
+    assert inst.verificationStatus.coding[0].code == "confirmed"
+    assert (
+        inst.verificationStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-ver-status"
+    )
+
+
+def test_condition_9(base_settings):
+    """No. 9 tests collection for Condition.
+    Test File: condition-example-f202-malignancy.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "condition-example-f202-malignancy.json"
+    )
+    inst = condition.Condition.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Condition" == inst.resource_type
+
+    impl_condition_9(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Condition" == data["resourceType"]
+
+    inst2 = condition.Condition(**data)
+    impl_condition_9(inst2)
+
+
+def impl_condition_10(inst):
+    assert inst.abatementString == "around April 9, 2013"
+    assert inst.asserter.reference == "Practitioner/f201"
+    assert inst.bodySite[0].coding[0].code == "38266002"
+    assert inst.bodySite[0].coding[0].display == "Entire body as a whole"
+    assert inst.bodySite[0].coding[0].system == "http://snomed.info/sct"
+    assert inst.category[0].coding[0].code == "55607006"
+    assert inst.category[0].coding[0].display == "Problem"
+    assert inst.category[0].coding[0].system == "http://snomed.info/sct"
+    assert inst.category[0].coding[1].code == "problem-list-item"
+    assert (
+        inst.category[0].coding[1].system
+        == "http://terminology.hl7.org/CodeSystem/condition-category"
+    )
+    assert inst.clinicalStatus.coding[0].code == "resolved"
+    assert (
+        inst.clinicalStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-clinical"
+    )
+    assert inst.code.coding[0].code == "386661006"
+    assert inst.code.coding[0].display == "Fever"
+    assert inst.code.coding[0].system == "http://snomed.info/sct"
+    assert inst.encounter.reference == "Encounter/f201"
+    assert inst.evidence[0].code[0].coding[0].code == "258710007"
+    assert inst.evidence[0].code[0].coding[0].display == "degrees C"
+    assert inst.evidence[0].code[0].coding[0].system == "http://snomed.info/sct"
+    assert inst.evidence[0].detail[0].display == "Temperature"
+    assert inst.evidence[0].detail[0].reference == "Observation/f202"
+    assert inst.id == "f201"
+    assert inst.identifier[0].value == "12345"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.onsetDateTime == fhirtypes.DateTime.validate(
+        "2013-04-02T12:09:24+00:06"
+    )
+    assert inst.recordedDate == fhirtypes.DateTime.validate("2013-04-04T12:09:24+00:06")
+    assert inst.recorder.reference == "Practitioner/f201"
+    assert inst.severity.coding[0].code == "255604002"
+    assert inst.severity.coding[0].display == "Mild"
+    assert inst.severity.coding[0].system == "http://snomed.info/sct"
+    assert inst.subject.display == "Roel"
+    assert inst.subject.reference == "Patient/f201"
+    assert inst.text.status == "generated"
+    assert inst.verificationStatus.coding[0].code == "confirmed"
+    assert (
+        inst.verificationStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-ver-status"
+    )
+
+
+def test_condition_10(base_settings):
+    """No. 10 tests collection for Condition.
+    Test File: condition-example-f201-fever.json
+    """
+    filename = base_settings["unittest_data_dir"] / "condition-example-f201-fever.json"
+    inst = condition.Condition.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Condition" == inst.resource_type
+
+    impl_condition_10(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Condition" == data["resourceType"]
+
+    inst2 = condition.Condition(**data)
+    impl_condition_10(inst2)

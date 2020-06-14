@@ -6,108 +6,98 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import appointmentresponse
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class AppointmentResponseTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("AppointmentResponse", js["resourceType"])
-        return appointmentresponse.AppointmentResponse(js)
+def impl_appointmentresponse_1(inst):
+    assert inst.actor.display == "Dr Adam Careful"
+    assert inst.actor.reference == "Practitioner/example"
+    assert inst.appointment.display == "Brian MRI results discussion"
+    assert inst.appointment.reference == "Appointment/examplereq"
+    assert inst.comment == "can't we try for this time, can't do mornings"
+    assert inst.end == fhirtypes.Instant.validate("2013-12-25T13:30:00Z")
+    assert inst.id == "exampleresp"
+    assert (
+        inst.identifier[0].system
+        == "http://example.org/sampleappointmentresponse-identifier"
+    )
+    assert inst.identifier[0].value == "response123"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.participantStatus == "tentative"
+    assert inst.participantType[0].coding[0].code == "ATND"
+    assert (
+        inst.participantType[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
+    )
+    assert inst.start == fhirtypes.Instant.validate("2013-12-25T13:15:00Z")
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">Accept Brian MRI results discussion</div>'
+    )
+    assert inst.text.status == "generated"
 
-    def testAppointmentResponse1(self):
-        inst = self.instantiate_from("appointmentresponse-example-req.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a AppointmentResponse instance"
-        )
-        self.implAppointmentResponse1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("AppointmentResponse", js["resourceType"])
-        inst2 = appointmentresponse.AppointmentResponse(js)
-        self.implAppointmentResponse1(inst2)
+def test_appointmentresponse_1(base_settings):
+    """No. 1 tests collection for AppointmentResponse.
+    Test File: appointmentresponse-example-req.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "appointmentresponse-example-req.json"
+    )
+    inst = appointmentresponse.AppointmentResponse.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "AppointmentResponse" == inst.resource_type
 
-    def implAppointmentResponse1(self, inst):
-        self.assertEqual(
-            force_bytes(inst.comment),
-            force_bytes("can't we try for this time, can't do mornings"),
-        )
-        self.assertEqual(inst.end.date, FHIRDate("2013-12-25T13:30:00Z").date)
-        self.assertEqual(inst.end.as_json(), "2013-12-25T13:30:00Z")
-        self.assertEqual(force_bytes(inst.id), force_bytes("exampleresp"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://example.org/sampleappointmentresponse-identifier"),
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].value), force_bytes("response123")
-        )
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.participantStatus), force_bytes("tentative"))
-        self.assertEqual(
-            force_bytes(inst.participantType[0].coding[0].code), force_bytes("ATND")
-        )
-        self.assertEqual(
-            force_bytes(inst.participantType[0].coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ParticipationType"),
-        )
-        self.assertEqual(inst.start.date, FHIRDate("2013-12-25T13:15:00Z").date)
-        self.assertEqual(inst.start.as_json(), "2013-12-25T13:15:00Z")
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">Accept Brian MRI results discussion</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    impl_appointmentresponse_1(inst)
 
-    def testAppointmentResponse2(self):
-        inst = self.instantiate_from("appointmentresponse-example.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a AppointmentResponse instance"
-        )
-        self.implAppointmentResponse2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "AppointmentResponse" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("AppointmentResponse", js["resourceType"])
-        inst2 = appointmentresponse.AppointmentResponse(js)
-        self.implAppointmentResponse2(inst2)
+    inst2 = appointmentresponse.AppointmentResponse(**data)
+    impl_appointmentresponse_1(inst2)
 
-    def implAppointmentResponse2(self, inst):
-        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.participantStatus), force_bytes("accepted"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">Accept Brian MRI results discussion</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+
+def impl_appointmentresponse_2(inst):
+    assert inst.actor.display == "Peter James Chalmers"
+    assert inst.actor.reference == "Patient/example"
+    assert inst.appointment.display == "Brian MRI results discussion"
+    assert inst.appointment.reference == "Appointment/example"
+    assert inst.id == "example"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.participantStatus == "accepted"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">Accept Brian MRI results discussion</div>'
+    )
+    assert inst.text.status == "generated"
+
+
+def test_appointmentresponse_2(base_settings):
+    """No. 2 tests collection for AppointmentResponse.
+    Test File: appointmentresponse-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "appointmentresponse-example.json"
+    inst = appointmentresponse.AppointmentResponse.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "AppointmentResponse" == inst.resource_type
+
+    impl_appointmentresponse_2(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "AppointmentResponse" == data["resourceType"]
+
+    inst2 = appointmentresponse.AppointmentResponse(**data)
+    impl_appointmentresponse_2(inst2)

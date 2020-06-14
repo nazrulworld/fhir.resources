@@ -6,287 +6,217 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import Any, Dict
+from typing import List as ListType
 
+from pydantic import Field, root_validator
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class Invoice(domainresource.DomainResource):
     """ Invoice containing ChargeItems from an Account.
-
     Invoice containing collected ChargeItems from an Account with calculated
     individual and total price for Billing purpose.
     """
 
-    resource_type = "Invoice"
+    resource_type = Field("Invoice", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    account: fhirtypes.ReferenceType = Field(
+        None,
+        alias="account",
+        title="Type `Reference` referencing `Account` (represented as `dict` in JSON)",
+        description="Account that is being balanced",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    cancelledReason: fhirtypes.String = Field(
+        None,
+        alias="cancelledReason",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Reason for cancellation of this Invoice",
+    )
 
-        self.account = None
-        """ Account that is being balanced.
-        Type `FHIRReference` referencing `['Account']` (represented as `dict` in JSON). """
+    date: fhirtypes.DateTime = Field(
+        None,
+        alias="date",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Invoice date / posting date",
+    )
 
-        self.cancelledReason = None
-        """ Reason for cancellation of this Invoice.
-        Type `str`. """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Business Identifier for item",
+    )
 
-        self.date = None
-        """ Invoice date / posting date.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    issuer: fhirtypes.ReferenceType = Field(
+        None,
+        alias="issuer",
+        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        description="Issuing Organization of Invoice",
+    )
 
-        self.identifier = None
-        """ Business Identifier for item.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    lineItem: ListType[fhirtypes.InvoiceLineItemType] = Field(
+        None,
+        alias="lineItem",
+        title="List of `InvoiceLineItem` items (represented as `dict` in JSON)",
+        description="Line items of this Invoice",
+    )
 
-        self.issuer = None
-        """ Issuing Organization of Invoice.
-        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
+    note: ListType[fhirtypes.AnnotationType] = Field(
+        None,
+        alias="note",
+        title="List of `Annotation` items (represented as `dict` in JSON)",
+        description="Comments made about the invoice",
+    )
 
-        self.lineItem = None
-        """ Line items of this Invoice.
-        List of `InvoiceLineItem` items (represented as `dict` in JSON). """
+    participant: ListType[fhirtypes.InvoiceParticipantType] = Field(
+        None,
+        alias="participant",
+        title="List of `InvoiceParticipant` items (represented as `dict` in JSON)",
+        description="Participant in creation of this Invoice",
+    )
 
-        self.note = None
-        """ Comments made about the invoice.
-        List of `Annotation` items (represented as `dict` in JSON). """
+    paymentTerms: fhirtypes.Markdown = Field(
+        None,
+        alias="paymentTerms",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Payment details",
+    )
 
-        self.participant = None
-        """ Participant in creation of this Invoice.
-        List of `InvoiceParticipant` items (represented as `dict` in JSON). """
+    recipient: fhirtypes.ReferenceType = Field(
+        None,
+        alias="recipient",
+        title="Type `Reference` referencing `Organization, Patient, RelatedPerson` (represented as `dict` in JSON)",
+        description="Recipient of this invoice",
+    )
 
-        self.paymentTerms = None
-        """ Payment details.
-        Type `str`. """
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="draft | issued | balanced | cancelled | entered-in-error",
+    )
 
-        self.recipient = None
-        """ Recipient of this invoice.
-        Type `FHIRReference` referencing `['Organization', 'Patient', 'RelatedPerson']` (represented as `dict` in JSON). """
+    subject: fhirtypes.ReferenceType = Field(
+        None,
+        alias="subject",
+        title="Type `Reference` referencing `Patient, Group` (represented as `dict` in JSON)",
+        description="Recipient(s) of goods and services",
+    )
 
-        self.status = None
-        """ draft | issued | balanced | cancelled | entered-in-error.
-        Type `str`. """
+    totalGross: fhirtypes.MoneyType = Field(
+        None,
+        alias="totalGross",
+        title="Type `Money` (represented as `dict` in JSON)",
+        description="Gross total of this Invoice",
+    )
 
-        self.subject = None
-        """ Recipient(s) of goods and services.
-        Type `FHIRReference` referencing `['Patient', 'Group']` (represented as `dict` in JSON). """
+    totalNet: fhirtypes.MoneyType = Field(
+        None,
+        alias="totalNet",
+        title="Type `Money` (represented as `dict` in JSON)",
+        description="Net total of this Invoice",
+    )
 
-        self.totalGross = None
-        """ Gross total of this Invoice.
-        Type `Money` (represented as `dict` in JSON). """
+    totalPriceComponent: ListType[fhirtypes.InvoiceLineItemPriceComponentType] = Field(
+        None,
+        alias="totalPriceComponent",
+        title="List of `InvoiceLineItemPriceComponent` items (represented as `dict` in JSON)",
+        description="Components of Invoice total",
+    )
 
-        self.totalNet = None
-        """ Net total of this Invoice.
-        Type `Money` (represented as `dict` in JSON). """
-
-        self.totalPriceComponent = None
-        """ Components of Invoice total.
-        List of `InvoiceLineItemPriceComponent` items (represented as `dict` in JSON). """
-
-        self.type = None
-        """ Type of Invoice.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(Invoice, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(Invoice, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "account",
-                    "account",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "cancelledReason",
-                    "cancelledReason",
-                    str,
-                    "string",
-                    False,
-                    None,
-                    False,
-                ),
-                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "issuer",
-                    "issuer",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "lineItem",
-                    "lineItem",
-                    InvoiceLineItem,
-                    "InvoiceLineItem",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "note",
-                    "note",
-                    annotation.Annotation,
-                    "Annotation",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "participant",
-                    "participant",
-                    InvoiceParticipant,
-                    "InvoiceParticipant",
-                    True,
-                    None,
-                    False,
-                ),
-                ("paymentTerms", "paymentTerms", str, "markdown", False, None, False),
-                (
-                    "recipient",
-                    "recipient",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("status", "status", str, "code", False, None, True),
-                (
-                    "subject",
-                    "subject",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("totalGross", "totalGross", money.Money, "Money", False, None, False),
-                ("totalNet", "totalNet", money.Money, "Money", False, None, False),
-                (
-                    "totalPriceComponent",
-                    "totalPriceComponent",
-                    InvoiceLineItemPriceComponent,
-                    "InvoiceLineItemPriceComponent",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    type: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Type of Invoice",
+    )
 
 
 class InvoiceLineItem(backboneelement.BackboneElement):
     """ Line items of this Invoice.
-
     Each line item represents one charge for goods and services rendered.
     Details such as date, code and amount are found in the referenced
     ChargeItem resource.
     """
 
-    resource_type = "InvoiceLineItem"
+    resource_type = Field("InvoiceLineItem", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    chargeItemCodeableConcept: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="chargeItemCodeableConcept",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Reference to ChargeItem containing details of this line item or an inline billing code",
+        one_of_many="chargeItem",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    chargeItemReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="chargeItemReference",
+        title="Type `Reference` referencing `ChargeItem` (represented as `dict` in JSON)",
+        description="Reference to ChargeItem containing details of this line item or an inline billing code",
+        one_of_many="chargeItem",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    priceComponent: ListType[fhirtypes.InvoiceLineItemPriceComponentType] = Field(
+        None,
+        alias="priceComponent",
+        title="List of `InvoiceLineItemPriceComponent` items (represented as `dict` in JSON)",
+        description="Components of total line item price",
+    )
+
+    sequence: fhirtypes.PositiveInt = Field(
+        None,
+        alias="sequence",
+        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        description="Sequence number of line item",
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "chargeItem": ["chargeItemCodeableConcept", "chargeItemReference",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.chargeItemCodeableConcept = None
-        """ Reference to ChargeItem containing details of this line item or an
-        inline billing code.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.chargeItemReference = None
-        """ Reference to ChargeItem containing details of this line item or an
-        inline billing code.
-        Type `FHIRReference` referencing `['ChargeItem']` (represented as `dict` in JSON). """
-
-        self.priceComponent = None
-        """ Components of total line item price.
-        List of `InvoiceLineItemPriceComponent` items (represented as `dict` in JSON). """
-
-        self.sequence = None
-        """ Sequence number of line item.
-        Type `int`. """
-
-        super(InvoiceLineItem, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(InvoiceLineItem, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "chargeItemCodeableConcept",
-                    "chargeItemCodeableConcept",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    "chargeItem",
-                    True,
-                ),
-                (
-                    "chargeItemReference",
-                    "chargeItemReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    "chargeItem",
-                    True,
-                ),
-                (
-                    "priceComponent",
-                    "priceComponent",
-                    InvoiceLineItemPriceComponent,
-                    "InvoiceLineItemPriceComponent",
-                    True,
-                    None,
-                    False,
-                ),
-                ("sequence", "sequence", int, "positiveInt", False, None, False),
-            ]
-        )
-        return js
+        return values
 
 
 class InvoiceLineItemPriceComponent(backboneelement.BackboneElement):
     """ Components of total line item price.
-
     The price for a ChargeItem may be calculated as a base price with
     surcharges/deductions that apply in certain conditions. A
     ChargeItemDefinition resource that defines the prices, factors and
@@ -295,131 +225,54 @@ class InvoiceLineItemPriceComponent(backboneelement.BackboneElement):
     of the Invoice as to how the prices have been calculated.
     """
 
-    resource_type = "InvoiceLineItemPriceComponent"
+    resource_type = Field("InvoiceLineItemPriceComponent", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    amount: fhirtypes.MoneyType = Field(
+        None,
+        alias="amount",
+        title="Type `Money` (represented as `dict` in JSON)",
+        description="Monetary amount associated with this component",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    code: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="code",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Code identifying the specific component",
+    )
 
-        self.amount = None
-        """ Monetary amount associated with this component.
-        Type `Money` (represented as `dict` in JSON). """
+    factor: fhirtypes.Decimal = Field(
+        None,
+        alias="factor",
+        title="Type `Decimal` (represented as `dict` in JSON)",
+        description="Factor used for calculating this component",
+    )
 
-        self.code = None
-        """ Code identifying the specific component.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.factor = None
-        """ Factor used for calculating this component.
-        Type `float`. """
-
-        self.type = None
-        """ base | surcharge | deduction | discount | tax | informational.
-        Type `str`. """
-
-        super(InvoiceLineItemPriceComponent, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(InvoiceLineItemPriceComponent, self).elementProperties()
-        js.extend(
-            [
-                ("amount", "amount", money.Money, "Money", False, None, False),
-                (
-                    "code",
-                    "code",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("factor", "factor", float, "decimal", False, None, False),
-                ("type", "type", str, "code", False, None, True),
-            ]
-        )
-        return js
+    type: fhirtypes.Code = Field(
+        ...,
+        alias="type",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="base | surcharge | deduction | discount | tax | informational",
+    )
 
 
 class InvoiceParticipant(backboneelement.BackboneElement):
     """ Participant in creation of this Invoice.
-
     Indicates who or what performed or participated in the charged service.
     """
 
-    resource_type = "InvoiceParticipant"
+    resource_type = Field("InvoiceParticipant", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    actor: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="actor",
+        title="Type `Reference` referencing `Practitioner, Organization, Patient, PractitionerRole, Device, RelatedPerson` (represented as `dict` in JSON)",
+        description="Individual who was involved",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.actor = None
-        """ Individual who was involved.
-        Type `FHIRReference` referencing `['Practitioner', 'Organization', 'Patient', 'PractitionerRole', 'Device', 'RelatedPerson']` (represented as `dict` in JSON). """
-
-        self.role = None
-        """ Type of involvement in creation of this Invoice.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(InvoiceParticipant, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(InvoiceParticipant, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "actor",
-                    "actor",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "role",
-                    "role",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import annotation
-except ImportError:
-    annotation = sys.modules[__package__ + ".annotation"]
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import money
-except ImportError:
-    money = sys.modules[__package__ + ".money"]
+    role: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="role",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Type of involvement in creation of this Invoice",
+    )

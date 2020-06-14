@@ -6,198 +6,101 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import domainresource
+from . import domainresource, fhirtypes
 
 
 class PaymentNotice(domainresource.DomainResource):
     """ PaymentNotice request.
-
     This resource provides the status of the payment for goods and services
     rendered, and the request and response resource references.
     """
 
-    resource_type = "PaymentNotice"
+    resource_type = Field("PaymentNotice", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    amount: fhirtypes.MoneyType = Field(
+        ...,
+        alias="amount",
+        title="Type `Money` (represented as `dict` in JSON)",
+        description="Monetary amount of the payment",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    created: fhirtypes.DateTime = Field(
+        ...,
+        alias="created",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Creation date",
+    )
 
-        self.amount = None
-        """ Monetary amount of the payment.
-        Type `Money` (represented as `dict` in JSON). """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Business Identifier for the payment noctice",
+    )
 
-        self.created = None
-        """ Creation date.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    payee: fhirtypes.ReferenceType = Field(
+        None,
+        alias="payee",
+        title="Type `Reference` referencing `Practitioner, PractitionerRole, Organization` (represented as `dict` in JSON)",
+        description="Party being paid",
+    )
 
-        self.identifier = None
-        """ Business Identifier for the payment noctice.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    payment: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="payment",
+        title="Type `Reference` referencing `PaymentReconciliation` (represented as `dict` in JSON)",
+        description="Payment reference",
+    )
 
-        self.payee = None
-        """ Party being paid.
-        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'Organization']` (represented as `dict` in JSON). """
+    paymentDate: fhirtypes.Date = Field(
+        None,
+        alias="paymentDate",
+        title="Type `Date` (represented as `dict` in JSON)",
+        description="Payment or clearing date",
+    )
 
-        self.payment = None
-        """ Payment reference.
-        Type `FHIRReference` referencing `['PaymentReconciliation']` (represented as `dict` in JSON). """
+    paymentStatus: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="paymentStatus",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Issued or cleared Status of the payment",
+    )
 
-        self.paymentDate = None
-        """ Payment or clearing date.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    provider: fhirtypes.ReferenceType = Field(
+        None,
+        alias="provider",
+        title="Type `Reference` referencing `Practitioner, PractitionerRole, Organization` (represented as `dict` in JSON)",
+        description="Responsible practitioner",
+    )
 
-        self.paymentStatus = None
-        """ Issued or cleared Status of the payment.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    recipient: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="recipient",
+        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        description="Party being notified",
+    )
 
-        self.provider = None
-        """ Responsible practitioner.
-        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'Organization']` (represented as `dict` in JSON). """
+    request: fhirtypes.ReferenceType = Field(
+        None,
+        alias="request",
+        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        description="Request reference",
+    )
 
-        self.recipient = None
-        """ Party being notified.
-        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
+    response: fhirtypes.ReferenceType = Field(
+        None,
+        alias="response",
+        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        description="Response reference",
+    )
 
-        self.request = None
-        """ Request reference.
-        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
-
-        self.response = None
-        """ Response reference.
-        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
-
-        self.status = None
-        """ active | cancelled | draft | entered-in-error.
-        Type `str`. """
-
-        super(PaymentNotice, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(PaymentNotice, self).elementProperties()
-        js.extend(
-            [
-                ("amount", "amount", money.Money, "Money", False, None, True),
-                (
-                    "created",
-                    "created",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "payee",
-                    "payee",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "payment",
-                    "payment",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "paymentDate",
-                    "paymentDate",
-                    fhirdate.FHIRDate,
-                    "date",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "paymentStatus",
-                    "paymentStatus",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "provider",
-                    "provider",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "recipient",
-                    "recipient",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "request",
-                    "request",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "response",
-                    "response",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("status", "status", str, "code", False, None, True),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import money
-except ImportError:
-    money = sys.modules[__package__ + ".money"]
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="active | cancelled | draft | entered-in-error",
+    )

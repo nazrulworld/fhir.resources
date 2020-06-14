@@ -6,91 +6,80 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import device
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class DeviceTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("Device", js["resourceType"])
-        return device.Device(js)
+def impl_device_1(inst):
+    assert inst.id == "f001"
+    assert inst.identifier[0].system == "http:/goodhealthhospital/identifier/devices"
+    assert inst.identifier[0].value == "12345"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.status == "active"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f001</p><p><b>identifier</b>: 12345</p><p><b>status</b>: active</p></div>'
+    )
+    assert inst.text.status == "generated"
 
-    def testDevice1(self):
-        inst = self.instantiate_from("device-example-f001-feedingtube.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Device instance")
-        self.implDevice1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("Device", js["resourceType"])
-        inst2 = device.Device(js)
-        self.implDevice1(inst2)
+def test_device_1(base_settings):
+    """No. 1 tests collection for Device.
+    Test File: device-example-f001-feedingtube.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "device-example-f001-feedingtube.json"
+    )
+    inst = device.Device.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Device" == inst.resource_type
 
-    def implDevice1(self, inst):
-        self.assertEqual(force_bytes(inst.id), force_bytes("f001"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http:/goodhealthhospital/identifier/devices"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("12345"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f001</p><p><b>identifier</b>: 12345</p><p><b>status</b>: active</p></div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    impl_device_1(inst)
 
-    def testDevice2(self):
-        inst = self.instantiate_from("device-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Device instance")
-        self.implDevice2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Device" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("Device", js["resourceType"])
-        inst2 = device.Device(js)
-        self.implDevice2(inst2)
+    inst2 = device.Device(**data)
+    impl_device_1(inst2)
 
-    def implDevice2(self, inst):
-        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://goodcare.org/devices/id"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("345675"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example</p><p><b>identifier</b>: 345675</p></div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+
+def impl_device_2(inst):
+    assert inst.id == "example"
+    assert inst.identifier[0].system == "http://goodcare.org/devices/id"
+    assert inst.identifier[0].value == "345675"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example</p><p><b>identifier</b>: 345675</p></div>'
+    )
+    assert inst.text.status == "generated"
+
+
+def test_device_2(base_settings):
+    """No. 2 tests collection for Device.
+    Test File: device-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "device-example.json"
+    inst = device.Device.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Device" == inst.resource_type
+
+    impl_device_2(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Device" == data["resourceType"]
+
+    inst2 = device.Device(**data)
+    impl_device_2(inst2)

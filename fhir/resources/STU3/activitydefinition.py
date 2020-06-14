@@ -6,428 +6,349 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from typing import Any, Dict
+from typing import List as ListType
 
+from pydantic import Field, root_validator
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class ActivityDefinition(domainresource.DomainResource):
     """ The definition of a specific activity to be taken, independent of any
     particular patient or context.
-
     This resource allows for the definition of some activity to be performed,
     independent of a particular patient, practitioner, or other performance
     context.
     """
 
-    resource_type = "ActivityDefinition"
+    resource_type = Field("ActivityDefinition", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    approvalDate: fhirtypes.Date = Field(
+        None,
+        alias="approvalDate",
+        title="Type `Date` (represented as `dict` in JSON)",
+        description="When the activity definition was approved by publisher",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    bodySite: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="bodySite",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="What part of body to perform on",
+    )
+
+    code: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="code",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Detail type of activity",
+    )
+
+    contact: ListType[fhirtypes.ContactDetailType] = Field(
+        None,
+        alias="contact",
+        title="List of `ContactDetail` items (represented as `dict` in JSON)",
+        description="Contact details for the publisher",
+    )
+
+    contributor: ListType[fhirtypes.ContributorType] = Field(
+        None,
+        alias="contributor",
+        title="List of `Contributor` items (represented as `dict` in JSON)",
+        description="A content contributor",
+    )
+
+    copyright: fhirtypes.Markdown = Field(
+        None,
+        alias="copyright",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Use and/or publishing restrictions",
+    )
+
+    date: fhirtypes.DateTime = Field(
+        None,
+        alias="date",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Date this was last changed",
+    )
+
+    description: fhirtypes.Markdown = Field(
+        None,
+        alias="description",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Natural language description of the activity definition",
+    )
+
+    dosage: ListType[fhirtypes.DosageType] = Field(
+        None,
+        alias="dosage",
+        title="List of `Dosage` items (represented as `dict` in JSON)",
+        description="Detailed dosage instructions",
+    )
+
+    dynamicValue: ListType[fhirtypes.ActivityDefinitionDynamicValueType] = Field(
+        None,
+        alias="dynamicValue",
+        title="List of `ActivityDefinitionDynamicValue` items (represented as `dict` in JSON)",
+        description="Dynamic aspects of the definition",
+    )
+
+    effectivePeriod: fhirtypes.PeriodType = Field(
+        None,
+        alias="effectivePeriod",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="When the activity definition is expected to be used",
+    )
+
+    experimental: bool = Field(
+        None,
+        alias="experimental",
+        title="Type `bool`",
+        description="For testing purposes, not real usage",
+    )
+
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Additional identifier for the activity definition",
+    )
+
+    jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="jurisdiction",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Intended jurisdiction for activity definition (if applicable)",
+    )
+
+    kind: fhirtypes.Code = Field(
+        None,
+        alias="kind",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="Kind of resource",
+    )
+
+    lastReviewDate: fhirtypes.Date = Field(
+        None,
+        alias="lastReviewDate",
+        title="Type `Date` (represented as `dict` in JSON)",
+        description="When the activity definition was last reviewed",
+    )
+
+    library: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="library",
+        title="List of `Reference` items referencing `Library` (represented as `dict` in JSON)",
+        description="Logic used by the asset",
+    )
+
+    location: fhirtypes.ReferenceType = Field(
+        None,
+        alias="location",
+        title="Type `Reference` referencing `Location` (represented as `dict` in JSON)",
+        description="Where it should happen",
+    )
+
+    name: fhirtypes.String = Field(
+        None,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name for this activity definition (computer friendly)",
+    )
+
+    participant: ListType[fhirtypes.ActivityDefinitionParticipantType] = Field(
+        None,
+        alias="participant",
+        title="List of `ActivityDefinitionParticipant` items (represented as `dict` in JSON)",
+        description="Who should participate in the action",
+    )
+
+    productCodeableConcept: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="productCodeableConcept",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="What\u0027s administered/supplied",
+        one_of_many="product",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    productReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="productReference",
+        title="Type `Reference` referencing `Medication, Substance` (represented as `dict` in JSON)",
+        description="What\u0027s administered/supplied",
+        one_of_many="product",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    publisher: fhirtypes.String = Field(
+        None,
+        alias="publisher",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name of the publisher (organization or individual)",
+    )
+
+    purpose: fhirtypes.Markdown = Field(
+        None,
+        alias="purpose",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Why this activity definition is defined",
+    )
+
+    quantity: fhirtypes.QuantityType = Field(
+        None,
+        alias="quantity",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="How much is administered/consumed/supplied",
+    )
+
+    relatedArtifact: ListType[fhirtypes.RelatedArtifactType] = Field(
+        None,
+        alias="relatedArtifact",
+        title="List of `RelatedArtifact` items (represented as `dict` in JSON)",
+        description="Additional documentation, citations, etc",
+    )
+
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="draft | active | retired | unknown",
+    )
+
+    timingDateTime: fhirtypes.DateTime = Field(
+        None,
+        alias="timingDateTime",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="When activity is to occur",
+        one_of_many="timing",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    timingPeriod: fhirtypes.PeriodType = Field(
+        None,
+        alias="timingPeriod",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="When activity is to occur",
+        one_of_many="timing",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    timingRange: fhirtypes.RangeType = Field(
+        None,
+        alias="timingRange",
+        title="Type `Range` (represented as `dict` in JSON)",
+        description="When activity is to occur",
+        one_of_many="timing",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    timingTiming: fhirtypes.TimingType = Field(
+        None,
+        alias="timingTiming",
+        title="Type `Timing` (represented as `dict` in JSON)",
+        description="When activity is to occur",
+        one_of_many="timing",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    title: fhirtypes.String = Field(
+        None,
+        alias="title",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name for this activity definition (human friendly)",
+    )
+
+    topic: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="topic",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="E.g. Education, Treatment, Assessment, etc",
+    )
+
+    transform: fhirtypes.ReferenceType = Field(
+        None,
+        alias="transform",
+        title="Type `Reference` referencing `StructureMap` (represented as `dict` in JSON)",
+        description="Transform to apply the template",
+    )
+
+    url: fhirtypes.Uri = Field(
+        None,
+        alias="url",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Logical URI to reference this activity definition (globally unique)",
+    )
+
+    usage: fhirtypes.String = Field(
+        None,
+        alias="usage",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Describes the clinical usage of the asset",
+    )
+
+    useContext: ListType[fhirtypes.UsageContextType] = Field(
+        None,
+        alias="useContext",
+        title="List of `UsageContext` items (represented as `dict` in JSON)",
+        description="Context the content is intended to support",
+    )
+
+    version: fhirtypes.String = Field(
+        None,
+        alias="version",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Business version of the activity definition",
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "product": ["productCodeableConcept", "productReference",],
+            "timing": [
+                "timingDateTime",
+                "timingPeriod",
+                "timingRange",
+                "timingTiming",
+            ],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.approvalDate = None
-        """ When the activity definition was approved by publisher.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.bodySite = None
-        """ What part of body to perform on.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.code = None
-        """ Detail type of activity.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.contact = None
-        """ Contact details for the publisher.
-        List of `ContactDetail` items (represented as `dict` in JSON). """
-
-        self.contributor = None
-        """ A content contributor.
-        List of `Contributor` items (represented as `dict` in JSON). """
-
-        self.copyright = None
-        """ Use and/or publishing restrictions.
-        Type `str`. """
-
-        self.date = None
-        """ Date this was last changed.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.description = None
-        """ Natural language description of the activity definition.
-        Type `str`. """
-
-        self.dosage = None
-        """ Detailed dosage instructions.
-        List of `Dosage` items (represented as `dict` in JSON). """
-
-        self.dynamicValue = None
-        """ Dynamic aspects of the definition.
-        List of `ActivityDefinitionDynamicValue` items (represented as `dict` in JSON). """
-
-        self.effectivePeriod = None
-        """ When the activity definition is expected to be used.
-        Type `Period` (represented as `dict` in JSON). """
-
-        self.experimental = None
-        """ For testing purposes, not real usage.
-        Type `bool`. """
-
-        self.identifier = None
-        """ Additional identifier for the activity definition.
-        List of `Identifier` items (represented as `dict` in JSON). """
-
-        self.jurisdiction = None
-        """ Intended jurisdiction for activity definition (if applicable).
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.kind = None
-        """ Kind of resource.
-        Type `str`. """
-
-        self.lastReviewDate = None
-        """ When the activity definition was last reviewed.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.library = None
-        """ Logic used by the asset.
-        List of `FHIRReference` items referencing `['Library']` (represented as `dict` in JSON). """
-
-        self.location = None
-        """ Where it should happen.
-        Type `FHIRReference` referencing `['Location']` (represented as `dict` in JSON). """
-
-        self.name = None
-        """ Name for this activity definition (computer friendly).
-        Type `str`. """
-
-        self.participant = None
-        """ Who should participate in the action.
-        List of `ActivityDefinitionParticipant` items (represented as `dict` in JSON). """
-
-        self.productCodeableConcept = None
-        """ What's administered/supplied.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.productReference = None
-        """ What's administered/supplied.
-        Type `FHIRReference` referencing `['Medication'], ['Substance']` (represented as `dict` in JSON). """
-
-        self.publisher = None
-        """ Name of the publisher (organization or individual).
-        Type `str`. """
-
-        self.purpose = None
-        """ Why this activity definition is defined.
-        Type `str`. """
-
-        self.quantity = None
-        """ How much is administered/consumed/supplied.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        self.relatedArtifact = None
-        """ Additional documentation, citations, etc.
-        List of `RelatedArtifact` items (represented as `dict` in JSON). """
-
-        self.status = None
-        """ draft | active | retired | unknown.
-        Type `str`. """
-
-        self.timingDateTime = None
-        """ When activity is to occur.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.timingPeriod = None
-        """ When activity is to occur.
-        Type `Period` (represented as `dict` in JSON). """
-
-        self.timingRange = None
-        """ When activity is to occur.
-        Type `Range` (represented as `dict` in JSON). """
-
-        self.timingTiming = None
-        """ When activity is to occur.
-        Type `Timing` (represented as `dict` in JSON). """
-
-        self.title = None
-        """ Name for this activity definition (human friendly).
-        Type `str`. """
-
-        self.topic = None
-        """ E.g. Education, Treatment, Assessment, etc.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.transform = None
-        """ Transform to apply the template.
-        Type `FHIRReference` referencing `['StructureMap']` (represented as `dict` in JSON). """
-
-        self.url = None
-        """ Logical URI to reference this activity definition (globally unique).
-        Type `str`. """
-
-        self.usage = None
-        """ Describes the clinical usage of the asset.
-        Type `str`. """
-
-        self.useContext = None
-        """ Context the content is intended to support.
-        List of `UsageContext` items (represented as `dict` in JSON). """
-
-        self.version = None
-        """ Business version of the activity definition.
-        Type `str`. """
-
-        super(ActivityDefinition, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ActivityDefinition, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "approvalDate",
-                    "approvalDate",
-                    fhirdate.FHIRDate,
-                    "date",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "bodySite",
-                    "bodySite",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "code",
-                    "code",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "contact",
-                    "contact",
-                    contactdetail.ContactDetail,
-                    "ContactDetail",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "contributor",
-                    "contributor",
-                    contributor.Contributor,
-                    "Contributor",
-                    True,
-                    None,
-                    False,
-                ),
-                ("copyright", "copyright", str, "markdown", False, None, False),
-                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-                ("description", "description", str, "markdown", False, None, False),
-                ("dosage", "dosage", dosage.Dosage, "Dosage", True, None, False),
-                (
-                    "dynamicValue",
-                    "dynamicValue",
-                    ActivityDefinitionDynamicValue,
-                    "ActivityDefinitionDynamicValue",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "effectivePeriod",
-                    "effectivePeriod",
-                    period.Period,
-                    "Period",
-                    False,
-                    None,
-                    False,
-                ),
-                ("experimental", "experimental", bool, "boolean", False, None, False),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "jurisdiction",
-                    "jurisdiction",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                ("kind", "kind", str, "code", False, None, False),
-                (
-                    "lastReviewDate",
-                    "lastReviewDate",
-                    fhirdate.FHIRDate,
-                    "date",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "library",
-                    "library",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "location",
-                    "location",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("name", "name", str, "string", False, None, False),
-                (
-                    "participant",
-                    "participant",
-                    ActivityDefinitionParticipant,
-                    "ActivityDefinitionParticipant",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "productCodeableConcept",
-                    "productCodeableConcept",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    "product",
-                    False,
-                ),
-                (
-                    "productReference",
-                    "productReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    "product",
-                    False,
-                ),
-                ("publisher", "publisher", str, "string", False, None, False),
-                ("purpose", "purpose", str, "markdown", False, None, False),
-                (
-                    "quantity",
-                    "quantity",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "relatedArtifact",
-                    "relatedArtifact",
-                    relatedartifact.RelatedArtifact,
-                    "RelatedArtifact",
-                    True,
-                    None,
-                    False,
-                ),
-                ("status", "status", str, "code", False, None, True),
-                (
-                    "timingDateTime",
-                    "timingDateTime",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    "timing",
-                    False,
-                ),
-                (
-                    "timingPeriod",
-                    "timingPeriod",
-                    period.Period,
-                    "Period",
-                    False,
-                    "timing",
-                    False,
-                ),
-                (
-                    "timingRange",
-                    "timingRange",
-                    range.Range,
-                    "Range",
-                    False,
-                    "timing",
-                    False,
-                ),
-                (
-                    "timingTiming",
-                    "timingTiming",
-                    timing.Timing,
-                    "Timing",
-                    False,
-                    "timing",
-                    False,
-                ),
-                ("title", "title", str, "string", False, None, False),
-                (
-                    "topic",
-                    "topic",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "transform",
-                    "transform",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("url", "url", str, "uri", False, None, False),
-                ("usage", "usage", str, "string", False, None, False),
-                (
-                    "useContext",
-                    "useContext",
-                    usagecontext.UsageContext,
-                    "UsageContext",
-                    True,
-                    None,
-                    False,
-                ),
-                ("version", "version", str, "string", False, None, False),
-            ]
-        )
-        return js
+        return values
 
 
 class ActivityDefinitionDynamicValue(backboneelement.BackboneElement):
     """ Dynamic aspects of the definition.
-
     Dynamic values that will be evaluated to produce values for elements of the
     resulting resource. For example, if the dosage of a medication must be
     computed based on the patient's weight, a dynamic value would be used to
@@ -435,145 +356,54 @@ class ActivityDefinitionDynamicValue(backboneelement.BackboneElement):
     intent resource that would contain the result.
     """
 
-    resource_type = "ActivityDefinitionDynamicValue"
+    resource_type = Field("ActivityDefinitionDynamicValue", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    description: fhirtypes.String = Field(
+        None,
+        alias="description",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Natural language description of the dynamic value",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    expression: fhirtypes.String = Field(
+        None,
+        alias="expression",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="An expression that provides the dynamic value for the customization",
+    )
 
-        self.description = None
-        """ Natural language description of the dynamic value.
-        Type `str`. """
+    language: fhirtypes.String = Field(
+        None,
+        alias="language",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Language of the expression",
+    )
 
-        self.expression = None
-        """ An expression that provides the dynamic value for the customization.
-        Type `str`. """
-
-        self.language = None
-        """ Language of the expression.
-        Type `str`. """
-
-        self.path = None
-        """ The path to the element to be set dynamically.
-        Type `str`. """
-
-        super(ActivityDefinitionDynamicValue, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ActivityDefinitionDynamicValue, self).elementProperties()
-        js.extend(
-            [
-                ("description", "description", str, "string", False, None, False),
-                ("expression", "expression", str, "string", False, None, False),
-                ("language", "language", str, "string", False, None, False),
-                ("path", "path", str, "string", False, None, False),
-            ]
-        )
-        return js
+    path: fhirtypes.String = Field(
+        None,
+        alias="path",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="The path to the element to be set dynamically",
+    )
 
 
 class ActivityDefinitionParticipant(backboneelement.BackboneElement):
     """ Who should participate in the action.
-
     Indicates who should participate in performing the action described.
     """
 
-    resource_type = "ActivityDefinitionParticipant"
+    resource_type = Field("ActivityDefinitionParticipant", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    role: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="role",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="E.g. Nurse, Surgeon, Parent, etc",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.role = None
-        """ E.g. Nurse, Surgeon, Parent, etc.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.type = None
-        """ patient | practitioner | related-person.
-        Type `str`. """
-
-        super(ActivityDefinitionParticipant, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ActivityDefinitionParticipant, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "role",
-                    "role",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("type", "type", str, "code", False, None, True),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import contactdetail
-except ImportError:
-    contactdetail = sys.modules[__package__ + ".contactdetail"]
-try:
-    from . import contributor
-except ImportError:
-    contributor = sys.modules[__package__ + ".contributor"]
-try:
-    from . import dosage
-except ImportError:
-    dosage = sys.modules[__package__ + ".dosage"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import period
-except ImportError:
-    period = sys.modules[__package__ + ".period"]
-try:
-    from . import quantity
-except ImportError:
-    quantity = sys.modules[__package__ + ".quantity"]
-try:
-    from . import range
-except ImportError:
-    range = sys.modules[__package__ + ".range"]
-try:
-    from . import relatedartifact
-except ImportError:
-    relatedartifact = sys.modules[__package__ + ".relatedartifact"]
-try:
-    from . import timing
-except ImportError:
-    timing = sys.modules[__package__ + ".timing"]
-try:
-    from . import usagecontext
-except ImportError:
-    usagecontext = sys.modules[__package__ + ".usagecontext"]
+    type: fhirtypes.Code = Field(
+        ...,
+        alias="type",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="patient | practitioner | related-person",
+    )

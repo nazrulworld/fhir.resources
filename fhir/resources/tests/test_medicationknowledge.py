@@ -6,78 +6,50 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import medicationknowledge
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class MedicationKnowledgeTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("MedicationKnowledge", js["resourceType"])
-        return medicationknowledge.MedicationKnowledge(js)
+def impl_medicationknowledge_1(inst):
+    assert inst.amount.unit == "mg/ml"
+    assert float(inst.amount.value) == float(50)
+    assert inst.code.coding[0].code == "0069-2587-10"
+    assert (
+        inst.code.coding[0].display
+        == "Vancomycin Hydrochloride (VANCOMYCIN HYDROCHLORIDE)"
+    )
+    assert inst.code.coding[0].system == "http://hl7.org/fhir/sid/ndc"
+    assert inst.contained[0].id == "org4"
+    assert inst.doseForm.coding[0].code == "385219001"
+    assert inst.doseForm.coding[0].display == "Injection Solution (qualifier value)"
+    assert inst.doseForm.coding[0].system == "http://snomed.info/sct"
+    assert inst.id == "example"
+    assert inst.manufacturer.reference == "#org4"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.status == "active"
+    assert inst.synonym[0] == "Vancomycin Hydrochloride (VANCOMYCIN HYDROCHLORIDE)"
+    assert inst.text.status == "generated"
 
-    def testMedicationKnowledge1(self):
-        inst = self.instantiate_from("medicationknowledge-example.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a MedicationKnowledge instance"
-        )
-        self.implMedicationKnowledge1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("MedicationKnowledge", js["resourceType"])
-        inst2 = medicationknowledge.MedicationKnowledge(js)
-        self.implMedicationKnowledge1(inst2)
+def test_medicationknowledge_1(base_settings):
+    """No. 1 tests collection for MedicationKnowledge.
+    Test File: medicationknowledge-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "medicationknowledge-example.json"
+    inst = medicationknowledge.MedicationKnowledge.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "MedicationKnowledge" == inst.resource_type
 
-    def implMedicationKnowledge1(self, inst):
-        self.assertEqual(force_bytes(inst.amount.unit), force_bytes("mg/ml"))
-        self.assertEqual(inst.amount.value, 50)
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].code), force_bytes("0069-2587-10")
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].display),
-            force_bytes("Vancomycin Hydrochloride (VANCOMYCIN HYDROCHLORIDE)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system),
-            force_bytes("http://hl7.org/fhir/sid/ndc"),
-        )
-        self.assertEqual(force_bytes(inst.contained[0].id), force_bytes("org4"))
-        self.assertEqual(
-            force_bytes(inst.doseForm.coding[0].code), force_bytes("385219001")
-        )
-        self.assertEqual(
-            force_bytes(inst.doseForm.coding[0].display),
-            force_bytes("Injection Solution (qualifier value)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.doseForm.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(
-            force_bytes(inst.synonym[0]),
-            force_bytes("Vancomycin Hydrochloride (VANCOMYCIN HYDROCHLORIDE)"),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    impl_medicationknowledge_1(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "MedicationKnowledge" == data["resourceType"]
+
+    inst2 = medicationknowledge.MedicationKnowledge(**data)
+    impl_medicationknowledge_1(inst2)

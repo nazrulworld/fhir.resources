@@ -6,1462 +6,881 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import Any, Dict
+from typing import List as ListType
 
+from pydantic import Field, root_validator
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class ClaimResponse(domainresource.DomainResource):
     """ Response to a claim predetermination or preauthorization.
-
     This resource provides the adjudication details from the processing of a
     Claim resource.
     """
 
-    resource_type = "ClaimResponse"
+    resource_type = Field("ClaimResponse", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    addItem: ListType[fhirtypes.ClaimResponseAddItemType] = Field(
+        None,
+        alias="addItem",
+        title="List of `ClaimResponseAddItem` items (represented as `dict` in JSON)",
+        description="Insurer added line items",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    adjudication: ListType[fhirtypes.ClaimResponseItemAdjudicationType] = Field(
+        None,
+        alias="adjudication",
+        title="List of `ClaimResponseItemAdjudication` items (represented as `dict` in JSON)",
+        description="Header-level adjudication",
+    )
 
-        self.addItem = None
-        """ Insurer added line items.
-        List of `ClaimResponseAddItem` items (represented as `dict` in JSON). """
+    communicationRequest: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="communicationRequest",
+        title="List of `Reference` items referencing `CommunicationRequest` (represented as `dict` in JSON)",
+        description="Request for additional information",
+    )
 
-        self.adjudication = None
-        """ Header-level adjudication.
-        List of `ClaimResponseItemAdjudication` items (represented as `dict` in JSON). """
+    created: fhirtypes.DateTime = Field(
+        ...,
+        alias="created",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Response creation date",
+    )
 
-        self.communicationRequest = None
-        """ Request for additional information.
-        List of `FHIRReference` items referencing `['CommunicationRequest']` (represented as `dict` in JSON). """
+    disposition: fhirtypes.String = Field(
+        None,
+        alias="disposition",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Disposition Message",
+    )
 
-        self.created = None
-        """ Response creation date.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    error: ListType[fhirtypes.ClaimResponseErrorType] = Field(
+        None,
+        alias="error",
+        title="List of `ClaimResponseError` items (represented as `dict` in JSON)",
+        description="Processing errors",
+    )
 
-        self.disposition = None
-        """ Disposition Message.
-        Type `str`. """
+    form: fhirtypes.AttachmentType = Field(
+        None,
+        alias="form",
+        title="Type `Attachment` (represented as `dict` in JSON)",
+        description="Printed reference or actual form",
+    )
 
-        self.error = None
-        """ Processing errors.
-        List of `ClaimResponseError` items (represented as `dict` in JSON). """
+    formCode: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="formCode",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Printed form identifier",
+    )
 
-        self.form = None
-        """ Printed reference or actual form.
-        Type `Attachment` (represented as `dict` in JSON). """
+    fundsReserve: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="fundsReserve",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Funds reserved status",
+    )
 
-        self.formCode = None
-        """ Printed form identifier.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Business Identifier for a claim response",
+    )
 
-        self.fundsReserve = None
-        """ Funds reserved status.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    insurance: ListType[fhirtypes.ClaimResponseInsuranceType] = Field(
+        None,
+        alias="insurance",
+        title="List of `ClaimResponseInsurance` items (represented as `dict` in JSON)",
+        description="Patient insurance information",
+    )
 
-        self.identifier = None
-        """ Business Identifier for a claim response.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    insurer: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="insurer",
+        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        description="Party responsible for reimbursement",
+    )
 
-        self.insurance = None
-        """ Patient insurance information.
-        List of `ClaimResponseInsurance` items (represented as `dict` in JSON). """
+    item: ListType[fhirtypes.ClaimResponseItemType] = Field(
+        None,
+        alias="item",
+        title="List of `ClaimResponseItem` items (represented as `dict` in JSON)",
+        description="Adjudication for claim line items",
+    )
 
-        self.insurer = None
-        """ Party responsible for reimbursement.
-        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
+    outcome: fhirtypes.Code = Field(
+        ...,
+        alias="outcome",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="queued | complete | error | partial",
+    )
 
-        self.item = None
-        """ Adjudication for claim line items.
-        List of `ClaimResponseItem` items (represented as `dict` in JSON). """
+    patient: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="patient",
+        title="Type `Reference` referencing `Patient` (represented as `dict` in JSON)",
+        description="The recipient of the products and services",
+    )
 
-        self.outcome = None
-        """ queued | complete | error | partial.
-        Type `str`. """
+    payeeType: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="payeeType",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Party to be paid any benefits payable",
+    )
 
-        self.patient = None
-        """ The recipient of the products and services.
-        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
+    payment: fhirtypes.ClaimResponsePaymentType = Field(
+        None,
+        alias="payment",
+        title="Type `ClaimResponsePayment` (represented as `dict` in JSON)",
+        description="Payment Details",
+    )
 
-        self.payeeType = None
-        """ Party to be paid any benefits payable.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    preAuthPeriod: fhirtypes.PeriodType = Field(
+        None,
+        alias="preAuthPeriod",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="Preauthorization reference effective period",
+    )
 
-        self.payment = None
-        """ Payment Details.
-        Type `ClaimResponsePayment` (represented as `dict` in JSON). """
+    preAuthRef: fhirtypes.String = Field(
+        None,
+        alias="preAuthRef",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Preauthorization reference",
+    )
 
-        self.preAuthPeriod = None
-        """ Preauthorization reference effective period.
-        Type `Period` (represented as `dict` in JSON). """
+    processNote: ListType[fhirtypes.ClaimResponseProcessNoteType] = Field(
+        None,
+        alias="processNote",
+        title="List of `ClaimResponseProcessNote` items (represented as `dict` in JSON)",
+        description="Note concerning adjudication",
+    )
 
-        self.preAuthRef = None
-        """ Preauthorization reference.
-        Type `str`. """
+    request: fhirtypes.ReferenceType = Field(
+        None,
+        alias="request",
+        title="Type `Reference` referencing `Claim` (represented as `dict` in JSON)",
+        description="Id of resource triggering adjudication",
+    )
 
-        self.processNote = None
-        """ Note concerning adjudication.
-        List of `ClaimResponseProcessNote` items (represented as `dict` in JSON). """
+    requestor: fhirtypes.ReferenceType = Field(
+        None,
+        alias="requestor",
+        title="Type `Reference` referencing `Practitioner, PractitionerRole, Organization` (represented as `dict` in JSON)",
+        description="Party responsible for the claim",
+    )
 
-        self.request = None
-        """ Id of resource triggering adjudication.
-        Type `FHIRReference` referencing `['Claim']` (represented as `dict` in JSON). """
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="active | cancelled | draft | entered-in-error",
+    )
 
-        self.requestor = None
-        """ Party responsible for the claim.
-        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'Organization']` (represented as `dict` in JSON). """
+    subType: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="subType",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="More granular claim type",
+    )
 
-        self.status = None
-        """ active | cancelled | draft | entered-in-error.
-        Type `str`. """
+    total: ListType[fhirtypes.ClaimResponseTotalType] = Field(
+        None,
+        alias="total",
+        title="List of `ClaimResponseTotal` items (represented as `dict` in JSON)",
+        description="Adjudication totals",
+    )
 
-        self.subType = None
-        """ More granular claim type.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    type: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="More granular claim type",
+    )
 
-        self.total = None
-        """ Adjudication totals.
-        List of `ClaimResponseTotal` items (represented as `dict` in JSON). """
-
-        self.type = None
-        """ More granular claim type.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.use = None
-        """ claim | preauthorization | predetermination.
-        Type `str`. """
-
-        super(ClaimResponse, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ClaimResponse, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "addItem",
-                    "addItem",
-                    ClaimResponseAddItem,
-                    "ClaimResponseAddItem",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "adjudication",
-                    "adjudication",
-                    ClaimResponseItemAdjudication,
-                    "ClaimResponseItemAdjudication",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "communicationRequest",
-                    "communicationRequest",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "created",
-                    "created",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    None,
-                    True,
-                ),
-                ("disposition", "disposition", str, "string", False, None, False),
-                (
-                    "error",
-                    "error",
-                    ClaimResponseError,
-                    "ClaimResponseError",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "form",
-                    "form",
-                    attachment.Attachment,
-                    "Attachment",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "formCode",
-                    "formCode",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "fundsReserve",
-                    "fundsReserve",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "insurance",
-                    "insurance",
-                    ClaimResponseInsurance,
-                    "ClaimResponseInsurance",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "insurer",
-                    "insurer",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "item",
-                    "item",
-                    ClaimResponseItem,
-                    "ClaimResponseItem",
-                    True,
-                    None,
-                    False,
-                ),
-                ("outcome", "outcome", str, "code", False, None, True),
-                (
-                    "patient",
-                    "patient",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "payeeType",
-                    "payeeType",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "payment",
-                    "payment",
-                    ClaimResponsePayment,
-                    "ClaimResponsePayment",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "preAuthPeriod",
-                    "preAuthPeriod",
-                    period.Period,
-                    "Period",
-                    False,
-                    None,
-                    False,
-                ),
-                ("preAuthRef", "preAuthRef", str, "string", False, None, False),
-                (
-                    "processNote",
-                    "processNote",
-                    ClaimResponseProcessNote,
-                    "ClaimResponseProcessNote",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "request",
-                    "request",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "requestor",
-                    "requestor",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("status", "status", str, "code", False, None, True),
-                (
-                    "subType",
-                    "subType",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "total",
-                    "total",
-                    ClaimResponseTotal,
-                    "ClaimResponseTotal",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                ("use", "use", str, "code", False, None, True),
-            ]
-        )
-        return js
+    use: fhirtypes.Code = Field(
+        ...,
+        alias="use",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="claim | preauthorization | predetermination",
+    )
 
 
 class ClaimResponseAddItem(backboneelement.BackboneElement):
     """ Insurer added line items.
-
     The first-tier service adjudications for payor added product or service
     lines.
     """
 
-    resource_type = "ClaimResponseAddItem"
+    resource_type = Field("ClaimResponseAddItem", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    adjudication: ListType[fhirtypes.ClaimResponseItemAdjudicationType] = Field(
+        ...,
+        alias="adjudication",
+        title="List of `ClaimResponseItemAdjudication` items (represented as `dict` in JSON)",
+        description="Added items adjudication",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    bodySite: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="bodySite",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Anatomical location",
+    )
+
+    detail: ListType[fhirtypes.ClaimResponseAddItemDetailType] = Field(
+        None,
+        alias="detail",
+        title="List of `ClaimResponseAddItemDetail` items (represented as `dict` in JSON)",
+        description="Insurer added line details",
+    )
+
+    detailSequence: ListType[fhirtypes.PositiveInt] = Field(
+        None,
+        alias="detailSequence",
+        title="List of `PositiveInt` items (represented as `dict` in JSON)",
+        description="Detail sequence number",
+    )
+
+    factor: fhirtypes.Decimal = Field(
+        None,
+        alias="factor",
+        title="Type `Decimal` (represented as `dict` in JSON)",
+        description="Price scaling factor",
+    )
+
+    itemSequence: ListType[fhirtypes.PositiveInt] = Field(
+        None,
+        alias="itemSequence",
+        title="List of `PositiveInt` items (represented as `dict` in JSON)",
+        description="Item sequence number",
+    )
+
+    locationAddress: fhirtypes.AddressType = Field(
+        None,
+        alias="locationAddress",
+        title="Type `Address` (represented as `dict` in JSON)",
+        description="Place of service or where product was supplied",
+        one_of_many="location",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    locationCodeableConcept: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="locationCodeableConcept",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Place of service or where product was supplied",
+        one_of_many="location",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    locationReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="locationReference",
+        title="Type `Reference` referencing `Location` (represented as `dict` in JSON)",
+        description="Place of service or where product was supplied",
+        one_of_many="location",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    modifier: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="modifier",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Service/Product billing modifiers",
+    )
+
+    net: fhirtypes.MoneyType = Field(
+        None,
+        alias="net",
+        title="Type `Money` (represented as `dict` in JSON)",
+        description="Total item cost",
+    )
+
+    noteNumber: ListType[fhirtypes.PositiveInt] = Field(
+        None,
+        alias="noteNumber",
+        title="List of `PositiveInt` items (represented as `dict` in JSON)",
+        description="Applicable note numbers",
+    )
+
+    productOrService: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="productOrService",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Billing, service, product, or drug code",
+    )
+
+    programCode: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="programCode",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Program the product or service is provided under",
+    )
+
+    provider: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="provider",
+        title="List of `Reference` items referencing `Practitioner, PractitionerRole, Organization` (represented as `dict` in JSON)",
+        description="Authorized providers",
+    )
+
+    quantity: fhirtypes.QuantityType = Field(
+        None,
+        alias="quantity",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="Count of products or services",
+    )
+
+    servicedDate: fhirtypes.Date = Field(
+        None,
+        alias="servicedDate",
+        title="Type `Date` (represented as `dict` in JSON)",
+        description="Date or dates of service or product delivery",
+        one_of_many="serviced",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    servicedPeriod: fhirtypes.PeriodType = Field(
+        None,
+        alias="servicedPeriod",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="Date or dates of service or product delivery",
+        one_of_many="serviced",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    subSite: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="subSite",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Anatomical sub-location",
+    )
+
+    subdetailSequence: ListType[fhirtypes.PositiveInt] = Field(
+        None,
+        alias="subdetailSequence",
+        title="List of `PositiveInt` items (represented as `dict` in JSON)",
+        description="Subdetail sequence number",
+    )
+
+    unitPrice: fhirtypes.MoneyType = Field(
+        None,
+        alias="unitPrice",
+        title="Type `Money` (represented as `dict` in JSON)",
+        description="Fee, charge or cost per item",
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "location": [
+                "locationAddress",
+                "locationCodeableConcept",
+                "locationReference",
+            ],
+            "serviced": ["servicedDate", "servicedPeriod",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.adjudication = None
-        """ Added items adjudication.
-        List of `ClaimResponseItemAdjudication` items (represented as `dict` in JSON). """
-
-        self.bodySite = None
-        """ Anatomical location.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.detail = None
-        """ Insurer added line details.
-        List of `ClaimResponseAddItemDetail` items (represented as `dict` in JSON). """
-
-        self.detailSequence = None
-        """ Detail sequence number.
-        List of `int` items. """
-
-        self.factor = None
-        """ Price scaling factor.
-        Type `float`. """
-
-        self.itemSequence = None
-        """ Item sequence number.
-        List of `int` items. """
-
-        self.locationAddress = None
-        """ Place of service or where product was supplied.
-        Type `Address` (represented as `dict` in JSON). """
-
-        self.locationCodeableConcept = None
-        """ Place of service or where product was supplied.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.locationReference = None
-        """ Place of service or where product was supplied.
-        Type `FHIRReference` referencing `['Location']` (represented as `dict` in JSON). """
-
-        self.modifier = None
-        """ Service/Product billing modifiers.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.net = None
-        """ Total item cost.
-        Type `Money` (represented as `dict` in JSON). """
-
-        self.noteNumber = None
-        """ Applicable note numbers.
-        List of `int` items. """
-
-        self.productOrService = None
-        """ Billing, service, product, or drug code.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.programCode = None
-        """ Program the product or service is provided under.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.provider = None
-        """ Authorized providers.
-        List of `FHIRReference` items referencing `['Practitioner', 'PractitionerRole', 'Organization']` (represented as `dict` in JSON). """
-
-        self.quantity = None
-        """ Count of products or services.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        self.servicedDate = None
-        """ Date or dates of service or product delivery.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.servicedPeriod = None
-        """ Date or dates of service or product delivery.
-        Type `Period` (represented as `dict` in JSON). """
-
-        self.subSite = None
-        """ Anatomical sub-location.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.subdetailSequence = None
-        """ Subdetail sequence number.
-        List of `int` items. """
-
-        self.unitPrice = None
-        """ Fee, charge or cost per item.
-        Type `Money` (represented as `dict` in JSON). """
-
-        super(ClaimResponseAddItem, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ClaimResponseAddItem, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "adjudication",
-                    "adjudication",
-                    ClaimResponseItemAdjudication,
-                    "ClaimResponseItemAdjudication",
-                    True,
-                    None,
-                    True,
-                ),
-                (
-                    "bodySite",
-                    "bodySite",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "detail",
-                    "detail",
-                    ClaimResponseAddItemDetail,
-                    "ClaimResponseAddItemDetail",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "detailSequence",
-                    "detailSequence",
-                    int,
-                    "positiveInt",
-                    True,
-                    None,
-                    False,
-                ),
-                ("factor", "factor", float, "decimal", False, None, False),
-                ("itemSequence", "itemSequence", int, "positiveInt", True, None, False),
-                (
-                    "locationAddress",
-                    "locationAddress",
-                    address.Address,
-                    "Address",
-                    False,
-                    "location",
-                    False,
-                ),
-                (
-                    "locationCodeableConcept",
-                    "locationCodeableConcept",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    "location",
-                    False,
-                ),
-                (
-                    "locationReference",
-                    "locationReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    "location",
-                    False,
-                ),
-                (
-                    "modifier",
-                    "modifier",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                ("net", "net", money.Money, "Money", False, None, False),
-                ("noteNumber", "noteNumber", int, "positiveInt", True, None, False),
-                (
-                    "productOrService",
-                    "productOrService",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "programCode",
-                    "programCode",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "provider",
-                    "provider",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "quantity",
-                    "quantity",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "servicedDate",
-                    "servicedDate",
-                    fhirdate.FHIRDate,
-                    "date",
-                    False,
-                    "serviced",
-                    False,
-                ),
-                (
-                    "servicedPeriod",
-                    "servicedPeriod",
-                    period.Period,
-                    "Period",
-                    False,
-                    "serviced",
-                    False,
-                ),
-                (
-                    "subSite",
-                    "subSite",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "subdetailSequence",
-                    "subdetailSequence",
-                    int,
-                    "positiveInt",
-                    True,
-                    None,
-                    False,
-                ),
-                ("unitPrice", "unitPrice", money.Money, "Money", False, None, False),
-            ]
-        )
-        return js
+        return values
 
 
 class ClaimResponseAddItemDetail(backboneelement.BackboneElement):
     """ Insurer added line details.
-
     The second-tier service adjudications for payor added services.
     """
 
-    resource_type = "ClaimResponseAddItemDetail"
+    resource_type = Field("ClaimResponseAddItemDetail", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    adjudication: ListType[fhirtypes.ClaimResponseItemAdjudicationType] = Field(
+        ...,
+        alias="adjudication",
+        title="List of `ClaimResponseItemAdjudication` items (represented as `dict` in JSON)",
+        description="Added items detail adjudication",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    factor: fhirtypes.Decimal = Field(
+        None,
+        alias="factor",
+        title="Type `Decimal` (represented as `dict` in JSON)",
+        description="Price scaling factor",
+    )
 
-        self.adjudication = None
-        """ Added items detail adjudication.
-        List of `ClaimResponseItemAdjudication` items (represented as `dict` in JSON). """
+    modifier: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="modifier",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Service/Product billing modifiers",
+    )
 
-        self.factor = None
-        """ Price scaling factor.
-        Type `float`. """
+    net: fhirtypes.MoneyType = Field(
+        None,
+        alias="net",
+        title="Type `Money` (represented as `dict` in JSON)",
+        description="Total item cost",
+    )
 
-        self.modifier = None
-        """ Service/Product billing modifiers.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    noteNumber: ListType[fhirtypes.PositiveInt] = Field(
+        None,
+        alias="noteNumber",
+        title="List of `PositiveInt` items (represented as `dict` in JSON)",
+        description="Applicable note numbers",
+    )
 
-        self.net = None
-        """ Total item cost.
-        Type `Money` (represented as `dict` in JSON). """
+    productOrService: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="productOrService",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Billing, service, product, or drug code",
+    )
 
-        self.noteNumber = None
-        """ Applicable note numbers.
-        List of `int` items. """
+    quantity: fhirtypes.QuantityType = Field(
+        None,
+        alias="quantity",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="Count of products or services",
+    )
 
-        self.productOrService = None
-        """ Billing, service, product, or drug code.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    subDetail: ListType[fhirtypes.ClaimResponseAddItemDetailSubDetailType] = Field(
+        None,
+        alias="subDetail",
+        title="List of `ClaimResponseAddItemDetailSubDetail` items (represented as `dict` in JSON)",
+        description="Insurer added line items",
+    )
 
-        self.quantity = None
-        """ Count of products or services.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        self.subDetail = None
-        """ Insurer added line items.
-        List of `ClaimResponseAddItemDetailSubDetail` items (represented as `dict` in JSON). """
-
-        self.unitPrice = None
-        """ Fee, charge or cost per item.
-        Type `Money` (represented as `dict` in JSON). """
-
-        super(ClaimResponseAddItemDetail, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ClaimResponseAddItemDetail, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "adjudication",
-                    "adjudication",
-                    ClaimResponseItemAdjudication,
-                    "ClaimResponseItemAdjudication",
-                    True,
-                    None,
-                    True,
-                ),
-                ("factor", "factor", float, "decimal", False, None, False),
-                (
-                    "modifier",
-                    "modifier",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                ("net", "net", money.Money, "Money", False, None, False),
-                ("noteNumber", "noteNumber", int, "positiveInt", True, None, False),
-                (
-                    "productOrService",
-                    "productOrService",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "quantity",
-                    "quantity",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "subDetail",
-                    "subDetail",
-                    ClaimResponseAddItemDetailSubDetail,
-                    "ClaimResponseAddItemDetailSubDetail",
-                    True,
-                    None,
-                    False,
-                ),
-                ("unitPrice", "unitPrice", money.Money, "Money", False, None, False),
-            ]
-        )
-        return js
+    unitPrice: fhirtypes.MoneyType = Field(
+        None,
+        alias="unitPrice",
+        title="Type `Money` (represented as `dict` in JSON)",
+        description="Fee, charge or cost per item",
+    )
 
 
 class ClaimResponseAddItemDetailSubDetail(backboneelement.BackboneElement):
     """ Insurer added line items.
-
     The third-tier service adjudications for payor added services.
     """
 
-    resource_type = "ClaimResponseAddItemDetailSubDetail"
+    resource_type = Field("ClaimResponseAddItemDetailSubDetail", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    adjudication: ListType[fhirtypes.ClaimResponseItemAdjudicationType] = Field(
+        ...,
+        alias="adjudication",
+        title="List of `ClaimResponseItemAdjudication` items (represented as `dict` in JSON)",
+        description="Added items detail adjudication",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    factor: fhirtypes.Decimal = Field(
+        None,
+        alias="factor",
+        title="Type `Decimal` (represented as `dict` in JSON)",
+        description="Price scaling factor",
+    )
 
-        self.adjudication = None
-        """ Added items detail adjudication.
-        List of `ClaimResponseItemAdjudication` items (represented as `dict` in JSON). """
+    modifier: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="modifier",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Service/Product billing modifiers",
+    )
 
-        self.factor = None
-        """ Price scaling factor.
-        Type `float`. """
+    net: fhirtypes.MoneyType = Field(
+        None,
+        alias="net",
+        title="Type `Money` (represented as `dict` in JSON)",
+        description="Total item cost",
+    )
 
-        self.modifier = None
-        """ Service/Product billing modifiers.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    noteNumber: ListType[fhirtypes.PositiveInt] = Field(
+        None,
+        alias="noteNumber",
+        title="List of `PositiveInt` items (represented as `dict` in JSON)",
+        description="Applicable note numbers",
+    )
 
-        self.net = None
-        """ Total item cost.
-        Type `Money` (represented as `dict` in JSON). """
+    productOrService: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="productOrService",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Billing, service, product, or drug code",
+    )
 
-        self.noteNumber = None
-        """ Applicable note numbers.
-        List of `int` items. """
+    quantity: fhirtypes.QuantityType = Field(
+        None,
+        alias="quantity",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="Count of products or services",
+    )
 
-        self.productOrService = None
-        """ Billing, service, product, or drug code.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.quantity = None
-        """ Count of products or services.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        self.unitPrice = None
-        """ Fee, charge or cost per item.
-        Type `Money` (represented as `dict` in JSON). """
-
-        super(ClaimResponseAddItemDetailSubDetail, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ClaimResponseAddItemDetailSubDetail, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "adjudication",
-                    "adjudication",
-                    ClaimResponseItemAdjudication,
-                    "ClaimResponseItemAdjudication",
-                    True,
-                    None,
-                    True,
-                ),
-                ("factor", "factor", float, "decimal", False, None, False),
-                (
-                    "modifier",
-                    "modifier",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                ("net", "net", money.Money, "Money", False, None, False),
-                ("noteNumber", "noteNumber", int, "positiveInt", True, None, False),
-                (
-                    "productOrService",
-                    "productOrService",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "quantity",
-                    "quantity",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    None,
-                    False,
-                ),
-                ("unitPrice", "unitPrice", money.Money, "Money", False, None, False),
-            ]
-        )
-        return js
+    unitPrice: fhirtypes.MoneyType = Field(
+        None,
+        alias="unitPrice",
+        title="Type `Money` (represented as `dict` in JSON)",
+        description="Fee, charge or cost per item",
+    )
 
 
 class ClaimResponseError(backboneelement.BackboneElement):
     """ Processing errors.
-
     Errors encountered during the processing of the adjudication.
     """
 
-    resource_type = "ClaimResponseError"
+    resource_type = Field("ClaimResponseError", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    code: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="code",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Error code detailing processing issues",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    detailSequence: fhirtypes.PositiveInt = Field(
+        None,
+        alias="detailSequence",
+        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        description="Detail sequence number",
+    )
 
-        self.code = None
-        """ Error code detailing processing issues.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    itemSequence: fhirtypes.PositiveInt = Field(
+        None,
+        alias="itemSequence",
+        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        description="Item sequence number",
+    )
 
-        self.detailSequence = None
-        """ Detail sequence number.
-        Type `int`. """
-
-        self.itemSequence = None
-        """ Item sequence number.
-        Type `int`. """
-
-        self.subDetailSequence = None
-        """ Subdetail sequence number.
-        Type `int`. """
-
-        super(ClaimResponseError, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ClaimResponseError, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "code",
-                    "code",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "detailSequence",
-                    "detailSequence",
-                    int,
-                    "positiveInt",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "itemSequence",
-                    "itemSequence",
-                    int,
-                    "positiveInt",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "subDetailSequence",
-                    "subDetailSequence",
-                    int,
-                    "positiveInt",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    subDetailSequence: fhirtypes.PositiveInt = Field(
+        None,
+        alias="subDetailSequence",
+        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        description="Subdetail sequence number",
+    )
 
 
 class ClaimResponseInsurance(backboneelement.BackboneElement):
     """ Patient insurance information.
-
     Financial instruments for reimbursement for the health care products and
     services specified on the claim.
     """
 
-    resource_type = "ClaimResponseInsurance"
+    resource_type = Field("ClaimResponseInsurance", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    businessArrangement: fhirtypes.String = Field(
+        None,
+        alias="businessArrangement",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Additional provider contract number",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    claimResponse: fhirtypes.ReferenceType = Field(
+        None,
+        alias="claimResponse",
+        title="Type `Reference` referencing `ClaimResponse` (represented as `dict` in JSON)",
+        description="Adjudication results",
+    )
 
-        self.businessArrangement = None
-        """ Additional provider contract number.
-        Type `str`. """
+    coverage: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="coverage",
+        title="Type `Reference` referencing `Coverage` (represented as `dict` in JSON)",
+        description="Insurance information",
+    )
 
-        self.claimResponse = None
-        """ Adjudication results.
-        Type `FHIRReference` referencing `['ClaimResponse']` (represented as `dict` in JSON). """
+    focal: bool = Field(
+        ...,
+        alias="focal",
+        title="Type `bool`",
+        description="Coverage to be used for adjudication",
+    )
 
-        self.coverage = None
-        """ Insurance information.
-        Type `FHIRReference` referencing `['Coverage']` (represented as `dict` in JSON). """
-
-        self.focal = None
-        """ Coverage to be used for adjudication.
-        Type `bool`. """
-
-        self.sequence = None
-        """ Insurance instance identifier.
-        Type `int`. """
-
-        super(ClaimResponseInsurance, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ClaimResponseInsurance, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "businessArrangement",
-                    "businessArrangement",
-                    str,
-                    "string",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "claimResponse",
-                    "claimResponse",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "coverage",
-                    "coverage",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                ("focal", "focal", bool, "boolean", False, None, True),
-                ("sequence", "sequence", int, "positiveInt", False, None, True),
-            ]
-        )
-        return js
+    sequence: fhirtypes.PositiveInt = Field(
+        ...,
+        alias="sequence",
+        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        description="Insurance instance identifier",
+    )
 
 
 class ClaimResponseItem(backboneelement.BackboneElement):
     """ Adjudication for claim line items.
-
     A claim line. Either a simple (a product or service) or a 'group' of
     details which can also be a simple items or groups of sub-details.
     """
 
-    resource_type = "ClaimResponseItem"
+    resource_type = Field("ClaimResponseItem", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    adjudication: ListType[fhirtypes.ClaimResponseItemAdjudicationType] = Field(
+        ...,
+        alias="adjudication",
+        title="List of `ClaimResponseItemAdjudication` items (represented as `dict` in JSON)",
+        description="Adjudication details",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    detail: ListType[fhirtypes.ClaimResponseItemDetailType] = Field(
+        None,
+        alias="detail",
+        title="List of `ClaimResponseItemDetail` items (represented as `dict` in JSON)",
+        description="Adjudication for claim details",
+    )
 
-        self.adjudication = None
-        """ Adjudication details.
-        List of `ClaimResponseItemAdjudication` items (represented as `dict` in JSON). """
+    itemSequence: fhirtypes.PositiveInt = Field(
+        ...,
+        alias="itemSequence",
+        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        description="Claim item instance identifier",
+    )
 
-        self.detail = None
-        """ Adjudication for claim details.
-        List of `ClaimResponseItemDetail` items (represented as `dict` in JSON). """
-
-        self.itemSequence = None
-        """ Claim item instance identifier.
-        Type `int`. """
-
-        self.noteNumber = None
-        """ Applicable note numbers.
-        List of `int` items. """
-
-        super(ClaimResponseItem, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ClaimResponseItem, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "adjudication",
-                    "adjudication",
-                    ClaimResponseItemAdjudication,
-                    "ClaimResponseItemAdjudication",
-                    True,
-                    None,
-                    True,
-                ),
-                (
-                    "detail",
-                    "detail",
-                    ClaimResponseItemDetail,
-                    "ClaimResponseItemDetail",
-                    True,
-                    None,
-                    False,
-                ),
-                ("itemSequence", "itemSequence", int, "positiveInt", False, None, True),
-                ("noteNumber", "noteNumber", int, "positiveInt", True, None, False),
-            ]
-        )
-        return js
+    noteNumber: ListType[fhirtypes.PositiveInt] = Field(
+        None,
+        alias="noteNumber",
+        title="List of `PositiveInt` items (represented as `dict` in JSON)",
+        description="Applicable note numbers",
+    )
 
 
 class ClaimResponseItemAdjudication(backboneelement.BackboneElement):
     """ Adjudication details.
-
     If this item is a group then the values here are a summary of the
     adjudication of the detail items. If this item is a simple product or
     service then this is the result of the adjudication of this item.
     """
 
-    resource_type = "ClaimResponseItemAdjudication"
+    resource_type = Field("ClaimResponseItemAdjudication", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    amount: fhirtypes.MoneyType = Field(
+        None,
+        alias="amount",
+        title="Type `Money` (represented as `dict` in JSON)",
+        description="Monetary amount",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    category: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="category",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Type of adjudication information",
+    )
 
-        self.amount = None
-        """ Monetary amount.
-        Type `Money` (represented as `dict` in JSON). """
+    reason: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="reason",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Explanation of adjudication outcome",
+    )
 
-        self.category = None
-        """ Type of adjudication information.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.reason = None
-        """ Explanation of adjudication outcome.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.value = None
-        """ Non-monetary value.
-        Type `float`. """
-
-        super(ClaimResponseItemAdjudication, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ClaimResponseItemAdjudication, self).elementProperties()
-        js.extend(
-            [
-                ("amount", "amount", money.Money, "Money", False, None, False),
-                (
-                    "category",
-                    "category",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "reason",
-                    "reason",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("value", "value", float, "decimal", False, None, False),
-            ]
-        )
-        return js
+    value: fhirtypes.Decimal = Field(
+        None,
+        alias="value",
+        title="Type `Decimal` (represented as `dict` in JSON)",
+        description="Non-monetary value",
+    )
 
 
 class ClaimResponseItemDetail(backboneelement.BackboneElement):
     """ Adjudication for claim details.
-
     A claim detail. Either a simple (a product or service) or a 'group' of sub-
     details which are simple items.
     """
 
-    resource_type = "ClaimResponseItemDetail"
+    resource_type = Field("ClaimResponseItemDetail", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    adjudication: ListType[fhirtypes.ClaimResponseItemAdjudicationType] = Field(
+        ...,
+        alias="adjudication",
+        title="List of `ClaimResponseItemAdjudication` items (represented as `dict` in JSON)",
+        description="Detail level adjudication details",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    detailSequence: fhirtypes.PositiveInt = Field(
+        ...,
+        alias="detailSequence",
+        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        description="Claim detail instance identifier",
+    )
 
-        self.adjudication = None
-        """ Detail level adjudication details.
-        List of `ClaimResponseItemAdjudication` items (represented as `dict` in JSON). """
+    noteNumber: ListType[fhirtypes.PositiveInt] = Field(
+        None,
+        alias="noteNumber",
+        title="List of `PositiveInt` items (represented as `dict` in JSON)",
+        description="Applicable note numbers",
+    )
 
-        self.detailSequence = None
-        """ Claim detail instance identifier.
-        Type `int`. """
-
-        self.noteNumber = None
-        """ Applicable note numbers.
-        List of `int` items. """
-
-        self.subDetail = None
-        """ Adjudication for claim sub-details.
-        List of `ClaimResponseItemDetailSubDetail` items (represented as `dict` in JSON). """
-
-        super(ClaimResponseItemDetail, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ClaimResponseItemDetail, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "adjudication",
-                    "adjudication",
-                    ClaimResponseItemAdjudication,
-                    "ClaimResponseItemAdjudication",
-                    True,
-                    None,
-                    True,
-                ),
-                (
-                    "detailSequence",
-                    "detailSequence",
-                    int,
-                    "positiveInt",
-                    False,
-                    None,
-                    True,
-                ),
-                ("noteNumber", "noteNumber", int, "positiveInt", True, None, False),
-                (
-                    "subDetail",
-                    "subDetail",
-                    ClaimResponseItemDetailSubDetail,
-                    "ClaimResponseItemDetailSubDetail",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    subDetail: ListType[fhirtypes.ClaimResponseItemDetailSubDetailType] = Field(
+        None,
+        alias="subDetail",
+        title="List of `ClaimResponseItemDetailSubDetail` items (represented as `dict` in JSON)",
+        description="Adjudication for claim sub-details",
+    )
 
 
 class ClaimResponseItemDetailSubDetail(backboneelement.BackboneElement):
     """ Adjudication for claim sub-details.
-
     A sub-detail adjudication of a simple product or service.
     """
 
-    resource_type = "ClaimResponseItemDetailSubDetail"
+    resource_type = Field("ClaimResponseItemDetailSubDetail", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    adjudication: ListType[fhirtypes.ClaimResponseItemAdjudicationType] = Field(
+        None,
+        alias="adjudication",
+        title="List of `ClaimResponseItemAdjudication` items (represented as `dict` in JSON)",
+        description="Subdetail level adjudication details",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    noteNumber: ListType[fhirtypes.PositiveInt] = Field(
+        None,
+        alias="noteNumber",
+        title="List of `PositiveInt` items (represented as `dict` in JSON)",
+        description="Applicable note numbers",
+    )
 
-        self.adjudication = None
-        """ Subdetail level adjudication details.
-        List of `ClaimResponseItemAdjudication` items (represented as `dict` in JSON). """
-
-        self.noteNumber = None
-        """ Applicable note numbers.
-        List of `int` items. """
-
-        self.subDetailSequence = None
-        """ Claim sub-detail instance identifier.
-        Type `int`. """
-
-        super(ClaimResponseItemDetailSubDetail, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ClaimResponseItemDetailSubDetail, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "adjudication",
-                    "adjudication",
-                    ClaimResponseItemAdjudication,
-                    "ClaimResponseItemAdjudication",
-                    True,
-                    None,
-                    False,
-                ),
-                ("noteNumber", "noteNumber", int, "positiveInt", True, None, False),
-                (
-                    "subDetailSequence",
-                    "subDetailSequence",
-                    int,
-                    "positiveInt",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
+    subDetailSequence: fhirtypes.PositiveInt = Field(
+        ...,
+        alias="subDetailSequence",
+        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        description="Claim sub-detail instance identifier",
+    )
 
 
 class ClaimResponsePayment(backboneelement.BackboneElement):
     """ Payment Details.
-
     Payment details for the adjudication of the claim.
     """
 
-    resource_type = "ClaimResponsePayment"
+    resource_type = Field("ClaimResponsePayment", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    adjustment: fhirtypes.MoneyType = Field(
+        None,
+        alias="adjustment",
+        title="Type `Money` (represented as `dict` in JSON)",
+        description="Payment adjustment for non-claim issues",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    adjustmentReason: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="adjustmentReason",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Explanation for the adjustment",
+    )
 
-        self.adjustment = None
-        """ Payment adjustment for non-claim issues.
-        Type `Money` (represented as `dict` in JSON). """
+    amount: fhirtypes.MoneyType = Field(
+        ...,
+        alias="amount",
+        title="Type `Money` (represented as `dict` in JSON)",
+        description="Payable amount after adjustment",
+    )
 
-        self.adjustmentReason = None
-        """ Explanation for the adjustment.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    date: fhirtypes.Date = Field(
+        None,
+        alias="date",
+        title="Type `Date` (represented as `dict` in JSON)",
+        description="Expected date of payment",
+    )
 
-        self.amount = None
-        """ Payable amount after adjustment.
-        Type `Money` (represented as `dict` in JSON). """
+    identifier: fhirtypes.IdentifierType = Field(
+        None,
+        alias="identifier",
+        title="Type `Identifier` (represented as `dict` in JSON)",
+        description="Business identifier for the payment",
+    )
 
-        self.date = None
-        """ Expected date of payment.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.identifier = None
-        """ Business identifier for the payment.
-        Type `Identifier` (represented as `dict` in JSON). """
-
-        self.type = None
-        """ Partial or complete payment.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(ClaimResponsePayment, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ClaimResponsePayment, self).elementProperties()
-        js.extend(
-            [
-                ("adjustment", "adjustment", money.Money, "Money", False, None, False),
-                (
-                    "adjustmentReason",
-                    "adjustmentReason",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("amount", "amount", money.Money, "Money", False, None, True),
-                ("date", "date", fhirdate.FHIRDate, "date", False, None, False),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
+    type: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Partial or complete payment",
+    )
 
 
 class ClaimResponseProcessNote(backboneelement.BackboneElement):
     """ Note concerning adjudication.
-
     A note that describes or explains adjudication results in a human readable
     form.
     """
 
-    resource_type = "ClaimResponseProcessNote"
+    resource_type = Field("ClaimResponseProcessNote", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    language: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="language",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Language of the text",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    number: fhirtypes.PositiveInt = Field(
+        None,
+        alias="number",
+        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        description="Note instance identifier",
+    )
 
-        self.language = None
-        """ Language of the text.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    text: fhirtypes.String = Field(
+        ...,
+        alias="text",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Note explanatory text",
+    )
 
-        self.number = None
-        """ Note instance identifier.
-        Type `int`. """
-
-        self.text = None
-        """ Note explanatory text.
-        Type `str`. """
-
-        self.type = None
-        """ display | print | printoper.
-        Type `str`. """
-
-        super(ClaimResponseProcessNote, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ClaimResponseProcessNote, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "language",
-                    "language",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("number", "number", int, "positiveInt", False, None, False),
-                ("text", "text", str, "string", False, None, True),
-                ("type", "type", str, "code", False, None, False),
-            ]
-        )
-        return js
+    type: fhirtypes.Code = Field(
+        None,
+        alias="type",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="display | print | printoper",
+    )
 
 
 class ClaimResponseTotal(backboneelement.BackboneElement):
     """ Adjudication totals.
-
     Categorized monetary totals for the adjudication.
     """
 
-    resource_type = "ClaimResponseTotal"
+    resource_type = Field("ClaimResponseTotal", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    amount: fhirtypes.MoneyType = Field(
+        ...,
+        alias="amount",
+        title="Type `Money` (represented as `dict` in JSON)",
+        description="Financial total for the category",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.amount = None
-        """ Financial total for the category.
-        Type `Money` (represented as `dict` in JSON). """
-
-        self.category = None
-        """ Type of adjudication information.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(ClaimResponseTotal, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ClaimResponseTotal, self).elementProperties()
-        js.extend(
-            [
-                ("amount", "amount", money.Money, "Money", False, None, True),
-                (
-                    "category",
-                    "category",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import address
-except ImportError:
-    address = sys.modules[__package__ + ".address"]
-try:
-    from . import attachment
-except ImportError:
-    attachment = sys.modules[__package__ + ".attachment"]
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import money
-except ImportError:
-    money = sys.modules[__package__ + ".money"]
-try:
-    from . import period
-except ImportError:
-    period = sys.modules[__package__ + ".period"]
-try:
-    from . import quantity
-except ImportError:
-    quantity = sys.modules[__package__ + ".quantity"]
+    category: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="category",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Type of adjudication information",
+    )

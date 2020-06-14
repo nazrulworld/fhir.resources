@@ -6,140 +6,87 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import explanationofbenefit
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class ExplanationOfBenefitTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("ExplanationOfBenefit", js["resourceType"])
-        return explanationofbenefit.ExplanationOfBenefit(js)
+def impl_explanationofbenefit_1(inst):
+    assert inst.careTeam[0].provider.reference == "Practitioner/example"
+    assert inst.careTeam[0].sequence == 1
+    assert inst.claim.reference == "Claim/100150"
+    assert inst.claimResponse.reference == "ClaimResponse/R3500"
+    assert inst.created == fhirtypes.DateTime.validate("2014-08-16")
+    assert inst.disposition == "Claim settled as per contract."
+    assert inst.enterer.reference == "Practitioner/1"
+    assert inst.facility.reference == "Location/1"
+    assert inst.id == "EB3500"
+    assert (
+        inst.identifier[0].system
+        == "http://www.BenefitsInc.com/fhir/explanationofbenefit"
+    )
+    assert inst.identifier[0].value == "987654321"
+    assert inst.insurance.coverage.reference == "Coverage/9876B1"
+    assert inst.item[0].adjudication[0].amount.code == "USD"
+    assert inst.item[0].adjudication[0].amount.system == "urn:iso:std:iso:4217"
+    assert float(inst.item[0].adjudication[0].amount.value) == float(120.0)
+    assert inst.item[0].adjudication[0].category.coding[0].code == "eligible"
+    assert inst.item[0].adjudication[1].category.coding[0].code == "eligpercent"
+    assert float(inst.item[0].adjudication[1].value) == float(0.8)
+    assert inst.item[0].adjudication[2].amount.code == "USD"
+    assert inst.item[0].adjudication[2].amount.system == "urn:iso:std:iso:4217"
+    assert float(inst.item[0].adjudication[2].amount.value) == float(96.0)
+    assert inst.item[0].adjudication[2].category.coding[0].code == "benefit"
+    assert inst.item[0].careTeamLinkId[0] == 1
+    assert inst.item[0].encounter[0].reference == "Encounter/example"
+    assert inst.item[0].net.code == "USD"
+    assert inst.item[0].net.system == "urn:iso:std:iso:4217"
+    assert float(inst.item[0].net.value) == float(135.57)
+    assert inst.item[0].sequence == 1
+    assert inst.item[0].service.coding[0].code == "1200"
+    assert inst.item[0].service.coding[0].system == "http://hl7.org/fhir/service-uscls"
+    assert inst.item[0].servicedDate == fhirtypes.Date.validate("2014-08-16")
+    assert inst.item[0].unitPrice.code == "USD"
+    assert inst.item[0].unitPrice.system == "urn:iso:std:iso:4217"
+    assert float(inst.item[0].unitPrice.value) == float(135.57)
+    assert inst.organization.reference == "Organization/2"
+    assert inst.outcome.coding[0].code == "complete"
+    assert inst.outcome.coding[0].system == "http://hl7.org/fhir/remittance-outcome"
+    assert inst.patient.reference == "Patient/pat1"
+    assert inst.payee.party.reference == "Organization/2"
+    assert inst.payee.type.coding[0].code == "provider"
+    assert inst.payee.type.coding[0].system == "http://hl7.org/fhir/payeetype"
+    assert inst.provider.reference == "Practitioner/1"
+    assert inst.status == "active"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the ExplanationOfBenefit</div>'
+    )
+    assert inst.text.status == "generated"
+    assert inst.totalBenefit.code == "USD"
+    assert inst.totalBenefit.system == "urn:iso:std:iso:4217"
+    assert float(inst.totalBenefit.value) == float(96.0)
+    assert inst.totalCost.code == "USD"
+    assert inst.totalCost.system == "urn:iso:std:iso:4217"
+    assert float(inst.totalCost.value) == float(135.57)
+    assert inst.type.coding[0].code == "oral"
+    assert inst.type.coding[0].system == "http://hl7.org/fhir/ex-claimtype"
 
-    def testExplanationOfBenefit1(self):
-        inst = self.instantiate_from("explanationofbenefit-example.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a ExplanationOfBenefit instance"
-        )
-        self.implExplanationOfBenefit1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("ExplanationOfBenefit", js["resourceType"])
-        inst2 = explanationofbenefit.ExplanationOfBenefit(js)
-        self.implExplanationOfBenefit1(inst2)
+def test_explanationofbenefit_1(base_settings):
+    """No. 1 tests collection for ExplanationOfBenefit.
+    Test File: explanationofbenefit-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "explanationofbenefit-example.json"
+    inst = explanationofbenefit.ExplanationOfBenefit.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ExplanationOfBenefit" == inst.resource_type
 
-    def implExplanationOfBenefit1(self, inst):
-        self.assertEqual(inst.careTeam[0].sequence, 1)
-        self.assertEqual(inst.created.date, FHIRDate("2014-08-16").date)
-        self.assertEqual(inst.created.as_json(), "2014-08-16")
-        self.assertEqual(
-            force_bytes(inst.disposition), force_bytes("Claim settled as per contract.")
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("EB3500"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://www.BenefitsInc.com/fhir/explanationofbenefit"),
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].value), force_bytes("987654321")
-        )
-        self.assertEqual(
-            force_bytes(inst.item[0].adjudication[0].amount.code), force_bytes("USD")
-        )
-        self.assertEqual(
-            force_bytes(inst.item[0].adjudication[0].amount.system),
-            force_bytes("urn:iso:std:iso:4217"),
-        )
-        self.assertEqual(inst.item[0].adjudication[0].amount.value, 120.0)
-        self.assertEqual(
-            force_bytes(inst.item[0].adjudication[0].category.coding[0].code),
-            force_bytes("eligible"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[0].adjudication[1].category.coding[0].code),
-            force_bytes("eligpercent"),
-        )
-        self.assertEqual(inst.item[0].adjudication[1].value, 0.8)
-        self.assertEqual(
-            force_bytes(inst.item[0].adjudication[2].amount.code), force_bytes("USD")
-        )
-        self.assertEqual(
-            force_bytes(inst.item[0].adjudication[2].amount.system),
-            force_bytes("urn:iso:std:iso:4217"),
-        )
-        self.assertEqual(inst.item[0].adjudication[2].amount.value, 96.0)
-        self.assertEqual(
-            force_bytes(inst.item[0].adjudication[2].category.coding[0].code),
-            force_bytes("benefit"),
-        )
-        self.assertEqual(inst.item[0].careTeamLinkId[0], 1)
-        self.assertEqual(force_bytes(inst.item[0].net.code), force_bytes("USD"))
-        self.assertEqual(
-            force_bytes(inst.item[0].net.system), force_bytes("urn:iso:std:iso:4217")
-        )
-        self.assertEqual(inst.item[0].net.value, 135.57)
-        self.assertEqual(inst.item[0].sequence, 1)
-        self.assertEqual(
-            force_bytes(inst.item[0].service.coding[0].code), force_bytes("1200")
-        )
-        self.assertEqual(
-            force_bytes(inst.item[0].service.coding[0].system),
-            force_bytes("http://hl7.org/fhir/service-uscls"),
-        )
-        self.assertEqual(inst.item[0].servicedDate.date, FHIRDate("2014-08-16").date)
-        self.assertEqual(inst.item[0].servicedDate.as_json(), "2014-08-16")
-        self.assertEqual(force_bytes(inst.item[0].unitPrice.code), force_bytes("USD"))
-        self.assertEqual(
-            force_bytes(inst.item[0].unitPrice.system),
-            force_bytes("urn:iso:std:iso:4217"),
-        )
-        self.assertEqual(inst.item[0].unitPrice.value, 135.57)
-        self.assertEqual(
-            force_bytes(inst.outcome.coding[0].code), force_bytes("complete")
-        )
-        self.assertEqual(
-            force_bytes(inst.outcome.coding[0].system),
-            force_bytes("http://hl7.org/fhir/remittance-outcome"),
-        )
-        self.assertEqual(
-            force_bytes(inst.payee.type.coding[0].code), force_bytes("provider")
-        )
-        self.assertEqual(
-            force_bytes(inst.payee.type.coding[0].system),
-            force_bytes("http://hl7.org/fhir/payeetype"),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the ExplanationOfBenefit</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.totalBenefit.code), force_bytes("USD"))
-        self.assertEqual(
-            force_bytes(inst.totalBenefit.system), force_bytes("urn:iso:std:iso:4217")
-        )
-        self.assertEqual(inst.totalBenefit.value, 96.0)
-        self.assertEqual(force_bytes(inst.totalCost.code), force_bytes("USD"))
-        self.assertEqual(
-            force_bytes(inst.totalCost.system), force_bytes("urn:iso:std:iso:4217")
-        )
-        self.assertEqual(inst.totalCost.value, 135.57)
-        self.assertEqual(force_bytes(inst.type.coding[0].code), force_bytes("oral"))
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].system),
-            force_bytes("http://hl7.org/fhir/ex-claimtype"),
-        )
+    impl_explanationofbenefit_1(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ExplanationOfBenefit" == data["resourceType"]
+
+    inst2 = explanationofbenefit.ExplanationOfBenefit(**data)
+    impl_explanationofbenefit_1(inst2)

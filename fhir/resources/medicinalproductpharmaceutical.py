@@ -6,11 +6,11 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class MedicinalProductPharmaceutical(domainresource.DomainResource):
@@ -18,174 +18,81 @@ class MedicinalProductPharmaceutical(domainresource.DomainResource):
     form.
     """
 
-    resource_type = "MedicinalProductPharmaceutical"
+    resource_type = Field("MedicinalProductPharmaceutical", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    administrableDoseForm: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="administrableDoseForm",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The administrable dose form, after necessary reconstitution",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    characteristics: ListType[
+        fhirtypes.MedicinalProductPharmaceuticalCharacteristicsType
+    ] = Field(
+        None,
+        alias="characteristics",
+        title="List of `MedicinalProductPharmaceuticalCharacteristics` items (represented as `dict` in JSON)",
+        description="Characteristics e.g. a products onset of action",
+    )
 
-        self.administrableDoseForm = None
-        """ The administrable dose form, after necessary reconstitution.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    device: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="device",
+        title="List of `Reference` items referencing `DeviceDefinition` (represented as `dict` in JSON)",
+        description="Accompanying device",
+    )
 
-        self.characteristics = None
-        """ Characteristics e.g. a products onset of action.
-        List of `MedicinalProductPharmaceuticalCharacteristics` items (represented as `dict` in JSON). """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="An identifier for the pharmaceutical medicinal product",
+    )
 
-        self.device = None
-        """ Accompanying device.
-        List of `FHIRReference` items referencing `['DeviceDefinition']` (represented as `dict` in JSON). """
+    ingredient: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="ingredient",
+        title="List of `Reference` items referencing `MedicinalProductIngredient` (represented as `dict` in JSON)",
+        description="Ingredient",
+    )
 
-        self.identifier = None
-        """ An identifier for the pharmaceutical medicinal product.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    routeOfAdministration: ListType[
+        fhirtypes.MedicinalProductPharmaceuticalRouteOfAdministrationType
+    ] = Field(
+        ...,
+        alias="routeOfAdministration",
+        title="List of `MedicinalProductPharmaceuticalRouteOfAdministration` items (represented as `dict` in JSON)",
+        description="The path by which the pharmaceutical product is taken into or makes contact with the body",
+    )
 
-        self.ingredient = None
-        """ Ingredient.
-        List of `FHIRReference` items referencing `['MedicinalProductIngredient']` (represented as `dict` in JSON). """
-
-        self.routeOfAdministration = None
-        """ The path by which the pharmaceutical product is taken into or makes
-        contact with the body.
-        List of `MedicinalProductPharmaceuticalRouteOfAdministration` items (represented as `dict` in JSON). """
-
-        self.unitOfPresentation = None
-        """ Todo.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(MedicinalProductPharmaceutical, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(MedicinalProductPharmaceutical, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "administrableDoseForm",
-                    "administrableDoseForm",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "characteristics",
-                    "characteristics",
-                    MedicinalProductPharmaceuticalCharacteristics,
-                    "MedicinalProductPharmaceuticalCharacteristics",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "device",
-                    "device",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "ingredient",
-                    "ingredient",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "routeOfAdministration",
-                    "routeOfAdministration",
-                    MedicinalProductPharmaceuticalRouteOfAdministration,
-                    "MedicinalProductPharmaceuticalRouteOfAdministration",
-                    True,
-                    None,
-                    True,
-                ),
-                (
-                    "unitOfPresentation",
-                    "unitOfPresentation",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    unitOfPresentation: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="unitOfPresentation",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Todo",
+    )
 
 
 class MedicinalProductPharmaceuticalCharacteristics(backboneelement.BackboneElement):
     """ Characteristics e.g. a products onset of action.
     """
 
-    resource_type = "MedicinalProductPharmaceuticalCharacteristics"
+    resource_type = Field("MedicinalProductPharmaceuticalCharacteristics", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    code: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="code",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="A coded characteristic",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.code = None
-        """ A coded characteristic.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.status = None
-        """ The status of characteristic e.g. assigned or pending.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(MedicinalProductPharmaceuticalCharacteristics, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(
-            MedicinalProductPharmaceuticalCharacteristics, self
-        ).elementProperties()
-        js.extend(
-            [
-                (
-                    "code",
-                    "code",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "status",
-                    "status",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    status: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="status",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The status of characteristic e.g. assigned or pending",
+    )
 
 
 class MedicinalProductPharmaceuticalRouteOfAdministration(
@@ -195,129 +102,60 @@ class MedicinalProductPharmaceuticalRouteOfAdministration(
     with the body.
     """
 
-    resource_type = "MedicinalProductPharmaceuticalRouteOfAdministration"
+    resource_type = Field(
+        "MedicinalProductPharmaceuticalRouteOfAdministration", const=True
+    )
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    code: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="code",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Coded expression for the route",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    firstDose: fhirtypes.QuantityType = Field(
+        None,
+        alias="firstDose",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="The first dose (dose quantity) administered in humans can be specified, for a product under investigation, using a numerical value and its unit of measurement",
+    )
 
-        self.code = None
-        """ Coded expression for the route.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    maxDosePerDay: fhirtypes.QuantityType = Field(
+        None,
+        alias="maxDosePerDay",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="The maximum dose per day (maximum dose quantity to be administered in any one 24-h period) that can be administered as per the protocol referenced in the clinical trial authorisation",
+    )
 
-        self.firstDose = None
-        """ The first dose (dose quantity) administered in humans can be
-        specified, for a product under investigation, using a numerical
-        value and its unit of measurement.
-        Type `Quantity` (represented as `dict` in JSON). """
+    maxDosePerTreatmentPeriod: fhirtypes.RatioType = Field(
+        None,
+        alias="maxDosePerTreatmentPeriod",
+        title="Type `Ratio` (represented as `dict` in JSON)",
+        description="The maximum dose per treatment period that can be administered as per the protocol referenced in the clinical trial authorisation",
+    )
 
-        self.maxDosePerDay = None
-        """ The maximum dose per day (maximum dose quantity to be administered
-        in any one 24-h period) that can be administered as per the
-        protocol referenced in the clinical trial authorisation.
-        Type `Quantity` (represented as `dict` in JSON). """
+    maxSingleDose: fhirtypes.QuantityType = Field(
+        None,
+        alias="maxSingleDose",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="The maximum single dose that can be administered as per the protocol of a clinical trial can be specified using a numerical value and its unit of measurement",
+    )
 
-        self.maxDosePerTreatmentPeriod = None
-        """ The maximum dose per treatment period that can be administered as
-        per the protocol referenced in the clinical trial authorisation.
-        Type `Ratio` (represented as `dict` in JSON). """
+    maxTreatmentPeriod: fhirtypes.DurationType = Field(
+        None,
+        alias="maxTreatmentPeriod",
+        title="Type `Duration` (represented as `dict` in JSON)",
+        description="The maximum treatment period during which an Investigational Medicinal Product can be administered as per the protocol referenced in the clinical trial authorisation",
+    )
 
-        self.maxSingleDose = None
-        """ The maximum single dose that can be administered as per the
-        protocol of a clinical trial can be specified using a numerical
-        value and its unit of measurement.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        self.maxTreatmentPeriod = None
-        """ The maximum treatment period during which an Investigational
-        Medicinal Product can be administered as per the protocol
-        referenced in the clinical trial authorisation.
-        Type `Duration` (represented as `dict` in JSON). """
-
-        self.targetSpecies = None
-        """ A species for which this route applies.
-        List of `MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies` items (represented as `dict` in JSON). """
-
-        super(MedicinalProductPharmaceuticalRouteOfAdministration, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(
-            MedicinalProductPharmaceuticalRouteOfAdministration, self
-        ).elementProperties()
-        js.extend(
-            [
-                (
-                    "code",
-                    "code",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "firstDose",
-                    "firstDose",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "maxDosePerDay",
-                    "maxDosePerDay",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "maxDosePerTreatmentPeriod",
-                    "maxDosePerTreatmentPeriod",
-                    ratio.Ratio,
-                    "Ratio",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "maxSingleDose",
-                    "maxSingleDose",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "maxTreatmentPeriod",
-                    "maxTreatmentPeriod",
-                    duration.Duration,
-                    "Duration",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "targetSpecies",
-                    "targetSpecies",
-                    MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies,
-                    "MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    targetSpecies: ListType[
+        fhirtypes.MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesType
+    ] = Field(
+        None,
+        alias="targetSpecies",
+        title="List of `MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies` items (represented as `dict` in JSON)",
+        description="A species for which this route applies",
+    )
 
 
 class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies(
@@ -326,56 +164,25 @@ class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies(
     """ A species for which this route applies.
     """
 
-    resource_type = "MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies"
+    resource_type = Field(
+        "MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies", const=True
+    )
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    code: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="code",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Coded expression for the species",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.code = None
-        """ Coded expression for the species.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.withdrawalPeriod = None
-        """ A species specific time during which consumption of animal product
-        is not appropriate.
-        List of `MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod` items (represented as `dict` in JSON). """
-
-        super(
-            MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies, self
-        ).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(
-            MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies, self
-        ).elementProperties()
-        js.extend(
-            [
-                (
-                    "code",
-                    "code",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "withdrawalPeriod",
-                    "withdrawalPeriod",
-                    MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod,
-                    "MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    withdrawalPeriod: ListType[
+        fhirtypes.MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriodType
+    ] = Field(
+        None,
+        alias="withdrawalPeriod",
+        title="List of `MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod` items (represented as `dict` in JSON)",
+        description="A species specific time during which consumption of animal product is not appropriate",
+    )
 
 
 class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod(
@@ -385,86 +192,28 @@ class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawal
     appropriate.
     """
 
-    resource_type = "MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod"
+    resource_type = Field(
+        "MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod",
+        const=True,
+    )
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    supportingInformation: fhirtypes.String = Field(
+        None,
+        alias="supportingInformation",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Extra information about the withdrawal period",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    tissue: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="tissue",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Coded expression for the type of tissue for which the withdrawal period applues, e.g. meat, milk",
+    )
 
-        self.supportingInformation = None
-        """ Extra information about the withdrawal period.
-        Type `str`. """
-
-        self.tissue = None
-        """ Coded expression for the type of tissue for which the withdrawal
-        period applues, e.g. meat, milk.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.value = None
-        """ A value for the time.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        super(
-            MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod,
-            self,
-        ).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(
-            MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod,
-            self,
-        ).elementProperties()
-        js.extend(
-            [
-                (
-                    "supportingInformation",
-                    "supportingInformation",
-                    str,
-                    "string",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "tissue",
-                    "tissue",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                ("value", "value", quantity.Quantity, "Quantity", False, None, True),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import duration
-except ImportError:
-    duration = sys.modules[__package__ + ".duration"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import quantity
-except ImportError:
-    quantity = sys.modules[__package__ + ".quantity"]
-try:
-    from . import ratio
-except ImportError:
-    ratio = sys.modules[__package__ + ".ratio"]
+    value: fhirtypes.QuantityType = Field(
+        ...,
+        alias="value",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="A value for the time",
+    )

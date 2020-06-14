@@ -6,144 +6,109 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import endpoint
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class EndpointTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("Endpoint", js["resourceType"])
-        return endpoint.Endpoint(js)
+def impl_endpoint_1(inst):
+    assert inst.address == "https://pacs.hospital.org/IHEInvokeImageDisplay"
+    assert inst.connectionType.code == "ihe-iid"
+    assert inst.connectionType.system == "http://hl7.org/fhir/endpoint-connection-type"
+    assert inst.id == "example-iid"
+    assert inst.name == "PACS Hospital Invoke Image Display endpoint"
+    assert inst.payloadType[0].text == "DICOM IID"
+    assert inst.status == "active"
+    assert inst.text.status == "generated"
 
-    def testEndpoint1(self):
-        inst = self.instantiate_from("endpoint-example-iid.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Endpoint instance")
-        self.implEndpoint1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("Endpoint", js["resourceType"])
-        inst2 = endpoint.Endpoint(js)
-        self.implEndpoint1(inst2)
+def test_endpoint_1(base_settings):
+    """No. 1 tests collection for Endpoint.
+    Test File: endpoint-example-iid.json
+    """
+    filename = base_settings["unittest_data_dir"] / "endpoint-example-iid.json"
+    inst = endpoint.Endpoint.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Endpoint" == inst.resource_type
 
-    def implEndpoint1(self, inst):
-        self.assertEqual(
-            force_bytes(inst.address),
-            force_bytes("https://pacs.hospital.org/IHEInvokeImageDisplay"),
-        )
-        self.assertEqual(force_bytes(inst.connectionType.code), force_bytes("ihe-iid"))
-        self.assertEqual(
-            force_bytes(inst.connectionType.system),
-            force_bytes("http://hl7.org/fhir/endpoint-connection-type"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("example-iid"))
-        self.assertEqual(
-            force_bytes(inst.name),
-            force_bytes("PACS Hospital Invoke Image Display endpoint"),
-        )
-        self.assertEqual(
-            force_bytes(inst.payloadType[0].text), force_bytes("DICOM IID")
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    impl_endpoint_1(inst)
 
-    def testEndpoint2(self):
-        inst = self.instantiate_from("endpoint-example-wadors.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Endpoint instance")
-        self.implEndpoint2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Endpoint" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("Endpoint", js["resourceType"])
-        inst2 = endpoint.Endpoint(js)
-        self.implEndpoint2(inst2)
+    inst2 = endpoint.Endpoint(**data)
+    impl_endpoint_1(inst2)
 
-    def implEndpoint2(self, inst):
-        self.assertEqual(
-            force_bytes(inst.address), force_bytes("https://pacs.hospital.org/wado-rs")
-        )
-        self.assertEqual(
-            force_bytes(inst.connectionType.code), force_bytes("dicom-wado-rs")
-        )
-        self.assertEqual(
-            force_bytes(inst.connectionType.system),
-            force_bytes("http://hl7.org/fhir/endpoint-connection-type"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("example-wadors"))
-        self.assertEqual(
-            force_bytes(inst.name), force_bytes("PACS Hospital DICOM WADO-RS endpoint")
-        )
-        self.assertEqual(
-            force_bytes(inst.payloadMimeType[0]), force_bytes("application/dicom")
-        )
-        self.assertEqual(
-            force_bytes(inst.payloadType[0].text), force_bytes("DICOM WADO-RS")
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 
-    def testEndpoint3(self):
-        inst = self.instantiate_from("endpoint-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Endpoint instance")
-        self.implEndpoint3(inst)
+def impl_endpoint_2(inst):
+    assert inst.address == "https://pacs.hospital.org/wado-rs"
+    assert inst.connectionType.code == "dicom-wado-rs"
+    assert inst.connectionType.system == "http://hl7.org/fhir/endpoint-connection-type"
+    assert inst.id == "example-wadors"
+    assert inst.name == "PACS Hospital DICOM WADO-RS endpoint"
+    assert inst.payloadMimeType[0] == "application/dicom"
+    assert inst.payloadType[0].text == "DICOM WADO-RS"
+    assert inst.status == "active"
+    assert inst.text.status == "generated"
 
-        js = inst.as_json()
-        self.assertEqual("Endpoint", js["resourceType"])
-        inst2 = endpoint.Endpoint(js)
-        self.implEndpoint3(inst2)
 
-    def implEndpoint3(self, inst):
-        self.assertEqual(
-            force_bytes(inst.address),
-            force_bytes("http://fhir3.healthintersections.com.au/open/CarePlan"),
-        )
-        self.assertEqual(
-            force_bytes(inst.connectionType.code), force_bytes("hl7-fhir-rest")
-        )
-        self.assertEqual(
-            force_bytes(inst.connectionType.system),
-            force_bytes("http://hl7.org/fhir/endpoint-connection-type"),
-        )
-        self.assertEqual(force_bytes(inst.contact[0].system), force_bytes("email"))
-        self.assertEqual(force_bytes(inst.contact[0].use), force_bytes("work"))
-        self.assertEqual(
-            force_bytes(inst.contact[0].value),
-            force_bytes("endpointmanager@example.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.header[0]), force_bytes("bearer-code BASGS534s4")
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://example.org/enpoint-identifier"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("epcp12"))
-        self.assertEqual(
-            force_bytes(inst.name), force_bytes("Health Intersections CarePlan Hub")
-        )
-        self.assertEqual(
-            force_bytes(inst.payloadMimeType[0]), force_bytes("application/fhir+xml")
-        )
-        self.assertEqual(
-            force_bytes(inst.payloadType[0].coding[0].code), force_bytes("CarePlan")
-        )
-        self.assertEqual(
-            force_bytes(inst.payloadType[0].coding[0].system),
-            force_bytes("http://hl7.org/fhir/resource-types"),
-        )
-        self.assertEqual(inst.period.start.date, FHIRDate("2014-09-01").date)
-        self.assertEqual(inst.period.start.as_json(), "2014-09-01")
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+def test_endpoint_2(base_settings):
+    """No. 2 tests collection for Endpoint.
+    Test File: endpoint-example-wadors.json
+    """
+    filename = base_settings["unittest_data_dir"] / "endpoint-example-wadors.json"
+    inst = endpoint.Endpoint.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Endpoint" == inst.resource_type
+
+    impl_endpoint_2(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Endpoint" == data["resourceType"]
+
+    inst2 = endpoint.Endpoint(**data)
+    impl_endpoint_2(inst2)
+
+
+def impl_endpoint_3(inst):
+    assert inst.address == "http://fhir3.healthintersections.com.au/open/CarePlan"
+    assert inst.connectionType.code == "hl7-fhir-rest"
+    assert inst.connectionType.system == "http://hl7.org/fhir/endpoint-connection-type"
+    assert inst.contact[0].system == "email"
+    assert inst.contact[0].use == "work"
+    assert inst.contact[0].value == "endpointmanager@example.org"
+    assert inst.header[0] == "bearer-code BASGS534s4"
+    assert inst.id == "example"
+    assert inst.identifier[0].system == "http://example.org/enpoint-identifier"
+    assert inst.identifier[0].value == "epcp12"
+    assert inst.managingOrganization.reference == "Organization/hl7"
+    assert inst.name == "Health Intersections CarePlan Hub"
+    assert inst.payloadMimeType[0] == "application/fhir+xml"
+    assert inst.payloadType[0].coding[0].code == "CarePlan"
+    assert inst.payloadType[0].coding[0].system == "http://hl7.org/fhir/resource-types"
+    assert inst.period.start == fhirtypes.DateTime.validate("2014-09-01")
+    assert inst.status == "active"
+    assert inst.text.status == "generated"
+
+
+def test_endpoint_3(base_settings):
+    """No. 3 tests collection for Endpoint.
+    Test File: endpoint-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "endpoint-example.json"
+    inst = endpoint.Endpoint.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Endpoint" == inst.resource_type
+
+    impl_endpoint_3(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Endpoint" == data["resourceType"]
+
+    inst2 = endpoint.Endpoint(**data)
+    impl_endpoint_3(inst2)

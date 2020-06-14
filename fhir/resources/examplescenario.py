@@ -6,689 +6,448 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class ExampleScenario(domainresource.DomainResource):
     """ Example of workflow instance.
     """
 
-    resource_type = "ExampleScenario"
+    resource_type = Field("ExampleScenario", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    actor: ListType[fhirtypes.ExampleScenarioActorType] = Field(
+        None,
+        alias="actor",
+        title="List of `ExampleScenarioActor` items (represented as `dict` in JSON)",
+        description="Actor participating in the resource",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    contact: ListType[fhirtypes.ContactDetailType] = Field(
+        None,
+        alias="contact",
+        title="List of `ContactDetail` items (represented as `dict` in JSON)",
+        description="Contact details for the publisher",
+    )
 
-        self.actor = None
-        """ Actor participating in the resource.
-        List of `ExampleScenarioActor` items (represented as `dict` in JSON). """
+    copyright: fhirtypes.Markdown = Field(
+        None,
+        alias="copyright",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Use and/or publishing restrictions",
+    )
 
-        self.contact = None
-        """ Contact details for the publisher.
-        List of `ContactDetail` items (represented as `dict` in JSON). """
+    date: fhirtypes.DateTime = Field(
+        None,
+        alias="date",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Date last changed",
+    )
 
-        self.copyright = None
-        """ Use and/or publishing restrictions.
-        Type `str`. """
+    experimental: bool = Field(
+        None,
+        alias="experimental",
+        title="Type `bool`",
+        description="For testing purposes, not real usage",
+    )
 
-        self.date = None
-        """ Date last changed.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Additional identifier for the example scenario",
+    )
 
-        self.experimental = None
-        """ For testing purposes, not real usage.
-        Type `bool`. """
+    instance: ListType[fhirtypes.ExampleScenarioInstanceType] = Field(
+        None,
+        alias="instance",
+        title="List of `ExampleScenarioInstance` items (represented as `dict` in JSON)",
+        description="Each resource and each version that is present in the workflow",
+    )
 
-        self.identifier = None
-        """ Additional identifier for the example scenario.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="jurisdiction",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Intended jurisdiction for example scenario (if applicable)",
+    )
 
-        self.instance = None
-        """ Each resource and each version that is present in the workflow.
-        List of `ExampleScenarioInstance` items (represented as `dict` in JSON). """
+    name: fhirtypes.String = Field(
+        None,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name for this example scenario (computer friendly)",
+    )
 
-        self.jurisdiction = None
-        """ Intended jurisdiction for example scenario (if applicable).
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    process: ListType[fhirtypes.ExampleScenarioProcessType] = Field(
+        None,
+        alias="process",
+        title="List of `ExampleScenarioProcess` items (represented as `dict` in JSON)",
+        description="Each major process - a group of operations",
+    )
 
-        self.name = None
-        """ Name for this example scenario (computer friendly).
-        Type `str`. """
+    publisher: fhirtypes.String = Field(
+        None,
+        alias="publisher",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name of the publisher (organization or individual)",
+    )
 
-        self.process = None
-        """ Each major process - a group of operations.
-        List of `ExampleScenarioProcess` items (represented as `dict` in JSON). """
+    purpose: fhirtypes.Markdown = Field(
+        None,
+        alias="purpose",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="The purpose of the example, e.g. to illustrate a scenario",
+    )
 
-        self.publisher = None
-        """ Name of the publisher (organization or individual).
-        Type `str`. """
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="draft | active | retired | unknown",
+    )
 
-        self.purpose = None
-        """ The purpose of the example, e.g. to illustrate a scenario.
-        Type `str`. """
+    url: fhirtypes.Uri = Field(
+        None,
+        alias="url",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Canonical identifier for this example scenario, represented as a URI (globally unique)",
+    )
 
-        self.status = None
-        """ draft | active | retired | unknown.
-        Type `str`. """
+    useContext: ListType[fhirtypes.UsageContextType] = Field(
+        None,
+        alias="useContext",
+        title="List of `UsageContext` items (represented as `dict` in JSON)",
+        description="The context that the content is intended to support",
+    )
 
-        self.url = None
-        """ Canonical identifier for this example scenario, represented as a
-        URI (globally unique).
-        Type `str`. """
+    version: fhirtypes.String = Field(
+        None,
+        alias="version",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Business version of the example scenario",
+    )
 
-        self.useContext = None
-        """ The context that the content is intended to support.
-        List of `UsageContext` items (represented as `dict` in JSON). """
-
-        self.version = None
-        """ Business version of the example scenario.
-        Type `str`. """
-
-        self.workflow = None
-        """ Another nested workflow.
-        List of `str` items referencing `['ExampleScenario']`. """
-
-        super(ExampleScenario, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ExampleScenario, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "actor",
-                    "actor",
-                    ExampleScenarioActor,
-                    "ExampleScenarioActor",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "contact",
-                    "contact",
-                    contactdetail.ContactDetail,
-                    "ContactDetail",
-                    True,
-                    None,
-                    False,
-                ),
-                ("copyright", "copyright", str, "markdown", False, None, False),
-                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-                ("experimental", "experimental", bool, "boolean", False, None, False),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "instance",
-                    "instance",
-                    ExampleScenarioInstance,
-                    "ExampleScenarioInstance",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "jurisdiction",
-                    "jurisdiction",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                ("name", "name", str, "string", False, None, False),
-                (
-                    "process",
-                    "process",
-                    ExampleScenarioProcess,
-                    "ExampleScenarioProcess",
-                    True,
-                    None,
-                    False,
-                ),
-                ("publisher", "publisher", str, "string", False, None, False),
-                ("purpose", "purpose", str, "markdown", False, None, False),
-                ("status", "status", str, "code", False, None, True),
-                ("url", "url", str, "uri", False, None, False),
-                (
-                    "useContext",
-                    "useContext",
-                    usagecontext.UsageContext,
-                    "UsageContext",
-                    True,
-                    None,
-                    False,
-                ),
-                ("version", "version", str, "string", False, None, False),
-                ("workflow", "workflow", str, "canonical", True, None, False),
-            ]
-        )
-        return js
+    workflow: ListType[fhirtypes.Canonical] = Field(
+        None,
+        alias="workflow",
+        title="List of `Canonical` items referencing `ExampleScenario` (represented as `dict` in JSON)",
+        description="Another nested workflow",
+    )
 
 
 class ExampleScenarioActor(backboneelement.BackboneElement):
     """ Actor participating in the resource.
     """
 
-    resource_type = "ExampleScenarioActor"
+    resource_type = Field("ExampleScenarioActor", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    actorId: fhirtypes.String = Field(
+        ...,
+        alias="actorId",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="ID or acronym of the actor",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    description: fhirtypes.Markdown = Field(
+        None,
+        alias="description",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="The description of the actor",
+    )
 
-        self.actorId = None
-        """ ID or acronym of the actor.
-        Type `str`. """
+    name: fhirtypes.String = Field(
+        None,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="The name of the actor as shown in the page",
+    )
 
-        self.description = None
-        """ The description of the actor.
-        Type `str`. """
-
-        self.name = None
-        """ The name of the actor as shown in the page.
-        Type `str`. """
-
-        self.type = None
-        """ person | entity.
-        Type `str`. """
-
-        super(ExampleScenarioActor, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ExampleScenarioActor, self).elementProperties()
-        js.extend(
-            [
-                ("actorId", "actorId", str, "string", False, None, True),
-                ("description", "description", str, "markdown", False, None, False),
-                ("name", "name", str, "string", False, None, False),
-                ("type", "type", str, "code", False, None, True),
-            ]
-        )
-        return js
+    type: fhirtypes.Code = Field(
+        ...,
+        alias="type",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="person | entity",
+    )
 
 
 class ExampleScenarioInstance(backboneelement.BackboneElement):
     """ Each resource and each version that is present in the workflow.
     """
 
-    resource_type = "ExampleScenarioInstance"
+    resource_type = Field("ExampleScenarioInstance", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    containedInstance: ListType[
+        fhirtypes.ExampleScenarioInstanceContainedInstanceType
+    ] = Field(
+        None,
+        alias="containedInstance",
+        title="List of `ExampleScenarioInstanceContainedInstance` items (represented as `dict` in JSON)",
+        description="Resources contained in the instance",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    description: fhirtypes.Markdown = Field(
+        None,
+        alias="description",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Human-friendly description of the resource instance",
+    )
 
-        self.containedInstance = None
-        """ Resources contained in the instance.
-        List of `ExampleScenarioInstanceContainedInstance` items (represented as `dict` in JSON). """
+    name: fhirtypes.String = Field(
+        None,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="A short name for the resource instance",
+    )
 
-        self.description = None
-        """ Human-friendly description of the resource instance.
-        Type `str`. """
+    resourceId: fhirtypes.String = Field(
+        ...,
+        alias="resourceId",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="The id of the resource for referencing",
+    )
 
-        self.name = None
-        """ A short name for the resource instance.
-        Type `str`. """
+    resourceType: fhirtypes.Code = Field(
+        ...,
+        alias="resourceType",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="The type of the resource",
+    )
 
-        self.resourceId = None
-        """ The id of the resource for referencing.
-        Type `str`. """
-
-        self.resourceType = None
-        """ The type of the resource.
-        Type `str`. """
-
-        self.version = None
-        """ A specific version of the resource.
-        List of `ExampleScenarioInstanceVersion` items (represented as `dict` in JSON). """
-
-        super(ExampleScenarioInstance, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ExampleScenarioInstance, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "containedInstance",
-                    "containedInstance",
-                    ExampleScenarioInstanceContainedInstance,
-                    "ExampleScenarioInstanceContainedInstance",
-                    True,
-                    None,
-                    False,
-                ),
-                ("description", "description", str, "markdown", False, None, False),
-                ("name", "name", str, "string", False, None, False),
-                ("resourceId", "resourceId", str, "string", False, None, True),
-                ("resourceType", "resourceType", str, "code", False, None, True),
-                (
-                    "version",
-                    "version",
-                    ExampleScenarioInstanceVersion,
-                    "ExampleScenarioInstanceVersion",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    version: ListType[fhirtypes.ExampleScenarioInstanceVersionType] = Field(
+        None,
+        alias="version",
+        title="List of `ExampleScenarioInstanceVersion` items (represented as `dict` in JSON)",
+        description="A specific version of the resource",
+    )
 
 
 class ExampleScenarioInstanceContainedInstance(backboneelement.BackboneElement):
     """ Resources contained in the instance.
-
     Resources contained in the instance (e.g. the observations contained in a
     bundle).
     """
 
-    resource_type = "ExampleScenarioInstanceContainedInstance"
+    resource_type = Field("ExampleScenarioInstanceContainedInstance", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    resourceId: fhirtypes.String = Field(
+        ...,
+        alias="resourceId",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Each resource contained in the instance",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.resourceId = None
-        """ Each resource contained in the instance.
-        Type `str`. """
-
-        self.versionId = None
-        """ A specific version of a resource contained in the instance.
-        Type `str`. """
-
-        super(ExampleScenarioInstanceContainedInstance, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ExampleScenarioInstanceContainedInstance, self).elementProperties()
-        js.extend(
-            [
-                ("resourceId", "resourceId", str, "string", False, None, True),
-                ("versionId", "versionId", str, "string", False, None, False),
-            ]
-        )
-        return js
+    versionId: fhirtypes.String = Field(
+        None,
+        alias="versionId",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="A specific version of a resource contained in the instance",
+    )
 
 
 class ExampleScenarioInstanceVersion(backboneelement.BackboneElement):
     """ A specific version of the resource.
     """
 
-    resource_type = "ExampleScenarioInstanceVersion"
+    resource_type = Field("ExampleScenarioInstanceVersion", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    description: fhirtypes.Markdown = Field(
+        ...,
+        alias="description",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="The description of the resource version",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.description = None
-        """ The description of the resource version.
-        Type `str`. """
-
-        self.versionId = None
-        """ The identifier of a specific version of a resource.
-        Type `str`. """
-
-        super(ExampleScenarioInstanceVersion, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ExampleScenarioInstanceVersion, self).elementProperties()
-        js.extend(
-            [
-                ("description", "description", str, "markdown", False, None, True),
-                ("versionId", "versionId", str, "string", False, None, True),
-            ]
-        )
-        return js
+    versionId: fhirtypes.String = Field(
+        ...,
+        alias="versionId",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="The identifier of a specific version of a resource",
+    )
 
 
 class ExampleScenarioProcess(backboneelement.BackboneElement):
     """ Each major process - a group of operations.
     """
 
-    resource_type = "ExampleScenarioProcess"
+    resource_type = Field("ExampleScenarioProcess", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    description: fhirtypes.Markdown = Field(
+        None,
+        alias="description",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="A longer description of the group of operations",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    postConditions: fhirtypes.Markdown = Field(
+        None,
+        alias="postConditions",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Description of final status after the process ends",
+    )
 
-        self.description = None
-        """ A longer description of the group of operations.
-        Type `str`. """
+    preConditions: fhirtypes.Markdown = Field(
+        None,
+        alias="preConditions",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Description of initial status before the process starts",
+    )
 
-        self.postConditions = None
-        """ Description of final status after the process ends.
-        Type `str`. """
+    step: ListType[fhirtypes.ExampleScenarioProcessStepType] = Field(
+        None,
+        alias="step",
+        title="List of `ExampleScenarioProcessStep` items (represented as `dict` in JSON)",
+        description="Each step of the process",
+    )
 
-        self.preConditions = None
-        """ Description of initial status before the process starts.
-        Type `str`. """
-
-        self.step = None
-        """ Each step of the process.
-        List of `ExampleScenarioProcessStep` items (represented as `dict` in JSON). """
-
-        self.title = None
-        """ The diagram title of the group of operations.
-        Type `str`. """
-
-        super(ExampleScenarioProcess, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ExampleScenarioProcess, self).elementProperties()
-        js.extend(
-            [
-                ("description", "description", str, "markdown", False, None, False),
-                (
-                    "postConditions",
-                    "postConditions",
-                    str,
-                    "markdown",
-                    False,
-                    None,
-                    False,
-                ),
-                ("preConditions", "preConditions", str, "markdown", False, None, False),
-                (
-                    "step",
-                    "step",
-                    ExampleScenarioProcessStep,
-                    "ExampleScenarioProcessStep",
-                    True,
-                    None,
-                    False,
-                ),
-                ("title", "title", str, "string", False, None, True),
-            ]
-        )
-        return js
+    title: fhirtypes.String = Field(
+        ...,
+        alias="title",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="The diagram title of the group of operations",
+    )
 
 
 class ExampleScenarioProcessStep(backboneelement.BackboneElement):
     """ Each step of the process.
     """
 
-    resource_type = "ExampleScenarioProcessStep"
+    resource_type = Field("ExampleScenarioProcessStep", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    alternative: ListType[fhirtypes.ExampleScenarioProcessStepAlternativeType] = Field(
+        None,
+        alias="alternative",
+        title="List of `ExampleScenarioProcessStepAlternative` items (represented as `dict` in JSON)",
+        description="Alternate non-typical step action",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    operation: fhirtypes.ExampleScenarioProcessStepOperationType = Field(
+        None,
+        alias="operation",
+        title="Type `ExampleScenarioProcessStepOperation` (represented as `dict` in JSON)",
+        description="Each interaction or action",
+    )
 
-        self.alternative = None
-        """ Alternate non-typical step action.
-        List of `ExampleScenarioProcessStepAlternative` items (represented as `dict` in JSON). """
+    pause: bool = Field(
+        None,
+        alias="pause",
+        title="Type `bool`",
+        description="If there is a pause in the flow",
+    )
 
-        self.operation = None
-        """ Each interaction or action.
-        Type `ExampleScenarioProcessStepOperation` (represented as `dict` in JSON). """
-
-        self.pause = None
-        """ If there is a pause in the flow.
-        Type `bool`. """
-
-        self.process = None
-        """ Nested process.
-        List of `ExampleScenarioProcess` items (represented as `dict` in JSON). """
-
-        super(ExampleScenarioProcessStep, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ExampleScenarioProcessStep, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "alternative",
-                    "alternative",
-                    ExampleScenarioProcessStepAlternative,
-                    "ExampleScenarioProcessStepAlternative",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "operation",
-                    "operation",
-                    ExampleScenarioProcessStepOperation,
-                    "ExampleScenarioProcessStepOperation",
-                    False,
-                    None,
-                    False,
-                ),
-                ("pause", "pause", bool, "boolean", False, None, False),
-                (
-                    "process",
-                    "process",
-                    ExampleScenarioProcess,
-                    "ExampleScenarioProcess",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    process: ListType[fhirtypes.ExampleScenarioProcessType] = Field(
+        None,
+        alias="process",
+        title="List of `ExampleScenarioProcess` items (represented as `dict` in JSON)",
+        description="Nested process",
+    )
 
 
 class ExampleScenarioProcessStepAlternative(backboneelement.BackboneElement):
     """ Alternate non-typical step action.
-
     Indicates an alternative step that can be taken instead of the operations
     on the base step in exceptional/atypical circumstances.
     """
 
-    resource_type = "ExampleScenarioProcessStepAlternative"
+    resource_type = Field("ExampleScenarioProcessStepAlternative", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    description: fhirtypes.Markdown = Field(
+        None,
+        alias="description",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="A human-readable description of each option",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    step: ListType[fhirtypes.ExampleScenarioProcessStepType] = Field(
+        None,
+        alias="step",
+        title="List of `ExampleScenarioProcessStep` items (represented as `dict` in JSON)",
+        description="What happens in each alternative option",
+    )
 
-        self.description = None
-        """ A human-readable description of each option.
-        Type `str`. """
-
-        self.step = None
-        """ What happens in each alternative option.
-        List of `ExampleScenarioProcessStep` items (represented as `dict` in JSON). """
-
-        self.title = None
-        """ Label for alternative.
-        Type `str`. """
-
-        super(ExampleScenarioProcessStepAlternative, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ExampleScenarioProcessStepAlternative, self).elementProperties()
-        js.extend(
-            [
-                ("description", "description", str, "markdown", False, None, False),
-                (
-                    "step",
-                    "step",
-                    ExampleScenarioProcessStep,
-                    "ExampleScenarioProcessStep",
-                    True,
-                    None,
-                    False,
-                ),
-                ("title", "title", str, "string", False, None, True),
-            ]
-        )
-        return js
+    title: fhirtypes.String = Field(
+        ...,
+        alias="title",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Label for alternative",
+    )
 
 
 class ExampleScenarioProcessStepOperation(backboneelement.BackboneElement):
     """ Each interaction or action.
     """
 
-    resource_type = "ExampleScenarioProcessStepOperation"
+    resource_type = Field("ExampleScenarioProcessStepOperation", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    description: fhirtypes.Markdown = Field(
+        None,
+        alias="description",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="A comment to be inserted in the diagram",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    initiator: fhirtypes.String = Field(
+        None,
+        alias="initiator",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Who starts the transaction",
+    )
 
-        self.description = None
-        """ A comment to be inserted in the diagram.
-        Type `str`. """
+    initiatorActive: bool = Field(
+        None,
+        alias="initiatorActive",
+        title="Type `bool`",
+        description="Whether the initiator is deactivated right after the transaction",
+    )
 
-        self.initiator = None
-        """ Who starts the transaction.
-        Type `str`. """
+    name: fhirtypes.String = Field(
+        None,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="The human-friendly name of the interaction",
+    )
 
-        self.initiatorActive = None
-        """ Whether the initiator is deactivated right after the transaction.
-        Type `bool`. """
+    number: fhirtypes.String = Field(
+        ...,
+        alias="number",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="The sequential number of the interaction",
+    )
 
-        self.name = None
-        """ The human-friendly name of the interaction.
-        Type `str`. """
+    receiver: fhirtypes.String = Field(
+        None,
+        alias="receiver",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Who receives the transaction",
+    )
 
-        self.number = None
-        """ The sequential number of the interaction.
-        Type `str`. """
+    receiverActive: bool = Field(
+        None,
+        alias="receiverActive",
+        title="Type `bool`",
+        description="Whether the receiver is deactivated right after the transaction",
+    )
 
-        self.receiver = None
-        """ Who receives the transaction.
-        Type `str`. """
+    request: fhirtypes.ExampleScenarioInstanceContainedInstanceType = Field(
+        None,
+        alias="request",
+        title="Type `ExampleScenarioInstanceContainedInstance` (represented as `dict` in JSON)",
+        description="Each resource instance used by the initiator",
+    )
 
-        self.receiverActive = None
-        """ Whether the receiver is deactivated right after the transaction.
-        Type `bool`. """
+    response: fhirtypes.ExampleScenarioInstanceContainedInstanceType = Field(
+        None,
+        alias="response",
+        title="Type `ExampleScenarioInstanceContainedInstance` (represented as `dict` in JSON)",
+        description="Each resource instance used by the responder",
+    )
 
-        self.request = None
-        """ Each resource instance used by the initiator.
-        Type `ExampleScenarioInstanceContainedInstance` (represented as `dict` in JSON). """
-
-        self.response = None
-        """ Each resource instance used by the responder.
-        Type `ExampleScenarioInstanceContainedInstance` (represented as `dict` in JSON). """
-
-        self.type = None
-        """ The type of operation - CRUD.
-        Type `str`. """
-
-        super(ExampleScenarioProcessStepOperation, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ExampleScenarioProcessStepOperation, self).elementProperties()
-        js.extend(
-            [
-                ("description", "description", str, "markdown", False, None, False),
-                ("initiator", "initiator", str, "string", False, None, False),
-                (
-                    "initiatorActive",
-                    "initiatorActive",
-                    bool,
-                    "boolean",
-                    False,
-                    None,
-                    False,
-                ),
-                ("name", "name", str, "string", False, None, False),
-                ("number", "number", str, "string", False, None, True),
-                ("receiver", "receiver", str, "string", False, None, False),
-                (
-                    "receiverActive",
-                    "receiverActive",
-                    bool,
-                    "boolean",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "request",
-                    "request",
-                    ExampleScenarioInstanceContainedInstance,
-                    "ExampleScenarioInstanceContainedInstance",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "response",
-                    "response",
-                    ExampleScenarioInstanceContainedInstance,
-                    "ExampleScenarioInstanceContainedInstance",
-                    False,
-                    None,
-                    False,
-                ),
-                ("type", "type", str, "string", False, None, False),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import contactdetail
-except ImportError:
-    contactdetail = sys.modules[__package__ + ".contactdetail"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import usagecontext
-except ImportError:
-    usagecontext = sys.modules[__package__ + ".usagecontext"]
+    type: fhirtypes.String = Field(
+        None,
+        alias="type",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="The type of operation - CRUD",
+    )

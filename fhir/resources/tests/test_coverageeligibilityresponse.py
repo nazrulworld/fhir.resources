@@ -6,659 +6,477 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import coverageeligibilityresponse
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class CoverageEligibilityResponseTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("CoverageEligibilityResponse", js["resourceType"])
-        return coverageeligibilityresponse.CoverageEligibilityResponse(js)
+def impl_coverageeligibilityresponse_1(inst):
+    assert inst.created == fhirtypes.DateTime.validate("2014-08-16T11:15:33+10:00")
+    assert inst.disposition == "Policy is currently in-force."
+    assert inst.id == "E2500"
+    assert (
+        inst.identifier[0].system
+        == "http://www.BenefitsInc.com/fhir/coverageeligibilityresponse"
+    )
+    assert inst.identifier[0].value == "881234"
+    assert inst.insurance[0].coverage.reference == "Coverage/9876B1"
+    assert inst.insurance[0].inforce is True
+    assert inst.insurer.reference == "Organization/2"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.outcome == "complete"
+    assert inst.patient.reference == "Patient/pat1"
+    assert inst.purpose[0] == "validation"
+    assert (
+        inst.request.reference
+        == "http://www.BenefitsInc.com/fhir/coverageeligibilityrequest/225476332402"
+    )
+    assert inst.status == "active"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the CoverageEligibilityResponse.</div>'
+    )
+    assert inst.text.status == "generated"
 
-    def testCoverageEligibilityResponse1(self):
-        inst = self.instantiate_from("coverageeligibilityresponse-example.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a CoverageEligibilityResponse instance"
-        )
-        self.implCoverageEligibilityResponse1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("CoverageEligibilityResponse", js["resourceType"])
-        inst2 = coverageeligibilityresponse.CoverageEligibilityResponse(js)
-        self.implCoverageEligibilityResponse1(inst2)
+def test_coverageeligibilityresponse_1(base_settings):
+    """No. 1 tests collection for CoverageEligibilityResponse.
+    Test File: coverageeligibilityresponse-example.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "coverageeligibilityresponse-example.json"
+    )
+    inst = coverageeligibilityresponse.CoverageEligibilityResponse.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "CoverageEligibilityResponse" == inst.resource_type
 
-    def implCoverageEligibilityResponse1(self, inst):
-        self.assertEqual(inst.created.date, FHIRDate("2014-08-16").date)
-        self.assertEqual(inst.created.as_json(), "2014-08-16")
-        self.assertEqual(
-            force_bytes(inst.disposition), force_bytes("Policy is currently in-force.")
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("E2500"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://www.BenefitsInc.com/fhir/coverageeligibilityresponse"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("881234"))
-        self.assertTrue(inst.insurance[0].inforce)
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.outcome), force_bytes("complete"))
-        self.assertEqual(force_bytes(inst.purpose[0]), force_bytes("validation"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the CoverageEligibilityResponse.</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    impl_coverageeligibilityresponse_1(inst)
 
-    def testCoverageEligibilityResponse2(self):
-        inst = self.instantiate_from("coverageeligibilityresponse-example-error.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a CoverageEligibilityResponse instance"
-        )
-        self.implCoverageEligibilityResponse2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "CoverageEligibilityResponse" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("CoverageEligibilityResponse", js["resourceType"])
-        inst2 = coverageeligibilityresponse.CoverageEligibilityResponse(js)
-        self.implCoverageEligibilityResponse2(inst2)
+    inst2 = coverageeligibilityresponse.CoverageEligibilityResponse(**data)
+    impl_coverageeligibilityresponse_1(inst2)
 
-    def implCoverageEligibilityResponse2(self, inst):
-        self.assertEqual(inst.created.date, FHIRDate("2014-09-16").date)
-        self.assertEqual(inst.created.as_json(), "2014-09-16")
-        self.assertEqual(
-            force_bytes(inst.disposition),
-            force_bytes(
-                "Eligibiliy request could not be processed, please address errors before submitting."
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.error[0].code.coding[0].code), force_bytes("a001")
-        )
-        self.assertEqual(
-            force_bytes(inst.error[0].code.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/adjudication-error"),
-        )
-        self.assertEqual(
-            force_bytes(inst.form.coding[0].code), force_bytes("ELRSP/2017/01")
-        )
-        self.assertEqual(
-            force_bytes(inst.form.coding[0].system),
-            force_bytes("http://national.org/form"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("E2503"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://www.BenefitsInc.com/fhir/coverageeligibilityresponse"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("8812343"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.outcome), force_bytes("error"))
-        self.assertEqual(force_bytes(inst.purpose[0]), force_bytes("validation"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the CoverageEligibilityResponse.</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 
-    def testCoverageEligibilityResponse3(self):
-        inst = self.instantiate_from(
-            "coverageeligibilityresponse-example-benefits-2.json"
-        )
-        self.assertIsNotNone(
-            inst, "Must have instantiated a CoverageEligibilityResponse instance"
-        )
-        self.implCoverageEligibilityResponse3(inst)
+def impl_coverageeligibilityresponse_2(inst):
+    assert inst.created == fhirtypes.DateTime.validate("2014-09-16T11:15:33+10:00")
+    assert (
+        inst.disposition
+        == "Eligibiliy request could not be processed, please address errors before submitting."
+    )
+    assert inst.error[0].code.coding[0].code == "a001"
+    assert (
+        inst.error[0].code.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/adjudication-error"
+    )
+    assert inst.form.coding[0].code == "ELRSP/2017/01"
+    assert inst.form.coding[0].system == "http://national.org/form"
+    assert inst.id == "E2503"
+    assert (
+        inst.identifier[0].system
+        == "http://www.BenefitsInc.com/fhir/coverageeligibilityresponse"
+    )
+    assert inst.identifier[0].value == "8812343"
+    assert inst.insurer.reference == "Organization/2"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.outcome == "error"
+    assert inst.patient.reference == "Patient/f201"
+    assert inst.purpose[0] == "validation"
+    assert (
+        inst.request.reference
+        == "http://www.BenefitsInc.com/fhir/coverageeligibilityresponse/225476332406"
+    )
+    assert inst.requestor.identifier.system == "http://national.org/clinic"
+    assert inst.requestor.identifier.value == "OR1234"
+    assert inst.status == "active"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the CoverageEligibilityResponse.</div>'
+    )
+    assert inst.text.status == "generated"
 
-        js = inst.as_json()
-        self.assertEqual("CoverageEligibilityResponse", js["resourceType"])
-        inst2 = coverageeligibilityresponse.CoverageEligibilityResponse(js)
-        self.implCoverageEligibilityResponse3(inst2)
 
-    def implCoverageEligibilityResponse3(self, inst):
-        self.assertEqual(force_bytes(inst.contained[0].id), force_bytes("coverage-1"))
-        self.assertEqual(inst.created.date, FHIRDate("2014-09-16").date)
-        self.assertEqual(inst.created.as_json(), "2014-09-16")
-        self.assertEqual(
-            force_bytes(inst.disposition), force_bytes("Policy is currently in-force.")
-        )
-        self.assertEqual(
-            force_bytes(inst.form.coding[0].code), force_bytes("ELRSP/2017/01")
-        )
-        self.assertEqual(
-            force_bytes(inst.form.coding[0].system),
-            force_bytes("http://national.org/form"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("E2502"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://www.BenefitsInc.com/fhir/coverageeligibilityresponse"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("8812342"))
-        self.assertTrue(inst.insurance[0].inforce)
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[0].benefit[0].allowedMoney.currency),
-            force_bytes("USD"),
-        )
-        self.assertEqual(
-            inst.insurance[0].item[0].benefit[0].allowedMoney.value, 500000
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[0].benefit[0].type.coding[0].code),
-            force_bytes("benefit"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[0].benefit[0].usedMoney.currency),
-            force_bytes("USD"),
-        )
-        self.assertEqual(inst.insurance[0].item[0].benefit[0].usedMoney.value, 3748.0)
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[0].benefit[1].allowedMoney.currency),
-            force_bytes("USD"),
-        )
-        self.assertEqual(inst.insurance[0].item[0].benefit[1].allowedMoney.value, 100)
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[0].benefit[1].type.coding[0].code),
-            force_bytes("copay-maximum"),
-        )
-        self.assertEqual(inst.insurance[0].item[0].benefit[2].allowedUnsignedInt, 20)
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[0].benefit[2].type.coding[0].code),
-            force_bytes("copay-percent"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[0].category.coding[0].code),
-            force_bytes("30"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[0].category.coding[0].display),
-            force_bytes("Health Benefit Plan Coverage"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[0].category.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/ex-benefitcategory"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[0].network.coding[0].code),
-            force_bytes("in"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[0].network.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/benefit-network"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[0].term.coding[0].code),
-            force_bytes("annual"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[0].term.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/benefit-term"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[0].unit.coding[0].code),
-            force_bytes("individual"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[0].unit.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/benefit-unit"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[1].benefit[0].allowedMoney.currency),
-            force_bytes("USD"),
-        )
-        self.assertEqual(inst.insurance[0].item[1].benefit[0].allowedMoney.value, 15000)
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[1].benefit[0].type.coding[0].code),
-            force_bytes("benefit"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[1].category.coding[0].code),
-            force_bytes("69"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[1].category.coding[0].display),
-            force_bytes("Maternity"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[1].category.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/ex-benefitcategory"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[1].network.coding[0].code),
-            force_bytes("in"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[1].network.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/benefit-network"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[1].term.coding[0].code),
-            force_bytes("annual"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[1].term.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/benefit-term"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[1].unit.coding[0].code),
-            force_bytes("individual"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[1].unit.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/benefit-unit"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[2].benefit[0].allowedMoney.currency),
-            force_bytes("USD"),
-        )
-        self.assertEqual(inst.insurance[0].item[2].benefit[0].allowedMoney.value, 2000)
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[2].benefit[0].type.coding[0].code),
-            force_bytes("benefit"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[2].category.coding[0].code),
-            force_bytes("F3"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[2].category.coding[0].display),
-            force_bytes("Dental Coverage"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[2].category.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/ex-benefitcategory"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[2].network.coding[0].code),
-            force_bytes("in"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[2].network.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/benefit-network"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[2].term.coding[0].code),
-            force_bytes("annual"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[2].term.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/benefit-term"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[2].unit.coding[0].code),
-            force_bytes("individual"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[2].unit.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/benefit-unit"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[3].category.coding[0].code),
-            force_bytes("F6"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[3].category.coding[0].display),
-            force_bytes("Vision Coverage"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[3].category.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/ex-benefitcategory"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[3].description),
-            force_bytes(
-                "Vision products and services such as exams, glasses and contact lenses."
-            ),
-        )
-        self.assertTrue(inst.insurance[0].item[3].excluded)
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[3].name), force_bytes("Vision")
-        )
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.outcome), force_bytes("complete"))
-        self.assertEqual(force_bytes(inst.purpose[0]), force_bytes("validation"))
-        self.assertEqual(force_bytes(inst.purpose[1]), force_bytes("benefits"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the CoverageEligibilityResponse.</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+def test_coverageeligibilityresponse_2(base_settings):
+    """No. 2 tests collection for CoverageEligibilityResponse.
+    Test File: coverageeligibilityresponse-example-error.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"]
+        / "coverageeligibilityresponse-example-error.json"
+    )
+    inst = coverageeligibilityresponse.CoverageEligibilityResponse.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "CoverageEligibilityResponse" == inst.resource_type
 
-    def testCoverageEligibilityResponse4(self):
-        inst = self.instantiate_from(
-            "coverageeligibilityresponse-example-benefits.json"
-        )
-        self.assertIsNotNone(
-            inst, "Must have instantiated a CoverageEligibilityResponse instance"
-        )
-        self.implCoverageEligibilityResponse4(inst)
+    impl_coverageeligibilityresponse_2(inst)
 
-        js = inst.as_json()
-        self.assertEqual("CoverageEligibilityResponse", js["resourceType"])
-        inst2 = coverageeligibilityresponse.CoverageEligibilityResponse(js)
-        self.implCoverageEligibilityResponse4(inst2)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "CoverageEligibilityResponse" == data["resourceType"]
 
-    def implCoverageEligibilityResponse4(self, inst):
-        self.assertEqual(inst.created.date, FHIRDate("2014-08-16").date)
-        self.assertEqual(inst.created.as_json(), "2014-08-16")
-        self.assertEqual(
-            force_bytes(inst.disposition), force_bytes("Policy is currently in-force.")
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("E2501"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://www.BenefitsInc.com/fhir/coverageeligibilityresponse"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("881234"))
-        self.assertTrue(inst.insurance[0].inforce)
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[0].benefit[0].allowedMoney.currency),
-            force_bytes("SAR"),
-        )
-        self.assertEqual(
-            inst.insurance[0].item[0].benefit[0].allowedMoney.value, 500000
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[0].benefit[0].type.coding[0].code),
-            force_bytes("benefit"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[0].benefit[1].allowedMoney.currency),
-            force_bytes("SAR"),
-        )
-        self.assertEqual(inst.insurance[0].item[0].benefit[1].allowedMoney.value, 100)
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[0].benefit[1].type.coding[0].code),
-            force_bytes("copay-maximum"),
-        )
-        self.assertEqual(inst.insurance[0].item[0].benefit[2].allowedUnsignedInt, 20)
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[0].benefit[2].type.coding[0].code),
-            force_bytes("copay-percent"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[0].category.coding[0].code),
-            force_bytes("30"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[0].category.coding[0].display),
-            force_bytes("Health Benefit Plan Coverage"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[0].category.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/ex-benefitcategory"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[0].network.coding[0].code),
-            force_bytes("in"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[0].network.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/benefit-network"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[0].term.coding[0].code),
-            force_bytes("annual"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[0].term.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/benefit-term"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[0].unit.coding[0].code),
-            force_bytes("individual"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[0].unit.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/benefit-unit"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[1].benefit[0].allowedMoney.currency),
-            force_bytes("SAR"),
-        )
-        self.assertEqual(inst.insurance[0].item[1].benefit[0].allowedMoney.value, 15000)
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[1].benefit[0].type.coding[0].code),
-            force_bytes("benefit"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[1].category.coding[0].code),
-            force_bytes("69"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[1].category.coding[0].display),
-            force_bytes("Maternity"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[1].category.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/ex-benefitcategory"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[1].network.coding[0].code),
-            force_bytes("in"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[1].network.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/benefit-network"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[1].term.coding[0].code),
-            force_bytes("annual"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[1].term.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/benefit-term"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[1].unit.coding[0].code),
-            force_bytes("individual"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[1].unit.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/benefit-unit"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[2].benefit[0].allowedMoney.currency),
-            force_bytes("SAR"),
-        )
-        self.assertEqual(inst.insurance[0].item[2].benefit[0].allowedMoney.value, 2000)
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[2].benefit[0].type.coding[0].code),
-            force_bytes("benefit"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[2].category.coding[0].code),
-            force_bytes("F3"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[2].category.coding[0].display),
-            force_bytes("Dental Coverage"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[2].category.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/ex-benefitcategory"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[2].network.coding[0].code),
-            force_bytes("in"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[2].network.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/benefit-network"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[2].term.coding[0].code),
-            force_bytes("annual"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[2].term.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/benefit-term"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[2].unit.coding[0].code),
-            force_bytes("individual"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[2].unit.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/benefit-unit"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[3].benefit[0].allowedMoney.currency),
-            force_bytes("SAR"),
-        )
-        self.assertEqual(inst.insurance[0].item[3].benefit[0].allowedMoney.value, 400)
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[3].benefit[0].type.coding[0].code),
-            force_bytes("benefit"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[3].category.coding[0].code),
-            force_bytes("F6"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[3].category.coding[0].display),
-            force_bytes("Vision Coverage"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[3].category.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/ex-benefitcategory"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[3].network.coding[0].code),
-            force_bytes("in"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[3].network.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/benefit-network"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[3].term.coding[0].code),
-            force_bytes("annual"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[3].term.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/benefit-term"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[3].unit.coding[0].code),
-            force_bytes("individual"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[3].unit.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/benefit-unit"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[4].benefit[0].allowedString),
-            force_bytes("shared"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[4].benefit[0].type.coding[0].code),
-            force_bytes("room"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[4].benefit[1].allowedMoney.currency),
-            force_bytes("SAR"),
-        )
-        self.assertEqual(inst.insurance[0].item[4].benefit[1].allowedMoney.value, 600)
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[4].benefit[1].type.coding[0].code),
-            force_bytes("benefit"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[4].category.coding[0].code),
-            force_bytes("49"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[4].category.coding[0].display),
-            force_bytes("Hospital Room and Board"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[4].category.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/ex-benefitcategory"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[4].network.coding[0].code),
-            force_bytes("in"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[4].network.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/benefit-network"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[4].term.coding[0].code),
-            force_bytes("day"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[4].term.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/benefit-term"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[4].unit.coding[0].code),
-            force_bytes("individual"),
-        )
-        self.assertEqual(
-            force_bytes(inst.insurance[0].item[4].unit.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/benefit-unit"),
-        )
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.outcome), force_bytes("complete"))
-        self.assertEqual(force_bytes(inst.purpose[0]), force_bytes("validation"))
-        self.assertEqual(force_bytes(inst.purpose[1]), force_bytes("benefits"))
-        self.assertEqual(inst.servicedDate.date, FHIRDate("2014-09-17").date)
-        self.assertEqual(inst.servicedDate.as_json(), "2014-09-17")
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the CoverageEligibilityResponse.</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    inst2 = coverageeligibilityresponse.CoverageEligibilityResponse(**data)
+    impl_coverageeligibilityresponse_2(inst2)
+
+
+def impl_coverageeligibilityresponse_3(inst):
+    assert inst.contained[0].id == "coverage-1"
+    assert inst.created == fhirtypes.DateTime.validate("2014-09-16T11:15:33+10:00")
+    assert inst.disposition == "Policy is currently in-force."
+    assert inst.form.coding[0].code == "ELRSP/2017/01"
+    assert inst.form.coding[0].system == "http://national.org/form"
+    assert inst.id == "E2502"
+    assert (
+        inst.identifier[0].system
+        == "http://www.BenefitsInc.com/fhir/coverageeligibilityresponse"
+    )
+    assert inst.identifier[0].value == "8812342"
+    assert inst.insurance[0].coverage.reference == "#coverage-1"
+    assert inst.insurance[0].inforce is True
+    assert inst.insurance[0].item[0].benefit[0].allowedMoney.currency == "USD"
+    assert float(inst.insurance[0].item[0].benefit[0].allowedMoney.value) == float(
+        500000
+    )
+    assert inst.insurance[0].item[0].benefit[0].type.coding[0].code == "benefit"
+    assert inst.insurance[0].item[0].benefit[0].usedMoney.currency == "USD"
+    assert float(inst.insurance[0].item[0].benefit[0].usedMoney.value) == float(3748.0)
+    assert inst.insurance[0].item[0].benefit[1].allowedMoney.currency == "USD"
+    assert float(inst.insurance[0].item[0].benefit[1].allowedMoney.value) == float(100)
+    assert inst.insurance[0].item[0].benefit[1].type.coding[0].code == "copay-maximum"
+    assert inst.insurance[0].item[0].benefit[2].allowedUnsignedInt == 20
+    assert inst.insurance[0].item[0].benefit[2].type.coding[0].code == "copay-percent"
+    assert inst.insurance[0].item[0].category.coding[0].code == "30"
+    assert (
+        inst.insurance[0].item[0].category.coding[0].display
+        == "Health Benefit Plan Coverage"
+    )
+    assert (
+        inst.insurance[0].item[0].category.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/ex-benefitcategory"
+    )
+    assert inst.insurance[0].item[0].network.coding[0].code == "in"
+    assert (
+        inst.insurance[0].item[0].network.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/benefit-network"
+    )
+    assert inst.insurance[0].item[0].term.coding[0].code == "annual"
+    assert (
+        inst.insurance[0].item[0].term.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/benefit-term"
+    )
+    assert inst.insurance[0].item[0].unit.coding[0].code == "individual"
+    assert (
+        inst.insurance[0].item[0].unit.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/benefit-unit"
+    )
+    assert inst.insurance[0].item[1].benefit[0].allowedMoney.currency == "USD"
+    assert float(inst.insurance[0].item[1].benefit[0].allowedMoney.value) == float(
+        15000
+    )
+    assert inst.insurance[0].item[1].benefit[0].type.coding[0].code == "benefit"
+    assert inst.insurance[0].item[1].category.coding[0].code == "69"
+    assert inst.insurance[0].item[1].category.coding[0].display == "Maternity"
+    assert (
+        inst.insurance[0].item[1].category.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/ex-benefitcategory"
+    )
+    assert inst.insurance[0].item[1].network.coding[0].code == "in"
+    assert (
+        inst.insurance[0].item[1].network.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/benefit-network"
+    )
+    assert inst.insurance[0].item[1].term.coding[0].code == "annual"
+    assert (
+        inst.insurance[0].item[1].term.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/benefit-term"
+    )
+    assert inst.insurance[0].item[1].unit.coding[0].code == "individual"
+    assert (
+        inst.insurance[0].item[1].unit.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/benefit-unit"
+    )
+    assert inst.insurance[0].item[2].benefit[0].allowedMoney.currency == "USD"
+    assert float(inst.insurance[0].item[2].benefit[0].allowedMoney.value) == float(2000)
+    assert inst.insurance[0].item[2].benefit[0].type.coding[0].code == "benefit"
+    assert inst.insurance[0].item[2].category.coding[0].code == "F3"
+    assert inst.insurance[0].item[2].category.coding[0].display == "Dental Coverage"
+    assert (
+        inst.insurance[0].item[2].category.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/ex-benefitcategory"
+    )
+    assert inst.insurance[0].item[2].network.coding[0].code == "in"
+    assert (
+        inst.insurance[0].item[2].network.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/benefit-network"
+    )
+    assert inst.insurance[0].item[2].term.coding[0].code == "annual"
+    assert (
+        inst.insurance[0].item[2].term.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/benefit-term"
+    )
+    assert inst.insurance[0].item[2].unit.coding[0].code == "individual"
+    assert (
+        inst.insurance[0].item[2].unit.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/benefit-unit"
+    )
+    assert inst.insurance[0].item[3].category.coding[0].code == "F6"
+    assert inst.insurance[0].item[3].category.coding[0].display == "Vision Coverage"
+    assert (
+        inst.insurance[0].item[3].category.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/ex-benefitcategory"
+    )
+    assert (
+        inst.insurance[0].item[3].description
+        == "Vision products and services such as exams, glasses and contact lenses."
+    )
+    assert inst.insurance[0].item[3].excluded is True
+    assert inst.insurance[0].item[3].name == "Vision"
+    assert inst.insurer.reference == "Organization/2"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.outcome == "complete"
+    assert inst.patient.reference == "Patient/f201"
+    assert inst.purpose[0] == "validation"
+    assert inst.purpose[1] == "benefits"
+    assert (
+        inst.request.reference
+        == "http://www.BenefitsInc.com/fhir/coverageeligibilityrequest/225476332405"
+    )
+    assert inst.requestor.identifier.system == "http://national.org/clinic"
+    assert inst.requestor.identifier.value == "OR1234"
+    assert inst.status == "active"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the CoverageEligibilityResponse.</div>'
+    )
+    assert inst.text.status == "generated"
+
+
+def test_coverageeligibilityresponse_3(base_settings):
+    """No. 3 tests collection for CoverageEligibilityResponse.
+    Test File: coverageeligibilityresponse-example-benefits-2.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"]
+        / "coverageeligibilityresponse-example-benefits-2.json"
+    )
+    inst = coverageeligibilityresponse.CoverageEligibilityResponse.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "CoverageEligibilityResponse" == inst.resource_type
+
+    impl_coverageeligibilityresponse_3(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "CoverageEligibilityResponse" == data["resourceType"]
+
+    inst2 = coverageeligibilityresponse.CoverageEligibilityResponse(**data)
+    impl_coverageeligibilityresponse_3(inst2)
+
+
+def impl_coverageeligibilityresponse_4(inst):
+    assert inst.created == fhirtypes.DateTime.validate("2014-08-16T11:15:33+10:00")
+    assert inst.disposition == "Policy is currently in-force."
+    assert inst.id == "E2501"
+    assert (
+        inst.identifier[0].system
+        == "http://www.BenefitsInc.com/fhir/coverageeligibilityresponse"
+    )
+    assert inst.identifier[0].value == "881234"
+    assert inst.insurance[0].coverage.reference == "Coverage/9876B1"
+    assert inst.insurance[0].inforce is True
+    assert inst.insurance[0].item[0].benefit[0].allowedMoney.currency == "SAR"
+    assert float(inst.insurance[0].item[0].benefit[0].allowedMoney.value) == float(
+        500000
+    )
+    assert inst.insurance[0].item[0].benefit[0].type.coding[0].code == "benefit"
+    assert inst.insurance[0].item[0].benefit[1].allowedMoney.currency == "SAR"
+    assert float(inst.insurance[0].item[0].benefit[1].allowedMoney.value) == float(100)
+    assert inst.insurance[0].item[0].benefit[1].type.coding[0].code == "copay-maximum"
+    assert inst.insurance[0].item[0].benefit[2].allowedUnsignedInt == 20
+    assert inst.insurance[0].item[0].benefit[2].type.coding[0].code == "copay-percent"
+    assert inst.insurance[0].item[0].category.coding[0].code == "30"
+    assert (
+        inst.insurance[0].item[0].category.coding[0].display
+        == "Health Benefit Plan Coverage"
+    )
+    assert (
+        inst.insurance[0].item[0].category.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/ex-benefitcategory"
+    )
+    assert inst.insurance[0].item[0].network.coding[0].code == "in"
+    assert (
+        inst.insurance[0].item[0].network.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/benefit-network"
+    )
+    assert inst.insurance[0].item[0].term.coding[0].code == "annual"
+    assert (
+        inst.insurance[0].item[0].term.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/benefit-term"
+    )
+    assert inst.insurance[0].item[0].unit.coding[0].code == "individual"
+    assert (
+        inst.insurance[0].item[0].unit.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/benefit-unit"
+    )
+    assert inst.insurance[0].item[1].benefit[0].allowedMoney.currency == "SAR"
+    assert float(inst.insurance[0].item[1].benefit[0].allowedMoney.value) == float(
+        15000
+    )
+    assert inst.insurance[0].item[1].benefit[0].type.coding[0].code == "benefit"
+    assert inst.insurance[0].item[1].category.coding[0].code == "69"
+    assert inst.insurance[0].item[1].category.coding[0].display == "Maternity"
+    assert (
+        inst.insurance[0].item[1].category.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/ex-benefitcategory"
+    )
+    assert inst.insurance[0].item[1].network.coding[0].code == "in"
+    assert (
+        inst.insurance[0].item[1].network.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/benefit-network"
+    )
+    assert inst.insurance[0].item[1].term.coding[0].code == "annual"
+    assert (
+        inst.insurance[0].item[1].term.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/benefit-term"
+    )
+    assert inst.insurance[0].item[1].unit.coding[0].code == "individual"
+    assert (
+        inst.insurance[0].item[1].unit.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/benefit-unit"
+    )
+    assert inst.insurance[0].item[2].benefit[0].allowedMoney.currency == "SAR"
+    assert float(inst.insurance[0].item[2].benefit[0].allowedMoney.value) == float(2000)
+    assert inst.insurance[0].item[2].benefit[0].type.coding[0].code == "benefit"
+    assert inst.insurance[0].item[2].category.coding[0].code == "F3"
+    assert inst.insurance[0].item[2].category.coding[0].display == "Dental Coverage"
+    assert (
+        inst.insurance[0].item[2].category.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/ex-benefitcategory"
+    )
+    assert inst.insurance[0].item[2].network.coding[0].code == "in"
+    assert (
+        inst.insurance[0].item[2].network.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/benefit-network"
+    )
+    assert inst.insurance[0].item[2].term.coding[0].code == "annual"
+    assert (
+        inst.insurance[0].item[2].term.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/benefit-term"
+    )
+    assert inst.insurance[0].item[2].unit.coding[0].code == "individual"
+    assert (
+        inst.insurance[0].item[2].unit.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/benefit-unit"
+    )
+    assert inst.insurance[0].item[3].benefit[0].allowedMoney.currency == "SAR"
+    assert float(inst.insurance[0].item[3].benefit[0].allowedMoney.value) == float(400)
+    assert inst.insurance[0].item[3].benefit[0].type.coding[0].code == "benefit"
+    assert inst.insurance[0].item[3].category.coding[0].code == "F6"
+    assert inst.insurance[0].item[3].category.coding[0].display == "Vision Coverage"
+    assert (
+        inst.insurance[0].item[3].category.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/ex-benefitcategory"
+    )
+    assert inst.insurance[0].item[3].network.coding[0].code == "in"
+    assert (
+        inst.insurance[0].item[3].network.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/benefit-network"
+    )
+    assert inst.insurance[0].item[3].term.coding[0].code == "annual"
+    assert (
+        inst.insurance[0].item[3].term.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/benefit-term"
+    )
+    assert inst.insurance[0].item[3].unit.coding[0].code == "individual"
+    assert (
+        inst.insurance[0].item[3].unit.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/benefit-unit"
+    )
+    assert inst.insurance[0].item[4].benefit[0].allowedString == "shared"
+    assert inst.insurance[0].item[4].benefit[0].type.coding[0].code == "room"
+    assert inst.insurance[0].item[4].benefit[1].allowedMoney.currency == "SAR"
+    assert float(inst.insurance[0].item[4].benefit[1].allowedMoney.value) == float(600)
+    assert inst.insurance[0].item[4].benefit[1].type.coding[0].code == "benefit"
+    assert inst.insurance[0].item[4].category.coding[0].code == "49"
+    assert (
+        inst.insurance[0].item[4].category.coding[0].display
+        == "Hospital Room and Board"
+    )
+    assert (
+        inst.insurance[0].item[4].category.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/ex-benefitcategory"
+    )
+    assert inst.insurance[0].item[4].network.coding[0].code == "in"
+    assert (
+        inst.insurance[0].item[4].network.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/benefit-network"
+    )
+    assert inst.insurance[0].item[4].term.coding[0].code == "day"
+    assert (
+        inst.insurance[0].item[4].term.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/benefit-term"
+    )
+    assert inst.insurance[0].item[4].unit.coding[0].code == "individual"
+    assert (
+        inst.insurance[0].item[4].unit.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/benefit-unit"
+    )
+    assert inst.insurer.reference == "Organization/2"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.outcome == "complete"
+    assert inst.patient.reference == "Patient/pat1"
+    assert inst.purpose[0] == "validation"
+    assert inst.purpose[1] == "benefits"
+    assert (
+        inst.request.reference
+        == "http://www.BenefitsInc.com/fhir/coverageeligibilityresponse/225476332402"
+    )
+    assert inst.servicedDate == fhirtypes.Date.validate("2014-09-17")
+    assert inst.status == "active"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the CoverageEligibilityResponse.</div>'
+    )
+    assert inst.text.status == "generated"
+
+
+def test_coverageeligibilityresponse_4(base_settings):
+    """No. 4 tests collection for CoverageEligibilityResponse.
+    Test File: coverageeligibilityresponse-example-benefits.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"]
+        / "coverageeligibilityresponse-example-benefits.json"
+    )
+    inst = coverageeligibilityresponse.CoverageEligibilityResponse.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "CoverageEligibilityResponse" == inst.resource_type
+
+    impl_coverageeligibilityresponse_4(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "CoverageEligibilityResponse" == data["resourceType"]
+
+    inst2 = coverageeligibilityresponse.CoverageEligibilityResponse(**data)
+    impl_coverageeligibilityresponse_4(inst2)

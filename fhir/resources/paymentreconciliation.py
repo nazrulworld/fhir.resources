@@ -6,407 +6,222 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class PaymentReconciliation(domainresource.DomainResource):
     """ PaymentReconciliation resource.
-
     This resource provides the details including amount of a payment and
     allocates the payment items being paid.
     """
 
-    resource_type = "PaymentReconciliation"
+    resource_type = Field("PaymentReconciliation", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    created: fhirtypes.DateTime = Field(
+        ...,
+        alias="created",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Creation date",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    detail: ListType[fhirtypes.PaymentReconciliationDetailType] = Field(
+        None,
+        alias="detail",
+        title="List of `PaymentReconciliationDetail` items (represented as `dict` in JSON)",
+        description="Settlement particulars",
+    )
 
-        self.created = None
-        """ Creation date.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    disposition: fhirtypes.String = Field(
+        None,
+        alias="disposition",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Disposition message",
+    )
 
-        self.detail = None
-        """ Settlement particulars.
-        List of `PaymentReconciliationDetail` items (represented as `dict` in JSON). """
+    formCode: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="formCode",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Printed form identifier",
+    )
 
-        self.disposition = None
-        """ Disposition message.
-        Type `str`. """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Business Identifier for a payment reconciliation",
+    )
 
-        self.formCode = None
-        """ Printed form identifier.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    outcome: fhirtypes.Code = Field(
+        None,
+        alias="outcome",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="queued | complete | error | partial",
+    )
 
-        self.identifier = None
-        """ Business Identifier for a payment reconciliation.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    paymentAmount: fhirtypes.MoneyType = Field(
+        ...,
+        alias="paymentAmount",
+        title="Type `Money` (represented as `dict` in JSON)",
+        description="Total amount of Payment",
+    )
 
-        self.outcome = None
-        """ queued | complete | error | partial.
-        Type `str`. """
+    paymentDate: fhirtypes.Date = Field(
+        ...,
+        alias="paymentDate",
+        title="Type `Date` (represented as `dict` in JSON)",
+        description="When payment issued",
+    )
 
-        self.paymentAmount = None
-        """ Total amount of Payment.
-        Type `Money` (represented as `dict` in JSON). """
+    paymentIdentifier: fhirtypes.IdentifierType = Field(
+        None,
+        alias="paymentIdentifier",
+        title="Type `Identifier` (represented as `dict` in JSON)",
+        description="Business identifier for the payment",
+    )
 
-        self.paymentDate = None
-        """ When payment issued.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    paymentIssuer: fhirtypes.ReferenceType = Field(
+        None,
+        alias="paymentIssuer",
+        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        description="Party generating payment",
+    )
 
-        self.paymentIdentifier = None
-        """ Business identifier for the payment.
-        Type `Identifier` (represented as `dict` in JSON). """
+    period: fhirtypes.PeriodType = Field(
+        None,
+        alias="period",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="Period covered",
+    )
 
-        self.paymentIssuer = None
-        """ Party generating payment.
-        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
+    processNote: ListType[fhirtypes.PaymentReconciliationProcessNoteType] = Field(
+        None,
+        alias="processNote",
+        title="List of `PaymentReconciliationProcessNote` items (represented as `dict` in JSON)",
+        description="Note concerning processing",
+    )
 
-        self.period = None
-        """ Period covered.
-        Type `Period` (represented as `dict` in JSON). """
+    request: fhirtypes.ReferenceType = Field(
+        None,
+        alias="request",
+        title="Type `Reference` referencing `Task` (represented as `dict` in JSON)",
+        description="Reference to requesting resource",
+    )
 
-        self.processNote = None
-        """ Note concerning processing.
-        List of `PaymentReconciliationProcessNote` items (represented as `dict` in JSON). """
+    requestor: fhirtypes.ReferenceType = Field(
+        None,
+        alias="requestor",
+        title="Type `Reference` referencing `Practitioner, PractitionerRole, Organization` (represented as `dict` in JSON)",
+        description="Responsible practitioner",
+    )
 
-        self.request = None
-        """ Reference to requesting resource.
-        Type `FHIRReference` referencing `['Task']` (represented as `dict` in JSON). """
-
-        self.requestor = None
-        """ Responsible practitioner.
-        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'Organization']` (represented as `dict` in JSON). """
-
-        self.status = None
-        """ active | cancelled | draft | entered-in-error.
-        Type `str`. """
-
-        super(PaymentReconciliation, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(PaymentReconciliation, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "created",
-                    "created",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "detail",
-                    "detail",
-                    PaymentReconciliationDetail,
-                    "PaymentReconciliationDetail",
-                    True,
-                    None,
-                    False,
-                ),
-                ("disposition", "disposition", str, "string", False, None, False),
-                (
-                    "formCode",
-                    "formCode",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                ("outcome", "outcome", str, "code", False, None, False),
-                (
-                    "paymentAmount",
-                    "paymentAmount",
-                    money.Money,
-                    "Money",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "paymentDate",
-                    "paymentDate",
-                    fhirdate.FHIRDate,
-                    "date",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "paymentIdentifier",
-                    "paymentIdentifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "paymentIssuer",
-                    "paymentIssuer",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("period", "period", period.Period, "Period", False, None, False),
-                (
-                    "processNote",
-                    "processNote",
-                    PaymentReconciliationProcessNote,
-                    "PaymentReconciliationProcessNote",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "request",
-                    "request",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "requestor",
-                    "requestor",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("status", "status", str, "code", False, None, True),
-            ]
-        )
-        return js
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="active | cancelled | draft | entered-in-error",
+    )
 
 
 class PaymentReconciliationDetail(backboneelement.BackboneElement):
     """ Settlement particulars.
-
     Distribution of the payment amount for a previously acknowledged payable.
     """
 
-    resource_type = "PaymentReconciliationDetail"
+    resource_type = Field("PaymentReconciliationDetail", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    amount: fhirtypes.MoneyType = Field(
+        None,
+        alias="amount",
+        title="Type `Money` (represented as `dict` in JSON)",
+        description="Amount allocated to this payable",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    date: fhirtypes.Date = Field(
+        None,
+        alias="date",
+        title="Type `Date` (represented as `dict` in JSON)",
+        description="Date of commitment to pay",
+    )
 
-        self.amount = None
-        """ Amount allocated to this payable.
-        Type `Money` (represented as `dict` in JSON). """
+    identifier: fhirtypes.IdentifierType = Field(
+        None,
+        alias="identifier",
+        title="Type `Identifier` (represented as `dict` in JSON)",
+        description="Business identifier of the payment detail",
+    )
 
-        self.date = None
-        """ Date of commitment to pay.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    payee: fhirtypes.ReferenceType = Field(
+        None,
+        alias="payee",
+        title="Type `Reference` referencing `Practitioner, PractitionerRole, Organization` (represented as `dict` in JSON)",
+        description="Recipient of the payment",
+    )
 
-        self.identifier = None
-        """ Business identifier of the payment detail.
-        Type `Identifier` (represented as `dict` in JSON). """
+    predecessor: fhirtypes.IdentifierType = Field(
+        None,
+        alias="predecessor",
+        title="Type `Identifier` (represented as `dict` in JSON)",
+        description="Business identifier of the prior payment detail",
+    )
 
-        self.payee = None
-        """ Recipient of the payment.
-        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'Organization']` (represented as `dict` in JSON). """
+    request: fhirtypes.ReferenceType = Field(
+        None,
+        alias="request",
+        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        description="Request giving rise to the payment",
+    )
 
-        self.predecessor = None
-        """ Business identifier of the prior payment detail.
-        Type `Identifier` (represented as `dict` in JSON). """
+    response: fhirtypes.ReferenceType = Field(
+        None,
+        alias="response",
+        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        description="Response committing to a payment",
+    )
 
-        self.request = None
-        """ Request giving rise to the payment.
-        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
+    responsible: fhirtypes.ReferenceType = Field(
+        None,
+        alias="responsible",
+        title="Type `Reference` referencing `PractitionerRole` (represented as `dict` in JSON)",
+        description="Contact for the response",
+    )
 
-        self.response = None
-        """ Response committing to a payment.
-        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
+    submitter: fhirtypes.ReferenceType = Field(
+        None,
+        alias="submitter",
+        title="Type `Reference` referencing `Practitioner, PractitionerRole, Organization` (represented as `dict` in JSON)",
+        description="Submitter of the request",
+    )
 
-        self.responsible = None
-        """ Contact for the response.
-        Type `FHIRReference` referencing `['PractitionerRole']` (represented as `dict` in JSON). """
-
-        self.submitter = None
-        """ Submitter of the request.
-        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'Organization']` (represented as `dict` in JSON). """
-
-        self.type = None
-        """ Category of payment.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(PaymentReconciliationDetail, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(PaymentReconciliationDetail, self).elementProperties()
-        js.extend(
-            [
-                ("amount", "amount", money.Money, "Money", False, None, False),
-                ("date", "date", fhirdate.FHIRDate, "date", False, None, False),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "payee",
-                    "payee",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "predecessor",
-                    "predecessor",
-                    identifier.Identifier,
-                    "Identifier",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "request",
-                    "request",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "response",
-                    "response",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "responsible",
-                    "responsible",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "submitter",
-                    "submitter",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
+    type: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Category of payment",
+    )
 
 
 class PaymentReconciliationProcessNote(backboneelement.BackboneElement):
     """ Note concerning processing.
-
     A note that describes or explains the processing in a human readable form.
     """
 
-    resource_type = "PaymentReconciliationProcessNote"
+    resource_type = Field("PaymentReconciliationProcessNote", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    text: fhirtypes.String = Field(
+        None,
+        alias="text",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Note explanatory text",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.text = None
-        """ Note explanatory text.
-        Type `str`. """
-
-        self.type = None
-        """ display | print | printoper.
-        Type `str`. """
-
-        super(PaymentReconciliationProcessNote, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(PaymentReconciliationProcessNote, self).elementProperties()
-        js.extend(
-            [
-                ("text", "text", str, "string", False, None, False),
-                ("type", "type", str, "code", False, None, False),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import money
-except ImportError:
-    money = sys.modules[__package__ + ".money"]
-try:
-    from . import period
-except ImportError:
-    period = sys.modules[__package__ + ".period"]
+    type: fhirtypes.Code = Field(
+        None,
+        alias="type",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="display | print | printoper",
+    )

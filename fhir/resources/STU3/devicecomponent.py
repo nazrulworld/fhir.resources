@@ -6,250 +6,119 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class DeviceComponent(domainresource.DomainResource):
     """ An instance of a medical-related component of a medical device.
-
     The characteristics, operational status and capabilities of a medical-
     related component of a medical device.
     """
 
-    resource_type = "DeviceComponent"
+    resource_type = Field("DeviceComponent", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    identifier: fhirtypes.IdentifierType = Field(
+        ...,
+        alias="identifier",
+        title="Type `Identifier` (represented as `dict` in JSON)",
+        description="Instance id assigned by the software stack",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    languageCode: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="languageCode",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Language code for the human-readable text strings produced by the device",
+    )
 
-        self.identifier = None
-        """ Instance id assigned by the software stack.
-        Type `Identifier` (represented as `dict` in JSON). """
+    lastSystemChange: fhirtypes.Instant = Field(
+        None,
+        alias="lastSystemChange",
+        title="Type `Instant` (represented as `dict` in JSON)",
+        description="Recent system change timestamp",
+    )
 
-        self.languageCode = None
-        """ Language code for the human-readable text strings produced by the
-        device.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    measurementPrinciple: fhirtypes.Code = Field(
+        None,
+        alias="measurementPrinciple",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="other | chemical | electrical | impedance | nuclear | optical | thermal | biological | mechanical | acoustical | manual+",
+    )
 
-        self.lastSystemChange = None
-        """ Recent system change timestamp.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    operationalStatus: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="operationalStatus",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Current operational status of the component, for example On, Off or Standby",
+    )
 
-        self.measurementPrinciple = None
-        """ other | chemical | electrical | impedance | nuclear | optical |
-        thermal | biological | mechanical | acoustical | manual+.
-        Type `str`. """
+    parameterGroup: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="parameterGroup",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Current supported parameter group",
+    )
 
-        self.operationalStatus = None
-        """ Current operational status of the component, for example On, Off or
-        Standby.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    parent: fhirtypes.ReferenceType = Field(
+        None,
+        alias="parent",
+        title="Type `Reference` referencing `DeviceComponent` (represented as `dict` in JSON)",
+        description="Parent resource link",
+    )
 
-        self.parameterGroup = None
-        """ Current supported parameter group.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    productionSpecification: ListType[
+        fhirtypes.DeviceComponentProductionSpecificationType
+    ] = Field(
+        None,
+        alias="productionSpecification",
+        title="List of `DeviceComponentProductionSpecification` items (represented as `dict` in JSON)",
+        description="Specification details such as Component Revisions, or Serial Numbers",
+    )
 
-        self.parent = None
-        """ Parent resource link.
-        Type `FHIRReference` referencing `['DeviceComponent']` (represented as `dict` in JSON). """
+    source: fhirtypes.ReferenceType = Field(
+        None,
+        alias="source",
+        title="Type `Reference` referencing `Device` (represented as `dict` in JSON)",
+        description="Top-level device resource link",
+    )
 
-        self.productionSpecification = None
-        """ Specification details such as Component Revisions, or Serial
-        Numbers.
-        List of `DeviceComponentProductionSpecification` items (represented as `dict` in JSON). """
-
-        self.source = None
-        """ Top-level device resource link.
-        Type `FHIRReference` referencing `['Device']` (represented as `dict` in JSON). """
-
-        self.type = None
-        """ What kind of component it is.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(DeviceComponent, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(DeviceComponent, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "languageCode",
-                    "languageCode",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "lastSystemChange",
-                    "lastSystemChange",
-                    fhirdate.FHIRDate,
-                    "instant",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "measurementPrinciple",
-                    "measurementPrinciple",
-                    str,
-                    "code",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "operationalStatus",
-                    "operationalStatus",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "parameterGroup",
-                    "parameterGroup",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "parent",
-                    "parent",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "productionSpecification",
-                    "productionSpecification",
-                    DeviceComponentProductionSpecification,
-                    "DeviceComponentProductionSpecification",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "source",
-                    "source",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
+    type: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="What kind of component it is",
+    )
 
 
 class DeviceComponentProductionSpecification(backboneelement.BackboneElement):
     """ Specification details such as Component Revisions, or Serial Numbers.
-
     The production specification such as component revision, serial number,
     etc.
     """
 
-    resource_type = "DeviceComponentProductionSpecification"
+    resource_type = Field("DeviceComponentProductionSpecification", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    componentId: fhirtypes.IdentifierType = Field(
+        None,
+        alias="componentId",
+        title="Type `Identifier` (represented as `dict` in JSON)",
+        description="Internal component unique identification",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    productionSpec: fhirtypes.String = Field(
+        None,
+        alias="productionSpec",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="A printable string defining the component",
+    )
 
-        self.componentId = None
-        """ Internal component unique identification.
-        Type `Identifier` (represented as `dict` in JSON). """
-
-        self.productionSpec = None
-        """ A printable string defining the component.
-        Type `str`. """
-
-        self.specType = None
-        """ Type or kind of production specification, for example serial number
-        or software revision.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(DeviceComponentProductionSpecification, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(DeviceComponentProductionSpecification, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "componentId",
-                    "componentId",
-                    identifier.Identifier,
-                    "Identifier",
-                    False,
-                    None,
-                    False,
-                ),
-                ("productionSpec", "productionSpec", str, "string", False, None, False),
-                (
-                    "specType",
-                    "specType",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
+    specType: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="specType",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Type or kind of production specification, for example serial number or software revision",
+    )

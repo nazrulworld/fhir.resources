@@ -2,7 +2,7 @@
 History
 =======
 
-5.1.1 (unreleased)
+6.0.0 (unreleased)
 ------------------
 
 - Nothing changed yet.

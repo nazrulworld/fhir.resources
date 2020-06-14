@@ -6,493 +6,277 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import examplescenario
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class ExampleScenarioTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("ExampleScenario", js["resourceType"])
-        return examplescenario.ExampleScenario(js)
+def impl_examplescenario_1(inst):
+    assert inst.actor[0].actorId == "Nurse"
+    assert inst.actor[0].description == "The Nurse"
+    assert inst.actor[0].name == "Nurse"
+    assert inst.actor[0].type == "person"
+    assert inst.actor[1].actorId == "MAP"
+    assert (
+        inst.actor[1].description
+        == "The entity that receives the Administration Requests to show the nurse to perform them"
+    )
+    assert inst.actor[1].name == "Nurse's Tablet"
+    assert inst.actor[1].type == "entity"
+    assert inst.actor[2].actorId == "OP"
+    assert inst.actor[2].description == "The Medication Administration Order Placer"
+    assert inst.actor[2].name == "MAR / Scheduler"
+    assert inst.actor[2].type == "entity"
+    assert inst.actor[3].actorId == "MAC"
+    assert (
+        inst.actor[3].description
+        == "The entity that receives the Medication Administration reports"
+    )
+    assert inst.actor[3].name == "MAR / EHR"
+    assert inst.actor[3].type == "entity"
+    assert inst.id == "example"
+    assert (
+        inst.instance[0].description
+        == 'The initial prescription which describes "medication X, 3 times per day" - the exact scheduling is not   in the initial prescription (it is left for the care teams to decide on the schedule).'
+    )
+    assert inst.instance[0].name == "Initial Prescription"
+    assert inst.instance[0].resourceId == "iherx001"
+    assert (
+        inst.instance[1].description == "The administration request for day 1, morning"
+    )
+    assert inst.instance[1].name == "Request for day 1, morning"
+    assert inst.instance[1].resourceId == "iherx001.001"
+    assert inst.instance[2].description == "The administration request for day 1, lunch"
+    assert inst.instance[2].name == "Request for day 1, lunch"
+    assert inst.instance[2].resourceId == "iherx001.002"
+    assert (
+        inst.instance[3].description == "The administration request for day 1, evening"
+    )
+    assert inst.instance[3].name == "Request for day 1, evening"
+    assert inst.instance[3].resourceId == "iherx001.003"
+    assert (
+        inst.instance[4].description == "The administration request for day 2, morning"
+    )
+    assert inst.instance[4].name == "Request for day 2, morning"
+    assert inst.instance[4].resourceId == "iherx001.004"
+    assert inst.instance[5].description == "The administration request for day 2, lunch"
+    assert inst.instance[5].name == "Request for day 2, lunch"
+    assert inst.instance[5].resourceId == "iherx001.005"
+    assert (
+        inst.instance[6].description == "The administration request for day 2, evening"
+    )
+    assert inst.instance[6].name == "Request for day 2, evening"
+    assert inst.instance[6].resourceId == "iherx001.006"
+    assert (
+        inst.instance[7].description
+        == "Administration report for day 1, morning: Taken"
+    )
+    assert inst.instance[7].name == "Morning meds - taken"
+    assert inst.instance[7].resourceId == "iheadm001a"
+    assert (
+        inst.instance[8].description
+        == "Administration report for day 1, morning: NOT Taken"
+    )
+    assert inst.instance[8].name == "Morning meds - not taken"
+    assert inst.instance[8].resourceId == "iheadm001b"
+    assert inst.instance[9].containedInstance[0].resourceId == "iherx001.001"
+    assert inst.instance[9].containedInstance[1].resourceId == "iherx001.002"
+    assert inst.instance[9].containedInstance[2].resourceId == "iherx001.003"
+    assert inst.instance[9].containedInstance[3].resourceId == "iherx001.004"
+    assert inst.instance[9].containedInstance[4].resourceId == "iherx001.005"
+    assert inst.instance[9].containedInstance[5].resourceId == "iherx001.006"
+    assert inst.instance[9].description == "All the medication Requests for Day 1"
+    assert inst.instance[9].name == "Bundle of Medication Requests"
+    assert inst.instance[9].resourceId == "iherx001bundle"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert (
+        inst.process[0].postConditions
+        == "Medication administration Reports are submitted, EHR is updated."
+    )
+    assert (
+        inst.process[0].preConditions
+        == "Medication administration requests are in the EHR / MAR, scheduled for each individual intake."
+    )
+    assert inst.process[0].step[0].operation.initiator == "Nurse"
+    assert inst.process[0].step[0].operation.name == "1. Get today's schedule"
+    assert inst.process[0].step[0].operation.number == "1"
+    assert inst.process[0].step[0].operation.receiver == "MAP"
+    assert (
+        inst.process[0].step[1].process[0].description
+        == "Query for medication administration orders,\\n- For today's shifts\\n- For today's patients"
+    )
+    assert inst.process[0].step[1].process[0].step[0].operation.initiator == "MAP"
+    assert (
+        inst.process[0].step[1].process[0].step[0].operation.name
+        == "2.Query for medication administration orders,\\n- For today's shifts\\n- For today's patients"
+    )
+    assert inst.process[0].step[1].process[0].step[0].operation.number == "2"
+    assert inst.process[0].step[1].process[0].step[0].operation.receiver == "OP"
+    assert (
+        inst.process[0].step[1].process[0].step[0].operation.request.resourceId
+        == "iherxqry"
+    )
+    assert (
+        inst.process[0].step[1].process[0].step[0].operation.response.resourceId
+        == "iherx001bundle"
+    )
+    assert (
+        inst.process[0].step[1].process[0].title == "P1. Query Administration Requests"
+    )
+    assert inst.process[0].step[2].pause is True
+    assert inst.process[0].step[3].operation.initiator == "MAP"
+    assert inst.process[0].step[3].operation.name == "Notify (alert)"
+    assert inst.process[0].step[3].operation.number == "4"
+    assert inst.process[0].step[3].operation.receiver == "Nurse"
+    assert inst.process[0].step[4].operation.initiator == "Nurse"
+    assert inst.process[0].step[4].operation.name == "Read orders"
+    assert inst.process[0].step[4].operation.number == "5"
+    assert inst.process[0].step[4].operation.receiver == "MAP"
+    assert inst.process[0].step[5].pause is True
+    assert inst.process[0].step[6].operation.initiator == "Nurse"
+    assert inst.process[0].step[6].operation.name == "Ask if patient took meds"
+    assert inst.process[0].step[6].operation.number == "5"
+    assert inst.process[0].step[6].operation.receiver == "Nurse"
+    assert (
+        inst.process[0].step[7].alternative[0].description
+        == "Invoke if patient took medications"
+    )
+    assert (
+        inst.process[0]
+        .step[7]
+        .alternative[0]
+        .step[0]
+        .process[0]
+        .step[0]
+        .operation.initiator
+        == "Nurse"
+    )
+    assert (
+        inst.process[0]
+        .step[7]
+        .alternative[0]
+        .step[0]
+        .process[0]
+        .step[0]
+        .operation.initiatorActive
+        is True
+    )
+    assert (
+        inst.process[0].step[7].alternative[0].step[0].process[0].step[0].operation.name
+        == "Register Meds taken"
+    )
+    assert (
+        inst.process[0]
+        .step[7]
+        .alternative[0]
+        .step[0]
+        .process[0]
+        .step[0]
+        .operation.number
+        == "1a"
+    )
+    assert (
+        inst.process[0]
+        .step[7]
+        .alternative[0]
+        .step[0]
+        .process[0]
+        .step[0]
+        .operation.receiver
+        == "MAP"
+    )
+    assert (
+        inst.process[0].step[7].alternative[0].step[0].process[0].title
+        == "Register Meds taken"
+    )
+    assert inst.process[0].step[7].alternative[0].title == "Patient took drugs"
+    assert (
+        inst.process[0].step[7].alternative[1].description
+        == "No, patient did not take drugs"
+    )
+    assert (
+        inst.process[0]
+        .step[7]
+        .alternative[1]
+        .step[0]
+        .process[0]
+        .step[0]
+        .operation.initiator
+        == "Nurse"
+    )
+    assert (
+        inst.process[0]
+        .step[7]
+        .alternative[1]
+        .step[0]
+        .process[0]
+        .step[0]
+        .operation.initiatorActive
+        is True
+    )
+    assert (
+        inst.process[0].step[7].alternative[1].step[0].process[0].step[0].operation.name
+        == "Register Meds NOT taken"
+    )
+    assert (
+        inst.process[0]
+        .step[7]
+        .alternative[1]
+        .step[0]
+        .process[0]
+        .step[0]
+        .operation.number
+        == "1b"
+    )
+    assert (
+        inst.process[0]
+        .step[7]
+        .alternative[1]
+        .step[0]
+        .process[0]
+        .step[0]
+        .operation.receiver
+        == "MAP"
+    )
+    assert (
+        inst.process[0].step[7].alternative[1].step[0].process[0].title
+        == "Register Meds NOT taken"
+    )
+    assert inst.process[0].step[7].alternative[1].title == "No drugs"
+    assert (
+        inst.process[0].step[7].alternative[2].description
+        == "Unknown whether patient took medications or not"
+    )
+    assert inst.process[0].step[7].alternative[2].step[0].pause is True
+    assert inst.process[0].step[7].alternative[2].title == "Not clear"
+    assert inst.process[0].step[8].pause is True
+    assert inst.process[0].step[9].operation.initiator == "Nurse"
+    assert inst.process[0].step[9].operation.name == "Administer drug"
+    assert inst.process[0].step[9].operation.number == "6"
+    assert inst.process[0].step[9].operation.receiver == "Nurse"
+    assert inst.process[0].title == "Mobile Medication Administration"
+    assert inst.status == "draft"
+    assert inst.text.status == "generated"
 
-    def testExampleScenario1(self):
-        inst = self.instantiate_from("examplescenario-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ExampleScenario instance")
-        self.implExampleScenario1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("ExampleScenario", js["resourceType"])
-        inst2 = examplescenario.ExampleScenario(js)
-        self.implExampleScenario1(inst2)
+def test_examplescenario_1(base_settings):
+    """No. 1 tests collection for ExampleScenario.
+    Test File: examplescenario-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "examplescenario-example.json"
+    inst = examplescenario.ExampleScenario.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ExampleScenario" == inst.resource_type
 
-    def implExampleScenario1(self, inst):
-        self.assertEqual(force_bytes(inst.actor[0].actorId), force_bytes("Nurse"))
-        self.assertEqual(
-            force_bytes(inst.actor[0].description), force_bytes("The Nurse")
-        )
-        self.assertEqual(force_bytes(inst.actor[0].name), force_bytes("Nurse"))
-        self.assertEqual(force_bytes(inst.actor[0].type), force_bytes("person"))
-        self.assertEqual(force_bytes(inst.actor[1].actorId), force_bytes("MAP"))
-        self.assertEqual(
-            force_bytes(inst.actor[1].description),
-            force_bytes(
-                "The entity that receives the Administration Requests to show the nurse to perform them"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.actor[1].name), force_bytes("Nurse's Tablet"))
-        self.assertEqual(force_bytes(inst.actor[1].type), force_bytes("entity"))
-        self.assertEqual(force_bytes(inst.actor[2].actorId), force_bytes("OP"))
-        self.assertEqual(
-            force_bytes(inst.actor[2].description),
-            force_bytes("The Medication Administration Order Placer"),
-        )
-        self.assertEqual(
-            force_bytes(inst.actor[2].name), force_bytes("MAR / Scheduler")
-        )
-        self.assertEqual(force_bytes(inst.actor[2].type), force_bytes("entity"))
-        self.assertEqual(force_bytes(inst.actor[3].actorId), force_bytes("MAC"))
-        self.assertEqual(
-            force_bytes(inst.actor[3].description),
-            force_bytes(
-                "The entity that receives the Medication Administration reports"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.actor[3].name), force_bytes("MAR / EHR"))
-        self.assertEqual(force_bytes(inst.actor[3].type), force_bytes("entity"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(
-            force_bytes(inst.instance[0].description),
-            force_bytes(
-                'The initial prescription which describes "medication X, 3 times per day" - the exact scheduling is not   in the initial prescription (it is left for the care teams to decide on the schedule).'
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.instance[0].name), force_bytes("Initial Prescription")
-        )
-        self.assertEqual(
-            force_bytes(inst.instance[0].resourceId), force_bytes("iherx001")
-        )
-        self.assertEqual(
-            force_bytes(inst.instance[1].description),
-            force_bytes("The administration request for day 1, morning"),
-        )
-        self.assertEqual(
-            force_bytes(inst.instance[1].name),
-            force_bytes("Request for day 1, morning"),
-        )
-        self.assertEqual(
-            force_bytes(inst.instance[1].resourceId), force_bytes("iherx001.001")
-        )
-        self.assertEqual(
-            force_bytes(inst.instance[2].description),
-            force_bytes("The administration request for day 1, lunch"),
-        )
-        self.assertEqual(
-            force_bytes(inst.instance[2].name), force_bytes("Request for day 1, lunch")
-        )
-        self.assertEqual(
-            force_bytes(inst.instance[2].resourceId), force_bytes("iherx001.002")
-        )
-        self.assertEqual(
-            force_bytes(inst.instance[3].description),
-            force_bytes("The administration request for day 1, evening"),
-        )
-        self.assertEqual(
-            force_bytes(inst.instance[3].name),
-            force_bytes("Request for day 1, evening"),
-        )
-        self.assertEqual(
-            force_bytes(inst.instance[3].resourceId), force_bytes("iherx001.003")
-        )
-        self.assertEqual(
-            force_bytes(inst.instance[4].description),
-            force_bytes("The administration request for day 2, morning"),
-        )
-        self.assertEqual(
-            force_bytes(inst.instance[4].name),
-            force_bytes("Request for day 2, morning"),
-        )
-        self.assertEqual(
-            force_bytes(inst.instance[4].resourceId), force_bytes("iherx001.004")
-        )
-        self.assertEqual(
-            force_bytes(inst.instance[5].description),
-            force_bytes("The administration request for day 2, lunch"),
-        )
-        self.assertEqual(
-            force_bytes(inst.instance[5].name), force_bytes("Request for day 2, lunch")
-        )
-        self.assertEqual(
-            force_bytes(inst.instance[5].resourceId), force_bytes("iherx001.005")
-        )
-        self.assertEqual(
-            force_bytes(inst.instance[6].description),
-            force_bytes("The administration request for day 2, evening"),
-        )
-        self.assertEqual(
-            force_bytes(inst.instance[6].name),
-            force_bytes("Request for day 2, evening"),
-        )
-        self.assertEqual(
-            force_bytes(inst.instance[6].resourceId), force_bytes("iherx001.006")
-        )
-        self.assertEqual(
-            force_bytes(inst.instance[7].description),
-            force_bytes("Administration report for day 1, morning: Taken"),
-        )
-        self.assertEqual(
-            force_bytes(inst.instance[7].name), force_bytes("Morning meds - taken")
-        )
-        self.assertEqual(
-            force_bytes(inst.instance[7].resourceId), force_bytes("iheadm001a")
-        )
-        self.assertEqual(
-            force_bytes(inst.instance[8].description),
-            force_bytes("Administration report for day 1, morning: NOT Taken"),
-        )
-        self.assertEqual(
-            force_bytes(inst.instance[8].name), force_bytes("Morning meds - not taken")
-        )
-        self.assertEqual(
-            force_bytes(inst.instance[8].resourceId), force_bytes("iheadm001b")
-        )
-        self.assertEqual(
-            force_bytes(inst.instance[9].containedInstance[0].resourceId),
-            force_bytes("iherx001.001"),
-        )
-        self.assertEqual(
-            force_bytes(inst.instance[9].containedInstance[1].resourceId),
-            force_bytes("iherx001.002"),
-        )
-        self.assertEqual(
-            force_bytes(inst.instance[9].containedInstance[2].resourceId),
-            force_bytes("iherx001.003"),
-        )
-        self.assertEqual(
-            force_bytes(inst.instance[9].containedInstance[3].resourceId),
-            force_bytes("iherx001.004"),
-        )
-        self.assertEqual(
-            force_bytes(inst.instance[9].containedInstance[4].resourceId),
-            force_bytes("iherx001.005"),
-        )
-        self.assertEqual(
-            force_bytes(inst.instance[9].containedInstance[5].resourceId),
-            force_bytes("iherx001.006"),
-        )
-        self.assertEqual(
-            force_bytes(inst.instance[9].description),
-            force_bytes("All the medication Requests for Day 1"),
-        )
-        self.assertEqual(
-            force_bytes(inst.instance[9].name),
-            force_bytes("Bundle of Medication Requests"),
-        )
-        self.assertEqual(
-            force_bytes(inst.instance[9].resourceId), force_bytes("iherx001bundle")
-        )
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.process[0].postConditions),
-            force_bytes(
-                "Medication administration Reports are submitted, EHR is updated."
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.process[0].preConditions),
-            force_bytes(
-                "Medication administration requests are in the EHR / MAR, scheduled for each individual intake."
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.process[0].step[0].operation.initiator),
-            force_bytes("Nurse"),
-        )
-        self.assertEqual(
-            force_bytes(inst.process[0].step[0].operation.name),
-            force_bytes("1. Get today's schedule"),
-        )
-        self.assertEqual(
-            force_bytes(inst.process[0].step[0].operation.number), force_bytes("1")
-        )
-        self.assertEqual(
-            force_bytes(inst.process[0].step[0].operation.receiver), force_bytes("MAP")
-        )
-        self.assertEqual(
-            force_bytes(inst.process[0].step[1].process[0].description),
-            force_bytes(
-                "Query for medication administration orders,\\n- For today's shifts\\n- For today's patients"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.process[0].step[1].process[0].step[0].operation.initiator),
-            force_bytes("MAP"),
-        )
-        self.assertEqual(
-            force_bytes(inst.process[0].step[1].process[0].step[0].operation.name),
-            force_bytes(
-                "2.Query for medication administration orders,\\n- For today's shifts\\n- For today's patients"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.process[0].step[1].process[0].step[0].operation.number),
-            force_bytes("2"),
-        )
-        self.assertEqual(
-            force_bytes(inst.process[0].step[1].process[0].step[0].operation.receiver),
-            force_bytes("OP"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.process[0].step[1].process[0].step[0].operation.request.resourceId
-            ),
-            force_bytes("iherxqry"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.process[0].step[1].process[0].step[0].operation.response.resourceId
-            ),
-            force_bytes("iherx001bundle"),
-        )
-        self.assertEqual(
-            force_bytes(inst.process[0].step[1].process[0].title),
-            force_bytes("P1. Query Administration Requests"),
-        )
-        self.assertTrue(inst.process[0].step[2].pause)
-        self.assertEqual(
-            force_bytes(inst.process[0].step[3].operation.initiator), force_bytes("MAP")
-        )
-        self.assertEqual(
-            force_bytes(inst.process[0].step[3].operation.name),
-            force_bytes("Notify (alert)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.process[0].step[3].operation.number), force_bytes("4")
-        )
-        self.assertEqual(
-            force_bytes(inst.process[0].step[3].operation.receiver),
-            force_bytes("Nurse"),
-        )
-        self.assertEqual(
-            force_bytes(inst.process[0].step[4].operation.initiator),
-            force_bytes("Nurse"),
-        )
-        self.assertEqual(
-            force_bytes(inst.process[0].step[4].operation.name),
-            force_bytes("Read orders"),
-        )
-        self.assertEqual(
-            force_bytes(inst.process[0].step[4].operation.number), force_bytes("5")
-        )
-        self.assertEqual(
-            force_bytes(inst.process[0].step[4].operation.receiver), force_bytes("MAP")
-        )
-        self.assertTrue(inst.process[0].step[5].pause)
-        self.assertEqual(
-            force_bytes(inst.process[0].step[6].operation.initiator),
-            force_bytes("Nurse"),
-        )
-        self.assertEqual(
-            force_bytes(inst.process[0].step[6].operation.name),
-            force_bytes("Ask if patient took meds"),
-        )
-        self.assertEqual(
-            force_bytes(inst.process[0].step[6].operation.number), force_bytes("5")
-        )
-        self.assertEqual(
-            force_bytes(inst.process[0].step[6].operation.receiver),
-            force_bytes("Nurse"),
-        )
-        self.assertEqual(
-            force_bytes(inst.process[0].step[7].alternative[0].description),
-            force_bytes("Invoke if patient took medications"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.process[0]
-                .step[7]
-                .alternative[0]
-                .step[0]
-                .process[0]
-                .step[0]
-                .operation.initiator
-            ),
-            force_bytes("Nurse"),
-        )
-        self.assertTrue(
-            inst.process[0]
-            .step[7]
-            .alternative[0]
-            .step[0]
-            .process[0]
-            .step[0]
-            .operation.initiatorActive
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.process[0]
-                .step[7]
-                .alternative[0]
-                .step[0]
-                .process[0]
-                .step[0]
-                .operation.name
-            ),
-            force_bytes("Register Meds taken"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.process[0]
-                .step[7]
-                .alternative[0]
-                .step[0]
-                .process[0]
-                .step[0]
-                .operation.number
-            ),
-            force_bytes("1a"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.process[0]
-                .step[7]
-                .alternative[0]
-                .step[0]
-                .process[0]
-                .step[0]
-                .operation.receiver
-            ),
-            force_bytes("MAP"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.process[0].step[7].alternative[0].step[0].process[0].title
-            ),
-            force_bytes("Register Meds taken"),
-        )
-        self.assertEqual(
-            force_bytes(inst.process[0].step[7].alternative[0].title),
-            force_bytes("Patient took drugs"),
-        )
-        self.assertEqual(
-            force_bytes(inst.process[0].step[7].alternative[1].description),
-            force_bytes("No, patient did not take drugs"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.process[0]
-                .step[7]
-                .alternative[1]
-                .step[0]
-                .process[0]
-                .step[0]
-                .operation.initiator
-            ),
-            force_bytes("Nurse"),
-        )
-        self.assertTrue(
-            inst.process[0]
-            .step[7]
-            .alternative[1]
-            .step[0]
-            .process[0]
-            .step[0]
-            .operation.initiatorActive
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.process[0]
-                .step[7]
-                .alternative[1]
-                .step[0]
-                .process[0]
-                .step[0]
-                .operation.name
-            ),
-            force_bytes("Register Meds NOT taken"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.process[0]
-                .step[7]
-                .alternative[1]
-                .step[0]
-                .process[0]
-                .step[0]
-                .operation.number
-            ),
-            force_bytes("1b"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.process[0]
-                .step[7]
-                .alternative[1]
-                .step[0]
-                .process[0]
-                .step[0]
-                .operation.receiver
-            ),
-            force_bytes("MAP"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.process[0].step[7].alternative[1].step[0].process[0].title
-            ),
-            force_bytes("Register Meds NOT taken"),
-        )
-        self.assertEqual(
-            force_bytes(inst.process[0].step[7].alternative[1].title),
-            force_bytes("No drugs"),
-        )
-        self.assertEqual(
-            force_bytes(inst.process[0].step[7].alternative[2].description),
-            force_bytes("Unknown whether patient took medications or not"),
-        )
-        self.assertTrue(inst.process[0].step[7].alternative[2].step[0].pause)
-        self.assertEqual(
-            force_bytes(inst.process[0].step[7].alternative[2].title),
-            force_bytes("Not clear"),
-        )
-        self.assertTrue(inst.process[0].step[8].pause)
-        self.assertEqual(
-            force_bytes(inst.process[0].step[9].operation.initiator),
-            force_bytes("Nurse"),
-        )
-        self.assertEqual(
-            force_bytes(inst.process[0].step[9].operation.name),
-            force_bytes("Administer drug"),
-        )
-        self.assertEqual(
-            force_bytes(inst.process[0].step[9].operation.number), force_bytes("6")
-        )
-        self.assertEqual(
-            force_bytes(inst.process[0].step[9].operation.receiver),
-            force_bytes("Nurse"),
-        )
-        self.assertEqual(
-            force_bytes(inst.process[0].title),
-            force_bytes("Mobile Medication Administration"),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    impl_examplescenario_1(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ExampleScenario" == data["resourceType"]
+
+    inst2 = examplescenario.ExampleScenario(**data)
+    impl_examplescenario_1(inst2)

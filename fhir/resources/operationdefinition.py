@@ -6,463 +6,353 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class OperationDefinition(domainresource.DomainResource):
     """ Definition of an operation or a named query.
-
     A formal computable definition of an operation (on the RESTful interface)
     or a named query (using the search interaction).
     """
 
-    resource_type = "OperationDefinition"
+    resource_type = Field("OperationDefinition", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    affectsState: bool = Field(
+        None,
+        alias="affectsState",
+        title="Type `bool`",
+        description="Whether content is changed by the operation",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    base: fhirtypes.Canonical = Field(
+        None,
+        alias="base",
+        title="Type `Canonical` referencing `OperationDefinition` (represented as `dict` in JSON)",
+        description="Marks this as a profile of the base",
+    )
 
-        self.affectsState = None
-        """ Whether content is changed by the operation.
-        Type `bool`. """
+    code: fhirtypes.Code = Field(
+        ...,
+        alias="code",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="Name used to invoke the operation",
+    )
 
-        self.base = None
-        """ Marks this as a profile of the base.
-        Type `str` referencing `['OperationDefinition']`. """
+    comment: fhirtypes.Markdown = Field(
+        None,
+        alias="comment",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Additional information about use",
+    )
 
-        self.code = None
-        """ Name used to invoke the operation.
-        Type `str`. """
+    contact: ListType[fhirtypes.ContactDetailType] = Field(
+        None,
+        alias="contact",
+        title="List of `ContactDetail` items (represented as `dict` in JSON)",
+        description="Contact details for the publisher",
+    )
 
-        self.comment = None
-        """ Additional information about use.
-        Type `str`. """
+    date: fhirtypes.DateTime = Field(
+        None,
+        alias="date",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Date last changed",
+    )
 
-        self.contact = None
-        """ Contact details for the publisher.
-        List of `ContactDetail` items (represented as `dict` in JSON). """
+    description: fhirtypes.Markdown = Field(
+        None,
+        alias="description",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Natural language description of the operation definition",
+    )
 
-        self.date = None
-        """ Date last changed.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    experimental: bool = Field(
+        None,
+        alias="experimental",
+        title="Type `bool`",
+        description="For testing purposes, not real usage",
+    )
 
-        self.description = None
-        """ Natural language description of the operation definition.
-        Type `str`. """
+    inputProfile: fhirtypes.Canonical = Field(
+        None,
+        alias="inputProfile",
+        title="Type `Canonical` referencing `StructureDefinition` (represented as `dict` in JSON)",
+        description="Validation information for in parameters",
+    )
 
-        self.experimental = None
-        """ For testing purposes, not real usage.
-        Type `bool`. """
+    instance: bool = Field(
+        ...,
+        alias="instance",
+        title="Type `bool`",
+        description="Invoke on an instance?",
+    )
 
-        self.inputProfile = None
-        """ Validation information for in parameters.
-        Type `str` referencing `['StructureDefinition']`. """
+    jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="jurisdiction",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Intended jurisdiction for operation definition (if applicable)",
+    )
 
-        self.instance = None
-        """ Invoke on an instance?.
-        Type `bool`. """
+    kind: fhirtypes.Code = Field(
+        ...,
+        alias="kind",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="operation | query",
+    )
 
-        self.jurisdiction = None
-        """ Intended jurisdiction for operation definition (if applicable).
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    name: fhirtypes.String = Field(
+        ...,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name for this operation definition (computer friendly)",
+    )
 
-        self.kind = None
-        """ operation | query.
-        Type `str`. """
+    outputProfile: fhirtypes.Canonical = Field(
+        None,
+        alias="outputProfile",
+        title="Type `Canonical` referencing `StructureDefinition` (represented as `dict` in JSON)",
+        description="Validation information for out parameters",
+    )
 
-        self.name = None
-        """ Name for this operation definition (computer friendly).
-        Type `str`. """
+    overload: ListType[fhirtypes.OperationDefinitionOverloadType] = Field(
+        None,
+        alias="overload",
+        title="List of `OperationDefinitionOverload` items (represented as `dict` in JSON)",
+        description="Define overloaded variants for when  generating code",
+    )
 
-        self.outputProfile = None
-        """ Validation information for out parameters.
-        Type `str` referencing `['StructureDefinition']`. """
+    parameter: ListType[fhirtypes.OperationDefinitionParameterType] = Field(
+        None,
+        alias="parameter",
+        title="List of `OperationDefinitionParameter` items (represented as `dict` in JSON)",
+        description="Parameters for the operation/query",
+    )
 
-        self.overload = None
-        """ Define overloaded variants for when  generating code.
-        List of `OperationDefinitionOverload` items (represented as `dict` in JSON). """
+    publisher: fhirtypes.String = Field(
+        None,
+        alias="publisher",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name of the publisher (organization or individual)",
+    )
 
-        self.parameter = None
-        """ Parameters for the operation/query.
-        List of `OperationDefinitionParameter` items (represented as `dict` in JSON). """
+    purpose: fhirtypes.Markdown = Field(
+        None,
+        alias="purpose",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Why this operation definition is defined",
+    )
 
-        self.publisher = None
-        """ Name of the publisher (organization or individual).
-        Type `str`. """
+    resource: ListType[fhirtypes.Code] = Field(
+        None,
+        alias="resource",
+        title="List of `Code` items (represented as `dict` in JSON)",
+        description="Types this operation applies to",
+    )
 
-        self.purpose = None
-        """ Why this operation definition is defined.
-        Type `str`. """
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="draft | active | retired | unknown",
+    )
 
-        self.resource = None
-        """ Types this operation applies to.
-        List of `str` items. """
+    system: bool = Field(
+        ...,
+        alias="system",
+        title="Type `bool`",
+        description="Invoke at the system level?",
+    )
 
-        self.status = None
-        """ draft | active | retired | unknown.
-        Type `str`. """
+    title: fhirtypes.String = Field(
+        None,
+        alias="title",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name for this operation definition (human friendly)",
+    )
 
-        self.system = None
-        """ Invoke at the system level?.
-        Type `bool`. """
+    type: bool = Field(
+        ..., alias="type", title="Type `bool`", description="Invoke at the type level?",
+    )
 
-        self.title = None
-        """ Name for this operation definition (human friendly).
-        Type `str`. """
+    url: fhirtypes.Uri = Field(
+        None,
+        alias="url",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Canonical identifier for this operation definition, represented as a URI (globally unique)",
+    )
 
-        self.type = None
-        """ Invoke at the type level?.
-        Type `bool`. """
+    useContext: ListType[fhirtypes.UsageContextType] = Field(
+        None,
+        alias="useContext",
+        title="List of `UsageContext` items (represented as `dict` in JSON)",
+        description="The context that the content is intended to support",
+    )
 
-        self.url = None
-        """ Canonical identifier for this operation definition, represented as
-        a URI (globally unique).
-        Type `str`. """
-
-        self.useContext = None
-        """ The context that the content is intended to support.
-        List of `UsageContext` items (represented as `dict` in JSON). """
-
-        self.version = None
-        """ Business version of the operation definition.
-        Type `str`. """
-
-        super(OperationDefinition, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(OperationDefinition, self).elementProperties()
-        js.extend(
-            [
-                ("affectsState", "affectsState", bool, "boolean", False, None, False),
-                ("base", "base", str, "canonical", False, None, False),
-                ("code", "code", str, "code", False, None, True),
-                ("comment", "comment", str, "markdown", False, None, False),
-                (
-                    "contact",
-                    "contact",
-                    contactdetail.ContactDetail,
-                    "ContactDetail",
-                    True,
-                    None,
-                    False,
-                ),
-                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-                ("description", "description", str, "markdown", False, None, False),
-                ("experimental", "experimental", bool, "boolean", False, None, False),
-                ("inputProfile", "inputProfile", str, "canonical", False, None, False),
-                ("instance", "instance", bool, "boolean", False, None, True),
-                (
-                    "jurisdiction",
-                    "jurisdiction",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                ("kind", "kind", str, "code", False, None, True),
-                ("name", "name", str, "string", False, None, True),
-                (
-                    "outputProfile",
-                    "outputProfile",
-                    str,
-                    "canonical",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "overload",
-                    "overload",
-                    OperationDefinitionOverload,
-                    "OperationDefinitionOverload",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "parameter",
-                    "parameter",
-                    OperationDefinitionParameter,
-                    "OperationDefinitionParameter",
-                    True,
-                    None,
-                    False,
-                ),
-                ("publisher", "publisher", str, "string", False, None, False),
-                ("purpose", "purpose", str, "markdown", False, None, False),
-                ("resource", "resource", str, "code", True, None, False),
-                ("status", "status", str, "code", False, None, True),
-                ("system", "system", bool, "boolean", False, None, True),
-                ("title", "title", str, "string", False, None, False),
-                ("type", "type", bool, "boolean", False, None, True),
-                ("url", "url", str, "uri", False, None, False),
-                (
-                    "useContext",
-                    "useContext",
-                    usagecontext.UsageContext,
-                    "UsageContext",
-                    True,
-                    None,
-                    False,
-                ),
-                ("version", "version", str, "string", False, None, False),
-            ]
-        )
-        return js
+    version: fhirtypes.String = Field(
+        None,
+        alias="version",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Business version of the operation definition",
+    )
 
 
 class OperationDefinitionOverload(backboneelement.BackboneElement):
     """ Define overloaded variants for when  generating code.
-
     Defines an appropriate combination of parameters to use when invoking this
     operation, to help code generators when generating overloaded parameter
     sets for this operation.
     """
 
-    resource_type = "OperationDefinitionOverload"
+    resource_type = Field("OperationDefinitionOverload", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    comment: fhirtypes.String = Field(
+        None,
+        alias="comment",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Comments to go on overload",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.comment = None
-        """ Comments to go on overload.
-        Type `str`. """
-
-        self.parameterName = None
-        """ Name of parameter to include in overload.
-        List of `str` items. """
-
-        super(OperationDefinitionOverload, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(OperationDefinitionOverload, self).elementProperties()
-        js.extend(
-            [
-                ("comment", "comment", str, "string", False, None, False),
-                ("parameterName", "parameterName", str, "string", True, None, False),
-            ]
-        )
-        return js
+    parameterName: ListType[fhirtypes.String] = Field(
+        None,
+        alias="parameterName",
+        title="List of `String` items (represented as `dict` in JSON)",
+        description="Name of parameter to include in overload",
+    )
 
 
 class OperationDefinitionParameter(backboneelement.BackboneElement):
     """ Parameters for the operation/query.
-
     The parameters for the operation/query.
     """
 
-    resource_type = "OperationDefinitionParameter"
+    resource_type = Field("OperationDefinitionParameter", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    binding: fhirtypes.OperationDefinitionParameterBindingType = Field(
+        None,
+        alias="binding",
+        title="Type `OperationDefinitionParameterBinding` (represented as `dict` in JSON)",
+        description="ValueSet details if this is coded",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    documentation: fhirtypes.String = Field(
+        None,
+        alias="documentation",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Description of meaning/use",
+    )
 
-        self.binding = None
-        """ ValueSet details if this is coded.
-        Type `OperationDefinitionParameterBinding` (represented as `dict` in JSON). """
+    max: fhirtypes.String = Field(
+        ...,
+        alias="max",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Maximum Cardinality (a number or *)",
+    )
 
-        self.documentation = None
-        """ Description of meaning/use.
-        Type `str`. """
+    min: fhirtypes.Integer = Field(
+        ...,
+        alias="min",
+        title="Type `Integer` (represented as `dict` in JSON)",
+        description="Minimum Cardinality",
+    )
 
-        self.max = None
-        """ Maximum Cardinality (a number or *).
-        Type `str`. """
+    name: fhirtypes.Code = Field(
+        ...,
+        alias="name",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="Name in Parameters.parameter.name or in URL",
+    )
 
-        self.min = None
-        """ Minimum Cardinality.
-        Type `int`. """
+    part: ListType[fhirtypes.OperationDefinitionParameterType] = Field(
+        None,
+        alias="part",
+        title="List of `OperationDefinitionParameter` items (represented as `dict` in JSON)",
+        description="Parts of a nested Parameter",
+    )
 
-        self.name = None
-        """ Name in Parameters.parameter.name or in URL.
-        Type `str`. """
+    referencedFrom: ListType[
+        fhirtypes.OperationDefinitionParameterReferencedFromType
+    ] = Field(
+        None,
+        alias="referencedFrom",
+        title="List of `OperationDefinitionParameterReferencedFrom` items (represented as `dict` in JSON)",
+        description="References to this parameter",
+    )
 
-        self.part = None
-        """ Parts of a nested Parameter.
-        List of `OperationDefinitionParameter` items (represented as `dict` in JSON). """
+    searchType: fhirtypes.Code = Field(
+        None,
+        alias="searchType",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="number | date | string | token | reference | composite | quantity | uri | special",
+    )
 
-        self.referencedFrom = None
-        """ References to this parameter.
-        List of `OperationDefinitionParameterReferencedFrom` items (represented as `dict` in JSON). """
+    targetProfile: ListType[fhirtypes.Canonical] = Field(
+        None,
+        alias="targetProfile",
+        title="List of `Canonical` items referencing `StructureDefinition` (represented as `dict` in JSON)",
+        description="If type is Reference | canonical, allowed targets",
+    )
 
-        self.searchType = None
-        """ number | date | string | token | reference | composite | quantity |
-        uri | special.
-        Type `str`. """
+    type: fhirtypes.Code = Field(
+        None,
+        alias="type",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="What type this parameter has",
+    )
 
-        self.targetProfile = None
-        """ If type is Reference | canonical, allowed targets.
-        List of `str` items referencing `['StructureDefinition']`. """
-
-        self.type = None
-        """ What type this parameter has.
-        Type `str`. """
-
-        self.use = None
-        """ in | out.
-        Type `str`. """
-
-        super(OperationDefinitionParameter, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(OperationDefinitionParameter, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "binding",
-                    "binding",
-                    OperationDefinitionParameterBinding,
-                    "OperationDefinitionParameterBinding",
-                    False,
-                    None,
-                    False,
-                ),
-                ("documentation", "documentation", str, "string", False, None, False),
-                ("max", "max", str, "string", False, None, True),
-                ("min", "min", int, "integer", False, None, True),
-                ("name", "name", str, "code", False, None, True),
-                (
-                    "part",
-                    "part",
-                    OperationDefinitionParameter,
-                    "OperationDefinitionParameter",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "referencedFrom",
-                    "referencedFrom",
-                    OperationDefinitionParameterReferencedFrom,
-                    "OperationDefinitionParameterReferencedFrom",
-                    True,
-                    None,
-                    False,
-                ),
-                ("searchType", "searchType", str, "code", False, None, False),
-                ("targetProfile", "targetProfile", str, "canonical", True, None, False),
-                ("type", "type", str, "code", False, None, False),
-                ("use", "use", str, "code", False, None, True),
-            ]
-        )
-        return js
+    use: fhirtypes.Code = Field(
+        ...,
+        alias="use",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="in | out",
+    )
 
 
 class OperationDefinitionParameterBinding(backboneelement.BackboneElement):
     """ ValueSet details if this is coded.
-
     Binds to a value set if this parameter is coded (code, Coding,
     CodeableConcept).
     """
 
-    resource_type = "OperationDefinitionParameterBinding"
+    resource_type = Field("OperationDefinitionParameterBinding", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    strength: fhirtypes.Code = Field(
+        ...,
+        alias="strength",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="required | extensible | preferred | example",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.strength = None
-        """ required | extensible | preferred | example.
-        Type `str`. """
-
-        self.valueSet = None
-        """ Source of value set.
-        Type `str` referencing `['ValueSet']`. """
-
-        super(OperationDefinitionParameterBinding, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(OperationDefinitionParameterBinding, self).elementProperties()
-        js.extend(
-            [
-                ("strength", "strength", str, "code", False, None, True),
-                ("valueSet", "valueSet", str, "canonical", False, None, True),
-            ]
-        )
-        return js
+    valueSet: fhirtypes.Canonical = Field(
+        ...,
+        alias="valueSet",
+        title="Type `Canonical` referencing `ValueSet` (represented as `dict` in JSON)",
+        description="Source of value set",
+    )
 
 
 class OperationDefinitionParameterReferencedFrom(backboneelement.BackboneElement):
     """ References to this parameter.
-
     Identifies other resource parameters within the operation invocation that
     are expected to resolve to this resource.
     """
 
-    resource_type = "OperationDefinitionParameterReferencedFrom"
+    resource_type = Field("OperationDefinitionParameterReferencedFrom", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    source: fhirtypes.String = Field(
+        ...,
+        alias="source",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Referencing parameter",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.source = None
-        """ Referencing parameter.
-        Type `str`. """
-
-        self.sourceId = None
-        """ Element id of reference.
-        Type `str`. """
-
-        super(OperationDefinitionParameterReferencedFrom, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(OperationDefinitionParameterReferencedFrom, self).elementProperties()
-        js.extend(
-            [
-                ("source", "source", str, "string", False, None, True),
-                ("sourceId", "sourceId", str, "string", False, None, False),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import contactdetail
-except ImportError:
-    contactdetail = sys.modules[__package__ + ".contactdetail"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import usagecontext
-except ImportError:
-    usagecontext = sys.modules[__package__ + ".usagecontext"]
+    sourceId: fhirtypes.String = Field(
+        None,
+        alias="sourceId",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Element id of reference",
+    )

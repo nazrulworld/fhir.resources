@@ -6,456 +6,368 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import Any, Dict
+from typing import List as ListType
 
+from pydantic import Field, root_validator
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class BiologicallyDerivedProduct(domainresource.DomainResource):
     """ A material substance originating from a biological entity.
-
     A material substance originating from a biological entity intended to be
     transplanted or infused
     into another (possibly the same) biological entity.
     """
 
-    resource_type = "BiologicallyDerivedProduct"
+    resource_type = Field("BiologicallyDerivedProduct", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    collection: fhirtypes.BiologicallyDerivedProductCollectionType = Field(
+        None,
+        alias="collection",
+        title="Type `BiologicallyDerivedProductCollection` (represented as `dict` in JSON)",
+        description="How this product was collected",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="External ids for this item",
+    )
 
-        self.collection = None
-        """ How this product was collected.
-        Type `BiologicallyDerivedProductCollection` (represented as `dict` in JSON). """
+    manipulation: fhirtypes.BiologicallyDerivedProductManipulationType = Field(
+        None,
+        alias="manipulation",
+        title="Type `BiologicallyDerivedProductManipulation` (represented as `dict` in JSON)",
+        description="Any manipulation of product post-collection",
+    )
 
-        self.identifier = None
-        """ External ids for this item.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    parent: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="parent",
+        title="List of `Reference` items referencing `BiologicallyDerivedProduct` (represented as `dict` in JSON)",
+        description="BiologicallyDerivedProduct parent",
+    )
 
-        self.manipulation = None
-        """ Any manipulation of product post-collection.
-        Type `BiologicallyDerivedProductManipulation` (represented as `dict` in JSON). """
+    processing: ListType[fhirtypes.BiologicallyDerivedProductProcessingType] = Field(
+        None,
+        alias="processing",
+        title="List of `BiologicallyDerivedProductProcessing` items (represented as `dict` in JSON)",
+        description="Any processing of the product during collection",
+    )
 
-        self.parent = None
-        """ BiologicallyDerivedProduct parent.
-        List of `FHIRReference` items referencing `['BiologicallyDerivedProduct']` (represented as `dict` in JSON). """
+    productCategory: fhirtypes.Code = Field(
+        None,
+        alias="productCategory",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="organ | tissue | fluid | cells | biologicalAgent",
+    )
 
-        self.processing = None
-        """ Any processing of the product during collection.
-        List of `BiologicallyDerivedProductProcessing` items (represented as `dict` in JSON). """
+    productCode: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="productCode",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="What this biologically derived product is",
+    )
 
-        self.productCategory = None
-        """ organ | tissue | fluid | cells | biologicalAgent.
-        Type `str`. """
+    quantity: fhirtypes.Integer = Field(
+        None,
+        alias="quantity",
+        title="Type `Integer` (represented as `dict` in JSON)",
+        description="The amount of this biologically derived product",
+    )
 
-        self.productCode = None
-        """ What this biologically derived product is.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    request: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="request",
+        title="List of `Reference` items referencing `ServiceRequest` (represented as `dict` in JSON)",
+        description="Procedure request",
+    )
 
-        self.quantity = None
-        """ The amount of this biologically derived product.
-        Type `int`. """
+    status: fhirtypes.Code = Field(
+        None,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="available | unavailable",
+    )
 
-        self.request = None
-        """ Procedure request.
-        List of `FHIRReference` items referencing `['ServiceRequest']` (represented as `dict` in JSON). """
-
-        self.status = None
-        """ available | unavailable.
-        Type `str`. """
-
-        self.storage = None
-        """ Product storage.
-        List of `BiologicallyDerivedProductStorage` items (represented as `dict` in JSON). """
-
-        super(BiologicallyDerivedProduct, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(BiologicallyDerivedProduct, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "collection",
-                    "collection",
-                    BiologicallyDerivedProductCollection,
-                    "BiologicallyDerivedProductCollection",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "manipulation",
-                    "manipulation",
-                    BiologicallyDerivedProductManipulation,
-                    "BiologicallyDerivedProductManipulation",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "parent",
-                    "parent",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "processing",
-                    "processing",
-                    BiologicallyDerivedProductProcessing,
-                    "BiologicallyDerivedProductProcessing",
-                    True,
-                    None,
-                    False,
-                ),
-                ("productCategory", "productCategory", str, "code", False, None, False),
-                (
-                    "productCode",
-                    "productCode",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("quantity", "quantity", int, "integer", False, None, False),
-                (
-                    "request",
-                    "request",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                ("status", "status", str, "code", False, None, False),
-                (
-                    "storage",
-                    "storage",
-                    BiologicallyDerivedProductStorage,
-                    "BiologicallyDerivedProductStorage",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    storage: ListType[fhirtypes.BiologicallyDerivedProductStorageType] = Field(
+        None,
+        alias="storage",
+        title="List of `BiologicallyDerivedProductStorage` items (represented as `dict` in JSON)",
+        description="Product storage",
+    )
 
 
 class BiologicallyDerivedProductCollection(backboneelement.BackboneElement):
     """ How this product was collected.
     """
 
-    resource_type = "BiologicallyDerivedProductCollection"
+    resource_type = Field("BiologicallyDerivedProductCollection", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    collectedDateTime: fhirtypes.DateTime = Field(
+        None,
+        alias="collectedDateTime",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Time of product collection",
+        one_of_many="collected",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    collectedPeriod: fhirtypes.PeriodType = Field(
+        None,
+        alias="collectedPeriod",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="Time of product collection",
+        one_of_many="collected",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    collector: fhirtypes.ReferenceType = Field(
+        None,
+        alias="collector",
+        title="Type `Reference` referencing `Practitioner, PractitionerRole` (represented as `dict` in JSON)",
+        description="Individual performing collection",
+    )
+
+    source: fhirtypes.ReferenceType = Field(
+        None,
+        alias="source",
+        title="Type `Reference` referencing `Patient, Organization` (represented as `dict` in JSON)",
+        description="Who is product from",
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "collected": ["collectedDateTime", "collectedPeriod",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.collectedDateTime = None
-        """ Time of product collection.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.collectedPeriod = None
-        """ Time of product collection.
-        Type `Period` (represented as `dict` in JSON). """
-
-        self.collector = None
-        """ Individual performing collection.
-        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole']` (represented as `dict` in JSON). """
-
-        self.source = None
-        """ Who is product from.
-        Type `FHIRReference` referencing `['Patient', 'Organization']` (represented as `dict` in JSON). """
-
-        super(BiologicallyDerivedProductCollection, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(BiologicallyDerivedProductCollection, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "collectedDateTime",
-                    "collectedDateTime",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    "collected",
-                    False,
-                ),
-                (
-                    "collectedPeriod",
-                    "collectedPeriod",
-                    period.Period,
-                    "Period",
-                    False,
-                    "collected",
-                    False,
-                ),
-                (
-                    "collector",
-                    "collector",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "source",
-                    "source",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+        return values
 
 
 class BiologicallyDerivedProductManipulation(backboneelement.BackboneElement):
     """ Any manipulation of product post-collection.
-
     Any manipulation of product post-collection that is intended to alter the
     product.  For example a buffy-coat enrichment or CD8 reduction of
     Peripheral Blood Stem Cells to make it more suitable for infusion.
     """
 
-    resource_type = "BiologicallyDerivedProductManipulation"
+    resource_type = Field("BiologicallyDerivedProductManipulation", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    description: fhirtypes.String = Field(
+        None,
+        alias="description",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Description of manipulation",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    timeDateTime: fhirtypes.DateTime = Field(
+        None,
+        alias="timeDateTime",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Time of manipulation",
+        one_of_many="time",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    timePeriod: fhirtypes.PeriodType = Field(
+        None,
+        alias="timePeriod",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="Time of manipulation",
+        one_of_many="time",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "time": ["timeDateTime", "timePeriod",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.description = None
-        """ Description of manipulation.
-        Type `str`. """
-
-        self.timeDateTime = None
-        """ Time of manipulation.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.timePeriod = None
-        """ Time of manipulation.
-        Type `Period` (represented as `dict` in JSON). """
-
-        super(BiologicallyDerivedProductManipulation, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(BiologicallyDerivedProductManipulation, self).elementProperties()
-        js.extend(
-            [
-                ("description", "description", str, "string", False, None, False),
-                (
-                    "timeDateTime",
-                    "timeDateTime",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    "time",
-                    False,
-                ),
-                (
-                    "timePeriod",
-                    "timePeriod",
-                    period.Period,
-                    "Period",
-                    False,
-                    "time",
-                    False,
-                ),
-            ]
-        )
-        return js
+        return values
 
 
 class BiologicallyDerivedProductProcessing(backboneelement.BackboneElement):
     """ Any processing of the product during collection.
-
     Any processing of the product during collection that does not change the
     fundamental nature of the product. For example adding anti-coagulants
     during the collection of Peripheral Blood Stem Cells.
     """
 
-    resource_type = "BiologicallyDerivedProductProcessing"
+    resource_type = Field("BiologicallyDerivedProductProcessing", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    additive: fhirtypes.ReferenceType = Field(
+        None,
+        alias="additive",
+        title="Type `Reference` referencing `Substance` (represented as `dict` in JSON)",
+        description="Substance added during processing",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    description: fhirtypes.String = Field(
+        None,
+        alias="description",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Description of of processing",
+    )
+
+    procedure: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="procedure",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Procesing code",
+    )
+
+    timeDateTime: fhirtypes.DateTime = Field(
+        None,
+        alias="timeDateTime",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Time of processing",
+        one_of_many="time",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    timePeriod: fhirtypes.PeriodType = Field(
+        None,
+        alias="timePeriod",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="Time of processing",
+        one_of_many="time",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "time": ["timeDateTime", "timePeriod",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.additive = None
-        """ Substance added during processing.
-        Type `FHIRReference` referencing `['Substance']` (represented as `dict` in JSON). """
-
-        self.description = None
-        """ Description of of processing.
-        Type `str`. """
-
-        self.procedure = None
-        """ Procesing code.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.timeDateTime = None
-        """ Time of processing.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.timePeriod = None
-        """ Time of processing.
-        Type `Period` (represented as `dict` in JSON). """
-
-        super(BiologicallyDerivedProductProcessing, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(BiologicallyDerivedProductProcessing, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "additive",
-                    "additive",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("description", "description", str, "string", False, None, False),
-                (
-                    "procedure",
-                    "procedure",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "timeDateTime",
-                    "timeDateTime",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    "time",
-                    False,
-                ),
-                (
-                    "timePeriod",
-                    "timePeriod",
-                    period.Period,
-                    "Period",
-                    False,
-                    "time",
-                    False,
-                ),
-            ]
-        )
-        return js
+        return values
 
 
 class BiologicallyDerivedProductStorage(backboneelement.BackboneElement):
     """ Product storage.
     """
 
-    resource_type = "BiologicallyDerivedProductStorage"
+    resource_type = Field("BiologicallyDerivedProductStorage", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    description: fhirtypes.String = Field(
+        None,
+        alias="description",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Description of storage",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    duration: fhirtypes.PeriodType = Field(
+        None,
+        alias="duration",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="Storage timeperiod",
+    )
 
-        self.description = None
-        """ Description of storage.
-        Type `str`. """
+    scale: fhirtypes.Code = Field(
+        None,
+        alias="scale",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="farenheit | celsius | kelvin",
+    )
 
-        self.duration = None
-        """ Storage timeperiod.
-        Type `Period` (represented as `dict` in JSON). """
-
-        self.scale = None
-        """ farenheit | celsius | kelvin.
-        Type `str`. """
-
-        self.temperature = None
-        """ Storage temperature.
-        Type `float`. """
-
-        super(BiologicallyDerivedProductStorage, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(BiologicallyDerivedProductStorage, self).elementProperties()
-        js.extend(
-            [
-                ("description", "description", str, "string", False, None, False),
-                ("duration", "duration", period.Period, "Period", False, None, False),
-                ("scale", "scale", str, "code", False, None, False),
-                ("temperature", "temperature", float, "decimal", False, None, False),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import period
-except ImportError:
-    period = sys.modules[__package__ + ".period"]
+    temperature: fhirtypes.Decimal = Field(
+        None,
+        alias="temperature",
+        title="Type `Decimal` (represented as `dict` in JSON)",
+        description="Storage temperature",
+    )

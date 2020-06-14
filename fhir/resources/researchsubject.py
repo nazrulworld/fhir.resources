@@ -6,124 +6,73 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import domainresource
+from . import domainresource, fhirtypes
 
 
 class ResearchSubject(domainresource.DomainResource):
     """ Physical entity which is the primary unit of interest in the study.
-
     A physical entity which is the primary unit of operational and/or
     administrative interest in a study.
     """
 
-    resource_type = "ResearchSubject"
+    resource_type = Field("ResearchSubject", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    actualArm: fhirtypes.String = Field(
+        None,
+        alias="actualArm",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="What path was followed",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    assignedArm: fhirtypes.String = Field(
+        None,
+        alias="assignedArm",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="What path should be followed",
+    )
 
-        self.actualArm = None
-        """ What path was followed.
-        Type `str`. """
+    consent: fhirtypes.ReferenceType = Field(
+        None,
+        alias="consent",
+        title="Type `Reference` referencing `Consent` (represented as `dict` in JSON)",
+        description="Agreement to participate in study",
+    )
 
-        self.assignedArm = None
-        """ What path should be followed.
-        Type `str`. """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Business Identifier for research subject in a study",
+    )
 
-        self.consent = None
-        """ Agreement to participate in study.
-        Type `FHIRReference` referencing `['Consent']` (represented as `dict` in JSON). """
+    individual: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="individual",
+        title="Type `Reference` referencing `Patient` (represented as `dict` in JSON)",
+        description="Who is part of study",
+    )
 
-        self.identifier = None
-        """ Business Identifier for research subject in a study.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    period: fhirtypes.PeriodType = Field(
+        None,
+        alias="period",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="Start and end of participation",
+    )
 
-        self.individual = None
-        """ Who is part of study.
-        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="candidate | eligible | follow-up | ineligible | not-registered | off-study | on-study | on-study-intervention | on-study-observation | pending-on-study | potential-candidate | screening | withdrawn",
+    )
 
-        self.period = None
-        """ Start and end of participation.
-        Type `Period` (represented as `dict` in JSON). """
-
-        self.status = None
-        """ candidate | eligible | follow-up | ineligible | not-registered |
-        off-study | on-study | on-study-intervention | on-study-observation
-        | pending-on-study | potential-candidate | screening | withdrawn.
-        Type `str`. """
-
-        self.study = None
-        """ Study subject is part of.
-        Type `FHIRReference` referencing `['ResearchStudy']` (represented as `dict` in JSON). """
-
-        super(ResearchSubject, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ResearchSubject, self).elementProperties()
-        js.extend(
-            [
-                ("actualArm", "actualArm", str, "string", False, None, False),
-                ("assignedArm", "assignedArm", str, "string", False, None, False),
-                (
-                    "consent",
-                    "consent",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "individual",
-                    "individual",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                ("period", "period", period.Period, "Period", False, None, False),
-                ("status", "status", str, "code", False, None, True),
-                (
-                    "study",
-                    "study",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import period
-except ImportError:
-    period = sys.modules[__package__ + ".period"]
+    study: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="study",
+        title="Type `Reference` referencing `ResearchStudy` (represented as `dict` in JSON)",
+        description="Study subject is part of",
+    )

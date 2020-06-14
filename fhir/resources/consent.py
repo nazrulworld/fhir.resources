@@ -6,570 +6,342 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import Any, Dict
+from typing import List as ListType
 
+from pydantic import Field, root_validator
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class Consent(domainresource.DomainResource):
     """ A healthcare consumer's  choices to permit or deny recipients or roles to
     perform actions for specific purposes and periods of time.
-
     A record of a healthcare consumer’s  choices, which permits or denies
     identified recipient(s) or recipient role(s) to perform one or more actions
     within a given policy context, for specific purposes and periods of time.
     """
 
-    resource_type = "Consent"
+    resource_type = Field("Consent", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    category: ListType[fhirtypes.CodeableConceptType] = Field(
+        ...,
+        alias="category",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Classification of the consent statement - for indexing/retrieval",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    dateTime: fhirtypes.DateTime = Field(
+        None,
+        alias="dateTime",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="When this Consent was created or indexed",
+    )
+
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Identifier for this record (external references)",
+    )
+
+    organization: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="organization",
+        title="List of `Reference` items referencing `Organization` (represented as `dict` in JSON)",
+        description="Custodian of the consent",
+    )
+
+    patient: fhirtypes.ReferenceType = Field(
+        None,
+        alias="patient",
+        title="Type `Reference` referencing `Patient` (represented as `dict` in JSON)",
+        description="Who the consent applies to",
+    )
+
+    performer: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="performer",
+        title="List of `Reference` items referencing `Organization, Patient, Practitioner, RelatedPerson, PractitionerRole` (represented as `dict` in JSON)",
+        description="Who is agreeing to the policy and rules",
+    )
+
+    policy: ListType[fhirtypes.ConsentPolicyType] = Field(
+        None,
+        alias="policy",
+        title="List of `ConsentPolicy` items (represented as `dict` in JSON)",
+        description="Policies covered by this consent",
+    )
+
+    policyRule: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="policyRule",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Regulation that this consents to",
+    )
+
+    provision: fhirtypes.ConsentProvisionType = Field(
+        None,
+        alias="provision",
+        title="Type `ConsentProvision` (represented as `dict` in JSON)",
+        description="Constraints to the base Consent.policyRule",
+    )
+
+    scope: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="scope",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Which of the four areas this resource covers (extensible)",
+    )
+
+    sourceAttachment: fhirtypes.AttachmentType = Field(
+        None,
+        alias="sourceAttachment",
+        title="Type `Attachment` (represented as `dict` in JSON)",
+        description="Source from which this consent is taken",
+        one_of_many="source",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    sourceReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="sourceReference",
+        title="Type `Reference` referencing `Consent, DocumentReference, Contract, QuestionnaireResponse` (represented as `dict` in JSON)",
+        description="Source from which this consent is taken",
+        one_of_many="source",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="draft | proposed | active | rejected | inactive | entered-in-error",
+    )
+
+    verification: ListType[fhirtypes.ConsentVerificationType] = Field(
+        None,
+        alias="verification",
+        title="List of `ConsentVerification` items (represented as `dict` in JSON)",
+        description="Consent Verified by patient or family",
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "source": ["sourceAttachment", "sourceReference",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.category = None
-        """ Classification of the consent statement - for indexing/retrieval.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.dateTime = None
-        """ When this Consent was created or indexed.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.identifier = None
-        """ Identifier for this record (external references).
-        List of `Identifier` items (represented as `dict` in JSON). """
-
-        self.organization = None
-        """ Custodian of the consent.
-        List of `FHIRReference` items referencing `['Organization']` (represented as `dict` in JSON). """
-
-        self.patient = None
-        """ Who the consent applies to.
-        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
-
-        self.performer = None
-        """ Who is agreeing to the policy and rules.
-        List of `FHIRReference` items referencing `['Organization', 'Patient', 'Practitioner', 'RelatedPerson', 'PractitionerRole']` (represented as `dict` in JSON). """
-
-        self.policy = None
-        """ Policies covered by this consent.
-        List of `ConsentPolicy` items (represented as `dict` in JSON). """
-
-        self.policyRule = None
-        """ Regulation that this consents to.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.provision = None
-        """ Constraints to the base Consent.policyRule.
-        Type `ConsentProvision` (represented as `dict` in JSON). """
-
-        self.scope = None
-        """ Which of the four areas this resource covers (extensible).
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.sourceAttachment = None
-        """ Source from which this consent is taken.
-        Type `Attachment` (represented as `dict` in JSON). """
-
-        self.sourceReference = None
-        """ Source from which this consent is taken.
-        Type `FHIRReference` referencing `['Consent', 'DocumentReference', 'Contract', 'QuestionnaireResponse']` (represented as `dict` in JSON). """
-
-        self.status = None
-        """ draft | proposed | active | rejected | inactive | entered-in-error.
-        Type `str`. """
-
-        self.verification = None
-        """ Consent Verified by patient or family.
-        List of `ConsentVerification` items (represented as `dict` in JSON). """
-
-        super(Consent, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(Consent, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "category",
-                    "category",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    True,
-                ),
-                (
-                    "dateTime",
-                    "dateTime",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "organization",
-                    "organization",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "patient",
-                    "patient",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "performer",
-                    "performer",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                ("policy", "policy", ConsentPolicy, "ConsentPolicy", True, None, False),
-                (
-                    "policyRule",
-                    "policyRule",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "provision",
-                    "provision",
-                    ConsentProvision,
-                    "ConsentProvision",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "scope",
-                    "scope",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "sourceAttachment",
-                    "sourceAttachment",
-                    attachment.Attachment,
-                    "Attachment",
-                    False,
-                    "source",
-                    False,
-                ),
-                (
-                    "sourceReference",
-                    "sourceReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    "source",
-                    False,
-                ),
-                ("status", "status", str, "code", False, None, True),
-                (
-                    "verification",
-                    "verification",
-                    ConsentVerification,
-                    "ConsentVerification",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+        return values
 
 
 class ConsentPolicy(backboneelement.BackboneElement):
     """ Policies covered by this consent.
-
     The references to the policies that are included in this consent scope.
     Policies may be organizational, but are often defined jurisdictionally, or
     in law.
     """
 
-    resource_type = "ConsentPolicy"
+    resource_type = Field("ConsentPolicy", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    authority: fhirtypes.Uri = Field(
+        None,
+        alias="authority",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Enforcement source for policy",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.authority = None
-        """ Enforcement source for policy.
-        Type `str`. """
-
-        self.uri = None
-        """ Specific policy covered by this consent.
-        Type `str`. """
-
-        super(ConsentPolicy, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ConsentPolicy, self).elementProperties()
-        js.extend(
-            [
-                ("authority", "authority", str, "uri", False, None, False),
-                ("uri", "uri", str, "uri", False, None, False),
-            ]
-        )
-        return js
+    uri: fhirtypes.Uri = Field(
+        None,
+        alias="uri",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Specific policy covered by this consent",
+    )
 
 
 class ConsentProvision(backboneelement.BackboneElement):
     """ Constraints to the base Consent.policyRule.
-
     An exception to the base policy of this consent. An exception can be an
     addition or removal of access permissions.
     """
 
-    resource_type = "ConsentProvision"
+    resource_type = Field("ConsentProvision", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    action: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="action",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Actions controlled by this rule",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    actor: ListType[fhirtypes.ConsentProvisionActorType] = Field(
+        None,
+        alias="actor",
+        title="List of `ConsentProvisionActor` items (represented as `dict` in JSON)",
+        description="Who|what controlled by this rule (or group, by role)",
+    )
 
-        self.action = None
-        """ Actions controlled by this rule.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    class_fhir: ListType[fhirtypes.CodingType] = Field(
+        None,
+        alias="class",
+        title="List of `Coding` items (represented as `dict` in JSON)",
+        description="e.g. Resource Type, Profile, CDA, etc.",
+    )
 
-        self.actor = None
-        """ Who|what controlled by this rule (or group, by role).
-        List of `ConsentProvisionActor` items (represented as `dict` in JSON). """
+    code: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="code",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="e.g. LOINC or SNOMED CT code, etc. in the content",
+    )
 
-        self.class_fhir = None
-        """ e.g. Resource Type, Profile, CDA, etc..
-        List of `Coding` items (represented as `dict` in JSON). """
+    data: ListType[fhirtypes.ConsentProvisionDataType] = Field(
+        None,
+        alias="data",
+        title="List of `ConsentProvisionData` items (represented as `dict` in JSON)",
+        description="Data controlled by this rule",
+    )
 
-        self.code = None
-        """ e.g. LOINC or SNOMED CT code, etc. in the content.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    dataPeriod: fhirtypes.PeriodType = Field(
+        None,
+        alias="dataPeriod",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="Timeframe for data controlled by this rule",
+    )
 
-        self.data = None
-        """ Data controlled by this rule.
-        List of `ConsentProvisionData` items (represented as `dict` in JSON). """
+    period: fhirtypes.PeriodType = Field(
+        None,
+        alias="period",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="Timeframe for this rule",
+    )
 
-        self.dataPeriod = None
-        """ Timeframe for data controlled by this rule.
-        Type `Period` (represented as `dict` in JSON). """
+    provision: ListType[fhirtypes.ConsentProvisionType] = Field(
+        None,
+        alias="provision",
+        title="List of `ConsentProvision` items (represented as `dict` in JSON)",
+        description="Nested Exception Rules",
+    )
 
-        self.period = None
-        """ Timeframe for this rule.
-        Type `Period` (represented as `dict` in JSON). """
+    purpose: ListType[fhirtypes.CodingType] = Field(
+        None,
+        alias="purpose",
+        title="List of `Coding` items (represented as `dict` in JSON)",
+        description="Context of activities covered by this rule",
+    )
 
-        self.provision = None
-        """ Nested Exception Rules.
-        List of `ConsentProvision` items (represented as `dict` in JSON). """
+    securityLabel: ListType[fhirtypes.CodingType] = Field(
+        None,
+        alias="securityLabel",
+        title="List of `Coding` items (represented as `dict` in JSON)",
+        description="Security Labels that define affected resources",
+    )
 
-        self.purpose = None
-        """ Context of activities covered by this rule.
-        List of `Coding` items (represented as `dict` in JSON). """
-
-        self.securityLabel = None
-        """ Security Labels that define affected resources.
-        List of `Coding` items (represented as `dict` in JSON). """
-
-        self.type = None
-        """ deny | permit.
-        Type `str`. """
-
-        super(ConsentProvision, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ConsentProvision, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "action",
-                    "action",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "actor",
-                    "actor",
-                    ConsentProvisionActor,
-                    "ConsentProvisionActor",
-                    True,
-                    None,
-                    False,
-                ),
-                ("class_fhir", "class", coding.Coding, "Coding", True, None, False),
-                (
-                    "code",
-                    "code",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "data",
-                    "data",
-                    ConsentProvisionData,
-                    "ConsentProvisionData",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "dataPeriod",
-                    "dataPeriod",
-                    period.Period,
-                    "Period",
-                    False,
-                    None,
-                    False,
-                ),
-                ("period", "period", period.Period, "Period", False, None, False),
-                (
-                    "provision",
-                    "provision",
-                    ConsentProvision,
-                    "ConsentProvision",
-                    True,
-                    None,
-                    False,
-                ),
-                ("purpose", "purpose", coding.Coding, "Coding", True, None, False),
-                (
-                    "securityLabel",
-                    "securityLabel",
-                    coding.Coding,
-                    "Coding",
-                    True,
-                    None,
-                    False,
-                ),
-                ("type", "type", str, "code", False, None, False),
-            ]
-        )
-        return js
+    type: fhirtypes.Code = Field(
+        None,
+        alias="type",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="deny | permit",
+    )
 
 
 class ConsentProvisionActor(backboneelement.BackboneElement):
     """ Who|what controlled by this rule (or group, by role).
-
     Who or what is controlled by this rule. Use group to identify a set of
     actors by some property they share (e.g. 'admitting officers').
     """
 
-    resource_type = "ConsentProvisionActor"
+    resource_type = Field("ConsentProvisionActor", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    reference: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="reference",
+        title="Type `Reference` referencing `Device, Group, CareTeam, Organization, Patient, Practitioner, RelatedPerson, PractitionerRole` (represented as `dict` in JSON)",
+        description="Resource for the actor (or group, by role)",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.reference = None
-        """ Resource for the actor (or group, by role).
-        Type `FHIRReference` referencing `['Device', 'Group', 'CareTeam', 'Organization', 'Patient', 'Practitioner', 'RelatedPerson', 'PractitionerRole']` (represented as `dict` in JSON). """
-
-        self.role = None
-        """ How the actor is involved.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(ConsentProvisionActor, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ConsentProvisionActor, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "reference",
-                    "reference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "role",
-                    "role",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
+    role: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="role",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="How the actor is involved",
+    )
 
 
 class ConsentProvisionData(backboneelement.BackboneElement):
     """ Data controlled by this rule.
-
     The resources controlled by this rule if specific resources are referenced.
     """
 
-    resource_type = "ConsentProvisionData"
+    resource_type = Field("ConsentProvisionData", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    meaning: fhirtypes.Code = Field(
+        ...,
+        alias="meaning",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="instance | related | dependents | authoredby",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.meaning = None
-        """ instance | related | dependents | authoredby.
-        Type `str`. """
-
-        self.reference = None
-        """ The actual data reference.
-        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
-
-        super(ConsentProvisionData, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ConsentProvisionData, self).elementProperties()
-        js.extend(
-            [
-                ("meaning", "meaning", str, "code", False, None, True),
-                (
-                    "reference",
-                    "reference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
+    reference: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="reference",
+        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        description="The actual data reference",
+    )
 
 
 class ConsentVerification(backboneelement.BackboneElement):
     """ Consent Verified by patient or family.
-
     Whether a treatment instruction (e.g. artificial respiration yes or no) was
     verified with the patient, his/her family or another authorized person.
     """
 
-    resource_type = "ConsentVerification"
+    resource_type = Field("ConsentVerification", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    verificationDate: fhirtypes.DateTime = Field(
+        None,
+        alias="verificationDate",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="When consent verified",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    verified: bool = Field(
+        ..., alias="verified", title="Type `bool`", description="Has been verified",
+    )
 
-        self.verificationDate = None
-        """ When consent verified.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.verified = None
-        """ Has been verified.
-        Type `bool`. """
-
-        self.verifiedWith = None
-        """ Person who verified.
-        Type `FHIRReference` referencing `['Patient', 'RelatedPerson']` (represented as `dict` in JSON). """
-
-        super(ConsentVerification, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ConsentVerification, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "verificationDate",
-                    "verificationDate",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    None,
-                    False,
-                ),
-                ("verified", "verified", bool, "boolean", False, None, True),
-                (
-                    "verifiedWith",
-                    "verifiedWith",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import attachment
-except ImportError:
-    attachment = sys.modules[__package__ + ".attachment"]
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import coding
-except ImportError:
-    coding = sys.modules[__package__ + ".coding"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import period
-except ImportError:
-    period = sys.modules[__package__ + ".period"]
+    verifiedWith: fhirtypes.ReferenceType = Field(
+        None,
+        alias="verifiedWith",
+        title="Type `Reference` referencing `Patient, RelatedPerson` (represented as `dict` in JSON)",
+        description="Person who verified",
+    )

@@ -6,16 +6,16 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import Any, Dict
+from typing import List as ListType
 
+from pydantic import Field, root_validator
 
-import sys
-
-from . import domainresource
+from . import domainresource, fhirtypes
 
 
 class MedicationStatement(domainresource.DomainResource):
     """ Record of medication being taken by a patient.
-
     A record of a medication that is being consumed by a patient.   A
     MedicationStatement may indicate that the patient may be taking the
     medication now or has taken the medication in the past or will be taking
@@ -42,286 +42,184 @@ class MedicationStatement(domainresource.DomainResource):
     missing detailed information.
     """
 
-    resource_type = "MedicationStatement"
+    resource_type = Field("MedicationStatement", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    basedOn: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="basedOn",
+        title="List of `Reference` items referencing `MedicationRequest, CarePlan, ServiceRequest` (represented as `dict` in JSON)",
+        description="Fulfils plan, proposal or order",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    category: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="category",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Type of medication usage",
+    )
+
+    context: fhirtypes.ReferenceType = Field(
+        None,
+        alias="context",
+        title="Type `Reference` referencing `Encounter, EpisodeOfCare` (represented as `dict` in JSON)",
+        description="Encounter / Episode associated with MedicationStatement",
+    )
+
+    dateAsserted: fhirtypes.DateTime = Field(
+        None,
+        alias="dateAsserted",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="When the statement was asserted?",
+    )
+
+    derivedFrom: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="derivedFrom",
+        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        description="Additional supporting information",
+    )
+
+    dosage: ListType[fhirtypes.DosageType] = Field(
+        None,
+        alias="dosage",
+        title="List of `Dosage` items (represented as `dict` in JSON)",
+        description="Details of how medication is/was taken or should be taken",
+    )
+
+    effectiveDateTime: fhirtypes.DateTime = Field(
+        None,
+        alias="effectiveDateTime",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="The date/time or interval when the medication is/was/will be taken",
+        one_of_many="effective",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    effectivePeriod: fhirtypes.PeriodType = Field(
+        None,
+        alias="effectivePeriod",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="The date/time or interval when the medication is/was/will be taken",
+        one_of_many="effective",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="External identifier",
+    )
+
+    informationSource: fhirtypes.ReferenceType = Field(
+        None,
+        alias="informationSource",
+        title="Type `Reference` referencing `Patient, Practitioner, PractitionerRole, RelatedPerson, Organization` (represented as `dict` in JSON)",
+        description="Person or organization that provided the information about the taking of this medication",
+    )
+
+    medicationCodeableConcept: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="medicationCodeableConcept",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="What medication was taken",
+        one_of_many="medication",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    medicationReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="medicationReference",
+        title="Type `Reference` referencing `Medication` (represented as `dict` in JSON)",
+        description="What medication was taken",
+        one_of_many="medication",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    note: ListType[fhirtypes.AnnotationType] = Field(
+        None,
+        alias="note",
+        title="List of `Annotation` items (represented as `dict` in JSON)",
+        description="Further information about the statement",
+    )
+
+    partOf: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="partOf",
+        title="List of `Reference` items referencing `MedicationAdministration, MedicationDispense, MedicationStatement, Procedure, Observation` (represented as `dict` in JSON)",
+        description="Part of referenced event",
+    )
+
+    reasonCode: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="reasonCode",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Reason for why the medication is being/was taken",
+    )
+
+    reasonReference: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="reasonReference",
+        title="List of `Reference` items referencing `Condition, Observation, DiagnosticReport` (represented as `dict` in JSON)",
+        description="Condition or observation that supports why the medication is being/was taken",
+    )
+
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="active | completed | entered-in-error | intended | stopped | on-hold | unknown | not-taken",
+    )
+
+    statusReason: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="statusReason",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Reason for current status",
+    )
+
+    subject: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="subject",
+        title="Type `Reference` referencing `Patient, Group` (represented as `dict` in JSON)",
+        description="Who is/was taking  the medication",
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "effective": ["effectiveDateTime", "effectivePeriod",],
+            "medication": ["medicationCodeableConcept", "medicationReference",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.basedOn = None
-        """ Fulfils plan, proposal or order.
-        List of `FHIRReference` items referencing `['MedicationRequest', 'CarePlan', 'ServiceRequest']` (represented as `dict` in JSON). """
-
-        self.category = None
-        """ Type of medication usage.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.context = None
-        """ Encounter / Episode associated with MedicationStatement.
-        Type `FHIRReference` referencing `['Encounter', 'EpisodeOfCare']` (represented as `dict` in JSON). """
-
-        self.dateAsserted = None
-        """ When the statement was asserted?.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.derivedFrom = None
-        """ Additional supporting information.
-        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
-
-        self.dosage = None
-        """ Details of how medication is/was taken or should be taken.
-        List of `Dosage` items (represented as `dict` in JSON). """
-
-        self.effectiveDateTime = None
-        """ The date/time or interval when the medication is/was/will be taken.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.effectivePeriod = None
-        """ The date/time or interval when the medication is/was/will be taken.
-        Type `Period` (represented as `dict` in JSON). """
-
-        self.identifier = None
-        """ External identifier.
-        List of `Identifier` items (represented as `dict` in JSON). """
-
-        self.informationSource = None
-        """ Person or organization that provided the information about the
-        taking of this medication.
-        Type `FHIRReference` referencing `['Patient', 'Practitioner', 'PractitionerRole', 'RelatedPerson', 'Organization']` (represented as `dict` in JSON). """
-
-        self.medicationCodeableConcept = None
-        """ What medication was taken.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.medicationReference = None
-        """ What medication was taken.
-        Type `FHIRReference` referencing `['Medication']` (represented as `dict` in JSON). """
-
-        self.note = None
-        """ Further information about the statement.
-        List of `Annotation` items (represented as `dict` in JSON). """
-
-        self.partOf = None
-        """ Part of referenced event.
-        List of `FHIRReference` items referencing `['MedicationAdministration', 'MedicationDispense', 'MedicationStatement', 'Procedure', 'Observation']` (represented as `dict` in JSON). """
-
-        self.reasonCode = None
-        """ Reason for why the medication is being/was taken.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.reasonReference = None
-        """ Condition or observation that supports why the medication is
-        being/was taken.
-        List of `FHIRReference` items referencing `['Condition', 'Observation', 'DiagnosticReport']` (represented as `dict` in JSON). """
-
-        self.status = None
-        """ active | completed | entered-in-error | intended | stopped | on-
-        hold | unknown | not-taken.
-        Type `str`. """
-
-        self.statusReason = None
-        """ Reason for current status.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.subject = None
-        """ Who is/was taking  the medication.
-        Type `FHIRReference` referencing `['Patient', 'Group']` (represented as `dict` in JSON). """
-
-        super(MedicationStatement, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(MedicationStatement, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "basedOn",
-                    "basedOn",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "category",
-                    "category",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "context",
-                    "context",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "dateAsserted",
-                    "dateAsserted",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "derivedFrom",
-                    "derivedFrom",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                ("dosage", "dosage", dosage.Dosage, "Dosage", True, None, False),
-                (
-                    "effectiveDateTime",
-                    "effectiveDateTime",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    "effective",
-                    False,
-                ),
-                (
-                    "effectivePeriod",
-                    "effectivePeriod",
-                    period.Period,
-                    "Period",
-                    False,
-                    "effective",
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "informationSource",
-                    "informationSource",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "medicationCodeableConcept",
-                    "medicationCodeableConcept",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    "medication",
-                    True,
-                ),
-                (
-                    "medicationReference",
-                    "medicationReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    "medication",
-                    True,
-                ),
-                (
-                    "note",
-                    "note",
-                    annotation.Annotation,
-                    "Annotation",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "partOf",
-                    "partOf",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "reasonCode",
-                    "reasonCode",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "reasonReference",
-                    "reasonReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                ("status", "status", str, "code", False, None, True),
-                (
-                    "statusReason",
-                    "statusReason",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "subject",
-                    "subject",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import annotation
-except ImportError:
-    annotation = sys.modules[__package__ + ".annotation"]
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import dosage
-except ImportError:
-    dosage = sys.modules[__package__ + ".dosage"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import period
-except ImportError:
-    period = sys.modules[__package__ + ".period"]
+        return values

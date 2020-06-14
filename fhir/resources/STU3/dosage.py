@@ -6,244 +6,198 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from typing import Any, Dict
+from typing import List as ListType
 
+from pydantic import Field, root_validator
 
-import sys
-
-from . import element
+from . import element, fhirtypes
 
 
 class Dosage(element.Element):
     """ How the medication is/was taken or should be taken.
-
     Indicates how the medication is/was taken or should be taken by the
     patient.
     """
 
-    resource_type = "Dosage"
+    resource_type = Field("Dosage", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    additionalInstruction: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="additionalInstruction",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description='Supplemental instruction - e.g. "with meals"',
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    asNeededBoolean: bool = Field(
+        None,
+        alias="asNeededBoolean",
+        title="Type `bool`",
+        description='Take "as needed" (for x)',
+        one_of_many="asNeeded",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    asNeededCodeableConcept: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="asNeededCodeableConcept",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description='Take "as needed" (for x)',
+        one_of_many="asNeeded",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    doseQuantity: fhirtypes.QuantityType = Field(
+        None,
+        alias="doseQuantity",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="Amount of medication per dose",
+        one_of_many="dose",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    doseRange: fhirtypes.RangeType = Field(
+        None,
+        alias="doseRange",
+        title="Type `Range` (represented as `dict` in JSON)",
+        description="Amount of medication per dose",
+        one_of_many="dose",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    maxDosePerAdministration: fhirtypes.QuantityType = Field(
+        None,
+        alias="maxDosePerAdministration",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="Upper limit on medication per administration",
+    )
+
+    maxDosePerLifetime: fhirtypes.QuantityType = Field(
+        None,
+        alias="maxDosePerLifetime",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="Upper limit on medication per lifetime of the patient",
+    )
+
+    maxDosePerPeriod: fhirtypes.RatioType = Field(
+        None,
+        alias="maxDosePerPeriod",
+        title="Type `Ratio` (represented as `dict` in JSON)",
+        description="Upper limit on medication per unit of time",
+    )
+
+    method: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="method",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Technique for administering medication",
+    )
+
+    patientInstruction: fhirtypes.String = Field(
+        None,
+        alias="patientInstruction",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Patient or consumer oriented instructions",
+    )
+
+    rateQuantity: fhirtypes.QuantityType = Field(
+        None,
+        alias="rateQuantity",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="Amount of medication per unit of time",
+        one_of_many="rate",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    rateRange: fhirtypes.RangeType = Field(
+        None,
+        alias="rateRange",
+        title="Type `Range` (represented as `dict` in JSON)",
+        description="Amount of medication per unit of time",
+        one_of_many="rate",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    rateRatio: fhirtypes.RatioType = Field(
+        None,
+        alias="rateRatio",
+        title="Type `Ratio` (represented as `dict` in JSON)",
+        description="Amount of medication per unit of time",
+        one_of_many="rate",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    route: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="route",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="How drug should enter body",
+    )
+
+    sequence: fhirtypes.Integer = Field(
+        None,
+        alias="sequence",
+        title="Type `Integer` (represented as `dict` in JSON)",
+        description="The order of the dosage instructions",
+    )
+
+    site: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="site",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Body site to administer to",
+    )
+
+    text: fhirtypes.String = Field(
+        None,
+        alias="text",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Free text dosage instructions e.g. SIG",
+    )
+
+    timing: fhirtypes.TimingType = Field(
+        None,
+        alias="timing",
+        title="Type `Timing` (represented as `dict` in JSON)",
+        description="When medication should be administered",
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "asNeeded": ["asNeededBoolean", "asNeededCodeableConcept",],
+            "dose": ["doseQuantity", "doseRange",],
+            "rate": ["rateQuantity", "rateRange", "rateRatio",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.additionalInstruction = None
-        """ Supplemental instruction - e.g. "with meals".
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.asNeededBoolean = None
-        """ Take "as needed" (for x).
-        Type `bool`. """
-
-        self.asNeededCodeableConcept = None
-        """ Take "as needed" (for x).
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.doseQuantity = None
-        """ Amount of medication per dose.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        self.doseRange = None
-        """ Amount of medication per dose.
-        Type `Range` (represented as `dict` in JSON). """
-
-        self.maxDosePerAdministration = None
-        """ Upper limit on medication per administration.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        self.maxDosePerLifetime = None
-        """ Upper limit on medication per lifetime of the patient.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        self.maxDosePerPeriod = None
-        """ Upper limit on medication per unit of time.
-        Type `Ratio` (represented as `dict` in JSON). """
-
-        self.method = None
-        """ Technique for administering medication.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.patientInstruction = None
-        """ Patient or consumer oriented instructions.
-        Type `str`. """
-
-        self.rateQuantity = None
-        """ Amount of medication per unit of time.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        self.rateRange = None
-        """ Amount of medication per unit of time.
-        Type `Range` (represented as `dict` in JSON). """
-
-        self.rateRatio = None
-        """ Amount of medication per unit of time.
-        Type `Ratio` (represented as `dict` in JSON). """
-
-        self.route = None
-        """ How drug should enter body.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.sequence = None
-        """ The order of the dosage instructions.
-        Type `int`. """
-
-        self.site = None
-        """ Body site to administer to.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.text = None
-        """ Free text dosage instructions e.g. SIG.
-        Type `str`. """
-
-        self.timing = None
-        """ When medication should be administered.
-        Type `Timing` (represented as `dict` in JSON). """
-
-        super(Dosage, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(Dosage, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "additionalInstruction",
-                    "additionalInstruction",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "asNeededBoolean",
-                    "asNeededBoolean",
-                    bool,
-                    "boolean",
-                    False,
-                    "asNeeded",
-                    False,
-                ),
-                (
-                    "asNeededCodeableConcept",
-                    "asNeededCodeableConcept",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    "asNeeded",
-                    False,
-                ),
-                (
-                    "doseQuantity",
-                    "doseQuantity",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    "dose",
-                    False,
-                ),
-                ("doseRange", "doseRange", range.Range, "Range", False, "dose", False),
-                (
-                    "maxDosePerAdministration",
-                    "maxDosePerAdministration",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "maxDosePerLifetime",
-                    "maxDosePerLifetime",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "maxDosePerPeriod",
-                    "maxDosePerPeriod",
-                    ratio.Ratio,
-                    "Ratio",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "method",
-                    "method",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "patientInstruction",
-                    "patientInstruction",
-                    str,
-                    "string",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "rateQuantity",
-                    "rateQuantity",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    "rate",
-                    False,
-                ),
-                ("rateRange", "rateRange", range.Range, "Range", False, "rate", False),
-                ("rateRatio", "rateRatio", ratio.Ratio, "Ratio", False, "rate", False),
-                (
-                    "route",
-                    "route",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("sequence", "sequence", int, "integer", False, None, False),
-                (
-                    "site",
-                    "site",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("text", "text", str, "string", False, None, False),
-                ("timing", "timing", timing.Timing, "Timing", False, None, False),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import quantity
-except ImportError:
-    quantity = sys.modules[__package__ + ".quantity"]
-try:
-    from . import range
-except ImportError:
-    range = sys.modules[__package__ + ".range"]
-try:
-    from . import ratio
-except ImportError:
-    ratio = sys.modules[__package__ + ".ratio"]
-try:
-    from . import timing
-except ImportError:
-    timing = sys.modules[__package__ + ".timing"]
+        return values

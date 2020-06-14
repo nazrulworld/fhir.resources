@@ -6,405 +6,224 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import specimendefinition
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class SpecimenDefinitionTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("SpecimenDefinition", js["resourceType"])
-        return specimendefinition.SpecimenDefinition(js)
+def impl_specimendefinition_1(inst):
+    assert inst.id == "2364"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.patientPreparation[0].text == "12 hour fasting"
+    assert inst.patientPreparation[1].coding[0].code == "263678003"
+    assert inst.patientPreparation[1].coding[0].display == "At rest"
+    assert inst.patientPreparation[1].coding[0].system == "http://snomed.info/sct"
+    assert inst.text.status == "generated"
+    assert inst.timeAspect == "preferrably morning time"
+    assert inst.typeCollected.coding[0].code == "122555007"
+    assert inst.typeCollected.coding[0].display == "Venous blood specimen"
+    assert inst.typeCollected.coding[0].system == "http://snomed.info/sct"
+    assert inst.typeTested[0].container.cap.coding[0].code == "yellow"
+    assert inst.typeTested[0].container.cap.coding[0].display == "yellow cap"
+    assert (
+        inst.typeTested[0].container.cap.coding[0].system == "urn:iso:std:iso:6710:2017"
+    )
+    assert inst.typeTested[0].container.material.coding[0].code == "61088005"
+    assert inst.typeTested[0].container.material.coding[0].display == "plastic"
+    assert (
+        inst.typeTested[0].container.material.coding[0].system
+        == "http://snomed.info/sct"
+    )
+    assert inst.typeTested[0].container.minimumVolumeQuantity.code == "mL"
+    assert (
+        inst.typeTested[0].container.minimumVolumeQuantity.system
+        == "http://unitsofmeasure.org"
+    )
+    assert inst.typeTested[0].container.minimumVolumeQuantity.unit == "ml"
+    assert float(inst.typeTested[0].container.minimumVolumeQuantity.value) == float(2)
+    assert inst.typeTested[0].container.type.coding[0].code == "702281005"
+    assert (
+        inst.typeTested[0].container.type.coding[0].display
+        == "Evacuated blood collection tube, thrombin/clot activator/gel separator"
+    )
+    assert (
+        inst.typeTested[0].container.type.coding[0].system == "http://snomed.info/sct"
+    )
+    assert inst.typeTested[0].handling[0].maxDuration.code == "min"
+    assert (
+        inst.typeTested[0].handling[0].maxDuration.system == "http://unitsofmeasure.org"
+    )
+    assert inst.typeTested[0].handling[0].maxDuration.unit == "minute"
+    assert float(inst.typeTested[0].handling[0].maxDuration.value) == float(60)
+    assert (
+        inst.typeTested[0].handling[0].temperatureQualifier.text
+        == "Ambient temperature"
+    )
+    assert inst.typeTested[0].handling[0].temperatureRange.high.code == "Cel"
+    assert (
+        inst.typeTested[0].handling[0].temperatureRange.high.system
+        == "http://unitsofmeasure.org"
+    )
+    assert inst.typeTested[0].handling[0].temperatureRange.high.unit == "°C"
+    assert float(inst.typeTested[0].handling[0].temperatureRange.high.value) == float(
+        25
+    )
+    assert inst.typeTested[0].handling[0].temperatureRange.low.code == "Cel"
+    assert (
+        inst.typeTested[0].handling[0].temperatureRange.low.system
+        == "http://unitsofmeasure.org"
+    )
+    assert inst.typeTested[0].handling[0].temperatureRange.low.unit == "°C"
+    assert float(inst.typeTested[0].handling[0].temperatureRange.low.value) == float(15)
+    assert inst.typeTested[0].handling[1].maxDuration.code == "h"
+    assert (
+        inst.typeTested[0].handling[1].maxDuration.system == "http://unitsofmeasure.org"
+    )
+    assert inst.typeTested[0].handling[1].maxDuration.unit == "hour"
+    assert float(inst.typeTested[0].handling[1].maxDuration.value) == float(8)
+    assert (
+        inst.typeTested[0].handling[1].temperatureQualifier.text
+        == "Refrigerated temperature"
+    )
+    assert inst.typeTested[0].handling[1].temperatureRange.high.code == "Cel"
+    assert (
+        inst.typeTested[0].handling[1].temperatureRange.high.system
+        == "http://unitsofmeasure.org"
+    )
+    assert inst.typeTested[0].handling[1].temperatureRange.high.unit == "°C"
+    assert float(inst.typeTested[0].handling[1].temperatureRange.high.value) == float(8)
+    assert inst.typeTested[0].handling[1].temperatureRange.low.code == "Cel"
+    assert (
+        inst.typeTested[0].handling[1].temperatureRange.low.system
+        == "http://unitsofmeasure.org"
+    )
+    assert inst.typeTested[0].handling[1].temperatureRange.low.unit == "°C"
+    assert float(inst.typeTested[0].handling[1].temperatureRange.low.value) == float(2)
+    assert inst.typeTested[0].preference == "preferred"
+    assert inst.typeTested[0].type.coding[0].code == "119364003"
+    assert inst.typeTested[0].type.coding[0].display == "Serum specimen"
+    assert inst.typeTested[0].type.coding[0].system == "http://snomed.info/sct"
+    assert inst.typeTested[1].container.cap.coding[0].code == "green"
+    assert inst.typeTested[1].container.cap.coding[0].display == "green cap"
+    assert (
+        inst.typeTested[1].container.cap.coding[0].system == "urn:iso:std:iso:6710:2017"
+    )
+    assert inst.typeTested[1].container.material.coding[0].code == "32039001"
+    assert inst.typeTested[1].container.material.coding[0].display == "glass"
+    assert (
+        inst.typeTested[1].container.material.coding[0].system
+        == "http://snomed.info/sct"
+    )
+    assert inst.typeTested[1].container.minimumVolumeQuantity.code == "mL"
+    assert (
+        inst.typeTested[1].container.minimumVolumeQuantity.system
+        == "http://unitsofmeasure.org"
+    )
+    assert inst.typeTested[1].container.minimumVolumeQuantity.unit == "ml"
+    assert float(inst.typeTested[1].container.minimumVolumeQuantity.value) == float(2)
+    assert inst.typeTested[1].container.type.coding[0].code == "767390000"
+    assert (
+        inst.typeTested[1].container.type.coding[0].display
+        == "Evacuated blood collection tube with heparin lithium and gel separator"
+    )
+    assert (
+        inst.typeTested[1].container.type.coding[0].system == "http://snomed.info/sct"
+    )
+    assert inst.typeTested[1].handling[0].maxDuration.code == "min"
+    assert (
+        inst.typeTested[1].handling[0].maxDuration.system == "http://unitsofmeasure.org"
+    )
+    assert inst.typeTested[1].handling[0].maxDuration.unit == "minute"
+    assert float(inst.typeTested[1].handling[0].maxDuration.value) == float(60)
+    assert (
+        inst.typeTested[1].handling[0].temperatureQualifier.text
+        == "Ambient temperature"
+    )
+    assert inst.typeTested[1].handling[0].temperatureRange.high.code == "Cel"
+    assert (
+        inst.typeTested[1].handling[0].temperatureRange.high.system
+        == "http://unitsofmeasure.org"
+    )
+    assert inst.typeTested[1].handling[0].temperatureRange.high.unit == "°C"
+    assert float(inst.typeTested[1].handling[0].temperatureRange.high.value) == float(
+        25
+    )
+    assert inst.typeTested[1].handling[0].temperatureRange.low.code == "Cel"
+    assert (
+        inst.typeTested[1].handling[0].temperatureRange.low.system
+        == "http://unitsofmeasure.org"
+    )
+    assert inst.typeTested[1].handling[0].temperatureRange.low.unit == "°C"
+    assert float(inst.typeTested[1].handling[0].temperatureRange.low.value) == float(15)
+    assert inst.typeTested[1].handling[1].maxDuration.code == "h"
+    assert (
+        inst.typeTested[1].handling[1].maxDuration.system == "http://unitsofmeasure.org"
+    )
+    assert inst.typeTested[1].handling[1].maxDuration.unit == "hour"
+    assert float(inst.typeTested[1].handling[1].maxDuration.value) == float(8)
+    assert (
+        inst.typeTested[1].handling[1].temperatureQualifier.text
+        == "Refrigerated temperature"
+    )
+    assert inst.typeTested[1].handling[1].temperatureRange.high.code == "Cel"
+    assert (
+        inst.typeTested[1].handling[1].temperatureRange.high.system
+        == "http://unitsofmeasure.org"
+    )
+    assert inst.typeTested[1].handling[1].temperatureRange.high.unit == "°C"
+    assert float(inst.typeTested[1].handling[1].temperatureRange.high.value) == float(8)
+    assert inst.typeTested[1].handling[1].temperatureRange.low.code == "Cel"
+    assert (
+        inst.typeTested[1].handling[1].temperatureRange.low.system
+        == "http://unitsofmeasure.org"
+    )
+    assert inst.typeTested[1].handling[1].temperatureRange.low.unit == "°C"
+    assert float(inst.typeTested[1].handling[1].temperatureRange.low.value) == float(2)
+    assert inst.typeTested[1].preference == "alternate"
+    assert inst.typeTested[1].rejectionCriterion[0].coding[0].code == "insufficient"
+    assert (
+        inst.typeTested[1].rejectionCriterion[0].coding[0].display
+        == "insufficient specimen volume"
+    )
+    assert (
+        inst.typeTested[1].rejectionCriterion[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/rejection-criteria"
+    )
+    assert inst.typeTested[1].rejectionCriterion[1].coding[0].code == "hemolized"
+    assert (
+        inst.typeTested[1].rejectionCriterion[1].coding[0].display
+        == "hemolized specimen"
+    )
+    assert (
+        inst.typeTested[1].rejectionCriterion[1].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/rejection-criteria"
+    )
+    assert inst.typeTested[1].type.coding[0].code == "119361006"
+    assert inst.typeTested[1].type.coding[0].display == "Plasma specimen"
+    assert inst.typeTested[1].type.coding[0].system == "http://snomed.info/sct"
 
-    def testSpecimenDefinition1(self):
-        inst = self.instantiate_from("specimendefinition-example-serum-plasma.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a SpecimenDefinition instance"
-        )
-        self.implSpecimenDefinition1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("SpecimenDefinition", js["resourceType"])
-        inst2 = specimendefinition.SpecimenDefinition(js)
-        self.implSpecimenDefinition1(inst2)
+def test_specimendefinition_1(base_settings):
+    """No. 1 tests collection for SpecimenDefinition.
+    Test File: specimendefinition-example-serum-plasma.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"]
+        / "specimendefinition-example-serum-plasma.json"
+    )
+    inst = specimendefinition.SpecimenDefinition.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "SpecimenDefinition" == inst.resource_type
 
-    def implSpecimenDefinition1(self, inst):
-        self.assertEqual(force_bytes(inst.id), force_bytes("2364"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.patientPreparation[0].text), force_bytes("12 hour fasting")
-        )
-        self.assertEqual(
-            force_bytes(inst.patientPreparation[1].coding[0].code),
-            force_bytes("263678003"),
-        )
-        self.assertEqual(
-            force_bytes(inst.patientPreparation[1].coding[0].display),
-            force_bytes("At rest"),
-        )
-        self.assertEqual(
-            force_bytes(inst.patientPreparation[1].coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.timeAspect), force_bytes("preferrably morning time")
-        )
-        self.assertEqual(
-            force_bytes(inst.typeCollected.coding[0].code), force_bytes("122555007")
-        )
-        self.assertEqual(
-            force_bytes(inst.typeCollected.coding[0].display),
-            force_bytes("Venous blood specimen"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeCollected.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[0].container.cap.coding[0].code),
-            force_bytes("yellow"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[0].container.cap.coding[0].display),
-            force_bytes("yellow cap"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[0].container.cap.coding[0].system),
-            force_bytes("urn:iso:std:iso:6710:2017"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[0].container.material.coding[0].code),
-            force_bytes("61088005"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[0].container.material.coding[0].display),
-            force_bytes("plastic"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[0].container.material.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[0].container.minimumVolumeQuantity.code),
-            force_bytes("mL"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[0].container.minimumVolumeQuantity.system),
-            force_bytes("http://unitsofmeasure.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[0].container.minimumVolumeQuantity.unit),
-            force_bytes("ml"),
-        )
-        self.assertEqual(inst.typeTested[0].container.minimumVolumeQuantity.value, 2)
-        self.assertEqual(
-            force_bytes(inst.typeTested[0].container.type.coding[0].code),
-            force_bytes("702281005"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[0].container.type.coding[0].display),
-            force_bytes(
-                "Evacuated blood collection tube, thrombin/clot activator/gel separator"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[0].container.type.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[0].handling[0].maxDuration.code),
-            force_bytes("min"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[0].handling[0].maxDuration.system),
-            force_bytes("http://unitsofmeasure.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[0].handling[0].maxDuration.unit),
-            force_bytes("minute"),
-        )
-        self.assertEqual(inst.typeTested[0].handling[0].maxDuration.value, 60)
-        self.assertEqual(
-            force_bytes(inst.typeTested[0].handling[0].temperatureQualifier.text),
-            force_bytes("Ambient temperature"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[0].handling[0].temperatureRange.high.code),
-            force_bytes("Cel"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[0].handling[0].temperatureRange.high.system),
-            force_bytes("http://unitsofmeasure.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[0].handling[0].temperatureRange.high.unit),
-            force_bytes("°C"),
-        )
-        self.assertEqual(inst.typeTested[0].handling[0].temperatureRange.high.value, 25)
-        self.assertEqual(
-            force_bytes(inst.typeTested[0].handling[0].temperatureRange.low.code),
-            force_bytes("Cel"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[0].handling[0].temperatureRange.low.system),
-            force_bytes("http://unitsofmeasure.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[0].handling[0].temperatureRange.low.unit),
-            force_bytes("°C"),
-        )
-        self.assertEqual(inst.typeTested[0].handling[0].temperatureRange.low.value, 15)
-        self.assertEqual(
-            force_bytes(inst.typeTested[0].handling[1].maxDuration.code),
-            force_bytes("h"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[0].handling[1].maxDuration.system),
-            force_bytes("http://unitsofmeasure.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[0].handling[1].maxDuration.unit),
-            force_bytes("hour"),
-        )
-        self.assertEqual(inst.typeTested[0].handling[1].maxDuration.value, 8)
-        self.assertEqual(
-            force_bytes(inst.typeTested[0].handling[1].temperatureQualifier.text),
-            force_bytes("Refrigerated temperature"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[0].handling[1].temperatureRange.high.code),
-            force_bytes("Cel"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[0].handling[1].temperatureRange.high.system),
-            force_bytes("http://unitsofmeasure.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[0].handling[1].temperatureRange.high.unit),
-            force_bytes("°C"),
-        )
-        self.assertEqual(inst.typeTested[0].handling[1].temperatureRange.high.value, 8)
-        self.assertEqual(
-            force_bytes(inst.typeTested[0].handling[1].temperatureRange.low.code),
-            force_bytes("Cel"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[0].handling[1].temperatureRange.low.system),
-            force_bytes("http://unitsofmeasure.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[0].handling[1].temperatureRange.low.unit),
-            force_bytes("°C"),
-        )
-        self.assertEqual(inst.typeTested[0].handling[1].temperatureRange.low.value, 2)
-        self.assertEqual(
-            force_bytes(inst.typeTested[0].preference), force_bytes("preferred")
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[0].type.coding[0].code),
-            force_bytes("119364003"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[0].type.coding[0].display),
-            force_bytes("Serum specimen"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[0].type.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[1].container.cap.coding[0].code),
-            force_bytes("green"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[1].container.cap.coding[0].display),
-            force_bytes("green cap"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[1].container.cap.coding[0].system),
-            force_bytes("urn:iso:std:iso:6710:2017"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[1].container.material.coding[0].code),
-            force_bytes("32039001"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[1].container.material.coding[0].display),
-            force_bytes("glass"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[1].container.material.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[1].container.minimumVolumeQuantity.code),
-            force_bytes("mL"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[1].container.minimumVolumeQuantity.system),
-            force_bytes("http://unitsofmeasure.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[1].container.minimumVolumeQuantity.unit),
-            force_bytes("ml"),
-        )
-        self.assertEqual(inst.typeTested[1].container.minimumVolumeQuantity.value, 2)
-        self.assertEqual(
-            force_bytes(inst.typeTested[1].container.type.coding[0].code),
-            force_bytes("767390000"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[1].container.type.coding[0].display),
-            force_bytes(
-                "Evacuated blood collection tube with heparin lithium and gel separator"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[1].container.type.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[1].handling[0].maxDuration.code),
-            force_bytes("min"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[1].handling[0].maxDuration.system),
-            force_bytes("http://unitsofmeasure.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[1].handling[0].maxDuration.unit),
-            force_bytes("minute"),
-        )
-        self.assertEqual(inst.typeTested[1].handling[0].maxDuration.value, 60)
-        self.assertEqual(
-            force_bytes(inst.typeTested[1].handling[0].temperatureQualifier.text),
-            force_bytes("Ambient temperature"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[1].handling[0].temperatureRange.high.code),
-            force_bytes("Cel"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[1].handling[0].temperatureRange.high.system),
-            force_bytes("http://unitsofmeasure.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[1].handling[0].temperatureRange.high.unit),
-            force_bytes("°C"),
-        )
-        self.assertEqual(inst.typeTested[1].handling[0].temperatureRange.high.value, 25)
-        self.assertEqual(
-            force_bytes(inst.typeTested[1].handling[0].temperatureRange.low.code),
-            force_bytes("Cel"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[1].handling[0].temperatureRange.low.system),
-            force_bytes("http://unitsofmeasure.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[1].handling[0].temperatureRange.low.unit),
-            force_bytes("°C"),
-        )
-        self.assertEqual(inst.typeTested[1].handling[0].temperatureRange.low.value, 15)
-        self.assertEqual(
-            force_bytes(inst.typeTested[1].handling[1].maxDuration.code),
-            force_bytes("h"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[1].handling[1].maxDuration.system),
-            force_bytes("http://unitsofmeasure.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[1].handling[1].maxDuration.unit),
-            force_bytes("hour"),
-        )
-        self.assertEqual(inst.typeTested[1].handling[1].maxDuration.value, 8)
-        self.assertEqual(
-            force_bytes(inst.typeTested[1].handling[1].temperatureQualifier.text),
-            force_bytes("Refrigerated temperature"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[1].handling[1].temperatureRange.high.code),
-            force_bytes("Cel"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[1].handling[1].temperatureRange.high.system),
-            force_bytes("http://unitsofmeasure.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[1].handling[1].temperatureRange.high.unit),
-            force_bytes("°C"),
-        )
-        self.assertEqual(inst.typeTested[1].handling[1].temperatureRange.high.value, 8)
-        self.assertEqual(
-            force_bytes(inst.typeTested[1].handling[1].temperatureRange.low.code),
-            force_bytes("Cel"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[1].handling[1].temperatureRange.low.system),
-            force_bytes("http://unitsofmeasure.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[1].handling[1].temperatureRange.low.unit),
-            force_bytes("°C"),
-        )
-        self.assertEqual(inst.typeTested[1].handling[1].temperatureRange.low.value, 2)
-        self.assertEqual(
-            force_bytes(inst.typeTested[1].preference), force_bytes("alternate")
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[1].rejectionCriterion[0].coding[0].code),
-            force_bytes("insufficient"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[1].rejectionCriterion[0].coding[0].display),
-            force_bytes("insufficient specimen volume"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[1].rejectionCriterion[0].coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/rejection-criteria"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[1].rejectionCriterion[1].coding[0].code),
-            force_bytes("hemolized"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[1].rejectionCriterion[1].coding[0].display),
-            force_bytes("hemolized specimen"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[1].rejectionCriterion[1].coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/rejection-criteria"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[1].type.coding[0].code),
-            force_bytes("119361006"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[1].type.coding[0].display),
-            force_bytes("Plasma specimen"),
-        )
-        self.assertEqual(
-            force_bytes(inst.typeTested[1].type.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
+    impl_specimendefinition_1(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "SpecimenDefinition" == data["resourceType"]
+
+    inst2 = specimendefinition.SpecimenDefinition(**data)
+    impl_specimendefinition_1(inst2)

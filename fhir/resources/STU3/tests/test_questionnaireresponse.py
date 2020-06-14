@@ -6,3388 +6,1744 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import questionnaireresponse
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class QuestionnaireResponseTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("QuestionnaireResponse", js["resourceType"])
-        return questionnaireresponse.QuestionnaireResponse(js)
+def impl_questionnaireresponse_1(inst):
+    assert inst.author.reference == "#questauth"
+    assert inst.authored == fhirtypes.DateTime.validate("2013-02-19T14:15:00-05:00")
+    assert inst.basedOn[0].reference == "#order"
+    assert inst.contained[0].id == "patsub"
+    assert inst.contained[1].id == "order"
+    assert inst.contained[2].id == "questauth"
+    assert inst.context.reference == "Encounter/example"
+    assert inst.id == "3141"
+    assert (
+        inst.identifier.system
+        == "http://example.org/fhir/NamingSystem/questionnaire-ids"
+    )
+    assert inst.identifier.value == "Q12349876"
+    assert (
+        inst.item[0].item[0].answer[0].item[0].item[0].answer[0].valueCoding.code == "1"
+    )
+    assert (
+        inst.item[0].item[0].answer[0].item[0].item[0].answer[0].valueCoding.system
+        == "http://cancer.questionnaire.org/system/code/yesno"
+    )
+    assert inst.item[0].item[0].answer[0].item[0].item[0].linkId == "1.1.1.1"
+    assert (
+        inst.item[0].item[0].answer[0].item[0].item[1].answer[0].valueCoding.code == "1"
+    )
+    assert (
+        inst.item[0].item[0].answer[0].item[0].item[1].answer[0].valueCoding.system
+        == "http://cancer.questionnaire.org/system/code/yesno"
+    )
+    assert inst.item[0].item[0].answer[0].item[0].item[1].linkId == "1.1.1.2"
+    assert (
+        inst.item[0].item[0].answer[0].item[0].item[2].answer[0].valueCoding.code == "0"
+    )
+    assert (
+        inst.item[0].item[0].answer[0].item[0].item[2].answer[0].valueCoding.system
+        == "http://cancer.questionnaire.org/system/code/yesno"
+    )
+    assert inst.item[0].item[0].answer[0].item[0].item[2].linkId == "1.1.1.3"
+    assert inst.item[0].item[0].answer[0].item[0].linkId == "1.1.1"
+    assert inst.item[0].item[0].answer[0].valueCoding.code == "1"
+    assert inst.item[0].item[0].answer[0].valueCoding.display == "Yes"
+    assert (
+        inst.item[0].item[0].answer[0].valueCoding.system
+        == "http://cancer.questionnaire.org/system/code/yesno"
+    )
+    assert inst.item[0].item[0].linkId == "1.1"
+    assert inst.item[0].linkId == "1"
+    assert inst.parent[0].reference == "Procedure/f201"
+    assert inst.status == "completed"
+    assert inst.subject.reference == "#patsub"
+    assert inst.text.status == "generated"
 
-    def testQuestionnaireResponse1(self):
-        inst = self.instantiate_from("questionnaireresponse-example.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a QuestionnaireResponse instance"
-        )
-        self.implQuestionnaireResponse1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("QuestionnaireResponse", js["resourceType"])
-        inst2 = questionnaireresponse.QuestionnaireResponse(js)
-        self.implQuestionnaireResponse1(inst2)
+def test_questionnaireresponse_1(base_settings):
+    """No. 1 tests collection for QuestionnaireResponse.
+    Test File: questionnaireresponse-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "questionnaireresponse-example.json"
+    inst = questionnaireresponse.QuestionnaireResponse.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "QuestionnaireResponse" == inst.resource_type
 
-    def implQuestionnaireResponse1(self, inst):
-        self.assertEqual(inst.authored.date, FHIRDate("2013-02-19T14:15:00-05:00").date)
-        self.assertEqual(inst.authored.as_json(), "2013-02-19T14:15:00-05:00")
-        self.assertEqual(force_bytes(inst.contained[0].id), force_bytes("patsub"))
-        self.assertEqual(force_bytes(inst.contained[1].id), force_bytes("order"))
-        self.assertEqual(force_bytes(inst.contained[2].id), force_bytes("questauth"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("3141"))
-        self.assertEqual(
-            force_bytes(inst.identifier.system),
-            force_bytes("http://example.org/fhir/NamingSystem/questionnaire-ids"),
-        )
-        self.assertEqual(force_bytes(inst.identifier.value), force_bytes("Q12349876"))
-        self.assertEqual(
-            force_bytes(
-                inst.item[0]
-                .item[0]
-                .answer[0]
-                .item[0]
-                .item[0]
-                .answer[0]
-                .valueCoding.code
-            ),
-            force_bytes("1"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[0]
-                .item[0]
-                .answer[0]
-                .item[0]
-                .item[0]
-                .answer[0]
-                .valueCoding.system
-            ),
-            force_bytes("http://cancer.questionnaire.org/system/code/yesno"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[0].item[0].answer[0].item[0].item[0].linkId),
-            force_bytes("1.1.1.1"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[0]
-                .item[0]
-                .answer[0]
-                .item[0]
-                .item[1]
-                .answer[0]
-                .valueCoding.code
-            ),
-            force_bytes("1"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[0]
-                .item[0]
-                .answer[0]
-                .item[0]
-                .item[1]
-                .answer[0]
-                .valueCoding.system
-            ),
-            force_bytes("http://cancer.questionnaire.org/system/code/yesno"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[0].item[0].answer[0].item[0].item[1].linkId),
-            force_bytes("1.1.1.2"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[0]
-                .item[0]
-                .answer[0]
-                .item[0]
-                .item[2]
-                .answer[0]
-                .valueCoding.code
-            ),
-            force_bytes("0"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[0]
-                .item[0]
-                .answer[0]
-                .item[0]
-                .item[2]
-                .answer[0]
-                .valueCoding.system
-            ),
-            force_bytes("http://cancer.questionnaire.org/system/code/yesno"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[0].item[0].answer[0].item[0].item[2].linkId),
-            force_bytes("1.1.1.3"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[0].item[0].answer[0].item[0].linkId),
-            force_bytes("1.1.1"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[0].item[0].answer[0].valueCoding.code),
-            force_bytes("1"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[0].item[0].answer[0].valueCoding.display),
-            force_bytes("Yes"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[0].item[0].answer[0].valueCoding.system),
-            force_bytes("http://cancer.questionnaire.org/system/code/yesno"),
-        )
-        self.assertEqual(force_bytes(inst.item[0].item[0].linkId), force_bytes("1.1"))
-        self.assertEqual(force_bytes(inst.item[0].linkId), force_bytes("1"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("completed"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    impl_questionnaireresponse_1(inst)
 
-    def testQuestionnaireResponse2(self):
-        inst = self.instantiate_from(
-            "questionnaireresponse-example-ussg-fht-answers.json"
-        )
-        self.assertIsNotNone(
-            inst, "Must have instantiated a QuestionnaireResponse instance"
-        )
-        self.implQuestionnaireResponse2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "QuestionnaireResponse" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("QuestionnaireResponse", js["resourceType"])
-        inst2 = questionnaireresponse.QuestionnaireResponse(js)
-        self.implQuestionnaireResponse2(inst2)
+    inst2 = questionnaireresponse.QuestionnaireResponse(**data)
+    impl_questionnaireresponse_1(inst2)
 
-    def implQuestionnaireResponse2(self, inst):
-        self.assertEqual(inst.authored.date, FHIRDate("2008-01-17").date)
-        self.assertEqual(inst.authored.as_json(), "2008-01-17")
-        self.assertEqual(force_bytes(inst.id), force_bytes("ussg-fht-answers"))
-        self.assertEqual(
-            inst.item[0].item[0].answer[0].valueDate.date, FHIRDate("2008-01-17").date
-        )
-        self.assertEqual(
-            inst.item[0].item[0].answer[0].valueDate.as_json(), "2008-01-17"
-        )
-        self.assertEqual(force_bytes(inst.item[0].item[0].linkId), force_bytes("0.1"))
-        self.assertEqual(
-            force_bytes(inst.item[0].item[0].text), force_bytes("Date Done")
-        )
-        self.assertEqual(force_bytes(inst.item[0].linkId), force_bytes("0"))
-        self.assertEqual(
-            force_bytes(inst.item[1].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54126-8"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[0].answer[0].valueString),
-            force_bytes("Annie Proband"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[0].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54125-0"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[0].linkId), force_bytes("1.1.1")
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[0].text), force_bytes("Name")
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[1].answer[0].valueCoding.code),
-            force_bytes("LA3-6"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[1].answer[0].valueCoding.display),
-            force_bytes("Female"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[1].answer[0].valueCoding.system),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[1].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54131-8"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[1].linkId), force_bytes("1.1.2")
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[1].text), force_bytes("Gender")
-        )
-        self.assertEqual(
-            inst.item[1].item[0].item[2].answer[0].valueDate.date,
-            FHIRDate("1966-04-04").date,
-        )
-        self.assertEqual(
-            inst.item[1].item[0].item[2].answer[0].valueDate.as_json(), "1966-04-04"
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[2].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/21112-8"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[2].linkId), force_bytes("1.1.3")
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[2].text), force_bytes("Date of Birth")
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[3].answer[0].valueCoding.code),
-            force_bytes("LA32-8"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[3].answer[0].valueCoding.display),
-            force_bytes("No"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[3].answer[0].valueCoding.system),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[3].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54132-6"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[3].linkId), force_bytes("1.1.4")
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[3].text),
-            force_bytes("Were you born a twin?"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[4].answer[0].valueCoding.code),
-            force_bytes("LA32-8"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[4].answer[0].valueCoding.display),
-            force_bytes("No"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[4].answer[0].valueCoding.system),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[4].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54128-4"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[4].linkId), force_bytes("1.1.5")
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[4].text),
-            force_bytes("Were you adopted?"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[5].answer[0].valueCoding.code),
-            force_bytes("LA32-8"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[5].answer[0].valueCoding.display),
-            force_bytes("No"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[5].answer[0].valueCoding.system),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[5].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54135-9"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[5].linkId), force_bytes("1.1.6")
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[5].text),
-            force_bytes(
-                "Are your parents related to each other in any way other than marriage?"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[1]
-                .item[0]
-                .item[6]
-                .answer[0]
-                .item[0]
-                .item[0]
-                .answer[0]
-                .valueCoding.code
-            ),
-            force_bytes("[in_i]"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[1]
-                .item[0]
-                .item[6]
-                .answer[0]
-                .item[0]
-                .item[0]
-                .answer[0]
-                .valueCoding.display
-            ),
-            force_bytes("inches"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[1]
-                .item[0]
-                .item[6]
-                .answer[0]
-                .item[0]
-                .item[0]
-                .answer[0]
-                .valueCoding.system
-            ),
-            force_bytes("http://unitsofmeasure.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[6].answer[0].item[0].item[0].linkId),
-            force_bytes("1.1.7.1.1"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[6].answer[0].item[0].item[0].text),
-            force_bytes("Units"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[6].answer[0].item[0].linkId),
-            force_bytes("1.1.7.1"),
-        )
-        self.assertEqual(inst.item[1].item[0].item[6].answer[0].valueDecimal, 63)
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[6].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/8302-2"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[6].linkId), force_bytes("1.1.7")
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[6].text), force_bytes("Height")
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[1]
-                .item[0]
-                .item[7]
-                .answer[0]
-                .item[0]
-                .item[0]
-                .answer[0]
-                .valueCoding.code
-            ),
-            force_bytes("lb"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[1]
-                .item[0]
-                .item[7]
-                .answer[0]
-                .item[0]
-                .item[0]
-                .answer[0]
-                .valueCoding.display
-            ),
-            force_bytes("pounds"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[1]
-                .item[0]
-                .item[7]
-                .answer[0]
-                .item[0]
-                .item[0]
-                .answer[0]
-                .valueCoding.system
-            ),
-            force_bytes("http://unitsofmeasure.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[7].answer[0].item[0].item[0].linkId),
-            force_bytes("1.1.8.1.1"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[7].answer[0].item[0].item[0].text),
-            force_bytes("Units"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[7].answer[0].item[0].linkId),
-            force_bytes("1.1.8.1"),
-        )
-        self.assertEqual(inst.item[1].item[0].item[7].answer[0].valueDecimal, 127)
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[7].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/29463-7"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[7].linkId), force_bytes("1.1.8")
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[7].text), force_bytes("Weight")
-        )
-        self.assertEqual(inst.item[1].item[0].item[8].answer[0].valueDecimal, 22.5)
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[8].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/39156-5"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[8].linkId), force_bytes("1.1.9")
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[8].text),
-            force_bytes("Body mass index (BMI) [Ratio]"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[9].answer[0].valueCoding.code),
-            force_bytes("LA4457-3"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[9].answer[0].valueCoding.display),
-            force_bytes("White"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[9].answer[0].valueCoding.system),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[9].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54134-2"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[9].linkId), force_bytes("1.1.10")
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].item[9].text), force_bytes("Race")
-        )
-        self.assertEqual(force_bytes(inst.item[1].item[0].linkId), force_bytes("1.1"))
-        self.assertEqual(force_bytes(inst.item[1].linkId), force_bytes("1"))
-        self.assertEqual(
-            force_bytes(inst.item[1].text), force_bytes("Your health information")
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54114-4"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[0].item[0].item[0].answer[0].valueCoding.code
-            ),
-            force_bytes("LA10405-1"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[0].item[0].item[0].answer[0].valueCoding.display
-            ),
-            force_bytes("Daughter"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[0].item[0].item[0].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[0].item[0].item[0].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54136-7"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[0].item[0].item[0].linkId),
-            force_bytes("2.1.1.1"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[0].item[0].item[0].text),
-            force_bytes("Relationship to you"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[0].item[0].item[1].answer[0].valueString),
-            force_bytes("Susan"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[0].item[0].item[1].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54138-3"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[0].item[0].item[1].linkId),
-            force_bytes("2.1.1.2"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[0].item[0].item[1].text), force_bytes("Name")
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[0].item[0].item[2].answer[0].valueCoding.code
-            ),
-            force_bytes("LA3-6"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[0].item[0].item[2].answer[0].valueCoding.display
-            ),
-            force_bytes("Female"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[0].item[0].item[2].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[0].item[0].item[2].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54123-5"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[0].item[0].item[2].linkId),
-            force_bytes("2.1.1.3"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[0].item[0].item[2].text),
-            force_bytes("Gender"),
-        )
-        self.assertEqual(
-            inst.item[2]
-            .item[0]
-            .item[0]
-            .item[3]
-            .answer[0]
-            .item[0]
-            .item[0]
-            .answer[0]
-            .valueDecimal,
-            17,
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2]
-                .item[0]
-                .item[0]
-                .item[3]
-                .answer[0]
-                .item[0]
-                .item[0]
-                .definition
-            ),
-            force_bytes("http://loinc.org/fhir/DataElement/54141-7"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[0].item[0].item[3].answer[0].item[0].item[0].linkId
-            ),
-            force_bytes("2.1.1.4.2.2"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[0].item[0].item[3].answer[0].item[0].item[0].text
-            ),
-            force_bytes("Age"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[0].item[0].item[3].answer[0].item[0].linkId),
-            force_bytes("2.1.1.4.2"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[0].item[0].item[3].answer[0].valueCoding.code
-            ),
-            force_bytes("LA33-6"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[0].item[0].item[3].answer[0].valueCoding.display
-            ),
-            force_bytes("Yes"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[0].item[0].item[3].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[0].item[0].item[3].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54139-1"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[0].item[0].item[3].linkId),
-            force_bytes("2.1.1.4"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[0].item[0].item[3].text),
-            force_bytes("Living?"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[0].item[0].item[4].answer[0].valueCoding.code
-            ),
-            force_bytes("LA32-8"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[0].item[0].item[4].answer[0].valueCoding.display
-            ),
-            force_bytes("No"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[0].item[0].item[4].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[0].item[0].item[4].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54121-9"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[0].item[0].item[4].linkId),
-            force_bytes("2.1.1.5"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[0].item[0].item[4].text),
-            force_bytes("Was this person born a twin?"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[0].item[0].item[5].answer[0].valueCoding.code
-            ),
-            force_bytes("LA32-8"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[0].item[0].item[5].answer[0].valueCoding.display
-            ),
-            force_bytes("No"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[0].item[0].item[5].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[0].item[0].item[5].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54122-7"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[0].item[0].item[5].linkId),
-            force_bytes("2.1.1.6"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[0].item[0].item[5].text),
-            force_bytes("Was this person adopted?"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[0].item[0].linkId), force_bytes("2.1.1")
-        )
-        self.assertEqual(force_bytes(inst.item[2].item[0].linkId), force_bytes("2.1"))
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[1].item[0].item[0].answer[0].valueCoding.code
-            ),
-            force_bytes("LA10415-0"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[1].item[0].item[0].answer[0].valueCoding.display
-            ),
-            force_bytes("Brother"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[1].item[0].item[0].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[1].item[0].item[0].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54136-7"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[1].item[0].item[0].linkId),
-            force_bytes("2.1.1.1"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[1].item[0].item[0].text),
-            force_bytes("Relationship to you"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[1].item[0].item[1].answer[0].valueString),
-            force_bytes("Brian"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[1].item[0].item[1].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54138-3"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[1].item[0].item[1].linkId),
-            force_bytes("2.1.1.2"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[1].item[0].item[1].text), force_bytes("Name")
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[1].item[0].item[2].answer[0].valueCoding.code
-            ),
-            force_bytes("LA2-8"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[1].item[0].item[2].answer[0].valueCoding.display
-            ),
-            force_bytes("Male"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[1].item[0].item[2].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[1].item[0].item[2].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54123-5"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[1].item[0].item[2].linkId),
-            force_bytes("2.1.1.3"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[1].item[0].item[2].text),
-            force_bytes("Gender"),
-        )
-        self.assertEqual(
-            inst.item[2]
-            .item[1]
-            .item[0]
-            .item[3]
-            .answer[0]
-            .item[0]
-            .item[0]
-            .answer[0]
-            .valueDecimal,
-            32,
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2]
-                .item[1]
-                .item[0]
-                .item[3]
-                .answer[0]
-                .item[0]
-                .item[0]
-                .definition
-            ),
-            force_bytes("http://loinc.org/fhir/DataElement/54141-7"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[1].item[0].item[3].answer[0].item[0].item[0].linkId
-            ),
-            force_bytes("2.1.1.4.2.2"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[1].item[0].item[3].answer[0].item[0].item[0].text
-            ),
-            force_bytes("Age"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[1].item[0].item[3].answer[0].item[0].linkId),
-            force_bytes("2.1.1.4.2"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[1].item[0].item[3].answer[0].valueCoding.code
-            ),
-            force_bytes("LA33-6"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[1].item[0].item[3].answer[0].valueCoding.display
-            ),
-            force_bytes("Yes"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[1].item[0].item[3].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[1].item[0].item[3].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54139-1"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[1].item[0].item[3].linkId),
-            force_bytes("2.1.1.4"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[1].item[0].item[3].text),
-            force_bytes("Living?"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[1].item[0].item[4].answer[0].valueCoding.code
-            ),
-            force_bytes("LA32-8"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[1].item[0].item[4].answer[0].valueCoding.display
-            ),
-            force_bytes("No"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[1].item[0].item[4].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[1].item[0].item[4].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54121-9"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[1].item[0].item[4].linkId),
-            force_bytes("2.1.1.5"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[1].item[0].item[4].text),
-            force_bytes("Was this person born a twin?"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[1].item[0].item[5].answer[0].valueCoding.code
-            ),
-            force_bytes("LA32-8"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[1].item[0].item[5].answer[0].valueCoding.display
-            ),
-            force_bytes("No"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[1].item[0].item[5].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[1].item[0].item[5].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54122-7"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[1].item[0].item[5].linkId),
-            force_bytes("2.1.1.6"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[1].item[0].item[5].text),
-            force_bytes("Was this person adopted?"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[1].item[0].linkId), force_bytes("2.1.1")
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[1].item[1].item[0].answer[0].valueCoding.code
-            ),
-            force_bytes("LA10550-4"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[1].item[1].item[0].answer[0].valueCoding.display
-            ),
-            force_bytes("-- Other Cancer"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[1].item[1].item[0].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[1].item[1].item[0].linkId),
-            force_bytes("2.1.2.1"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[1].item[1].item[0].text),
-            force_bytes("Disease or Condition"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[1].item[1].item[1].answer[0].valueCoding.code
-            ),
-            force_bytes("LA10397-0"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[1].item[1].item[1].answer[0].valueCoding.display
-            ),
-            force_bytes("30-39"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[1].item[1].item[1].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[1].item[1].item[1].linkId),
-            force_bytes("2.1.2.2"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[1].item[1].item[1].text),
-            force_bytes("Age at Diagnosis"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[1].item[1].linkId), force_bytes("2.1.2")
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[1].item[1].text),
-            force_bytes("This family member's history of disease"),
-        )
-        self.assertEqual(force_bytes(inst.item[2].item[1].linkId), force_bytes("2.1"))
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[2].item[0].item[0].answer[0].valueCoding.code
-            ),
-            force_bytes("LA10418-4"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[2].item[0].item[0].answer[0].valueCoding.display
-            ),
-            force_bytes("Sister"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[2].item[0].item[0].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[2].item[0].item[0].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54136-7"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[2].item[0].item[0].linkId),
-            force_bytes("2.1.1.1"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[2].item[0].item[0].text),
-            force_bytes("Relationship to you"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[2].item[0].item[1].answer[0].valueString),
-            force_bytes("Janet"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[2].item[0].item[1].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54138-3"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[2].item[0].item[1].linkId),
-            force_bytes("2.1.1.2"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[2].item[0].item[1].text), force_bytes("Name")
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[2].item[0].item[2].answer[0].valueCoding.code
-            ),
-            force_bytes("LA3-6"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[2].item[0].item[2].answer[0].valueCoding.display
-            ),
-            force_bytes("Female"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[2].item[0].item[2].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[2].item[0].item[2].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54123-5"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[2].item[0].item[2].linkId),
-            force_bytes("2.1.1.3"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[2].item[0].item[2].text),
-            force_bytes("Gender"),
-        )
-        self.assertEqual(
-            inst.item[2]
-            .item[2]
-            .item[0]
-            .item[3]
-            .answer[0]
-            .item[0]
-            .item[0]
-            .answer[0]
-            .valueDecimal,
-            36,
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2]
-                .item[2]
-                .item[0]
-                .item[3]
-                .answer[0]
-                .item[0]
-                .item[0]
-                .definition
-            ),
-            force_bytes("http://loinc.org/fhir/DataElement/54141-7"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[2].item[0].item[3].answer[0].item[0].item[0].linkId
-            ),
-            force_bytes("2.1.1.4.2.2"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[2].item[0].item[3].answer[0].item[0].item[0].text
-            ),
-            force_bytes("Age"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[2].item[0].item[3].answer[0].item[0].linkId),
-            force_bytes("2.1.1.4.2"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[2].item[0].item[3].answer[0].valueCoding.code
-            ),
-            force_bytes("LA33-6"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[2].item[0].item[3].answer[0].valueCoding.display
-            ),
-            force_bytes("Yes"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[2].item[0].item[3].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[2].item[0].item[3].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54139-1"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[2].item[0].item[3].linkId),
-            force_bytes("2.1.1.4"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[2].item[0].item[3].text),
-            force_bytes("Living?"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[2].item[0].item[4].answer[0].valueCoding.code
-            ),
-            force_bytes("LA32-8"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[2].item[0].item[4].answer[0].valueCoding.display
-            ),
-            force_bytes("No"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[2].item[0].item[4].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[2].item[0].item[4].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54121-9"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[2].item[0].item[4].linkId),
-            force_bytes("2.1.1.5"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[2].item[0].item[4].text),
-            force_bytes("Was this person born a twin?"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[2].item[0].item[5].answer[0].valueCoding.code
-            ),
-            force_bytes("LA32-8"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[2].item[0].item[5].answer[0].valueCoding.display
-            ),
-            force_bytes("No"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[2].item[0].item[5].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[2].item[0].item[5].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54122-7"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[2].item[0].item[5].linkId),
-            force_bytes("2.1.1.6"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[2].item[0].item[5].text),
-            force_bytes("Was this person adopted?"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[2].item[0].linkId), force_bytes("2.1.1")
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[2].item[1].item[0].answer[0].valueCoding.code
-            ),
-            force_bytes("LA10536-3"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[2].item[1].item[0].answer[0].valueCoding.display
-            ),
-            force_bytes("-- Breast Cancer"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[2].item[1].item[0].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[2].item[1].item[0].linkId),
-            force_bytes("2.1.2.1"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[2].item[1].item[0].text),
-            force_bytes("Disease or Condition"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[2].item[1].item[1].answer[0].valueCoding.code
-            ),
-            force_bytes("LA10397-0"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[2].item[1].item[1].answer[0].valueCoding.display
-            ),
-            force_bytes("30-39"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[2].item[1].item[1].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[2].item[1].item[1].linkId),
-            force_bytes("2.1.2.2"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[2].item[1].item[1].text),
-            force_bytes("Age at Diagnosis"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[2].item[1].linkId), force_bytes("2.1.2")
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[2].item[1].text),
-            force_bytes("This family member's history of disease"),
-        )
-        self.assertEqual(force_bytes(inst.item[2].item[2].linkId), force_bytes("2.1"))
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[3].item[0].item[0].answer[0].valueCoding.code
-            ),
-            force_bytes("LA10419-2"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[3].item[0].item[0].answer[0].valueCoding.display
-            ),
-            force_bytes("Nephew"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[3].item[0].item[0].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[3].item[0].item[0].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54136-7"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[3].item[0].item[0].linkId),
-            force_bytes("2.1.1.1"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[3].item[0].item[0].text),
-            force_bytes("Relationship to you"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[3].item[0].item[1].answer[0].valueString),
-            force_bytes("Ian"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[3].item[0].item[1].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54138-3"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[3].item[0].item[1].linkId),
-            force_bytes("2.1.1.2"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[3].item[0].item[1].text), force_bytes("Name")
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[3].item[0].item[2].answer[0].valueCoding.code
-            ),
-            force_bytes("LA2-8"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[3].item[0].item[2].answer[0].valueCoding.display
-            ),
-            force_bytes("Male"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[3].item[0].item[2].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[3].item[0].item[2].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54123-5"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[3].item[0].item[2].linkId),
-            force_bytes("2.1.1.3"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[3].item[0].item[2].text),
-            force_bytes("Gender"),
-        )
-        self.assertEqual(
-            inst.item[2]
-            .item[3]
-            .item[0]
-            .item[3]
-            .answer[0]
-            .item[0]
-            .item[0]
-            .answer[0]
-            .valueDecimal,
-            16,
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2]
-                .item[3]
-                .item[0]
-                .item[3]
-                .answer[0]
-                .item[0]
-                .item[0]
-                .definition
-            ),
-            force_bytes("http://loinc.org/fhir/DataElement/54141-7"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[3].item[0].item[3].answer[0].item[0].item[0].linkId
-            ),
-            force_bytes("2.1.1.4.2.2"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[3].item[0].item[3].answer[0].item[0].item[0].text
-            ),
-            force_bytes("Age"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[3].item[0].item[3].answer[0].item[0].linkId),
-            force_bytes("2.1.1.4.2"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[3].item[0].item[3].answer[0].valueCoding.code
-            ),
-            force_bytes("LA33-6"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[3].item[0].item[3].answer[0].valueCoding.display
-            ),
-            force_bytes("Yes"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[3].item[0].item[3].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[3].item[0].item[3].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54139-1"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[3].item[0].item[3].linkId),
-            force_bytes("2.1.1.4"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[3].item[0].item[3].text),
-            force_bytes("Living?"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[3].item[0].item[4].answer[0].valueCoding.code
-            ),
-            force_bytes("LA32-8"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[3].item[0].item[4].answer[0].valueCoding.display
-            ),
-            force_bytes("No"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[3].item[0].item[4].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[3].item[0].item[4].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54121-9"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[3].item[0].item[4].linkId),
-            force_bytes("2.1.1.5"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[3].item[0].item[4].text),
-            force_bytes("Was this person born a twin?"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[3].item[0].item[5].answer[0].valueCoding.code
-            ),
-            force_bytes("LA32-8"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[3].item[0].item[5].answer[0].valueCoding.display
-            ),
-            force_bytes("No"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[3].item[0].item[5].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[3].item[0].item[5].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54122-7"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[3].item[0].item[5].linkId),
-            force_bytes("2.1.1.6"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[3].item[0].item[5].text),
-            force_bytes("Was this person adopted?"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[3].item[0].linkId), force_bytes("2.1.1")
-        )
-        self.assertEqual(force_bytes(inst.item[2].item[3].linkId), force_bytes("2.1"))
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[4].item[0].item[0].answer[0].valueCoding.code
-            ),
-            force_bytes("LA10420-0"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[4].item[0].item[0].answer[0].valueCoding.display
-            ),
-            force_bytes("Niece"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[4].item[0].item[0].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[4].item[0].item[0].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54136-7"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[4].item[0].item[0].linkId),
-            force_bytes("2.1.1.1"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[4].item[0].item[0].text),
-            force_bytes("Relationship to you"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[4].item[0].item[1].answer[0].valueString),
-            force_bytes("Helen"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[4].item[0].item[1].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54138-3"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[4].item[0].item[1].linkId),
-            force_bytes("2.1.1.2"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[4].item[0].item[1].text), force_bytes("Name")
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[4].item[0].item[2].answer[0].valueCoding.code
-            ),
-            force_bytes("LA3-6"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[4].item[0].item[2].answer[0].valueCoding.display
-            ),
-            force_bytes("Female"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[4].item[0].item[2].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[4].item[0].item[2].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54123-5"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[4].item[0].item[2].linkId),
-            force_bytes("2.1.1.3"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[4].item[0].item[2].text),
-            force_bytes("Gender"),
-        )
-        self.assertEqual(
-            inst.item[2]
-            .item[4]
-            .item[0]
-            .item[3]
-            .answer[0]
-            .item[0]
-            .item[0]
-            .answer[0]
-            .valueDecimal,
-            15,
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2]
-                .item[4]
-                .item[0]
-                .item[3]
-                .answer[0]
-                .item[0]
-                .item[0]
-                .definition
-            ),
-            force_bytes("http://loinc.org/fhir/DataElement/54141-7"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[4].item[0].item[3].answer[0].item[0].item[0].linkId
-            ),
-            force_bytes("2.1.1.4.2.2"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[4].item[0].item[3].answer[0].item[0].item[0].text
-            ),
-            force_bytes("Age"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[4].item[0].item[3].answer[0].item[0].linkId),
-            force_bytes("2.1.1.4.2"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[4].item[0].item[3].answer[0].valueCoding.code
-            ),
-            force_bytes("LA33-6"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[4].item[0].item[3].answer[0].valueCoding.display
-            ),
-            force_bytes("Yes"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[4].item[0].item[3].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[4].item[0].item[3].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54139-1"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[4].item[0].item[3].linkId),
-            force_bytes("2.1.1.4"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[4].item[0].item[3].text),
-            force_bytes("Living?"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[4].item[0].item[4].answer[0].valueCoding.code
-            ),
-            force_bytes("LA32-8"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[4].item[0].item[4].answer[0].valueCoding.display
-            ),
-            force_bytes("No"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[4].item[0].item[4].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[4].item[0].item[4].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54121-9"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[4].item[0].item[4].linkId),
-            force_bytes("2.1.1.5"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[4].item[0].item[4].text),
-            force_bytes("Was this person born a twin?"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[4].item[0].item[5].answer[0].valueCoding.code
-            ),
-            force_bytes("LA32-8"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[4].item[0].item[5].answer[0].valueCoding.display
-            ),
-            force_bytes("No"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[4].item[0].item[5].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[4].item[0].item[5].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54122-7"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[4].item[0].item[5].linkId),
-            force_bytes("2.1.1.6"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[4].item[0].item[5].text),
-            force_bytes("Was this person adopted?"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[4].item[0].linkId), force_bytes("2.1.1")
-        )
-        self.assertEqual(force_bytes(inst.item[2].item[4].linkId), force_bytes("2.1"))
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[5].item[0].item[0].answer[0].valueCoding.code
-            ),
-            force_bytes("LA10416-8"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[5].item[0].item[0].answer[0].valueCoding.display
-            ),
-            force_bytes("Father"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[5].item[0].item[0].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[5].item[0].item[0].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54136-7"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[5].item[0].item[0].linkId),
-            force_bytes("2.1.1.1"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[5].item[0].item[0].text),
-            force_bytes("Relationship to you"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[5].item[0].item[1].answer[0].valueString),
-            force_bytes("Donald"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[5].item[0].item[1].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54138-3"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[5].item[0].item[1].linkId),
-            force_bytes("2.1.1.2"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[5].item[0].item[1].text), force_bytes("Name")
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[5].item[0].item[2].answer[0].valueCoding.code
-            ),
-            force_bytes("LA2-8"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[5].item[0].item[2].answer[0].valueCoding.display
-            ),
-            force_bytes("Male"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[5].item[0].item[2].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[5].item[0].item[2].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54123-5"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[5].item[0].item[2].linkId),
-            force_bytes("2.1.1.3"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[5].item[0].item[2].text),
-            force_bytes("Gender"),
-        )
-        self.assertEqual(
-            inst.item[2]
-            .item[5]
-            .item[0]
-            .item[3]
-            .answer[0]
-            .item[0]
-            .item[0]
-            .answer[0]
-            .valueDecimal,
-            52,
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2]
-                .item[5]
-                .item[0]
-                .item[3]
-                .answer[0]
-                .item[0]
-                .item[0]
-                .definition
-            ),
-            force_bytes("http://loinc.org/fhir/DataElement/54141-7"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[5].item[0].item[3].answer[0].item[0].item[0].linkId
-            ),
-            force_bytes("2.1.1.4.2.2"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[5].item[0].item[3].answer[0].item[0].item[0].text
-            ),
-            force_bytes("Age"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[5].item[0].item[3].answer[0].item[0].linkId),
-            force_bytes("2.1.1.4.2"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[5].item[0].item[3].answer[0].valueCoding.code
-            ),
-            force_bytes("LA33-6"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[5].item[0].item[3].answer[0].valueCoding.display
-            ),
-            force_bytes("Yes"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[5].item[0].item[3].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[5].item[0].item[3].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54139-1"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[5].item[0].item[3].linkId),
-            force_bytes("2.1.1.4"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[5].item[0].item[3].text),
-            force_bytes("Living?"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[5].item[0].item[4].answer[0].valueCoding.code
-            ),
-            force_bytes("LA32-8"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[5].item[0].item[4].answer[0].valueCoding.display
-            ),
-            force_bytes("No"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[5].item[0].item[4].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[5].item[0].item[4].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54121-9"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[5].item[0].item[4].linkId),
-            force_bytes("2.1.1.5"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[5].item[0].item[4].text),
-            force_bytes("Was this person born a twin?"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[5].item[0].item[5].answer[0].valueCoding.code
-            ),
-            force_bytes("LA32-8"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[5].item[0].item[5].answer[0].valueCoding.display
-            ),
-            force_bytes("No"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[5].item[0].item[5].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[5].item[0].item[5].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54122-7"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[5].item[0].item[5].linkId),
-            force_bytes("2.1.1.6"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[5].item[0].item[5].text),
-            force_bytes("Was this person adopted?"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[5].item[0].linkId), force_bytes("2.1.1")
-        )
-        self.assertEqual(force_bytes(inst.item[2].item[5].linkId), force_bytes("2.1"))
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[6].item[0].item[0].answer[0].valueCoding.code
-            ),
-            force_bytes("LA10425-9"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[6].item[0].item[0].answer[0].valueCoding.display
-            ),
-            force_bytes("Paternal Uncle"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[6].item[0].item[0].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[6].item[0].item[0].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54136-7"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[6].item[0].item[0].linkId),
-            force_bytes("2.1.1.1"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[6].item[0].item[0].text),
-            force_bytes("Relationship to you"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[6].item[0].item[1].answer[0].valueString),
-            force_bytes("Eric"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[6].item[0].item[1].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54138-3"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[6].item[0].item[1].linkId),
-            force_bytes("2.1.1.2"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[6].item[0].item[1].text), force_bytes("Name")
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[6].item[0].item[2].answer[0].valueCoding.code
-            ),
-            force_bytes("LA2-8"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[6].item[0].item[2].answer[0].valueCoding.display
-            ),
-            force_bytes("Male"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[6].item[0].item[2].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[6].item[0].item[2].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54123-5"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[6].item[0].item[2].linkId),
-            force_bytes("2.1.1.3"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[6].item[0].item[2].text),
-            force_bytes("Gender"),
-        )
-        self.assertEqual(
-            inst.item[2]
-            .item[6]
-            .item[0]
-            .item[3]
-            .answer[0]
-            .item[0]
-            .item[0]
-            .answer[0]
-            .valueDecimal,
-            56,
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2]
-                .item[6]
-                .item[0]
-                .item[3]
-                .answer[0]
-                .item[0]
-                .item[0]
-                .definition
-            ),
-            force_bytes("http://loinc.org/fhir/DataElement/54141-7"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[6].item[0].item[3].answer[0].item[0].item[0].linkId
-            ),
-            force_bytes("2.1.1.4.2.2"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[6].item[0].item[3].answer[0].item[0].item[0].text
-            ),
-            force_bytes("Age"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[6].item[0].item[3].answer[0].item[0].linkId),
-            force_bytes("2.1.1.4.2"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[6].item[0].item[3].answer[0].valueCoding.code
-            ),
-            force_bytes("LA33-6"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[6].item[0].item[3].answer[0].valueCoding.display
-            ),
-            force_bytes("Yes"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[6].item[0].item[3].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[6].item[0].item[3].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54139-1"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[6].item[0].item[3].linkId),
-            force_bytes("2.1.1.4"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[6].item[0].item[3].text),
-            force_bytes("Living?"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[6].item[0].item[4].answer[0].valueCoding.code
-            ),
-            force_bytes("LA32-8"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[6].item[0].item[4].answer[0].valueCoding.display
-            ),
-            force_bytes("No"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[6].item[0].item[4].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[6].item[0].item[4].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54121-9"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[6].item[0].item[4].linkId),
-            force_bytes("2.1.1.5"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[6].item[0].item[4].text),
-            force_bytes("Was this person born a twin?"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[6].item[0].item[5].answer[0].valueCoding.code
-            ),
-            force_bytes("LA32-8"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[6].item[0].item[5].answer[0].valueCoding.display
-            ),
-            force_bytes("No"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[6].item[0].item[5].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[6].item[0].item[5].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54122-7"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[6].item[0].item[5].linkId),
-            force_bytes("2.1.1.6"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[6].item[0].item[5].text),
-            force_bytes("Was this person adopted?"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[6].item[0].linkId), force_bytes("2.1.1")
-        )
-        self.assertEqual(force_bytes(inst.item[2].item[6].linkId), force_bytes("2.1"))
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[7].item[0].item[0].answer[0].valueCoding.code
-            ),
-            force_bytes("LA10421-8"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[7].item[0].item[0].answer[0].valueCoding.display
-            ),
-            force_bytes("Paternal Aunt"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[7].item[0].item[0].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[7].item[0].item[0].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54136-7"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[7].item[0].item[0].linkId),
-            force_bytes("2.1.1.1"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[7].item[0].item[0].text),
-            force_bytes("Relationship to you"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[7].item[0].item[1].answer[0].valueString),
-            force_bytes("Fiona"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[7].item[0].item[1].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54138-3"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[7].item[0].item[1].linkId),
-            force_bytes("2.1.1.2"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[7].item[0].item[1].text), force_bytes("Name")
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[7].item[0].item[2].answer[0].valueCoding.code
-            ),
-            force_bytes("LA3-6"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[7].item[0].item[2].answer[0].valueCoding.display
-            ),
-            force_bytes("Female"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[7].item[0].item[2].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[7].item[0].item[2].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54123-5"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[7].item[0].item[2].linkId),
-            force_bytes("2.1.1.3"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[7].item[0].item[2].text),
-            force_bytes("Gender"),
-        )
-        self.assertEqual(
-            inst.item[2]
-            .item[7]
-            .item[0]
-            .item[3]
-            .answer[0]
-            .item[0]
-            .item[0]
-            .answer[0]
-            .valueDecimal,
-            57,
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2]
-                .item[7]
-                .item[0]
-                .item[3]
-                .answer[0]
-                .item[0]
-                .item[0]
-                .definition
-            ),
-            force_bytes("http://loinc.org/fhir/DataElement/54141-7"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[7].item[0].item[3].answer[0].item[0].item[0].linkId
-            ),
-            force_bytes("2.1.1.4.2.2"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[7].item[0].item[3].answer[0].item[0].item[0].text
-            ),
-            force_bytes("Age"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[7].item[0].item[3].answer[0].item[0].linkId),
-            force_bytes("2.1.1.4.2"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[7].item[0].item[3].answer[0].valueCoding.code
-            ),
-            force_bytes("LA33-6"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[7].item[0].item[3].answer[0].valueCoding.display
-            ),
-            force_bytes("Yes"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[7].item[0].item[3].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[7].item[0].item[3].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54139-1"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[7].item[0].item[3].linkId),
-            force_bytes("2.1.1.4"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[7].item[0].item[3].text),
-            force_bytes("Living?"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[7].item[0].item[4].answer[0].valueCoding.code
-            ),
-            force_bytes("LA32-8"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[7].item[0].item[4].answer[0].valueCoding.display
-            ),
-            force_bytes("No"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[7].item[0].item[4].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[7].item[0].item[4].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54121-9"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[7].item[0].item[4].linkId),
-            force_bytes("2.1.1.5"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[7].item[0].item[4].text),
-            force_bytes("Was this person born a twin?"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[7].item[0].item[5].answer[0].valueCoding.code
-            ),
-            force_bytes("LA32-8"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[7].item[0].item[5].answer[0].valueCoding.display
-            ),
-            force_bytes("No"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[7].item[0].item[5].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[7].item[0].item[5].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54122-7"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[7].item[0].item[5].linkId),
-            force_bytes("2.1.1.6"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[7].item[0].item[5].text),
-            force_bytes("Was this person adopted?"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[7].item[0].linkId), force_bytes("2.1.1")
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[7].item[1].item[0].answer[0].valueCoding.code
-            ),
-            force_bytes("LA10543-9"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[7].item[1].item[0].answer[0].valueCoding.display
-            ),
-            force_bytes("-- Skin Cancer"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[7].item[1].item[0].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[7].item[1].item[0].linkId),
-            force_bytes("2.1.2.1"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[7].item[1].item[0].text),
-            force_bytes("Disease or Condition"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[7].item[1].linkId), force_bytes("2.1.2")
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[7].item[1].text),
-            force_bytes("This family member's history of disease"),
-        )
-        self.assertEqual(force_bytes(inst.item[2].item[7].linkId), force_bytes("2.1"))
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[8].item[0].item[0].answer[0].valueCoding.code
-            ),
-            force_bytes("LA10423-4"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[8].item[0].item[0].answer[0].valueCoding.display
-            ),
-            force_bytes("Paternal Grandfather"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[8].item[0].item[0].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[8].item[0].item[0].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54136-7"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[8].item[0].item[0].linkId),
-            force_bytes("2.1.1.1"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[8].item[0].item[0].text),
-            force_bytes("Relationship to you"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[8].item[0].item[1].answer[0].valueString),
-            force_bytes("Bob"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[8].item[0].item[1].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54138-3"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[8].item[0].item[1].linkId),
-            force_bytes("2.1.1.2"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[8].item[0].item[1].text), force_bytes("Name")
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[8].item[0].item[2].answer[0].valueCoding.code
-            ),
-            force_bytes("LA2-8"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[8].item[0].item[2].answer[0].valueCoding.display
-            ),
-            force_bytes("Male"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[8].item[0].item[2].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[8].item[0].item[2].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54123-5"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[8].item[0].item[2].linkId),
-            force_bytes("2.1.1.3"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[8].item[0].item[2].text),
-            force_bytes("Gender"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2]
-                .item[8]
-                .item[0]
-                .item[3]
-                .answer[0]
-                .item[0]
-                .item[0]
-                .answer[0]
-                .valueCoding.code
-            ),
-            force_bytes("LA10537-1"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2]
-                .item[8]
-                .item[0]
-                .item[3]
-                .answer[0]
-                .item[0]
-                .item[0]
-                .answer[0]
-                .valueCoding.display
-            ),
-            force_bytes("-- Colon Cancer"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2]
-                .item[8]
-                .item[0]
-                .item[3]
-                .answer[0]
-                .item[0]
-                .item[0]
-                .answer[0]
-                .valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2]
-                .item[8]
-                .item[0]
-                .item[3]
-                .answer[0]
-                .item[0]
-                .item[0]
-                .definition
-            ),
-            force_bytes("http://loinc.org/fhir/DataElement/54112-8"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[8].item[0].item[3].answer[0].item[0].item[0].linkId
-            ),
-            force_bytes("2.1.1.4.1.1"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[8].item[0].item[3].answer[0].item[0].item[0].text
-            ),
-            force_bytes("Cause of Death"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2]
-                .item[8]
-                .item[0]
-                .item[3]
-                .answer[0]
-                .item[0]
-                .item[1]
-                .answer[0]
-                .valueCoding.code
-            ),
-            force_bytes("LA10400-2"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2]
-                .item[8]
-                .item[0]
-                .item[3]
-                .answer[0]
-                .item[0]
-                .item[1]
-                .answer[0]
-                .valueCoding.display
-            ),
-            force_bytes("OVER 60"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2]
-                .item[8]
-                .item[0]
-                .item[3]
-                .answer[0]
-                .item[0]
-                .item[1]
-                .answer[0]
-                .valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2]
-                .item[8]
-                .item[0]
-                .item[3]
-                .answer[0]
-                .item[0]
-                .item[1]
-                .definition
-            ),
-            force_bytes("http://loinc.org/fhir/DataElement/54113-6"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[8].item[0].item[3].answer[0].item[0].item[1].linkId
-            ),
-            force_bytes("2.1.1.4.1.2"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[8].item[0].item[3].answer[0].item[0].item[1].text
-            ),
-            force_bytes("Age at Death"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[8].item[0].item[3].answer[0].item[0].linkId),
-            force_bytes("2.1.1.4.1"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[8].item[0].item[3].answer[0].valueCoding.code
-            ),
-            force_bytes("LA32-8"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[8].item[0].item[3].answer[0].valueCoding.display
-            ),
-            force_bytes("No"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[8].item[0].item[3].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[8].item[0].item[3].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54139-1"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[8].item[0].item[3].linkId),
-            force_bytes("2.1.1.4"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[8].item[0].item[3].text),
-            force_bytes("Living?"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[8].item[0].item[4].answer[0].valueCoding.code
-            ),
-            force_bytes("LA32-8"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[8].item[0].item[4].answer[0].valueCoding.display
-            ),
-            force_bytes("No"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[8].item[0].item[4].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[8].item[0].item[4].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54121-9"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[8].item[0].item[4].linkId),
-            force_bytes("2.1.1.5"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[8].item[0].item[4].text),
-            force_bytes("Was this person born a twin?"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[8].item[0].item[5].answer[0].valueCoding.code
-            ),
-            force_bytes("LA32-8"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[8].item[0].item[5].answer[0].valueCoding.display
-            ),
-            force_bytes("No"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[8].item[0].item[5].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[8].item[0].item[5].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54122-7"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[8].item[0].item[5].linkId),
-            force_bytes("2.1.1.6"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[8].item[0].item[5].text),
-            force_bytes("Was this person adopted?"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[8].item[0].linkId), force_bytes("2.1.1")
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[8].item[1].item[0].answer[0].valueCoding.code
-            ),
-            force_bytes("LA10537-1"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[8].item[1].item[0].answer[0].valueCoding.display
-            ),
-            force_bytes("-- Colon Cancer"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[8].item[1].item[0].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[8].item[1].item[0].linkId),
-            force_bytes("2.1.2.1"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[8].item[1].item[0].text),
-            force_bytes("Disease or Condition"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[8].item[1].item[1].answer[0].valueCoding.code
-            ),
-            force_bytes("LA10400-2"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[8].item[1].item[1].answer[0].valueCoding.display
-            ),
-            force_bytes("OVER 60"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[8].item[1].item[1].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[8].item[1].item[1].linkId),
-            force_bytes("2.1.2.2"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[8].item[1].item[1].text),
-            force_bytes("Age at Diagnosis"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[8].item[1].linkId), force_bytes("2.1.2")
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[8].item[1].text),
-            force_bytes("This family member's history of disease"),
-        )
-        self.assertEqual(force_bytes(inst.item[2].item[8].linkId), force_bytes("2.1"))
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[9].item[0].item[0].answer[0].valueCoding.code
-            ),
-            force_bytes("LA10424-2"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[9].item[0].item[0].answer[0].valueCoding.display
-            ),
-            force_bytes("Paternal Grandmother"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[9].item[0].item[0].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[9].item[0].item[0].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54136-7"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[9].item[0].item[0].linkId),
-            force_bytes("2.1.1.1"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[9].item[0].item[0].text),
-            force_bytes("Relationship to you"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[9].item[0].item[1].answer[0].valueString),
-            force_bytes("Claire"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[9].item[0].item[1].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54138-3"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[9].item[0].item[1].linkId),
-            force_bytes("2.1.1.2"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[9].item[0].item[1].text), force_bytes("Name")
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[9].item[0].item[2].answer[0].valueCoding.code
-            ),
-            force_bytes("LA3-6"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[9].item[0].item[2].answer[0].valueCoding.display
-            ),
-            force_bytes("Female"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[9].item[0].item[2].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[9].item[0].item[2].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54123-5"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[9].item[0].item[2].linkId),
-            force_bytes("2.1.1.3"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[9].item[0].item[2].text),
-            force_bytes("Gender"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2]
-                .item[9]
-                .item[0]
-                .item[3]
-                .answer[0]
-                .item[0]
-                .item[0]
-                .answer[0]
-                .item[0]
-                .answer[0]
-                .valueString
-            ),
-            force_bytes("Lou Gehrigs"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2]
-                .item[9]
-                .item[0]
-                .item[3]
-                .answer[0]
-                .item[0]
-                .item[0]
-                .answer[0]
-                .item[0]
-                .linkId
-            ),
-            force_bytes("2.1.1.4.1.1.1"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2]
-                .item[9]
-                .item[0]
-                .item[3]
-                .answer[0]
-                .item[0]
-                .item[0]
-                .answer[0]
-                .item[0]
-                .text
-            ),
-            force_bytes("Please specify"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2]
-                .item[9]
-                .item[0]
-                .item[3]
-                .answer[0]
-                .item[0]
-                .item[0]
-                .answer[0]
-                .valueCoding.code
-            ),
-            force_bytes("LA10589-2"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2]
-                .item[9]
-                .item[0]
-                .item[3]
-                .answer[0]
-                .item[0]
-                .item[0]
-                .answer[0]
-                .valueCoding.display
-            ),
-            force_bytes("-- Other/Unexpected"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2]
-                .item[9]
-                .item[0]
-                .item[3]
-                .answer[0]
-                .item[0]
-                .item[0]
-                .answer[0]
-                .valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2]
-                .item[9]
-                .item[0]
-                .item[3]
-                .answer[0]
-                .item[0]
-                .item[0]
-                .definition
-            ),
-            force_bytes("http://loinc.org/fhir/DataElement/54112-8"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[9].item[0].item[3].answer[0].item[0].item[0].linkId
-            ),
-            force_bytes("2.1.1.4.1.1"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[9].item[0].item[3].answer[0].item[0].item[0].text
-            ),
-            force_bytes("Cause of Death"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2]
-                .item[9]
-                .item[0]
-                .item[3]
-                .answer[0]
-                .item[0]
-                .item[1]
-                .answer[0]
-                .valueCoding.code
-            ),
-            force_bytes("LA10400-2"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2]
-                .item[9]
-                .item[0]
-                .item[3]
-                .answer[0]
-                .item[0]
-                .item[1]
-                .answer[0]
-                .valueCoding.display
-            ),
-            force_bytes("OVER 60"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2]
-                .item[9]
-                .item[0]
-                .item[3]
-                .answer[0]
-                .item[0]
-                .item[1]
-                .answer[0]
-                .valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2]
-                .item[9]
-                .item[0]
-                .item[3]
-                .answer[0]
-                .item[0]
-                .item[1]
-                .definition
-            ),
-            force_bytes("http://loinc.org/fhir/DataElement/54113-6"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[9].item[0].item[3].answer[0].item[0].item[1].linkId
-            ),
-            force_bytes("2.1.1.4.1.2"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[9].item[0].item[3].answer[0].item[0].item[1].text
-            ),
-            force_bytes("Age at Death"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[9].item[0].item[3].answer[0].item[0].linkId),
-            force_bytes("2.1.1.4.1"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[9].item[0].item[3].answer[0].valueCoding.code
-            ),
-            force_bytes("LA32-8"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[9].item[0].item[3].answer[0].valueCoding.display
-            ),
-            force_bytes("No"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[9].item[0].item[3].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[9].item[0].item[3].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54139-1"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[9].item[0].item[3].linkId),
-            force_bytes("2.1.1.4"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[9].item[0].item[3].text),
-            force_bytes("Living?"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[9].item[0].item[4].answer[0].valueCoding.code
-            ),
-            force_bytes("LA32-8"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[9].item[0].item[4].answer[0].valueCoding.display
-            ),
-            force_bytes("No"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[9].item[0].item[4].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[9].item[0].item[4].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54121-9"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[9].item[0].item[4].linkId),
-            force_bytes("2.1.1.5"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[9].item[0].item[4].text),
-            force_bytes("Was this person born a twin?"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[9].item[0].item[5].answer[0].valueCoding.code
-            ),
-            force_bytes("LA32-8"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[9].item[0].item[5].answer[0].valueCoding.display
-            ),
-            force_bytes("No"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.item[2].item[9].item[0].item[5].answer[0].valueCoding.system
-            ),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[9].item[0].item[5].definition),
-            force_bytes("http://loinc.org/fhir/DataElement/54122-7"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[9].item[0].item[5].linkId),
-            force_bytes("2.1.1.6"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[9].item[0].item[5].text),
-            force_bytes("Was this person adopted?"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[9].item[0].linkId), force_bytes("2.1.1")
-        )
-        self.assertEqual(force_bytes(inst.item[2].item[9].linkId), force_bytes("2.1"))
-        self.assertEqual(force_bytes(inst.item[2].linkId), force_bytes("2"))
-        self.assertEqual(
-            force_bytes(inst.item[2].text),
-            force_bytes("Family member health information"),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("in-progress"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 
-    def testQuestionnaireResponse3(self):
-        inst = self.instantiate_from(
-            "questionnaireresponse-example-f201-lifelines.json"
-        )
-        self.assertIsNotNone(
-            inst, "Must have instantiated a QuestionnaireResponse instance"
-        )
-        self.implQuestionnaireResponse3(inst)
+def impl_questionnaireresponse_2(inst):
+    assert inst.authored == fhirtypes.DateTime.validate("2008-01-17")
+    assert inst.id == "ussg-fht-answers"
+    assert inst.item[0].item[0].answer[0].valueDate == fhirtypes.Date.validate(
+        "2008-01-17"
+    )
+    assert inst.item[0].item[0].linkId == "0.1"
+    assert inst.item[0].item[0].text == "Date Done"
+    assert inst.item[0].linkId == "0"
+    assert inst.item[1].definition == "http://loinc.org/fhir/DataElement/54126-8"
+    assert inst.item[1].item[0].item[0].answer[0].valueString == "Annie Proband"
+    assert (
+        inst.item[1].item[0].item[0].definition
+        == "http://loinc.org/fhir/DataElement/54125-0"
+    )
+    assert inst.item[1].item[0].item[0].linkId == "1.1.1"
+    assert inst.item[1].item[0].item[0].text == "Name"
+    assert inst.item[1].item[0].item[1].answer[0].valueCoding.code == "LA3-6"
+    assert inst.item[1].item[0].item[1].answer[0].valueCoding.display == "Female"
+    assert (
+        inst.item[1].item[0].item[1].answer[0].valueCoding.system == "http://loinc.org"
+    )
+    assert (
+        inst.item[1].item[0].item[1].definition
+        == "http://loinc.org/fhir/DataElement/54131-8"
+    )
+    assert inst.item[1].item[0].item[1].linkId == "1.1.2"
+    assert inst.item[1].item[0].item[1].text == "Gender"
+    assert inst.item[1].item[0].item[2].answer[0].valueDate == fhirtypes.Date.validate(
+        "1966-04-04"
+    )
+    assert (
+        inst.item[1].item[0].item[2].definition
+        == "http://loinc.org/fhir/DataElement/21112-8"
+    )
+    assert inst.item[1].item[0].item[2].linkId == "1.1.3"
+    assert inst.item[1].item[0].item[2].text == "Date of Birth"
+    assert inst.item[1].item[0].item[3].answer[0].valueCoding.code == "LA32-8"
+    assert inst.item[1].item[0].item[3].answer[0].valueCoding.display == "No"
+    assert (
+        inst.item[1].item[0].item[3].answer[0].valueCoding.system == "http://loinc.org"
+    )
+    assert (
+        inst.item[1].item[0].item[3].definition
+        == "http://loinc.org/fhir/DataElement/54132-6"
+    )
+    assert inst.item[1].item[0].item[3].linkId == "1.1.4"
+    assert inst.item[1].item[0].item[3].text == "Were you born a twin?"
+    assert inst.item[1].item[0].item[4].answer[0].valueCoding.code == "LA32-8"
+    assert inst.item[1].item[0].item[4].answer[0].valueCoding.display == "No"
+    assert (
+        inst.item[1].item[0].item[4].answer[0].valueCoding.system == "http://loinc.org"
+    )
+    assert (
+        inst.item[1].item[0].item[4].definition
+        == "http://loinc.org/fhir/DataElement/54128-4"
+    )
+    assert inst.item[1].item[0].item[4].linkId == "1.1.5"
+    assert inst.item[1].item[0].item[4].text == "Were you adopted?"
+    assert inst.item[1].item[0].item[5].answer[0].valueCoding.code == "LA32-8"
+    assert inst.item[1].item[0].item[5].answer[0].valueCoding.display == "No"
+    assert (
+        inst.item[1].item[0].item[5].answer[0].valueCoding.system == "http://loinc.org"
+    )
+    assert (
+        inst.item[1].item[0].item[5].definition
+        == "http://loinc.org/fhir/DataElement/54135-9"
+    )
+    assert inst.item[1].item[0].item[5].linkId == "1.1.6"
+    assert (
+        inst.item[1].item[0].item[5].text
+        == "Are your parents related to each other in any way other than marriage?"
+    )
+    assert (
+        inst.item[1]
+        .item[0]
+        .item[6]
+        .answer[0]
+        .item[0]
+        .item[0]
+        .answer[0]
+        .valueCoding.code
+        == "[in_i]"
+    )
+    assert (
+        inst.item[1]
+        .item[0]
+        .item[6]
+        .answer[0]
+        .item[0]
+        .item[0]
+        .answer[0]
+        .valueCoding.display
+        == "inches"
+    )
+    assert (
+        inst.item[1]
+        .item[0]
+        .item[6]
+        .answer[0]
+        .item[0]
+        .item[0]
+        .answer[0]
+        .valueCoding.system
+        == "http://unitsofmeasure.org"
+    )
+    assert inst.item[1].item[0].item[6].answer[0].item[0].item[0].linkId == "1.1.7.1.1"
+    assert inst.item[1].item[0].item[6].answer[0].item[0].item[0].text == "Units"
+    assert inst.item[1].item[0].item[6].answer[0].item[0].linkId == "1.1.7.1"
+    assert float(inst.item[1].item[0].item[6].answer[0].valueDecimal) == float(63)
+    assert (
+        inst.item[1].item[0].item[6].definition
+        == "http://loinc.org/fhir/DataElement/8302-2"
+    )
+    assert inst.item[1].item[0].item[6].linkId == "1.1.7"
+    assert inst.item[1].item[0].item[6].text == "Height"
+    assert (
+        inst.item[1]
+        .item[0]
+        .item[7]
+        .answer[0]
+        .item[0]
+        .item[0]
+        .answer[0]
+        .valueCoding.code
+        == "lb"
+    )
+    assert (
+        inst.item[1]
+        .item[0]
+        .item[7]
+        .answer[0]
+        .item[0]
+        .item[0]
+        .answer[0]
+        .valueCoding.display
+        == "pounds"
+    )
+    assert (
+        inst.item[1]
+        .item[0]
+        .item[7]
+        .answer[0]
+        .item[0]
+        .item[0]
+        .answer[0]
+        .valueCoding.system
+        == "http://unitsofmeasure.org"
+    )
+    assert inst.item[1].item[0].item[7].answer[0].item[0].item[0].linkId == "1.1.8.1.1"
+    assert inst.item[1].item[0].item[7].answer[0].item[0].item[0].text == "Units"
+    assert inst.item[1].item[0].item[7].answer[0].item[0].linkId == "1.1.8.1"
+    assert float(inst.item[1].item[0].item[7].answer[0].valueDecimal) == float(127)
+    assert (
+        inst.item[1].item[0].item[7].definition
+        == "http://loinc.org/fhir/DataElement/29463-7"
+    )
+    assert inst.item[1].item[0].item[7].linkId == "1.1.8"
+    assert inst.item[1].item[0].item[7].text == "Weight"
+    assert float(inst.item[1].item[0].item[8].answer[0].valueDecimal) == float(22.5)
+    assert (
+        inst.item[1].item[0].item[8].definition
+        == "http://loinc.org/fhir/DataElement/39156-5"
+    )
+    assert inst.item[1].item[0].item[8].linkId == "1.1.9"
+    assert inst.item[1].item[0].item[8].text == "Body mass index (BMI) [Ratio]"
+    assert inst.item[1].item[0].item[9].answer[0].valueCoding.code == "LA4457-3"
+    assert inst.item[1].item[0].item[9].answer[0].valueCoding.display == "White"
+    assert (
+        inst.item[1].item[0].item[9].answer[0].valueCoding.system == "http://loinc.org"
+    )
+    assert (
+        inst.item[1].item[0].item[9].definition
+        == "http://loinc.org/fhir/DataElement/54134-2"
+    )
+    assert inst.item[1].item[0].item[9].linkId == "1.1.10"
+    assert inst.item[1].item[0].item[9].text == "Race"
+    assert inst.item[1].item[0].linkId == "1.1"
+    assert inst.item[1].linkId == "1"
+    assert inst.item[1].text == "Your health information"
+    assert inst.item[2].definition == "http://loinc.org/fhir/DataElement/54114-4"
+    assert (
+        inst.item[2].item[0].item[0].item[0].answer[0].valueCoding.code == "LA10405-1"
+    )
+    assert (
+        inst.item[2].item[0].item[0].item[0].answer[0].valueCoding.display == "Daughter"
+    )
+    assert (
+        inst.item[2].item[0].item[0].item[0].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[0].item[0].item[0].definition
+        == "http://loinc.org/fhir/DataElement/54136-7"
+    )
+    assert inst.item[2].item[0].item[0].item[0].linkId == "2.1.1.1"
+    assert inst.item[2].item[0].item[0].item[0].text == "Relationship to you"
+    assert inst.item[2].item[0].item[0].item[1].answer[0].valueString == "Susan"
+    assert (
+        inst.item[2].item[0].item[0].item[1].definition
+        == "http://loinc.org/fhir/DataElement/54138-3"
+    )
+    assert inst.item[2].item[0].item[0].item[1].linkId == "2.1.1.2"
+    assert inst.item[2].item[0].item[0].item[1].text == "Name"
+    assert inst.item[2].item[0].item[0].item[2].answer[0].valueCoding.code == "LA3-6"
+    assert (
+        inst.item[2].item[0].item[0].item[2].answer[0].valueCoding.display == "Female"
+    )
+    assert (
+        inst.item[2].item[0].item[0].item[2].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[0].item[0].item[2].definition
+        == "http://loinc.org/fhir/DataElement/54123-5"
+    )
+    assert inst.item[2].item[0].item[0].item[2].linkId == "2.1.1.3"
+    assert inst.item[2].item[0].item[0].item[2].text == "Gender"
+    assert float(
+        inst.item[2]
+        .item[0]
+        .item[0]
+        .item[3]
+        .answer[0]
+        .item[0]
+        .item[0]
+        .answer[0]
+        .valueDecimal
+    ) == float(17)
+    assert (
+        inst.item[2].item[0].item[0].item[3].answer[0].item[0].item[0].definition
+        == "http://loinc.org/fhir/DataElement/54141-7"
+    )
+    assert (
+        inst.item[2].item[0].item[0].item[3].answer[0].item[0].item[0].linkId
+        == "2.1.1.4.2.2"
+    )
+    assert inst.item[2].item[0].item[0].item[3].answer[0].item[0].item[0].text == "Age"
+    assert inst.item[2].item[0].item[0].item[3].answer[0].item[0].linkId == "2.1.1.4.2"
+    assert inst.item[2].item[0].item[0].item[3].answer[0].valueCoding.code == "LA33-6"
+    assert inst.item[2].item[0].item[0].item[3].answer[0].valueCoding.display == "Yes"
+    assert (
+        inst.item[2].item[0].item[0].item[3].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[0].item[0].item[3].definition
+        == "http://loinc.org/fhir/DataElement/54139-1"
+    )
+    assert inst.item[2].item[0].item[0].item[3].linkId == "2.1.1.4"
+    assert inst.item[2].item[0].item[0].item[3].text == "Living?"
+    assert inst.item[2].item[0].item[0].item[4].answer[0].valueCoding.code == "LA32-8"
+    assert inst.item[2].item[0].item[0].item[4].answer[0].valueCoding.display == "No"
+    assert (
+        inst.item[2].item[0].item[0].item[4].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[0].item[0].item[4].definition
+        == "http://loinc.org/fhir/DataElement/54121-9"
+    )
+    assert inst.item[2].item[0].item[0].item[4].linkId == "2.1.1.5"
+    assert inst.item[2].item[0].item[0].item[4].text == "Was this person born a twin?"
+    assert inst.item[2].item[0].item[0].item[5].answer[0].valueCoding.code == "LA32-8"
+    assert inst.item[2].item[0].item[0].item[5].answer[0].valueCoding.display == "No"
+    assert (
+        inst.item[2].item[0].item[0].item[5].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[0].item[0].item[5].definition
+        == "http://loinc.org/fhir/DataElement/54122-7"
+    )
+    assert inst.item[2].item[0].item[0].item[5].linkId == "2.1.1.6"
+    assert inst.item[2].item[0].item[0].item[5].text == "Was this person adopted?"
+    assert inst.item[2].item[0].item[0].linkId == "2.1.1"
+    assert inst.item[2].item[0].linkId == "2.1"
+    assert (
+        inst.item[2].item[1].item[0].item[0].answer[0].valueCoding.code == "LA10415-0"
+    )
+    assert (
+        inst.item[2].item[1].item[0].item[0].answer[0].valueCoding.display == "Brother"
+    )
+    assert (
+        inst.item[2].item[1].item[0].item[0].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[1].item[0].item[0].definition
+        == "http://loinc.org/fhir/DataElement/54136-7"
+    )
+    assert inst.item[2].item[1].item[0].item[0].linkId == "2.1.1.1"
+    assert inst.item[2].item[1].item[0].item[0].text == "Relationship to you"
+    assert inst.item[2].item[1].item[0].item[1].answer[0].valueString == "Brian"
+    assert (
+        inst.item[2].item[1].item[0].item[1].definition
+        == "http://loinc.org/fhir/DataElement/54138-3"
+    )
+    assert inst.item[2].item[1].item[0].item[1].linkId == "2.1.1.2"
+    assert inst.item[2].item[1].item[0].item[1].text == "Name"
+    assert inst.item[2].item[1].item[0].item[2].answer[0].valueCoding.code == "LA2-8"
+    assert inst.item[2].item[1].item[0].item[2].answer[0].valueCoding.display == "Male"
+    assert (
+        inst.item[2].item[1].item[0].item[2].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[1].item[0].item[2].definition
+        == "http://loinc.org/fhir/DataElement/54123-5"
+    )
+    assert inst.item[2].item[1].item[0].item[2].linkId == "2.1.1.3"
+    assert inst.item[2].item[1].item[0].item[2].text == "Gender"
+    assert float(
+        inst.item[2]
+        .item[1]
+        .item[0]
+        .item[3]
+        .answer[0]
+        .item[0]
+        .item[0]
+        .answer[0]
+        .valueDecimal
+    ) == float(32)
+    assert (
+        inst.item[2].item[1].item[0].item[3].answer[0].item[0].item[0].definition
+        == "http://loinc.org/fhir/DataElement/54141-7"
+    )
+    assert (
+        inst.item[2].item[1].item[0].item[3].answer[0].item[0].item[0].linkId
+        == "2.1.1.4.2.2"
+    )
+    assert inst.item[2].item[1].item[0].item[3].answer[0].item[0].item[0].text == "Age"
+    assert inst.item[2].item[1].item[0].item[3].answer[0].item[0].linkId == "2.1.1.4.2"
+    assert inst.item[2].item[1].item[0].item[3].answer[0].valueCoding.code == "LA33-6"
+    assert inst.item[2].item[1].item[0].item[3].answer[0].valueCoding.display == "Yes"
+    assert (
+        inst.item[2].item[1].item[0].item[3].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[1].item[0].item[3].definition
+        == "http://loinc.org/fhir/DataElement/54139-1"
+    )
+    assert inst.item[2].item[1].item[0].item[3].linkId == "2.1.1.4"
+    assert inst.item[2].item[1].item[0].item[3].text == "Living?"
+    assert inst.item[2].item[1].item[0].item[4].answer[0].valueCoding.code == "LA32-8"
+    assert inst.item[2].item[1].item[0].item[4].answer[0].valueCoding.display == "No"
+    assert (
+        inst.item[2].item[1].item[0].item[4].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[1].item[0].item[4].definition
+        == "http://loinc.org/fhir/DataElement/54121-9"
+    )
+    assert inst.item[2].item[1].item[0].item[4].linkId == "2.1.1.5"
+    assert inst.item[2].item[1].item[0].item[4].text == "Was this person born a twin?"
+    assert inst.item[2].item[1].item[0].item[5].answer[0].valueCoding.code == "LA32-8"
+    assert inst.item[2].item[1].item[0].item[5].answer[0].valueCoding.display == "No"
+    assert (
+        inst.item[2].item[1].item[0].item[5].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[1].item[0].item[5].definition
+        == "http://loinc.org/fhir/DataElement/54122-7"
+    )
+    assert inst.item[2].item[1].item[0].item[5].linkId == "2.1.1.6"
+    assert inst.item[2].item[1].item[0].item[5].text == "Was this person adopted?"
+    assert inst.item[2].item[1].item[0].linkId == "2.1.1"
+    assert (
+        inst.item[2].item[1].item[1].item[0].answer[0].valueCoding.code == "LA10550-4"
+    )
+    assert (
+        inst.item[2].item[1].item[1].item[0].answer[0].valueCoding.display
+        == "-- Other Cancer"
+    )
+    assert (
+        inst.item[2].item[1].item[1].item[0].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert inst.item[2].item[1].item[1].item[0].linkId == "2.1.2.1"
+    assert inst.item[2].item[1].item[1].item[0].text == "Disease or Condition"
+    assert (
+        inst.item[2].item[1].item[1].item[1].answer[0].valueCoding.code == "LA10397-0"
+    )
+    assert inst.item[2].item[1].item[1].item[1].answer[0].valueCoding.display == "30-39"
+    assert (
+        inst.item[2].item[1].item[1].item[1].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert inst.item[2].item[1].item[1].item[1].linkId == "2.1.2.2"
+    assert inst.item[2].item[1].item[1].item[1].text == "Age at Diagnosis"
+    assert inst.item[2].item[1].item[1].linkId == "2.1.2"
+    assert (
+        inst.item[2].item[1].item[1].text == "This family member's history of disease"
+    )
+    assert inst.item[2].item[1].linkId == "2.1"
+    assert (
+        inst.item[2].item[2].item[0].item[0].answer[0].valueCoding.code == "LA10418-4"
+    )
+    assert (
+        inst.item[2].item[2].item[0].item[0].answer[0].valueCoding.display == "Sister"
+    )
+    assert (
+        inst.item[2].item[2].item[0].item[0].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[2].item[0].item[0].definition
+        == "http://loinc.org/fhir/DataElement/54136-7"
+    )
+    assert inst.item[2].item[2].item[0].item[0].linkId == "2.1.1.1"
+    assert inst.item[2].item[2].item[0].item[0].text == "Relationship to you"
+    assert inst.item[2].item[2].item[0].item[1].answer[0].valueString == "Janet"
+    assert (
+        inst.item[2].item[2].item[0].item[1].definition
+        == "http://loinc.org/fhir/DataElement/54138-3"
+    )
+    assert inst.item[2].item[2].item[0].item[1].linkId == "2.1.1.2"
+    assert inst.item[2].item[2].item[0].item[1].text == "Name"
+    assert inst.item[2].item[2].item[0].item[2].answer[0].valueCoding.code == "LA3-6"
+    assert (
+        inst.item[2].item[2].item[0].item[2].answer[0].valueCoding.display == "Female"
+    )
+    assert (
+        inst.item[2].item[2].item[0].item[2].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[2].item[0].item[2].definition
+        == "http://loinc.org/fhir/DataElement/54123-5"
+    )
+    assert inst.item[2].item[2].item[0].item[2].linkId == "2.1.1.3"
+    assert inst.item[2].item[2].item[0].item[2].text == "Gender"
+    assert float(
+        inst.item[2]
+        .item[2]
+        .item[0]
+        .item[3]
+        .answer[0]
+        .item[0]
+        .item[0]
+        .answer[0]
+        .valueDecimal
+    ) == float(36)
+    assert (
+        inst.item[2].item[2].item[0].item[3].answer[0].item[0].item[0].definition
+        == "http://loinc.org/fhir/DataElement/54141-7"
+    )
+    assert (
+        inst.item[2].item[2].item[0].item[3].answer[0].item[0].item[0].linkId
+        == "2.1.1.4.2.2"
+    )
+    assert inst.item[2].item[2].item[0].item[3].answer[0].item[0].item[0].text == "Age"
+    assert inst.item[2].item[2].item[0].item[3].answer[0].item[0].linkId == "2.1.1.4.2"
+    assert inst.item[2].item[2].item[0].item[3].answer[0].valueCoding.code == "LA33-6"
+    assert inst.item[2].item[2].item[0].item[3].answer[0].valueCoding.display == "Yes"
+    assert (
+        inst.item[2].item[2].item[0].item[3].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[2].item[0].item[3].definition
+        == "http://loinc.org/fhir/DataElement/54139-1"
+    )
+    assert inst.item[2].item[2].item[0].item[3].linkId == "2.1.1.4"
+    assert inst.item[2].item[2].item[0].item[3].text == "Living?"
+    assert inst.item[2].item[2].item[0].item[4].answer[0].valueCoding.code == "LA32-8"
+    assert inst.item[2].item[2].item[0].item[4].answer[0].valueCoding.display == "No"
+    assert (
+        inst.item[2].item[2].item[0].item[4].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[2].item[0].item[4].definition
+        == "http://loinc.org/fhir/DataElement/54121-9"
+    )
+    assert inst.item[2].item[2].item[0].item[4].linkId == "2.1.1.5"
+    assert inst.item[2].item[2].item[0].item[4].text == "Was this person born a twin?"
+    assert inst.item[2].item[2].item[0].item[5].answer[0].valueCoding.code == "LA32-8"
+    assert inst.item[2].item[2].item[0].item[5].answer[0].valueCoding.display == "No"
+    assert (
+        inst.item[2].item[2].item[0].item[5].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[2].item[0].item[5].definition
+        == "http://loinc.org/fhir/DataElement/54122-7"
+    )
+    assert inst.item[2].item[2].item[0].item[5].linkId == "2.1.1.6"
+    assert inst.item[2].item[2].item[0].item[5].text == "Was this person adopted?"
+    assert inst.item[2].item[2].item[0].linkId == "2.1.1"
+    assert (
+        inst.item[2].item[2].item[1].item[0].answer[0].valueCoding.code == "LA10536-3"
+    )
+    assert (
+        inst.item[2].item[2].item[1].item[0].answer[0].valueCoding.display
+        == "-- Breast Cancer"
+    )
+    assert (
+        inst.item[2].item[2].item[1].item[0].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert inst.item[2].item[2].item[1].item[0].linkId == "2.1.2.1"
+    assert inst.item[2].item[2].item[1].item[0].text == "Disease or Condition"
+    assert (
+        inst.item[2].item[2].item[1].item[1].answer[0].valueCoding.code == "LA10397-0"
+    )
+    assert inst.item[2].item[2].item[1].item[1].answer[0].valueCoding.display == "30-39"
+    assert (
+        inst.item[2].item[2].item[1].item[1].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert inst.item[2].item[2].item[1].item[1].linkId == "2.1.2.2"
+    assert inst.item[2].item[2].item[1].item[1].text == "Age at Diagnosis"
+    assert inst.item[2].item[2].item[1].linkId == "2.1.2"
+    assert (
+        inst.item[2].item[2].item[1].text == "This family member's history of disease"
+    )
+    assert inst.item[2].item[2].linkId == "2.1"
+    assert (
+        inst.item[2].item[3].item[0].item[0].answer[0].valueCoding.code == "LA10419-2"
+    )
+    assert (
+        inst.item[2].item[3].item[0].item[0].answer[0].valueCoding.display == "Nephew"
+    )
+    assert (
+        inst.item[2].item[3].item[0].item[0].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[3].item[0].item[0].definition
+        == "http://loinc.org/fhir/DataElement/54136-7"
+    )
+    assert inst.item[2].item[3].item[0].item[0].linkId == "2.1.1.1"
+    assert inst.item[2].item[3].item[0].item[0].text == "Relationship to you"
+    assert inst.item[2].item[3].item[0].item[1].answer[0].valueString == "Ian"
+    assert (
+        inst.item[2].item[3].item[0].item[1].definition
+        == "http://loinc.org/fhir/DataElement/54138-3"
+    )
+    assert inst.item[2].item[3].item[0].item[1].linkId == "2.1.1.2"
+    assert inst.item[2].item[3].item[0].item[1].text == "Name"
+    assert inst.item[2].item[3].item[0].item[2].answer[0].valueCoding.code == "LA2-8"
+    assert inst.item[2].item[3].item[0].item[2].answer[0].valueCoding.display == "Male"
+    assert (
+        inst.item[2].item[3].item[0].item[2].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[3].item[0].item[2].definition
+        == "http://loinc.org/fhir/DataElement/54123-5"
+    )
+    assert inst.item[2].item[3].item[0].item[2].linkId == "2.1.1.3"
+    assert inst.item[2].item[3].item[0].item[2].text == "Gender"
+    assert float(
+        inst.item[2]
+        .item[3]
+        .item[0]
+        .item[3]
+        .answer[0]
+        .item[0]
+        .item[0]
+        .answer[0]
+        .valueDecimal
+    ) == float(16)
+    assert (
+        inst.item[2].item[3].item[0].item[3].answer[0].item[0].item[0].definition
+        == "http://loinc.org/fhir/DataElement/54141-7"
+    )
+    assert (
+        inst.item[2].item[3].item[0].item[3].answer[0].item[0].item[0].linkId
+        == "2.1.1.4.2.2"
+    )
+    assert inst.item[2].item[3].item[0].item[3].answer[0].item[0].item[0].text == "Age"
+    assert inst.item[2].item[3].item[0].item[3].answer[0].item[0].linkId == "2.1.1.4.2"
+    assert inst.item[2].item[3].item[0].item[3].answer[0].valueCoding.code == "LA33-6"
+    assert inst.item[2].item[3].item[0].item[3].answer[0].valueCoding.display == "Yes"
+    assert (
+        inst.item[2].item[3].item[0].item[3].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[3].item[0].item[3].definition
+        == "http://loinc.org/fhir/DataElement/54139-1"
+    )
+    assert inst.item[2].item[3].item[0].item[3].linkId == "2.1.1.4"
+    assert inst.item[2].item[3].item[0].item[3].text == "Living?"
+    assert inst.item[2].item[3].item[0].item[4].answer[0].valueCoding.code == "LA32-8"
+    assert inst.item[2].item[3].item[0].item[4].answer[0].valueCoding.display == "No"
+    assert (
+        inst.item[2].item[3].item[0].item[4].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[3].item[0].item[4].definition
+        == "http://loinc.org/fhir/DataElement/54121-9"
+    )
+    assert inst.item[2].item[3].item[0].item[4].linkId == "2.1.1.5"
+    assert inst.item[2].item[3].item[0].item[4].text == "Was this person born a twin?"
+    assert inst.item[2].item[3].item[0].item[5].answer[0].valueCoding.code == "LA32-8"
+    assert inst.item[2].item[3].item[0].item[5].answer[0].valueCoding.display == "No"
+    assert (
+        inst.item[2].item[3].item[0].item[5].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[3].item[0].item[5].definition
+        == "http://loinc.org/fhir/DataElement/54122-7"
+    )
+    assert inst.item[2].item[3].item[0].item[5].linkId == "2.1.1.6"
+    assert inst.item[2].item[3].item[0].item[5].text == "Was this person adopted?"
+    assert inst.item[2].item[3].item[0].linkId == "2.1.1"
+    assert inst.item[2].item[3].linkId == "2.1"
+    assert (
+        inst.item[2].item[4].item[0].item[0].answer[0].valueCoding.code == "LA10420-0"
+    )
+    assert inst.item[2].item[4].item[0].item[0].answer[0].valueCoding.display == "Niece"
+    assert (
+        inst.item[2].item[4].item[0].item[0].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[4].item[0].item[0].definition
+        == "http://loinc.org/fhir/DataElement/54136-7"
+    )
+    assert inst.item[2].item[4].item[0].item[0].linkId == "2.1.1.1"
+    assert inst.item[2].item[4].item[0].item[0].text == "Relationship to you"
+    assert inst.item[2].item[4].item[0].item[1].answer[0].valueString == "Helen"
+    assert (
+        inst.item[2].item[4].item[0].item[1].definition
+        == "http://loinc.org/fhir/DataElement/54138-3"
+    )
+    assert inst.item[2].item[4].item[0].item[1].linkId == "2.1.1.2"
+    assert inst.item[2].item[4].item[0].item[1].text == "Name"
+    assert inst.item[2].item[4].item[0].item[2].answer[0].valueCoding.code == "LA3-6"
+    assert (
+        inst.item[2].item[4].item[0].item[2].answer[0].valueCoding.display == "Female"
+    )
+    assert (
+        inst.item[2].item[4].item[0].item[2].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[4].item[0].item[2].definition
+        == "http://loinc.org/fhir/DataElement/54123-5"
+    )
+    assert inst.item[2].item[4].item[0].item[2].linkId == "2.1.1.3"
+    assert inst.item[2].item[4].item[0].item[2].text == "Gender"
+    assert float(
+        inst.item[2]
+        .item[4]
+        .item[0]
+        .item[3]
+        .answer[0]
+        .item[0]
+        .item[0]
+        .answer[0]
+        .valueDecimal
+    ) == float(15)
+    assert (
+        inst.item[2].item[4].item[0].item[3].answer[0].item[0].item[0].definition
+        == "http://loinc.org/fhir/DataElement/54141-7"
+    )
+    assert (
+        inst.item[2].item[4].item[0].item[3].answer[0].item[0].item[0].linkId
+        == "2.1.1.4.2.2"
+    )
+    assert inst.item[2].item[4].item[0].item[3].answer[0].item[0].item[0].text == "Age"
+    assert inst.item[2].item[4].item[0].item[3].answer[0].item[0].linkId == "2.1.1.4.2"
+    assert inst.item[2].item[4].item[0].item[3].answer[0].valueCoding.code == "LA33-6"
+    assert inst.item[2].item[4].item[0].item[3].answer[0].valueCoding.display == "Yes"
+    assert (
+        inst.item[2].item[4].item[0].item[3].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[4].item[0].item[3].definition
+        == "http://loinc.org/fhir/DataElement/54139-1"
+    )
+    assert inst.item[2].item[4].item[0].item[3].linkId == "2.1.1.4"
+    assert inst.item[2].item[4].item[0].item[3].text == "Living?"
+    assert inst.item[2].item[4].item[0].item[4].answer[0].valueCoding.code == "LA32-8"
+    assert inst.item[2].item[4].item[0].item[4].answer[0].valueCoding.display == "No"
+    assert (
+        inst.item[2].item[4].item[0].item[4].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[4].item[0].item[4].definition
+        == "http://loinc.org/fhir/DataElement/54121-9"
+    )
+    assert inst.item[2].item[4].item[0].item[4].linkId == "2.1.1.5"
+    assert inst.item[2].item[4].item[0].item[4].text == "Was this person born a twin?"
+    assert inst.item[2].item[4].item[0].item[5].answer[0].valueCoding.code == "LA32-8"
+    assert inst.item[2].item[4].item[0].item[5].answer[0].valueCoding.display == "No"
+    assert (
+        inst.item[2].item[4].item[0].item[5].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[4].item[0].item[5].definition
+        == "http://loinc.org/fhir/DataElement/54122-7"
+    )
+    assert inst.item[2].item[4].item[0].item[5].linkId == "2.1.1.6"
+    assert inst.item[2].item[4].item[0].item[5].text == "Was this person adopted?"
+    assert inst.item[2].item[4].item[0].linkId == "2.1.1"
+    assert inst.item[2].item[4].linkId == "2.1"
+    assert (
+        inst.item[2].item[5].item[0].item[0].answer[0].valueCoding.code == "LA10416-8"
+    )
+    assert (
+        inst.item[2].item[5].item[0].item[0].answer[0].valueCoding.display == "Father"
+    )
+    assert (
+        inst.item[2].item[5].item[0].item[0].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[5].item[0].item[0].definition
+        == "http://loinc.org/fhir/DataElement/54136-7"
+    )
+    assert inst.item[2].item[5].item[0].item[0].linkId == "2.1.1.1"
+    assert inst.item[2].item[5].item[0].item[0].text == "Relationship to you"
+    assert inst.item[2].item[5].item[0].item[1].answer[0].valueString == "Donald"
+    assert (
+        inst.item[2].item[5].item[0].item[1].definition
+        == "http://loinc.org/fhir/DataElement/54138-3"
+    )
+    assert inst.item[2].item[5].item[0].item[1].linkId == "2.1.1.2"
+    assert inst.item[2].item[5].item[0].item[1].text == "Name"
+    assert inst.item[2].item[5].item[0].item[2].answer[0].valueCoding.code == "LA2-8"
+    assert inst.item[2].item[5].item[0].item[2].answer[0].valueCoding.display == "Male"
+    assert (
+        inst.item[2].item[5].item[0].item[2].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[5].item[0].item[2].definition
+        == "http://loinc.org/fhir/DataElement/54123-5"
+    )
+    assert inst.item[2].item[5].item[0].item[2].linkId == "2.1.1.3"
+    assert inst.item[2].item[5].item[0].item[2].text == "Gender"
+    assert float(
+        inst.item[2]
+        .item[5]
+        .item[0]
+        .item[3]
+        .answer[0]
+        .item[0]
+        .item[0]
+        .answer[0]
+        .valueDecimal
+    ) == float(52)
+    assert (
+        inst.item[2].item[5].item[0].item[3].answer[0].item[0].item[0].definition
+        == "http://loinc.org/fhir/DataElement/54141-7"
+    )
+    assert (
+        inst.item[2].item[5].item[0].item[3].answer[0].item[0].item[0].linkId
+        == "2.1.1.4.2.2"
+    )
+    assert inst.item[2].item[5].item[0].item[3].answer[0].item[0].item[0].text == "Age"
+    assert inst.item[2].item[5].item[0].item[3].answer[0].item[0].linkId == "2.1.1.4.2"
+    assert inst.item[2].item[5].item[0].item[3].answer[0].valueCoding.code == "LA33-6"
+    assert inst.item[2].item[5].item[0].item[3].answer[0].valueCoding.display == "Yes"
+    assert (
+        inst.item[2].item[5].item[0].item[3].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[5].item[0].item[3].definition
+        == "http://loinc.org/fhir/DataElement/54139-1"
+    )
+    assert inst.item[2].item[5].item[0].item[3].linkId == "2.1.1.4"
+    assert inst.item[2].item[5].item[0].item[3].text == "Living?"
+    assert inst.item[2].item[5].item[0].item[4].answer[0].valueCoding.code == "LA32-8"
+    assert inst.item[2].item[5].item[0].item[4].answer[0].valueCoding.display == "No"
+    assert (
+        inst.item[2].item[5].item[0].item[4].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[5].item[0].item[4].definition
+        == "http://loinc.org/fhir/DataElement/54121-9"
+    )
+    assert inst.item[2].item[5].item[0].item[4].linkId == "2.1.1.5"
+    assert inst.item[2].item[5].item[0].item[4].text == "Was this person born a twin?"
+    assert inst.item[2].item[5].item[0].item[5].answer[0].valueCoding.code == "LA32-8"
+    assert inst.item[2].item[5].item[0].item[5].answer[0].valueCoding.display == "No"
+    assert (
+        inst.item[2].item[5].item[0].item[5].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[5].item[0].item[5].definition
+        == "http://loinc.org/fhir/DataElement/54122-7"
+    )
+    assert inst.item[2].item[5].item[0].item[5].linkId == "2.1.1.6"
+    assert inst.item[2].item[5].item[0].item[5].text == "Was this person adopted?"
+    assert inst.item[2].item[5].item[0].linkId == "2.1.1"
+    assert inst.item[2].item[5].linkId == "2.1"
+    assert (
+        inst.item[2].item[6].item[0].item[0].answer[0].valueCoding.code == "LA10425-9"
+    )
+    assert (
+        inst.item[2].item[6].item[0].item[0].answer[0].valueCoding.display
+        == "Paternal Uncle"
+    )
+    assert (
+        inst.item[2].item[6].item[0].item[0].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[6].item[0].item[0].definition
+        == "http://loinc.org/fhir/DataElement/54136-7"
+    )
+    assert inst.item[2].item[6].item[0].item[0].linkId == "2.1.1.1"
+    assert inst.item[2].item[6].item[0].item[0].text == "Relationship to you"
+    assert inst.item[2].item[6].item[0].item[1].answer[0].valueString == "Eric"
+    assert (
+        inst.item[2].item[6].item[0].item[1].definition
+        == "http://loinc.org/fhir/DataElement/54138-3"
+    )
+    assert inst.item[2].item[6].item[0].item[1].linkId == "2.1.1.2"
+    assert inst.item[2].item[6].item[0].item[1].text == "Name"
+    assert inst.item[2].item[6].item[0].item[2].answer[0].valueCoding.code == "LA2-8"
+    assert inst.item[2].item[6].item[0].item[2].answer[0].valueCoding.display == "Male"
+    assert (
+        inst.item[2].item[6].item[0].item[2].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[6].item[0].item[2].definition
+        == "http://loinc.org/fhir/DataElement/54123-5"
+    )
+    assert inst.item[2].item[6].item[0].item[2].linkId == "2.1.1.3"
+    assert inst.item[2].item[6].item[0].item[2].text == "Gender"
+    assert float(
+        inst.item[2]
+        .item[6]
+        .item[0]
+        .item[3]
+        .answer[0]
+        .item[0]
+        .item[0]
+        .answer[0]
+        .valueDecimal
+    ) == float(56)
+    assert (
+        inst.item[2].item[6].item[0].item[3].answer[0].item[0].item[0].definition
+        == "http://loinc.org/fhir/DataElement/54141-7"
+    )
+    assert (
+        inst.item[2].item[6].item[0].item[3].answer[0].item[0].item[0].linkId
+        == "2.1.1.4.2.2"
+    )
+    assert inst.item[2].item[6].item[0].item[3].answer[0].item[0].item[0].text == "Age"
+    assert inst.item[2].item[6].item[0].item[3].answer[0].item[0].linkId == "2.1.1.4.2"
+    assert inst.item[2].item[6].item[0].item[3].answer[0].valueCoding.code == "LA33-6"
+    assert inst.item[2].item[6].item[0].item[3].answer[0].valueCoding.display == "Yes"
+    assert (
+        inst.item[2].item[6].item[0].item[3].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[6].item[0].item[3].definition
+        == "http://loinc.org/fhir/DataElement/54139-1"
+    )
+    assert inst.item[2].item[6].item[0].item[3].linkId == "2.1.1.4"
+    assert inst.item[2].item[6].item[0].item[3].text == "Living?"
+    assert inst.item[2].item[6].item[0].item[4].answer[0].valueCoding.code == "LA32-8"
+    assert inst.item[2].item[6].item[0].item[4].answer[0].valueCoding.display == "No"
+    assert (
+        inst.item[2].item[6].item[0].item[4].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[6].item[0].item[4].definition
+        == "http://loinc.org/fhir/DataElement/54121-9"
+    )
+    assert inst.item[2].item[6].item[0].item[4].linkId == "2.1.1.5"
+    assert inst.item[2].item[6].item[0].item[4].text == "Was this person born a twin?"
+    assert inst.item[2].item[6].item[0].item[5].answer[0].valueCoding.code == "LA32-8"
+    assert inst.item[2].item[6].item[0].item[5].answer[0].valueCoding.display == "No"
+    assert (
+        inst.item[2].item[6].item[0].item[5].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[6].item[0].item[5].definition
+        == "http://loinc.org/fhir/DataElement/54122-7"
+    )
+    assert inst.item[2].item[6].item[0].item[5].linkId == "2.1.1.6"
+    assert inst.item[2].item[6].item[0].item[5].text == "Was this person adopted?"
+    assert inst.item[2].item[6].item[0].linkId == "2.1.1"
+    assert inst.item[2].item[6].linkId == "2.1"
+    assert (
+        inst.item[2].item[7].item[0].item[0].answer[0].valueCoding.code == "LA10421-8"
+    )
+    assert (
+        inst.item[2].item[7].item[0].item[0].answer[0].valueCoding.display
+        == "Paternal Aunt"
+    )
+    assert (
+        inst.item[2].item[7].item[0].item[0].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[7].item[0].item[0].definition
+        == "http://loinc.org/fhir/DataElement/54136-7"
+    )
+    assert inst.item[2].item[7].item[0].item[0].linkId == "2.1.1.1"
+    assert inst.item[2].item[7].item[0].item[0].text == "Relationship to you"
+    assert inst.item[2].item[7].item[0].item[1].answer[0].valueString == "Fiona"
+    assert (
+        inst.item[2].item[7].item[0].item[1].definition
+        == "http://loinc.org/fhir/DataElement/54138-3"
+    )
+    assert inst.item[2].item[7].item[0].item[1].linkId == "2.1.1.2"
+    assert inst.item[2].item[7].item[0].item[1].text == "Name"
+    assert inst.item[2].item[7].item[0].item[2].answer[0].valueCoding.code == "LA3-6"
+    assert (
+        inst.item[2].item[7].item[0].item[2].answer[0].valueCoding.display == "Female"
+    )
+    assert (
+        inst.item[2].item[7].item[0].item[2].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[7].item[0].item[2].definition
+        == "http://loinc.org/fhir/DataElement/54123-5"
+    )
+    assert inst.item[2].item[7].item[0].item[2].linkId == "2.1.1.3"
+    assert inst.item[2].item[7].item[0].item[2].text == "Gender"
+    assert float(
+        inst.item[2]
+        .item[7]
+        .item[0]
+        .item[3]
+        .answer[0]
+        .item[0]
+        .item[0]
+        .answer[0]
+        .valueDecimal
+    ) == float(57)
+    assert (
+        inst.item[2].item[7].item[0].item[3].answer[0].item[0].item[0].definition
+        == "http://loinc.org/fhir/DataElement/54141-7"
+    )
+    assert (
+        inst.item[2].item[7].item[0].item[3].answer[0].item[0].item[0].linkId
+        == "2.1.1.4.2.2"
+    )
+    assert inst.item[2].item[7].item[0].item[3].answer[0].item[0].item[0].text == "Age"
+    assert inst.item[2].item[7].item[0].item[3].answer[0].item[0].linkId == "2.1.1.4.2"
+    assert inst.item[2].item[7].item[0].item[3].answer[0].valueCoding.code == "LA33-6"
+    assert inst.item[2].item[7].item[0].item[3].answer[0].valueCoding.display == "Yes"
+    assert (
+        inst.item[2].item[7].item[0].item[3].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[7].item[0].item[3].definition
+        == "http://loinc.org/fhir/DataElement/54139-1"
+    )
+    assert inst.item[2].item[7].item[0].item[3].linkId == "2.1.1.4"
+    assert inst.item[2].item[7].item[0].item[3].text == "Living?"
+    assert inst.item[2].item[7].item[0].item[4].answer[0].valueCoding.code == "LA32-8"
+    assert inst.item[2].item[7].item[0].item[4].answer[0].valueCoding.display == "No"
+    assert (
+        inst.item[2].item[7].item[0].item[4].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[7].item[0].item[4].definition
+        == "http://loinc.org/fhir/DataElement/54121-9"
+    )
+    assert inst.item[2].item[7].item[0].item[4].linkId == "2.1.1.5"
+    assert inst.item[2].item[7].item[0].item[4].text == "Was this person born a twin?"
+    assert inst.item[2].item[7].item[0].item[5].answer[0].valueCoding.code == "LA32-8"
+    assert inst.item[2].item[7].item[0].item[5].answer[0].valueCoding.display == "No"
+    assert (
+        inst.item[2].item[7].item[0].item[5].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[7].item[0].item[5].definition
+        == "http://loinc.org/fhir/DataElement/54122-7"
+    )
+    assert inst.item[2].item[7].item[0].item[5].linkId == "2.1.1.6"
+    assert inst.item[2].item[7].item[0].item[5].text == "Was this person adopted?"
+    assert inst.item[2].item[7].item[0].linkId == "2.1.1"
+    assert (
+        inst.item[2].item[7].item[1].item[0].answer[0].valueCoding.code == "LA10543-9"
+    )
+    assert (
+        inst.item[2].item[7].item[1].item[0].answer[0].valueCoding.display
+        == "-- Skin Cancer"
+    )
+    assert (
+        inst.item[2].item[7].item[1].item[0].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert inst.item[2].item[7].item[1].item[0].linkId == "2.1.2.1"
+    assert inst.item[2].item[7].item[1].item[0].text == "Disease or Condition"
+    assert inst.item[2].item[7].item[1].linkId == "2.1.2"
+    assert (
+        inst.item[2].item[7].item[1].text == "This family member's history of disease"
+    )
+    assert inst.item[2].item[7].linkId == "2.1"
+    assert (
+        inst.item[2].item[8].item[0].item[0].answer[0].valueCoding.code == "LA10423-4"
+    )
+    assert (
+        inst.item[2].item[8].item[0].item[0].answer[0].valueCoding.display
+        == "Paternal Grandfather"
+    )
+    assert (
+        inst.item[2].item[8].item[0].item[0].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[8].item[0].item[0].definition
+        == "http://loinc.org/fhir/DataElement/54136-7"
+    )
+    assert inst.item[2].item[8].item[0].item[0].linkId == "2.1.1.1"
+    assert inst.item[2].item[8].item[0].item[0].text == "Relationship to you"
+    assert inst.item[2].item[8].item[0].item[1].answer[0].valueString == "Bob"
+    assert (
+        inst.item[2].item[8].item[0].item[1].definition
+        == "http://loinc.org/fhir/DataElement/54138-3"
+    )
+    assert inst.item[2].item[8].item[0].item[1].linkId == "2.1.1.2"
+    assert inst.item[2].item[8].item[0].item[1].text == "Name"
+    assert inst.item[2].item[8].item[0].item[2].answer[0].valueCoding.code == "LA2-8"
+    assert inst.item[2].item[8].item[0].item[2].answer[0].valueCoding.display == "Male"
+    assert (
+        inst.item[2].item[8].item[0].item[2].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[8].item[0].item[2].definition
+        == "http://loinc.org/fhir/DataElement/54123-5"
+    )
+    assert inst.item[2].item[8].item[0].item[2].linkId == "2.1.1.3"
+    assert inst.item[2].item[8].item[0].item[2].text == "Gender"
+    assert (
+        inst.item[2]
+        .item[8]
+        .item[0]
+        .item[3]
+        .answer[0]
+        .item[0]
+        .item[0]
+        .answer[0]
+        .valueCoding.code
+        == "LA10537-1"
+    )
+    assert (
+        inst.item[2]
+        .item[8]
+        .item[0]
+        .item[3]
+        .answer[0]
+        .item[0]
+        .item[0]
+        .answer[0]
+        .valueCoding.display
+        == "-- Colon Cancer"
+    )
+    assert (
+        inst.item[2]
+        .item[8]
+        .item[0]
+        .item[3]
+        .answer[0]
+        .item[0]
+        .item[0]
+        .answer[0]
+        .valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[8].item[0].item[3].answer[0].item[0].item[0].definition
+        == "http://loinc.org/fhir/DataElement/54112-8"
+    )
+    assert (
+        inst.item[2].item[8].item[0].item[3].answer[0].item[0].item[0].linkId
+        == "2.1.1.4.1.1"
+    )
+    assert (
+        inst.item[2].item[8].item[0].item[3].answer[0].item[0].item[0].text
+        == "Cause of Death"
+    )
+    assert (
+        inst.item[2]
+        .item[8]
+        .item[0]
+        .item[3]
+        .answer[0]
+        .item[0]
+        .item[1]
+        .answer[0]
+        .valueCoding.code
+        == "LA10400-2"
+    )
+    assert (
+        inst.item[2]
+        .item[8]
+        .item[0]
+        .item[3]
+        .answer[0]
+        .item[0]
+        .item[1]
+        .answer[0]
+        .valueCoding.display
+        == "OVER 60"
+    )
+    assert (
+        inst.item[2]
+        .item[8]
+        .item[0]
+        .item[3]
+        .answer[0]
+        .item[0]
+        .item[1]
+        .answer[0]
+        .valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[8].item[0].item[3].answer[0].item[0].item[1].definition
+        == "http://loinc.org/fhir/DataElement/54113-6"
+    )
+    assert (
+        inst.item[2].item[8].item[0].item[3].answer[0].item[0].item[1].linkId
+        == "2.1.1.4.1.2"
+    )
+    assert (
+        inst.item[2].item[8].item[0].item[3].answer[0].item[0].item[1].text
+        == "Age at Death"
+    )
+    assert inst.item[2].item[8].item[0].item[3].answer[0].item[0].linkId == "2.1.1.4.1"
+    assert inst.item[2].item[8].item[0].item[3].answer[0].valueCoding.code == "LA32-8"
+    assert inst.item[2].item[8].item[0].item[3].answer[0].valueCoding.display == "No"
+    assert (
+        inst.item[2].item[8].item[0].item[3].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[8].item[0].item[3].definition
+        == "http://loinc.org/fhir/DataElement/54139-1"
+    )
+    assert inst.item[2].item[8].item[0].item[3].linkId == "2.1.1.4"
+    assert inst.item[2].item[8].item[0].item[3].text == "Living?"
+    assert inst.item[2].item[8].item[0].item[4].answer[0].valueCoding.code == "LA32-8"
+    assert inst.item[2].item[8].item[0].item[4].answer[0].valueCoding.display == "No"
+    assert (
+        inst.item[2].item[8].item[0].item[4].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[8].item[0].item[4].definition
+        == "http://loinc.org/fhir/DataElement/54121-9"
+    )
+    assert inst.item[2].item[8].item[0].item[4].linkId == "2.1.1.5"
+    assert inst.item[2].item[8].item[0].item[4].text == "Was this person born a twin?"
+    assert inst.item[2].item[8].item[0].item[5].answer[0].valueCoding.code == "LA32-8"
+    assert inst.item[2].item[8].item[0].item[5].answer[0].valueCoding.display == "No"
+    assert (
+        inst.item[2].item[8].item[0].item[5].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[8].item[0].item[5].definition
+        == "http://loinc.org/fhir/DataElement/54122-7"
+    )
+    assert inst.item[2].item[8].item[0].item[5].linkId == "2.1.1.6"
+    assert inst.item[2].item[8].item[0].item[5].text == "Was this person adopted?"
+    assert inst.item[2].item[8].item[0].linkId == "2.1.1"
+    assert (
+        inst.item[2].item[8].item[1].item[0].answer[0].valueCoding.code == "LA10537-1"
+    )
+    assert (
+        inst.item[2].item[8].item[1].item[0].answer[0].valueCoding.display
+        == "-- Colon Cancer"
+    )
+    assert (
+        inst.item[2].item[8].item[1].item[0].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert inst.item[2].item[8].item[1].item[0].linkId == "2.1.2.1"
+    assert inst.item[2].item[8].item[1].item[0].text == "Disease or Condition"
+    assert (
+        inst.item[2].item[8].item[1].item[1].answer[0].valueCoding.code == "LA10400-2"
+    )
+    assert (
+        inst.item[2].item[8].item[1].item[1].answer[0].valueCoding.display == "OVER 60"
+    )
+    assert (
+        inst.item[2].item[8].item[1].item[1].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert inst.item[2].item[8].item[1].item[1].linkId == "2.1.2.2"
+    assert inst.item[2].item[8].item[1].item[1].text == "Age at Diagnosis"
+    assert inst.item[2].item[8].item[1].linkId == "2.1.2"
+    assert (
+        inst.item[2].item[8].item[1].text == "This family member's history of disease"
+    )
+    assert inst.item[2].item[8].linkId == "2.1"
+    assert (
+        inst.item[2].item[9].item[0].item[0].answer[0].valueCoding.code == "LA10424-2"
+    )
+    assert (
+        inst.item[2].item[9].item[0].item[0].answer[0].valueCoding.display
+        == "Paternal Grandmother"
+    )
+    assert (
+        inst.item[2].item[9].item[0].item[0].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[9].item[0].item[0].definition
+        == "http://loinc.org/fhir/DataElement/54136-7"
+    )
+    assert inst.item[2].item[9].item[0].item[0].linkId == "2.1.1.1"
+    assert inst.item[2].item[9].item[0].item[0].text == "Relationship to you"
+    assert inst.item[2].item[9].item[0].item[1].answer[0].valueString == "Claire"
+    assert (
+        inst.item[2].item[9].item[0].item[1].definition
+        == "http://loinc.org/fhir/DataElement/54138-3"
+    )
+    assert inst.item[2].item[9].item[0].item[1].linkId == "2.1.1.2"
+    assert inst.item[2].item[9].item[0].item[1].text == "Name"
+    assert inst.item[2].item[9].item[0].item[2].answer[0].valueCoding.code == "LA3-6"
+    assert (
+        inst.item[2].item[9].item[0].item[2].answer[0].valueCoding.display == "Female"
+    )
+    assert (
+        inst.item[2].item[9].item[0].item[2].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[9].item[0].item[2].definition
+        == "http://loinc.org/fhir/DataElement/54123-5"
+    )
+    assert inst.item[2].item[9].item[0].item[2].linkId == "2.1.1.3"
+    assert inst.item[2].item[9].item[0].item[2].text == "Gender"
+    assert (
+        inst.item[2]
+        .item[9]
+        .item[0]
+        .item[3]
+        .answer[0]
+        .item[0]
+        .item[0]
+        .answer[0]
+        .item[0]
+        .answer[0]
+        .valueString
+        == "Lou Gehrigs"
+    )
+    assert (
+        inst.item[2]
+        .item[9]
+        .item[0]
+        .item[3]
+        .answer[0]
+        .item[0]
+        .item[0]
+        .answer[0]
+        .item[0]
+        .linkId
+        == "2.1.1.4.1.1.1"
+    )
+    assert (
+        inst.item[2]
+        .item[9]
+        .item[0]
+        .item[3]
+        .answer[0]
+        .item[0]
+        .item[0]
+        .answer[0]
+        .item[0]
+        .text
+        == "Please specify"
+    )
+    assert (
+        inst.item[2]
+        .item[9]
+        .item[0]
+        .item[3]
+        .answer[0]
+        .item[0]
+        .item[0]
+        .answer[0]
+        .valueCoding.code
+        == "LA10589-2"
+    )
+    assert (
+        inst.item[2]
+        .item[9]
+        .item[0]
+        .item[3]
+        .answer[0]
+        .item[0]
+        .item[0]
+        .answer[0]
+        .valueCoding.display
+        == "-- Other/Unexpected"
+    )
+    assert (
+        inst.item[2]
+        .item[9]
+        .item[0]
+        .item[3]
+        .answer[0]
+        .item[0]
+        .item[0]
+        .answer[0]
+        .valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[9].item[0].item[3].answer[0].item[0].item[0].definition
+        == "http://loinc.org/fhir/DataElement/54112-8"
+    )
+    assert (
+        inst.item[2].item[9].item[0].item[3].answer[0].item[0].item[0].linkId
+        == "2.1.1.4.1.1"
+    )
+    assert (
+        inst.item[2].item[9].item[0].item[3].answer[0].item[0].item[0].text
+        == "Cause of Death"
+    )
+    assert (
+        inst.item[2]
+        .item[9]
+        .item[0]
+        .item[3]
+        .answer[0]
+        .item[0]
+        .item[1]
+        .answer[0]
+        .valueCoding.code
+        == "LA10400-2"
+    )
+    assert (
+        inst.item[2]
+        .item[9]
+        .item[0]
+        .item[3]
+        .answer[0]
+        .item[0]
+        .item[1]
+        .answer[0]
+        .valueCoding.display
+        == "OVER 60"
+    )
+    assert (
+        inst.item[2]
+        .item[9]
+        .item[0]
+        .item[3]
+        .answer[0]
+        .item[0]
+        .item[1]
+        .answer[0]
+        .valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[9].item[0].item[3].answer[0].item[0].item[1].definition
+        == "http://loinc.org/fhir/DataElement/54113-6"
+    )
+    assert (
+        inst.item[2].item[9].item[0].item[3].answer[0].item[0].item[1].linkId
+        == "2.1.1.4.1.2"
+    )
+    assert (
+        inst.item[2].item[9].item[0].item[3].answer[0].item[0].item[1].text
+        == "Age at Death"
+    )
+    assert inst.item[2].item[9].item[0].item[3].answer[0].item[0].linkId == "2.1.1.4.1"
+    assert inst.item[2].item[9].item[0].item[3].answer[0].valueCoding.code == "LA32-8"
+    assert inst.item[2].item[9].item[0].item[3].answer[0].valueCoding.display == "No"
+    assert (
+        inst.item[2].item[9].item[0].item[3].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[9].item[0].item[3].definition
+        == "http://loinc.org/fhir/DataElement/54139-1"
+    )
+    assert inst.item[2].item[9].item[0].item[3].linkId == "2.1.1.4"
+    assert inst.item[2].item[9].item[0].item[3].text == "Living?"
+    assert inst.item[2].item[9].item[0].item[4].answer[0].valueCoding.code == "LA32-8"
+    assert inst.item[2].item[9].item[0].item[4].answer[0].valueCoding.display == "No"
+    assert (
+        inst.item[2].item[9].item[0].item[4].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[9].item[0].item[4].definition
+        == "http://loinc.org/fhir/DataElement/54121-9"
+    )
+    assert inst.item[2].item[9].item[0].item[4].linkId == "2.1.1.5"
+    assert inst.item[2].item[9].item[0].item[4].text == "Was this person born a twin?"
+    assert inst.item[2].item[9].item[0].item[5].answer[0].valueCoding.code == "LA32-8"
+    assert inst.item[2].item[9].item[0].item[5].answer[0].valueCoding.display == "No"
+    assert (
+        inst.item[2].item[9].item[0].item[5].answer[0].valueCoding.system
+        == "http://loinc.org"
+    )
+    assert (
+        inst.item[2].item[9].item[0].item[5].definition
+        == "http://loinc.org/fhir/DataElement/54122-7"
+    )
+    assert inst.item[2].item[9].item[0].item[5].linkId == "2.1.1.6"
+    assert inst.item[2].item[9].item[0].item[5].text == "Was this person adopted?"
+    assert inst.item[2].item[9].item[0].linkId == "2.1.1"
+    assert inst.item[2].item[9].linkId == "2.1"
+    assert inst.item[2].linkId == "2"
+    assert inst.item[2].subject.reference == "Patient/pat1"
+    assert inst.item[2].text == "Family member health information"
+    assert inst.questionnaire.reference == "Questionnaire/ussg-fht"
+    assert inst.status == "in-progress"
+    assert inst.subject.reference == "http://hl7.org/fhir/Patient/proband"
+    assert inst.text.status == "generated"
 
-        js = inst.as_json()
-        self.assertEqual("QuestionnaireResponse", js["resourceType"])
-        inst2 = questionnaireresponse.QuestionnaireResponse(js)
-        self.implQuestionnaireResponse3(inst2)
 
-    def implQuestionnaireResponse3(self, inst):
-        self.assertEqual(inst.authored.date, FHIRDate("2013-06-18T00:00:00+01:00").date)
-        self.assertEqual(inst.authored.as_json(), "2013-06-18T00:00:00+01:00")
-        self.assertEqual(force_bytes(inst.id), force_bytes("f201"))
-        self.assertEqual(
-            force_bytes(inst.item[0].item[0].answer[0].valueString),
-            force_bytes("I am allergic to house dust"),
-        )
-        self.assertEqual(force_bytes(inst.item[0].item[0].linkId), force_bytes("1.1"))
-        self.assertEqual(
-            force_bytes(inst.item[0].item[0].text),
-            force_bytes("Do you have allergies?"),
-        )
-        self.assertEqual(force_bytes(inst.item[0].linkId), force_bytes("1"))
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].answer[0].valueString), force_bytes("Male")
-        )
-        self.assertEqual(force_bytes(inst.item[1].item[0].linkId), force_bytes("2.1"))
-        self.assertEqual(
-            force_bytes(inst.item[1].item[0].text), force_bytes("What is your gender?")
-        )
-        self.assertEqual(
-            inst.item[1].item[1].answer[0].valueDate.date, FHIRDate("1960-03-13").date
-        )
-        self.assertEqual(
-            inst.item[1].item[1].answer[0].valueDate.as_json(), "1960-03-13"
-        )
-        self.assertEqual(force_bytes(inst.item[1].item[1].linkId), force_bytes("2.2"))
-        self.assertEqual(
-            force_bytes(inst.item[1].item[1].text),
-            force_bytes("What is your date of birth?"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[2].answer[0].valueString),
-            force_bytes("The Netherlands"),
-        )
-        self.assertEqual(force_bytes(inst.item[1].item[2].linkId), force_bytes("2.3"))
-        self.assertEqual(
-            force_bytes(inst.item[1].item[2].text),
-            force_bytes("What is your country of birth?"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].item[3].answer[0].valueString),
-            force_bytes("married"),
-        )
-        self.assertEqual(force_bytes(inst.item[1].item[3].linkId), force_bytes("2.4"))
-        self.assertEqual(
-            force_bytes(inst.item[1].item[3].text),
-            force_bytes("What is your marital status?"),
-        )
-        self.assertEqual(force_bytes(inst.item[1].linkId), force_bytes("2"))
-        self.assertEqual(
-            force_bytes(inst.item[1].text), force_bytes("General questions")
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[0].answer[0].valueString), force_bytes("No")
-        )
-        self.assertEqual(force_bytes(inst.item[2].item[0].linkId), force_bytes("3.1"))
-        self.assertEqual(
-            force_bytes(inst.item[2].item[0].text), force_bytes("Do you smoke?")
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].item[1].answer[0].valueString),
-            force_bytes("No, but I used to drink"),
-        )
-        self.assertEqual(force_bytes(inst.item[2].item[1].linkId), force_bytes("3.2"))
-        self.assertEqual(
-            force_bytes(inst.item[2].item[1].text),
-            force_bytes("Do you drink alchohol?"),
-        )
-        self.assertEqual(force_bytes(inst.item[2].linkId), force_bytes("3"))
-        self.assertEqual(force_bytes(inst.item[2].text), force_bytes("Intoxications"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("completed"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+def test_questionnaireresponse_2(base_settings):
+    """No. 2 tests collection for QuestionnaireResponse.
+    Test File: questionnaireresponse-example-ussg-fht-answers.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"]
+        / "questionnaireresponse-example-ussg-fht-answers.json"
+    )
+    inst = questionnaireresponse.QuestionnaireResponse.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "QuestionnaireResponse" == inst.resource_type
 
-    def testQuestionnaireResponse4(self):
-        inst = self.instantiate_from("questionnaireresponse-example-bluebook.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a QuestionnaireResponse instance"
-        )
-        self.implQuestionnaireResponse4(inst)
+    impl_questionnaireresponse_2(inst)
 
-        js = inst.as_json()
-        self.assertEqual("QuestionnaireResponse", js["resourceType"])
-        inst2 = questionnaireresponse.QuestionnaireResponse(js)
-        self.implQuestionnaireResponse4(inst2)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "QuestionnaireResponse" == data["resourceType"]
 
-    def implQuestionnaireResponse4(self, inst):
-        self.assertEqual(inst.authored.date, FHIRDate("2013-02-19T14:15:00+10:00").date)
-        self.assertEqual(inst.authored.as_json(), "2013-02-19T14:15:00+10:00")
-        self.assertEqual(force_bytes(inst.id), force_bytes("bb"))
-        self.assertEqual(
-            force_bytes(inst.item[0].item[0].item[0].answer[0].valueString),
-            force_bytes("Cathy Jones"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[0].item[0].item[0].linkId), force_bytes("nameOfChild")
-        )
-        self.assertEqual(
-            force_bytes(inst.item[0].item[0].item[0].text), force_bytes("Name of child")
-        )
-        self.assertEqual(
-            force_bytes(inst.item[0].item[0].item[1].answer[0].valueCoding.code),
-            force_bytes("f"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[0].item[0].item[1].linkId), force_bytes("sex")
-        )
-        self.assertEqual(
-            force_bytes(inst.item[0].item[0].item[1].text), force_bytes("Sex")
-        )
-        self.assertEqual(force_bytes(inst.item[0].item[0].linkId), force_bytes("group"))
-        self.assertEqual(inst.item[0].item[1].item[0].answer[0].valueDecimal, 3.25)
-        self.assertEqual(
-            force_bytes(inst.item[0].item[1].item[0].linkId), force_bytes("birthWeight")
-        )
-        self.assertEqual(
-            force_bytes(inst.item[0].item[1].item[0].text),
-            force_bytes("Birth weight (kg)"),
-        )
-        self.assertEqual(inst.item[0].item[1].item[1].answer[0].valueDecimal, 44.3)
-        self.assertEqual(
-            force_bytes(inst.item[0].item[1].item[1].linkId), force_bytes("birthLength")
-        )
-        self.assertEqual(
-            force_bytes(inst.item[0].item[1].item[1].text),
-            force_bytes("Birth length (cm)"),
-        )
-        self.assertEqual(
-            inst.item[0]
-            .item[1]
-            .item[2]
-            .answer[0]
-            .item[0]
-            .item[0]
-            .answer[0]
-            .valueDate.date,
-            FHIRDate("1972-11-30").date,
-        )
-        self.assertEqual(
-            inst.item[0]
-            .item[1]
-            .item[2]
-            .answer[0]
-            .item[0]
-            .item[0]
-            .answer[0]
-            .valueDate.as_json(),
-            "1972-11-30",
-        )
-        self.assertEqual(
-            force_bytes(inst.item[0].item[1].item[2].answer[0].item[0].item[0].linkId),
-            force_bytes("vitaminKDose1"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[0].item[1].item[2].answer[0].item[0].item[0].text),
-            force_bytes("1st dose"),
-        )
-        self.assertEqual(
-            inst.item[0]
-            .item[1]
-            .item[2]
-            .answer[0]
-            .item[0]
-            .item[1]
-            .answer[0]
-            .valueDate.date,
-            FHIRDate("1972-12-11").date,
-        )
-        self.assertEqual(
-            inst.item[0]
-            .item[1]
-            .item[2]
-            .answer[0]
-            .item[0]
-            .item[1]
-            .answer[0]
-            .valueDate.as_json(),
-            "1972-12-11",
-        )
-        self.assertEqual(
-            force_bytes(inst.item[0].item[1].item[2].answer[0].item[0].item[1].linkId),
-            force_bytes("vitaminKDose2"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[0].item[1].item[2].answer[0].item[0].item[1].text),
-            force_bytes("2nd dose"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[0].item[1].item[2].answer[0].item[0].linkId),
-            force_bytes("vitaminKgivenDoses"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[0].item[1].item[2].answer[0].valueCoding.code),
-            force_bytes("INJECTION"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[0].item[1].item[2].linkId),
-            force_bytes("vitaminKgiven"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[0].item[1].item[2].text),
-            force_bytes("Vitamin K given"),
-        )
-        self.assertEqual(
-            inst.item[0].item[1].item[3].answer[0].item[0].answer[0].valueDate.date,
-            FHIRDate("1972-12-04").date,
-        )
-        self.assertEqual(
-            inst.item[0]
-            .item[1]
-            .item[3]
-            .answer[0]
-            .item[0]
-            .answer[0]
-            .valueDate.as_json(),
-            "1972-12-04",
-        )
-        self.assertEqual(
-            force_bytes(inst.item[0].item[1].item[3].answer[0].item[0].linkId),
-            force_bytes("hepBgivenDate"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[0].item[1].item[3].answer[0].item[0].text),
-            force_bytes("Date given"),
-        )
-        self.assertTrue(inst.item[0].item[1].item[3].answer[0].valueBoolean)
-        self.assertEqual(
-            force_bytes(inst.item[0].item[1].item[3].linkId), force_bytes("hepBgiven")
-        )
-        self.assertEqual(
-            force_bytes(inst.item[0].item[1].item[3].text),
-            force_bytes("Hep B given y / n"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[0].item[1].item[4].answer[0].valueString),
-            force_bytes("Already able to speak Chinese"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[0].item[1].item[4].linkId),
-            force_bytes("abnormalitiesAtBirth"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[0].item[1].item[4].text),
-            force_bytes("Abnormalities noted at birth"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[0].item[1].linkId), force_bytes("neonatalInformation")
-        )
-        self.assertEqual(
-            force_bytes(inst.item[0].item[1].text), force_bytes("Neonatal Information")
-        )
-        self.assertEqual(force_bytes(inst.item[0].linkId), force_bytes("birthDetails"))
-        self.assertEqual(
-            force_bytes(inst.item[0].text),
-            force_bytes("Birth details - To be completed by health professional"),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("completed"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    inst2 = questionnaireresponse.QuestionnaireResponse(**data)
+    impl_questionnaireresponse_2(inst2)
 
-    def testQuestionnaireResponse5(self):
-        inst = self.instantiate_from("questionnaireresponse-example-gcs.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a QuestionnaireResponse instance"
-        )
-        self.implQuestionnaireResponse5(inst)
 
-        js = inst.as_json()
-        self.assertEqual("QuestionnaireResponse", js["resourceType"])
-        inst2 = questionnaireresponse.QuestionnaireResponse(js)
-        self.implQuestionnaireResponse5(inst2)
+def impl_questionnaireresponse_3(inst):
+    assert inst.author.reference == "Practitioner/f201"
+    assert inst.authored == fhirtypes.DateTime.validate("2013-06-18T00:00:00+01:00")
+    assert inst.id == "f201"
+    assert inst.item[0].item[0].answer[0].valueString == "I am allergic to house dust"
+    assert inst.item[0].item[0].linkId == "1.1"
+    assert inst.item[0].item[0].text == "Do you have allergies?"
+    assert inst.item[0].linkId == "1"
+    assert inst.item[1].item[0].answer[0].valueString == "Male"
+    assert inst.item[1].item[0].linkId == "2.1"
+    assert inst.item[1].item[0].text == "What is your gender?"
+    assert inst.item[1].item[1].answer[0].valueDate == fhirtypes.Date.validate(
+        "1960-03-13"
+    )
+    assert inst.item[1].item[1].linkId == "2.2"
+    assert inst.item[1].item[1].text == "What is your date of birth?"
+    assert inst.item[1].item[2].answer[0].valueString == "The Netherlands"
+    assert inst.item[1].item[2].linkId == "2.3"
+    assert inst.item[1].item[2].text == "What is your country of birth?"
+    assert inst.item[1].item[3].answer[0].valueString == "married"
+    assert inst.item[1].item[3].linkId == "2.4"
+    assert inst.item[1].item[3].text == "What is your marital status?"
+    assert inst.item[1].linkId == "2"
+    assert inst.item[1].text == "General questions"
+    assert inst.item[2].item[0].answer[0].valueString == "No"
+    assert inst.item[2].item[0].linkId == "3.1"
+    assert inst.item[2].item[0].text == "Do you smoke?"
+    assert inst.item[2].item[1].answer[0].valueString == "No, but I used to drink"
+    assert inst.item[2].item[1].linkId == "3.2"
+    assert inst.item[2].item[1].text == "Do you drink alchohol?"
+    assert inst.item[2].linkId == "3"
+    assert inst.item[2].text == "Intoxications"
+    assert inst.source.reference == "Practitioner/f201"
+    assert inst.status == "completed"
+    assert inst.subject.display == "Roel"
+    assert inst.subject.reference == "Patient/f201"
+    assert inst.text.status == "generated"
 
-    def implQuestionnaireResponse5(self, inst):
-        self.assertEqual(inst.authored.date, FHIRDate("2014-12-11T04:44:16Z").date)
-        self.assertEqual(inst.authored.as_json(), "2014-12-11T04:44:16Z")
-        self.assertEqual(force_bytes(inst.id), force_bytes("gcs"))
-        self.assertEqual(
-            force_bytes(inst.item[0].answer[0].valueCoding.code),
-            force_bytes("LA6560-2"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[0].answer[0].valueCoding.display),
-            force_bytes("Confused"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[0].answer[0].valueCoding.extension[0].url),
-            force_bytes("http://hl7.org/fhir/StructureDefinition/iso21090-CO-value"),
-        )
-        self.assertEqual(
-            inst.item[0].answer[0].valueCoding.extension[0].valueDecimal, 4
-        )
-        self.assertEqual(
-            force_bytes(inst.item[0].answer[0].valueCoding.system),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(force_bytes(inst.item[0].linkId), force_bytes("1.1"))
-        self.assertEqual(
-            force_bytes(inst.item[1].answer[0].valueCoding.code),
-            force_bytes("LA6566-9"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].answer[0].valueCoding.display),
-            force_bytes("Localizing pain"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].answer[0].valueCoding.extension[0].url),
-            force_bytes("http://hl7.org/fhir/StructureDefinition/iso21090-CO-value"),
-        )
-        self.assertEqual(
-            inst.item[1].answer[0].valueCoding.extension[0].valueDecimal, 5
-        )
-        self.assertEqual(
-            force_bytes(inst.item[1].answer[0].valueCoding.system),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(force_bytes(inst.item[1].linkId), force_bytes("1.2"))
-        self.assertEqual(
-            force_bytes(inst.item[2].answer[0].valueCoding.code),
-            force_bytes("LA6556-0"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].answer[0].valueCoding.display),
-            force_bytes("Eyes open spontaneously"),
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].answer[0].valueCoding.extension[0].url),
-            force_bytes("http://hl7.org/fhir/StructureDefinition/iso21090-CO-value"),
-        )
-        self.assertEqual(
-            inst.item[2].answer[0].valueCoding.extension[0].valueDecimal, 4
-        )
-        self.assertEqual(
-            force_bytes(inst.item[2].answer[0].valueCoding.system),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(force_bytes(inst.item[2].linkId), force_bytes("1.3"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("completed"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+
+def test_questionnaireresponse_3(base_settings):
+    """No. 3 tests collection for QuestionnaireResponse.
+    Test File: questionnaireresponse-example-f201-lifelines.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"]
+        / "questionnaireresponse-example-f201-lifelines.json"
+    )
+    inst = questionnaireresponse.QuestionnaireResponse.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "QuestionnaireResponse" == inst.resource_type
+
+    impl_questionnaireresponse_3(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "QuestionnaireResponse" == data["resourceType"]
+
+    inst2 = questionnaireresponse.QuestionnaireResponse(**data)
+    impl_questionnaireresponse_3(inst2)
+
+
+def impl_questionnaireresponse_4(inst):
+    assert inst.author.reference == "http://hl7.org/fhir/Practitioner/example"
+    assert inst.authored == fhirtypes.DateTime.validate("2013-02-19T14:15:00+10:00")
+    assert inst.id == "bb"
+    assert inst.item[0].item[0].item[0].answer[0].valueString == "Cathy Jones"
+    assert inst.item[0].item[0].item[0].linkId == "nameOfChild"
+    assert inst.item[0].item[0].item[0].text == "Name of child"
+    assert inst.item[0].item[0].item[1].answer[0].valueCoding.code == "f"
+    assert inst.item[0].item[0].item[1].linkId == "sex"
+    assert inst.item[0].item[0].item[1].text == "Sex"
+    assert inst.item[0].item[0].linkId == "group"
+    assert float(inst.item[0].item[1].item[0].answer[0].valueDecimal) == float(3.25)
+    assert inst.item[0].item[1].item[0].linkId == "birthWeight"
+    assert inst.item[0].item[1].item[0].text == "Birth weight (kg)"
+    assert float(inst.item[0].item[1].item[1].answer[0].valueDecimal) == float(44.3)
+    assert inst.item[0].item[1].item[1].linkId == "birthLength"
+    assert inst.item[0].item[1].item[1].text == "Birth length (cm)"
+    assert inst.item[0].item[1].item[2].answer[0].item[0].item[0].answer[
+        0
+    ].valueDate == fhirtypes.Date.validate("1972-11-30")
+    assert (
+        inst.item[0].item[1].item[2].answer[0].item[0].item[0].linkId == "vitaminKDose1"
+    )
+    assert inst.item[0].item[1].item[2].answer[0].item[0].item[0].text == "1st dose"
+    assert inst.item[0].item[1].item[2].answer[0].item[0].item[1].answer[
+        0
+    ].valueDate == fhirtypes.Date.validate("1972-12-11")
+    assert (
+        inst.item[0].item[1].item[2].answer[0].item[0].item[1].linkId == "vitaminKDose2"
+    )
+    assert inst.item[0].item[1].item[2].answer[0].item[0].item[1].text == "2nd dose"
+    assert inst.item[0].item[1].item[2].answer[0].item[0].linkId == "vitaminKgivenDoses"
+    assert inst.item[0].item[1].item[2].answer[0].valueCoding.code == "INJECTION"
+    assert inst.item[0].item[1].item[2].linkId == "vitaminKgiven"
+    assert inst.item[0].item[1].item[2].text == "Vitamin K given"
+    assert inst.item[0].item[1].item[3].answer[0].item[0].answer[
+        0
+    ].valueDate == fhirtypes.Date.validate("1972-12-04")
+    assert inst.item[0].item[1].item[3].answer[0].item[0].linkId == "hepBgivenDate"
+    assert inst.item[0].item[1].item[3].answer[0].item[0].text == "Date given"
+    assert inst.item[0].item[1].item[3].answer[0].valueBoolean is True
+    assert inst.item[0].item[1].item[3].linkId == "hepBgiven"
+    assert inst.item[0].item[1].item[3].text == "Hep B given y / n"
+    assert (
+        inst.item[0].item[1].item[4].answer[0].valueString
+        == "Already able to speak Chinese"
+    )
+    assert inst.item[0].item[1].item[4].linkId == "abnormalitiesAtBirth"
+    assert inst.item[0].item[1].item[4].text == "Abnormalities noted at birth"
+    assert inst.item[0].item[1].linkId == "neonatalInformation"
+    assert inst.item[0].item[1].text == "Neonatal Information"
+    assert inst.item[0].linkId == "birthDetails"
+    assert inst.item[0].text == "Birth details - To be completed by health professional"
+    assert inst.status == "completed"
+    assert inst.subject.reference == "http://hl7.org/fhir/Patient/1"
+    assert inst.text.status == "generated"
+
+
+def test_questionnaireresponse_4(base_settings):
+    """No. 4 tests collection for QuestionnaireResponse.
+    Test File: questionnaireresponse-example-bluebook.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"]
+        / "questionnaireresponse-example-bluebook.json"
+    )
+    inst = questionnaireresponse.QuestionnaireResponse.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "QuestionnaireResponse" == inst.resource_type
+
+    impl_questionnaireresponse_4(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "QuestionnaireResponse" == data["resourceType"]
+
+    inst2 = questionnaireresponse.QuestionnaireResponse(**data)
+    impl_questionnaireresponse_4(inst2)
+
+
+def impl_questionnaireresponse_5(inst):
+    assert inst.authored == fhirtypes.DateTime.validate("2014-12-11T04:44:16Z")
+    assert inst.id == "gcs"
+    assert inst.item[0].answer[0].valueCoding.code == "LA6560-2"
+    assert inst.item[0].answer[0].valueCoding.display == "Confused"
+    assert (
+        inst.item[0].answer[0].valueCoding.extension[0].url
+        == "http://hl7.org/fhir/StructureDefinition/iso21090-CO-value"
+    )
+    assert float(inst.item[0].answer[0].valueCoding.extension[0].valueDecimal) == float(
+        4
+    )
+    assert inst.item[0].answer[0].valueCoding.system == "http://loinc.org"
+    assert inst.item[0].linkId == "1.1"
+    assert inst.item[1].answer[0].valueCoding.code == "LA6566-9"
+    assert inst.item[1].answer[0].valueCoding.display == "Localizing pain"
+    assert (
+        inst.item[1].answer[0].valueCoding.extension[0].url
+        == "http://hl7.org/fhir/StructureDefinition/iso21090-CO-value"
+    )
+    assert float(inst.item[1].answer[0].valueCoding.extension[0].valueDecimal) == float(
+        5
+    )
+    assert inst.item[1].answer[0].valueCoding.system == "http://loinc.org"
+    assert inst.item[1].linkId == "1.2"
+    assert inst.item[2].answer[0].valueCoding.code == "LA6556-0"
+    assert inst.item[2].answer[0].valueCoding.display == "Eyes open spontaneously"
+    assert (
+        inst.item[2].answer[0].valueCoding.extension[0].url
+        == "http://hl7.org/fhir/StructureDefinition/iso21090-CO-value"
+    )
+    assert float(inst.item[2].answer[0].valueCoding.extension[0].valueDecimal) == float(
+        4
+    )
+    assert inst.item[2].answer[0].valueCoding.system == "http://loinc.org"
+    assert inst.item[2].linkId == "1.3"
+    assert inst.questionnaire.reference == "Questionnaire/gcs"
+    assert inst.source.reference == "Practitioner/f007"
+    assert inst.status == "completed"
+    assert inst.subject.display == "Peter James Chalmers"
+    assert inst.subject.reference == "Patient/example"
+    assert inst.text.status == "generated"
+
+
+def test_questionnaireresponse_5(base_settings):
+    """No. 5 tests collection for QuestionnaireResponse.
+    Test File: questionnaireresponse-example-gcs.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "questionnaireresponse-example-gcs.json"
+    )
+    inst = questionnaireresponse.QuestionnaireResponse.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "QuestionnaireResponse" == inst.resource_type
+
+    impl_questionnaireresponse_5(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "QuestionnaireResponse" == data["resourceType"]
+
+    inst2 = questionnaireresponse.QuestionnaireResponse(**data)
+    impl_questionnaireresponse_5(inst2)

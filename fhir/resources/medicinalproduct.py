@@ -6,11 +6,12 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import Any, Dict
+from typing import List as ListType
 
+from pydantic import Field, root_validator
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class MedicinalProduct(domainresource.DomainResource):
@@ -18,286 +19,151 @@ class MedicinalProduct(domainresource.DomainResource):
     direct patient care (e.g. regulatory use).
     """
 
-    resource_type = "MedicinalProduct"
+    resource_type = Field("MedicinalProduct", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    additionalMonitoringIndicator: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="additionalMonitoringIndicator",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Whether the Medicinal Product is subject to additional monitoring for regulatory reasons",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    attachedDocument: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="attachedDocument",
+        title="List of `Reference` items referencing `DocumentReference` (represented as `dict` in JSON)",
+        description="Supporting documentation, typically for regulatory submission",
+    )
 
-        self.additionalMonitoringIndicator = None
-        """ Whether the Medicinal Product is subject to additional monitoring
-        for regulatory reasons.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    clinicalTrial: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="clinicalTrial",
+        title="List of `Reference` items referencing `ResearchStudy` (represented as `dict` in JSON)",
+        description="Clinical trials or studies that this product is involved in",
+    )
 
-        self.attachedDocument = None
-        """ Supporting documentation, typically for regulatory submission.
-        List of `FHIRReference` items referencing `['DocumentReference']` (represented as `dict` in JSON). """
+    combinedPharmaceuticalDoseForm: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="combinedPharmaceuticalDoseForm",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The dose form for a single part product, or combined form of a multiple part product",
+    )
 
-        self.clinicalTrial = None
-        """ Clinical trials or studies that this product is involved in.
-        List of `FHIRReference` items referencing `['ResearchStudy']` (represented as `dict` in JSON). """
+    contact: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="contact",
+        title="List of `Reference` items referencing `Organization, PractitionerRole` (represented as `dict` in JSON)",
+        description="A product specific contact, person (in a role), or an organization",
+    )
 
-        self.combinedPharmaceuticalDoseForm = None
-        """ The dose form for a single part product, or combined form of a
-        multiple part product.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    crossReference: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="crossReference",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Reference to another product, e.g. for linking authorised to investigational product",
+    )
 
-        self.contact = None
-        """ A product specific contact, person (in a role), or an organization.
-        List of `FHIRReference` items referencing `['Organization', 'PractitionerRole']` (represented as `dict` in JSON). """
+    domain: fhirtypes.CodingType = Field(
+        None,
+        alias="domain",
+        title="Type `Coding` (represented as `dict` in JSON)",
+        description="If this medicine applies to human or veterinary uses",
+    )
 
-        self.crossReference = None
-        """ Reference to another product, e.g. for linking authorised to
-        investigational product.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Business identifier for this product. Could be an MPID",
+    )
 
-        self.domain = None
-        """ If this medicine applies to human or veterinary uses.
-        Type `Coding` (represented as `dict` in JSON). """
+    legalStatusOfSupply: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="legalStatusOfSupply",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The legal status of supply of the medicinal product as classified by the regulator",
+    )
 
-        self.identifier = None
-        """ Business identifier for this product. Could be an MPID.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    manufacturingBusinessOperation: ListType[
+        fhirtypes.MedicinalProductManufacturingBusinessOperationType
+    ] = Field(
+        None,
+        alias="manufacturingBusinessOperation",
+        title="List of `MedicinalProductManufacturingBusinessOperation` items (represented as `dict` in JSON)",
+        description="An operation applied to the product, for manufacturing or adminsitrative purpose",
+    )
 
-        self.legalStatusOfSupply = None
-        """ The legal status of supply of the medicinal product as classified
-        by the regulator.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    marketingStatus: ListType[fhirtypes.MarketingStatusType] = Field(
+        None,
+        alias="marketingStatus",
+        title="List of `MarketingStatus` items (represented as `dict` in JSON)",
+        description="Marketing status of the medicinal product, in contrast to marketing authorizaton",
+    )
 
-        self.manufacturingBusinessOperation = None
-        """ An operation applied to the product, for manufacturing or
-        adminsitrative purpose.
-        List of `MedicinalProductManufacturingBusinessOperation` items (represented as `dict` in JSON). """
+    masterFile: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="masterFile",
+        title="List of `Reference` items referencing `DocumentReference` (represented as `dict` in JSON)",
+        description="A master file for to the medicinal product (e.g. Pharmacovigilance System Master File)",
+    )
 
-        self.marketingStatus = None
-        """ Marketing status of the medicinal product, in contrast to marketing
-        authorizaton.
-        List of `MarketingStatus` items (represented as `dict` in JSON). """
+    name: ListType[fhirtypes.MedicinalProductNameType] = Field(
+        ...,
+        alias="name",
+        title="List of `MedicinalProductName` items (represented as `dict` in JSON)",
+        description="The product\u0027s name, including full name and possibly coded parts",
+    )
 
-        self.masterFile = None
-        """ A master file for to the medicinal product (e.g. Pharmacovigilance
-        System Master File).
-        List of `FHIRReference` items referencing `['DocumentReference']` (represented as `dict` in JSON). """
+    packagedMedicinalProduct: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="packagedMedicinalProduct",
+        title="List of `Reference` items referencing `MedicinalProductPackaged` (represented as `dict` in JSON)",
+        description="Package representation for the product",
+    )
 
-        self.name = None
-        """ The product's name, including full name and possibly coded parts.
-        List of `MedicinalProductName` items (represented as `dict` in JSON). """
+    paediatricUseIndicator: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="paediatricUseIndicator",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="If authorised for use in children",
+    )
 
-        self.packagedMedicinalProduct = None
-        """ Package representation for the product.
-        List of `FHIRReference` items referencing `['MedicinalProductPackaged']` (represented as `dict` in JSON). """
+    pharmaceuticalProduct: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="pharmaceuticalProduct",
+        title="List of `Reference` items referencing `MedicinalProductPharmaceutical` (represented as `dict` in JSON)",
+        description="Pharmaceutical aspects of product",
+    )
 
-        self.paediatricUseIndicator = None
-        """ If authorised for use in children.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    productClassification: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="productClassification",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Allows the product to be classified by various systems",
+    )
 
-        self.pharmaceuticalProduct = None
-        """ Pharmaceutical aspects of product.
-        List of `FHIRReference` items referencing `['MedicinalProductPharmaceutical']` (represented as `dict` in JSON). """
+    specialDesignation: ListType[
+        fhirtypes.MedicinalProductSpecialDesignationType
+    ] = Field(
+        None,
+        alias="specialDesignation",
+        title="List of `MedicinalProductSpecialDesignation` items (represented as `dict` in JSON)",
+        description="Indicates if the medicinal product has an orphan designation for the treatment of a rare disease",
+    )
 
-        self.productClassification = None
-        """ Allows the product to be classified by various systems.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    specialMeasures: ListType[fhirtypes.String] = Field(
+        None,
+        alias="specialMeasures",
+        title="List of `String` items (represented as `dict` in JSON)",
+        description="Whether the Medicinal Product is subject to special measures for regulatory reasons",
+    )
 
-        self.specialDesignation = None
-        """ Indicates if the medicinal product has an orphan designation for
-        the treatment of a rare disease.
-        List of `MedicinalProductSpecialDesignation` items (represented as `dict` in JSON). """
-
-        self.specialMeasures = None
-        """ Whether the Medicinal Product is subject to special measures for
-        regulatory reasons.
-        List of `str` items. """
-
-        self.type = None
-        """ Regulatory type, e.g. Investigational or Authorized.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(MedicinalProduct, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(MedicinalProduct, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "additionalMonitoringIndicator",
-                    "additionalMonitoringIndicator",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "attachedDocument",
-                    "attachedDocument",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "clinicalTrial",
-                    "clinicalTrial",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "combinedPharmaceuticalDoseForm",
-                    "combinedPharmaceuticalDoseForm",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "contact",
-                    "contact",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "crossReference",
-                    "crossReference",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                ("domain", "domain", coding.Coding, "Coding", False, None, False),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "legalStatusOfSupply",
-                    "legalStatusOfSupply",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "manufacturingBusinessOperation",
-                    "manufacturingBusinessOperation",
-                    MedicinalProductManufacturingBusinessOperation,
-                    "MedicinalProductManufacturingBusinessOperation",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "marketingStatus",
-                    "marketingStatus",
-                    marketingstatus.MarketingStatus,
-                    "MarketingStatus",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "masterFile",
-                    "masterFile",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "name",
-                    "name",
-                    MedicinalProductName,
-                    "MedicinalProductName",
-                    True,
-                    None,
-                    True,
-                ),
-                (
-                    "packagedMedicinalProduct",
-                    "packagedMedicinalProduct",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "paediatricUseIndicator",
-                    "paediatricUseIndicator",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "pharmaceuticalProduct",
-                    "pharmaceuticalProduct",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "productClassification",
-                    "productClassification",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "specialDesignation",
-                    "specialDesignation",
-                    MedicinalProductSpecialDesignation,
-                    "MedicinalProductSpecialDesignation",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "specialMeasures",
-                    "specialMeasures",
-                    str,
-                    "string",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    type: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Regulatory type, e.g. Investigational or Authorized",
+    )
 
 
 class MedicinalProductManufacturingBusinessOperation(backboneelement.BackboneElement):
@@ -305,266 +171,128 @@ class MedicinalProductManufacturingBusinessOperation(backboneelement.BackboneEle
     purpose.
     """
 
-    resource_type = "MedicinalProductManufacturingBusinessOperation"
+    resource_type = Field("MedicinalProductManufacturingBusinessOperation", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    authorisationReferenceNumber: fhirtypes.IdentifierType = Field(
+        None,
+        alias="authorisationReferenceNumber",
+        title="Type `Identifier` (represented as `dict` in JSON)",
+        description="Regulatory authorization reference number",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    confidentialityIndicator: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="confidentialityIndicator",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="To indicate if this proces is commercially confidential",
+    )
 
-        self.authorisationReferenceNumber = None
-        """ Regulatory authorization reference number.
-        Type `Identifier` (represented as `dict` in JSON). """
+    effectiveDate: fhirtypes.DateTime = Field(
+        None,
+        alias="effectiveDate",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Regulatory authorization date",
+    )
 
-        self.confidentialityIndicator = None
-        """ To indicate if this proces is commercially confidential.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    manufacturer: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="manufacturer",
+        title="List of `Reference` items referencing `Organization` (represented as `dict` in JSON)",
+        description="The manufacturer or establishment associated with the process",
+    )
 
-        self.effectiveDate = None
-        """ Regulatory authorization date.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    operationType: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="operationType",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The type of manufacturing operation",
+    )
 
-        self.manufacturer = None
-        """ The manufacturer or establishment associated with the process.
-        List of `FHIRReference` items referencing `['Organization']` (represented as `dict` in JSON). """
-
-        self.operationType = None
-        """ The type of manufacturing operation.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.regulator = None
-        """ A regulator which oversees the operation.
-        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
-
-        super(MedicinalProductManufacturingBusinessOperation, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(
-            MedicinalProductManufacturingBusinessOperation, self
-        ).elementProperties()
-        js.extend(
-            [
-                (
-                    "authorisationReferenceNumber",
-                    "authorisationReferenceNumber",
-                    identifier.Identifier,
-                    "Identifier",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "confidentialityIndicator",
-                    "confidentialityIndicator",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "effectiveDate",
-                    "effectiveDate",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "manufacturer",
-                    "manufacturer",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "operationType",
-                    "operationType",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "regulator",
-                    "regulator",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    regulator: fhirtypes.ReferenceType = Field(
+        None,
+        alias="regulator",
+        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        description="A regulator which oversees the operation",
+    )
 
 
 class MedicinalProductName(backboneelement.BackboneElement):
     """ The product's name, including full name and possibly coded parts.
     """
 
-    resource_type = "MedicinalProductName"
+    resource_type = Field("MedicinalProductName", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    countryLanguage: ListType[
+        fhirtypes.MedicinalProductNameCountryLanguageType
+    ] = Field(
+        None,
+        alias="countryLanguage",
+        title="List of `MedicinalProductNameCountryLanguage` items (represented as `dict` in JSON)",
+        description="Country where the name applies",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    namePart: ListType[fhirtypes.MedicinalProductNameNamePartType] = Field(
+        None,
+        alias="namePart",
+        title="List of `MedicinalProductNameNamePart` items (represented as `dict` in JSON)",
+        description="Coding words or phrases of the name",
+    )
 
-        self.countryLanguage = None
-        """ Country where the name applies.
-        List of `MedicinalProductNameCountryLanguage` items (represented as `dict` in JSON). """
-
-        self.namePart = None
-        """ Coding words or phrases of the name.
-        List of `MedicinalProductNameNamePart` items (represented as `dict` in JSON). """
-
-        self.productName = None
-        """ The full product name.
-        Type `str`. """
-
-        super(MedicinalProductName, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(MedicinalProductName, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "countryLanguage",
-                    "countryLanguage",
-                    MedicinalProductNameCountryLanguage,
-                    "MedicinalProductNameCountryLanguage",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "namePart",
-                    "namePart",
-                    MedicinalProductNameNamePart,
-                    "MedicinalProductNameNamePart",
-                    True,
-                    None,
-                    False,
-                ),
-                ("productName", "productName", str, "string", False, None, True),
-            ]
-        )
-        return js
+    productName: fhirtypes.String = Field(
+        ...,
+        alias="productName",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="The full product name",
+    )
 
 
 class MedicinalProductNameCountryLanguage(backboneelement.BackboneElement):
     """ Country where the name applies.
     """
 
-    resource_type = "MedicinalProductNameCountryLanguage"
+    resource_type = Field("MedicinalProductNameCountryLanguage", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    country: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="country",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Country code for where this name applies",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    jurisdiction: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="jurisdiction",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Jurisdiction code for where this name applies",
+    )
 
-        self.country = None
-        """ Country code for where this name applies.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.jurisdiction = None
-        """ Jurisdiction code for where this name applies.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.language = None
-        """ Language code for this name.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(MedicinalProductNameCountryLanguage, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(MedicinalProductNameCountryLanguage, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "country",
-                    "country",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "jurisdiction",
-                    "jurisdiction",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "language",
-                    "language",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
+    language: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="language",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Language code for this name",
+    )
 
 
 class MedicinalProductNameNamePart(backboneelement.BackboneElement):
     """ Coding words or phrases of the name.
     """
 
-    resource_type = "MedicinalProductNameNamePart"
+    resource_type = Field("MedicinalProductNameNamePart", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    part: fhirtypes.String = Field(
+        ...,
+        alias="part",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="A fragment of a product name",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.part = None
-        """ A fragment of a product name.
-        Type `str`. """
-
-        self.type = None
-        """ Idenifying type for this part of the name (e.g. strength part).
-        Type `Coding` (represented as `dict` in JSON). """
-
-        super(MedicinalProductNameNamePart, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(MedicinalProductNameNamePart, self).elementProperties()
-        js.extend(
-            [
-                ("part", "part", str, "string", False, None, True),
-                ("type", "type", coding.Coding, "Coding", False, None, True),
-            ]
-        )
-        return js
+    type: fhirtypes.CodingType = Field(
+        ...,
+        alias="type",
+        title="Type `Coding` (represented as `dict` in JSON)",
+        description="Idenifying type for this part of the name (e.g. strength part)",
+    )
 
 
 class MedicinalProductSpecialDesignation(backboneelement.BackboneElement):
@@ -572,146 +300,102 @@ class MedicinalProductSpecialDesignation(backboneelement.BackboneElement):
     treatment of a rare disease.
     """
 
-    resource_type = "MedicinalProductSpecialDesignation"
+    resource_type = Field("MedicinalProductSpecialDesignation", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    date: fhirtypes.DateTime = Field(
+        None,
+        alias="date",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Date when the designation was granted",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Identifier for the designation, or procedure number",
+    )
+
+    indicationCodeableConcept: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="indicationCodeableConcept",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Condition for which the medicinal use applies",
+        one_of_many="indication",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    indicationReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="indicationReference",
+        title="Type `Reference` referencing `MedicinalProductIndication` (represented as `dict` in JSON)",
+        description="Condition for which the medicinal use applies",
+        one_of_many="indication",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    intendedUse: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="intendedUse",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The intended use of the product, e.g. prevention, treatment",
+    )
+
+    species: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="species",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Animal species for which this applies",
+    )
+
+    status: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="status",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="For example granted, pending, expired or withdrawn",
+    )
+
+    type: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The type of special designation, e.g. orphan drug, minor use",
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "indication": ["indicationCodeableConcept", "indicationReference",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.date = None
-        """ Date when the designation was granted.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.identifier = None
-        """ Identifier for the designation, or procedure number.
-        List of `Identifier` items (represented as `dict` in JSON). """
-
-        self.indicationCodeableConcept = None
-        """ Condition for which the medicinal use applies.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.indicationReference = None
-        """ Condition for which the medicinal use applies.
-        Type `FHIRReference` referencing `['MedicinalProductIndication']` (represented as `dict` in JSON). """
-
-        self.intendedUse = None
-        """ The intended use of the product, e.g. prevention, treatment.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.species = None
-        """ Animal species for which this applies.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.status = None
-        """ For example granted, pending, expired or withdrawn.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.type = None
-        """ The type of special designation, e.g. orphan drug, minor use.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(MedicinalProductSpecialDesignation, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(MedicinalProductSpecialDesignation, self).elementProperties()
-        js.extend(
-            [
-                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "indicationCodeableConcept",
-                    "indicationCodeableConcept",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    "indication",
-                    False,
-                ),
-                (
-                    "indicationReference",
-                    "indicationReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    "indication",
-                    False,
-                ),
-                (
-                    "intendedUse",
-                    "intendedUse",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "species",
-                    "species",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "status",
-                    "status",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import coding
-except ImportError:
-    coding = sys.modules[__package__ + ".coding"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import marketingstatus
-except ImportError:
-    marketingstatus = sys.modules[__package__ + ".marketingstatus"]
+        return values

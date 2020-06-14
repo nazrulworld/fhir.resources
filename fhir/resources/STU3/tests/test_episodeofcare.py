@@ -6,107 +6,74 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import episodeofcare
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class EpisodeOfCareTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("EpisodeOfCare", js["resourceType"])
-        return episodeofcare.EpisodeOfCare(js)
+def impl_episodeofcare_1(inst):
+    assert inst.account[0].display == "example account"
+    assert inst.account[0].reference == "Account/example"
+    assert inst.careManager.display == "Amanda Assigned"
+    assert inst.careManager.reference == "Practitioner/14"
+    assert inst.diagnosis[0].condition.reference == "Condition/stroke"
+    assert inst.diagnosis[0].rank == 1
+    assert inst.diagnosis[0].role.coding[0].code == "CC"
+    assert inst.diagnosis[0].role.coding[0].display == "Chief complaint"
+    assert (
+        inst.diagnosis[0].role.coding[0].system == "http://hl7.org/fhir/diagnosis-role"
+    )
+    assert inst.id == "example"
+    assert (
+        inst.identifier[0].system == "http://example.org/sampleepisodeofcare-identifier"
+    )
+    assert inst.identifier[0].value == "123"
+    assert inst.managingOrganization.reference == "Organization/hl7"
+    assert inst.patient.reference == "Patient/example"
+    assert inst.period.start == fhirtypes.DateTime.validate("2014-09-01")
+    assert inst.referralRequest[0].display == "Referral from Example Aged Care Services"
+    assert inst.status == "active"
+    assert inst.statusHistory[0].period.end == fhirtypes.DateTime.validate("2014-09-14")
+    assert inst.statusHistory[0].period.start == fhirtypes.DateTime.validate(
+        "2014-09-01"
+    )
+    assert inst.statusHistory[0].status == "planned"
+    assert inst.statusHistory[1].period.end == fhirtypes.DateTime.validate("2014-09-21")
+    assert inst.statusHistory[1].period.start == fhirtypes.DateTime.validate(
+        "2014-09-15"
+    )
+    assert inst.statusHistory[1].status == "active"
+    assert inst.statusHistory[2].period.end == fhirtypes.DateTime.validate("2014-09-24")
+    assert inst.statusHistory[2].period.start == fhirtypes.DateTime.validate(
+        "2014-09-22"
+    )
+    assert inst.statusHistory[2].status == "onhold"
+    assert inst.statusHistory[3].period.start == fhirtypes.DateTime.validate(
+        "2014-09-25"
+    )
+    assert inst.statusHistory[3].status == "active"
+    assert inst.team[0].display == "example care team"
+    assert inst.team[0].reference == "CareTeam/example"
+    assert inst.text.status == "generated"
+    assert inst.type[0].coding[0].code == "hacc"
+    assert inst.type[0].coding[0].display == "Home and Community Care"
+    assert inst.type[0].coding[0].system == "http://hl7.org/fhir/episodeofcare-type"
 
-    def testEpisodeOfCare1(self):
-        inst = self.instantiate_from("episodeofcare-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a EpisodeOfCare instance")
-        self.implEpisodeOfCare1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("EpisodeOfCare", js["resourceType"])
-        inst2 = episodeofcare.EpisodeOfCare(js)
-        self.implEpisodeOfCare1(inst2)
+def test_episodeofcare_1(base_settings):
+    """No. 1 tests collection for EpisodeOfCare.
+    Test File: episodeofcare-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "episodeofcare-example.json"
+    inst = episodeofcare.EpisodeOfCare.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "EpisodeOfCare" == inst.resource_type
 
-    def implEpisodeOfCare1(self, inst):
-        self.assertEqual(inst.diagnosis[0].rank, 1)
-        self.assertEqual(
-            force_bytes(inst.diagnosis[0].role.coding[0].code), force_bytes("CC")
-        )
-        self.assertEqual(
-            force_bytes(inst.diagnosis[0].role.coding[0].display),
-            force_bytes("Chief complaint"),
-        )
-        self.assertEqual(
-            force_bytes(inst.diagnosis[0].role.coding[0].system),
-            force_bytes("http://hl7.org/fhir/diagnosis-role"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://example.org/sampleepisodeofcare-identifier"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("123"))
-        self.assertEqual(inst.period.start.date, FHIRDate("2014-09-01").date)
-        self.assertEqual(inst.period.start.as_json(), "2014-09-01")
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(
-            inst.statusHistory[0].period.end.date, FHIRDate("2014-09-14").date
-        )
-        self.assertEqual(inst.statusHistory[0].period.end.as_json(), "2014-09-14")
-        self.assertEqual(
-            inst.statusHistory[0].period.start.date, FHIRDate("2014-09-01").date
-        )
-        self.assertEqual(inst.statusHistory[0].period.start.as_json(), "2014-09-01")
-        self.assertEqual(
-            force_bytes(inst.statusHistory[0].status), force_bytes("planned")
-        )
-        self.assertEqual(
-            inst.statusHistory[1].period.end.date, FHIRDate("2014-09-21").date
-        )
-        self.assertEqual(inst.statusHistory[1].period.end.as_json(), "2014-09-21")
-        self.assertEqual(
-            inst.statusHistory[1].period.start.date, FHIRDate("2014-09-15").date
-        )
-        self.assertEqual(inst.statusHistory[1].period.start.as_json(), "2014-09-15")
-        self.assertEqual(
-            force_bytes(inst.statusHistory[1].status), force_bytes("active")
-        )
-        self.assertEqual(
-            inst.statusHistory[2].period.end.date, FHIRDate("2014-09-24").date
-        )
-        self.assertEqual(inst.statusHistory[2].period.end.as_json(), "2014-09-24")
-        self.assertEqual(
-            inst.statusHistory[2].period.start.date, FHIRDate("2014-09-22").date
-        )
-        self.assertEqual(inst.statusHistory[2].period.start.as_json(), "2014-09-22")
-        self.assertEqual(
-            force_bytes(inst.statusHistory[2].status), force_bytes("onhold")
-        )
-        self.assertEqual(
-            inst.statusHistory[3].period.start.date, FHIRDate("2014-09-25").date
-        )
-        self.assertEqual(inst.statusHistory[3].period.start.as_json(), "2014-09-25")
-        self.assertEqual(
-            force_bytes(inst.statusHistory[3].status), force_bytes("active")
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type[0].coding[0].code), force_bytes("hacc"))
-        self.assertEqual(
-            force_bytes(inst.type[0].coding[0].display),
-            force_bytes("Home and Community Care"),
-        )
-        self.assertEqual(
-            force_bytes(inst.type[0].coding[0].system),
-            force_bytes("http://hl7.org/fhir/episodeofcare-type"),
-        )
+    impl_episodeofcare_1(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "EpisodeOfCare" == data["resourceType"]
+
+    inst2 = episodeofcare.EpisodeOfCare(**data)
+    impl_episodeofcare_1(inst2)

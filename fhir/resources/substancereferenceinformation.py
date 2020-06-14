@@ -6,476 +6,267 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import Any, Dict
+from typing import List as ListType
 
+from pydantic import Field, root_validator
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class SubstanceReferenceInformation(domainresource.DomainResource):
     """ Todo.
     """
 
-    resource_type = "SubstanceReferenceInformation"
+    resource_type = Field("SubstanceReferenceInformation", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    classification: ListType[
+        fhirtypes.SubstanceReferenceInformationClassificationType
+    ] = Field(
+        None,
+        alias="classification",
+        title="List of `SubstanceReferenceInformationClassification` items (represented as `dict` in JSON)",
+        description="Todo",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    comment: fhirtypes.String = Field(
+        None,
+        alias="comment",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Todo",
+    )
 
-        self.classification = None
-        """ Todo.
-        List of `SubstanceReferenceInformationClassification` items (represented as `dict` in JSON). """
+    gene: ListType[fhirtypes.SubstanceReferenceInformationGeneType] = Field(
+        None,
+        alias="gene",
+        title="List of `SubstanceReferenceInformationGene` items (represented as `dict` in JSON)",
+        description="Todo",
+    )
 
-        self.comment = None
-        """ Todo.
-        Type `str`. """
+    geneElement: ListType[
+        fhirtypes.SubstanceReferenceInformationGeneElementType
+    ] = Field(
+        None,
+        alias="geneElement",
+        title="List of `SubstanceReferenceInformationGeneElement` items (represented as `dict` in JSON)",
+        description="Todo",
+    )
 
-        self.gene = None
-        """ Todo.
-        List of `SubstanceReferenceInformationGene` items (represented as `dict` in JSON). """
-
-        self.geneElement = None
-        """ Todo.
-        List of `SubstanceReferenceInformationGeneElement` items (represented as `dict` in JSON). """
-
-        self.target = None
-        """ Todo.
-        List of `SubstanceReferenceInformationTarget` items (represented as `dict` in JSON). """
-
-        super(SubstanceReferenceInformation, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(SubstanceReferenceInformation, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "classification",
-                    "classification",
-                    SubstanceReferenceInformationClassification,
-                    "SubstanceReferenceInformationClassification",
-                    True,
-                    None,
-                    False,
-                ),
-                ("comment", "comment", str, "string", False, None, False),
-                (
-                    "gene",
-                    "gene",
-                    SubstanceReferenceInformationGene,
-                    "SubstanceReferenceInformationGene",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "geneElement",
-                    "geneElement",
-                    SubstanceReferenceInformationGeneElement,
-                    "SubstanceReferenceInformationGeneElement",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "target",
-                    "target",
-                    SubstanceReferenceInformationTarget,
-                    "SubstanceReferenceInformationTarget",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    target: ListType[fhirtypes.SubstanceReferenceInformationTargetType] = Field(
+        None,
+        alias="target",
+        title="List of `SubstanceReferenceInformationTarget` items (represented as `dict` in JSON)",
+        description="Todo",
+    )
 
 
 class SubstanceReferenceInformationClassification(backboneelement.BackboneElement):
     """ Todo.
     """
 
-    resource_type = "SubstanceReferenceInformationClassification"
+    resource_type = Field("SubstanceReferenceInformationClassification", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    classification: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="classification",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Todo",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    domain: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="domain",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Todo",
+    )
 
-        self.classification = None
-        """ Todo.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    source: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="source",
+        title="List of `Reference` items referencing `DocumentReference` (represented as `dict` in JSON)",
+        description="Todo",
+    )
 
-        self.domain = None
-        """ Todo.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.source = None
-        """ Todo.
-        List of `FHIRReference` items referencing `['DocumentReference']` (represented as `dict` in JSON). """
-
-        self.subtype = None
-        """ Todo.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        super(SubstanceReferenceInformationClassification, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(
-            SubstanceReferenceInformationClassification, self
-        ).elementProperties()
-        js.extend(
-            [
-                (
-                    "classification",
-                    "classification",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "domain",
-                    "domain",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "source",
-                    "source",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "subtype",
-                    "subtype",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    subtype: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="subtype",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Todo",
+    )
 
 
 class SubstanceReferenceInformationGene(backboneelement.BackboneElement):
     """ Todo.
     """
 
-    resource_type = "SubstanceReferenceInformationGene"
+    resource_type = Field("SubstanceReferenceInformationGene", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    gene: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="gene",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Todo",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    geneSequenceOrigin: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="geneSequenceOrigin",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Todo",
+    )
 
-        self.gene = None
-        """ Todo.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.geneSequenceOrigin = None
-        """ Todo.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.source = None
-        """ Todo.
-        List of `FHIRReference` items referencing `['DocumentReference']` (represented as `dict` in JSON). """
-
-        super(SubstanceReferenceInformationGene, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(SubstanceReferenceInformationGene, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "gene",
-                    "gene",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "geneSequenceOrigin",
-                    "geneSequenceOrigin",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "source",
-                    "source",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    source: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="source",
+        title="List of `Reference` items referencing `DocumentReference` (represented as `dict` in JSON)",
+        description="Todo",
+    )
 
 
 class SubstanceReferenceInformationGeneElement(backboneelement.BackboneElement):
     """ Todo.
     """
 
-    resource_type = "SubstanceReferenceInformationGeneElement"
+    resource_type = Field("SubstanceReferenceInformationGeneElement", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    element: fhirtypes.IdentifierType = Field(
+        None,
+        alias="element",
+        title="Type `Identifier` (represented as `dict` in JSON)",
+        description="Todo",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    source: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="source",
+        title="List of `Reference` items referencing `DocumentReference` (represented as `dict` in JSON)",
+        description="Todo",
+    )
 
-        self.element = None
-        """ Todo.
-        Type `Identifier` (represented as `dict` in JSON). """
-
-        self.source = None
-        """ Todo.
-        List of `FHIRReference` items referencing `['DocumentReference']` (represented as `dict` in JSON). """
-
-        self.type = None
-        """ Todo.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(SubstanceReferenceInformationGeneElement, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(SubstanceReferenceInformationGeneElement, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "element",
-                    "element",
-                    identifier.Identifier,
-                    "Identifier",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "source",
-                    "source",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    type: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Todo",
+    )
 
 
 class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
     """ Todo.
     """
 
-    resource_type = "SubstanceReferenceInformationTarget"
+    resource_type = Field("SubstanceReferenceInformationTarget", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    amountQuantity: fhirtypes.QuantityType = Field(
+        None,
+        alias="amountQuantity",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="Todo",
+        one_of_many="amount",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    amountRange: fhirtypes.RangeType = Field(
+        None,
+        alias="amountRange",
+        title="Type `Range` (represented as `dict` in JSON)",
+        description="Todo",
+        one_of_many="amount",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    amountString: fhirtypes.String = Field(
+        None,
+        alias="amountString",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Todo",
+        one_of_many="amount",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    amountType: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="amountType",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Todo",
+    )
+
+    interaction: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="interaction",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Todo",
+    )
+
+    organism: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="organism",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Todo",
+    )
+
+    organismType: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="organismType",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Todo",
+    )
+
+    source: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="source",
+        title="List of `Reference` items referencing `DocumentReference` (represented as `dict` in JSON)",
+        description="Todo",
+    )
+
+    target: fhirtypes.IdentifierType = Field(
+        None,
+        alias="target",
+        title="Type `Identifier` (represented as `dict` in JSON)",
+        description="Todo",
+    )
+
+    type: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Todo",
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "amount": ["amountQuantity", "amountRange", "amountString",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.amountQuantity = None
-        """ Todo.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        self.amountRange = None
-        """ Todo.
-        Type `Range` (represented as `dict` in JSON). """
-
-        self.amountString = None
-        """ Todo.
-        Type `str`. """
-
-        self.amountType = None
-        """ Todo.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.interaction = None
-        """ Todo.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.organism = None
-        """ Todo.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.organismType = None
-        """ Todo.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.source = None
-        """ Todo.
-        List of `FHIRReference` items referencing `['DocumentReference']` (represented as `dict` in JSON). """
-
-        self.target = None
-        """ Todo.
-        Type `Identifier` (represented as `dict` in JSON). """
-
-        self.type = None
-        """ Todo.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(SubstanceReferenceInformationTarget, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(SubstanceReferenceInformationTarget, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "amountQuantity",
-                    "amountQuantity",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    "amount",
-                    False,
-                ),
-                (
-                    "amountRange",
-                    "amountRange",
-                    range.Range,
-                    "Range",
-                    False,
-                    "amount",
-                    False,
-                ),
-                ("amountString", "amountString", str, "string", False, "amount", False),
-                (
-                    "amountType",
-                    "amountType",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "interaction",
-                    "interaction",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "organism",
-                    "organism",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "organismType",
-                    "organismType",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "source",
-                    "source",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "target",
-                    "target",
-                    identifier.Identifier,
-                    "Identifier",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import quantity
-except ImportError:
-    quantity = sys.modules[__package__ + ".quantity"]
-try:
-    from . import range
-except ImportError:
-    range = sys.modules[__package__ + ".range"]
+        return values

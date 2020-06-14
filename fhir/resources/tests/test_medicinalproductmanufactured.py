@@ -6,74 +6,54 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import medicinalproductmanufactured
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class MedicinalProductManufacturedTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("MedicinalProductManufactured", js["resourceType"])
-        return medicinalproductmanufactured.MedicinalProductManufactured(js)
+def impl_medicinalproductmanufactured_1(inst):
+    assert inst.id == "example"
+    assert inst.ingredient[0].reference == "MedicinalProductIngredient/example"
+    assert inst.manufacturedDoseForm.coding[0].code == "Film-coatedtablet"
+    assert (
+        inst.manufacturedDoseForm.coding[0].system
+        == "http://ema.europa.eu/example/manufactureddoseform"
+    )
+    assert inst.manufacturer[0].reference == "Organization/example"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.physicalCharacteristics.color[0] == "Pink"
+    assert inst.physicalCharacteristics.imprint[0] == "894"
+    assert inst.physicalCharacteristics.shape == "Oval"
+    assert inst.quantity.unit == "1"
+    assert float(inst.quantity.value) == float(10)
+    assert inst.text.status == "generated"
+    assert inst.unitOfPresentation.coding[0].code == "Tablet"
+    assert (
+        inst.unitOfPresentation.coding[0].system
+        == "http://ema.europa.eu/example/unitofpresentation"
+    )
 
-    def testMedicinalProductManufactured1(self):
-        inst = self.instantiate_from("medicinalproductmanufactured-example.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a MedicinalProductManufactured instance"
-        )
-        self.implMedicinalProductManufactured1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("MedicinalProductManufactured", js["resourceType"])
-        inst2 = medicinalproductmanufactured.MedicinalProductManufactured(js)
-        self.implMedicinalProductManufactured1(inst2)
+def test_medicinalproductmanufactured_1(base_settings):
+    """No. 1 tests collection for MedicinalProductManufactured.
+    Test File: medicinalproductmanufactured-example.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "medicinalproductmanufactured-example.json"
+    )
+    inst = medicinalproductmanufactured.MedicinalProductManufactured.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "MedicinalProductManufactured" == inst.resource_type
 
-    def implMedicinalProductManufactured1(self, inst):
-        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(
-            force_bytes(inst.manufacturedDoseForm.coding[0].code),
-            force_bytes("Film-coatedtablet"),
-        )
-        self.assertEqual(
-            force_bytes(inst.manufacturedDoseForm.coding[0].system),
-            force_bytes("http://ema.europa.eu/example/manufactureddoseform"),
-        )
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.physicalCharacteristics.color[0]), force_bytes("Pink")
-        )
-        self.assertEqual(
-            force_bytes(inst.physicalCharacteristics.imprint[0]), force_bytes("894")
-        )
-        self.assertEqual(
-            force_bytes(inst.physicalCharacteristics.shape), force_bytes("Oval")
-        )
-        self.assertEqual(force_bytes(inst.quantity.unit), force_bytes("1"))
-        self.assertEqual(inst.quantity.value, 10)
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.unitOfPresentation.coding[0].code), force_bytes("Tablet")
-        )
-        self.assertEqual(
-            force_bytes(inst.unitOfPresentation.coding[0].system),
-            force_bytes("http://ema.europa.eu/example/unitofpresentation"),
-        )
+    impl_medicinalproductmanufactured_1(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "MedicinalProductManufactured" == data["resourceType"]
+
+    inst2 = medicinalproductmanufactured.MedicinalProductManufactured(**data)
+    impl_medicinalproductmanufactured_1(inst2)

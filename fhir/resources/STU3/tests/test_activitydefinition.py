@@ -6,1292 +6,812 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import activitydefinition
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class ActivityDefinitionTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("ActivityDefinition", js["resourceType"])
-        return activitydefinition.ActivityDefinition(js)
+def impl_activitydefinition_1(inst):
+    assert inst.code.coding[0].code == "zika-virus-exposure-assessment"
+    assert inst.code.coding[0].system == "http://example.org/questionnaires"
+    assert inst.description == "Administer Zika Virus Exposure Assessment"
+    assert inst.id == "administer-zika-virus-exposure-assessment"
+    assert inst.kind == "ProcedureRequest"
+    assert inst.library[0].reference == "Library/zika-virus-intervention-logic"
+    assert inst.participant[0].type == "practitioner"
+    assert inst.relatedArtifact[0].type == "derived-from"
+    assert (
+        inst.relatedArtifact[0].url
+        == "https://www.cdc.gov/zika/hc-providers/pregnant-woman.html"
+    )
+    assert (
+        inst.relatedArtifact[1].resource.reference
+        == "Questionnaire/zika-virus-exposure-assessment"
+    )
+    assert inst.relatedArtifact[1].type == "depends-on"
+    assert inst.status == "draft"
+    assert inst.text.status == "generated"
+    assert (
+        inst.url
+        == "http://example.org/ActivityDefinition/administer-zika-virus-exposure-assessment"
+    )
 
-    def testActivityDefinition1(self):
-        inst = self.instantiate_from(
-            "activitydefinition-administer-zika-virus-exposure-assessment.json"
-        )
-        self.assertIsNotNone(
-            inst, "Must have instantiated a ActivityDefinition instance"
-        )
-        self.implActivityDefinition1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("ActivityDefinition", js["resourceType"])
-        inst2 = activitydefinition.ActivityDefinition(js)
-        self.implActivityDefinition1(inst2)
+def test_activitydefinition_1(base_settings):
+    """No. 1 tests collection for ActivityDefinition.
+    Test File: activitydefinition-administer-zika-virus-exposure-assessment.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"]
+        / "activitydefinition-administer-zika-virus-exposure-assessment.json"
+    )
+    inst = activitydefinition.ActivityDefinition.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ActivityDefinition" == inst.resource_type
 
-    def implActivityDefinition1(self, inst):
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].code),
-            force_bytes("zika-virus-exposure-assessment"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system),
-            force_bytes("http://example.org/questionnaires"),
-        )
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes("Administer Zika Virus Exposure Assessment"),
-        )
-        self.assertEqual(
-            force_bytes(inst.id),
-            force_bytes("administer-zika-virus-exposure-assessment"),
-        )
-        self.assertEqual(force_bytes(inst.kind), force_bytes("ProcedureRequest"))
-        self.assertEqual(
-            force_bytes(inst.participant[0].type), force_bytes("practitioner")
-        )
-        self.assertEqual(
-            force_bytes(inst.relatedArtifact[0].type), force_bytes("derived-from")
-        )
-        self.assertEqual(
-            force_bytes(inst.relatedArtifact[0].url),
-            force_bytes("https://www.cdc.gov/zika/hc-providers/pregnant-woman.html"),
-        )
-        self.assertEqual(
-            force_bytes(inst.relatedArtifact[1].type), force_bytes("depends-on")
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.url),
-            force_bytes(
-                "http://example.org/ActivityDefinition/administer-zika-virus-exposure-assessment"
-            ),
-        )
+    impl_activitydefinition_1(inst)
 
-    def testActivityDefinition2(self):
-        inst = self.instantiate_from(
-            "activitydefinition-provide-mosquito-prevention-advice.json"
-        )
-        self.assertIsNotNone(
-            inst, "Must have instantiated a ActivityDefinition instance"
-        )
-        self.implActivityDefinition2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ActivityDefinition" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("ActivityDefinition", js["resourceType"])
-        inst2 = activitydefinition.ActivityDefinition(js)
-        self.implActivityDefinition2(inst2)
+    inst2 = activitydefinition.ActivityDefinition(**data)
+    impl_activitydefinition_1(inst2)
 
-    def implActivityDefinition2(self, inst):
-        self.assertEqual(
-            force_bytes(inst.code.text),
-            force_bytes("Provide Mosquito Prevention Advice"),
-        )
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes("Provide mosquito prevention advice"),
-        )
-        self.assertEqual(
-            force_bytes(inst.id), force_bytes("provide-mosquito-prevention-advice")
-        )
-        self.assertEqual(force_bytes(inst.kind), force_bytes("CommunicationRequest"))
-        self.assertEqual(
-            force_bytes(inst.participant[0].type), force_bytes("practitioner")
-        )
-        self.assertEqual(
-            force_bytes(inst.relatedArtifact[0].display),
-            force_bytes("Advice for patients about how to avoid Mosquito bites."),
-        )
-        self.assertEqual(
-            force_bytes(inst.relatedArtifact[0].type), force_bytes("documentation")
-        )
-        self.assertEqual(
-            force_bytes(inst.relatedArtifact[0].url),
-            force_bytes("http://www.cdc.gov/zika/prevention/index.html"),
-        )
-        self.assertEqual(
-            force_bytes(inst.relatedArtifact[1].display),
-            force_bytes(
-                "Advice for patients about which mosquito repellents are effective and safe to use in pregnancy. [DEET, IF3535 and Picardin are safe during]"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.relatedArtifact[1].type), force_bytes("documentation")
-        )
-        self.assertEqual(
-            force_bytes(inst.relatedArtifact[1].url),
-            force_bytes(
-                "https://www.epa.gov/insect-repellents/find-insect-repellent-right-you"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.url),
-            force_bytes(
-                "http://example.org/ActivityDefinition/provide-mosquito-prevention-advice"
-            ),
-        )
 
-    def testActivityDefinition3(self):
-        inst = self.instantiate_from("activitydefinition-predecessor-example.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a ActivityDefinition instance"
-        )
-        self.implActivityDefinition3(inst)
+def impl_activitydefinition_2(inst):
+    assert inst.code.text == "Provide Mosquito Prevention Advice"
+    assert inst.description == "Provide mosquito prevention advice"
+    assert inst.id == "provide-mosquito-prevention-advice"
+    assert inst.kind == "CommunicationRequest"
+    assert inst.library[0].reference == "Library/zika-virus-intervention-logic"
+    assert inst.participant[0].type == "practitioner"
+    assert (
+        inst.relatedArtifact[0].display
+        == "Advice for patients about how to avoid Mosquito bites."
+    )
+    assert inst.relatedArtifact[0].type == "documentation"
+    assert (
+        inst.relatedArtifact[0].url == "http://www.cdc.gov/zika/prevention/index.html"
+    )
+    assert (
+        inst.relatedArtifact[1].display
+        == "Advice for patients about which mosquito repellents are effective and safe to use in pregnancy. [DEET, IF3535 and Picardin are safe during]"
+    )
+    assert inst.relatedArtifact[1].type == "documentation"
+    assert (
+        inst.relatedArtifact[1].url
+        == "https://www.epa.gov/insect-repellents/find-insect-repellent-right-you"
+    )
+    assert inst.status == "draft"
+    assert inst.text.status == "generated"
+    assert (
+        inst.url
+        == "http://example.org/ActivityDefinition/provide-mosquito-prevention-advice"
+    )
 
-        js = inst.as_json()
-        self.assertEqual("ActivityDefinition", js["resourceType"])
-        inst2 = activitydefinition.ActivityDefinition(js)
-        self.implActivityDefinition3(inst2)
 
-    def implActivityDefinition3(self, inst):
-        self.assertEqual(inst.approvalDate.date, FHIRDate("2016-03-12").date)
-        self.assertEqual(inst.approvalDate.as_json(), "2016-03-12")
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].code), force_bytes("306206005")
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.text), force_bytes("Referral to service (procedure)")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].system), force_bytes("phone")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].use), force_bytes("work")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].value), force_bytes("415-362-4007")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[1].system), force_bytes("email")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[1].use), force_bytes("work")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[1].value),
-            force_bytes("info@motivemi.com"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contributor[0].contact[0].telecom[0].system),
-            force_bytes("phone"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contributor[0].contact[0].telecom[0].use),
-            force_bytes("work"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contributor[0].contact[0].telecom[0].value),
-            force_bytes("415-362-4007"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contributor[0].contact[0].telecom[1].system),
-            force_bytes("email"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contributor[0].contact[0].telecom[1].use),
-            force_bytes("work"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contributor[0].contact[0].telecom[1].value),
-            force_bytes("info@motivemi.com"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contributor[0].name),
-            force_bytes("Motive Medical Intelligence"),
-        )
-        self.assertEqual(force_bytes(inst.contributor[0].type), force_bytes("author"))
-        self.assertEqual(
-            force_bytes(inst.copyright),
-            force_bytes(
-                "© Copyright 2016 Motive Medical Intelligence. All rights reserved."
-            ),
-        )
-        self.assertEqual(inst.date.date, FHIRDate("2017-03-03T14:06:00Z").date)
-        self.assertEqual(inst.date.as_json(), "2017-03-03T14:06:00Z")
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes(
-                "refer to primary care mental-health integrated care program for evaluation and treatment of mental health conditions now"
-            ),
-        )
-        self.assertEqual(inst.effectivePeriod.end.date, FHIRDate("2017-12-31").date)
-        self.assertEqual(inst.effectivePeriod.end.as_json(), "2017-12-31")
-        self.assertEqual(inst.effectivePeriod.start.date, FHIRDate("2016-01-01").date)
-        self.assertEqual(inst.effectivePeriod.start.as_json(), "2016-01-01")
-        self.assertTrue(inst.experimental)
-        self.assertEqual(
-            force_bytes(inst.id), force_bytes("referralPrimaryCareMentalHealth-initial")
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://motivemi.com/artifacts"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].use), force_bytes("official"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].value),
-            force_bytes("referralPrimaryCareMentalHealth"),
-        )
-        self.assertEqual(
-            force_bytes(inst.jurisdiction[0].coding[0].code), force_bytes("US")
-        )
-        self.assertEqual(
-            force_bytes(inst.jurisdiction[0].coding[0].system),
-            force_bytes("urn:iso:std:iso:3166"),
-        )
-        self.assertEqual(force_bytes(inst.kind), force_bytes("ReferralRequest"))
-        self.assertEqual(inst.lastReviewDate.date, FHIRDate("2016-08-15").date)
-        self.assertEqual(inst.lastReviewDate.as_json(), "2016-08-15")
-        self.assertEqual(
-            force_bytes(inst.name), force_bytes("ReferralPrimaryCareMentalHealth")
-        )
-        self.assertEqual(
-            force_bytes(inst.participant[0].type), force_bytes("practitioner")
-        )
-        self.assertEqual(
-            force_bytes(inst.publisher), force_bytes("Motive Medical Intelligence")
-        )
-        self.assertEqual(
-            force_bytes(inst.relatedArtifact[0].display),
-            force_bytes(
-                "Practice Guideline for the Treatment of Patients with Major Depressive Disorder"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.relatedArtifact[0].type), force_bytes("citation")
-        )
-        self.assertEqual(
-            force_bytes(inst.relatedArtifact[0].url),
-            force_bytes(
-                "http://psychiatryonline.org/pb/assets/raw/sitewide/practice_guidelines/guidelines/mdd.pdf"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.relatedArtifact[1].type), force_bytes("successor")
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("retired"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.title),
-            force_bytes("Referral to Primary Care Mental Health"),
-        )
-        self.assertEqual(
-            force_bytes(inst.topic[0].text), force_bytes("Mental Health Referral")
-        )
-        self.assertEqual(
-            force_bytes(inst.url),
-            force_bytes(
-                "http://motivemi.com/artifacts/ActivityDefinition/referralPrimaryCareMentalHealth"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.useContext[0].code.code), force_bytes("age"))
-        self.assertEqual(
-            force_bytes(inst.useContext[0].code.system),
-            force_bytes("http://hl7.org/fhir/usage-context-type"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[0].valueCodeableConcept.coding[0].code),
-            force_bytes("D000328"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[0].valueCodeableConcept.coding[0].display),
-            force_bytes("Adult"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[0].valueCodeableConcept.coding[0].system),
-            force_bytes("https://meshb.nlm.nih.gov"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[1].code.code), force_bytes("focus")
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[1].code.system),
-            force_bytes("http://hl7.org/fhir/usage-context-type"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[1].valueCodeableConcept.coding[0].code),
-            force_bytes("87512008"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[1].valueCodeableConcept.coding[0].display),
-            force_bytes("Mild major depression"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[1].valueCodeableConcept.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[2].code.code), force_bytes("focus")
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[2].code.system),
-            force_bytes("http://hl7.org/fhir/usage-context-type"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[2].valueCodeableConcept.coding[0].code),
-            force_bytes("40379007"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[2].valueCodeableConcept.coding[0].display),
-            force_bytes("Major depression, recurrent, mild"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[2].valueCodeableConcept.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[3].code.code), force_bytes("focus")
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[3].code.system),
-            force_bytes("http://hl7.org/fhir/usage-context-type"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[3].valueCodeableConcept.coding[0].code),
-            force_bytes("225444004"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[3].valueCodeableConcept.coding[0].display),
-            force_bytes("At risk for suicide (finding)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[3].valueCodeableConcept.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[4].code.code), force_bytes("focus")
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[4].code.system),
-            force_bytes("http://hl7.org/fhir/usage-context-type"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[4].valueCodeableConcept.coding[0].code),
-            force_bytes("306206005"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[4].valueCodeableConcept.coding[0].display),
-            force_bytes("Referral to service (procedure)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[4].valueCodeableConcept.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.useContext[5].code.code), force_bytes("user"))
-        self.assertEqual(
-            force_bytes(inst.useContext[5].code.system),
-            force_bytes("http://hl7.org/fhir/usage-context-type"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[5].valueCodeableConcept.coding[0].code),
-            force_bytes("309343006"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[5].valueCodeableConcept.coding[0].display),
-            force_bytes("Physician"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[5].valueCodeableConcept.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[6].code.code), force_bytes("venue")
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[6].code.system),
-            force_bytes("http://hl7.org/fhir/usage-context-type"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[6].valueCodeableConcept.coding[0].code),
-            force_bytes("440655000"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[6].valueCodeableConcept.coding[0].display),
-            force_bytes("Outpatient environment"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[6].valueCodeableConcept.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.version), force_bytes("1.0.0"))
+def test_activitydefinition_2(base_settings):
+    """No. 2 tests collection for ActivityDefinition.
+    Test File: activitydefinition-provide-mosquito-prevention-advice.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"]
+        / "activitydefinition-provide-mosquito-prevention-advice.json"
+    )
+    inst = activitydefinition.ActivityDefinition.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ActivityDefinition" == inst.resource_type
 
-    def testActivityDefinition4(self):
-        inst = self.instantiate_from(
-            "activitydefinition-order-serum-zika-dengue-virus-igm.json"
-        )
-        self.assertIsNotNone(
-            inst, "Must have instantiated a ActivityDefinition instance"
-        )
-        self.implActivityDefinition4(inst)
+    impl_activitydefinition_2(inst)
 
-        js = inst.as_json()
-        self.assertEqual("ActivityDefinition", js["resourceType"])
-        inst2 = activitydefinition.ActivityDefinition(js)
-        self.implActivityDefinition4(inst2)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ActivityDefinition" == data["resourceType"]
 
-    def implActivityDefinition4(self, inst):
-        self.assertEqual(
-            force_bytes(inst.code.text), force_bytes("Serum Zika and Dengue Virus IgM")
-        )
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes("Order Serum Zika and Dengue Virus IgM"),
-        )
-        self.assertEqual(
-            force_bytes(inst.id), force_bytes("serum-zika-dengue-virus-igm")
-        )
-        self.assertEqual(force_bytes(inst.kind), force_bytes("ProcedureRequest"))
-        self.assertEqual(
-            force_bytes(inst.participant[0].type), force_bytes("practitioner")
-        )
-        self.assertEqual(
-            force_bytes(inst.relatedArtifact[0].display),
-            force_bytes(
-                "Explanation of diagnostic tests for Zika virus and which to use based on the patient’s clinical and exposure history."
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.relatedArtifact[0].type), force_bytes("documentation")
-        )
-        self.assertEqual(
-            force_bytes(inst.relatedArtifact[0].url),
-            force_bytes("http://www.cdc.gov/zika/hc-providers/diagnostic.html"),
-        )
-        self.assertEqual(
-            force_bytes(inst.relatedArtifact[1].type), force_bytes("derived-from")
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.url),
-            force_bytes(
-                "http://example.org/ActivityDefinition/serum-zika-dengue-virus-igm"
-            ),
-        )
+    inst2 = activitydefinition.ActivityDefinition(**data)
+    impl_activitydefinition_2(inst2)
 
-    def testActivityDefinition5(self):
-        inst = self.instantiate_from("activitydefinition-procedurerequest-example.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a ActivityDefinition instance"
-        )
-        self.implActivityDefinition5(inst)
 
-        js = inst.as_json()
-        self.assertEqual("ActivityDefinition", js["resourceType"])
-        inst2 = activitydefinition.ActivityDefinition(js)
-        self.implActivityDefinition5(inst2)
+def impl_activitydefinition_3(inst):
+    assert inst.approvalDate == fhirtypes.Date.validate("2016-03-12")
+    assert inst.code.coding[0].code == "306206005"
+    assert inst.code.coding[0].system == "http://snomed.info/sct"
+    assert inst.code.text == "Referral to service (procedure)"
+    assert inst.contact[0].telecom[0].system == "phone"
+    assert inst.contact[0].telecom[0].use == "work"
+    assert inst.contact[0].telecom[0].value == "415-362-4007"
+    assert inst.contact[0].telecom[1].system == "email"
+    assert inst.contact[0].telecom[1].use == "work"
+    assert inst.contact[0].telecom[1].value == "info@motivemi.com"
+    assert inst.contributor[0].contact[0].telecom[0].system == "phone"
+    assert inst.contributor[0].contact[0].telecom[0].use == "work"
+    assert inst.contributor[0].contact[0].telecom[0].value == "415-362-4007"
+    assert inst.contributor[0].contact[0].telecom[1].system == "email"
+    assert inst.contributor[0].contact[0].telecom[1].use == "work"
+    assert inst.contributor[0].contact[0].telecom[1].value == "info@motivemi.com"
+    assert inst.contributor[0].name == "Motive Medical Intelligence"
+    assert inst.contributor[0].type == "author"
+    assert (
+        inst.copyright
+        == "© Copyright 2016 Motive Medical Intelligence. All rights reserved."
+    )
+    assert inst.date == fhirtypes.DateTime.validate("2017-03-03T14:06:00Z")
+    assert (
+        inst.description
+        == "refer to primary care mental-health integrated care program for evaluation and treatment of mental health conditions now"
+    )
+    assert inst.effectivePeriod.end == fhirtypes.DateTime.validate("2017-12-31")
+    assert inst.effectivePeriod.start == fhirtypes.DateTime.validate("2016-01-01")
+    assert inst.experimental is True
+    assert inst.id == "referralPrimaryCareMentalHealth-initial"
+    assert inst.identifier[0].system == "http://motivemi.com/artifacts"
+    assert inst.identifier[0].use == "official"
+    assert inst.identifier[0].value == "referralPrimaryCareMentalHealth"
+    assert inst.jurisdiction[0].coding[0].code == "US"
+    assert inst.jurisdiction[0].coding[0].system == "urn:iso:std:iso:3166"
+    assert inst.kind == "ReferralRequest"
+    assert inst.lastReviewDate == fhirtypes.Date.validate("2016-08-15")
+    assert inst.name == "ReferralPrimaryCareMentalHealth"
+    assert inst.participant[0].type == "practitioner"
+    assert inst.publisher == "Motive Medical Intelligence"
+    assert (
+        inst.relatedArtifact[0].display
+        == "Practice Guideline for the Treatment of Patients with Major Depressive Disorder"
+    )
+    assert inst.relatedArtifact[0].type == "citation"
+    assert (
+        inst.relatedArtifact[0].url
+        == "http://psychiatryonline.org/pb/assets/raw/sitewide/practice_guidelines/guidelines/mdd.pdf"
+    )
+    assert (
+        inst.relatedArtifact[1].resource.reference
+        == "ActivityDefinition/referralPrimaryCareMentalHealth"
+    )
+    assert inst.relatedArtifact[1].type == "successor"
+    assert inst.status == "retired"
+    assert inst.text.status == "generated"
+    assert inst.title == "Referral to Primary Care Mental Health"
+    assert inst.topic[0].text == "Mental Health Referral"
+    assert (
+        inst.url
+        == "http://motivemi.com/artifacts/ActivityDefinition/referralPrimaryCareMentalHealth"
+    )
+    assert inst.useContext[0].code.code == "age"
+    assert inst.useContext[0].code.system == "http://hl7.org/fhir/usage-context-type"
+    assert inst.useContext[0].valueCodeableConcept.coding[0].code == "D000328"
+    assert inst.useContext[0].valueCodeableConcept.coding[0].display == "Adult"
+    assert (
+        inst.useContext[0].valueCodeableConcept.coding[0].system
+        == "https://meshb.nlm.nih.gov"
+    )
+    assert inst.useContext[1].code.code == "focus"
+    assert inst.useContext[1].code.system == "http://hl7.org/fhir/usage-context-type"
+    assert inst.useContext[1].valueCodeableConcept.coding[0].code == "87512008"
+    assert (
+        inst.useContext[1].valueCodeableConcept.coding[0].display
+        == "Mild major depression"
+    )
+    assert (
+        inst.useContext[1].valueCodeableConcept.coding[0].system
+        == "http://snomed.info/sct"
+    )
+    assert inst.useContext[2].code.code == "focus"
+    assert inst.useContext[2].code.system == "http://hl7.org/fhir/usage-context-type"
+    assert inst.useContext[2].valueCodeableConcept.coding[0].code == "40379007"
+    assert (
+        inst.useContext[2].valueCodeableConcept.coding[0].display
+        == "Major depression, recurrent, mild"
+    )
+    assert (
+        inst.useContext[2].valueCodeableConcept.coding[0].system
+        == "http://snomed.info/sct"
+    )
+    assert inst.useContext[3].code.code == "focus"
+    assert inst.useContext[3].code.system == "http://hl7.org/fhir/usage-context-type"
+    assert inst.useContext[3].valueCodeableConcept.coding[0].code == "225444004"
+    assert (
+        inst.useContext[3].valueCodeableConcept.coding[0].display
+        == "At risk for suicide (finding)"
+    )
+    assert (
+        inst.useContext[3].valueCodeableConcept.coding[0].system
+        == "http://snomed.info/sct"
+    )
+    assert inst.useContext[4].code.code == "focus"
+    assert inst.useContext[4].code.system == "http://hl7.org/fhir/usage-context-type"
+    assert inst.useContext[4].valueCodeableConcept.coding[0].code == "306206005"
+    assert (
+        inst.useContext[4].valueCodeableConcept.coding[0].display
+        == "Referral to service (procedure)"
+    )
+    assert (
+        inst.useContext[4].valueCodeableConcept.coding[0].system
+        == "http://snomed.info/sct"
+    )
+    assert inst.useContext[5].code.code == "user"
+    assert inst.useContext[5].code.system == "http://hl7.org/fhir/usage-context-type"
+    assert inst.useContext[5].valueCodeableConcept.coding[0].code == "309343006"
+    assert inst.useContext[5].valueCodeableConcept.coding[0].display == "Physician"
+    assert (
+        inst.useContext[5].valueCodeableConcept.coding[0].system
+        == "http://snomed.info/sct"
+    )
+    assert inst.useContext[6].code.code == "venue"
+    assert inst.useContext[6].code.system == "http://hl7.org/fhir/usage-context-type"
+    assert inst.useContext[6].valueCodeableConcept.coding[0].code == "440655000"
+    assert (
+        inst.useContext[6].valueCodeableConcept.coding[0].display
+        == "Outpatient environment"
+    )
+    assert (
+        inst.useContext[6].valueCodeableConcept.coding[0].system
+        == "http://snomed.info/sct"
+    )
+    assert inst.version == "1.0.0"
 
-    def implActivityDefinition5(self, inst):
-        self.assertEqual(
-            force_bytes(inst.bodySite[0].coding[0].code), force_bytes("17401000")
-        )
-        self.assertEqual(
-            force_bytes(inst.bodySite[0].coding[0].display),
-            force_bytes("Heart valve structure"),
-        )
-        self.assertEqual(
-            force_bytes(inst.bodySite[0].coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("34068001"))
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].display),
-            force_bytes("Heart valve replacement"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.description), force_bytes("Heart valve replacement")
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("heart-valve-replacement"))
-        self.assertEqual(force_bytes(inst.kind), force_bytes("ProcedureRequest"))
-        self.assertEqual(
-            force_bytes(inst.participant[0].role.coding[0].code),
-            force_bytes("207RI0011X"),
-        )
-        self.assertEqual(
-            force_bytes(inst.participant[0].role.coding[0].display),
-            force_bytes("Interventional Cardiology"),
-        )
-        self.assertEqual(
-            force_bytes(inst.participant[0].role.coding[0].system),
-            force_bytes("http://nucc.org/provider-taxonomy"),
-        )
-        self.assertEqual(
-            force_bytes(inst.participant[0].role.text),
-            force_bytes("Interventional Cardiology"),
-        )
-        self.assertEqual(
-            force_bytes(inst.participant[0].type), force_bytes("practitioner")
-        )
-        self.assertEqual(
-            force_bytes(inst.purpose),
-            force_bytes("Describes the proposal to perform a Heart Valve replacement."),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.topic[0].coding[0].code), force_bytes("34068001")
-        )
-        self.assertEqual(
-            force_bytes(inst.topic[0].coding[0].display),
-            force_bytes("Heart valve replacement"),
-        )
-        self.assertEqual(
-            force_bytes(inst.topic[0].coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.useContext[0].code.code), force_bytes("age"))
-        self.assertEqual(
-            force_bytes(inst.useContext[0].code.system),
-            force_bytes("http://hl7.org/fhir/usage-context-type"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[0].valueCodeableConcept.coding[0].code),
-            force_bytes("D000328"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[0].valueCodeableConcept.coding[0].display),
-            force_bytes("Adult"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[0].valueCodeableConcept.coding[0].system),
-            force_bytes("https://meshb.nlm.nih.gov"),
-        )
-        self.assertEqual(force_bytes(inst.useContext[1].code.code), force_bytes("user"))
-        self.assertEqual(
-            force_bytes(inst.useContext[1].code.system),
-            force_bytes("http://hl7.org/fhir/usage-context-type"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[1].valueCodeableConcept.coding[0].code),
-            force_bytes("309343006"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[1].valueCodeableConcept.coding[0].display),
-            force_bytes("Physician"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[1].valueCodeableConcept.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
 
-    def testActivityDefinition6(self):
-        inst = self.instantiate_from("activitydefinition-medicationorder-example.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a ActivityDefinition instance"
-        )
-        self.implActivityDefinition6(inst)
+def test_activitydefinition_3(base_settings):
+    """No. 3 tests collection for ActivityDefinition.
+    Test File: activitydefinition-predecessor-example.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"]
+        / "activitydefinition-predecessor-example.json"
+    )
+    inst = activitydefinition.ActivityDefinition.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ActivityDefinition" == inst.resource_type
 
-        js = inst.as_json()
-        self.assertEqual("ActivityDefinition", js["resourceType"])
-        inst2 = activitydefinition.ActivityDefinition(js)
-        self.implActivityDefinition6(inst2)
+    impl_activitydefinition_3(inst)
 
-    def implActivityDefinition6(self, inst):
-        self.assertEqual(inst.approvalDate.date, FHIRDate("2016-03-12").date)
-        self.assertEqual(inst.approvalDate.as_json(), "2016-03-12")
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].system), force_bytes("phone")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].use), force_bytes("work")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].value), force_bytes("415-362-4007")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[1].system), force_bytes("email")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[1].use), force_bytes("work")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[1].value),
-            force_bytes("info@motivemi.com"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contained[0].id), force_bytes("citalopramMedication")
-        )
-        self.assertEqual(
-            force_bytes(inst.contained[1].id), force_bytes("citalopramSubstance")
-        )
-        self.assertEqual(
-            force_bytes(inst.contributor[0].contact[0].telecom[0].system),
-            force_bytes("phone"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contributor[0].contact[0].telecom[0].use),
-            force_bytes("work"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contributor[0].contact[0].telecom[0].value),
-            force_bytes("415-362-4007"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contributor[0].contact[0].telecom[1].system),
-            force_bytes("email"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contributor[0].contact[0].telecom[1].use),
-            force_bytes("work"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contributor[0].contact[0].telecom[1].value),
-            force_bytes("info@motivemi.com"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contributor[0].name),
-            force_bytes("Motive Medical Intelligence"),
-        )
-        self.assertEqual(force_bytes(inst.contributor[0].type), force_bytes("author"))
-        self.assertEqual(
-            force_bytes(inst.copyright),
-            force_bytes(
-                "© Copyright 2016 Motive Medical Intelligence. All rights reserved."
-            ),
-        )
-        self.assertEqual(inst.date.date, FHIRDate("2015-08-15").date)
-        self.assertEqual(inst.date.as_json(), "2015-08-15")
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes(
-                "Citalopram 20 mg tablet 1 tablet oral 1 time daily now (30 table; 3 refills"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.dosage[0].doseQuantity.unit), force_bytes("{tbl}")
-        )
-        self.assertEqual(inst.dosage[0].doseQuantity.value, 1)
-        self.assertEqual(
-            force_bytes(inst.dosage[0].route.coding[0].code), force_bytes("26643006")
-        )
-        self.assertEqual(
-            force_bytes(inst.dosage[0].route.coding[0].display),
-            force_bytes("Oral route (qualifier value)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.dosage[0].route.text),
-            force_bytes("Oral route (qualifier value)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.dosage[0].text), force_bytes("1 tablet oral 1 time daily")
-        )
-        self.assertEqual(inst.dosage[0].timing.repeat.frequency, 1)
-        self.assertEqual(inst.dosage[0].timing.repeat.period, 1)
-        self.assertEqual(
-            force_bytes(inst.dosage[0].timing.repeat.periodUnit), force_bytes("d")
-        )
-        self.assertEqual(
-            force_bytes(inst.dynamicValue[0].description),
-            force_bytes("dispenseRequest.numberOfRepeatsAllowed is three (3)"),
-        )
-        self.assertEqual(force_bytes(inst.dynamicValue[0].expression), force_bytes("3"))
-        self.assertEqual(
-            force_bytes(inst.dynamicValue[0].language), force_bytes("text/cql")
-        )
-        self.assertEqual(
-            force_bytes(inst.dynamicValue[0].path),
-            force_bytes("dispenseRequest.numberOfRepeatsAllowed"),
-        )
-        self.assertEqual(
-            force_bytes(inst.dynamicValue[1].description),
-            force_bytes("dispenseRequest.quantity is thirty (30) tablets"),
-        )
-        self.assertEqual(
-            force_bytes(inst.dynamicValue[1].expression), force_bytes("30 '{tbl}'")
-        )
-        self.assertEqual(
-            force_bytes(inst.dynamicValue[1].language), force_bytes("text/cql")
-        )
-        self.assertEqual(
-            force_bytes(inst.dynamicValue[1].path),
-            force_bytes("dispenseRequest.quantity"),
-        )
-        self.assertEqual(inst.effectivePeriod.end.date, FHIRDate("2017-12-31").date)
-        self.assertEqual(inst.effectivePeriod.end.as_json(), "2017-12-31")
-        self.assertEqual(inst.effectivePeriod.start.date, FHIRDate("2016-01-01").date)
-        self.assertEqual(inst.effectivePeriod.start.as_json(), "2016-01-01")
-        self.assertTrue(inst.experimental)
-        self.assertEqual(force_bytes(inst.id), force_bytes("citalopramPrescription"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system), force_bytes("http://motivemi.com")
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].use), force_bytes("official"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].value), force_bytes("citalopramPrescription")
-        )
-        self.assertEqual(
-            force_bytes(inst.jurisdiction[0].coding[0].code), force_bytes("US")
-        )
-        self.assertEqual(
-            force_bytes(inst.jurisdiction[0].coding[0].system),
-            force_bytes("urn:iso:std:iso:3166"),
-        )
-        self.assertEqual(force_bytes(inst.kind), force_bytes("MedicationRequest"))
-        self.assertEqual(inst.lastReviewDate.date, FHIRDate("2016-08-15").date)
-        self.assertEqual(inst.lastReviewDate.as_json(), "2016-08-15")
-        self.assertEqual(force_bytes(inst.name), force_bytes("CitalopramPrescription"))
-        self.assertEqual(
-            force_bytes(inst.publisher), force_bytes("Motive Medical Intelligence")
-        )
-        self.assertEqual(
-            force_bytes(inst.purpose),
-            force_bytes(
-                "Defines a guideline supported prescription for the treatment of depressive disorders"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.relatedArtifact[0].display),
-            force_bytes(
-                "Practice Guideline for the Treatment of Patients with Major Depressive Disorder"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.relatedArtifact[0].type), force_bytes("citation")
-        )
-        self.assertEqual(
-            force_bytes(inst.relatedArtifact[0].url),
-            force_bytes(
-                "http://psychiatryonline.org/pb/assets/raw/sitewide/practice_guidelines/guidelines/mdd.pdf"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.relatedArtifact[1].type), force_bytes("composed-of")
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.title), force_bytes("Citalopram Prescription")
-        )
-        self.assertEqual(
-            force_bytes(inst.topic[0].text), force_bytes("Mental Health Treatment")
-        )
-        self.assertEqual(
-            force_bytes(inst.url),
-            force_bytes(
-                "http://motivemi.com/artifacts/ActivityDefinition/citalopramPrescription"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.usage),
-            force_bytes(
-                "This activity definition is used as part of various suicide risk order sets"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.useContext[0].code.code), force_bytes("age"))
-        self.assertEqual(
-            force_bytes(inst.useContext[0].code.system),
-            force_bytes("http://hl7.org/fhir/usage-context-type"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[0].valueCodeableConcept.coding[0].code),
-            force_bytes("D000328"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[0].valueCodeableConcept.coding[0].display),
-            force_bytes("Adult"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[0].valueCodeableConcept.coding[0].system),
-            force_bytes("https://meshb.nlm.nih.gov"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[1].code.code), force_bytes("focus")
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[1].code.system),
-            force_bytes("http://hl7.org/fhir/usage-context-type"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[1].valueCodeableConcept.coding[0].code),
-            force_bytes("87512008"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[1].valueCodeableConcept.coding[0].display),
-            force_bytes("Mild major depression"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[1].valueCodeableConcept.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[2].code.code), force_bytes("focus")
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[2].code.system),
-            force_bytes("http://hl7.org/fhir/usage-context-type"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[2].valueCodeableConcept.coding[0].code),
-            force_bytes("40379007"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[2].valueCodeableConcept.coding[0].display),
-            force_bytes("Major depression, recurrent, mild"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[2].valueCodeableConcept.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[3].code.code), force_bytes("focus")
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[3].code.system),
-            force_bytes("http://hl7.org/fhir/usage-context-type"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[3].valueCodeableConcept.coding[0].code),
-            force_bytes("225444004"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[3].valueCodeableConcept.coding[0].display),
-            force_bytes("At risk for suicide (finding)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[3].valueCodeableConcept.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[4].code.code), force_bytes("focus")
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[4].code.system),
-            force_bytes("http://hl7.org/fhir/usage-context-type"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[4].valueCodeableConcept.coding[0].code),
-            force_bytes("306206005"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[4].valueCodeableConcept.coding[0].display),
-            force_bytes("Referral to service (procedure)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[4].valueCodeableConcept.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.useContext[5].code.code), force_bytes("user"))
-        self.assertEqual(
-            force_bytes(inst.useContext[5].code.system),
-            force_bytes("http://hl7.org/fhir/usage-context-type"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[5].valueCodeableConcept.coding[0].code),
-            force_bytes("309343006"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[5].valueCodeableConcept.coding[0].display),
-            force_bytes("Physician"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[5].valueCodeableConcept.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[6].code.code), force_bytes("venue")
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[6].code.system),
-            force_bytes("http://hl7.org/fhir/usage-context-type"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[6].valueCodeableConcept.coding[0].code),
-            force_bytes("440655000"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[6].valueCodeableConcept.coding[0].display),
-            force_bytes("Outpatient environment"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[6].valueCodeableConcept.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.version), force_bytes("1.0.0"))
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ActivityDefinition" == data["resourceType"]
 
-    def testActivityDefinition7(self):
-        inst = self.instantiate_from("activitydefinition-example.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a ActivityDefinition instance"
-        )
-        self.implActivityDefinition7(inst)
+    inst2 = activitydefinition.ActivityDefinition(**data)
+    impl_activitydefinition_3(inst2)
 
-        js = inst.as_json()
-        self.assertEqual("ActivityDefinition", js["resourceType"])
-        inst2 = activitydefinition.ActivityDefinition(js)
-        self.implActivityDefinition7(inst2)
 
-    def implActivityDefinition7(self, inst):
-        self.assertEqual(inst.approvalDate.date, FHIRDate("2017-03-01").date)
-        self.assertEqual(inst.approvalDate.as_json(), "2017-03-01")
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].code), force_bytes("306206005")
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.text), force_bytes("Referral to service (procedure)")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].system), force_bytes("phone")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].use), force_bytes("work")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].value), force_bytes("415-362-4007")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[1].system), force_bytes("email")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[1].use), force_bytes("work")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[1].value),
-            force_bytes("info@motivemi.com"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contributor[0].contact[0].telecom[0].system),
-            force_bytes("phone"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contributor[0].contact[0].telecom[0].use),
-            force_bytes("work"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contributor[0].contact[0].telecom[0].value),
-            force_bytes("415-362-4007"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contributor[0].contact[0].telecom[1].system),
-            force_bytes("email"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contributor[0].contact[0].telecom[1].use),
-            force_bytes("work"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contributor[0].contact[0].telecom[1].value),
-            force_bytes("info@motivemi.com"),
-        )
-        self.assertEqual(
-            force_bytes(inst.contributor[0].name),
-            force_bytes("Motive Medical Intelligence"),
-        )
-        self.assertEqual(force_bytes(inst.contributor[0].type), force_bytes("author"))
-        self.assertEqual(
-            force_bytes(inst.copyright),
-            force_bytes(
-                "© Copyright 2016 Motive Medical Intelligence. All rights reserved."
-            ),
-        )
-        self.assertEqual(inst.date.date, FHIRDate("2017-03-03T14:06:00Z").date)
-        self.assertEqual(inst.date.as_json(), "2017-03-03T14:06:00Z")
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes(
-                "refer to primary care mental-health integrated care program for evaluation and treatment of mental health conditions now"
-            ),
-        )
-        self.assertEqual(inst.effectivePeriod.end.date, FHIRDate("2017-12-31").date)
-        self.assertEqual(inst.effectivePeriod.end.as_json(), "2017-12-31")
-        self.assertEqual(inst.effectivePeriod.start.date, FHIRDate("2017-03-01").date)
-        self.assertEqual(inst.effectivePeriod.start.as_json(), "2017-03-01")
-        self.assertTrue(inst.experimental)
-        self.assertEqual(
-            force_bytes(inst.id), force_bytes("referralPrimaryCareMentalHealth")
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://motivemi.com/artifacts"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].use), force_bytes("official"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].value),
-            force_bytes("referralPrimaryCareMentalHealth"),
-        )
-        self.assertEqual(
-            force_bytes(inst.jurisdiction[0].coding[0].code), force_bytes("US")
-        )
-        self.assertEqual(
-            force_bytes(inst.jurisdiction[0].coding[0].system),
-            force_bytes("urn:iso:std:iso:3166"),
-        )
-        self.assertEqual(force_bytes(inst.kind), force_bytes("ReferralRequest"))
-        self.assertEqual(inst.lastReviewDate.date, FHIRDate("2017-03-01").date)
-        self.assertEqual(inst.lastReviewDate.as_json(), "2017-03-01")
-        self.assertEqual(
-            force_bytes(inst.name), force_bytes("ReferralPrimaryCareMentalHealth")
-        )
-        self.assertEqual(
-            force_bytes(inst.participant[0].type), force_bytes("practitioner")
-        )
-        self.assertEqual(
-            force_bytes(inst.publisher), force_bytes("Motive Medical Intelligence")
-        )
-        self.assertEqual(
-            force_bytes(inst.relatedArtifact[0].display),
-            force_bytes(
-                "Practice Guideline for the Treatment of Patients with Major Depressive Disorder"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.relatedArtifact[0].type), force_bytes("citation")
-        )
-        self.assertEqual(
-            force_bytes(inst.relatedArtifact[0].url),
-            force_bytes(
-                "http://psychiatryonline.org/pb/assets/raw/sitewide/practice_guidelines/guidelines/mdd.pdf"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.relatedArtifact[1].type), force_bytes("predecessor")
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.title),
-            force_bytes("Referral to Primary Care Mental Health"),
-        )
-        self.assertEqual(
-            force_bytes(inst.topic[0].text), force_bytes("Mental Health Referral")
-        )
-        self.assertEqual(
-            force_bytes(inst.url),
-            force_bytes(
-                "http://motivemi.com/artifacts/ActivityDefinition/referralPrimaryCareMentalHealth"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.useContext[0].code.code), force_bytes("age"))
-        self.assertEqual(
-            force_bytes(inst.useContext[0].code.system),
-            force_bytes("http://hl7.org/fhir/usage-context-type"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[0].valueCodeableConcept.coding[0].code),
-            force_bytes("D000328"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[0].valueCodeableConcept.coding[0].display),
-            force_bytes("Adult"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[0].valueCodeableConcept.coding[0].system),
-            force_bytes("https://meshb.nlm.nih.gov"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[1].code.code), force_bytes("focus")
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[1].code.system),
-            force_bytes("http://hl7.org/fhir/usage-context-type"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[1].valueCodeableConcept.coding[0].code),
-            force_bytes("87512008"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[1].valueCodeableConcept.coding[0].display),
-            force_bytes("Mild major depression"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[1].valueCodeableConcept.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[2].code.code), force_bytes("focus")
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[2].code.system),
-            force_bytes("http://hl7.org/fhir/usage-context-type"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[2].valueCodeableConcept.coding[0].code),
-            force_bytes("40379007"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[2].valueCodeableConcept.coding[0].display),
-            force_bytes("Major depression, recurrent, mild"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[2].valueCodeableConcept.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[3].code.code), force_bytes("focus")
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[3].code.system),
-            force_bytes("http://hl7.org/fhir/usage-context-type"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[3].valueCodeableConcept.coding[0].code),
-            force_bytes("225444004"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[3].valueCodeableConcept.coding[0].display),
-            force_bytes("At risk for suicide (finding)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[3].valueCodeableConcept.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[4].code.code), force_bytes("focus")
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[4].code.system),
-            force_bytes("http://hl7.org/fhir/usage-context-type"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[4].valueCodeableConcept.coding[0].code),
-            force_bytes("306206005"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[4].valueCodeableConcept.coding[0].display),
-            force_bytes("Referral to service (procedure)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[4].valueCodeableConcept.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.useContext[5].code.code), force_bytes("user"))
-        self.assertEqual(
-            force_bytes(inst.useContext[5].code.system),
-            force_bytes("http://hl7.org/fhir/usage-context-type"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[5].valueCodeableConcept.coding[0].code),
-            force_bytes("309343006"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[5].valueCodeableConcept.coding[0].display),
-            force_bytes("Physician"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[5].valueCodeableConcept.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[6].code.code), force_bytes("venue")
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[6].code.system),
-            force_bytes("http://hl7.org/fhir/usage-context-type"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[6].valueCodeableConcept.coding[0].code),
-            force_bytes("440655000"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[6].valueCodeableConcept.coding[0].display),
-            force_bytes("Outpatient environment"),
-        )
-        self.assertEqual(
-            force_bytes(inst.useContext[6].valueCodeableConcept.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.version), force_bytes("1.1.0"))
+def impl_activitydefinition_4(inst):
+    assert inst.code.text == "Serum Zika and Dengue Virus IgM"
+    assert inst.description == "Order Serum Zika and Dengue Virus IgM"
+    assert inst.id == "serum-zika-dengue-virus-igm"
+    assert inst.kind == "ProcedureRequest"
+    assert inst.library[0].reference == "Library/zika-virus-intervention-logic"
+    assert inst.participant[0].type == "practitioner"
+    assert (
+        inst.relatedArtifact[0].display
+        == "Explanation of diagnostic tests for Zika virus and which to use based on the patient’s clinical and exposure history."
+    )
+    assert inst.relatedArtifact[0].type == "documentation"
+    assert (
+        inst.relatedArtifact[0].url
+        == "http://www.cdc.gov/zika/hc-providers/diagnostic.html"
+    )
+    assert (
+        inst.relatedArtifact[1].resource.reference
+        == "ActivityDefinition/serum-dengue-virus-igm"
+    )
+    assert inst.relatedArtifact[1].type == "derived-from"
+    assert inst.status == "draft"
+    assert inst.text.status == "generated"
+    assert (
+        inst.url == "http://example.org/ActivityDefinition/serum-zika-dengue-virus-igm"
+    )
 
-    def testActivityDefinition8(self):
-        inst = self.instantiate_from(
-            "activitydefinition-order-serum-dengue-virus-igm.json"
-        )
-        self.assertIsNotNone(
-            inst, "Must have instantiated a ActivityDefinition instance"
-        )
-        self.implActivityDefinition8(inst)
 
-        js = inst.as_json()
-        self.assertEqual("ActivityDefinition", js["resourceType"])
-        inst2 = activitydefinition.ActivityDefinition(js)
-        self.implActivityDefinition8(inst2)
+def test_activitydefinition_4(base_settings):
+    """No. 4 tests collection for ActivityDefinition.
+    Test File: activitydefinition-order-serum-zika-dengue-virus-igm.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"]
+        / "activitydefinition-order-serum-zika-dengue-virus-igm.json"
+    )
+    inst = activitydefinition.ActivityDefinition.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ActivityDefinition" == inst.resource_type
 
-    def implActivityDefinition8(self, inst):
-        self.assertEqual(
-            force_bytes(inst.code.text), force_bytes("Serum Dengue Virus IgM")
-        )
-        self.assertEqual(
-            force_bytes(inst.description), force_bytes("Order Serum Dengue Virus IgM")
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("serum-dengue-virus-igm"))
-        self.assertEqual(force_bytes(inst.kind), force_bytes("ProcedureRequest"))
-        self.assertEqual(
-            force_bytes(inst.participant[0].type), force_bytes("practitioner")
-        )
-        self.assertEqual(
-            force_bytes(inst.relatedArtifact[0].display),
-            force_bytes(
-                "Explanation of diagnostic tests for Dengue virus and which to use based on the patient’s clinical and exposure history."
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.relatedArtifact[0].type), force_bytes("documentation")
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.url),
-            force_bytes("http://example.org/ActivityDefinition/serum-dengue-virus-igm"),
-        )
+    impl_activitydefinition_4(inst)
 
-    def testActivityDefinition9(self):
-        inst = self.instantiate_from("activitydefinition-supplyrequest-example.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a ActivityDefinition instance"
-        )
-        self.implActivityDefinition9(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ActivityDefinition" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("ActivityDefinition", js["resourceType"])
-        inst2 = activitydefinition.ActivityDefinition(js)
-        self.implActivityDefinition9(inst2)
+    inst2 = activitydefinition.ActivityDefinition(**data)
+    impl_activitydefinition_4(inst2)
 
-    def implActivityDefinition9(self, inst):
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].code), force_bytes("BlueTubes")
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].display),
-            force_bytes("Blood collect tubes blue cap"),
-        )
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes("10 Blood collect tubes blue cap"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("blood-tubes-supply"))
-        self.assertEqual(force_bytes(inst.kind), force_bytes("SupplyRequest"))
-        self.assertEqual(
-            force_bytes(inst.purpose),
-            force_bytes(
-                "Describes a request for 10 Blood collection tubes with blue caps."
-            ),
-        )
-        self.assertEqual(inst.quantity.value, 10)
-        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+
+def impl_activitydefinition_5(inst):
+    assert inst.bodySite[0].coding[0].code == "17401000"
+    assert inst.bodySite[0].coding[0].display == "Heart valve structure"
+    assert inst.bodySite[0].coding[0].system == "http://snomed.info/sct"
+    assert inst.code.coding[0].code == "34068001"
+    assert inst.code.coding[0].display == "Heart valve replacement"
+    assert inst.code.coding[0].system == "http://snomed.info/sct"
+    assert inst.description == "Heart valve replacement"
+    assert inst.id == "heart-valve-replacement"
+    assert inst.kind == "ProcedureRequest"
+    assert inst.location.reference == "Location/1"
+    assert inst.participant[0].role.coding[0].code == "207RI0011X"
+    assert inst.participant[0].role.coding[0].display == "Interventional Cardiology"
+    assert (
+        inst.participant[0].role.coding[0].system == "http://nucc.org/provider-taxonomy"
+    )
+    assert inst.participant[0].role.text == "Interventional Cardiology"
+    assert inst.participant[0].type == "practitioner"
+    assert (
+        inst.purpose == "Describes the proposal to perform a Heart Valve replacement."
+    )
+    assert inst.status == "draft"
+    assert inst.text.status == "generated"
+    assert inst.topic[0].coding[0].code == "34068001"
+    assert inst.topic[0].coding[0].display == "Heart valve replacement"
+    assert inst.topic[0].coding[0].system == "http://snomed.info/sct"
+    assert inst.useContext[0].code.code == "age"
+    assert inst.useContext[0].code.system == "http://hl7.org/fhir/usage-context-type"
+    assert inst.useContext[0].valueCodeableConcept.coding[0].code == "D000328"
+    assert inst.useContext[0].valueCodeableConcept.coding[0].display == "Adult"
+    assert (
+        inst.useContext[0].valueCodeableConcept.coding[0].system
+        == "https://meshb.nlm.nih.gov"
+    )
+    assert inst.useContext[1].code.code == "user"
+    assert inst.useContext[1].code.system == "http://hl7.org/fhir/usage-context-type"
+    assert inst.useContext[1].valueCodeableConcept.coding[0].code == "309343006"
+    assert inst.useContext[1].valueCodeableConcept.coding[0].display == "Physician"
+    assert (
+        inst.useContext[1].valueCodeableConcept.coding[0].system
+        == "http://snomed.info/sct"
+    )
+
+
+def test_activitydefinition_5(base_settings):
+    """No. 5 tests collection for ActivityDefinition.
+    Test File: activitydefinition-procedurerequest-example.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"]
+        / "activitydefinition-procedurerequest-example.json"
+    )
+    inst = activitydefinition.ActivityDefinition.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ActivityDefinition" == inst.resource_type
+
+    impl_activitydefinition_5(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ActivityDefinition" == data["resourceType"]
+
+    inst2 = activitydefinition.ActivityDefinition(**data)
+    impl_activitydefinition_5(inst2)
+
+
+def impl_activitydefinition_6(inst):
+    assert inst.approvalDate == fhirtypes.Date.validate("2016-03-12")
+    assert inst.contact[0].telecom[0].system == "phone"
+    assert inst.contact[0].telecom[0].use == "work"
+    assert inst.contact[0].telecom[0].value == "415-362-4007"
+    assert inst.contact[0].telecom[1].system == "email"
+    assert inst.contact[0].telecom[1].use == "work"
+    assert inst.contact[0].telecom[1].value == "info@motivemi.com"
+    assert inst.contained[0].id == "citalopramMedication"
+    assert inst.contained[1].id == "citalopramSubstance"
+    assert inst.contributor[0].contact[0].telecom[0].system == "phone"
+    assert inst.contributor[0].contact[0].telecom[0].use == "work"
+    assert inst.contributor[0].contact[0].telecom[0].value == "415-362-4007"
+    assert inst.contributor[0].contact[0].telecom[1].system == "email"
+    assert inst.contributor[0].contact[0].telecom[1].use == "work"
+    assert inst.contributor[0].contact[0].telecom[1].value == "info@motivemi.com"
+    assert inst.contributor[0].name == "Motive Medical Intelligence"
+    assert inst.contributor[0].type == "author"
+    assert (
+        inst.copyright
+        == "© Copyright 2016 Motive Medical Intelligence. All rights reserved."
+    )
+    assert inst.date == fhirtypes.DateTime.validate("2015-08-15")
+    assert (
+        inst.description
+        == "Citalopram 20 mg tablet 1 tablet oral 1 time daily now (30 table; 3 refills"
+    )
+    assert inst.dosage[0].doseQuantity.unit == "{tbl}"
+    assert float(inst.dosage[0].doseQuantity.value) == float(1)
+    assert inst.dosage[0].route.coding[0].code == "26643006"
+    assert inst.dosage[0].route.coding[0].display == "Oral route (qualifier value)"
+    assert inst.dosage[0].route.text == "Oral route (qualifier value)"
+    assert inst.dosage[0].text == "1 tablet oral 1 time daily"
+    assert inst.dosage[0].timing.repeat.frequency == 1
+    assert float(inst.dosage[0].timing.repeat.period) == float(1)
+    assert inst.dosage[0].timing.repeat.periodUnit == "d"
+    assert (
+        inst.dynamicValue[0].description
+        == "dispenseRequest.numberOfRepeatsAllowed is three (3)"
+    )
+    assert inst.dynamicValue[0].expression == "3"
+    assert inst.dynamicValue[0].language == "text/cql"
+    assert inst.dynamicValue[0].path == "dispenseRequest.numberOfRepeatsAllowed"
+    assert (
+        inst.dynamicValue[1].description
+        == "dispenseRequest.quantity is thirty (30) tablets"
+    )
+    assert inst.dynamicValue[1].expression == "30 '{tbl}'"
+    assert inst.dynamicValue[1].language == "text/cql"
+    assert inst.dynamicValue[1].path == "dispenseRequest.quantity"
+    assert inst.effectivePeriod.end == fhirtypes.DateTime.validate("2017-12-31")
+    assert inst.effectivePeriod.start == fhirtypes.DateTime.validate("2016-01-01")
+    assert inst.experimental is True
+    assert inst.id == "citalopramPrescription"
+    assert inst.identifier[0].system == "http://motivemi.com"
+    assert inst.identifier[0].use == "official"
+    assert inst.identifier[0].value == "citalopramPrescription"
+    assert inst.jurisdiction[0].coding[0].code == "US"
+    assert inst.jurisdiction[0].coding[0].system == "urn:iso:std:iso:3166"
+    assert inst.kind == "MedicationRequest"
+    assert inst.lastReviewDate == fhirtypes.Date.validate("2016-08-15")
+    assert inst.name == "CitalopramPrescription"
+    assert inst.productReference.reference == "#citalopramMedication"
+    assert inst.publisher == "Motive Medical Intelligence"
+    assert (
+        inst.purpose
+        == "Defines a guideline supported prescription for the treatment of depressive disorders"
+    )
+    assert (
+        inst.relatedArtifact[0].display
+        == "Practice Guideline for the Treatment of Patients with Major Depressive Disorder"
+    )
+    assert inst.relatedArtifact[0].type == "citation"
+    assert (
+        inst.relatedArtifact[0].url
+        == "http://psychiatryonline.org/pb/assets/raw/sitewide/practice_guidelines/guidelines/mdd.pdf"
+    )
+    assert inst.relatedArtifact[1].resource.reference == "#citalopramMedication"
+    assert inst.relatedArtifact[1].type == "composed-of"
+    assert inst.status == "active"
+    assert inst.text.status == "generated"
+    assert inst.title == "Citalopram Prescription"
+    assert inst.topic[0].text == "Mental Health Treatment"
+    assert (
+        inst.url
+        == "http://motivemi.com/artifacts/ActivityDefinition/citalopramPrescription"
+    )
+    assert (
+        inst.usage
+        == "This activity definition is used as part of various suicide risk order sets"
+    )
+    assert inst.useContext[0].code.code == "age"
+    assert inst.useContext[0].code.system == "http://hl7.org/fhir/usage-context-type"
+    assert inst.useContext[0].valueCodeableConcept.coding[0].code == "D000328"
+    assert inst.useContext[0].valueCodeableConcept.coding[0].display == "Adult"
+    assert (
+        inst.useContext[0].valueCodeableConcept.coding[0].system
+        == "https://meshb.nlm.nih.gov"
+    )
+    assert inst.useContext[1].code.code == "focus"
+    assert inst.useContext[1].code.system == "http://hl7.org/fhir/usage-context-type"
+    assert inst.useContext[1].valueCodeableConcept.coding[0].code == "87512008"
+    assert (
+        inst.useContext[1].valueCodeableConcept.coding[0].display
+        == "Mild major depression"
+    )
+    assert (
+        inst.useContext[1].valueCodeableConcept.coding[0].system
+        == "http://snomed.info/sct"
+    )
+    assert inst.useContext[2].code.code == "focus"
+    assert inst.useContext[2].code.system == "http://hl7.org/fhir/usage-context-type"
+    assert inst.useContext[2].valueCodeableConcept.coding[0].code == "40379007"
+    assert (
+        inst.useContext[2].valueCodeableConcept.coding[0].display
+        == "Major depression, recurrent, mild"
+    )
+    assert (
+        inst.useContext[2].valueCodeableConcept.coding[0].system
+        == "http://snomed.info/sct"
+    )
+    assert inst.useContext[3].code.code == "focus"
+    assert inst.useContext[3].code.system == "http://hl7.org/fhir/usage-context-type"
+    assert inst.useContext[3].valueCodeableConcept.coding[0].code == "225444004"
+    assert (
+        inst.useContext[3].valueCodeableConcept.coding[0].display
+        == "At risk for suicide (finding)"
+    )
+    assert (
+        inst.useContext[3].valueCodeableConcept.coding[0].system
+        == "http://snomed.info/sct"
+    )
+    assert inst.useContext[4].code.code == "focus"
+    assert inst.useContext[4].code.system == "http://hl7.org/fhir/usage-context-type"
+    assert inst.useContext[4].valueCodeableConcept.coding[0].code == "306206005"
+    assert (
+        inst.useContext[4].valueCodeableConcept.coding[0].display
+        == "Referral to service (procedure)"
+    )
+    assert (
+        inst.useContext[4].valueCodeableConcept.coding[0].system
+        == "http://snomed.info/sct"
+    )
+    assert inst.useContext[5].code.code == "user"
+    assert inst.useContext[5].code.system == "http://hl7.org/fhir/usage-context-type"
+    assert inst.useContext[5].valueCodeableConcept.coding[0].code == "309343006"
+    assert inst.useContext[5].valueCodeableConcept.coding[0].display == "Physician"
+    assert (
+        inst.useContext[5].valueCodeableConcept.coding[0].system
+        == "http://snomed.info/sct"
+    )
+    assert inst.useContext[6].code.code == "venue"
+    assert inst.useContext[6].code.system == "http://hl7.org/fhir/usage-context-type"
+    assert inst.useContext[6].valueCodeableConcept.coding[0].code == "440655000"
+    assert (
+        inst.useContext[6].valueCodeableConcept.coding[0].display
+        == "Outpatient environment"
+    )
+    assert (
+        inst.useContext[6].valueCodeableConcept.coding[0].system
+        == "http://snomed.info/sct"
+    )
+    assert inst.version == "1.0.0"
+
+
+def test_activitydefinition_6(base_settings):
+    """No. 6 tests collection for ActivityDefinition.
+    Test File: activitydefinition-medicationorder-example.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"]
+        / "activitydefinition-medicationorder-example.json"
+    )
+    inst = activitydefinition.ActivityDefinition.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ActivityDefinition" == inst.resource_type
+
+    impl_activitydefinition_6(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ActivityDefinition" == data["resourceType"]
+
+    inst2 = activitydefinition.ActivityDefinition(**data)
+    impl_activitydefinition_6(inst2)
+
+
+def impl_activitydefinition_7(inst):
+    assert inst.approvalDate == fhirtypes.Date.validate("2017-03-01")
+    assert inst.code.coding[0].code == "306206005"
+    assert inst.code.coding[0].system == "http://snomed.info/sct"
+    assert inst.code.text == "Referral to service (procedure)"
+    assert inst.contact[0].telecom[0].system == "phone"
+    assert inst.contact[0].telecom[0].use == "work"
+    assert inst.contact[0].telecom[0].value == "415-362-4007"
+    assert inst.contact[0].telecom[1].system == "email"
+    assert inst.contact[0].telecom[1].use == "work"
+    assert inst.contact[0].telecom[1].value == "info@motivemi.com"
+    assert inst.contributor[0].contact[0].telecom[0].system == "phone"
+    assert inst.contributor[0].contact[0].telecom[0].use == "work"
+    assert inst.contributor[0].contact[0].telecom[0].value == "415-362-4007"
+    assert inst.contributor[0].contact[0].telecom[1].system == "email"
+    assert inst.contributor[0].contact[0].telecom[1].use == "work"
+    assert inst.contributor[0].contact[0].telecom[1].value == "info@motivemi.com"
+    assert inst.contributor[0].name == "Motive Medical Intelligence"
+    assert inst.contributor[0].type == "author"
+    assert (
+        inst.copyright
+        == "© Copyright 2016 Motive Medical Intelligence. All rights reserved."
+    )
+    assert inst.date == fhirtypes.DateTime.validate("2017-03-03T14:06:00Z")
+    assert (
+        inst.description
+        == "refer to primary care mental-health integrated care program for evaluation and treatment of mental health conditions now"
+    )
+    assert inst.effectivePeriod.end == fhirtypes.DateTime.validate("2017-12-31")
+    assert inst.effectivePeriod.start == fhirtypes.DateTime.validate("2017-03-01")
+    assert inst.experimental is True
+    assert inst.id == "referralPrimaryCareMentalHealth"
+    assert inst.identifier[0].system == "http://motivemi.com/artifacts"
+    assert inst.identifier[0].use == "official"
+    assert inst.identifier[0].value == "referralPrimaryCareMentalHealth"
+    assert inst.jurisdiction[0].coding[0].code == "US"
+    assert inst.jurisdiction[0].coding[0].system == "urn:iso:std:iso:3166"
+    assert inst.kind == "ReferralRequest"
+    assert inst.lastReviewDate == fhirtypes.Date.validate("2017-03-01")
+    assert inst.name == "ReferralPrimaryCareMentalHealth"
+    assert inst.participant[0].type == "practitioner"
+    assert inst.publisher == "Motive Medical Intelligence"
+    assert (
+        inst.relatedArtifact[0].display
+        == "Practice Guideline for the Treatment of Patients with Major Depressive Disorder"
+    )
+    assert inst.relatedArtifact[0].type == "citation"
+    assert (
+        inst.relatedArtifact[0].url
+        == "http://psychiatryonline.org/pb/assets/raw/sitewide/practice_guidelines/guidelines/mdd.pdf"
+    )
+    assert (
+        inst.relatedArtifact[1].resource.reference
+        == "ActivityDefinition/referralPrimaryCareMentalHealth-initial"
+    )
+    assert inst.relatedArtifact[1].type == "predecessor"
+    assert inst.status == "active"
+    assert inst.text.status == "generated"
+    assert inst.title == "Referral to Primary Care Mental Health"
+    assert inst.topic[0].text == "Mental Health Referral"
+    assert (
+        inst.url
+        == "http://motivemi.com/artifacts/ActivityDefinition/referralPrimaryCareMentalHealth"
+    )
+    assert inst.useContext[0].code.code == "age"
+    assert inst.useContext[0].code.system == "http://hl7.org/fhir/usage-context-type"
+    assert inst.useContext[0].valueCodeableConcept.coding[0].code == "D000328"
+    assert inst.useContext[0].valueCodeableConcept.coding[0].display == "Adult"
+    assert (
+        inst.useContext[0].valueCodeableConcept.coding[0].system
+        == "https://meshb.nlm.nih.gov"
+    )
+    assert inst.useContext[1].code.code == "focus"
+    assert inst.useContext[1].code.system == "http://hl7.org/fhir/usage-context-type"
+    assert inst.useContext[1].valueCodeableConcept.coding[0].code == "87512008"
+    assert (
+        inst.useContext[1].valueCodeableConcept.coding[0].display
+        == "Mild major depression"
+    )
+    assert (
+        inst.useContext[1].valueCodeableConcept.coding[0].system
+        == "http://snomed.info/sct"
+    )
+    assert inst.useContext[2].code.code == "focus"
+    assert inst.useContext[2].code.system == "http://hl7.org/fhir/usage-context-type"
+    assert inst.useContext[2].valueCodeableConcept.coding[0].code == "40379007"
+    assert (
+        inst.useContext[2].valueCodeableConcept.coding[0].display
+        == "Major depression, recurrent, mild"
+    )
+    assert (
+        inst.useContext[2].valueCodeableConcept.coding[0].system
+        == "http://snomed.info/sct"
+    )
+    assert inst.useContext[3].code.code == "focus"
+    assert inst.useContext[3].code.system == "http://hl7.org/fhir/usage-context-type"
+    assert inst.useContext[3].valueCodeableConcept.coding[0].code == "225444004"
+    assert (
+        inst.useContext[3].valueCodeableConcept.coding[0].display
+        == "At risk for suicide (finding)"
+    )
+    assert (
+        inst.useContext[3].valueCodeableConcept.coding[0].system
+        == "http://snomed.info/sct"
+    )
+    assert inst.useContext[4].code.code == "focus"
+    assert inst.useContext[4].code.system == "http://hl7.org/fhir/usage-context-type"
+    assert inst.useContext[4].valueCodeableConcept.coding[0].code == "306206005"
+    assert (
+        inst.useContext[4].valueCodeableConcept.coding[0].display
+        == "Referral to service (procedure)"
+    )
+    assert (
+        inst.useContext[4].valueCodeableConcept.coding[0].system
+        == "http://snomed.info/sct"
+    )
+    assert inst.useContext[5].code.code == "user"
+    assert inst.useContext[5].code.system == "http://hl7.org/fhir/usage-context-type"
+    assert inst.useContext[5].valueCodeableConcept.coding[0].code == "309343006"
+    assert inst.useContext[5].valueCodeableConcept.coding[0].display == "Physician"
+    assert (
+        inst.useContext[5].valueCodeableConcept.coding[0].system
+        == "http://snomed.info/sct"
+    )
+    assert inst.useContext[6].code.code == "venue"
+    assert inst.useContext[6].code.system == "http://hl7.org/fhir/usage-context-type"
+    assert inst.useContext[6].valueCodeableConcept.coding[0].code == "440655000"
+    assert (
+        inst.useContext[6].valueCodeableConcept.coding[0].display
+        == "Outpatient environment"
+    )
+    assert (
+        inst.useContext[6].valueCodeableConcept.coding[0].system
+        == "http://snomed.info/sct"
+    )
+    assert inst.version == "1.1.0"
+
+
+def test_activitydefinition_7(base_settings):
+    """No. 7 tests collection for ActivityDefinition.
+    Test File: activitydefinition-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "activitydefinition-example.json"
+    inst = activitydefinition.ActivityDefinition.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ActivityDefinition" == inst.resource_type
+
+    impl_activitydefinition_7(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ActivityDefinition" == data["resourceType"]
+
+    inst2 = activitydefinition.ActivityDefinition(**data)
+    impl_activitydefinition_7(inst2)
+
+
+def impl_activitydefinition_8(inst):
+    assert inst.code.text == "Serum Dengue Virus IgM"
+    assert inst.description == "Order Serum Dengue Virus IgM"
+    assert inst.id == "serum-dengue-virus-igm"
+    assert inst.kind == "ProcedureRequest"
+    assert inst.participant[0].type == "practitioner"
+    assert (
+        inst.relatedArtifact[0].display
+        == "Explanation of diagnostic tests for Dengue virus and which to use based on the patient’s clinical and exposure history."
+    )
+    assert inst.relatedArtifact[0].type == "documentation"
+    assert inst.status == "draft"
+    assert inst.text.status == "generated"
+    assert inst.url == "http://example.org/ActivityDefinition/serum-dengue-virus-igm"
+
+
+def test_activitydefinition_8(base_settings):
+    """No. 8 tests collection for ActivityDefinition.
+    Test File: activitydefinition-order-serum-dengue-virus-igm.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"]
+        / "activitydefinition-order-serum-dengue-virus-igm.json"
+    )
+    inst = activitydefinition.ActivityDefinition.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ActivityDefinition" == inst.resource_type
+
+    impl_activitydefinition_8(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ActivityDefinition" == data["resourceType"]
+
+    inst2 = activitydefinition.ActivityDefinition(**data)
+    impl_activitydefinition_8(inst2)
+
+
+def impl_activitydefinition_9(inst):
+    assert inst.code.coding[0].code == "BlueTubes"
+    assert inst.code.coding[0].display == "Blood collect tubes blue cap"
+    assert inst.description == "10 Blood collect tubes blue cap"
+    assert inst.id == "blood-tubes-supply"
+    assert inst.kind == "SupplyRequest"
+    assert (
+        inst.purpose
+        == "Describes a request for 10 Blood collection tubes with blue caps."
+    )
+    assert float(inst.quantity.value) == float(10)
+    assert inst.status == "draft"
+    assert inst.text.status == "generated"
+    assert inst.transform.reference == "StructureMap/supplyrequest-transform"
+
+
+def test_activitydefinition_9(base_settings):
+    """No. 9 tests collection for ActivityDefinition.
+    Test File: activitydefinition-supplyrequest-example.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"]
+        / "activitydefinition-supplyrequest-example.json"
+    )
+    inst = activitydefinition.ActivityDefinition.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ActivityDefinition" == inst.resource_type
+
+    impl_activitydefinition_9(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ActivityDefinition" == data["resourceType"]
+
+    inst2 = activitydefinition.ActivityDefinition(**data)
+    impl_activitydefinition_9(inst2)

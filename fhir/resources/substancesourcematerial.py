@@ -6,11 +6,11 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class SubstanceSourceMaterial(domainresource.DomainResource):
@@ -30,213 +30,102 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
     herbal annex.
     """
 
-    resource_type = "SubstanceSourceMaterial"
+    resource_type = Field("SubstanceSourceMaterial", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    countryOfOrigin: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="countryOfOrigin",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="The country where the plant material is harvested or the countries where the plasma is sourced from as laid down in accordance with the Plasma Master File. For \u201cPlasma-derived substances\u201d the attribute country of origin provides information about the countries used for the manufacturing of the Cryopoor plama or Crioprecipitate",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    developmentStage: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="developmentStage",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Stage of life for animals, plants, insects and microorganisms. This information shall be provided only when the substance is significantly different in these stages (e.g. foetal bovine serum)",
+    )
 
-        self.countryOfOrigin = None
-        """ The country where the plant material is harvested or the countries
-        where the plasma is sourced from as laid down in accordance with
-        the Plasma Master File. For “Plasma-derived substances” the
-        attribute country of origin provides information about the
-        countries used for the manufacturing of the Cryopoor plama or
-        Crioprecipitate.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    fractionDescription: ListType[
+        fhirtypes.SubstanceSourceMaterialFractionDescriptionType
+    ] = Field(
+        None,
+        alias="fractionDescription",
+        title="List of `SubstanceSourceMaterialFractionDescription` items (represented as `dict` in JSON)",
+        description="Many complex materials are fractions of parts of plants, animals, or minerals. Fraction elements are often necessary to define both Substances and Specified Group 1 Substances. For substances derived from Plants, fraction information will be captured at the Substance information level ( . Oils, Juices and Exudates). Additional information for Extracts, such as extraction solvent composition, will be captured at the Specified Substance Group 1 information level. For plasma-derived products fraction information will be captured at the Substance and the Specified Substance Group 1 levels",
+    )
 
-        self.developmentStage = None
-        """ Stage of life for animals, plants, insects and microorganisms. This
-        information shall be provided only when the substance is
-        significantly different in these stages (e.g. foetal bovine serum).
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    geographicalLocation: ListType[fhirtypes.String] = Field(
+        None,
+        alias="geographicalLocation",
+        title="List of `String` items (represented as `dict` in JSON)",
+        description="The place/region where the plant is harvested or the places/regions where the animal source material has its habitat",
+    )
 
-        self.fractionDescription = None
-        """ Many complex materials are fractions of parts of plants, animals,
-        or minerals. Fraction elements are often necessary to define both
-        Substances and Specified Group 1 Substances. For substances derived
-        from Plants, fraction information will be captured at the Substance
-        information level ( . Oils, Juices and Exudates). Additional
-        information for Extracts, such as extraction solvent composition,
-        will be captured at the Specified Substance Group 1 information
-        level. For plasma-derived products fraction information will be
-        captured at the Substance and the Specified Substance Group 1
-        levels.
-        List of `SubstanceSourceMaterialFractionDescription` items (represented as `dict` in JSON). """
+    organism: fhirtypes.SubstanceSourceMaterialOrganismType = Field(
+        None,
+        alias="organism",
+        title="Type `SubstanceSourceMaterialOrganism` (represented as `dict` in JSON)",
+        description="This subclause describes the organism which the substance is derived from. For vaccines, the parent organism shall be specified based on these subclause elements. As an example, full taxonomy will be described for the Substance Name: ., Leaf",
+    )
 
-        self.geographicalLocation = None
-        """ The place/region where the plant is harvested or the places/regions
-        where the animal source material has its habitat.
-        List of `str` items. """
+    organismId: fhirtypes.IdentifierType = Field(
+        None,
+        alias="organismId",
+        title="Type `Identifier` (represented as `dict` in JSON)",
+        description="The unique identifier associated with the source material parent organism shall be specified",
+    )
 
-        self.organism = None
-        """ This subclause describes the organism which the substance is
-        derived from. For vaccines, the parent organism shall be specified
-        based on these subclause elements. As an example, full taxonomy
-        will be described for the Substance Name: ., Leaf.
-        Type `SubstanceSourceMaterialOrganism` (represented as `dict` in JSON). """
+    organismName: fhirtypes.String = Field(
+        None,
+        alias="organismName",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="The organism accepted Scientific name shall be provided based on the organism taxonomy",
+    )
 
-        self.organismId = None
-        """ The unique identifier associated with the source material parent
-        organism shall be specified.
-        Type `Identifier` (represented as `dict` in JSON). """
+    parentSubstanceId: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="parentSubstanceId",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="The parent of the herbal drug Ginkgo biloba, Leaf is the substance ID of the substance (fresh) of Ginkgo biloba L. or Ginkgo biloba L. (Whole plant)",
+    )
 
-        self.organismName = None
-        """ The organism accepted Scientific name shall be provided based on
-        the organism taxonomy.
-        Type `str`. """
+    parentSubstanceName: ListType[fhirtypes.String] = Field(
+        None,
+        alias="parentSubstanceName",
+        title="List of `String` items (represented as `dict` in JSON)",
+        description="The parent substance of the Herbal Drug, or Herbal preparation",
+    )
 
-        self.parentSubstanceId = None
-        """ The parent of the herbal drug Ginkgo biloba, Leaf is the substance
-        ID of the substance (fresh) of Ginkgo biloba L. or Ginkgo biloba L.
-        (Whole plant).
-        List of `Identifier` items (represented as `dict` in JSON). """
+    partDescription: ListType[
+        fhirtypes.SubstanceSourceMaterialPartDescriptionType
+    ] = Field(
+        None,
+        alias="partDescription",
+        title="List of `SubstanceSourceMaterialPartDescription` items (represented as `dict` in JSON)",
+        description="To do",
+    )
 
-        self.parentSubstanceName = None
-        """ The parent substance of the Herbal Drug, or Herbal preparation.
-        List of `str` items. """
+    sourceMaterialClass: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="sourceMaterialClass",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="General high level classification of the source material specific to the origin of the material",
+    )
 
-        self.partDescription = None
-        """ To do.
-        List of `SubstanceSourceMaterialPartDescription` items (represented as `dict` in JSON). """
+    sourceMaterialState: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="sourceMaterialState",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The state of the source material when extracted",
+    )
 
-        self.sourceMaterialClass = None
-        """ General high level classification of the source material specific
-        to the origin of the material.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.sourceMaterialState = None
-        """ The state of the source material when extracted.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.sourceMaterialType = None
-        """ The type of the source material shall be specified based on a
-        controlled vocabulary. For vaccines, this subclause refers to the
-        class of infectious agent.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(SubstanceSourceMaterial, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(SubstanceSourceMaterial, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "countryOfOrigin",
-                    "countryOfOrigin",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "developmentStage",
-                    "developmentStage",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "fractionDescription",
-                    "fractionDescription",
-                    SubstanceSourceMaterialFractionDescription,
-                    "SubstanceSourceMaterialFractionDescription",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "geographicalLocation",
-                    "geographicalLocation",
-                    str,
-                    "string",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "organism",
-                    "organism",
-                    SubstanceSourceMaterialOrganism,
-                    "SubstanceSourceMaterialOrganism",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "organismId",
-                    "organismId",
-                    identifier.Identifier,
-                    "Identifier",
-                    False,
-                    None,
-                    False,
-                ),
-                ("organismName", "organismName", str, "string", False, None, False),
-                (
-                    "parentSubstanceId",
-                    "parentSubstanceId",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "parentSubstanceName",
-                    "parentSubstanceName",
-                    str,
-                    "string",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "partDescription",
-                    "partDescription",
-                    SubstanceSourceMaterialPartDescription,
-                    "SubstanceSourceMaterialPartDescription",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "sourceMaterialClass",
-                    "sourceMaterialClass",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "sourceMaterialState",
-                    "sourceMaterialState",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "sourceMaterialType",
-                    "sourceMaterialType",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    sourceMaterialType: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="sourceMaterialType",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The type of the source material shall be specified based on a controlled vocabulary. For vaccines, this subclause refers to the class of infectious agent",
+    )
 
 
 class SubstanceSourceMaterialFractionDescription(backboneelement.BackboneElement):
@@ -251,48 +140,21 @@ class SubstanceSourceMaterialFractionDescription(backboneelement.BackboneElement
     levels.
     """
 
-    resource_type = "SubstanceSourceMaterialFractionDescription"
+    resource_type = Field("SubstanceSourceMaterialFractionDescription", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    fraction: fhirtypes.String = Field(
+        None,
+        alias="fraction",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="This element is capturing information about the fraction of a plant part, or human plasma for fractionation",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.fraction = None
-        """ This element is capturing information about the fraction of a plant
-        part, or human plasma for fractionation.
-        Type `str`. """
-
-        self.materialType = None
-        """ The specific type of the material constituting the component. For
-        Herbal preparations the particulars of the extracts (liquid/dry) is
-        described in Specified Substance Group 1.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(SubstanceSourceMaterialFractionDescription, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(SubstanceSourceMaterialFractionDescription, self).elementProperties()
-        js.extend(
-            [
-                ("fraction", "fraction", str, "string", False, None, False),
-                (
-                    "materialType",
-                    "materialType",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    materialType: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="materialType",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The specific type of the material constituting the component. For Herbal preparations the particulars of the extracts (liquid/dry) is described in Specified Substance Group 1",
+    )
 
 
 class SubstanceSourceMaterialOrganism(backboneelement.BackboneElement):
@@ -302,441 +164,179 @@ class SubstanceSourceMaterialOrganism(backboneelement.BackboneElement):
     Substance Name: ., Leaf.
     """
 
-    resource_type = "SubstanceSourceMaterialOrganism"
+    resource_type = Field("SubstanceSourceMaterialOrganism", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    author: ListType[fhirtypes.SubstanceSourceMaterialOrganismAuthorType] = Field(
+        None,
+        alias="author",
+        title="List of `SubstanceSourceMaterialOrganismAuthor` items (represented as `dict` in JSON)",
+        description="4.9.13.6.1 Author type (Conditional)",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    family: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="family",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The family of an organism shall be specified",
+    )
 
-        self.author = None
-        """ 4.9.13.6.1 Author type (Conditional).
-        List of `SubstanceSourceMaterialOrganismAuthor` items (represented as `dict` in JSON). """
+    genus: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="genus",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The genus of an organism shall be specified; refers to the Latin epithet of the genus element of the plant/animal scientific name; it is present in names for genera, species and infraspecies",
+    )
 
-        self.family = None
-        """ The family of an organism shall be specified.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    hybrid: fhirtypes.SubstanceSourceMaterialOrganismHybridType = Field(
+        None,
+        alias="hybrid",
+        title="Type `SubstanceSourceMaterialOrganismHybrid` (represented as `dict` in JSON)",
+        description="4.9.13.8.1 Hybrid species maternal organism ID (Optional)",
+    )
 
-        self.genus = None
-        """ The genus of an organism shall be specified; refers to the Latin
-        epithet of the genus element of the plant/animal scientific name;
-        it is present in names for genera, species and infraspecies.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    intraspecificDescription: fhirtypes.String = Field(
+        None,
+        alias="intraspecificDescription",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="The intraspecific description of an organism shall be specified based on a controlled vocabulary. For Influenza Vaccine, the intraspecific description shall contain the syntax of the antigen in line with the WHO convention",
+    )
 
-        self.hybrid = None
-        """ 4.9.13.8.1 Hybrid species maternal organism ID (Optional).
-        Type `SubstanceSourceMaterialOrganismHybrid` (represented as `dict` in JSON). """
+    intraspecificType: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="intraspecificType",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The Intraspecific type of an organism shall be specified",
+    )
 
-        self.intraspecificDescription = None
-        """ The intraspecific description of an organism shall be specified
-        based on a controlled vocabulary. For Influenza Vaccine, the
-        intraspecific description shall contain the syntax of the antigen
-        in line with the WHO convention.
-        Type `str`. """
+    organismGeneral: fhirtypes.SubstanceSourceMaterialOrganismOrganismGeneralType = Field(
+        None,
+        alias="organismGeneral",
+        title="Type `SubstanceSourceMaterialOrganismOrganismGeneral` (represented as `dict` in JSON)",
+        description="4.9.13.7.1 Kingdom (Conditional)",
+    )
 
-        self.intraspecificType = None
-        """ The Intraspecific type of an organism shall be specified.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.organismGeneral = None
-        """ 4.9.13.7.1 Kingdom (Conditional).
-        Type `SubstanceSourceMaterialOrganismOrganismGeneral` (represented as `dict` in JSON). """
-
-        self.species = None
-        """ The species of an organism shall be specified; refers to the Latin
-        epithet of the species of the plant/animal; it is present in names
-        for species and infraspecies.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(SubstanceSourceMaterialOrganism, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(SubstanceSourceMaterialOrganism, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "author",
-                    "author",
-                    SubstanceSourceMaterialOrganismAuthor,
-                    "SubstanceSourceMaterialOrganismAuthor",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "family",
-                    "family",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "genus",
-                    "genus",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "hybrid",
-                    "hybrid",
-                    SubstanceSourceMaterialOrganismHybrid,
-                    "SubstanceSourceMaterialOrganismHybrid",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "intraspecificDescription",
-                    "intraspecificDescription",
-                    str,
-                    "string",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "intraspecificType",
-                    "intraspecificType",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "organismGeneral",
-                    "organismGeneral",
-                    SubstanceSourceMaterialOrganismOrganismGeneral,
-                    "SubstanceSourceMaterialOrganismOrganismGeneral",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "species",
-                    "species",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    species: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="species",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The species of an organism shall be specified; refers to the Latin epithet of the species of the plant/animal; it is present in names for species and infraspecies",
+    )
 
 
 class SubstanceSourceMaterialOrganismAuthor(backboneelement.BackboneElement):
     """ 4.9.13.6.1 Author type (Conditional).
     """
 
-    resource_type = "SubstanceSourceMaterialOrganismAuthor"
+    resource_type = Field("SubstanceSourceMaterialOrganismAuthor", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    authorDescription: fhirtypes.String = Field(
+        None,
+        alias="authorDescription",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="The author of an organism species shall be specified. The author year of an organism shall also be specified when applicable; refers to the year in which the first author(s) published the infraspecific plant/animal name (of any rank)",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.authorDescription = None
-        """ The author of an organism species shall be specified. The author
-        year of an organism shall also be specified when applicable; refers
-        to the year in which the first author(s) published the
-        infraspecific plant/animal name (of any rank).
-        Type `str`. """
-
-        self.authorType = None
-        """ The type of author of an organism species shall be specified. The
-        parenthetical author of an organism species refers to the first
-        author who published the plant/animal name (of any rank). The
-        primary author of an organism species refers to the first
-        author(s), who validly published the plant/animal name.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(SubstanceSourceMaterialOrganismAuthor, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(SubstanceSourceMaterialOrganismAuthor, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "authorDescription",
-                    "authorDescription",
-                    str,
-                    "string",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "authorType",
-                    "authorType",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    authorType: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="authorType",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The type of author of an organism species shall be specified. The parenthetical author of an organism species refers to the first author who published the plant/animal name (of any rank). The primary author of an organism species refers to the first author(s), who validly published the plant/animal name",
+    )
 
 
 class SubstanceSourceMaterialOrganismHybrid(backboneelement.BackboneElement):
     """ 4.9.13.8.1 Hybrid species maternal organism ID (Optional).
     """
 
-    resource_type = "SubstanceSourceMaterialOrganismHybrid"
+    resource_type = Field("SubstanceSourceMaterialOrganismHybrid", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    hybridType: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="hybridType",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The hybrid type of an organism shall be specified",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    maternalOrganismId: fhirtypes.String = Field(
+        None,
+        alias="maternalOrganismId",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="The identifier of the maternal species constituting the hybrid organism shall be specified based on a controlled vocabulary. For plants, the parents aren\u2019t always known, and it is unlikely that it will be known which is maternal and which is paternal",
+    )
 
-        self.hybridType = None
-        """ The hybrid type of an organism shall be specified.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    maternalOrganismName: fhirtypes.String = Field(
+        None,
+        alias="maternalOrganismName",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="The name of the maternal species constituting the hybrid organism shall be specified. For plants, the parents aren\u2019t always known, and it is unlikely that it will be known which is maternal and which is paternal",
+    )
 
-        self.maternalOrganismId = None
-        """ The identifier of the maternal species constituting the hybrid
-        organism shall be specified based on a controlled vocabulary. For
-        plants, the parents aren’t always known, and it is unlikely that it
-        will be known which is maternal and which is paternal.
-        Type `str`. """
+    paternalOrganismId: fhirtypes.String = Field(
+        None,
+        alias="paternalOrganismId",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="The identifier of the paternal species constituting the hybrid organism shall be specified based on a controlled vocabulary",
+    )
 
-        self.maternalOrganismName = None
-        """ The name of the maternal species constituting the hybrid organism
-        shall be specified. For plants, the parents aren’t always known,
-        and it is unlikely that it will be known which is maternal and
-        which is paternal.
-        Type `str`. """
-
-        self.paternalOrganismId = None
-        """ The identifier of the paternal species constituting the hybrid
-        organism shall be specified based on a controlled vocabulary.
-        Type `str`. """
-
-        self.paternalOrganismName = None
-        """ The name of the paternal species constituting the hybrid organism
-        shall be specified.
-        Type `str`. """
-
-        super(SubstanceSourceMaterialOrganismHybrid, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(SubstanceSourceMaterialOrganismHybrid, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "hybridType",
-                    "hybridType",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "maternalOrganismId",
-                    "maternalOrganismId",
-                    str,
-                    "string",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "maternalOrganismName",
-                    "maternalOrganismName",
-                    str,
-                    "string",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "paternalOrganismId",
-                    "paternalOrganismId",
-                    str,
-                    "string",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "paternalOrganismName",
-                    "paternalOrganismName",
-                    str,
-                    "string",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    paternalOrganismName: fhirtypes.String = Field(
+        None,
+        alias="paternalOrganismName",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="The name of the paternal species constituting the hybrid organism shall be specified",
+    )
 
 
 class SubstanceSourceMaterialOrganismOrganismGeneral(backboneelement.BackboneElement):
     """ 4.9.13.7.1 Kingdom (Conditional).
     """
 
-    resource_type = "SubstanceSourceMaterialOrganismOrganismGeneral"
+    resource_type = Field("SubstanceSourceMaterialOrganismOrganismGeneral", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    class_fhir: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="class",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The class of an organism shall be specified",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    kingdom: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="kingdom",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The kingdom of an organism shall be specified",
+    )
 
-        self.class_fhir = None
-        """ The class of an organism shall be specified.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    order: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="order",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The order of an organism shall be specified,",
+    )
 
-        self.kingdom = None
-        """ The kingdom of an organism shall be specified.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.order = None
-        """ The order of an organism shall be specified,.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.phylum = None
-        """ The phylum of an organism shall be specified.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(SubstanceSourceMaterialOrganismOrganismGeneral, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(
-            SubstanceSourceMaterialOrganismOrganismGeneral, self
-        ).elementProperties()
-        js.extend(
-            [
-                (
-                    "class_fhir",
-                    "class",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "kingdom",
-                    "kingdom",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "order",
-                    "order",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "phylum",
-                    "phylum",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    phylum: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="phylum",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The phylum of an organism shall be specified",
+    )
 
 
 class SubstanceSourceMaterialPartDescription(backboneelement.BackboneElement):
     """ To do.
     """
 
-    resource_type = "SubstanceSourceMaterialPartDescription"
+    resource_type = Field("SubstanceSourceMaterialPartDescription", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    part: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="part",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Entity of anatomical origin of source material within an organism",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.part = None
-        """ Entity of anatomical origin of source material within an organism.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.partLocation = None
-        """ The detailed anatomic location when the part can be extracted from
-        different anatomical locations of the organism. Multiple
-        alternative locations may apply.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(SubstanceSourceMaterialPartDescription, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(SubstanceSourceMaterialPartDescription, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "part",
-                    "part",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "partLocation",
-                    "partLocation",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
+    partLocation: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="partLocation",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The detailed anatomic location when the part can be extracted from different anatomical locations of the organism. Multiple alternative locations may apply",
+    )

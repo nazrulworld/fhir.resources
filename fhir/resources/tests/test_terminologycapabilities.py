@@ -6,80 +6,53 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import terminologycapabilities
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class TerminologyCapabilitiesTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("TerminologyCapabilities", js["resourceType"])
-        return terminologycapabilities.TerminologyCapabilities(js)
+def impl_terminologycapabilities_1(inst):
+    assert inst.codeSearch == "explicit"
+    assert inst.contact[0].name == "System Administrator"
+    assert inst.contact[0].telecom[0].system == "email"
+    assert inst.contact[0].telecom[0].value == "wile@acme.org"
+    assert inst.date == fhirtypes.DateTime.validate("2012-01-04")
+    assert (
+        inst.description
+        == "This is the FHIR capability statement for the main EHR at ACME for the private interface - it does not describe the public interface"
+    )
+    assert inst.experimental is True
+    assert inst.id == "example"
+    assert inst.implementation.description == "Acme Terminology Server"
+    assert inst.implementation.url == "http://example.org/tx"
+    assert inst.kind == "instance"
+    assert inst.name == "ACME-EHR"
+    assert inst.publisher == "ACME Corporation"
+    assert inst.software.name == "TxServer"
+    assert inst.software.version == "0.1.2"
+    assert inst.status == "draft"
+    assert inst.text.status == "generated"
+    assert inst.title == "ACME EHR capability statement"
+    assert inst.url == "urn:uuid:68D043B5-9ECF-4559-A57A-396E0D452311"
+    assert inst.version == "20130510"
 
-    def testTerminologyCapabilities1(self):
-        inst = self.instantiate_from("terminologycapabilities-example.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a TerminologyCapabilities instance"
-        )
-        self.implTerminologyCapabilities1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("TerminologyCapabilities", js["resourceType"])
-        inst2 = terminologycapabilities.TerminologyCapabilities(js)
-        self.implTerminologyCapabilities1(inst2)
+def test_terminologycapabilities_1(base_settings):
+    """No. 1 tests collection for TerminologyCapabilities.
+    Test File: terminologycapabilities-example.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "terminologycapabilities-example.json"
+    )
+    inst = terminologycapabilities.TerminologyCapabilities.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "TerminologyCapabilities" == inst.resource_type
 
-    def implTerminologyCapabilities1(self, inst):
-        self.assertEqual(force_bytes(inst.codeSearch), force_bytes("explicit"))
-        self.assertEqual(
-            force_bytes(inst.contact[0].name), force_bytes("System Administrator")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].system), force_bytes("email")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].value), force_bytes("wile@acme.org")
-        )
-        self.assertEqual(inst.date.date, FHIRDate("2012-01-04").date)
-        self.assertEqual(inst.date.as_json(), "2012-01-04")
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes(
-                "This is the FHIR capability statement for the main EHR at ACME for the private interface - it does not describe the public interface"
-            ),
-        )
-        self.assertTrue(inst.experimental)
-        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(
-            force_bytes(inst.implementation.description),
-            force_bytes("Acme Terminology Server"),
-        )
-        self.assertEqual(
-            force_bytes(inst.implementation.url), force_bytes("http://example.org/tx")
-        )
-        self.assertEqual(force_bytes(inst.kind), force_bytes("instance"))
-        self.assertEqual(force_bytes(inst.name), force_bytes("ACME-EHR"))
-        self.assertEqual(force_bytes(inst.publisher), force_bytes("ACME Corporation"))
-        self.assertEqual(force_bytes(inst.software.name), force_bytes("TxServer"))
-        self.assertEqual(force_bytes(inst.software.version), force_bytes("0.1.2"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            force_bytes(inst.title), force_bytes("ACME EHR capability statement")
-        )
-        self.assertEqual(
-            force_bytes(inst.url),
-            force_bytes("urn:uuid:68D043B5-9ECF-4559-A57A-396E0D452311"),
-        )
-        self.assertEqual(force_bytes(inst.version), force_bytes("20130510"))
+    impl_terminologycapabilities_1(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "TerminologyCapabilities" == data["resourceType"]
+
+    inst2 = terminologycapabilities.TerminologyCapabilities(**data)
+    impl_terminologycapabilities_1(inst2)

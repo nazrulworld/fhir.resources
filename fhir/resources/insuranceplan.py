@@ -6,802 +6,395 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class InsurancePlan(domainresource.DomainResource):
     """ Details of a Health Insurance product/plan provided by an organization.
     """
 
-    resource_type = "InsurancePlan"
+    resource_type = Field("InsurancePlan", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    administeredBy: fhirtypes.ReferenceType = Field(
+        None,
+        alias="administeredBy",
+        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        description="Product administrator",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    alias: ListType[fhirtypes.String] = Field(
+        None,
+        alias="alias",
+        title="List of `String` items (represented as `dict` in JSON)",
+        description="Alternate names",
+    )
 
-        self.administeredBy = None
-        """ Product administrator.
-        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
+    contact: ListType[fhirtypes.InsurancePlanContactType] = Field(
+        None,
+        alias="contact",
+        title="List of `InsurancePlanContact` items (represented as `dict` in JSON)",
+        description="Contact for the product",
+    )
 
-        self.alias = None
-        """ Alternate names.
-        List of `str` items. """
+    coverage: ListType[fhirtypes.InsurancePlanCoverageType] = Field(
+        None,
+        alias="coverage",
+        title="List of `InsurancePlanCoverage` items (represented as `dict` in JSON)",
+        description="Coverage details",
+    )
 
-        self.contact = None
-        """ Contact for the product.
-        List of `InsurancePlanContact` items (represented as `dict` in JSON). """
+    coverageArea: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="coverageArea",
+        title="List of `Reference` items referencing `Location` (represented as `dict` in JSON)",
+        description="Where product applies",
+    )
 
-        self.coverage = None
-        """ Coverage details.
-        List of `InsurancePlanCoverage` items (represented as `dict` in JSON). """
+    endpoint: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="endpoint",
+        title="List of `Reference` items referencing `Endpoint` (represented as `dict` in JSON)",
+        description="Technical endpoint",
+    )
 
-        self.coverageArea = None
-        """ Where product applies.
-        List of `FHIRReference` items referencing `['Location']` (represented as `dict` in JSON). """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Business Identifier for Product",
+    )
 
-        self.endpoint = None
-        """ Technical endpoint.
-        List of `FHIRReference` items referencing `['Endpoint']` (represented as `dict` in JSON). """
+    name: fhirtypes.String = Field(
+        None,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Official name",
+    )
 
-        self.identifier = None
-        """ Business Identifier for Product.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    network: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="network",
+        title="List of `Reference` items referencing `Organization` (represented as `dict` in JSON)",
+        description="What networks are Included",
+    )
 
-        self.name = None
-        """ Official name.
-        Type `str`. """
+    ownedBy: fhirtypes.ReferenceType = Field(
+        None,
+        alias="ownedBy",
+        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        description="Plan issuer",
+    )
 
-        self.network = None
-        """ What networks are Included.
-        List of `FHIRReference` items referencing `['Organization']` (represented as `dict` in JSON). """
+    period: fhirtypes.PeriodType = Field(
+        None,
+        alias="period",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="When the product is available",
+    )
 
-        self.ownedBy = None
-        """ Plan issuer.
-        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
+    plan: ListType[fhirtypes.InsurancePlanPlanType] = Field(
+        None,
+        alias="plan",
+        title="List of `InsurancePlanPlan` items (represented as `dict` in JSON)",
+        description="Plan details",
+    )
 
-        self.period = None
-        """ When the product is available.
-        Type `Period` (represented as `dict` in JSON). """
+    status: fhirtypes.Code = Field(
+        None,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="draft | active | retired | unknown",
+    )
 
-        self.plan = None
-        """ Plan details.
-        List of `InsurancePlanPlan` items (represented as `dict` in JSON). """
-
-        self.status = None
-        """ draft | active | retired | unknown.
-        Type `str`. """
-
-        self.type = None
-        """ Kind of product.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        super(InsurancePlan, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(InsurancePlan, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "administeredBy",
-                    "administeredBy",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("alias", "alias", str, "string", True, None, False),
-                (
-                    "contact",
-                    "contact",
-                    InsurancePlanContact,
-                    "InsurancePlanContact",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "coverage",
-                    "coverage",
-                    InsurancePlanCoverage,
-                    "InsurancePlanCoverage",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "coverageArea",
-                    "coverageArea",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "endpoint",
-                    "endpoint",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                ("name", "name", str, "string", False, None, False),
-                (
-                    "network",
-                    "network",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "ownedBy",
-                    "ownedBy",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("period", "period", period.Period, "Period", False, None, False),
-                (
-                    "plan",
-                    "plan",
-                    InsurancePlanPlan,
-                    "InsurancePlanPlan",
-                    True,
-                    None,
-                    False,
-                ),
-                ("status", "status", str, "code", False, None, False),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    type: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="type",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Kind of product",
+    )
 
 
 class InsurancePlanContact(backboneelement.BackboneElement):
     """ Contact for the product.
-
     The contact for the health insurance product for a certain purpose.
     """
 
-    resource_type = "InsurancePlanContact"
+    resource_type = Field("InsurancePlanContact", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    address: fhirtypes.AddressType = Field(
+        None,
+        alias="address",
+        title="Type `Address` (represented as `dict` in JSON)",
+        description="Visiting or postal addresses for the contact",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    name: fhirtypes.HumanNameType = Field(
+        None,
+        alias="name",
+        title="Type `HumanName` (represented as `dict` in JSON)",
+        description="A name associated with the contact",
+    )
 
-        self.address = None
-        """ Visiting or postal addresses for the contact.
-        Type `Address` (represented as `dict` in JSON). """
+    purpose: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="purpose",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The type of contact",
+    )
 
-        self.name = None
-        """ A name associated with the contact.
-        Type `HumanName` (represented as `dict` in JSON). """
-
-        self.purpose = None
-        """ The type of contact.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.telecom = None
-        """ Contact details (telephone, email, etc.)  for a contact.
-        List of `ContactPoint` items (represented as `dict` in JSON). """
-
-        super(InsurancePlanContact, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(InsurancePlanContact, self).elementProperties()
-        js.extend(
-            [
-                ("address", "address", address.Address, "Address", False, None, False),
-                ("name", "name", humanname.HumanName, "HumanName", False, None, False),
-                (
-                    "purpose",
-                    "purpose",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "telecom",
-                    "telecom",
-                    contactpoint.ContactPoint,
-                    "ContactPoint",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    telecom: ListType[fhirtypes.ContactPointType] = Field(
+        None,
+        alias="telecom",
+        title="List of `ContactPoint` items (represented as `dict` in JSON)",
+        description="Contact details (telephone, email, etc.)  for a contact",
+    )
 
 
 class InsurancePlanCoverage(backboneelement.BackboneElement):
     """ Coverage details.
-
     Details about the coverage offered by the insurance product.
     """
 
-    resource_type = "InsurancePlanCoverage"
+    resource_type = Field("InsurancePlanCoverage", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    benefit: ListType[fhirtypes.InsurancePlanCoverageBenefitType] = Field(
+        ...,
+        alias="benefit",
+        title="List of `InsurancePlanCoverageBenefit` items (represented as `dict` in JSON)",
+        description="List of benefits",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    network: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="network",
+        title="List of `Reference` items referencing `Organization` (represented as `dict` in JSON)",
+        description="What networks provide coverage",
+    )
 
-        self.benefit = None
-        """ List of benefits.
-        List of `InsurancePlanCoverageBenefit` items (represented as `dict` in JSON). """
-
-        self.network = None
-        """ What networks provide coverage.
-        List of `FHIRReference` items referencing `['Organization']` (represented as `dict` in JSON). """
-
-        self.type = None
-        """ Type of coverage.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(InsurancePlanCoverage, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(InsurancePlanCoverage, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "benefit",
-                    "benefit",
-                    InsurancePlanCoverageBenefit,
-                    "InsurancePlanCoverageBenefit",
-                    True,
-                    None,
-                    True,
-                ),
-                (
-                    "network",
-                    "network",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
+    type: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Type of coverage",
+    )
 
 
 class InsurancePlanCoverageBenefit(backboneelement.BackboneElement):
     """ List of benefits.
-
     Specific benefits under this type of coverage.
     """
 
-    resource_type = "InsurancePlanCoverageBenefit"
+    resource_type = Field("InsurancePlanCoverageBenefit", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    limit: ListType[fhirtypes.InsurancePlanCoverageBenefitLimitType] = Field(
+        None,
+        alias="limit",
+        title="List of `InsurancePlanCoverageBenefitLimit` items (represented as `dict` in JSON)",
+        description="Benefit limits",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    requirement: fhirtypes.String = Field(
+        None,
+        alias="requirement",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Referral requirements",
+    )
 
-        self.limit = None
-        """ Benefit limits.
-        List of `InsurancePlanCoverageBenefitLimit` items (represented as `dict` in JSON). """
-
-        self.requirement = None
-        """ Referral requirements.
-        Type `str`. """
-
-        self.type = None
-        """ Type of benefit.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(InsurancePlanCoverageBenefit, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(InsurancePlanCoverageBenefit, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "limit",
-                    "limit",
-                    InsurancePlanCoverageBenefitLimit,
-                    "InsurancePlanCoverageBenefitLimit",
-                    True,
-                    None,
-                    False,
-                ),
-                ("requirement", "requirement", str, "string", False, None, False),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
+    type: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Type of benefit",
+    )
 
 
 class InsurancePlanCoverageBenefitLimit(backboneelement.BackboneElement):
     """ Benefit limits.
-
     The specific limits on the benefit.
     """
 
-    resource_type = "InsurancePlanCoverageBenefitLimit"
+    resource_type = Field("InsurancePlanCoverageBenefitLimit", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    code: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="code",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Benefit limit details",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.code = None
-        """ Benefit limit details.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.value = None
-        """ Maximum value allowed.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        super(InsurancePlanCoverageBenefitLimit, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(InsurancePlanCoverageBenefitLimit, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "code",
-                    "code",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("value", "value", quantity.Quantity, "Quantity", False, None, False),
-            ]
-        )
-        return js
+    value: fhirtypes.QuantityType = Field(
+        None,
+        alias="value",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="Maximum value allowed",
+    )
 
 
 class InsurancePlanPlan(backboneelement.BackboneElement):
     """ Plan details.
-
     Details about an insurance plan.
     """
 
-    resource_type = "InsurancePlanPlan"
+    resource_type = Field("InsurancePlanPlan", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    coverageArea: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="coverageArea",
+        title="List of `Reference` items referencing `Location` (represented as `dict` in JSON)",
+        description="Where product applies",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    generalCost: ListType[fhirtypes.InsurancePlanPlanGeneralCostType] = Field(
+        None,
+        alias="generalCost",
+        title="List of `InsurancePlanPlanGeneralCost` items (represented as `dict` in JSON)",
+        description="Overall costs",
+    )
 
-        self.coverageArea = None
-        """ Where product applies.
-        List of `FHIRReference` items referencing `['Location']` (represented as `dict` in JSON). """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Business Identifier for Product",
+    )
 
-        self.generalCost = None
-        """ Overall costs.
-        List of `InsurancePlanPlanGeneralCost` items (represented as `dict` in JSON). """
+    network: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="network",
+        title="List of `Reference` items referencing `Organization` (represented as `dict` in JSON)",
+        description="What networks provide coverage",
+    )
 
-        self.identifier = None
-        """ Business Identifier for Product.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    specificCost: ListType[fhirtypes.InsurancePlanPlanSpecificCostType] = Field(
+        None,
+        alias="specificCost",
+        title="List of `InsurancePlanPlanSpecificCost` items (represented as `dict` in JSON)",
+        description="Specific costs",
+    )
 
-        self.network = None
-        """ What networks provide coverage.
-        List of `FHIRReference` items referencing `['Organization']` (represented as `dict` in JSON). """
-
-        self.specificCost = None
-        """ Specific costs.
-        List of `InsurancePlanPlanSpecificCost` items (represented as `dict` in JSON). """
-
-        self.type = None
-        """ Type of plan.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(InsurancePlanPlan, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(InsurancePlanPlan, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "coverageArea",
-                    "coverageArea",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "generalCost",
-                    "generalCost",
-                    InsurancePlanPlanGeneralCost,
-                    "InsurancePlanPlanGeneralCost",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "network",
-                    "network",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "specificCost",
-                    "specificCost",
-                    InsurancePlanPlanSpecificCost,
-                    "InsurancePlanPlanSpecificCost",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    type: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Type of plan",
+    )
 
 
 class InsurancePlanPlanGeneralCost(backboneelement.BackboneElement):
     """ Overall costs.
-
     Overall costs associated with the plan.
     """
 
-    resource_type = "InsurancePlanPlanGeneralCost"
+    resource_type = Field("InsurancePlanPlanGeneralCost", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    comment: fhirtypes.String = Field(
+        None,
+        alias="comment",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Additional cost information",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    cost: fhirtypes.MoneyType = Field(
+        None,
+        alias="cost",
+        title="Type `Money` (represented as `dict` in JSON)",
+        description="Cost value",
+    )
 
-        self.comment = None
-        """ Additional cost information.
-        Type `str`. """
+    groupSize: fhirtypes.PositiveInt = Field(
+        None,
+        alias="groupSize",
+        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        description="Number of enrollees",
+    )
 
-        self.cost = None
-        """ Cost value.
-        Type `Money` (represented as `dict` in JSON). """
-
-        self.groupSize = None
-        """ Number of enrollees.
-        Type `int`. """
-
-        self.type = None
-        """ Type of cost.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(InsurancePlanPlanGeneralCost, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(InsurancePlanPlanGeneralCost, self).elementProperties()
-        js.extend(
-            [
-                ("comment", "comment", str, "string", False, None, False),
-                ("cost", "cost", money.Money, "Money", False, None, False),
-                ("groupSize", "groupSize", int, "positiveInt", False, None, False),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    type: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Type of cost",
+    )
 
 
 class InsurancePlanPlanSpecificCost(backboneelement.BackboneElement):
     """ Specific costs.
-
     Costs associated with the coverage provided by the product.
     """
 
-    resource_type = "InsurancePlanPlanSpecificCost"
+    resource_type = Field("InsurancePlanPlanSpecificCost", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    benefit: ListType[fhirtypes.InsurancePlanPlanSpecificCostBenefitType] = Field(
+        None,
+        alias="benefit",
+        title="List of `InsurancePlanPlanSpecificCostBenefit` items (represented as `dict` in JSON)",
+        description="Benefits list",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.benefit = None
-        """ Benefits list.
-        List of `InsurancePlanPlanSpecificCostBenefit` items (represented as `dict` in JSON). """
-
-        self.category = None
-        """ General category of benefit.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(InsurancePlanPlanSpecificCost, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(InsurancePlanPlanSpecificCost, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "benefit",
-                    "benefit",
-                    InsurancePlanPlanSpecificCostBenefit,
-                    "InsurancePlanPlanSpecificCostBenefit",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "category",
-                    "category",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
+    category: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="category",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="General category of benefit",
+    )
 
 
 class InsurancePlanPlanSpecificCostBenefit(backboneelement.BackboneElement):
     """ Benefits list.
-
     List of the specific benefits under this category of benefit.
     """
 
-    resource_type = "InsurancePlanPlanSpecificCostBenefit"
+    resource_type = Field("InsurancePlanPlanSpecificCostBenefit", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    cost: ListType[fhirtypes.InsurancePlanPlanSpecificCostBenefitCostType] = Field(
+        None,
+        alias="cost",
+        title="List of `InsurancePlanPlanSpecificCostBenefitCost` items (represented as `dict` in JSON)",
+        description="List of the costs",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.cost = None
-        """ List of the costs.
-        List of `InsurancePlanPlanSpecificCostBenefitCost` items (represented as `dict` in JSON). """
-
-        self.type = None
-        """ Type of specific benefit.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(InsurancePlanPlanSpecificCostBenefit, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(InsurancePlanPlanSpecificCostBenefit, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "cost",
-                    "cost",
-                    InsurancePlanPlanSpecificCostBenefitCost,
-                    "InsurancePlanPlanSpecificCostBenefitCost",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
+    type: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Type of specific benefit",
+    )
 
 
 class InsurancePlanPlanSpecificCostBenefitCost(backboneelement.BackboneElement):
     """ List of the costs.
-
     List of the costs associated with a specific benefit.
     """
 
-    resource_type = "InsurancePlanPlanSpecificCostBenefitCost"
+    resource_type = Field("InsurancePlanPlanSpecificCostBenefitCost", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    applicability: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="applicability",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="in-network | out-of-network | other",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    qualifiers: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="qualifiers",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Additional information about the cost",
+    )
 
-        self.applicability = None
-        """ in-network | out-of-network | other.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    type: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Type of cost",
+    )
 
-        self.qualifiers = None
-        """ Additional information about the cost.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.type = None
-        """ Type of cost.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.value = None
-        """ The actual cost value.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        super(InsurancePlanPlanSpecificCostBenefitCost, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(InsurancePlanPlanSpecificCostBenefitCost, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "applicability",
-                    "applicability",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "qualifiers",
-                    "qualifiers",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                ("value", "value", quantity.Quantity, "Quantity", False, None, False),
-            ]
-        )
-        return js
-
-
-try:
-    from . import address
-except ImportError:
-    address = sys.modules[__package__ + ".address"]
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import contactpoint
-except ImportError:
-    contactpoint = sys.modules[__package__ + ".contactpoint"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import humanname
-except ImportError:
-    humanname = sys.modules[__package__ + ".humanname"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import money
-except ImportError:
-    money = sys.modules[__package__ + ".money"]
-try:
-    from . import period
-except ImportError:
-    period = sys.modules[__package__ + ".period"]
-try:
-    from . import quantity
-except ImportError:
-    quantity = sys.modules[__package__ + ".quantity"]
+    value: fhirtypes.QuantityType = Field(
+        None,
+        alias="value",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="The actual cost value",
+    )

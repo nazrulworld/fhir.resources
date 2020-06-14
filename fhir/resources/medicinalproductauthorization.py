@@ -6,255 +6,133 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import Any, Dict
+from typing import List as ListType
 
+from pydantic import Field, root_validator
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class MedicinalProductAuthorization(domainresource.DomainResource):
     """ The regulatory authorization of a medicinal product.
     """
 
-    resource_type = "MedicinalProductAuthorization"
+    resource_type = Field("MedicinalProductAuthorization", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    country: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="country",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="The country in which the marketing authorization has been granted",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    dataExclusivityPeriod: fhirtypes.PeriodType = Field(
+        None,
+        alias="dataExclusivityPeriod",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="A period of time after authorization before generic product applicatiosn can be submitted",
+    )
 
-        self.country = None
-        """ The country in which the marketing authorization has been granted.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    dateOfFirstAuthorization: fhirtypes.DateTime = Field(
+        None,
+        alias="dateOfFirstAuthorization",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="The date when the first authorization was granted by a Medicines Regulatory Agency",
+    )
 
-        self.dataExclusivityPeriod = None
-        """ A period of time after authorization before generic product
-        applicatiosn can be submitted.
-        Type `Period` (represented as `dict` in JSON). """
+    holder: fhirtypes.ReferenceType = Field(
+        None,
+        alias="holder",
+        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        description="Marketing Authorization Holder",
+    )
 
-        self.dateOfFirstAuthorization = None
-        """ The date when the first authorization was granted by a Medicines
-        Regulatory Agency.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Business identifier for the marketing authorization, as assigned by a regulator",
+    )
 
-        self.holder = None
-        """ Marketing Authorization Holder.
-        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
+    internationalBirthDate: fhirtypes.DateTime = Field(
+        None,
+        alias="internationalBirthDate",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Date of first marketing authorization for a company\u0027s new medicinal product in any country in the World",
+    )
 
-        self.identifier = None
-        """ Business identifier for the marketing authorization, as assigned by
-        a regulator.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="jurisdiction",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Jurisdiction within a country",
+    )
 
-        self.internationalBirthDate = None
-        """ Date of first marketing authorization for a company's new medicinal
-        product in any country in the World.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    jurisdictionalAuthorization: ListType[
+        fhirtypes.MedicinalProductAuthorizationJurisdictionalAuthorizationType
+    ] = Field(
+        None,
+        alias="jurisdictionalAuthorization",
+        title="List of `MedicinalProductAuthorizationJurisdictionalAuthorization` items (represented as `dict` in JSON)",
+        description="Authorization in areas within a country",
+    )
 
-        self.jurisdiction = None
-        """ Jurisdiction within a country.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    legalBasis: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="legalBasis",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The legal framework against which this authorization is granted",
+    )
 
-        self.jurisdictionalAuthorization = None
-        """ Authorization in areas within a country.
-        List of `MedicinalProductAuthorizationJurisdictionalAuthorization` items (represented as `dict` in JSON). """
+    procedure: fhirtypes.MedicinalProductAuthorizationProcedureType = Field(
+        None,
+        alias="procedure",
+        title="Type `MedicinalProductAuthorizationProcedure` (represented as `dict` in JSON)",
+        description="The regulatory procedure for granting or amending a marketing authorization",
+    )
 
-        self.legalBasis = None
-        """ The legal framework against which this authorization is granted.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    regulator: fhirtypes.ReferenceType = Field(
+        None,
+        alias="regulator",
+        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        description="Medicines Regulatory Agency",
+    )
 
-        self.procedure = None
-        """ The regulatory procedure for granting or amending a marketing
-        authorization.
-        Type `MedicinalProductAuthorizationProcedure` (represented as `dict` in JSON). """
+    restoreDate: fhirtypes.DateTime = Field(
+        None,
+        alias="restoreDate",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="The date when a suspended the marketing or the marketing authorization of the product is anticipated to be restored",
+    )
 
-        self.regulator = None
-        """ Medicines Regulatory Agency.
-        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
+    status: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="status",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The status of the marketing authorization",
+    )
 
-        self.restoreDate = None
-        """ The date when a suspended the marketing or the marketing
-        authorization of the product is anticipated to be restored.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    statusDate: fhirtypes.DateTime = Field(
+        None,
+        alias="statusDate",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="The date at which the given status has become applicable",
+    )
 
-        self.status = None
-        """ The status of the marketing authorization.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    subject: fhirtypes.ReferenceType = Field(
+        None,
+        alias="subject",
+        title="Type `Reference` referencing `MedicinalProduct, MedicinalProductPackaged` (represented as `dict` in JSON)",
+        description="The medicinal product that is being authorized",
+    )
 
-        self.statusDate = None
-        """ The date at which the given status has become applicable.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.subject = None
-        """ The medicinal product that is being authorized.
-        Type `FHIRReference` referencing `['MedicinalProduct', 'MedicinalProductPackaged']` (represented as `dict` in JSON). """
-
-        self.validityPeriod = None
-        """ The beginning of the time period in which the marketing
-        authorization is in the specific status shall be specified A
-        complete date consisting of day, month and year shall be specified
-        using the ISO 8601 date format.
-        Type `Period` (represented as `dict` in JSON). """
-
-        super(MedicinalProductAuthorization, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(MedicinalProductAuthorization, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "country",
-                    "country",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "dataExclusivityPeriod",
-                    "dataExclusivityPeriod",
-                    period.Period,
-                    "Period",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "dateOfFirstAuthorization",
-                    "dateOfFirstAuthorization",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "holder",
-                    "holder",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "internationalBirthDate",
-                    "internationalBirthDate",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "jurisdiction",
-                    "jurisdiction",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "jurisdictionalAuthorization",
-                    "jurisdictionalAuthorization",
-                    MedicinalProductAuthorizationJurisdictionalAuthorization,
-                    "MedicinalProductAuthorizationJurisdictionalAuthorization",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "legalBasis",
-                    "legalBasis",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "procedure",
-                    "procedure",
-                    MedicinalProductAuthorizationProcedure,
-                    "MedicinalProductAuthorizationProcedure",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "regulator",
-                    "regulator",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "restoreDate",
-                    "restoreDate",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "status",
-                    "status",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "statusDate",
-                    "statusDate",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "subject",
-                    "subject",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "validityPeriod",
-                    "validityPeriod",
-                    period.Period,
-                    "Period",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    validityPeriod: fhirtypes.PeriodType = Field(
+        None,
+        alias="validityPeriod",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="The beginning of the time period in which the marketing authorization is in the specific status shall be specified A complete date consisting of day, month and year shall be specified using the ISO 8601 date format",
+    )
 
 
 class MedicinalProductAuthorizationJurisdictionalAuthorization(
@@ -263,205 +141,125 @@ class MedicinalProductAuthorizationJurisdictionalAuthorization(
     """ Authorization in areas within a country.
     """
 
-    resource_type = "MedicinalProductAuthorizationJurisdictionalAuthorization"
+    resource_type = Field(
+        "MedicinalProductAuthorizationJurisdictionalAuthorization", const=True
+    )
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    country: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="country",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Country of authorization",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="The assigned number for the marketing authorization",
+    )
 
-        self.country = None
-        """ Country of authorization.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="jurisdiction",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Jurisdiction within a country",
+    )
 
-        self.identifier = None
-        """ The assigned number for the marketing authorization.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    legalStatusOfSupply: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="legalStatusOfSupply",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The legal status of supply in a jurisdiction or region",
+    )
 
-        self.jurisdiction = None
-        """ Jurisdiction within a country.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.legalStatusOfSupply = None
-        """ The legal status of supply in a jurisdiction or region.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.validityPeriod = None
-        """ The start and expected end date of the authorization.
-        Type `Period` (represented as `dict` in JSON). """
-
-        super(MedicinalProductAuthorizationJurisdictionalAuthorization, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(
-            MedicinalProductAuthorizationJurisdictionalAuthorization, self
-        ).elementProperties()
-        js.extend(
-            [
-                (
-                    "country",
-                    "country",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "jurisdiction",
-                    "jurisdiction",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "legalStatusOfSupply",
-                    "legalStatusOfSupply",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "validityPeriod",
-                    "validityPeriod",
-                    period.Period,
-                    "Period",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    validityPeriod: fhirtypes.PeriodType = Field(
+        None,
+        alias="validityPeriod",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="The start and expected end date of the authorization",
+    )
 
 
 class MedicinalProductAuthorizationProcedure(backboneelement.BackboneElement):
     """ The regulatory procedure for granting or amending a marketing authorization.
     """
 
-    resource_type = "MedicinalProductAuthorizationProcedure"
+    resource_type = Field("MedicinalProductAuthorizationProcedure", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    application: ListType[fhirtypes.MedicinalProductAuthorizationProcedureType] = Field(
+        None,
+        alias="application",
+        title="List of `MedicinalProductAuthorizationProcedure` items (represented as `dict` in JSON)",
+        description="Applcations submitted to obtain a marketing authorization",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    dateDateTime: fhirtypes.DateTime = Field(
+        None,
+        alias="dateDateTime",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Date of procedure",
+        one_of_many="date",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    datePeriod: fhirtypes.PeriodType = Field(
+        None,
+        alias="datePeriod",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="Date of procedure",
+        one_of_many="date",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    identifier: fhirtypes.IdentifierType = Field(
+        None,
+        alias="identifier",
+        title="Type `Identifier` (represented as `dict` in JSON)",
+        description="Identifier for this procedure",
+    )
+
+    type: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Type of procedure",
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "date": ["dateDateTime", "datePeriod",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.application = None
-        """ Applcations submitted to obtain a marketing authorization.
-        List of `MedicinalProductAuthorizationProcedure` items (represented as `dict` in JSON). """
-
-        self.dateDateTime = None
-        """ Date of procedure.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.datePeriod = None
-        """ Date of procedure.
-        Type `Period` (represented as `dict` in JSON). """
-
-        self.identifier = None
-        """ Identifier for this procedure.
-        Type `Identifier` (represented as `dict` in JSON). """
-
-        self.type = None
-        """ Type of procedure.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(MedicinalProductAuthorizationProcedure, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(MedicinalProductAuthorizationProcedure, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "application",
-                    "application",
-                    MedicinalProductAuthorizationProcedure,
-                    "MedicinalProductAuthorizationProcedure",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "dateDateTime",
-                    "dateDateTime",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    "date",
-                    False,
-                ),
-                (
-                    "datePeriod",
-                    "datePeriod",
-                    period.Period,
-                    "Period",
-                    False,
-                    "date",
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import period
-except ImportError:
-    period = sys.modules[__package__ + ".period"]
+        return values

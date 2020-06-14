@@ -6,1233 +6,788 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class CapabilityStatement(domainresource.DomainResource):
     """ A statement of system capabilities.
-
     A Capability Statement documents a set of capabilities (behaviors) of a
     FHIR Server that may be used as a statement of actual server functionality
     or a statement of required or desired server implementation.
     """
 
-    resource_type = "CapabilityStatement"
+    resource_type = Field("CapabilityStatement", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    acceptUnknown: fhirtypes.Code = Field(
+        ...,
+        alias="acceptUnknown",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="no | extensions | elements | both",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    contact: ListType[fhirtypes.ContactDetailType] = Field(
+        None,
+        alias="contact",
+        title="List of `ContactDetail` items (represented as `dict` in JSON)",
+        description="Contact details for the publisher",
+    )
 
-        self.acceptUnknown = None
-        """ no | extensions | elements | both.
-        Type `str`. """
+    copyright: fhirtypes.Markdown = Field(
+        None,
+        alias="copyright",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Use and/or publishing restrictions",
+    )
 
-        self.contact = None
-        """ Contact details for the publisher.
-        List of `ContactDetail` items (represented as `dict` in JSON). """
+    date: fhirtypes.DateTime = Field(
+        ...,
+        alias="date",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Date this was last changed",
+    )
 
-        self.copyright = None
-        """ Use and/or publishing restrictions.
-        Type `str`. """
+    description: fhirtypes.Markdown = Field(
+        None,
+        alias="description",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Natural language description of the capability statement",
+    )
 
-        self.date = None
-        """ Date this was last changed.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    document: ListType[fhirtypes.CapabilityStatementDocumentType] = Field(
+        None,
+        alias="document",
+        title="List of `CapabilityStatementDocument` items (represented as `dict` in JSON)",
+        description="Document definition",
+    )
 
-        self.description = None
-        """ Natural language description of the capability statement.
-        Type `str`. """
+    experimental: bool = Field(
+        None,
+        alias="experimental",
+        title="Type `bool`",
+        description="For testing purposes, not real usage",
+    )
 
-        self.document = None
-        """ Document definition.
-        List of `CapabilityStatementDocument` items (represented as `dict` in JSON). """
+    fhirVersion: fhirtypes.Id = Field(
+        ...,
+        alias="fhirVersion",
+        title="Type `Id` (represented as `dict` in JSON)",
+        description="FHIR Version the system uses",
+    )
 
-        self.experimental = None
-        """ For testing purposes, not real usage.
-        Type `bool`. """
+    format: ListType[fhirtypes.Code] = Field(
+        ...,
+        alias="format",
+        title="List of `Code` items (represented as `dict` in JSON)",
+        description="formats supported (xml | json | ttl | mime type)",
+    )
 
-        self.fhirVersion = None
-        """ FHIR Version the system uses.
-        Type `str`. """
+    implementation: fhirtypes.CapabilityStatementImplementationType = Field(
+        None,
+        alias="implementation",
+        title="Type `CapabilityStatementImplementation` (represented as `dict` in JSON)",
+        description="If this describes a specific instance",
+    )
 
-        self.format = None
-        """ formats supported (xml | json | ttl | mime type).
-        List of `str` items. """
+    implementationGuide: ListType[fhirtypes.Uri] = Field(
+        None,
+        alias="implementationGuide",
+        title="List of `Uri` items (represented as `dict` in JSON)",
+        description="Implementation guides supported",
+    )
 
-        self.implementation = None
-        """ If this describes a specific instance.
-        Type `CapabilityStatementImplementation` (represented as `dict` in JSON). """
+    instantiates: ListType[fhirtypes.Uri] = Field(
+        None,
+        alias="instantiates",
+        title="List of `Uri` items (represented as `dict` in JSON)",
+        description="Canonical URL of another capability statement this implements",
+    )
 
-        self.implementationGuide = None
-        """ Implementation guides supported.
-        List of `str` items. """
+    jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="jurisdiction",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Intended jurisdiction for capability statement (if applicable)",
+    )
 
-        self.instantiates = None
-        """ Canonical URL of another capability statement this implements.
-        List of `str` items. """
+    kind: fhirtypes.Code = Field(
+        ...,
+        alias="kind",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="instance | capability | requirements",
+    )
 
-        self.jurisdiction = None
-        """ Intended jurisdiction for capability statement (if applicable).
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    messaging: ListType[fhirtypes.CapabilityStatementMessagingType] = Field(
+        None,
+        alias="messaging",
+        title="List of `CapabilityStatementMessaging` items (represented as `dict` in JSON)",
+        description="If messaging is supported",
+    )
 
-        self.kind = None
-        """ instance | capability | requirements.
-        Type `str`. """
+    name: fhirtypes.String = Field(
+        None,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name for this capability statement (computer friendly)",
+    )
 
-        self.messaging = None
-        """ If messaging is supported.
-        List of `CapabilityStatementMessaging` items (represented as `dict` in JSON). """
+    patchFormat: ListType[fhirtypes.Code] = Field(
+        None,
+        alias="patchFormat",
+        title="List of `Code` items (represented as `dict` in JSON)",
+        description="Patch formats supported",
+    )
 
-        self.name = None
-        """ Name for this capability statement (computer friendly).
-        Type `str`. """
+    profile: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="profile",
+        title="List of `Reference` items referencing `StructureDefinition` (represented as `dict` in JSON)",
+        description="Profiles for use cases supported",
+    )
 
-        self.patchFormat = None
-        """ Patch formats supported.
-        List of `str` items. """
+    publisher: fhirtypes.String = Field(
+        None,
+        alias="publisher",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name of the publisher (organization or individual)",
+    )
 
-        self.profile = None
-        """ Profiles for use cases supported.
-        List of `FHIRReference` items referencing `['StructureDefinition']` (represented as `dict` in JSON). """
+    purpose: fhirtypes.Markdown = Field(
+        None,
+        alias="purpose",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Why this capability statement is defined",
+    )
 
-        self.publisher = None
-        """ Name of the publisher (organization or individual).
-        Type `str`. """
+    rest: ListType[fhirtypes.CapabilityStatementRestType] = Field(
+        None,
+        alias="rest",
+        title="List of `CapabilityStatementRest` items (represented as `dict` in JSON)",
+        description="If the endpoint is a RESTful one",
+    )
 
-        self.purpose = None
-        """ Why this capability statement is defined.
-        Type `str`. """
+    software: fhirtypes.CapabilityStatementSoftwareType = Field(
+        None,
+        alias="software",
+        title="Type `CapabilityStatementSoftware` (represented as `dict` in JSON)",
+        description="Software that is covered by this capability statement",
+    )
 
-        self.rest = None
-        """ If the endpoint is a RESTful one.
-        List of `CapabilityStatementRest` items (represented as `dict` in JSON). """
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="draft | active | retired | unknown",
+    )
 
-        self.software = None
-        """ Software that is covered by this capability statement.
-        Type `CapabilityStatementSoftware` (represented as `dict` in JSON). """
+    title: fhirtypes.String = Field(
+        None,
+        alias="title",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name for this capability statement (human friendly)",
+    )
 
-        self.status = None
-        """ draft | active | retired | unknown.
-        Type `str`. """
+    url: fhirtypes.Uri = Field(
+        None,
+        alias="url",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Logical URI to reference this capability statement (globally unique)",
+    )
 
-        self.title = None
-        """ Name for this capability statement (human friendly).
-        Type `str`. """
+    useContext: ListType[fhirtypes.UsageContextType] = Field(
+        None,
+        alias="useContext",
+        title="List of `UsageContext` items (represented as `dict` in JSON)",
+        description="Context the content is intended to support",
+    )
 
-        self.url = None
-        """ Logical URI to reference this capability statement (globally
-        unique).
-        Type `str`. """
-
-        self.useContext = None
-        """ Context the content is intended to support.
-        List of `UsageContext` items (represented as `dict` in JSON). """
-
-        self.version = None
-        """ Business version of the capability statement.
-        Type `str`. """
-
-        super(CapabilityStatement, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(CapabilityStatement, self).elementProperties()
-        js.extend(
-            [
-                ("acceptUnknown", "acceptUnknown", str, "code", False, None, True),
-                (
-                    "contact",
-                    "contact",
-                    contactdetail.ContactDetail,
-                    "ContactDetail",
-                    True,
-                    None,
-                    False,
-                ),
-                ("copyright", "copyright", str, "markdown", False, None, False),
-                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, True),
-                ("description", "description", str, "markdown", False, None, False),
-                (
-                    "document",
-                    "document",
-                    CapabilityStatementDocument,
-                    "CapabilityStatementDocument",
-                    True,
-                    None,
-                    False,
-                ),
-                ("experimental", "experimental", bool, "boolean", False, None, False),
-                ("fhirVersion", "fhirVersion", str, "id", False, None, True),
-                ("format", "format", str, "code", True, None, True),
-                (
-                    "implementation",
-                    "implementation",
-                    CapabilityStatementImplementation,
-                    "CapabilityStatementImplementation",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "implementationGuide",
-                    "implementationGuide",
-                    str,
-                    "uri",
-                    True,
-                    None,
-                    False,
-                ),
-                ("instantiates", "instantiates", str, "uri", True, None, False),
-                (
-                    "jurisdiction",
-                    "jurisdiction",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                ("kind", "kind", str, "code", False, None, True),
-                (
-                    "messaging",
-                    "messaging",
-                    CapabilityStatementMessaging,
-                    "CapabilityStatementMessaging",
-                    True,
-                    None,
-                    False,
-                ),
-                ("name", "name", str, "string", False, None, False),
-                ("patchFormat", "patchFormat", str, "code", True, None, False),
-                (
-                    "profile",
-                    "profile",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                ("publisher", "publisher", str, "string", False, None, False),
-                ("purpose", "purpose", str, "markdown", False, None, False),
-                (
-                    "rest",
-                    "rest",
-                    CapabilityStatementRest,
-                    "CapabilityStatementRest",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "software",
-                    "software",
-                    CapabilityStatementSoftware,
-                    "CapabilityStatementSoftware",
-                    False,
-                    None,
-                    False,
-                ),
-                ("status", "status", str, "code", False, None, True),
-                ("title", "title", str, "string", False, None, False),
-                ("url", "url", str, "uri", False, None, False),
-                (
-                    "useContext",
-                    "useContext",
-                    usagecontext.UsageContext,
-                    "UsageContext",
-                    True,
-                    None,
-                    False,
-                ),
-                ("version", "version", str, "string", False, None, False),
-            ]
-        )
-        return js
+    version: fhirtypes.String = Field(
+        None,
+        alias="version",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Business version of the capability statement",
+    )
 
 
 class CapabilityStatementDocument(backboneelement.BackboneElement):
     """ Document definition.
-
     A document definition.
     """
 
-    resource_type = "CapabilityStatementDocument"
+    resource_type = Field("CapabilityStatementDocument", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    documentation: fhirtypes.String = Field(
+        None,
+        alias="documentation",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Description of document support",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    mode: fhirtypes.Code = Field(
+        ...,
+        alias="mode",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="producer | consumer",
+    )
 
-        self.documentation = None
-        """ Description of document support.
-        Type `str`. """
-
-        self.mode = None
-        """ producer | consumer.
-        Type `str`. """
-
-        self.profile = None
-        """ Constraint on a resource used in the document.
-        Type `FHIRReference` referencing `['StructureDefinition']` (represented as `dict` in JSON). """
-
-        super(CapabilityStatementDocument, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(CapabilityStatementDocument, self).elementProperties()
-        js.extend(
-            [
-                ("documentation", "documentation", str, "string", False, None, False),
-                ("mode", "mode", str, "code", False, None, True),
-                (
-                    "profile",
-                    "profile",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
+    profile: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="profile",
+        title="Type `Reference` referencing `StructureDefinition` (represented as `dict` in JSON)",
+        description="Constraint on a resource used in the document",
+    )
 
 
 class CapabilityStatementImplementation(backboneelement.BackboneElement):
     """ If this describes a specific instance.
-
     Identifies a specific implementation instance that is described by the
     capability statement - i.e. a particular installation, rather than the
     capabilities of a software program.
     """
 
-    resource_type = "CapabilityStatementImplementation"
+    resource_type = Field("CapabilityStatementImplementation", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    description: fhirtypes.String = Field(
+        ...,
+        alias="description",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Describes this specific instance",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.description = None
-        """ Describes this specific instance.
-        Type `str`. """
-
-        self.url = None
-        """ Base URL for the installation.
-        Type `str`. """
-
-        super(CapabilityStatementImplementation, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(CapabilityStatementImplementation, self).elementProperties()
-        js.extend(
-            [
-                ("description", "description", str, "string", False, None, True),
-                ("url", "url", str, "uri", False, None, False),
-            ]
-        )
-        return js
+    url: fhirtypes.Uri = Field(
+        None,
+        alias="url",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Base URL for the installation",
+    )
 
 
 class CapabilityStatementMessaging(backboneelement.BackboneElement):
     """ If messaging is supported.
-
     A description of the messaging capabilities of the solution.
     """
 
-    resource_type = "CapabilityStatementMessaging"
+    resource_type = Field("CapabilityStatementMessaging", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    documentation: fhirtypes.String = Field(
+        None,
+        alias="documentation",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Messaging interface behavior details",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    endpoint: ListType[fhirtypes.CapabilityStatementMessagingEndpointType] = Field(
+        None,
+        alias="endpoint",
+        title="List of `CapabilityStatementMessagingEndpoint` items (represented as `dict` in JSON)",
+        description="Where messages should be sent",
+    )
 
-        self.documentation = None
-        """ Messaging interface behavior details.
-        Type `str`. """
+    event: ListType[fhirtypes.CapabilityStatementMessagingEventType] = Field(
+        None,
+        alias="event",
+        title="List of `CapabilityStatementMessagingEvent` items (represented as `dict` in JSON)",
+        description="Declare support for this event",
+    )
 
-        self.endpoint = None
-        """ Where messages should be sent.
-        List of `CapabilityStatementMessagingEndpoint` items (represented as `dict` in JSON). """
+    reliableCache: fhirtypes.UnsignedInt = Field(
+        None,
+        alias="reliableCache",
+        title="Type `UnsignedInt` (represented as `dict` in JSON)",
+        description="Reliable Message Cache Length (min)",
+    )
 
-        self.event = None
-        """ Declare support for this event.
-        List of `CapabilityStatementMessagingEvent` items (represented as `dict` in JSON). """
-
-        self.reliableCache = None
-        """ Reliable Message Cache Length (min).
-        Type `int`. """
-
-        self.supportedMessage = None
-        """ Messages supported by this system.
-        List of `CapabilityStatementMessagingSupportedMessage` items (represented as `dict` in JSON). """
-
-        super(CapabilityStatementMessaging, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(CapabilityStatementMessaging, self).elementProperties()
-        js.extend(
-            [
-                ("documentation", "documentation", str, "string", False, None, False),
-                (
-                    "endpoint",
-                    "endpoint",
-                    CapabilityStatementMessagingEndpoint,
-                    "CapabilityStatementMessagingEndpoint",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "event",
-                    "event",
-                    CapabilityStatementMessagingEvent,
-                    "CapabilityStatementMessagingEvent",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "reliableCache",
-                    "reliableCache",
-                    int,
-                    "unsignedInt",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "supportedMessage",
-                    "supportedMessage",
-                    CapabilityStatementMessagingSupportedMessage,
-                    "CapabilityStatementMessagingSupportedMessage",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    supportedMessage: ListType[
+        fhirtypes.CapabilityStatementMessagingSupportedMessageType
+    ] = Field(
+        None,
+        alias="supportedMessage",
+        title="List of `CapabilityStatementMessagingSupportedMessage` items (represented as `dict` in JSON)",
+        description="Messages supported by this system",
+    )
 
 
 class CapabilityStatementMessagingEndpoint(backboneelement.BackboneElement):
     """ Where messages should be sent.
-
     An endpoint (network accessible address) to which messages and/or replies
     are to be sent.
     """
 
-    resource_type = "CapabilityStatementMessagingEndpoint"
+    resource_type = Field("CapabilityStatementMessagingEndpoint", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    address: fhirtypes.Uri = Field(
+        ...,
+        alias="address",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Network address or identifier of the end-point",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.address = None
-        """ Network address or identifier of the end-point.
-        Type `str`. """
-
-        self.protocol = None
-        """ http | ftp | mllp +.
-        Type `Coding` (represented as `dict` in JSON). """
-
-        super(CapabilityStatementMessagingEndpoint, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(CapabilityStatementMessagingEndpoint, self).elementProperties()
-        js.extend(
-            [
-                ("address", "address", str, "uri", False, None, True),
-                ("protocol", "protocol", coding.Coding, "Coding", False, None, True),
-            ]
-        )
-        return js
+    protocol: fhirtypes.CodingType = Field(
+        ...,
+        alias="protocol",
+        title="Type `Coding` (represented as `dict` in JSON)",
+        description="http | ftp | mllp +",
+    )
 
 
 class CapabilityStatementMessagingEvent(backboneelement.BackboneElement):
     """ Declare support for this event.
-
     A description of the solution's support for an event at this end-point.
     """
 
-    resource_type = "CapabilityStatementMessagingEvent"
+    resource_type = Field("CapabilityStatementMessagingEvent", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    category: fhirtypes.Code = Field(
+        None,
+        alias="category",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="Consequence | Currency | Notification",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    code: fhirtypes.CodingType = Field(
+        ...,
+        alias="code",
+        title="Type `Coding` (represented as `dict` in JSON)",
+        description="Event type",
+    )
 
-        self.category = None
-        """ Consequence | Currency | Notification.
-        Type `str`. """
+    documentation: fhirtypes.String = Field(
+        None,
+        alias="documentation",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Endpoint-specific event documentation",
+    )
 
-        self.code = None
-        """ Event type.
-        Type `Coding` (represented as `dict` in JSON). """
+    focus: fhirtypes.Code = Field(
+        ...,
+        alias="focus",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="Resource that\u0027s focus of message",
+    )
 
-        self.documentation = None
-        """ Endpoint-specific event documentation.
-        Type `str`. """
+    mode: fhirtypes.Code = Field(
+        ...,
+        alias="mode",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="sender | receiver",
+    )
 
-        self.focus = None
-        """ Resource that's focus of message.
-        Type `str`. """
+    request: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="request",
+        title="Type `Reference` referencing `StructureDefinition` (represented as `dict` in JSON)",
+        description="Profile that describes the request",
+    )
 
-        self.mode = None
-        """ sender | receiver.
-        Type `str`. """
-
-        self.request = None
-        """ Profile that describes the request.
-        Type `FHIRReference` referencing `['StructureDefinition']` (represented as `dict` in JSON). """
-
-        self.response = None
-        """ Profile that describes the response.
-        Type `FHIRReference` referencing `['StructureDefinition']` (represented as `dict` in JSON). """
-
-        super(CapabilityStatementMessagingEvent, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(CapabilityStatementMessagingEvent, self).elementProperties()
-        js.extend(
-            [
-                ("category", "category", str, "code", False, None, False),
-                ("code", "code", coding.Coding, "Coding", False, None, True),
-                ("documentation", "documentation", str, "string", False, None, False),
-                ("focus", "focus", str, "code", False, None, True),
-                ("mode", "mode", str, "code", False, None, True),
-                (
-                    "request",
-                    "request",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "response",
-                    "response",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
+    response: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="response",
+        title="Type `Reference` referencing `StructureDefinition` (represented as `dict` in JSON)",
+        description="Profile that describes the response",
+    )
 
 
 class CapabilityStatementMessagingSupportedMessage(backboneelement.BackboneElement):
     """ Messages supported by this system.
-
     References to message definitions for messages this system can send or
     receive.
     """
 
-    resource_type = "CapabilityStatementMessagingSupportedMessage"
+    resource_type = Field("CapabilityStatementMessagingSupportedMessage", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    definition: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="definition",
+        title="Type `Reference` referencing `MessageDefinition` (represented as `dict` in JSON)",
+        description="Message supported by this system",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.definition = None
-        """ Message supported by this system.
-        Type `FHIRReference` referencing `['MessageDefinition']` (represented as `dict` in JSON). """
-
-        self.mode = None
-        """ sender | receiver.
-        Type `str`. """
-
-        super(CapabilityStatementMessagingSupportedMessage, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(
-            CapabilityStatementMessagingSupportedMessage, self
-        ).elementProperties()
-        js.extend(
-            [
-                (
-                    "definition",
-                    "definition",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                ("mode", "mode", str, "code", False, None, True),
-            ]
-        )
-        return js
+    mode: fhirtypes.Code = Field(
+        ...,
+        alias="mode",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="sender | receiver",
+    )
 
 
 class CapabilityStatementRest(backboneelement.BackboneElement):
     """ If the endpoint is a RESTful one.
-
     A definition of the restful capabilities of the solution, if any.
     """
 
-    resource_type = "CapabilityStatementRest"
+    resource_type = Field("CapabilityStatementRest", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    compartment: ListType[fhirtypes.Uri] = Field(
+        None,
+        alias="compartment",
+        title="List of `Uri` items (represented as `dict` in JSON)",
+        description="Compartments served/used by system",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    documentation: fhirtypes.String = Field(
+        None,
+        alias="documentation",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="General description of implementation",
+    )
 
-        self.compartment = None
-        """ Compartments served/used by system.
-        List of `str` items. """
+    interaction: ListType[fhirtypes.CapabilityStatementRestInteractionType] = Field(
+        None,
+        alias="interaction",
+        title="List of `CapabilityStatementRestInteraction` items (represented as `dict` in JSON)",
+        description="What operations are supported?",
+    )
 
-        self.documentation = None
-        """ General description of implementation.
-        Type `str`. """
+    mode: fhirtypes.Code = Field(
+        ...,
+        alias="mode",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="client | server",
+    )
 
-        self.interaction = None
-        """ What operations are supported?.
-        List of `CapabilityStatementRestInteraction` items (represented as `dict` in JSON). """
+    operation: ListType[fhirtypes.CapabilityStatementRestOperationType] = Field(
+        None,
+        alias="operation",
+        title="List of `CapabilityStatementRestOperation` items (represented as `dict` in JSON)",
+        description="Definition of an operation or a custom query",
+    )
 
-        self.mode = None
-        """ client | server.
-        Type `str`. """
+    resource: ListType[fhirtypes.CapabilityStatementRestResourceType] = Field(
+        None,
+        alias="resource",
+        title="List of `CapabilityStatementRestResource` items (represented as `dict` in JSON)",
+        description="Resource served on the REST interface",
+    )
 
-        self.operation = None
-        """ Definition of an operation or a custom query.
-        List of `CapabilityStatementRestOperation` items (represented as `dict` in JSON). """
+    searchParam: ListType[
+        fhirtypes.CapabilityStatementRestResourceSearchParamType
+    ] = Field(
+        None,
+        alias="searchParam",
+        title="List of `CapabilityStatementRestResourceSearchParam` items (represented as `dict` in JSON)",
+        description="Search parameters for searching all resources",
+    )
 
-        self.resource = None
-        """ Resource served on the REST interface.
-        List of `CapabilityStatementRestResource` items (represented as `dict` in JSON). """
-
-        self.searchParam = None
-        """ Search parameters for searching all resources.
-        List of `CapabilityStatementRestResourceSearchParam` items (represented as `dict` in JSON). """
-
-        self.security = None
-        """ Information about security of implementation.
-        Type `CapabilityStatementRestSecurity` (represented as `dict` in JSON). """
-
-        super(CapabilityStatementRest, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(CapabilityStatementRest, self).elementProperties()
-        js.extend(
-            [
-                ("compartment", "compartment", str, "uri", True, None, False),
-                ("documentation", "documentation", str, "string", False, None, False),
-                (
-                    "interaction",
-                    "interaction",
-                    CapabilityStatementRestInteraction,
-                    "CapabilityStatementRestInteraction",
-                    True,
-                    None,
-                    False,
-                ),
-                ("mode", "mode", str, "code", False, None, True),
-                (
-                    "operation",
-                    "operation",
-                    CapabilityStatementRestOperation,
-                    "CapabilityStatementRestOperation",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "resource",
-                    "resource",
-                    CapabilityStatementRestResource,
-                    "CapabilityStatementRestResource",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "searchParam",
-                    "searchParam",
-                    CapabilityStatementRestResourceSearchParam,
-                    "CapabilityStatementRestResourceSearchParam",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "security",
-                    "security",
-                    CapabilityStatementRestSecurity,
-                    "CapabilityStatementRestSecurity",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    security: fhirtypes.CapabilityStatementRestSecurityType = Field(
+        None,
+        alias="security",
+        title="Type `CapabilityStatementRestSecurity` (represented as `dict` in JSON)",
+        description="Information about security of implementation",
+    )
 
 
 class CapabilityStatementRestInteraction(backboneelement.BackboneElement):
     """ What operations are supported?.
-
     A specification of restful operations supported by the system.
     """
 
-    resource_type = "CapabilityStatementRestInteraction"
+    resource_type = Field("CapabilityStatementRestInteraction", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    code: fhirtypes.Code = Field(
+        ...,
+        alias="code",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="transaction | batch | search-system | history-system",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.code = None
-        """ transaction | batch | search-system | history-system.
-        Type `str`. """
-
-        self.documentation = None
-        """ Anything special about operation behavior.
-        Type `str`. """
-
-        super(CapabilityStatementRestInteraction, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(CapabilityStatementRestInteraction, self).elementProperties()
-        js.extend(
-            [
-                ("code", "code", str, "code", False, None, True),
-                ("documentation", "documentation", str, "string", False, None, False),
-            ]
-        )
-        return js
+    documentation: fhirtypes.String = Field(
+        None,
+        alias="documentation",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Anything special about operation behavior",
+    )
 
 
 class CapabilityStatementRestOperation(backboneelement.BackboneElement):
     """ Definition of an operation or a custom query.
-
     Definition of an operation or a named query together with its parameters
     and their meaning and type.
     """
 
-    resource_type = "CapabilityStatementRestOperation"
+    resource_type = Field("CapabilityStatementRestOperation", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    definition: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="definition",
+        title="Type `Reference` referencing `OperationDefinition` (represented as `dict` in JSON)",
+        description="The defined operation/query",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.definition = None
-        """ The defined operation/query.
-        Type `FHIRReference` referencing `['OperationDefinition']` (represented as `dict` in JSON). """
-
-        self.name = None
-        """ Name by which the operation/query is invoked.
-        Type `str`. """
-
-        super(CapabilityStatementRestOperation, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(CapabilityStatementRestOperation, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "definition",
-                    "definition",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                ("name", "name", str, "string", False, None, True),
-            ]
-        )
-        return js
+    name: fhirtypes.String = Field(
+        ...,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name by which the operation/query is invoked",
+    )
 
 
 class CapabilityStatementRestResource(backboneelement.BackboneElement):
     """ Resource served on the REST interface.
-
     A specification of the restful capabilities of the solution for a specific
     resource type.
     """
 
-    resource_type = "CapabilityStatementRestResource"
+    resource_type = Field("CapabilityStatementRestResource", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    conditionalCreate: bool = Field(
+        None,
+        alias="conditionalCreate",
+        title="Type `bool`",
+        description="If allows/uses conditional create",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    conditionalDelete: fhirtypes.Code = Field(
+        None,
+        alias="conditionalDelete",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="not-supported | single | multiple - how conditional delete is supported",
+    )
 
-        self.conditionalCreate = None
-        """ If allows/uses conditional create.
-        Type `bool`. """
+    conditionalRead: fhirtypes.Code = Field(
+        None,
+        alias="conditionalRead",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="not-supported | modified-since | not-match | full-support",
+    )
 
-        self.conditionalDelete = None
-        """ not-supported | single | multiple - how conditional delete is
-        supported.
-        Type `str`. """
+    conditionalUpdate: bool = Field(
+        None,
+        alias="conditionalUpdate",
+        title="Type `bool`",
+        description="If allows/uses conditional update",
+    )
 
-        self.conditionalRead = None
-        """ not-supported | modified-since | not-match | full-support.
-        Type `str`. """
+    documentation: fhirtypes.Markdown = Field(
+        None,
+        alias="documentation",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Additional information about the use of the resource type",
+    )
 
-        self.conditionalUpdate = None
-        """ If allows/uses conditional update.
-        Type `bool`. """
+    interaction: ListType[
+        fhirtypes.CapabilityStatementRestResourceInteractionType
+    ] = Field(
+        ...,
+        alias="interaction",
+        title="List of `CapabilityStatementRestResourceInteraction` items (represented as `dict` in JSON)",
+        description="What operations are supported?",
+    )
 
-        self.documentation = None
-        """ Additional information about the use of the resource type.
-        Type `str`. """
+    profile: fhirtypes.ReferenceType = Field(
+        None,
+        alias="profile",
+        title="Type `Reference` referencing `StructureDefinition` (represented as `dict` in JSON)",
+        description="Base System profile for all uses of resource",
+    )
 
-        self.interaction = None
-        """ What operations are supported?.
-        List of `CapabilityStatementRestResourceInteraction` items (represented as `dict` in JSON). """
+    readHistory: bool = Field(
+        None,
+        alias="readHistory",
+        title="Type `bool`",
+        description="Whether vRead can return past versions",
+    )
 
-        self.profile = None
-        """ Base System profile for all uses of resource.
-        Type `FHIRReference` referencing `['StructureDefinition']` (represented as `dict` in JSON). """
+    referencePolicy: ListType[fhirtypes.Code] = Field(
+        None,
+        alias="referencePolicy",
+        title="List of `Code` items (represented as `dict` in JSON)",
+        description="literal | logical | resolves | enforced | local",
+    )
 
-        self.readHistory = None
-        """ Whether vRead can return past versions.
-        Type `bool`. """
+    searchInclude: ListType[fhirtypes.String] = Field(
+        None,
+        alias="searchInclude",
+        title="List of `String` items (represented as `dict` in JSON)",
+        description="_include values supported by the server",
+    )
 
-        self.referencePolicy = None
-        """ literal | logical | resolves | enforced | local.
-        List of `str` items. """
+    searchParam: ListType[
+        fhirtypes.CapabilityStatementRestResourceSearchParamType
+    ] = Field(
+        None,
+        alias="searchParam",
+        title="List of `CapabilityStatementRestResourceSearchParam` items (represented as `dict` in JSON)",
+        description="Search parameters supported by implementation",
+    )
 
-        self.searchInclude = None
-        """ _include values supported by the server.
-        List of `str` items. """
+    searchRevInclude: ListType[fhirtypes.String] = Field(
+        None,
+        alias="searchRevInclude",
+        title="List of `String` items (represented as `dict` in JSON)",
+        description="_revinclude values supported by the server",
+    )
 
-        self.searchParam = None
-        """ Search parameters supported by implementation.
-        List of `CapabilityStatementRestResourceSearchParam` items (represented as `dict` in JSON). """
+    type: fhirtypes.Code = Field(
+        ...,
+        alias="type",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="A resource type that is supported",
+    )
 
-        self.searchRevInclude = None
-        """ _revinclude values supported by the server.
-        List of `str` items. """
+    updateCreate: bool = Field(
+        None,
+        alias="updateCreate",
+        title="Type `bool`",
+        description="If update can commit to a new identity",
+    )
 
-        self.type = None
-        """ A resource type that is supported.
-        Type `str`. """
-
-        self.updateCreate = None
-        """ If update can commit to a new identity.
-        Type `bool`. """
-
-        self.versioning = None
-        """ no-version | versioned | versioned-update.
-        Type `str`. """
-
-        super(CapabilityStatementRestResource, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(CapabilityStatementRestResource, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "conditionalCreate",
-                    "conditionalCreate",
-                    bool,
-                    "boolean",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "conditionalDelete",
-                    "conditionalDelete",
-                    str,
-                    "code",
-                    False,
-                    None,
-                    False,
-                ),
-                ("conditionalRead", "conditionalRead", str, "code", False, None, False),
-                (
-                    "conditionalUpdate",
-                    "conditionalUpdate",
-                    bool,
-                    "boolean",
-                    False,
-                    None,
-                    False,
-                ),
-                ("documentation", "documentation", str, "markdown", False, None, False),
-                (
-                    "interaction",
-                    "interaction",
-                    CapabilityStatementRestResourceInteraction,
-                    "CapabilityStatementRestResourceInteraction",
-                    True,
-                    None,
-                    True,
-                ),
-                (
-                    "profile",
-                    "profile",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("readHistory", "readHistory", bool, "boolean", False, None, False),
-                ("referencePolicy", "referencePolicy", str, "code", True, None, False),
-                ("searchInclude", "searchInclude", str, "string", True, None, False),
-                (
-                    "searchParam",
-                    "searchParam",
-                    CapabilityStatementRestResourceSearchParam,
-                    "CapabilityStatementRestResourceSearchParam",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "searchRevInclude",
-                    "searchRevInclude",
-                    str,
-                    "string",
-                    True,
-                    None,
-                    False,
-                ),
-                ("type", "type", str, "code", False, None, True),
-                ("updateCreate", "updateCreate", bool, "boolean", False, None, False),
-                ("versioning", "versioning", str, "code", False, None, False),
-            ]
-        )
-        return js
+    versioning: fhirtypes.Code = Field(
+        None,
+        alias="versioning",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="no-version | versioned | versioned-update",
+    )
 
 
 class CapabilityStatementRestResourceInteraction(backboneelement.BackboneElement):
     """ What operations are supported?.
-
     Identifies a restful operation supported by the solution.
     """
 
-    resource_type = "CapabilityStatementRestResourceInteraction"
+    resource_type = Field("CapabilityStatementRestResourceInteraction", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    code: fhirtypes.Code = Field(
+        ...,
+        alias="code",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="read | vread | update | patch | delete | history-instance | history-type | create | search-type",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.code = None
-        """ read | vread | update | patch | delete | history-instance |
-        history-type | create | search-type.
-        Type `str`. """
-
-        self.documentation = None
-        """ Anything special about operation behavior.
-        Type `str`. """
-
-        super(CapabilityStatementRestResourceInteraction, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(CapabilityStatementRestResourceInteraction, self).elementProperties()
-        js.extend(
-            [
-                ("code", "code", str, "code", False, None, True),
-                ("documentation", "documentation", str, "string", False, None, False),
-            ]
-        )
-        return js
+    documentation: fhirtypes.String = Field(
+        None,
+        alias="documentation",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Anything special about operation behavior",
+    )
 
 
 class CapabilityStatementRestResourceSearchParam(backboneelement.BackboneElement):
     """ Search parameters supported by implementation.
-
     Search parameters for implementations to support and/or make use of -
     either references to ones defined in the specification, or additional ones
     defined for/by the implementation.
     """
 
-    resource_type = "CapabilityStatementRestResourceSearchParam"
+    resource_type = Field("CapabilityStatementRestResourceSearchParam", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    definition: fhirtypes.Uri = Field(
+        None,
+        alias="definition",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Source of definition for parameter",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    documentation: fhirtypes.String = Field(
+        None,
+        alias="documentation",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Server-specific usage",
+    )
 
-        self.definition = None
-        """ Source of definition for parameter.
-        Type `str`. """
+    name: fhirtypes.String = Field(
+        ...,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name of search parameter",
+    )
 
-        self.documentation = None
-        """ Server-specific usage.
-        Type `str`. """
-
-        self.name = None
-        """ Name of search parameter.
-        Type `str`. """
-
-        self.type = None
-        """ number | date | string | token | reference | composite | quantity |
-        uri.
-        Type `str`. """
-
-        super(CapabilityStatementRestResourceSearchParam, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(CapabilityStatementRestResourceSearchParam, self).elementProperties()
-        js.extend(
-            [
-                ("definition", "definition", str, "uri", False, None, False),
-                ("documentation", "documentation", str, "string", False, None, False),
-                ("name", "name", str, "string", False, None, True),
-                ("type", "type", str, "code", False, None, True),
-            ]
-        )
-        return js
+    type: fhirtypes.Code = Field(
+        ...,
+        alias="type",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="number | date | string | token | reference | composite | quantity | uri",
+    )
 
 
 class CapabilityStatementRestSecurity(backboneelement.BackboneElement):
     """ Information about security of implementation.
-
     Information about security implementation from an interface perspective -
     what a client needs to know.
     """
 
-    resource_type = "CapabilityStatementRestSecurity"
+    resource_type = Field("CapabilityStatementRestSecurity", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    certificate: ListType[
+        fhirtypes.CapabilityStatementRestSecurityCertificateType
+    ] = Field(
+        None,
+        alias="certificate",
+        title="List of `CapabilityStatementRestSecurityCertificate` items (represented as `dict` in JSON)",
+        description="Certificates associated with security profiles",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    cors: bool = Field(
+        None,
+        alias="cors",
+        title="Type `bool`",
+        description="Adds CORS Headers (http://enable-cors.org/)",
+    )
 
-        self.certificate = None
-        """ Certificates associated with security profiles.
-        List of `CapabilityStatementRestSecurityCertificate` items (represented as `dict` in JSON). """
+    description: fhirtypes.String = Field(
+        None,
+        alias="description",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="General description of how security works",
+    )
 
-        self.cors = None
-        """ Adds CORS Headers (http://enable-cors.org/).
-        Type `bool`. """
-
-        self.description = None
-        """ General description of how security works.
-        Type `str`. """
-
-        self.service = None
-        """ OAuth | SMART-on-FHIR | NTLM | Basic | Kerberos | Certificates.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        super(CapabilityStatementRestSecurity, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(CapabilityStatementRestSecurity, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "certificate",
-                    "certificate",
-                    CapabilityStatementRestSecurityCertificate,
-                    "CapabilityStatementRestSecurityCertificate",
-                    True,
-                    None,
-                    False,
-                ),
-                ("cors", "cors", bool, "boolean", False, None, False),
-                ("description", "description", str, "string", False, None, False),
-                (
-                    "service",
-                    "service",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    service: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="service",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="OAuth | SMART-on-FHIR | NTLM | Basic | Kerberos | Certificates",
+    )
 
 
 class CapabilityStatementRestSecurityCertificate(backboneelement.BackboneElement):
     """ Certificates associated with security profiles.
     """
 
-    resource_type = "CapabilityStatementRestSecurityCertificate"
+    resource_type = Field("CapabilityStatementRestSecurityCertificate", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    blob: fhirtypes.Base64Binary = Field(
+        None,
+        alias="blob",
+        title="Type `Base64Binary` (represented as `dict` in JSON)",
+        description="Actual certificate",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.blob = None
-        """ Actual certificate.
-        Type `str`. """
-
-        self.type = None
-        """ Mime type for certificates.
-        Type `str`. """
-
-        super(CapabilityStatementRestSecurityCertificate, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(CapabilityStatementRestSecurityCertificate, self).elementProperties()
-        js.extend(
-            [
-                ("blob", "blob", str, "base64Binary", False, None, False),
-                ("type", "type", str, "code", False, None, False),
-            ]
-        )
-        return js
+    type: fhirtypes.Code = Field(
+        None,
+        alias="type",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="Mime type for certificates",
+    )
 
 
 class CapabilityStatementSoftware(backboneelement.BackboneElement):
     """ Software that is covered by this capability statement.
-
     Software that is covered by this capability statement.  It is used when the
     capability statement describes the capabilities of a particular software
     version, independent of an installation.
     """
 
-    resource_type = "CapabilityStatementSoftware"
+    resource_type = Field("CapabilityStatementSoftware", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    name: fhirtypes.String = Field(
+        ...,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="A name the software is known by",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    releaseDate: fhirtypes.DateTime = Field(
+        None,
+        alias="releaseDate",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Date this version released",
+    )
 
-        self.name = None
-        """ A name the software is known by.
-        Type `str`. """
-
-        self.releaseDate = None
-        """ Date this version released.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.version = None
-        """ Version covered by this statement.
-        Type `str`. """
-
-        super(CapabilityStatementSoftware, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(CapabilityStatementSoftware, self).elementProperties()
-        js.extend(
-            [
-                ("name", "name", str, "string", False, None, True),
-                (
-                    "releaseDate",
-                    "releaseDate",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    None,
-                    False,
-                ),
-                ("version", "version", str, "string", False, None, False),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import coding
-except ImportError:
-    coding = sys.modules[__package__ + ".coding"]
-try:
-    from . import contactdetail
-except ImportError:
-    contactdetail = sys.modules[__package__ + ".contactdetail"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import usagecontext
-except ImportError:
-    usagecontext = sys.modules[__package__ + ".usagecontext"]
+    version: fhirtypes.String = Field(
+        None,
+        alias="version",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Version covered by this statement",
+    )

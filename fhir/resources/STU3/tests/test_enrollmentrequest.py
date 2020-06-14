@@ -6,54 +6,41 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import enrollmentrequest
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class EnrollmentRequestTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("EnrollmentRequest", js["resourceType"])
-        return enrollmentrequest.EnrollmentRequest(js)
+def impl_enrollmentrequest_1(inst):
+    assert inst.coverage.reference == "Coverage/9876B1"
+    assert inst.created == fhirtypes.DateTime.validate("2014-08-16")
+    assert inst.id == "22345"
+    assert inst.identifier[0].system == "http://happyvalley.com/enrollmentrequest"
+    assert inst.identifier[0].value == "EN22345"
+    assert inst.organization.reference == "Organization/1"
+    assert inst.status == "active"
+    assert inst.subject.reference == "Patient/1"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the EnrollmentRequest.</div>'
+    )
+    assert inst.text.status == "generated"
 
-    def testEnrollmentRequest1(self):
-        inst = self.instantiate_from("enrollmentrequest-example.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a EnrollmentRequest instance"
-        )
-        self.implEnrollmentRequest1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("EnrollmentRequest", js["resourceType"])
-        inst2 = enrollmentrequest.EnrollmentRequest(js)
-        self.implEnrollmentRequest1(inst2)
+def test_enrollmentrequest_1(base_settings):
+    """No. 1 tests collection for EnrollmentRequest.
+    Test File: enrollmentrequest-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "enrollmentrequest-example.json"
+    inst = enrollmentrequest.EnrollmentRequest.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "EnrollmentRequest" == inst.resource_type
 
-    def implEnrollmentRequest1(self, inst):
-        self.assertEqual(inst.created.date, FHIRDate("2014-08-16").date)
-        self.assertEqual(inst.created.as_json(), "2014-08-16")
-        self.assertEqual(force_bytes(inst.id), force_bytes("22345"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://happyvalley.com/enrollmentrequest"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("EN22345"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the EnrollmentRequest.</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    impl_enrollmentrequest_1(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "EnrollmentRequest" == data["resourceType"]
+
+    inst2 = enrollmentrequest.EnrollmentRequest(**data)
+    impl_enrollmentrequest_1(inst2)

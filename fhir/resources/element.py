@@ -6,53 +6,30 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import List as ListType
+
+from pydantic import Field
+
+from . import fhirabstractmodel, fhirtypes
 
 
-from . import fhirabstractbase
-
-
-class Element(fhirabstractbase.FHIRAbstractBase):
+class Element(fhirabstractmodel.FHIRAbstractModel):
     """ Base for all elements.
-
     Base definition for all elements in a resource.
     """
 
-    resource_type = "Element"
+    resource_type = Field("Element", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    extension: ListType[fhirtypes.ExtensionType] = Field(
+        None,
+        alias="extension",
+        title="List of `Extension` items (represented as `dict` in JSON)",
+        description="Additional content defined by implementations",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.extension = None
-        """ Additional content defined by implementations.
-        List of `Extension` items (represented as `dict` in JSON). """
-
-        self.id = None
-        """ Unique id for inter-element referencing.
-        Type `str`. """
-
-        super(Element, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(Element, self).elementProperties()
-        from . import extension
-
-        js.extend(
-            [
-                (
-                    "extension",
-                    "extension",
-                    extension.Extension,
-                    "Extension",
-                    True,
-                    None,
-                    False,
-                ),
-                ("id", "id", str, "string", False, None, False),
-            ]
-        )
-        return js
+    id: fhirtypes.String = Field(
+        None,
+        alias="id",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Unique id for inter-element referencing",
+    )

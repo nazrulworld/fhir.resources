@@ -6,503 +6,382 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from typing import Any, Dict
+from typing import List as ListType
 
+from pydantic import Field, root_validator
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class ImplementationGuide(domainresource.DomainResource):
     """ A set of rules about how FHIR is used.
-
     A set of rules of how FHIR is used to solve a particular problem. This
     resource is used to gather all the parts of an implementation guide into a
     logical whole and to publish a computable definition of all the parts.
     """
 
-    resource_type = "ImplementationGuide"
+    resource_type = Field("ImplementationGuide", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    binary: ListType[fhirtypes.Uri] = Field(
+        None,
+        alias="binary",
+        title="List of `Uri` items (represented as `dict` in JSON)",
+        description="Image, css, script, etc.",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    contact: ListType[fhirtypes.ContactDetailType] = Field(
+        None,
+        alias="contact",
+        title="List of `ContactDetail` items (represented as `dict` in JSON)",
+        description="Contact details for the publisher",
+    )
 
-        self.binary = None
-        """ Image, css, script, etc..
-        List of `str` items. """
+    copyright: fhirtypes.Markdown = Field(
+        None,
+        alias="copyright",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Use and/or publishing restrictions",
+    )
 
-        self.contact = None
-        """ Contact details for the publisher.
-        List of `ContactDetail` items (represented as `dict` in JSON). """
+    date: fhirtypes.DateTime = Field(
+        None,
+        alias="date",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Date this was last changed",
+    )
 
-        self.copyright = None
-        """ Use and/or publishing restrictions.
-        Type `str`. """
+    dependency: ListType[fhirtypes.ImplementationGuideDependencyType] = Field(
+        None,
+        alias="dependency",
+        title="List of `ImplementationGuideDependency` items (represented as `dict` in JSON)",
+        description="Another Implementation guide this depends on",
+    )
 
-        self.date = None
-        """ Date this was last changed.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    description: fhirtypes.Markdown = Field(
+        None,
+        alias="description",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Natural language description of the implementation guide",
+    )
 
-        self.dependency = None
-        """ Another Implementation guide this depends on.
-        List of `ImplementationGuideDependency` items (represented as `dict` in JSON). """
+    experimental: bool = Field(
+        None,
+        alias="experimental",
+        title="Type `bool`",
+        description="For testing purposes, not real usage",
+    )
 
-        self.description = None
-        """ Natural language description of the implementation guide.
-        Type `str`. """
+    fhirVersion: fhirtypes.Id = Field(
+        None,
+        alias="fhirVersion",
+        title="Type `Id` (represented as `dict` in JSON)",
+        description="FHIR Version this Implementation Guide targets",
+    )
 
-        self.experimental = None
-        """ For testing purposes, not real usage.
-        Type `bool`. """
+    global_fhir: ListType[fhirtypes.ImplementationGuideGlobalType] = Field(
+        None,
+        alias="global",
+        title="List of `ImplementationGuideGlobal` items (represented as `dict` in JSON)",
+        description="Profiles that apply globally",
+    )
 
-        self.fhirVersion = None
-        """ FHIR Version this Implementation Guide targets.
-        Type `str`. """
+    jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="jurisdiction",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Intended jurisdiction for implementation guide (if applicable)",
+    )
 
-        self.global_fhir = None
-        """ Profiles that apply globally.
-        List of `ImplementationGuideGlobal` items (represented as `dict` in JSON). """
+    name: fhirtypes.String = Field(
+        ...,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name for this implementation guide (computer friendly)",
+    )
 
-        self.jurisdiction = None
-        """ Intended jurisdiction for implementation guide (if applicable).
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    package: ListType[fhirtypes.ImplementationGuidePackageType] = Field(
+        None,
+        alias="package",
+        title="List of `ImplementationGuidePackage` items (represented as `dict` in JSON)",
+        description="Group of resources as used in .page.package",
+    )
 
-        self.name = None
-        """ Name for this implementation guide (computer friendly).
-        Type `str`. """
+    page: fhirtypes.ImplementationGuidePageType = Field(
+        None,
+        alias="page",
+        title="Type `ImplementationGuidePage` (represented as `dict` in JSON)",
+        description="Page/Section in the Guide",
+    )
 
-        self.package = None
-        """ Group of resources as used in .page.package.
-        List of `ImplementationGuidePackage` items (represented as `dict` in JSON). """
+    publisher: fhirtypes.String = Field(
+        None,
+        alias="publisher",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name of the publisher (organization or individual)",
+    )
 
-        self.page = None
-        """ Page/Section in the Guide.
-        Type `ImplementationGuidePage` (represented as `dict` in JSON). """
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="draft | active | retired | unknown",
+    )
 
-        self.publisher = None
-        """ Name of the publisher (organization or individual).
-        Type `str`. """
+    url: fhirtypes.Uri = Field(
+        ...,
+        alias="url",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Logical URI to reference this implementation guide (globally unique)",
+    )
 
-        self.status = None
-        """ draft | active | retired | unknown.
-        Type `str`. """
+    useContext: ListType[fhirtypes.UsageContextType] = Field(
+        None,
+        alias="useContext",
+        title="List of `UsageContext` items (represented as `dict` in JSON)",
+        description="Context the content is intended to support",
+    )
 
-        self.url = None
-        """ Logical URI to reference this implementation guide (globally
-        unique).
-        Type `str`. """
-
-        self.useContext = None
-        """ Context the content is intended to support.
-        List of `UsageContext` items (represented as `dict` in JSON). """
-
-        self.version = None
-        """ Business version of the implementation guide.
-        Type `str`. """
-
-        super(ImplementationGuide, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ImplementationGuide, self).elementProperties()
-        js.extend(
-            [
-                ("binary", "binary", str, "uri", True, None, False),
-                (
-                    "contact",
-                    "contact",
-                    contactdetail.ContactDetail,
-                    "ContactDetail",
-                    True,
-                    None,
-                    False,
-                ),
-                ("copyright", "copyright", str, "markdown", False, None, False),
-                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-                (
-                    "dependency",
-                    "dependency",
-                    ImplementationGuideDependency,
-                    "ImplementationGuideDependency",
-                    True,
-                    None,
-                    False,
-                ),
-                ("description", "description", str, "markdown", False, None, False),
-                ("experimental", "experimental", bool, "boolean", False, None, False),
-                ("fhirVersion", "fhirVersion", str, "id", False, None, False),
-                (
-                    "global_fhir",
-                    "global",
-                    ImplementationGuideGlobal,
-                    "ImplementationGuideGlobal",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "jurisdiction",
-                    "jurisdiction",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                ("name", "name", str, "string", False, None, True),
-                (
-                    "package",
-                    "package",
-                    ImplementationGuidePackage,
-                    "ImplementationGuidePackage",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "page",
-                    "page",
-                    ImplementationGuidePage,
-                    "ImplementationGuidePage",
-                    False,
-                    None,
-                    False,
-                ),
-                ("publisher", "publisher", str, "string", False, None, False),
-                ("status", "status", str, "code", False, None, True),
-                ("url", "url", str, "uri", False, None, True),
-                (
-                    "useContext",
-                    "useContext",
-                    usagecontext.UsageContext,
-                    "UsageContext",
-                    True,
-                    None,
-                    False,
-                ),
-                ("version", "version", str, "string", False, None, False),
-            ]
-        )
-        return js
+    version: fhirtypes.String = Field(
+        None,
+        alias="version",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Business version of the implementation guide",
+    )
 
 
 class ImplementationGuideDependency(backboneelement.BackboneElement):
     """ Another Implementation guide this depends on.
-
     Another implementation guide that this implementation depends on.
     Typically, an implementation guide uses value sets, profiles etc.defined in
     other implementation guides.
     """
 
-    resource_type = "ImplementationGuideDependency"
+    resource_type = Field("ImplementationGuideDependency", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    type: fhirtypes.Code = Field(
+        ...,
+        alias="type",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="reference | inclusion",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.type = None
-        """ reference | inclusion.
-        Type `str`. """
-
-        self.uri = None
-        """ Where to find dependency.
-        Type `str`. """
-
-        super(ImplementationGuideDependency, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ImplementationGuideDependency, self).elementProperties()
-        js.extend(
-            [
-                ("type", "type", str, "code", False, None, True),
-                ("uri", "uri", str, "uri", False, None, True),
-            ]
-        )
-        return js
+    uri: fhirtypes.Uri = Field(
+        ...,
+        alias="uri",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Where to find dependency",
+    )
 
 
 class ImplementationGuideGlobal(backboneelement.BackboneElement):
     """ Profiles that apply globally.
-
     A set of profiles that all resources covered by this implementation guide
     must conform to.
     """
 
-    resource_type = "ImplementationGuideGlobal"
+    resource_type = Field("ImplementationGuideGlobal", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    profile: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="profile",
+        title="Type `Reference` referencing `StructureDefinition` (represented as `dict` in JSON)",
+        description="Profile that all resources must conform to",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.profile = None
-        """ Profile that all resources must conform to.
-        Type `FHIRReference` referencing `['StructureDefinition']` (represented as `dict` in JSON). """
-
-        self.type = None
-        """ Type this profiles applies to.
-        Type `str`. """
-
-        super(ImplementationGuideGlobal, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ImplementationGuideGlobal, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "profile",
-                    "profile",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                ("type", "type", str, "code", False, None, True),
-            ]
-        )
-        return js
+    type: fhirtypes.Code = Field(
+        ...,
+        alias="type",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="Type this profiles applies to",
+    )
 
 
 class ImplementationGuidePackage(backboneelement.BackboneElement):
     """ Group of resources as used in .page.package.
-
     A logical group of resources. Logical groups can be used when building
     pages.
     """
 
-    resource_type = "ImplementationGuidePackage"
+    resource_type = Field("ImplementationGuidePackage", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    description: fhirtypes.String = Field(
+        None,
+        alias="description",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Human readable text describing the package",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    name: fhirtypes.String = Field(
+        ...,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name used .page.package",
+    )
 
-        self.description = None
-        """ Human readable text describing the package.
-        Type `str`. """
-
-        self.name = None
-        """ Name used .page.package.
-        Type `str`. """
-
-        self.resource = None
-        """ Resource in the implementation guide.
-        List of `ImplementationGuidePackageResource` items (represented as `dict` in JSON). """
-
-        super(ImplementationGuidePackage, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ImplementationGuidePackage, self).elementProperties()
-        js.extend(
-            [
-                ("description", "description", str, "string", False, None, False),
-                ("name", "name", str, "string", False, None, True),
-                (
-                    "resource",
-                    "resource",
-                    ImplementationGuidePackageResource,
-                    "ImplementationGuidePackageResource",
-                    True,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
+    resource: ListType[fhirtypes.ImplementationGuidePackageResourceType] = Field(
+        ...,
+        alias="resource",
+        title="List of `ImplementationGuidePackageResource` items (represented as `dict` in JSON)",
+        description="Resource in the implementation guide",
+    )
 
 
 class ImplementationGuidePackageResource(backboneelement.BackboneElement):
     """ Resource in the implementation guide.
-
     A resource that is part of the implementation guide. Conformance resources
     (value set, structure definition, capability statements etc.) are obvious
     candidates for inclusion, but any kind of resource can be included as an
     example resource.
     """
 
-    resource_type = "ImplementationGuidePackageResource"
+    resource_type = Field("ImplementationGuidePackageResource", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    acronym: fhirtypes.String = Field(
+        None,
+        alias="acronym",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Short code to identify the resource",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    description: fhirtypes.String = Field(
+        None,
+        alias="description",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Reason why included in guide",
+    )
+
+    example: bool = Field(
+        ...,
+        alias="example",
+        title="Type `bool`",
+        description="If not an example, has its normal meaning",
+    )
+
+    exampleFor: fhirtypes.ReferenceType = Field(
+        None,
+        alias="exampleFor",
+        title="Type `Reference` referencing `StructureDefinition` (represented as `dict` in JSON)",
+        description="Resource this is an example of (if applicable)",
+    )
+
+    name: fhirtypes.String = Field(
+        None,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Human Name for the resource",
+    )
+
+    sourceReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="sourceReference",
+        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        description="Location of the resource",
+        one_of_many="source",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    sourceUri: fhirtypes.Uri = Field(
+        None,
+        alias="sourceUri",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Location of the resource",
+        one_of_many="source",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "source": ["sourceReference", "sourceUri",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.acronym = None
-        """ Short code to identify the resource.
-        Type `str`. """
-
-        self.description = None
-        """ Reason why included in guide.
-        Type `str`. """
-
-        self.example = None
-        """ If not an example, has its normal meaning.
-        Type `bool`. """
-
-        self.exampleFor = None
-        """ Resource this is an example of (if applicable).
-        Type `FHIRReference` referencing `['StructureDefinition']` (represented as `dict` in JSON). """
-
-        self.name = None
-        """ Human Name for the resource.
-        Type `str`. """
-
-        self.sourceReference = None
-        """ Location of the resource.
-        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
-
-        self.sourceUri = None
-        """ Location of the resource.
-        Type `str`. """
-
-        super(ImplementationGuidePackageResource, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ImplementationGuidePackageResource, self).elementProperties()
-        js.extend(
-            [
-                ("acronym", "acronym", str, "string", False, None, False),
-                ("description", "description", str, "string", False, None, False),
-                ("example", "example", bool, "boolean", False, None, True),
-                (
-                    "exampleFor",
-                    "exampleFor",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("name", "name", str, "string", False, None, False),
-                (
-                    "sourceReference",
-                    "sourceReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    "source",
-                    True,
-                ),
-                ("sourceUri", "sourceUri", str, "uri", False, "source", True),
-            ]
-        )
-        return js
+        return values
 
 
 class ImplementationGuidePage(backboneelement.BackboneElement):
     """ Page/Section in the Guide.
-
     A page / section in the implementation guide. The root page is the
     implementation guide home page.
     """
 
-    resource_type = "ImplementationGuidePage"
+    resource_type = Field("ImplementationGuidePage", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    format: fhirtypes.Code = Field(
+        None,
+        alias="format",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="Format of the page (e.g. html, markdown, etc.)",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    kind: fhirtypes.Code = Field(
+        ...,
+        alias="kind",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="page | example | list | include | directory | dictionary | toc | resource",
+    )
 
-        self.format = None
-        """ Format of the page (e.g. html, markdown, etc.).
-        Type `str`. """
+    package: ListType[fhirtypes.String] = Field(
+        None,
+        alias="package",
+        title="List of `String` items (represented as `dict` in JSON)",
+        description="Name of package to include",
+    )
 
-        self.kind = None
-        """ page | example | list | include | directory | dictionary | toc |
-        resource.
-        Type `str`. """
+    page: ListType[fhirtypes.ImplementationGuidePageType] = Field(
+        None,
+        alias="page",
+        title="List of `ImplementationGuidePage` items (represented as `dict` in JSON)",
+        description="Nested Pages / Sections",
+    )
 
-        self.package = None
-        """ Name of package to include.
-        List of `str` items. """
+    source: fhirtypes.Uri = Field(
+        ...,
+        alias="source",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Where to find that page",
+    )
 
-        self.page = None
-        """ Nested Pages / Sections.
-        List of `ImplementationGuidePage` items (represented as `dict` in JSON). """
+    title: fhirtypes.String = Field(
+        ...,
+        alias="title",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Short title shown for navigational assistance",
+    )
 
-        self.source = None
-        """ Where to find that page.
-        Type `str`. """
-
-        self.title = None
-        """ Short title shown for navigational assistance.
-        Type `str`. """
-
-        self.type = None
-        """ Kind of resource to include in the list.
-        List of `str` items. """
-
-        super(ImplementationGuidePage, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ImplementationGuidePage, self).elementProperties()
-        js.extend(
-            [
-                ("format", "format", str, "code", False, None, False),
-                ("kind", "kind", str, "code", False, None, True),
-                ("package", "package", str, "string", True, None, False),
-                (
-                    "page",
-                    "page",
-                    ImplementationGuidePage,
-                    "ImplementationGuidePage",
-                    True,
-                    None,
-                    False,
-                ),
-                ("source", "source", str, "uri", False, None, True),
-                ("title", "title", str, "string", False, None, True),
-                ("type", "type", str, "code", True, None, False),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import contactdetail
-except ImportError:
-    contactdetail = sys.modules[__package__ + ".contactdetail"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import usagecontext
-except ImportError:
-    usagecontext = sys.modules[__package__ + ".usagecontext"]
+    type: ListType[fhirtypes.Code] = Field(
+        None,
+        alias="type",
+        title="List of `Code` items (represented as `dict` in JSON)",
+        description="Kind of resource to include in the list",
+    )

@@ -6,439 +6,310 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class TerminologyCapabilities(domainresource.DomainResource):
     """ A statement of system capabilities.
-
     A TerminologyCapabilities resource documents a set of capabilities
     (behaviors) of a FHIR Terminology Server that may be used as a statement of
     actual server functionality or a statement of required or desired server
     implementation.
     """
 
-    resource_type = "TerminologyCapabilities"
+    resource_type = Field("TerminologyCapabilities", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    closure: fhirtypes.TerminologyCapabilitiesClosureType = Field(
+        None,
+        alias="closure",
+        title="Type `TerminologyCapabilitiesClosure` (represented as `dict` in JSON)",
+        description="Information about the [ConceptMap/$closure](conceptmap-operation-closure.html) operation",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    codeSearch: fhirtypes.Code = Field(
+        None,
+        alias="codeSearch",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="explicit | all",
+    )
 
-        self.closure = None
-        """ Information about the [ConceptMap/$closure](conceptmap-operation-
-        closure.html) operation.
-        Type `TerminologyCapabilitiesClosure` (represented as `dict` in JSON). """
+    codeSystem: ListType[fhirtypes.TerminologyCapabilitiesCodeSystemType] = Field(
+        None,
+        alias="codeSystem",
+        title="List of `TerminologyCapabilitiesCodeSystem` items (represented as `dict` in JSON)",
+        description="A code system supported by the server",
+    )
 
-        self.codeSearch = None
-        """ explicit | all.
-        Type `str`. """
+    contact: ListType[fhirtypes.ContactDetailType] = Field(
+        None,
+        alias="contact",
+        title="List of `ContactDetail` items (represented as `dict` in JSON)",
+        description="Contact details for the publisher",
+    )
 
-        self.codeSystem = None
-        """ A code system supported by the server.
-        List of `TerminologyCapabilitiesCodeSystem` items (represented as `dict` in JSON). """
+    copyright: fhirtypes.Markdown = Field(
+        None,
+        alias="copyright",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Use and/or publishing restrictions",
+    )
 
-        self.contact = None
-        """ Contact details for the publisher.
-        List of `ContactDetail` items (represented as `dict` in JSON). """
+    date: fhirtypes.DateTime = Field(
+        ...,
+        alias="date",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Date last changed",
+    )
 
-        self.copyright = None
-        """ Use and/or publishing restrictions.
-        Type `str`. """
+    description: fhirtypes.Markdown = Field(
+        None,
+        alias="description",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Natural language description of the terminology capabilities",
+    )
 
-        self.date = None
-        """ Date last changed.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    expansion: fhirtypes.TerminologyCapabilitiesExpansionType = Field(
+        None,
+        alias="expansion",
+        title="Type `TerminologyCapabilitiesExpansion` (represented as `dict` in JSON)",
+        description="Information about the [ValueSet/$expand](valueset-operation-expand.html) operation",
+    )
 
-        self.description = None
-        """ Natural language description of the terminology capabilities.
-        Type `str`. """
+    experimental: bool = Field(
+        None,
+        alias="experimental",
+        title="Type `bool`",
+        description="For testing purposes, not real usage",
+    )
 
-        self.expansion = None
-        """ Information about the [ValueSet/$expand](valueset-operation-
-        expand.html) operation.
-        Type `TerminologyCapabilitiesExpansion` (represented as `dict` in JSON). """
+    implementation: fhirtypes.TerminologyCapabilitiesImplementationType = Field(
+        None,
+        alias="implementation",
+        title="Type `TerminologyCapabilitiesImplementation` (represented as `dict` in JSON)",
+        description="If this describes a specific instance",
+    )
 
-        self.experimental = None
-        """ For testing purposes, not real usage.
-        Type `bool`. """
+    jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="jurisdiction",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Intended jurisdiction for terminology capabilities (if applicable)",
+    )
 
-        self.implementation = None
-        """ If this describes a specific instance.
-        Type `TerminologyCapabilitiesImplementation` (represented as `dict` in JSON). """
+    kind: fhirtypes.Code = Field(
+        ...,
+        alias="kind",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="instance | capability | requirements",
+    )
 
-        self.jurisdiction = None
-        """ Intended jurisdiction for terminology capabilities (if applicable).
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    lockedDate: bool = Field(
+        None,
+        alias="lockedDate",
+        title="Type `bool`",
+        description="Whether lockedDate is supported",
+    )
 
-        self.kind = None
-        """ instance | capability | requirements.
-        Type `str`. """
+    name: fhirtypes.String = Field(
+        None,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name for this terminology capabilities (computer friendly)",
+    )
 
-        self.lockedDate = None
-        """ Whether lockedDate is supported.
-        Type `bool`. """
+    publisher: fhirtypes.String = Field(
+        None,
+        alias="publisher",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name of the publisher (organization or individual)",
+    )
 
-        self.name = None
-        """ Name for this terminology capabilities (computer friendly).
-        Type `str`. """
+    purpose: fhirtypes.Markdown = Field(
+        None,
+        alias="purpose",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Why this terminology capabilities is defined",
+    )
 
-        self.publisher = None
-        """ Name of the publisher (organization or individual).
-        Type `str`. """
+    software: fhirtypes.TerminologyCapabilitiesSoftwareType = Field(
+        None,
+        alias="software",
+        title="Type `TerminologyCapabilitiesSoftware` (represented as `dict` in JSON)",
+        description="Software that is covered by this terminology capability statement",
+    )
 
-        self.purpose = None
-        """ Why this terminology capabilities is defined.
-        Type `str`. """
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="draft | active | retired | unknown",
+    )
 
-        self.software = None
-        """ Software that is covered by this terminology capability statement.
-        Type `TerminologyCapabilitiesSoftware` (represented as `dict` in JSON). """
+    title: fhirtypes.String = Field(
+        None,
+        alias="title",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name for this terminology capabilities (human friendly)",
+    )
 
-        self.status = None
-        """ draft | active | retired | unknown.
-        Type `str`. """
+    translation: fhirtypes.TerminologyCapabilitiesTranslationType = Field(
+        None,
+        alias="translation",
+        title="Type `TerminologyCapabilitiesTranslation` (represented as `dict` in JSON)",
+        description="Information about the [ConceptMap/$translate](conceptmap-operation-translate.html) operation",
+    )
 
-        self.title = None
-        """ Name for this terminology capabilities (human friendly).
-        Type `str`. """
+    url: fhirtypes.Uri = Field(
+        None,
+        alias="url",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Canonical identifier for this terminology capabilities, represented as a URI (globally unique)",
+    )
 
-        self.translation = None
-        """ Information about the [ConceptMap/$translate](conceptmap-operation-
-        translate.html) operation.
-        Type `TerminologyCapabilitiesTranslation` (represented as `dict` in JSON). """
+    useContext: ListType[fhirtypes.UsageContextType] = Field(
+        None,
+        alias="useContext",
+        title="List of `UsageContext` items (represented as `dict` in JSON)",
+        description="The context that the content is intended to support",
+    )
 
-        self.url = None
-        """ Canonical identifier for this terminology capabilities, represented
-        as a URI (globally unique).
-        Type `str`. """
+    validateCode: fhirtypes.TerminologyCapabilitiesValidateCodeType = Field(
+        None,
+        alias="validateCode",
+        title="Type `TerminologyCapabilitiesValidateCode` (represented as `dict` in JSON)",
+        description="Information about the [ValueSet/$validate-code](valueset-operation-validate-code.html) operation",
+    )
 
-        self.useContext = None
-        """ The context that the content is intended to support.
-        List of `UsageContext` items (represented as `dict` in JSON). """
-
-        self.validateCode = None
-        """ Information about the [ValueSet/$validate-code](valueset-operation-
-        validate-code.html) operation.
-        Type `TerminologyCapabilitiesValidateCode` (represented as `dict` in JSON). """
-
-        self.version = None
-        """ Business version of the terminology capabilities.
-        Type `str`. """
-
-        super(TerminologyCapabilities, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(TerminologyCapabilities, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "closure",
-                    "closure",
-                    TerminologyCapabilitiesClosure,
-                    "TerminologyCapabilitiesClosure",
-                    False,
-                    None,
-                    False,
-                ),
-                ("codeSearch", "codeSearch", str, "code", False, None, False),
-                (
-                    "codeSystem",
-                    "codeSystem",
-                    TerminologyCapabilitiesCodeSystem,
-                    "TerminologyCapabilitiesCodeSystem",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "contact",
-                    "contact",
-                    contactdetail.ContactDetail,
-                    "ContactDetail",
-                    True,
-                    None,
-                    False,
-                ),
-                ("copyright", "copyright", str, "markdown", False, None, False),
-                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, True),
-                ("description", "description", str, "markdown", False, None, False),
-                (
-                    "expansion",
-                    "expansion",
-                    TerminologyCapabilitiesExpansion,
-                    "TerminologyCapabilitiesExpansion",
-                    False,
-                    None,
-                    False,
-                ),
-                ("experimental", "experimental", bool, "boolean", False, None, False),
-                (
-                    "implementation",
-                    "implementation",
-                    TerminologyCapabilitiesImplementation,
-                    "TerminologyCapabilitiesImplementation",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "jurisdiction",
-                    "jurisdiction",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                ("kind", "kind", str, "code", False, None, True),
-                ("lockedDate", "lockedDate", bool, "boolean", False, None, False),
-                ("name", "name", str, "string", False, None, False),
-                ("publisher", "publisher", str, "string", False, None, False),
-                ("purpose", "purpose", str, "markdown", False, None, False),
-                (
-                    "software",
-                    "software",
-                    TerminologyCapabilitiesSoftware,
-                    "TerminologyCapabilitiesSoftware",
-                    False,
-                    None,
-                    False,
-                ),
-                ("status", "status", str, "code", False, None, True),
-                ("title", "title", str, "string", False, None, False),
-                (
-                    "translation",
-                    "translation",
-                    TerminologyCapabilitiesTranslation,
-                    "TerminologyCapabilitiesTranslation",
-                    False,
-                    None,
-                    False,
-                ),
-                ("url", "url", str, "uri", False, None, False),
-                (
-                    "useContext",
-                    "useContext",
-                    usagecontext.UsageContext,
-                    "UsageContext",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "validateCode",
-                    "validateCode",
-                    TerminologyCapabilitiesValidateCode,
-                    "TerminologyCapabilitiesValidateCode",
-                    False,
-                    None,
-                    False,
-                ),
-                ("version", "version", str, "string", False, None, False),
-            ]
-        )
-        return js
+    version: fhirtypes.String = Field(
+        None,
+        alias="version",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Business version of the terminology capabilities",
+    )
 
 
 class TerminologyCapabilitiesClosure(backboneelement.BackboneElement):
     """ Information about the [ConceptMap/$closure](conceptmap-operation-
     closure.html) operation.
-
     Whether the $closure operation is supported.
     """
 
-    resource_type = "TerminologyCapabilitiesClosure"
+    resource_type = Field("TerminologyCapabilitiesClosure", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
-
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.translation = None
-        """ If cross-system closure is supported.
-        Type `bool`. """
-
-        super(TerminologyCapabilitiesClosure, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(TerminologyCapabilitiesClosure, self).elementProperties()
-        js.extend(
-            [("translation", "translation", bool, "boolean", False, None, False),]
-        )
-        return js
+    translation: bool = Field(
+        None,
+        alias="translation",
+        title="Type `bool`",
+        description="If cross-system closure is supported",
+    )
 
 
 class TerminologyCapabilitiesCodeSystem(backboneelement.BackboneElement):
     """ A code system supported by the server.
-
     Identifies a code system that is supported by the server. If there is a no
     code system URL, then this declares the general assumptions a client can
     make about support for any CodeSystem resource.
     """
 
-    resource_type = "TerminologyCapabilitiesCodeSystem"
+    resource_type = Field("TerminologyCapabilitiesCodeSystem", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    subsumption: bool = Field(
+        None,
+        alias="subsumption",
+        title="Type `bool`",
+        description="Whether subsumption is supported",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    uri: fhirtypes.Canonical = Field(
+        None,
+        alias="uri",
+        title="Type `Canonical` referencing `CodeSystem` (represented as `dict` in JSON)",
+        description="URI for the Code System",
+    )
 
-        self.subsumption = None
-        """ Whether subsumption is supported.
-        Type `bool`. """
-
-        self.uri = None
-        """ URI for the Code System.
-        Type `str` referencing `['CodeSystem']`. """
-
-        self.version = None
-        """ Version of Code System supported.
-        List of `TerminologyCapabilitiesCodeSystemVersion` items (represented as `dict` in JSON). """
-
-        super(TerminologyCapabilitiesCodeSystem, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(TerminologyCapabilitiesCodeSystem, self).elementProperties()
-        js.extend(
-            [
-                ("subsumption", "subsumption", bool, "boolean", False, None, False),
-                ("uri", "uri", str, "canonical", False, None, False),
-                (
-                    "version",
-                    "version",
-                    TerminologyCapabilitiesCodeSystemVersion,
-                    "TerminologyCapabilitiesCodeSystemVersion",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    version: ListType[fhirtypes.TerminologyCapabilitiesCodeSystemVersionType] = Field(
+        None,
+        alias="version",
+        title="List of `TerminologyCapabilitiesCodeSystemVersion` items (represented as `dict` in JSON)",
+        description="Version of Code System supported",
+    )
 
 
 class TerminologyCapabilitiesCodeSystemVersion(backboneelement.BackboneElement):
     """ Version of Code System supported.
-
     For the code system, a list of versions that are supported by the server.
     """
 
-    resource_type = "TerminologyCapabilitiesCodeSystemVersion"
+    resource_type = Field("TerminologyCapabilitiesCodeSystemVersion", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    code: fhirtypes.String = Field(
+        None,
+        alias="code",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Version identifier for this version",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    compositional: bool = Field(
+        None,
+        alias="compositional",
+        title="Type `bool`",
+        description="If compositional grammar is supported",
+    )
 
-        self.code = None
-        """ Version identifier for this version.
-        Type `str`. """
+    filter: ListType[
+        fhirtypes.TerminologyCapabilitiesCodeSystemVersionFilterType
+    ] = Field(
+        None,
+        alias="filter",
+        title="List of `TerminologyCapabilitiesCodeSystemVersionFilter` items (represented as `dict` in JSON)",
+        description="Filter Properties supported",
+    )
 
-        self.compositional = None
-        """ If compositional grammar is supported.
-        Type `bool`. """
+    isDefault: bool = Field(
+        None,
+        alias="isDefault",
+        title="Type `bool`",
+        description="If this is the default version for this code system",
+    )
 
-        self.filter = None
-        """ Filter Properties supported.
-        List of `TerminologyCapabilitiesCodeSystemVersionFilter` items (represented as `dict` in JSON). """
+    language: ListType[fhirtypes.Code] = Field(
+        None,
+        alias="language",
+        title="List of `Code` items (represented as `dict` in JSON)",
+        description="Language Displays supported",
+    )
 
-        self.isDefault = None
-        """ If this is the default version for this code system.
-        Type `bool`. """
-
-        self.language = None
-        """ Language Displays supported.
-        List of `str` items. """
-
-        self.property = None
-        """ Properties supported for $lookup.
-        List of `str` items. """
-
-        super(TerminologyCapabilitiesCodeSystemVersion, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(TerminologyCapabilitiesCodeSystemVersion, self).elementProperties()
-        js.extend(
-            [
-                ("code", "code", str, "string", False, None, False),
-                ("compositional", "compositional", bool, "boolean", False, None, False),
-                (
-                    "filter",
-                    "filter",
-                    TerminologyCapabilitiesCodeSystemVersionFilter,
-                    "TerminologyCapabilitiesCodeSystemVersionFilter",
-                    True,
-                    None,
-                    False,
-                ),
-                ("isDefault", "isDefault", bool, "boolean", False, None, False),
-                ("language", "language", str, "code", True, None, False),
-                ("property", "property", str, "code", True, None, False),
-            ]
-        )
-        return js
+    property: ListType[fhirtypes.Code] = Field(
+        None,
+        alias="property",
+        title="List of `Code` items (represented as `dict` in JSON)",
+        description="Properties supported for $lookup",
+    )
 
 
 class TerminologyCapabilitiesCodeSystemVersionFilter(backboneelement.BackboneElement):
     """ Filter Properties supported.
     """
 
-    resource_type = "TerminologyCapabilitiesCodeSystemVersionFilter"
+    resource_type = Field("TerminologyCapabilitiesCodeSystemVersionFilter", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    code: fhirtypes.Code = Field(
+        ...,
+        alias="code",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="Code of the property supported",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.code = None
-        """ Code of the property supported.
-        Type `str`. """
-
-        self.op = None
-        """ Operations supported for the property.
-        List of `str` items. """
-
-        super(TerminologyCapabilitiesCodeSystemVersionFilter, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(
-            TerminologyCapabilitiesCodeSystemVersionFilter, self
-        ).elementProperties()
-        js.extend(
-            [
-                ("code", "code", str, "code", False, None, True),
-                ("op", "op", str, "code", True, None, True),
-            ]
-        )
-        return js
+    op: ListType[fhirtypes.Code] = Field(
+        ...,
+        alias="op",
+        title="List of `Code` items (represented as `dict` in JSON)",
+        description="Operations supported for the property",
+    )
 
 
 class TerminologyCapabilitiesExpansion(backboneelement.BackboneElement):
@@ -446,179 +317,113 @@ class TerminologyCapabilitiesExpansion(backboneelement.BackboneElement):
     operation.
     """
 
-    resource_type = "TerminologyCapabilitiesExpansion"
+    resource_type = Field("TerminologyCapabilitiesExpansion", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    hierarchical: bool = Field(
+        None,
+        alias="hierarchical",
+        title="Type `bool`",
+        description="Whether the server can return nested value sets",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    incomplete: bool = Field(
+        None,
+        alias="incomplete",
+        title="Type `bool`",
+        description="Allow request for incomplete expansions?",
+    )
 
-        self.hierarchical = None
-        """ Whether the server can return nested value sets.
-        Type `bool`. """
+    paging: bool = Field(
+        None,
+        alias="paging",
+        title="Type `bool`",
+        description="Whether the server supports paging on expansion",
+    )
 
-        self.incomplete = None
-        """ Allow request for incomplete expansions?.
-        Type `bool`. """
+    parameter: ListType[
+        fhirtypes.TerminologyCapabilitiesExpansionParameterType
+    ] = Field(
+        None,
+        alias="parameter",
+        title="List of `TerminologyCapabilitiesExpansionParameter` items (represented as `dict` in JSON)",
+        description="Supported expansion parameter",
+    )
 
-        self.paging = None
-        """ Whether the server supports paging on expansion.
-        Type `bool`. """
-
-        self.parameter = None
-        """ Supported expansion parameter.
-        List of `TerminologyCapabilitiesExpansionParameter` items (represented as `dict` in JSON). """
-
-        self.textFilter = None
-        """ Documentation about text searching works.
-        Type `str`. """
-
-        super(TerminologyCapabilitiesExpansion, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(TerminologyCapabilitiesExpansion, self).elementProperties()
-        js.extend(
-            [
-                ("hierarchical", "hierarchical", bool, "boolean", False, None, False),
-                ("incomplete", "incomplete", bool, "boolean", False, None, False),
-                ("paging", "paging", bool, "boolean", False, None, False),
-                (
-                    "parameter",
-                    "parameter",
-                    TerminologyCapabilitiesExpansionParameter,
-                    "TerminologyCapabilitiesExpansionParameter",
-                    True,
-                    None,
-                    False,
-                ),
-                ("textFilter", "textFilter", str, "markdown", False, None, False),
-            ]
-        )
-        return js
+    textFilter: fhirtypes.Markdown = Field(
+        None,
+        alias="textFilter",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Documentation about text searching works",
+    )
 
 
 class TerminologyCapabilitiesExpansionParameter(backboneelement.BackboneElement):
     """ Supported expansion parameter.
     """
 
-    resource_type = "TerminologyCapabilitiesExpansionParameter"
+    resource_type = Field("TerminologyCapabilitiesExpansionParameter", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    documentation: fhirtypes.String = Field(
+        None,
+        alias="documentation",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Description of support for parameter",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.documentation = None
-        """ Description of support for parameter.
-        Type `str`. """
-
-        self.name = None
-        """ Expansion Parameter name.
-        Type `str`. """
-
-        super(TerminologyCapabilitiesExpansionParameter, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(TerminologyCapabilitiesExpansionParameter, self).elementProperties()
-        js.extend(
-            [
-                ("documentation", "documentation", str, "string", False, None, False),
-                ("name", "name", str, "code", False, None, True),
-            ]
-        )
-        return js
+    name: fhirtypes.Code = Field(
+        ...,
+        alias="name",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="Expansion Parameter name",
+    )
 
 
 class TerminologyCapabilitiesImplementation(backboneelement.BackboneElement):
     """ If this describes a specific instance.
-
     Identifies a specific implementation instance that is described by the
     terminology capability statement - i.e. a particular installation, rather
     than the capabilities of a software program.
     """
 
-    resource_type = "TerminologyCapabilitiesImplementation"
+    resource_type = Field("TerminologyCapabilitiesImplementation", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    description: fhirtypes.String = Field(
+        ...,
+        alias="description",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Describes this specific instance",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.description = None
-        """ Describes this specific instance.
-        Type `str`. """
-
-        self.url = None
-        """ Base URL for the implementation.
-        Type `str`. """
-
-        super(TerminologyCapabilitiesImplementation, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(TerminologyCapabilitiesImplementation, self).elementProperties()
-        js.extend(
-            [
-                ("description", "description", str, "string", False, None, True),
-                ("url", "url", str, "url", False, None, False),
-            ]
-        )
-        return js
+    url: fhirtypes.Url = Field(
+        None,
+        alias="url",
+        title="Type `Url` (represented as `dict` in JSON)",
+        description="Base URL for the implementation",
+    )
 
 
 class TerminologyCapabilitiesSoftware(backboneelement.BackboneElement):
     """ Software that is covered by this terminology capability statement.
-
     Software that is covered by this terminology capability statement.  It is
     used when the statement describes the capabilities of a particular software
     version, independent of an installation.
     """
 
-    resource_type = "TerminologyCapabilitiesSoftware"
+    resource_type = Field("TerminologyCapabilitiesSoftware", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    name: fhirtypes.String = Field(
+        ...,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="A name the software is known by",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.name = None
-        """ A name the software is known by.
-        Type `str`. """
-
-        self.version = None
-        """ Version covered by this statement.
-        Type `str`. """
-
-        super(TerminologyCapabilitiesSoftware, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(TerminologyCapabilitiesSoftware, self).elementProperties()
-        js.extend(
-            [
-                ("name", "name", str, "string", False, None, True),
-                ("version", "version", str, "string", False, None, False),
-            ]
-        )
-        return js
+    version: fhirtypes.String = Field(
+        None,
+        alias="version",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Version covered by this statement",
+    )
 
 
 class TerminologyCapabilitiesTranslation(backboneelement.BackboneElement):
@@ -626,30 +431,14 @@ class TerminologyCapabilitiesTranslation(backboneelement.BackboneElement):
     translate.html) operation.
     """
 
-    resource_type = "TerminologyCapabilitiesTranslation"
+    resource_type = Field("TerminologyCapabilitiesTranslation", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
-
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.needsMap = None
-        """ Whether the client must identify the map.
-        Type `bool`. """
-
-        super(TerminologyCapabilitiesTranslation, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(TerminologyCapabilitiesTranslation, self).elementProperties()
-        js.extend(
-            [("needsMap", "needsMap", bool, "boolean", False, None, True),]
-        )
-        return js
+    needsMap: bool = Field(
+        ...,
+        alias="needsMap",
+        title="Type `bool`",
+        description="Whether the client must identify the map",
+    )
 
 
 class TerminologyCapabilitiesValidateCode(backboneelement.BackboneElement):
@@ -657,45 +446,11 @@ class TerminologyCapabilitiesValidateCode(backboneelement.BackboneElement):
     validate-code.html) operation.
     """
 
-    resource_type = "TerminologyCapabilitiesValidateCode"
+    resource_type = Field("TerminologyCapabilitiesValidateCode", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
-
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.translations = None
-        """ Whether translations are validated.
-        Type `bool`. """
-
-        super(TerminologyCapabilitiesValidateCode, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(TerminologyCapabilitiesValidateCode, self).elementProperties()
-        js.extend(
-            [("translations", "translations", bool, "boolean", False, None, True),]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import contactdetail
-except ImportError:
-    contactdetail = sys.modules[__package__ + ".contactdetail"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import usagecontext
-except ImportError:
-    usagecontext = sys.modules[__package__ + ".usagecontext"]
+    translations: bool = Field(
+        ...,
+        alias="translations",
+        title="Type `bool`",
+        description="Whether translations are validated",
+    )

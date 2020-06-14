@@ -6,123 +6,78 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import practitionerrole
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class PractitionerRoleTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("PractitionerRole", js["resourceType"])
-        return practitionerrole.PractitionerRole(js)
+def impl_practitionerrole_1(inst):
+    assert inst.active is True
+    assert (
+        inst.availabilityExceptions
+        == "Adam is generally unavailable on public holidays and during the Christmas/New Year break"
+    )
+    assert inst.availableTime[0].availableEndTime == fhirtypes.Time.validate("16:30:00")
+    assert inst.availableTime[0].availableStartTime == fhirtypes.Time.validate(
+        "09:00:00"
+    )
+    assert inst.availableTime[0].daysOfWeek[0] == "mon"
+    assert inst.availableTime[0].daysOfWeek[1] == "tue"
+    assert inst.availableTime[0].daysOfWeek[2] == "wed"
+    assert inst.availableTime[1].availableEndTime == fhirtypes.Time.validate("12:00:00")
+    assert inst.availableTime[1].availableStartTime == fhirtypes.Time.validate(
+        "09:00:00"
+    )
+    assert inst.availableTime[1].daysOfWeek[0] == "thu"
+    assert inst.availableTime[1].daysOfWeek[1] == "fri"
+    assert inst.code[0].coding[0].code == "RP"
+    assert inst.code[0].coding[0].system == "http://hl7.org/fhir/v2/0286"
+    assert inst.endpoint[0].reference == "Endpoint/example"
+    assert inst.healthcareService[0].reference == "HealthcareService/example"
+    assert inst.id == "example"
+    assert inst.identifier[0].system == "http://www.acme.org/practitioners"
+    assert inst.identifier[0].value == "23"
+    assert inst.location[0].display == "South Wing, second floor"
+    assert inst.location[0].reference == "Location/1"
+    assert (
+        inst.notAvailable[0].description
+        == "Adam will be on extended leave during May 2017"
+    )
+    assert inst.notAvailable[0].during.end == fhirtypes.DateTime.validate("2017-05-20")
+    assert inst.notAvailable[0].during.start == fhirtypes.DateTime.validate(
+        "2017-05-01"
+    )
+    assert inst.organization.reference == "Organization/f001"
+    assert inst.period.end == fhirtypes.DateTime.validate("2012-03-31")
+    assert inst.period.start == fhirtypes.DateTime.validate("2012-01-01")
+    assert inst.practitioner.display == "Dr Adam Careful"
+    assert inst.practitioner.reference == "Practitioner/example"
+    assert inst.specialty[0].coding[0].code == "408443003"
+    assert inst.specialty[0].coding[0].display == "General medical practice"
+    assert inst.specialty[0].coding[0].system == "http://snomed.info/sct"
+    assert inst.telecom[0].system == "phone"
+    assert inst.telecom[0].use == "work"
+    assert inst.telecom[0].value == "(03) 5555 6473"
+    assert inst.telecom[1].system == "email"
+    assert inst.telecom[1].use == "work"
+    assert inst.telecom[1].value == "adam.southern@example.org"
+    assert inst.text.status == "generated"
 
-    def testPractitionerRole1(self):
-        inst = self.instantiate_from("practitionerrole-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a PractitionerRole instance")
-        self.implPractitionerRole1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("PractitionerRole", js["resourceType"])
-        inst2 = practitionerrole.PractitionerRole(js)
-        self.implPractitionerRole1(inst2)
+def test_practitionerrole_1(base_settings):
+    """No. 1 tests collection for PractitionerRole.
+    Test File: practitionerrole-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "practitionerrole-example.json"
+    inst = practitionerrole.PractitionerRole.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "PractitionerRole" == inst.resource_type
 
-    def implPractitionerRole1(self, inst):
-        self.assertTrue(inst.active)
-        self.assertEqual(
-            force_bytes(inst.availabilityExceptions),
-            force_bytes(
-                "Adam is generally unavailable on public holidays and during the Christmas/New Year break"
-            ),
-        )
-        self.assertEqual(
-            inst.availableTime[0].availableEndTime.date, FHIRDate("16:30:00").date
-        )
-        self.assertEqual(inst.availableTime[0].availableEndTime.as_json(), "16:30:00")
-        self.assertEqual(
-            inst.availableTime[0].availableStartTime.date, FHIRDate("09:00:00").date
-        )
-        self.assertEqual(inst.availableTime[0].availableStartTime.as_json(), "09:00:00")
-        self.assertEqual(
-            force_bytes(inst.availableTime[0].daysOfWeek[0]), force_bytes("mon")
-        )
-        self.assertEqual(
-            force_bytes(inst.availableTime[0].daysOfWeek[1]), force_bytes("tue")
-        )
-        self.assertEqual(
-            force_bytes(inst.availableTime[0].daysOfWeek[2]), force_bytes("wed")
-        )
-        self.assertEqual(
-            inst.availableTime[1].availableEndTime.date, FHIRDate("12:00:00").date
-        )
-        self.assertEqual(inst.availableTime[1].availableEndTime.as_json(), "12:00:00")
-        self.assertEqual(
-            inst.availableTime[1].availableStartTime.date, FHIRDate("09:00:00").date
-        )
-        self.assertEqual(inst.availableTime[1].availableStartTime.as_json(), "09:00:00")
-        self.assertEqual(
-            force_bytes(inst.availableTime[1].daysOfWeek[0]), force_bytes("thu")
-        )
-        self.assertEqual(
-            force_bytes(inst.availableTime[1].daysOfWeek[1]), force_bytes("fri")
-        )
-        self.assertEqual(force_bytes(inst.code[0].coding[0].code), force_bytes("RP"))
-        self.assertEqual(
-            force_bytes(inst.code[0].coding[0].system),
-            force_bytes("http://hl7.org/fhir/v2/0286"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://www.acme.org/practitioners"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("23"))
-        self.assertEqual(
-            force_bytes(inst.notAvailable[0].description),
-            force_bytes("Adam will be on extended leave during May 2017"),
-        )
-        self.assertEqual(
-            inst.notAvailable[0].during.end.date, FHIRDate("2017-05-20").date
-        )
-        self.assertEqual(inst.notAvailable[0].during.end.as_json(), "2017-05-20")
-        self.assertEqual(
-            inst.notAvailable[0].during.start.date, FHIRDate("2017-05-01").date
-        )
-        self.assertEqual(inst.notAvailable[0].during.start.as_json(), "2017-05-01")
-        self.assertEqual(inst.period.end.date, FHIRDate("2012-03-31").date)
-        self.assertEqual(inst.period.end.as_json(), "2012-03-31")
-        self.assertEqual(inst.period.start.date, FHIRDate("2012-01-01").date)
-        self.assertEqual(inst.period.start.as_json(), "2012-01-01")
-        self.assertEqual(
-            force_bytes(inst.specialty[0].coding[0].code), force_bytes("408443003")
-        )
-        self.assertEqual(
-            force_bytes(inst.specialty[0].coding[0].display),
-            force_bytes("General medical practice"),
-        )
-        self.assertEqual(
-            force_bytes(inst.specialty[0].coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.telecom[0].system), force_bytes("phone"))
-        self.assertEqual(force_bytes(inst.telecom[0].use), force_bytes("work"))
-        self.assertEqual(
-            force_bytes(inst.telecom[0].value), force_bytes("(03) 5555 6473")
-        )
-        self.assertEqual(force_bytes(inst.telecom[1].system), force_bytes("email"))
-        self.assertEqual(force_bytes(inst.telecom[1].use), force_bytes("work"))
-        self.assertEqual(
-            force_bytes(inst.telecom[1].value), force_bytes("adam.southern@example.org")
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    impl_practitionerrole_1(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "PractitionerRole" == data["resourceType"]
+
+    inst2 = practitionerrole.PractitionerRole(**data)
+    impl_practitionerrole_1(inst2)

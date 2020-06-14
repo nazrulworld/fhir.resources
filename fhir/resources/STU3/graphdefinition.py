@@ -6,335 +6,242 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class GraphDefinition(domainresource.DomainResource):
     """ Definition of an graph of resources.
-
     A formal computable definition of a graph of resources - that is, a
     coherent set of resources that form a graph by following references. The
     Graph Definition resource defines a set and makes rules about the set.
     """
 
-    resource_type = "GraphDefinition"
+    resource_type = Field("GraphDefinition", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    contact: ListType[fhirtypes.ContactDetailType] = Field(
+        None,
+        alias="contact",
+        title="List of `ContactDetail` items (represented as `dict` in JSON)",
+        description="Contact details for the publisher",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    date: fhirtypes.DateTime = Field(
+        None,
+        alias="date",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Date this was last changed",
+    )
 
-        self.contact = None
-        """ Contact details for the publisher.
-        List of `ContactDetail` items (represented as `dict` in JSON). """
+    description: fhirtypes.Markdown = Field(
+        None,
+        alias="description",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Natural language description of the graph definition",
+    )
 
-        self.date = None
-        """ Date this was last changed.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    experimental: bool = Field(
+        None,
+        alias="experimental",
+        title="Type `bool`",
+        description="For testing purposes, not real usage",
+    )
 
-        self.description = None
-        """ Natural language description of the graph definition.
-        Type `str`. """
+    jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="jurisdiction",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Intended jurisdiction for graph definition (if applicable)",
+    )
 
-        self.experimental = None
-        """ For testing purposes, not real usage.
-        Type `bool`. """
+    link: ListType[fhirtypes.GraphDefinitionLinkType] = Field(
+        None,
+        alias="link",
+        title="List of `GraphDefinitionLink` items (represented as `dict` in JSON)",
+        description="Links this graph makes rules about",
+    )
 
-        self.jurisdiction = None
-        """ Intended jurisdiction for graph definition (if applicable).
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    name: fhirtypes.String = Field(
+        ...,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name for this graph definition (computer friendly)",
+    )
 
-        self.link = None
-        """ Links this graph makes rules about.
-        List of `GraphDefinitionLink` items (represented as `dict` in JSON). """
+    profile: fhirtypes.Uri = Field(
+        None,
+        alias="profile",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Profile on base resource",
+    )
 
-        self.name = None
-        """ Name for this graph definition (computer friendly).
-        Type `str`. """
+    publisher: fhirtypes.String = Field(
+        None,
+        alias="publisher",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name of the publisher (organization or individual)",
+    )
 
-        self.profile = None
-        """ Profile on base resource.
-        Type `str`. """
+    purpose: fhirtypes.Markdown = Field(
+        None,
+        alias="purpose",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Why this graph definition is defined",
+    )
 
-        self.publisher = None
-        """ Name of the publisher (organization or individual).
-        Type `str`. """
+    start: fhirtypes.Code = Field(
+        ...,
+        alias="start",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="Type of resource at which the graph starts",
+    )
 
-        self.purpose = None
-        """ Why this graph definition is defined.
-        Type `str`. """
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="draft | active | retired | unknown",
+    )
 
-        self.start = None
-        """ Type of resource at which the graph starts.
-        Type `str`. """
+    url: fhirtypes.Uri = Field(
+        None,
+        alias="url",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Logical URI to reference this graph definition (globally unique)",
+    )
 
-        self.status = None
-        """ draft | active | retired | unknown.
-        Type `str`. """
+    useContext: ListType[fhirtypes.UsageContextType] = Field(
+        None,
+        alias="useContext",
+        title="List of `UsageContext` items (represented as `dict` in JSON)",
+        description="Context the content is intended to support",
+    )
 
-        self.url = None
-        """ Logical URI to reference this graph definition (globally unique).
-        Type `str`. """
-
-        self.useContext = None
-        """ Context the content is intended to support.
-        List of `UsageContext` items (represented as `dict` in JSON). """
-
-        self.version = None
-        """ Business version of the graph definition.
-        Type `str`. """
-
-        super(GraphDefinition, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(GraphDefinition, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "contact",
-                    "contact",
-                    contactdetail.ContactDetail,
-                    "ContactDetail",
-                    True,
-                    None,
-                    False,
-                ),
-                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-                ("description", "description", str, "markdown", False, None, False),
-                ("experimental", "experimental", bool, "boolean", False, None, False),
-                (
-                    "jurisdiction",
-                    "jurisdiction",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "link",
-                    "link",
-                    GraphDefinitionLink,
-                    "GraphDefinitionLink",
-                    True,
-                    None,
-                    False,
-                ),
-                ("name", "name", str, "string", False, None, True),
-                ("profile", "profile", str, "uri", False, None, False),
-                ("publisher", "publisher", str, "string", False, None, False),
-                ("purpose", "purpose", str, "markdown", False, None, False),
-                ("start", "start", str, "code", False, None, True),
-                ("status", "status", str, "code", False, None, True),
-                ("url", "url", str, "uri", False, None, False),
-                (
-                    "useContext",
-                    "useContext",
-                    usagecontext.UsageContext,
-                    "UsageContext",
-                    True,
-                    None,
-                    False,
-                ),
-                ("version", "version", str, "string", False, None, False),
-            ]
-        )
-        return js
+    version: fhirtypes.String = Field(
+        None,
+        alias="version",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Business version of the graph definition",
+    )
 
 
 class GraphDefinitionLink(backboneelement.BackboneElement):
     """ Links this graph makes rules about.
     """
 
-    resource_type = "GraphDefinitionLink"
+    resource_type = Field("GraphDefinitionLink", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    description: fhirtypes.String = Field(
+        None,
+        alias="description",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Why this link is specified",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    max: fhirtypes.String = Field(
+        None,
+        alias="max",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Maximum occurrences for this link",
+    )
 
-        self.description = None
-        """ Why this link is specified.
-        Type `str`. """
+    min: fhirtypes.Integer = Field(
+        None,
+        alias="min",
+        title="Type `Integer` (represented as `dict` in JSON)",
+        description="Minimum occurrences for this link",
+    )
 
-        self.max = None
-        """ Maximum occurrences for this link.
-        Type `str`. """
+    path: fhirtypes.String = Field(
+        ...,
+        alias="path",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Path in the resource that contains the link",
+    )
 
-        self.min = None
-        """ Minimum occurrences for this link.
-        Type `int`. """
+    sliceName: fhirtypes.String = Field(
+        None,
+        alias="sliceName",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Which slice (if profiled)",
+    )
 
-        self.path = None
-        """ Path in the resource that contains the link.
-        Type `str`. """
-
-        self.sliceName = None
-        """ Which slice (if profiled).
-        Type `str`. """
-
-        self.target = None
-        """ Potential target for the link.
-        List of `GraphDefinitionLinkTarget` items (represented as `dict` in JSON). """
-
-        super(GraphDefinitionLink, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(GraphDefinitionLink, self).elementProperties()
-        js.extend(
-            [
-                ("description", "description", str, "string", False, None, False),
-                ("max", "max", str, "string", False, None, False),
-                ("min", "min", int, "integer", False, None, False),
-                ("path", "path", str, "string", False, None, True),
-                ("sliceName", "sliceName", str, "string", False, None, False),
-                (
-                    "target",
-                    "target",
-                    GraphDefinitionLinkTarget,
-                    "GraphDefinitionLinkTarget",
-                    True,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
+    target: ListType[fhirtypes.GraphDefinitionLinkTargetType] = Field(
+        ...,
+        alias="target",
+        title="List of `GraphDefinitionLinkTarget` items (represented as `dict` in JSON)",
+        description="Potential target for the link",
+    )
 
 
 class GraphDefinitionLinkTarget(backboneelement.BackboneElement):
     """ Potential target for the link.
     """
 
-    resource_type = "GraphDefinitionLinkTarget"
+    resource_type = Field("GraphDefinitionLinkTarget", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    compartment: ListType[fhirtypes.GraphDefinitionLinkTargetCompartmentType] = Field(
+        None,
+        alias="compartment",
+        title="List of `GraphDefinitionLinkTargetCompartment` items (represented as `dict` in JSON)",
+        description="Compartment Consistency Rules",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    link: ListType[fhirtypes.GraphDefinitionLinkType] = Field(
+        None,
+        alias="link",
+        title="List of `GraphDefinitionLink` items (represented as `dict` in JSON)",
+        description="Additional links from target resource",
+    )
 
-        self.compartment = None
-        """ Compartment Consistency Rules.
-        List of `GraphDefinitionLinkTargetCompartment` items (represented as `dict` in JSON). """
+    profile: fhirtypes.Uri = Field(
+        None,
+        alias="profile",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Profile for the target resource",
+    )
 
-        self.link = None
-        """ Additional links from target resource.
-        List of `GraphDefinitionLink` items (represented as `dict` in JSON). """
-
-        self.profile = None
-        """ Profile for the target resource.
-        Type `str`. """
-
-        self.type = None
-        """ Type of resource this link refers to.
-        Type `str`. """
-
-        super(GraphDefinitionLinkTarget, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(GraphDefinitionLinkTarget, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "compartment",
-                    "compartment",
-                    GraphDefinitionLinkTargetCompartment,
-                    "GraphDefinitionLinkTargetCompartment",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "link",
-                    "link",
-                    GraphDefinitionLink,
-                    "GraphDefinitionLink",
-                    True,
-                    None,
-                    False,
-                ),
-                ("profile", "profile", str, "uri", False, None, False),
-                ("type", "type", str, "code", False, None, True),
-            ]
-        )
-        return js
+    type: fhirtypes.Code = Field(
+        ...,
+        alias="type",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="Type of resource this link refers to",
+    )
 
 
 class GraphDefinitionLinkTargetCompartment(backboneelement.BackboneElement):
     """ Compartment Consistency Rules.
     """
 
-    resource_type = "GraphDefinitionLinkTargetCompartment"
+    resource_type = Field("GraphDefinitionLinkTargetCompartment", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    code: fhirtypes.Code = Field(
+        ...,
+        alias="code",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="Identifies the compartment",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    description: fhirtypes.String = Field(
+        None,
+        alias="description",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Documentation for FHIRPath expression",
+    )
 
-        self.code = None
-        """ Identifies the compartment.
-        Type `str`. """
+    expression: fhirtypes.String = Field(
+        None,
+        alias="expression",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Custom rule, as a FHIRPath expression",
+    )
 
-        self.description = None
-        """ Documentation for FHIRPath expression.
-        Type `str`. """
-
-        self.expression = None
-        """ Custom rule, as a FHIRPath expression.
-        Type `str`. """
-
-        self.rule = None
-        """ identical | matching | different | custom.
-        Type `str`. """
-
-        super(GraphDefinitionLinkTargetCompartment, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(GraphDefinitionLinkTargetCompartment, self).elementProperties()
-        js.extend(
-            [
-                ("code", "code", str, "code", False, None, True),
-                ("description", "description", str, "string", False, None, False),
-                ("expression", "expression", str, "string", False, None, False),
-                ("rule", "rule", str, "code", False, None, True),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import contactdetail
-except ImportError:
-    contactdetail = sys.modules[__package__ + ".contactdetail"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import usagecontext
-except ImportError:
-    usagecontext = sys.modules[__package__ + ".usagecontext"]
+    rule: fhirtypes.Code = Field(
+        ...,
+        alias="rule",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="identical | matching | different | custom",
+    )

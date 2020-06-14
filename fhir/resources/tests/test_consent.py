@@ -6,947 +6,803 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import consent
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class ConsentTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("Consent", js["resourceType"])
-        return consent.Consent(js)
+def impl_consent_1(inst):
+    assert inst.category[0].coding[0].code == "59284-0"
+    assert inst.category[0].coding[0].system == "http://loinc.org"
+    assert inst.dateTime == fhirtypes.DateTime.validate("2015-11-18T11:15:33+10:00")
+    assert inst.id == "consent-example-notThis"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.organization[0].reference == "Organization/f001"
+    assert inst.patient.display == "P. van de Heuvel"
+    assert inst.patient.reference == "Patient/f001"
+    assert inst.policyRule.coding[0].code == "OPTIN"
+    assert (
+        inst.policyRule.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+    )
+    assert inst.provision.data[0].meaning == "related"
+    assert inst.provision.data[0].reference.reference == "Task/example3"
+    assert inst.scope.coding[0].code == "patient-privacy"
+    assert (
+        inst.scope.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/consentscope"
+    )
+    assert inst.sourceAttachment.title == "The terms of the consent in lawyer speak."
+    assert inst.status == "active"
+    assert inst.text.status == "generated"
 
-    def testConsent1(self):
-        inst = self.instantiate_from("consent-example-notThis.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Consent instance")
-        self.implConsent1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("Consent", js["resourceType"])
-        inst2 = consent.Consent(js)
-        self.implConsent1(inst2)
+def test_consent_1(base_settings):
+    """No. 1 tests collection for Consent.
+    Test File: consent-example-notThis.json
+    """
+    filename = base_settings["unittest_data_dir"] / "consent-example-notThis.json"
+    inst = consent.Consent.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Consent" == inst.resource_type
 
-    def implConsent1(self, inst):
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].code), force_bytes("59284-0")
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].system),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(inst.dateTime.date, FHIRDate("2015-11-18").date)
-        self.assertEqual(inst.dateTime.as_json(), "2015-11-18")
-        self.assertEqual(force_bytes(inst.id), force_bytes("consent-example-notThis"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.policyRule.coding[0].code), force_bytes("OPTIN")
-        )
-        self.assertEqual(
-            force_bytes(inst.policyRule.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActCode"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.data[0].meaning), force_bytes("related")
-        )
-        self.assertEqual(
-            force_bytes(inst.scope.coding[0].code), force_bytes("patient-privacy")
-        )
-        self.assertEqual(
-            force_bytes(inst.scope.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/consentscope"),
-        )
-        self.assertEqual(
-            force_bytes(inst.sourceAttachment.title),
-            force_bytes("The terms of the consent in lawyer speak."),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    impl_consent_1(inst)
 
-    def testConsent2(self):
-        inst = self.instantiate_from("consent-example-smartonfhir.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Consent instance")
-        self.implConsent2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Consent" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("Consent", js["resourceType"])
-        inst2 = consent.Consent(js)
-        self.implConsent2(inst2)
+    inst2 = consent.Consent(**data)
+    impl_consent_1(inst2)
 
-    def implConsent2(self, inst):
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].code), force_bytes("59284-0")
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].system),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(inst.dateTime.date, FHIRDate("2016-06-23T17:02:33+10:00").date)
-        self.assertEqual(inst.dateTime.as_json(), "2016-06-23T17:02:33+10:00")
-        self.assertEqual(
-            force_bytes(inst.id), force_bytes("consent-example-smartonfhir")
-        )
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.policyRule.coding[0].code), force_bytes("OPTIN")
-        )
-        self.assertEqual(
-            force_bytes(inst.policyRule.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActCode"),
-        )
-        self.assertEqual(
-            inst.provision.period.end.date, FHIRDate("2016-06-23T17:32:33+10:00").date
-        )
-        self.assertEqual(
-            inst.provision.period.end.as_json(), "2016-06-23T17:32:33+10:00"
-        )
-        self.assertEqual(
-            inst.provision.period.start.date, FHIRDate("2016-06-23T17:02:33+10:00").date
-        )
-        self.assertEqual(
-            inst.provision.period.start.as_json(), "2016-06-23T17:02:33+10:00"
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[0].action[0].coding[0].code),
-            force_bytes("access"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[0].action[0].coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/consentaction"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[0].class_fhir[0].code),
-            force_bytes("MedicationRequest"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[0].class_fhir[0].system),
-            force_bytes("http://hl7.org/fhir/resource-types"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[0].type), force_bytes("permit")
-        )
-        self.assertEqual(
-            force_bytes(inst.scope.coding[0].code), force_bytes("patient-privacy")
-        )
-        self.assertEqual(
-            force_bytes(inst.scope.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/consentscope"),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 
-    def testConsent3(self):
-        inst = self.instantiate_from("consent-example-notAuthor.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Consent instance")
-        self.implConsent3(inst)
+def impl_consent_2(inst):
+    assert inst.category[0].coding[0].code == "59284-0"
+    assert inst.category[0].coding[0].system == "http://loinc.org"
+    assert inst.dateTime == fhirtypes.DateTime.validate("2016-06-23T17:02:33+10:00")
+    assert inst.id == "consent-example-smartonfhir"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.organization[0].reference == "Organization/f001"
+    assert inst.patient.reference == "Patient/xcda"
+    assert inst.performer[0].reference == "RelatedPerson/peter"
+    assert inst.policyRule.coding[0].code == "OPTIN"
+    assert (
+        inst.policyRule.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+    )
+    assert inst.provision.period.end == fhirtypes.DateTime.validate(
+        "2016-06-23T17:32:33+10:00"
+    )
+    assert inst.provision.period.start == fhirtypes.DateTime.validate(
+        "2016-06-23T17:02:33+10:00"
+    )
+    assert inst.provision.provision[0].action[0].coding[0].code == "access"
+    assert (
+        inst.provision.provision[0].action[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/consentaction"
+    )
+    assert inst.provision.provision[0].class_fhir[0].code == "MedicationRequest"
+    assert (
+        inst.provision.provision[0].class_fhir[0].system
+        == "http://hl7.org/fhir/resource-types"
+    )
+    assert inst.provision.provision[0].type == "permit"
+    assert inst.scope.coding[0].code == "patient-privacy"
+    assert (
+        inst.scope.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/consentscope"
+    )
+    assert inst.status == "active"
+    assert inst.text.status == "generated"
 
-        js = inst.as_json()
-        self.assertEqual("Consent", js["resourceType"])
-        inst2 = consent.Consent(js)
-        self.implConsent3(inst2)
 
-    def implConsent3(self, inst):
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].code), force_bytes("59284-0")
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].system),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(inst.dateTime.date, FHIRDate("2015-11-18").date)
-        self.assertEqual(inst.dateTime.as_json(), "2015-11-18")
-        self.assertEqual(force_bytes(inst.id), force_bytes("consent-example-notAuthor"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.policyRule.coding[0].code), force_bytes("OPTIN")
-        )
-        self.assertEqual(
-            force_bytes(inst.policyRule.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActCode"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.actor[0].role.coding[0].code), force_bytes("CST")
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.actor[0].role.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ParticipationType"),
-        )
-        self.assertEqual(
-            force_bytes(inst.scope.coding[0].code), force_bytes("patient-privacy")
-        )
-        self.assertEqual(
-            force_bytes(inst.scope.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/consentscope"),
-        )
-        self.assertEqual(
-            force_bytes(inst.sourceAttachment.title),
-            force_bytes("The terms of the consent in lawyer speak."),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+def test_consent_2(base_settings):
+    """No. 2 tests collection for Consent.
+    Test File: consent-example-smartonfhir.json
+    """
+    filename = base_settings["unittest_data_dir"] / "consent-example-smartonfhir.json"
+    inst = consent.Consent.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Consent" == inst.resource_type
 
-    def testConsent4(self):
-        inst = self.instantiate_from("consent-example-notTime.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Consent instance")
-        self.implConsent4(inst)
+    impl_consent_2(inst)
 
-        js = inst.as_json()
-        self.assertEqual("Consent", js["resourceType"])
-        inst2 = consent.Consent(js)
-        self.implConsent4(inst2)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Consent" == data["resourceType"]
 
-    def implConsent4(self, inst):
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].code), force_bytes("59284-0")
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].system),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(inst.dateTime.date, FHIRDate("2015-11-18").date)
-        self.assertEqual(inst.dateTime.as_json(), "2015-11-18")
-        self.assertEqual(force_bytes(inst.id), force_bytes("consent-example-notTime"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.policyRule.coding[0].code), force_bytes("OPTIN")
-        )
-        self.assertEqual(
-            force_bytes(inst.policyRule.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActCode"),
-        )
-        self.assertEqual(inst.provision.period.end.date, FHIRDate("2015-02-01").date)
-        self.assertEqual(inst.provision.period.end.as_json(), "2015-02-01")
-        self.assertEqual(inst.provision.period.start.date, FHIRDate("2015-01-01").date)
-        self.assertEqual(inst.provision.period.start.as_json(), "2015-01-01")
-        self.assertEqual(
-            force_bytes(inst.scope.coding[0].code), force_bytes("patient-privacy")
-        )
-        self.assertEqual(
-            force_bytes(inst.scope.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/consentscope"),
-        )
-        self.assertEqual(
-            force_bytes(inst.sourceAttachment.title),
-            force_bytes("The terms of the consent in lawyer speak."),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    inst2 = consent.Consent(**data)
+    impl_consent_2(inst2)
 
-    def testConsent5(self):
-        inst = self.instantiate_from("consent-example-signature.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Consent instance")
-        self.implConsent5(inst)
 
-        js = inst.as_json()
-        self.assertEqual("Consent", js["resourceType"])
-        inst2 = consent.Consent(js)
-        self.implConsent5(inst2)
+def impl_consent_3(inst):
+    assert inst.category[0].coding[0].code == "59284-0"
+    assert inst.category[0].coding[0].system == "http://loinc.org"
+    assert inst.dateTime == fhirtypes.DateTime.validate("2015-11-18T11:15:33+10:00")
+    assert inst.id == "consent-example-notAuthor"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.organization[0].reference == "Organization/f001"
+    assert inst.patient.display == "P. van de Heuvel"
+    assert inst.patient.reference == "Patient/f001"
+    assert inst.policyRule.coding[0].code == "OPTIN"
+    assert (
+        inst.policyRule.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+    )
+    assert inst.provision.actor[0].reference.reference == "Organization/f001"
+    assert inst.provision.actor[0].role.coding[0].code == "CST"
+    assert (
+        inst.provision.actor[0].role.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
+    )
+    assert inst.scope.coding[0].code == "patient-privacy"
+    assert (
+        inst.scope.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/consentscope"
+    )
+    assert inst.sourceAttachment.title == "The terms of the consent in lawyer speak."
+    assert inst.status == "active"
+    assert inst.text.status == "generated"
 
-    def implConsent5(self, inst):
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].code), force_bytes("npp")
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/consentcategorycodes"),
-        )
-        self.assertEqual(inst.dateTime.date, FHIRDate("2016-05-26T00:41:10-04:00").date)
-        self.assertEqual(inst.dateTime.as_json(), "2016-05-26T00:41:10-04:00")
-        self.assertEqual(force_bytes(inst.id), force_bytes("consent-example-signature"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("urn:oid:2.16.840.1.113883.3.72.5.9.1"),
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].value),
-            force_bytes("494e0c7a-a69e-4fb4-9d02-6aae747790d7"),
-        )
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.policyRule.coding[0].code), force_bytes("OPTIN")
-        )
-        self.assertEqual(
-            force_bytes(inst.policyRule.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActCode"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.actor[0].role.coding[0].code),
-            force_bytes("PRCP"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.actor[0].role.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ParticipationType"),
-        )
-        self.assertEqual(inst.provision.period.end.date, FHIRDate("2016-10-10").date)
-        self.assertEqual(inst.provision.period.end.as_json(), "2016-10-10")
-        self.assertEqual(inst.provision.period.start.date, FHIRDate("2015-10-10").date)
-        self.assertEqual(inst.provision.period.start.as_json(), "2015-10-10")
-        self.assertEqual(
-            force_bytes(inst.provision.provision[0].actor[0].role.coding[0].code),
-            force_bytes("AUT"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[0].actor[0].role.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ParticipationType"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[0].class_fhir[0].code),
-            force_bytes("application/hl7-cda+xml"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[0].class_fhir[0].system),
-            force_bytes("urn:ietf:bcp:13"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[0].code[0].coding[0].code),
-            force_bytes("34133-9"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[0].code[0].coding[0].system),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[0].code[1].coding[0].code),
-            force_bytes("18842-5"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[0].code[1].coding[0].system),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[0].type), force_bytes("permit")
-        )
-        self.assertEqual(
-            force_bytes(inst.scope.coding[0].code), force_bytes("patient-privacy")
-        )
-        self.assertEqual(
-            force_bytes(inst.scope.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/consentscope"),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 
-    def testConsent6(self):
-        inst = self.instantiate_from("consent-example-notThem.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Consent instance")
-        self.implConsent6(inst)
+def test_consent_3(base_settings):
+    """No. 3 tests collection for Consent.
+    Test File: consent-example-notAuthor.json
+    """
+    filename = base_settings["unittest_data_dir"] / "consent-example-notAuthor.json"
+    inst = consent.Consent.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Consent" == inst.resource_type
 
-        js = inst.as_json()
-        self.assertEqual("Consent", js["resourceType"])
-        inst2 = consent.Consent(js)
-        self.implConsent6(inst2)
+    impl_consent_3(inst)
 
-    def implConsent6(self, inst):
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].code), force_bytes("59284-0")
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].system),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(inst.dateTime.date, FHIRDate("2015-11-18").date)
-        self.assertEqual(inst.dateTime.as_json(), "2015-11-18")
-        self.assertEqual(force_bytes(inst.id), force_bytes("consent-example-notThem"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.policyRule.coding[0].code), force_bytes("OPTIN")
-        )
-        self.assertEqual(
-            force_bytes(inst.policyRule.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActCode"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.action[0].coding[0].code), force_bytes("access")
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.action[0].coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/consentaction"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.action[1].coding[0].code), force_bytes("correct")
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.action[1].coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/consentaction"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.actor[0].role.coding[0].code),
-            force_bytes("PRCP"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.actor[0].role.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ParticipationType"),
-        )
-        self.assertEqual(
-            force_bytes(inst.scope.coding[0].code), force_bytes("patient-privacy")
-        )
-        self.assertEqual(
-            force_bytes(inst.scope.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/consentscope"),
-        )
-        self.assertEqual(
-            force_bytes(inst.sourceAttachment.title),
-            force_bytes("The terms of the consent in lawyer speak."),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Consent" == data["resourceType"]
 
-    def testConsent7(self):
-        inst = self.instantiate_from("consent-example-grantor.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Consent instance")
-        self.implConsent7(inst)
+    inst2 = consent.Consent(**data)
+    impl_consent_3(inst2)
 
-        js = inst.as_json()
-        self.assertEqual("Consent", js["resourceType"])
-        inst2 = consent.Consent(js)
-        self.implConsent7(inst2)
 
-    def implConsent7(self, inst):
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].code), force_bytes("INFAO")
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActCode"),
-        )
-        self.assertEqual(inst.dateTime.date, FHIRDate("2015-11-18").date)
-        self.assertEqual(inst.dateTime.as_json(), "2015-11-18")
-        self.assertEqual(force_bytes(inst.id), force_bytes("consent-example-grantor"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.policyRule.coding[0].code), force_bytes("OPTOUT")
-        )
-        self.assertEqual(
-            force_bytes(inst.policyRule.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActCode"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.action[0].coding[0].code), force_bytes("access")
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.action[0].coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/consentaction"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.actor[0].role.coding[0].code), force_bytes("CST")
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.actor[0].role.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ParticipationType"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.actor[1].role.coding[0].code),
-            force_bytes("PRCP"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.actor[1].role.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ParticipationType"),
-        )
-        self.assertEqual(
-            force_bytes(inst.scope.coding[0].code), force_bytes("patient-privacy")
-        )
-        self.assertEqual(
-            force_bytes(inst.scope.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/consentscope"),
-        )
-        self.assertEqual(
-            force_bytes(inst.sourceAttachment.title),
-            force_bytes("The terms of the consent in lawyer speak."),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+def impl_consent_4(inst):
+    assert inst.category[0].coding[0].code == "59284-0"
+    assert inst.category[0].coding[0].system == "http://loinc.org"
+    assert inst.dateTime == fhirtypes.DateTime.validate("2015-11-18T11:15:33+10:00")
+    assert inst.id == "consent-example-notTime"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.organization[0].reference == "Organization/f001"
+    assert inst.patient.display == "P. van de Heuvel"
+    assert inst.patient.reference == "Patient/f001"
+    assert inst.policyRule.coding[0].code == "OPTIN"
+    assert (
+        inst.policyRule.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+    )
+    assert inst.provision.period.end == fhirtypes.DateTime.validate(
+        "2015-02-01T11:15:33+10:00"
+    )
+    assert inst.provision.period.start == fhirtypes.DateTime.validate(
+        "2015-01-01T11:15:33+10:00"
+    )
+    assert inst.scope.coding[0].code == "patient-privacy"
+    assert (
+        inst.scope.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/consentscope"
+    )
+    assert inst.sourceAttachment.title == "The terms of the consent in lawyer speak."
+    assert inst.status == "active"
+    assert inst.text.status == "generated"
 
-    def testConsent8(self):
-        inst = self.instantiate_from("consent-example-notOrg.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Consent instance")
-        self.implConsent8(inst)
 
-        js = inst.as_json()
-        self.assertEqual("Consent", js["resourceType"])
-        inst2 = consent.Consent(js)
-        self.implConsent8(inst2)
+def test_consent_4(base_settings):
+    """No. 4 tests collection for Consent.
+    Test File: consent-example-notTime.json
+    """
+    filename = base_settings["unittest_data_dir"] / "consent-example-notTime.json"
+    inst = consent.Consent.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Consent" == inst.resource_type
 
-    def implConsent8(self, inst):
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].code), force_bytes("59284-0")
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].system),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(inst.dateTime.date, FHIRDate("2015-11-18").date)
-        self.assertEqual(inst.dateTime.as_json(), "2015-11-18")
-        self.assertEqual(force_bytes(inst.id), force_bytes("consent-example-notOrg"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.policyRule.coding[0].code), force_bytes("OPTIN")
-        )
-        self.assertEqual(
-            force_bytes(inst.policyRule.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActCode"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.action[0].coding[0].code), force_bytes("access")
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.action[0].coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/consentaction"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.action[1].coding[0].code), force_bytes("correct")
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.action[1].coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/consentaction"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.actor[0].role.coding[0].code),
-            force_bytes("PRCP"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.actor[0].role.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ParticipationType"),
-        )
-        self.assertEqual(force_bytes(inst.provision.type), force_bytes("deny"))
-        self.assertEqual(
-            force_bytes(inst.scope.coding[0].code), force_bytes("patient-privacy")
-        )
-        self.assertEqual(
-            force_bytes(inst.scope.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/consentscope"),
-        )
-        self.assertEqual(
-            force_bytes(inst.sourceAttachment.title),
-            force_bytes("The terms of the consent in lawyer speak."),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    impl_consent_4(inst)
 
-    def testConsent9(self):
-        inst = self.instantiate_from("consent-example-pkb.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Consent instance")
-        self.implConsent9(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Consent" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("Consent", js["resourceType"])
-        inst2 = consent.Consent(js)
-        self.implConsent9(inst2)
+    inst2 = consent.Consent(**data)
+    impl_consent_4(inst2)
 
-    def implConsent9(self, inst):
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].code), force_bytes("59284-0")
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].system),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(inst.dateTime.date, FHIRDate("2016-06-16").date)
-        self.assertEqual(inst.dateTime.as_json(), "2016-06-16")
-        self.assertEqual(force_bytes(inst.id), force_bytes("consent-example-pkb"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.policyRule.coding[0].code), force_bytes("OPTOUT")
-        )
-        self.assertEqual(
-            force_bytes(inst.policyRule.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActCode"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.action[0].coding[0].code), force_bytes("access")
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.action[0].coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/consentaction"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.actor[0].role.coding[0].code),
-            force_bytes("PRCP"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.actor[0].role.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ParticipationType"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[0].action[0].coding[0].code),
-            force_bytes("access"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[0].action[0].coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/consentaction"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[0].actor[0].role.coding[0].code),
-            force_bytes("PRCP"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[0].actor[0].role.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ParticipationType"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[0].securityLabel[0].code),
-            force_bytes("PSY"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[0].securityLabel[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActCode"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[1].action[0].coding[0].code),
-            force_bytes("access"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[1].action[0].coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/consentaction"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[1].actor[0].role.coding[0].code),
-            force_bytes("PRCP"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[1].actor[0].role.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ParticipationType"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[1].securityLabel[0].code),
-            force_bytes("SPI"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[1].securityLabel[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActCode"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[2].action[0].coding[0].code),
-            force_bytes("access"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[2].action[0].coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/consentaction"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[2].actor[0].role.coding[0].code),
-            force_bytes("PRCP"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[2].actor[0].role.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ParticipationType"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[2].securityLabel[0].code),
-            force_bytes("N"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[2].securityLabel[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-Confidentiality"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[3].action[0].coding[0].code),
-            force_bytes("access"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[3].action[0].coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/consentaction"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[3].actor[0].role.coding[0].code),
-            force_bytes("PRCP"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[3].actor[0].role.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ParticipationType"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[3].securityLabel[0].code),
-            force_bytes("PSY"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[3].securityLabel[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActCode"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[4].action[0].coding[0].code),
-            force_bytes("access"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[4].action[0].coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/consentaction"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[4].actor[0].role.coding[0].code),
-            force_bytes("PRCP"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[4].actor[0].role.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ParticipationType"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[4].securityLabel[0].code),
-            force_bytes("SPI"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[4].securityLabel[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActCode"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[5].action[0].coding[0].code),
-            force_bytes("access"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[5].action[0].coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/consentaction"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[5].actor[0].role.coding[0].code),
-            force_bytes("PRCP"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[5].actor[0].role.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ParticipationType"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[5].securityLabel[0].code),
-            force_bytes("SEX"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[5].securityLabel[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActCode"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[6].action[0].coding[0].code),
-            force_bytes("access"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[6].action[0].coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/consentaction"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[6].actor[0].role.coding[0].code),
-            force_bytes("PRCP"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[6].actor[0].role.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ParticipationType"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[6].securityLabel[0].code),
-            force_bytes("N"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[6].securityLabel[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-Confidentiality"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[7].action[0].coding[0].code),
-            force_bytes("access"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[7].action[0].coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/consentaction"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[7].actor[0].role.coding[0].code),
-            force_bytes("PRCP"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[7].actor[0].role.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ParticipationType"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[7].securityLabel[0].code),
-            force_bytes("PSY"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[7].securityLabel[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActCode"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[8].action[0].coding[0].code),
-            force_bytes("access"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[8].action[0].coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/consentaction"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[8].actor[0].role.coding[0].code),
-            force_bytes("PRCP"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[8].actor[0].role.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ParticipationType"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[8].securityLabel[0].code),
-            force_bytes("SPI"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[8].securityLabel[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActCode"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[9].action[0].coding[0].code),
-            force_bytes("access"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[9].action[0].coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/consentaction"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[9].actor[0].role.coding[0].code),
-            force_bytes("PRCP"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[9].actor[0].role.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ParticipationType"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[9].securityLabel[0].code),
-            force_bytes("SEX"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.provision[9].securityLabel[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActCode"),
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.securityLabel[0].code), force_bytes("N")
-        )
-        self.assertEqual(
-            force_bytes(inst.provision.securityLabel[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-Confidentiality"),
-        )
-        self.assertEqual(
-            force_bytes(inst.scope.coding[0].code), force_bytes("patient-privacy")
-        )
-        self.assertEqual(
-            force_bytes(inst.scope.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/consentscope"),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 
-    def testConsent10(self):
-        inst = self.instantiate_from("consent-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Consent instance")
-        self.implConsent10(inst)
+def impl_consent_5(inst):
+    assert inst.category[0].coding[0].code == "npp"
+    assert (
+        inst.category[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/consentcategorycodes"
+    )
+    assert inst.dateTime == fhirtypes.DateTime.validate("2016-05-26T00:41:10-04:00")
+    assert inst.id == "consent-example-signature"
+    assert inst.identifier[0].system == "urn:oid:2.16.840.1.113883.3.72.5.9.1"
+    assert inst.identifier[0].value == "494e0c7a-a69e-4fb4-9d02-6aae747790d7"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.organization[0].reference == "Organization/f001"
+    assert inst.patient.reference == "Patient/72"
+    assert inst.performer[0].reference == "Patient/72"
+    assert inst.policyRule.coding[0].code == "OPTIN"
+    assert (
+        inst.policyRule.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+    )
+    assert inst.provision.actor[0].reference.reference == "Practitioner/13"
+    assert inst.provision.actor[0].role.coding[0].code == "PRCP"
+    assert (
+        inst.provision.actor[0].role.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
+    )
+    assert inst.provision.period.end == fhirtypes.DateTime.validate(
+        "2016-10-10T11:15:33+10:00"
+    )
+    assert inst.provision.period.start == fhirtypes.DateTime.validate(
+        "2015-10-10T11:15:33+10:00"
+    )
+    assert (
+        inst.provision.provision[0].actor[0].reference.reference
+        == "Practitioner/xcda-author"
+    )
+    assert inst.provision.provision[0].actor[0].role.coding[0].code == "AUT"
+    assert (
+        inst.provision.provision[0].actor[0].role.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
+    )
+    assert inst.provision.provision[0].class_fhir[0].code == "application/hl7-cda+xml"
+    assert inst.provision.provision[0].class_fhir[0].system == "urn:ietf:bcp:13"
+    assert inst.provision.provision[0].code[0].coding[0].code == "34133-9"
+    assert inst.provision.provision[0].code[0].coding[0].system == "http://loinc.org"
+    assert inst.provision.provision[0].code[1].coding[0].code == "18842-5"
+    assert inst.provision.provision[0].code[1].coding[0].system == "http://loinc.org"
+    assert inst.provision.provision[0].type == "permit"
+    assert inst.scope.coding[0].code == "patient-privacy"
+    assert (
+        inst.scope.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/consentscope"
+    )
+    assert inst.status == "active"
+    assert inst.text.status == "generated"
 
-        js = inst.as_json()
-        self.assertEqual("Consent", js["resourceType"])
-        inst2 = consent.Consent(js)
-        self.implConsent10(inst2)
 
-    def implConsent10(self, inst):
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].code), force_bytes("59284-0")
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].system),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(inst.dateTime.date, FHIRDate("2016-05-11").date)
-        self.assertEqual(inst.dateTime.as_json(), "2016-05-11")
-        self.assertEqual(force_bytes(inst.id), force_bytes("consent-example-basic"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.policyRule.coding[0].code), force_bytes("OPTIN")
-        )
-        self.assertEqual(
-            force_bytes(inst.policyRule.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActCode"),
-        )
-        self.assertEqual(inst.provision.period.end.date, FHIRDate("2016-01-01").date)
-        self.assertEqual(inst.provision.period.end.as_json(), "2016-01-01")
-        self.assertEqual(inst.provision.period.start.date, FHIRDate("1964-01-01").date)
-        self.assertEqual(inst.provision.period.start.as_json(), "1964-01-01")
-        self.assertEqual(
-            force_bytes(inst.scope.coding[0].code), force_bytes("patient-privacy")
-        )
-        self.assertEqual(
-            force_bytes(inst.scope.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/consentscope"),
-        )
-        self.assertEqual(
-            force_bytes(inst.sourceAttachment.title),
-            force_bytes("The terms of the consent in lawyer speak."),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+def test_consent_5(base_settings):
+    """No. 5 tests collection for Consent.
+    Test File: consent-example-signature.json
+    """
+    filename = base_settings["unittest_data_dir"] / "consent-example-signature.json"
+    inst = consent.Consent.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Consent" == inst.resource_type
+
+    impl_consent_5(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Consent" == data["resourceType"]
+
+    inst2 = consent.Consent(**data)
+    impl_consent_5(inst2)
+
+
+def impl_consent_6(inst):
+    assert inst.category[0].coding[0].code == "59284-0"
+    assert inst.category[0].coding[0].system == "http://loinc.org"
+    assert inst.dateTime == fhirtypes.DateTime.validate("2015-11-18T11:15:33+10:00")
+    assert inst.id == "consent-example-notThem"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.organization[0].reference == "Organization/f001"
+    assert inst.patient.display == "P. van de Heuvel"
+    assert inst.patient.reference == "Patient/f001"
+    assert inst.policyRule.coding[0].code == "OPTIN"
+    assert (
+        inst.policyRule.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+    )
+    assert inst.provision.action[0].coding[0].code == "access"
+    assert (
+        inst.provision.action[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/consentaction"
+    )
+    assert inst.provision.action[1].coding[0].code == "correct"
+    assert (
+        inst.provision.action[1].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/consentaction"
+    )
+    assert inst.provision.actor[0].reference.display == "Fictive Nurse"
+    assert inst.provision.actor[0].reference.reference == "Practitioner/f204"
+    assert inst.provision.actor[0].role.coding[0].code == "PRCP"
+    assert (
+        inst.provision.actor[0].role.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
+    )
+    assert inst.scope.coding[0].code == "patient-privacy"
+    assert (
+        inst.scope.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/consentscope"
+    )
+    assert inst.sourceAttachment.title == "The terms of the consent in lawyer speak."
+    assert inst.status == "active"
+    assert inst.text.status == "generated"
+
+
+def test_consent_6(base_settings):
+    """No. 6 tests collection for Consent.
+    Test File: consent-example-notThem.json
+    """
+    filename = base_settings["unittest_data_dir"] / "consent-example-notThem.json"
+    inst = consent.Consent.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Consent" == inst.resource_type
+
+    impl_consent_6(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Consent" == data["resourceType"]
+
+    inst2 = consent.Consent(**data)
+    impl_consent_6(inst2)
+
+
+def impl_consent_7(inst):
+    assert inst.category[0].coding[0].code == "INFAO"
+    assert (
+        inst.category[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+    )
+    assert inst.dateTime == fhirtypes.DateTime.validate("2015-11-18T11:15:33+10:00")
+    assert inst.id == "consent-example-grantor"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.organization[0].reference == "Organization/f001"
+    assert inst.patient.display == "P. van de Heuvel"
+    assert inst.patient.reference == "Patient/f001"
+    assert inst.policyRule.coding[0].code == "OPTOUT"
+    assert (
+        inst.policyRule.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+    )
+    assert inst.provision.action[0].coding[0].code == "access"
+    assert (
+        inst.provision.action[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/consentaction"
+    )
+    assert inst.provision.actor[0].reference.reference == "Organization/f001"
+    assert inst.provision.actor[0].role.coding[0].code == "CST"
+    assert (
+        inst.provision.actor[0].role.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
+    )
+    assert inst.provision.actor[1].reference.display == "Good Health Clinic"
+    assert inst.provision.actor[1].reference.reference == "Patient/example"
+    assert inst.provision.actor[1].role.coding[0].code == "PRCP"
+    assert (
+        inst.provision.actor[1].role.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
+    )
+    assert inst.scope.coding[0].code == "patient-privacy"
+    assert (
+        inst.scope.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/consentscope"
+    )
+    assert inst.sourceAttachment.title == "The terms of the consent in lawyer speak."
+    assert inst.status == "active"
+    assert inst.text.status == "generated"
+
+
+def test_consent_7(base_settings):
+    """No. 7 tests collection for Consent.
+    Test File: consent-example-grantor.json
+    """
+    filename = base_settings["unittest_data_dir"] / "consent-example-grantor.json"
+    inst = consent.Consent.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Consent" == inst.resource_type
+
+    impl_consent_7(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Consent" == data["resourceType"]
+
+    inst2 = consent.Consent(**data)
+    impl_consent_7(inst2)
+
+
+def impl_consent_8(inst):
+    assert inst.category[0].coding[0].code == "59284-0"
+    assert inst.category[0].coding[0].system == "http://loinc.org"
+    assert inst.dateTime == fhirtypes.DateTime.validate("2015-11-18T11:15:33+10:00")
+    assert inst.id == "consent-example-notOrg"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.organization[0].reference == "Organization/f001"
+    assert inst.patient.display == "P. van de Heuvel"
+    assert inst.patient.reference == "Patient/f001"
+    assert inst.policyRule.coding[0].code == "OPTIN"
+    assert (
+        inst.policyRule.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+    )
+    assert inst.provision.action[0].coding[0].code == "access"
+    assert (
+        inst.provision.action[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/consentaction"
+    )
+    assert inst.provision.action[1].coding[0].code == "correct"
+    assert (
+        inst.provision.action[1].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/consentaction"
+    )
+    assert inst.provision.actor[0].reference.reference == "Organization/f001"
+    assert inst.provision.actor[0].role.coding[0].code == "PRCP"
+    assert (
+        inst.provision.actor[0].role.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
+    )
+    assert inst.provision.type == "deny"
+    assert inst.scope.coding[0].code == "patient-privacy"
+    assert (
+        inst.scope.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/consentscope"
+    )
+    assert inst.sourceAttachment.title == "The terms of the consent in lawyer speak."
+    assert inst.status == "active"
+    assert inst.text.status == "generated"
+
+
+def test_consent_8(base_settings):
+    """No. 8 tests collection for Consent.
+    Test File: consent-example-notOrg.json
+    """
+    filename = base_settings["unittest_data_dir"] / "consent-example-notOrg.json"
+    inst = consent.Consent.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Consent" == inst.resource_type
+
+    impl_consent_8(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Consent" == data["resourceType"]
+
+    inst2 = consent.Consent(**data)
+    impl_consent_8(inst2)
+
+
+def impl_consent_9(inst):
+    assert inst.category[0].coding[0].code == "59284-0"
+    assert inst.category[0].coding[0].system == "http://loinc.org"
+    assert inst.dateTime == fhirtypes.DateTime.validate("2016-06-16T11:15:33+10:00")
+    assert inst.id == "consent-example-pkb"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.organization[0].reference == "Organization/f001"
+    assert inst.patient.display == "...example patient..."
+    assert inst.patient.reference == "Patient/example"
+    assert inst.policyRule.coding[0].code == "OPTOUT"
+    assert (
+        inst.policyRule.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+    )
+    assert inst.provision.action[0].coding[0].code == "access"
+    assert (
+        inst.provision.action[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/consentaction"
+    )
+    assert inst.provision.actor[0].reference.reference == "Organization/f001"
+    assert inst.provision.actor[0].role.coding[0].code == "PRCP"
+    assert (
+        inst.provision.actor[0].role.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
+    )
+    assert inst.provision.provision[0].action[0].coding[0].code == "access"
+    assert (
+        inst.provision.provision[0].action[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/consentaction"
+    )
+    assert (
+        inst.provision.provision[0].actor[0].reference.reference == "Organization/f001"
+    )
+    assert inst.provision.provision[0].actor[0].role.coding[0].code == "PRCP"
+    assert (
+        inst.provision.provision[0].actor[0].role.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
+    )
+    assert inst.provision.provision[0].securityLabel[0].code == "PSY"
+    assert (
+        inst.provision.provision[0].securityLabel[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+    )
+    assert inst.provision.provision[1].action[0].coding[0].code == "access"
+    assert (
+        inst.provision.provision[1].action[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/consentaction"
+    )
+    assert (
+        inst.provision.provision[1].actor[0].reference.reference == "Organization/f001"
+    )
+    assert inst.provision.provision[1].actor[0].role.coding[0].code == "PRCP"
+    assert (
+        inst.provision.provision[1].actor[0].role.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
+    )
+    assert inst.provision.provision[1].securityLabel[0].code == "SPI"
+    assert (
+        inst.provision.provision[1].securityLabel[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+    )
+    assert inst.provision.provision[2].action[0].coding[0].code == "access"
+    assert (
+        inst.provision.provision[2].action[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/consentaction"
+    )
+    assert (
+        inst.provision.provision[2].actor[0].reference.reference == "Organization/f001"
+    )
+    assert inst.provision.provision[2].actor[0].role.coding[0].code == "PRCP"
+    assert (
+        inst.provision.provision[2].actor[0].role.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
+    )
+    assert inst.provision.provision[2].securityLabel[0].code == "N"
+    assert (
+        inst.provision.provision[2].securityLabel[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-Confidentiality"
+    )
+    assert inst.provision.provision[3].action[0].coding[0].code == "access"
+    assert (
+        inst.provision.provision[3].action[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/consentaction"
+    )
+    assert (
+        inst.provision.provision[3].actor[0].reference.reference == "Organization/f001"
+    )
+    assert inst.provision.provision[3].actor[0].role.coding[0].code == "PRCP"
+    assert (
+        inst.provision.provision[3].actor[0].role.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
+    )
+    assert inst.provision.provision[3].securityLabel[0].code == "PSY"
+    assert (
+        inst.provision.provision[3].securityLabel[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+    )
+    assert inst.provision.provision[4].action[0].coding[0].code == "access"
+    assert (
+        inst.provision.provision[4].action[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/consentaction"
+    )
+    assert (
+        inst.provision.provision[4].actor[0].reference.reference == "Organization/f001"
+    )
+    assert inst.provision.provision[4].actor[0].role.coding[0].code == "PRCP"
+    assert (
+        inst.provision.provision[4].actor[0].role.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
+    )
+    assert inst.provision.provision[4].securityLabel[0].code == "SPI"
+    assert (
+        inst.provision.provision[4].securityLabel[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+    )
+    assert inst.provision.provision[5].action[0].coding[0].code == "access"
+    assert (
+        inst.provision.provision[5].action[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/consentaction"
+    )
+    assert (
+        inst.provision.provision[5].actor[0].reference.reference == "Organization/f001"
+    )
+    assert inst.provision.provision[5].actor[0].role.coding[0].code == "PRCP"
+    assert (
+        inst.provision.provision[5].actor[0].role.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
+    )
+    assert inst.provision.provision[5].securityLabel[0].code == "SEX"
+    assert (
+        inst.provision.provision[5].securityLabel[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+    )
+    assert inst.provision.provision[6].action[0].coding[0].code == "access"
+    assert (
+        inst.provision.provision[6].action[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/consentaction"
+    )
+    assert (
+        inst.provision.provision[6].actor[0].reference.reference == "Organization/f001"
+    )
+    assert inst.provision.provision[6].actor[0].role.coding[0].code == "PRCP"
+    assert (
+        inst.provision.provision[6].actor[0].role.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
+    )
+    assert inst.provision.provision[6].securityLabel[0].code == "N"
+    assert (
+        inst.provision.provision[6].securityLabel[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-Confidentiality"
+    )
+    assert inst.provision.provision[7].action[0].coding[0].code == "access"
+    assert (
+        inst.provision.provision[7].action[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/consentaction"
+    )
+    assert (
+        inst.provision.provision[7].actor[0].reference.reference == "Organization/f001"
+    )
+    assert inst.provision.provision[7].actor[0].role.coding[0].code == "PRCP"
+    assert (
+        inst.provision.provision[7].actor[0].role.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
+    )
+    assert inst.provision.provision[7].securityLabel[0].code == "PSY"
+    assert (
+        inst.provision.provision[7].securityLabel[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+    )
+    assert inst.provision.provision[8].action[0].coding[0].code == "access"
+    assert (
+        inst.provision.provision[8].action[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/consentaction"
+    )
+    assert (
+        inst.provision.provision[8].actor[0].reference.reference == "Organization/f001"
+    )
+    assert inst.provision.provision[8].actor[0].role.coding[0].code == "PRCP"
+    assert (
+        inst.provision.provision[8].actor[0].role.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
+    )
+    assert inst.provision.provision[8].securityLabel[0].code == "SPI"
+    assert (
+        inst.provision.provision[8].securityLabel[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+    )
+    assert inst.provision.provision[9].action[0].coding[0].code == "access"
+    assert (
+        inst.provision.provision[9].action[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/consentaction"
+    )
+    assert (
+        inst.provision.provision[9].actor[0].reference.reference == "Organization/f001"
+    )
+    assert inst.provision.provision[9].actor[0].role.coding[0].code == "PRCP"
+    assert (
+        inst.provision.provision[9].actor[0].role.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
+    )
+    assert inst.provision.provision[9].securityLabel[0].code == "SEX"
+    assert (
+        inst.provision.provision[9].securityLabel[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+    )
+    assert inst.provision.securityLabel[0].code == "N"
+    assert (
+        inst.provision.securityLabel[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-Confidentiality"
+    )
+    assert inst.scope.coding[0].code == "patient-privacy"
+    assert (
+        inst.scope.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/consentscope"
+    )
+    assert inst.status == "active"
+    assert inst.text.status == "generated"
+
+
+def test_consent_9(base_settings):
+    """No. 9 tests collection for Consent.
+    Test File: consent-example-pkb.json
+    """
+    filename = base_settings["unittest_data_dir"] / "consent-example-pkb.json"
+    inst = consent.Consent.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Consent" == inst.resource_type
+
+    impl_consent_9(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Consent" == data["resourceType"]
+
+    inst2 = consent.Consent(**data)
+    impl_consent_9(inst2)
+
+
+def impl_consent_10(inst):
+    assert inst.category[0].coding[0].code == "59284-0"
+    assert inst.category[0].coding[0].system == "http://loinc.org"
+    assert inst.dateTime == fhirtypes.DateTime.validate("2016-05-11T11:15:33+10:00")
+    assert inst.id == "consent-example-basic"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.organization[0].reference == "Organization/f001"
+    assert inst.patient.display == "P. van de Heuvel"
+    assert inst.patient.reference == "Patient/f001"
+    assert inst.policyRule.coding[0].code == "OPTIN"
+    assert (
+        inst.policyRule.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+    )
+    assert inst.provision.period.end == fhirtypes.DateTime.validate(
+        "2016-01-01T11:15:33+10:00"
+    )
+    assert inst.provision.period.start == fhirtypes.DateTime.validate(
+        "1964-01-01T11:15:33+10:00"
+    )
+    assert inst.scope.coding[0].code == "patient-privacy"
+    assert (
+        inst.scope.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/consentscope"
+    )
+    assert inst.sourceAttachment.title == "The terms of the consent in lawyer speak."
+    assert inst.status == "active"
+    assert inst.text.status == "generated"
+
+
+def test_consent_10(base_settings):
+    """No. 10 tests collection for Consent.
+    Test File: consent-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "consent-example.json"
+    inst = consent.Consent.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Consent" == inst.resource_type
+
+    impl_consent_10(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Consent" == data["resourceType"]
+
+    inst2 = consent.Consent(**data)
+    impl_consent_10(inst2)

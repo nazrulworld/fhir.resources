@@ -6,16 +6,15 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class Subscription(domainresource.DomainResource):
     """ Server push subscription criteria.
-
     The subscription resource is used to define a push-based subscription from
     a server to another system. Once a subscription is registered with the
     server, the server checks every resource that is created or updated, and if
@@ -23,131 +22,90 @@ class Subscription(domainresource.DomainResource):
     "channel" so that another system can take an appropriate action.
     """
 
-    resource_type = "Subscription"
+    resource_type = Field("Subscription", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    channel: fhirtypes.SubscriptionChannelType = Field(
+        ...,
+        alias="channel",
+        title="Type `SubscriptionChannel` (represented as `dict` in JSON)",
+        description="The channel on which to report matches to the criteria",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    contact: ListType[fhirtypes.ContactPointType] = Field(
+        None,
+        alias="contact",
+        title="List of `ContactPoint` items (represented as `dict` in JSON)",
+        description="Contact details for source (e.g. troubleshooting)",
+    )
 
-        self.channel = None
-        """ The channel on which to report matches to the criteria.
-        Type `SubscriptionChannel` (represented as `dict` in JSON). """
+    criteria: fhirtypes.String = Field(
+        ...,
+        alias="criteria",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Rule for server push",
+    )
 
-        self.contact = None
-        """ Contact details for source (e.g. troubleshooting).
-        List of `ContactPoint` items (represented as `dict` in JSON). """
+    end: fhirtypes.Instant = Field(
+        None,
+        alias="end",
+        title="Type `Instant` (represented as `dict` in JSON)",
+        description="When to automatically delete the subscription",
+    )
 
-        self.criteria = None
-        """ Rule for server push.
-        Type `str`. """
+    error: fhirtypes.String = Field(
+        None,
+        alias="error",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Latest error note",
+    )
 
-        self.end = None
-        """ When to automatically delete the subscription.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    reason: fhirtypes.String = Field(
+        ...,
+        alias="reason",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Description of why this subscription was created",
+    )
 
-        self.error = None
-        """ Latest error note.
-        Type `str`. """
-
-        self.reason = None
-        """ Description of why this subscription was created.
-        Type `str`. """
-
-        self.status = None
-        """ requested | active | error | off.
-        Type `str`. """
-
-        super(Subscription, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(Subscription, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "channel",
-                    "channel",
-                    SubscriptionChannel,
-                    "SubscriptionChannel",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "contact",
-                    "contact",
-                    contactpoint.ContactPoint,
-                    "ContactPoint",
-                    True,
-                    None,
-                    False,
-                ),
-                ("criteria", "criteria", str, "string", False, None, True),
-                ("end", "end", fhirdate.FHIRDate, "instant", False, None, False),
-                ("error", "error", str, "string", False, None, False),
-                ("reason", "reason", str, "string", False, None, True),
-                ("status", "status", str, "code", False, None, True),
-            ]
-        )
-        return js
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="requested | active | error | off",
+    )
 
 
 class SubscriptionChannel(backboneelement.BackboneElement):
     """ The channel on which to report matches to the criteria.
-
     Details where to send notifications when resources are received that meet
     the criteria.
     """
 
-    resource_type = "SubscriptionChannel"
+    resource_type = Field("SubscriptionChannel", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    endpoint: fhirtypes.Url = Field(
+        None,
+        alias="endpoint",
+        title="Type `Url` (represented as `dict` in JSON)",
+        description="Where the channel points to",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    header: ListType[fhirtypes.String] = Field(
+        None,
+        alias="header",
+        title="List of `String` items (represented as `dict` in JSON)",
+        description="Usage depends on the channel type",
+    )
 
-        self.endpoint = None
-        """ Where the channel points to.
-        Type `str`. """
+    payload: fhirtypes.Code = Field(
+        None,
+        alias="payload",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="MIME type to send, or omit for no payload",
+    )
 
-        self.header = None
-        """ Usage depends on the channel type.
-        List of `str` items. """
-
-        self.payload = None
-        """ MIME type to send, or omit for no payload.
-        Type `str`. """
-
-        self.type = None
-        """ rest-hook | websocket | email | sms | message.
-        Type `str`. """
-
-        super(SubscriptionChannel, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(SubscriptionChannel, self).elementProperties()
-        js.extend(
-            [
-                ("endpoint", "endpoint", str, "url", False, None, False),
-                ("header", "header", str, "string", True, None, False),
-                ("payload", "payload", str, "code", False, None, False),
-                ("type", "type", str, "code", False, None, True),
-            ]
-        )
-        return js
-
-
-try:
-    from . import contactpoint
-except ImportError:
-    contactpoint = sys.modules[__package__ + ".contactpoint"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
+    type: fhirtypes.Code = Field(
+        ...,
+        alias="type",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="rest-hook | websocket | email | sms | message",
+    )

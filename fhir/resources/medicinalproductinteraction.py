@@ -6,186 +6,130 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import Any, Dict
+from typing import List as ListType
 
+from pydantic import Field, root_validator
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class MedicinalProductInteraction(domainresource.DomainResource):
     """ MedicinalProductInteraction.
-
     The interactions of the medicinal product with other medicinal products, or
     other forms of interactions.
     """
 
-    resource_type = "MedicinalProductInteraction"
+    resource_type = Field("MedicinalProductInteraction", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    description: fhirtypes.String = Field(
+        None,
+        alias="description",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="The interaction described",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    effect: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="effect",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description='The effect of the interaction, for example "reduced gastric absorption of primary medication"',
+    )
 
-        self.description = None
-        """ The interaction described.
-        Type `str`. """
+    incidence: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="incidence",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The incidence of the interaction, e.g. theoretical, observed",
+    )
 
-        self.effect = None
-        """ The effect of the interaction, for example "reduced gastric
-        absorption of primary medication".
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    interactant: ListType[fhirtypes.MedicinalProductInteractionInteractantType] = Field(
+        None,
+        alias="interactant",
+        title="List of `MedicinalProductInteractionInteractant` items (represented as `dict` in JSON)",
+        description="The specific medication, food or laboratory test that interacts",
+    )
 
-        self.incidence = None
-        """ The incidence of the interaction, e.g. theoretical, observed.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    management: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="management",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Actions for managing the interaction",
+    )
 
-        self.interactant = None
-        """ The specific medication, food or laboratory test that interacts.
-        List of `MedicinalProductInteractionInteractant` items (represented as `dict` in JSON). """
+    subject: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="subject",
+        title="List of `Reference` items referencing `MedicinalProduct, Medication, Substance` (represented as `dict` in JSON)",
+        description="The medication for which this is a described interaction",
+    )
 
-        self.management = None
-        """ Actions for managing the interaction.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.subject = None
-        """ The medication for which this is a described interaction.
-        List of `FHIRReference` items referencing `['MedicinalProduct', 'Medication', 'Substance']` (represented as `dict` in JSON). """
-
-        self.type = None
-        """ The type of the interaction e.g. drug-drug interaction, drug-food
-        interaction, drug-lab test interaction.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(MedicinalProductInteraction, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(MedicinalProductInteraction, self).elementProperties()
-        js.extend(
-            [
-                ("description", "description", str, "string", False, None, False),
-                (
-                    "effect",
-                    "effect",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "incidence",
-                    "incidence",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "interactant",
-                    "interactant",
-                    MedicinalProductInteractionInteractant,
-                    "MedicinalProductInteractionInteractant",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "management",
-                    "management",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "subject",
-                    "subject",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    type: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The type of the interaction e.g. drug-drug interaction, drug-food interaction, drug-lab test interaction",
+    )
 
 
 class MedicinalProductInteractionInteractant(backboneelement.BackboneElement):
     """ The specific medication, food or laboratory test that interacts.
     """
 
-    resource_type = "MedicinalProductInteractionInteractant"
+    resource_type = Field("MedicinalProductInteractionInteractant", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    itemCodeableConcept: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="itemCodeableConcept",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The specific medication, food or laboratory test that interacts",
+        one_of_many="item",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    itemReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="itemReference",
+        title="Type `Reference` referencing `MedicinalProduct, Medication, Substance, ObservationDefinition` (represented as `dict` in JSON)",
+        description="The specific medication, food or laboratory test that interacts",
+        one_of_many="item",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "item": ["itemCodeableConcept", "itemReference",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.itemCodeableConcept = None
-        """ The specific medication, food or laboratory test that interacts.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.itemReference = None
-        """ The specific medication, food or laboratory test that interacts.
-        Type `FHIRReference` referencing `['MedicinalProduct', 'Medication', 'Substance', 'ObservationDefinition']` (represented as `dict` in JSON). """
-
-        super(MedicinalProductInteractionInteractant, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(MedicinalProductInteractionInteractant, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "itemCodeableConcept",
-                    "itemCodeableConcept",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    "item",
-                    True,
-                ),
-                (
-                    "itemReference",
-                    "itemReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    "item",
-                    True,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
+        return values

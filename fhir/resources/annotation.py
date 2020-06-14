@@ -6,74 +6,87 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import Any, Dict
 
+from pydantic import Field, root_validator
 
-import sys
-
-from . import element
+from . import element, fhirtypes
 
 
 class Annotation(element.Element):
     """ Text node with attribution.
-
     A  text note which also  contains information about who made the statement
     and when.
     """
 
-    resource_type = "Annotation"
+    resource_type = Field("Annotation", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    authorReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="authorReference",
+        title="Type `Reference` referencing `Practitioner, Patient, RelatedPerson, Organization` (represented as `dict` in JSON)",
+        description="Individual responsible for the annotation",
+        one_of_many="author",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    authorString: fhirtypes.String = Field(
+        None,
+        alias="authorString",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Individual responsible for the annotation",
+        one_of_many="author",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    text: fhirtypes.Markdown = Field(
+        ...,
+        alias="text",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="The annotation  - text content (as markdown)",
+    )
+
+    time: fhirtypes.DateTime = Field(
+        None,
+        alias="time",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="When the annotation was made",
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "author": ["authorReference", "authorString",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.authorReference = None
-        """ Individual responsible for the annotation.
-        Type `FHIRReference` referencing `['Practitioner', 'Patient', 'RelatedPerson', 'Organization']` (represented as `dict` in JSON). """
-
-        self.authorString = None
-        """ Individual responsible for the annotation.
-        Type `str`. """
-
-        self.text = None
-        """ The annotation  - text content (as markdown).
-        Type `str`. """
-
-        self.time = None
-        """ When the annotation was made.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        super(Annotation, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(Annotation, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "authorReference",
-                    "authorReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    "author",
-                    False,
-                ),
-                ("authorString", "authorString", str, "string", False, "author", False),
-                ("text", "text", str, "markdown", False, None, True),
-                ("time", "time", fhirdate.FHIRDate, "dateTime", False, None, False),
-            ]
-        )
-        return js
-
-
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
+        return values

@@ -6,474 +6,406 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import task
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class TaskTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("Task", js["resourceType"])
-        return task.Task(js)
+def impl_task_1(inst):
+    assert inst.authoredOn == fhirtypes.DateTime.validate("2016-10-31T08:25:05+10:00")
+    assert inst.basedOn[0].display == "General Wellness Careplan"
+    assert inst.businessStatus.text == "test completed and posted"
+    assert inst.code.text == "Lipid Panel"
+    assert inst.context.display == "Example In-Patient Encounter"
+    assert inst.context.reference == "Encounter/example"
+    assert (
+        inst.description
+        == "Create order for getting specimen, Set up inhouse testing,  generate order for any sendouts and submit with specimen"
+    )
+    assert inst.executionPeriod.end == fhirtypes.DateTime.validate(
+        "2016-10-31T18:45:05+10:00"
+    )
+    assert inst.executionPeriod.start == fhirtypes.DateTime.validate(
+        "2016-10-31T08:25:05+10:00"
+    )
+    assert inst.focus.display == "Lipid Panel Request"
+    assert inst.focus.reference == "ProcedureRequest/lipid"
+    assert inst.for_fhir.display == "Peter James Chalmers"
+    assert inst.for_fhir.reference == "Patient/example"
+    assert inst.groupIdentifier.system == "http:/goodhealth.org/accession/identifiers"
+    assert inst.groupIdentifier.use == "official"
+    assert inst.groupIdentifier.value == "G20170201-001"
+    assert inst.id == "example6"
+    assert inst.identifier[0].system == "http:/goodhealth.org/identifiers"
+    assert inst.identifier[0].use == "official"
+    assert inst.identifier[0].value == "20170201-001"
+    assert inst.intent == "order"
+    assert inst.lastModified == fhirtypes.DateTime.validate("2016-10-31T18:45:05+10:00")
+    assert inst.output[0].type.text == "DiagnosticReport generated"
+    assert inst.output[0].valueReference.reference == "DiagnosticReport/lipids"
+    assert inst.output[1].type.text == "collected specimen"
+    assert inst.output[1].valueReference.reference == "Specimen/101"
+    assert inst.owner.display == "Clinical Laboratory @ Acme Hospital"
+    assert inst.owner.reference == "Organization/1832473e-2fe0-452d-abe9-3cdb9879522f"
+    assert inst.performerType[0].coding[0].code == "performer"
+    assert inst.performerType[0].coding[0].display == "Performer"
+    assert (
+        inst.performerType[0].coding[0].system
+        == "http://hl7.org/fhir/task-performer-type"
+    )
+    assert inst.performerType[0].text == "Performer"
+    assert inst.priority == "routine"
+    assert (
+        inst.reason.text
+        == "The Task.reason should only be included if there is no Task.focus or if it differs from the reason indicated on the focus"
+    )
+    assert inst.requester.agent.display == "Dr Adam Careful"
+    assert inst.requester.agent.reference == "Practitioner/example"
+    assert inst.requester.onBehalfOf.display == "Good Health Clinic"
+    assert inst.requester.onBehalfOf.reference == "Organization/2.16.840.1.113883.19.5"
+    assert inst.restriction.period.end == fhirtypes.DateTime.validate(
+        "2016-11-02T09:45:05+10:00"
+    )
+    assert inst.restriction.repetitions == 1
+    assert inst.status == "completed"
+    assert inst.text.status == "generated"
 
-    def testTask1(self):
-        inst = self.instantiate_from("task-example6.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Task instance")
-        self.implTask1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("Task", js["resourceType"])
-        inst2 = task.Task(js)
-        self.implTask1(inst2)
+def test_task_1(base_settings):
+    """No. 1 tests collection for Task.
+    Test File: task-example6.json
+    """
+    filename = base_settings["unittest_data_dir"] / "task-example6.json"
+    inst = task.Task.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Task" == inst.resource_type
 
-    def implTask1(self, inst):
-        self.assertEqual(
-            inst.authoredOn.date, FHIRDate("2016-10-31T08:25:05+10:00").date
-        )
-        self.assertEqual(inst.authoredOn.as_json(), "2016-10-31T08:25:05+10:00")
-        self.assertEqual(
-            force_bytes(inst.businessStatus.text),
-            force_bytes("test completed and posted"),
-        )
-        self.assertEqual(force_bytes(inst.code.text), force_bytes("Lipid Panel"))
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes(
-                "Create order for getting specimen, Set up inhouse testing,  generate order for any sendouts and submit with specimen"
-            ),
-        )
-        self.assertEqual(
-            inst.executionPeriod.end.date, FHIRDate("2016-10-31T18:45:05+10:00").date
-        )
-        self.assertEqual(
-            inst.executionPeriod.end.as_json(), "2016-10-31T18:45:05+10:00"
-        )
-        self.assertEqual(
-            inst.executionPeriod.start.date, FHIRDate("2016-10-31T08:25:05+10:00").date
-        )
-        self.assertEqual(
-            inst.executionPeriod.start.as_json(), "2016-10-31T08:25:05+10:00"
-        )
-        self.assertEqual(
-            force_bytes(inst.groupIdentifier.system),
-            force_bytes("http:/goodhealth.org/accession/identifiers"),
-        )
-        self.assertEqual(force_bytes(inst.groupIdentifier.use), force_bytes("official"))
-        self.assertEqual(
-            force_bytes(inst.groupIdentifier.value), force_bytes("G20170201-001")
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("example6"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http:/goodhealth.org/identifiers"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].use), force_bytes("official"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].value), force_bytes("20170201-001")
-        )
-        self.assertEqual(force_bytes(inst.intent), force_bytes("order"))
-        self.assertEqual(
-            inst.lastModified.date, FHIRDate("2016-10-31T18:45:05+10:00").date
-        )
-        self.assertEqual(inst.lastModified.as_json(), "2016-10-31T18:45:05+10:00")
-        self.assertEqual(
-            force_bytes(inst.output[0].type.text),
-            force_bytes("DiagnosticReport generated"),
-        )
-        self.assertEqual(
-            force_bytes(inst.output[1].type.text), force_bytes("collected specimen")
-        )
-        self.assertEqual(
-            force_bytes(inst.performerType[0].coding[0].code), force_bytes("performer")
-        )
-        self.assertEqual(
-            force_bytes(inst.performerType[0].coding[0].display),
-            force_bytes("Performer"),
-        )
-        self.assertEqual(
-            force_bytes(inst.performerType[0].coding[0].system),
-            force_bytes("http://hl7.org/fhir/task-performer-type"),
-        )
-        self.assertEqual(
-            force_bytes(inst.performerType[0].text), force_bytes("Performer")
-        )
-        self.assertEqual(force_bytes(inst.priority), force_bytes("routine"))
-        self.assertEqual(
-            force_bytes(inst.reason.text),
-            force_bytes(
-                "The Task.reason should only be included if there is no Task.focus or if it differs from the reason indicated on the focus"
-            ),
-        )
-        self.assertEqual(
-            inst.restriction.period.end.date, FHIRDate("2016-11-02T09:45:05+10:00").date
-        )
-        self.assertEqual(
-            inst.restriction.period.end.as_json(), "2016-11-02T09:45:05+10:00"
-        )
-        self.assertEqual(inst.restriction.repetitions, 1)
-        self.assertEqual(force_bytes(inst.status), force_bytes("completed"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    impl_task_1(inst)
 
-    def testTask2(self):
-        inst = self.instantiate_from("task-example1.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Task instance")
-        self.implTask2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Task" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("Task", js["resourceType"])
-        inst2 = task.Task(js)
-        self.implTask2(inst2)
+    inst2 = task.Task(**data)
+    impl_task_1(inst2)
 
-    def implTask2(self, inst):
-        self.assertEqual(
-            inst.authoredOn.date, FHIRDate("2016-10-31T08:25:05+10:00").date
-        )
-        self.assertEqual(inst.authoredOn.as_json(), "2016-10-31T08:25:05+10:00")
-        self.assertEqual(
-            force_bytes(inst.businessStatus.text), force_bytes("waiting for specimen")
-        )
-        self.assertEqual(force_bytes(inst.code.text), force_bytes("Lipid Panel"))
-        self.assertEqual(force_bytes(inst.contained[0].id), force_bytes("signature"))
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes(
-                "Create order for getting specimen, Set up inhouse testing,  generate order for any sendouts and submit with specimen"
-            ),
-        )
-        self.assertEqual(
-            inst.executionPeriod.start.date, FHIRDate("2016-10-31T08:25:05+10:00").date
-        )
-        self.assertEqual(
-            inst.executionPeriod.start.as_json(), "2016-10-31T08:25:05+10:00"
-        )
-        self.assertEqual(
-            force_bytes(inst.groupIdentifier.system),
-            force_bytes("http:/goodhealth.org/accession/identifiers"),
-        )
-        self.assertEqual(force_bytes(inst.groupIdentifier.use), force_bytes("official"))
-        self.assertEqual(
-            force_bytes(inst.groupIdentifier.value), force_bytes("G20170201-001")
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("example1"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http:/goodhealth.org/identifiers"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].use), force_bytes("official"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].value), force_bytes("20170201-001")
-        )
-        self.assertEqual(force_bytes(inst.intent), force_bytes("order"))
-        self.assertEqual(
-            inst.lastModified.date, FHIRDate("2016-10-31T09:45:05+10:00").date
-        )
-        self.assertEqual(inst.lastModified.as_json(), "2016-10-31T09:45:05+10:00")
-        self.assertEqual(
-            force_bytes(inst.performerType[0].coding[0].code), force_bytes("performer")
-        )
-        self.assertEqual(
-            force_bytes(inst.performerType[0].coding[0].display),
-            force_bytes("Performer"),
-        )
-        self.assertEqual(
-            force_bytes(inst.performerType[0].coding[0].system),
-            force_bytes("http://hl7.org/fhir/task-performer-type"),
-        )
-        self.assertEqual(
-            force_bytes(inst.performerType[0].text), force_bytes("Performer")
-        )
-        self.assertEqual(force_bytes(inst.priority), force_bytes("routine"))
-        self.assertEqual(
-            force_bytes(inst.reason.text),
-            force_bytes(
-                "The Task.reason should only be included if there is no Task.focus or if it differs from the reason indicated on the focus"
-            ),
-        )
-        self.assertEqual(
-            inst.restriction.period.end.date, FHIRDate("2016-11-02T09:45:05+10:00").date
-        )
-        self.assertEqual(
-            inst.restriction.period.end.as_json(), "2016-11-02T09:45:05+10:00"
-        )
-        self.assertEqual(inst.restriction.repetitions, 1)
-        self.assertEqual(force_bytes(inst.status), force_bytes("in-progress"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 
-    def testTask3(self):
-        inst = self.instantiate_from("task-example3.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Task instance")
-        self.implTask3(inst)
+def impl_task_2(inst):
+    assert inst.authoredOn == fhirtypes.DateTime.validate("2016-10-31T08:25:05+10:00")
+    assert inst.basedOn[0].display == "General Wellness Careplan"
+    assert inst.businessStatus.text == "waiting for specimen"
+    assert inst.code.text == "Lipid Panel"
+    assert inst.contained[0].id == "signature"
+    assert inst.context.display == "Example In-Patient Encounter"
+    assert inst.context.reference == "Encounter/example"
+    assert (
+        inst.description
+        == "Create order for getting specimen, Set up inhouse testing,  generate order for any sendouts and submit with specimen"
+    )
+    assert inst.executionPeriod.start == fhirtypes.DateTime.validate(
+        "2016-10-31T08:25:05+10:00"
+    )
+    assert inst.focus.display == "Lipid Panel Request"
+    assert inst.focus.reference == "ProcedureRequest/lipid"
+    assert inst.for_fhir.display == "Peter James Chalmers"
+    assert inst.for_fhir.reference == "Patient/example"
+    assert inst.groupIdentifier.system == "http:/goodhealth.org/accession/identifiers"
+    assert inst.groupIdentifier.use == "official"
+    assert inst.groupIdentifier.value == "G20170201-001"
+    assert inst.id == "example1"
+    assert inst.identifier[0].system == "http:/goodhealth.org/identifiers"
+    assert inst.identifier[0].use == "official"
+    assert inst.identifier[0].value == "20170201-001"
+    assert inst.intent == "order"
+    assert inst.lastModified == fhirtypes.DateTime.validate("2016-10-31T09:45:05+10:00")
+    assert inst.owner.display == "Clinical Laboratory @ Acme Hospital"
+    assert inst.owner.reference == "Organization/1832473e-2fe0-452d-abe9-3cdb9879522f"
+    assert inst.performerType[0].coding[0].code == "performer"
+    assert inst.performerType[0].coding[0].display == "Performer"
+    assert (
+        inst.performerType[0].coding[0].system
+        == "http://hl7.org/fhir/task-performer-type"
+    )
+    assert inst.performerType[0].text == "Performer"
+    assert inst.priority == "routine"
+    assert (
+        inst.reason.text
+        == "The Task.reason should only be included if there is no Task.focus or if it differs from the reason indicated on the focus"
+    )
+    assert inst.relevantHistory[0].display == "Author's Signature"
+    assert inst.relevantHistory[0].reference == "#signature"
+    assert inst.requester.agent.display == "Dr Adam Careful"
+    assert inst.requester.agent.reference == "Practitioner/example"
+    assert inst.requester.onBehalfOf.display == "Good Health Clinic"
+    assert inst.requester.onBehalfOf.reference == "Organization/2.16.840.1.113883.19.5"
+    assert inst.restriction.period.end == fhirtypes.DateTime.validate(
+        "2016-11-02T09:45:05+10:00"
+    )
+    assert inst.restriction.repetitions == 1
+    assert inst.status == "in-progress"
+    assert inst.text.status == "generated"
 
-        js = inst.as_json()
-        self.assertEqual("Task", js["resourceType"])
-        inst2 = task.Task(js)
-        self.implTask3(inst2)
 
-    def implTask3(self, inst):
-        self.assertEqual(
-            inst.authoredOn.date, FHIRDate("2016-03-10T22:39:32-04:00").date
-        )
-        self.assertEqual(inst.authoredOn.as_json(), "2016-03-10T22:39:32-04:00")
-        self.assertEqual(force_bytes(inst.code.text), force_bytes("Refill Request"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("example3"))
-        self.assertEqual(force_bytes(inst.intent), force_bytes("order"))
-        self.assertEqual(
-            inst.lastModified.date, FHIRDate("2016-03-10T22:39:32-04:00").date
-        )
-        self.assertEqual(inst.lastModified.as_json(), "2016-03-10T22:39:32-04:00")
-        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+def test_task_2(base_settings):
+    """No. 2 tests collection for Task.
+    Test File: task-example1.json
+    """
+    filename = base_settings["unittest_data_dir"] / "task-example1.json"
+    inst = task.Task.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Task" == inst.resource_type
 
-    def testTask4(self):
-        inst = self.instantiate_from("task-example2.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Task instance")
-        self.implTask4(inst)
+    impl_task_2(inst)
 
-        js = inst.as_json()
-        self.assertEqual("Task", js["resourceType"])
-        inst2 = task.Task(js)
-        self.implTask4(inst2)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Task" == data["resourceType"]
 
-    def implTask4(self, inst):
-        self.assertEqual(
-            inst.authoredOn.date, FHIRDate("2016-10-31T08:45:05+10:00").date
-        )
-        self.assertEqual(inst.authoredOn.as_json(), "2016-10-31T08:45:05+10:00")
-        self.assertEqual(
-            force_bytes(inst.businessStatus.text), force_bytes("waiting for patient")
-        )
-        self.assertEqual(
-            force_bytes(inst.code.text), force_bytes("Specimen Collection")
-        )
-        self.assertEqual(
-            inst.executionPeriod.start.date, FHIRDate("2016-10-31T08:45:05+10:00").date
-        )
-        self.assertEqual(
-            inst.executionPeriod.start.as_json(), "2016-10-31T08:45:05+10:00"
-        )
-        self.assertEqual(
-            force_bytes(inst.groupIdentifier.system),
-            force_bytes("http:/goodhealth.org/accession/identifiers"),
-        )
-        self.assertEqual(force_bytes(inst.groupIdentifier.use), force_bytes("official"))
-        self.assertEqual(
-            force_bytes(inst.groupIdentifier.value), force_bytes("G20170201-001")
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("example2"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http:/goodhealth.org/identifiers"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].use), force_bytes("official"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].value), force_bytes("20170201-002")
-        )
-        self.assertEqual(force_bytes(inst.intent), force_bytes("filler-order"))
-        self.assertEqual(
-            inst.lastModified.date, FHIRDate("2016-10-31T09:45:05+10:00").date
-        )
-        self.assertEqual(inst.lastModified.as_json(), "2016-10-31T09:45:05+10:00")
-        self.assertEqual(
-            force_bytes(inst.performerType[0].coding[0].code), force_bytes("performer")
-        )
-        self.assertEqual(
-            force_bytes(inst.performerType[0].coding[0].display),
-            force_bytes("Performer"),
-        )
-        self.assertEqual(
-            force_bytes(inst.performerType[0].coding[0].system),
-            force_bytes("http://hl7.org/fhir/task-performer-type"),
-        )
-        self.assertEqual(
-            force_bytes(inst.performerType[0].text), force_bytes("Performer")
-        )
-        self.assertEqual(force_bytes(inst.priority), force_bytes("routine"))
-        self.assertEqual(
-            inst.restriction.period.end.date, FHIRDate("2016-11-01T09:45:05+10:00").date
-        )
-        self.assertEqual(
-            inst.restriction.period.end.as_json(), "2016-11-01T09:45:05+10:00"
-        )
-        self.assertEqual(inst.restriction.repetitions, 1)
-        self.assertEqual(force_bytes(inst.status), force_bytes("accepted"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    inst2 = task.Task(**data)
+    impl_task_2(inst2)
 
-    def testTask5(self):
-        inst = self.instantiate_from("task-example5.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Task instance")
-        self.implTask5(inst)
 
-        js = inst.as_json()
-        self.assertEqual("Task", js["resourceType"])
-        inst2 = task.Task(js)
-        self.implTask5(inst2)
+def impl_task_3(inst):
+    assert inst.authoredOn == fhirtypes.DateTime.validate("2016-03-10T22:39:32-04:00")
+    assert inst.code.text == "Refill Request"
+    assert inst.focus.reference == "MedicationRequest/medrx002"
+    assert inst.for_fhir.reference == "Patient/f001"
+    assert inst.id == "example3"
+    assert inst.intent == "order"
+    assert inst.lastModified == fhirtypes.DateTime.validate("2016-03-10T22:39:32-04:00")
+    assert inst.owner.reference == "Practitioner/example"
+    assert inst.requester.agent.reference == "Patient/example"
+    assert inst.status == "draft"
+    assert inst.text.status == "generated"
 
-    def implTask5(self, inst):
-        self.assertEqual(
-            inst.authoredOn.date, FHIRDate("2016-10-31T08:25:05+10:00").date
-        )
-        self.assertEqual(inst.authoredOn.as_json(), "2016-10-31T08:25:05+10:00")
-        self.assertEqual(
-            force_bytes(inst.businessStatus.text),
-            force_bytes("specimen received, test in progress"),
-        )
-        self.assertEqual(force_bytes(inst.code.text), force_bytes("Lipid Panel"))
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes(
-                "Create order for getting specimen, Set up inhouse testing,  generate order for any sendouts and submit with specimen"
-            ),
-        )
-        self.assertEqual(
-            inst.executionPeriod.start.date, FHIRDate("2016-10-31T08:25:05+10:00").date
-        )
-        self.assertEqual(
-            inst.executionPeriod.start.as_json(), "2016-10-31T08:25:05+10:00"
-        )
-        self.assertEqual(
-            force_bytes(inst.groupIdentifier.system),
-            force_bytes("http:/goodhealth.org/accession/identifiers"),
-        )
-        self.assertEqual(force_bytes(inst.groupIdentifier.use), force_bytes("official"))
-        self.assertEqual(
-            force_bytes(inst.groupIdentifier.value), force_bytes("G20170201-001")
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("example5"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http:/goodhealth.org/identifiers"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].use), force_bytes("official"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].value), force_bytes("20170201-001")
-        )
-        self.assertEqual(force_bytes(inst.intent), force_bytes("order"))
-        self.assertEqual(
-            inst.lastModified.date, FHIRDate("2016-10-31T16:45:05+10:00").date
-        )
-        self.assertEqual(inst.lastModified.as_json(), "2016-10-31T16:45:05+10:00")
-        self.assertEqual(
-            force_bytes(inst.output[0].type.text), force_bytes("collected specimen")
-        )
-        self.assertEqual(
-            force_bytes(inst.performerType[0].coding[0].code), force_bytes("performer")
-        )
-        self.assertEqual(
-            force_bytes(inst.performerType[0].coding[0].display),
-            force_bytes("Performer"),
-        )
-        self.assertEqual(
-            force_bytes(inst.performerType[0].coding[0].system),
-            force_bytes("http://hl7.org/fhir/task-performer-type"),
-        )
-        self.assertEqual(
-            force_bytes(inst.performerType[0].text), force_bytes("Performer")
-        )
-        self.assertEqual(force_bytes(inst.priority), force_bytes("routine"))
-        self.assertEqual(
-            force_bytes(inst.reason.text),
-            force_bytes(
-                "The Task.reason should only be included if there is no Task.focus or if it differs from the reason indicated on the focus"
-            ),
-        )
-        self.assertEqual(
-            inst.restriction.period.end.date, FHIRDate("2016-11-02T09:45:05+10:00").date
-        )
-        self.assertEqual(
-            inst.restriction.period.end.as_json(), "2016-11-02T09:45:05+10:00"
-        )
-        self.assertEqual(inst.restriction.repetitions, 1)
-        self.assertEqual(force_bytes(inst.status), force_bytes("in-progress"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 
-    def testTask6(self):
-        inst = self.instantiate_from("task-example4.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Task instance")
-        self.implTask6(inst)
+def test_task_3(base_settings):
+    """No. 3 tests collection for Task.
+    Test File: task-example3.json
+    """
+    filename = base_settings["unittest_data_dir"] / "task-example3.json"
+    inst = task.Task.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Task" == inst.resource_type
 
-        js = inst.as_json()
-        self.assertEqual("Task", js["resourceType"])
-        inst2 = task.Task(js)
-        self.implTask6(inst2)
+    impl_task_3(inst)
 
-    def implTask6(self, inst):
-        self.assertEqual(
-            inst.authoredOn.date, FHIRDate("2016-10-31T08:45:05+10:00").date
-        )
-        self.assertEqual(inst.authoredOn.as_json(), "2016-10-31T08:45:05+10:00")
-        self.assertEqual(
-            force_bytes(inst.code.text), force_bytes("Specimen Collection")
-        )
-        self.assertEqual(
-            inst.executionPeriod.end.date, FHIRDate("2016-10-31T14:45:05+10:00").date
-        )
-        self.assertEqual(
-            inst.executionPeriod.end.as_json(), "2016-10-31T14:45:05+10:00"
-        )
-        self.assertEqual(
-            inst.executionPeriod.start.date, FHIRDate("2016-10-31T08:45:05+10:00").date
-        )
-        self.assertEqual(
-            inst.executionPeriod.start.as_json(), "2016-10-31T08:45:05+10:00"
-        )
-        self.assertEqual(
-            force_bytes(inst.groupIdentifier.system),
-            force_bytes("http:/goodhealth.org/accession/identifiers"),
-        )
-        self.assertEqual(force_bytes(inst.groupIdentifier.use), force_bytes("official"))
-        self.assertEqual(
-            force_bytes(inst.groupIdentifier.value), force_bytes("G20170201-001")
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("example4"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http:/goodhealth.org/identifiers"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].use), force_bytes("official"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].value), force_bytes("20170201-002")
-        )
-        self.assertEqual(force_bytes(inst.intent), force_bytes("filler-order"))
-        self.assertEqual(
-            inst.lastModified.date, FHIRDate("2016-10-31T09:45:05+10:00").date
-        )
-        self.assertEqual(inst.lastModified.as_json(), "2016-10-31T09:45:05+10:00")
-        self.assertEqual(
-            force_bytes(inst.output[0].type.text), force_bytes("collected specimen")
-        )
-        self.assertEqual(
-            force_bytes(inst.performerType[0].coding[0].code), force_bytes("performer")
-        )
-        self.assertEqual(
-            force_bytes(inst.performerType[0].coding[0].display),
-            force_bytes("Performer"),
-        )
-        self.assertEqual(
-            force_bytes(inst.performerType[0].coding[0].system),
-            force_bytes("http://hl7.org/fhir/task-performer-type"),
-        )
-        self.assertEqual(
-            force_bytes(inst.performerType[0].text), force_bytes("Performer")
-        )
-        self.assertEqual(force_bytes(inst.priority), force_bytes("routine"))
-        self.assertEqual(
-            inst.restriction.period.end.date, FHIRDate("2016-11-01T09:45:05+10:00").date
-        )
-        self.assertEqual(
-            inst.restriction.period.end.as_json(), "2016-11-01T09:45:05+10:00"
-        )
-        self.assertEqual(inst.restriction.repetitions, 1)
-        self.assertEqual(force_bytes(inst.status), force_bytes("completed"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Task" == data["resourceType"]
+
+    inst2 = task.Task(**data)
+    impl_task_3(inst2)
+
+
+def impl_task_4(inst):
+    assert inst.authoredOn == fhirtypes.DateTime.validate("2016-10-31T08:45:05+10:00")
+    assert inst.businessStatus.text == "waiting for patient"
+    assert inst.code.text == "Specimen Collection"
+    assert inst.context.display == "Example In-Patient Encounter"
+    assert inst.context.reference == "Encounter/example"
+    assert inst.executionPeriod.start == fhirtypes.DateTime.validate(
+        "2016-10-31T08:45:05+10:00"
+    )
+    assert inst.focus.display == "BloodDraw ProcedureRequest"
+    assert inst.for_fhir.display == "Peter James Chalmers"
+    assert inst.for_fhir.reference == "Patient/example"
+    assert inst.groupIdentifier.system == "http:/goodhealth.org/accession/identifiers"
+    assert inst.groupIdentifier.use == "official"
+    assert inst.groupIdentifier.value == "G20170201-001"
+    assert inst.id == "example2"
+    assert inst.identifier[0].system == "http:/goodhealth.org/identifiers"
+    assert inst.identifier[0].use == "official"
+    assert inst.identifier[0].value == "20170201-002"
+    assert inst.intent == "filler-order"
+    assert inst.lastModified == fhirtypes.DateTime.validate("2016-10-31T09:45:05+10:00")
+    assert inst.owner.display == "Clinical Laboratory @ Acme Hospital"
+    assert inst.owner.reference == "Organization/1832473e-2fe0-452d-abe9-3cdb9879522f"
+    assert inst.partOf[0].display == "Lipid Panel"
+    assert inst.partOf[0].reference == "Task/example1"
+    assert inst.performerType[0].coding[0].code == "performer"
+    assert inst.performerType[0].coding[0].display == "Performer"
+    assert (
+        inst.performerType[0].coding[0].system
+        == "http://hl7.org/fhir/task-performer-type"
+    )
+    assert inst.performerType[0].text == "Performer"
+    assert inst.priority == "routine"
+    assert inst.requester.agent.display == "Clinical Laboratory @ Acme Hospital"
+    assert (
+        inst.requester.agent.reference
+        == "Organization/1832473e-2fe0-452d-abe9-3cdb9879522f"
+    )
+    assert inst.restriction.period.end == fhirtypes.DateTime.validate(
+        "2016-11-01T09:45:05+10:00"
+    )
+    assert inst.restriction.repetitions == 1
+    assert inst.status == "accepted"
+    assert inst.text.status == "generated"
+
+
+def test_task_4(base_settings):
+    """No. 4 tests collection for Task.
+    Test File: task-example2.json
+    """
+    filename = base_settings["unittest_data_dir"] / "task-example2.json"
+    inst = task.Task.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Task" == inst.resource_type
+
+    impl_task_4(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Task" == data["resourceType"]
+
+    inst2 = task.Task(**data)
+    impl_task_4(inst2)
+
+
+def impl_task_5(inst):
+    assert inst.authoredOn == fhirtypes.DateTime.validate("2016-10-31T08:25:05+10:00")
+    assert inst.basedOn[0].display == "General Wellness Careplan"
+    assert inst.businessStatus.text == "specimen received, test in progress"
+    assert inst.code.text == "Lipid Panel"
+    assert inst.context.display == "Example In-Patient Encounter"
+    assert inst.context.reference == "Encounter/example"
+    assert (
+        inst.description
+        == "Create order for getting specimen, Set up inhouse testing,  generate order for any sendouts and submit with specimen"
+    )
+    assert inst.executionPeriod.start == fhirtypes.DateTime.validate(
+        "2016-10-31T08:25:05+10:00"
+    )
+    assert inst.focus.display == "Lipid Panel Request"
+    assert inst.focus.reference == "ProcedureRequest/lipid"
+    assert inst.for_fhir.display == "Peter James Chalmers"
+    assert inst.for_fhir.reference == "Patient/example"
+    assert inst.groupIdentifier.system == "http:/goodhealth.org/accession/identifiers"
+    assert inst.groupIdentifier.use == "official"
+    assert inst.groupIdentifier.value == "G20170201-001"
+    assert inst.id == "example5"
+    assert inst.identifier[0].system == "http:/goodhealth.org/identifiers"
+    assert inst.identifier[0].use == "official"
+    assert inst.identifier[0].value == "20170201-001"
+    assert inst.intent == "order"
+    assert inst.lastModified == fhirtypes.DateTime.validate("2016-10-31T16:45:05+10:00")
+    assert inst.output[0].type.text == "collected specimen"
+    assert inst.output[0].valueReference.reference == "Specimen/101"
+    assert inst.owner.display == "Clinical Laboratory @ Acme Hospital"
+    assert inst.owner.reference == "Organization/1832473e-2fe0-452d-abe9-3cdb9879522f"
+    assert inst.performerType[0].coding[0].code == "performer"
+    assert inst.performerType[0].coding[0].display == "Performer"
+    assert (
+        inst.performerType[0].coding[0].system
+        == "http://hl7.org/fhir/task-performer-type"
+    )
+    assert inst.performerType[0].text == "Performer"
+    assert inst.priority == "routine"
+    assert (
+        inst.reason.text
+        == "The Task.reason should only be included if there is no Task.focus or if it differs from the reason indicated on the focus"
+    )
+    assert inst.requester.agent.display == "Dr Adam Careful"
+    assert inst.requester.agent.reference == "Practitioner/example"
+    assert inst.requester.onBehalfOf.display == "Good Health Clinic"
+    assert inst.requester.onBehalfOf.reference == "Organization/2.16.840.1.113883.19.5"
+    assert inst.restriction.period.end == fhirtypes.DateTime.validate(
+        "2016-11-02T09:45:05+10:00"
+    )
+    assert inst.restriction.repetitions == 1
+    assert inst.status == "in-progress"
+    assert inst.text.status == "generated"
+
+
+def test_task_5(base_settings):
+    """No. 5 tests collection for Task.
+    Test File: task-example5.json
+    """
+    filename = base_settings["unittest_data_dir"] / "task-example5.json"
+    inst = task.Task.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Task" == inst.resource_type
+
+    impl_task_5(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Task" == data["resourceType"]
+
+    inst2 = task.Task(**data)
+    impl_task_5(inst2)
+
+
+def impl_task_6(inst):
+    assert inst.authoredOn == fhirtypes.DateTime.validate("2016-10-31T08:45:05+10:00")
+    assert inst.code.text == "Specimen Collection"
+    assert inst.context.display == "Example In-Patient Encounter"
+    assert inst.context.reference == "Encounter/example"
+    assert inst.executionPeriod.end == fhirtypes.DateTime.validate(
+        "2016-10-31T14:45:05+10:00"
+    )
+    assert inst.executionPeriod.start == fhirtypes.DateTime.validate(
+        "2016-10-31T08:45:05+10:00"
+    )
+    assert inst.focus.display == "BloodDraw ProcedureRequest"
+    assert inst.for_fhir.display == "Peter James Chalmers"
+    assert inst.for_fhir.reference == "Patient/example"
+    assert inst.groupIdentifier.system == "http:/goodhealth.org/accession/identifiers"
+    assert inst.groupIdentifier.use == "official"
+    assert inst.groupIdentifier.value == "G20170201-001"
+    assert inst.id == "example4"
+    assert inst.identifier[0].system == "http:/goodhealth.org/identifiers"
+    assert inst.identifier[0].use == "official"
+    assert inst.identifier[0].value == "20170201-002"
+    assert inst.intent == "filler-order"
+    assert inst.lastModified == fhirtypes.DateTime.validate("2016-10-31T09:45:05+10:00")
+    assert inst.output[0].type.text == "collected specimen"
+    assert inst.output[0].valueReference.reference == "Specimen/101"
+    assert inst.owner.display == "Luigi Maas"
+    assert inst.owner.reference == "Practitioner/f202"
+    assert inst.partOf[0].display == "Lipid Panel"
+    assert inst.partOf[0].reference == "Task/example1"
+    assert inst.performerType[0].coding[0].code == "performer"
+    assert inst.performerType[0].coding[0].display == "Performer"
+    assert (
+        inst.performerType[0].coding[0].system
+        == "http://hl7.org/fhir/task-performer-type"
+    )
+    assert inst.performerType[0].text == "Performer"
+    assert inst.priority == "routine"
+    assert inst.requester.agent.display == "Clinical Laboratory @ Acme Hospital"
+    assert (
+        inst.requester.agent.reference
+        == "Organization/1832473e-2fe0-452d-abe9-3cdb9879522f"
+    )
+    assert inst.restriction.period.end == fhirtypes.DateTime.validate(
+        "2016-11-01T09:45:05+10:00"
+    )
+    assert inst.restriction.repetitions == 1
+    assert inst.status == "completed"
+    assert inst.text.status == "generated"
+
+
+def test_task_6(base_settings):
+    """No. 6 tests collection for Task.
+    Test File: task-example4.json
+    """
+    filename = base_settings["unittest_data_dir"] / "task-example4.json"
+    inst = task.Task.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Task" == inst.resource_type
+
+    impl_task_6(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Task" == data["resourceType"]
+
+    inst2 = task.Task(**data)
+    impl_task_6(inst2)

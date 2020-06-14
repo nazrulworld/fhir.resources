@@ -6,16 +6,15 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class MessageHeader(domainresource.DomainResource):
     """ A resource that describes a message that is exchanged between systems.
-
     The header for a message exchange that is either requesting or responding
     to an action.  The reference(s) that are the subject of the action as well
     as other information related to the action are typically transmitted in a
@@ -23,353 +22,190 @@ class MessageHeader(domainresource.DomainResource):
     in the bundle.
     """
 
-    resource_type = "MessageHeader"
+    resource_type = Field("MessageHeader", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    author: fhirtypes.ReferenceType = Field(
+        None,
+        alias="author",
+        title="Type `Reference` referencing `Practitioner` (represented as `dict` in JSON)",
+        description="The source of the decision",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    destination: ListType[fhirtypes.MessageHeaderDestinationType] = Field(
+        None,
+        alias="destination",
+        title="List of `MessageHeaderDestination` items (represented as `dict` in JSON)",
+        description="Message destination application(s)",
+    )
 
-        self.author = None
-        """ The source of the decision.
-        Type `FHIRReference` referencing `['Practitioner']` (represented as `dict` in JSON). """
+    enterer: fhirtypes.ReferenceType = Field(
+        None,
+        alias="enterer",
+        title="Type `Reference` referencing `Practitioner` (represented as `dict` in JSON)",
+        description="The source of the data entry",
+    )
 
-        self.destination = None
-        """ Message destination application(s).
-        List of `MessageHeaderDestination` items (represented as `dict` in JSON). """
+    event: fhirtypes.CodingType = Field(
+        ...,
+        alias="event",
+        title="Type `Coding` (represented as `dict` in JSON)",
+        description="Code for the event this message represents",
+    )
 
-        self.enterer = None
-        """ The source of the data entry.
-        Type `FHIRReference` referencing `['Practitioner']` (represented as `dict` in JSON). """
+    focus: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="focus",
+        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        description="The actual content of the message",
+    )
 
-        self.event = None
-        """ Code for the event this message represents.
-        Type `Coding` (represented as `dict` in JSON). """
+    reason: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="reason",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Cause of event",
+    )
 
-        self.focus = None
-        """ The actual content of the message.
-        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
+    receiver: fhirtypes.ReferenceType = Field(
+        None,
+        alias="receiver",
+        title="Type `Reference` referencing `Practitioner, Organization` (represented as `dict` in JSON)",
+        description='Intended "real-world" recipient for the data',
+    )
 
-        self.reason = None
-        """ Cause of event.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    response: fhirtypes.MessageHeaderResponseType = Field(
+        None,
+        alias="response",
+        title="Type `MessageHeaderResponse` (represented as `dict` in JSON)",
+        description="If this is a reply to prior message",
+    )
 
-        self.receiver = None
-        """ Intended "real-world" recipient for the data.
-        Type `FHIRReference` referencing `['Practitioner'], ['Organization']` (represented as `dict` in JSON). """
+    responsible: fhirtypes.ReferenceType = Field(
+        None,
+        alias="responsible",
+        title="Type `Reference` referencing `Practitioner, Organization` (represented as `dict` in JSON)",
+        description="Final responsibility for event",
+    )
 
-        self.response = None
-        """ If this is a reply to prior message.
-        Type `MessageHeaderResponse` (represented as `dict` in JSON). """
+    sender: fhirtypes.ReferenceType = Field(
+        None,
+        alias="sender",
+        title="Type `Reference` referencing `Practitioner, Organization` (represented as `dict` in JSON)",
+        description="Real world sender of the message",
+    )
 
-        self.responsible = None
-        """ Final responsibility for event.
-        Type `FHIRReference` referencing `['Practitioner'], ['Organization']` (represented as `dict` in JSON). """
+    source: fhirtypes.MessageHeaderSourceType = Field(
+        ...,
+        alias="source",
+        title="Type `MessageHeaderSource` (represented as `dict` in JSON)",
+        description="Message source application",
+    )
 
-        self.sender = None
-        """ Real world sender of the message.
-        Type `FHIRReference` referencing `['Practitioner'], ['Organization']` (represented as `dict` in JSON). """
-
-        self.source = None
-        """ Message source application.
-        Type `MessageHeaderSource` (represented as `dict` in JSON). """
-
-        self.timestamp = None
-        """ Time that the message was sent.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        super(MessageHeader, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(MessageHeader, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "author",
-                    "author",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "destination",
-                    "destination",
-                    MessageHeaderDestination,
-                    "MessageHeaderDestination",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "enterer",
-                    "enterer",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("event", "event", coding.Coding, "Coding", False, None, True),
-                (
-                    "focus",
-                    "focus",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "reason",
-                    "reason",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "receiver",
-                    "receiver",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "response",
-                    "response",
-                    MessageHeaderResponse,
-                    "MessageHeaderResponse",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "responsible",
-                    "responsible",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "sender",
-                    "sender",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "source",
-                    "source",
-                    MessageHeaderSource,
-                    "MessageHeaderSource",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "timestamp",
-                    "timestamp",
-                    fhirdate.FHIRDate,
-                    "instant",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
+    timestamp: fhirtypes.Instant = Field(
+        ...,
+        alias="timestamp",
+        title="Type `Instant` (represented as `dict` in JSON)",
+        description="Time that the message was sent",
+    )
 
 
 class MessageHeaderDestination(backboneelement.BackboneElement):
     """ Message destination application(s).
-
     The destination application which the message is intended for.
     """
 
-    resource_type = "MessageHeaderDestination"
+    resource_type = Field("MessageHeaderDestination", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    endpoint: fhirtypes.Uri = Field(
+        ...,
+        alias="endpoint",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Actual destination address or id",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    name: fhirtypes.String = Field(
+        None,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name of system",
+    )
 
-        self.endpoint = None
-        """ Actual destination address or id.
-        Type `str`. """
-
-        self.name = None
-        """ Name of system.
-        Type `str`. """
-
-        self.target = None
-        """ Particular delivery destination within the destination.
-        Type `FHIRReference` referencing `['Device']` (represented as `dict` in JSON). """
-
-        super(MessageHeaderDestination, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(MessageHeaderDestination, self).elementProperties()
-        js.extend(
-            [
-                ("endpoint", "endpoint", str, "uri", False, None, True),
-                ("name", "name", str, "string", False, None, False),
-                (
-                    "target",
-                    "target",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    target: fhirtypes.ReferenceType = Field(
+        None,
+        alias="target",
+        title="Type `Reference` referencing `Device` (represented as `dict` in JSON)",
+        description="Particular delivery destination within the destination",
+    )
 
 
 class MessageHeaderResponse(backboneelement.BackboneElement):
     """ If this is a reply to prior message.
-
     Information about the message that this message is a response to.  Only
     present if this message is a response.
     """
 
-    resource_type = "MessageHeaderResponse"
+    resource_type = Field("MessageHeaderResponse", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    code: fhirtypes.Code = Field(
+        ...,
+        alias="code",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="ok | transient-error | fatal-error",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    details: fhirtypes.ReferenceType = Field(
+        None,
+        alias="details",
+        title="Type `Reference` referencing `OperationOutcome` (represented as `dict` in JSON)",
+        description="Specific list of hints/warnings/errors",
+    )
 
-        self.code = None
-        """ ok | transient-error | fatal-error.
-        Type `str`. """
-
-        self.details = None
-        """ Specific list of hints/warnings/errors.
-        Type `FHIRReference` referencing `['OperationOutcome']` (represented as `dict` in JSON). """
-
-        self.identifier = None
-        """ Id of original message.
-        Type `str`. """
-
-        super(MessageHeaderResponse, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(MessageHeaderResponse, self).elementProperties()
-        js.extend(
-            [
-                ("code", "code", str, "code", False, None, True),
-                (
-                    "details",
-                    "details",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("identifier", "identifier", str, "id", False, None, True),
-            ]
-        )
-        return js
+    identifier: fhirtypes.Id = Field(
+        ...,
+        alias="identifier",
+        title="Type `Id` (represented as `dict` in JSON)",
+        description="Id of original message",
+    )
 
 
 class MessageHeaderSource(backboneelement.BackboneElement):
     """ Message source application.
-
     The source application from which this message originated.
     """
 
-    resource_type = "MessageHeaderSource"
+    resource_type = Field("MessageHeaderSource", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    contact: fhirtypes.ContactPointType = Field(
+        None,
+        alias="contact",
+        title="Type `ContactPoint` (represented as `dict` in JSON)",
+        description="Human contact for problems",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    endpoint: fhirtypes.Uri = Field(
+        ...,
+        alias="endpoint",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Actual message source address or id",
+    )
 
-        self.contact = None
-        """ Human contact for problems.
-        Type `ContactPoint` (represented as `dict` in JSON). """
+    name: fhirtypes.String = Field(
+        None,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name of system",
+    )
 
-        self.endpoint = None
-        """ Actual message source address or id.
-        Type `str`. """
+    software: fhirtypes.String = Field(
+        None,
+        alias="software",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name of software running the system",
+    )
 
-        self.name = None
-        """ Name of system.
-        Type `str`. """
-
-        self.software = None
-        """ Name of software running the system.
-        Type `str`. """
-
-        self.version = None
-        """ Version of software running.
-        Type `str`. """
-
-        super(MessageHeaderSource, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(MessageHeaderSource, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "contact",
-                    "contact",
-                    contactpoint.ContactPoint,
-                    "ContactPoint",
-                    False,
-                    None,
-                    False,
-                ),
-                ("endpoint", "endpoint", str, "uri", False, None, True),
-                ("name", "name", str, "string", False, None, False),
-                ("software", "software", str, "string", False, None, False),
-                ("version", "version", str, "string", False, None, False),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import coding
-except ImportError:
-    coding = sys.modules[__package__ + ".coding"]
-try:
-    from . import contactpoint
-except ImportError:
-    contactpoint = sys.modules[__package__ + ".contactpoint"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
+    version: fhirtypes.String = Field(
+        None,
+        alias="version",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Version of software running",
+    )

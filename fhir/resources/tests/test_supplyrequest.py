@@ -6,78 +6,53 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import supplyrequest
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class SupplyRequestTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("SupplyRequest", js["resourceType"])
-        return supplyrequest.SupplyRequest(js)
+def impl_supplyrequest_1(inst):
+    assert inst.authoredOn == fhirtypes.DateTime.validate("2016-12-31")
+    assert inst.category.coding[0].code == "central"
+    assert inst.category.coding[0].display == "Central Stock Resupply"
+    assert inst.deliverFrom.display == "Location 1"
+    assert inst.deliverTo.display == "GoodHealth Clinic Receiving"
+    assert inst.id == "simpleorder"
+    assert inst.identifier[0].value == "Order10284"
+    assert inst.itemCodeableConcept.coding[0].code == "BlueTubes"
+    assert inst.itemCodeableConcept.coding[0].display == "Blood collect tubes blue cap"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.occurrenceDateTime == fhirtypes.DateTime.validate("2016-12-31")
+    assert inst.priority == "asap"
+    assert float(inst.quantity.value) == float(10)
+    assert inst.reasonCode[0].coding[0].code == "stock_low"
+    assert inst.reasonCode[0].coding[0].display == "Refill due to low stock"
+    assert inst.requester.display == "Henry Seven"
+    assert inst.status == "active"
+    assert inst.supplier[0].display == "Vendor1"
+    assert inst.text.status == "generated"
 
-    def testSupplyRequest1(self):
-        inst = self.instantiate_from("supplyrequest-example-simpleorder.json")
-        self.assertIsNotNone(inst, "Must have instantiated a SupplyRequest instance")
-        self.implSupplyRequest1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("SupplyRequest", js["resourceType"])
-        inst2 = supplyrequest.SupplyRequest(js)
-        self.implSupplyRequest1(inst2)
+def test_supplyrequest_1(base_settings):
+    """No. 1 tests collection for SupplyRequest.
+    Test File: supplyrequest-example-simpleorder.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "supplyrequest-example-simpleorder.json"
+    )
+    inst = supplyrequest.SupplyRequest.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "SupplyRequest" == inst.resource_type
 
-    def implSupplyRequest1(self, inst):
-        self.assertEqual(inst.authoredOn.date, FHIRDate("2016-12-31").date)
-        self.assertEqual(inst.authoredOn.as_json(), "2016-12-31")
-        self.assertEqual(
-            force_bytes(inst.category.coding[0].code), force_bytes("central")
-        )
-        self.assertEqual(
-            force_bytes(inst.category.coding[0].display),
-            force_bytes("Central Stock Resupply"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("simpleorder"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].value), force_bytes("Order10284")
-        )
-        self.assertEqual(
-            force_bytes(inst.itemCodeableConcept.coding[0].code),
-            force_bytes("BlueTubes"),
-        )
-        self.assertEqual(
-            force_bytes(inst.itemCodeableConcept.coding[0].display),
-            force_bytes("Blood collect tubes blue cap"),
-        )
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(inst.occurrenceDateTime.date, FHIRDate("2016-12-31").date)
-        self.assertEqual(inst.occurrenceDateTime.as_json(), "2016-12-31")
-        self.assertEqual(force_bytes(inst.priority), force_bytes("asap"))
-        self.assertEqual(inst.quantity.value, 10)
-        self.assertEqual(
-            force_bytes(inst.reasonCode[0].coding[0].code), force_bytes("stock_low")
-        )
-        self.assertEqual(
-            force_bytes(inst.reasonCode[0].coding[0].display),
-            force_bytes("Refill due to low stock"),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    impl_supplyrequest_1(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "SupplyRequest" == data["resourceType"]
+
+    inst2 = supplyrequest.SupplyRequest(**data)
+    impl_supplyrequest_1(inst2)

@@ -6,572 +6,280 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class MeasureReport(domainresource.DomainResource):
     """ Results of a measure evaluation.
-
     The MeasureReport resource contains the results of the calculation of a
     measure; and optionally a reference to the resources involved in that
     calculation.
     """
 
-    resource_type = "MeasureReport"
+    resource_type = Field("MeasureReport", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    date: fhirtypes.DateTime = Field(
+        None,
+        alias="date",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="When the report was generated",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    evaluatedResource: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="evaluatedResource",
+        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        description="What data was used to calculate the measure score",
+    )
 
-        self.date = None
-        """ When the report was generated.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    group: ListType[fhirtypes.MeasureReportGroupType] = Field(
+        None,
+        alias="group",
+        title="List of `MeasureReportGroup` items (represented as `dict` in JSON)",
+        description="Measure results for each group",
+    )
 
-        self.evaluatedResource = None
-        """ What data was used to calculate the measure score.
-        List of `FHIRReference` items referencing `['Resource']` (represented as `dict` in JSON). """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Additional identifier for the MeasureReport",
+    )
 
-        self.group = None
-        """ Measure results for each group.
-        List of `MeasureReportGroup` items (represented as `dict` in JSON). """
+    improvementNotation: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="improvementNotation",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="increase | decrease",
+    )
 
-        self.identifier = None
-        """ Additional identifier for the MeasureReport.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    measure: fhirtypes.Canonical = Field(
+        ...,
+        alias="measure",
+        title="Type `Canonical` referencing `Measure` (represented as `dict` in JSON)",
+        description="What measure was calculated",
+    )
 
-        self.improvementNotation = None
-        """ increase | decrease.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    period: fhirtypes.PeriodType = Field(
+        ...,
+        alias="period",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="What period the report covers",
+    )
 
-        self.measure = None
-        """ What measure was calculated.
-        Type `str` referencing `['Measure']`. """
+    reporter: fhirtypes.ReferenceType = Field(
+        None,
+        alias="reporter",
+        title="Type `Reference` referencing `Practitioner, PractitionerRole, Location, Organization` (represented as `dict` in JSON)",
+        description="Who is reporting the data",
+    )
 
-        self.period = None
-        """ What period the report covers.
-        Type `Period` (represented as `dict` in JSON). """
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="complete | pending | error",
+    )
 
-        self.reporter = None
-        """ Who is reporting the data.
-        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'Location', 'Organization']` (represented as `dict` in JSON). """
+    subject: fhirtypes.ReferenceType = Field(
+        None,
+        alias="subject",
+        title="Type `Reference` referencing `Patient, Practitioner, PractitionerRole, Location, Device, RelatedPerson, Group` (represented as `dict` in JSON)",
+        description="What individual(s) the report is for",
+    )
 
-        self.status = None
-        """ complete | pending | error.
-        Type `str`. """
-
-        self.subject = None
-        """ What individual(s) the report is for.
-        Type `FHIRReference` referencing `['Patient', 'Practitioner', 'PractitionerRole', 'Location', 'Device', 'RelatedPerson', 'Group']` (represented as `dict` in JSON). """
-
-        self.type = None
-        """ individual | subject-list | summary | data-collection.
-        Type `str`. """
-
-        super(MeasureReport, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(MeasureReport, self).elementProperties()
-        js.extend(
-            [
-                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-                (
-                    "evaluatedResource",
-                    "evaluatedResource",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "group",
-                    "group",
-                    MeasureReportGroup,
-                    "MeasureReportGroup",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "improvementNotation",
-                    "improvementNotation",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("measure", "measure", str, "canonical", False, None, True),
-                ("period", "period", period.Period, "Period", False, None, True),
-                (
-                    "reporter",
-                    "reporter",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("status", "status", str, "code", False, None, True),
-                (
-                    "subject",
-                    "subject",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("type", "type", str, "code", False, None, True),
-            ]
-        )
-        return js
+    type: fhirtypes.Code = Field(
+        ...,
+        alias="type",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="individual | subject-list | summary | data-collection",
+    )
 
 
 class MeasureReportGroup(backboneelement.BackboneElement):
     """ Measure results for each group.
-
     The results of the calculation, one for each population group in the
     measure.
     """
 
-    resource_type = "MeasureReportGroup"
+    resource_type = Field("MeasureReportGroup", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    code: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="code",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Meaning of the group",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    measureScore: fhirtypes.QuantityType = Field(
+        None,
+        alias="measureScore",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="What score this group achieved",
+    )
 
-        self.code = None
-        """ Meaning of the group.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    population: ListType[fhirtypes.MeasureReportGroupPopulationType] = Field(
+        None,
+        alias="population",
+        title="List of `MeasureReportGroupPopulation` items (represented as `dict` in JSON)",
+        description="The populations in the group",
+    )
 
-        self.measureScore = None
-        """ What score this group achieved.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        self.population = None
-        """ The populations in the group.
-        List of `MeasureReportGroupPopulation` items (represented as `dict` in JSON). """
-
-        self.stratifier = None
-        """ Stratification results.
-        List of `MeasureReportGroupStratifier` items (represented as `dict` in JSON). """
-
-        super(MeasureReportGroup, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(MeasureReportGroup, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "code",
-                    "code",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "measureScore",
-                    "measureScore",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "population",
-                    "population",
-                    MeasureReportGroupPopulation,
-                    "MeasureReportGroupPopulation",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "stratifier",
-                    "stratifier",
-                    MeasureReportGroupStratifier,
-                    "MeasureReportGroupStratifier",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    stratifier: ListType[fhirtypes.MeasureReportGroupStratifierType] = Field(
+        None,
+        alias="stratifier",
+        title="List of `MeasureReportGroupStratifier` items (represented as `dict` in JSON)",
+        description="Stratification results",
+    )
 
 
 class MeasureReportGroupPopulation(backboneelement.BackboneElement):
     """ The populations in the group.
-
     The populations that make up the population group, one for each type of
     population appropriate for the measure.
     """
 
-    resource_type = "MeasureReportGroupPopulation"
+    resource_type = Field("MeasureReportGroupPopulation", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    code: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="code",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="initial-population | numerator | numerator-exclusion | denominator | denominator-exclusion | denominator-exception | measure-population | measure-population-exclusion | measure-observation",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    count: fhirtypes.Integer = Field(
+        None,
+        alias="count",
+        title="Type `Integer` (represented as `dict` in JSON)",
+        description="Size of the population",
+    )
 
-        self.code = None
-        """ initial-population | numerator | numerator-exclusion | denominator
-        | denominator-exclusion | denominator-exception | measure-
-        population | measure-population-exclusion | measure-observation.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.count = None
-        """ Size of the population.
-        Type `int`. """
-
-        self.subjectResults = None
-        """ For subject-list reports, the subject results in this population.
-        Type `FHIRReference` referencing `['List']` (represented as `dict` in JSON). """
-
-        super(MeasureReportGroupPopulation, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(MeasureReportGroupPopulation, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "code",
-                    "code",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("count", "count", int, "integer", False, None, False),
-                (
-                    "subjectResults",
-                    "subjectResults",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    subjectResults: fhirtypes.ReferenceType = Field(
+        None,
+        alias="subjectResults",
+        title="Type `Reference` referencing `List` (represented as `dict` in JSON)",
+        description="For subject-list reports, the subject results in this population",
+    )
 
 
 class MeasureReportGroupStratifier(backboneelement.BackboneElement):
     """ Stratification results.
-
     When a measure includes multiple stratifiers, there will be a stratifier
     group for each stratifier defined by the measure.
     """
 
-    resource_type = "MeasureReportGroupStratifier"
+    resource_type = Field("MeasureReportGroupStratifier", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    code: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="code",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="What stratifier of the group",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.code = None
-        """ What stratifier of the group.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.stratum = None
-        """ Stratum results, one for each unique value, or set of values, in
-        the stratifier, or stratifier components.
-        List of `MeasureReportGroupStratifierStratum` items (represented as `dict` in JSON). """
-
-        super(MeasureReportGroupStratifier, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(MeasureReportGroupStratifier, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "code",
-                    "code",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "stratum",
-                    "stratum",
-                    MeasureReportGroupStratifierStratum,
-                    "MeasureReportGroupStratifierStratum",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    stratum: ListType[fhirtypes.MeasureReportGroupStratifierStratumType] = Field(
+        None,
+        alias="stratum",
+        title="List of `MeasureReportGroupStratifierStratum` items (represented as `dict` in JSON)",
+        description="Stratum results, one for each unique value, or set of values, in the stratifier, or stratifier components",
+    )
 
 
 class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
     """ Stratum results, one for each unique value, or set of values, in the
     stratifier, or stratifier components.
-
     This element contains the results for a single stratum within the
     stratifier. For example, when stratifying on administrative gender, there
     will be four strata, one for each possible gender value.
     """
 
-    resource_type = "MeasureReportGroupStratifierStratum"
+    resource_type = Field("MeasureReportGroupStratifierStratum", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    component: ListType[
+        fhirtypes.MeasureReportGroupStratifierStratumComponentType
+    ] = Field(
+        None,
+        alias="component",
+        title="List of `MeasureReportGroupStratifierStratumComponent` items (represented as `dict` in JSON)",
+        description="Stratifier component values",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    measureScore: fhirtypes.QuantityType = Field(
+        None,
+        alias="measureScore",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="What score this stratum achieved",
+    )
 
-        self.component = None
-        """ Stratifier component values.
-        List of `MeasureReportGroupStratifierStratumComponent` items (represented as `dict` in JSON). """
+    population: ListType[
+        fhirtypes.MeasureReportGroupStratifierStratumPopulationType
+    ] = Field(
+        None,
+        alias="population",
+        title="List of `MeasureReportGroupStratifierStratumPopulation` items (represented as `dict` in JSON)",
+        description="Population results in this stratum",
+    )
 
-        self.measureScore = None
-        """ What score this stratum achieved.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        self.population = None
-        """ Population results in this stratum.
-        List of `MeasureReportGroupStratifierStratumPopulation` items (represented as `dict` in JSON). """
-
-        self.value = None
-        """ The stratum value, e.g. male.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(MeasureReportGroupStratifierStratum, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(MeasureReportGroupStratifierStratum, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "component",
-                    "component",
-                    MeasureReportGroupStratifierStratumComponent,
-                    "MeasureReportGroupStratifierStratumComponent",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "measureScore",
-                    "measureScore",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "population",
-                    "population",
-                    MeasureReportGroupStratifierStratumPopulation,
-                    "MeasureReportGroupStratifierStratumPopulation",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "value",
-                    "value",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    value: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="value",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The stratum value, e.g. male",
+    )
 
 
 class MeasureReportGroupStratifierStratumComponent(backboneelement.BackboneElement):
     """ Stratifier component values.
-
     A stratifier component value.
     """
 
-    resource_type = "MeasureReportGroupStratifierStratumComponent"
+    resource_type = Field("MeasureReportGroupStratifierStratumComponent", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    code: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="code",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="What stratifier component of the group",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.code = None
-        """ What stratifier component of the group.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.value = None
-        """ The stratum component value, e.g. male.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(MeasureReportGroupStratifierStratumComponent, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(
-            MeasureReportGroupStratifierStratumComponent, self
-        ).elementProperties()
-        js.extend(
-            [
-                (
-                    "code",
-                    "code",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "value",
-                    "value",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
+    value: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="value",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The stratum component value, e.g. male",
+    )
 
 
 class MeasureReportGroupStratifierStratumPopulation(backboneelement.BackboneElement):
     """ Population results in this stratum.
-
     The populations that make up the stratum, one for each type of population
     appropriate to the measure.
     """
 
-    resource_type = "MeasureReportGroupStratifierStratumPopulation"
+    resource_type = Field("MeasureReportGroupStratifierStratumPopulation", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    code: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="code",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="initial-population | numerator | numerator-exclusion | denominator | denominator-exclusion | denominator-exception | measure-population | measure-population-exclusion | measure-observation",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    count: fhirtypes.Integer = Field(
+        None,
+        alias="count",
+        title="Type `Integer` (represented as `dict` in JSON)",
+        description="Size of the population",
+    )
 
-        self.code = None
-        """ initial-population | numerator | numerator-exclusion | denominator
-        | denominator-exclusion | denominator-exception | measure-
-        population | measure-population-exclusion | measure-observation.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.count = None
-        """ Size of the population.
-        Type `int`. """
-
-        self.subjectResults = None
-        """ For subject-list reports, the subject results in this population.
-        Type `FHIRReference` referencing `['List']` (represented as `dict` in JSON). """
-
-        super(MeasureReportGroupStratifierStratumPopulation, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(
-            MeasureReportGroupStratifierStratumPopulation, self
-        ).elementProperties()
-        js.extend(
-            [
-                (
-                    "code",
-                    "code",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("count", "count", int, "integer", False, None, False),
-                (
-                    "subjectResults",
-                    "subjectResults",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import period
-except ImportError:
-    period = sys.modules[__package__ + ".period"]
-try:
-    from . import quantity
-except ImportError:
-    quantity = sys.modules[__package__ + ".quantity"]
+    subjectResults: fhirtypes.ReferenceType = Field(
+        None,
+        alias="subjectResults",
+        title="Type `Reference` referencing `List` (represented as `dict` in JSON)",
+        description="For subject-list reports, the subject results in this population",
+    )

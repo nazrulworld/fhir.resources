@@ -6,578 +6,328 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class ExpansionProfile(domainresource.DomainResource):
     """ Defines behaviour and contraints on the ValueSet Expansion operation.
-
     Resource to define constraints on the Expansion of a FHIR ValueSet.
     """
 
-    resource_type = "ExpansionProfile"
+    resource_type = Field("ExpansionProfile", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    activeOnly: bool = Field(
+        None,
+        alias="activeOnly",
+        title="Type `bool`",
+        description="Include or exclude inactive concepts in the expansion",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    contact: ListType[fhirtypes.ContactDetailType] = Field(
+        None,
+        alias="contact",
+        title="List of `ContactDetail` items (represented as `dict` in JSON)",
+        description="Contact details for the publisher",
+    )
 
-        self.activeOnly = None
-        """ Include or exclude inactive concepts in the expansion.
-        Type `bool`. """
+    date: fhirtypes.DateTime = Field(
+        None,
+        alias="date",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Date this was last changed",
+    )
 
-        self.contact = None
-        """ Contact details for the publisher.
-        List of `ContactDetail` items (represented as `dict` in JSON). """
+    description: fhirtypes.Markdown = Field(
+        None,
+        alias="description",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Natural language description of the expansion profile",
+    )
 
-        self.date = None
-        """ Date this was last changed.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    designation: fhirtypes.ExpansionProfileDesignationType = Field(
+        None,
+        alias="designation",
+        title="Type `ExpansionProfileDesignation` (represented as `dict` in JSON)",
+        description="When the expansion profile imposes designation contraints",
+    )
 
-        self.description = None
-        """ Natural language description of the expansion profile.
-        Type `str`. """
+    displayLanguage: fhirtypes.Code = Field(
+        None,
+        alias="displayLanguage",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="Specify the language for the display element of codes in the value set expansion",
+    )
 
-        self.designation = None
-        """ When the expansion profile imposes designation contraints.
-        Type `ExpansionProfileDesignation` (represented as `dict` in JSON). """
+    excludeNested: bool = Field(
+        None,
+        alias="excludeNested",
+        title="Type `bool`",
+        description="Nested codes in the expansion or not",
+    )
 
-        self.displayLanguage = None
-        """ Specify the language for the display element of codes in the value
-        set expansion.
-        Type `str`. """
+    excludeNotForUI: bool = Field(
+        None,
+        alias="excludeNotForUI",
+        title="Type `bool`",
+        description="Include or exclude codes which cannot be rendered in user interfaces in the value set expansion",
+    )
 
-        self.excludeNested = None
-        """ Nested codes in the expansion or not.
-        Type `bool`. """
+    excludePostCoordinated: bool = Field(
+        None,
+        alias="excludePostCoordinated",
+        title="Type `bool`",
+        description="Include or exclude codes which are post coordinated expressions in the value set expansion",
+    )
 
-        self.excludeNotForUI = None
-        """ Include or exclude codes which cannot be rendered in user
-        interfaces in the value set expansion.
-        Type `bool`. """
+    excludedSystem: fhirtypes.ExpansionProfileExcludedSystemType = Field(
+        None,
+        alias="excludedSystem",
+        title="Type `ExpansionProfileExcludedSystem` (represented as `dict` in JSON)",
+        description="Systems/Versions to be exclude",
+    )
 
-        self.excludePostCoordinated = None
-        """ Include or exclude codes which are post coordinated expressions in
-        the value set expansion.
-        Type `bool`. """
+    experimental: bool = Field(
+        None,
+        alias="experimental",
+        title="Type `bool`",
+        description="For testing purposes, not real usage",
+    )
 
-        self.excludedSystem = None
-        """ Systems/Versions to be exclude.
-        Type `ExpansionProfileExcludedSystem` (represented as `dict` in JSON). """
+    fixedVersion: ListType[fhirtypes.ExpansionProfileFixedVersionType] = Field(
+        None,
+        alias="fixedVersion",
+        title="List of `ExpansionProfileFixedVersion` items (represented as `dict` in JSON)",
+        description="Fix use of a code system to a particular version",
+    )
 
-        self.experimental = None
-        """ For testing purposes, not real usage.
-        Type `bool`. """
+    identifier: fhirtypes.IdentifierType = Field(
+        None,
+        alias="identifier",
+        title="Type `Identifier` (represented as `dict` in JSON)",
+        description="Additional identifier for the expansion profile",
+    )
 
-        self.fixedVersion = None
-        """ Fix use of a code system to a particular version.
-        List of `ExpansionProfileFixedVersion` items (represented as `dict` in JSON). """
+    includeDefinition: bool = Field(
+        None,
+        alias="includeDefinition",
+        title="Type `bool`",
+        description="Include or exclude the value set definition in the expansion",
+    )
 
-        self.identifier = None
-        """ Additional identifier for the expansion profile.
-        Type `Identifier` (represented as `dict` in JSON). """
+    includeDesignations: bool = Field(
+        None,
+        alias="includeDesignations",
+        title="Type `bool`",
+        description="Whether the expansion should include concept designations",
+    )
 
-        self.includeDefinition = None
-        """ Include or exclude the value set definition in the expansion.
-        Type `bool`. """
+    jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="jurisdiction",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Intended jurisdiction for expansion profile (if applicable)",
+    )
 
-        self.includeDesignations = None
-        """ Whether the expansion should include concept designations.
-        Type `bool`. """
+    limitedExpansion: bool = Field(
+        None,
+        alias="limitedExpansion",
+        title="Type `bool`",
+        description="Controls behaviour of the value set expand operation when value sets are too large to be completely expanded",
+    )
 
-        self.jurisdiction = None
-        """ Intended jurisdiction for expansion profile (if applicable).
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    name: fhirtypes.String = Field(
+        None,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name for this expansion profile (computer friendly)",
+    )
 
-        self.limitedExpansion = None
-        """ Controls behaviour of the value set expand operation when value
-        sets are too large to be completely expanded.
-        Type `bool`. """
+    publisher: fhirtypes.String = Field(
+        None,
+        alias="publisher",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name of the publisher (organization or individual)",
+    )
 
-        self.name = None
-        """ Name for this expansion profile (computer friendly).
-        Type `str`. """
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="draft | active | retired | unknown",
+    )
 
-        self.publisher = None
-        """ Name of the publisher (organization or individual).
-        Type `str`. """
+    url: fhirtypes.Uri = Field(
+        None,
+        alias="url",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Logical URI to reference this expansion profile (globally unique)",
+    )
 
-        self.status = None
-        """ draft | active | retired | unknown.
-        Type `str`. """
+    useContext: ListType[fhirtypes.UsageContextType] = Field(
+        None,
+        alias="useContext",
+        title="List of `UsageContext` items (represented as `dict` in JSON)",
+        description="Context the content is intended to support",
+    )
 
-        self.url = None
-        """ Logical URI to reference this expansion profile (globally unique).
-        Type `str`. """
-
-        self.useContext = None
-        """ Context the content is intended to support.
-        List of `UsageContext` items (represented as `dict` in JSON). """
-
-        self.version = None
-        """ Business version of the expansion profile.
-        Type `str`. """
-
-        super(ExpansionProfile, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ExpansionProfile, self).elementProperties()
-        js.extend(
-            [
-                ("activeOnly", "activeOnly", bool, "boolean", False, None, False),
-                (
-                    "contact",
-                    "contact",
-                    contactdetail.ContactDetail,
-                    "ContactDetail",
-                    True,
-                    None,
-                    False,
-                ),
-                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-                ("description", "description", str, "markdown", False, None, False),
-                (
-                    "designation",
-                    "designation",
-                    ExpansionProfileDesignation,
-                    "ExpansionProfileDesignation",
-                    False,
-                    None,
-                    False,
-                ),
-                ("displayLanguage", "displayLanguage", str, "code", False, None, False),
-                ("excludeNested", "excludeNested", bool, "boolean", False, None, False),
-                (
-                    "excludeNotForUI",
-                    "excludeNotForUI",
-                    bool,
-                    "boolean",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "excludePostCoordinated",
-                    "excludePostCoordinated",
-                    bool,
-                    "boolean",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "excludedSystem",
-                    "excludedSystem",
-                    ExpansionProfileExcludedSystem,
-                    "ExpansionProfileExcludedSystem",
-                    False,
-                    None,
-                    False,
-                ),
-                ("experimental", "experimental", bool, "boolean", False, None, False),
-                (
-                    "fixedVersion",
-                    "fixedVersion",
-                    ExpansionProfileFixedVersion,
-                    "ExpansionProfileFixedVersion",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "includeDefinition",
-                    "includeDefinition",
-                    bool,
-                    "boolean",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "includeDesignations",
-                    "includeDesignations",
-                    bool,
-                    "boolean",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "jurisdiction",
-                    "jurisdiction",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "limitedExpansion",
-                    "limitedExpansion",
-                    bool,
-                    "boolean",
-                    False,
-                    None,
-                    False,
-                ),
-                ("name", "name", str, "string", False, None, False),
-                ("publisher", "publisher", str, "string", False, None, False),
-                ("status", "status", str, "code", False, None, True),
-                ("url", "url", str, "uri", False, None, False),
-                (
-                    "useContext",
-                    "useContext",
-                    usagecontext.UsageContext,
-                    "UsageContext",
-                    True,
-                    None,
-                    False,
-                ),
-                ("version", "version", str, "string", False, None, False),
-            ]
-        )
-        return js
+    version: fhirtypes.String = Field(
+        None,
+        alias="version",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Business version of the expansion profile",
+    )
 
 
 class ExpansionProfileDesignation(backboneelement.BackboneElement):
     """ When the expansion profile imposes designation contraints.
-
     A set of criteria that provide the constraints imposed on the value set
     expansion by including or excluding designations.
     """
 
-    resource_type = "ExpansionProfileDesignation"
+    resource_type = Field("ExpansionProfileDesignation", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    exclude: fhirtypes.ExpansionProfileDesignationExcludeType = Field(
+        None,
+        alias="exclude",
+        title="Type `ExpansionProfileDesignationExclude` (represented as `dict` in JSON)",
+        description="Designations to be excluded",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.exclude = None
-        """ Designations to be excluded.
-        Type `ExpansionProfileDesignationExclude` (represented as `dict` in JSON). """
-
-        self.include = None
-        """ Designations to be included.
-        Type `ExpansionProfileDesignationInclude` (represented as `dict` in JSON). """
-
-        super(ExpansionProfileDesignation, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ExpansionProfileDesignation, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "exclude",
-                    "exclude",
-                    ExpansionProfileDesignationExclude,
-                    "ExpansionProfileDesignationExclude",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "include",
-                    "include",
-                    ExpansionProfileDesignationInclude,
-                    "ExpansionProfileDesignationInclude",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    include: fhirtypes.ExpansionProfileDesignationIncludeType = Field(
+        None,
+        alias="include",
+        title="Type `ExpansionProfileDesignationInclude` (represented as `dict` in JSON)",
+        description="Designations to be included",
+    )
 
 
 class ExpansionProfileDesignationExclude(backboneelement.BackboneElement):
     """ Designations to be excluded.
     """
 
-    resource_type = "ExpansionProfileDesignationExclude"
+    resource_type = Field("ExpansionProfileDesignationExclude", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
-
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.designation = None
-        """ The designation to be excluded.
-        List of `ExpansionProfileDesignationExcludeDesignation` items (represented as `dict` in JSON). """
-
-        super(ExpansionProfileDesignationExclude, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ExpansionProfileDesignationExclude, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "designation",
-                    "designation",
-                    ExpansionProfileDesignationExcludeDesignation,
-                    "ExpansionProfileDesignationExcludeDesignation",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    designation: ListType[
+        fhirtypes.ExpansionProfileDesignationExcludeDesignationType
+    ] = Field(
+        None,
+        alias="designation",
+        title="List of `ExpansionProfileDesignationExcludeDesignation` items (represented as `dict` in JSON)",
+        description="The designation to be excluded",
+    )
 
 
 class ExpansionProfileDesignationExcludeDesignation(backboneelement.BackboneElement):
     """ The designation to be excluded.
-
     A data group for each designation to be excluded.
     """
 
-    resource_type = "ExpansionProfileDesignationExcludeDesignation"
+    resource_type = Field("ExpansionProfileDesignationExcludeDesignation", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    language: fhirtypes.Code = Field(
+        None,
+        alias="language",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="Human language of the designation to be excluded",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.language = None
-        """ Human language of the designation to be excluded.
-        Type `str`. """
-
-        self.use = None
-        """ What kind of Designation to exclude.
-        Type `Coding` (represented as `dict` in JSON). """
-
-        super(ExpansionProfileDesignationExcludeDesignation, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(
-            ExpansionProfileDesignationExcludeDesignation, self
-        ).elementProperties()
-        js.extend(
-            [
-                ("language", "language", str, "code", False, None, False),
-                ("use", "use", coding.Coding, "Coding", False, None, False),
-            ]
-        )
-        return js
+    use: fhirtypes.CodingType = Field(
+        None,
+        alias="use",
+        title="Type `Coding` (represented as `dict` in JSON)",
+        description="What kind of Designation to exclude",
+    )
 
 
 class ExpansionProfileDesignationInclude(backboneelement.BackboneElement):
     """ Designations to be included.
     """
 
-    resource_type = "ExpansionProfileDesignationInclude"
+    resource_type = Field("ExpansionProfileDesignationInclude", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
-
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.designation = None
-        """ The designation to be included.
-        List of `ExpansionProfileDesignationIncludeDesignation` items (represented as `dict` in JSON). """
-
-        super(ExpansionProfileDesignationInclude, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ExpansionProfileDesignationInclude, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "designation",
-                    "designation",
-                    ExpansionProfileDesignationIncludeDesignation,
-                    "ExpansionProfileDesignationIncludeDesignation",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    designation: ListType[
+        fhirtypes.ExpansionProfileDesignationIncludeDesignationType
+    ] = Field(
+        None,
+        alias="designation",
+        title="List of `ExpansionProfileDesignationIncludeDesignation` items (represented as `dict` in JSON)",
+        description="The designation to be included",
+    )
 
 
 class ExpansionProfileDesignationIncludeDesignation(backboneelement.BackboneElement):
     """ The designation to be included.
-
     A data group for each designation to be included.
     """
 
-    resource_type = "ExpansionProfileDesignationIncludeDesignation"
+    resource_type = Field("ExpansionProfileDesignationIncludeDesignation", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    language: fhirtypes.Code = Field(
+        None,
+        alias="language",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="Human language of the designation to be included",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.language = None
-        """ Human language of the designation to be included.
-        Type `str`. """
-
-        self.use = None
-        """ What kind of Designation to include.
-        Type `Coding` (represented as `dict` in JSON). """
-
-        super(ExpansionProfileDesignationIncludeDesignation, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(
-            ExpansionProfileDesignationIncludeDesignation, self
-        ).elementProperties()
-        js.extend(
-            [
-                ("language", "language", str, "code", False, None, False),
-                ("use", "use", coding.Coding, "Coding", False, None, False),
-            ]
-        )
-        return js
+    use: fhirtypes.CodingType = Field(
+        None,
+        alias="use",
+        title="Type `Coding` (represented as `dict` in JSON)",
+        description="What kind of Designation to include",
+    )
 
 
 class ExpansionProfileExcludedSystem(backboneelement.BackboneElement):
     """ Systems/Versions to be exclude.
-
     Code system, or a particular version of a code system to be excluded from
     value set expansions.
     """
 
-    resource_type = "ExpansionProfileExcludedSystem"
+    resource_type = Field("ExpansionProfileExcludedSystem", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    system: fhirtypes.Uri = Field(
+        ...,
+        alias="system",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="The specific code system to be excluded",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.system = None
-        """ The specific code system to be excluded.
-        Type `str`. """
-
-        self.version = None
-        """ Specific version of the code system referred to.
-        Type `str`. """
-
-        super(ExpansionProfileExcludedSystem, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ExpansionProfileExcludedSystem, self).elementProperties()
-        js.extend(
-            [
-                ("system", "system", str, "uri", False, None, True),
-                ("version", "version", str, "string", False, None, False),
-            ]
-        )
-        return js
+    version: fhirtypes.String = Field(
+        None,
+        alias="version",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Specific version of the code system referred to",
+    )
 
 
 class ExpansionProfileFixedVersion(backboneelement.BackboneElement):
     """ Fix use of a code system to a particular version.
-
     Fix use of a particular code system to a particular version.
     """
 
-    resource_type = "ExpansionProfileFixedVersion"
+    resource_type = Field("ExpansionProfileFixedVersion", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    mode: fhirtypes.Code = Field(
+        ...,
+        alias="mode",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="default | check | override",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    system: fhirtypes.Uri = Field(
+        ...,
+        alias="system",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="System to have its version fixed",
+    )
 
-        self.mode = None
-        """ default | check | override.
-        Type `str`. """
-
-        self.system = None
-        """ System to have its version fixed.
-        Type `str`. """
-
-        self.version = None
-        """ Specific version of the code system referred to.
-        Type `str`. """
-
-        super(ExpansionProfileFixedVersion, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ExpansionProfileFixedVersion, self).elementProperties()
-        js.extend(
-            [
-                ("mode", "mode", str, "code", False, None, True),
-                ("system", "system", str, "uri", False, None, True),
-                ("version", "version", str, "string", False, None, True),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import coding
-except ImportError:
-    coding = sys.modules[__package__ + ".coding"]
-try:
-    from . import contactdetail
-except ImportError:
-    contactdetail = sys.modules[__package__ + ".contactdetail"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import usagecontext
-except ImportError:
-    usagecontext = sys.modules[__package__ + ".usagecontext"]
+    version: fhirtypes.String = Field(
+        ...,
+        alias="version",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Specific version of the code system referred to",
+    )

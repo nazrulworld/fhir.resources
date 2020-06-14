@@ -6,563 +6,520 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import servicerequest
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class ServiceRequestTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("ServiceRequest", js["resourceType"])
-        return servicerequest.ServiceRequest(js)
+def impl_servicerequest_1(inst):
+    assert inst.asNeededCodeableConcept.text == "as needed to clear mucus"
+    assert inst.authoredOn == fhirtypes.DateTime.validate("2017-02-01T17:23:07Z")
+    assert inst.basedOn[0].reference == "CarePlan/gpvisit"
+    assert inst.code.coding[0].code == "34431008"
+    assert inst.code.coding[0].display == "Physiotherapy of chest (regime/therapy) "
+    assert inst.code.coding[0].system == "http://snomed.info/sct"
+    assert inst.contained[0].id == "signature"
+    assert inst.contained[1].id == "cystic-fibrosis"
+    assert inst.id == "physiotherapy"
+    assert inst.identifier[0].system == "http://goodhealth.org/placer-ids"
+    assert inst.identifier[0].type.coding[0].code == "PLAC"
+    assert inst.identifier[0].type.coding[0].display == "Placer Identifier"
+    assert (
+        inst.identifier[0].type.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v2-0203"
+    )
+    assert inst.identifier[0].type.text == "Placer"
+    assert inst.identifier[0].value == "20170201-0001"
+    assert inst.intent == "order"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert float(inst.occurrenceTiming.repeat.duration) == float(15)
+    assert float(inst.occurrenceTiming.repeat.durationMax) == float(25)
+    assert inst.occurrenceTiming.repeat.durationUnit == "min"
+    assert inst.occurrenceTiming.repeat.frequency == 1
+    assert inst.occurrenceTiming.repeat.frequencyMax == 4
+    assert float(inst.occurrenceTiming.repeat.period) == float(1)
+    assert inst.occurrenceTiming.repeat.periodUnit == "d"
+    assert inst.reasonReference[0].reference == "#cystic-fibrosis"
+    assert inst.relevantHistory[0].display == "Author's Signature"
+    assert inst.relevantHistory[0].reference == "#signature"
+    assert inst.requester.display == "Dr Adam Careful"
+    assert inst.requester.reference == "Practitioner/example"
+    assert inst.status == "completed"
+    assert inst.subject.reference == "Patient/example"
+    assert inst.text.status == "generated"
 
-    def testServiceRequest1(self):
-        inst = self.instantiate_from("servicerequest-example2.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ServiceRequest instance")
-        self.implServiceRequest1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("ServiceRequest", js["resourceType"])
-        inst2 = servicerequest.ServiceRequest(js)
-        self.implServiceRequest1(inst2)
+def test_servicerequest_1(base_settings):
+    """No. 1 tests collection for ServiceRequest.
+    Test File: servicerequest-example2.json
+    """
+    filename = base_settings["unittest_data_dir"] / "servicerequest-example2.json"
+    inst = servicerequest.ServiceRequest.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ServiceRequest" == inst.resource_type
 
-    def implServiceRequest1(self, inst):
-        self.assertEqual(
-            force_bytes(inst.asNeededCodeableConcept.text),
-            force_bytes("as needed to clear mucus"),
-        )
-        self.assertEqual(inst.authoredOn.date, FHIRDate("2017-02-01T17:23:07Z").date)
-        self.assertEqual(inst.authoredOn.as_json(), "2017-02-01T17:23:07Z")
-        self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("34431008"))
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].display),
-            force_bytes("Physiotherapy of chest (regime/therapy) "),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.contained[0].id), force_bytes("signature"))
-        self.assertEqual(
-            force_bytes(inst.contained[1].id), force_bytes("cystic-fibrosis")
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("physiotherapy"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://goodhealth.org/placer-ids"),
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].type.coding[0].code), force_bytes("PLAC")
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].type.coding[0].display),
-            force_bytes("Placer Identifier"),
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].type.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v2-0203"),
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].type.text), force_bytes("Placer")
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].value), force_bytes("20170201-0001")
-        )
-        self.assertEqual(force_bytes(inst.intent), force_bytes("order"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(inst.occurrenceTiming.repeat.duration, 15)
-        self.assertEqual(inst.occurrenceTiming.repeat.durationMax, 25)
-        self.assertEqual(
-            force_bytes(inst.occurrenceTiming.repeat.durationUnit), force_bytes("min")
-        )
-        self.assertEqual(inst.occurrenceTiming.repeat.frequency, 1)
-        self.assertEqual(inst.occurrenceTiming.repeat.frequencyMax, 4)
-        self.assertEqual(inst.occurrenceTiming.repeat.period, 1)
-        self.assertEqual(
-            force_bytes(inst.occurrenceTiming.repeat.periodUnit), force_bytes("d")
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("completed"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    impl_servicerequest_1(inst)
 
-    def testServiceRequest2(self):
-        inst = self.instantiate_from("servicerequest-example3.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ServiceRequest instance")
-        self.implServiceRequest2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ServiceRequest" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("ServiceRequest", js["resourceType"])
-        inst2 = servicerequest.ServiceRequest(js)
-        self.implServiceRequest2(inst2)
+    inst2 = servicerequest.ServiceRequest(**data)
+    impl_servicerequest_1(inst2)
 
-    def implServiceRequest2(self, inst):
-        self.assertEqual(inst.authoredOn.date, FHIRDate("2017-02-01T17:23:07Z").date)
-        self.assertEqual(inst.authoredOn.as_json(), "2017-02-01T17:23:07Z")
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].code), force_bytes("359962006")
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].display),
-            force_bytes("Turning patient in bed (procedure)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertTrue(inst.doNotPerform)
-        self.assertEqual(force_bytes(inst.id), force_bytes("do-not-turn"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://goodhealth.org/placer-ids"),
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].value), force_bytes("20170201-0002")
-        )
-        self.assertEqual(force_bytes(inst.intent), force_bytes("order"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.priority), force_bytes("stat"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 
-    def testServiceRequest3(self):
-        inst = self.instantiate_from("servicerequest-example-lipid.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ServiceRequest instance")
-        self.implServiceRequest3(inst)
+def impl_servicerequest_2(inst):
+    assert inst.authoredOn == fhirtypes.DateTime.validate("2017-02-01T17:23:07Z")
+    assert inst.code.coding[0].code == "359962006"
+    assert inst.code.coding[0].display == "Turning patient in bed (procedure)"
+    assert inst.code.coding[0].system == "http://snomed.info/sct"
+    assert inst.doNotPerform is True
+    assert inst.id == "do-not-turn"
+    assert inst.identifier[0].system == "http://goodhealth.org/placer-ids"
+    assert inst.identifier[0].value == "20170201-0002"
+    assert inst.intent == "order"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.priority == "stat"
+    assert inst.reasonReference[0].display == "Patient has a spinal fracture"
+    assert inst.requester.display == "Dr Adam Careful"
+    assert inst.requester.reference == "Practitioner/example"
+    assert inst.status == "active"
+    assert inst.subject.reference == "Patient/example"
+    assert inst.text.status == "generated"
 
-        js = inst.as_json()
-        self.assertEqual("ServiceRequest", js["resourceType"])
-        inst2 = servicerequest.ServiceRequest(js)
-        self.implServiceRequest3(inst2)
 
-    def implServiceRequest3(self, inst):
-        self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("LIPID"))
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system),
-            force_bytes("http://acme.org/tests"),
-        )
-        self.assertEqual(force_bytes(inst.code.text), force_bytes("Lipid Panel"))
-        self.assertEqual(force_bytes(inst.contained[0].id), force_bytes("fasting"))
-        self.assertEqual(force_bytes(inst.contained[1].id), force_bytes("serum"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("lipid"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system), force_bytes("urn:oid:1.3.4.5.6.7")
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].type.coding[0].code), force_bytes("PLAC")
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].type.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v2-0203"),
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].type.text), force_bytes("Placer")
-        )
-        self.assertEqual(
-            force_bytes(inst.identifier[0].value), force_bytes("2345234234234")
-        )
-        self.assertEqual(force_bytes(inst.intent), force_bytes("original-order"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.note[0].text), force_bytes("patient is afraid of needles")
-        )
-        self.assertEqual(
-            inst.occurrenceDateTime.date, FHIRDate("2013-05-02T16:16:00-07:00").date
-        )
-        self.assertEqual(inst.occurrenceDateTime.as_json(), "2013-05-02T16:16:00-07:00")
-        self.assertEqual(
-            force_bytes(inst.reasonCode[0].coding[0].code), force_bytes("V173")
-        )
-        self.assertEqual(
-            force_bytes(inst.reasonCode[0].coding[0].display),
-            force_bytes("Fam hx-ischem heart dis"),
-        )
-        self.assertEqual(
-            force_bytes(inst.reasonCode[0].coding[0].system),
-            force_bytes("http://hl7.org/fhir/sid/icd-9"),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+def test_servicerequest_2(base_settings):
+    """No. 2 tests collection for ServiceRequest.
+    Test File: servicerequest-example3.json
+    """
+    filename = base_settings["unittest_data_dir"] / "servicerequest-example3.json"
+    inst = servicerequest.ServiceRequest.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ServiceRequest" == inst.resource_type
 
-    def testServiceRequest4(self):
-        inst = self.instantiate_from("servicerequest-example-colonoscopy-bx.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ServiceRequest instance")
-        self.implServiceRequest4(inst)
+    impl_servicerequest_2(inst)
 
-        js = inst.as_json()
-        self.assertEqual("ServiceRequest", js["resourceType"])
-        inst2 = servicerequest.ServiceRequest(js)
-        self.implServiceRequest4(inst2)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ServiceRequest" == data["resourceType"]
 
-    def implServiceRequest4(self, inst):
-        self.assertEqual(inst.authoredOn.date, FHIRDate("2017-03-05").date)
-        self.assertEqual(inst.authoredOn.as_json(), "2017-03-05")
-        self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("76164006"))
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].display),
-            force_bytes("Biopsy of colon (procedure)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.code.text), force_bytes("Biopsy of colon"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("colon-biopsy"))
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("12345"))
-        self.assertEqual(force_bytes(inst.intent), force_bytes("order"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.requisition.system),
-            force_bytes("http://bumc.org/requisitions"),
-        )
-        self.assertEqual(force_bytes(inst.requisition.value), force_bytes("req12345"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("completed"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    inst2 = servicerequest.ServiceRequest(**data)
+    impl_servicerequest_2(inst2)
 
-    def testServiceRequest5(self):
-        inst = self.instantiate_from("servicerequest-example4.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ServiceRequest instance")
-        self.implServiceRequest5(inst)
 
-        js = inst.as_json()
-        self.assertEqual("ServiceRequest", js["resourceType"])
-        inst2 = servicerequest.ServiceRequest(js)
-        self.implServiceRequest5(inst2)
+def impl_servicerequest_3(inst):
+    assert inst.code.coding[0].code == "LIPID"
+    assert inst.code.coding[0].system == "http://acme.org/tests"
+    assert inst.code.text == "Lipid Panel"
+    assert inst.contained[0].id == "fasting"
+    assert inst.contained[1].id == "serum"
+    assert inst.encounter.reference == "Encounter/example"
+    assert inst.id == "lipid"
+    assert inst.identifier[0].system == "urn:oid:1.3.4.5.6.7"
+    assert inst.identifier[0].type.coding[0].code == "PLAC"
+    assert (
+        inst.identifier[0].type.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v2-0203"
+    )
+    assert inst.identifier[0].type.text == "Placer"
+    assert inst.identifier[0].value == "2345234234234"
+    assert inst.intent == "original-order"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.note[0].text == "patient is afraid of needles"
+    assert inst.occurrenceDateTime == fhirtypes.DateTime.validate(
+        "2013-05-02T16:16:00-07:00"
+    )
+    assert inst.performer[0].reference == "Practitioner/f202"
+    assert inst.reasonCode[0].coding[0].code == "V173"
+    assert inst.reasonCode[0].coding[0].display == "Fam hx-ischem heart dis"
+    assert inst.reasonCode[0].coding[0].system == "http://hl7.org/fhir/sid/icd-9"
+    assert inst.requester.reference == "Practitioner/example"
+    assert inst.specimen[0].display == "Serum specimen"
+    assert inst.specimen[0].reference == "#serum"
+    assert inst.status == "active"
+    assert inst.subject.reference == "Patient/example"
+    assert inst.supportingInfo[0].display == "Fasting status"
+    assert inst.supportingInfo[0].reference == "#fasting"
+    assert inst.text.status == "generated"
 
-    def implServiceRequest5(self, inst):
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].code), force_bytes("229115003")
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].display),
-            force_bytes("Bench Press (regime/therapy) "),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("benchpress"))
-        self.assertEqual(force_bytes(inst.intent), force_bytes("plan"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(inst.occurrenceTiming.repeat.count, 20)
-        self.assertEqual(inst.occurrenceTiming.repeat.countMax, 30)
-        self.assertEqual(inst.occurrenceTiming.repeat.frequency, 3)
-        self.assertEqual(inst.occurrenceTiming.repeat.period, 1)
-        self.assertEqual(
-            force_bytes(inst.occurrenceTiming.repeat.periodUnit), force_bytes("wk")
-        )
-        self.assertEqual(
-            force_bytes(inst.patientInstruction),
-            force_bytes(
-                "Start with 30kg 10-15 repetitions for three sets and increase in increments of 5kg when you feel ready"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 
-    def testServiceRequest6(self):
-        inst = self.instantiate_from("servicerequest-example-edu.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ServiceRequest instance")
-        self.implServiceRequest6(inst)
+def test_servicerequest_3(base_settings):
+    """No. 3 tests collection for ServiceRequest.
+    Test File: servicerequest-example-lipid.json
+    """
+    filename = base_settings["unittest_data_dir"] / "servicerequest-example-lipid.json"
+    inst = servicerequest.ServiceRequest.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ServiceRequest" == inst.resource_type
 
-        js = inst.as_json()
-        self.assertEqual("ServiceRequest", js["resourceType"])
-        inst2 = servicerequest.ServiceRequest(js)
-        self.implServiceRequest6(inst2)
+    impl_servicerequest_3(inst)
 
-    def implServiceRequest6(self, inst):
-        self.assertEqual(inst.authoredOn.date, FHIRDate("2016-08-16").date)
-        self.assertEqual(inst.authoredOn.as_json(), "2016-08-16")
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].code), force_bytes("311401005")
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].display),
-            force_bytes("Patient education (procedure)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.category[0].text), force_bytes("Education"))
-        self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("48023004"))
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].display),
-            force_bytes("Breast self-examination technique education (procedure)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.text),
-            force_bytes("Health education - breast examination"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("education"))
-        self.assertEqual(force_bytes(inst.intent), force_bytes("order"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(inst.occurrenceDateTime.date, FHIRDate("2014-08-16").date)
-        self.assertEqual(inst.occurrenceDateTime.as_json(), "2014-08-16")
-        self.assertEqual(
-            force_bytes(inst.reasonCode[0].text),
-            force_bytes("early detection of breast mass"),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("completed"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ServiceRequest" == data["resourceType"]
 
-    def testServiceRequest7(self):
-        inst = self.instantiate_from("servicerequest-example-ventilation.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ServiceRequest instance")
-        self.implServiceRequest7(inst)
+    inst2 = servicerequest.ServiceRequest(**data)
+    impl_servicerequest_3(inst2)
 
-        js = inst.as_json()
-        self.assertEqual("ServiceRequest", js["resourceType"])
-        inst2 = servicerequest.ServiceRequest(js)
-        self.implServiceRequest7(inst2)
 
-    def implServiceRequest7(self, inst):
-        self.assertEqual(inst.authoredOn.date, FHIRDate("2018-02-20").date)
-        self.assertEqual(inst.authoredOn.as_json(), "2018-02-20")
-        self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("40617009"))
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].display),
-            force_bytes("Artificial respiration (procedure)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.text), force_bytes("Mechanical Ventilation")
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("vent"))
-        self.assertEqual(force_bytes(inst.intent), force_bytes("order"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.orderDetail[0].coding[0].code), force_bytes("243144002")
-        )
-        self.assertEqual(
-            force_bytes(inst.orderDetail[0].coding[0].display),
-            force_bytes("Patient triggered inspiratory assistance (procedure)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.orderDetail[0].coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.orderDetail[0].text), force_bytes("IPPB"))
-        self.assertEqual(
-            force_bytes(inst.orderDetail[1].text),
-            force_bytes(
-                " Initial Settings : Sens: -1 cm H20 Pressure 15 cm H2O moderate flow:  Monitor VS every 15 minutes x 4 at the start of mechanical ventilation, then routine for unit OR every 5 hr"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.reasonCode[0].text),
-            force_bytes("chronic obstructive lung disease (COLD)"),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("completed"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+def impl_servicerequest_4(inst):
+    assert inst.authoredOn == fhirtypes.DateTime.validate("2017-03-05")
+    assert inst.code.coding[0].code == "76164006"
+    assert inst.code.coding[0].display == "Biopsy of colon (procedure)"
+    assert inst.code.coding[0].system == "http://snomed.info/sct"
+    assert inst.code.text == "Biopsy of colon"
+    assert inst.id == "colon-biopsy"
+    assert inst.identifier[0].value == "12345"
+    assert inst.intent == "order"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.performer[0].display == "Dr Adam Careful"
+    assert inst.performer[0].reference == "Practitioner/example"
+    assert inst.requester.display == "Dr. Beverly Crusher"
+    assert (
+        inst.requester.reference == "Practitioner/3ad0687e-f477-468c-afd5-fcc2bf897809"
+    )
+    assert inst.requisition.system == "http://bumc.org/requisitions"
+    assert inst.requisition.value == "req12345"
+    assert inst.status == "completed"
+    assert inst.subject.reference == "Patient/example"
+    assert inst.text.status == "generated"
 
-    def testServiceRequest8(self):
-        inst = self.instantiate_from("servicerequest-example-ambulation.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ServiceRequest instance")
-        self.implServiceRequest8(inst)
 
-        js = inst.as_json()
-        self.assertEqual("ServiceRequest", js["resourceType"])
-        inst2 = servicerequest.ServiceRequest(js)
-        self.implServiceRequest8(inst2)
+def test_servicerequest_4(base_settings):
+    """No. 4 tests collection for ServiceRequest.
+    Test File: servicerequest-example-colonoscopy-bx.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"]
+        / "servicerequest-example-colonoscopy-bx.json"
+    )
+    inst = servicerequest.ServiceRequest.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ServiceRequest" == inst.resource_type
 
-    def implServiceRequest8(self, inst):
-        self.assertEqual(inst.authoredOn.date, FHIRDate("2017-03-05").date)
-        self.assertEqual(inst.authoredOn.as_json(), "2017-03-05")
-        self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("62013009"))
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].display),
-            force_bytes("Ambulating patient (procedure)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.code.text), force_bytes("Ambulation"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("ambulation"))
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("45678"))
-        self.assertEqual(force_bytes(inst.intent), force_bytes("order"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("completed"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    impl_servicerequest_4(inst)
 
-    def testServiceRequest9(self):
-        inst = self.instantiate_from("servicerequest-example-pt.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ServiceRequest instance")
-        self.implServiceRequest9(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ServiceRequest" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("ServiceRequest", js["resourceType"])
-        inst2 = servicerequest.ServiceRequest(js)
-        self.implServiceRequest9(inst2)
+    inst2 = servicerequest.ServiceRequest(**data)
+    impl_servicerequest_4(inst2)
 
-    def implServiceRequest9(self, inst):
-        self.assertEqual(inst.authoredOn.date, FHIRDate("2016-09-20").date)
-        self.assertEqual(inst.authoredOn.as_json(), "2016-09-20")
-        self.assertEqual(
-            force_bytes(inst.bodySite[0].coding[0].code), force_bytes("36701003")
-        )
-        self.assertEqual(
-            force_bytes(inst.bodySite[0].coding[0].display),
-            force_bytes("Both knees (body structure)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.bodySite[0].coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.bodySite[0].text), force_bytes("Both knees"))
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].code), force_bytes("386053000")
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].display),
-            force_bytes("Evaluation procedure (procedure)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.category[0].coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.category[0].text), force_bytes("Evaluation"))
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].code), force_bytes("710830005")
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].display),
-            force_bytes("Assessment of passive range of motion (procedure)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.text),
-            force_bytes("Assessment of passive range of motion"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("physical-therapy"))
-        self.assertEqual(force_bytes(inst.intent), force_bytes("order"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(inst.occurrenceDateTime.date, FHIRDate("2016-09-27").date)
-        self.assertEqual(inst.occurrenceDateTime.as_json(), "2016-09-27")
-        self.assertEqual(
-            force_bytes(inst.reasonCode[0].text),
-            force_bytes("assessment of mobility limitations due to osteoarthritis"),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("completed"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 
-    def testServiceRequest10(self):
-        inst = self.instantiate_from("servicerequest-example-di.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ServiceRequest instance")
-        self.implServiceRequest10(inst)
+def impl_servicerequest_5(inst):
+    assert inst.code.coding[0].code == "229115003"
+    assert inst.code.coding[0].display == "Bench Press (regime/therapy) "
+    assert inst.code.coding[0].system == "http://snomed.info/sct"
+    assert inst.id == "benchpress"
+    assert inst.intent == "plan"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.occurrenceTiming.repeat.count == 20
+    assert inst.occurrenceTiming.repeat.countMax == 30
+    assert inst.occurrenceTiming.repeat.frequency == 3
+    assert float(inst.occurrenceTiming.repeat.period) == float(1)
+    assert inst.occurrenceTiming.repeat.periodUnit == "wk"
+    assert (
+        inst.patientInstruction
+        == "Start with 30kg 10-15 repetitions for three sets and increase in increments of 5kg when you feel ready"
+    )
+    assert inst.status == "active"
+    assert inst.subject.reference == "Patient/example"
+    assert inst.text.status == "generated"
 
-        js = inst.as_json()
-        self.assertEqual("ServiceRequest", js["resourceType"])
-        inst2 = servicerequest.ServiceRequest(js)
-        self.implServiceRequest10(inst2)
 
-    def implServiceRequest10(self, inst):
-        self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("24627-2"))
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system), force_bytes("http://loinc.org")
-        )
-        self.assertEqual(force_bytes(inst.code.text), force_bytes("Chest CT"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("di"))
-        self.assertEqual(force_bytes(inst.intent), force_bytes("original-order"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            inst.occurrenceDateTime.date, FHIRDate("2013-05-08T09:33:27+07:00").date
-        )
-        self.assertEqual(inst.occurrenceDateTime.as_json(), "2013-05-08T09:33:27+07:00")
-        self.assertEqual(
-            force_bytes(inst.reasonCode[0].text),
-            force_bytes("Check for metastatic disease"),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+def test_servicerequest_5(base_settings):
+    """No. 5 tests collection for ServiceRequest.
+    Test File: servicerequest-example4.json
+    """
+    filename = base_settings["unittest_data_dir"] / "servicerequest-example4.json"
+    inst = servicerequest.ServiceRequest.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ServiceRequest" == inst.resource_type
+
+    impl_servicerequest_5(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ServiceRequest" == data["resourceType"]
+
+    inst2 = servicerequest.ServiceRequest(**data)
+    impl_servicerequest_5(inst2)
+
+
+def impl_servicerequest_6(inst):
+    assert inst.authoredOn == fhirtypes.DateTime.validate("2016-08-16")
+    assert inst.category[0].coding[0].code == "311401005"
+    assert inst.category[0].coding[0].display == "Patient education (procedure)"
+    assert inst.category[0].coding[0].system == "http://snomed.info/sct"
+    assert inst.category[0].text == "Education"
+    assert inst.code.coding[0].code == "48023004"
+    assert (
+        inst.code.coding[0].display
+        == "Breast self-examination technique education (procedure)"
+    )
+    assert inst.code.coding[0].system == "http://snomed.info/sct"
+    assert inst.code.text == "Health education - breast examination"
+    assert inst.id == "education"
+    assert inst.intent == "order"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.occurrenceDateTime == fhirtypes.DateTime.validate("2014-08-16")
+    assert inst.performer[0].display == "Pamela Educator, RN"
+    assert inst.reasonCode[0].text == "early detection of breast mass"
+    assert inst.requester.display == "Angela Care, MD"
+    assert inst.status == "completed"
+    assert inst.subject.display == "Jane Doe"
+    assert inst.text.status == "generated"
+
+
+def test_servicerequest_6(base_settings):
+    """No. 6 tests collection for ServiceRequest.
+    Test File: servicerequest-example-edu.json
+    """
+    filename = base_settings["unittest_data_dir"] / "servicerequest-example-edu.json"
+    inst = servicerequest.ServiceRequest.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ServiceRequest" == inst.resource_type
+
+    impl_servicerequest_6(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ServiceRequest" == data["resourceType"]
+
+    inst2 = servicerequest.ServiceRequest(**data)
+    impl_servicerequest_6(inst2)
+
+
+def impl_servicerequest_7(inst):
+    assert inst.authoredOn == fhirtypes.DateTime.validate("2018-02-20")
+    assert inst.code.coding[0].code == "40617009"
+    assert inst.code.coding[0].display == "Artificial respiration (procedure)"
+    assert inst.code.coding[0].system == "http://snomed.info/sct"
+    assert inst.code.text == "Mechanical Ventilation"
+    assert inst.id == "vent"
+    assert inst.intent == "order"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.orderDetail[0].coding[0].code == "243144002"
+    assert (
+        inst.orderDetail[0].coding[0].display
+        == "Patient triggered inspiratory assistance (procedure)"
+    )
+    assert inst.orderDetail[0].coding[0].system == "http://snomed.info/sct"
+    assert inst.orderDetail[0].text == "IPPB"
+    assert (
+        inst.orderDetail[1].text
+        == " Initial Settings : Sens: -1 cm H20 Pressure 15 cm H2O moderate flow:  Monitor VS every 15 minutes x 4 at the start of mechanical ventilation, then routine for unit OR every 5 hr"
+    )
+    assert inst.performer[0].display == "Dr Cecil Surgeon"
+    assert inst.performer[0].reference == "Practitioner/example"
+    assert inst.reasonCode[0].text == "chronic obstructive lung disease (COLD)"
+    assert inst.requester.display == "Dr. Beverly Crusher"
+    assert (
+        inst.requester.reference == "Practitioner/3ad0687e-f477-468c-afd5-fcc2bf897809"
+    )
+    assert inst.status == "completed"
+    assert inst.subject.reference == "Patient/example"
+    assert inst.text.status == "generated"
+
+
+def test_servicerequest_7(base_settings):
+    """No. 7 tests collection for ServiceRequest.
+    Test File: servicerequest-example-ventilation.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "servicerequest-example-ventilation.json"
+    )
+    inst = servicerequest.ServiceRequest.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ServiceRequest" == inst.resource_type
+
+    impl_servicerequest_7(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ServiceRequest" == data["resourceType"]
+
+    inst2 = servicerequest.ServiceRequest(**data)
+    impl_servicerequest_7(inst2)
+
+
+def impl_servicerequest_8(inst):
+    assert inst.authoredOn == fhirtypes.DateTime.validate("2017-03-05")
+    assert inst.basedOn[0].display == "Maternity care plan"
+    assert inst.basedOn[0].reference == "CarePlan/preg"
+    assert inst.code.coding[0].code == "62013009"
+    assert inst.code.coding[0].display == "Ambulating patient (procedure)"
+    assert inst.code.coding[0].system == "http://snomed.info/sct"
+    assert inst.code.text == "Ambulation"
+    assert inst.id == "ambulation"
+    assert inst.identifier[0].value == "45678"
+    assert inst.intent == "order"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.reasonReference[0].display == "Blood Pressure"
+    assert inst.reasonReference[0].reference == "Observation/blood-pressure"
+    assert inst.requester.display == "Dr. Beverly Crusher"
+    assert (
+        inst.requester.reference == "Practitioner/3ad0687e-f477-468c-afd5-fcc2bf897809"
+    )
+    assert inst.status == "completed"
+    assert inst.subject.reference == "Patient/example"
+    assert inst.text.status == "generated"
+
+
+def test_servicerequest_8(base_settings):
+    """No. 8 tests collection for ServiceRequest.
+    Test File: servicerequest-example-ambulation.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "servicerequest-example-ambulation.json"
+    )
+    inst = servicerequest.ServiceRequest.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ServiceRequest" == inst.resource_type
+
+    impl_servicerequest_8(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ServiceRequest" == data["resourceType"]
+
+    inst2 = servicerequest.ServiceRequest(**data)
+    impl_servicerequest_8(inst2)
+
+
+def impl_servicerequest_9(inst):
+    assert inst.authoredOn == fhirtypes.DateTime.validate("2016-09-20")
+    assert inst.bodySite[0].coding[0].code == "36701003"
+    assert inst.bodySite[0].coding[0].display == "Both knees (body structure)"
+    assert inst.bodySite[0].coding[0].system == "http://snomed.info/sct"
+    assert inst.bodySite[0].text == "Both knees"
+    assert inst.category[0].coding[0].code == "386053000"
+    assert inst.category[0].coding[0].display == "Evaluation procedure (procedure)"
+    assert inst.category[0].coding[0].system == "http://snomed.info/sct"
+    assert inst.category[0].text == "Evaluation"
+    assert inst.code.coding[0].code == "710830005"
+    assert (
+        inst.code.coding[0].display
+        == "Assessment of passive range of motion (procedure)"
+    )
+    assert inst.code.coding[0].system == "http://snomed.info/sct"
+    assert inst.code.text == "Assessment of passive range of motion"
+    assert inst.id == "physical-therapy"
+    assert inst.intent == "order"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.occurrenceDateTime == fhirtypes.DateTime.validate("2016-09-27")
+    assert inst.performer[0].display == "Paul Therapist, PT"
+    assert (
+        inst.reasonCode[0].text
+        == "assessment of mobility limitations due to osteoarthritis"
+    )
+    assert inst.requester.display == "Ollie Ortho, MD"
+    assert inst.status == "completed"
+    assert inst.subject.reference == "Patient/example"
+    assert inst.text.status == "generated"
+
+
+def test_servicerequest_9(base_settings):
+    """No. 9 tests collection for ServiceRequest.
+    Test File: servicerequest-example-pt.json
+    """
+    filename = base_settings["unittest_data_dir"] / "servicerequest-example-pt.json"
+    inst = servicerequest.ServiceRequest.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ServiceRequest" == inst.resource_type
+
+    impl_servicerequest_9(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ServiceRequest" == data["resourceType"]
+
+    inst2 = servicerequest.ServiceRequest(**data)
+    impl_servicerequest_9(inst2)
+
+
+def impl_servicerequest_10(inst):
+    assert inst.code.coding[0].code == "24627-2"
+    assert inst.code.coding[0].system == "http://loinc.org"
+    assert inst.code.text == "Chest CT"
+    assert inst.id == "di"
+    assert inst.intent == "original-order"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.occurrenceDateTime == fhirtypes.DateTime.validate(
+        "2013-05-08T09:33:27+07:00"
+    )
+    assert inst.reasonCode[0].text == "Check for metastatic disease"
+    assert inst.requester.display == "Dr. Adam Careful"
+    assert inst.requester.reference == "Practitioner/example"
+    assert inst.status == "active"
+    assert inst.subject.reference == "Patient/dicom"
+    assert inst.text.status == "generated"
+
+
+def test_servicerequest_10(base_settings):
+    """No. 10 tests collection for ServiceRequest.
+    Test File: servicerequest-example-di.json
+    """
+    filename = base_settings["unittest_data_dir"] / "servicerequest-example-di.json"
+    inst = servicerequest.ServiceRequest.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ServiceRequest" == inst.resource_type
+
+    impl_servicerequest_10(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ServiceRequest" == data["resourceType"]
+
+    inst2 = servicerequest.ServiceRequest(**data)
+    impl_servicerequest_10(inst2)

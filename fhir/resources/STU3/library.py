@@ -6,327 +6,201 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import domainresource
+from . import domainresource, fhirtypes
 
 
 class Library(domainresource.DomainResource):
     """ Represents a library of quality improvement components.
-
     The Library resource is a general-purpose container for knowledge asset
     definitions. It can be used to describe and expose existing knowledge
     assets such as logic libraries and information model descriptions, as well
     as to describe a collection of knowledge assets.
     """
 
-    resource_type = "Library"
+    resource_type = Field("Library", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    approvalDate: fhirtypes.Date = Field(
+        None,
+        alias="approvalDate",
+        title="Type `Date` (represented as `dict` in JSON)",
+        description="When the library was approved by publisher",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    contact: ListType[fhirtypes.ContactDetailType] = Field(
+        None,
+        alias="contact",
+        title="List of `ContactDetail` items (represented as `dict` in JSON)",
+        description="Contact details for the publisher",
+    )
 
-        self.approvalDate = None
-        """ When the library was approved by publisher.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    content: ListType[fhirtypes.AttachmentType] = Field(
+        None,
+        alias="content",
+        title="List of `Attachment` items (represented as `dict` in JSON)",
+        description="Contents of the library, either embedded or referenced",
+    )
 
-        self.contact = None
-        """ Contact details for the publisher.
-        List of `ContactDetail` items (represented as `dict` in JSON). """
+    contributor: ListType[fhirtypes.ContributorType] = Field(
+        None,
+        alias="contributor",
+        title="List of `Contributor` items (represented as `dict` in JSON)",
+        description="A content contributor",
+    )
 
-        self.content = None
-        """ Contents of the library, either embedded or referenced.
-        List of `Attachment` items (represented as `dict` in JSON). """
+    copyright: fhirtypes.Markdown = Field(
+        None,
+        alias="copyright",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Use and/or publishing restrictions",
+    )
 
-        self.contributor = None
-        """ A content contributor.
-        List of `Contributor` items (represented as `dict` in JSON). """
+    dataRequirement: ListType[fhirtypes.DataRequirementType] = Field(
+        None,
+        alias="dataRequirement",
+        title="List of `DataRequirement` items (represented as `dict` in JSON)",
+        description="What data is referenced by this library",
+    )
 
-        self.copyright = None
-        """ Use and/or publishing restrictions.
-        Type `str`. """
+    date: fhirtypes.DateTime = Field(
+        None,
+        alias="date",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Date this was last changed",
+    )
 
-        self.dataRequirement = None
-        """ What data is referenced by this library.
-        List of `DataRequirement` items (represented as `dict` in JSON). """
+    description: fhirtypes.Markdown = Field(
+        None,
+        alias="description",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Natural language description of the library",
+    )
 
-        self.date = None
-        """ Date this was last changed.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    effectivePeriod: fhirtypes.PeriodType = Field(
+        None,
+        alias="effectivePeriod",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="When the library is expected to be used",
+    )
 
-        self.description = None
-        """ Natural language description of the library.
-        Type `str`. """
+    experimental: bool = Field(
+        None,
+        alias="experimental",
+        title="Type `bool`",
+        description="For testing purposes, not real usage",
+    )
 
-        self.effectivePeriod = None
-        """ When the library is expected to be used.
-        Type `Period` (represented as `dict` in JSON). """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Additional identifier for the library",
+    )
 
-        self.experimental = None
-        """ For testing purposes, not real usage.
-        Type `bool`. """
+    jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="jurisdiction",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Intended jurisdiction for library (if applicable)",
+    )
 
-        self.identifier = None
-        """ Additional identifier for the library.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    lastReviewDate: fhirtypes.Date = Field(
+        None,
+        alias="lastReviewDate",
+        title="Type `Date` (represented as `dict` in JSON)",
+        description="When the library was last reviewed",
+    )
 
-        self.jurisdiction = None
-        """ Intended jurisdiction for library (if applicable).
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    name: fhirtypes.String = Field(
+        None,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name for this library (computer friendly)",
+    )
 
-        self.lastReviewDate = None
-        """ When the library was last reviewed.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    parameter: ListType[fhirtypes.ParameterDefinitionType] = Field(
+        None,
+        alias="parameter",
+        title="List of `ParameterDefinition` items (represented as `dict` in JSON)",
+        description="Parameters defined by the library",
+    )
 
-        self.name = None
-        """ Name for this library (computer friendly).
-        Type `str`. """
+    publisher: fhirtypes.String = Field(
+        None,
+        alias="publisher",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name of the publisher (organization or individual)",
+    )
 
-        self.parameter = None
-        """ Parameters defined by the library.
-        List of `ParameterDefinition` items (represented as `dict` in JSON). """
+    purpose: fhirtypes.Markdown = Field(
+        None,
+        alias="purpose",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Why this library is defined",
+    )
 
-        self.publisher = None
-        """ Name of the publisher (organization or individual).
-        Type `str`. """
+    relatedArtifact: ListType[fhirtypes.RelatedArtifactType] = Field(
+        None,
+        alias="relatedArtifact",
+        title="List of `RelatedArtifact` items (represented as `dict` in JSON)",
+        description="Additional documentation, citations, etc.",
+    )
 
-        self.purpose = None
-        """ Why this library is defined.
-        Type `str`. """
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="draft | active | retired | unknown",
+    )
 
-        self.relatedArtifact = None
-        """ Additional documentation, citations, etc..
-        List of `RelatedArtifact` items (represented as `dict` in JSON). """
+    title: fhirtypes.String = Field(
+        None,
+        alias="title",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name for this library (human friendly)",
+    )
 
-        self.status = None
-        """ draft | active | retired | unknown.
-        Type `str`. """
+    topic: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="topic",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="E.g. Education, Treatment, Assessment, etc",
+    )
 
-        self.title = None
-        """ Name for this library (human friendly).
-        Type `str`. """
+    type: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="logic-library | model-definition | asset-collection | module-definition",
+    )
 
-        self.topic = None
-        """ E.g. Education, Treatment, Assessment, etc.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    url: fhirtypes.Uri = Field(
+        None,
+        alias="url",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Logical URI to reference this library (globally unique)",
+    )
 
-        self.type = None
-        """ logic-library | model-definition | asset-collection | module-
-        definition.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    usage: fhirtypes.String = Field(
+        None,
+        alias="usage",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Describes the clinical usage of the library",
+    )
 
-        self.url = None
-        """ Logical URI to reference this library (globally unique).
-        Type `str`. """
+    useContext: ListType[fhirtypes.UsageContextType] = Field(
+        None,
+        alias="useContext",
+        title="List of `UsageContext` items (represented as `dict` in JSON)",
+        description="Context the content is intended to support",
+    )
 
-        self.usage = None
-        """ Describes the clinical usage of the library.
-        Type `str`. """
-
-        self.useContext = None
-        """ Context the content is intended to support.
-        List of `UsageContext` items (represented as `dict` in JSON). """
-
-        self.version = None
-        """ Business version of the library.
-        Type `str`. """
-
-        super(Library, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(Library, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "approvalDate",
-                    "approvalDate",
-                    fhirdate.FHIRDate,
-                    "date",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "contact",
-                    "contact",
-                    contactdetail.ContactDetail,
-                    "ContactDetail",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "content",
-                    "content",
-                    attachment.Attachment,
-                    "Attachment",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "contributor",
-                    "contributor",
-                    contributor.Contributor,
-                    "Contributor",
-                    True,
-                    None,
-                    False,
-                ),
-                ("copyright", "copyright", str, "markdown", False, None, False),
-                (
-                    "dataRequirement",
-                    "dataRequirement",
-                    datarequirement.DataRequirement,
-                    "DataRequirement",
-                    True,
-                    None,
-                    False,
-                ),
-                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-                ("description", "description", str, "markdown", False, None, False),
-                (
-                    "effectivePeriod",
-                    "effectivePeriod",
-                    period.Period,
-                    "Period",
-                    False,
-                    None,
-                    False,
-                ),
-                ("experimental", "experimental", bool, "boolean", False, None, False),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "jurisdiction",
-                    "jurisdiction",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "lastReviewDate",
-                    "lastReviewDate",
-                    fhirdate.FHIRDate,
-                    "date",
-                    False,
-                    None,
-                    False,
-                ),
-                ("name", "name", str, "string", False, None, False),
-                (
-                    "parameter",
-                    "parameter",
-                    parameterdefinition.ParameterDefinition,
-                    "ParameterDefinition",
-                    True,
-                    None,
-                    False,
-                ),
-                ("publisher", "publisher", str, "string", False, None, False),
-                ("purpose", "purpose", str, "markdown", False, None, False),
-                (
-                    "relatedArtifact",
-                    "relatedArtifact",
-                    relatedartifact.RelatedArtifact,
-                    "RelatedArtifact",
-                    True,
-                    None,
-                    False,
-                ),
-                ("status", "status", str, "code", False, None, True),
-                ("title", "title", str, "string", False, None, False),
-                (
-                    "topic",
-                    "topic",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                ("url", "url", str, "uri", False, None, False),
-                ("usage", "usage", str, "string", False, None, False),
-                (
-                    "useContext",
-                    "useContext",
-                    usagecontext.UsageContext,
-                    "UsageContext",
-                    True,
-                    None,
-                    False,
-                ),
-                ("version", "version", str, "string", False, None, False),
-            ]
-        )
-        return js
-
-
-try:
-    from . import attachment
-except ImportError:
-    attachment = sys.modules[__package__ + ".attachment"]
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import contactdetail
-except ImportError:
-    contactdetail = sys.modules[__package__ + ".contactdetail"]
-try:
-    from . import contributor
-except ImportError:
-    contributor = sys.modules[__package__ + ".contributor"]
-try:
-    from . import datarequirement
-except ImportError:
-    datarequirement = sys.modules[__package__ + ".datarequirement"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import parameterdefinition
-except ImportError:
-    parameterdefinition = sys.modules[__package__ + ".parameterdefinition"]
-try:
-    from . import period
-except ImportError:
-    period = sys.modules[__package__ + ".period"]
-try:
-    from . import relatedartifact
-except ImportError:
-    relatedartifact = sys.modules[__package__ + ".relatedartifact"]
-try:
-    from . import usagecontext
-except ImportError:
-    usagecontext = sys.modules[__package__ + ".usagecontext"]
+    version: fhirtypes.String = Field(
+        None,
+        alias="version",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Business version of the library",
+    )

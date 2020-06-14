@@ -6,155 +6,80 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import domainresource
+from . import domainresource, fhirtypes
 
 
 class EnrollmentResponse(domainresource.DomainResource):
     """ EnrollmentResponse resource.
-
     This resource provides enrollment and plan details from the processing of
     an Enrollment resource.
     """
 
-    resource_type = "EnrollmentResponse"
+    resource_type = Field("EnrollmentResponse", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    created: fhirtypes.DateTime = Field(
+        None,
+        alias="created",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Creation date",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    disposition: fhirtypes.String = Field(
+        None,
+        alias="disposition",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Disposition Message",
+    )
 
-        self.created = None
-        """ Creation date.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Business Identifier",
+    )
 
-        self.disposition = None
-        """ Disposition Message.
-        Type `str`. """
+    organization: fhirtypes.ReferenceType = Field(
+        None,
+        alias="organization",
+        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        description="Insurer",
+    )
 
-        self.identifier = None
-        """ Business Identifier.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    outcome: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="outcome",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="complete | error | partial",
+    )
 
-        self.organization = None
-        """ Insurer.
-        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
+    request: fhirtypes.ReferenceType = Field(
+        None,
+        alias="request",
+        title="Type `Reference` referencing `EnrollmentRequest` (represented as `dict` in JSON)",
+        description="Claim reference",
+    )
 
-        self.outcome = None
-        """ complete | error | partial.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    requestOrganization: fhirtypes.ReferenceType = Field(
+        None,
+        alias="requestOrganization",
+        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        description="Responsible organization",
+    )
 
-        self.request = None
-        """ Claim reference.
-        Type `FHIRReference` referencing `['EnrollmentRequest']` (represented as `dict` in JSON). """
+    requestProvider: fhirtypes.ReferenceType = Field(
+        None,
+        alias="requestProvider",
+        title="Type `Reference` referencing `Practitioner` (represented as `dict` in JSON)",
+        description="Responsible practitioner",
+    )
 
-        self.requestOrganization = None
-        """ Responsible organization.
-        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
-
-        self.requestProvider = None
-        """ Responsible practitioner.
-        Type `FHIRReference` referencing `['Practitioner']` (represented as `dict` in JSON). """
-
-        self.status = None
-        """ active | cancelled | draft | entered-in-error.
-        Type `str`. """
-
-        super(EnrollmentResponse, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(EnrollmentResponse, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "created",
-                    "created",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    None,
-                    False,
-                ),
-                ("disposition", "disposition", str, "string", False, None, False),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "organization",
-                    "organization",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "outcome",
-                    "outcome",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "request",
-                    "request",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "requestOrganization",
-                    "requestOrganization",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "requestProvider",
-                    "requestProvider",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("status", "status", str, "code", False, None, False),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
+    status: fhirtypes.Code = Field(
+        None,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="active | cancelled | draft | entered-in-error",
+    )

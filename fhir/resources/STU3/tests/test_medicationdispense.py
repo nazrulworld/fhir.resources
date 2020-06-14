@@ -6,931 +6,723 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import medicationdispense
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class MedicationDispenseTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("MedicationDispense", js["resourceType"])
-        return medicationdispense.MedicationDispense(js)
+def impl_medicationdispense_1(inst):
+    assert inst.authorizingPrescription[0].reference == "MedicationRequest/medrx0316"
+    assert inst.contained[0].id == "med0306"
+    assert inst.daysSupply.code == "d"
+    assert inst.daysSupply.system == "http://unitsofmeasure.org"
+    assert inst.daysSupply.unit == "Day"
+    assert float(inst.daysSupply.value) == float(1)
+    assert inst.dosageInstruction[0].doseQuantity.code == "mg/kg"
+    assert inst.dosageInstruction[0].doseQuantity.system == "http://unitsofmeasure.org"
+    assert inst.dosageInstruction[0].doseQuantity.unit == "mg/kg"
+    assert float(inst.dosageInstruction[0].doseQuantity.value) == float(1.8)
+    assert inst.dosageInstruction[0].route.coding[0].code == "255560000"
+    assert inst.dosageInstruction[0].route.coding[0].display == "Intravenous"
+    assert inst.dosageInstruction[0].route.coding[0].system == "http://snomed.info/sct"
+    assert inst.dosageInstruction[0].sequence == 1
+    assert (
+        inst.dosageInstruction[0].text
+        == "1.8 mg/kg IV infusion over 30 minutes every 3 weeks for 16 cycles"
+    )
+    assert inst.dosageInstruction[0].timing.repeat.count == 16
+    assert inst.dosageInstruction[0].timing.repeat.frequency == 1
+    assert float(inst.dosageInstruction[0].timing.repeat.period) == float(3)
+    assert inst.dosageInstruction[0].timing.repeat.periodUnit == "wk"
+    assert inst.id == "meddisp0317"
+    assert inst.medicationReference.display == "Brentixumab Vedotin (Adcetris)"
+    assert inst.medicationReference.reference == "#med0306"
+    assert inst.performer[0].actor.reference == "Practitioner/f006"
+    assert (
+        inst.performer[0].onBehalfOf.reference == "Organization/2.16.840.1.113883.19.5"
+    )
+    assert inst.quantity.code == "415818005"
+    assert inst.quantity.system == "http://snomed.info/sct"
+    assert float(inst.quantity.value) == float(3)
+    assert inst.status == "stopped"
+    assert inst.subject.display == "Donald Duck "
+    assert inst.subject.reference == "Patient/pat1"
+    assert inst.text.status == "generated"
+    assert inst.type.coding[0].code == "TF"
+    assert inst.type.coding[0].display == "Trial Fill"
+    assert inst.type.coding[0].system == "http://hl7.org/fhir/v3/ActCode"
+    assert inst.whenHandedOver == fhirtypes.DateTime.validate(
+        "2015-06-26T07:13:00+05:00"
+    )
+    assert inst.whenPrepared == fhirtypes.DateTime.validate("2015-06-25T07:13:00+05:00")
 
-    def testMedicationDispense1(self):
-        inst = self.instantiate_from("medicationdispense0317.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a MedicationDispense instance"
-        )
-        self.implMedicationDispense1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("MedicationDispense", js["resourceType"])
-        inst2 = medicationdispense.MedicationDispense(js)
-        self.implMedicationDispense1(inst2)
+def test_medicationdispense_1(base_settings):
+    """No. 1 tests collection for MedicationDispense.
+    Test File: medicationdispense0317.json
+    """
+    filename = base_settings["unittest_data_dir"] / "medicationdispense0317.json"
+    inst = medicationdispense.MedicationDispense.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "MedicationDispense" == inst.resource_type
 
-    def implMedicationDispense1(self, inst):
-        self.assertEqual(force_bytes(inst.contained[0].id), force_bytes("med0306"))
-        self.assertEqual(force_bytes(inst.daysSupply.code), force_bytes("d"))
-        self.assertEqual(
-            force_bytes(inst.daysSupply.system),
-            force_bytes("http://unitsofmeasure.org"),
-        )
-        self.assertEqual(force_bytes(inst.daysSupply.unit), force_bytes("Day"))
-        self.assertEqual(inst.daysSupply.value, 1)
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].doseQuantity.code),
-            force_bytes("mg/kg"),
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].doseQuantity.system),
-            force_bytes("http://unitsofmeasure.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].doseQuantity.unit),
-            force_bytes("mg/kg"),
-        )
-        self.assertEqual(inst.dosageInstruction[0].doseQuantity.value, 1.8)
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].route.coding[0].code),
-            force_bytes("255560000"),
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].route.coding[0].display),
-            force_bytes("Intravenous"),
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].route.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(inst.dosageInstruction[0].sequence, 1)
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].text),
-            force_bytes(
-                "1.8 mg/kg IV infusion over 30 minutes every 3 weeks for 16 cycles"
-            ),
-        )
-        self.assertEqual(inst.dosageInstruction[0].timing.repeat.count, 16)
-        self.assertEqual(inst.dosageInstruction[0].timing.repeat.frequency, 1)
-        self.assertEqual(inst.dosageInstruction[0].timing.repeat.period, 3)
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].timing.repeat.periodUnit),
-            force_bytes("wk"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("meddisp0317"))
-        self.assertEqual(force_bytes(inst.quantity.code), force_bytes("415818005"))
-        self.assertEqual(
-            force_bytes(inst.quantity.system), force_bytes("http://snomed.info/sct")
-        )
-        self.assertEqual(inst.quantity.value, 3)
-        self.assertEqual(force_bytes(inst.status), force_bytes("stopped"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type.coding[0].code), force_bytes("TF"))
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].display), force_bytes("Trial Fill")
-        )
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].system),
-            force_bytes("http://hl7.org/fhir/v3/ActCode"),
-        )
-        self.assertEqual(
-            inst.whenHandedOver.date, FHIRDate("2015-06-26T07:13:00+05:00").date
-        )
-        self.assertEqual(inst.whenHandedOver.as_json(), "2015-06-26T07:13:00+05:00")
-        self.assertEqual(
-            inst.whenPrepared.date, FHIRDate("2015-06-25T07:13:00+05:00").date
-        )
-        self.assertEqual(inst.whenPrepared.as_json(), "2015-06-25T07:13:00+05:00")
+    impl_medicationdispense_1(inst)
 
-    def testMedicationDispense2(self):
-        inst = self.instantiate_from("medicationdispense0301.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a MedicationDispense instance"
-        )
-        self.implMedicationDispense2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "MedicationDispense" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("MedicationDispense", js["resourceType"])
-        inst2 = medicationdispense.MedicationDispense(js)
-        self.implMedicationDispense2(inst2)
+    inst2 = medicationdispense.MedicationDispense(**data)
+    impl_medicationdispense_1(inst2)
 
-    def implMedicationDispense2(self, inst):
-        self.assertEqual(force_bytes(inst.contained[0].id), force_bytes("med0301"))
-        self.assertEqual(force_bytes(inst.contained[1].id), force_bytes("signature"))
-        self.assertEqual(force_bytes(inst.daysSupply.code), force_bytes("d"))
-        self.assertEqual(
-            force_bytes(inst.daysSupply.system),
-            force_bytes("http://unitsofmeasure.org"),
-        )
-        self.assertEqual(force_bytes(inst.daysSupply.unit), force_bytes("Day"))
-        self.assertEqual(inst.daysSupply.value, 3)
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].doseQuantity.code), force_bytes("mg")
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].doseQuantity.system),
-            force_bytes("http://unitsofmeasure.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].doseQuantity.unit), force_bytes("mg")
-        )
-        self.assertEqual(inst.dosageInstruction[0].doseQuantity.value, 500)
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].method.coding[0].code),
-            force_bytes("420620005"),
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].method.coding[0].display),
-            force_bytes("Push - dosing instruction imperative (qualifier value)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].method.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].route.coding[0].code),
-            force_bytes("255560000"),
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].route.coding[0].display),
-            force_bytes("Intravenous"),
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].route.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(inst.dosageInstruction[0].sequence, 1)
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].text),
-            force_bytes("500mg IV q6h x 3 days"),
-        )
-        self.assertEqual(inst.dosageInstruction[0].timing.repeat.frequency, 1)
-        self.assertEqual(inst.dosageInstruction[0].timing.repeat.period, 6)
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].timing.repeat.periodUnit),
-            force_bytes("h"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("meddisp0301"))
-        self.assertEqual(force_bytes(inst.quantity.code), force_bytes("Vial"))
-        self.assertEqual(
-            force_bytes(inst.quantity.system),
-            force_bytes("http://hl7.org/fhir/v3/orderableDrugForm"),
-        )
-        self.assertEqual(force_bytes(inst.quantity.unit), force_bytes("Vial"))
-        self.assertEqual(inst.quantity.value, 12)
-        self.assertEqual(force_bytes(inst.status), force_bytes("in-progress"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type.coding[0].code), force_bytes("EM"))
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].display), force_bytes("Emergency Supply")
-        )
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].system),
-            force_bytes("http://hl7.org/fhir/v3/ActCode"),
-        )
-        self.assertEqual(inst.whenPrepared.date, FHIRDate("2015-01-15T10:20:00Z").date)
-        self.assertEqual(inst.whenPrepared.as_json(), "2015-01-15T10:20:00Z")
 
-    def testMedicationDispense3(self):
-        inst = self.instantiate_from("medicationdispense0321.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a MedicationDispense instance"
-        )
-        self.implMedicationDispense3(inst)
+def impl_medicationdispense_2(inst):
+    assert inst.authorizingPrescription[0].reference == "MedicationRequest/medrx0318"
+    assert inst.contained[0].id == "med0301"
+    assert inst.contained[1].id == "signature"
+    assert inst.daysSupply.code == "d"
+    assert inst.daysSupply.system == "http://unitsofmeasure.org"
+    assert inst.daysSupply.unit == "Day"
+    assert float(inst.daysSupply.value) == float(3)
+    assert inst.destination.reference == "Location/ph"
+    assert inst.dosageInstruction[0].doseQuantity.code == "mg"
+    assert inst.dosageInstruction[0].doseQuantity.system == "http://unitsofmeasure.org"
+    assert inst.dosageInstruction[0].doseQuantity.unit == "mg"
+    assert float(inst.dosageInstruction[0].doseQuantity.value) == float(500)
+    assert inst.dosageInstruction[0].method.coding[0].code == "420620005"
+    assert (
+        inst.dosageInstruction[0].method.coding[0].display
+        == "Push - dosing instruction imperative (qualifier value)"
+    )
+    assert inst.dosageInstruction[0].method.coding[0].system == "http://snomed.info/sct"
+    assert inst.dosageInstruction[0].route.coding[0].code == "255560000"
+    assert inst.dosageInstruction[0].route.coding[0].display == "Intravenous"
+    assert inst.dosageInstruction[0].route.coding[0].system == "http://snomed.info/sct"
+    assert inst.dosageInstruction[0].sequence == 1
+    assert inst.dosageInstruction[0].text == "500mg IV q6h x 3 days"
+    assert inst.dosageInstruction[0].timing.repeat.frequency == 1
+    assert float(inst.dosageInstruction[0].timing.repeat.period) == float(6)
+    assert inst.dosageInstruction[0].timing.repeat.periodUnit == "h"
+    assert inst.eventHistory[0].display == "Author's Signature"
+    assert inst.eventHistory[0].reference == "#signature"
+    assert inst.id == "meddisp0301"
+    assert inst.medicationReference.display == "Vancomycin Hydrochloride"
+    assert inst.medicationReference.reference == "#med0301"
+    assert inst.performer[0].actor.reference == "Practitioner/f006"
+    assert (
+        inst.performer[0].onBehalfOf.reference == "Organization/2.16.840.1.113883.19.5"
+    )
+    assert inst.quantity.code == "Vial"
+    assert inst.quantity.system == "http://hl7.org/fhir/v3/orderableDrugForm"
+    assert inst.quantity.unit == "Vial"
+    assert float(inst.quantity.value) == float(12)
+    assert inst.receiver[0].display == "Donald Duck"
+    assert inst.receiver[0].reference == "Patient/pat1"
+    assert inst.status == "in-progress"
+    assert inst.subject.display == "Donald Duck"
+    assert inst.subject.reference == "Patient/pat1"
+    assert inst.supportingInformation[0].reference == "Condition/f203"
+    assert inst.text.status == "generated"
+    assert inst.type.coding[0].code == "EM"
+    assert inst.type.coding[0].display == "Emergency Supply"
+    assert inst.type.coding[0].system == "http://hl7.org/fhir/v3/ActCode"
+    assert inst.whenPrepared == fhirtypes.DateTime.validate("2015-01-15T10:20:00Z")
 
-        js = inst.as_json()
-        self.assertEqual("MedicationDispense", js["resourceType"])
-        inst2 = medicationdispense.MedicationDispense(js)
-        self.implMedicationDispense3(inst2)
 
-    def implMedicationDispense3(self, inst):
-        self.assertEqual(force_bytes(inst.daysSupply.code), force_bytes("d"))
-        self.assertEqual(
-            force_bytes(inst.daysSupply.system),
-            force_bytes("http://unitsofmeasure.org"),
-        )
-        self.assertEqual(force_bytes(inst.daysSupply.unit), force_bytes("Day"))
-        self.assertEqual(inst.daysSupply.value, 10)
-        self.assertEqual(
-            force_bytes(
-                inst.dosageInstruction[0].additionalInstruction[0].coding[0].code
-            ),
-            force_bytes("418914006"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.dosageInstruction[0].additionalInstruction[0].coding[0].display
-            ),
-            force_bytes(
-                "Warning. May cause drowsiness. If affected do not drive or operate machinery. Avoid alcoholic drink (qualifier value)"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.dosageInstruction[0].additionalInstruction[0].coding[0].system
-            ),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.dosageInstruction[0].asNeededCodeableConcept.coding[0].code
-            ),
-            force_bytes("203082005"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.dosageInstruction[0].asNeededCodeableConcept.coding[0].display
-            ),
-            force_bytes("Fibromyalgia (disorder)"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.dosageInstruction[0].asNeededCodeableConcept.coding[0].system
-            ),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].doseQuantity.code), force_bytes("TAB")
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].doseQuantity.system),
-            force_bytes("http://hl7.org/fhir/v3/orderableDrugForm"),
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].doseQuantity.unit), force_bytes("TAB")
-        )
-        self.assertEqual(inst.dosageInstruction[0].doseQuantity.value, 1)
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].route.coding[0].code),
-            force_bytes("26643006"),
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].route.coding[0].display),
-            force_bytes("Oral Route"),
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].route.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(inst.dosageInstruction[0].sequence, 1)
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].text),
-            force_bytes("1 tablet every four hours as needed for pain"),
-        )
-        self.assertEqual(inst.dosageInstruction[0].timing.repeat.frequency, 1)
-        self.assertEqual(inst.dosageInstruction[0].timing.repeat.period, 4)
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].timing.repeat.periodUnit),
-            force_bytes("h"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("meddisp0321"))
-        self.assertEqual(
-            force_bytes(inst.medicationCodeableConcept.coding[0].code),
-            force_bytes("49999-051-30"),
-        )
-        self.assertEqual(
-            force_bytes(inst.medicationCodeableConcept.coding[0].display),
-            force_bytes("Vicodin 5mg Hydrocodone, 500mg Acetaminophen tablet "),
-        )
-        self.assertEqual(
-            force_bytes(inst.medicationCodeableConcept.coding[0].system),
-            force_bytes("http://hl7.org/fhir/sid/ndc"),
-        )
-        self.assertEqual(force_bytes(inst.quantity.code), force_bytes("TAB"))
-        self.assertEqual(
-            force_bytes(inst.quantity.system), force_bytes("http://unitsofmeasure.org")
-        )
-        self.assertEqual(inst.quantity.value, 30)
-        self.assertEqual(force_bytes(inst.status), force_bytes("in-progress"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type.coding[0].code), force_bytes("RFP"))
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].display), force_bytes("Refill - Part Fill")
-        )
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].system),
-            force_bytes("http://hl7.org/fhir/v3/ActCode"),
-        )
-        self.assertEqual(inst.whenPrepared.date, FHIRDate("2015-01-15T10:20:00Z").date)
-        self.assertEqual(inst.whenPrepared.as_json(), "2015-01-15T10:20:00Z")
+def test_medicationdispense_2(base_settings):
+    """No. 2 tests collection for MedicationDispense.
+    Test File: medicationdispense0301.json
+    """
+    filename = base_settings["unittest_data_dir"] / "medicationdispense0301.json"
+    inst = medicationdispense.MedicationDispense.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "MedicationDispense" == inst.resource_type
 
-    def testMedicationDispense4(self):
-        inst = self.instantiate_from("medicationdispense0320.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a MedicationDispense instance"
-        )
-        self.implMedicationDispense4(inst)
+    impl_medicationdispense_2(inst)
 
-        js = inst.as_json()
-        self.assertEqual("MedicationDispense", js["resourceType"])
-        inst2 = medicationdispense.MedicationDispense(js)
-        self.implMedicationDispense4(inst2)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "MedicationDispense" == data["resourceType"]
 
-    def implMedicationDispense4(self, inst):
-        self.assertEqual(force_bytes(inst.contained[0].id), force_bytes("med0318"))
-        self.assertEqual(force_bytes(inst.daysSupply.code), force_bytes("d"))
-        self.assertEqual(
-            force_bytes(inst.daysSupply.system),
-            force_bytes("http://unitsofmeasure.org"),
-        )
-        self.assertEqual(force_bytes(inst.daysSupply.unit), force_bytes("Day"))
-        self.assertEqual(inst.daysSupply.value, 1)
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].doseQuantity.code), force_bytes("mL")
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].doseQuantity.system),
-            force_bytes("http://unitsofmeasure.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].doseQuantity.unit), force_bytes("mL")
-        )
-        self.assertEqual(inst.dosageInstruction[0].doseQuantity.value, 1000)
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].rateRatio.denominator.code),
-            force_bytes("h"),
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].rateRatio.denominator.system),
-            force_bytes("http://unitsofmeasure.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].rateRatio.denominator.unit),
-            force_bytes("h"),
-        )
-        self.assertEqual(inst.dosageInstruction[0].rateRatio.denominator.value, 1)
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].rateRatio.numerator.code),
-            force_bytes("mL"),
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].rateRatio.numerator.system),
-            force_bytes("http://unitsofmeasure.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].rateRatio.numerator.unit),
-            force_bytes("mL"),
-        )
-        self.assertEqual(inst.dosageInstruction[0].rateRatio.numerator.value, 50)
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].route.coding[0].code),
-            force_bytes("255560000"),
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].route.coding[0].display),
-            force_bytes("Intravenous"),
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].route.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(inst.dosageInstruction[0].sequence, 1)
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].text),
-            force_bytes("1000mL infused at 50ml/hour for 4 hours - hang at 2200 hours"),
-        )
-        self.assertEqual(
-            inst.dosageInstruction[0].timing.event[0].date,
-            FHIRDate("2015-01-15T22:00:00+11:00").date,
-        )
-        self.assertEqual(
-            inst.dosageInstruction[0].timing.event[0].as_json(),
-            "2015-01-15T22:00:00+11:00",
-        )
-        self.assertEqual(inst.dosageInstruction[0].timing.repeat.frequency, 1)
-        self.assertEqual(inst.dosageInstruction[0].timing.repeat.period, 24)
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].timing.repeat.periodUnit),
-            force_bytes("h"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("meddisp0320"))
-        self.assertEqual(force_bytes(inst.quantity.code), force_bytes("ml"))
-        self.assertEqual(
-            force_bytes(inst.quantity.system), force_bytes("http://unitsofmeasure.org")
-        )
-        self.assertEqual(inst.quantity.value, 1000)
-        self.assertEqual(force_bytes(inst.status), force_bytes("completed"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(
-            inst.whenHandedOver.date, FHIRDate("2015-03-17T17:13:00+05:00").date
-        )
-        self.assertEqual(inst.whenHandedOver.as_json(), "2015-03-17T17:13:00+05:00")
-        self.assertEqual(
-            inst.whenPrepared.date, FHIRDate("2015-03-16T17:13:00+05:00").date
-        )
-        self.assertEqual(inst.whenPrepared.as_json(), "2015-03-16T17:13:00+05:00")
+    inst2 = medicationdispense.MedicationDispense(**data)
+    impl_medicationdispense_2(inst2)
 
-    def testMedicationDispense5(self):
-        inst = self.instantiate_from("medicationdispense0316.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a MedicationDispense instance"
-        )
-        self.implMedicationDispense5(inst)
 
-        js = inst.as_json()
-        self.assertEqual("MedicationDispense", js["resourceType"])
-        inst2 = medicationdispense.MedicationDispense(js)
-        self.implMedicationDispense5(inst2)
+def impl_medicationdispense_3(inst):
+    assert inst.authorizingPrescription[0].reference == "MedicationRequest/medrx0321"
+    assert inst.daysSupply.code == "d"
+    assert inst.daysSupply.system == "http://unitsofmeasure.org"
+    assert inst.daysSupply.unit == "Day"
+    assert float(inst.daysSupply.value) == float(10)
+    assert (
+        inst.dosageInstruction[0].additionalInstruction[0].coding[0].code == "418914006"
+    )
+    assert (
+        inst.dosageInstruction[0].additionalInstruction[0].coding[0].display
+        == "Warning. May cause drowsiness. If affected do not drive or operate machinery. Avoid alcoholic drink (qualifier value)"
+    )
+    assert (
+        inst.dosageInstruction[0].additionalInstruction[0].coding[0].system
+        == "http://snomed.info/sct"
+    )
+    assert (
+        inst.dosageInstruction[0].asNeededCodeableConcept.coding[0].code == "203082005"
+    )
+    assert (
+        inst.dosageInstruction[0].asNeededCodeableConcept.coding[0].display
+        == "Fibromyalgia (disorder)"
+    )
+    assert (
+        inst.dosageInstruction[0].asNeededCodeableConcept.coding[0].system
+        == "http://snomed.info/sct"
+    )
+    assert inst.dosageInstruction[0].doseQuantity.code == "TAB"
+    assert (
+        inst.dosageInstruction[0].doseQuantity.system
+        == "http://hl7.org/fhir/v3/orderableDrugForm"
+    )
+    assert inst.dosageInstruction[0].doseQuantity.unit == "TAB"
+    assert float(inst.dosageInstruction[0].doseQuantity.value) == float(1)
+    assert inst.dosageInstruction[0].route.coding[0].code == "26643006"
+    assert inst.dosageInstruction[0].route.coding[0].display == "Oral Route"
+    assert inst.dosageInstruction[0].route.coding[0].system == "http://snomed.info/sct"
+    assert inst.dosageInstruction[0].sequence == 1
+    assert (
+        inst.dosageInstruction[0].text == "1 tablet every four hours as needed for pain"
+    )
+    assert inst.dosageInstruction[0].timing.repeat.frequency == 1
+    assert float(inst.dosageInstruction[0].timing.repeat.period) == float(4)
+    assert inst.dosageInstruction[0].timing.repeat.periodUnit == "h"
+    assert inst.id == "meddisp0321"
+    assert inst.medicationCodeableConcept.coding[0].code == "49999-051-30"
+    assert (
+        inst.medicationCodeableConcept.coding[0].display
+        == "Vicodin 5mg Hydrocodone, 500mg Acetaminophen tablet "
+    )
+    assert (
+        inst.medicationCodeableConcept.coding[0].system == "http://hl7.org/fhir/sid/ndc"
+    )
+    assert inst.performer[0].actor.reference == "Practitioner/f006"
+    assert (
+        inst.performer[0].onBehalfOf.reference == "Organization/2.16.840.1.113883.19.5"
+    )
+    assert inst.quantity.code == "TAB"
+    assert inst.quantity.system == "http://unitsofmeasure.org"
+    assert float(inst.quantity.value) == float(30)
+    assert inst.status == "in-progress"
+    assert inst.subject.display == "Donald Duck"
+    assert inst.subject.reference == "Patient/pat1"
+    assert inst.text.status == "generated"
+    assert inst.type.coding[0].code == "RFP"
+    assert inst.type.coding[0].display == "Refill - Part Fill"
+    assert inst.type.coding[0].system == "http://hl7.org/fhir/v3/ActCode"
+    assert inst.whenPrepared == fhirtypes.DateTime.validate("2015-01-15T10:20:00Z")
 
-    def implMedicationDispense5(self, inst):
-        self.assertEqual(force_bytes(inst.daysSupply.code), force_bytes("d"))
-        self.assertEqual(
-            force_bytes(inst.daysSupply.system),
-            force_bytes("http://unitsofmeasure.org"),
-        )
-        self.assertEqual(force_bytes(inst.daysSupply.unit), force_bytes("Day"))
-        self.assertEqual(inst.daysSupply.value, 30)
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].doseQuantity.code), force_bytes("U")
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].doseQuantity.system),
-            force_bytes("http://unitsofmeasure.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].doseQuantity.unit), force_bytes("U")
-        )
-        self.assertEqual(inst.dosageInstruction[0].doseQuantity.value, 20)
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].route.coding[0].code),
-            force_bytes("263887005"),
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].route.coding[0].display),
-            force_bytes("Subcutaneous (qualifier value)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].route.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(inst.dosageInstruction[0].sequence, 1)
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].text),
-            force_bytes("20 Units SC three times daily"),
-        )
-        self.assertEqual(inst.dosageInstruction[0].timing.repeat.frequency, 3)
-        self.assertEqual(inst.dosageInstruction[0].timing.repeat.period, 1)
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].timing.repeat.periodUnit),
-            force_bytes("d"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("meddisp0316"))
-        self.assertEqual(
-            force_bytes(inst.medicationCodeableConcept.coding[0].code),
-            force_bytes("285018"),
-        )
-        self.assertEqual(
-            force_bytes(inst.medicationCodeableConcept.coding[0].display),
-            force_bytes("Lantus 100 unit/ml injectable solution"),
-        )
-        self.assertEqual(
-            force_bytes(inst.medicationCodeableConcept.coding[0].system),
-            force_bytes("http://www.nlm.nih.gov/research/umls/rxnorm"),
-        )
-        self.assertEqual(force_bytes(inst.quantity.code), force_bytes("ml"))
-        self.assertEqual(
-            force_bytes(inst.quantity.system), force_bytes("http://unitsofmeasure.org")
-        )
-        self.assertEqual(inst.quantity.value, 10)
-        self.assertEqual(force_bytes(inst.status), force_bytes("in-progress"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type.coding[0].code), force_bytes("RFP"))
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].display), force_bytes("Refill - Part Fill")
-        )
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].system),
-            force_bytes("http://hl7.org/fhir/v3/ActCode"),
-        )
-        self.assertEqual(
-            inst.whenPrepared.date, FHIRDate("2015-06-25T07:13:00+05:00").date
-        )
-        self.assertEqual(inst.whenPrepared.as_json(), "2015-06-25T07:13:00+05:00")
 
-    def testMedicationDispense6(self):
-        inst = self.instantiate_from("medicationdispense0327.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a MedicationDispense instance"
-        )
-        self.implMedicationDispense6(inst)
+def test_medicationdispense_3(base_settings):
+    """No. 3 tests collection for MedicationDispense.
+    Test File: medicationdispense0321.json
+    """
+    filename = base_settings["unittest_data_dir"] / "medicationdispense0321.json"
+    inst = medicationdispense.MedicationDispense.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "MedicationDispense" == inst.resource_type
 
-        js = inst.as_json()
-        self.assertEqual("MedicationDispense", js["resourceType"])
-        inst2 = medicationdispense.MedicationDispense(js)
-        self.implMedicationDispense6(inst2)
+    impl_medicationdispense_3(inst)
 
-    def implMedicationDispense6(self, inst):
-        self.assertEqual(force_bytes(inst.daysSupply.code), force_bytes("d"))
-        self.assertEqual(
-            force_bytes(inst.daysSupply.system),
-            force_bytes("http://unitsofmeasure.org"),
-        )
-        self.assertEqual(force_bytes(inst.daysSupply.unit), force_bytes("Day"))
-        self.assertEqual(inst.daysSupply.value, 30)
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].additionalInstruction[0].text),
-            force_bytes("Shake Well"),
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].doseQuantity.code), force_bytes("ea")
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].doseQuantity.system),
-            force_bytes("http://unitsofmeasure.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].doseQuantity.unit), force_bytes("ea")
-        )
-        self.assertEqual(inst.dosageInstruction[0].doseQuantity.value, 1)
-        self.assertEqual(inst.dosageInstruction[0].sequence, 1)
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].text),
-            force_bytes("Use two sprays twice daily"),
-        )
-        self.assertEqual(inst.dosageInstruction[0].timing.repeat.frequency, 2)
-        self.assertEqual(inst.dosageInstruction[0].timing.repeat.period, 1)
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].timing.repeat.periodUnit),
-            force_bytes("d"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("meddisp0327"))
-        self.assertEqual(
-            force_bytes(inst.medicationCodeableConcept.coding[0].code),
-            force_bytes("746763"),
-        )
-        self.assertEqual(
-            force_bytes(inst.medicationCodeableConcept.coding[0].display),
-            force_bytes(
-                "Proventil 0.09mg/actuat (Albuterol sulfate 0.108mg/actuat from mouthpiece)"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.medicationCodeableConcept.coding[0].system),
-            force_bytes("http://www.nlm.nih.gov/research/umls/rxnorm"),
-        )
-        self.assertEqual(force_bytes(inst.quantity.code), force_bytes("ml"))
-        self.assertEqual(
-            force_bytes(inst.quantity.system), force_bytes("http://unitsofmeasure.org")
-        )
-        self.assertEqual(inst.quantity.value, 30)
-        self.assertEqual(force_bytes(inst.status), force_bytes("completed"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type.coding[0].code), force_bytes("TF"))
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].display), force_bytes("Trial Fill")
-        )
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].system),
-            force_bytes("http://hl7.org/fhir/v3/ActCode"),
-        )
-        self.assertEqual(
-            inst.whenHandedOver.date, FHIRDate("2015-01-15T16:20:00Z").date
-        )
-        self.assertEqual(inst.whenHandedOver.as_json(), "2015-01-15T16:20:00Z")
-        self.assertEqual(inst.whenPrepared.date, FHIRDate("2015-01-15T10:20:00Z").date)
-        self.assertEqual(inst.whenPrepared.as_json(), "2015-01-15T10:20:00Z")
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "MedicationDispense" == data["resourceType"]
 
-    def testMedicationDispense7(self):
-        inst = self.instantiate_from("medicationdispenseexample8.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a MedicationDispense instance"
-        )
-        self.implMedicationDispense7(inst)
+    inst2 = medicationdispense.MedicationDispense(**data)
+    impl_medicationdispense_3(inst2)
 
-        js = inst.as_json()
-        self.assertEqual("MedicationDispense", js["resourceType"])
-        inst2 = medicationdispense.MedicationDispense(js)
-        self.implMedicationDispense7(inst2)
 
-    def implMedicationDispense7(self, inst):
-        self.assertEqual(
-            force_bytes(inst.contained[0].id), force_bytes("medexample015")
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].doseQuantity.code), force_bytes("mg")
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].doseQuantity.system),
-            force_bytes("http://unitsofmeasure.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].doseQuantity.unit), force_bytes("mg")
-        )
-        self.assertEqual(inst.dosageInstruction[0].doseQuantity.value, 500)
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].route.coding[0].code),
-            force_bytes("394899003"),
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].route.coding[0].display),
-            force_bytes("oral administration of treatment"),
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].route.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(inst.dosageInstruction[0].sequence, 1)
-        self.assertEqual(inst.dosageInstruction[0].timing.repeat.frequency, 2)
-        self.assertEqual(inst.dosageInstruction[0].timing.repeat.period, 21)
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].timing.repeat.periodUnit),
-            force_bytes("d"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("meddisp008"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("completed"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+def impl_medicationdispense_4(inst):
+    assert inst.authorizingPrescription[0].reference == "MedicationRequest/medrx0323"
+    assert inst.contained[0].id == "med0318"
+    assert inst.daysSupply.code == "d"
+    assert inst.daysSupply.system == "http://unitsofmeasure.org"
+    assert inst.daysSupply.unit == "Day"
+    assert float(inst.daysSupply.value) == float(1)
+    assert inst.dosageInstruction[0].doseQuantity.code == "mL"
+    assert inst.dosageInstruction[0].doseQuantity.system == "http://unitsofmeasure.org"
+    assert inst.dosageInstruction[0].doseQuantity.unit == "mL"
+    assert float(inst.dosageInstruction[0].doseQuantity.value) == float(1000)
+    assert inst.dosageInstruction[0].rateRatio.denominator.code == "h"
+    assert (
+        inst.dosageInstruction[0].rateRatio.denominator.system
+        == "http://unitsofmeasure.org"
+    )
+    assert inst.dosageInstruction[0].rateRatio.denominator.unit == "h"
+    assert float(inst.dosageInstruction[0].rateRatio.denominator.value) == float(1)
+    assert inst.dosageInstruction[0].rateRatio.numerator.code == "mL"
+    assert (
+        inst.dosageInstruction[0].rateRatio.numerator.system
+        == "http://unitsofmeasure.org"
+    )
+    assert inst.dosageInstruction[0].rateRatio.numerator.unit == "mL"
+    assert float(inst.dosageInstruction[0].rateRatio.numerator.value) == float(50)
+    assert inst.dosageInstruction[0].route.coding[0].code == "255560000"
+    assert inst.dosageInstruction[0].route.coding[0].display == "Intravenous"
+    assert inst.dosageInstruction[0].route.coding[0].system == "http://snomed.info/sct"
+    assert inst.dosageInstruction[0].sequence == 1
+    assert (
+        inst.dosageInstruction[0].text
+        == "1000mL infused at 50ml/hour for 4 hours - hang at 2200 hours"
+    )
+    assert inst.dosageInstruction[0].timing.event[0] == fhirtypes.DateTime.validate(
+        "2015-01-15T22:00:00+11:00"
+    )
+    assert inst.dosageInstruction[0].timing.repeat.frequency == 1
+    assert float(inst.dosageInstruction[0].timing.repeat.period) == float(24)
+    assert inst.dosageInstruction[0].timing.repeat.periodUnit == "h"
+    assert inst.id == "meddisp0320"
+    assert inst.medicationReference.display == "TPN Solution"
+    assert inst.medicationReference.reference == "#med0318"
+    assert inst.performer[0].actor.reference == "Practitioner/f006"
+    assert (
+        inst.performer[0].onBehalfOf.reference == "Organization/2.16.840.1.113883.19.5"
+    )
+    assert inst.quantity.code == "ml"
+    assert inst.quantity.system == "http://unitsofmeasure.org"
+    assert float(inst.quantity.value) == float(1000)
+    assert inst.status == "completed"
+    assert inst.subject.display == "Donald Duck"
+    assert inst.subject.reference == "Patient/pat1"
+    assert inst.text.status == "generated"
+    assert inst.whenHandedOver == fhirtypes.DateTime.validate(
+        "2015-03-17T17:13:00+05:00"
+    )
+    assert inst.whenPrepared == fhirtypes.DateTime.validate("2015-03-16T17:13:00+05:00")
 
-    def testMedicationDispense8(self):
-        inst = self.instantiate_from("medicationdispense0331.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a MedicationDispense instance"
-        )
-        self.implMedicationDispense8(inst)
 
-        js = inst.as_json()
-        self.assertEqual("MedicationDispense", js["resourceType"])
-        inst2 = medicationdispense.MedicationDispense(js)
-        self.implMedicationDispense8(inst2)
+def test_medicationdispense_4(base_settings):
+    """No. 4 tests collection for MedicationDispense.
+    Test File: medicationdispense0320.json
+    """
+    filename = base_settings["unittest_data_dir"] / "medicationdispense0320.json"
+    inst = medicationdispense.MedicationDispense.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "MedicationDispense" == inst.resource_type
 
-    def implMedicationDispense8(self, inst):
-        self.assertEqual(force_bytes(inst.contained[0].id), force_bytes("med0352"))
-        self.assertEqual(force_bytes(inst.daysSupply.code), force_bytes("d"))
-        self.assertEqual(
-            force_bytes(inst.daysSupply.system),
-            force_bytes("http://unitsofmeasure.org"),
-        )
-        self.assertEqual(force_bytes(inst.daysSupply.unit), force_bytes("Day"))
-        self.assertEqual(inst.daysSupply.value, 1)
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].additionalInstruction[0].text),
-            force_bytes(
-                "Take along with one 2mg Coumadin tablet for a total daily dose of 7mg as prescribed by physician"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].doseQuantity.code), force_bytes("mg")
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].doseQuantity.system),
-            force_bytes("http://unitsofmeasure.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].doseQuantity.unit), force_bytes("mg")
-        )
-        self.assertEqual(inst.dosageInstruction[0].doseQuantity.value, 2)
-        self.assertEqual(inst.dosageInstruction[0].sequence, 1)
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].text),
-            force_bytes("7mg (=one 5mg tablet PLUS one 2mg tablet) once daily"),
-        )
-        self.assertEqual(inst.dosageInstruction[0].timing.repeat.frequency, 1)
-        self.assertEqual(inst.dosageInstruction[0].timing.repeat.period, 1)
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].timing.repeat.periodUnit),
-            force_bytes("d"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("meddisp0331"))
-        self.assertEqual(force_bytes(inst.quantity.code), force_bytes("415818006"))
-        self.assertEqual(
-            force_bytes(inst.quantity.system), force_bytes("http://snomed.info/sct")
-        )
-        self.assertEqual(inst.quantity.value, 1)
-        self.assertEqual(force_bytes(inst.status), force_bytes("in-progress"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type.coding[0].code), force_bytes("DF"))
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].display), force_bytes("Daily Fill")
-        )
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].system),
-            force_bytes("http://hl7.org/fhir/v3/ActCode"),
-        )
-        self.assertEqual(inst.whenPrepared.date, FHIRDate("2015-01-15T10:20:00Z").date)
-        self.assertEqual(inst.whenPrepared.as_json(), "2015-01-15T10:20:00Z")
+    impl_medicationdispense_4(inst)
 
-    def testMedicationDispense9(self):
-        inst = self.instantiate_from("medicationdispense0311.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a MedicationDispense instance"
-        )
-        self.implMedicationDispense9(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "MedicationDispense" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("MedicationDispense", js["resourceType"])
-        inst2 = medicationdispense.MedicationDispense(js)
-        self.implMedicationDispense9(inst2)
+    inst2 = medicationdispense.MedicationDispense(**data)
+    impl_medicationdispense_4(inst2)
 
-    def implMedicationDispense9(self, inst):
-        self.assertEqual(force_bytes(inst.daysSupply.code), force_bytes("d"))
-        self.assertEqual(
-            force_bytes(inst.daysSupply.system),
-            force_bytes("http://unitsofmeasure.org"),
-        )
-        self.assertEqual(force_bytes(inst.daysSupply.unit), force_bytes("Day"))
-        self.assertEqual(inst.daysSupply.value, 10)
-        self.assertEqual(
-            force_bytes(
-                inst.dosageInstruction[0].additionalInstruction[0].coding[0].code
-            ),
-            force_bytes("418637003"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.dosageInstruction[0].additionalInstruction[0].coding[0].display
-            ),
-            force_bytes(
-                "Do not take with any other paracetamol products (qualifier value)"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.dosageInstruction[0].additionalInstruction[0].coding[0].system
-            ),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.dosageInstruction[0].asNeededCodeableConcept.coding[0].code
-            ),
-            force_bytes("386661006"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.dosageInstruction[0].asNeededCodeableConcept.coding[0].display
-            ),
-            force_bytes("Fever (finding)"),
-        )
-        self.assertEqual(
-            force_bytes(
-                inst.dosageInstruction[0].asNeededCodeableConcept.coding[0].system
-            ),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].doseQuantity.code), force_bytes("mg")
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].doseQuantity.system),
-            force_bytes("http://unitsofmeasure.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].doseQuantity.unit), force_bytes("mg")
-        )
-        self.assertEqual(inst.dosageInstruction[0].doseQuantity.value, 240)
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].maxDosePerPeriod.denominator.code),
-            force_bytes("d"),
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].maxDosePerPeriod.denominator.system),
-            force_bytes("http://unitsofmeasure.org"),
-        )
-        self.assertEqual(
-            inst.dosageInstruction[0].maxDosePerPeriod.denominator.value, 1
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].maxDosePerPeriod.numerator.code),
-            force_bytes("mg"),
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].maxDosePerPeriod.numerator.system),
-            force_bytes("http://unitsofmeasure.org"),
-        )
-        self.assertEqual(
-            inst.dosageInstruction[0].maxDosePerPeriod.numerator.value, 720
-        )
-        self.assertEqual(inst.dosageInstruction[0].sequence, 1)
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].text),
-            force_bytes(
-                "Insert two suppositories (240mg) rectally twice daily as needed for fever to a maximim of 6 per day"
-            ),
-        )
-        self.assertEqual(inst.dosageInstruction[0].timing.repeat.frequency, 2)
-        self.assertEqual(inst.dosageInstruction[0].timing.repeat.period, 1)
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].timing.repeat.periodUnit),
-            force_bytes("d"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("meddisp0311"))
-        self.assertEqual(
-            force_bytes(inst.medicationCodeableConcept.coding[0].code),
-            force_bytes("50090-0001"),
-        )
-        self.assertEqual(
-            force_bytes(inst.medicationCodeableConcept.coding[0].display),
-            force_bytes("Acetaminophen 120mg Suppository"),
-        )
-        self.assertEqual(
-            force_bytes(inst.medicationCodeableConcept.coding[0].system),
-            force_bytes("http://hl7.org/fhir/sid/ndc"),
-        )
-        self.assertEqual(force_bytes(inst.quantity.code), force_bytes("RECSUPP"))
-        self.assertEqual(
-            force_bytes(inst.quantity.system), force_bytes("http://unitsofmeasure.org")
-        )
-        self.assertEqual(inst.quantity.value, 60)
-        self.assertEqual(force_bytes(inst.status), force_bytes("completed"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type.coding[0].code), force_bytes("RFP"))
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].display), force_bytes("Refill - Part Fill")
-        )
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].system),
-            force_bytes("http://hl7.org/fhir/v3/ActCode"),
-        )
-        self.assertEqual(
-            inst.whenHandedOver.date, FHIRDate("2015-01-15T16:20:00Z").date
-        )
-        self.assertEqual(inst.whenHandedOver.as_json(), "2015-01-15T16:20:00Z")
-        self.assertEqual(inst.whenPrepared.date, FHIRDate("2015-01-15T10:20:00Z").date)
-        self.assertEqual(inst.whenPrepared.as_json(), "2015-01-15T10:20:00Z")
 
-    def testMedicationDispense10(self):
-        inst = self.instantiate_from("medicationdispense0307.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a MedicationDispense instance"
-        )
-        self.implMedicationDispense10(inst)
+def impl_medicationdispense_5(inst):
+    assert inst.authorizingPrescription[0].reference == "MedicationRequest/medrx0320"
+    assert inst.daysSupply.code == "d"
+    assert inst.daysSupply.system == "http://unitsofmeasure.org"
+    assert inst.daysSupply.unit == "Day"
+    assert float(inst.daysSupply.value) == float(30)
+    assert inst.dosageInstruction[0].doseQuantity.code == "U"
+    assert inst.dosageInstruction[0].doseQuantity.system == "http://unitsofmeasure.org"
+    assert inst.dosageInstruction[0].doseQuantity.unit == "U"
+    assert float(inst.dosageInstruction[0].doseQuantity.value) == float(20)
+    assert inst.dosageInstruction[0].route.coding[0].code == "263887005"
+    assert (
+        inst.dosageInstruction[0].route.coding[0].display
+        == "Subcutaneous (qualifier value)"
+    )
+    assert inst.dosageInstruction[0].route.coding[0].system == "http://snomed.info/sct"
+    assert inst.dosageInstruction[0].sequence == 1
+    assert inst.dosageInstruction[0].text == "20 Units SC three times daily"
+    assert inst.dosageInstruction[0].timing.repeat.frequency == 3
+    assert float(inst.dosageInstruction[0].timing.repeat.period) == float(1)
+    assert inst.dosageInstruction[0].timing.repeat.periodUnit == "d"
+    assert inst.id == "meddisp0316"
+    assert inst.medicationCodeableConcept.coding[0].code == "285018"
+    assert (
+        inst.medicationCodeableConcept.coding[0].display
+        == "Lantus 100 unit/ml injectable solution"
+    )
+    assert (
+        inst.medicationCodeableConcept.coding[0].system
+        == "http://www.nlm.nih.gov/research/umls/rxnorm"
+    )
+    assert inst.performer[0].actor.reference == "Practitioner/f006"
+    assert (
+        inst.performer[0].onBehalfOf.reference == "Organization/2.16.840.1.113883.19.5"
+    )
+    assert inst.quantity.code == "ml"
+    assert inst.quantity.system == "http://unitsofmeasure.org"
+    assert float(inst.quantity.value) == float(10)
+    assert inst.status == "in-progress"
+    assert inst.subject.display == "Donald Duck "
+    assert inst.subject.reference == "Patient/pat1"
+    assert inst.text.status == "generated"
+    assert inst.type.coding[0].code == "RFP"
+    assert inst.type.coding[0].display == "Refill - Part Fill"
+    assert inst.type.coding[0].system == "http://hl7.org/fhir/v3/ActCode"
+    assert inst.whenPrepared == fhirtypes.DateTime.validate("2015-06-25T07:13:00+05:00")
 
-        js = inst.as_json()
-        self.assertEqual("MedicationDispense", js["resourceType"])
-        inst2 = medicationdispense.MedicationDispense(js)
-        self.implMedicationDispense10(inst2)
 
-    def implMedicationDispense10(self, inst):
-        self.assertEqual(force_bytes(inst.daysSupply.code), force_bytes("d"))
-        self.assertEqual(
-            force_bytes(inst.daysSupply.system),
-            force_bytes("http://unitsofmeasure.org"),
-        )
-        self.assertEqual(force_bytes(inst.daysSupply.unit), force_bytes("Day"))
-        self.assertEqual(inst.daysSupply.value, 30)
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].doseQuantity.code), force_bytes("mg")
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].doseQuantity.system),
-            force_bytes("http://unitsofmeasure.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].doseQuantity.unit), force_bytes("mg")
-        )
-        self.assertEqual(inst.dosageInstruction[0].doseQuantity.value, 6)
-        self.assertEqual(inst.dosageInstruction[0].sequence, 1)
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].text),
-            force_bytes("Take 3 tablets (6mg) once daily"),
-        )
-        self.assertEqual(inst.dosageInstruction[0].timing.repeat.frequency, 1)
-        self.assertEqual(inst.dosageInstruction[0].timing.repeat.period, 1)
-        self.assertEqual(
-            force_bytes(inst.dosageInstruction[0].timing.repeat.periodUnit),
-            force_bytes("d"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("meddisp0307"))
-        self.assertEqual(
-            force_bytes(inst.medicationCodeableConcept.coding[0].code),
-            force_bytes("76388-713-25"),
-        )
-        self.assertEqual(
-            force_bytes(inst.medicationCodeableConcept.coding[0].display),
-            force_bytes("Myleran 2mg tablet, film coated"),
-        )
-        self.assertEqual(
-            force_bytes(inst.medicationCodeableConcept.coding[0].system),
-            force_bytes("http://hl7.org/fhir/sid/ndc"),
-        )
-        self.assertEqual(force_bytes(inst.quantity.code), force_bytes("TAB"))
-        self.assertEqual(
-            force_bytes(inst.quantity.system), force_bytes("http://unitsofmeasure.org")
-        )
-        self.assertEqual(inst.quantity.value, 90)
-        self.assertEqual(force_bytes(inst.status), force_bytes("completed"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type.coding[0].code), force_bytes("RFP"))
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].display), force_bytes("Refill - Part Fill")
-        )
-        self.assertEqual(
-            force_bytes(inst.type.coding[0].system),
-            force_bytes("http://hl7.org/fhir/v3/ActCode"),
-        )
-        self.assertEqual(
-            inst.whenHandedOver.date, FHIRDate("2015-01-15T16:20:00Z").date
-        )
-        self.assertEqual(inst.whenHandedOver.as_json(), "2015-01-15T16:20:00Z")
-        self.assertEqual(inst.whenPrepared.date, FHIRDate("2015-01-15T10:20:00Z").date)
-        self.assertEqual(inst.whenPrepared.as_json(), "2015-01-15T10:20:00Z")
+def test_medicationdispense_5(base_settings):
+    """No. 5 tests collection for MedicationDispense.
+    Test File: medicationdispense0316.json
+    """
+    filename = base_settings["unittest_data_dir"] / "medicationdispense0316.json"
+    inst = medicationdispense.MedicationDispense.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "MedicationDispense" == inst.resource_type
+
+    impl_medicationdispense_5(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "MedicationDispense" == data["resourceType"]
+
+    inst2 = medicationdispense.MedicationDispense(**data)
+    impl_medicationdispense_5(inst2)
+
+
+def impl_medicationdispense_6(inst):
+    assert inst.authorizingPrescription[0].reference == "MedicationRequest/medrx0321"
+    assert inst.daysSupply.code == "d"
+    assert inst.daysSupply.system == "http://unitsofmeasure.org"
+    assert inst.daysSupply.unit == "Day"
+    assert float(inst.daysSupply.value) == float(30)
+    assert inst.dosageInstruction[0].additionalInstruction[0].text == "Shake Well"
+    assert inst.dosageInstruction[0].doseQuantity.code == "ea"
+    assert inst.dosageInstruction[0].doseQuantity.system == "http://unitsofmeasure.org"
+    assert inst.dosageInstruction[0].doseQuantity.unit == "ea"
+    assert float(inst.dosageInstruction[0].doseQuantity.value) == float(1)
+    assert inst.dosageInstruction[0].sequence == 1
+    assert inst.dosageInstruction[0].text == "Use two sprays twice daily"
+    assert inst.dosageInstruction[0].timing.repeat.frequency == 2
+    assert float(inst.dosageInstruction[0].timing.repeat.period) == float(1)
+    assert inst.dosageInstruction[0].timing.repeat.periodUnit == "d"
+    assert inst.id == "meddisp0327"
+    assert inst.medicationCodeableConcept.coding[0].code == "746763"
+    assert (
+        inst.medicationCodeableConcept.coding[0].display
+        == "Proventil 0.09mg/actuat (Albuterol sulfate 0.108mg/actuat from mouthpiece)"
+    )
+    assert (
+        inst.medicationCodeableConcept.coding[0].system
+        == "http://www.nlm.nih.gov/research/umls/rxnorm"
+    )
+    assert inst.performer[0].actor.reference == "Practitioner/f006"
+    assert (
+        inst.performer[0].onBehalfOf.reference == "Organization/2.16.840.1.113883.19.5"
+    )
+    assert inst.quantity.code == "ml"
+    assert inst.quantity.system == "http://unitsofmeasure.org"
+    assert float(inst.quantity.value) == float(30)
+    assert inst.status == "completed"
+    assert inst.subject.display == "Donald Duck"
+    assert inst.subject.reference == "Patient/pat1"
+    assert inst.text.status == "generated"
+    assert inst.type.coding[0].code == "TF"
+    assert inst.type.coding[0].display == "Trial Fill"
+    assert inst.type.coding[0].system == "http://hl7.org/fhir/v3/ActCode"
+    assert inst.whenHandedOver == fhirtypes.DateTime.validate("2015-01-15T16:20:00Z")
+    assert inst.whenPrepared == fhirtypes.DateTime.validate("2015-01-15T10:20:00Z")
+
+
+def test_medicationdispense_6(base_settings):
+    """No. 6 tests collection for MedicationDispense.
+    Test File: medicationdispense0327.json
+    """
+    filename = base_settings["unittest_data_dir"] / "medicationdispense0327.json"
+    inst = medicationdispense.MedicationDispense.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "MedicationDispense" == inst.resource_type
+
+    impl_medicationdispense_6(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "MedicationDispense" == data["resourceType"]
+
+    inst2 = medicationdispense.MedicationDispense(**data)
+    impl_medicationdispense_6(inst2)
+
+
+def impl_medicationdispense_7(inst):
+    assert inst.authorizingPrescription[0].reference == "MedicationRequest/medrx0309"
+    assert inst.contained[0].id == "medexample015"
+    assert inst.dosageInstruction[0].doseQuantity.code == "mg"
+    assert inst.dosageInstruction[0].doseQuantity.system == "http://unitsofmeasure.org"
+    assert inst.dosageInstruction[0].doseQuantity.unit == "mg"
+    assert float(inst.dosageInstruction[0].doseQuantity.value) == float(500)
+    assert inst.dosageInstruction[0].route.coding[0].code == "394899003"
+    assert (
+        inst.dosageInstruction[0].route.coding[0].display
+        == "oral administration of treatment"
+    )
+    assert inst.dosageInstruction[0].route.coding[0].system == "http://snomed.info/sct"
+    assert inst.dosageInstruction[0].sequence == 1
+    assert inst.dosageInstruction[0].timing.repeat.frequency == 2
+    assert float(inst.dosageInstruction[0].timing.repeat.period) == float(21)
+    assert inst.dosageInstruction[0].timing.repeat.periodUnit == "d"
+    assert inst.id == "meddisp008"
+    assert inst.medicationReference.reference == "#medexample015"
+    assert inst.performer[0].actor.reference == "Practitioner/f006"
+    assert (
+        inst.performer[0].onBehalfOf.reference == "Organization/2.16.840.1.113883.19.5"
+    )
+    assert inst.status == "completed"
+    assert inst.subject.display == "Donald Duck"
+    assert inst.subject.reference == "Patient/pat1"
+    assert inst.text.status == "generated"
+
+
+def test_medicationdispense_7(base_settings):
+    """No. 7 tests collection for MedicationDispense.
+    Test File: medicationdispenseexample8.json
+    """
+    filename = base_settings["unittest_data_dir"] / "medicationdispenseexample8.json"
+    inst = medicationdispense.MedicationDispense.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "MedicationDispense" == inst.resource_type
+
+    impl_medicationdispense_7(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "MedicationDispense" == data["resourceType"]
+
+    inst2 = medicationdispense.MedicationDispense(**data)
+    impl_medicationdispense_7(inst2)
+
+
+def impl_medicationdispense_8(inst):
+    assert inst.authorizingPrescription[0].reference == "MedicationRequest/medrx0331"
+    assert inst.contained[0].id == "med0352"
+    assert inst.daysSupply.code == "d"
+    assert inst.daysSupply.system == "http://unitsofmeasure.org"
+    assert inst.daysSupply.unit == "Day"
+    assert float(inst.daysSupply.value) == float(1)
+    assert (
+        inst.dosageInstruction[0].additionalInstruction[0].text
+        == "Take along with one 2mg Coumadin tablet for a total daily dose of 7mg as prescribed by physician"
+    )
+    assert inst.dosageInstruction[0].doseQuantity.code == "mg"
+    assert inst.dosageInstruction[0].doseQuantity.system == "http://unitsofmeasure.org"
+    assert inst.dosageInstruction[0].doseQuantity.unit == "mg"
+    assert float(inst.dosageInstruction[0].doseQuantity.value) == float(2)
+    assert inst.dosageInstruction[0].sequence == 1
+    assert (
+        inst.dosageInstruction[0].text
+        == "7mg (=one 5mg tablet PLUS one 2mg tablet) once daily"
+    )
+    assert inst.dosageInstruction[0].timing.repeat.frequency == 1
+    assert float(inst.dosageInstruction[0].timing.repeat.period) == float(1)
+    assert inst.dosageInstruction[0].timing.repeat.periodUnit == "d"
+    assert inst.id == "meddisp0331"
+    assert inst.medicationReference.display == "Coumadin 2mg tablet"
+    assert inst.medicationReference.reference == "#med0352"
+    assert inst.performer[0].actor.reference == "Practitioner/f006"
+    assert (
+        inst.performer[0].onBehalfOf.reference == "Organization/2.16.840.1.113883.19.5"
+    )
+    assert inst.quantity.code == "415818006"
+    assert inst.quantity.system == "http://snomed.info/sct"
+    assert float(inst.quantity.value) == float(1)
+    assert inst.status == "in-progress"
+    assert inst.subject.display == "Donald Duck"
+    assert inst.subject.reference == "Patient/pat1"
+    assert inst.text.status == "generated"
+    assert inst.type.coding[0].code == "DF"
+    assert inst.type.coding[0].display == "Daily Fill"
+    assert inst.type.coding[0].system == "http://hl7.org/fhir/v3/ActCode"
+    assert inst.whenPrepared == fhirtypes.DateTime.validate("2015-01-15T10:20:00Z")
+
+
+def test_medicationdispense_8(base_settings):
+    """No. 8 tests collection for MedicationDispense.
+    Test File: medicationdispense0331.json
+    """
+    filename = base_settings["unittest_data_dir"] / "medicationdispense0331.json"
+    inst = medicationdispense.MedicationDispense.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "MedicationDispense" == inst.resource_type
+
+    impl_medicationdispense_8(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "MedicationDispense" == data["resourceType"]
+
+    inst2 = medicationdispense.MedicationDispense(**data)
+    impl_medicationdispense_8(inst2)
+
+
+def impl_medicationdispense_9(inst):
+    assert inst.authorizingPrescription[0].reference == "MedicationRequest/medrx0324"
+    assert inst.daysSupply.code == "d"
+    assert inst.daysSupply.system == "http://unitsofmeasure.org"
+    assert inst.daysSupply.unit == "Day"
+    assert float(inst.daysSupply.value) == float(10)
+    assert (
+        inst.dosageInstruction[0].additionalInstruction[0].coding[0].code == "418637003"
+    )
+    assert (
+        inst.dosageInstruction[0].additionalInstruction[0].coding[0].display
+        == "Do not take with any other paracetamol products (qualifier value)"
+    )
+    assert (
+        inst.dosageInstruction[0].additionalInstruction[0].coding[0].system
+        == "http://snomed.info/sct"
+    )
+    assert (
+        inst.dosageInstruction[0].asNeededCodeableConcept.coding[0].code == "386661006"
+    )
+    assert (
+        inst.dosageInstruction[0].asNeededCodeableConcept.coding[0].display
+        == "Fever (finding)"
+    )
+    assert (
+        inst.dosageInstruction[0].asNeededCodeableConcept.coding[0].system
+        == "http://snomed.info/sct"
+    )
+    assert inst.dosageInstruction[0].doseQuantity.code == "mg"
+    assert inst.dosageInstruction[0].doseQuantity.system == "http://unitsofmeasure.org"
+    assert inst.dosageInstruction[0].doseQuantity.unit == "mg"
+    assert float(inst.dosageInstruction[0].doseQuantity.value) == float(240)
+    assert inst.dosageInstruction[0].maxDosePerPeriod.denominator.code == "d"
+    assert (
+        inst.dosageInstruction[0].maxDosePerPeriod.denominator.system
+        == "http://unitsofmeasure.org"
+    )
+    assert float(inst.dosageInstruction[0].maxDosePerPeriod.denominator.value) == float(
+        1
+    )
+    assert inst.dosageInstruction[0].maxDosePerPeriod.numerator.code == "mg"
+    assert (
+        inst.dosageInstruction[0].maxDosePerPeriod.numerator.system
+        == "http://unitsofmeasure.org"
+    )
+    assert float(inst.dosageInstruction[0].maxDosePerPeriod.numerator.value) == float(
+        720
+    )
+    assert inst.dosageInstruction[0].sequence == 1
+    assert (
+        inst.dosageInstruction[0].text
+        == "Insert two suppositories (240mg) rectally twice daily as needed for fever to a maximim of 6 per day"
+    )
+    assert inst.dosageInstruction[0].timing.repeat.frequency == 2
+    assert float(inst.dosageInstruction[0].timing.repeat.period) == float(1)
+    assert inst.dosageInstruction[0].timing.repeat.periodUnit == "d"
+    assert inst.id == "meddisp0311"
+    assert inst.medicationCodeableConcept.coding[0].code == "50090-0001"
+    assert (
+        inst.medicationCodeableConcept.coding[0].display
+        == "Acetaminophen 120mg Suppository"
+    )
+    assert (
+        inst.medicationCodeableConcept.coding[0].system == "http://hl7.org/fhir/sid/ndc"
+    )
+    assert inst.performer[0].actor.reference == "Practitioner/f006"
+    assert (
+        inst.performer[0].onBehalfOf.reference == "Organization/2.16.840.1.113883.19.5"
+    )
+    assert inst.quantity.code == "RECSUPP"
+    assert inst.quantity.system == "http://unitsofmeasure.org"
+    assert float(inst.quantity.value) == float(60)
+    assert inst.status == "completed"
+    assert inst.subject.display == "Donald Duck"
+    assert inst.subject.reference == "Patient/pat1"
+    assert inst.text.status == "generated"
+    assert inst.type.coding[0].code == "RFP"
+    assert inst.type.coding[0].display == "Refill - Part Fill"
+    assert inst.type.coding[0].system == "http://hl7.org/fhir/v3/ActCode"
+    assert inst.whenHandedOver == fhirtypes.DateTime.validate("2015-01-15T16:20:00Z")
+    assert inst.whenPrepared == fhirtypes.DateTime.validate("2015-01-15T10:20:00Z")
+
+
+def test_medicationdispense_9(base_settings):
+    """No. 9 tests collection for MedicationDispense.
+    Test File: medicationdispense0311.json
+    """
+    filename = base_settings["unittest_data_dir"] / "medicationdispense0311.json"
+    inst = medicationdispense.MedicationDispense.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "MedicationDispense" == inst.resource_type
+
+    impl_medicationdispense_9(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "MedicationDispense" == data["resourceType"]
+
+    inst2 = medicationdispense.MedicationDispense(**data)
+    impl_medicationdispense_9(inst2)
+
+
+def impl_medicationdispense_10(inst):
+    assert inst.authorizingPrescription[0].reference == "MedicationRequest/medrx0306"
+    assert inst.daysSupply.code == "d"
+    assert inst.daysSupply.system == "http://unitsofmeasure.org"
+    assert inst.daysSupply.unit == "Day"
+    assert float(inst.daysSupply.value) == float(30)
+    assert inst.dosageInstruction[0].doseQuantity.code == "mg"
+    assert inst.dosageInstruction[0].doseQuantity.system == "http://unitsofmeasure.org"
+    assert inst.dosageInstruction[0].doseQuantity.unit == "mg"
+    assert float(inst.dosageInstruction[0].doseQuantity.value) == float(6)
+    assert inst.dosageInstruction[0].sequence == 1
+    assert inst.dosageInstruction[0].text == "Take 3 tablets (6mg) once daily"
+    assert inst.dosageInstruction[0].timing.repeat.frequency == 1
+    assert float(inst.dosageInstruction[0].timing.repeat.period) == float(1)
+    assert inst.dosageInstruction[0].timing.repeat.periodUnit == "d"
+    assert inst.id == "meddisp0307"
+    assert inst.medicationCodeableConcept.coding[0].code == "76388-713-25"
+    assert (
+        inst.medicationCodeableConcept.coding[0].display
+        == "Myleran 2mg tablet, film coated"
+    )
+    assert (
+        inst.medicationCodeableConcept.coding[0].system == "http://hl7.org/fhir/sid/ndc"
+    )
+    assert inst.performer[0].actor.reference == "Practitioner/f006"
+    assert (
+        inst.performer[0].onBehalfOf.reference == "Organization/2.16.840.1.113883.19.5"
+    )
+    assert inst.quantity.code == "TAB"
+    assert inst.quantity.system == "http://unitsofmeasure.org"
+    assert float(inst.quantity.value) == float(90)
+    assert inst.status == "completed"
+    assert inst.subject.display == "Donald Duck"
+    assert inst.subject.reference == "Patient/pat1"
+    assert inst.text.status == "generated"
+    assert inst.type.coding[0].code == "RFP"
+    assert inst.type.coding[0].display == "Refill - Part Fill"
+    assert inst.type.coding[0].system == "http://hl7.org/fhir/v3/ActCode"
+    assert inst.whenHandedOver == fhirtypes.DateTime.validate("2015-01-15T16:20:00Z")
+    assert inst.whenPrepared == fhirtypes.DateTime.validate("2015-01-15T10:20:00Z")
+
+
+def test_medicationdispense_10(base_settings):
+    """No. 10 tests collection for MedicationDispense.
+    Test File: medicationdispense0307.json
+    """
+    filename = base_settings["unittest_data_dir"] / "medicationdispense0307.json"
+    inst = medicationdispense.MedicationDispense.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "MedicationDispense" == inst.resource_type
+
+    impl_medicationdispense_10(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "MedicationDispense" == data["resourceType"]
+
+    inst2 = medicationdispense.MedicationDispense(**data)
+    impl_medicationdispense_10(inst2)

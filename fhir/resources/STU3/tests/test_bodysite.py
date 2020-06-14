@@ -6,146 +6,114 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import bodysite
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class BodySiteTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("BodySite", js["resourceType"])
-        return bodysite.BodySite(js)
+def impl_bodysite_1(inst):
+    assert inst.code.coding[0].code == "83418008"
+    assert inst.code.coding[0].display == "Entire fetus (body structure)"
+    assert inst.code.coding[0].system == "http://snomed.info/sct"
+    assert inst.code.text == "Fetus"
+    assert inst.description == "EDD 1/1/2017 confirmation by LMP"
+    assert inst.id == "fetus"
+    assert inst.identifier[0].system == "http://goodhealth.org/bodysite/identifiers"
+    assert inst.identifier[0].value == "12345"
+    assert inst.patient.reference == "Patient/example"
+    assert inst.text.status == "generated"
 
-    def testBodySite1(self):
-        inst = self.instantiate_from("bodysite-example-fetus.json")
-        self.assertIsNotNone(inst, "Must have instantiated a BodySite instance")
-        self.implBodySite1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("BodySite", js["resourceType"])
-        inst2 = bodysite.BodySite(js)
-        self.implBodySite1(inst2)
+def test_bodysite_1(base_settings):
+    """No. 1 tests collection for BodySite.
+    Test File: bodysite-example-fetus.json
+    """
+    filename = base_settings["unittest_data_dir"] / "bodysite-example-fetus.json"
+    inst = bodysite.BodySite.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "BodySite" == inst.resource_type
 
-    def implBodySite1(self, inst):
-        self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("83418008"))
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].display),
-            force_bytes("Entire fetus (body structure)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.code.text), force_bytes("Fetus"))
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes("EDD 1/1/2017 confirmation by LMP"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("fetus"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://goodhealth.org/bodysite/identifiers"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("12345"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    impl_bodysite_1(inst)
 
-    def testBodySite2(self):
-        inst = self.instantiate_from("bodysite-example-tumor.json")
-        self.assertIsNotNone(inst, "Must have instantiated a BodySite instance")
-        self.implBodySite2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "BodySite" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("BodySite", js["resourceType"])
-        inst2 = bodysite.BodySite(js)
-        self.implBodySite2(inst2)
+    inst2 = bodysite.BodySite(**data)
+    impl_bodysite_1(inst2)
 
-    def implBodySite2(self, inst):
-        self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("4147007"))
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].display),
-            force_bytes("Mass (morphologic abnormality)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.code.text), force_bytes("Splenic mass"))
-        self.assertEqual(
-            force_bytes(inst.description), force_bytes("7 cm maximum diameter")
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("tumor"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://goodhealth.org/bodysite/identifiers"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("12345"))
-        self.assertEqual(
-            force_bytes(inst.image[0].contentType), force_bytes("application/dicom")
-        )
-        self.assertEqual(
-            force_bytes(inst.image[0].url),
-            force_bytes(
-                "http://imaging.acme.com/wado/server?requestType=WADO&amp;wado_details"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.qualifier[0].coding[0].code), force_bytes("78961009")
-        )
-        self.assertEqual(
-            force_bytes(inst.qualifier[0].coding[0].display),
-            force_bytes("Splenic structure (body structure)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.qualifier[0].coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.qualifier[0].text), force_bytes("Splenic mass")
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 
-    def testBodySite3(self):
-        inst = self.instantiate_from("bodysite-example-skin-patch.json")
-        self.assertIsNotNone(inst, "Must have instantiated a BodySite instance")
-        self.implBodySite3(inst)
+def impl_bodysite_2(inst):
+    assert inst.code.coding[0].code == "4147007"
+    assert inst.code.coding[0].display == "Mass (morphologic abnormality)"
+    assert inst.code.coding[0].system == "http://snomed.info/sct"
+    assert inst.code.text == "Splenic mass"
+    assert inst.description == "7 cm maximum diameter"
+    assert inst.id == "tumor"
+    assert inst.identifier[0].system == "http://goodhealth.org/bodysite/identifiers"
+    assert inst.identifier[0].value == "12345"
+    assert inst.image[0].contentType == "application/dicom"
+    assert (
+        inst.image[0].url
+        == "http://imaging.acme.com/wado/server?requestType=WADO&amp;wado_details"
+    )
+    assert inst.patient.reference == "Patient/example"
+    assert inst.qualifier[0].coding[0].code == "78961009"
+    assert inst.qualifier[0].coding[0].display == "Splenic structure (body structure)"
+    assert inst.qualifier[0].coding[0].system == "http://snomed.info/sct"
+    assert inst.qualifier[0].text == "Splenic mass"
+    assert inst.text.status == "generated"
 
-        js = inst.as_json()
-        self.assertEqual("BodySite", js["resourceType"])
-        inst2 = bodysite.BodySite(js)
-        self.implBodySite3(inst2)
 
-    def implBodySite3(self, inst):
-        self.assertFalse(inst.active)
-        self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("39937001"))
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].display),
-            force_bytes("Skin structure (body structure)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.code.text), force_bytes("Skin patch"))
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes("inner surface (volar) of the left forearm"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("skin-patch"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://goodhealth.org/bodysite/identifiers"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("12345"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+def test_bodysite_2(base_settings):
+    """No. 2 tests collection for BodySite.
+    Test File: bodysite-example-tumor.json
+    """
+    filename = base_settings["unittest_data_dir"] / "bodysite-example-tumor.json"
+    inst = bodysite.BodySite.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "BodySite" == inst.resource_type
+
+    impl_bodysite_2(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "BodySite" == data["resourceType"]
+
+    inst2 = bodysite.BodySite(**data)
+    impl_bodysite_2(inst2)
+
+
+def impl_bodysite_3(inst):
+    assert inst.active is False
+    assert inst.code.coding[0].code == "39937001"
+    assert inst.code.coding[0].display == "Skin structure (body structure)"
+    assert inst.code.coding[0].system == "http://snomed.info/sct"
+    assert inst.code.text == "Skin patch"
+    assert inst.description == "inner surface (volar) of the left forearm"
+    assert inst.id == "skin-patch"
+    assert inst.identifier[0].system == "http://goodhealth.org/bodysite/identifiers"
+    assert inst.identifier[0].value == "12345"
+    assert inst.patient.reference == "Patient/example"
+    assert inst.text.status == "generated"
+
+
+def test_bodysite_3(base_settings):
+    """No. 3 tests collection for BodySite.
+    Test File: bodysite-example-skin-patch.json
+    """
+    filename = base_settings["unittest_data_dir"] / "bodysite-example-skin-patch.json"
+    inst = bodysite.BodySite.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "BodySite" == inst.resource_type
+
+    impl_bodysite_3(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "BodySite" == data["resourceType"]
+
+    inst2 = bodysite.BodySite(**data)
+    impl_bodysite_3(inst2)

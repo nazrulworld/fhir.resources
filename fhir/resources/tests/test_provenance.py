@@ -6,300 +6,288 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import provenance
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class ProvenanceTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("Provenance", js["resourceType"])
-        return provenance.Provenance(js)
+def impl_provenance_1(inst):
+    assert inst.activity.coding[0].code == "AU"
+    assert inst.activity.coding[0].display == "authenticated"
+    assert (
+        inst.activity.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-DocumentCompletion"
+    )
+    assert inst.agent[0].type.coding[0].code == "VERF"
+    assert (
+        inst.agent[0].type.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
+    )
+    assert inst.agent[0].who.identifier.system == "urn:ietf:rfc:3986"
+    assert inst.agent[0].who.identifier.value == "mailto:hhd@ssa.gov"
+    assert inst.id == "signature"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.reason[0].coding[0].code == "TREAT"
+    assert inst.reason[0].coding[0].display == "treatment"
+    assert (
+        inst.reason[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.recorded == fhirtypes.Instant.validate("2015-08-27T08:39:24+10:00")
+    # Don't know how to create unit test for "signature[0].data", which is a Base64Binary
+    assert inst.signature[0].sigFormat == "application/signature+xml"
+    assert inst.signature[0].targetFormat == "application/fhir+xml"
+    assert inst.signature[0].type[0].code == "1.2.840.10065.1.12.1.5"
+    assert inst.signature[0].type[0].display == "Verification Signature"
+    assert inst.signature[0].type[0].system == "urn:iso-astm:E1762-95:2013"
+    assert inst.signature[0].when == fhirtypes.Instant.validate(
+        "2015-08-27T08:39:24+10:00"
+    )
+    assert inst.signature[0].who.reference == "Practitioner/xcda-author"
+    assert inst.target[0].reference == "DocumentReference/example"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">procedure record authored on 27-June 2015 by Harold Hippocrates, MD Content extracted from Referral received 26-June</div>'
+    )
+    assert inst.text.status == "generated"
 
-    def testProvenance1(self):
-        inst = self.instantiate_from("provenance-example-sig.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Provenance instance")
-        self.implProvenance1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("Provenance", js["resourceType"])
-        inst2 = provenance.Provenance(js)
-        self.implProvenance1(inst2)
+def test_provenance_1(base_settings):
+    """No. 1 tests collection for Provenance.
+    Test File: provenance-example-sig.json
+    """
+    filename = base_settings["unittest_data_dir"] / "provenance-example-sig.json"
+    inst = provenance.Provenance.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Provenance" == inst.resource_type
 
-    def implProvenance1(self, inst):
-        self.assertEqual(force_bytes(inst.activity.coding[0].code), force_bytes("AU"))
-        self.assertEqual(
-            force_bytes(inst.activity.coding[0].display), force_bytes("authenticated")
-        )
-        self.assertEqual(
-            force_bytes(inst.activity.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-DocumentCompletion"),
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[0].type.coding[0].code), force_bytes("VERF")
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[0].type.coding[0].system),
-            force_bytes(
-                "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("signature"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.reason[0].coding[0].code), force_bytes("TREAT")
-        )
-        self.assertEqual(
-            force_bytes(inst.reason[0].coding[0].display), force_bytes("treatment")
-        )
-        self.assertEqual(
-            force_bytes(inst.reason[0].coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(inst.recorded.date, FHIRDate("2015-08-27T08:39:24+10:00").date)
-        self.assertEqual(inst.recorded.as_json(), "2015-08-27T08:39:24+10:00")
-        self.assertEqual(force_bytes(inst.signature[0].data), force_bytes("Li4u"))
-        self.assertEqual(
-            force_bytes(inst.signature[0].sigFormat),
-            force_bytes("application/signature+xml"),
-        )
-        self.assertEqual(
-            force_bytes(inst.signature[0].targetFormat),
-            force_bytes("application/fhir+xml"),
-        )
-        self.assertEqual(
-            force_bytes(inst.signature[0].type[0].code),
-            force_bytes("1.2.840.10065.1.12.1.5"),
-        )
-        self.assertEqual(
-            force_bytes(inst.signature[0].type[0].display),
-            force_bytes("Verification Signature"),
-        )
-        self.assertEqual(
-            force_bytes(inst.signature[0].type[0].system),
-            force_bytes("urn:iso-astm:E1762-95:2013"),
-        )
-        self.assertEqual(
-            inst.signature[0].when.date, FHIRDate("2015-08-27T08:39:24+10:00").date
-        )
-        self.assertEqual(inst.signature[0].when.as_json(), "2015-08-27T08:39:24+10:00")
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">procedure record authored on 27-June 2015 by Harold Hippocrates, MD Content extracted from Referral received 26-June</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    impl_provenance_1(inst)
 
-    def testProvenance2(self):
-        inst = self.instantiate_from("provenance-consent-signature.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Provenance instance")
-        self.implProvenance2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Provenance" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("Provenance", js["resourceType"])
-        inst2 = provenance.Provenance(js)
-        self.implProvenance2(inst2)
+    inst2 = provenance.Provenance(**data)
+    impl_provenance_1(inst2)
 
-    def implProvenance2(self, inst):
-        self.assertEqual(
-            force_bytes(inst.agent[0].role[0].coding[0].code), force_bytes("AUT")
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[0].role[0].coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ParticipationType"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("consent-signature"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(inst.recorded.date, FHIRDate("2016-05-26T00:41:10-04:00").date)
-        self.assertEqual(inst.recorded.as_json(), "2016-05-26T00:41:10-04:00")
-        self.assertEqual(
-            force_bytes(inst.signature[0].data),
-            force_bytes("dGhpcyBibG9iIGlzIHNuaXBwZWQ="),
-        )
-        self.assertEqual(
-            force_bytes(inst.signature[0].sigFormat),
-            force_bytes("application/signature+xml"),
-        )
-        self.assertEqual(
-            force_bytes(inst.signature[0].targetFormat),
-            force_bytes("application/fhir+xml"),
-        )
-        self.assertEqual(
-            force_bytes(inst.signature[0].type[0].code),
-            force_bytes("1.2.840.10065.1.12.1.1"),
-        )
-        self.assertEqual(
-            force_bytes(inst.signature[0].type[0].display),
-            force_bytes("Author's Signature"),
-        )
-        self.assertEqual(
-            force_bytes(inst.signature[0].type[0].system),
-            force_bytes("urn:iso-astm:E1762-95:2013"),
-        )
-        self.assertEqual(
-            inst.signature[0].when.date, FHIRDate("2016-05-26T00:41:10-04:00").date
-        )
-        self.assertEqual(inst.signature[0].when.as_json(), "2016-05-26T00:41:10-04:00")
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 
-    def testProvenance3(self):
-        inst = self.instantiate_from("provenance-example-cwl.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Provenance instance")
-        self.implProvenance3(inst)
+def impl_provenance_2(inst):
+    assert inst.agent[0].role[0].coding[0].code == "AUT"
+    assert (
+        inst.agent[0].role[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
+    )
+    assert inst.agent[0].who.reference == "Patient/72"
+    assert inst.id == "consent-signature"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.recorded == fhirtypes.Instant.validate("2016-05-26T00:41:10-04:00")
+    # Don't know how to create unit test for "signature[0].data", which is a Base64Binary
+    assert inst.signature[0].sigFormat == "application/signature+xml"
+    assert inst.signature[0].targetFormat == "application/fhir+xml"
+    assert inst.signature[0].type[0].code == "1.2.840.10065.1.12.1.1"
+    assert inst.signature[0].type[0].display == "Author's Signature"
+    assert inst.signature[0].type[0].system == "urn:iso-astm:E1762-95:2013"
+    assert inst.signature[0].when == fhirtypes.Instant.validate(
+        "2016-05-26T00:41:10-04:00"
+    )
+    assert inst.signature[0].who.reference == "Patient/72"
+    assert inst.target[0].reference == "Consent/consent-example-signature"
+    assert inst.text.status == "generated"
 
-        js = inst.as_json()
-        self.assertEqual("Provenance", js["resourceType"])
-        inst2 = provenance.Provenance(js)
-        self.implProvenance3(inst2)
 
-    def implProvenance3(self, inst):
-        self.assertEqual(
-            force_bytes(inst.agent[0].type.coding[0].code), force_bytes("AUT")
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[0].type.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ParticipationType"),
-        )
-        self.assertEqual(force_bytes(inst.entity[0].role), force_bytes("source"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("example-cwl"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(inst.occurredPeriod.start.date, FHIRDate("2016-11-30").date)
-        self.assertEqual(inst.occurredPeriod.start.as_json(), "2016-11-30")
-        self.assertEqual(
-            force_bytes(inst.reason[0].text),
-            force_bytes(
-                "profiling Short Tandem Repeats (STRs) from high throughput sequencing data."
-            ),
-        )
-        self.assertEqual(inst.recorded.date, FHIRDate("2016-12-01T08:12:14+10:00").date)
-        self.assertEqual(inst.recorded.as_json(), "2016-12-01T08:12:14+10:00")
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+def test_provenance_2(base_settings):
+    """No. 2 tests collection for Provenance.
+    Test File: provenance-consent-signature.json
+    """
+    filename = base_settings["unittest_data_dir"] / "provenance-consent-signature.json"
+    inst = provenance.Provenance.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Provenance" == inst.resource_type
 
-    def testProvenance4(self):
-        inst = self.instantiate_from("provenance-example-biocompute-object.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Provenance instance")
-        self.implProvenance4(inst)
+    impl_provenance_2(inst)
 
-        js = inst.as_json()
-        self.assertEqual("Provenance", js["resourceType"])
-        inst2 = provenance.Provenance(js)
-        self.implProvenance4(inst2)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Provenance" == data["resourceType"]
 
-    def implProvenance4(self, inst):
-        self.assertEqual(
-            force_bytes(inst.agent[0].type.coding[0].code), force_bytes("AUT")
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[0].type.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ParticipationType"),
-        )
-        self.assertEqual(force_bytes(inst.entity[0].role), force_bytes("source"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("example-biocompute-object"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(inst.occurredPeriod.start.date, FHIRDate("2017-06-06").date)
-        self.assertEqual(inst.occurredPeriod.start.as_json(), "2017-06-06")
-        self.assertEqual(
-            force_bytes(inst.reason[0].text),
-            force_bytes("antiviral resistance detection"),
-        )
-        self.assertEqual(inst.recorded.date, FHIRDate("2016-06-09T08:12:14+10:00").date)
-        self.assertEqual(inst.recorded.as_json(), "2016-06-09T08:12:14+10:00")
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    inst2 = provenance.Provenance(**data)
+    impl_provenance_2(inst2)
 
-    def testProvenance5(self):
-        inst = self.instantiate_from("provenance-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Provenance instance")
-        self.implProvenance5(inst)
 
-        js = inst.as_json()
-        self.assertEqual("Provenance", js["resourceType"])
-        inst2 = provenance.Provenance(js)
-        self.implProvenance5(inst2)
+def impl_provenance_3(inst):
+    assert inst.agent[0].type.coding[0].code == "AUT"
+    assert (
+        inst.agent[0].type.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
+    )
+    assert inst.agent[0].who.reference == "Patient/example"
+    assert inst.entity[0].role == "source"
+    assert inst.entity[0].what.identifier.type.coding[0].code == "CWL"
+    assert inst.entity[0].what.identifier.type.coding[0].display == "lobSTR"
+    assert (
+        inst.entity[0].what.identifier.type.coding[0].system
+        == "https://github.com/common-workflow-language/workflows"
+    )
+    assert (
+        inst.entity[0].what.identifier.value
+        == "https://github.com/common-workflow-language/workflows/blob/master/workflows/lobSTR/lobSTR-workflow.cwl"
+    )
+    assert inst.id == "example-cwl"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.occurredPeriod.start == fhirtypes.DateTime.validate(
+        "2016-11-30T11:15:33+10:00"
+    )
+    assert (
+        inst.reason[0].text
+        == "profiling Short Tandem Repeats (STRs) from high throughput sequencing data."
+    )
+    assert inst.recorded == fhirtypes.Instant.validate("2016-12-01T08:12:14+10:00")
+    assert inst.target[0].reference == "MolecularSequence/example-pgx-1"
+    assert inst.text.status == "generated"
 
-    def implProvenance5(self, inst):
-        self.assertEqual(
-            force_bytes(inst.agent[0].type.coding[0].code), force_bytes("AUT")
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[0].type.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ParticipationType"),
-        )
-        self.assertEqual(force_bytes(inst.agent[1].id), force_bytes("a1"))
-        self.assertEqual(
-            force_bytes(inst.agent[1].type.coding[0].code), force_bytes("DEV")
-        )
-        self.assertEqual(
-            force_bytes(inst.agent[1].type.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ParticipationType"),
-        )
-        self.assertEqual(force_bytes(inst.entity[0].role), force_bytes("source"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(inst.occurredPeriod.end.date, FHIRDate("2015-06-28").date)
-        self.assertEqual(inst.occurredPeriod.end.as_json(), "2015-06-28")
-        self.assertEqual(inst.occurredPeriod.start.date, FHIRDate("2015-06-27").date)
-        self.assertEqual(inst.occurredPeriod.start.as_json(), "2015-06-27")
-        self.assertEqual(
-            force_bytes(inst.policy[0]), force_bytes("http://acme.com/fhir/Consent/25")
-        )
-        self.assertEqual(
-            force_bytes(inst.reason[0].coding[0].code), force_bytes("3457005")
-        )
-        self.assertEqual(
-            force_bytes(inst.reason[0].coding[0].display), force_bytes("Referral")
-        )
-        self.assertEqual(
-            force_bytes(inst.reason[0].coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(inst.recorded.date, FHIRDate("2015-06-27T08:39:24+10:00").date)
-        self.assertEqual(inst.recorded.as_json(), "2015-06-27T08:39:24+10:00")
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+
+def test_provenance_3(base_settings):
+    """No. 3 tests collection for Provenance.
+    Test File: provenance-example-cwl.json
+    """
+    filename = base_settings["unittest_data_dir"] / "provenance-example-cwl.json"
+    inst = provenance.Provenance.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Provenance" == inst.resource_type
+
+    impl_provenance_3(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Provenance" == data["resourceType"]
+
+    inst2 = provenance.Provenance(**data)
+    impl_provenance_3(inst2)
+
+
+def impl_provenance_4(inst):
+    assert inst.agent[0].type.coding[0].code == "AUT"
+    assert (
+        inst.agent[0].type.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
+    )
+    assert inst.agent[0].who.reference == "Practitioner/example"
+    assert inst.entity[0].role == "source"
+    assert inst.entity[0].what.identifier.type.coding[0].code == "biocompute"
+    assert inst.entity[0].what.identifier.type.coding[0].display == "obj.1001"
+    assert (
+        inst.entity[0].what.identifier.type.coding[0].system
+        == "https://hive.biochemistry.gwu.edu"
+    )
+    assert (
+        inst.entity[0].what.identifier.value
+        == "https://hive.biochemistry.gwu.edu/cgi-bin/prd/htscsrs/servlet.cgi?pageid=bcoexample_1"
+    )
+    assert inst.id == "example-biocompute-object"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.occurredPeriod.start == fhirtypes.DateTime.validate(
+        "2017-06-06T11:15:33+10:00"
+    )
+    assert inst.reason[0].text == "antiviral resistance detection"
+    assert inst.recorded == fhirtypes.Instant.validate("2016-06-09T08:12:14+10:00")
+    assert inst.target[0].reference == "MolecularSequence/example"
+    assert inst.text.status == "generated"
+
+
+def test_provenance_4(base_settings):
+    """No. 4 tests collection for Provenance.
+    Test File: provenance-example-biocompute-object.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "provenance-example-biocompute-object.json"
+    )
+    inst = provenance.Provenance.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Provenance" == inst.resource_type
+
+    impl_provenance_4(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Provenance" == data["resourceType"]
+
+    inst2 = provenance.Provenance(**data)
+    impl_provenance_4(inst2)
+
+
+def impl_provenance_5(inst):
+    assert inst.agent[0].type.coding[0].code == "AUT"
+    assert (
+        inst.agent[0].type.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
+    )
+    assert inst.agent[0].who.reference == "Practitioner/xcda-author"
+    assert inst.agent[1].id == "a1"
+    assert inst.agent[1].type.coding[0].code == "DEV"
+    assert (
+        inst.agent[1].type.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
+    )
+    assert inst.agent[1].who.reference == "Device/software"
+    assert inst.entity[0].role == "source"
+    assert inst.entity[0].what.display == "CDA Document in XDS repository"
+    assert inst.entity[0].what.reference == "DocumentReference/example"
+    assert inst.id == "example"
+    assert inst.location.reference == "Location/1"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.occurredPeriod.end == fhirtypes.DateTime.validate(
+        "2015-06-28T11:15:33+10:00"
+    )
+    assert inst.occurredPeriod.start == fhirtypes.DateTime.validate(
+        "2015-06-27T11:15:33+10:00"
+    )
+    assert inst.policy[0] == "http://acme.com/fhir/Consent/25"
+    assert inst.reason[0].coding[0].code == "3457005"
+    assert inst.reason[0].coding[0].display == "Referral"
+    assert inst.reason[0].coding[0].system == "http://snomed.info/sct"
+    assert inst.recorded == fhirtypes.Instant.validate("2015-06-27T08:39:24+10:00")
+    assert inst.target[0].reference == "Procedure/example/_history/1"
+    assert inst.text.status == "generated"
+
+
+def test_provenance_5(base_settings):
+    """No. 5 tests collection for Provenance.
+    Test File: provenance-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "provenance-example.json"
+    inst = provenance.Provenance.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Provenance" == inst.resource_type
+
+    impl_provenance_5(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Provenance" == data["resourceType"]
+
+    inst2 = provenance.Provenance(**data)
+    impl_provenance_5(inst2)

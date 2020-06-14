@@ -6,822 +6,740 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import Any, Dict
+from typing import List as ListType
 
+from pydantic import Field, root_validator
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class Questionnaire(domainresource.DomainResource):
     """ A structured set of questions.
-
     A structured set of questions intended to guide the collection of answers
     from end-users. Questionnaires provide detailed control over order,
     presentation, phraseology and grouping to allow coherent, consistent data
     collection.
     """
 
-    resource_type = "Questionnaire"
+    resource_type = Field("Questionnaire", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    approvalDate: fhirtypes.Date = Field(
+        None,
+        alias="approvalDate",
+        title="Type `Date` (represented as `dict` in JSON)",
+        description="When the questionnaire was approved by publisher",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    code: ListType[fhirtypes.CodingType] = Field(
+        None,
+        alias="code",
+        title="List of `Coding` items (represented as `dict` in JSON)",
+        description="Concept that represents the overall questionnaire",
+    )
 
-        self.approvalDate = None
-        """ When the questionnaire was approved by publisher.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    contact: ListType[fhirtypes.ContactDetailType] = Field(
+        None,
+        alias="contact",
+        title="List of `ContactDetail` items (represented as `dict` in JSON)",
+        description="Contact details for the publisher",
+    )
 
-        self.code = None
-        """ Concept that represents the overall questionnaire.
-        List of `Coding` items (represented as `dict` in JSON). """
+    copyright: fhirtypes.Markdown = Field(
+        None,
+        alias="copyright",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Use and/or publishing restrictions",
+    )
 
-        self.contact = None
-        """ Contact details for the publisher.
-        List of `ContactDetail` items (represented as `dict` in JSON). """
+    date: fhirtypes.DateTime = Field(
+        None,
+        alias="date",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Date last changed",
+    )
 
-        self.copyright = None
-        """ Use and/or publishing restrictions.
-        Type `str`. """
+    derivedFrom: ListType[fhirtypes.Canonical] = Field(
+        None,
+        alias="derivedFrom",
+        title="List of `Canonical` items referencing `Questionnaire` (represented as `dict` in JSON)",
+        description="Instantiates protocol or definition",
+    )
 
-        self.date = None
-        """ Date last changed.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    description: fhirtypes.Markdown = Field(
+        None,
+        alias="description",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Natural language description of the questionnaire",
+    )
 
-        self.derivedFrom = None
-        """ Instantiates protocol or definition.
-        List of `str` items referencing `['Questionnaire']`. """
+    effectivePeriod: fhirtypes.PeriodType = Field(
+        None,
+        alias="effectivePeriod",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="When the questionnaire is expected to be used",
+    )
 
-        self.description = None
-        """ Natural language description of the questionnaire.
-        Type `str`. """
+    experimental: bool = Field(
+        None,
+        alias="experimental",
+        title="Type `bool`",
+        description="For testing purposes, not real usage",
+    )
 
-        self.effectivePeriod = None
-        """ When the questionnaire is expected to be used.
-        Type `Period` (represented as `dict` in JSON). """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Additional identifier for the questionnaire",
+    )
 
-        self.experimental = None
-        """ For testing purposes, not real usage.
-        Type `bool`. """
+    item: ListType[fhirtypes.QuestionnaireItemType] = Field(
+        None,
+        alias="item",
+        title="List of `QuestionnaireItem` items (represented as `dict` in JSON)",
+        description="Questions and sections within the Questionnaire",
+    )
 
-        self.identifier = None
-        """ Additional identifier for the questionnaire.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="jurisdiction",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Intended jurisdiction for questionnaire (if applicable)",
+    )
 
-        self.item = None
-        """ Questions and sections within the Questionnaire.
-        List of `QuestionnaireItem` items (represented as `dict` in JSON). """
+    lastReviewDate: fhirtypes.Date = Field(
+        None,
+        alias="lastReviewDate",
+        title="Type `Date` (represented as `dict` in JSON)",
+        description="When the questionnaire was last reviewed",
+    )
 
-        self.jurisdiction = None
-        """ Intended jurisdiction for questionnaire (if applicable).
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    name: fhirtypes.String = Field(
+        None,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name for this questionnaire (computer friendly)",
+    )
 
-        self.lastReviewDate = None
-        """ When the questionnaire was last reviewed.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    publisher: fhirtypes.String = Field(
+        None,
+        alias="publisher",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name of the publisher (organization or individual)",
+    )
 
-        self.name = None
-        """ Name for this questionnaire (computer friendly).
-        Type `str`. """
+    purpose: fhirtypes.Markdown = Field(
+        None,
+        alias="purpose",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="Why this questionnaire is defined",
+    )
 
-        self.publisher = None
-        """ Name of the publisher (organization or individual).
-        Type `str`. """
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="draft | active | retired | unknown",
+    )
 
-        self.purpose = None
-        """ Why this questionnaire is defined.
-        Type `str`. """
+    subjectType: ListType[fhirtypes.Code] = Field(
+        None,
+        alias="subjectType",
+        title="List of `Code` items (represented as `dict` in JSON)",
+        description="Resource that can be subject of QuestionnaireResponse",
+    )
 
-        self.status = None
-        """ draft | active | retired | unknown.
-        Type `str`. """
+    title: fhirtypes.String = Field(
+        None,
+        alias="title",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name for this questionnaire (human friendly)",
+    )
 
-        self.subjectType = None
-        """ Resource that can be subject of QuestionnaireResponse.
-        List of `str` items. """
+    url: fhirtypes.Uri = Field(
+        None,
+        alias="url",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Canonical identifier for this questionnaire, represented as a URI (globally unique)",
+    )
 
-        self.title = None
-        """ Name for this questionnaire (human friendly).
-        Type `str`. """
+    useContext: ListType[fhirtypes.UsageContextType] = Field(
+        None,
+        alias="useContext",
+        title="List of `UsageContext` items (represented as `dict` in JSON)",
+        description="The context that the content is intended to support",
+    )
 
-        self.url = None
-        """ Canonical identifier for this questionnaire, represented as a URI
-        (globally unique).
-        Type `str`. """
-
-        self.useContext = None
-        """ The context that the content is intended to support.
-        List of `UsageContext` items (represented as `dict` in JSON). """
-
-        self.version = None
-        """ Business version of the questionnaire.
-        Type `str`. """
-
-        super(Questionnaire, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(Questionnaire, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "approvalDate",
-                    "approvalDate",
-                    fhirdate.FHIRDate,
-                    "date",
-                    False,
-                    None,
-                    False,
-                ),
-                ("code", "code", coding.Coding, "Coding", True, None, False),
-                (
-                    "contact",
-                    "contact",
-                    contactdetail.ContactDetail,
-                    "ContactDetail",
-                    True,
-                    None,
-                    False,
-                ),
-                ("copyright", "copyright", str, "markdown", False, None, False),
-                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-                ("derivedFrom", "derivedFrom", str, "canonical", True, None, False),
-                ("description", "description", str, "markdown", False, None, False),
-                (
-                    "effectivePeriod",
-                    "effectivePeriod",
-                    period.Period,
-                    "Period",
-                    False,
-                    None,
-                    False,
-                ),
-                ("experimental", "experimental", bool, "boolean", False, None, False),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "item",
-                    "item",
-                    QuestionnaireItem,
-                    "QuestionnaireItem",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "jurisdiction",
-                    "jurisdiction",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "lastReviewDate",
-                    "lastReviewDate",
-                    fhirdate.FHIRDate,
-                    "date",
-                    False,
-                    None,
-                    False,
-                ),
-                ("name", "name", str, "string", False, None, False),
-                ("publisher", "publisher", str, "string", False, None, False),
-                ("purpose", "purpose", str, "markdown", False, None, False),
-                ("status", "status", str, "code", False, None, True),
-                ("subjectType", "subjectType", str, "code", True, None, False),
-                ("title", "title", str, "string", False, None, False),
-                ("url", "url", str, "uri", False, None, False),
-                (
-                    "useContext",
-                    "useContext",
-                    usagecontext.UsageContext,
-                    "UsageContext",
-                    True,
-                    None,
-                    False,
-                ),
-                ("version", "version", str, "string", False, None, False),
-            ]
-        )
-        return js
+    version: fhirtypes.String = Field(
+        None,
+        alias="version",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Business version of the questionnaire",
+    )
 
 
 class QuestionnaireItem(backboneelement.BackboneElement):
     """ Questions and sections within the Questionnaire.
-
     A particular question, question grouping or display text that is part of
     the questionnaire.
     """
 
-    resource_type = "QuestionnaireItem"
+    resource_type = Field("QuestionnaireItem", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    answerOption: ListType[fhirtypes.QuestionnaireItemAnswerOptionType] = Field(
+        None,
+        alias="answerOption",
+        title="List of `QuestionnaireItemAnswerOption` items (represented as `dict` in JSON)",
+        description="Permitted answer",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    answerValueSet: fhirtypes.Canonical = Field(
+        None,
+        alias="answerValueSet",
+        title="Type `Canonical` referencing `ValueSet` (represented as `dict` in JSON)",
+        description="Valueset containing permitted answers",
+    )
 
-        self.answerOption = None
-        """ Permitted answer.
-        List of `QuestionnaireItemAnswerOption` items (represented as `dict` in JSON). """
+    code: ListType[fhirtypes.CodingType] = Field(
+        None,
+        alias="code",
+        title="List of `Coding` items (represented as `dict` in JSON)",
+        description="Corresponding concept for this item in a terminology",
+    )
 
-        self.answerValueSet = None
-        """ Valueset containing permitted answers.
-        Type `str` referencing `['ValueSet']`. """
+    definition: fhirtypes.Uri = Field(
+        None,
+        alias="definition",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="ElementDefinition - details for the item",
+    )
 
-        self.code = None
-        """ Corresponding concept for this item in a terminology.
-        List of `Coding` items (represented as `dict` in JSON). """
+    enableBehavior: fhirtypes.Code = Field(
+        None,
+        alias="enableBehavior",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="all | any",
+    )
 
-        self.definition = None
-        """ ElementDefinition - details for the item.
-        Type `str`. """
+    enableWhen: ListType[fhirtypes.QuestionnaireItemEnableWhenType] = Field(
+        None,
+        alias="enableWhen",
+        title="List of `QuestionnaireItemEnableWhen` items (represented as `dict` in JSON)",
+        description="Only allow data when",
+    )
 
-        self.enableBehavior = None
-        """ all | any.
-        Type `str`. """
+    initial: ListType[fhirtypes.QuestionnaireItemInitialType] = Field(
+        None,
+        alias="initial",
+        title="List of `QuestionnaireItemInitial` items (represented as `dict` in JSON)",
+        description="Initial value(s) when item is first rendered",
+    )
 
-        self.enableWhen = None
-        """ Only allow data when.
-        List of `QuestionnaireItemEnableWhen` items (represented as `dict` in JSON). """
+    item: ListType[fhirtypes.QuestionnaireItemType] = Field(
+        None,
+        alias="item",
+        title="List of `QuestionnaireItem` items (represented as `dict` in JSON)",
+        description="Nested questionnaire items",
+    )
 
-        self.initial = None
-        """ Initial value(s) when item is first rendered.
-        List of `QuestionnaireItemInitial` items (represented as `dict` in JSON). """
+    linkId: fhirtypes.String = Field(
+        ...,
+        alias="linkId",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Unique id for item in questionnaire",
+    )
 
-        self.item = None
-        """ Nested questionnaire items.
-        List of `QuestionnaireItem` items (represented as `dict` in JSON). """
+    maxLength: fhirtypes.Integer = Field(
+        None,
+        alias="maxLength",
+        title="Type `Integer` (represented as `dict` in JSON)",
+        description="No more than this many characters",
+    )
 
-        self.linkId = None
-        """ Unique id for item in questionnaire.
-        Type `str`. """
+    prefix: fhirtypes.String = Field(
+        None,
+        alias="prefix",
+        title="Type `String` (represented as `dict` in JSON)",
+        description='E.g. "1(a)", "2.5.3"',
+    )
 
-        self.maxLength = None
-        """ No more than this many characters.
-        Type `int`. """
+    readOnly: bool = Field(
+        None,
+        alias="readOnly",
+        title="Type `bool`",
+        description="Don\u0027t allow human editing",
+    )
 
-        self.prefix = None
-        """ E.g. "1(a)", "2.5.3".
-        Type `str`. """
+    repeats: bool = Field(
+        None,
+        alias="repeats",
+        title="Type `bool`",
+        description="Whether the item may repeat",
+    )
 
-        self.readOnly = None
-        """ Don't allow human editing.
-        Type `bool`. """
+    required: bool = Field(
+        None,
+        alias="required",
+        title="Type `bool`",
+        description="Whether the item must be included in data results",
+    )
 
-        self.repeats = None
-        """ Whether the item may repeat.
-        Type `bool`. """
+    text: fhirtypes.String = Field(
+        None,
+        alias="text",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Primary text for the item",
+    )
 
-        self.required = None
-        """ Whether the item must be included in data results.
-        Type `bool`. """
-
-        self.text = None
-        """ Primary text for the item.
-        Type `str`. """
-
-        self.type = None
-        """ group | display | boolean | decimal | integer | date | dateTime +.
-        Type `str`. """
-
-        super(QuestionnaireItem, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(QuestionnaireItem, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "answerOption",
-                    "answerOption",
-                    QuestionnaireItemAnswerOption,
-                    "QuestionnaireItemAnswerOption",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "answerValueSet",
-                    "answerValueSet",
-                    str,
-                    "canonical",
-                    False,
-                    None,
-                    False,
-                ),
-                ("code", "code", coding.Coding, "Coding", True, None, False),
-                ("definition", "definition", str, "uri", False, None, False),
-                ("enableBehavior", "enableBehavior", str, "code", False, None, False),
-                (
-                    "enableWhen",
-                    "enableWhen",
-                    QuestionnaireItemEnableWhen,
-                    "QuestionnaireItemEnableWhen",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "initial",
-                    "initial",
-                    QuestionnaireItemInitial,
-                    "QuestionnaireItemInitial",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "item",
-                    "item",
-                    QuestionnaireItem,
-                    "QuestionnaireItem",
-                    True,
-                    None,
-                    False,
-                ),
-                ("linkId", "linkId", str, "string", False, None, True),
-                ("maxLength", "maxLength", int, "integer", False, None, False),
-                ("prefix", "prefix", str, "string", False, None, False),
-                ("readOnly", "readOnly", bool, "boolean", False, None, False),
-                ("repeats", "repeats", bool, "boolean", False, None, False),
-                ("required", "required", bool, "boolean", False, None, False),
-                ("text", "text", str, "string", False, None, False),
-                ("type", "type", str, "code", False, None, True),
-            ]
-        )
-        return js
+    type: fhirtypes.Code = Field(
+        ...,
+        alias="type",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="group | display | boolean | decimal | integer | date | dateTime +",
+    )
 
 
 class QuestionnaireItemAnswerOption(backboneelement.BackboneElement):
     """ Permitted answer.
-
     One of the permitted answers for a "choice" or "open-choice" question.
     """
 
-    resource_type = "QuestionnaireItemAnswerOption"
+    resource_type = Field("QuestionnaireItemAnswerOption", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    initialSelected: bool = Field(
+        None,
+        alias="initialSelected",
+        title="Type `bool`",
+        description="Whether option is selected by default",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    valueCoding: fhirtypes.CodingType = Field(
+        None,
+        alias="valueCoding",
+        title="Type `Coding` (represented as `dict` in JSON)",
+        description="Answer value",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    valueDate: fhirtypes.Date = Field(
+        None,
+        alias="valueDate",
+        title="Type `Date` (represented as `dict` in JSON)",
+        description="Answer value",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    valueInteger: fhirtypes.Integer = Field(
+        None,
+        alias="valueInteger",
+        title="Type `Integer` (represented as `dict` in JSON)",
+        description="Answer value",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    valueReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="valueReference",
+        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        description="Answer value",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    valueString: fhirtypes.String = Field(
+        None,
+        alias="valueString",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Answer value",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    valueTime: fhirtypes.Time = Field(
+        None,
+        alias="valueTime",
+        title="Type `Time` (represented as `dict` in JSON)",
+        description="Answer value",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "value": [
+                "valueCoding",
+                "valueDate",
+                "valueInteger",
+                "valueReference",
+                "valueString",
+                "valueTime",
+            ],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.initialSelected = None
-        """ Whether option is selected by default.
-        Type `bool`. """
-
-        self.valueCoding = None
-        """ Answer value.
-        Type `Coding` (represented as `dict` in JSON). """
-
-        self.valueDate = None
-        """ Answer value.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.valueInteger = None
-        """ Answer value.
-        Type `int`. """
-
-        self.valueReference = None
-        """ Answer value.
-        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
-
-        self.valueString = None
-        """ Answer value.
-        Type `str`. """
-
-        self.valueTime = None
-        """ Answer value.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        super(QuestionnaireItemAnswerOption, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(QuestionnaireItemAnswerOption, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "initialSelected",
-                    "initialSelected",
-                    bool,
-                    "boolean",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "valueCoding",
-                    "valueCoding",
-                    coding.Coding,
-                    "Coding",
-                    False,
-                    "value",
-                    True,
-                ),
-                (
-                    "valueDate",
-                    "valueDate",
-                    fhirdate.FHIRDate,
-                    "date",
-                    False,
-                    "value",
-                    True,
-                ),
-                ("valueInteger", "valueInteger", int, "integer", False, "value", True),
-                (
-                    "valueReference",
-                    "valueReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    "value",
-                    True,
-                ),
-                ("valueString", "valueString", str, "string", False, "value", True),
-                (
-                    "valueTime",
-                    "valueTime",
-                    fhirdate.FHIRDate,
-                    "time",
-                    False,
-                    "value",
-                    True,
-                ),
-            ]
-        )
-        return js
+        return values
 
 
 class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
     """ Only allow data when.
-
     A constraint indicating that this item should only be enabled
     (displayed/allow answers to be captured) when the specified condition is
     true.
     """
 
-    resource_type = "QuestionnaireItemEnableWhen"
+    resource_type = Field("QuestionnaireItemEnableWhen", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    answerBoolean: bool = Field(
+        None,
+        alias="answerBoolean",
+        title="Type `bool`",
+        description="Value for question comparison based on operator",
+        one_of_many="answer",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    answerCoding: fhirtypes.CodingType = Field(
+        None,
+        alias="answerCoding",
+        title="Type `Coding` (represented as `dict` in JSON)",
+        description="Value for question comparison based on operator",
+        one_of_many="answer",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    answerDate: fhirtypes.Date = Field(
+        None,
+        alias="answerDate",
+        title="Type `Date` (represented as `dict` in JSON)",
+        description="Value for question comparison based on operator",
+        one_of_many="answer",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    answerDateTime: fhirtypes.DateTime = Field(
+        None,
+        alias="answerDateTime",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Value for question comparison based on operator",
+        one_of_many="answer",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    answerDecimal: fhirtypes.Decimal = Field(
+        None,
+        alias="answerDecimal",
+        title="Type `Decimal` (represented as `dict` in JSON)",
+        description="Value for question comparison based on operator",
+        one_of_many="answer",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    answerInteger: fhirtypes.Integer = Field(
+        None,
+        alias="answerInteger",
+        title="Type `Integer` (represented as `dict` in JSON)",
+        description="Value for question comparison based on operator",
+        one_of_many="answer",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    answerQuantity: fhirtypes.QuantityType = Field(
+        None,
+        alias="answerQuantity",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="Value for question comparison based on operator",
+        one_of_many="answer",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    answerReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="answerReference",
+        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        description="Value for question comparison based on operator",
+        one_of_many="answer",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    answerString: fhirtypes.String = Field(
+        None,
+        alias="answerString",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Value for question comparison based on operator",
+        one_of_many="answer",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    answerTime: fhirtypes.Time = Field(
+        None,
+        alias="answerTime",
+        title="Type `Time` (represented as `dict` in JSON)",
+        description="Value for question comparison based on operator",
+        one_of_many="answer",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    operator: fhirtypes.Code = Field(
+        ...,
+        alias="operator",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="exists | = | != | \u003e | \u003c | \u003e= | \u003c=",
+    )
+
+    question: fhirtypes.String = Field(
+        ...,
+        alias="question",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Question that determines whether item is enabled",
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "answer": [
+                "answerBoolean",
+                "answerCoding",
+                "answerDate",
+                "answerDateTime",
+                "answerDecimal",
+                "answerInteger",
+                "answerQuantity",
+                "answerReference",
+                "answerString",
+                "answerTime",
+            ],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.answerBoolean = None
-        """ Value for question comparison based on operator.
-        Type `bool`. """
-
-        self.answerCoding = None
-        """ Value for question comparison based on operator.
-        Type `Coding` (represented as `dict` in JSON). """
-
-        self.answerDate = None
-        """ Value for question comparison based on operator.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.answerDateTime = None
-        """ Value for question comparison based on operator.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.answerDecimal = None
-        """ Value for question comparison based on operator.
-        Type `float`. """
-
-        self.answerInteger = None
-        """ Value for question comparison based on operator.
-        Type `int`. """
-
-        self.answerQuantity = None
-        """ Value for question comparison based on operator.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        self.answerReference = None
-        """ Value for question comparison based on operator.
-        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
-
-        self.answerString = None
-        """ Value for question comparison based on operator.
-        Type `str`. """
-
-        self.answerTime = None
-        """ Value for question comparison based on operator.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.operator = None
-        """ exists | = | != | > | < | >= | <=.
-        Type `str`. """
-
-        self.question = None
-        """ Question that determines whether item is enabled.
-        Type `str`. """
-
-        super(QuestionnaireItemEnableWhen, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(QuestionnaireItemEnableWhen, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "answerBoolean",
-                    "answerBoolean",
-                    bool,
-                    "boolean",
-                    False,
-                    "answer",
-                    True,
-                ),
-                (
-                    "answerCoding",
-                    "answerCoding",
-                    coding.Coding,
-                    "Coding",
-                    False,
-                    "answer",
-                    True,
-                ),
-                (
-                    "answerDate",
-                    "answerDate",
-                    fhirdate.FHIRDate,
-                    "date",
-                    False,
-                    "answer",
-                    True,
-                ),
-                (
-                    "answerDateTime",
-                    "answerDateTime",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    "answer",
-                    True,
-                ),
-                (
-                    "answerDecimal",
-                    "answerDecimal",
-                    float,
-                    "decimal",
-                    False,
-                    "answer",
-                    True,
-                ),
-                (
-                    "answerInteger",
-                    "answerInteger",
-                    int,
-                    "integer",
-                    False,
-                    "answer",
-                    True,
-                ),
-                (
-                    "answerQuantity",
-                    "answerQuantity",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    "answer",
-                    True,
-                ),
-                (
-                    "answerReference",
-                    "answerReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    "answer",
-                    True,
-                ),
-                ("answerString", "answerString", str, "string", False, "answer", True),
-                (
-                    "answerTime",
-                    "answerTime",
-                    fhirdate.FHIRDate,
-                    "time",
-                    False,
-                    "answer",
-                    True,
-                ),
-                ("operator", "operator", str, "code", False, None, True),
-                ("question", "question", str, "string", False, None, True),
-            ]
-        )
-        return js
+        return values
 
 
 class QuestionnaireItemInitial(backboneelement.BackboneElement):
     """ Initial value(s) when item is first rendered.
-
     One or more values that should be pre-populated in the answer when
     initially rendering the questionnaire for user input.
     """
 
-    resource_type = "QuestionnaireItemInitial"
+    resource_type = Field("QuestionnaireItemInitial", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    valueAttachment: fhirtypes.AttachmentType = Field(
+        None,
+        alias="valueAttachment",
+        title="Type `Attachment` (represented as `dict` in JSON)",
+        description="Actual value for initializing the question",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    valueBoolean: bool = Field(
+        None,
+        alias="valueBoolean",
+        title="Type `bool`",
+        description="Actual value for initializing the question",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    valueCoding: fhirtypes.CodingType = Field(
+        None,
+        alias="valueCoding",
+        title="Type `Coding` (represented as `dict` in JSON)",
+        description="Actual value for initializing the question",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    valueDate: fhirtypes.Date = Field(
+        None,
+        alias="valueDate",
+        title="Type `Date` (represented as `dict` in JSON)",
+        description="Actual value for initializing the question",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    valueDateTime: fhirtypes.DateTime = Field(
+        None,
+        alias="valueDateTime",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Actual value for initializing the question",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    valueDecimal: fhirtypes.Decimal = Field(
+        None,
+        alias="valueDecimal",
+        title="Type `Decimal` (represented as `dict` in JSON)",
+        description="Actual value for initializing the question",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    valueInteger: fhirtypes.Integer = Field(
+        None,
+        alias="valueInteger",
+        title="Type `Integer` (represented as `dict` in JSON)",
+        description="Actual value for initializing the question",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    valueQuantity: fhirtypes.QuantityType = Field(
+        None,
+        alias="valueQuantity",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="Actual value for initializing the question",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    valueReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="valueReference",
+        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        description="Actual value for initializing the question",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    valueString: fhirtypes.String = Field(
+        None,
+        alias="valueString",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Actual value for initializing the question",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    valueTime: fhirtypes.Time = Field(
+        None,
+        alias="valueTime",
+        title="Type `Time` (represented as `dict` in JSON)",
+        description="Actual value for initializing the question",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    valueUri: fhirtypes.Uri = Field(
+        None,
+        alias="valueUri",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Actual value for initializing the question",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "value": [
+                "valueAttachment",
+                "valueBoolean",
+                "valueCoding",
+                "valueDate",
+                "valueDateTime",
+                "valueDecimal",
+                "valueInteger",
+                "valueQuantity",
+                "valueReference",
+                "valueString",
+                "valueTime",
+                "valueUri",
+            ],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.valueAttachment = None
-        """ Actual value for initializing the question.
-        Type `Attachment` (represented as `dict` in JSON). """
-
-        self.valueBoolean = None
-        """ Actual value for initializing the question.
-        Type `bool`. """
-
-        self.valueCoding = None
-        """ Actual value for initializing the question.
-        Type `Coding` (represented as `dict` in JSON). """
-
-        self.valueDate = None
-        """ Actual value for initializing the question.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.valueDateTime = None
-        """ Actual value for initializing the question.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.valueDecimal = None
-        """ Actual value for initializing the question.
-        Type `float`. """
-
-        self.valueInteger = None
-        """ Actual value for initializing the question.
-        Type `int`. """
-
-        self.valueQuantity = None
-        """ Actual value for initializing the question.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        self.valueReference = None
-        """ Actual value for initializing the question.
-        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
-
-        self.valueString = None
-        """ Actual value for initializing the question.
-        Type `str`. """
-
-        self.valueTime = None
-        """ Actual value for initializing the question.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.valueUri = None
-        """ Actual value for initializing the question.
-        Type `str`. """
-
-        super(QuestionnaireItemInitial, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(QuestionnaireItemInitial, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "valueAttachment",
-                    "valueAttachment",
-                    attachment.Attachment,
-                    "Attachment",
-                    False,
-                    "value",
-                    True,
-                ),
-                ("valueBoolean", "valueBoolean", bool, "boolean", False, "value", True),
-                (
-                    "valueCoding",
-                    "valueCoding",
-                    coding.Coding,
-                    "Coding",
-                    False,
-                    "value",
-                    True,
-                ),
-                (
-                    "valueDate",
-                    "valueDate",
-                    fhirdate.FHIRDate,
-                    "date",
-                    False,
-                    "value",
-                    True,
-                ),
-                (
-                    "valueDateTime",
-                    "valueDateTime",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    "value",
-                    True,
-                ),
-                (
-                    "valueDecimal",
-                    "valueDecimal",
-                    float,
-                    "decimal",
-                    False,
-                    "value",
-                    True,
-                ),
-                ("valueInteger", "valueInteger", int, "integer", False, "value", True),
-                (
-                    "valueQuantity",
-                    "valueQuantity",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    "value",
-                    True,
-                ),
-                (
-                    "valueReference",
-                    "valueReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    "value",
-                    True,
-                ),
-                ("valueString", "valueString", str, "string", False, "value", True),
-                (
-                    "valueTime",
-                    "valueTime",
-                    fhirdate.FHIRDate,
-                    "time",
-                    False,
-                    "value",
-                    True,
-                ),
-                ("valueUri", "valueUri", str, "uri", False, "value", True),
-            ]
-        )
-        return js
-
-
-try:
-    from . import attachment
-except ImportError:
-    attachment = sys.modules[__package__ + ".attachment"]
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import coding
-except ImportError:
-    coding = sys.modules[__package__ + ".coding"]
-try:
-    from . import contactdetail
-except ImportError:
-    contactdetail = sys.modules[__package__ + ".contactdetail"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import period
-except ImportError:
-    period = sys.modules[__package__ + ".period"]
-try:
-    from . import quantity
-except ImportError:
-    quantity = sys.modules[__package__ + ".quantity"]
-try:
-    from . import usagecontext
-except ImportError:
-    usagecontext = sys.modules[__package__ + ".usagecontext"]
+        return values

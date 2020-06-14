@@ -6,80 +6,64 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import clinicalimpression
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class ClinicalImpressionTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("ClinicalImpression", js["resourceType"])
-        return clinicalimpression.ClinicalImpression(js)
+def impl_clinicalimpression_1(inst):
+    assert inst.assessor.reference == "Practitioner/example"
+    assert inst.context.reference == "Encounter/example"
+    assert inst.date == fhirtypes.DateTime.validate("2014-12-06T22:33:00+11:00")
+    assert (
+        inst.description
+        == "This 26 yo male patient is brought into ER by ambulance after being involved in a motor vehicle accident"
+    )
+    assert inst.effectivePeriod.end == fhirtypes.DateTime.validate(
+        "2014-12-06T22:33:00+11:00"
+    )
+    assert inst.effectivePeriod.start == fhirtypes.DateTime.validate(
+        "2014-12-06T20:00:00+11:00"
+    )
+    assert inst.finding[0].itemCodeableConcept.coding[0].code == "850.0"
+    assert (
+        inst.finding[0].itemCodeableConcept.coding[0].system
+        == "http://hl7.org/fhir/sid/icd-9"
+    )
+    assert inst.id == "example"
+    assert inst.identifier[0].value == "12345"
+    assert inst.investigation[0].code.text == "Initial Examination"
+    assert (
+        inst.investigation[0].item[0].display
+        == "deep laceration of the scalp (left temporo-occipital)"
+    )
+    assert inst.investigation[0].item[1].display == "decreased level of consciousness"
+    assert inst.investigation[0].item[2].display == "disoriented to time and place"
+    assert inst.investigation[0].item[3].display == "restless"
+    assert inst.problem[0].display == "MVA"
+    assert inst.status == "completed"
+    assert inst.subject.reference == "Patient/example"
+    assert (
+        inst.summary
+        == "provisional diagnoses of laceration of head and traumatic brain injury (TBI)"
+    )
+    assert inst.text.status == "generated"
 
-    def testClinicalImpression1(self):
-        inst = self.instantiate_from("clinicalimpression-example.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a ClinicalImpression instance"
-        )
-        self.implClinicalImpression1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("ClinicalImpression", js["resourceType"])
-        inst2 = clinicalimpression.ClinicalImpression(js)
-        self.implClinicalImpression1(inst2)
+def test_clinicalimpression_1(base_settings):
+    """No. 1 tests collection for ClinicalImpression.
+    Test File: clinicalimpression-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "clinicalimpression-example.json"
+    inst = clinicalimpression.ClinicalImpression.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ClinicalImpression" == inst.resource_type
 
-    def implClinicalImpression1(self, inst):
-        self.assertEqual(inst.date.date, FHIRDate("2014-12-06T22:33:00+11:00").date)
-        self.assertEqual(inst.date.as_json(), "2014-12-06T22:33:00+11:00")
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes(
-                "This 26 yo male patient is brought into ER by ambulance after being involved in a motor vehicle accident"
-            ),
-        )
-        self.assertEqual(
-            inst.effectivePeriod.end.date, FHIRDate("2014-12-06T22:33:00+11:00").date
-        )
-        self.assertEqual(
-            inst.effectivePeriod.end.as_json(), "2014-12-06T22:33:00+11:00"
-        )
-        self.assertEqual(
-            inst.effectivePeriod.start.date, FHIRDate("2014-12-06T20:00:00+11:00").date
-        )
-        self.assertEqual(
-            inst.effectivePeriod.start.as_json(), "2014-12-06T20:00:00+11:00"
-        )
-        self.assertEqual(
-            force_bytes(inst.finding[0].itemCodeableConcept.coding[0].code),
-            force_bytes("850.0"),
-        )
-        self.assertEqual(
-            force_bytes(inst.finding[0].itemCodeableConcept.coding[0].system),
-            force_bytes("http://hl7.org/fhir/sid/icd-9"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("12345"))
-        self.assertEqual(
-            force_bytes(inst.investigation[0].code.text),
-            force_bytes("Initial Examination"),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("completed"))
-        self.assertEqual(
-            force_bytes(inst.summary),
-            force_bytes(
-                "provisional diagnoses of laceration of head and traumatic brain injury (TBI)"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    impl_clinicalimpression_1(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ClinicalImpression" == data["resourceType"]
+
+    inst2 = clinicalimpression.ClinicalImpression(**data)
+    impl_clinicalimpression_1(inst2)

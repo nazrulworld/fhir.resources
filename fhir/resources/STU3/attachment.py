@@ -6,89 +6,70 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic import Field
 
-
-import sys
-
-from . import element
+from . import element, fhirtypes
 
 
 class Attachment(element.Element):
     """ Content in a format defined elsewhere.
-
     For referring to data content defined in other formats.
     """
 
-    resource_type = "Attachment"
+    resource_type = Field("Attachment", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    contentType: fhirtypes.Code = Field(
+        None,
+        alias="contentType",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="Mime type of the content, with charset etc.",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    creation: fhirtypes.DateTime = Field(
+        None,
+        alias="creation",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Date attachment was first created",
+    )
 
-        self.contentType = None
-        """ Mime type of the content, with charset etc..
-        Type `str`. """
+    data: fhirtypes.Base64Binary = Field(
+        None,
+        alias="data",
+        title="Type `Base64Binary` (represented as `dict` in JSON)",
+        description="Data inline, base64ed",
+    )
 
-        self.creation = None
-        """ Date attachment was first created.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    hash: fhirtypes.Base64Binary = Field(
+        None,
+        alias="hash",
+        title="Type `Base64Binary` (represented as `dict` in JSON)",
+        description="Hash of the data (sha-1, base64ed)",
+    )
 
-        self.data = None
-        """ Data inline, base64ed.
-        Type `str`. """
+    language: fhirtypes.Code = Field(
+        None,
+        alias="language",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="Human language of the content (BCP-47)",
+    )
 
-        self.hash = None
-        """ Hash of the data (sha-1, base64ed).
-        Type `str`. """
+    size: fhirtypes.UnsignedInt = Field(
+        None,
+        alias="size",
+        title="Type `UnsignedInt` (represented as `dict` in JSON)",
+        description="Number of bytes of content (if url provided)",
+    )
 
-        self.language = None
-        """ Human language of the content (BCP-47).
-        Type `str`. """
+    title: fhirtypes.String = Field(
+        None,
+        alias="title",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Label to display in place of the data",
+    )
 
-        self.size = None
-        """ Number of bytes of content (if url provided).
-        Type `int`. """
-
-        self.title = None
-        """ Label to display in place of the data.
-        Type `str`. """
-
-        self.url = None
-        """ Uri where the data can be found.
-        Type `str`. """
-
-        super(Attachment, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(Attachment, self).elementProperties()
-        js.extend(
-            [
-                ("contentType", "contentType", str, "code", False, None, False),
-                (
-                    "creation",
-                    "creation",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    None,
-                    False,
-                ),
-                ("data", "data", str, "base64Binary", False, None, False),
-                ("hash", "hash", str, "base64Binary", False, None, False),
-                ("language", "language", str, "code", False, None, False),
-                ("size", "size", int, "unsignedInt", False, None, False),
-                ("title", "title", str, "string", False, None, False),
-                ("url", "url", str, "uri", False, None, False),
-            ]
-        )
-        return js
-
-
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
+    url: fhirtypes.Uri = Field(
+        None,
+        alias="url",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Uri where the data can be found",
+    )

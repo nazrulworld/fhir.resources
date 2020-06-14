@@ -6,486 +6,459 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-
-import io
-import json
-import os
-import sys
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import searchparameter
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class SearchParameterTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("SearchParameter", js["resourceType"])
-        if "base" not in js:
-            raise ValueError("Required `base` attribute doesnt found! ")
-        return searchparameter.SearchParameter(js)
+def impl_searchparameter_1(inst):
+    assert inst.base[0] == "Resource"
+    assert inst.code == "workflow"
+    assert inst.description == "Optional Extensions Element"
+    assert inst.experimental is True
+    assert inst.id == "valueset-extensions-ValueSet-workflow"
+    assert inst.name == "workflow"
+    assert inst.status == "draft"
+    assert inst.type == "token"
+    assert (
+        inst.url
+        == "http://hl7.org/fhir/SearchParameter/valueset-extensions-ValueSet-workflow"
+    )
+    assert inst.version == "4.0.1"
+    assert (
+        inst.xpath
+        == "f:ValueSet/f:extension[@url='http://hl7.org/fhir/StructureDefinition/valueset-workflowStatus'] | /f:#workflowStatus"
+    )
+    assert inst.xpathUsage == "normal"
 
-    def testSearchParameter1(self):
-        try:
-            inst = self.instantiate_from("valueset-extensions-ValueSet-workflow.json")
-        except ValueError as exc:
-            sys.stderr.write(str(exc) + "\n")
-            return 1
-        self.assertIsNotNone(inst, "Must have instantiated a SearchParameter instance")
-        self.implSearchParameter1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("SearchParameter", js["resourceType"])
-        inst2 = searchparameter.SearchParameter(js)
-        self.implSearchParameter1(inst2)
+def test_searchparameter_1(base_settings):
+    """No. 1 tests collection for SearchParameter.
+    Test File: valueset-extensions-ValueSet-workflow.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"]
+        / "valueset-extensions-ValueSet-workflow.json"
+    )
+    inst = searchparameter.SearchParameter.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "SearchParameter" == inst.resource_type
 
-    def implSearchParameter1(self, inst):
-        self.assertEqual(force_bytes(inst.code), force_bytes("workflow"))
-        self.assertEqual(
-            force_bytes(inst.description), force_bytes("Optional Extensions Element")
-        )
-        self.assertTrue(inst.experimental)
-        self.assertEqual(
-            force_bytes(inst.id), force_bytes("valueset-extensions-ValueSet-workflow")
-        )
-        self.assertEqual(force_bytes(inst.name), force_bytes("workflow"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-        self.assertEqual(force_bytes(inst.type), force_bytes("token"))
-        self.assertEqual(
-            force_bytes(inst.url),
-            force_bytes(
-                "http://hl7.org/fhir/SearchParameter/valueset-extensions-ValueSet-workflow"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.version), force_bytes("4.0.1"))
-        self.assertEqual(
-            force_bytes(inst.xpath),
-            force_bytes(
-                "f:ValueSet/f:extension[@url='http://hl7.org/fhir/StructureDefinition/valueset-workflowStatus'] | /f:#workflowStatus"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.xpathUsage), force_bytes("normal"))
+    impl_searchparameter_1(inst)
 
-    def testSearchParameter2(self):
-        try:
-            inst = self.instantiate_from("codesystem-extensions-CodeSystem-author.json")
-        except ValueError as exc:
-            sys.stderr.write(str(exc) + "\n")
-            return 1
-        self.assertIsNotNone(inst, "Must have instantiated a SearchParameter instance")
-        self.implSearchParameter2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "SearchParameter" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("SearchParameter", js["resourceType"])
-        inst2 = searchparameter.SearchParameter(js)
-        self.implSearchParameter2(inst2)
+    inst2 = searchparameter.SearchParameter(**data)
+    impl_searchparameter_1(inst2)
 
-    def implSearchParameter2(self, inst):
-        self.assertEqual(force_bytes(inst.code), force_bytes("author"))
-        self.assertEqual(
-            force_bytes(inst.description), force_bytes("Optional Extensions Element")
-        )
-        self.assertTrue(inst.experimental)
-        self.assertEqual(
-            force_bytes(inst.id), force_bytes("codesystem-extensions-CodeSystem-author")
-        )
-        self.assertEqual(force_bytes(inst.name), force_bytes("author"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-        self.assertEqual(force_bytes(inst.type), force_bytes("string"))
-        self.assertEqual(
-            force_bytes(inst.url),
-            force_bytes(
-                "http://hl7.org/fhir/SearchParameter/codesystem-extensions-CodeSystem-author"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.version), force_bytes("4.0.1"))
-        self.assertEqual(
-            force_bytes(inst.xpath),
-            force_bytes(
-                "f:CodeSystem/f:extension[@url='http://hl7.org/fhir/StructureDefinition/codesystem-author'] | /f:#author"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.xpathUsage), force_bytes("normal"))
 
-    def testSearchParameter3(self):
-        inst = self.instantiate_from("searchparameter-example-extension.json")
-        self.assertIsNotNone(inst, "Must have instantiated a SearchParameter instance")
-        self.implSearchParameter3(inst)
+def impl_searchparameter_2(inst):
+    assert inst.base[0] == "Task"
+    assert inst.code == "author"
+    assert inst.description == "Optional Extensions Element"
+    assert inst.experimental is True
+    assert inst.id == "codesystem-extensions-CodeSystem-author"
+    assert inst.name == "author"
+    assert inst.status == "draft"
+    assert inst.type == "string"
+    assert (
+        inst.url
+        == "http://hl7.org/fhir/SearchParameter/codesystem-extensions-CodeSystem-author"
+    )
+    assert inst.version == "4.0.1"
+    assert (
+        inst.xpath
+        == "f:CodeSystem/f:extension[@url='http://hl7.org/fhir/StructureDefinition/codesystem-author'] | /f:#author"
+    )
+    assert inst.xpathUsage == "normal"
 
-        js = inst.as_json()
-        self.assertEqual("SearchParameter", js["resourceType"])
-        inst2 = searchparameter.SearchParameter(js)
-        self.implSearchParameter3(inst2)
 
-    def implSearchParameter3(self, inst):
-        self.assertEqual(force_bytes(inst.base[0]), force_bytes("Patient"))
-        self.assertEqual(force_bytes(inst.code), force_bytes("part-agree"))
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].system), force_bytes("url")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].value),
-            force_bytes("http://hl7.org/fhir"),
-        )
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes(
-                "Search by url for a participation agreement, which is stored in a DocumentReference"
-            ),
-        )
-        self.assertTrue(inst.experimental)
-        self.assertEqual(
-            force_bytes(inst.expression),
-            force_bytes(
-                "DocumentReference.extension('http://example.org/fhir/StructureDefinition/participation-agreement')"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("example-extension"))
-        self.assertEqual(
-            force_bytes(inst.name),
-            force_bytes("Example Search Parameter on an extension"),
-        )
-        self.assertEqual(
-            force_bytes(inst.publisher),
-            force_bytes("Health Level Seven International (FHIR Infrastructure)"),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-        self.assertEqual(force_bytes(inst.target[0]), force_bytes("DocumentReference"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type), force_bytes("reference"))
-        self.assertEqual(
-            force_bytes(inst.url),
-            force_bytes("http://hl7.org/fhir/SearchParameter/example-extension"),
-        )
-        self.assertEqual(
-            force_bytes(inst.xpath),
-            force_bytes(
-                "f:DocumentReference/f:extension[@url='http://example.org/fhir/StructureDefinition/participation-agreement']"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.xpathUsage), force_bytes("normal"))
+def test_searchparameter_2(base_settings):
+    """No. 2 tests collection for SearchParameter.
+    Test File: codesystem-extensions-CodeSystem-author.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"]
+        / "codesystem-extensions-CodeSystem-author.json"
+    )
+    inst = searchparameter.SearchParameter.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "SearchParameter" == inst.resource_type
 
-    def testSearchParameter4(self):
-        inst = self.instantiate_from(
-            "questionnaireresponse-extensions-QuestionnaireResponse-item-subject.json"
-        )
-        self.assertIsNotNone(inst, "Must have instantiated a SearchParameter instance")
-        self.implSearchParameter4(inst)
+    impl_searchparameter_2(inst)
 
-        js = inst.as_json()
-        self.assertEqual("SearchParameter", js["resourceType"])
-        inst2 = searchparameter.SearchParameter(js)
-        self.implSearchParameter4(inst2)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "SearchParameter" == data["resourceType"]
 
-    def implSearchParameter4(self, inst):
-        self.assertEqual(
-            force_bytes(inst.base[0]), force_bytes("QuestionnaireResponse")
-        )
-        self.assertEqual(force_bytes(inst.code), force_bytes("item-subject"))
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes(
-                "Allows searching for QuestionnaireResponses by item value where the item has isSubject=true"
-            ),
-        )
-        self.assertTrue(inst.experimental)
-        self.assertEqual(
-            force_bytes(inst.expression),
-            force_bytes(
-                "QuestionnaireResponse.item.where(hasExtension('http://hl7.org/fhir/StructureDefinition/questionnaireresponse-isSubject')).answer.value.ofType(Reference)"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.id),
-            force_bytes(
-                "questionnaireresponse-extensions-QuestionnaireResponse-item-subject"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.name), force_bytes("item-subject"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-        self.assertEqual(force_bytes(inst.type), force_bytes("reference"))
-        self.assertEqual(
-            force_bytes(inst.url),
-            force_bytes(
-                "http://hl7.org/fhir/SearchParameter/questionnaireresponse-extensions-QuestionnaireResponse-item-subject"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.version), force_bytes("4.0.1"))
-        self.assertEqual(force_bytes(inst.xpathUsage), force_bytes("normal"))
+    inst2 = searchparameter.SearchParameter(**data)
+    impl_searchparameter_2(inst2)
 
-    def testSearchParameter5(self):
-        inst = self.instantiate_from("searchparameter-filter.json")
-        self.assertIsNotNone(inst, "Must have instantiated a SearchParameter instance")
-        self.implSearchParameter5(inst)
 
-        js = inst.as_json()
-        self.assertEqual("SearchParameter", js["resourceType"])
-        inst2 = searchparameter.SearchParameter(js)
-        self.implSearchParameter5(inst2)
+def impl_searchparameter_3(inst):
+    assert inst.base[0] == "Patient"
+    assert inst.code == "part-agree"
+    assert inst.contact[0].telecom[0].system == "url"
+    assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
+    assert (
+        inst.description
+        == "Search by url for a participation agreement, which is stored in a DocumentReference"
+    )
+    assert inst.experimental is True
+    assert (
+        inst.expression
+        == "DocumentReference.extension('http://example.org/fhir/StructureDefinition/participation-agreement')"
+    )
+    assert inst.id == "example-extension"
+    assert inst.name == "Example Search Parameter on an extension"
+    assert inst.publisher == "Health Level Seven International (FHIR Infrastructure)"
+    assert inst.status == "draft"
+    assert inst.target[0] == "DocumentReference"
+    assert inst.text.status == "generated"
+    assert inst.type == "reference"
+    assert inst.url == "http://hl7.org/fhir/SearchParameter/example-extension"
+    assert (
+        inst.xpath
+        == "f:DocumentReference/f:extension[@url='http://example.org/fhir/StructureDefinition/participation-agreement']"
+    )
+    assert inst.xpathUsage == "normal"
 
-    def implSearchParameter5(self, inst):
-        self.assertEqual(force_bytes(inst.base[0]), force_bytes("Resource"))
-        self.assertEqual(force_bytes(inst.code), force_bytes("_filter"))
-        self.assertEqual(force_bytes(inst.contact[0].name), force_bytes("FHIR Project"))
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].system), force_bytes("url")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].value),
-            force_bytes("http://hl7.org/fhir"),
-        )
-        self.assertEqual(inst.date.date, FHIRDate("2018-07-26").date)
-        self.assertEqual(inst.date.as_json(), "2018-07-26")
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes(
-                "This is the formal declaration for the _filter parameter, documented at [http://hl7.org/fhir/search_filter.html](http://hl7.org/fhir/search_filter.html)"
-            ),
-        )
-        self.assertFalse(inst.experimental)
-        self.assertEqual(force_bytes(inst.id), force_bytes("filter"))
-        self.assertEqual(force_bytes(inst.name), force_bytes("FilterSearchParameter"))
-        self.assertEqual(
-            force_bytes(inst.publisher),
-            force_bytes("Health Level Seven International (FHIR Infrastructure)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.purpose),
-            force_bytes(
-                "Support combination searches when the simple name=value basis of search cannot express what is required"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type), force_bytes("special"))
-        self.assertEqual(
-            force_bytes(inst.url),
-            force_bytes("http://hl7.org/fhir/SearchParameter/filter"),
-        )
-        self.assertEqual(force_bytes(inst.version), force_bytes("1"))
 
-    def testSearchParameter6(self):
-        inst = self.instantiate_from("searchparameter-example-reference.json")
-        self.assertIsNotNone(inst, "Must have instantiated a SearchParameter instance")
-        self.implSearchParameter6(inst)
+def test_searchparameter_3(base_settings):
+    """No. 3 tests collection for SearchParameter.
+    Test File: searchparameter-example-extension.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "searchparameter-example-extension.json"
+    )
+    inst = searchparameter.SearchParameter.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "SearchParameter" == inst.resource_type
 
-        js = inst.as_json()
-        self.assertEqual("SearchParameter", js["resourceType"])
-        inst2 = searchparameter.SearchParameter(js)
-        self.implSearchParameter6(inst2)
+    impl_searchparameter_3(inst)
 
-    def implSearchParameter6(self, inst):
-        self.assertEqual(force_bytes(inst.base[0]), force_bytes("Condition"))
-        self.assertEqual(force_bytes(inst.chain[0]), force_bytes("name"))
-        self.assertEqual(force_bytes(inst.chain[1]), force_bytes("identifier"))
-        self.assertEqual(force_bytes(inst.code), force_bytes("subject"))
-        self.assertEqual(force_bytes(inst.contact[0].name), force_bytes("[string]"))
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].system), force_bytes("url")
-        )
-        self.assertEqual(
-            force_bytes(inst.contact[0].telecom[0].value),
-            force_bytes("http://hl7.org/fhir"),
-        )
-        self.assertEqual(inst.date.date, FHIRDate("2013-10-23").date)
-        self.assertEqual(inst.date.as_json(), "2013-10-23")
-        self.assertEqual(
-            force_bytes(inst.description), force_bytes("Search by condition subject")
-        )
-        self.assertTrue(inst.experimental)
-        self.assertEqual(force_bytes(inst.expression), force_bytes("Condition.subject"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("example-reference"))
-        self.assertEqual(force_bytes(inst.modifier[0]), force_bytes("missing"))
-        self.assertEqual(
-            force_bytes(inst.name), force_bytes("Example Search Parameter")
-        )
-        self.assertEqual(
-            force_bytes(inst.publisher),
-            force_bytes("Health Level Seven International (FHIR Infrastructure)"),
-        )
-        self.assertEqual(
-            force_bytes(inst.purpose),
-            force_bytes("Need to search Condition by subject"),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-        self.assertEqual(force_bytes(inst.target[0]), force_bytes("Organization"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type), force_bytes("reference"))
-        self.assertEqual(
-            force_bytes(inst.url),
-            force_bytes("http://hl7.org/fhir/SearchParameter/example-reference"),
-        )
-        self.assertEqual(force_bytes(inst.xpathUsage), force_bytes("normal"))
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "SearchParameter" == data["resourceType"]
 
-    def testSearchParameter7(self):
-        inst = self.instantiate_from(
-            "diagnosticreport-genetic-DiagnosticReport-assessed-condition.json"
-        )
-        self.assertIsNotNone(inst, "Must have instantiated a SearchParameter instance")
-        self.implSearchParameter7(inst)
+    inst2 = searchparameter.SearchParameter(**data)
+    impl_searchparameter_3(inst2)
 
-        js = inst.as_json()
-        self.assertEqual("SearchParameter", js["resourceType"])
-        inst2 = searchparameter.SearchParameter(js)
-        self.implSearchParameter7(inst2)
 
-    def implSearchParameter7(self, inst):
-        self.assertEqual(force_bytes(inst.base[0]), force_bytes("DiagnosticReport"))
-        self.assertEqual(force_bytes(inst.code), force_bytes("assessed-condition"))
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes("Condition assessed by genetic test"),
-        )
-        self.assertTrue(inst.experimental)
-        self.assertEqual(
-            force_bytes(inst.expression),
-            force_bytes(
-                "DiagnosticReport.extension('http://hl7.org/fhir/StructureDefinition/DiagnosticReport-geneticsAssessedCondition')"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.id),
-            force_bytes("diagnosticreport-genetic-DiagnosticReport-assessed-condition"),
-        )
-        self.assertEqual(force_bytes(inst.name), force_bytes("assessed-condition"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-        self.assertEqual(force_bytes(inst.type), force_bytes("reference"))
-        self.assertEqual(
-            force_bytes(inst.url),
-            force_bytes(
-                "http://hl7.org/fhir/SearchParameter/diagnosticreport-genetic-DiagnosticReport-assessed-condition"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.version), force_bytes("4.0.1"))
-        self.assertEqual(force_bytes(inst.xpathUsage), force_bytes("normal"))
+def impl_searchparameter_4(inst):
+    assert inst.base[0] == "QuestionnaireResponse"
+    assert inst.code == "item-subject"
+    assert (
+        inst.description
+        == "Allows searching for QuestionnaireResponses by item value where the item has isSubject=true"
+    )
+    assert inst.experimental is True
+    assert (
+        inst.expression
+        == "QuestionnaireResponse.item.where(hasExtension('http://hl7.org/fhir/StructureDefinition/questionnaireresponse-isSubject')).answer.value.ofType(Reference)"
+    )
+    assert (
+        inst.id == "questionnaireresponse-extensions-QuestionnaireResponse-item-subject"
+    )
+    assert inst.name == "item-subject"
+    assert inst.status == "draft"
+    assert inst.type == "reference"
+    assert (
+        inst.url
+        == "http://hl7.org/fhir/SearchParameter/questionnaireresponse-extensions-QuestionnaireResponse-item-subject"
+    )
+    assert inst.version == "4.0.1"
+    assert inst.xpathUsage == "normal"
 
-    def testSearchParameter8(self):
-        inst = self.instantiate_from("device-extensions-Device-din.json")
-        self.assertIsNotNone(inst, "Must have instantiated a SearchParameter instance")
-        self.implSearchParameter8(inst)
 
-        js = inst.as_json()
-        self.assertEqual("SearchParameter", js["resourceType"])
-        inst2 = searchparameter.SearchParameter(js)
-        self.implSearchParameter8(inst2)
+def test_searchparameter_4(base_settings):
+    """No. 4 tests collection for SearchParameter.
+    Test File: questionnaireresponse-extensions-QuestionnaireResponse-item-subject.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"]
+        / "questionnaireresponse-extensions-QuestionnaireResponse-item-subject.json"
+    )
+    inst = searchparameter.SearchParameter.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "SearchParameter" == inst.resource_type
 
-    def implSearchParameter8(self, inst):
-        self.assertEqual(force_bytes(inst.base[0]), force_bytes("Device"))
-        self.assertEqual(force_bytes(inst.code), force_bytes("din"))
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes("The donation identification number (DIN)"),
-        )
-        self.assertTrue(inst.experimental)
-        self.assertEqual(
-            force_bytes(inst.expression),
-            force_bytes(
-                "Device.extension('http://hl7.org/fhir/SearchParameter/device-extensions-Device-din')"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.id), force_bytes("device-extensions-Device-din")
-        )
-        self.assertEqual(force_bytes(inst.name), force_bytes("din"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-        self.assertEqual(force_bytes(inst.type), force_bytes("token"))
-        self.assertEqual(
-            force_bytes(inst.url),
-            force_bytes(
-                "http://hl7.org/fhir/SearchParameter/device-extensions-Device-din"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.version), force_bytes("4.0.1"))
-        self.assertEqual(force_bytes(inst.xpathUsage), force_bytes("normal"))
+    impl_searchparameter_4(inst)
 
-    def testSearchParameter9(self):
-        inst = self.instantiate_from(
-            "observation-genetic-Observation-gene-identifier.json"
-        )
-        self.assertIsNotNone(inst, "Must have instantiated a SearchParameter instance")
-        self.implSearchParameter9(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "SearchParameter" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("SearchParameter", js["resourceType"])
-        inst2 = searchparameter.SearchParameter(js)
-        self.implSearchParameter9(inst2)
+    inst2 = searchparameter.SearchParameter(**data)
+    impl_searchparameter_4(inst2)
 
-    def implSearchParameter9(self, inst):
-        self.assertEqual(force_bytes(inst.base[0]), force_bytes("Observation"))
-        self.assertEqual(force_bytes(inst.code), force_bytes("gene-identifier"))
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes("HGNC gene symbol and identifier"),
-        )
-        self.assertTrue(inst.experimental)
-        self.assertEqual(
-            force_bytes(inst.expression),
-            force_bytes(
-                "Observation.extension('http://hl7.org/fhir/StructureDefinition/observation-geneticsGene')"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.id),
-            force_bytes("observation-genetic-Observation-gene-identifier"),
-        )
-        self.assertEqual(force_bytes(inst.name), force_bytes("gene-identifier"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-        self.assertEqual(force_bytes(inst.type), force_bytes("token"))
-        self.assertEqual(
-            force_bytes(inst.url),
-            force_bytes(
-                "http://hl7.org/fhir/SearchParameter/observation-genetic-Observation-gene-identifier"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.version), force_bytes("4.0.1"))
-        self.assertEqual(force_bytes(inst.xpathUsage), force_bytes("normal"))
 
-    def testSearchParameter10(self):
-        try:
-            inst = self.instantiate_from(
-                "codesystem-extensions-CodeSystem-workflow.json"
-            )
-        except ValueError as exc:
-            sys.stderr.write(str(exc) + "\n")
-            return 1
-        self.assertIsNotNone(inst, "Must have instantiated a SearchParameter instance")
-        self.implSearchParameter10(inst)
+def impl_searchparameter_5(inst):
+    assert inst.base[0] == "Resource"
+    assert inst.code == "_filter"
+    assert inst.contact[0].name == "FHIR Project"
+    assert inst.contact[0].telecom[0].system == "url"
+    assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
+    assert inst.date == fhirtypes.DateTime.validate("2018-07-26")
+    assert (
+        inst.description
+        == "This is the formal declaration for the _filter parameter, documented at [http://hl7.org/fhir/search_filter.html](http://hl7.org/fhir/search_filter.html)"
+    )
+    assert inst.experimental is False
+    assert inst.id == "filter"
+    assert inst.name == "FilterSearchParameter"
+    assert inst.publisher == "Health Level Seven International (FHIR Infrastructure)"
+    assert (
+        inst.purpose
+        == "Support combination searches when the simple name=value basis of search cannot express what is required"
+    )
+    assert inst.status == "draft"
+    assert inst.text.status == "generated"
+    assert inst.type == "special"
+    assert inst.url == "http://hl7.org/fhir/SearchParameter/filter"
+    assert inst.version == "1"
 
-        js = inst.as_json()
-        self.assertEqual("SearchParameter", js["resourceType"])
-        inst2 = searchparameter.SearchParameter(js)
-        self.implSearchParameter10(inst2)
 
-    def implSearchParameter10(self, inst):
-        self.assertEqual(force_bytes(inst.code), force_bytes("workflow"))
-        self.assertEqual(
-            force_bytes(inst.description), force_bytes("Optional Extensions Element")
-        )
-        self.assertTrue(inst.experimental)
-        self.assertEqual(
-            force_bytes(inst.id),
-            force_bytes("codesystem-extensions-CodeSystem-workflow"),
-        )
-        self.assertEqual(force_bytes(inst.name), force_bytes("workflow"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("draft"))
-        self.assertEqual(force_bytes(inst.type), force_bytes("token"))
-        self.assertEqual(
-            force_bytes(inst.url),
-            force_bytes(
-                "http://hl7.org/fhir/SearchParameter/codesystem-extensions-CodeSystem-workflow"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.version), force_bytes("4.0.1"))
-        self.assertEqual(
-            force_bytes(inst.xpath),
-            force_bytes(
-                "f:CodeSystem/f:extension[@url='http://hl7.org/fhir/StructureDefinition/codesystem-workflowStatus'] | /f:#workflowStatus"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.xpathUsage), force_bytes("normal"))
+def test_searchparameter_5(base_settings):
+    """No. 5 tests collection for SearchParameter.
+    Test File: searchparameter-filter.json
+    """
+    filename = base_settings["unittest_data_dir"] / "searchparameter-filter.json"
+    inst = searchparameter.SearchParameter.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "SearchParameter" == inst.resource_type
+
+    impl_searchparameter_5(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "SearchParameter" == data["resourceType"]
+
+    inst2 = searchparameter.SearchParameter(**data)
+    impl_searchparameter_5(inst2)
+
+
+def impl_searchparameter_6(inst):
+    assert inst.base[0] == "Condition"
+    assert inst.chain[0] == "name"
+    assert inst.chain[1] == "identifier"
+    assert inst.code == "subject"
+    assert inst.contact[0].name == "[string]"
+    assert inst.contact[0].telecom[0].system == "url"
+    assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
+    assert inst.date == fhirtypes.DateTime.validate("2013-10-23")
+    assert inst.description == "Search by condition subject"
+    assert inst.experimental is True
+    assert inst.expression == "Condition.subject"
+    assert inst.id == "example-reference"
+    assert inst.modifier[0] == "missing"
+    assert inst.name == "Example Search Parameter"
+    assert inst.publisher == "Health Level Seven International (FHIR Infrastructure)"
+    assert inst.purpose == "Need to search Condition by subject"
+    assert inst.status == "draft"
+    assert inst.target[0] == "Organization"
+    assert inst.text.status == "generated"
+    assert inst.type == "reference"
+    assert inst.url == "http://hl7.org/fhir/SearchParameter/example-reference"
+    assert inst.xpathUsage == "normal"
+
+
+def test_searchparameter_6(base_settings):
+    """No. 6 tests collection for SearchParameter.
+    Test File: searchparameter-example-reference.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "searchparameter-example-reference.json"
+    )
+    inst = searchparameter.SearchParameter.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "SearchParameter" == inst.resource_type
+
+    impl_searchparameter_6(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "SearchParameter" == data["resourceType"]
+
+    inst2 = searchparameter.SearchParameter(**data)
+    impl_searchparameter_6(inst2)
+
+
+def impl_searchparameter_7(inst):
+    assert inst.base[0] == "DiagnosticReport"
+    assert inst.code == "assessed-condition"
+    assert inst.description == "Condition assessed by genetic test"
+    assert inst.experimental is True
+    assert (
+        inst.expression
+        == "DiagnosticReport.extension('http://hl7.org/fhir/StructureDefinition/DiagnosticReport-geneticsAssessedCondition')"
+    )
+    assert inst.id == "diagnosticreport-genetic-DiagnosticReport-assessed-condition"
+    assert inst.name == "assessed-condition"
+    assert inst.status == "draft"
+    assert inst.type == "reference"
+    assert (
+        inst.url
+        == "http://hl7.org/fhir/SearchParameter/diagnosticreport-genetic-DiagnosticReport-assessed-condition"
+    )
+    assert inst.version == "4.0.1"
+    assert inst.xpathUsage == "normal"
+
+
+def test_searchparameter_7(base_settings):
+    """No. 7 tests collection for SearchParameter.
+    Test File: diagnosticreport-genetic-DiagnosticReport-assessed-condition.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"]
+        / "diagnosticreport-genetic-DiagnosticReport-assessed-condition.json"
+    )
+    inst = searchparameter.SearchParameter.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "SearchParameter" == inst.resource_type
+
+    impl_searchparameter_7(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "SearchParameter" == data["resourceType"]
+
+    inst2 = searchparameter.SearchParameter(**data)
+    impl_searchparameter_7(inst2)
+
+
+def impl_searchparameter_8(inst):
+    assert inst.base[0] == "Device"
+    assert inst.code == "din"
+    assert inst.description == "The donation identification number (DIN)"
+    assert inst.experimental is True
+    assert (
+        inst.expression
+        == "Device.extension('http://hl7.org/fhir/SearchParameter/device-extensions-Device-din')"
+    )
+    assert inst.id == "device-extensions-Device-din"
+    assert inst.name == "din"
+    assert inst.status == "draft"
+    assert inst.type == "token"
+    assert (
+        inst.url == "http://hl7.org/fhir/SearchParameter/device-extensions-Device-din"
+    )
+    assert inst.version == "4.0.1"
+    assert inst.xpathUsage == "normal"
+
+
+def test_searchparameter_8(base_settings):
+    """No. 8 tests collection for SearchParameter.
+    Test File: device-extensions-Device-din.json
+    """
+    filename = base_settings["unittest_data_dir"] / "device-extensions-Device-din.json"
+    inst = searchparameter.SearchParameter.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "SearchParameter" == inst.resource_type
+
+    impl_searchparameter_8(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "SearchParameter" == data["resourceType"]
+
+    inst2 = searchparameter.SearchParameter(**data)
+    impl_searchparameter_8(inst2)
+
+
+def impl_searchparameter_9(inst):
+    assert inst.base[0] == "Observation"
+    assert inst.code == "gene-identifier"
+    assert inst.description == "HGNC gene symbol and identifier"
+    assert inst.experimental is True
+    assert (
+        inst.expression
+        == "Observation.extension('http://hl7.org/fhir/StructureDefinition/observation-geneticsGene')"
+    )
+    assert inst.id == "observation-genetic-Observation-gene-identifier"
+    assert inst.name == "gene-identifier"
+    assert inst.status == "draft"
+    assert inst.type == "token"
+    assert (
+        inst.url
+        == "http://hl7.org/fhir/SearchParameter/observation-genetic-Observation-gene-identifier"
+    )
+    assert inst.version == "4.0.1"
+    assert inst.xpathUsage == "normal"
+
+
+def test_searchparameter_9(base_settings):
+    """No. 9 tests collection for SearchParameter.
+    Test File: observation-genetic-Observation-gene-identifier.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"]
+        / "observation-genetic-Observation-gene-identifier.json"
+    )
+    inst = searchparameter.SearchParameter.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "SearchParameter" == inst.resource_type
+
+    impl_searchparameter_9(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "SearchParameter" == data["resourceType"]
+
+    inst2 = searchparameter.SearchParameter(**data)
+    impl_searchparameter_9(inst2)
+
+
+def impl_searchparameter_10(inst):
+    assert inst.base[0] == "Patient"
+    assert inst.base[1] == "Task"
+    assert inst.code == "workflow"
+    assert inst.description == "Optional Extensions Element"
+    assert inst.experimental is True
+    assert inst.id == "codesystem-extensions-CodeSystem-workflow"
+    assert inst.name == "workflow"
+    assert inst.status == "draft"
+    assert inst.type == "token"
+    assert (
+        inst.url
+        == "http://hl7.org/fhir/SearchParameter/codesystem-extensions-CodeSystem-workflow"
+    )
+    assert inst.version == "4.0.1"
+    assert (
+        inst.xpath
+        == "f:CodeSystem/f:extension[@url='http://hl7.org/fhir/StructureDefinition/codesystem-workflowStatus'] | /f:#workflowStatus"
+    )
+    assert inst.xpathUsage == "normal"
+
+
+def test_searchparameter_10(base_settings):
+    """No. 10 tests collection for SearchParameter.
+    Test File: codesystem-extensions-CodeSystem-workflow.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"]
+        / "codesystem-extensions-CodeSystem-workflow.json"
+    )
+    inst = searchparameter.SearchParameter.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "SearchParameter" == inst.resource_type
+
+    impl_searchparameter_10(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "SearchParameter" == data["resourceType"]
+
+    inst2 = searchparameter.SearchParameter(**data)
+    impl_searchparameter_10(inst2)

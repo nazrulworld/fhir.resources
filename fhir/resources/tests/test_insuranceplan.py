@@ -6,53 +6,40 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import insuranceplan
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class InsurancePlanTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("InsurancePlan", js["resourceType"])
-        return insuranceplan.InsurancePlan(js)
+def impl_insuranceplan_1(inst):
+    assert inst.id == "example"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.name == "foo"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example</p><p><b>name</b>: foo</p></div>'
+    )
+    assert inst.text.status == "generated"
 
-    def testInsurancePlan1(self):
-        inst = self.instantiate_from("insuranceplan-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a InsurancePlan instance")
-        self.implInsurancePlan1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("InsurancePlan", js["resourceType"])
-        inst2 = insuranceplan.InsurancePlan(js)
-        self.implInsurancePlan1(inst2)
+def test_insuranceplan_1(base_settings):
+    """No. 1 tests collection for InsurancePlan.
+    Test File: insuranceplan-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "insuranceplan-example.json"
+    inst = insuranceplan.InsurancePlan.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "InsurancePlan" == inst.resource_type
 
-    def implInsurancePlan1(self, inst):
-        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.name), force_bytes("foo"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example</p><p><b>name</b>: foo</p></div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    impl_insuranceplan_1(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "InsurancePlan" == data["resourceType"]
+
+    inst2 = insuranceplan.InsurancePlan(**data)
+    impl_insuranceplan_1(inst2)

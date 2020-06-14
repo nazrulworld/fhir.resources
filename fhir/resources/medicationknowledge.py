@@ -6,388 +6,266 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import Any, Dict
+from typing import List as ListType
 
+from pydantic import Field, root_validator
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class MedicationKnowledge(domainresource.DomainResource):
     """ Definition of Medication Knowledge.
-
     Information about a medication that is used to support knowledge.
     """
 
-    resource_type = "MedicationKnowledge"
+    resource_type = Field("MedicationKnowledge", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    administrationGuidelines: ListType[
+        fhirtypes.MedicationKnowledgeAdministrationGuidelinesType
+    ] = Field(
+        None,
+        alias="administrationGuidelines",
+        title="List of `MedicationKnowledgeAdministrationGuidelines` items (represented as `dict` in JSON)",
+        description="Guidelines for administration of the medication",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    amount: fhirtypes.QuantityType = Field(
+        None,
+        alias="amount",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="Amount of drug in package",
+    )
 
-        self.administrationGuidelines = None
-        """ Guidelines for administration of the medication.
-        List of `MedicationKnowledgeAdministrationGuidelines` items (represented as `dict` in JSON). """
+    associatedMedication: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="associatedMedication",
+        title="List of `Reference` items referencing `Medication` (represented as `dict` in JSON)",
+        description="A medication resource that is associated with this medication",
+    )
 
-        self.amount = None
-        """ Amount of drug in package.
-        Type `Quantity` (represented as `dict` in JSON). """
+    code: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="code",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Code that identifies this medication",
+    )
 
-        self.associatedMedication = None
-        """ A medication resource that is associated with this medication.
-        List of `FHIRReference` items referencing `['Medication']` (represented as `dict` in JSON). """
+    contraindication: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="contraindication",
+        title="List of `Reference` items referencing `DetectedIssue` (represented as `dict` in JSON)",
+        description="Potential clinical issue with or between medication(s)",
+    )
 
-        self.code = None
-        """ Code that identifies this medication.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    cost: ListType[fhirtypes.MedicationKnowledgeCostType] = Field(
+        None,
+        alias="cost",
+        title="List of `MedicationKnowledgeCost` items (represented as `dict` in JSON)",
+        description="The pricing of the medication",
+    )
 
-        self.contraindication = None
-        """ Potential clinical issue with or between medication(s).
-        List of `FHIRReference` items referencing `['DetectedIssue']` (represented as `dict` in JSON). """
+    doseForm: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="doseForm",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="powder | tablets | capsule +",
+    )
 
-        self.cost = None
-        """ The pricing of the medication.
-        List of `MedicationKnowledgeCost` items (represented as `dict` in JSON). """
+    drugCharacteristic: ListType[
+        fhirtypes.MedicationKnowledgeDrugCharacteristicType
+    ] = Field(
+        None,
+        alias="drugCharacteristic",
+        title="List of `MedicationKnowledgeDrugCharacteristic` items (represented as `dict` in JSON)",
+        description="Specifies descriptive properties of the medicine",
+    )
 
-        self.doseForm = None
-        """ powder | tablets | capsule +.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    ingredient: ListType[fhirtypes.MedicationKnowledgeIngredientType] = Field(
+        None,
+        alias="ingredient",
+        title="List of `MedicationKnowledgeIngredient` items (represented as `dict` in JSON)",
+        description="Active or inactive ingredient",
+    )
 
-        self.drugCharacteristic = None
-        """ Specifies descriptive properties of the medicine.
-        List of `MedicationKnowledgeDrugCharacteristic` items (represented as `dict` in JSON). """
+    intendedRoute: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="intendedRoute",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="The intended or approved route of administration",
+    )
 
-        self.ingredient = None
-        """ Active or inactive ingredient.
-        List of `MedicationKnowledgeIngredient` items (represented as `dict` in JSON). """
+    kinetics: ListType[fhirtypes.MedicationKnowledgeKineticsType] = Field(
+        None,
+        alias="kinetics",
+        title="List of `MedicationKnowledgeKinetics` items (represented as `dict` in JSON)",
+        description="The time course of drug absorption, distribution, metabolism and excretion of a medication from the body",
+    )
 
-        self.intendedRoute = None
-        """ The intended or approved route of administration.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    manufacturer: fhirtypes.ReferenceType = Field(
+        None,
+        alias="manufacturer",
+        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        description="Manufacturer of the item",
+    )
 
-        self.kinetics = None
-        """ The time course of drug absorption, distribution, metabolism and
-        excretion of a medication from the body.
-        List of `MedicationKnowledgeKinetics` items (represented as `dict` in JSON). """
+    medicineClassification: ListType[
+        fhirtypes.MedicationKnowledgeMedicineClassificationType
+    ] = Field(
+        None,
+        alias="medicineClassification",
+        title="List of `MedicationKnowledgeMedicineClassification` items (represented as `dict` in JSON)",
+        description="Categorization of the medication within a formulary or classification system",
+    )
 
-        self.manufacturer = None
-        """ Manufacturer of the item.
-        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
+    monitoringProgram: ListType[
+        fhirtypes.MedicationKnowledgeMonitoringProgramType
+    ] = Field(
+        None,
+        alias="monitoringProgram",
+        title="List of `MedicationKnowledgeMonitoringProgram` items (represented as `dict` in JSON)",
+        description="Program under which a medication is reviewed",
+    )
 
-        self.medicineClassification = None
-        """ Categorization of the medication within a formulary or
-        classification system.
-        List of `MedicationKnowledgeMedicineClassification` items (represented as `dict` in JSON). """
+    monograph: ListType[fhirtypes.MedicationKnowledgeMonographType] = Field(
+        None,
+        alias="monograph",
+        title="List of `MedicationKnowledgeMonograph` items (represented as `dict` in JSON)",
+        description="Associated documentation about the medication",
+    )
 
-        self.monitoringProgram = None
-        """ Program under which a medication is reviewed.
-        List of `MedicationKnowledgeMonitoringProgram` items (represented as `dict` in JSON). """
+    packaging: fhirtypes.MedicationKnowledgePackagingType = Field(
+        None,
+        alias="packaging",
+        title="Type `MedicationKnowledgePackaging` (represented as `dict` in JSON)",
+        description="Details about packaged medications",
+    )
 
-        self.monograph = None
-        """ Associated documentation about the medication.
-        List of `MedicationKnowledgeMonograph` items (represented as `dict` in JSON). """
+    preparationInstruction: fhirtypes.Markdown = Field(
+        None,
+        alias="preparationInstruction",
+        title="Type `Markdown` (represented as `dict` in JSON)",
+        description="The instructions for preparing the medication",
+    )
 
-        self.packaging = None
-        """ Details about packaged medications.
-        Type `MedicationKnowledgePackaging` (represented as `dict` in JSON). """
+    productType: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="productType",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Category of the medication or product",
+    )
 
-        self.preparationInstruction = None
-        """ The instructions for preparing the medication.
-        Type `str`. """
+    regulatory: ListType[fhirtypes.MedicationKnowledgeRegulatoryType] = Field(
+        None,
+        alias="regulatory",
+        title="List of `MedicationKnowledgeRegulatory` items (represented as `dict` in JSON)",
+        description="Regulatory information about a medication",
+    )
 
-        self.productType = None
-        """ Category of the medication or product.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    relatedMedicationKnowledge: ListType[
+        fhirtypes.MedicationKnowledgeRelatedMedicationKnowledgeType
+    ] = Field(
+        None,
+        alias="relatedMedicationKnowledge",
+        title="List of `MedicationKnowledgeRelatedMedicationKnowledge` items (represented as `dict` in JSON)",
+        description="Associated or related medication information",
+    )
 
-        self.regulatory = None
-        """ Regulatory information about a medication.
-        List of `MedicationKnowledgeRegulatory` items (represented as `dict` in JSON). """
+    status: fhirtypes.Code = Field(
+        None,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="active | inactive | entered-in-error",
+    )
 
-        self.relatedMedicationKnowledge = None
-        """ Associated or related medication information.
-        List of `MedicationKnowledgeRelatedMedicationKnowledge` items (represented as `dict` in JSON). """
-
-        self.status = None
-        """ active | inactive | entered-in-error.
-        Type `str`. """
-
-        self.synonym = None
-        """ Additional names for a medication.
-        List of `str` items. """
-
-        super(MedicationKnowledge, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(MedicationKnowledge, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "administrationGuidelines",
-                    "administrationGuidelines",
-                    MedicationKnowledgeAdministrationGuidelines,
-                    "MedicationKnowledgeAdministrationGuidelines",
-                    True,
-                    None,
-                    False,
-                ),
-                ("amount", "amount", quantity.Quantity, "Quantity", False, None, False),
-                (
-                    "associatedMedication",
-                    "associatedMedication",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "code",
-                    "code",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "contraindication",
-                    "contraindication",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "cost",
-                    "cost",
-                    MedicationKnowledgeCost,
-                    "MedicationKnowledgeCost",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "doseForm",
-                    "doseForm",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "drugCharacteristic",
-                    "drugCharacteristic",
-                    MedicationKnowledgeDrugCharacteristic,
-                    "MedicationKnowledgeDrugCharacteristic",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "ingredient",
-                    "ingredient",
-                    MedicationKnowledgeIngredient,
-                    "MedicationKnowledgeIngredient",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "intendedRoute",
-                    "intendedRoute",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "kinetics",
-                    "kinetics",
-                    MedicationKnowledgeKinetics,
-                    "MedicationKnowledgeKinetics",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "manufacturer",
-                    "manufacturer",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "medicineClassification",
-                    "medicineClassification",
-                    MedicationKnowledgeMedicineClassification,
-                    "MedicationKnowledgeMedicineClassification",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "monitoringProgram",
-                    "monitoringProgram",
-                    MedicationKnowledgeMonitoringProgram,
-                    "MedicationKnowledgeMonitoringProgram",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "monograph",
-                    "monograph",
-                    MedicationKnowledgeMonograph,
-                    "MedicationKnowledgeMonograph",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "packaging",
-                    "packaging",
-                    MedicationKnowledgePackaging,
-                    "MedicationKnowledgePackaging",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "preparationInstruction",
-                    "preparationInstruction",
-                    str,
-                    "markdown",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "productType",
-                    "productType",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "regulatory",
-                    "regulatory",
-                    MedicationKnowledgeRegulatory,
-                    "MedicationKnowledgeRegulatory",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "relatedMedicationKnowledge",
-                    "relatedMedicationKnowledge",
-                    MedicationKnowledgeRelatedMedicationKnowledge,
-                    "MedicationKnowledgeRelatedMedicationKnowledge",
-                    True,
-                    None,
-                    False,
-                ),
-                ("status", "status", str, "code", False, None, False),
-                ("synonym", "synonym", str, "string", True, None, False),
-            ]
-        )
-        return js
+    synonym: ListType[fhirtypes.String] = Field(
+        None,
+        alias="synonym",
+        title="List of `String` items (represented as `dict` in JSON)",
+        description="Additional names for a medication",
+    )
 
 
 class MedicationKnowledgeAdministrationGuidelines(backboneelement.BackboneElement):
     """ Guidelines for administration of the medication.
-
     Guidelines for the administration of the medication.
     """
 
-    resource_type = "MedicationKnowledgeAdministrationGuidelines"
+    resource_type = Field("MedicationKnowledgeAdministrationGuidelines", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    dosage: ListType[
+        fhirtypes.MedicationKnowledgeAdministrationGuidelinesDosageType
+    ] = Field(
+        None,
+        alias="dosage",
+        title="List of `MedicationKnowledgeAdministrationGuidelinesDosage` items (represented as `dict` in JSON)",
+        description="Dosage for the medication for the specific guidelines",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    indicationCodeableConcept: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="indicationCodeableConcept",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Indication for use that apply to the specific administration guidelines",
+        one_of_many="indication",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    indicationReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="indicationReference",
+        title="Type `Reference` referencing `ObservationDefinition` (represented as `dict` in JSON)",
+        description="Indication for use that apply to the specific administration guidelines",
+        one_of_many="indication",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    patientCharacteristics: ListType[
+        fhirtypes.MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsType
+    ] = Field(
+        None,
+        alias="patientCharacteristics",
+        title="List of `MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics` items (represented as `dict` in JSON)",
+        description="Characteristics of the patient that are relevant to the administration guidelines",
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "indication": ["indicationCodeableConcept", "indicationReference",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.dosage = None
-        """ Dosage for the medication for the specific guidelines.
-        List of `MedicationKnowledgeAdministrationGuidelinesDosage` items (represented as `dict` in JSON). """
-
-        self.indicationCodeableConcept = None
-        """ Indication for use that apply to the specific administration
-        guidelines.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.indicationReference = None
-        """ Indication for use that apply to the specific administration
-        guidelines.
-        Type `FHIRReference` referencing `['ObservationDefinition']` (represented as `dict` in JSON). """
-
-        self.patientCharacteristics = None
-        """ Characteristics of the patient that are relevant to the
-        administration guidelines.
-        List of `MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics` items (represented as `dict` in JSON). """
-
-        super(MedicationKnowledgeAdministrationGuidelines, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(
-            MedicationKnowledgeAdministrationGuidelines, self
-        ).elementProperties()
-        js.extend(
-            [
-                (
-                    "dosage",
-                    "dosage",
-                    MedicationKnowledgeAdministrationGuidelinesDosage,
-                    "MedicationKnowledgeAdministrationGuidelinesDosage",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "indicationCodeableConcept",
-                    "indicationCodeableConcept",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    "indication",
-                    False,
-                ),
-                (
-                    "indicationReference",
-                    "indicationReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    "indication",
-                    False,
-                ),
-                (
-                    "patientCharacteristics",
-                    "patientCharacteristics",
-                    MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics,
-                    "MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+        return values
 
 
 class MedicationKnowledgeAdministrationGuidelinesDosage(
@@ -396,47 +274,23 @@ class MedicationKnowledgeAdministrationGuidelinesDosage(
     """ Dosage for the medication for the specific guidelines.
     """
 
-    resource_type = "MedicationKnowledgeAdministrationGuidelinesDosage"
+    resource_type = Field(
+        "MedicationKnowledgeAdministrationGuidelinesDosage", const=True
+    )
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    dosage: ListType[fhirtypes.DosageType] = Field(
+        ...,
+        alias="dosage",
+        title="List of `Dosage` items (represented as `dict` in JSON)",
+        description="Dosage for the medication for the specific guidelines",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.dosage = None
-        """ Dosage for the medication for the specific guidelines.
-        List of `Dosage` items (represented as `dict` in JSON). """
-
-        self.type = None
-        """ Type of dosage.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(MedicationKnowledgeAdministrationGuidelinesDosage, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(
-            MedicationKnowledgeAdministrationGuidelinesDosage, self
-        ).elementProperties()
-        js.extend(
-            [
-                ("dosage", "dosage", dosage.Dosage, "Dosage", True, None, True),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
+    type: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Type of dosage",
+    )
 
 
 class MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics(
@@ -444,269 +298,281 @@ class MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics(
 ):
     """ Characteristics of the patient that are relevant to the administration
     guidelines.
-
     Characteristics of the patient that are relevant to the administration
     guidelines (for example, height, weight, gender, etc.).
     """
 
-    resource_type = "MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics"
+    resource_type = Field(
+        "MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics", const=True
+    )
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    characteristicCodeableConcept: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="characteristicCodeableConcept",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Specific characteristic that is relevant to the administration guideline",
+        one_of_many="characteristic",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    characteristicQuantity: fhirtypes.QuantityType = Field(
+        None,
+        alias="characteristicQuantity",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="Specific characteristic that is relevant to the administration guideline",
+        one_of_many="characteristic",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    value: ListType[fhirtypes.String] = Field(
+        None,
+        alias="value",
+        title="List of `String` items (represented as `dict` in JSON)",
+        description="The specific characteristic",
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "characteristic": [
+                "characteristicCodeableConcept",
+                "characteristicQuantity",
+            ],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.characteristicCodeableConcept = None
-        """ Specific characteristic that is relevant to the administration
-        guideline.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.characteristicQuantity = None
-        """ Specific characteristic that is relevant to the administration
-        guideline.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        self.value = None
-        """ The specific characteristic.
-        List of `str` items. """
-
-        super(
-            MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics, self
-        ).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(
-            MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics, self
-        ).elementProperties()
-        js.extend(
-            [
-                (
-                    "characteristicCodeableConcept",
-                    "characteristicCodeableConcept",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    "characteristic",
-                    True,
-                ),
-                (
-                    "characteristicQuantity",
-                    "characteristicQuantity",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    "characteristic",
-                    True,
-                ),
-                ("value", "value", str, "string", True, None, False),
-            ]
-        )
-        return js
+        return values
 
 
 class MedicationKnowledgeCost(backboneelement.BackboneElement):
     """ The pricing of the medication.
-
     The price of the medication.
     """
 
-    resource_type = "MedicationKnowledgeCost"
+    resource_type = Field("MedicationKnowledgeCost", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    cost: fhirtypes.MoneyType = Field(
+        ...,
+        alias="cost",
+        title="Type `Money` (represented as `dict` in JSON)",
+        description="The price of the medication",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    source: fhirtypes.String = Field(
+        None,
+        alias="source",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="The source or owner for the price information",
+    )
 
-        self.cost = None
-        """ The price of the medication.
-        Type `Money` (represented as `dict` in JSON). """
-
-        self.source = None
-        """ The source or owner for the price information.
-        Type `str`. """
-
-        self.type = None
-        """ The category of the cost information.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(MedicationKnowledgeCost, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(MedicationKnowledgeCost, self).elementProperties()
-        js.extend(
-            [
-                ("cost", "cost", money.Money, "Money", False, None, True),
-                ("source", "source", str, "string", False, None, False),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
+    type: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The category of the cost information",
+    )
 
 
 class MedicationKnowledgeDrugCharacteristic(backboneelement.BackboneElement):
     """ Specifies descriptive properties of the medicine.
-
     Specifies descriptive properties of the medicine, such as color, shape,
     imprints, etc.
     """
 
-    resource_type = "MedicationKnowledgeDrugCharacteristic"
+    resource_type = Field("MedicationKnowledgeDrugCharacteristic", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    type: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Code specifying the type of characteristic of medication",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    valueBase64Binary: fhirtypes.Base64Binary = Field(
+        None,
+        alias="valueBase64Binary",
+        title="Type `Base64Binary` (represented as `dict` in JSON)",
+        description="Description of the characteristic",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    valueCodeableConcept: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="valueCodeableConcept",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Description of the characteristic",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    valueQuantity: fhirtypes.QuantityType = Field(
+        None,
+        alias="valueQuantity",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="Description of the characteristic",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    valueString: fhirtypes.String = Field(
+        None,
+        alias="valueString",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Description of the characteristic",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "value": [
+                "valueBase64Binary",
+                "valueCodeableConcept",
+                "valueQuantity",
+                "valueString",
+            ],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.type = None
-        """ Code specifying the type of characteristic of medication.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.valueBase64Binary = None
-        """ Description of the characteristic.
-        Type `str`. """
-
-        self.valueCodeableConcept = None
-        """ Description of the characteristic.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.valueQuantity = None
-        """ Description of the characteristic.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        self.valueString = None
-        """ Description of the characteristic.
-        Type `str`. """
-
-        super(MedicationKnowledgeDrugCharacteristic, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(MedicationKnowledgeDrugCharacteristic, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "valueBase64Binary",
-                    "valueBase64Binary",
-                    str,
-                    "base64Binary",
-                    False,
-                    "value",
-                    False,
-                ),
-                (
-                    "valueCodeableConcept",
-                    "valueCodeableConcept",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    "value",
-                    False,
-                ),
-                (
-                    "valueQuantity",
-                    "valueQuantity",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    "value",
-                    False,
-                ),
-                ("valueString", "valueString", str, "string", False, "value", False),
-            ]
-        )
-        return js
+        return values
 
 
 class MedicationKnowledgeIngredient(backboneelement.BackboneElement):
     """ Active or inactive ingredient.
-
     Identifies a particular constituent of interest in the product.
     """
 
-    resource_type = "MedicationKnowledgeIngredient"
+    resource_type = Field("MedicationKnowledgeIngredient", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    isActive: bool = Field(
+        None,
+        alias="isActive",
+        title="Type `bool`",
+        description="Active ingredient indicator",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    itemCodeableConcept: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="itemCodeableConcept",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Medication(s) or substance(s) contained in the medication",
+        one_of_many="item",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    itemReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="itemReference",
+        title="Type `Reference` referencing `Substance` (represented as `dict` in JSON)",
+        description="Medication(s) or substance(s) contained in the medication",
+        one_of_many="item",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    strength: fhirtypes.RatioType = Field(
+        None,
+        alias="strength",
+        title="Type `Ratio` (represented as `dict` in JSON)",
+        description="Quantity of ingredient present",
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "item": ["itemCodeableConcept", "itemReference",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.isActive = None
-        """ Active ingredient indicator.
-        Type `bool`. """
-
-        self.itemCodeableConcept = None
-        """ Medication(s) or substance(s) contained in the medication.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.itemReference = None
-        """ Medication(s) or substance(s) contained in the medication.
-        Type `FHIRReference` referencing `['Substance']` (represented as `dict` in JSON). """
-
-        self.strength = None
-        """ Quantity of ingredient present.
-        Type `Ratio` (represented as `dict` in JSON). """
-
-        super(MedicationKnowledgeIngredient, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(MedicationKnowledgeIngredient, self).elementProperties()
-        js.extend(
-            [
-                ("isActive", "isActive", bool, "boolean", False, None, False),
-                (
-                    "itemCodeableConcept",
-                    "itemCodeableConcept",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    "item",
-                    True,
-                ),
-                (
-                    "itemReference",
-                    "itemReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    "item",
-                    True,
-                ),
-                ("strength", "strength", ratio.Ratio, "Ratio", False, None, False),
-            ]
-        )
-        return js
+        return values
 
 
 class MedicationKnowledgeKinetics(backboneelement.BackboneElement):
@@ -714,66 +580,28 @@ class MedicationKnowledgeKinetics(backboneelement.BackboneElement):
     of a medication from the body.
     """
 
-    resource_type = "MedicationKnowledgeKinetics"
+    resource_type = Field("MedicationKnowledgeKinetics", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    areaUnderCurve: ListType[fhirtypes.QuantityType] = Field(
+        None,
+        alias="areaUnderCurve",
+        title="List of `Quantity` items (represented as `dict` in JSON)",
+        description="The drug concentration measured at certain discrete points in time",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    halfLifePeriod: fhirtypes.DurationType = Field(
+        None,
+        alias="halfLifePeriod",
+        title="Type `Duration` (represented as `dict` in JSON)",
+        description="Time required for concentration in the body to decrease by half",
+    )
 
-        self.areaUnderCurve = None
-        """ The drug concentration measured at certain discrete points in time.
-        List of `Quantity` items (represented as `dict` in JSON). """
-
-        self.halfLifePeriod = None
-        """ Time required for concentration in the body to decrease by half.
-        Type `Duration` (represented as `dict` in JSON). """
-
-        self.lethalDose50 = None
-        """ The median lethal dose of a drug.
-        List of `Quantity` items (represented as `dict` in JSON). """
-
-        super(MedicationKnowledgeKinetics, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(MedicationKnowledgeKinetics, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "areaUnderCurve",
-                    "areaUnderCurve",
-                    quantity.Quantity,
-                    "Quantity",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "halfLifePeriod",
-                    "halfLifePeriod",
-                    duration.Duration,
-                    "Duration",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "lethalDose50",
-                    "lethalDose50",
-                    quantity.Quantity,
-                    "Quantity",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    lethalDose50: ListType[fhirtypes.QuantityType] = Field(
+        None,
+        alias="lethalDose50",
+        title="List of `Quantity` items (represented as `dict` in JSON)",
+        description="The median lethal dose of a drug",
+    )
 
 
 class MedicationKnowledgeMedicineClassification(backboneelement.BackboneElement):
@@ -781,292 +609,123 @@ class MedicationKnowledgeMedicineClassification(backboneelement.BackboneElement)
     system.
     """
 
-    resource_type = "MedicationKnowledgeMedicineClassification"
+    resource_type = Field("MedicationKnowledgeMedicineClassification", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    classification: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="classification",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Specific category assigned to the medication",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.classification = None
-        """ Specific category assigned to the medication.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.type = None
-        """ The type of category for the medication (for example, therapeutic
-        classification, therapeutic sub-classification).
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(MedicationKnowledgeMedicineClassification, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(MedicationKnowledgeMedicineClassification, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "classification",
-                    "classification",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
+    type: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The type of category for the medication (for example, therapeutic classification, therapeutic sub-classification)",
+    )
 
 
 class MedicationKnowledgeMonitoringProgram(backboneelement.BackboneElement):
     """ Program under which a medication is reviewed.
-
     The program under which the medication is reviewed.
     """
 
-    resource_type = "MedicationKnowledgeMonitoringProgram"
+    resource_type = Field("MedicationKnowledgeMonitoringProgram", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    name: fhirtypes.String = Field(
+        None,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name of the reviewing program",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.name = None
-        """ Name of the reviewing program.
-        Type `str`. """
-
-        self.type = None
-        """ Type of program under which the medication is monitored.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(MedicationKnowledgeMonitoringProgram, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(MedicationKnowledgeMonitoringProgram, self).elementProperties()
-        js.extend(
-            [
-                ("name", "name", str, "string", False, None, False),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    type: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Type of program under which the medication is monitored",
+    )
 
 
 class MedicationKnowledgeMonograph(backboneelement.BackboneElement):
     """ Associated documentation about the medication.
     """
 
-    resource_type = "MedicationKnowledgeMonograph"
+    resource_type = Field("MedicationKnowledgeMonograph", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    source: fhirtypes.ReferenceType = Field(
+        None,
+        alias="source",
+        title="Type `Reference` referencing `DocumentReference, Media` (represented as `dict` in JSON)",
+        description="Associated documentation about the medication",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.source = None
-        """ Associated documentation about the medication.
-        Type `FHIRReference` referencing `['DocumentReference', 'Media']` (represented as `dict` in JSON). """
-
-        self.type = None
-        """ The category of medication document.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(MedicationKnowledgeMonograph, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(MedicationKnowledgeMonograph, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "source",
-                    "source",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    type: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The category of medication document",
+    )
 
 
 class MedicationKnowledgePackaging(backboneelement.BackboneElement):
     """ Details about packaged medications.
-
     Information that only applies to packages (not products).
     """
 
-    resource_type = "MedicationKnowledgePackaging"
+    resource_type = Field("MedicationKnowledgePackaging", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    quantity: fhirtypes.QuantityType = Field(
+        None,
+        alias="quantity",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="The number of product units the package would contain if fully loaded",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.quantity = None
-        """ The number of product units the package would contain if fully
-        loaded.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        self.type = None
-        """ A code that defines the specific type of packaging that the
-        medication can be found in.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(MedicationKnowledgePackaging, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(MedicationKnowledgePackaging, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "quantity",
-                    "quantity",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    type: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="A code that defines the specific type of packaging that the medication can be found in",
+    )
 
 
 class MedicationKnowledgeRegulatory(backboneelement.BackboneElement):
     """ Regulatory information about a medication.
     """
 
-    resource_type = "MedicationKnowledgeRegulatory"
+    resource_type = Field("MedicationKnowledgeRegulatory", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    maxDispense: fhirtypes.MedicationKnowledgeRegulatoryMaxDispenseType = Field(
+        None,
+        alias="maxDispense",
+        title="Type `MedicationKnowledgeRegulatoryMaxDispense` (represented as `dict` in JSON)",
+        description="The maximum number of units of the medication that can be dispensed in a period",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    regulatoryAuthority: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="regulatoryAuthority",
+        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        description="Specifies the authority of the regulation",
+    )
 
-        self.maxDispense = None
-        """ The maximum number of units of the medication that can be dispensed
-        in a period.
-        Type `MedicationKnowledgeRegulatoryMaxDispense` (represented as `dict` in JSON). """
+    schedule: ListType[fhirtypes.MedicationKnowledgeRegulatoryScheduleType] = Field(
+        None,
+        alias="schedule",
+        title="List of `MedicationKnowledgeRegulatorySchedule` items (represented as `dict` in JSON)",
+        description="Specifies the schedule of a medication in jurisdiction",
+    )
 
-        self.regulatoryAuthority = None
-        """ Specifies the authority of the regulation.
-        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
-
-        self.schedule = None
-        """ Specifies the schedule of a medication in jurisdiction.
-        List of `MedicationKnowledgeRegulatorySchedule` items (represented as `dict` in JSON). """
-
-        self.substitution = None
-        """ Specifies if changes are allowed when dispensing a medication from
-        a regulatory perspective.
-        List of `MedicationKnowledgeRegulatorySubstitution` items (represented as `dict` in JSON). """
-
-        super(MedicationKnowledgeRegulatory, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(MedicationKnowledgeRegulatory, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "maxDispense",
-                    "maxDispense",
-                    MedicationKnowledgeRegulatoryMaxDispense,
-                    "MedicationKnowledgeRegulatoryMaxDispense",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "regulatoryAuthority",
-                    "regulatoryAuthority",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "schedule",
-                    "schedule",
-                    MedicationKnowledgeRegulatorySchedule,
-                    "MedicationKnowledgeRegulatorySchedule",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "substitution",
-                    "substitution",
-                    MedicationKnowledgeRegulatorySubstitution,
-                    "MedicationKnowledgeRegulatorySubstitution",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    substitution: ListType[
+        fhirtypes.MedicationKnowledgeRegulatorySubstitutionType
+    ] = Field(
+        None,
+        alias="substitution",
+        title="List of `MedicationKnowledgeRegulatorySubstitution` items (represented as `dict` in JSON)",
+        description="Specifies if changes are allowed when dispensing a medication from a regulatory perspective",
+    )
 
 
 class MedicationKnowledgeRegulatoryMaxDispense(backboneelement.BackboneElement):
@@ -1074,85 +733,35 @@ class MedicationKnowledgeRegulatoryMaxDispense(backboneelement.BackboneElement):
     period.
     """
 
-    resource_type = "MedicationKnowledgeRegulatoryMaxDispense"
+    resource_type = Field("MedicationKnowledgeRegulatoryMaxDispense", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    period: fhirtypes.DurationType = Field(
+        None,
+        alias="period",
+        title="Type `Duration` (represented as `dict` in JSON)",
+        description="The period that applies to the maximum number of units",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.period = None
-        """ The period that applies to the maximum number of units.
-        Type `Duration` (represented as `dict` in JSON). """
-
-        self.quantity = None
-        """ The maximum number of units of the medication that can be dispensed.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        super(MedicationKnowledgeRegulatoryMaxDispense, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(MedicationKnowledgeRegulatoryMaxDispense, self).elementProperties()
-        js.extend(
-            [
-                ("period", "period", duration.Duration, "Duration", False, None, False),
-                (
-                    "quantity",
-                    "quantity",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
+    quantity: fhirtypes.QuantityType = Field(
+        ...,
+        alias="quantity",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="The maximum number of units of the medication that can be dispensed",
+    )
 
 
 class MedicationKnowledgeRegulatorySchedule(backboneelement.BackboneElement):
     """ Specifies the schedule of a medication in jurisdiction.
     """
 
-    resource_type = "MedicationKnowledgeRegulatorySchedule"
+    resource_type = Field("MedicationKnowledgeRegulatorySchedule", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
-
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.schedule = None
-        """ Specifies the specific drug schedule.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(MedicationKnowledgeRegulatorySchedule, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(MedicationKnowledgeRegulatorySchedule, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "schedule",
-                    "schedule",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
+    schedule: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="schedule",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Specifies the specific drug schedule",
+    )
 
 
 class MedicationKnowledgeRegulatorySubstitution(backboneelement.BackboneElement):
@@ -1160,130 +769,40 @@ class MedicationKnowledgeRegulatorySubstitution(backboneelement.BackboneElement)
     regulatory perspective.
     """
 
-    resource_type = "MedicationKnowledgeRegulatorySubstitution"
+    resource_type = Field("MedicationKnowledgeRegulatorySubstitution", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    allowed: bool = Field(
+        ...,
+        alias="allowed",
+        title="Type `bool`",
+        description="Specifies if regulation allows for changes in the medication when dispensing",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.allowed = None
-        """ Specifies if regulation allows for changes in the medication when
-        dispensing.
-        Type `bool`. """
-
-        self.type = None
-        """ Specifies the type of substitution allowed.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(MedicationKnowledgeRegulatorySubstitution, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(MedicationKnowledgeRegulatorySubstitution, self).elementProperties()
-        js.extend(
-            [
-                ("allowed", "allowed", bool, "boolean", False, None, True),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
+    type: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Specifies the type of substitution allowed",
+    )
 
 
 class MedicationKnowledgeRelatedMedicationKnowledge(backboneelement.BackboneElement):
     """ Associated or related medication information.
-
     Associated or related knowledge about a medication.
     """
 
-    resource_type = "MedicationKnowledgeRelatedMedicationKnowledge"
+    resource_type = Field("MedicationKnowledgeRelatedMedicationKnowledge", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    reference: ListType[fhirtypes.ReferenceType] = Field(
+        ...,
+        alias="reference",
+        title="List of `Reference` items referencing `MedicationKnowledge` (represented as `dict` in JSON)",
+        description="Associated documentation about the associated medication knowledge",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.reference = None
-        """ Associated documentation about the associated medication knowledge.
-        List of `FHIRReference` items referencing `['MedicationKnowledge']` (represented as `dict` in JSON). """
-
-        self.type = None
-        """ Category of medicationKnowledge.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(MedicationKnowledgeRelatedMedicationKnowledge, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(
-            MedicationKnowledgeRelatedMedicationKnowledge, self
-        ).elementProperties()
-        js.extend(
-            [
-                (
-                    "reference",
-                    "reference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    True,
-                ),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import dosage
-except ImportError:
-    dosage = sys.modules[__package__ + ".dosage"]
-try:
-    from . import duration
-except ImportError:
-    duration = sys.modules[__package__ + ".duration"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import money
-except ImportError:
-    money = sys.modules[__package__ + ".money"]
-try:
-    from . import quantity
-except ImportError:
-    quantity = sys.modules[__package__ + ".quantity"]
-try:
-    from . import ratio
-except ImportError:
-    ratio = sys.modules[__package__ + ".ratio"]
+    type: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Category of medicationKnowledge",
+    )

@@ -6,305 +6,356 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import processrequest
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class ProcessRequestTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("ProcessRequest", js["resourceType"])
-        return processrequest.ProcessRequest(js)
+def impl_processrequest_1(inst):
+    assert inst.action == "poll"
+    assert inst.created == fhirtypes.DateTime.validate("2014-08-16")
+    assert inst.exclude[0] == "Communication"
+    assert inst.exclude[1] == "PaymentReconciliation"
+    assert inst.id == "1113"
+    assert inst.identifier[0].system == "http://happyvalley.com/processrequest"
+    assert inst.identifier[0].value == "113"
+    assert inst.organization.reference == "Organization/1"
+    assert inst.status == "active"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Poll ProcessRequest</div>'
+    )
+    assert inst.text.status == "generated"
 
-    def testProcessRequest1(self):
-        inst = self.instantiate_from("processrequest-example-poll-exclusive.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ProcessRequest instance")
-        self.implProcessRequest1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("ProcessRequest", js["resourceType"])
-        inst2 = processrequest.ProcessRequest(js)
-        self.implProcessRequest1(inst2)
+def test_processrequest_1(base_settings):
+    """No. 1 tests collection for ProcessRequest.
+    Test File: processrequest-example-poll-exclusive.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"]
+        / "processrequest-example-poll-exclusive.json"
+    )
+    inst = processrequest.ProcessRequest.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ProcessRequest" == inst.resource_type
 
-    def implProcessRequest1(self, inst):
-        self.assertEqual(force_bytes(inst.action), force_bytes("poll"))
-        self.assertEqual(inst.created.date, FHIRDate("2014-08-16").date)
-        self.assertEqual(inst.created.as_json(), "2014-08-16")
-        self.assertEqual(force_bytes(inst.exclude[0]), force_bytes("Communication"))
-        self.assertEqual(
-            force_bytes(inst.exclude[1]), force_bytes("PaymentReconciliation")
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("1113"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://happyvalley.com/processrequest"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("113"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Poll ProcessRequest</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    impl_processrequest_1(inst)
 
-    def testProcessRequest2(self):
-        inst = self.instantiate_from("processrequest-example-poll-eob.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ProcessRequest instance")
-        self.implProcessRequest2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ProcessRequest" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("ProcessRequest", js["resourceType"])
-        inst2 = processrequest.ProcessRequest(js)
-        self.implProcessRequest2(inst2)
+    inst2 = processrequest.ProcessRequest(**data)
+    impl_processrequest_1(inst2)
 
-    def implProcessRequest2(self, inst):
-        self.assertEqual(force_bytes(inst.action), force_bytes("poll"))
-        self.assertEqual(inst.created.date, FHIRDate("2014-08-16").date)
-        self.assertEqual(inst.created.as_json(), "2014-08-16")
-        self.assertEqual(force_bytes(inst.id), force_bytes("1115"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://www.phr.com/patient/12345/processrequest"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("115"))
-        self.assertEqual(
-            force_bytes(inst.include[0]), force_bytes("ExplanationOfBenefit")
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Poll ProcessRequest</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 
-    def testProcessRequest3(self):
-        inst = self.instantiate_from("processrequest-example-poll-specific.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ProcessRequest instance")
-        self.implProcessRequest3(inst)
+def impl_processrequest_2(inst):
+    assert inst.action == "poll"
+    assert inst.created == fhirtypes.DateTime.validate("2014-08-16")
+    assert inst.id == "1115"
+    assert (
+        inst.identifier[0].system == "http://www.phr.com/patient/12345/processrequest"
+    )
+    assert inst.identifier[0].value == "115"
+    assert inst.include[0] == "ExplanationOfBenefit"
+    assert inst.status == "active"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Poll ProcessRequest</div>'
+    )
+    assert inst.text.status == "generated"
 
-        js = inst.as_json()
-        self.assertEqual("ProcessRequest", js["resourceType"])
-        inst2 = processrequest.ProcessRequest(js)
-        self.implProcessRequest3(inst2)
 
-    def implProcessRequest3(self, inst):
-        self.assertEqual(force_bytes(inst.action), force_bytes("poll"))
-        self.assertEqual(inst.created.date, FHIRDate("2014-08-16").date)
-        self.assertEqual(inst.created.as_json(), "2014-08-16")
-        self.assertEqual(force_bytes(inst.id), force_bytes("1111"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://happyvalley.com/processrequest"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("111"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Poll ProcessRequest</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+def test_processrequest_2(base_settings):
+    """No. 2 tests collection for ProcessRequest.
+    Test File: processrequest-example-poll-eob.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "processrequest-example-poll-eob.json"
+    )
+    inst = processrequest.ProcessRequest.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ProcessRequest" == inst.resource_type
 
-    def testProcessRequest4(self):
-        inst = self.instantiate_from("processrequest-example-poll-inclusive.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ProcessRequest instance")
-        self.implProcessRequest4(inst)
+    impl_processrequest_2(inst)
 
-        js = inst.as_json()
-        self.assertEqual("ProcessRequest", js["resourceType"])
-        inst2 = processrequest.ProcessRequest(js)
-        self.implProcessRequest4(inst2)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ProcessRequest" == data["resourceType"]
 
-    def implProcessRequest4(self, inst):
-        self.assertEqual(force_bytes(inst.action), force_bytes("poll"))
-        self.assertEqual(inst.created.date, FHIRDate("2014-08-16").date)
-        self.assertEqual(inst.created.as_json(), "2014-08-16")
-        self.assertEqual(force_bytes(inst.id), force_bytes("1112"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://happyvalley.com/processrequest"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("112"))
-        self.assertEqual(
-            force_bytes(inst.include[0]), force_bytes("PaymentReconciliation")
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Poll ProcessRequest</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    inst2 = processrequest.ProcessRequest(**data)
+    impl_processrequest_2(inst2)
 
-    def testProcessRequest5(self):
-        inst = self.instantiate_from("processrequest-example-poll-payrec.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ProcessRequest instance")
-        self.implProcessRequest5(inst)
 
-        js = inst.as_json()
-        self.assertEqual("ProcessRequest", js["resourceType"])
-        inst2 = processrequest.ProcessRequest(js)
-        self.implProcessRequest5(inst2)
+def impl_processrequest_3(inst):
+    assert inst.action == "poll"
+    assert inst.created == fhirtypes.DateTime.validate("2014-08-16")
+    assert inst.id == "1111"
+    assert inst.identifier[0].system == "http://happyvalley.com/processrequest"
+    assert inst.identifier[0].value == "111"
+    assert inst.organization.reference == "Organization/1"
+    assert inst.provider.identifier.system == "http://npid.org/providerid"
+    assert inst.provider.identifier.value == "AF12345"
+    assert inst.request.reference == "http://benefitco.com/oralhealthclaim/12345"
+    assert inst.status == "active"
+    assert inst.target.identifier.system == "http://ninsurers.org/payorid"
+    assert inst.target.identifier.value == "WI12345"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Poll ProcessRequest</div>'
+    )
+    assert inst.text.status == "generated"
 
-    def implProcessRequest5(self, inst):
-        self.assertEqual(force_bytes(inst.action), force_bytes("poll"))
-        self.assertEqual(inst.created.date, FHIRDate("2014-08-16").date)
-        self.assertEqual(inst.created.as_json(), "2014-08-16")
-        self.assertEqual(force_bytes(inst.id), force_bytes("1114"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://happyvalley.com/processrequest"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("114"))
-        self.assertEqual(
-            force_bytes(inst.include[0]), force_bytes("PaymentReconciliation")
-        )
-        self.assertEqual(inst.period.end.date, FHIRDate("2014-08-20").date)
-        self.assertEqual(inst.period.end.as_json(), "2014-08-20")
-        self.assertEqual(inst.period.start.date, FHIRDate("2014-08-10").date)
-        self.assertEqual(inst.period.start.as_json(), "2014-08-10")
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Poll ProcessRequest</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 
-    def testProcessRequest6(self):
-        inst = self.instantiate_from("processrequest-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ProcessRequest instance")
-        self.implProcessRequest6(inst)
+def test_processrequest_3(base_settings):
+    """No. 3 tests collection for ProcessRequest.
+    Test File: processrequest-example-poll-specific.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "processrequest-example-poll-specific.json"
+    )
+    inst = processrequest.ProcessRequest.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ProcessRequest" == inst.resource_type
 
-        js = inst.as_json()
-        self.assertEqual("ProcessRequest", js["resourceType"])
-        inst2 = processrequest.ProcessRequest(js)
-        self.implProcessRequest6(inst2)
+    impl_processrequest_3(inst)
 
-    def implProcessRequest6(self, inst):
-        self.assertEqual(force_bytes(inst.action), force_bytes("poll"))
-        self.assertEqual(inst.created.date, FHIRDate("2014-08-16").date)
-        self.assertEqual(inst.created.as_json(), "2014-08-16")
-        self.assertEqual(force_bytes(inst.id), force_bytes("1110"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://happyvalley.com/processrequest"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("110"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Poll ProcessRequest</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ProcessRequest" == data["resourceType"]
 
-    def testProcessRequest7(self):
-        inst = self.instantiate_from("processrequest-example-reverse.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ProcessRequest instance")
-        self.implProcessRequest7(inst)
+    inst2 = processrequest.ProcessRequest(**data)
+    impl_processrequest_3(inst2)
 
-        js = inst.as_json()
-        self.assertEqual("ProcessRequest", js["resourceType"])
-        inst2 = processrequest.ProcessRequest(js)
-        self.implProcessRequest7(inst2)
 
-    def implProcessRequest7(self, inst):
-        self.assertEqual(force_bytes(inst.action), force_bytes("cancel"))
-        self.assertEqual(inst.created.date, FHIRDate("2014-08-16").date)
-        self.assertEqual(inst.created.as_json(), "2014-08-16")
-        self.assertEqual(force_bytes(inst.id), force_bytes("87654"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://happyvalley.com/processrequest"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("76543"))
-        self.assertFalse(inst.nullify)
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Reversal ProcessRequest</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+def impl_processrequest_4(inst):
+    assert inst.action == "poll"
+    assert inst.created == fhirtypes.DateTime.validate("2014-08-16")
+    assert inst.id == "1112"
+    assert inst.identifier[0].system == "http://happyvalley.com/processrequest"
+    assert inst.identifier[0].value == "112"
+    assert inst.include[0] == "PaymentReconciliation"
+    assert inst.organization.reference == "Organization/1"
+    assert inst.status == "active"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Poll ProcessRequest</div>'
+    )
+    assert inst.text.status == "generated"
 
-    def testProcessRequest8(self):
-        inst = self.instantiate_from("processrequest-example-reprocess.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ProcessRequest instance")
-        self.implProcessRequest8(inst)
 
-        js = inst.as_json()
-        self.assertEqual("ProcessRequest", js["resourceType"])
-        inst2 = processrequest.ProcessRequest(js)
-        self.implProcessRequest8(inst2)
+def test_processrequest_4(base_settings):
+    """No. 4 tests collection for ProcessRequest.
+    Test File: processrequest-example-poll-inclusive.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"]
+        / "processrequest-example-poll-inclusive.json"
+    )
+    inst = processrequest.ProcessRequest.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ProcessRequest" == inst.resource_type
 
-    def implProcessRequest8(self, inst):
-        self.assertEqual(force_bytes(inst.action), force_bytes("reprocess"))
-        self.assertEqual(inst.created.date, FHIRDate("2014-08-16").date)
-        self.assertEqual(inst.created.as_json(), "2014-08-16")
-        self.assertEqual(force_bytes(inst.id), force_bytes("44654"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://happyvalley.com/processrequest"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("44543"))
-        self.assertEqual(inst.item[0].sequenceLinkId, 1)
-        self.assertEqual(force_bytes(inst.reference), force_bytes("ABC12345G"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the ReProcess ProcessRequest resource.</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    impl_processrequest_4(inst)
 
-    def testProcessRequest9(self):
-        inst = self.instantiate_from("processrequest-example-status.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ProcessRequest instance")
-        self.implProcessRequest9(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ProcessRequest" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("ProcessRequest", js["resourceType"])
-        inst2 = processrequest.ProcessRequest(js)
-        self.implProcessRequest9(inst2)
+    inst2 = processrequest.ProcessRequest(**data)
+    impl_processrequest_4(inst2)
 
-    def implProcessRequest9(self, inst):
-        self.assertEqual(force_bytes(inst.action), force_bytes("status"))
-        self.assertEqual(inst.created.date, FHIRDate("2014-08-16").date)
-        self.assertEqual(inst.created.as_json(), "2014-08-16")
-        self.assertEqual(force_bytes(inst.id), force_bytes("87655"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://happyvalley.com/processrequest"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("1776543"))
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Status ProcessRequest</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+
+def impl_processrequest_5(inst):
+    assert inst.action == "poll"
+    assert inst.created == fhirtypes.DateTime.validate("2014-08-16")
+    assert inst.id == "1114"
+    assert inst.identifier[0].system == "http://happyvalley.com/processrequest"
+    assert inst.identifier[0].value == "114"
+    assert inst.include[0] == "PaymentReconciliation"
+    assert inst.organization.reference == "Organization/1"
+    assert inst.period.end == fhirtypes.DateTime.validate("2014-08-20")
+    assert inst.period.start == fhirtypes.DateTime.validate("2014-08-10")
+    assert inst.status == "active"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Poll ProcessRequest</div>'
+    )
+    assert inst.text.status == "generated"
+
+
+def test_processrequest_5(base_settings):
+    """No. 5 tests collection for ProcessRequest.
+    Test File: processrequest-example-poll-payrec.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "processrequest-example-poll-payrec.json"
+    )
+    inst = processrequest.ProcessRequest.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ProcessRequest" == inst.resource_type
+
+    impl_processrequest_5(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ProcessRequest" == data["resourceType"]
+
+    inst2 = processrequest.ProcessRequest(**data)
+    impl_processrequest_5(inst2)
+
+
+def impl_processrequest_6(inst):
+    assert inst.action == "poll"
+    assert inst.created == fhirtypes.DateTime.validate("2014-08-16")
+    assert inst.id == "1110"
+    assert inst.identifier[0].system == "http://happyvalley.com/processrequest"
+    assert inst.identifier[0].value == "110"
+    assert inst.organization.reference == "Organization/1"
+    assert inst.status == "active"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Poll ProcessRequest</div>'
+    )
+    assert inst.text.status == "generated"
+
+
+def test_processrequest_6(base_settings):
+    """No. 6 tests collection for ProcessRequest.
+    Test File: processrequest-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "processrequest-example.json"
+    inst = processrequest.ProcessRequest.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ProcessRequest" == inst.resource_type
+
+    impl_processrequest_6(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ProcessRequest" == data["resourceType"]
+
+    inst2 = processrequest.ProcessRequest(**data)
+    impl_processrequest_6(inst2)
+
+
+def impl_processrequest_7(inst):
+    assert inst.action == "cancel"
+    assert inst.created == fhirtypes.DateTime.validate("2014-08-16")
+    assert inst.id == "87654"
+    assert inst.identifier[0].system == "http://happyvalley.com/processrequest"
+    assert inst.identifier[0].value == "76543"
+    assert inst.nullify is False
+    assert inst.organization.reference == "Organization/1"
+    assert inst.request.reference == "http://BenefitsInc.com/fhir/claim/12345"
+    assert inst.status == "active"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Reversal ProcessRequest</div>'
+    )
+    assert inst.text.status == "generated"
+
+
+def test_processrequest_7(base_settings):
+    """No. 7 tests collection for ProcessRequest.
+    Test File: processrequest-example-reverse.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "processrequest-example-reverse.json"
+    )
+    inst = processrequest.ProcessRequest.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ProcessRequest" == inst.resource_type
+
+    impl_processrequest_7(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ProcessRequest" == data["resourceType"]
+
+    inst2 = processrequest.ProcessRequest(**data)
+    impl_processrequest_7(inst2)
+
+
+def impl_processrequest_8(inst):
+    assert inst.action == "reprocess"
+    assert inst.created == fhirtypes.DateTime.validate("2014-08-16")
+    assert inst.id == "44654"
+    assert inst.identifier[0].system == "http://happyvalley.com/processrequest"
+    assert inst.identifier[0].value == "44543"
+    assert inst.item[0].sequenceLinkId == 1
+    assert inst.organization.reference == "Organization/1"
+    assert inst.reference == "ABC12345G"
+    assert inst.request.reference == "http://BenefitsInc.com/fhir/claim/12345"
+    assert inst.status == "active"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the ReProcess ProcessRequest resource.</div>'
+    )
+    assert inst.text.status == "generated"
+
+
+def test_processrequest_8(base_settings):
+    """No. 8 tests collection for ProcessRequest.
+    Test File: processrequest-example-reprocess.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "processrequest-example-reprocess.json"
+    )
+    inst = processrequest.ProcessRequest.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ProcessRequest" == inst.resource_type
+
+    impl_processrequest_8(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ProcessRequest" == data["resourceType"]
+
+    inst2 = processrequest.ProcessRequest(**data)
+    impl_processrequest_8(inst2)
+
+
+def impl_processrequest_9(inst):
+    assert inst.action == "status"
+    assert inst.created == fhirtypes.DateTime.validate("2014-08-16")
+    assert inst.id == "87655"
+    assert inst.identifier[0].system == "http://happyvalley.com/processrequest"
+    assert inst.identifier[0].value == "1776543"
+    assert inst.organization.reference == "Organization/1"
+    assert inst.request.reference == "http://happyvalley.com/claim/12345"
+    assert inst.response.reference == "http://BenefitsInc.com/fhir/claimresponse/3500"
+    assert inst.status == "active"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Status ProcessRequest</div>'
+    )
+    assert inst.text.status == "generated"
+
+
+def test_processrequest_9(base_settings):
+    """No. 9 tests collection for ProcessRequest.
+    Test File: processrequest-example-status.json
+    """
+    filename = base_settings["unittest_data_dir"] / "processrequest-example-status.json"
+    inst = processrequest.ProcessRequest.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ProcessRequest" == inst.resource_type
+
+    impl_processrequest_9(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ProcessRequest" == data["resourceType"]
+
+    inst2 = processrequest.ProcessRequest(**data)
+    impl_processrequest_9(inst2)

@@ -6,518 +6,375 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import Any, Dict
+from typing import List as ListType
 
+from pydantic import Field, root_validator
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class AuditEvent(domainresource.DomainResource):
     """ Event record kept for security purposes.
-
     A record of an event made for purposes of maintaining a security log.
     Typical uses include detection of intrusion attempts and monitoring for
     inappropriate usage.
     """
 
-    resource_type = "AuditEvent"
+    resource_type = Field("AuditEvent", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    action: fhirtypes.Code = Field(
+        None,
+        alias="action",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="Type of action performed during the event",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    agent: ListType[fhirtypes.AuditEventAgentType] = Field(
+        ...,
+        alias="agent",
+        title="List of `AuditEventAgent` items (represented as `dict` in JSON)",
+        description="Actor involved in the event",
+    )
 
-        self.action = None
-        """ Type of action performed during the event.
-        Type `str`. """
+    entity: ListType[fhirtypes.AuditEventEntityType] = Field(
+        None,
+        alias="entity",
+        title="List of `AuditEventEntity` items (represented as `dict` in JSON)",
+        description="Data or objects used",
+    )
 
-        self.agent = None
-        """ Actor involved in the event.
-        List of `AuditEventAgent` items (represented as `dict` in JSON). """
+    outcome: fhirtypes.Code = Field(
+        None,
+        alias="outcome",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="Whether the event succeeded or failed",
+    )
 
-        self.entity = None
-        """ Data or objects used.
-        List of `AuditEventEntity` items (represented as `dict` in JSON). """
+    outcomeDesc: fhirtypes.String = Field(
+        None,
+        alias="outcomeDesc",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Description of the event outcome",
+    )
 
-        self.outcome = None
-        """ Whether the event succeeded or failed.
-        Type `str`. """
+    period: fhirtypes.PeriodType = Field(
+        None,
+        alias="period",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="When the activity occurred",
+    )
 
-        self.outcomeDesc = None
-        """ Description of the event outcome.
-        Type `str`. """
+    purposeOfEvent: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="purposeOfEvent",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="The purposeOfUse of the event",
+    )
 
-        self.period = None
-        """ When the activity occurred.
-        Type `Period` (represented as `dict` in JSON). """
+    recorded: fhirtypes.Instant = Field(
+        ...,
+        alias="recorded",
+        title="Type `Instant` (represented as `dict` in JSON)",
+        description="Time when the event was recorded",
+    )
 
-        self.purposeOfEvent = None
-        """ The purposeOfUse of the event.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    source: fhirtypes.AuditEventSourceType = Field(
+        ...,
+        alias="source",
+        title="Type `AuditEventSource` (represented as `dict` in JSON)",
+        description="Audit Event Reporter",
+    )
 
-        self.recorded = None
-        """ Time when the event was recorded.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    subtype: ListType[fhirtypes.CodingType] = Field(
+        None,
+        alias="subtype",
+        title="List of `Coding` items (represented as `dict` in JSON)",
+        description="More specific type/id for the event",
+    )
 
-        self.source = None
-        """ Audit Event Reporter.
-        Type `AuditEventSource` (represented as `dict` in JSON). """
-
-        self.subtype = None
-        """ More specific type/id for the event.
-        List of `Coding` items (represented as `dict` in JSON). """
-
-        self.type = None
-        """ Type/identifier of event.
-        Type `Coding` (represented as `dict` in JSON). """
-
-        super(AuditEvent, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(AuditEvent, self).elementProperties()
-        js.extend(
-            [
-                ("action", "action", str, "code", False, None, False),
-                (
-                    "agent",
-                    "agent",
-                    AuditEventAgent,
-                    "AuditEventAgent",
-                    True,
-                    None,
-                    True,
-                ),
-                (
-                    "entity",
-                    "entity",
-                    AuditEventEntity,
-                    "AuditEventEntity",
-                    True,
-                    None,
-                    False,
-                ),
-                ("outcome", "outcome", str, "code", False, None, False),
-                ("outcomeDesc", "outcomeDesc", str, "string", False, None, False),
-                ("period", "period", period.Period, "Period", False, None, False),
-                (
-                    "purposeOfEvent",
-                    "purposeOfEvent",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "recorded",
-                    "recorded",
-                    fhirdate.FHIRDate,
-                    "instant",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "source",
-                    "source",
-                    AuditEventSource,
-                    "AuditEventSource",
-                    False,
-                    None,
-                    True,
-                ),
-                ("subtype", "subtype", coding.Coding, "Coding", True, None, False),
-                ("type", "type", coding.Coding, "Coding", False, None, True),
-            ]
-        )
-        return js
+    type: fhirtypes.CodingType = Field(
+        ...,
+        alias="type",
+        title="Type `Coding` (represented as `dict` in JSON)",
+        description="Type/identifier of event",
+    )
 
 
 class AuditEventAgent(backboneelement.BackboneElement):
     """ Actor involved in the event.
-
     An actor taking an active role in the event or activity that is logged.
     """
 
-    resource_type = "AuditEventAgent"
+    resource_type = Field("AuditEventAgent", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    altId: fhirtypes.String = Field(
+        None,
+        alias="altId",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Alternative User identity",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    location: fhirtypes.ReferenceType = Field(
+        None,
+        alias="location",
+        title="Type `Reference` referencing `Location` (represented as `dict` in JSON)",
+        description="Where",
+    )
 
-        self.altId = None
-        """ Alternative User identity.
-        Type `str`. """
+    media: fhirtypes.CodingType = Field(
+        None,
+        alias="media",
+        title="Type `Coding` (represented as `dict` in JSON)",
+        description="Type of media",
+    )
 
-        self.location = None
-        """ Where.
-        Type `FHIRReference` referencing `['Location']` (represented as `dict` in JSON). """
+    name: fhirtypes.String = Field(
+        None,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Human friendly name for the agent",
+    )
 
-        self.media = None
-        """ Type of media.
-        Type `Coding` (represented as `dict` in JSON). """
+    network: fhirtypes.AuditEventAgentNetworkType = Field(
+        None,
+        alias="network",
+        title="Type `AuditEventAgentNetwork` (represented as `dict` in JSON)",
+        description="Logical network location for application activity",
+    )
 
-        self.name = None
-        """ Human friendly name for the agent.
-        Type `str`. """
+    policy: ListType[fhirtypes.Uri] = Field(
+        None,
+        alias="policy",
+        title="List of `Uri` items (represented as `dict` in JSON)",
+        description="Policy that authorized event",
+    )
 
-        self.network = None
-        """ Logical network location for application activity.
-        Type `AuditEventAgentNetwork` (represented as `dict` in JSON). """
+    purposeOfUse: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="purposeOfUse",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Reason given for this user",
+    )
 
-        self.policy = None
-        """ Policy that authorized event.
-        List of `str` items. """
+    requestor: bool = Field(
+        ...,
+        alias="requestor",
+        title="Type `bool`",
+        description="Whether user is initiator",
+    )
 
-        self.purposeOfUse = None
-        """ Reason given for this user.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    role: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="role",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Agent role in the event",
+    )
 
-        self.requestor = None
-        """ Whether user is initiator.
-        Type `bool`. """
+    type: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="How agent participated",
+    )
 
-        self.role = None
-        """ Agent role in the event.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.type = None
-        """ How agent participated.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.who = None
-        """ Identifier of who.
-        Type `FHIRReference` referencing `['PractitionerRole', 'Practitioner', 'Organization', 'Device', 'Patient', 'RelatedPerson']` (represented as `dict` in JSON). """
-
-        super(AuditEventAgent, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(AuditEventAgent, self).elementProperties()
-        js.extend(
-            [
-                ("altId", "altId", str, "string", False, None, False),
-                (
-                    "location",
-                    "location",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("media", "media", coding.Coding, "Coding", False, None, False),
-                ("name", "name", str, "string", False, None, False),
-                (
-                    "network",
-                    "network",
-                    AuditEventAgentNetwork,
-                    "AuditEventAgentNetwork",
-                    False,
-                    None,
-                    False,
-                ),
-                ("policy", "policy", str, "uri", True, None, False),
-                (
-                    "purposeOfUse",
-                    "purposeOfUse",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                ("requestor", "requestor", bool, "boolean", False, None, True),
-                (
-                    "role",
-                    "role",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "who",
-                    "who",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    who: fhirtypes.ReferenceType = Field(
+        None,
+        alias="who",
+        title="Type `Reference` referencing `PractitionerRole, Practitioner, Organization, Device, Patient, RelatedPerson` (represented as `dict` in JSON)",
+        description="Identifier of who",
+    )
 
 
 class AuditEventAgentNetwork(backboneelement.BackboneElement):
     """ Logical network location for application activity.
-
     Logical network location for application activity, if the activity has a
     network location.
     """
 
-    resource_type = "AuditEventAgentNetwork"
+    resource_type = Field("AuditEventAgentNetwork", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    address: fhirtypes.String = Field(
+        None,
+        alias="address",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Identifier for the network access point of the user device",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.address = None
-        """ Identifier for the network access point of the user device.
-        Type `str`. """
-
-        self.type = None
-        """ The type of network access point.
-        Type `str`. """
-
-        super(AuditEventAgentNetwork, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(AuditEventAgentNetwork, self).elementProperties()
-        js.extend(
-            [
-                ("address", "address", str, "string", False, None, False),
-                ("type", "type", str, "code", False, None, False),
-            ]
-        )
-        return js
+    type: fhirtypes.Code = Field(
+        None,
+        alias="type",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="The type of network access point",
+    )
 
 
 class AuditEventEntity(backboneelement.BackboneElement):
     """ Data or objects used.
-
     Specific instances of data or objects that have been accessed.
     """
 
-    resource_type = "AuditEventEntity"
+    resource_type = Field("AuditEventEntity", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    description: fhirtypes.String = Field(
+        None,
+        alias="description",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Descriptive text",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    detail: ListType[fhirtypes.AuditEventEntityDetailType] = Field(
+        None,
+        alias="detail",
+        title="List of `AuditEventEntityDetail` items (represented as `dict` in JSON)",
+        description="Additional Information about the entity",
+    )
 
-        self.description = None
-        """ Descriptive text.
-        Type `str`. """
+    lifecycle: fhirtypes.CodingType = Field(
+        None,
+        alias="lifecycle",
+        title="Type `Coding` (represented as `dict` in JSON)",
+        description="Life-cycle stage for the entity",
+    )
 
-        self.detail = None
-        """ Additional Information about the entity.
-        List of `AuditEventEntityDetail` items (represented as `dict` in JSON). """
+    name: fhirtypes.String = Field(
+        None,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Descriptor for entity",
+    )
 
-        self.lifecycle = None
-        """ Life-cycle stage for the entity.
-        Type `Coding` (represented as `dict` in JSON). """
+    query: fhirtypes.Base64Binary = Field(
+        None,
+        alias="query",
+        title="Type `Base64Binary` (represented as `dict` in JSON)",
+        description="Query parameters",
+    )
 
-        self.name = None
-        """ Descriptor for entity.
-        Type `str`. """
+    role: fhirtypes.CodingType = Field(
+        None,
+        alias="role",
+        title="Type `Coding` (represented as `dict` in JSON)",
+        description="What role the entity played",
+    )
 
-        self.query = None
-        """ Query parameters.
-        Type `str`. """
+    securityLabel: ListType[fhirtypes.CodingType] = Field(
+        None,
+        alias="securityLabel",
+        title="List of `Coding` items (represented as `dict` in JSON)",
+        description="Security labels on the entity",
+    )
 
-        self.role = None
-        """ What role the entity played.
-        Type `Coding` (represented as `dict` in JSON). """
+    type: fhirtypes.CodingType = Field(
+        None,
+        alias="type",
+        title="Type `Coding` (represented as `dict` in JSON)",
+        description="Type of entity involved",
+    )
 
-        self.securityLabel = None
-        """ Security labels on the entity.
-        List of `Coding` items (represented as `dict` in JSON). """
-
-        self.type = None
-        """ Type of entity involved.
-        Type `Coding` (represented as `dict` in JSON). """
-
-        self.what = None
-        """ Specific instance of resource.
-        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
-
-        super(AuditEventEntity, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(AuditEventEntity, self).elementProperties()
-        js.extend(
-            [
-                ("description", "description", str, "string", False, None, False),
-                (
-                    "detail",
-                    "detail",
-                    AuditEventEntityDetail,
-                    "AuditEventEntityDetail",
-                    True,
-                    None,
-                    False,
-                ),
-                ("lifecycle", "lifecycle", coding.Coding, "Coding", False, None, False),
-                ("name", "name", str, "string", False, None, False),
-                ("query", "query", str, "base64Binary", False, None, False),
-                ("role", "role", coding.Coding, "Coding", False, None, False),
-                (
-                    "securityLabel",
-                    "securityLabel",
-                    coding.Coding,
-                    "Coding",
-                    True,
-                    None,
-                    False,
-                ),
-                ("type", "type", coding.Coding, "Coding", False, None, False),
-                (
-                    "what",
-                    "what",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    what: fhirtypes.ReferenceType = Field(
+        None,
+        alias="what",
+        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        description="Specific instance of resource",
+    )
 
 
 class AuditEventEntityDetail(backboneelement.BackboneElement):
     """ Additional Information about the entity.
-
     Tagged value pairs for conveying additional information about the entity.
     """
 
-    resource_type = "AuditEventEntityDetail"
+    resource_type = Field("AuditEventEntityDetail", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    type: fhirtypes.String = Field(
+        ...,
+        alias="type",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name of the property",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    valueBase64Binary: fhirtypes.Base64Binary = Field(
+        None,
+        alias="valueBase64Binary",
+        title="Type `Base64Binary` (represented as `dict` in JSON)",
+        description="Property value",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    valueString: fhirtypes.String = Field(
+        None,
+        alias="valueString",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Property value",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "value": ["valueBase64Binary", "valueString",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.type = None
-        """ Name of the property.
-        Type `str`. """
-
-        self.valueBase64Binary = None
-        """ Property value.
-        Type `str`. """
-
-        self.valueString = None
-        """ Property value.
-        Type `str`. """
-
-        super(AuditEventEntityDetail, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(AuditEventEntityDetail, self).elementProperties()
-        js.extend(
-            [
-                ("type", "type", str, "string", False, None, True),
-                (
-                    "valueBase64Binary",
-                    "valueBase64Binary",
-                    str,
-                    "base64Binary",
-                    False,
-                    "value",
-                    True,
-                ),
-                ("valueString", "valueString", str, "string", False, "value", True),
-            ]
-        )
-        return js
+        return values
 
 
 class AuditEventSource(backboneelement.BackboneElement):
     """ Audit Event Reporter.
-
     The system that is reporting the event.
     """
 
-    resource_type = "AuditEventSource"
+    resource_type = Field("AuditEventSource", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    observer: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="observer",
+        title="Type `Reference` referencing `PractitionerRole, Practitioner, Organization, Device, Patient, RelatedPerson` (represented as `dict` in JSON)",
+        description="The identity of source detecting the event",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    site: fhirtypes.String = Field(
+        None,
+        alias="site",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Logical source location within the enterprise",
+    )
 
-        self.observer = None
-        """ The identity of source detecting the event.
-        Type `FHIRReference` referencing `['PractitionerRole', 'Practitioner', 'Organization', 'Device', 'Patient', 'RelatedPerson']` (represented as `dict` in JSON). """
-
-        self.site = None
-        """ Logical source location within the enterprise.
-        Type `str`. """
-
-        self.type = None
-        """ The type of source where event originated.
-        List of `Coding` items (represented as `dict` in JSON). """
-
-        super(AuditEventSource, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(AuditEventSource, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "observer",
-                    "observer",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                ("site", "site", str, "string", False, None, False),
-                ("type", "type", coding.Coding, "Coding", True, None, False),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import coding
-except ImportError:
-    coding = sys.modules[__package__ + ".coding"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import period
-except ImportError:
-    period = sys.modules[__package__ + ".period"]
+    type: ListType[fhirtypes.CodingType] = Field(
+        None,
+        alias="type",
+        title="List of `Coding` items (represented as `dict` in JSON)",
+        description="The type of source where event originated",
+    )

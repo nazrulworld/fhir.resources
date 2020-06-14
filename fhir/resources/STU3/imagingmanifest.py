@@ -6,292 +6,148 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class ImagingManifest(domainresource.DomainResource):
     """ Key Object Selection.
-
     A text description of the DICOM SOP instances selected in the
     ImagingManifest; or the reason for, or significance of, the selection.
     """
 
-    resource_type = "ImagingManifest"
+    resource_type = Field("ImagingManifest", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    author: fhirtypes.ReferenceType = Field(
+        None,
+        alias="author",
+        title="Type `Reference` referencing `Practitioner, Device, Organization, Patient, RelatedPerson` (represented as `dict` in JSON)",
+        description="Author (human or machine)",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    authoringTime: fhirtypes.DateTime = Field(
+        None,
+        alias="authoringTime",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Time when the selection of instances was made",
+    )
 
-        self.author = None
-        """ Author (human or machine).
-        Type `FHIRReference` referencing `['Practitioner'], ['Device'], ['Organization'], ['Patient'], ['RelatedPerson']` (represented as `dict` in JSON). """
+    description: fhirtypes.String = Field(
+        None,
+        alias="description",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Description text",
+    )
 
-        self.authoringTime = None
-        """ Time when the selection of instances was made.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    identifier: fhirtypes.IdentifierType = Field(
+        None,
+        alias="identifier",
+        title="Type `Identifier` (represented as `dict` in JSON)",
+        description="SOP Instance UID",
+    )
 
-        self.description = None
-        """ Description text.
-        Type `str`. """
+    patient: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="patient",
+        title="Type `Reference` referencing `Patient` (represented as `dict` in JSON)",
+        description="Patient of the selected objects",
+    )
 
-        self.identifier = None
-        """ SOP Instance UID.
-        Type `Identifier` (represented as `dict` in JSON). """
-
-        self.patient = None
-        """ Patient of the selected objects.
-        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
-
-        self.study = None
-        """ Study identity of the selected instances.
-        List of `ImagingManifestStudy` items (represented as `dict` in JSON). """
-
-        super(ImagingManifest, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ImagingManifest, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "author",
-                    "author",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "authoringTime",
-                    "authoringTime",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    None,
-                    False,
-                ),
-                ("description", "description", str, "string", False, None, False),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "patient",
-                    "patient",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "study",
-                    "study",
-                    ImagingManifestStudy,
-                    "ImagingManifestStudy",
-                    True,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
+    study: ListType[fhirtypes.ImagingManifestStudyType] = Field(
+        ...,
+        alias="study",
+        title="List of `ImagingManifestStudy` items (represented as `dict` in JSON)",
+        description="Study identity of the selected instances",
+    )
 
 
 class ImagingManifestStudy(backboneelement.BackboneElement):
     """ Study identity of the selected instances.
-
     Study identity and locating information of the DICOM SOP instances in the
     selection.
     """
 
-    resource_type = "ImagingManifestStudy"
+    resource_type = Field("ImagingManifestStudy", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    endpoint: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="endpoint",
+        title="List of `Reference` items referencing `Endpoint` (represented as `dict` in JSON)",
+        description="Study access service endpoint",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    imagingStudy: fhirtypes.ReferenceType = Field(
+        None,
+        alias="imagingStudy",
+        title="Type `Reference` referencing `ImagingStudy` (represented as `dict` in JSON)",
+        description="Reference to ImagingStudy",
+    )
 
-        self.endpoint = None
-        """ Study access service endpoint.
-        List of `FHIRReference` items referencing `['Endpoint']` (represented as `dict` in JSON). """
+    series: ListType[fhirtypes.ImagingManifestStudySeriesType] = Field(
+        ...,
+        alias="series",
+        title="List of `ImagingManifestStudySeries` items (represented as `dict` in JSON)",
+        description="Series identity of the selected instances",
+    )
 
-        self.imagingStudy = None
-        """ Reference to ImagingStudy.
-        Type `FHIRReference` referencing `['ImagingStudy']` (represented as `dict` in JSON). """
-
-        self.series = None
-        """ Series identity of the selected instances.
-        List of `ImagingManifestStudySeries` items (represented as `dict` in JSON). """
-
-        self.uid = None
-        """ Study instance UID.
-        Type `str`. """
-
-        super(ImagingManifestStudy, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ImagingManifestStudy, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "endpoint",
-                    "endpoint",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "imagingStudy",
-                    "imagingStudy",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "series",
-                    "series",
-                    ImagingManifestStudySeries,
-                    "ImagingManifestStudySeries",
-                    True,
-                    None,
-                    True,
-                ),
-                ("uid", "uid", str, "oid", False, None, True),
-            ]
-        )
-        return js
+    uid: fhirtypes.Oid = Field(
+        ...,
+        alias="uid",
+        title="Type `Oid` (represented as `dict` in JSON)",
+        description="Study instance UID",
+    )
 
 
 class ImagingManifestStudySeries(backboneelement.BackboneElement):
     """ Series identity of the selected instances.
-
     Series identity and locating information of the DICOM SOP instances in the
     selection.
     """
 
-    resource_type = "ImagingManifestStudySeries"
+    resource_type = Field("ImagingManifestStudySeries", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    endpoint: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="endpoint",
+        title="List of `Reference` items referencing `Endpoint` (represented as `dict` in JSON)",
+        description="Series access endpoint",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    instance: ListType[fhirtypes.ImagingManifestStudySeriesInstanceType] = Field(
+        ...,
+        alias="instance",
+        title="List of `ImagingManifestStudySeriesInstance` items (represented as `dict` in JSON)",
+        description="The selected instance",
+    )
 
-        self.endpoint = None
-        """ Series access endpoint.
-        List of `FHIRReference` items referencing `['Endpoint']` (represented as `dict` in JSON). """
-
-        self.instance = None
-        """ The selected instance.
-        List of `ImagingManifestStudySeriesInstance` items (represented as `dict` in JSON). """
-
-        self.uid = None
-        """ Series instance UID.
-        Type `str`. """
-
-        super(ImagingManifestStudySeries, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ImagingManifestStudySeries, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "endpoint",
-                    "endpoint",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "instance",
-                    "instance",
-                    ImagingManifestStudySeriesInstance,
-                    "ImagingManifestStudySeriesInstance",
-                    True,
-                    None,
-                    True,
-                ),
-                ("uid", "uid", str, "oid", False, None, True),
-            ]
-        )
-        return js
+    uid: fhirtypes.Oid = Field(
+        ...,
+        alias="uid",
+        title="Type `Oid` (represented as `dict` in JSON)",
+        description="Series instance UID",
+    )
 
 
 class ImagingManifestStudySeriesInstance(backboneelement.BackboneElement):
     """ The selected instance.
-
     Identity and locating information of the selected DICOM SOP instances.
     """
 
-    resource_type = "ImagingManifestStudySeriesInstance"
+    resource_type = Field("ImagingManifestStudySeriesInstance", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    sopClass: fhirtypes.Oid = Field(
+        ...,
+        alias="sopClass",
+        title="Type `Oid` (represented as `dict` in JSON)",
+        description="SOP class UID of instance",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.sopClass = None
-        """ SOP class UID of instance.
-        Type `str`. """
-
-        self.uid = None
-        """ Selected instance UID.
-        Type `str`. """
-
-        super(ImagingManifestStudySeriesInstance, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ImagingManifestStudySeriesInstance, self).elementProperties()
-        js.extend(
-            [
-                ("sopClass", "sopClass", str, "oid", False, None, True),
-                ("uid", "uid", str, "oid", False, None, True),
-            ]
-        )
-        return js
-
-
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
+    uid: fhirtypes.Oid = Field(
+        ...,
+        alias="uid",
+        title="Type `Oid` (represented as `dict` in JSON)",
+        description="Selected instance UID",
+    )

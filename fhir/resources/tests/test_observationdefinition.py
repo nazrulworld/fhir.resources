@@ -6,56 +6,38 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import observationdefinition
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class ObservationDefinitionTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("ObservationDefinition", js["resourceType"])
-        return observationdefinition.ObservationDefinition(js)
+def impl_observationdefinition_1(inst):
+    assert inst.code.coding[0].code == "15074-8"
+    assert inst.code.coding[0].display == "Glucose [Moles/volume] in Blood"
+    assert inst.code.coding[0].system == "http://loinc.org"
+    assert inst.id == "example"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.text.status == "generated"
 
-    def testObservationDefinition1(self):
-        inst = self.instantiate_from("observationdefinition-example.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a ObservationDefinition instance"
-        )
-        self.implObservationDefinition1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("ObservationDefinition", js["resourceType"])
-        inst2 = observationdefinition.ObservationDefinition(js)
-        self.implObservationDefinition1(inst2)
+def test_observationdefinition_1(base_settings):
+    """No. 1 tests collection for ObservationDefinition.
+    Test File: observationdefinition-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "observationdefinition-example.json"
+    inst = observationdefinition.ObservationDefinition.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "ObservationDefinition" == inst.resource_type
 
-    def implObservationDefinition1(self, inst):
-        self.assertEqual(force_bytes(inst.code.coding[0].code), force_bytes("15074-8"))
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].display),
-            force_bytes("Glucose [Moles/volume] in Blood"),
-        )
-        self.assertEqual(
-            force_bytes(inst.code.coding[0].system), force_bytes("http://loinc.org")
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    impl_observationdefinition_1(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "ObservationDefinition" == data["resourceType"]
+
+    inst2 = observationdefinition.ObservationDefinition(**data)
+    impl_observationdefinition_1(inst2)

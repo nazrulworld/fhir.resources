@@ -6,96 +6,89 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import devicerequest
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class DeviceRequestTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("DeviceRequest", js["resourceType"])
-        return devicerequest.DeviceRequest(js)
+def impl_devicerequest_1(inst):
+    assert inst.authoredOn == fhirtypes.DateTime.validate("2013-05-08T09:33:27+07:00")
+    assert inst.basedOn[0].display == "Homecare - DM follow-up"
+    assert inst.codeCodeableConcept.coding[0].code == "43148-6"
+    assert inst.codeCodeableConcept.coding[0].system == "http://loinc.org"
+    assert inst.codeCodeableConcept.text == "Insulin delivery device panel"
+    assert inst.context.display == "Encounter 1"
+    assert inst.definition[0].display == "DM ambulatory protocol II"
+    assert inst.groupIdentifier.value == "ip_request1"
+    assert inst.id == "insulinpump"
+    assert inst.identifier[0].value == "ip_request1.1"
+    assert inst.intent.text == "instance-order"
+    assert inst.note[0].text == "this is the right device brand and model"
+    assert inst.occurrenceDateTime == fhirtypes.DateTime.validate(
+        "2013-05-08T09:33:27+07:00"
+    )
+    assert inst.performer.display == "Nurse Rossignol"
+    assert inst.performerType.coding[0].display == "Qualified nurse"
+    assert inst.performerType.text == "Nurse"
+    assert inst.priorRequest[0].display == "CGM ambulatory"
+    assert inst.priority == "routine"
+    assert inst.reasonCode[0].text == "gastroparesis"
+    assert inst.reasonReference[0].display == "Gastroparesis"
+    assert inst.relevantHistory[0].display == "Request for unspecified device"
+    assert inst.requester.agent.display == "Dr. Adam Careful"
+    assert inst.requester.agent.reference == "Practitioner/example"
+    assert inst.requester.onBehalfOf.reference == "Organization/2.16.840.1.113883.19.5"
+    assert inst.status == "active"
+    assert inst.subject.reference == "Patient/dicom"
+    assert inst.supportingInfo[0].display == "Previous results"
+    assert inst.text.status == "generated"
 
-    def testDeviceRequest1(self):
-        inst = self.instantiate_from("devicerequest-example-insulinpump.json")
-        self.assertIsNotNone(inst, "Must have instantiated a DeviceRequest instance")
-        self.implDeviceRequest1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("DeviceRequest", js["resourceType"])
-        inst2 = devicerequest.DeviceRequest(js)
-        self.implDeviceRequest1(inst2)
+def test_devicerequest_1(base_settings):
+    """No. 1 tests collection for DeviceRequest.
+    Test File: devicerequest-example-insulinpump.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "devicerequest-example-insulinpump.json"
+    )
+    inst = devicerequest.DeviceRequest.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "DeviceRequest" == inst.resource_type
 
-    def implDeviceRequest1(self, inst):
-        self.assertEqual(
-            inst.authoredOn.date, FHIRDate("2013-05-08T09:33:27+07:00").date
-        )
-        self.assertEqual(inst.authoredOn.as_json(), "2013-05-08T09:33:27+07:00")
-        self.assertEqual(
-            force_bytes(inst.codeCodeableConcept.coding[0].code), force_bytes("43148-6")
-        )
-        self.assertEqual(
-            force_bytes(inst.codeCodeableConcept.coding[0].system),
-            force_bytes("http://loinc.org"),
-        )
-        self.assertEqual(
-            force_bytes(inst.codeCodeableConcept.text),
-            force_bytes("Insulin delivery device panel"),
-        )
-        self.assertEqual(
-            force_bytes(inst.groupIdentifier.value), force_bytes("ip_request1")
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("insulinpump"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].value), force_bytes("ip_request1.1")
-        )
-        self.assertEqual(force_bytes(inst.intent.text), force_bytes("instance-order"))
-        self.assertEqual(
-            force_bytes(inst.note[0].text),
-            force_bytes("this is the right device brand and model"),
-        )
-        self.assertEqual(
-            inst.occurrenceDateTime.date, FHIRDate("2013-05-08T09:33:27+07:00").date
-        )
-        self.assertEqual(inst.occurrenceDateTime.as_json(), "2013-05-08T09:33:27+07:00")
-        self.assertEqual(
-            force_bytes(inst.performerType.coding[0].display),
-            force_bytes("Qualified nurse"),
-        )
-        self.assertEqual(force_bytes(inst.performerType.text), force_bytes("Nurse"))
-        self.assertEqual(force_bytes(inst.priority), force_bytes("routine"))
-        self.assertEqual(
-            force_bytes(inst.reasonCode[0].text), force_bytes("gastroparesis")
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("active"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    impl_devicerequest_1(inst)
 
-    def testDeviceRequest2(self):
-        inst = self.instantiate_from("devicerequest-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a DeviceRequest instance")
-        self.implDeviceRequest2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "DeviceRequest" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("DeviceRequest", js["resourceType"])
-        inst2 = devicerequest.DeviceRequest(js)
-        self.implDeviceRequest2(inst2)
+    inst2 = devicerequest.DeviceRequest(**data)
+    impl_devicerequest_1(inst2)
 
-    def implDeviceRequest2(self, inst):
-        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(
-            force_bytes(inst.intent.coding[0].code), force_bytes("original-order")
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("completed"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+
+def impl_devicerequest_2(inst):
+    assert inst.codeReference.reference == "Device/example"
+    assert inst.id == "example"
+    assert inst.intent.coding[0].code == "original-order"
+    assert inst.status == "completed"
+    assert inst.subject.reference == "Patient/example"
+    assert inst.text.status == "generated"
+
+
+def test_devicerequest_2(base_settings):
+    """No. 2 tests collection for DeviceRequest.
+    Test File: devicerequest-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "devicerequest-example.json"
+    inst = devicerequest.DeviceRequest.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "DeviceRequest" == inst.resource_type
+
+    impl_devicerequest_2(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "DeviceRequest" == data["resourceType"]
+
+    inst2 = devicerequest.DeviceRequest(**data)
+    impl_devicerequest_2(inst2)

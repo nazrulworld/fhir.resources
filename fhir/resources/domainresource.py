@@ -6,89 +6,44 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import List as ListType
 
+from pydantic import Field
 
-import sys
-
-from . import resource
+from . import fhirtypes, resource
 
 
 class DomainResource(resource.Resource):
     """ A resource with narrative, extensions, and contained resources.
-
     A resource that includes narrative, extensions, and contained resources.
     """
 
-    resource_type = "DomainResource"
+    resource_type = Field("DomainResource", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    contained: ListType[fhirtypes.ResourceType] = Field(
+        None,
+        alias="contained",
+        title="List of `Resource` items (represented as `dict` in JSON)",
+        description="Contained, inline Resources",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    extension: ListType[fhirtypes.ExtensionType] = Field(
+        None,
+        alias="extension",
+        title="List of `Extension` items (represented as `dict` in JSON)",
+        description="Additional content defined by implementations",
+    )
 
-        self.contained = None
-        """ Contained, inline Resources.
-        List of `Resource` items (represented as `dict` in JSON). """
+    modifierExtension: ListType[fhirtypes.ExtensionType] = Field(
+        None,
+        alias="modifierExtension",
+        title="List of `Extension` items (represented as `dict` in JSON)",
+        description="Extensions that cannot be ignored",
+    )
 
-        self.extension = None
-        """ Additional content defined by implementations.
-        List of `Extension` items (represented as `dict` in JSON). """
-
-        self.modifierExtension = None
-        """ Extensions that cannot be ignored.
-        List of `Extension` items (represented as `dict` in JSON). """
-
-        self.text = None
-        """ Text summary of the resource, for human interpretation.
-        Type `Narrative` (represented as `dict` in JSON). """
-
-        super(DomainResource, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(DomainResource, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "contained",
-                    "contained",
-                    resource.Resource,
-                    "Resource",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "extension",
-                    "extension",
-                    extension.Extension,
-                    "Extension",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "modifierExtension",
-                    "modifierExtension",
-                    extension.Extension,
-                    "Extension",
-                    True,
-                    None,
-                    False,
-                ),
-                ("text", "text", narrative.Narrative, "Narrative", False, None, False),
-            ]
-        )
-        return js
-
-
-try:
-    from . import extension
-except ImportError:
-    extension = sys.modules[__package__ + ".extension"]
-try:
-    from . import narrative
-except ImportError:
-    narrative = sys.modules[__package__ + ".narrative"]
+    text: fhirtypes.NarrativeType = Field(
+        None,
+        alias="text",
+        title="Type `Narrative` (represented as `dict` in JSON)",
+        description="Text summary of the resource, for human interpretation",
+    )

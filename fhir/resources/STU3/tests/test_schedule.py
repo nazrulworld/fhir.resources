@@ -6,192 +6,154 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import schedule
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class ScheduleTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("Schedule", js["resourceType"])
-        return schedule.Schedule(js)
+def impl_schedule_1(inst):
+    assert inst.active is True
+    assert inst.actor[0].display == "Dr. Beverly Crusher"
+    assert inst.actor[0].reference == "Practitioner/1"
+    assert inst.actor[1].display == "USS Enterprise-D Sickbay"
+    assert inst.actor[1].reference == "Location/3"
+    assert (
+        inst.comment
+        == "The slots attached to this schedule are for genetic counselling in the USS Enterprise-D Sickbay."
+    )
+    assert inst.id == "exampleloc1"
+    assert inst.identifier[0].system == "http://example.org/scheduleid"
+    assert inst.identifier[0].use == "usual"
+    assert inst.identifier[0].value == "46"
+    assert inst.planningHorizon.end == fhirtypes.DateTime.validate(
+        "2017-12-25T09:30:00Z"
+    )
+    assert inst.planningHorizon.start == fhirtypes.DateTime.validate(
+        "2017-12-25T09:15:00Z"
+    )
+    assert inst.serviceCategory.coding[0].code == "17"
+    assert inst.serviceCategory.coding[0].display == "General Practice"
+    assert inst.serviceType[0].coding[0].code == "75"
+    assert inst.serviceType[0].coding[0].display == "Genetic Counselling"
+    assert inst.specialty[0].coding[0].code == "394580004"
+    assert inst.specialty[0].coding[0].display == "Clinical genetics"
+    assert inst.text.status == "generated"
 
-    def testSchedule1(self):
-        inst = self.instantiate_from("schedule-provider-location1-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Schedule instance")
-        self.implSchedule1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("Schedule", js["resourceType"])
-        inst2 = schedule.Schedule(js)
-        self.implSchedule1(inst2)
+def test_schedule_1(base_settings):
+    """No. 1 tests collection for Schedule.
+    Test File: schedule-provider-location1-example.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "schedule-provider-location1-example.json"
+    )
+    inst = schedule.Schedule.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Schedule" == inst.resource_type
 
-    def implSchedule1(self, inst):
-        self.assertTrue(inst.active)
-        self.assertEqual(
-            force_bytes(inst.comment),
-            force_bytes(
-                "The slots attached to this schedule are for genetic counselling in the USS Enterprise-D Sickbay."
-            ),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("exampleloc1"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://example.org/scheduleid"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].use), force_bytes("usual"))
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("46"))
-        self.assertEqual(
-            inst.planningHorizon.end.date, FHIRDate("2017-12-25T09:30:00Z").date
-        )
-        self.assertEqual(inst.planningHorizon.end.as_json(), "2017-12-25T09:30:00Z")
-        self.assertEqual(
-            inst.planningHorizon.start.date, FHIRDate("2017-12-25T09:15:00Z").date
-        )
-        self.assertEqual(inst.planningHorizon.start.as_json(), "2017-12-25T09:15:00Z")
-        self.assertEqual(
-            force_bytes(inst.serviceCategory.coding[0].code), force_bytes("17")
-        )
-        self.assertEqual(
-            force_bytes(inst.serviceCategory.coding[0].display),
-            force_bytes("General Practice"),
-        )
-        self.assertEqual(
-            force_bytes(inst.serviceType[0].coding[0].code), force_bytes("75")
-        )
-        self.assertEqual(
-            force_bytes(inst.serviceType[0].coding[0].display),
-            force_bytes("Genetic Counselling"),
-        )
-        self.assertEqual(
-            force_bytes(inst.specialty[0].coding[0].code), force_bytes("394580004")
-        )
-        self.assertEqual(
-            force_bytes(inst.specialty[0].coding[0].display),
-            force_bytes("Clinical genetics"),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    impl_schedule_1(inst)
 
-    def testSchedule2(self):
-        inst = self.instantiate_from("schedule-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Schedule instance")
-        self.implSchedule2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Schedule" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("Schedule", js["resourceType"])
-        inst2 = schedule.Schedule(js)
-        self.implSchedule2(inst2)
+    inst2 = schedule.Schedule(**data)
+    impl_schedule_1(inst2)
 
-    def implSchedule2(self, inst):
-        self.assertTrue(inst.active)
-        self.assertEqual(
-            force_bytes(inst.comment),
-            force_bytes(
-                "The slots attached to this schedule should be specialized to cover immunizations within the clinic"
-            ),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://example.org/scheduleid"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].use), force_bytes("usual"))
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("45"))
-        self.assertEqual(
-            inst.planningHorizon.end.date, FHIRDate("2013-12-25T09:30:00Z").date
-        )
-        self.assertEqual(inst.planningHorizon.end.as_json(), "2013-12-25T09:30:00Z")
-        self.assertEqual(
-            inst.planningHorizon.start.date, FHIRDate("2013-12-25T09:15:00Z").date
-        )
-        self.assertEqual(inst.planningHorizon.start.as_json(), "2013-12-25T09:15:00Z")
-        self.assertEqual(
-            force_bytes(inst.serviceCategory.coding[0].code), force_bytes("17")
-        )
-        self.assertEqual(
-            force_bytes(inst.serviceCategory.coding[0].display),
-            force_bytes("General Practice"),
-        )
-        self.assertEqual(
-            force_bytes(inst.serviceType[0].coding[0].code), force_bytes("57")
-        )
-        self.assertEqual(
-            force_bytes(inst.serviceType[0].coding[0].display),
-            force_bytes("Immunization"),
-        )
-        self.assertEqual(
-            force_bytes(inst.specialty[0].coding[0].code), force_bytes("408480009")
-        )
-        self.assertEqual(
-            force_bytes(inst.specialty[0].coding[0].display),
-            force_bytes("Clinical immunology"),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 
-    def testSchedule3(self):
-        inst = self.instantiate_from("schedule-provider-location2-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Schedule instance")
-        self.implSchedule3(inst)
+def impl_schedule_2(inst):
+    assert inst.active is True
+    assert inst.actor[0].display == "Burgers UMC, South Wing, second floor"
+    assert inst.actor[0].reference == "Location/1"
+    assert (
+        inst.comment
+        == "The slots attached to this schedule should be specialized to cover immunizations within the clinic"
+    )
+    assert inst.id == "example"
+    assert inst.identifier[0].system == "http://example.org/scheduleid"
+    assert inst.identifier[0].use == "usual"
+    assert inst.identifier[0].value == "45"
+    assert inst.planningHorizon.end == fhirtypes.DateTime.validate(
+        "2013-12-25T09:30:00Z"
+    )
+    assert inst.planningHorizon.start == fhirtypes.DateTime.validate(
+        "2013-12-25T09:15:00Z"
+    )
+    assert inst.serviceCategory.coding[0].code == "17"
+    assert inst.serviceCategory.coding[0].display == "General Practice"
+    assert inst.serviceType[0].coding[0].code == "57"
+    assert inst.serviceType[0].coding[0].display == "Immunization"
+    assert inst.specialty[0].coding[0].code == "408480009"
+    assert inst.specialty[0].coding[0].display == "Clinical immunology"
+    assert inst.text.status == "generated"
 
-        js = inst.as_json()
-        self.assertEqual("Schedule", js["resourceType"])
-        inst2 = schedule.Schedule(js)
-        self.implSchedule3(inst2)
 
-    def implSchedule3(self, inst):
-        self.assertTrue(inst.active)
-        self.assertEqual(
-            force_bytes(inst.comment),
-            force_bytes(
-                "The slots attached to this schedule are for neurosurgery operations at Starfleet HQ only."
-            ),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("exampleloc2"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://example.org/scheduleid"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].use), force_bytes("usual"))
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("47"))
-        self.assertEqual(
-            inst.planningHorizon.end.date, FHIRDate("2017-12-25T09:30:00Z").date
-        )
-        self.assertEqual(inst.planningHorizon.end.as_json(), "2017-12-25T09:30:00Z")
-        self.assertEqual(
-            inst.planningHorizon.start.date, FHIRDate("2017-12-25T09:15:00Z").date
-        )
-        self.assertEqual(inst.planningHorizon.start.as_json(), "2017-12-25T09:15:00Z")
-        self.assertEqual(
-            force_bytes(inst.serviceCategory.coding[0].code), force_bytes("31")
-        )
-        self.assertEqual(
-            force_bytes(inst.serviceCategory.coding[0].display),
-            force_bytes("Specialist Surgical"),
-        )
-        self.assertEqual(
-            force_bytes(inst.serviceType[0].coding[0].code), force_bytes("221")
-        )
-        self.assertEqual(
-            force_bytes(inst.serviceType[0].coding[0].display),
-            force_bytes("Surgery - General"),
-        )
-        self.assertEqual(
-            force_bytes(inst.specialty[0].coding[0].code), force_bytes("394610002")
-        )
-        self.assertEqual(
-            force_bytes(inst.specialty[0].coding[0].display),
-            force_bytes("Surgery-Neurosurgery"),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+def test_schedule_2(base_settings):
+    """No. 2 tests collection for Schedule.
+    Test File: schedule-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "schedule-example.json"
+    inst = schedule.Schedule.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Schedule" == inst.resource_type
+
+    impl_schedule_2(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Schedule" == data["resourceType"]
+
+    inst2 = schedule.Schedule(**data)
+    impl_schedule_2(inst2)
+
+
+def impl_schedule_3(inst):
+    assert inst.active is True
+    assert inst.actor[0].display == "Dr. Beverly Crusher"
+    assert inst.actor[0].reference == "Practitioner/1"
+    assert inst.actor[1].display == "Starfleet HQ Sickbay"
+    assert inst.actor[1].reference == "Location/2"
+    assert (
+        inst.comment
+        == "The slots attached to this schedule are for neurosurgery operations at Starfleet HQ only."
+    )
+    assert inst.id == "exampleloc2"
+    assert inst.identifier[0].system == "http://example.org/scheduleid"
+    assert inst.identifier[0].use == "usual"
+    assert inst.identifier[0].value == "47"
+    assert inst.planningHorizon.end == fhirtypes.DateTime.validate(
+        "2017-12-25T09:30:00Z"
+    )
+    assert inst.planningHorizon.start == fhirtypes.DateTime.validate(
+        "2017-12-25T09:15:00Z"
+    )
+    assert inst.serviceCategory.coding[0].code == "31"
+    assert inst.serviceCategory.coding[0].display == "Specialist Surgical"
+    assert inst.serviceType[0].coding[0].code == "221"
+    assert inst.serviceType[0].coding[0].display == "Surgery - General"
+    assert inst.specialty[0].coding[0].code == "394610002"
+    assert inst.specialty[0].coding[0].display == "Surgery-Neurosurgery"
+    assert inst.text.status == "generated"
+
+
+def test_schedule_3(base_settings):
+    """No. 3 tests collection for Schedule.
+    Test File: schedule-provider-location2-example.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"] / "schedule-provider-location2-example.json"
+    )
+    inst = schedule.Schedule.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Schedule" == inst.resource_type
+
+    impl_schedule_3(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Schedule" == data["resourceType"]
+
+    inst2 = schedule.Schedule(**data)
+    impl_schedule_3(inst2)

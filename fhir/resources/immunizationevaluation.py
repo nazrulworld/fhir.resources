@@ -6,218 +6,171 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import Any, Dict
+from typing import List as ListType
 
+from pydantic import Field, root_validator
 
-import sys
-
-from . import domainresource
+from . import domainresource, fhirtypes
 
 
 class ImmunizationEvaluation(domainresource.DomainResource):
     """ Immunization evaluation information.
-
     Describes a comparison of an immunization event against published
     recommendations to determine if the administration is "valid" in relation
     to those  recommendations.
     """
 
-    resource_type = "ImmunizationEvaluation"
+    resource_type = Field("ImmunizationEvaluation", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    authority: fhirtypes.ReferenceType = Field(
+        None,
+        alias="authority",
+        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        description="Who is responsible for publishing the recommendations",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    date: fhirtypes.DateTime = Field(
+        None,
+        alias="date",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Date evaluation was performed",
+    )
+
+    description: fhirtypes.String = Field(
+        None,
+        alias="description",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Evaluation notes",
+    )
+
+    doseNumberPositiveInt: fhirtypes.PositiveInt = Field(
+        None,
+        alias="doseNumberPositiveInt",
+        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        description="Dose number within series",
+        one_of_many="doseNumber",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    doseNumberString: fhirtypes.String = Field(
+        None,
+        alias="doseNumberString",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Dose number within series",
+        one_of_many="doseNumber",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    doseStatus: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="doseStatus",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Status of the dose relative to published recommendations",
+    )
+
+    doseStatusReason: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="doseStatusReason",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Reason for the dose status",
+    )
+
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Business identifier",
+    )
+
+    immunizationEvent: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="immunizationEvent",
+        title="Type `Reference` referencing `Immunization` (represented as `dict` in JSON)",
+        description="Immunization being evaluated",
+    )
+
+    patient: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="patient",
+        title="Type `Reference` referencing `Patient` (represented as `dict` in JSON)",
+        description="Who this evaluation is for",
+    )
+
+    series: fhirtypes.String = Field(
+        None,
+        alias="series",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Name of vaccine series",
+    )
+
+    seriesDosesPositiveInt: fhirtypes.PositiveInt = Field(
+        None,
+        alias="seriesDosesPositiveInt",
+        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        description="Recommended number of doses for immunity",
+        one_of_many="seriesDoses",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    seriesDosesString: fhirtypes.String = Field(
+        None,
+        alias="seriesDosesString",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Recommended number of doses for immunity",
+        one_of_many="seriesDoses",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="completed | entered-in-error",
+    )
+
+    targetDisease: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="targetDisease",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Evaluation target disease",
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "doseNumber": ["doseNumberPositiveInt", "doseNumberString",],
+            "seriesDoses": ["seriesDosesPositiveInt", "seriesDosesString",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.authority = None
-        """ Who is responsible for publishing the recommendations.
-        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
-
-        self.date = None
-        """ Date evaluation was performed.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.description = None
-        """ Evaluation notes.
-        Type `str`. """
-
-        self.doseNumberPositiveInt = None
-        """ Dose number within series.
-        Type `int`. """
-
-        self.doseNumberString = None
-        """ Dose number within series.
-        Type `str`. """
-
-        self.doseStatus = None
-        """ Status of the dose relative to published recommendations.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.doseStatusReason = None
-        """ Reason for the dose status.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.identifier = None
-        """ Business identifier.
-        List of `Identifier` items (represented as `dict` in JSON). """
-
-        self.immunizationEvent = None
-        """ Immunization being evaluated.
-        Type `FHIRReference` referencing `['Immunization']` (represented as `dict` in JSON). """
-
-        self.patient = None
-        """ Who this evaluation is for.
-        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
-
-        self.series = None
-        """ Name of vaccine series.
-        Type `str`. """
-
-        self.seriesDosesPositiveInt = None
-        """ Recommended number of doses for immunity.
-        Type `int`. """
-
-        self.seriesDosesString = None
-        """ Recommended number of doses for immunity.
-        Type `str`. """
-
-        self.status = None
-        """ completed | entered-in-error.
-        Type `str`. """
-
-        self.targetDisease = None
-        """ Evaluation target disease.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(ImmunizationEvaluation, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ImmunizationEvaluation, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "authority",
-                    "authority",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-                ("description", "description", str, "string", False, None, False),
-                (
-                    "doseNumberPositiveInt",
-                    "doseNumberPositiveInt",
-                    int,
-                    "positiveInt",
-                    False,
-                    "doseNumber",
-                    False,
-                ),
-                (
-                    "doseNumberString",
-                    "doseNumberString",
-                    str,
-                    "string",
-                    False,
-                    "doseNumber",
-                    False,
-                ),
-                (
-                    "doseStatus",
-                    "doseStatus",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "doseStatusReason",
-                    "doseStatusReason",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "immunizationEvent",
-                    "immunizationEvent",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "patient",
-                    "patient",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                ("series", "series", str, "string", False, None, False),
-                (
-                    "seriesDosesPositiveInt",
-                    "seriesDosesPositiveInt",
-                    int,
-                    "positiveInt",
-                    False,
-                    "seriesDoses",
-                    False,
-                ),
-                (
-                    "seriesDosesString",
-                    "seriesDosesString",
-                    str,
-                    "string",
-                    False,
-                    "seriesDoses",
-                    False,
-                ),
-                ("status", "status", str, "code", False, None, True),
-                (
-                    "targetDisease",
-                    "targetDisease",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
+        return values

@@ -6,68 +6,66 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import binary
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class BinaryTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("Binary", js["resourceType"])
-        return binary.Binary(js)
+def impl_binary_1(inst):
+    assert inst.contentType == "application/pdf"
+    assert inst.id == "example"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.securityContext.reference == "DocumentReference/example"
 
-    def testBinary1(self):
-        inst = self.instantiate_from("binary-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Binary instance")
-        self.implBinary1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("Binary", js["resourceType"])
-        inst2 = binary.Binary(js)
-        self.implBinary1(inst2)
+def test_binary_1(base_settings):
+    """No. 1 tests collection for Binary.
+    Test File: binary-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "binary-example.json"
+    inst = binary.Binary.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Binary" == inst.resource_type
 
-    def implBinary1(self, inst):
-        self.assertEqual(force_bytes(inst.contentType), force_bytes("application/pdf"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
+    impl_binary_1(inst)
 
-    def testBinary2(self):
-        inst = self.instantiate_from("binary-f006.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Binary instance")
-        self.implBinary2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Binary" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("Binary", js["resourceType"])
-        inst2 = binary.Binary(js)
-        self.implBinary2(inst2)
+    inst2 = binary.Binary(**data)
+    impl_binary_1(inst2)
 
-    def implBinary2(self, inst):
-        self.assertEqual(force_bytes(inst.contentType), force_bytes("image/jpeg"))
-        self.assertEqual(force_bytes(inst.id), force_bytes("f006"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
+
+def impl_binary_2(inst):
+    assert inst.contentType == "image/jpeg"
+    assert inst.id == "f006"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+
+
+def test_binary_2(base_settings):
+    """No. 2 tests collection for Binary.
+    Test File: binary-f006.json
+    """
+    filename = base_settings["unittest_data_dir"] / "binary-f006.json"
+    inst = binary.Binary.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Binary" == inst.resource_type
+
+    impl_binary_2(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Binary" == data["resourceType"]
+
+    inst2 = binary.Binary(**data)
+    impl_binary_2(inst2)

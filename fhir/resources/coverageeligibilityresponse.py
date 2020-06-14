@@ -6,642 +6,441 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import Any, Dict
+from typing import List as ListType
 
+from pydantic import Field, root_validator
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class CoverageEligibilityResponse(domainresource.DomainResource):
     """ CoverageEligibilityResponse resource.
-
     This resource provides eligibility and plan details from the processing of
     an CoverageEligibilityRequest resource.
     """
 
-    resource_type = "CoverageEligibilityResponse"
+    resource_type = Field("CoverageEligibilityResponse", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    created: fhirtypes.DateTime = Field(
+        ...,
+        alias="created",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Response creation date",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    disposition: fhirtypes.String = Field(
+        None,
+        alias="disposition",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Disposition Message",
+    )
+
+    error: ListType[fhirtypes.CoverageEligibilityResponseErrorType] = Field(
+        None,
+        alias="error",
+        title="List of `CoverageEligibilityResponseError` items (represented as `dict` in JSON)",
+        description="Processing errors",
+    )
+
+    form: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="form",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Printed form identifier",
+    )
+
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Business Identifier for coverage eligiblity request",
+    )
+
+    insurance: ListType[fhirtypes.CoverageEligibilityResponseInsuranceType] = Field(
+        None,
+        alias="insurance",
+        title="List of `CoverageEligibilityResponseInsurance` items (represented as `dict` in JSON)",
+        description="Patient insurance information",
+    )
+
+    insurer: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="insurer",
+        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        description="Coverage issuer",
+    )
+
+    outcome: fhirtypes.Code = Field(
+        ...,
+        alias="outcome",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="queued | complete | error | partial",
+    )
+
+    patient: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="patient",
+        title="Type `Reference` referencing `Patient` (represented as `dict` in JSON)",
+        description="Intended recipient of products and services",
+    )
+
+    preAuthRef: fhirtypes.String = Field(
+        None,
+        alias="preAuthRef",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Preauthorization reference",
+    )
+
+    purpose: ListType[fhirtypes.Code] = Field(
+        ...,
+        alias="purpose",
+        title="List of `Code` items (represented as `dict` in JSON)",
+        description="auth-requirements | benefits | discovery | validation",
+    )
+
+    request: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="request",
+        title="Type `Reference` referencing `CoverageEligibilityRequest` (represented as `dict` in JSON)",
+        description="Eligibility request reference",
+    )
+
+    requestor: fhirtypes.ReferenceType = Field(
+        None,
+        alias="requestor",
+        title="Type `Reference` referencing `Practitioner, PractitionerRole, Organization` (represented as `dict` in JSON)",
+        description="Party responsible for the request",
+    )
+
+    servicedDate: fhirtypes.Date = Field(
+        None,
+        alias="servicedDate",
+        title="Type `Date` (represented as `dict` in JSON)",
+        description="Estimated date or dates of service",
+        one_of_many="serviced",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    servicedPeriod: fhirtypes.PeriodType = Field(
+        None,
+        alias="servicedPeriod",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="Estimated date or dates of service",
+        one_of_many="serviced",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="active | cancelled | draft | entered-in-error",
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "serviced": ["servicedDate", "servicedPeriod",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.created = None
-        """ Response creation date.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.disposition = None
-        """ Disposition Message.
-        Type `str`. """
-
-        self.error = None
-        """ Processing errors.
-        List of `CoverageEligibilityResponseError` items (represented as `dict` in JSON). """
-
-        self.form = None
-        """ Printed form identifier.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.identifier = None
-        """ Business Identifier for coverage eligiblity request.
-        List of `Identifier` items (represented as `dict` in JSON). """
-
-        self.insurance = None
-        """ Patient insurance information.
-        List of `CoverageEligibilityResponseInsurance` items (represented as `dict` in JSON). """
-
-        self.insurer = None
-        """ Coverage issuer.
-        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
-
-        self.outcome = None
-        """ queued | complete | error | partial.
-        Type `str`. """
-
-        self.patient = None
-        """ Intended recipient of products and services.
-        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
-
-        self.preAuthRef = None
-        """ Preauthorization reference.
-        Type `str`. """
-
-        self.purpose = None
-        """ auth-requirements | benefits | discovery | validation.
-        List of `str` items. """
-
-        self.request = None
-        """ Eligibility request reference.
-        Type `FHIRReference` referencing `['CoverageEligibilityRequest']` (represented as `dict` in JSON). """
-
-        self.requestor = None
-        """ Party responsible for the request.
-        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'Organization']` (represented as `dict` in JSON). """
-
-        self.servicedDate = None
-        """ Estimated date or dates of service.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.servicedPeriod = None
-        """ Estimated date or dates of service.
-        Type `Period` (represented as `dict` in JSON). """
-
-        self.status = None
-        """ active | cancelled | draft | entered-in-error.
-        Type `str`. """
-
-        super(CoverageEligibilityResponse, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(CoverageEligibilityResponse, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "created",
-                    "created",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    None,
-                    True,
-                ),
-                ("disposition", "disposition", str, "string", False, None, False),
-                (
-                    "error",
-                    "error",
-                    CoverageEligibilityResponseError,
-                    "CoverageEligibilityResponseError",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "form",
-                    "form",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "insurance",
-                    "insurance",
-                    CoverageEligibilityResponseInsurance,
-                    "CoverageEligibilityResponseInsurance",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "insurer",
-                    "insurer",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                ("outcome", "outcome", str, "code", False, None, True),
-                (
-                    "patient",
-                    "patient",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                ("preAuthRef", "preAuthRef", str, "string", False, None, False),
-                ("purpose", "purpose", str, "code", True, None, True),
-                (
-                    "request",
-                    "request",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "requestor",
-                    "requestor",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "servicedDate",
-                    "servicedDate",
-                    fhirdate.FHIRDate,
-                    "date",
-                    False,
-                    "serviced",
-                    False,
-                ),
-                (
-                    "servicedPeriod",
-                    "servicedPeriod",
-                    period.Period,
-                    "Period",
-                    False,
-                    "serviced",
-                    False,
-                ),
-                ("status", "status", str, "code", False, None, True),
-            ]
-        )
-        return js
+        return values
 
 
 class CoverageEligibilityResponseError(backboneelement.BackboneElement):
     """ Processing errors.
-
     Errors encountered during the processing of the request.
     """
 
-    resource_type = "CoverageEligibilityResponseError"
+    resource_type = Field("CoverageEligibilityResponseError", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
-
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.code = None
-        """ Error code detailing processing issues.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(CoverageEligibilityResponseError, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(CoverageEligibilityResponseError, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "code",
-                    "code",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
+    code: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="code",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Error code detailing processing issues",
+    )
 
 
 class CoverageEligibilityResponseInsurance(backboneelement.BackboneElement):
     """ Patient insurance information.
-
     Financial instruments for reimbursement for the health care products and
     services.
     """
 
-    resource_type = "CoverageEligibilityResponseInsurance"
+    resource_type = Field("CoverageEligibilityResponseInsurance", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    benefitPeriod: fhirtypes.PeriodType = Field(
+        None,
+        alias="benefitPeriod",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="When the benefits are applicable",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    coverage: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="coverage",
+        title="Type `Reference` referencing `Coverage` (represented as `dict` in JSON)",
+        description="Insurance information",
+    )
 
-        self.benefitPeriod = None
-        """ When the benefits are applicable.
-        Type `Period` (represented as `dict` in JSON). """
+    inforce: bool = Field(
+        None,
+        alias="inforce",
+        title="Type `bool`",
+        description="Coverage inforce indicator",
+    )
 
-        self.coverage = None
-        """ Insurance information.
-        Type `FHIRReference` referencing `['Coverage']` (represented as `dict` in JSON). """
-
-        self.inforce = None
-        """ Coverage inforce indicator.
-        Type `bool`. """
-
-        self.item = None
-        """ Benefits and authorization details.
-        List of `CoverageEligibilityResponseInsuranceItem` items (represented as `dict` in JSON). """
-
-        super(CoverageEligibilityResponseInsurance, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(CoverageEligibilityResponseInsurance, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "benefitPeriod",
-                    "benefitPeriod",
-                    period.Period,
-                    "Period",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "coverage",
-                    "coverage",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                ("inforce", "inforce", bool, "boolean", False, None, False),
-                (
-                    "item",
-                    "item",
-                    CoverageEligibilityResponseInsuranceItem,
-                    "CoverageEligibilityResponseInsuranceItem",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    item: ListType[fhirtypes.CoverageEligibilityResponseInsuranceItemType] = Field(
+        None,
+        alias="item",
+        title="List of `CoverageEligibilityResponseInsuranceItem` items (represented as `dict` in JSON)",
+        description="Benefits and authorization details",
+    )
 
 
 class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
     """ Benefits and authorization details.
-
     Benefits and optionally current balances, and authorization details by
     category or service.
     """
 
-    resource_type = "CoverageEligibilityResponseInsuranceItem"
+    resource_type = Field("CoverageEligibilityResponseInsuranceItem", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    authorizationRequired: bool = Field(
+        None,
+        alias="authorizationRequired",
+        title="Type `bool`",
+        description="Authorization required flag",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    authorizationSupporting: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="authorizationSupporting",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Type of required supporting materials",
+    )
 
-        self.authorizationRequired = None
-        """ Authorization required flag.
-        Type `bool`. """
+    authorizationUrl: fhirtypes.Uri = Field(
+        None,
+        alias="authorizationUrl",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Preauthorization requirements endpoint",
+    )
 
-        self.authorizationSupporting = None
-        """ Type of required supporting materials.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    benefit: ListType[
+        fhirtypes.CoverageEligibilityResponseInsuranceItemBenefitType
+    ] = Field(
+        None,
+        alias="benefit",
+        title="List of `CoverageEligibilityResponseInsuranceItemBenefit` items (represented as `dict` in JSON)",
+        description="Benefit Summary",
+    )
 
-        self.authorizationUrl = None
-        """ Preauthorization requirements endpoint.
-        Type `str`. """
+    category: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="category",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Benefit classification",
+    )
 
-        self.benefit = None
-        """ Benefit Summary.
-        List of `CoverageEligibilityResponseInsuranceItemBenefit` items (represented as `dict` in JSON). """
+    description: fhirtypes.String = Field(
+        None,
+        alias="description",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Description of the benefit or services covered",
+    )
 
-        self.category = None
-        """ Benefit classification.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    excluded: bool = Field(
+        None,
+        alias="excluded",
+        title="Type `bool`",
+        description="Excluded from the plan",
+    )
 
-        self.description = None
-        """ Description of the benefit or services covered.
-        Type `str`. """
+    modifier: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="modifier",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Product or service billing modifiers",
+    )
 
-        self.excluded = None
-        """ Excluded from the plan.
-        Type `bool`. """
+    name: fhirtypes.String = Field(
+        None,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Short name for the benefit",
+    )
 
-        self.modifier = None
-        """ Product or service billing modifiers.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    network: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="network",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="In or out of network",
+    )
 
-        self.name = None
-        """ Short name for the benefit.
-        Type `str`. """
+    productOrService: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="productOrService",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Billing, service, product, or drug code",
+    )
 
-        self.network = None
-        """ In or out of network.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    provider: fhirtypes.ReferenceType = Field(
+        None,
+        alias="provider",
+        title="Type `Reference` referencing `Practitioner, PractitionerRole` (represented as `dict` in JSON)",
+        description="Performing practitioner",
+    )
 
-        self.productOrService = None
-        """ Billing, service, product, or drug code.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    term: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="term",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Annual or lifetime",
+    )
 
-        self.provider = None
-        """ Performing practitioner.
-        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole']` (represented as `dict` in JSON). """
-
-        self.term = None
-        """ Annual or lifetime.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.unit = None
-        """ Individual or family.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(CoverageEligibilityResponseInsuranceItem, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(CoverageEligibilityResponseInsuranceItem, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "authorizationRequired",
-                    "authorizationRequired",
-                    bool,
-                    "boolean",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "authorizationSupporting",
-                    "authorizationSupporting",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "authorizationUrl",
-                    "authorizationUrl",
-                    str,
-                    "uri",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "benefit",
-                    "benefit",
-                    CoverageEligibilityResponseInsuranceItemBenefit,
-                    "CoverageEligibilityResponseInsuranceItemBenefit",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "category",
-                    "category",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("description", "description", str, "string", False, None, False),
-                ("excluded", "excluded", bool, "boolean", False, None, False),
-                (
-                    "modifier",
-                    "modifier",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                ("name", "name", str, "string", False, None, False),
-                (
-                    "network",
-                    "network",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "productOrService",
-                    "productOrService",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "provider",
-                    "provider",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "term",
-                    "term",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "unit",
-                    "unit",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    unit: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="unit",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Individual or family",
+    )
 
 
 class CoverageEligibilityResponseInsuranceItemBenefit(backboneelement.BackboneElement):
     """ Benefit Summary.
-
     Benefits used to date.
     """
 
-    resource_type = "CoverageEligibilityResponseInsuranceItemBenefit"
+    resource_type = Field("CoverageEligibilityResponseInsuranceItemBenefit", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    allowedMoney: fhirtypes.MoneyType = Field(
+        None,
+        alias="allowedMoney",
+        title="Type `Money` (represented as `dict` in JSON)",
+        description="Benefits allowed",
+        one_of_many="allowed",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    allowedString: fhirtypes.String = Field(
+        None,
+        alias="allowedString",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Benefits allowed",
+        one_of_many="allowed",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    allowedUnsignedInt: fhirtypes.UnsignedInt = Field(
+        None,
+        alias="allowedUnsignedInt",
+        title="Type `UnsignedInt` (represented as `dict` in JSON)",
+        description="Benefits allowed",
+        one_of_many="allowed",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    type: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Benefit classification",
+    )
+
+    usedMoney: fhirtypes.MoneyType = Field(
+        None,
+        alias="usedMoney",
+        title="Type `Money` (represented as `dict` in JSON)",
+        description="Benefits used",
+        one_of_many="used",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    usedString: fhirtypes.String = Field(
+        None,
+        alias="usedString",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Benefits used",
+        one_of_many="used",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    usedUnsignedInt: fhirtypes.UnsignedInt = Field(
+        None,
+        alias="usedUnsignedInt",
+        title="Type `UnsignedInt` (represented as `dict` in JSON)",
+        description="Benefits used",
+        one_of_many="used",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "allowed": ["allowedMoney", "allowedString", "allowedUnsignedInt",],
+            "used": ["usedMoney", "usedString", "usedUnsignedInt",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.allowedMoney = None
-        """ Benefits allowed.
-        Type `Money` (represented as `dict` in JSON). """
-
-        self.allowedString = None
-        """ Benefits allowed.
-        Type `str`. """
-
-        self.allowedUnsignedInt = None
-        """ Benefits allowed.
-        Type `int`. """
-
-        self.type = None
-        """ Benefit classification.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.usedMoney = None
-        """ Benefits used.
-        Type `Money` (represented as `dict` in JSON). """
-
-        self.usedString = None
-        """ Benefits used.
-        Type `str`. """
-
-        self.usedUnsignedInt = None
-        """ Benefits used.
-        Type `int`. """
-
-        super(CoverageEligibilityResponseInsuranceItemBenefit, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(
-            CoverageEligibilityResponseInsuranceItemBenefit, self
-        ).elementProperties()
-        js.extend(
-            [
-                (
-                    "allowedMoney",
-                    "allowedMoney",
-                    money.Money,
-                    "Money",
-                    False,
-                    "allowed",
-                    False,
-                ),
-                (
-                    "allowedString",
-                    "allowedString",
-                    str,
-                    "string",
-                    False,
-                    "allowed",
-                    False,
-                ),
-                (
-                    "allowedUnsignedInt",
-                    "allowedUnsignedInt",
-                    int,
-                    "unsignedInt",
-                    False,
-                    "allowed",
-                    False,
-                ),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                ("usedMoney", "usedMoney", money.Money, "Money", False, "used", False),
-                ("usedString", "usedString", str, "string", False, "used", False),
-                (
-                    "usedUnsignedInt",
-                    "usedUnsignedInt",
-                    int,
-                    "unsignedInt",
-                    False,
-                    "used",
-                    False,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import money
-except ImportError:
-    money = sys.modules[__package__ + ".money"]
-try:
-    from . import period
-except ImportError:
-    period = sys.modules[__package__ + ".period"]
+        return values

@@ -6,2856 +6,1961 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from typing import Any, Dict
+from typing import List as ListType
 
+from pydantic import Field, root_validator
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class ExplanationOfBenefit(domainresource.DomainResource):
     """ Explanation of Benefit resource.
-
     This resource provides: the claim details; adjudication details from the
     processing of a Claim; and optionally account balance information, for
     informing the subscriber of the benefits provided.
     """
 
-    resource_type = "ExplanationOfBenefit"
+    resource_type = Field("ExplanationOfBenefit", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    accident: fhirtypes.ExplanationOfBenefitAccidentType = Field(
+        None,
+        alias="accident",
+        title="Type `ExplanationOfBenefitAccident` (represented as `dict` in JSON)",
+        description="Details of the event",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    addItem: ListType[fhirtypes.ExplanationOfBenefitAddItemType] = Field(
+        None,
+        alias="addItem",
+        title="List of `ExplanationOfBenefitAddItem` items (represented as `dict` in JSON)",
+        description="Insurer added line items",
+    )
 
-        self.accident = None
-        """ Details of the event.
-        Type `ExplanationOfBenefitAccident` (represented as `dict` in JSON). """
+    adjudication: ListType[fhirtypes.ExplanationOfBenefitItemAdjudicationType] = Field(
+        None,
+        alias="adjudication",
+        title="List of `ExplanationOfBenefitItemAdjudication` items (represented as `dict` in JSON)",
+        description="Header-level adjudication",
+    )
 
-        self.addItem = None
-        """ Insurer added line items.
-        List of `ExplanationOfBenefitAddItem` items (represented as `dict` in JSON). """
+    benefitBalance: ListType[fhirtypes.ExplanationOfBenefitBenefitBalanceType] = Field(
+        None,
+        alias="benefitBalance",
+        title="List of `ExplanationOfBenefitBenefitBalance` items (represented as `dict` in JSON)",
+        description="Balance by Benefit Category",
+    )
 
-        self.adjudication = None
-        """ Header-level adjudication.
-        List of `ExplanationOfBenefitItemAdjudication` items (represented as `dict` in JSON). """
+    benefitPeriod: fhirtypes.PeriodType = Field(
+        None,
+        alias="benefitPeriod",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="When the benefits are applicable",
+    )
 
-        self.benefitBalance = None
-        """ Balance by Benefit Category.
-        List of `ExplanationOfBenefitBenefitBalance` items (represented as `dict` in JSON). """
+    billablePeriod: fhirtypes.PeriodType = Field(
+        None,
+        alias="billablePeriod",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="Relevant time frame for the claim",
+    )
 
-        self.benefitPeriod = None
-        """ When the benefits are applicable.
-        Type `Period` (represented as `dict` in JSON). """
+    careTeam: ListType[fhirtypes.ExplanationOfBenefitCareTeamType] = Field(
+        None,
+        alias="careTeam",
+        title="List of `ExplanationOfBenefitCareTeam` items (represented as `dict` in JSON)",
+        description="Care Team members",
+    )
 
-        self.billablePeriod = None
-        """ Relevant time frame for the claim.
-        Type `Period` (represented as `dict` in JSON). """
+    claim: fhirtypes.ReferenceType = Field(
+        None,
+        alias="claim",
+        title="Type `Reference` referencing `Claim` (represented as `dict` in JSON)",
+        description="Claim reference",
+    )
 
-        self.careTeam = None
-        """ Care Team members.
-        List of `ExplanationOfBenefitCareTeam` items (represented as `dict` in JSON). """
+    claimResponse: fhirtypes.ReferenceType = Field(
+        None,
+        alias="claimResponse",
+        title="Type `Reference` referencing `ClaimResponse` (represented as `dict` in JSON)",
+        description="Claim response reference",
+    )
 
-        self.claim = None
-        """ Claim reference.
-        Type `FHIRReference` referencing `['Claim']` (represented as `dict` in JSON). """
+    created: fhirtypes.DateTime = Field(
+        ...,
+        alias="created",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="Response creation date",
+    )
 
-        self.claimResponse = None
-        """ Claim response reference.
-        Type `FHIRReference` referencing `['ClaimResponse']` (represented as `dict` in JSON). """
+    diagnosis: ListType[fhirtypes.ExplanationOfBenefitDiagnosisType] = Field(
+        None,
+        alias="diagnosis",
+        title="List of `ExplanationOfBenefitDiagnosis` items (represented as `dict` in JSON)",
+        description="Pertinent diagnosis information",
+    )
 
-        self.created = None
-        """ Response creation date.
-        Type `FHIRDate` (represented as `str` in JSON). """
+    disposition: fhirtypes.String = Field(
+        None,
+        alias="disposition",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Disposition Message",
+    )
 
-        self.diagnosis = None
-        """ Pertinent diagnosis information.
-        List of `ExplanationOfBenefitDiagnosis` items (represented as `dict` in JSON). """
+    enterer: fhirtypes.ReferenceType = Field(
+        None,
+        alias="enterer",
+        title="Type `Reference` referencing `Practitioner, PractitionerRole` (represented as `dict` in JSON)",
+        description="Author of the claim",
+    )
 
-        self.disposition = None
-        """ Disposition Message.
-        Type `str`. """
+    facility: fhirtypes.ReferenceType = Field(
+        None,
+        alias="facility",
+        title="Type `Reference` referencing `Location` (represented as `dict` in JSON)",
+        description="Servicing Facility",
+    )
 
-        self.enterer = None
-        """ Author of the claim.
-        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole']` (represented as `dict` in JSON). """
+    form: fhirtypes.AttachmentType = Field(
+        None,
+        alias="form",
+        title="Type `Attachment` (represented as `dict` in JSON)",
+        description="Printed reference or actual form",
+    )
 
-        self.facility = None
-        """ Servicing Facility.
-        Type `FHIRReference` referencing `['Location']` (represented as `dict` in JSON). """
+    formCode: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="formCode",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Printed form identifier",
+    )
 
-        self.form = None
-        """ Printed reference or actual form.
-        Type `Attachment` (represented as `dict` in JSON). """
+    fundsReserve: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="fundsReserve",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Funds reserved status",
+    )
 
-        self.formCode = None
-        """ Printed form identifier.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    fundsReserveRequested: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="fundsReserveRequested",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="For whom to reserve funds",
+    )
 
-        self.fundsReserve = None
-        """ Funds reserved status.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="Business Identifier for the resource",
+    )
 
-        self.fundsReserveRequested = None
-        """ For whom to reserve funds.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    insurance: ListType[fhirtypes.ExplanationOfBenefitInsuranceType] = Field(
+        ...,
+        alias="insurance",
+        title="List of `ExplanationOfBenefitInsurance` items (represented as `dict` in JSON)",
+        description="Patient insurance information",
+    )
 
-        self.identifier = None
-        """ Business Identifier for the resource.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    insurer: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="insurer",
+        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        description="Party responsible for reimbursement",
+    )
 
-        self.insurance = None
-        """ Patient insurance information.
-        List of `ExplanationOfBenefitInsurance` items (represented as `dict` in JSON). """
+    item: ListType[fhirtypes.ExplanationOfBenefitItemType] = Field(
+        None,
+        alias="item",
+        title="List of `ExplanationOfBenefitItem` items (represented as `dict` in JSON)",
+        description="Product or service provided",
+    )
 
-        self.insurer = None
-        """ Party responsible for reimbursement.
-        Type `FHIRReference` referencing `['Organization']` (represented as `dict` in JSON). """
+    originalPrescription: fhirtypes.ReferenceType = Field(
+        None,
+        alias="originalPrescription",
+        title="Type `Reference` referencing `MedicationRequest` (represented as `dict` in JSON)",
+        description="Original prescription if superceded by fulfiller",
+    )
 
-        self.item = None
-        """ Product or service provided.
-        List of `ExplanationOfBenefitItem` items (represented as `dict` in JSON). """
+    outcome: fhirtypes.Code = Field(
+        ...,
+        alias="outcome",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="queued | complete | error | partial",
+    )
 
-        self.originalPrescription = None
-        """ Original prescription if superceded by fulfiller.
-        Type `FHIRReference` referencing `['MedicationRequest']` (represented as `dict` in JSON). """
+    patient: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="patient",
+        title="Type `Reference` referencing `Patient` (represented as `dict` in JSON)",
+        description="The recipient of the products and services",
+    )
 
-        self.outcome = None
-        """ queued | complete | error | partial.
-        Type `str`. """
+    payee: fhirtypes.ExplanationOfBenefitPayeeType = Field(
+        None,
+        alias="payee",
+        title="Type `ExplanationOfBenefitPayee` (represented as `dict` in JSON)",
+        description="Recipient of benefits payable",
+    )
 
-        self.patient = None
-        """ The recipient of the products and services.
-        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
+    payment: fhirtypes.ExplanationOfBenefitPaymentType = Field(
+        None,
+        alias="payment",
+        title="Type `ExplanationOfBenefitPayment` (represented as `dict` in JSON)",
+        description="Payment Details",
+    )
 
-        self.payee = None
-        """ Recipient of benefits payable.
-        Type `ExplanationOfBenefitPayee` (represented as `dict` in JSON). """
+    preAuthRef: ListType[fhirtypes.String] = Field(
+        None,
+        alias="preAuthRef",
+        title="List of `String` items (represented as `dict` in JSON)",
+        description="Preauthorization reference",
+    )
 
-        self.payment = None
-        """ Payment Details.
-        Type `ExplanationOfBenefitPayment` (represented as `dict` in JSON). """
+    preAuthRefPeriod: ListType[fhirtypes.PeriodType] = Field(
+        None,
+        alias="preAuthRefPeriod",
+        title="List of `Period` items (represented as `dict` in JSON)",
+        description="Preauthorization in-effect period",
+    )
 
-        self.preAuthRef = None
-        """ Preauthorization reference.
-        List of `str` items. """
+    precedence: fhirtypes.PositiveInt = Field(
+        None,
+        alias="precedence",
+        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        description="Precedence (primary, secondary, etc.)",
+    )
 
-        self.preAuthRefPeriod = None
-        """ Preauthorization in-effect period.
-        List of `Period` items (represented as `dict` in JSON). """
+    prescription: fhirtypes.ReferenceType = Field(
+        None,
+        alias="prescription",
+        title="Type `Reference` referencing `MedicationRequest, VisionPrescription` (represented as `dict` in JSON)",
+        description="Prescription authorizing services or products",
+    )
 
-        self.precedence = None
-        """ Precedence (primary, secondary, etc.).
-        Type `int`. """
+    priority: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="priority",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Desired processing urgency",
+    )
 
-        self.prescription = None
-        """ Prescription authorizing services or products.
-        Type `FHIRReference` referencing `['MedicationRequest', 'VisionPrescription']` (represented as `dict` in JSON). """
+    procedure: ListType[fhirtypes.ExplanationOfBenefitProcedureType] = Field(
+        None,
+        alias="procedure",
+        title="List of `ExplanationOfBenefitProcedure` items (represented as `dict` in JSON)",
+        description="Clinical procedures performed",
+    )
 
-        self.priority = None
-        """ Desired processing urgency.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    processNote: ListType[fhirtypes.ExplanationOfBenefitProcessNoteType] = Field(
+        None,
+        alias="processNote",
+        title="List of `ExplanationOfBenefitProcessNote` items (represented as `dict` in JSON)",
+        description="Note concerning adjudication",
+    )
 
-        self.procedure = None
-        """ Clinical procedures performed.
-        List of `ExplanationOfBenefitProcedure` items (represented as `dict` in JSON). """
+    provider: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="provider",
+        title="Type `Reference` referencing `Practitioner, PractitionerRole, Organization` (represented as `dict` in JSON)",
+        description="Party responsible for the claim",
+    )
 
-        self.processNote = None
-        """ Note concerning adjudication.
-        List of `ExplanationOfBenefitProcessNote` items (represented as `dict` in JSON). """
+    referral: fhirtypes.ReferenceType = Field(
+        None,
+        alias="referral",
+        title="Type `Reference` referencing `ServiceRequest` (represented as `dict` in JSON)",
+        description="Treatment Referral",
+    )
 
-        self.provider = None
-        """ Party responsible for the claim.
-        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'Organization']` (represented as `dict` in JSON). """
+    related: ListType[fhirtypes.ExplanationOfBenefitRelatedType] = Field(
+        None,
+        alias="related",
+        title="List of `ExplanationOfBenefitRelated` items (represented as `dict` in JSON)",
+        description="Prior or corollary claims",
+    )
 
-        self.referral = None
-        """ Treatment Referral.
-        Type `FHIRReference` referencing `['ServiceRequest']` (represented as `dict` in JSON). """
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="active | cancelled | draft | entered-in-error",
+    )
 
-        self.related = None
-        """ Prior or corollary claims.
-        List of `ExplanationOfBenefitRelated` items (represented as `dict` in JSON). """
+    subType: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="subType",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="More granular claim type",
+    )
 
-        self.status = None
-        """ active | cancelled | draft | entered-in-error.
-        Type `str`. """
+    supportingInfo: ListType[fhirtypes.ExplanationOfBenefitSupportingInfoType] = Field(
+        None,
+        alias="supportingInfo",
+        title="List of `ExplanationOfBenefitSupportingInfo` items (represented as `dict` in JSON)",
+        description="Supporting information",
+    )
 
-        self.subType = None
-        """ More granular claim type.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    total: ListType[fhirtypes.ExplanationOfBenefitTotalType] = Field(
+        None,
+        alias="total",
+        title="List of `ExplanationOfBenefitTotal` items (represented as `dict` in JSON)",
+        description="Adjudication totals",
+    )
 
-        self.supportingInfo = None
-        """ Supporting information.
-        List of `ExplanationOfBenefitSupportingInfo` items (represented as `dict` in JSON). """
+    type: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Category or discipline",
+    )
 
-        self.total = None
-        """ Adjudication totals.
-        List of `ExplanationOfBenefitTotal` items (represented as `dict` in JSON). """
-
-        self.type = None
-        """ Category or discipline.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.use = None
-        """ claim | preauthorization | predetermination.
-        Type `str`. """
-
-        super(ExplanationOfBenefit, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ExplanationOfBenefit, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "accident",
-                    "accident",
-                    ExplanationOfBenefitAccident,
-                    "ExplanationOfBenefitAccident",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "addItem",
-                    "addItem",
-                    ExplanationOfBenefitAddItem,
-                    "ExplanationOfBenefitAddItem",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "adjudication",
-                    "adjudication",
-                    ExplanationOfBenefitItemAdjudication,
-                    "ExplanationOfBenefitItemAdjudication",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "benefitBalance",
-                    "benefitBalance",
-                    ExplanationOfBenefitBenefitBalance,
-                    "ExplanationOfBenefitBenefitBalance",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "benefitPeriod",
-                    "benefitPeriod",
-                    period.Period,
-                    "Period",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "billablePeriod",
-                    "billablePeriod",
-                    period.Period,
-                    "Period",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "careTeam",
-                    "careTeam",
-                    ExplanationOfBenefitCareTeam,
-                    "ExplanationOfBenefitCareTeam",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "claim",
-                    "claim",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "claimResponse",
-                    "claimResponse",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "created",
-                    "created",
-                    fhirdate.FHIRDate,
-                    "dateTime",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "diagnosis",
-                    "diagnosis",
-                    ExplanationOfBenefitDiagnosis,
-                    "ExplanationOfBenefitDiagnosis",
-                    True,
-                    None,
-                    False,
-                ),
-                ("disposition", "disposition", str, "string", False, None, False),
-                (
-                    "enterer",
-                    "enterer",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "facility",
-                    "facility",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "form",
-                    "form",
-                    attachment.Attachment,
-                    "Attachment",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "formCode",
-                    "formCode",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "fundsReserve",
-                    "fundsReserve",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "fundsReserveRequested",
-                    "fundsReserveRequested",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "insurance",
-                    "insurance",
-                    ExplanationOfBenefitInsurance,
-                    "ExplanationOfBenefitInsurance",
-                    True,
-                    None,
-                    True,
-                ),
-                (
-                    "insurer",
-                    "insurer",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "item",
-                    "item",
-                    ExplanationOfBenefitItem,
-                    "ExplanationOfBenefitItem",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "originalPrescription",
-                    "originalPrescription",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                ("outcome", "outcome", str, "code", False, None, True),
-                (
-                    "patient",
-                    "patient",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "payee",
-                    "payee",
-                    ExplanationOfBenefitPayee,
-                    "ExplanationOfBenefitPayee",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "payment",
-                    "payment",
-                    ExplanationOfBenefitPayment,
-                    "ExplanationOfBenefitPayment",
-                    False,
-                    None,
-                    False,
-                ),
-                ("preAuthRef", "preAuthRef", str, "string", True, None, False),
-                (
-                    "preAuthRefPeriod",
-                    "preAuthRefPeriod",
-                    period.Period,
-                    "Period",
-                    True,
-                    None,
-                    False,
-                ),
-                ("precedence", "precedence", int, "positiveInt", False, None, False),
-                (
-                    "prescription",
-                    "prescription",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "priority",
-                    "priority",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "procedure",
-                    "procedure",
-                    ExplanationOfBenefitProcedure,
-                    "ExplanationOfBenefitProcedure",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "processNote",
-                    "processNote",
-                    ExplanationOfBenefitProcessNote,
-                    "ExplanationOfBenefitProcessNote",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "provider",
-                    "provider",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "referral",
-                    "referral",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "related",
-                    "related",
-                    ExplanationOfBenefitRelated,
-                    "ExplanationOfBenefitRelated",
-                    True,
-                    None,
-                    False,
-                ),
-                ("status", "status", str, "code", False, None, True),
-                (
-                    "subType",
-                    "subType",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "supportingInfo",
-                    "supportingInfo",
-                    ExplanationOfBenefitSupportingInfo,
-                    "ExplanationOfBenefitSupportingInfo",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "total",
-                    "total",
-                    ExplanationOfBenefitTotal,
-                    "ExplanationOfBenefitTotal",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                ("use", "use", str, "code", False, None, True),
-            ]
-        )
-        return js
+    use: fhirtypes.Code = Field(
+        ...,
+        alias="use",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="claim | preauthorization | predetermination",
+    )
 
 
 class ExplanationOfBenefitAccident(backboneelement.BackboneElement):
     """ Details of the event.
-
     Details of a accident which resulted in injuries which required the
     products and services listed in the claim.
     """
 
-    resource_type = "ExplanationOfBenefitAccident"
+    resource_type = Field("ExplanationOfBenefitAccident", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    date: fhirtypes.Date = Field(
+        None,
+        alias="date",
+        title="Type `Date` (represented as `dict` in JSON)",
+        description="When the incident occurred",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    locationAddress: fhirtypes.AddressType = Field(
+        None,
+        alias="locationAddress",
+        title="Type `Address` (represented as `dict` in JSON)",
+        description="Where the event occurred",
+        one_of_many="location",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    locationReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="locationReference",
+        title="Type `Reference` referencing `Location` (represented as `dict` in JSON)",
+        description="Where the event occurred",
+        one_of_many="location",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    type: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="The nature of the accident",
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "location": ["locationAddress", "locationReference",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.date = None
-        """ When the incident occurred.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.locationAddress = None
-        """ Where the event occurred.
-        Type `Address` (represented as `dict` in JSON). """
-
-        self.locationReference = None
-        """ Where the event occurred.
-        Type `FHIRReference` referencing `['Location']` (represented as `dict` in JSON). """
-
-        self.type = None
-        """ The nature of the accident.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(ExplanationOfBenefitAccident, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ExplanationOfBenefitAccident, self).elementProperties()
-        js.extend(
-            [
-                ("date", "date", fhirdate.FHIRDate, "date", False, None, False),
-                (
-                    "locationAddress",
-                    "locationAddress",
-                    address.Address,
-                    "Address",
-                    False,
-                    "location",
-                    False,
-                ),
-                (
-                    "locationReference",
-                    "locationReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    "location",
-                    False,
-                ),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+        return values
 
 
 class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
     """ Insurer added line items.
-
     The first-tier service adjudications for payor added product or service
     lines.
     """
 
-    resource_type = "ExplanationOfBenefitAddItem"
+    resource_type = Field("ExplanationOfBenefitAddItem", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    adjudication: ListType[fhirtypes.ExplanationOfBenefitItemAdjudicationType] = Field(
+        None,
+        alias="adjudication",
+        title="List of `ExplanationOfBenefitItemAdjudication` items (represented as `dict` in JSON)",
+        description="Added items adjudication",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    bodySite: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="bodySite",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Anatomical location",
+    )
+
+    detail: ListType[fhirtypes.ExplanationOfBenefitAddItemDetailType] = Field(
+        None,
+        alias="detail",
+        title="List of `ExplanationOfBenefitAddItemDetail` items (represented as `dict` in JSON)",
+        description="Insurer added line items",
+    )
+
+    detailSequence: ListType[fhirtypes.PositiveInt] = Field(
+        None,
+        alias="detailSequence",
+        title="List of `PositiveInt` items (represented as `dict` in JSON)",
+        description="Detail sequence number",
+    )
+
+    factor: fhirtypes.Decimal = Field(
+        None,
+        alias="factor",
+        title="Type `Decimal` (represented as `dict` in JSON)",
+        description="Price scaling factor",
+    )
+
+    itemSequence: ListType[fhirtypes.PositiveInt] = Field(
+        None,
+        alias="itemSequence",
+        title="List of `PositiveInt` items (represented as `dict` in JSON)",
+        description="Item sequence number",
+    )
+
+    locationAddress: fhirtypes.AddressType = Field(
+        None,
+        alias="locationAddress",
+        title="Type `Address` (represented as `dict` in JSON)",
+        description="Place of service or where product was supplied",
+        one_of_many="location",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    locationCodeableConcept: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="locationCodeableConcept",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Place of service or where product was supplied",
+        one_of_many="location",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    locationReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="locationReference",
+        title="Type `Reference` referencing `Location` (represented as `dict` in JSON)",
+        description="Place of service or where product was supplied",
+        one_of_many="location",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    modifier: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="modifier",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Service/Product billing modifiers",
+    )
+
+    net: fhirtypes.MoneyType = Field(
+        None,
+        alias="net",
+        title="Type `Money` (represented as `dict` in JSON)",
+        description="Total item cost",
+    )
+
+    noteNumber: ListType[fhirtypes.PositiveInt] = Field(
+        None,
+        alias="noteNumber",
+        title="List of `PositiveInt` items (represented as `dict` in JSON)",
+        description="Applicable note numbers",
+    )
+
+    productOrService: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="productOrService",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Billing, service, product, or drug code",
+    )
+
+    programCode: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="programCode",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Program the product or service is provided under",
+    )
+
+    provider: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="provider",
+        title="List of `Reference` items referencing `Practitioner, PractitionerRole, Organization` (represented as `dict` in JSON)",
+        description="Authorized providers",
+    )
+
+    quantity: fhirtypes.QuantityType = Field(
+        None,
+        alias="quantity",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="Count of products or services",
+    )
+
+    servicedDate: fhirtypes.Date = Field(
+        None,
+        alias="servicedDate",
+        title="Type `Date` (represented as `dict` in JSON)",
+        description="Date or dates of service or product delivery",
+        one_of_many="serviced",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    servicedPeriod: fhirtypes.PeriodType = Field(
+        None,
+        alias="servicedPeriod",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="Date or dates of service or product delivery",
+        one_of_many="serviced",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    subDetailSequence: ListType[fhirtypes.PositiveInt] = Field(
+        None,
+        alias="subDetailSequence",
+        title="List of `PositiveInt` items (represented as `dict` in JSON)",
+        description="Subdetail sequence number",
+    )
+
+    subSite: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="subSite",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Anatomical sub-location",
+    )
+
+    unitPrice: fhirtypes.MoneyType = Field(
+        None,
+        alias="unitPrice",
+        title="Type `Money` (represented as `dict` in JSON)",
+        description="Fee, charge or cost per item",
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "location": [
+                "locationAddress",
+                "locationCodeableConcept",
+                "locationReference",
+            ],
+            "serviced": ["servicedDate", "servicedPeriod",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.adjudication = None
-        """ Added items adjudication.
-        List of `ExplanationOfBenefitItemAdjudication` items (represented as `dict` in JSON). """
-
-        self.bodySite = None
-        """ Anatomical location.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.detail = None
-        """ Insurer added line items.
-        List of `ExplanationOfBenefitAddItemDetail` items (represented as `dict` in JSON). """
-
-        self.detailSequence = None
-        """ Detail sequence number.
-        List of `int` items. """
-
-        self.factor = None
-        """ Price scaling factor.
-        Type `float`. """
-
-        self.itemSequence = None
-        """ Item sequence number.
-        List of `int` items. """
-
-        self.locationAddress = None
-        """ Place of service or where product was supplied.
-        Type `Address` (represented as `dict` in JSON). """
-
-        self.locationCodeableConcept = None
-        """ Place of service or where product was supplied.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.locationReference = None
-        """ Place of service or where product was supplied.
-        Type `FHIRReference` referencing `['Location']` (represented as `dict` in JSON). """
-
-        self.modifier = None
-        """ Service/Product billing modifiers.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.net = None
-        """ Total item cost.
-        Type `Money` (represented as `dict` in JSON). """
-
-        self.noteNumber = None
-        """ Applicable note numbers.
-        List of `int` items. """
-
-        self.productOrService = None
-        """ Billing, service, product, or drug code.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.programCode = None
-        """ Program the product or service is provided under.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.provider = None
-        """ Authorized providers.
-        List of `FHIRReference` items referencing `['Practitioner', 'PractitionerRole', 'Organization']` (represented as `dict` in JSON). """
-
-        self.quantity = None
-        """ Count of products or services.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        self.servicedDate = None
-        """ Date or dates of service or product delivery.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.servicedPeriod = None
-        """ Date or dates of service or product delivery.
-        Type `Period` (represented as `dict` in JSON). """
-
-        self.subDetailSequence = None
-        """ Subdetail sequence number.
-        List of `int` items. """
-
-        self.subSite = None
-        """ Anatomical sub-location.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.unitPrice = None
-        """ Fee, charge or cost per item.
-        Type `Money` (represented as `dict` in JSON). """
-
-        super(ExplanationOfBenefitAddItem, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ExplanationOfBenefitAddItem, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "adjudication",
-                    "adjudication",
-                    ExplanationOfBenefitItemAdjudication,
-                    "ExplanationOfBenefitItemAdjudication",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "bodySite",
-                    "bodySite",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "detail",
-                    "detail",
-                    ExplanationOfBenefitAddItemDetail,
-                    "ExplanationOfBenefitAddItemDetail",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "detailSequence",
-                    "detailSequence",
-                    int,
-                    "positiveInt",
-                    True,
-                    None,
-                    False,
-                ),
-                ("factor", "factor", float, "decimal", False, None, False),
-                ("itemSequence", "itemSequence", int, "positiveInt", True, None, False),
-                (
-                    "locationAddress",
-                    "locationAddress",
-                    address.Address,
-                    "Address",
-                    False,
-                    "location",
-                    False,
-                ),
-                (
-                    "locationCodeableConcept",
-                    "locationCodeableConcept",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    "location",
-                    False,
-                ),
-                (
-                    "locationReference",
-                    "locationReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    "location",
-                    False,
-                ),
-                (
-                    "modifier",
-                    "modifier",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                ("net", "net", money.Money, "Money", False, None, False),
-                ("noteNumber", "noteNumber", int, "positiveInt", True, None, False),
-                (
-                    "productOrService",
-                    "productOrService",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "programCode",
-                    "programCode",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "provider",
-                    "provider",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "quantity",
-                    "quantity",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "servicedDate",
-                    "servicedDate",
-                    fhirdate.FHIRDate,
-                    "date",
-                    False,
-                    "serviced",
-                    False,
-                ),
-                (
-                    "servicedPeriod",
-                    "servicedPeriod",
-                    period.Period,
-                    "Period",
-                    False,
-                    "serviced",
-                    False,
-                ),
-                (
-                    "subDetailSequence",
-                    "subDetailSequence",
-                    int,
-                    "positiveInt",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "subSite",
-                    "subSite",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                ("unitPrice", "unitPrice", money.Money, "Money", False, None, False),
-            ]
-        )
-        return js
+        return values
 
 
 class ExplanationOfBenefitAddItemDetail(backboneelement.BackboneElement):
     """ Insurer added line items.
-
     The second-tier service adjudications for payor added services.
     """
 
-    resource_type = "ExplanationOfBenefitAddItemDetail"
+    resource_type = Field("ExplanationOfBenefitAddItemDetail", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    adjudication: ListType[fhirtypes.ExplanationOfBenefitItemAdjudicationType] = Field(
+        None,
+        alias="adjudication",
+        title="List of `ExplanationOfBenefitItemAdjudication` items (represented as `dict` in JSON)",
+        description="Added items adjudication",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    factor: fhirtypes.Decimal = Field(
+        None,
+        alias="factor",
+        title="Type `Decimal` (represented as `dict` in JSON)",
+        description="Price scaling factor",
+    )
 
-        self.adjudication = None
-        """ Added items adjudication.
-        List of `ExplanationOfBenefitItemAdjudication` items (represented as `dict` in JSON). """
+    modifier: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="modifier",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Service/Product billing modifiers",
+    )
 
-        self.factor = None
-        """ Price scaling factor.
-        Type `float`. """
+    net: fhirtypes.MoneyType = Field(
+        None,
+        alias="net",
+        title="Type `Money` (represented as `dict` in JSON)",
+        description="Total item cost",
+    )
 
-        self.modifier = None
-        """ Service/Product billing modifiers.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    noteNumber: ListType[fhirtypes.PositiveInt] = Field(
+        None,
+        alias="noteNumber",
+        title="List of `PositiveInt` items (represented as `dict` in JSON)",
+        description="Applicable note numbers",
+    )
 
-        self.net = None
-        """ Total item cost.
-        Type `Money` (represented as `dict` in JSON). """
+    productOrService: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="productOrService",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Billing, service, product, or drug code",
+    )
 
-        self.noteNumber = None
-        """ Applicable note numbers.
-        List of `int` items. """
+    quantity: fhirtypes.QuantityType = Field(
+        None,
+        alias="quantity",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="Count of products or services",
+    )
 
-        self.productOrService = None
-        """ Billing, service, product, or drug code.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    subDetail: ListType[
+        fhirtypes.ExplanationOfBenefitAddItemDetailSubDetailType
+    ] = Field(
+        None,
+        alias="subDetail",
+        title="List of `ExplanationOfBenefitAddItemDetailSubDetail` items (represented as `dict` in JSON)",
+        description="Insurer added line items",
+    )
 
-        self.quantity = None
-        """ Count of products or services.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        self.subDetail = None
-        """ Insurer added line items.
-        List of `ExplanationOfBenefitAddItemDetailSubDetail` items (represented as `dict` in JSON). """
-
-        self.unitPrice = None
-        """ Fee, charge or cost per item.
-        Type `Money` (represented as `dict` in JSON). """
-
-        super(ExplanationOfBenefitAddItemDetail, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ExplanationOfBenefitAddItemDetail, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "adjudication",
-                    "adjudication",
-                    ExplanationOfBenefitItemAdjudication,
-                    "ExplanationOfBenefitItemAdjudication",
-                    True,
-                    None,
-                    False,
-                ),
-                ("factor", "factor", float, "decimal", False, None, False),
-                (
-                    "modifier",
-                    "modifier",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                ("net", "net", money.Money, "Money", False, None, False),
-                ("noteNumber", "noteNumber", int, "positiveInt", True, None, False),
-                (
-                    "productOrService",
-                    "productOrService",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "quantity",
-                    "quantity",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "subDetail",
-                    "subDetail",
-                    ExplanationOfBenefitAddItemDetailSubDetail,
-                    "ExplanationOfBenefitAddItemDetailSubDetail",
-                    True,
-                    None,
-                    False,
-                ),
-                ("unitPrice", "unitPrice", money.Money, "Money", False, None, False),
-            ]
-        )
-        return js
+    unitPrice: fhirtypes.MoneyType = Field(
+        None,
+        alias="unitPrice",
+        title="Type `Money` (represented as `dict` in JSON)",
+        description="Fee, charge or cost per item",
+    )
 
 
 class ExplanationOfBenefitAddItemDetailSubDetail(backboneelement.BackboneElement):
     """ Insurer added line items.
-
     The third-tier service adjudications for payor added services.
     """
 
-    resource_type = "ExplanationOfBenefitAddItemDetailSubDetail"
+    resource_type = Field("ExplanationOfBenefitAddItemDetailSubDetail", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    adjudication: ListType[fhirtypes.ExplanationOfBenefitItemAdjudicationType] = Field(
+        None,
+        alias="adjudication",
+        title="List of `ExplanationOfBenefitItemAdjudication` items (represented as `dict` in JSON)",
+        description="Added items adjudication",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    factor: fhirtypes.Decimal = Field(
+        None,
+        alias="factor",
+        title="Type `Decimal` (represented as `dict` in JSON)",
+        description="Price scaling factor",
+    )
 
-        self.adjudication = None
-        """ Added items adjudication.
-        List of `ExplanationOfBenefitItemAdjudication` items (represented as `dict` in JSON). """
+    modifier: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="modifier",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Service/Product billing modifiers",
+    )
 
-        self.factor = None
-        """ Price scaling factor.
-        Type `float`. """
+    net: fhirtypes.MoneyType = Field(
+        None,
+        alias="net",
+        title="Type `Money` (represented as `dict` in JSON)",
+        description="Total item cost",
+    )
 
-        self.modifier = None
-        """ Service/Product billing modifiers.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    noteNumber: ListType[fhirtypes.PositiveInt] = Field(
+        None,
+        alias="noteNumber",
+        title="List of `PositiveInt` items (represented as `dict` in JSON)",
+        description="Applicable note numbers",
+    )
 
-        self.net = None
-        """ Total item cost.
-        Type `Money` (represented as `dict` in JSON). """
+    productOrService: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="productOrService",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Billing, service, product, or drug code",
+    )
 
-        self.noteNumber = None
-        """ Applicable note numbers.
-        List of `int` items. """
+    quantity: fhirtypes.QuantityType = Field(
+        None,
+        alias="quantity",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="Count of products or services",
+    )
 
-        self.productOrService = None
-        """ Billing, service, product, or drug code.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.quantity = None
-        """ Count of products or services.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        self.unitPrice = None
-        """ Fee, charge or cost per item.
-        Type `Money` (represented as `dict` in JSON). """
-
-        super(ExplanationOfBenefitAddItemDetailSubDetail, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ExplanationOfBenefitAddItemDetailSubDetail, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "adjudication",
-                    "adjudication",
-                    ExplanationOfBenefitItemAdjudication,
-                    "ExplanationOfBenefitItemAdjudication",
-                    True,
-                    None,
-                    False,
-                ),
-                ("factor", "factor", float, "decimal", False, None, False),
-                (
-                    "modifier",
-                    "modifier",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                ("net", "net", money.Money, "Money", False, None, False),
-                ("noteNumber", "noteNumber", int, "positiveInt", True, None, False),
-                (
-                    "productOrService",
-                    "productOrService",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "quantity",
-                    "quantity",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    None,
-                    False,
-                ),
-                ("unitPrice", "unitPrice", money.Money, "Money", False, None, False),
-            ]
-        )
-        return js
+    unitPrice: fhirtypes.MoneyType = Field(
+        None,
+        alias="unitPrice",
+        title="Type `Money` (represented as `dict` in JSON)",
+        description="Fee, charge or cost per item",
+    )
 
 
 class ExplanationOfBenefitBenefitBalance(backboneelement.BackboneElement):
     """ Balance by Benefit Category.
     """
 
-    resource_type = "ExplanationOfBenefitBenefitBalance"
+    resource_type = Field("ExplanationOfBenefitBenefitBalance", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    category: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="category",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Benefit classification",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    description: fhirtypes.String = Field(
+        None,
+        alias="description",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Description of the benefit or services covered",
+    )
 
-        self.category = None
-        """ Benefit classification.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    excluded: bool = Field(
+        None,
+        alias="excluded",
+        title="Type `bool`",
+        description="Excluded from the plan",
+    )
 
-        self.description = None
-        """ Description of the benefit or services covered.
-        Type `str`. """
+    financial: ListType[
+        fhirtypes.ExplanationOfBenefitBenefitBalanceFinancialType
+    ] = Field(
+        None,
+        alias="financial",
+        title="List of `ExplanationOfBenefitBenefitBalanceFinancial` items (represented as `dict` in JSON)",
+        description="Benefit Summary",
+    )
 
-        self.excluded = None
-        """ Excluded from the plan.
-        Type `bool`. """
+    name: fhirtypes.String = Field(
+        None,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Short name for the benefit",
+    )
 
-        self.financial = None
-        """ Benefit Summary.
-        List of `ExplanationOfBenefitBenefitBalanceFinancial` items (represented as `dict` in JSON). """
+    network: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="network",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="In or out of network",
+    )
 
-        self.name = None
-        """ Short name for the benefit.
-        Type `str`. """
+    term: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="term",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Annual or lifetime",
+    )
 
-        self.network = None
-        """ In or out of network.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.term = None
-        """ Annual or lifetime.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.unit = None
-        """ Individual or family.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(ExplanationOfBenefitBenefitBalance, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ExplanationOfBenefitBenefitBalance, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "category",
-                    "category",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                ("description", "description", str, "string", False, None, False),
-                ("excluded", "excluded", bool, "boolean", False, None, False),
-                (
-                    "financial",
-                    "financial",
-                    ExplanationOfBenefitBenefitBalanceFinancial,
-                    "ExplanationOfBenefitBenefitBalanceFinancial",
-                    True,
-                    None,
-                    False,
-                ),
-                ("name", "name", str, "string", False, None, False),
-                (
-                    "network",
-                    "network",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "term",
-                    "term",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "unit",
-                    "unit",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    unit: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="unit",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Individual or family",
+    )
 
 
 class ExplanationOfBenefitBenefitBalanceFinancial(backboneelement.BackboneElement):
     """ Benefit Summary.
-
     Benefits Used to date.
     """
 
-    resource_type = "ExplanationOfBenefitBenefitBalanceFinancial"
+    resource_type = Field("ExplanationOfBenefitBenefitBalanceFinancial", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    allowedMoney: fhirtypes.MoneyType = Field(
+        None,
+        alias="allowedMoney",
+        title="Type `Money` (represented as `dict` in JSON)",
+        description="Benefits allowed",
+        one_of_many="allowed",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    allowedString: fhirtypes.String = Field(
+        None,
+        alias="allowedString",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Benefits allowed",
+        one_of_many="allowed",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    allowedUnsignedInt: fhirtypes.UnsignedInt = Field(
+        None,
+        alias="allowedUnsignedInt",
+        title="Type `UnsignedInt` (represented as `dict` in JSON)",
+        description="Benefits allowed",
+        one_of_many="allowed",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    type: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Benefit classification",
+    )
+
+    usedMoney: fhirtypes.MoneyType = Field(
+        None,
+        alias="usedMoney",
+        title="Type `Money` (represented as `dict` in JSON)",
+        description="Benefits used",
+        one_of_many="used",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    usedUnsignedInt: fhirtypes.UnsignedInt = Field(
+        None,
+        alias="usedUnsignedInt",
+        title="Type `UnsignedInt` (represented as `dict` in JSON)",
+        description="Benefits used",
+        one_of_many="used",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "allowed": ["allowedMoney", "allowedString", "allowedUnsignedInt",],
+            "used": ["usedMoney", "usedUnsignedInt",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.allowedMoney = None
-        """ Benefits allowed.
-        Type `Money` (represented as `dict` in JSON). """
-
-        self.allowedString = None
-        """ Benefits allowed.
-        Type `str`. """
-
-        self.allowedUnsignedInt = None
-        """ Benefits allowed.
-        Type `int`. """
-
-        self.type = None
-        """ Benefit classification.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.usedMoney = None
-        """ Benefits used.
-        Type `Money` (represented as `dict` in JSON). """
-
-        self.usedUnsignedInt = None
-        """ Benefits used.
-        Type `int`. """
-
-        super(ExplanationOfBenefitBenefitBalanceFinancial, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(
-            ExplanationOfBenefitBenefitBalanceFinancial, self
-        ).elementProperties()
-        js.extend(
-            [
-                (
-                    "allowedMoney",
-                    "allowedMoney",
-                    money.Money,
-                    "Money",
-                    False,
-                    "allowed",
-                    False,
-                ),
-                (
-                    "allowedString",
-                    "allowedString",
-                    str,
-                    "string",
-                    False,
-                    "allowed",
-                    False,
-                ),
-                (
-                    "allowedUnsignedInt",
-                    "allowedUnsignedInt",
-                    int,
-                    "unsignedInt",
-                    False,
-                    "allowed",
-                    False,
-                ),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                ("usedMoney", "usedMoney", money.Money, "Money", False, "used", False),
-                (
-                    "usedUnsignedInt",
-                    "usedUnsignedInt",
-                    int,
-                    "unsignedInt",
-                    False,
-                    "used",
-                    False,
-                ),
-            ]
-        )
-        return js
+        return values
 
 
 class ExplanationOfBenefitCareTeam(backboneelement.BackboneElement):
     """ Care Team members.
-
     The members of the team who provided the products and services.
     """
 
-    resource_type = "ExplanationOfBenefitCareTeam"
+    resource_type = Field("ExplanationOfBenefitCareTeam", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    provider: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="provider",
+        title="Type `Reference` referencing `Practitioner, PractitionerRole, Organization` (represented as `dict` in JSON)",
+        description="Practitioner or organization",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    qualification: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="qualification",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Practitioner credential or specialization",
+    )
 
-        self.provider = None
-        """ Practitioner or organization.
-        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'Organization']` (represented as `dict` in JSON). """
+    responsible: bool = Field(
+        None,
+        alias="responsible",
+        title="Type `bool`",
+        description="Indicator of the lead practitioner",
+    )
 
-        self.qualification = None
-        """ Practitioner credential or specialization.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    role: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="role",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Function within the team",
+    )
 
-        self.responsible = None
-        """ Indicator of the lead practitioner.
-        Type `bool`. """
-
-        self.role = None
-        """ Function within the team.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.sequence = None
-        """ Order of care team.
-        Type `int`. """
-
-        super(ExplanationOfBenefitCareTeam, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ExplanationOfBenefitCareTeam, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "provider",
-                    "provider",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "qualification",
-                    "qualification",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("responsible", "responsible", bool, "boolean", False, None, False),
-                (
-                    "role",
-                    "role",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("sequence", "sequence", int, "positiveInt", False, None, True),
-            ]
-        )
-        return js
+    sequence: fhirtypes.PositiveInt = Field(
+        ...,
+        alias="sequence",
+        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        description="Order of care team",
+    )
 
 
 class ExplanationOfBenefitDiagnosis(backboneelement.BackboneElement):
     """ Pertinent diagnosis information.
-
     Information about diagnoses relevant to the claim items.
     """
 
-    resource_type = "ExplanationOfBenefitDiagnosis"
+    resource_type = Field("ExplanationOfBenefitDiagnosis", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    diagnosisCodeableConcept: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="diagnosisCodeableConcept",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Nature of illness or problem",
+        one_of_many="diagnosis",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    diagnosisReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="diagnosisReference",
+        title="Type `Reference` referencing `Condition` (represented as `dict` in JSON)",
+        description="Nature of illness or problem",
+        one_of_many="diagnosis",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    onAdmission: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="onAdmission",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Present on admission",
+    )
+
+    packageCode: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="packageCode",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Package billing code",
+    )
+
+    sequence: fhirtypes.PositiveInt = Field(
+        ...,
+        alias="sequence",
+        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        description="Diagnosis instance identifier",
+    )
+
+    type: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="type",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Timing or nature of the diagnosis",
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "diagnosis": ["diagnosisCodeableConcept", "diagnosisReference",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.diagnosisCodeableConcept = None
-        """ Nature of illness or problem.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.diagnosisReference = None
-        """ Nature of illness or problem.
-        Type `FHIRReference` referencing `['Condition']` (represented as `dict` in JSON). """
-
-        self.onAdmission = None
-        """ Present on admission.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.packageCode = None
-        """ Package billing code.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.sequence = None
-        """ Diagnosis instance identifier.
-        Type `int`. """
-
-        self.type = None
-        """ Timing or nature of the diagnosis.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        super(ExplanationOfBenefitDiagnosis, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ExplanationOfBenefitDiagnosis, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "diagnosisCodeableConcept",
-                    "diagnosisCodeableConcept",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    "diagnosis",
-                    True,
-                ),
-                (
-                    "diagnosisReference",
-                    "diagnosisReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    "diagnosis",
-                    True,
-                ),
-                (
-                    "onAdmission",
-                    "onAdmission",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "packageCode",
-                    "packageCode",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("sequence", "sequence", int, "positiveInt", False, None, True),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+        return values
 
 
 class ExplanationOfBenefitInsurance(backboneelement.BackboneElement):
     """ Patient insurance information.
-
     Financial instruments for reimbursement for the health care products and
     services specified on the claim.
     """
 
-    resource_type = "ExplanationOfBenefitInsurance"
+    resource_type = Field("ExplanationOfBenefitInsurance", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    coverage: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="coverage",
+        title="Type `Reference` referencing `Coverage` (represented as `dict` in JSON)",
+        description="Insurance information",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    focal: bool = Field(
+        ...,
+        alias="focal",
+        title="Type `bool`",
+        description="Coverage to be used for adjudication",
+    )
 
-        self.coverage = None
-        """ Insurance information.
-        Type `FHIRReference` referencing `['Coverage']` (represented as `dict` in JSON). """
-
-        self.focal = None
-        """ Coverage to be used for adjudication.
-        Type `bool`. """
-
-        self.preAuthRef = None
-        """ Prior authorization reference number.
-        List of `str` items. """
-
-        super(ExplanationOfBenefitInsurance, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ExplanationOfBenefitInsurance, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "coverage",
-                    "coverage",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                ("focal", "focal", bool, "boolean", False, None, True),
-                ("preAuthRef", "preAuthRef", str, "string", True, None, False),
-            ]
-        )
-        return js
+    preAuthRef: ListType[fhirtypes.String] = Field(
+        None,
+        alias="preAuthRef",
+        title="List of `String` items (represented as `dict` in JSON)",
+        description="Prior authorization reference number",
+    )
 
 
 class ExplanationOfBenefitItem(backboneelement.BackboneElement):
     """ Product or service provided.
-
     A claim line. Either a simple (a product or service) or a 'group' of
     details which can also be a simple items or groups of sub-details.
     """
 
-    resource_type = "ExplanationOfBenefitItem"
+    resource_type = Field("ExplanationOfBenefitItem", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    adjudication: ListType[fhirtypes.ExplanationOfBenefitItemAdjudicationType] = Field(
+        None,
+        alias="adjudication",
+        title="List of `ExplanationOfBenefitItemAdjudication` items (represented as `dict` in JSON)",
+        description="Adjudication details",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    bodySite: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="bodySite",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Anatomical location",
+    )
+
+    careTeamSequence: ListType[fhirtypes.PositiveInt] = Field(
+        None,
+        alias="careTeamSequence",
+        title="List of `PositiveInt` items (represented as `dict` in JSON)",
+        description="Applicable care team members",
+    )
+
+    category: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="category",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Benefit classification",
+    )
+
+    detail: ListType[fhirtypes.ExplanationOfBenefitItemDetailType] = Field(
+        None,
+        alias="detail",
+        title="List of `ExplanationOfBenefitItemDetail` items (represented as `dict` in JSON)",
+        description="Additional items",
+    )
+
+    diagnosisSequence: ListType[fhirtypes.PositiveInt] = Field(
+        None,
+        alias="diagnosisSequence",
+        title="List of `PositiveInt` items (represented as `dict` in JSON)",
+        description="Applicable diagnoses",
+    )
+
+    encounter: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="encounter",
+        title="List of `Reference` items referencing `Encounter` (represented as `dict` in JSON)",
+        description="Encounters related to this billed item",
+    )
+
+    factor: fhirtypes.Decimal = Field(
+        None,
+        alias="factor",
+        title="Type `Decimal` (represented as `dict` in JSON)",
+        description="Price scaling factor",
+    )
+
+    informationSequence: ListType[fhirtypes.PositiveInt] = Field(
+        None,
+        alias="informationSequence",
+        title="List of `PositiveInt` items (represented as `dict` in JSON)",
+        description="Applicable exception and supporting information",
+    )
+
+    locationAddress: fhirtypes.AddressType = Field(
+        None,
+        alias="locationAddress",
+        title="Type `Address` (represented as `dict` in JSON)",
+        description="Place of service or where product was supplied",
+        one_of_many="location",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    locationCodeableConcept: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="locationCodeableConcept",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Place of service or where product was supplied",
+        one_of_many="location",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    locationReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="locationReference",
+        title="Type `Reference` referencing `Location` (represented as `dict` in JSON)",
+        description="Place of service or where product was supplied",
+        one_of_many="location",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    modifier: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="modifier",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Product or service billing modifiers",
+    )
+
+    net: fhirtypes.MoneyType = Field(
+        None,
+        alias="net",
+        title="Type `Money` (represented as `dict` in JSON)",
+        description="Total item cost",
+    )
+
+    noteNumber: ListType[fhirtypes.PositiveInt] = Field(
+        None,
+        alias="noteNumber",
+        title="List of `PositiveInt` items (represented as `dict` in JSON)",
+        description="Applicable note numbers",
+    )
+
+    procedureSequence: ListType[fhirtypes.PositiveInt] = Field(
+        None,
+        alias="procedureSequence",
+        title="List of `PositiveInt` items (represented as `dict` in JSON)",
+        description="Applicable procedures",
+    )
+
+    productOrService: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="productOrService",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Billing, service, product, or drug code",
+    )
+
+    programCode: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="programCode",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Program the product or service is provided under",
+    )
+
+    quantity: fhirtypes.QuantityType = Field(
+        None,
+        alias="quantity",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="Count of products or services",
+    )
+
+    revenue: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="revenue",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Revenue or cost center code",
+    )
+
+    sequence: fhirtypes.PositiveInt = Field(
+        ...,
+        alias="sequence",
+        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        description="Item instance identifier",
+    )
+
+    servicedDate: fhirtypes.Date = Field(
+        None,
+        alias="servicedDate",
+        title="Type `Date` (represented as `dict` in JSON)",
+        description="Date or dates of service or product delivery",
+        one_of_many="serviced",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    servicedPeriod: fhirtypes.PeriodType = Field(
+        None,
+        alias="servicedPeriod",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="Date or dates of service or product delivery",
+        one_of_many="serviced",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    subSite: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="subSite",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Anatomical sub-location",
+    )
+
+    udi: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="udi",
+        title="List of `Reference` items referencing `Device` (represented as `dict` in JSON)",
+        description="Unique device identifier",
+    )
+
+    unitPrice: fhirtypes.MoneyType = Field(
+        None,
+        alias="unitPrice",
+        title="Type `Money` (represented as `dict` in JSON)",
+        description="Fee, charge or cost per item",
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "location": [
+                "locationAddress",
+                "locationCodeableConcept",
+                "locationReference",
+            ],
+            "serviced": ["servicedDate", "servicedPeriod",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.adjudication = None
-        """ Adjudication details.
-        List of `ExplanationOfBenefitItemAdjudication` items (represented as `dict` in JSON). """
-
-        self.bodySite = None
-        """ Anatomical location.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.careTeamSequence = None
-        """ Applicable care team members.
-        List of `int` items. """
-
-        self.category = None
-        """ Benefit classification.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.detail = None
-        """ Additional items.
-        List of `ExplanationOfBenefitItemDetail` items (represented as `dict` in JSON). """
-
-        self.diagnosisSequence = None
-        """ Applicable diagnoses.
-        List of `int` items. """
-
-        self.encounter = None
-        """ Encounters related to this billed item.
-        List of `FHIRReference` items referencing `['Encounter']` (represented as `dict` in JSON). """
-
-        self.factor = None
-        """ Price scaling factor.
-        Type `float`. """
-
-        self.informationSequence = None
-        """ Applicable exception and supporting information.
-        List of `int` items. """
-
-        self.locationAddress = None
-        """ Place of service or where product was supplied.
-        Type `Address` (represented as `dict` in JSON). """
-
-        self.locationCodeableConcept = None
-        """ Place of service or where product was supplied.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.locationReference = None
-        """ Place of service or where product was supplied.
-        Type `FHIRReference` referencing `['Location']` (represented as `dict` in JSON). """
-
-        self.modifier = None
-        """ Product or service billing modifiers.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.net = None
-        """ Total item cost.
-        Type `Money` (represented as `dict` in JSON). """
-
-        self.noteNumber = None
-        """ Applicable note numbers.
-        List of `int` items. """
-
-        self.procedureSequence = None
-        """ Applicable procedures.
-        List of `int` items. """
-
-        self.productOrService = None
-        """ Billing, service, product, or drug code.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.programCode = None
-        """ Program the product or service is provided under.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.quantity = None
-        """ Count of products or services.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        self.revenue = None
-        """ Revenue or cost center code.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.sequence = None
-        """ Item instance identifier.
-        Type `int`. """
-
-        self.servicedDate = None
-        """ Date or dates of service or product delivery.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.servicedPeriod = None
-        """ Date or dates of service or product delivery.
-        Type `Period` (represented as `dict` in JSON). """
-
-        self.subSite = None
-        """ Anatomical sub-location.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.udi = None
-        """ Unique device identifier.
-        List of `FHIRReference` items referencing `['Device']` (represented as `dict` in JSON). """
-
-        self.unitPrice = None
-        """ Fee, charge or cost per item.
-        Type `Money` (represented as `dict` in JSON). """
-
-        super(ExplanationOfBenefitItem, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(ExplanationOfBenefitItem, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "adjudication",
-                    "adjudication",
-                    ExplanationOfBenefitItemAdjudication,
-                    "ExplanationOfBenefitItemAdjudication",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "bodySite",
-                    "bodySite",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "careTeamSequence",
-                    "careTeamSequence",
-                    int,
-                    "positiveInt",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "category",
-                    "category",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "detail",
-                    "detail",
-                    ExplanationOfBenefitItemDetail,
-                    "ExplanationOfBenefitItemDetail",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "diagnosisSequence",
-                    "diagnosisSequence",
-                    int,
-                    "positiveInt",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "encounter",
-                    "encounter",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                ("factor", "factor", float, "decimal", False, None, False),
-                (
-                    "informationSequence",
-                    "informationSequence",
-                    int,
-                    "positiveInt",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "locationAddress",
-                    "locationAddress",
-                    address.Address,
-                    "Address",
-                    False,
-                    "location",
-                    False,
-                ),
-                (
-                    "locationCodeableConcept",
-                    "locationCodeableConcept",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    "location",
-                    False,
-                ),
-                (
-                    "locationReference",
-                    "locationReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    "location",
-                    False,
-                ),
-                (
-                    "modifier",
-                    "modifier",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                ("net", "net", money.Money, "Money", False, None, False),
-                ("noteNumber", "noteNumber", int, "positiveInt", True, None, False),
-                (
-                    "procedureSequence",
-                    "procedureSequence",
-                    int,
-                    "positiveInt",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "productOrService",
-                    "productOrService",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "programCode",
-                    "programCode",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "quantity",
-                    "quantity",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "revenue",
-                    "revenue",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("sequence", "sequence", int, "positiveInt", False, None, True),
-                (
-                    "servicedDate",
-                    "servicedDate",
-                    fhirdate.FHIRDate,
-                    "date",
-                    False,
-                    "serviced",
-                    False,
-                ),
-                (
-                    "servicedPeriod",
-                    "servicedPeriod",
-                    period.Period,
-                    "Period",
-                    False,
-                    "serviced",
-                    False,
-                ),
-                (
-                    "subSite",
-                    "subSite",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "udi",
-                    "udi",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                ("unitPrice", "unitPrice", money.Money, "Money", False, None, False),
-            ]
-        )
-        return js
+        return values
 
 
 class ExplanationOfBenefitItemAdjudication(backboneelement.BackboneElement):
     """ Adjudication details.
-
     If this item is a group then the values here are a summary of the
     adjudication of the detail items. If this item is a simple product or
     service then this is the result of the adjudication of this item.
     """
 
-    resource_type = "ExplanationOfBenefitItemAdjudication"
+    resource_type = Field("ExplanationOfBenefitItemAdjudication", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    amount: fhirtypes.MoneyType = Field(
+        None,
+        alias="amount",
+        title="Type `Money` (represented as `dict` in JSON)",
+        description="Monetary amount",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    category: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="category",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Type of adjudication information",
+    )
 
-        self.amount = None
-        """ Monetary amount.
-        Type `Money` (represented as `dict` in JSON). """
+    reason: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="reason",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Explanation of adjudication outcome",
+    )
 
-        self.category = None
-        """ Type of adjudication information.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.reason = None
-        """ Explanation of adjudication outcome.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.value = None
-        """ Non-monitary value.
-        Type `float`. """
-
-        super(ExplanationOfBenefitItemAdjudication, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ExplanationOfBenefitItemAdjudication, self).elementProperties()
-        js.extend(
-            [
-                ("amount", "amount", money.Money, "Money", False, None, False),
-                (
-                    "category",
-                    "category",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "reason",
-                    "reason",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("value", "value", float, "decimal", False, None, False),
-            ]
-        )
-        return js
+    value: fhirtypes.Decimal = Field(
+        None,
+        alias="value",
+        title="Type `Decimal` (represented as `dict` in JSON)",
+        description="Non-monitary value",
+    )
 
 
 class ExplanationOfBenefitItemDetail(backboneelement.BackboneElement):
     """ Additional items.
-
     Second-tier of goods and services.
     """
 
-    resource_type = "ExplanationOfBenefitItemDetail"
+    resource_type = Field("ExplanationOfBenefitItemDetail", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    adjudication: ListType[fhirtypes.ExplanationOfBenefitItemAdjudicationType] = Field(
+        None,
+        alias="adjudication",
+        title="List of `ExplanationOfBenefitItemAdjudication` items (represented as `dict` in JSON)",
+        description="Detail level adjudication details",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    category: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="category",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Benefit classification",
+    )
 
-        self.adjudication = None
-        """ Detail level adjudication details.
-        List of `ExplanationOfBenefitItemAdjudication` items (represented as `dict` in JSON). """
+    factor: fhirtypes.Decimal = Field(
+        None,
+        alias="factor",
+        title="Type `Decimal` (represented as `dict` in JSON)",
+        description="Price scaling factor",
+    )
 
-        self.category = None
-        """ Benefit classification.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    modifier: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="modifier",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Service/Product billing modifiers",
+    )
 
-        self.factor = None
-        """ Price scaling factor.
-        Type `float`. """
+    net: fhirtypes.MoneyType = Field(
+        None,
+        alias="net",
+        title="Type `Money` (represented as `dict` in JSON)",
+        description="Total item cost",
+    )
 
-        self.modifier = None
-        """ Service/Product billing modifiers.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    noteNumber: ListType[fhirtypes.PositiveInt] = Field(
+        None,
+        alias="noteNumber",
+        title="List of `PositiveInt` items (represented as `dict` in JSON)",
+        description="Applicable note numbers",
+    )
 
-        self.net = None
-        """ Total item cost.
-        Type `Money` (represented as `dict` in JSON). """
+    productOrService: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="productOrService",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Billing, service, product, or drug code",
+    )
 
-        self.noteNumber = None
-        """ Applicable note numbers.
-        List of `int` items. """
+    programCode: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="programCode",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Program the product or service is provided under",
+    )
 
-        self.productOrService = None
-        """ Billing, service, product, or drug code.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    quantity: fhirtypes.QuantityType = Field(
+        None,
+        alias="quantity",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="Count of products or services",
+    )
 
-        self.programCode = None
-        """ Program the product or service is provided under.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    revenue: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="revenue",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Revenue or cost center code",
+    )
 
-        self.quantity = None
-        """ Count of products or services.
-        Type `Quantity` (represented as `dict` in JSON). """
+    sequence: fhirtypes.PositiveInt = Field(
+        ...,
+        alias="sequence",
+        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        description="Product or service provided",
+    )
 
-        self.revenue = None
-        """ Revenue or cost center code.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    subDetail: ListType[fhirtypes.ExplanationOfBenefitItemDetailSubDetailType] = Field(
+        None,
+        alias="subDetail",
+        title="List of `ExplanationOfBenefitItemDetailSubDetail` items (represented as `dict` in JSON)",
+        description="Additional items",
+    )
 
-        self.sequence = None
-        """ Product or service provided.
-        Type `int`. """
+    udi: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="udi",
+        title="List of `Reference` items referencing `Device` (represented as `dict` in JSON)",
+        description="Unique device identifier",
+    )
 
-        self.subDetail = None
-        """ Additional items.
-        List of `ExplanationOfBenefitItemDetailSubDetail` items (represented as `dict` in JSON). """
-
-        self.udi = None
-        """ Unique device identifier.
-        List of `FHIRReference` items referencing `['Device']` (represented as `dict` in JSON). """
-
-        self.unitPrice = None
-        """ Fee, charge or cost per item.
-        Type `Money` (represented as `dict` in JSON). """
-
-        super(ExplanationOfBenefitItemDetail, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ExplanationOfBenefitItemDetail, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "adjudication",
-                    "adjudication",
-                    ExplanationOfBenefitItemAdjudication,
-                    "ExplanationOfBenefitItemAdjudication",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "category",
-                    "category",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("factor", "factor", float, "decimal", False, None, False),
-                (
-                    "modifier",
-                    "modifier",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                ("net", "net", money.Money, "Money", False, None, False),
-                ("noteNumber", "noteNumber", int, "positiveInt", True, None, False),
-                (
-                    "productOrService",
-                    "productOrService",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "programCode",
-                    "programCode",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "quantity",
-                    "quantity",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "revenue",
-                    "revenue",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("sequence", "sequence", int, "positiveInt", False, None, True),
-                (
-                    "subDetail",
-                    "subDetail",
-                    ExplanationOfBenefitItemDetailSubDetail,
-                    "ExplanationOfBenefitItemDetailSubDetail",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "udi",
-                    "udi",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                ("unitPrice", "unitPrice", money.Money, "Money", False, None, False),
-            ]
-        )
-        return js
+    unitPrice: fhirtypes.MoneyType = Field(
+        None,
+        alias="unitPrice",
+        title="Type `Money` (represented as `dict` in JSON)",
+        description="Fee, charge or cost per item",
+    )
 
 
 class ExplanationOfBenefitItemDetailSubDetail(backboneelement.BackboneElement):
     """ Additional items.
-
     Third-tier of goods and services.
     """
 
-    resource_type = "ExplanationOfBenefitItemDetailSubDetail"
+    resource_type = Field("ExplanationOfBenefitItemDetailSubDetail", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    adjudication: ListType[fhirtypes.ExplanationOfBenefitItemAdjudicationType] = Field(
+        None,
+        alias="adjudication",
+        title="List of `ExplanationOfBenefitItemAdjudication` items (represented as `dict` in JSON)",
+        description="Subdetail level adjudication details",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    category: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="category",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Benefit classification",
+    )
 
-        self.adjudication = None
-        """ Subdetail level adjudication details.
-        List of `ExplanationOfBenefitItemAdjudication` items (represented as `dict` in JSON). """
+    factor: fhirtypes.Decimal = Field(
+        None,
+        alias="factor",
+        title="Type `Decimal` (represented as `dict` in JSON)",
+        description="Price scaling factor",
+    )
 
-        self.category = None
-        """ Benefit classification.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    modifier: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="modifier",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Service/Product billing modifiers",
+    )
 
-        self.factor = None
-        """ Price scaling factor.
-        Type `float`. """
+    net: fhirtypes.MoneyType = Field(
+        None,
+        alias="net",
+        title="Type `Money` (represented as `dict` in JSON)",
+        description="Total item cost",
+    )
 
-        self.modifier = None
-        """ Service/Product billing modifiers.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    noteNumber: ListType[fhirtypes.PositiveInt] = Field(
+        None,
+        alias="noteNumber",
+        title="List of `PositiveInt` items (represented as `dict` in JSON)",
+        description="Applicable note numbers",
+    )
 
-        self.net = None
-        """ Total item cost.
-        Type `Money` (represented as `dict` in JSON). """
+    productOrService: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="productOrService",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Billing, service, product, or drug code",
+    )
 
-        self.noteNumber = None
-        """ Applicable note numbers.
-        List of `int` items. """
+    programCode: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="programCode",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Program the product or service is provided under",
+    )
 
-        self.productOrService = None
-        """ Billing, service, product, or drug code.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    quantity: fhirtypes.QuantityType = Field(
+        None,
+        alias="quantity",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="Count of products or services",
+    )
 
-        self.programCode = None
-        """ Program the product or service is provided under.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
+    revenue: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="revenue",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Revenue or cost center code",
+    )
 
-        self.quantity = None
-        """ Count of products or services.
-        Type `Quantity` (represented as `dict` in JSON). """
+    sequence: fhirtypes.PositiveInt = Field(
+        ...,
+        alias="sequence",
+        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        description="Product or service provided",
+    )
 
-        self.revenue = None
-        """ Revenue or cost center code.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    udi: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="udi",
+        title="List of `Reference` items referencing `Device` (represented as `dict` in JSON)",
+        description="Unique device identifier",
+    )
 
-        self.sequence = None
-        """ Product or service provided.
-        Type `int`. """
-
-        self.udi = None
-        """ Unique device identifier.
-        List of `FHIRReference` items referencing `['Device']` (represented as `dict` in JSON). """
-
-        self.unitPrice = None
-        """ Fee, charge or cost per item.
-        Type `Money` (represented as `dict` in JSON). """
-
-        super(ExplanationOfBenefitItemDetailSubDetail, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ExplanationOfBenefitItemDetailSubDetail, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "adjudication",
-                    "adjudication",
-                    ExplanationOfBenefitItemAdjudication,
-                    "ExplanationOfBenefitItemAdjudication",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "category",
-                    "category",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("factor", "factor", float, "decimal", False, None, False),
-                (
-                    "modifier",
-                    "modifier",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                ("net", "net", money.Money, "Money", False, None, False),
-                ("noteNumber", "noteNumber", int, "positiveInt", True, None, False),
-                (
-                    "productOrService",
-                    "productOrService",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "programCode",
-                    "programCode",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "quantity",
-                    "quantity",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "revenue",
-                    "revenue",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("sequence", "sequence", int, "positiveInt", False, None, True),
-                (
-                    "udi",
-                    "udi",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                ("unitPrice", "unitPrice", money.Money, "Money", False, None, False),
-            ]
-        )
-        return js
+    unitPrice: fhirtypes.MoneyType = Field(
+        None,
+        alias="unitPrice",
+        title="Type `Money` (represented as `dict` in JSON)",
+        description="Fee, charge or cost per item",
+    )
 
 
 class ExplanationOfBenefitPayee(backboneelement.BackboneElement):
     """ Recipient of benefits payable.
-
     The party to be reimbursed for cost of the products and services according
     to the terms of the policy.
     """
 
-    resource_type = "ExplanationOfBenefitPayee"
+    resource_type = Field("ExplanationOfBenefitPayee", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    party: fhirtypes.ReferenceType = Field(
+        None,
+        alias="party",
+        title="Type `Reference` referencing `Practitioner, PractitionerRole, Organization, Patient, RelatedPerson` (represented as `dict` in JSON)",
+        description="Recipient reference",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.party = None
-        """ Recipient reference.
-        Type `FHIRReference` referencing `['Practitioner', 'PractitionerRole', 'Organization', 'Patient', 'RelatedPerson']` (represented as `dict` in JSON). """
-
-        self.type = None
-        """ Category of recipient.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(ExplanationOfBenefitPayee, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ExplanationOfBenefitPayee, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "party",
-                    "party",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    type: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Category of recipient",
+    )
 
 
 class ExplanationOfBenefitPayment(backboneelement.BackboneElement):
     """ Payment Details.
-
     Payment details for the adjudication of the claim.
     """
 
-    resource_type = "ExplanationOfBenefitPayment"
+    resource_type = Field("ExplanationOfBenefitPayment", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    adjustment: fhirtypes.MoneyType = Field(
+        None,
+        alias="adjustment",
+        title="Type `Money` (represented as `dict` in JSON)",
+        description="Payment adjustment for non-claim issues",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    adjustmentReason: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="adjustmentReason",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Explanation for the variance",
+    )
 
-        self.adjustment = None
-        """ Payment adjustment for non-claim issues.
-        Type `Money` (represented as `dict` in JSON). """
+    amount: fhirtypes.MoneyType = Field(
+        None,
+        alias="amount",
+        title="Type `Money` (represented as `dict` in JSON)",
+        description="Payable amount after adjustment",
+    )
 
-        self.adjustmentReason = None
-        """ Explanation for the variance.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    date: fhirtypes.Date = Field(
+        None,
+        alias="date",
+        title="Type `Date` (represented as `dict` in JSON)",
+        description="Expected date of payment",
+    )
 
-        self.amount = None
-        """ Payable amount after adjustment.
-        Type `Money` (represented as `dict` in JSON). """
+    identifier: fhirtypes.IdentifierType = Field(
+        None,
+        alias="identifier",
+        title="Type `Identifier` (represented as `dict` in JSON)",
+        description="Business identifier for the payment",
+    )
 
-        self.date = None
-        """ Expected date of payment.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.identifier = None
-        """ Business identifier for the payment.
-        Type `Identifier` (represented as `dict` in JSON). """
-
-        self.type = None
-        """ Partial or complete payment.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(ExplanationOfBenefitPayment, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ExplanationOfBenefitPayment, self).elementProperties()
-        js.extend(
-            [
-                ("adjustment", "adjustment", money.Money, "Money", False, None, False),
-                (
-                    "adjustmentReason",
-                    "adjustmentReason",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("amount", "amount", money.Money, "Money", False, None, False),
-                ("date", "date", fhirdate.FHIRDate, "date", False, None, False),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    type: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Partial or complete payment",
+    )
 
 
 class ExplanationOfBenefitProcedure(backboneelement.BackboneElement):
     """ Clinical procedures performed.
-
     Procedures performed on the patient relevant to the billing items with the
     claim.
     """
 
-    resource_type = "ExplanationOfBenefitProcedure"
+    resource_type = Field("ExplanationOfBenefitProcedure", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    date: fhirtypes.DateTime = Field(
+        None,
+        alias="date",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="When the procedure was performed",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    procedureCodeableConcept: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="procedureCodeableConcept",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Specific clinical procedure",
+        one_of_many="procedure",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    procedureReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="procedureReference",
+        title="Type `Reference` referencing `Procedure` (represented as `dict` in JSON)",
+        description="Specific clinical procedure",
+        one_of_many="procedure",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    sequence: fhirtypes.PositiveInt = Field(
+        ...,
+        alias="sequence",
+        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        description="Procedure instance identifier",
+    )
+
+    type: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="type",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Category of Procedure",
+    )
+
+    udi: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="udi",
+        title="List of `Reference` items referencing `Device` (represented as `dict` in JSON)",
+        description="Unique device identifier",
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "procedure": ["procedureCodeableConcept", "procedureReference",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.date = None
-        """ When the procedure was performed.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.procedureCodeableConcept = None
-        """ Specific clinical procedure.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.procedureReference = None
-        """ Specific clinical procedure.
-        Type `FHIRReference` referencing `['Procedure']` (represented as `dict` in JSON). """
-
-        self.sequence = None
-        """ Procedure instance identifier.
-        Type `int`. """
-
-        self.type = None
-        """ Category of Procedure.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.udi = None
-        """ Unique device identifier.
-        List of `FHIRReference` items referencing `['Device']` (represented as `dict` in JSON). """
-
-        super(ExplanationOfBenefitProcedure, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ExplanationOfBenefitProcedure, self).elementProperties()
-        js.extend(
-            [
-                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-                (
-                    "procedureCodeableConcept",
-                    "procedureCodeableConcept",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    "procedure",
-                    True,
-                ),
-                (
-                    "procedureReference",
-                    "procedureReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    "procedure",
-                    True,
-                ),
-                ("sequence", "sequence", int, "positiveInt", False, None, True),
-                (
-                    "type",
-                    "type",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "udi",
-                    "udi",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+        return values
 
 
 class ExplanationOfBenefitProcessNote(backboneelement.BackboneElement):
     """ Note concerning adjudication.
-
     A note that describes or explains adjudication results in a human readable
     form.
     """
 
-    resource_type = "ExplanationOfBenefitProcessNote"
+    resource_type = Field("ExplanationOfBenefitProcessNote", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    language: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="language",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Language of the text",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    number: fhirtypes.PositiveInt = Field(
+        None,
+        alias="number",
+        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        description="Note instance identifier",
+    )
 
-        self.language = None
-        """ Language of the text.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+    text: fhirtypes.String = Field(
+        None,
+        alias="text",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Note explanatory text",
+    )
 
-        self.number = None
-        """ Note instance identifier.
-        Type `int`. """
-
-        self.text = None
-        """ Note explanatory text.
-        Type `str`. """
-
-        self.type = None
-        """ display | print | printoper.
-        Type `str`. """
-
-        super(ExplanationOfBenefitProcessNote, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ExplanationOfBenefitProcessNote, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "language",
-                    "language",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("number", "number", int, "positiveInt", False, None, False),
-                ("text", "text", str, "string", False, None, False),
-                ("type", "type", str, "code", False, None, False),
-            ]
-        )
-        return js
+    type: fhirtypes.Code = Field(
+        None,
+        alias="type",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="display | print | printoper",
+    )
 
 
 class ExplanationOfBenefitRelated(backboneelement.BackboneElement):
     """ Prior or corollary claims.
-
     Other claims which are related to this claim such as prior submissions or
     claims for related services or for the same event.
     """
 
-    resource_type = "ExplanationOfBenefitRelated"
+    resource_type = Field("ExplanationOfBenefitRelated", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    claim: fhirtypes.ReferenceType = Field(
+        None,
+        alias="claim",
+        title="Type `Reference` referencing `Claim` (represented as `dict` in JSON)",
+        description="Reference to the related claim",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    reference: fhirtypes.IdentifierType = Field(
+        None,
+        alias="reference",
+        title="Type `Identifier` (represented as `dict` in JSON)",
+        description="File or case reference",
+    )
 
-        self.claim = None
-        """ Reference to the related claim.
-        Type `FHIRReference` referencing `['Claim']` (represented as `dict` in JSON). """
-
-        self.reference = None
-        """ File or case reference.
-        Type `Identifier` (represented as `dict` in JSON). """
-
-        self.relationship = None
-        """ How the reference claim is related.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(ExplanationOfBenefitRelated, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ExplanationOfBenefitRelated, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "claim",
-                    "claim",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "reference",
-                    "reference",
-                    identifier.Identifier,
-                    "Identifier",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "relationship",
-                    "relationship",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
+    relationship: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="relationship",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="How the reference claim is related",
+    )
 
 
 class ExplanationOfBenefitSupportingInfo(backboneelement.BackboneElement):
     """ Supporting information.
-
     Additional information codes regarding exceptions, special considerations,
     the condition, situation, prior or concurrent issues.
     """
 
-    resource_type = "ExplanationOfBenefitSupportingInfo"
+    resource_type = Field("ExplanationOfBenefitSupportingInfo", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    category: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="category",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Classification of the supplied information",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    code: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="code",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Type of information",
+    )
+
+    reason: fhirtypes.CodingType = Field(
+        None,
+        alias="reason",
+        title="Type `Coding` (represented as `dict` in JSON)",
+        description="Explanation for the information",
+    )
+
+    sequence: fhirtypes.PositiveInt = Field(
+        ...,
+        alias="sequence",
+        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        description="Information instance identifier",
+    )
+
+    timingDate: fhirtypes.Date = Field(
+        None,
+        alias="timingDate",
+        title="Type `Date` (represented as `dict` in JSON)",
+        description="When it occurred",
+        one_of_many="timing",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    timingPeriod: fhirtypes.PeriodType = Field(
+        None,
+        alias="timingPeriod",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="When it occurred",
+        one_of_many="timing",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    valueAttachment: fhirtypes.AttachmentType = Field(
+        None,
+        alias="valueAttachment",
+        title="Type `Attachment` (represented as `dict` in JSON)",
+        description="Data to be provided",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    valueBoolean: bool = Field(
+        None,
+        alias="valueBoolean",
+        title="Type `bool`",
+        description="Data to be provided",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    valueQuantity: fhirtypes.QuantityType = Field(
+        None,
+        alias="valueQuantity",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="Data to be provided",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    valueReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="valueReference",
+        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        description="Data to be provided",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    valueString: fhirtypes.String = Field(
+        None,
+        alias="valueString",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Data to be provided",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "timing": ["timingDate", "timingPeriod",],
+            "value": [
+                "valueAttachment",
+                "valueBoolean",
+                "valueQuantity",
+                "valueReference",
+                "valueString",
+            ],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.category = None
-        """ Classification of the supplied information.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.code = None
-        """ Type of information.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.reason = None
-        """ Explanation for the information.
-        Type `Coding` (represented as `dict` in JSON). """
-
-        self.sequence = None
-        """ Information instance identifier.
-        Type `int`. """
-
-        self.timingDate = None
-        """ When it occurred.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.timingPeriod = None
-        """ When it occurred.
-        Type `Period` (represented as `dict` in JSON). """
-
-        self.valueAttachment = None
-        """ Data to be provided.
-        Type `Attachment` (represented as `dict` in JSON). """
-
-        self.valueBoolean = None
-        """ Data to be provided.
-        Type `bool`. """
-
-        self.valueQuantity = None
-        """ Data to be provided.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        self.valueReference = None
-        """ Data to be provided.
-        Type `FHIRReference` referencing `['Resource']` (represented as `dict` in JSON). """
-
-        self.valueString = None
-        """ Data to be provided.
-        Type `str`. """
-
-        super(ExplanationOfBenefitSupportingInfo, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ExplanationOfBenefitSupportingInfo, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "category",
-                    "category",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "code",
-                    "code",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                ("reason", "reason", coding.Coding, "Coding", False, None, False),
-                ("sequence", "sequence", int, "positiveInt", False, None, True),
-                (
-                    "timingDate",
-                    "timingDate",
-                    fhirdate.FHIRDate,
-                    "date",
-                    False,
-                    "timing",
-                    False,
-                ),
-                (
-                    "timingPeriod",
-                    "timingPeriod",
-                    period.Period,
-                    "Period",
-                    False,
-                    "timing",
-                    False,
-                ),
-                (
-                    "valueAttachment",
-                    "valueAttachment",
-                    attachment.Attachment,
-                    "Attachment",
-                    False,
-                    "value",
-                    False,
-                ),
-                (
-                    "valueBoolean",
-                    "valueBoolean",
-                    bool,
-                    "boolean",
-                    False,
-                    "value",
-                    False,
-                ),
-                (
-                    "valueQuantity",
-                    "valueQuantity",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    "value",
-                    False,
-                ),
-                (
-                    "valueReference",
-                    "valueReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    "value",
-                    False,
-                ),
-                ("valueString", "valueString", str, "string", False, "value", False),
-            ]
-        )
-        return js
+        return values
 
 
 class ExplanationOfBenefitTotal(backboneelement.BackboneElement):
     """ Adjudication totals.
-
     Categorized monetary totals for the adjudication.
     """
 
-    resource_type = "ExplanationOfBenefitTotal"
+    resource_type = Field("ExplanationOfBenefitTotal", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    amount: fhirtypes.MoneyType = Field(
+        ...,
+        alias="amount",
+        title="Type `Money` (represented as `dict` in JSON)",
+        description="Financial total for the category",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
-
-        self.amount = None
-        """ Financial total for the category.
-        Type `Money` (represented as `dict` in JSON). """
-
-        self.category = None
-        """ Type of adjudication information.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(ExplanationOfBenefitTotal, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(ExplanationOfBenefitTotal, self).elementProperties()
-        js.extend(
-            [
-                ("amount", "amount", money.Money, "Money", False, None, True),
-                (
-                    "category",
-                    "category",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import address
-except ImportError:
-    address = sys.modules[__package__ + ".address"]
-try:
-    from . import attachment
-except ImportError:
-    attachment = sys.modules[__package__ + ".attachment"]
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import coding
-except ImportError:
-    coding = sys.modules[__package__ + ".coding"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import money
-except ImportError:
-    money = sys.modules[__package__ + ".money"]
-try:
-    from . import period
-except ImportError:
-    period = sys.modules[__package__ + ".period"]
-try:
-    from . import quantity
-except ImportError:
-    quantity = sys.modules[__package__ + ".quantity"]
+    category: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="category",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Type of adjudication information",
+    )

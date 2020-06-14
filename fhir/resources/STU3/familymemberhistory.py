@@ -6,435 +6,374 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from typing import Any, Dict
+from typing import List as ListType
 
+from pydantic import Field, root_validator
 
-import sys
-
-from . import backboneelement, domainresource
+from . import backboneelement, domainresource, fhirtypes
 
 
 class FamilyMemberHistory(domainresource.DomainResource):
     """ Information about patient's relatives, relevant for patient.
-
     Significant health events and conditions for a person related to the
     patient relevant in the context of care for the patient.
     """
 
-    resource_type = "FamilyMemberHistory"
+    resource_type = Field("FamilyMemberHistory", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    ageAge: fhirtypes.AgeType = Field(
+        None,
+        alias="ageAge",
+        title="Type `Age` (represented as `dict` in JSON)",
+        description="(approximate) age",
+        one_of_many="age",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    ageRange: fhirtypes.RangeType = Field(
+        None,
+        alias="ageRange",
+        title="Type `Range` (represented as `dict` in JSON)",
+        description="(approximate) age",
+        one_of_many="age",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    ageString: fhirtypes.String = Field(
+        None,
+        alias="ageString",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="(approximate) age",
+        one_of_many="age",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    bornDate: fhirtypes.Date = Field(
+        None,
+        alias="bornDate",
+        title="Type `Date` (represented as `dict` in JSON)",
+        description="(approximate) date of birth",
+        one_of_many="born",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    bornPeriod: fhirtypes.PeriodType = Field(
+        None,
+        alias="bornPeriod",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="(approximate) date of birth",
+        one_of_many="born",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    bornString: fhirtypes.String = Field(
+        None,
+        alias="bornString",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="(approximate) date of birth",
+        one_of_many="born",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    condition: ListType[fhirtypes.FamilyMemberHistoryConditionType] = Field(
+        None,
+        alias="condition",
+        title="List of `FamilyMemberHistoryCondition` items (represented as `dict` in JSON)",
+        description="Condition that the related person had",
+    )
+
+    date: fhirtypes.DateTime = Field(
+        None,
+        alias="date",
+        title="Type `DateTime` (represented as `dict` in JSON)",
+        description="When history was captured/updated",
+    )
+
+    deceasedAge: fhirtypes.AgeType = Field(
+        None,
+        alias="deceasedAge",
+        title="Type `Age` (represented as `dict` in JSON)",
+        description="Dead? How old/when?",
+        one_of_many="deceased",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    deceasedBoolean: bool = Field(
+        None,
+        alias="deceasedBoolean",
+        title="Type `bool`",
+        description="Dead? How old/when?",
+        one_of_many="deceased",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    deceasedDate: fhirtypes.Date = Field(
+        None,
+        alias="deceasedDate",
+        title="Type `Date` (represented as `dict` in JSON)",
+        description="Dead? How old/when?",
+        one_of_many="deceased",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    deceasedRange: fhirtypes.RangeType = Field(
+        None,
+        alias="deceasedRange",
+        title="Type `Range` (represented as `dict` in JSON)",
+        description="Dead? How old/when?",
+        one_of_many="deceased",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    deceasedString: fhirtypes.String = Field(
+        None,
+        alias="deceasedString",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="Dead? How old/when?",
+        one_of_many="deceased",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    definition: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="definition",
+        title="List of `Reference` items referencing `PlanDefinition, Questionnaire` (represented as `dict` in JSON)",
+        description="Instantiates protocol or definition",
+    )
+
+    estimatedAge: bool = Field(
+        None,
+        alias="estimatedAge",
+        title="Type `bool`",
+        description="Age is estimated?",
+    )
+
+    gender: fhirtypes.Code = Field(
+        None,
+        alias="gender",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="male | female | other | unknown",
+    )
+
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON)",
+        description="External Id(s) for this record",
+    )
+
+    name: fhirtypes.String = Field(
+        None,
+        alias="name",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="The family member described",
+    )
+
+    notDone: bool = Field(
+        None,
+        alias="notDone",
+        title="Type `bool`",
+        description="The taking of a family member\u0027s history did not occur",
+    )
+
+    notDoneReason: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="notDoneReason",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="subject-unknown | withheld | unable-to-obtain | deferred",
+    )
+
+    note: ListType[fhirtypes.AnnotationType] = Field(
+        None,
+        alias="note",
+        title="List of `Annotation` items (represented as `dict` in JSON)",
+        description="General note about related person",
+    )
+
+    patient: fhirtypes.ReferenceType = Field(
+        ...,
+        alias="patient",
+        title="Type `Reference` referencing `Patient` (represented as `dict` in JSON)",
+        description="Patient history is about",
+    )
+
+    reasonCode: ListType[fhirtypes.CodeableConceptType] = Field(
+        None,
+        alias="reasonCode",
+        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
+        description="Why was family member history performed?",
+    )
+
+    reasonReference: ListType[fhirtypes.ReferenceType] = Field(
+        None,
+        alias="reasonReference",
+        title="List of `Reference` items referencing `Condition, Observation, AllergyIntolerance, QuestionnaireResponse` (represented as `dict` in JSON)",
+        description="Why was family member history performed?",
+    )
+
+    relationship: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="relationship",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Relationship to the subject",
+    )
+
+    status: fhirtypes.Code = Field(
+        ...,
+        alias="status",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="partial | completed | entered-in-error | health-unknown",
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "age": ["ageAge", "ageRange", "ageString",],
+            "born": ["bornDate", "bornPeriod", "bornString",],
+            "deceased": [
+                "deceasedAge",
+                "deceasedBoolean",
+                "deceasedDate",
+                "deceasedRange",
+                "deceasedString",
+            ],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.ageAge = None
-        """ (approximate) age.
-        Type `Age` (represented as `dict` in JSON). """
-
-        self.ageRange = None
-        """ (approximate) age.
-        Type `Range` (represented as `dict` in JSON). """
-
-        self.ageString = None
-        """ (approximate) age.
-        Type `str`. """
-
-        self.bornDate = None
-        """ (approximate) date of birth.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.bornPeriod = None
-        """ (approximate) date of birth.
-        Type `Period` (represented as `dict` in JSON). """
-
-        self.bornString = None
-        """ (approximate) date of birth.
-        Type `str`. """
-
-        self.condition = None
-        """ Condition that the related person had.
-        List of `FamilyMemberHistoryCondition` items (represented as `dict` in JSON). """
-
-        self.date = None
-        """ When history was captured/updated.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.deceasedAge = None
-        """ Dead? How old/when?.
-        Type `Age` (represented as `dict` in JSON). """
-
-        self.deceasedBoolean = None
-        """ Dead? How old/when?.
-        Type `bool`. """
-
-        self.deceasedDate = None
-        """ Dead? How old/when?.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.deceasedRange = None
-        """ Dead? How old/when?.
-        Type `Range` (represented as `dict` in JSON). """
-
-        self.deceasedString = None
-        """ Dead? How old/when?.
-        Type `str`. """
-
-        self.definition = None
-        """ Instantiates protocol or definition.
-        List of `FHIRReference` items referencing `['PlanDefinition'], ['Questionnaire']` (represented as `dict` in JSON). """
-
-        self.estimatedAge = None
-        """ Age is estimated?.
-        Type `bool`. """
-
-        self.gender = None
-        """ male | female | other | unknown.
-        Type `str`. """
-
-        self.identifier = None
-        """ External Id(s) for this record.
-        List of `Identifier` items (represented as `dict` in JSON). """
-
-        self.name = None
-        """ The family member described.
-        Type `str`. """
-
-        self.notDone = None
-        """ The taking of a family member's history did not occur.
-        Type `bool`. """
-
-        self.notDoneReason = None
-        """ subject-unknown | withheld | unable-to-obtain | deferred.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.note = None
-        """ General note about related person.
-        List of `Annotation` items (represented as `dict` in JSON). """
-
-        self.patient = None
-        """ Patient history is about.
-        Type `FHIRReference` referencing `['Patient']` (represented as `dict` in JSON). """
-
-        self.reasonCode = None
-        """ Why was family member history performed?.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-
-        self.reasonReference = None
-        """ Why was family member history performed?.
-        List of `FHIRReference` items referencing `['Condition'], ['Observation'], ['AllergyIntolerance'], ['QuestionnaireResponse']` (represented as `dict` in JSON). """
-
-        self.relationship = None
-        """ Relationship to the subject.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.status = None
-        """ partial | completed | entered-in-error | health-unknown.
-        Type `str`. """
-
-        super(FamilyMemberHistory, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(FamilyMemberHistory, self).elementProperties()
-        js.extend(
-            [
-                ("ageAge", "ageAge", age.Age, "Age", False, "age", False),
-                ("ageRange", "ageRange", range.Range, "Range", False, "age", False),
-                ("ageString", "ageString", str, "string", False, "age", False),
-                (
-                    "bornDate",
-                    "bornDate",
-                    fhirdate.FHIRDate,
-                    "date",
-                    False,
-                    "born",
-                    False,
-                ),
-                (
-                    "bornPeriod",
-                    "bornPeriod",
-                    period.Period,
-                    "Period",
-                    False,
-                    "born",
-                    False,
-                ),
-                ("bornString", "bornString", str, "string", False, "born", False),
-                (
-                    "condition",
-                    "condition",
-                    FamilyMemberHistoryCondition,
-                    "FamilyMemberHistoryCondition",
-                    True,
-                    None,
-                    False,
-                ),
-                ("date", "date", fhirdate.FHIRDate, "dateTime", False, None, False),
-                (
-                    "deceasedAge",
-                    "deceasedAge",
-                    age.Age,
-                    "Age",
-                    False,
-                    "deceased",
-                    False,
-                ),
-                (
-                    "deceasedBoolean",
-                    "deceasedBoolean",
-                    bool,
-                    "boolean",
-                    False,
-                    "deceased",
-                    False,
-                ),
-                (
-                    "deceasedDate",
-                    "deceasedDate",
-                    fhirdate.FHIRDate,
-                    "date",
-                    False,
-                    "deceased",
-                    False,
-                ),
-                (
-                    "deceasedRange",
-                    "deceasedRange",
-                    range.Range,
-                    "Range",
-                    False,
-                    "deceased",
-                    False,
-                ),
-                (
-                    "deceasedString",
-                    "deceasedString",
-                    str,
-                    "string",
-                    False,
-                    "deceased",
-                    False,
-                ),
-                (
-                    "definition",
-                    "definition",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                ("estimatedAge", "estimatedAge", bool, "boolean", False, None, False),
-                ("gender", "gender", str, "code", False, None, False),
-                (
-                    "identifier",
-                    "identifier",
-                    identifier.Identifier,
-                    "Identifier",
-                    True,
-                    None,
-                    False,
-                ),
-                ("name", "name", str, "string", False, None, False),
-                ("notDone", "notDone", bool, "boolean", False, None, False),
-                (
-                    "notDoneReason",
-                    "notDoneReason",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-                (
-                    "note",
-                    "note",
-                    annotation.Annotation,
-                    "Annotation",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "patient",
-                    "patient",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "reasonCode",
-                    "reasonCode",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "reasonReference",
-                    "reasonReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    True,
-                    None,
-                    False,
-                ),
-                (
-                    "relationship",
-                    "relationship",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                ("status", "status", str, "code", False, None, True),
-            ]
-        )
-        return js
+        return values
 
 
 class FamilyMemberHistoryCondition(backboneelement.BackboneElement):
     """ Condition that the related person had.
-
     The significant Conditions (or condition) that the family member had. This
     is a repeating section to allow a system to represent more than one
     condition per resource, though there is nothing stopping multiple resources
     - one per condition.
     """
 
-    resource_type = "FamilyMemberHistoryCondition"
+    resource_type = Field("FamilyMemberHistoryCondition", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    code: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="code",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Condition suffered by relation",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    note: ListType[fhirtypes.AnnotationType] = Field(
+        None,
+        alias="note",
+        title="List of `Annotation` items (represented as `dict` in JSON)",
+        description="Extra information about condition",
+    )
+
+    onsetAge: fhirtypes.AgeType = Field(
+        None,
+        alias="onsetAge",
+        title="Type `Age` (represented as `dict` in JSON)",
+        description="When condition first manifested",
+        one_of_many="onset",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    onsetPeriod: fhirtypes.PeriodType = Field(
+        None,
+        alias="onsetPeriod",
+        title="Type `Period` (represented as `dict` in JSON)",
+        description="When condition first manifested",
+        one_of_many="onset",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    onsetRange: fhirtypes.RangeType = Field(
+        None,
+        alias="onsetRange",
+        title="Type `Range` (represented as `dict` in JSON)",
+        description="When condition first manifested",
+        one_of_many="onset",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    onsetString: fhirtypes.String = Field(
+        None,
+        alias="onsetString",
+        title="Type `String` (represented as `dict` in JSON)",
+        description="When condition first manifested",
+        one_of_many="onset",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    outcome: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="outcome",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="deceased | permanent disability | etc.",
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "onset": ["onsetAge", "onsetPeriod", "onsetRange", "onsetString",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.code = None
-        """ Condition suffered by relation.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.note = None
-        """ Extra information about condition.
-        List of `Annotation` items (represented as `dict` in JSON). """
-
-        self.onsetAge = None
-        """ When condition first manifested.
-        Type `Age` (represented as `dict` in JSON). """
-
-        self.onsetPeriod = None
-        """ When condition first manifested.
-        Type `Period` (represented as `dict` in JSON). """
-
-        self.onsetRange = None
-        """ When condition first manifested.
-        Type `Range` (represented as `dict` in JSON). """
-
-        self.onsetString = None
-        """ When condition first manifested.
-        Type `str`. """
-
-        self.outcome = None
-        """ deceased | permanent disability | etc..
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(FamilyMemberHistoryCondition, self).__init__(
-            jsondict=jsondict, strict=strict
-        )
-
-    def elementProperties(self):
-        js = super(FamilyMemberHistoryCondition, self).elementProperties()
-        js.extend(
-            [
-                (
-                    "code",
-                    "code",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    True,
-                ),
-                (
-                    "note",
-                    "note",
-                    annotation.Annotation,
-                    "Annotation",
-                    True,
-                    None,
-                    False,
-                ),
-                ("onsetAge", "onsetAge", age.Age, "Age", False, "onset", False),
-                (
-                    "onsetPeriod",
-                    "onsetPeriod",
-                    period.Period,
-                    "Period",
-                    False,
-                    "onset",
-                    False,
-                ),
-                (
-                    "onsetRange",
-                    "onsetRange",
-                    range.Range,
-                    "Range",
-                    False,
-                    "onset",
-                    False,
-                ),
-                ("onsetString", "onsetString", str, "string", False, "onset", False),
-                (
-                    "outcome",
-                    "outcome",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    None,
-                    False,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import age
-except ImportError:
-    age = sys.modules[__package__ + ".age"]
-try:
-    from . import annotation
-except ImportError:
-    annotation = sys.modules[__package__ + ".annotation"]
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
-try:
-    from . import identifier
-except ImportError:
-    identifier = sys.modules[__package__ + ".identifier"]
-try:
-    from . import period
-except ImportError:
-    period = sys.modules[__package__ + ".period"]
-try:
-    from . import range
-except ImportError:
-    range = sys.modules[__package__ + ".range"]
+        return values

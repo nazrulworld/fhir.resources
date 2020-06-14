@@ -6,365 +6,258 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import appointment
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class AppointmentTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("Appointment", js["resourceType"])
-        return appointment.Appointment(js)
+def impl_appointment_1(inst):
+    assert inst.appointmentType.coding[0].code == "FOLLOWUP"
+    assert (
+        inst.appointmentType.coding[0].display
+        == "A follow up visit from a previous appointment"
+    )
+    assert (
+        inst.appointmentType.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v2-0276"
+    )
+    assert inst.basedOn[0].reference == "ServiceRequest/myringotomy"
+    assert (
+        inst.comment
+        == "Further expand on the results of the MRI and determine the next actions that may be appropriate."
+    )
+    assert inst.created == fhirtypes.DateTime.validate("2013-10-10T12:09:24+00:06")
+    assert inst.description == "Discussion on the results of your recent MRI"
+    assert inst.end == fhirtypes.Instant.validate("2013-12-10T11:00:00Z")
+    assert inst.id == "example"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.participant[0].actor.display == "Peter James Chalmers"
+    assert inst.participant[0].actor.reference == "Patient/example"
+    assert inst.participant[0].required == "required"
+    assert inst.participant[0].status == "accepted"
+    assert inst.participant[1].actor.display == "Dr Adam Careful"
+    assert inst.participant[1].actor.reference == "Practitioner/example"
+    assert inst.participant[1].required == "required"
+    assert inst.participant[1].status == "accepted"
+    assert inst.participant[1].type[0].coding[0].code == "ATND"
+    assert (
+        inst.participant[1].type[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
+    )
+    assert inst.participant[2].actor.display == "South Wing, second floor"
+    assert inst.participant[2].actor.reference == "Location/1"
+    assert inst.participant[2].required == "required"
+    assert inst.participant[2].status == "accepted"
+    assert inst.priority == 5
+    assert inst.reasonReference[0].display == "Severe burn of left ear"
+    assert inst.reasonReference[0].reference == "Condition/example"
+    assert inst.serviceCategory[0].coding[0].code == "gp"
+    assert inst.serviceCategory[0].coding[0].display == "General Practice"
+    assert (
+        inst.serviceCategory[0].coding[0].system
+        == "http://example.org/service-category"
+    )
+    assert inst.serviceType[0].coding[0].code == "52"
+    assert inst.serviceType[0].coding[0].display == "General Discussion"
+    assert inst.specialty[0].coding[0].code == "394814009"
+    assert inst.specialty[0].coding[0].display == "General practice"
+    assert inst.specialty[0].coding[0].system == "http://snomed.info/sct"
+    assert inst.start == fhirtypes.Instant.validate("2013-12-10T09:00:00Z")
+    assert inst.status == "booked"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">Brian MRI results discussion</div>'
+    )
+    assert inst.text.status == "generated"
 
-    def testAppointment1(self):
-        inst = self.instantiate_from("appointment-example.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Appointment instance")
-        self.implAppointment1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("Appointment", js["resourceType"])
-        inst2 = appointment.Appointment(js)
-        self.implAppointment1(inst2)
+def test_appointment_1(base_settings):
+    """No. 1 tests collection for Appointment.
+    Test File: appointment-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "appointment-example.json"
+    inst = appointment.Appointment.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Appointment" == inst.resource_type
 
-    def implAppointment1(self, inst):
-        self.assertEqual(
-            force_bytes(inst.appointmentType.coding[0].code), force_bytes("FOLLOWUP")
-        )
-        self.assertEqual(
-            force_bytes(inst.appointmentType.coding[0].display),
-            force_bytes("A follow up visit from a previous appointment"),
-        )
-        self.assertEqual(
-            force_bytes(inst.appointmentType.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v2-0276"),
-        )
-        self.assertEqual(
-            force_bytes(inst.comment),
-            force_bytes(
-                "Further expand on the results of the MRI and determine the next actions that may be appropriate."
-            ),
-        )
-        self.assertEqual(inst.created.date, FHIRDate("2013-10-10").date)
-        self.assertEqual(inst.created.as_json(), "2013-10-10")
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes("Discussion on the results of your recent MRI"),
-        )
-        self.assertEqual(inst.end.date, FHIRDate("2013-12-10T11:00:00Z").date)
-        self.assertEqual(inst.end.as_json(), "2013-12-10T11:00:00Z")
-        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.participant[0].required), force_bytes("required")
-        )
-        self.assertEqual(
-            force_bytes(inst.participant[0].status), force_bytes("accepted")
-        )
-        self.assertEqual(
-            force_bytes(inst.participant[1].required), force_bytes("required")
-        )
-        self.assertEqual(
-            force_bytes(inst.participant[1].status), force_bytes("accepted")
-        )
-        self.assertEqual(
-            force_bytes(inst.participant[1].type[0].coding[0].code), force_bytes("ATND")
-        )
-        self.assertEqual(
-            force_bytes(inst.participant[1].type[0].coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ParticipationType"),
-        )
-        self.assertEqual(
-            force_bytes(inst.participant[2].required), force_bytes("required")
-        )
-        self.assertEqual(
-            force_bytes(inst.participant[2].status), force_bytes("accepted")
-        )
-        self.assertEqual(inst.priority, 5)
-        self.assertEqual(
-            force_bytes(inst.serviceCategory[0].coding[0].code), force_bytes("gp")
-        )
-        self.assertEqual(
-            force_bytes(inst.serviceCategory[0].coding[0].display),
-            force_bytes("General Practice"),
-        )
-        self.assertEqual(
-            force_bytes(inst.serviceCategory[0].coding[0].system),
-            force_bytes("http://example.org/service-category"),
-        )
-        self.assertEqual(
-            force_bytes(inst.serviceType[0].coding[0].code), force_bytes("52")
-        )
-        self.assertEqual(
-            force_bytes(inst.serviceType[0].coding[0].display),
-            force_bytes("General Discussion"),
-        )
-        self.assertEqual(
-            force_bytes(inst.specialty[0].coding[0].code), force_bytes("394814009")
-        )
-        self.assertEqual(
-            force_bytes(inst.specialty[0].coding[0].display),
-            force_bytes("General practice"),
-        )
-        self.assertEqual(
-            force_bytes(inst.specialty[0].coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(inst.start.date, FHIRDate("2013-12-10T09:00:00Z").date)
-        self.assertEqual(inst.start.as_json(), "2013-12-10T09:00:00Z")
-        self.assertEqual(force_bytes(inst.status), force_bytes("booked"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">Brian MRI results discussion</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+    impl_appointment_1(inst)
 
-    def testAppointment2(self):
-        inst = self.instantiate_from("appointment-example-request.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Appointment instance")
-        self.implAppointment2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Appointment" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("Appointment", js["resourceType"])
-        inst2 = appointment.Appointment(js)
-        self.implAppointment2(inst2)
+    inst2 = appointment.Appointment(**data)
+    impl_appointment_1(inst2)
 
-    def implAppointment2(self, inst):
-        self.assertEqual(
-            force_bytes(inst.appointmentType.coding[0].code), force_bytes("WALKIN")
-        )
-        self.assertEqual(
-            force_bytes(inst.appointmentType.coding[0].display),
-            force_bytes("A previously unscheduled walk-in visit"),
-        )
-        self.assertEqual(
-            force_bytes(inst.appointmentType.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v2-0276"),
-        )
-        self.assertEqual(
-            force_bytes(inst.comment),
-            force_bytes(
-                "Further expand on the results of the MRI and determine the next actions that may be appropriate."
-            ),
-        )
-        self.assertEqual(inst.created.date, FHIRDate("2015-12-02").date)
-        self.assertEqual(inst.created.as_json(), "2015-12-02")
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes("Discussion on the results of your recent MRI"),
-        )
-        self.assertEqual(force_bytes(inst.id), force_bytes("examplereq"))
-        self.assertEqual(
-            force_bytes(inst.identifier[0].system),
-            force_bytes("http://example.org/sampleappointment-identifier"),
-        )
-        self.assertEqual(force_bytes(inst.identifier[0].value), force_bytes("123"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(inst.minutesDuration, 15)
-        self.assertEqual(
-            force_bytes(inst.participant[0].required), force_bytes("required")
-        )
-        self.assertEqual(
-            force_bytes(inst.participant[0].status), force_bytes("needs-action")
-        )
-        self.assertEqual(
-            force_bytes(inst.participant[1].required), force_bytes("required")
-        )
-        self.assertEqual(
-            force_bytes(inst.participant[1].status), force_bytes("needs-action")
-        )
-        self.assertEqual(
-            force_bytes(inst.participant[1].type[0].coding[0].code), force_bytes("ATND")
-        )
-        self.assertEqual(
-            force_bytes(inst.participant[1].type[0].coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ParticipationType"),
-        )
-        self.assertEqual(
-            force_bytes(inst.participant[2].required), force_bytes("required")
-        )
-        self.assertEqual(
-            force_bytes(inst.participant[2].status), force_bytes("accepted")
-        )
-        self.assertEqual(inst.priority, 5)
-        self.assertEqual(
-            force_bytes(inst.reasonCode[0].coding[0].code), force_bytes("413095006")
-        )
-        self.assertEqual(
-            force_bytes(inst.reasonCode[0].coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(
-            force_bytes(inst.reasonCode[0].text), force_bytes("Clinical Review")
-        )
-        self.assertEqual(inst.requestedPeriod[0].end.date, FHIRDate("2016-06-09").date)
-        self.assertEqual(inst.requestedPeriod[0].end.as_json(), "2016-06-09")
-        self.assertEqual(
-            inst.requestedPeriod[0].start.date, FHIRDate("2016-06-02").date
-        )
-        self.assertEqual(inst.requestedPeriod[0].start.as_json(), "2016-06-02")
-        self.assertEqual(
-            force_bytes(inst.serviceCategory[0].coding[0].code), force_bytes("gp")
-        )
-        self.assertEqual(
-            force_bytes(inst.serviceCategory[0].coding[0].display),
-            force_bytes("General Practice"),
-        )
-        self.assertEqual(
-            force_bytes(inst.serviceCategory[0].coding[0].system),
-            force_bytes("http://example.org/service-category"),
-        )
-        self.assertEqual(
-            force_bytes(inst.specialty[0].coding[0].code), force_bytes("394814009")
-        )
-        self.assertEqual(
-            force_bytes(inst.specialty[0].coding[0].display),
-            force_bytes("General practice"),
-        )
-        self.assertEqual(
-            force_bytes(inst.specialty[0].coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(force_bytes(inst.status), force_bytes("proposed"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">Brian MRI results discussion</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
 
-    def testAppointment3(self):
-        inst = self.instantiate_from("appointment-example2doctors.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Appointment instance")
-        self.implAppointment3(inst)
+def impl_appointment_2(inst):
+    assert inst.appointmentType.coding[0].code == "WALKIN"
+    assert (
+        inst.appointmentType.coding[0].display
+        == "A previously unscheduled walk-in visit"
+    )
+    assert (
+        inst.appointmentType.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v2-0276"
+    )
+    assert (
+        inst.comment
+        == "Further expand on the results of the MRI and determine the next actions that may be appropriate."
+    )
+    assert inst.created == fhirtypes.DateTime.validate("2015-12-02T11:15:33+10:00")
+    assert inst.description == "Discussion on the results of your recent MRI"
+    assert inst.id == "examplereq"
+    assert (
+        inst.identifier[0].system == "http://example.org/sampleappointment-identifier"
+    )
+    assert inst.identifier[0].value == "123"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.minutesDuration == 15
+    assert inst.participant[0].actor.display == "Peter James Chalmers"
+    assert inst.participant[0].actor.reference == "Patient/example"
+    assert inst.participant[0].required == "required"
+    assert inst.participant[0].status == "needs-action"
+    assert inst.participant[1].required == "required"
+    assert inst.participant[1].status == "needs-action"
+    assert inst.participant[1].type[0].coding[0].code == "ATND"
+    assert (
+        inst.participant[1].type[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
+    )
+    assert inst.participant[2].actor.display == "South Wing, second floor"
+    assert inst.participant[2].actor.reference == "Location/1"
+    assert inst.participant[2].required == "required"
+    assert inst.participant[2].status == "accepted"
+    assert inst.priority == 5
+    assert inst.reasonCode[0].coding[0].code == "413095006"
+    assert inst.reasonCode[0].coding[0].system == "http://snomed.info/sct"
+    assert inst.reasonCode[0].text == "Clinical Review"
+    assert inst.requestedPeriod[0].end == fhirtypes.DateTime.validate(
+        "2016-06-09T12:09:24+00:06"
+    )
+    assert inst.requestedPeriod[0].start == fhirtypes.DateTime.validate(
+        "2016-06-02T12:09:24+00:06"
+    )
+    assert inst.serviceCategory[0].coding[0].code == "gp"
+    assert inst.serviceCategory[0].coding[0].display == "General Practice"
+    assert (
+        inst.serviceCategory[0].coding[0].system
+        == "http://example.org/service-category"
+    )
+    assert inst.slot[0].reference == "Slot/example"
+    assert inst.specialty[0].coding[0].code == "394814009"
+    assert inst.specialty[0].coding[0].display == "General practice"
+    assert inst.specialty[0].coding[0].system == "http://snomed.info/sct"
+    assert inst.status == "proposed"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">Brian MRI results discussion</div>'
+    )
+    assert inst.text.status == "generated"
 
-        js = inst.as_json()
-        self.assertEqual("Appointment", js["resourceType"])
-        inst2 = appointment.Appointment(js)
-        self.implAppointment3(inst2)
 
-    def implAppointment3(self, inst):
-        self.assertEqual(
-            force_bytes(inst.appointmentType.coding[0].code), force_bytes("WALKIN")
-        )
-        self.assertEqual(
-            force_bytes(inst.appointmentType.coding[0].display),
-            force_bytes("A previously unscheduled walk-in visit"),
-        )
-        self.assertEqual(
-            force_bytes(inst.appointmentType.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v2-0276"),
-        )
-        self.assertEqual(
-            force_bytes(inst.comment),
-            force_bytes(
-                "Clarify the results of the MRI to ensure context of test was correct"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.description),
-            force_bytes("Discussion about Peter Chalmers MRI results"),
-        )
-        self.assertEqual(inst.end.date, FHIRDate("2013-12-09T11:00:00Z").date)
-        self.assertEqual(inst.end.as_json(), "2013-12-09T11:00:00Z")
-        self.assertEqual(force_bytes(inst.id), force_bytes("2docs"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.participant[0].required), force_bytes("information-only")
-        )
-        self.assertEqual(
-            force_bytes(inst.participant[0].status), force_bytes("accepted")
-        )
-        self.assertEqual(
-            force_bytes(inst.participant[1].required), force_bytes("required")
-        )
-        self.assertEqual(
-            force_bytes(inst.participant[1].status), force_bytes("accepted")
-        )
-        self.assertEqual(
-            force_bytes(inst.participant[2].required), force_bytes("required")
-        )
-        self.assertEqual(
-            force_bytes(inst.participant[2].status), force_bytes("accepted")
-        )
-        self.assertEqual(
-            force_bytes(inst.participant[3].required), force_bytes("information-only")
-        )
-        self.assertEqual(
-            force_bytes(inst.participant[3].status), force_bytes("accepted")
-        )
-        self.assertEqual(inst.priority, 5)
-        self.assertEqual(
-            force_bytes(inst.serviceCategory[0].coding[0].code), force_bytes("gp")
-        )
-        self.assertEqual(
-            force_bytes(inst.serviceCategory[0].coding[0].display),
-            force_bytes("General Practice"),
-        )
-        self.assertEqual(
-            force_bytes(inst.serviceCategory[0].coding[0].system),
-            force_bytes("http://example.org/service-category"),
-        )
-        self.assertEqual(
-            force_bytes(inst.serviceType[0].coding[0].code), force_bytes("52")
-        )
-        self.assertEqual(
-            force_bytes(inst.serviceType[0].coding[0].display),
-            force_bytes("General Discussion"),
-        )
-        self.assertEqual(
-            force_bytes(inst.specialty[0].coding[0].code), force_bytes("394814009")
-        )
-        self.assertEqual(
-            force_bytes(inst.specialty[0].coding[0].display),
-            force_bytes("General practice"),
-        )
-        self.assertEqual(
-            force_bytes(inst.specialty[0].coding[0].system),
-            force_bytes("http://snomed.info/sct"),
-        )
-        self.assertEqual(inst.start.date, FHIRDate("2013-12-09T09:00:00Z").date)
-        self.assertEqual(inst.start.as_json(), "2013-12-09T09:00:00Z")
-        self.assertEqual(force_bytes(inst.status), force_bytes("booked"))
-        self.assertEqual(
-            force_bytes(inst.text.div),
-            force_bytes(
-                '<div xmlns="http://www.w3.org/1999/xhtml">Brian MRI results discussion</div>'
-            ),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
+def test_appointment_2(base_settings):
+    """No. 2 tests collection for Appointment.
+    Test File: appointment-example-request.json
+    """
+    filename = base_settings["unittest_data_dir"] / "appointment-example-request.json"
+    inst = appointment.Appointment.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Appointment" == inst.resource_type
+
+    impl_appointment_2(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Appointment" == data["resourceType"]
+
+    inst2 = appointment.Appointment(**data)
+    impl_appointment_2(inst2)
+
+
+def impl_appointment_3(inst):
+    assert inst.appointmentType.coding[0].code == "WALKIN"
+    assert (
+        inst.appointmentType.coding[0].display
+        == "A previously unscheduled walk-in visit"
+    )
+    assert (
+        inst.appointmentType.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v2-0276"
+    )
+    assert (
+        inst.comment
+        == "Clarify the results of the MRI to ensure context of test was correct"
+    )
+    assert inst.description == "Discussion about Peter Chalmers MRI results"
+    assert inst.end == fhirtypes.Instant.validate("2013-12-09T11:00:00Z")
+    assert inst.id == "2docs"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.participant[0].actor.display == "Peter James Chalmers"
+    assert inst.participant[0].actor.reference == "Patient/example"
+    assert inst.participant[0].required == "information-only"
+    assert inst.participant[0].status == "accepted"
+    assert inst.participant[1].actor.display == "Dr Adam Careful"
+    assert inst.participant[1].actor.reference == "Practitioner/example"
+    assert inst.participant[1].required == "required"
+    assert inst.participant[1].status == "accepted"
+    assert inst.participant[2].actor.display == "Luigi Maas"
+    assert inst.participant[2].actor.reference == "Practitioner/f202"
+    assert inst.participant[2].required == "required"
+    assert inst.participant[2].status == "accepted"
+    assert inst.participant[3].actor.display == "Phone Call"
+    assert inst.participant[3].required == "information-only"
+    assert inst.participant[3].status == "accepted"
+    assert inst.priority == 5
+    assert inst.serviceCategory[0].coding[0].code == "gp"
+    assert inst.serviceCategory[0].coding[0].display == "General Practice"
+    assert (
+        inst.serviceCategory[0].coding[0].system
+        == "http://example.org/service-category"
+    )
+    assert inst.serviceType[0].coding[0].code == "52"
+    assert inst.serviceType[0].coding[0].display == "General Discussion"
+    assert inst.specialty[0].coding[0].code == "394814009"
+    assert inst.specialty[0].coding[0].display == "General practice"
+    assert inst.specialty[0].coding[0].system == "http://snomed.info/sct"
+    assert inst.start == fhirtypes.Instant.validate("2013-12-09T09:00:00Z")
+    assert inst.status == "booked"
+    assert inst.supportingInformation[0].reference == "DiagnosticReport/ultrasound"
+    assert (
+        inst.text.div
+        == '<div xmlns="http://www.w3.org/1999/xhtml">Brian MRI results discussion</div>'
+    )
+    assert inst.text.status == "generated"
+
+
+def test_appointment_3(base_settings):
+    """No. 3 tests collection for Appointment.
+    Test File: appointment-example2doctors.json
+    """
+    filename = base_settings["unittest_data_dir"] / "appointment-example2doctors.json"
+    inst = appointment.Appointment.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "Appointment" == inst.resource_type
+
+    impl_appointment_3(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "Appointment" == data["resourceType"]
+
+    inst2 = appointment.Appointment(**data)
+    impl_appointment_3(inst2)

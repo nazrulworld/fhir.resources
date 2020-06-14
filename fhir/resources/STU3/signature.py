@@ -6,116 +6,123 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from typing import Any, Dict
+from typing import List as ListType
 
+from pydantic import Field, root_validator
 
-import sys
-
-from . import element
+from . import element, fhirtypes
 
 
 class Signature(element.Element):
     """ A digital Signature - XML DigSig, JWT, Graphical image of signature, etc..
-
     A digital signature along with supporting context. The signature may be
     electronic/cryptographic in nature, or a graphical image representing a
     hand-written signature, or a signature process. Different signature
     approaches have different utilities.
     """
 
-    resource_type = "Signature"
+    resource_type = Field("Signature", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    blob: fhirtypes.Base64Binary = Field(
+        None,
+        alias="blob",
+        title="Type `Base64Binary` (represented as `dict` in JSON)",
+        description="The actual signature content (XML DigSig. JWT, picture, etc.)",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    contentType: fhirtypes.Code = Field(
+        None,
+        alias="contentType",
+        title="Type `Code` (represented as `dict` in JSON)",
+        description="The technical format of the signature",
+    )
+
+    onBehalfOfReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="onBehalfOfReference",
+        title="Type `Reference` referencing `Practitioner, RelatedPerson, Patient, Device, Organization` (represented as `dict` in JSON)",
+        description="The party represented",
+        one_of_many="onBehalfOf",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    onBehalfOfUri: fhirtypes.Uri = Field(
+        None,
+        alias="onBehalfOfUri",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="The party represented",
+        one_of_many="onBehalfOf",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=False,
+    )
+
+    type: ListType[fhirtypes.CodingType] = Field(
+        ...,
+        alias="type",
+        title="List of `Coding` items (represented as `dict` in JSON)",
+        description="Indication of the reason the entity signed the object(s)",
+    )
+
+    when: fhirtypes.Instant = Field(
+        ...,
+        alias="when",
+        title="Type `Instant` (represented as `dict` in JSON)",
+        description="When the signature was created",
+    )
+
+    whoReference: fhirtypes.ReferenceType = Field(
+        None,
+        alias="whoReference",
+        title="Type `Reference` referencing `Practitioner, RelatedPerson, Patient, Device, Organization` (represented as `dict` in JSON)",
+        description="Who signed",
+        one_of_many="who",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    whoUri: fhirtypes.Uri = Field(
+        None,
+        alias="whoUri",
+        title="Type `Uri` (represented as `dict` in JSON)",
+        description="Who signed",
+        one_of_many="who",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "onBehalfOf": ["onBehalfOfReference", "onBehalfOfUri",],
+            "who": ["whoReference", "whoUri",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.blob = None
-        """ The actual signature content (XML DigSig. JWT, picture, etc.).
-        Type `str`. """
-
-        self.contentType = None
-        """ The technical format of the signature.
-        Type `str`. """
-
-        self.onBehalfOfReference = None
-        """ The party represented.
-        Type `FHIRReference` referencing `['Practitioner'], ['RelatedPerson'], ['Patient'], ['Device'], ['Organization']` (represented as `dict` in JSON). """
-
-        self.onBehalfOfUri = None
-        """ The party represented.
-        Type `str`. """
-
-        self.type = None
-        """ Indication of the reason the entity signed the object(s).
-        List of `Coding` items (represented as `dict` in JSON). """
-
-        self.when = None
-        """ When the signature was created.
-        Type `FHIRDate` (represented as `str` in JSON). """
-
-        self.whoReference = None
-        """ Who signed.
-        Type `FHIRReference` referencing `['Practitioner'], ['RelatedPerson'], ['Patient'], ['Device'], ['Organization']` (represented as `dict` in JSON). """
-
-        self.whoUri = None
-        """ Who signed.
-        Type `str`. """
-
-        super(Signature, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(Signature, self).elementProperties()
-        js.extend(
-            [
-                ("blob", "blob", str, "base64Binary", False, None, False),
-                ("contentType", "contentType", str, "code", False, None, False),
-                (
-                    "onBehalfOfReference",
-                    "onBehalfOfReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    "onBehalfOf",
-                    False,
-                ),
-                (
-                    "onBehalfOfUri",
-                    "onBehalfOfUri",
-                    str,
-                    "uri",
-                    False,
-                    "onBehalfOf",
-                    False,
-                ),
-                ("type", "type", coding.Coding, "Coding", True, None, True),
-                ("when", "when", fhirdate.FHIRDate, "instant", False, None, True),
-                (
-                    "whoReference",
-                    "whoReference",
-                    fhirreference.FHIRReference,
-                    "Reference",
-                    False,
-                    "who",
-                    True,
-                ),
-                ("whoUri", "whoUri", str, "uri", False, "who", True),
-            ]
-        )
-        return js
-
-
-try:
-    from . import coding
-except ImportError:
-    coding = sys.modules[__package__ + ".coding"]
-try:
-    from . import fhirdate
-except ImportError:
-    fhirdate = sys.modules[__package__ + ".fhirdate"]
-try:
-    from . import fhirreference
-except ImportError:
-    fhirreference = sys.modules[__package__ + ".fhirreference"]
+        return values

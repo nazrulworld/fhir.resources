@@ -6,586 +6,562 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-
-import io
-import json
-import os
-import unittest
-
-import pytest
-
+from .. import fhirtypes  # noqa: F401
 from .. import molecularsequence
-from ..fhirdate import FHIRDate
-from .fixtures import force_bytes
 
 
-@pytest.mark.usefixtures("base_settings")
-class MolecularSequenceTests(unittest.TestCase):
-    def instantiate_from(self, filename):
-        datadir = os.environ.get("FHIR_UNITTEST_DATADIR") or ""
-        with io.open(os.path.join(datadir, filename), "r", encoding="utf-8") as handle:
-            js = json.load(handle)
-            self.assertEqual("MolecularSequence", js["resourceType"])
-        return molecularsequence.MolecularSequence(js)
+def impl_molecularsequence_1(inst):
+    assert inst.coordinateSystem == 0
+    assert inst.id == "breastcancer"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.patient.reference == "Patient/brcapat"
+    assert inst.referenceSeq.referenceSeqId.coding[0].code == "NM_000059.3"
+    assert (
+        inst.referenceSeq.referenceSeqId.coding[0].display
+        == "Homo sapiens BRCA2, DNA repair associated (BRCA2), mRNA"
+    )
+    assert (
+        inst.referenceSeq.referenceSeqId.coding[0].system
+        == "http://www.ncbi.nlm.nih.gov/nuccore/"
+    )
+    assert inst.referenceSeq.windowEnd == 101499444
+    assert inst.referenceSeq.windowStart == 101488058
+    assert inst.text.status == "generated"
+    assert inst.type == "rna"
+    assert inst.variant[0].end == 32316187
+    assert inst.variant[0].observedAllele == "A"
+    assert inst.variant[0].referenceAllele == "C"
+    assert inst.variant[0].start == 32316186
 
-    def testMolecularSequence1(self):
-        inst = self.instantiate_from("sequence-genetics-example-breastcancer.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a MolecularSequence instance"
-        )
-        self.implMolecularSequence1(inst)
 
-        js = inst.as_json()
-        self.assertEqual("MolecularSequence", js["resourceType"])
-        inst2 = molecularsequence.MolecularSequence(js)
-        self.implMolecularSequence1(inst2)
+def test_molecularsequence_1(base_settings):
+    """No. 1 tests collection for MolecularSequence.
+    Test File: sequence-genetics-example-breastcancer.json
+    """
+    filename = (
+        base_settings["unittest_data_dir"]
+        / "sequence-genetics-example-breastcancer.json"
+    )
+    inst = molecularsequence.MolecularSequence.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "MolecularSequence" == inst.resource_type
 
-    def implMolecularSequence1(self, inst):
-        self.assertEqual(inst.coordinateSystem, 0)
-        self.assertEqual(force_bytes(inst.id), force_bytes("breastcancer"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.referenceSeq.referenceSeqId.coding[0].code),
-            force_bytes("NM_000059.3"),
-        )
-        self.assertEqual(
-            force_bytes(inst.referenceSeq.referenceSeqId.coding[0].display),
-            force_bytes("Homo sapiens BRCA2, DNA repair associated (BRCA2), mRNA"),
-        )
-        self.assertEqual(
-            force_bytes(inst.referenceSeq.referenceSeqId.coding[0].system),
-            force_bytes("http://www.ncbi.nlm.nih.gov/nuccore/"),
-        )
-        self.assertEqual(inst.referenceSeq.windowEnd, 101499444)
-        self.assertEqual(inst.referenceSeq.windowStart, 101488058)
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type), force_bytes("rna"))
-        self.assertEqual(inst.variant[0].end, 32316187)
-        self.assertEqual(force_bytes(inst.variant[0].observedAllele), force_bytes("A"))
-        self.assertEqual(force_bytes(inst.variant[0].referenceAllele), force_bytes("C"))
-        self.assertEqual(inst.variant[0].start, 32316186)
+    impl_molecularsequence_1(inst)
 
-    def testMolecularSequence2(self):
-        inst = self.instantiate_from("sequence-graphic-example-1.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a MolecularSequence instance"
-        )
-        self.implMolecularSequence2(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "MolecularSequence" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("MolecularSequence", js["resourceType"])
-        inst2 = molecularsequence.MolecularSequence(js)
-        self.implMolecularSequence2(inst2)
+    inst2 = molecularsequence.MolecularSequence(**data)
+    impl_molecularsequence_1(inst2)
 
-    def implMolecularSequence2(self, inst):
-        self.assertEqual(inst.coordinateSystem, 0)
-        self.assertEqual(force_bytes(inst.id), force_bytes("graphic-example-1"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.referenceSeq.referenceSeqId.coding[0].code),
-            force_bytes("NC_000002.12"),
-        )
-        self.assertEqual(
-            force_bytes(inst.referenceSeq.referenceSeqId.coding[0].system),
-            force_bytes("http://www.ncbi.nlm.nih.gov/nuccore"),
-        )
-        self.assertEqual(force_bytes(inst.referenceSeq.strand), force_bytes("watson"))
-        self.assertEqual(inst.referenceSeq.windowEnd, 128273732)
-        self.assertEqual(inst.referenceSeq.windowStart, 128273724)
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type), force_bytes("dna"))
-        self.assertEqual(force_bytes(inst.variant[0].cigar), force_bytes("1M"))
-        self.assertEqual(inst.variant[0].end, 128273726)
-        self.assertEqual(force_bytes(inst.variant[0].observedAllele), force_bytes("G"))
-        self.assertEqual(force_bytes(inst.variant[0].referenceAllele), force_bytes("T"))
-        self.assertEqual(inst.variant[0].start, 128273725)
 
-    def testMolecularSequence3(self):
-        inst = self.instantiate_from("sequence-example-fda-vcfeval.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a MolecularSequence instance"
-        )
-        self.implMolecularSequence3(inst)
+def impl_molecularsequence_2(inst):
+    assert inst.coordinateSystem == 0
+    assert inst.id == "graphic-example-1"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.pointer[0].reference == "MolecularSequence/graphic-example-2"
+    assert inst.referenceSeq.referenceSeqId.coding[0].code == "NC_000002.12"
+    assert (
+        inst.referenceSeq.referenceSeqId.coding[0].system
+        == "http://www.ncbi.nlm.nih.gov/nuccore"
+    )
+    assert inst.referenceSeq.strand == "watson"
+    assert inst.referenceSeq.windowEnd == 128273732
+    assert inst.referenceSeq.windowStart == 128273724
+    assert inst.text.status == "generated"
+    assert inst.type == "dna"
+    assert inst.variant[0].cigar == "1M"
+    assert inst.variant[0].end == 128273726
+    assert inst.variant[0].observedAllele == "G"
+    assert inst.variant[0].referenceAllele == "T"
+    assert inst.variant[0].start == 128273725
 
-        js = inst.as_json()
-        self.assertEqual("MolecularSequence", js["resourceType"])
-        inst2 = molecularsequence.MolecularSequence(js)
-        self.implMolecularSequence3(inst2)
 
-    def implMolecularSequence3(self, inst):
-        self.assertEqual(inst.coordinateSystem, 1)
-        self.assertEqual(force_bytes(inst.id), force_bytes("fda-vcfeval-comparison"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(inst.quality[0].end, 101770080)
-        self.assertEqual(inst.quality[0].gtFP, 2186)
-        self.assertEqual(
-            force_bytes(inst.quality[0].method.coding[0].code),
-            force_bytes("app-BxfGF8j02pBZzZxbzZxP725P"),
-        )
-        self.assertEqual(
-            force_bytes(inst.quality[0].method.coding[0].system),
-            force_bytes("https://precision.fda.gov/apps/"),
-        )
-        self.assertEqual(
-            force_bytes(inst.quality[0].method.text),
-            force_bytes("Vcfeval + Hap.py Comparison"),
-        )
-        self.assertEqual(inst.quality[0].precision, 0.428005)
-        self.assertEqual(inst.quality[0].queryFP, 10670)
-        self.assertEqual(inst.quality[0].recall, 0.752111)
-        self.assertEqual(
-            force_bytes(inst.quality[0].standardSequence.coding[0].code),
-            force_bytes("file-BkZxBZ00bpJVk2q6x43b1YBx"),
-        )
-        self.assertEqual(
-            force_bytes(inst.quality[0].standardSequence.coding[0].system),
-            force_bytes("https://precision.fda.gov/files/"),
-        )
-        self.assertEqual(inst.quality[0].start, 10453)
-        self.assertEqual(inst.quality[0].truthFN, 2554)
-        self.assertEqual(inst.quality[0].truthTP, 7749)
-        self.assertEqual(force_bytes(inst.quality[0].type), force_bytes("indel"))
-        self.assertEqual(inst.quality[1].end, 101770080)
-        self.assertEqual(inst.quality[1].gtFP, 493)
-        self.assertEqual(
-            force_bytes(inst.quality[1].method.coding[0].code),
-            force_bytes("app-BxfGF8j02pBZzZxbzZxP725P"),
-        )
-        self.assertEqual(
-            force_bytes(inst.quality[1].method.coding[0].system),
-            force_bytes("https://precision.fda.gov/apps/"),
-        )
-        self.assertEqual(
-            force_bytes(inst.quality[1].method.text),
-            force_bytes("Vcfeval + Hap.py Comparison"),
-        )
-        self.assertEqual(inst.quality[1].precision, 0.808602)
-        self.assertEqual(inst.quality[1].queryFP, 21744)
-        self.assertEqual(inst.quality[1].recall, 0.986642)
-        self.assertEqual(
-            force_bytes(inst.quality[1].standardSequence.coding[0].code),
-            force_bytes("file-BkZxBZ00bpJVk2q6x43b1YBx"),
-        )
-        self.assertEqual(
-            force_bytes(inst.quality[1].standardSequence.coding[0].system),
-            force_bytes("https://precision.fda.gov/files/"),
-        )
-        self.assertEqual(inst.quality[1].start, 10453)
-        self.assertEqual(inst.quality[1].truthFN, 1247)
-        self.assertEqual(inst.quality[1].truthTP, 92106)
-        self.assertEqual(force_bytes(inst.quality[1].type), force_bytes("snp"))
-        self.assertEqual(
-            force_bytes(inst.referenceSeq.referenceSeqId.coding[0].code),
-            force_bytes("NC_000001.11"),
-        )
-        self.assertEqual(
-            force_bytes(inst.referenceSeq.referenceSeqId.coding[0].system),
-            force_bytes("http://www.ncbi.nlm.nih.gov/nuccore"),
-        )
-        self.assertEqual(force_bytes(inst.referenceSeq.strand), force_bytes("watson"))
-        self.assertEqual(inst.referenceSeq.windowEnd, 101770080)
-        self.assertEqual(inst.referenceSeq.windowStart, 10453)
-        self.assertEqual(force_bytes(inst.repository[0].name), force_bytes("FDA"))
-        self.assertEqual(force_bytes(inst.repository[0].type), force_bytes("login"))
-        self.assertEqual(
-            force_bytes(inst.repository[0].url),
-            force_bytes("https://precision.fda.gov/jobs/job-ByxYPx809jFVy21KJG74Jg3Y"),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(inst.variant[0].end, 13117)
-        self.assertEqual(force_bytes(inst.variant[0].observedAllele), force_bytes("T"))
-        self.assertEqual(force_bytes(inst.variant[0].referenceAllele), force_bytes("G"))
-        self.assertEqual(inst.variant[0].start, 13116)
+def test_molecularsequence_2(base_settings):
+    """No. 2 tests collection for MolecularSequence.
+    Test File: sequence-graphic-example-1.json
+    """
+    filename = base_settings["unittest_data_dir"] / "sequence-graphic-example-1.json"
+    inst = molecularsequence.MolecularSequence.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "MolecularSequence" == inst.resource_type
 
-    def testMolecularSequence4(self):
-        inst = self.instantiate_from("sequence-complex-variant.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a MolecularSequence instance"
-        )
-        self.implMolecularSequence4(inst)
+    impl_molecularsequence_2(inst)
 
-        js = inst.as_json()
-        self.assertEqual("MolecularSequence", js["resourceType"])
-        inst2 = molecularsequence.MolecularSequence(js)
-        self.implMolecularSequence4(inst2)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "MolecularSequence" == data["resourceType"]
 
-    def implMolecularSequence4(self, inst):
-        self.assertEqual(inst.coordinateSystem, 1)
-        self.assertEqual(force_bytes(inst.id), force_bytes("sequence-complex-variant"))
-        self.assertEqual(force_bytes(inst.identifier[0].use), force_bytes("official"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(inst.quantity.value, 25)
-        self.assertEqual(inst.readCoverage, 1)
-        self.assertEqual(
-            force_bytes(inst.referenceSeq.referenceSeqId.coding[0].code),
-            force_bytes("NC_000002.12"),
-        )
-        self.assertEqual(
-            force_bytes(inst.referenceSeq.referenceSeqId.coding[0].system),
-            force_bytes("http://www.ncbi.nlm.nih.gov/nuccore"),
-        )
-        self.assertEqual(force_bytes(inst.referenceSeq.strand), force_bytes("watson"))
-        self.assertEqual(inst.referenceSeq.windowEnd, 128273754)
-        self.assertEqual(inst.referenceSeq.windowStart, 128273724)
-        self.assertEqual(
-            force_bytes(inst.repository[0].datasetId), force_bytes("Ensembl")
-        )
-        self.assertEqual(
-            force_bytes(inst.repository[0].readsetId), force_bytes("v1beta2")
-        )
-        self.assertEqual(force_bytes(inst.repository[0].type), force_bytes("other"))
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type), force_bytes("dna"))
-        self.assertEqual(force_bytes(inst.variant[0].cigar), force_bytes("3M1D4M6N2M"))
-        self.assertEqual(inst.variant[0].end, 128273736)
-        self.assertEqual(
-            force_bytes(inst.variant[0].observedAllele), force_bytes("CTCATTGT")
-        )
-        self.assertEqual(
-            force_bytes(inst.variant[0].referenceAllele),
-            force_bytes("CTCCATTGCATGCGTT"),
-        )
-        self.assertEqual(inst.variant[0].start, 128273724)
+    inst2 = molecularsequence.MolecularSequence(**data)
+    impl_molecularsequence_2(inst2)
 
-    def testMolecularSequence5(self):
-        inst = self.instantiate_from("sequence-example-TPMT-one.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a MolecularSequence instance"
-        )
-        self.implMolecularSequence5(inst)
 
-        js = inst.as_json()
-        self.assertEqual("MolecularSequence", js["resourceType"])
-        inst2 = molecularsequence.MolecularSequence(js)
-        self.implMolecularSequence5(inst2)
+def impl_molecularsequence_3(inst):
+    assert inst.coordinateSystem == 1
+    assert inst.id == "fda-vcfeval-comparison"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.patient.reference == "Patient/example"
+    assert inst.quality[0].end == 101770080
+    assert float(inst.quality[0].gtFP) == float(2186)
+    assert inst.quality[0].method.coding[0].code == "app-BxfGF8j02pBZzZxbzZxP725P"
+    assert inst.quality[0].method.coding[0].system == "https://precision.fda.gov/apps/"
+    assert inst.quality[0].method.text == "Vcfeval + Hap.py Comparison"
+    assert float(inst.quality[0].precision) == float(0.428005)
+    assert float(inst.quality[0].queryFP) == float(10670)
+    assert float(inst.quality[0].recall) == float(0.752111)
+    assert (
+        inst.quality[0].standardSequence.coding[0].code
+        == "file-BkZxBZ00bpJVk2q6x43b1YBx"
+    )
+    assert (
+        inst.quality[0].standardSequence.coding[0].system
+        == "https://precision.fda.gov/files/"
+    )
+    assert inst.quality[0].start == 10453
+    assert float(inst.quality[0].truthFN) == float(2554)
+    assert float(inst.quality[0].truthTP) == float(7749)
+    assert inst.quality[0].type == "indel"
+    assert inst.quality[1].end == 101770080
+    assert float(inst.quality[1].gtFP) == float(493)
+    assert inst.quality[1].method.coding[0].code == "app-BxfGF8j02pBZzZxbzZxP725P"
+    assert inst.quality[1].method.coding[0].system == "https://precision.fda.gov/apps/"
+    assert inst.quality[1].method.text == "Vcfeval + Hap.py Comparison"
+    assert float(inst.quality[1].precision) == float(0.808602)
+    assert float(inst.quality[1].queryFP) == float(21744)
+    assert float(inst.quality[1].recall) == float(0.986642)
+    assert (
+        inst.quality[1].standardSequence.coding[0].code
+        == "file-BkZxBZ00bpJVk2q6x43b1YBx"
+    )
+    assert (
+        inst.quality[1].standardSequence.coding[0].system
+        == "https://precision.fda.gov/files/"
+    )
+    assert inst.quality[1].start == 10453
+    assert float(inst.quality[1].truthFN) == float(1247)
+    assert float(inst.quality[1].truthTP) == float(92106)
+    assert inst.quality[1].type == "snp"
+    assert inst.referenceSeq.referenceSeqId.coding[0].code == "NC_000001.11"
+    assert (
+        inst.referenceSeq.referenceSeqId.coding[0].system
+        == "http://www.ncbi.nlm.nih.gov/nuccore"
+    )
+    assert inst.referenceSeq.strand == "watson"
+    assert inst.referenceSeq.windowEnd == 101770080
+    assert inst.referenceSeq.windowStart == 10453
+    assert inst.repository[0].name == "FDA"
+    assert inst.repository[0].type == "login"
+    assert (
+        inst.repository[0].url
+        == "https://precision.fda.gov/jobs/job-ByxYPx809jFVy21KJG74Jg3Y"
+    )
+    assert inst.text.status == "generated"
+    assert inst.variant[0].end == 13117
+    assert inst.variant[0].observedAllele == "T"
+    assert inst.variant[0].referenceAllele == "G"
+    assert inst.variant[0].start == 13116
 
-    def implMolecularSequence5(self, inst):
-        self.assertEqual(inst.coordinateSystem, 1)
-        self.assertEqual(force_bytes(inst.id), force_bytes("example-TPMT-one"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.observedSeq), force_bytes("T-C-C-C-A-C-C-C"))
-        self.assertEqual(
-            force_bytes(inst.referenceSeq.referenceSeqId.coding[0].code),
-            force_bytes("NT_007592.15"),
-        )
-        self.assertEqual(
-            force_bytes(inst.referenceSeq.referenceSeqId.coding[0].system),
-            force_bytes("http://www.ncbi.nlm.nih.gov/nuccore"),
-        )
-        self.assertEqual(force_bytes(inst.referenceSeq.strand), force_bytes("watson"))
-        self.assertEqual(inst.referenceSeq.windowEnd, 18143955)
-        self.assertEqual(inst.referenceSeq.windowStart, 18130918)
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type), force_bytes("dna"))
-        self.assertEqual(inst.variant[0].end, 18139214)
-        self.assertEqual(force_bytes(inst.variant[0].observedAllele), force_bytes("A"))
-        self.assertEqual(force_bytes(inst.variant[0].referenceAllele), force_bytes("G"))
-        self.assertEqual(inst.variant[0].start, 18139214)
 
-    def testMolecularSequence6(self):
-        inst = self.instantiate_from("sequence-example-pgx-2.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a MolecularSequence instance"
-        )
-        self.implMolecularSequence6(inst)
+def test_molecularsequence_3(base_settings):
+    """No. 3 tests collection for MolecularSequence.
+    Test File: sequence-example-fda-vcfeval.json
+    """
+    filename = base_settings["unittest_data_dir"] / "sequence-example-fda-vcfeval.json"
+    inst = molecularsequence.MolecularSequence.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "MolecularSequence" == inst.resource_type
 
-        js = inst.as_json()
-        self.assertEqual("MolecularSequence", js["resourceType"])
-        inst2 = molecularsequence.MolecularSequence(js)
-        self.implMolecularSequence6(inst2)
+    impl_molecularsequence_3(inst)
 
-    def implMolecularSequence6(self, inst):
-        self.assertEqual(inst.coordinateSystem, 0)
-        self.assertEqual(force_bytes(inst.id), force_bytes("example-pgx-2"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.referenceSeq.orientation), force_bytes("sense")
-        )
-        self.assertEqual(
-            force_bytes(inst.referenceSeq.referenceSeqId.coding[0].code),
-            force_bytes("NG_007726.3"),
-        )
-        self.assertEqual(
-            force_bytes(inst.referenceSeq.referenceSeqId.coding[0].system),
-            force_bytes("http://www.ncbi.nlm.nih.gov/nuccore"),
-        )
-        self.assertEqual(force_bytes(inst.referenceSeq.strand), force_bytes("watson"))
-        self.assertEqual(inst.referenceSeq.windowEnd, 55227980)
-        self.assertEqual(inst.referenceSeq.windowStart, 55227970)
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type), force_bytes("dna"))
-        self.assertEqual(inst.variant[0].end, 55227979)
-        self.assertEqual(force_bytes(inst.variant[0].observedAllele), force_bytes("G"))
-        self.assertEqual(force_bytes(inst.variant[0].referenceAllele), force_bytes("T"))
-        self.assertEqual(inst.variant[0].start, 55227978)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "MolecularSequence" == data["resourceType"]
 
-    def testMolecularSequence7(self):
-        inst = self.instantiate_from("molecularsequence-example.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a MolecularSequence instance"
-        )
-        self.implMolecularSequence7(inst)
+    inst2 = molecularsequence.MolecularSequence(**data)
+    impl_molecularsequence_3(inst2)
 
-        js = inst.as_json()
-        self.assertEqual("MolecularSequence", js["resourceType"])
-        inst2 = molecularsequence.MolecularSequence(js)
-        self.implMolecularSequence7(inst2)
 
-    def implMolecularSequence7(self, inst):
-        self.assertEqual(inst.coordinateSystem, 0)
-        self.assertEqual(force_bytes(inst.id), force_bytes("example"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.referenceSeq.referenceSeqId.coding[0].code),
-            force_bytes("NC_000009.11"),
-        )
-        self.assertEqual(
-            force_bytes(inst.referenceSeq.referenceSeqId.coding[0].system),
-            force_bytes("http://www.ncbi.nlm.nih.gov/nuccore"),
-        )
-        self.assertEqual(force_bytes(inst.referenceSeq.strand), force_bytes("watson"))
-        self.assertEqual(inst.referenceSeq.windowEnd, 22125510)
-        self.assertEqual(inst.referenceSeq.windowStart, 22125500)
-        self.assertEqual(force_bytes(inst.repository[0].name), force_bytes("GA4GH API"))
-        self.assertEqual(force_bytes(inst.repository[0].type), force_bytes("openapi"))
-        self.assertEqual(
-            force_bytes(inst.repository[0].url),
-            force_bytes(
-                "http://grch37.rest.ensembl.org/ga4gh/variants/3:rs1333049?content-type=application/json"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.repository[0].variantsetId), force_bytes("3:rs1333049")
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type), force_bytes("dna"))
-        self.assertEqual(inst.variant[0].end, 22125504)
-        self.assertEqual(force_bytes(inst.variant[0].observedAllele), force_bytes("C"))
-        self.assertEqual(force_bytes(inst.variant[0].referenceAllele), force_bytes("G"))
-        self.assertEqual(inst.variant[0].start, 22125503)
+def impl_molecularsequence_4(inst):
+    assert inst.coordinateSystem == 1
+    assert inst.device.display == "12 lead EKG Device Metric"
+    assert inst.id == "sequence-complex-variant"
+    assert inst.identifier[0].use == "official"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.performer.display == "HL7"
+    assert inst.performer.reference == "Organization/hl7"
+    assert float(inst.quantity.value) == float(25)
+    assert inst.readCoverage == 1
+    assert inst.referenceSeq.referenceSeqId.coding[0].code == "NC_000002.12"
+    assert (
+        inst.referenceSeq.referenceSeqId.coding[0].system
+        == "http://www.ncbi.nlm.nih.gov/nuccore"
+    )
+    assert inst.referenceSeq.strand == "watson"
+    assert inst.referenceSeq.windowEnd == 128273754
+    assert inst.referenceSeq.windowStart == 128273724
+    assert inst.repository[0].datasetId == "Ensembl"
+    assert inst.repository[0].readsetId == "v1beta2"
+    assert inst.repository[0].type == "other"
+    assert inst.specimen.display == "Molecular Specimen ID: MLD45-Z4-1234"
+    assert inst.specimen.reference == "Specimen/genetics-example1-somatic"
+    assert inst.text.status == "generated"
+    assert inst.type == "dna"
+    assert inst.variant[0].cigar == "3M1D4M6N2M"
+    assert inst.variant[0].end == 128273736
+    assert inst.variant[0].observedAllele == "CTCATTGT"
+    assert inst.variant[0].referenceAllele == "CTCCATTGCATGCGTT"
+    assert inst.variant[0].start == 128273724
 
-    def testMolecularSequence8(self):
-        inst = self.instantiate_from("sequence-example-fda.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a MolecularSequence instance"
-        )
-        self.implMolecularSequence8(inst)
 
-        js = inst.as_json()
-        self.assertEqual("MolecularSequence", js["resourceType"])
-        inst2 = molecularsequence.MolecularSequence(js)
-        self.implMolecularSequence8(inst2)
+def test_molecularsequence_4(base_settings):
+    """No. 4 tests collection for MolecularSequence.
+    Test File: sequence-complex-variant.json
+    """
+    filename = base_settings["unittest_data_dir"] / "sequence-complex-variant.json"
+    inst = molecularsequence.MolecularSequence.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "MolecularSequence" == inst.resource_type
 
-    def implMolecularSequence8(self, inst):
-        self.assertEqual(inst.coordinateSystem, 1)
-        self.assertEqual(force_bytes(inst.id), force_bytes("fda-example"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(inst.quality[0].end, 101770080)
-        self.assertEqual(inst.quality[0].fScore, 0.545551)
-        self.assertEqual(inst.quality[0].gtFP, 2186)
-        self.assertEqual(
-            force_bytes(inst.quality[0].method.coding[0].code),
-            force_bytes("job-ByxYPx809jFVy21KJG74Jg3Y"),
-        )
-        self.assertEqual(
-            force_bytes(inst.quality[0].method.coding[0].system),
-            force_bytes("https://precision.fda.gov/jobs/"),
-        )
-        self.assertEqual(
-            force_bytes(inst.quality[0].method.text),
-            force_bytes("Vcfeval + Hap.py Comparison"),
-        )
-        self.assertEqual(inst.quality[0].precision, 0.428005)
-        self.assertEqual(inst.quality[0].queryFP, 10670)
-        self.assertEqual(inst.quality[0].queryTP, 7984)
-        self.assertEqual(inst.quality[0].recall, 0.752111)
-        self.assertEqual(
-            force_bytes(inst.quality[0].standardSequence.coding[0].code),
-            force_bytes("file-Bk50V4Q0qVb65P0v2VPbfYPZ"),
-        )
-        self.assertEqual(
-            force_bytes(inst.quality[0].standardSequence.coding[0].system),
-            force_bytes("https://precision.fda.gov/files/"),
-        )
-        self.assertEqual(inst.quality[0].start, 10453)
-        self.assertEqual(inst.quality[0].truthFN, 2554)
-        self.assertEqual(inst.quality[0].truthTP, 7749)
-        self.assertEqual(force_bytes(inst.quality[0].type), force_bytes("snp"))
-        self.assertEqual(
-            force_bytes(inst.referenceSeq.referenceSeqId.coding[0].code),
-            force_bytes("NC_000001.11"),
-        )
-        self.assertEqual(
-            force_bytes(inst.referenceSeq.referenceSeqId.coding[0].system),
-            force_bytes("http://www.ncbi.nlm.nih.gov/nuccore"),
-        )
-        self.assertEqual(force_bytes(inst.referenceSeq.strand), force_bytes("watson"))
-        self.assertEqual(inst.referenceSeq.windowEnd, 101770080)
-        self.assertEqual(inst.referenceSeq.windowStart, 10453)
-        self.assertEqual(force_bytes(inst.repository[0].name), force_bytes("FDA"))
-        self.assertEqual(force_bytes(inst.repository[0].type), force_bytes("login"))
-        self.assertEqual(
-            force_bytes(inst.repository[0].url),
-            force_bytes(
-                "https://precision.fda.gov/files/file-Bx37ZK009P4bX5g3qjkFZV38"
-            ),
-        )
-        self.assertEqual(
-            force_bytes(inst.repository[0].variantsetId),
-            force_bytes("file-Bx37ZK009P4bX5g3qjkFZV38"),
-        )
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type), force_bytes("dna"))
-        self.assertEqual(inst.variant[0].end, 13117)
-        self.assertEqual(force_bytes(inst.variant[0].observedAllele), force_bytes("T"))
-        self.assertEqual(force_bytes(inst.variant[0].referenceAllele), force_bytes("G"))
-        self.assertEqual(inst.variant[0].start, 13116)
+    impl_molecularsequence_4(inst)
 
-    def testMolecularSequence9(self):
-        inst = self.instantiate_from("coord-1base-example.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a MolecularSequence instance"
-        )
-        self.implMolecularSequence9(inst)
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "MolecularSequence" == data["resourceType"]
 
-        js = inst.as_json()
-        self.assertEqual("MolecularSequence", js["resourceType"])
-        inst2 = molecularsequence.MolecularSequence(js)
-        self.implMolecularSequence9(inst2)
+    inst2 = molecularsequence.MolecularSequence(**data)
+    impl_molecularsequence_4(inst2)
 
-    def implMolecularSequence9(self, inst):
-        self.assertEqual(inst.coordinateSystem, 1)
-        self.assertEqual(force_bytes(inst.id), force_bytes("coord-1-base"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(force_bytes(inst.observedSeq), force_bytes("ACATGGTAGC"))
-        self.assertEqual(
-            force_bytes(inst.referenceSeq.referenceSeqString), force_bytes("ACGTAGTC")
-        )
-        self.assertEqual(force_bytes(inst.referenceSeq.strand), force_bytes("watson"))
-        self.assertEqual(inst.referenceSeq.windowEnd, 8)
-        self.assertEqual(inst.referenceSeq.windowStart, 1)
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type), force_bytes("dna"))
-        self.assertEqual(force_bytes(inst.variant[0].cigar), force_bytes("3I"))
-        self.assertEqual(inst.variant[0].end, 3)
-        self.assertEqual(
-            force_bytes(inst.variant[0].observedAllele), force_bytes("ATG")
-        )
-        self.assertEqual(force_bytes(inst.variant[0].referenceAllele), force_bytes("-"))
-        self.assertEqual(inst.variant[0].start, 2)
-        self.assertEqual(force_bytes(inst.variant[1].cigar), force_bytes("3I"))
-        self.assertEqual(inst.variant[1].end, 5)
-        self.assertEqual(force_bytes(inst.variant[1].observedAllele), force_bytes("T"))
-        self.assertEqual(force_bytes(inst.variant[1].referenceAllele), force_bytes("A"))
-        self.assertEqual(inst.variant[1].start, 5)
-        self.assertEqual(force_bytes(inst.variant[2].cigar), force_bytes("1D"))
-        self.assertEqual(inst.variant[2].end, 7)
-        self.assertEqual(force_bytes(inst.variant[2].observedAllele), force_bytes("-"))
-        self.assertEqual(force_bytes(inst.variant[2].referenceAllele), force_bytes("T"))
-        self.assertEqual(inst.variant[2].start, 7)
 
-    def testMolecularSequence10(self):
-        inst = self.instantiate_from("sequence-graphic-example-4.json")
-        self.assertIsNotNone(
-            inst, "Must have instantiated a MolecularSequence instance"
-        )
-        self.implMolecularSequence10(inst)
+def impl_molecularsequence_5(inst):
+    assert inst.coordinateSystem == 1
+    assert inst.id == "example-TPMT-one"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.observedSeq == "T-C-C-C-A-C-C-C"
+    assert inst.patient.reference == "Patient/example"
+    assert inst.referenceSeq.referenceSeqId.coding[0].code == "NT_007592.15"
+    assert (
+        inst.referenceSeq.referenceSeqId.coding[0].system
+        == "http://www.ncbi.nlm.nih.gov/nuccore"
+    )
+    assert inst.referenceSeq.strand == "watson"
+    assert inst.referenceSeq.windowEnd == 18143955
+    assert inst.referenceSeq.windowStart == 18130918
+    assert inst.text.status == "generated"
+    assert inst.type == "dna"
+    assert inst.variant[0].end == 18139214
+    assert inst.variant[0].observedAllele == "A"
+    assert inst.variant[0].referenceAllele == "G"
+    assert inst.variant[0].start == 18139214
 
-        js = inst.as_json()
-        self.assertEqual("MolecularSequence", js["resourceType"])
-        inst2 = molecularsequence.MolecularSequence(js)
-        self.implMolecularSequence10(inst2)
 
-    def implMolecularSequence10(self, inst):
-        self.assertEqual(inst.coordinateSystem, 0)
-        self.assertEqual(force_bytes(inst.id), force_bytes("graphic-example-4"))
-        self.assertEqual(force_bytes(inst.meta.tag[0].code), force_bytes("HTEST"))
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].display), force_bytes("test health data")
-        )
-        self.assertEqual(
-            force_bytes(inst.meta.tag[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/v3-ActReason"),
-        )
-        self.assertEqual(
-            force_bytes(inst.referenceSeq.chromosome.coding[0].code), force_bytes("2")
-        )
-        self.assertEqual(
-            force_bytes(inst.referenceSeq.chromosome.coding[0].display),
-            force_bytes("chromosome 2"),
-        )
-        self.assertEqual(
-            force_bytes(inst.referenceSeq.chromosome.coding[0].system),
-            force_bytes("http://terminology.hl7.org/CodeSystem/chromosome-human"),
-        )
-        self.assertEqual(
-            force_bytes(inst.referenceSeq.genomeBuild), force_bytes("GRCh 38")
-        )
-        self.assertEqual(force_bytes(inst.referenceSeq.strand), force_bytes("watson"))
-        self.assertEqual(inst.referenceSeq.windowEnd, 128273740)
-        self.assertEqual(inst.referenceSeq.windowStart, 128273736)
-        self.assertEqual(force_bytes(inst.text.status), force_bytes("generated"))
-        self.assertEqual(force_bytes(inst.type), force_bytes("dna"))
+def test_molecularsequence_5(base_settings):
+    """No. 5 tests collection for MolecularSequence.
+    Test File: sequence-example-TPMT-one.json
+    """
+    filename = base_settings["unittest_data_dir"] / "sequence-example-TPMT-one.json"
+    inst = molecularsequence.MolecularSequence.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "MolecularSequence" == inst.resource_type
+
+    impl_molecularsequence_5(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "MolecularSequence" == data["resourceType"]
+
+    inst2 = molecularsequence.MolecularSequence(**data)
+    impl_molecularsequence_5(inst2)
+
+
+def impl_molecularsequence_6(inst):
+    assert inst.coordinateSystem == 0
+    assert inst.id == "example-pgx-2"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.patient.reference == "Patient/example"
+    assert inst.referenceSeq.orientation == "sense"
+    assert inst.referenceSeq.referenceSeqId.coding[0].code == "NG_007726.3"
+    assert (
+        inst.referenceSeq.referenceSeqId.coding[0].system
+        == "http://www.ncbi.nlm.nih.gov/nuccore"
+    )
+    assert inst.referenceSeq.strand == "watson"
+    assert inst.referenceSeq.windowEnd == 55227980
+    assert inst.referenceSeq.windowStart == 55227970
+    assert inst.text.status == "generated"
+    assert inst.type == "dna"
+    assert inst.variant[0].end == 55227979
+    assert inst.variant[0].observedAllele == "G"
+    assert inst.variant[0].referenceAllele == "T"
+    assert inst.variant[0].start == 55227978
+    assert inst.variant[0].variantPointer.display == "Target Haplotype Observation"
+    assert inst.variant[0].variantPointer.reference == "Observation/example-haplotype2"
+
+
+def test_molecularsequence_6(base_settings):
+    """No. 6 tests collection for MolecularSequence.
+    Test File: sequence-example-pgx-2.json
+    """
+    filename = base_settings["unittest_data_dir"] / "sequence-example-pgx-2.json"
+    inst = molecularsequence.MolecularSequence.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "MolecularSequence" == inst.resource_type
+
+    impl_molecularsequence_6(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "MolecularSequence" == data["resourceType"]
+
+    inst2 = molecularsequence.MolecularSequence(**data)
+    impl_molecularsequence_6(inst2)
+
+
+def impl_molecularsequence_7(inst):
+    assert inst.coordinateSystem == 0
+    assert inst.id == "example"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.patient.reference == "Patient/example"
+    assert inst.referenceSeq.referenceSeqId.coding[0].code == "NC_000009.11"
+    assert (
+        inst.referenceSeq.referenceSeqId.coding[0].system
+        == "http://www.ncbi.nlm.nih.gov/nuccore"
+    )
+    assert inst.referenceSeq.strand == "watson"
+    assert inst.referenceSeq.windowEnd == 22125510
+    assert inst.referenceSeq.windowStart == 22125500
+    assert inst.repository[0].name == "GA4GH API"
+    assert inst.repository[0].type == "openapi"
+    assert (
+        inst.repository[0].url
+        == "http://grch37.rest.ensembl.org/ga4gh/variants/3:rs1333049?content-type=application/json"
+    )
+    assert inst.repository[0].variantsetId == "3:rs1333049"
+    assert inst.text.status == "generated"
+    assert inst.type == "dna"
+    assert inst.variant[0].end == 22125504
+    assert inst.variant[0].observedAllele == "C"
+    assert inst.variant[0].referenceAllele == "G"
+    assert inst.variant[0].start == 22125503
+
+
+def test_molecularsequence_7(base_settings):
+    """No. 7 tests collection for MolecularSequence.
+    Test File: molecularsequence-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "molecularsequence-example.json"
+    inst = molecularsequence.MolecularSequence.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "MolecularSequence" == inst.resource_type
+
+    impl_molecularsequence_7(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "MolecularSequence" == data["resourceType"]
+
+    inst2 = molecularsequence.MolecularSequence(**data)
+    impl_molecularsequence_7(inst2)
+
+
+def impl_molecularsequence_8(inst):
+    assert inst.coordinateSystem == 1
+    assert inst.id == "fda-example"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.patient.reference == "Patient/example"
+    assert inst.quality[0].end == 101770080
+    assert float(inst.quality[0].fScore) == float(0.545551)
+    assert float(inst.quality[0].gtFP) == float(2186)
+    assert inst.quality[0].method.coding[0].code == "job-ByxYPx809jFVy21KJG74Jg3Y"
+    assert inst.quality[0].method.coding[0].system == "https://precision.fda.gov/jobs/"
+    assert inst.quality[0].method.text == "Vcfeval + Hap.py Comparison"
+    assert float(inst.quality[0].precision) == float(0.428005)
+    assert float(inst.quality[0].queryFP) == float(10670)
+    assert float(inst.quality[0].queryTP) == float(7984)
+    assert float(inst.quality[0].recall) == float(0.752111)
+    assert (
+        inst.quality[0].standardSequence.coding[0].code
+        == "file-Bk50V4Q0qVb65P0v2VPbfYPZ"
+    )
+    assert (
+        inst.quality[0].standardSequence.coding[0].system
+        == "https://precision.fda.gov/files/"
+    )
+    assert inst.quality[0].start == 10453
+    assert float(inst.quality[0].truthFN) == float(2554)
+    assert float(inst.quality[0].truthTP) == float(7749)
+    assert inst.quality[0].type == "snp"
+    assert inst.referenceSeq.referenceSeqId.coding[0].code == "NC_000001.11"
+    assert (
+        inst.referenceSeq.referenceSeqId.coding[0].system
+        == "http://www.ncbi.nlm.nih.gov/nuccore"
+    )
+    assert inst.referenceSeq.strand == "watson"
+    assert inst.referenceSeq.windowEnd == 101770080
+    assert inst.referenceSeq.windowStart == 10453
+    assert inst.repository[0].name == "FDA"
+    assert inst.repository[0].type == "login"
+    assert (
+        inst.repository[0].url
+        == "https://precision.fda.gov/files/file-Bx37ZK009P4bX5g3qjkFZV38"
+    )
+    assert inst.repository[0].variantsetId == "file-Bx37ZK009P4bX5g3qjkFZV38"
+    assert inst.text.status == "generated"
+    assert inst.type == "dna"
+    assert inst.variant[0].end == 13117
+    assert inst.variant[0].observedAllele == "T"
+    assert inst.variant[0].referenceAllele == "G"
+    assert inst.variant[0].start == 13116
+
+
+def test_molecularsequence_8(base_settings):
+    """No. 8 tests collection for MolecularSequence.
+    Test File: sequence-example-fda.json
+    """
+    filename = base_settings["unittest_data_dir"] / "sequence-example-fda.json"
+    inst = molecularsequence.MolecularSequence.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "MolecularSequence" == inst.resource_type
+
+    impl_molecularsequence_8(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "MolecularSequence" == data["resourceType"]
+
+    inst2 = molecularsequence.MolecularSequence(**data)
+    impl_molecularsequence_8(inst2)
+
+
+def impl_molecularsequence_9(inst):
+    assert inst.coordinateSystem == 1
+    assert inst.id == "coord-1-base"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.observedSeq == "ACATGGTAGC"
+    assert inst.referenceSeq.referenceSeqString == "ACGTAGTC"
+    assert inst.referenceSeq.strand == "watson"
+    assert inst.referenceSeq.windowEnd == 8
+    assert inst.referenceSeq.windowStart == 1
+    assert inst.text.status == "generated"
+    assert inst.type == "dna"
+    assert inst.variant[0].cigar == "3I"
+    assert inst.variant[0].end == 3
+    assert inst.variant[0].observedAllele == "ATG"
+    assert inst.variant[0].referenceAllele == "-"
+    assert inst.variant[0].start == 2
+    assert inst.variant[1].cigar == "3I"
+    assert inst.variant[1].end == 5
+    assert inst.variant[1].observedAllele == "T"
+    assert inst.variant[1].referenceAllele == "A"
+    assert inst.variant[1].start == 5
+    assert inst.variant[2].cigar == "1D"
+    assert inst.variant[2].end == 7
+    assert inst.variant[2].observedAllele == "-"
+    assert inst.variant[2].referenceAllele == "T"
+    assert inst.variant[2].start == 7
+
+
+def test_molecularsequence_9(base_settings):
+    """No. 9 tests collection for MolecularSequence.
+    Test File: coord-1base-example.json
+    """
+    filename = base_settings["unittest_data_dir"] / "coord-1base-example.json"
+    inst = molecularsequence.MolecularSequence.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "MolecularSequence" == inst.resource_type
+
+    impl_molecularsequence_9(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "MolecularSequence" == data["resourceType"]
+
+    inst2 = molecularsequence.MolecularSequence(**data)
+    impl_molecularsequence_9(inst2)
+
+
+def impl_molecularsequence_10(inst):
+    assert inst.coordinateSystem == 0
+    assert inst.id == "graphic-example-4"
+    assert inst.meta.tag[0].code == "HTEST"
+    assert inst.meta.tag[0].display == "test health data"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert inst.referenceSeq.chromosome.coding[0].code == "2"
+    assert inst.referenceSeq.chromosome.coding[0].display == "chromosome 2"
+    assert (
+        inst.referenceSeq.chromosome.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/chromosome-human"
+    )
+    assert inst.referenceSeq.genomeBuild == "GRCh 38"
+    assert inst.referenceSeq.strand == "watson"
+    assert inst.referenceSeq.windowEnd == 128273740
+    assert inst.referenceSeq.windowStart == 128273736
+    assert inst.text.status == "generated"
+    assert inst.type == "dna"
+
+
+def test_molecularsequence_10(base_settings):
+    """No. 10 tests collection for MolecularSequence.
+    Test File: sequence-graphic-example-4.json
+    """
+    filename = base_settings["unittest_data_dir"] / "sequence-graphic-example-4.json"
+    inst = molecularsequence.MolecularSequence.parse_file(
+        filename, content_type="application/json", encoding="utf-8"
+    )
+    assert "MolecularSequence" == inst.resource_type
+
+    impl_molecularsequence_10(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.dict()
+    assert "MolecularSequence" == data["resourceType"]
+
+    inst2 = molecularsequence.MolecularSequence(**data)
+    impl_molecularsequence_10(inst2)

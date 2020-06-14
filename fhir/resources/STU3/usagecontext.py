@@ -6,100 +6,91 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from typing import Any, Dict
 
+from pydantic import Field, root_validator
 
-import sys
-
-from . import element
+from . import element, fhirtypes
 
 
 class UsageContext(element.Element):
     """ Describes the context of use for a conformance or knowledge resource.
-
     Specifies clinical/business/etc metadata that can be used to retrieve,
     index and/or categorize an artifact. This metadata can either be specific
     to the applicable population (e.g., age category, DRG) or the specific
     context of care (e.g., venue, care setting, provider of care).
     """
 
-    resource_type = "UsageContext"
+    resource_type = Field("UsageContext", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
+    code: fhirtypes.CodingType = Field(
+        ...,
+        alias="code",
+        title="Type `Coding` (represented as `dict` in JSON)",
+        description="Type of context being specified",
+    )
 
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
+    valueCodeableConcept: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="valueCodeableConcept",
+        title="Type `CodeableConcept` (represented as `dict` in JSON)",
+        description="Value that defines the context",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    valueQuantity: fhirtypes.QuantityType = Field(
+        None,
+        alias="valueQuantity",
+        title="Type `Quantity` (represented as `dict` in JSON)",
+        description="Value that defines the context",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    valueRange: fhirtypes.RangeType = Field(
+        None,
+        alias="valueRange",
+        title="Type `Range` (represented as `dict` in JSON)",
+        description="Value that defines the context",
+        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        one_of_many_required=True,
+    )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
         """
+        one_of_many_fields = {
+            "value": ["valueCodeableConcept", "valueQuantity", "valueRange",],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        self.code = None
-        """ Type of context being specified.
-        Type `Coding` (represented as `dict` in JSON). """
-
-        self.valueCodeableConcept = None
-        """ Value that defines the context.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.valueQuantity = None
-        """ Value that defines the context.
-        Type `Quantity` (represented as `dict` in JSON). """
-
-        self.valueRange = None
-        """ Value that defines the context.
-        Type `Range` (represented as `dict` in JSON). """
-
-        super(UsageContext, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(UsageContext, self).elementProperties()
-        js.extend(
-            [
-                ("code", "code", coding.Coding, "Coding", False, None, True),
-                (
-                    "valueCodeableConcept",
-                    "valueCodeableConcept",
-                    codeableconcept.CodeableConcept,
-                    "CodeableConcept",
-                    False,
-                    "value",
-                    True,
-                ),
-                (
-                    "valueQuantity",
-                    "valueQuantity",
-                    quantity.Quantity,
-                    "Quantity",
-                    False,
-                    "value",
-                    True,
-                ),
-                (
-                    "valueRange",
-                    "valueRange",
-                    range.Range,
-                    "Range",
-                    False,
-                    "value",
-                    True,
-                ),
-            ]
-        )
-        return js
-
-
-try:
-    from . import codeableconcept
-except ImportError:
-    codeableconcept = sys.modules[__package__ + ".codeableconcept"]
-try:
-    from . import coding
-except ImportError:
-    coding = sys.modules[__package__ + ".coding"]
-try:
-    from . import quantity
-except ImportError:
-    quantity = sys.modules[__package__ + ".quantity"]
-try:
-    from . import range
-except ImportError:
-    range = sys.modules[__package__ + ".range"]
+        return values

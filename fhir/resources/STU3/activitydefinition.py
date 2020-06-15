@@ -90,7 +90,10 @@ class ActivityDefinition(domainresource.DomainResource):
     dynamicValue: ListType[fhirtypes.ActivityDefinitionDynamicValueType] = Field(
         None,
         alias="dynamicValue",
-        title="List of `ActivityDefinitionDynamicValue` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ActivityDefinitionDynamicValue` items (represented as `dict` "
+            "in JSON)"
+        ),
         description="Dynamic aspects of the definition",
     )
 
@@ -139,14 +142,19 @@ class ActivityDefinition(domainresource.DomainResource):
     library: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="library",
-        title="List of `Reference` items referencing `Library` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Library` (represented as `dict`"
+            " in JSON)"
+        ),
         description="Logic used by the asset",
     )
 
     location: fhirtypes.ReferenceType = Field(
         None,
         alias="location",
-        title="Type `Reference` referencing `Location` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Location` (represented as `dict` in " "JSON)"
+        ),
         description="Where it should happen",
     )
 
@@ -160,7 +168,10 @@ class ActivityDefinition(domainresource.DomainResource):
     participant: ListType[fhirtypes.ActivityDefinitionParticipantType] = Field(
         None,
         alias="participant",
-        title="List of `ActivityDefinitionParticipant` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ActivityDefinitionParticipant` items (represented as `dict` "
+            "in JSON)"
+        ),
         description="Who should participate in the action",
     )
 
@@ -176,7 +187,10 @@ class ActivityDefinition(domainresource.DomainResource):
     productReference: fhirtypes.ReferenceType = Field(
         None,
         alias="productReference",
-        title="Type `Reference` referencing `Medication, Substance` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Medication, Substance` (represented as "
+            "`dict` in JSON)"
+        ),
         description="What\u0027s administered/supplied",
         one_of_many="product",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -270,7 +284,10 @@ class ActivityDefinition(domainresource.DomainResource):
     transform: fhirtypes.ReferenceType = Field(
         None,
         alias="transform",
-        title="Type `Reference` referencing `StructureMap` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `StructureMap` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Transform to apply the template",
     )
 
@@ -317,13 +334,8 @@ class ActivityDefinition(domainresource.DomainResource):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "product": ["productCodeableConcept", "productReference",],
-            "timing": [
-                "timingDateTime",
-                "timingPeriod",
-                "timingRange",
-                "timingTiming",
-            ],
+            "product": ["productCodeableConcept", "productReference"],
+            "timing": ["timingDateTime", "timingPeriod", "timingRange", "timingTiming"],
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

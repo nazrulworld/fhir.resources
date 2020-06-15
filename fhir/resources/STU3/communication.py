@@ -26,7 +26,10 @@ class Communication(domainresource.DomainResource):
     basedOn: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="basedOn",
-        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Resource` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Request fulfilled by this communication",
     )
 
@@ -40,14 +43,20 @@ class Communication(domainresource.DomainResource):
     context: fhirtypes.ReferenceType = Field(
         None,
         alias="context",
-        title="Type `Reference` referencing `Encounter, EpisodeOfCare` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Encounter, EpisodeOfCare` (represented "
+            "as `dict` in JSON)"
+        ),
         description="Encounter or episode leading to message",
     )
 
     definition: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="definition",
-        title="List of `Reference` items referencing `PlanDefinition, ActivityDefinition` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `PlanDefinition, "
+            "ActivityDefinition` (represented as `dict` in JSON)"
+        ),
         description="Instantiates protocol or definition",
     )
 
@@ -89,7 +98,10 @@ class Communication(domainresource.DomainResource):
     partOf: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="partOf",
-        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Resource` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Part of this action",
     )
 
@@ -110,7 +122,10 @@ class Communication(domainresource.DomainResource):
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="reasonReference",
-        title="List of `Reference` items referencing `Condition, Observation` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Condition, Observation` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Why was communication done?",
     )
 
@@ -124,14 +139,20 @@ class Communication(domainresource.DomainResource):
     recipient: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="recipient",
-        title="List of `Reference` items referencing `Device, Organization, Patient, Practitioner, RelatedPerson, Group` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Device, Organization, Patient, "
+            "Practitioner, RelatedPerson, Group` (represented as `dict` in JSON)"
+        ),
         description="Message recipient",
     )
 
     sender: fhirtypes.ReferenceType = Field(
         None,
         alias="sender",
-        title="Type `Reference` referencing `Device, Organization, Patient, Practitioner, RelatedPerson` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Device, Organization, Patient, "
+            "Practitioner, RelatedPerson` (represented as `dict` in JSON)"
+        ),
         description="Message sender",
     )
 
@@ -146,20 +167,29 @@ class Communication(domainresource.DomainResource):
         ...,
         alias="status",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="preparation | in-progress | suspended | aborted | completed | entered-in-error",
+        description=(
+            "preparation | in-progress | suspended | aborted | completed | entered-"
+            "in-error"
+        ),
     )
 
     subject: fhirtypes.ReferenceType = Field(
         None,
         alias="subject",
-        title="Type `Reference` referencing `Patient, Group` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Group` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Focus of message",
     )
 
     topic: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="topic",
-        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Resource` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Focal resources",
     )
 
@@ -183,7 +213,9 @@ class CommunicationPayload(backboneelement.BackboneElement):
     contentReference: fhirtypes.ReferenceType = Field(
         None,
         alias="contentReference",
-        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        ),
         description="Message part content",
         one_of_many="content",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
@@ -213,7 +245,7 @@ class CommunicationPayload(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "content": ["contentAttachment", "contentReference", "contentString",],
+            "content": ["contentAttachment", "contentReference", "contentString"]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

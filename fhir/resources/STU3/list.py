@@ -44,7 +44,10 @@ class List(domainresource.DomainResource):
     encounter: fhirtypes.ReferenceType = Field(
         None,
         alias="encounter",
-        title="Type `Reference` referencing `Encounter` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Encounter` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Context in which list created",
     )
 
@@ -86,7 +89,10 @@ class List(domainresource.DomainResource):
     source: fhirtypes.ReferenceType = Field(
         None,
         alias="source",
-        title="Type `Reference` referencing `Practitioner, Patient, Device` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, Patient, Device` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Who and/or what defined the list contents (aka Author)",
     )
 
@@ -100,7 +106,10 @@ class List(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         None,
         alias="subject",
-        title="Type `Reference` referencing `Patient, Group, Device, Location` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Group, Device, Location` "
+            "(represented as `dict` in JSON)"
+        ),
         description="If all resources have the same subject",
     )
 
@@ -143,6 +152,8 @@ class ListEntry(backboneelement.BackboneElement):
     item: fhirtypes.ReferenceType = Field(
         ...,
         alias="item",
-        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        ),
         description="Actual entry",
     )

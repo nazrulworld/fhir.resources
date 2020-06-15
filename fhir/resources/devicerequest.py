@@ -33,7 +33,10 @@ class DeviceRequest(domainresource.DomainResource):
     basedOn: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="basedOn",
-        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Resource` (represented as "
+            "`dict` in JSON)"
+        ),
         description="What request fulfills",
     )
 
@@ -58,7 +61,10 @@ class DeviceRequest(domainresource.DomainResource):
     encounter: fhirtypes.ReferenceType = Field(
         None,
         alias="encounter",
-        title="Type `Reference` referencing `Encounter` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Encounter` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Encounter motivating request",
     )
 
@@ -79,7 +85,10 @@ class DeviceRequest(domainresource.DomainResource):
     instantiatesCanonical: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="instantiatesCanonical",
-        title="List of `Canonical` items referencing `ActivityDefinition, PlanDefinition` (represented as `dict` in JSON)",
+        title=(
+            "List of `Canonical` items referencing `ActivityDefinition, "
+            "PlanDefinition` (represented as `dict` in JSON)"
+        ),
         description="Instantiates FHIR protocol or definition",
     )
 
@@ -93,7 +102,10 @@ class DeviceRequest(domainresource.DomainResource):
     insurance: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="insurance",
-        title="List of `Reference` items referencing `Coverage, ClaimResponse` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Coverage, ClaimResponse` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Associated insurance coverage",
     )
 
@@ -101,7 +113,10 @@ class DeviceRequest(domainresource.DomainResource):
         ...,
         alias="intent",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="proposal | plan | directive | order | original-order | reflex-order | filler-order | instance-order | option",
+        description=(
+            "proposal | plan | directive | order | original-order | reflex-order | "
+            "filler-order | instance-order | option"
+        ),
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
@@ -148,7 +163,11 @@ class DeviceRequest(domainresource.DomainResource):
     performer: fhirtypes.ReferenceType = Field(
         None,
         alias="performer",
-        title="Type `Reference` referencing `Practitioner, PractitionerRole, Organization, CareTeam, HealthcareService, Patient, Device, RelatedPerson` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, PractitionerRole, "
+            "Organization, CareTeam, HealthcareService, Patient, Device, "
+            "RelatedPerson` (represented as `dict` in JSON)"
+        ),
         description="Requested Filler",
     )
 
@@ -162,7 +181,10 @@ class DeviceRequest(domainresource.DomainResource):
     priorRequest: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="priorRequest",
-        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Resource` (represented as "
+            "`dict` in JSON)"
+        ),
         description="What request replaces",
     )
 
@@ -183,21 +205,30 @@ class DeviceRequest(domainresource.DomainResource):
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="reasonReference",
-        title="List of `Reference` items referencing `Condition, Observation, DiagnosticReport, DocumentReference` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Condition, Observation, "
+            "DiagnosticReport, DocumentReference` (represented as `dict` in JSON)"
+        ),
         description="Linked Reason for request",
     )
 
     relevantHistory: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="relevantHistory",
-        title="List of `Reference` items referencing `Provenance` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Provenance` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Request provenance",
     )
 
     requester: fhirtypes.ReferenceType = Field(
         None,
         alias="requester",
-        title="Type `Reference` referencing `Device, Practitioner, PractitionerRole, Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Device, Practitioner, PractitionerRole, "
+            "Organization` (represented as `dict` in JSON)"
+        ),
         description="Who/what is requesting diagnostics",
     )
 
@@ -205,20 +236,29 @@ class DeviceRequest(domainresource.DomainResource):
         None,
         alias="status",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="draft | active | on-hold | revoked | completed | entered-in-error | unknown",
+        description=(
+            "draft | active | on-hold | revoked | completed | entered-in-error | "
+            "unknown"
+        ),
     )
 
     subject: fhirtypes.ReferenceType = Field(
         ...,
         alias="subject",
-        title="Type `Reference` referencing `Patient, Group, Location, Device` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Group, Location, Device` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Focus of request",
     )
 
     supportingInfo: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="supportingInfo",
-        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Resource` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Additional clinical information",
     )
 
@@ -237,7 +277,7 @@ class DeviceRequest(domainresource.DomainResource):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "code": ["codeCodeableConcept", "codeReference",],
+            "code": ["codeCodeableConcept", "codeReference"],
             "occurrence": [
                 "occurrenceDateTime",
                 "occurrencePeriod",
@@ -337,7 +377,7 @@ class DeviceRequestParameter(backboneelement.BackboneElement):
                 "valueCodeableConcept",
                 "valueQuantity",
                 "valueRange",
-            ],
+            ]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

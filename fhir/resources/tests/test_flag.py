@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import flag
 
@@ -23,9 +25,9 @@ def impl_flag_1(inst):
     assert inst.code.coding[0].code == "bigdog"
     assert inst.code.coding[0].display == "Big dog"
     assert inst.code.coding[0].system == "http://example.org/local"
-    assert (
-        inst.code.text
-        == "Patient has a big dog at his home. Always always wear a suit of armor or take other active counter-measures"
+    assert inst.code.text == (
+        "Patient has a big dog at his home. Always always wear a suit"
+        " of armor or take other active counter-measures"
     )
     assert inst.id == "example"
     assert inst.identifier[0].value == "12345"
@@ -39,9 +41,9 @@ def impl_flag_1(inst):
     assert inst.status == "inactive"
     assert inst.subject.display == "Peter Patient"
     assert inst.subject.reference == "Patient/example"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Large Dog warning for Peter Patient</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Large Dog '
+        "warning for Peter Patient</div>"
     )
     assert inst.text.status == "generated"
 
@@ -83,9 +85,9 @@ def impl_flag_2(inst):
     assert inst.status == "active"
     assert inst.subject.display == "Peter Patient"
     assert inst.subject.reference == "Patient/example"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Follow Infection Control Level 3 Protocol</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Follow Infection'
+        " Control Level 3 Protocol</div>"
     )
     assert inst.text.status == "generated"
 

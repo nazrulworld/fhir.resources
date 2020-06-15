@@ -27,7 +27,10 @@ class DetectedIssue(domainresource.DomainResource):
     author: fhirtypes.ReferenceType = Field(
         None,
         alias="author",
-        title="Type `Reference` referencing `Practitioner, PractitionerRole, Device` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, PractitionerRole, Device` "
+            "(represented as `dict` in JSON)"
+        ),
         description="The provider or device that identified the issue",
     )
 
@@ -80,14 +83,19 @@ class DetectedIssue(domainresource.DomainResource):
     implicated: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="implicated",
-        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Resource` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Problem resource",
     )
 
     mitigation: ListType[fhirtypes.DetectedIssueMitigationType] = Field(
         None,
         alias="mitigation",
-        title="List of `DetectedIssueMitigation` items (represented as `dict` in JSON)",
+        title=(
+            "List of `DetectedIssueMitigation` items (represented as `dict` in " "JSON)"
+        ),
         description="Step taken to address",
     )
 
@@ -133,9 +141,7 @@ class DetectedIssue(domainresource.DomainResource):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "identified": ["identifiedDateTime", "identifiedPeriod",],
-        }
+        one_of_many_fields = {"identified": ["identifiedDateTime", "identifiedPeriod"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -176,7 +182,10 @@ class DetectedIssueEvidence(backboneelement.BackboneElement):
     detail: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="detail",
-        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Resource` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Supporting information",
     )
 
@@ -201,7 +210,10 @@ class DetectedIssueMitigation(backboneelement.BackboneElement):
     author: fhirtypes.ReferenceType = Field(
         None,
         alias="author",
-        title="Type `Reference` referencing `Practitioner, PractitionerRole` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, PractitionerRole` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Who is committing?",
     )
 

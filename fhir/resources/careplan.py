@@ -33,28 +33,41 @@ class CarePlan(domainresource.DomainResource):
     addresses: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="addresses",
-        title="List of `Reference` items referencing `Condition` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Condition` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Health issues this plan addresses",
     )
 
     author: fhirtypes.ReferenceType = Field(
         None,
         alias="author",
-        title="Type `Reference` referencing `Patient, Practitioner, PractitionerRole, Device, RelatedPerson, Organization, CareTeam` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Practitioner, PractitionerRole,"
+            " Device, RelatedPerson, Organization, CareTeam` (represented as `dict`"
+            " in JSON)"
+        ),
         description="Who is the designated responsible party",
     )
 
     basedOn: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="basedOn",
-        title="List of `Reference` items referencing `CarePlan` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `CarePlan` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Fulfills CarePlan",
     )
 
     careTeam: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="careTeam",
-        title="List of `Reference` items referencing `CareTeam` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `CareTeam` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Who\u0027s involved in plan?",
     )
 
@@ -68,7 +81,11 @@ class CarePlan(domainresource.DomainResource):
     contributor: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="contributor",
-        title="List of `Reference` items referencing `Patient, Practitioner, PractitionerRole, Device, RelatedPerson, Organization, CareTeam` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Patient, Practitioner, "
+            "PractitionerRole, Device, RelatedPerson, Organization, CareTeam` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Who provided the content of the care plan",
     )
 
@@ -89,14 +106,20 @@ class CarePlan(domainresource.DomainResource):
     encounter: fhirtypes.ReferenceType = Field(
         None,
         alias="encounter",
-        title="Type `Reference` referencing `Encounter` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Encounter` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Encounter created as part of",
     )
 
     goal: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="goal",
-        title="List of `Reference` items referencing `Goal` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Goal` (represented as `dict` in"
+            " JSON)"
+        ),
         description="Desired outcome of plan",
     )
 
@@ -110,7 +133,11 @@ class CarePlan(domainresource.DomainResource):
     instantiatesCanonical: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="instantiatesCanonical",
-        title="List of `Canonical` items referencing `PlanDefinition, Questionnaire, Measure, ActivityDefinition, OperationDefinition` (represented as `dict` in JSON)",
+        title=(
+            "List of `Canonical` items referencing `PlanDefinition, Questionnaire, "
+            "Measure, ActivityDefinition, OperationDefinition` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Instantiates FHIR protocol or definition",
     )
 
@@ -138,7 +165,10 @@ class CarePlan(domainresource.DomainResource):
     partOf: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="partOf",
-        title="List of `Reference` items referencing `CarePlan` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `CarePlan` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Part of referenced CarePlan",
     )
 
@@ -152,7 +182,10 @@ class CarePlan(domainresource.DomainResource):
     replaces: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="replaces",
-        title="List of `Reference` items referencing `CarePlan` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `CarePlan` (represented as "
+            "`dict` in JSON)"
+        ),
         description="CarePlan replaced by this CarePlan",
     )
 
@@ -160,20 +193,29 @@ class CarePlan(domainresource.DomainResource):
         ...,
         alias="status",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="draft | active | on-hold | revoked | completed | entered-in-error | unknown",
+        description=(
+            "draft | active | on-hold | revoked | completed | entered-in-error | "
+            "unknown"
+        ),
     )
 
     subject: fhirtypes.ReferenceType = Field(
         ...,
         alias="subject",
-        title="Type `Reference` referencing `Patient, Group` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Group` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Who the care plan is for",
     )
 
     supportingInfo: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="supportingInfo",
-        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Resource` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Information considered as part of plan",
     )
 
@@ -211,7 +253,10 @@ class CarePlanActivity(backboneelement.BackboneElement):
     outcomeReference: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="outcomeReference",
-        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Resource` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Appointment, Encounter, Procedure, etc.",
     )
 
@@ -225,7 +270,12 @@ class CarePlanActivity(backboneelement.BackboneElement):
     reference: fhirtypes.ReferenceType = Field(
         None,
         alias="reference",
-        title="Type `Reference` referencing `Appointment, CommunicationRequest, DeviceRequest, MedicationRequest, NutritionOrder, Task, ServiceRequest, VisionPrescription, RequestGroup` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Appointment, CommunicationRequest, "
+            "DeviceRequest, MedicationRequest, NutritionOrder, Task, "
+            "ServiceRequest, VisionPrescription, RequestGroup` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Activity details defined in specific resource",
     )
 
@@ -270,14 +320,21 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
     goal: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="goal",
-        title="List of `Reference` items referencing `Goal` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Goal` (represented as `dict` in"
+            " JSON)"
+        ),
         description="Goals this activity relates to",
     )
 
     instantiatesCanonical: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="instantiatesCanonical",
-        title="List of `Canonical` items referencing `PlanDefinition, ActivityDefinition, Questionnaire, Measure, OperationDefinition` (represented as `dict` in JSON)",
+        title=(
+            "List of `Canonical` items referencing `PlanDefinition, "
+            "ActivityDefinition, Questionnaire, Measure, OperationDefinition` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Instantiates FHIR protocol or definition",
     )
 
@@ -292,20 +349,29 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
         None,
         alias="kind",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="Appointment | CommunicationRequest | DeviceRequest | MedicationRequest | NutritionOrder | Task | ServiceRequest | VisionPrescription",
+        description=(
+            "Appointment | CommunicationRequest | DeviceRequest | MedicationRequest"
+            " | NutritionOrder | Task | ServiceRequest | VisionPrescription"
+        ),
     )
 
     location: fhirtypes.ReferenceType = Field(
         None,
         alias="location",
-        title="Type `Reference` referencing `Location` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Location` (represented as `dict` in " "JSON)"
+        ),
         description="Where it should happen",
     )
 
     performer: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="performer",
-        title="List of `Reference` items referencing `Practitioner, PractitionerRole, Organization, RelatedPerson, Patient, CareTeam, HealthcareService, Device` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Practitioner, PractitionerRole,"
+            " Organization, RelatedPerson, Patient, CareTeam, HealthcareService, "
+            "Device` (represented as `dict` in JSON)"
+        ),
         description="Who will be responsible?",
     )
 
@@ -321,7 +387,10 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
     productReference: fhirtypes.ReferenceType = Field(
         None,
         alias="productReference",
-        title="Type `Reference` referencing `Medication, Substance` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Medication, Substance` (represented as "
+            "`dict` in JSON)"
+        ),
         description="What is to be administered/supplied",
         one_of_many="product",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -344,7 +413,10 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="reasonReference",
-        title="List of `Reference` items referencing `Condition, Observation, DiagnosticReport, DocumentReference` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Condition, Observation, "
+            "DiagnosticReport, DocumentReference` (represented as `dict` in JSON)"
+        ),
         description="Why activity is needed",
     )
 
@@ -379,7 +451,10 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
         ...,
         alias="status",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="not-started | scheduled | in-progress | on-hold | completed | cancelled | stopped | unknown | entered-in-error",
+        description=(
+            "not-started | scheduled | in-progress | on-hold | completed | "
+            "cancelled | stopped | unknown | entered-in-error"
+        ),
     )
 
     statusReason: fhirtypes.CodeableConceptType = Field(
@@ -404,8 +479,8 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "product": ["productCodeableConcept", "productReference",],
-            "scheduled": ["scheduledPeriod", "scheduledString", "scheduledTiming",],
+            "product": ["productCodeableConcept", "productReference"],
+            "scheduled": ["scheduledPeriod", "scheduledString", "scheduledTiming"],
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

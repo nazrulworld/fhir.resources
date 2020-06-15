@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import library
 
@@ -19,9 +21,10 @@ def impl_library_1(inst):
     assert inst.content[0].url == "http://example.com/elm/OMTK-modelinfo-0.1.0.xml"
     assert inst.copyright == "© CDC 2016+."
     assert inst.date == fhirtypes.DateTime.validate("2017-05-05T11:15:33+10:00")
-    assert (
-        inst.description
-        == "Opioid Management Terminology Knowledge Base Model Definition for use in implementing CDC Opioid Prescribing Guidelines."
+    assert inst.description == (
+        "Opioid Management Terminology Knowledge Base Model "
+        "Definition for use in implementing CDC Opioid Prescribing "
+        "Guidelines."
     )
     assert inst.experimental is True
     assert inst.id == "omtk-modelinfo"
@@ -36,9 +39,8 @@ def impl_library_1(inst):
         inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     )
     assert inst.publisher == "Centers for Disease Control and Prevention (CDC)"
-    assert (
-        inst.purpose
-        == "This library defines the Opioid Management Terminology Knowledge Base model"
+    assert inst.purpose == (
+        "This library defines the Opioid Management Terminology " "Knowledge Base model"
     )
     assert inst.status == "active"
     assert inst.text.status == "generated"
@@ -49,9 +51,9 @@ def impl_library_1(inst):
         inst.type.coding[0].system
         == "http://terminology.hl7.org/CodeSystem/library-type"
     )
-    assert (
-        inst.usage
-        == "This library is used to resolve data elements in the Opioid Management Terminology Knowledge Base model"
+    assert inst.usage == (
+        "This library is used to resolve data elements in the Opioid "
+        "Management Terminology Knowledge Base model"
     )
     assert inst.useContext[0].code.code == "focus"
     assert inst.useContext[0].code.display == "Clinical Focus"
@@ -212,15 +214,15 @@ def impl_library_4(inst):
     )
     assert inst.dataRequirement[0].type == "MedicationRequest"
     assert inst.dataRequirement[1].codeFilter[0].path == "medicationCodeableConcept"
-    assert (
-        inst.dataRequirement[1].codeFilter[0].valueSet
-        == "http://example.org/fhir/ValueSet/opioids-abused-in-ambulatory-care"
+    assert inst.dataRequirement[1].codeFilter[0].valueSet == (
+        "http://example.org/fhir/ValueSet/opioids-abused-in-" "ambulatory-care"
     )
     assert inst.dataRequirement[1].type == "MedicationRequest"
     assert inst.date == fhirtypes.DateTime.validate("2018-03-25T13:49:09-06:00")
-    assert (
-        inst.description
-        == "Opioid decision support logic to avoid prescribing opioid pain medication and benzodiazepines concurrently whenever possible."
+    assert inst.description == (
+        "Opioid decision support logic to avoid prescribing opioid "
+        "pain medication and benzodiazepines concurrently whenever "
+        "possible."
     )
     assert inst.experimental is False
     assert inst.id == "opioidcds-recommendation-11"
@@ -235,18 +237,20 @@ def impl_library_4(inst):
         inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     )
     assert inst.publisher == "Centers for Disease Control and Prevention (CDC)"
-    assert (
-        inst.purpose
-        == "The purpose of this library is to determine whether opioid pain medication and benzodiazepines have been prescribed concurrently."
+    assert inst.purpose == (
+        "The purpose of this library is to determine whether opioid "
+        "pain medication and benzodiazepines have been prescribed "
+        "concurrently."
     )
     assert (
         inst.relatedArtifact[0].display
         == "CDC guideline for prescribing opioids for chronic pain"
     )
     assert inst.relatedArtifact[0].type == "documentation"
-    assert (
-        inst.relatedArtifact[0].url
-        == "https://guidelines.gov/summaries/summary/50153/cdc-guideline-for-prescribing-opioids-for-chronic-pain---united-states-2016#420"
+    assert inst.relatedArtifact[0].url == (
+        "https://guidelines.gov/summaries/summary/50153/cdc-"
+        "guideline-for-prescribing-opioids-for-chronic-pain---united-"
+        "states-2016#420"
     )
     assert inst.relatedArtifact[1].resource == "Library/opioidcds-common"
     assert inst.relatedArtifact[1].type == "depends-on"
@@ -260,9 +264,10 @@ def impl_library_4(inst):
         inst.type.coding[0].system
         == "http://terminology.hl7.org/CodeSystem/library-type"
     )
-    assert (
-        inst.usage
-        == "This library is used to notify the prescriber/user to avoid prescribing opioid pain medication and benzodiazepines concurrently."
+    assert inst.usage == (
+        "This library is used to notify the prescriber/user to avoid "
+        "prescribing opioid pain medication and benzodiazepines "
+        "concurrently."
     )
     assert inst.useContext[0].code.code == "focus"
     assert inst.useContext[0].code.display == "Clinical Focus"
@@ -327,9 +332,8 @@ def impl_library_5(inst):
     assert inst.content[0].contentType == "application/elm+xml"
     assert inst.copyright == "© CDC 2016+."
     assert inst.dataRequirement[0].codeFilter[0].path == "medicationCodeableConcept"
-    assert (
-        inst.dataRequirement[0].codeFilter[0].valueSet
-        == "http://example.org/fhir/ValueSet/opioids-indicating-end-of-life"
+    assert inst.dataRequirement[0].codeFilter[0].valueSet == (
+        "http://example.org/fhir/ValueSet/opioids-indicating-end-of-" "life"
     )
     assert inst.dataRequirement[0].type == "MedicationRequest"
     assert inst.dataRequirement[1].codeFilter[0].path == "code"
@@ -337,9 +341,8 @@ def impl_library_5(inst):
     assert inst.dataRequirement[2].codeFilter[0].path == "code"
     assert inst.dataRequirement[2].type == "Procedure"
     assert inst.dataRequirement[3].codeFilter[0].path == "medicationCodeableConcept"
-    assert (
-        inst.dataRequirement[3].codeFilter[0].valueSet
-        == "http://example.org/fhir/ValueSet/opioids-abused-in-ambulatory-care"
+    assert inst.dataRequirement[3].codeFilter[0].valueSet == (
+        "http://example.org/fhir/ValueSet/opioids-abused-in-" "ambulatory-care"
     )
     assert inst.dataRequirement[3].type == "MedicationRequest"
     assert inst.dataRequirement[4].type == "Encounter"
@@ -357,18 +360,21 @@ def impl_library_5(inst):
         inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     )
     assert inst.publisher == "Centers for Disease Control and Prevention (CDC)"
-    assert (
-        inst.purpose
-        == "The purpose of this library is to determine whether the patient has been evaluated for benefits and harms within 1 to 4 weeks of starting opioid therapy and every 3 months or more subsequently."
+    assert inst.purpose == (
+        "The purpose of this library is to determine whether the "
+        "patient has been evaluated for benefits and harms within 1 "
+        "to 4 weeks of starting opioid therapy and every 3 months or "
+        "more subsequently."
     )
     assert (
         inst.relatedArtifact[0].display
         == "CDC guideline for prescribing opioids for chronic pain"
     )
     assert inst.relatedArtifact[0].type == "documentation"
-    assert (
-        inst.relatedArtifact[0].url
-        == "https://guidelines.gov/summaries/summary/50153/cdc-guideline-for-prescribing-opioids-for-chronic-pain---united-states-2016#420"
+    assert inst.relatedArtifact[0].url == (
+        "https://guidelines.gov/summaries/summary/50153/cdc-"
+        "guideline-for-prescribing-opioids-for-chronic-pain---united-"
+        "states-2016#420"
     )
     assert inst.relatedArtifact[1].resource == "Library/opioidcds-common"
     assert inst.relatedArtifact[1].type == "depends-on"
@@ -382,9 +388,10 @@ def impl_library_5(inst):
         inst.type.coding[0].system
         == "http://terminology.hl7.org/CodeSystem/library-type"
     )
-    assert (
-        inst.usage
-        == "This library is used to notify the prescriber/user whether an evaluation for benefits and harms associated with opioid therapy is recommended for the patient."
+    assert inst.usage == (
+        "This library is used to notify the prescriber/user whether "
+        "an evaluation for benefits and harms associated with opioid "
+        "therapy is recommended for the patient."
     )
     assert inst.useContext[0].code.code == "focus"
     assert inst.useContext[0].code.display == "Clinical Focus"
@@ -537,21 +544,18 @@ def impl_library_8(inst):
     assert inst.content[0].contentType == "application/elm+xml"
     assert inst.copyright == "© CDC 2016+."
     assert inst.dataRequirement[0].codeFilter[0].path == "medicationCodeableConcept"
-    assert (
-        inst.dataRequirement[0].codeFilter[0].valueSet
-        == "http://example.org/fhir/ValueSet/opioids-indicating-end-of-life"
+    assert inst.dataRequirement[0].codeFilter[0].valueSet == (
+        "http://example.org/fhir/ValueSet/opioids-indicating-end-of-" "life"
     )
     assert inst.dataRequirement[0].type == "MedicationRequest"
     assert inst.dataRequirement[1].codeFilter[0].path == "medicationCodeableConcept"
-    assert (
-        inst.dataRequirement[1].codeFilter[0].valueSet
-        == "http://example.org/fhir/ValueSet/opioids-abused-in-ambulatory-care"
+    assert inst.dataRequirement[1].codeFilter[0].valueSet == (
+        "http://example.org/fhir/ValueSet/opioids-abused-in-" "ambulatory-care"
     )
     assert inst.dataRequirement[1].type == "MedicationRequest"
     assert inst.dataRequirement[2].codeFilter[0].path == "combo-code"
-    assert (
-        inst.dataRequirement[2].codeFilter[0].valueSet
-        == "http://example.org/fhir/ValueSet/illicit-drug-urine-screening"
+    assert inst.dataRequirement[2].codeFilter[0].valueSet == (
+        "http://example.org/fhir/ValueSet/illicit-drug-urine-" "screening"
     )
     assert inst.dataRequirement[2].type == "Observation"
     assert inst.dataRequirement[3].codeFilter[0].path == "combo-code"
@@ -561,9 +565,10 @@ def impl_library_8(inst):
     )
     assert inst.dataRequirement[3].type == "Observation"
     assert inst.date == fhirtypes.DateTime.validate("2018-03-25T13:49:09-06:00")
-    assert (
-        inst.description
-        == "Opioid decision support logic to evaluate whether the patient has had a urine screening in the past 12 months and provide analysis."
+    assert inst.description == (
+        "Opioid decision support logic to evaluate whether the "
+        "patient has had a urine screening in the past 12 months and "
+        "provide analysis."
     )
     assert inst.experimental is False
     assert inst.id == "opioidcds-recommendation-10"
@@ -583,9 +588,10 @@ def impl_library_8(inst):
         == "CDC guideline for prescribing opioids for chronic pain"
     )
     assert inst.relatedArtifact[0].type == "documentation"
-    assert (
-        inst.relatedArtifact[0].url
-        == "https://guidelines.gov/summaries/summary/50153/cdc-guideline-for-prescribing-opioids-for-chronic-pain---united-states-2016#420"
+    assert inst.relatedArtifact[0].url == (
+        "https://guidelines.gov/summaries/summary/50153/cdc-"
+        "guideline-for-prescribing-opioids-for-chronic-pain---united-"
+        "states-2016#420"
     )
     assert inst.relatedArtifact[1].resource == "Library/opioidcds-common"
     assert inst.relatedArtifact[1].type == "depends-on"
@@ -599,9 +605,10 @@ def impl_library_8(inst):
         inst.type.coding[0].system
         == "http://terminology.hl7.org/CodeSystem/library-type"
     )
-    assert (
-        inst.usage
-        == "This library is used to notify the prescriber/user whether the patient has had a urine screening in the past 12 months and to provide analysis if true."
+    assert inst.usage == (
+        "This library is used to notify the prescriber/user whether "
+        "the patient has had a urine screening in the past 12 months "
+        "and to provide analysis if true."
     )
     assert inst.useContext[0].code.code == "focus"
     assert inst.useContext[0].code.display == "Clinical Focus"
@@ -723,9 +730,8 @@ def impl_library_9(inst):
     )
     assert inst.dataRequirement[7].type == "MedicationStatement"
     assert inst.date == fhirtypes.DateTime.validate("2015-07-22T11:15:33+10:00")
-    assert (
-        inst.description
-        == "Logic for CMS 146: Appropriate Testing for Children with Pharyngitis"
+    assert inst.description == (
+        "Logic for CMS 146: Appropriate Testing for Children with " "Pharyngitis"
     )
     assert inst.id == "library-cms146-example"
     assert inst.identifier[0].use == "official"
@@ -774,17 +780,16 @@ def impl_library_10(inst):
     assert inst.dataRequirement[0].codeFilter[0].code[0].code == "active"
     assert inst.dataRequirement[0].codeFilter[0].path == "status"
     assert inst.dataRequirement[0].codeFilter[1].code[0].code == "outpatient"
-    assert (
-        inst.dataRequirement[0].codeFilter[1].code[0].system
-        == "http://terminology.hl7.org/CodeSystem/medicationrequest-category"
+    assert inst.dataRequirement[0].codeFilter[1].code[0].system == (
+        "http://terminology.hl7.org/CodeSystem/medicationrequest-" "category"
     )
     assert inst.dataRequirement[0].codeFilter[1].path == "category"
     assert inst.dataRequirement[0].id == "medications"
     assert inst.dataRequirement[0].type == "MedicationRequest"
     assert inst.date == fhirtypes.DateTime.validate("2018-03-25T13:49:09-06:00")
-    assert (
-        inst.description
-        == "Opioid Decision Support Logic for use in implementing CDC Opioid Prescribing Guidelines."
+    assert inst.description == (
+        "Opioid Decision Support Logic for use in implementing CDC "
+        "Opioid Prescribing Guidelines."
     )
     assert inst.experimental is False
     assert inst.id == "opioidcds-recommendation-05"
@@ -799,26 +804,27 @@ def impl_library_10(inst):
         inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     )
     assert inst.publisher == "Centers for Disease Control and Prevention (CDC)"
-    assert (
-        inst.purpose
-        == "This library works in concert with the OMTK logic library to provide decision support for Morphine Milligram Equivalence calculations and dynamic value resolution."
+    assert inst.purpose == (
+        "This library works in concert with the OMTK logic library to"
+        " provide decision support for Morphine Milligram Equivalence"
+        " calculations and dynamic value resolution."
     )
     assert (
         inst.relatedArtifact[0].display
         == "CDC guideline for prescribing opioids for chronic pain"
     )
     assert inst.relatedArtifact[0].type == "documentation"
-    assert (
-        inst.relatedArtifact[0].url
-        == "https://guidelines.gov/summaries/summary/50153/cdc-guideline-for-prescribing-opioids-for-chronic-pain---united-states-2016#420"
+    assert inst.relatedArtifact[0].url == (
+        "https://guidelines.gov/summaries/summary/50153/cdc-"
+        "guideline-for-prescribing-opioids-for-chronic-pain---united-"
+        "states-2016#420"
     )
     assert inst.relatedArtifact[1].resource == "Library/opioidcds-common"
     assert inst.relatedArtifact[1].type == "depends-on"
     assert inst.relatedArtifact[2].display == "MME Conversion Tables"
     assert inst.relatedArtifact[2].type == "documentation"
-    assert (
-        inst.relatedArtifact[2].url
-        == "https://www.cdc.gov/drugoverdose/pdf/calculating_total_daily_dose-a.pdf"
+    assert inst.relatedArtifact[2].url == (
+        "https://www.cdc.gov/drugoverdose/pdf/calculating_total_daily" "_dose-a.pdf"
     )
     assert inst.status == "active"
     assert inst.text.status == "generated"
@@ -830,9 +836,9 @@ def impl_library_10(inst):
         inst.type.coding[0].system
         == "http://terminology.hl7.org/CodeSystem/library-type"
     )
-    assert (
-        inst.usage
-        == "This library is to notify the prescriber/user whether the current prescription exceeds the recommended MME."
+    assert inst.usage == (
+        "This library is to notify the prescriber/user whether the "
+        "current prescription exceeds the recommended MME."
     )
     assert inst.useContext[0].code.code == "focus"
     assert inst.useContext[0].code.display == "Clinical Focus"

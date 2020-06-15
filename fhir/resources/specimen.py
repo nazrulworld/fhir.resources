@@ -66,7 +66,10 @@ class Specimen(domainresource.DomainResource):
     parent: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="parent",
-        title="List of `Reference` items referencing `Specimen` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Specimen` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Specimen from which this specimen originated",
     )
 
@@ -87,7 +90,10 @@ class Specimen(domainresource.DomainResource):
     request: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="request",
-        title="List of `Reference` items referencing `ServiceRequest` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `ServiceRequest` (represented as"
+            " `dict` in JSON)"
+        ),
         description="Why the specimen was collected",
     )
 
@@ -101,8 +107,15 @@ class Specimen(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         None,
         alias="subject",
-        title="Type `Reference` referencing `Patient, Group, Device, Substance, Location` (represented as `dict` in JSON)",
-        description="Where the specimen came from. This may be from patient(s), from a location (e.g., the source of an environmental sample), or a sampling of a substance or a device",
+        title=(
+            "Type `Reference` referencing `Patient, Group, Device, Substance, "
+            "Location` (represented as `dict` in JSON)"
+        ),
+        description=(
+            "Where the specimen came from. This may be from patient(s), from a "
+            "location (e.g., the source of an environmental sample), or a sampling "
+            "of a substance or a device"
+        ),
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -148,7 +161,10 @@ class SpecimenCollection(backboneelement.BackboneElement):
     collector: fhirtypes.ReferenceType = Field(
         None,
         alias="collector",
-        title="Type `Reference` referencing `Practitioner, PractitionerRole` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, PractitionerRole` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Who collected the specimen",
     )
 
@@ -206,8 +222,8 @@ class SpecimenCollection(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "collected": ["collectedDateTime", "collectedPeriod",],
-            "fastingStatus": ["fastingStatusCodeableConcept", "fastingStatusDuration",],
+            "collected": ["collectedDateTime", "collectedPeriod"],
+            "fastingStatus": ["fastingStatusCodeableConcept", "fastingStatusDuration"],
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
@@ -251,7 +267,10 @@ class SpecimenContainer(backboneelement.BackboneElement):
     additiveReference: fhirtypes.ReferenceType = Field(
         None,
         alias="additiveReference",
-        title="Type `Reference` referencing `Substance` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Substance` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Additive associated with container",
         one_of_many="additive",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -307,7 +326,7 @@ class SpecimenContainer(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "additive": ["additiveCodeableConcept", "additiveReference",],
+            "additive": ["additiveCodeableConcept", "additiveReference"]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
@@ -341,7 +360,10 @@ class SpecimenProcessing(backboneelement.BackboneElement):
     additive: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="additive",
-        title="List of `Reference` items referencing `Substance` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Substance` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Material used in the processing step",
     )
 
@@ -391,9 +413,7 @@ class SpecimenProcessing(backboneelement.BackboneElement):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "time": ["timeDateTime", "timePeriod",],
-        }
+        one_of_many_fields = {"time": ["timeDateTime", "timePeriod"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (

@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import allergyintolerance
 
@@ -23,15 +25,15 @@ def impl_allergyintolerance_1(inst):
     assert inst.identifier[0].system == "http://acme.com/ids/patients/risks"
     assert inst.identifier[0].value == "49476534"
     assert inst.lastOccurrence == fhirtypes.DateTime.validate("2012-06")
-    assert (
-        inst.note[0].text
-        == "The criticality is high becasue of the observed anaphylactic reaction when challenged with cashew extract."
+    assert inst.note[0].text == (
+        "The criticality is high becasue of the observed anaphylactic"
+        " reaction when challenged with cashew extract."
     )
     assert inst.onsetDateTime == fhirtypes.DateTime.validate("2004")
     assert inst.patient.reference == "Patient/example"
-    assert (
-        inst.reaction[0].description
-        == "Challenge Protocol. Severe reaction to subcutaneous cashew extract. Epinephrine administered"
+    assert inst.reaction[0].description == (
+        "Challenge Protocol. Severe reaction to subcutaneous cashew "
+        "extract. Epinephrine administered"
     )
     assert inst.reaction[0].exposureRoute.coding[0].code == "34206005"
     assert inst.reaction[0].exposureRoute.coding[0].display == "Subcutaneous route"
@@ -59,9 +61,9 @@ def impl_allergyintolerance_1(inst):
     assert (
         inst.reaction[1].manifestation[0].coding[0].system == "http://snomed.info/sct"
     )
-    assert (
-        inst.reaction[1].note[0].text
-        == "The patient reports that the onset of urticaria was within 15 minutes of eating cashews."
+    assert inst.reaction[1].note[0].text == (
+        "The patient reports that the onset of urticaria was within "
+        "15 minutes of eating cashews."
     )
     assert inst.reaction[1].onset == fhirtypes.DateTime.validate("2004")
     assert inst.reaction[1].severity == "moderate"

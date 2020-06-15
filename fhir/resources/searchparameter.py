@@ -52,7 +52,10 @@ class SearchParameter(domainresource.DomainResource):
     component: ListType[fhirtypes.SearchParameterComponentType] = Field(
         None,
         alias="component",
-        title="List of `SearchParameterComponent` items (represented as `dict` in JSON)",
+        title=(
+            "List of `SearchParameterComponent` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="For Composite resources to define the parts",
     )
 
@@ -73,7 +76,10 @@ class SearchParameter(domainresource.DomainResource):
     derivedFrom: fhirtypes.Canonical = Field(
         None,
         alias="derivedFrom",
-        title="Type `Canonical` referencing `SearchParameter` (represented as `dict` in JSON)",
+        title=(
+            "Type `Canonical` referencing `SearchParameter` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Original definition for the search parameter",
     )
 
@@ -109,7 +115,10 @@ class SearchParameter(domainresource.DomainResource):
         None,
         alias="modifier",
         title="List of `Code` items (represented as `dict` in JSON)",
-        description="missing | exact | contains | not | text | in | not-in | below | above | type | identifier | ofType",
+        description=(
+            "missing | exact | contains | not | text | in | not-in | below | above "
+            "| type | identifier | ofType"
+        ),
     )
 
     multipleAnd: bool = Field(
@@ -165,14 +174,20 @@ class SearchParameter(domainresource.DomainResource):
         ...,
         alias="type",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="number | date | string | token | reference | composite | quantity | uri | special",
+        description=(
+            "number | date | string | token | reference | composite | quantity | "
+            "uri | special"
+        ),
     )
 
     url: fhirtypes.Uri = Field(
         ...,
         alias="url",
         title="Type `Uri` (represented as `dict` in JSON)",
-        description="Canonical identifier for this search parameter, represented as a URI (globally unique)",
+        description=(
+            "Canonical identifier for this search parameter, represented as a URI "
+            "(globally unique)"
+        ),
     )
 
     useContext: ListType[fhirtypes.UsageContextType] = Field(
@@ -214,7 +229,10 @@ class SearchParameterComponent(backboneelement.BackboneElement):
     definition: fhirtypes.Canonical = Field(
         ...,
         alias="definition",
-        title="Type `Canonical` referencing `SearchParameter` (represented as `dict` in JSON)",
+        title=(
+            "Type `Canonical` referencing `SearchParameter` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Defines how the part works",
     )
 

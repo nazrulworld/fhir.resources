@@ -26,7 +26,10 @@ class MedicationKnowledge(domainresource.DomainResource):
     ] = Field(
         None,
         alias="administrationGuidelines",
-        title="List of `MedicationKnowledgeAdministrationGuidelines` items (represented as `dict` in JSON)",
+        title=(
+            "List of `MedicationKnowledgeAdministrationGuidelines` items "
+            "(represented as `dict` in JSON)"
+        ),
         description="Guidelines for administration of the medication",
     )
 
@@ -40,7 +43,10 @@ class MedicationKnowledge(domainresource.DomainResource):
     associatedMedication: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="associatedMedication",
-        title="List of `Reference` items referencing `Medication` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Medication` (represented as "
+            "`dict` in JSON)"
+        ),
         description="A medication resource that is associated with this medication",
     )
 
@@ -54,14 +60,19 @@ class MedicationKnowledge(domainresource.DomainResource):
     contraindication: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="contraindication",
-        title="List of `Reference` items referencing `DetectedIssue` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `DetectedIssue` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Potential clinical issue with or between medication(s)",
     )
 
     cost: ListType[fhirtypes.MedicationKnowledgeCostType] = Field(
         None,
         alias="cost",
-        title="List of `MedicationKnowledgeCost` items (represented as `dict` in JSON)",
+        title=(
+            "List of `MedicationKnowledgeCost` items (represented as `dict` in " "JSON)"
+        ),
         description="The pricing of the medication",
     )
 
@@ -77,14 +88,20 @@ class MedicationKnowledge(domainresource.DomainResource):
     ] = Field(
         None,
         alias="drugCharacteristic",
-        title="List of `MedicationKnowledgeDrugCharacteristic` items (represented as `dict` in JSON)",
+        title=(
+            "List of `MedicationKnowledgeDrugCharacteristic` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Specifies descriptive properties of the medicine",
     )
 
     ingredient: ListType[fhirtypes.MedicationKnowledgeIngredientType] = Field(
         None,
         alias="ingredient",
-        title="List of `MedicationKnowledgeIngredient` items (represented as `dict` in JSON)",
+        title=(
+            "List of `MedicationKnowledgeIngredient` items (represented as `dict` "
+            "in JSON)"
+        ),
         description="Active or inactive ingredient",
     )
 
@@ -98,14 +115,23 @@ class MedicationKnowledge(domainresource.DomainResource):
     kinetics: ListType[fhirtypes.MedicationKnowledgeKineticsType] = Field(
         None,
         alias="kinetics",
-        title="List of `MedicationKnowledgeKinetics` items (represented as `dict` in JSON)",
-        description="The time course of drug absorption, distribution, metabolism and excretion of a medication from the body",
+        title=(
+            "List of `MedicationKnowledgeKinetics` items (represented as `dict` in "
+            "JSON)"
+        ),
+        description=(
+            "The time course of drug absorption, distribution, metabolism and "
+            "excretion of a medication from the body"
+        ),
     )
 
     manufacturer: fhirtypes.ReferenceType = Field(
         None,
         alias="manufacturer",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Manufacturer of the item",
     )
 
@@ -114,8 +140,14 @@ class MedicationKnowledge(domainresource.DomainResource):
     ] = Field(
         None,
         alias="medicineClassification",
-        title="List of `MedicationKnowledgeMedicineClassification` items (represented as `dict` in JSON)",
-        description="Categorization of the medication within a formulary or classification system",
+        title=(
+            "List of `MedicationKnowledgeMedicineClassification` items (represented"
+            " as `dict` in JSON)"
+        ),
+        description=(
+            "Categorization of the medication within a formulary or classification "
+            "system"
+        ),
     )
 
     monitoringProgram: ListType[
@@ -123,14 +155,20 @@ class MedicationKnowledge(domainresource.DomainResource):
     ] = Field(
         None,
         alias="monitoringProgram",
-        title="List of `MedicationKnowledgeMonitoringProgram` items (represented as `dict` in JSON)",
+        title=(
+            "List of `MedicationKnowledgeMonitoringProgram` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Program under which a medication is reviewed",
     )
 
     monograph: ListType[fhirtypes.MedicationKnowledgeMonographType] = Field(
         None,
         alias="monograph",
-        title="List of `MedicationKnowledgeMonograph` items (represented as `dict` in JSON)",
+        title=(
+            "List of `MedicationKnowledgeMonograph` items (represented as `dict` in"
+            " JSON)"
+        ),
         description="Associated documentation about the medication",
     )
 
@@ -158,7 +196,10 @@ class MedicationKnowledge(domainresource.DomainResource):
     regulatory: ListType[fhirtypes.MedicationKnowledgeRegulatoryType] = Field(
         None,
         alias="regulatory",
-        title="List of `MedicationKnowledgeRegulatory` items (represented as `dict` in JSON)",
+        title=(
+            "List of `MedicationKnowledgeRegulatory` items (represented as `dict` "
+            "in JSON)"
+        ),
         description="Regulatory information about a medication",
     )
 
@@ -167,7 +208,10 @@ class MedicationKnowledge(domainresource.DomainResource):
     ] = Field(
         None,
         alias="relatedMedicationKnowledge",
-        title="List of `MedicationKnowledgeRelatedMedicationKnowledge` items (represented as `dict` in JSON)",
+        title=(
+            "List of `MedicationKnowledgeRelatedMedicationKnowledge` items "
+            "(represented as `dict` in JSON)"
+        ),
         description="Associated or related medication information",
     )
 
@@ -198,7 +242,10 @@ class MedicationKnowledgeAdministrationGuidelines(backboneelement.BackboneElemen
     ] = Field(
         None,
         alias="dosage",
-        title="List of `MedicationKnowledgeAdministrationGuidelinesDosage` items (represented as `dict` in JSON)",
+        title=(
+            "List of `MedicationKnowledgeAdministrationGuidelinesDosage` items "
+            "(represented as `dict` in JSON)"
+        ),
         description="Dosage for the medication for the specific guidelines",
     )
 
@@ -206,7 +253,9 @@ class MedicationKnowledgeAdministrationGuidelines(backboneelement.BackboneElemen
         None,
         alias="indicationCodeableConcept",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Indication for use that apply to the specific administration guidelines",
+        description=(
+            "Indication for use that apply to the specific administration " "guidelines"
+        ),
         one_of_many="indication",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
     )
@@ -214,8 +263,13 @@ class MedicationKnowledgeAdministrationGuidelines(backboneelement.BackboneElemen
     indicationReference: fhirtypes.ReferenceType = Field(
         None,
         alias="indicationReference",
-        title="Type `Reference` referencing `ObservationDefinition` (represented as `dict` in JSON)",
-        description="Indication for use that apply to the specific administration guidelines",
+        title=(
+            "Type `Reference` referencing `ObservationDefinition` (represented as "
+            "`dict` in JSON)"
+        ),
+        description=(
+            "Indication for use that apply to the specific administration " "guidelines"
+        ),
         one_of_many="indication",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
     )
@@ -225,8 +279,15 @@ class MedicationKnowledgeAdministrationGuidelines(backboneelement.BackboneElemen
     ] = Field(
         None,
         alias="patientCharacteristics",
-        title="List of `MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics` items (represented as `dict` in JSON)",
-        description="Characteristics of the patient that are relevant to the administration guidelines",
+        title=(
+            "List of "
+            "`MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics` "
+            "items (represented as `dict` in JSON)"
+        ),
+        description=(
+            "Characteristics of the patient that are relevant to the administration"
+            " guidelines"
+        ),
     )
 
     @root_validator(pre=True)
@@ -244,7 +305,7 @@ class MedicationKnowledgeAdministrationGuidelines(backboneelement.BackboneElemen
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "indication": ["indicationCodeableConcept", "indicationReference",],
+            "indication": ["indicationCodeableConcept", "indicationReference"]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
@@ -310,7 +371,10 @@ class MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics(
         None,
         alias="characteristicCodeableConcept",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Specific characteristic that is relevant to the administration guideline",
+        description=(
+            "Specific characteristic that is relevant to the administration "
+            "guideline"
+        ),
         one_of_many="characteristic",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
     )
@@ -319,7 +383,10 @@ class MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics(
         None,
         alias="characteristicQuantity",
         title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Specific characteristic that is relevant to the administration guideline",
+        description=(
+            "Specific characteristic that is relevant to the administration "
+            "guideline"
+        ),
         one_of_many="characteristic",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
     )
@@ -349,7 +416,7 @@ class MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics(
             "characteristic": [
                 "characteristicCodeableConcept",
                 "characteristicQuantity",
-            ],
+            ]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
@@ -473,7 +540,7 @@ class MedicationKnowledgeDrugCharacteristic(backboneelement.BackboneElement):
                 "valueCodeableConcept",
                 "valueQuantity",
                 "valueString",
-            ],
+            ]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
@@ -523,7 +590,10 @@ class MedicationKnowledgeIngredient(backboneelement.BackboneElement):
     itemReference: fhirtypes.ReferenceType = Field(
         None,
         alias="itemReference",
-        title="Type `Reference` referencing `Substance` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Substance` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Medication(s) or substance(s) contained in the medication",
         one_of_many="item",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
@@ -550,9 +620,7 @@ class MedicationKnowledgeIngredient(backboneelement.BackboneElement):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "item": ["itemCodeableConcept", "itemReference",],
-        }
+        one_of_many_fields = {"item": ["itemCodeableConcept", "itemReference"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -622,7 +690,10 @@ class MedicationKnowledgeMedicineClassification(backboneelement.BackboneElement)
         ...,
         alias="type",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The type of category for the medication (for example, therapeutic classification, therapeutic sub-classification)",
+        description=(
+            "The type of category for the medication (for example, therapeutic "
+            "classification, therapeutic sub-classification)"
+        ),
     )
 
 
@@ -657,7 +728,10 @@ class MedicationKnowledgeMonograph(backboneelement.BackboneElement):
     source: fhirtypes.ReferenceType = Field(
         None,
         alias="source",
-        title="Type `Reference` referencing `DocumentReference, Media` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `DocumentReference, Media` (represented "
+            "as `dict` in JSON)"
+        ),
         description="Associated documentation about the medication",
     )
 
@@ -687,7 +761,10 @@ class MedicationKnowledgePackaging(backboneelement.BackboneElement):
         None,
         alias="type",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="A code that defines the specific type of packaging that the medication can be found in",
+        description=(
+            "A code that defines the specific type of packaging that the medication"
+            " can be found in"
+        ),
     )
 
 
@@ -700,21 +777,33 @@ class MedicationKnowledgeRegulatory(backboneelement.BackboneElement):
     maxDispense: fhirtypes.MedicationKnowledgeRegulatoryMaxDispenseType = Field(
         None,
         alias="maxDispense",
-        title="Type `MedicationKnowledgeRegulatoryMaxDispense` (represented as `dict` in JSON)",
-        description="The maximum number of units of the medication that can be dispensed in a period",
+        title=(
+            "Type `MedicationKnowledgeRegulatoryMaxDispense` (represented as `dict`"
+            " in JSON)"
+        ),
+        description=(
+            "The maximum number of units of the medication that can be dispensed in"
+            " a period"
+        ),
     )
 
     regulatoryAuthority: fhirtypes.ReferenceType = Field(
         ...,
         alias="regulatoryAuthority",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Specifies the authority of the regulation",
     )
 
     schedule: ListType[fhirtypes.MedicationKnowledgeRegulatoryScheduleType] = Field(
         None,
         alias="schedule",
-        title="List of `MedicationKnowledgeRegulatorySchedule` items (represented as `dict` in JSON)",
+        title=(
+            "List of `MedicationKnowledgeRegulatorySchedule` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Specifies the schedule of a medication in jurisdiction",
     )
 
@@ -723,8 +812,14 @@ class MedicationKnowledgeRegulatory(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="substitution",
-        title="List of `MedicationKnowledgeRegulatorySubstitution` items (represented as `dict` in JSON)",
-        description="Specifies if changes are allowed when dispensing a medication from a regulatory perspective",
+        title=(
+            "List of `MedicationKnowledgeRegulatorySubstitution` items (represented"
+            " as `dict` in JSON)"
+        ),
+        description=(
+            "Specifies if changes are allowed when dispensing a medication from a "
+            "regulatory perspective"
+        ),
     )
 
 
@@ -775,7 +870,10 @@ class MedicationKnowledgeRegulatorySubstitution(backboneelement.BackboneElement)
         ...,
         alias="allowed",
         title="Type `bool`",
-        description="Specifies if regulation allows for changes in the medication when dispensing",
+        description=(
+            "Specifies if regulation allows for changes in the medication when "
+            "dispensing"
+        ),
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -796,7 +894,10 @@ class MedicationKnowledgeRelatedMedicationKnowledge(backboneelement.BackboneElem
     reference: ListType[fhirtypes.ReferenceType] = Field(
         ...,
         alias="reference",
-        title="List of `Reference` items referencing `MedicationKnowledge` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `MedicationKnowledge` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Associated documentation about the associated medication knowledge",
     )
 

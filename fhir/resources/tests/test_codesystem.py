@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import codesystem
 
@@ -13,27 +15,27 @@ from .. import codesystem
 def impl_codesystem_1(inst):
     assert inst.caseSensitive is True
     assert inst.concept[0].code == "source"
-    assert (
-        inst.concept[0].definition
-        == "This structure describes an instance passed to the mapping engine that is used a source of data."
+    assert inst.concept[0].definition == (
+        "This structure describes an instance passed to the mapping "
+        "engine that is used a source of data."
     )
     assert inst.concept[0].display == "Source Structure Definition"
     assert inst.concept[1].code == "queried"
-    assert (
-        inst.concept[1].definition
-        == "This structure describes an instance that the mapping engine may ask for that is used a source of data."
+    assert inst.concept[1].definition == (
+        "This structure describes an instance that the mapping engine"
+        " may ask for that is used a source of data."
     )
     assert inst.concept[1].display == "Queried Structure Definition"
     assert inst.concept[2].code == "target"
-    assert (
-        inst.concept[2].definition
-        == "This structure describes an instance passed to the mapping engine that is used a target of data."
+    assert inst.concept[2].definition == (
+        "This structure describes an instance passed to the mapping "
+        "engine that is used a target of data."
     )
     assert inst.concept[2].display == "Target Structure Definition"
     assert inst.concept[3].code == "produced"
-    assert (
-        inst.concept[3].definition
-        == "This structure describes an instance that the mapping engine may ask to create that is used a target of data."
+    assert inst.concept[3].definition == (
+        "This structure describes an instance that the mapping engine"
+        " may ask to create that is used a target of data."
     )
     assert inst.concept[3].display == "Produced Structure Definition"
     assert inst.contact[0].telecom[0].system == "url"
@@ -44,19 +46,17 @@ def impl_codesystem_1(inst):
     assert inst.date == fhirtypes.DateTime.validate("2019-11-01T09:29:23+11:00")
     assert inst.description == "How the referenced structure is used in this mapping."
     assert inst.experimental is False
-    assert (
-        inst.extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+    assert inst.extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
     )
     assert inst.extension[0].valueCode == "fhir"
-    assert (
-        inst.extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+    assert inst.extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
+        "standards-status"
     )
     assert inst.extension[1].valueCode == "trial-use"
-    assert (
-        inst.extension[2].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    assert inst.extension[2].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
     )
     assert inst.extension[2].valueInteger == 2
     assert inst.id == "map-model-mode"
@@ -104,24 +104,24 @@ def impl_codesystem_2(inst):
     assert inst.concept[1].definition == "Boolean false."
     assert inst.concept[1].display == "false"
     assert inst.concept[2].code == "trace"
-    assert (
-        inst.concept[2].definition
-        == "The content is greater than zero, but too small to be quantified."
+    assert inst.concept[2].definition == (
+        "The content is greater than zero, but too small to be " "quantified."
     )
     assert inst.concept[2].display == "Trace Amount Detected"
     assert inst.concept[3].code == "sufficient"
-    assert (
-        inst.concept[3].definition
-        == "The specific quantity is not known, but is known to be non-zero and is not specified because it makes up the bulk of the material."
+    assert inst.concept[3].definition == (
+        "The specific quantity is not known, but is known to be non-"
+        "zero and is not specified because it makes up the bulk of "
+        "the material."
     )
     assert inst.concept[3].display == "Sufficient Quantity"
-    assert (
-        inst.concept[3].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/codesystem-concept-comments"
+    assert inst.concept[3].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/codesystem-concept-" "comments"
     )
-    assert (
-        inst.concept[3].extension[0].valueString
-        == "used in formulations (e.g. 'Add 10mg of ingredient X, 50mg of ingredient Y, and sufficient quantity of water to 100mL.' This code would be used to express the quantity of water. )"
+    assert inst.concept[3].extension[0].valueString == (
+        "used in formulations (e.g. 'Add 10mg of ingredient X, 50mg "
+        "of ingredient Y, and sufficient quantity of water to 100mL.'"
+        " This code would be used to express the quantity of water. )"
     )
     assert inst.concept[4].code == "withdrawn"
     assert inst.concept[4].definition == "The value is no longer available."
@@ -132,9 +132,8 @@ def impl_codesystem_2(inst):
         == "The are no known applicable values in this context."
     )
     assert inst.concept[5].display == "Nil Known"
-    assert (
-        inst.concept[5].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/codesystem-concept-comments"
+    assert inst.concept[5].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/codesystem-concept-" "comments"
     )
     assert (
         inst.concept[5].extension[0].valueString
@@ -142,14 +141,13 @@ def impl_codesystem_2(inst):
     )
     assert inst.content == "complete"
     assert inst.date == fhirtypes.DateTime.validate("2019-11-01T09:29:23+11:00")
-    assert (
-        inst.description
-        == "A set of generally useful codes defined so they can be included in value sets."
+    assert inst.description == (
+        "A set of generally useful codes defined so they can be "
+        "included in value sets."
     )
     assert inst.experimental is False
-    assert (
-        inst.extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+    assert inst.extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
     )
     assert inst.extension[0].valueCode == "fhir"
     assert inst.id == "special-values"
@@ -202,15 +200,13 @@ def impl_codesystem_3(inst):
     )
     assert inst.concept[1].display == "System Error"
     assert inst.concept[2].code == "invalid-phone-number"
-    assert (
-        inst.concept[2].definition
-        == "The communication was not done due to an invalid phone number."
+    assert inst.concept[2].definition == (
+        "The communication was not done due to an invalid phone " "number."
     )
     assert inst.concept[2].display == "Invalid Phone Number"
     assert inst.concept[3].code == "recipient-unavailable"
-    assert (
-        inst.concept[3].definition
-        == "The communication was not done due to the recipient being unavailable."
+    assert inst.concept[3].definition == (
+        "The communication was not done due to the recipient being " "unavailable."
     )
     assert inst.concept[3].display == "Recipient Unavailable"
     assert inst.concept[4].code == "family-objection"
@@ -235,19 +231,17 @@ def impl_codesystem_3(inst):
         inst.description == "Codes for the reason why a communication did not happen."
     )
     assert inst.experimental is False
-    assert (
-        inst.extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+    assert inst.extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
     )
     assert inst.extension[0].valueCode == "pc"
-    assert (
-        inst.extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+    assert inst.extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
+        "standards-status"
     )
     assert inst.extension[1].valueCode == "draft"
-    assert (
-        inst.extension[2].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    assert inst.extension[2].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
     )
     assert inst.extension[2].valueInteger == 1
     assert inst.id == "communication-not-done-reason"
@@ -261,9 +255,8 @@ def impl_codesystem_3(inst):
     assert inst.status == "draft"
     assert inst.text.status == "generated"
     assert inst.title == "CommunicationNotDoneReason"
-    assert (
-        inst.url
-        == "http://terminology.hl7.org/CodeSystem/communication-not-done-reason"
+    assert inst.url == (
+        "http://terminology.hl7.org/CodeSystem/communication-not-" "done-reason"
     )
     assert inst.valueSet == "http://hl7.org/fhir/ValueSet/communication-not-done-reason"
     assert inst.version == "4.0.1"
@@ -299,9 +292,9 @@ def impl_codesystem_4(inst):
     assert inst.concept[1].code == "is-a"
     assert inst.concept[1].display == "Is-A"
     assert inst.concept[2].code == "part-of"
-    assert (
-        inst.concept[2].definition
-        == "Child elements list the individual parts of a composite whole (e.g. body site)."
+    assert inst.concept[2].definition == (
+        "Child elements list the individual parts of a composite "
+        "whole (e.g. body site)."
     )
     assert inst.concept[2].display == "Part Of"
     assert inst.concept[3].code == "classified-with"
@@ -316,24 +309,22 @@ def impl_codesystem_4(inst):
         inst.description == "The meaning of the hierarchy of concepts in a code system."
     )
     assert inst.experimental is False
-    assert (
-        inst.extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+    assert inst.extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
     )
     assert inst.extension[0].valueCode == "vocab"
-    assert (
-        inst.extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+    assert inst.extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
+        "standards-status"
     )
     assert inst.extension[1].valueCode == "normative"
-    assert (
-        inst.extension[2].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version"
+    assert inst.extension[2].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
+        "normative-version"
     )
     assert inst.extension[2].valueCode == "4.0.0"
-    assert (
-        inst.extension[3].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    assert inst.extension[3].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
     )
     assert inst.extension[3].valueInteger == 5
     assert inst.id == "codesystem-hierarchy-meaning"
@@ -378,21 +369,23 @@ def test_codesystem_4(base_settings):
 def impl_codesystem_5(inst):
     assert inst.caseSensitive is True
     assert inst.concept[0].code == "continuous"
-    assert (
-        inst.concept[0].definition
-        == "A medication which is expected to be continued beyond the present order and which the patient should be assumed to be taking unless explicitly stopped."
+    assert inst.concept[0].definition == (
+        "A medication which is expected to be continued beyond the "
+        "present order and which the patient should be assumed to be "
+        "taking unless explicitly stopped."
     )
     assert inst.concept[0].display == "Continuous long term therapy"
     assert inst.concept[1].code == "acute"
-    assert (
-        inst.concept[1].definition
-        == "A medication which the patient is only expected to consume for the duration of the current order and which is not expected to be renewed."
+    assert inst.concept[1].definition == (
+        "A medication which the patient is only expected to consume "
+        "for the duration of the current order and which is not "
+        "expected to be renewed."
     )
     assert inst.concept[1].display == "Short course (acute) therapy"
     assert inst.concept[2].code == "seasonal"
-    assert (
-        inst.concept[2].definition
-        == "A medication which is expected to be used on a part time basis at certain times of the year"
+    assert inst.concept[2].definition == (
+        "A medication which is expected to be used on a part time "
+        "basis at certain times of the year"
     )
     assert inst.concept[2].display == "Seasonal"
     assert inst.contact[0].telecom[0].system == "url"
@@ -400,19 +393,17 @@ def impl_codesystem_5(inst):
     assert inst.content == "complete"
     assert inst.description == "MedicationRequest Course of Therapy Codes"
     assert inst.experimental is False
-    assert (
-        inst.extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+    assert inst.extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
     )
     assert inst.extension[0].valueCode == "phx"
-    assert (
-        inst.extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+    assert inst.extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
+        "standards-status"
     )
     assert inst.extension[1].valueCode == "draft"
-    assert (
-        inst.extension[2].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    assert inst.extension[2].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
     )
     assert inst.extension[2].valueInteger == 1
     assert inst.id == "medicationrequest-course-of-therapy"
@@ -430,13 +421,11 @@ def impl_codesystem_5(inst):
     assert inst.status == "draft"
     assert inst.text.status == "generated"
     assert inst.title == "Medication request  course of  therapy  codes"
-    assert (
-        inst.url
-        == "http://terminology.hl7.org/CodeSystem/medicationrequest-course-of-therapy"
+    assert inst.url == (
+        "http://terminology.hl7.org/CodeSystem/medicationrequest-" "course-of-therapy"
     )
-    assert (
-        inst.valueSet
-        == "http://hl7.org/fhir/ValueSet/medicationrequest-course-of-therapy"
+    assert inst.valueSet == (
+        "http://hl7.org/fhir/ValueSet/medicationrequest-course-of-" "therapy"
     )
     assert inst.version == "4.0.1"
 
@@ -467,27 +456,26 @@ def test_codesystem_5(base_settings):
 def impl_codesystem_6(inst):
     assert inst.caseSensitive is True
     assert inst.concept[0].code == "0"
-    assert (
-        inst.concept[0].definition
-        == "The operation completed successfully (whether with warnings or not)."
+    assert inst.concept[0].definition == (
+        "The operation completed successfully (whether with warnings " "or not)."
     )
     assert inst.concept[0].display == "Success"
     assert inst.concept[1].code == "4"
-    assert (
-        inst.concept[1].definition
-        == "The action was not successful due to some kind of minor failure (often equivalent to an HTTP 400 response)."
+    assert inst.concept[1].definition == (
+        "The action was not successful due to some kind of minor "
+        "failure (often equivalent to an HTTP 400 response)."
     )
     assert inst.concept[1].display == "Minor failure"
     assert inst.concept[2].code == "8"
-    assert (
-        inst.concept[2].definition
-        == "The action was not successful due to some kind of unexpected error (often equivalent to an HTTP 500 response)."
+    assert inst.concept[2].definition == (
+        "The action was not successful due to some kind of unexpected"
+        " error (often equivalent to an HTTP 500 response)."
     )
     assert inst.concept[2].display == "Serious failure"
     assert inst.concept[3].code == "12"
-    assert (
-        inst.concept[3].definition
-        == "An error of such magnitude occurred that the system is no longer available for use (i.e. the system died)."
+    assert inst.concept[3].definition == (
+        "An error of such magnitude occurred that the system is no "
+        "longer available for use (i.e. the system died)."
     )
     assert inst.concept[3].display == "Major failure"
     assert inst.contact[0].telecom[0].system == "url"
@@ -498,19 +486,17 @@ def impl_codesystem_6(inst):
     assert inst.date == fhirtypes.DateTime.validate("2019-11-01T09:29:23+11:00")
     assert inst.description == "Indicates whether the event succeeded or failed."
     assert inst.experimental is False
-    assert (
-        inst.extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+    assert inst.extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
     )
     assert inst.extension[0].valueCode == "sec"
-    assert (
-        inst.extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+    assert inst.extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
+        "standards-status"
     )
     assert inst.extension[1].valueCode == "trial-use"
-    assert (
-        inst.extension[2].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    assert inst.extension[2].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
     )
     assert inst.extension[2].valueInteger == 3
     assert inst.id == "audit-event-outcome"
@@ -570,19 +556,17 @@ def impl_codesystem_7(inst):
     assert inst.copyright == "This is an example set."
     assert inst.description == "This value set includes sample Contract Subtype codes."
     assert inst.experimental is False
-    assert (
-        inst.extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+    assert inst.extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
     )
     assert inst.extension[0].valueCode == "fm"
-    assert (
-        inst.extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+    assert inst.extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
+        "standards-status"
     )
     assert inst.extension[1].valueCode == "draft"
-    assert (
-        inst.extension[2].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    assert inst.extension[2].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
     )
     assert inst.extension[2].valueInteger == 1
     assert inst.id == "contract-subtype"
@@ -628,9 +612,9 @@ def test_codesystem_7(base_settings):
 def impl_codesystem_8(inst):
     assert inst.caseSensitive is True
     assert inst.concept[0].code == "create"
-    assert (
-        inst.concept[0].definition
-        == "create(type : string) - type is passed through to the application on the standard API, and must be known by it."
+    assert inst.concept[0].definition == (
+        "create(type : string) - type is passed through to the "
+        "application on the standard API, and must be known by it."
     )
     assert inst.concept[0].display == "create"
     assert inst.concept[1].code == "copy"
@@ -643,15 +627,17 @@ def impl_codesystem_8(inst):
     )
     assert inst.concept[2].display == "truncate"
     assert inst.concept[3].code == "escape"
-    assert (
-        inst.concept[3].definition
-        == "escape(source, fmt1, fmt2) - change source from one kind of escaping to another (plain, java, xml, json). note that this is for when the string itself is escaped."
+    assert inst.concept[3].definition == (
+        "escape(source, fmt1, fmt2) - change source from one kind of "
+        "escaping to another (plain, java, xml, json). note that this"
+        " is for when the string itself is escaped."
     )
     assert inst.concept[3].display == "escape"
     assert inst.concept[4].code == "cast"
-    assert (
-        inst.concept[4].definition
-        == "cast(source, type?) - case source from one type to another. target type can be left as implicit if there is one and only one target type known."
+    assert inst.concept[4].definition == (
+        "cast(source, type?) - case source from one type to another. "
+        "target type can be left as implicit if there is one and only"
+        " one target type known."
     )
     assert inst.concept[4].display == "cast"
     assert inst.concept[5].code == "append"
@@ -666,9 +652,9 @@ def impl_codesystem_8(inst):
     )
     assert inst.concept[6].display == "translate"
     assert inst.concept[7].code == "reference"
-    assert (
-        inst.concept[7].definition
-        == "reference(source : object) - return a string that references the provided tree properly."
+    assert inst.concept[7].definition == (
+        "reference(source : object) - return a string that references"
+        " the provided tree properly."
     )
     assert inst.concept[7].display == "reference"
     assert inst.concept[8].code == "dateOp"
@@ -691,19 +677,17 @@ def impl_codesystem_8(inst):
     assert inst.date == fhirtypes.DateTime.validate("2019-11-01T09:29:23+11:00")
     assert inst.description == "How data is copied/created."
     assert inst.experimental is False
-    assert (
-        inst.extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+    assert inst.extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
     )
     assert inst.extension[0].valueCode == "fhir"
-    assert (
-        inst.extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+    assert inst.extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
+        "standards-status"
     )
     assert inst.extension[1].valueCode == "trial-use"
-    assert (
-        inst.extension[2].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    assert inst.extension[2].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
     )
     assert inst.extension[2].valueInteger == 2
     assert inst.id == "map-transform"
@@ -745,21 +729,21 @@ def test_codesystem_8(base_settings):
 def impl_codesystem_9(inst):
     assert inst.caseSensitive is True
     assert inst.concept[0].code == "registered"
-    assert (
-        inst.concept[0].definition
-        == "The existence of the imaging study is registered, but there is nothing yet available."
+    assert inst.concept[0].definition == (
+        "The existence of the imaging study is registered, but there "
+        "is nothing yet available."
     )
     assert inst.concept[0].display == "Registered"
     assert inst.concept[1].code == "available"
-    assert (
-        inst.concept[1].definition
-        == "At least one instance has been associated with this imaging study."
+    assert inst.concept[1].definition == (
+        "At least one instance has been associated with this imaging " "study."
     )
     assert inst.concept[1].display == "Available"
     assert inst.concept[2].code == "cancelled"
-    assert (
-        inst.concept[2].definition
-        == 'The imaging study is unavailable because the imaging study was not started or not completed (also sometimes called "aborted").'
+    assert inst.concept[2].definition == (
+        "The imaging study is unavailable because the imaging study "
+        "was not started or not completed (also sometimes called "
+        '"aborted").'
     )
     assert inst.concept[2].display == "Cancelled"
     assert inst.concept[3].code == "entered-in-error"
@@ -774,19 +758,17 @@ def impl_codesystem_9(inst):
     assert inst.date == fhirtypes.DateTime.validate("2019-11-01T09:29:23+11:00")
     assert inst.description == "The status of the ImagingStudy."
     assert inst.experimental is False
-    assert (
-        inst.extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+    assert inst.extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
     )
     assert inst.extension[0].valueCode == "ii"
-    assert (
-        inst.extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+    assert inst.extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
+        "standards-status"
     )
     assert inst.extension[1].valueCode == "trial-use"
-    assert (
-        inst.extension[2].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    assert inst.extension[2].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
     )
     assert inst.extension[2].valueInteger == 3
     assert inst.id == "imagingstudy-status"
@@ -870,19 +852,17 @@ def impl_codesystem_10(inst):
         == "This value set includes a smattering of Benefit type codes."
     )
     assert inst.experimental is False
-    assert (
-        inst.extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+    assert inst.extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
     )
     assert inst.extension[0].valueCode == "fm"
-    assert (
-        inst.extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+    assert inst.extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
+        "standards-status"
     )
     assert inst.extension[1].valueCode == "draft"
-    assert (
-        inst.extension[2].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    assert inst.extension[2].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
     )
     assert inst.extension[2].valueInteger == 1
     assert inst.id == "benefit-type"

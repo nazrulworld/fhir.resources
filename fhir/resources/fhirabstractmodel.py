@@ -47,9 +47,12 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
                 "resource_type"
             ].default
             error = (
-                f"``{__pydantic_self__.__class__.__module__}.{__pydantic_self__.__class__.__name__}`` "
-                f"expects resource type ``{expected_resource_type}``, but got ``{resource_type}``. "
-                "Make sure resource type name is correct and right ModelClass has been chosen."
+                f"``{__pydantic_self__.__class__.__module__}."
+                f"{__pydantic_self__.__class__.__name__}`` "
+                f"expects resource type ``{expected_resource_type}``, "
+                f"but got ``{resource_type}``. "
+                "Make sure resource type name is correct and right "
+                "ModelClass has been chosen."
             )
             errors.append(
                 ErrorWrapper(WrongResourceType(error=error), loc="resource_type")

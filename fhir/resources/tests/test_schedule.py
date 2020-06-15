@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import schedule
 
@@ -16,9 +18,9 @@ def impl_schedule_1(inst):
     assert inst.actor[0].reference == "Practitioner/1"
     assert inst.actor[1].display == "USS Enterprise-D Sickbay"
     assert inst.actor[1].reference == "Location/3"
-    assert (
-        inst.comment
-        == "The slots attached to this schedule are for genetic counselling in the USS Enterprise-D Sickbay."
+    assert inst.comment == (
+        "The slots attached to this schedule are for genetic "
+        "counselling in the USS Enterprise-D Sickbay."
     )
     assert inst.id == "exampleloc1"
     assert inst.identifier[0].system == "http://example.org/scheduleid"
@@ -70,9 +72,9 @@ def impl_schedule_2(inst):
     assert inst.active is True
     assert inst.actor[0].display == "Burgers UMC, South Wing, second floor"
     assert inst.actor[0].reference == "Location/1"
-    assert (
-        inst.comment
-        == "The slots attached to this schedule should be specialized to cover immunizations within the clinic"
+    assert inst.comment == (
+        "The slots attached to this schedule should be specialized to"
+        " cover immunizations within the clinic"
     )
     assert inst.id == "example"
     assert inst.identifier[0].system == "http://example.org/scheduleid"
@@ -124,9 +126,9 @@ def impl_schedule_3(inst):
     assert inst.actor[0].reference == "Practitioner/1"
     assert inst.actor[1].display == "Starfleet HQ Sickbay"
     assert inst.actor[1].reference == "Location/2"
-    assert (
-        inst.comment
-        == "The slots attached to this schedule are for neurosurgery operations at Starfleet HQ only."
+    assert inst.comment == (
+        "The slots attached to this schedule are for neurosurgery "
+        "operations at Starfleet HQ only."
     )
     assert inst.id == "exampleloc2"
     assert inst.identifier[0].system == "http://example.org/scheduleid"

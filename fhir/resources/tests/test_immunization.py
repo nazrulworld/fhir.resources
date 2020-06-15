@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import immunization
 
@@ -24,9 +26,8 @@ def impl_immunization_1(inst):
     assert inst.encounter.reference == "Encounter/example"
     assert inst.expirationDate == fhirtypes.Date.validate("2015-02-15")
     assert inst.fundingSource.coding[0].code == "private"
-    assert (
-        inst.fundingSource.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/immunization-funding-source"
+    assert inst.fundingSource.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/immunization-funding-" "source"
     )
     assert inst.id == "example"
     assert inst.identifier[0].system == "urn:ietf:rfc:3986"
@@ -59,17 +60,15 @@ def impl_immunization_1(inst):
     )
     assert inst.primarySource is True
     assert inst.programEligibility[0].coding[0].code == "ineligible"
-    assert (
-        inst.programEligibility[0].coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/immunization-program-eligibility"
+    assert inst.programEligibility[0].coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/immunization-program-" "eligibility"
     )
     assert inst.reasonCode[0].coding[0].code == "429060002"
     assert inst.reasonCode[0].coding[0].system == "http://snomed.info/sct"
     assert inst.route.coding[0].code == "IM"
     assert inst.route.coding[0].display == "Injection, intramuscular"
-    assert (
-        inst.route.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration"
+    assert inst.route.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministrati" "on"
     )
     assert inst.site.coding[0].code == "LA"
     assert inst.site.coding[0].display == "left arm"
@@ -159,9 +158,8 @@ def impl_immunization_3(inst):
     assert inst.encounter.reference == "Encounter/example"
     assert inst.expirationDate == fhirtypes.Date.validate("2018-12-15")
     assert inst.fundingSource.coding[0].code == "private"
-    assert (
-        inst.fundingSource.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/immunization-funding-source"
+    assert inst.fundingSource.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/immunization-funding-" "source"
     )
     assert inst.id == "protocol"
     assert inst.identifier[0].system == "urn:ietf:rfc:3986"
@@ -193,9 +191,8 @@ def impl_immunization_3(inst):
     )
     assert inst.primarySource is True
     assert inst.programEligibility[0].coding[0].code == "ineligible"
-    assert (
-        inst.programEligibility[0].coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/immunization-program-eligibility"
+    assert inst.programEligibility[0].coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/immunization-program-" "eligibility"
     )
     assert inst.protocolApplied[0].doseNumberPositiveInt == 1
     assert inst.protocolApplied[0].series == "2-dose"
@@ -213,9 +210,8 @@ def impl_immunization_3(inst):
     )
     assert inst.route.coding[0].code == "IM"
     assert inst.route.coding[0].display == "Injection, intramuscular"
-    assert (
-        inst.route.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration"
+    assert inst.route.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministrati" "on"
     )
     assert inst.site.coding[0].code == "LA"
     assert inst.site.coding[0].display == "left arm"
@@ -308,9 +304,8 @@ def impl_immunization_5(inst):
     assert inst.encounter.reference == "Encounter/example"
     assert inst.expirationDate == fhirtypes.Date.validate("2015-02-28")
     assert inst.fundingSource.coding[0].code == "private"
-    assert (
-        inst.fundingSource.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/immunization-funding-source"
+    assert inst.fundingSource.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/immunization-funding-" "source"
     )
     assert inst.id == "subpotent"
     assert inst.identifier[0].system == "urn:ietf:rfc:3986"
@@ -343,15 +338,13 @@ def impl_immunization_5(inst):
     )
     assert inst.primarySource is True
     assert inst.programEligibility[0].coding[0].code == "ineligible"
-    assert (
-        inst.programEligibility[0].coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/immunization-program-eligibility"
+    assert inst.programEligibility[0].coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/immunization-program-" "eligibility"
     )
     assert inst.route.coding[0].code == "IM"
     assert inst.route.coding[0].display == "Injection, intramuscular"
-    assert (
-        inst.route.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration"
+    assert inst.route.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministrati" "on"
     )
     assert inst.site.coding[0].code == "LT"
     assert inst.site.coding[0].display == "left thigh"
@@ -360,9 +353,8 @@ def impl_immunization_5(inst):
     )
     assert inst.status == "completed"
     assert inst.subpotentReason[0].coding[0].code == "partial"
-    assert (
-        inst.subpotentReason[0].coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/immunization-subpotent-reason"
+    assert inst.subpotentReason[0].coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/immunization-" "subpotent-reason"
     )
     assert inst.text.status == "generated"
     assert inst.vaccineCode.coding[0].code == "GNHEP"

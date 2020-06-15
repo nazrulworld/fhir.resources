@@ -24,14 +24,21 @@ class DocumentManifest(domainresource.DomainResource):
     author: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="author",
-        title="List of `Reference` items referencing `Practitioner, PractitionerRole, Organization, Device, Patient, RelatedPerson` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Practitioner, PractitionerRole,"
+            " Organization, Device, Patient, RelatedPerson` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Who and/or what authored the DocumentManifest",
     )
 
     content: ListType[fhirtypes.ReferenceType] = Field(
         ...,
         alias="content",
-        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Resource` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Items in manifest",
     )
 
@@ -66,14 +73,20 @@ class DocumentManifest(domainresource.DomainResource):
     recipient: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="recipient",
-        title="List of `Reference` items referencing `Patient, Practitioner, PractitionerRole, RelatedPerson, Organization` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Patient, Practitioner, "
+            "PractitionerRole, RelatedPerson, Organization` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Intended to get notified about this set of documents",
     )
 
     related: ListType[fhirtypes.DocumentManifestRelatedType] = Field(
         None,
         alias="related",
-        title="List of `DocumentManifestRelated` items (represented as `dict` in JSON)",
+        title=(
+            "List of `DocumentManifestRelated` items (represented as `dict` in " "JSON)"
+        ),
         description="Related things",
     )
 
@@ -94,7 +107,10 @@ class DocumentManifest(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         None,
         alias="subject",
-        title="Type `Reference` referencing `Patient, Practitioner, Group, Device` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Practitioner, Group, Device` "
+            "(represented as `dict` in JSON)"
+        ),
         description="The subject of the set of documents",
     )
 
@@ -123,6 +139,8 @@ class DocumentManifestRelated(backboneelement.BackboneElement):
     ref: fhirtypes.ReferenceType = Field(
         None,
         alias="ref",
-        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        ),
         description="Related Resource",
     )

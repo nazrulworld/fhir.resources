@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import subscription
 
@@ -28,9 +30,8 @@ def impl_subscription_1(inst):
     assert inst.status == "error"
     assert inst.tag[0].code == "bili-done"
     assert inst.tag[0].system == "http://example.org/fhir/cs/internal"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">[Put rendering here]</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">[Put rendering ' "here]</div>"
     )
     assert inst.text.status == "generated"
 
@@ -72,9 +73,8 @@ def impl_subscription_2(inst):
     assert inst.status == "requested"
     assert inst.tag[0].code == "bili-done"
     assert inst.tag[0].system == "http://example.org/fhir/cs/internal"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">[Put rendering here]</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">[Put rendering ' "here]</div>"
     )
     assert inst.text.status == "generated"
 

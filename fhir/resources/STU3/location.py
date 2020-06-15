@@ -33,21 +33,33 @@ class Location(domainresource.DomainResource):
         None,
         alias="alias",
         title="List of `String` items (represented as `dict` in JSON)",
-        description="A list of\u00a0alternate names that the location is known as, or was known as in the past",
+        description=(
+            "A list of\u00a0alternate names that the location is known as, or was known "
+            "as in the past"
+        ),
     )
 
     description: fhirtypes.String = Field(
         None,
         alias="description",
         title="Type `String` (represented as `dict` in JSON)",
-        description="Additional details about the location that could be displayed as further information to identify the location beyond its name",
+        description=(
+            "Additional details about the location that could be displayed as "
+            "further information to identify the location beyond its name"
+        ),
     )
 
     endpoint: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="endpoint",
-        title="List of `Reference` items referencing `Endpoint` (represented as `dict` in JSON)",
-        description="Technical endpoints providing access to services operated for the location",
+        title=(
+            "List of `Reference` items referencing `Endpoint` (represented as "
+            "`dict` in JSON)"
+        ),
+        description=(
+            "Technical endpoints providing access to services operated for the "
+            "location"
+        ),
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -60,7 +72,10 @@ class Location(domainresource.DomainResource):
     managingOrganization: fhirtypes.ReferenceType = Field(
         None,
         alias="managingOrganization",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Organization responsible for provisioning and upkeep",
     )
 
@@ -88,7 +103,9 @@ class Location(domainresource.DomainResource):
     partOf: fhirtypes.ReferenceType = Field(
         None,
         alias="partOf",
-        title="Type `Reference` referencing `Location` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Location` (represented as `dict` in " "JSON)"
+        ),
         description="Another Location this one is physically part of",
     )
 

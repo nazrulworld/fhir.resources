@@ -32,7 +32,10 @@ class Meta(element.Element):
     profile: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="profile",
-        title="List of `Canonical` items referencing `StructureDefinition` (represented as `dict` in JSON)",
+        title=(
+            "List of `Canonical` items referencing `StructureDefinition` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Profiles this resource claims to conform to",
     )
 

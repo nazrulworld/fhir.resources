@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import immunizationevaluation
 
@@ -16,9 +18,8 @@ def impl_immunizationevaluation_1(inst):
     assert inst.doseNumberPositiveInt == 1
     assert inst.doseStatus.coding[0].code == "valid"
     assert inst.doseStatus.coding[0].display == "Valid"
-    assert (
-        inst.doseStatus.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status"
+    assert inst.doseStatus.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/immunization-" "evaluation-dose-status"
     )
     assert inst.id == "example"
     assert inst.identifier[0].system == "urn:ietf:rfc:3986"
@@ -66,18 +67,17 @@ def impl_immunizationevaluation_2(inst):
     assert inst.doseNumberPositiveInt == 2
     assert inst.doseStatus.coding[0].code == "notvalid"
     assert inst.doseStatus.coding[0].display == "Not Valid"
-    assert (
-        inst.doseStatus.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status"
+    assert inst.doseStatus.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/immunization-" "evaluation-dose-status"
     )
     assert inst.doseStatusReason[0].coding[0].code == "outsidesched"
     assert (
         inst.doseStatusReason[0].coding[0].display
         == "Administered outside recommended schedule"
     )
-    assert (
-        inst.doseStatusReason[0].coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status-reason"
+    assert inst.doseStatusReason[0].coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/immunization-"
+        "evaluation-dose-status-reason"
     )
     assert inst.id == "notValid"
     assert inst.identifier[0].system == "urn:ietf:rfc:3986"

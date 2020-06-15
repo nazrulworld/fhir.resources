@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import documentmanifest
 
@@ -84,9 +86,9 @@ def impl_documentmanifest_2(inst):
     )
     assert inst.related[1].identifier.value == "R3500"
     assert inst.status == "current"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A Financial Management Attachment example</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A Financial '
+        "Management Attachment example</div>"
     )
     assert inst.text.status == "generated"
 

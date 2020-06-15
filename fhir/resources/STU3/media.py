@@ -24,7 +24,10 @@ class Media(domainresource.DomainResource):
     basedOn: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="basedOn",
-        title="List of `Reference` items referencing `ProcedureRequest` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `ProcedureRequest` (represented "
+            "as `dict` in JSON)"
+        ),
         description="Procedure that caused this media to be created",
     )
 
@@ -45,14 +48,20 @@ class Media(domainresource.DomainResource):
     context: fhirtypes.ReferenceType = Field(
         None,
         alias="context",
-        title="Type `Reference` referencing `Encounter, EpisodeOfCare` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Encounter, EpisodeOfCare` (represented "
+            "as `dict` in JSON)"
+        ),
         description="Encounter / Episode associated with media",
     )
 
     device: fhirtypes.ReferenceType = Field(
         None,
         alias="device",
-        title="Type `Reference` referencing `Device, DeviceMetric` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Device, DeviceMetric` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Observing Device",
     )
 
@@ -112,7 +121,10 @@ class Media(domainresource.DomainResource):
     operator: fhirtypes.ReferenceType = Field(
         None,
         alias="operator",
-        title="Type `Reference` referencing `Practitioner` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner` (represented as `dict` in "
+            "JSON)"
+        ),
         description="The person who generated the image",
     )
 
@@ -126,7 +138,10 @@ class Media(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         None,
         alias="subject",
-        title="Type `Reference` referencing `Patient, Practitioner, Group, Device, Specimen` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Practitioner, Group, Device, "
+            "Specimen` (represented as `dict` in JSON)"
+        ),
         description="Who/What this Media is a record of",
     )
 
@@ -172,9 +187,7 @@ class Media(domainresource.DomainResource):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "occurrence": ["occurrenceDateTime", "occurrencePeriod",],
-        }
+        one_of_many_fields = {"occurrence": ["occurrenceDateTime", "occurrencePeriod"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (

@@ -38,7 +38,10 @@ class PractitionerRole(domainresource.DomainResource):
     availableTime: ListType[fhirtypes.PractitionerRoleAvailableTimeType] = Field(
         None,
         alias="availableTime",
-        title="List of `PractitionerRoleAvailableTime` items (represented as `dict` in JSON)",
+        title=(
+            "List of `PractitionerRoleAvailableTime` items (represented as `dict` "
+            "in JSON)"
+        ),
         description="Times the Service Site is available",
     )
 
@@ -52,15 +55,27 @@ class PractitionerRole(domainresource.DomainResource):
     endpoint: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="endpoint",
-        title="List of `Reference` items referencing `Endpoint` (represented as `dict` in JSON)",
-        description="Technical endpoints providing access to services operated for the practitioner with this role",
+        title=(
+            "List of `Reference` items referencing `Endpoint` (represented as "
+            "`dict` in JSON)"
+        ),
+        description=(
+            "Technical endpoints providing access to services operated for the "
+            "practitioner with this role"
+        ),
     )
 
     healthcareService: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="healthcareService",
-        title="List of `Reference` items referencing `HealthcareService` (represented as `dict` in JSON)",
-        description="The list of healthcare services that this worker provides for this role\u0027s Organization/Location(s)",
+        title=(
+            "List of `Reference` items referencing `HealthcareService` (represented"
+            " as `dict` in JSON)"
+        ),
+        description=(
+            "The list of healthcare services that this worker provides for this "
+            "role\u0027s Organization/Location(s)"
+        ),
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -73,21 +88,30 @@ class PractitionerRole(domainresource.DomainResource):
     location: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="location",
-        title="List of `Reference` items referencing `Location` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Location` (represented as "
+            "`dict` in JSON)"
+        ),
         description="The location(s) at which this practitioner provides care",
     )
 
     notAvailable: ListType[fhirtypes.PractitionerRoleNotAvailableType] = Field(
         None,
         alias="notAvailable",
-        title="List of `PractitionerRoleNotAvailable` items (represented as `dict` in JSON)",
+        title=(
+            "List of `PractitionerRoleNotAvailable` items (represented as `dict` in"
+            " JSON)"
+        ),
         description="Not available during this time due to provided reason",
     )
 
     organization: fhirtypes.ReferenceType = Field(
         None,
         alias="organization",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Organization where the roles are available",
     )
 
@@ -95,14 +119,23 @@ class PractitionerRole(domainresource.DomainResource):
         None,
         alias="period",
         title="Type `Period` (represented as `dict` in JSON)",
-        description="The period during which the practitioner is authorized to perform in these role(s)",
+        description=(
+            "The period during which the practitioner is authorized to perform in "
+            "these role(s)"
+        ),
     )
 
     practitioner: fhirtypes.ReferenceType = Field(
         None,
         alias="practitioner",
-        title="Type `Reference` referencing `Practitioner` (represented as `dict` in JSON)",
-        description="Practitioner that is able to provide the defined services for the organization",
+        title=(
+            "Type `Reference` referencing `Practitioner` (represented as `dict` in "
+            "JSON)"
+        ),
+        description=(
+            "Practitioner that is able to provide the defined services for the "
+            "organization"
+        ),
     )
 
     specialty: ListType[fhirtypes.CodeableConceptType] = Field(

@@ -55,7 +55,9 @@ class TriggerDefinition(element.Element):
     eventTimingReference: fhirtypes.ReferenceType = Field(
         None,
         alias="eventTimingReference",
-        title="Type `Reference` referencing `Schedule` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Schedule` (represented as `dict` in " "JSON)"
+        ),
         description="Timing of the event",
         one_of_many="eventTiming",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -74,7 +76,10 @@ class TriggerDefinition(element.Element):
         ...,
         alias="type",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="named-event | periodic | data-added | data-modified | data-removed | data-accessed | data-access-ended",
+        description=(
+            "named-event | periodic | data-added | data-modified | data-removed | "
+            "data-accessed | data-access-ended"
+        ),
     )
 
     @root_validator(pre=True)
@@ -97,7 +102,7 @@ class TriggerDefinition(element.Element):
                 "eventTimingDateTime",
                 "eventTimingReference",
                 "eventTimingTiming",
-            ],
+            ]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

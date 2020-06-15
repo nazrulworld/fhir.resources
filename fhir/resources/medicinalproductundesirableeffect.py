@@ -44,7 +44,10 @@ class MedicinalProductUndesirableEffect(domainresource.DomainResource):
     subject: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="subject",
-        title="List of `Reference` items referencing `MedicinalProduct, Medication` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `MedicinalProduct, Medication` "
+            "(represented as `dict` in JSON)"
+        ),
         description="The medication for which this is an indication",
     )
 

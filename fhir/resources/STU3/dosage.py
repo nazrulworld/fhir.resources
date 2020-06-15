@@ -177,9 +177,9 @@ class Dosage(element.Element):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "asNeeded": ["asNeededBoolean", "asNeededCodeableConcept",],
-            "dose": ["doseQuantity", "doseRange",],
-            "rate": ["rateQuantity", "rateRange", "rateRatio",],
+            "asNeeded": ["asNeededBoolean", "asNeededCodeableConcept"],
+            "dose": ["doseQuantity", "doseRange"],
+            "rate": ["rateQuantity", "rateRange", "rateRatio"],
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

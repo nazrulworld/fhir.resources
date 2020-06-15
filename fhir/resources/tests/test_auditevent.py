@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import auditevent
 
@@ -17,9 +19,8 @@ def impl_auditevent_1(inst):
     assert inst.agent[0].requestor is True
     assert inst.agent[0].type.coding[0].code == "humanuser"
     assert inst.agent[0].type.coding[0].display == "human user"
-    assert (
-        inst.agent[0].type.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/extra-security-role-type"
+    assert inst.agent[0].type.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/extra-security-role-" "type"
     )
     assert inst.agent[0].who.identifier.value == "95"
     assert inst.agent[1].altId == "6580"
@@ -34,7 +35,12 @@ def impl_auditevent_1(inst):
     )
     assert inst.agent[1].who.identifier.system == "urn:oid:2.16.840.1.113883.4.2"
     assert inst.agent[1].who.identifier.value == "2.16.840.1.113883.4.2"
-    # Don't know how to create unit test for "entity[0].query", which is a Base64Binary
+    assert inst.entity[0].query == bytes_validator(
+        (
+            "aHR0cDovL2ZoaXItZGV2LmhlYWx0aGludGVyc2VjdGlvbnMuY29tLmF1L29w"
+            "ZW4vRW5jb3VudGVyP3BhcnRpY2lwYW50PTEz"
+        )
+    )
     assert inst.entity[0].role.code == "24"
     assert inst.entity[0].role.display == "Query"
     assert (
@@ -101,9 +107,8 @@ def impl_auditevent_2(inst):
     assert inst.agent[0].requestor is True
     assert inst.agent[0].type.coding[0].code == "humanuser"
     assert inst.agent[0].type.coding[0].display == "human user"
-    assert (
-        inst.agent[0].type.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/extra-security-role-type"
+    assert inst.agent[0].type.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/extra-security-role-" "type"
     )
     assert inst.agent[0].who.identifier.value == "95"
     assert inst.agent[1].altId == "6580"
@@ -172,9 +177,8 @@ def impl_auditevent_3(inst):
     assert inst.agent[0].requestor is True
     assert inst.agent[0].type.coding[0].code == "humanuser"
     assert inst.agent[0].type.coding[0].display == "human user"
-    assert (
-        inst.agent[0].type.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/extra-security-role-type"
+    assert inst.agent[0].type.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/extra-security-role-" "type"
     )
     assert inst.agent[0].who.identifier.value == "95"
     assert inst.agent[1].altId == "6580"
@@ -264,9 +268,8 @@ def impl_auditevent_4(inst):
     assert inst.agent[1].requestor is True
     assert inst.agent[1].type.coding[0].code == "humanuser"
     assert inst.agent[1].type.coding[0].display == "human user"
-    assert (
-        inst.agent[1].type.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/extra-security-role-type"
+    assert inst.agent[1].type.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/extra-security-role-" "type"
     )
     assert inst.agent[1].who.identifier.value == "95"
     assert inst.agent[2].media.code == "110033"
@@ -375,9 +378,8 @@ def impl_auditevent_5(inst):
     assert inst.agent[0].requestor is True
     assert inst.agent[0].type.coding[0].code == "humanuser"
     assert inst.agent[0].type.coding[0].display == "human user"
-    assert (
-        inst.agent[0].type.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/extra-security-role-type"
+    assert inst.agent[0].type.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/extra-security-role-" "type"
     )
     assert inst.agent[0].who.identifier.value == "95"
     assert inst.agent[1].altId == "6580"
@@ -458,9 +460,8 @@ def impl_auditevent_6(inst):
     assert inst.agent[1].requestor is True
     assert inst.agent[1].type.coding[0].code == "humanuser"
     assert inst.agent[1].type.coding[0].display == "human user"
-    assert (
-        inst.agent[1].type.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/extra-security-role-type"
+    assert inst.agent[1].type.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/extra-security-role-" "type"
     )
     assert inst.agent[1].who.identifier.value == "95"
     assert inst.entity[0].role.code == "1"
@@ -480,7 +481,9 @@ def impl_auditevent_6(inst):
         == "e3cdfc81a0d24bd^^^&2.16.840.1.113883.4.2&ISO"
     )
     assert inst.entity[1].detail[0].type == "MSH-10"
-    # Don't know how to create unit test for "entity[1].detail[0].valueBase64Binary", which is a Base64Binary
+    assert inst.entity[1].detail[0].valueBase64Binary == bytes_validator(
+        "MS4yLjg0MC4xMTQzNTAuMS4xMy4wLjEuNy4xLjE="
+    )
     assert inst.entity[1].role.code == "24"
     assert inst.entity[1].role.display == "Query"
     assert (
@@ -539,9 +542,8 @@ def impl_auditevent_7(inst):
     assert inst.agent[0].role[0].text == "Service User (Logon)"
     assert inst.agent[0].type.coding[0].code == "humanuser"
     assert inst.agent[0].type.coding[0].display == "human user"
-    assert (
-        inst.agent[0].type.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/extra-security-role-type"
+    assert inst.agent[0].type.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/extra-security-role-" "type"
     )
     assert inst.agent[0].who.identifier.value == "Grahame"
     assert inst.agent[1].altId == "6580"
@@ -598,9 +600,10 @@ def impl_auditevent_7(inst):
     assert inst.subtype[0].code == "110120"
     assert inst.subtype[0].display == "Application Start"
     assert inst.subtype[0].system == "http://dicom.nema.org/resources/ontology/DCM"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Application Start for under service login &quot;Grahame&quot; (id: Grahame\'s Test HL7Connect)</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Application '
+        "Start for under service login &quot;Grahame&quot; (id: "
+        "Grahame's Test HL7Connect)</div>"
     )
     assert inst.text.status == "generated"
     assert inst.type.code == "110100"
@@ -744,9 +747,10 @@ def impl_auditevent_8(inst):
     )
     assert inst.subtype[0].code == "Disclosure"
     assert inst.subtype[0].display == "HIPAA disclosure"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Disclosure by some idiot, for marketing reasons, to places unknown, of a Poor Sap, data about Everthing important.</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Disclosure by '
+        "some idiot, for marketing reasons, to places unknown, of a "
+        "Poor Sap, data about Everthing important.</div>"
     )
     assert inst.text.status == "generated"
     assert inst.type.code == "110106"
@@ -781,9 +785,8 @@ def impl_auditevent_9(inst):
     assert inst.agent[0].requestor is True
     assert inst.agent[0].type.coding[0].code == "humanuser"
     assert inst.agent[0].type.coding[0].display == "human user"
-    assert (
-        inst.agent[0].type.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/extra-security-role-type"
+    assert inst.agent[0].type.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/extra-security-role-" "type"
     )
     assert inst.agent[0].who.identifier.value == "95"
     assert inst.agent[1].altId == "6580"
@@ -819,9 +822,8 @@ def impl_auditevent_9(inst):
         inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     )
     assert inst.outcome == "8"
-    assert (
-        inst.outcomeDesc
-        == "Invalid request to create an Operation resource on the Patient endpoint."
+    assert inst.outcomeDesc == (
+        "Invalid request to create an Operation resource on the " "Patient endpoint."
     )
     assert inst.recorded == fhirtypes.Instant.validate("2017-09-07T23:42:24Z")
     assert (

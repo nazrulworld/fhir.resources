@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import adverseevent
 
@@ -34,9 +36,8 @@ def impl_adverseevent_1(inst):
     assert inst.recorder.reference == "Practitioner/example"
     assert inst.seriousness.coding[0].code == "Non-serious"
     assert inst.seriousness.coding[0].display == "Non-serious"
-    assert (
-        inst.seriousness.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/adverse-event-seriousness"
+    assert inst.seriousness.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/adverse-event-" "seriousness"
     )
     assert inst.severity.coding[0].code == "mild"
     assert inst.severity.coding[0].display == "Mild"

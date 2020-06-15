@@ -31,7 +31,10 @@ class Linkage(domainresource.DomainResource):
     author: fhirtypes.ReferenceType = Field(
         None,
         alias="author",
-        title="Type `Reference` referencing `Practitioner, Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, Organization` (represented"
+            " as `dict` in JSON)"
+        ),
         description="Who is responsible for linkages",
     )
 

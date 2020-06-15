@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import devicerequest
 
@@ -20,9 +22,8 @@ def impl_devicerequest_1(inst):
     assert inst.groupIdentifier.value == "ip_request1"
     assert inst.id == "insulinpump"
     assert inst.identifier[0].value == "ip_request1.1"
-    assert (
-        inst.instantiatesCanonical[0]
-        == "http://motivemi.com/artifacts/PlanDefinition/low-suicide-risk-order-set"
+    assert inst.instantiatesCanonical[0] == (
+        "http://motivemi.com/artifacts/PlanDefinition/low-suicide-" "risk-order-set"
     )
     assert inst.intent == "instance-order"
     assert inst.meta.tag[0].code == "HTEST"
@@ -74,9 +75,8 @@ def test_devicerequest_1(base_settings):
 
 def impl_devicerequest_2(inst):
     assert inst.codeCodeableConcept.coding[0].code == "lens"
-    assert (
-        inst.codeCodeableConcept.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/ex-visionprescriptionproduct"
+    assert inst.codeCodeableConcept.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/ex-" "visionprescriptionproduct"
     )
     assert inst.groupIdentifier.system == "http://acme.org"
     assert inst.groupIdentifier.value == "15013"
@@ -153,9 +153,8 @@ def test_devicerequest_2(base_settings):
 
 def impl_devicerequest_3(inst):
     assert inst.codeCodeableConcept.coding[0].code == "lens"
-    assert (
-        inst.codeCodeableConcept.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/ex-visionprescriptionproduct"
+    assert inst.codeCodeableConcept.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/ex-" "visionprescriptionproduct"
     )
     assert inst.groupIdentifier.system == "http://acme.org"
     assert inst.groupIdentifier.value == "15013"

@@ -67,7 +67,10 @@ class DeviceUseStatement(domainresource.DomainResource):
     source: fhirtypes.ReferenceType = Field(
         None,
         alias="source",
-        title="Type `Reference` referencing `Patient, Practitioner, RelatedPerson` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Practitioner, RelatedPerson` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Who made the statement",
     )
 
@@ -81,7 +84,10 @@ class DeviceUseStatement(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         ...,
         alias="subject",
-        title="Type `Reference` referencing `Patient, Group` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Group` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Patient using device",
     )
 
@@ -134,7 +140,7 @@ class DeviceUseStatement(domainresource.DomainResource):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "timing": ["timingDateTime", "timingPeriod", "timingTiming",],
+            "timing": ["timingDateTime", "timingPeriod", "timingTiming"]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

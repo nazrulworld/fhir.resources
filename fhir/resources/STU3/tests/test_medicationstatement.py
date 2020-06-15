@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import medicationstatement
 
@@ -21,9 +23,9 @@ def impl_medicationstatement_1(inst):
     assert inst.medicationCodeableConcept.coding[0].code == "27658006"
     assert inst.medicationCodeableConcept.coding[0].display == "Amoxicillin (product)"
     assert inst.medicationCodeableConcept.coding[0].system == "http://snomed.info/sct"
-    assert (
-        inst.note[0].text
-        == "Patient indicated that they thought it was Amoxicillin they were taking but it was really Erythromycin"
+    assert inst.note[0].text == (
+        "Patient indicated that they thought it was Amoxicillin they "
+        "were taking but it was really Erythromycin"
     )
     assert inst.status == "entered-in-error"
     assert inst.subject.display == "Donald Duck"
@@ -137,9 +139,9 @@ def impl_medicationstatement_3(inst):
     assert inst.informationSource.display == "Donald Duck"
     assert inst.informationSource.reference == "Patient/pat1"
     assert inst.medicationCodeableConcept.text == "Little Pink Pill for water retention"
-    assert (
-        inst.note[0].text
-        == "Patient can not remember the name of the tablet, but takes it every day in the morning for water retention"
+    assert inst.note[0].text == (
+        "Patient can not remember the name of the tablet, but takes "
+        "it every day in the morning for water retention"
     )
     assert inst.reasonReference[0].reference == "Observation/blood-pressure"
     assert inst.status == "active"
@@ -245,9 +247,8 @@ def impl_medicationstatement_5(inst):
     assert inst.dosage[0].route.coding[0].display == "Oral Route"
     assert inst.dosage[0].route.coding[0].system == "http://snomed.info/sct"
     assert inst.dosage[0].sequence == 1
-    assert (
-        inst.dosage[0].text
-        == "1-2 tablets once daily at bedtime as needed for restless legs"
+    assert inst.dosage[0].text == (
+        "1-2 tablets once daily at bedtime as needed for restless " "legs"
     )
     assert inst.dosage[0].timing.repeat.frequency == 1
     assert float(inst.dosage[0].timing.repeat.period) == float(1)
@@ -297,9 +298,9 @@ def impl_medicationstatement_6(inst):
     assert inst.informationSource.display == "Donald Duck"
     assert inst.informationSource.reference == "Patient/pat1"
     assert inst.medicationReference.reference == "#med0315"
-    assert (
-        inst.note[0].text
-        == "patient plans to start using for seasonal allergies in the Spring when pollen is in the air"
+    assert inst.note[0].text == (
+        "patient plans to start using for seasonal allergies in the "
+        "Spring when pollen is in the air"
     )
     assert inst.status == "intended"
     assert inst.subject.display == "Donald Duck"

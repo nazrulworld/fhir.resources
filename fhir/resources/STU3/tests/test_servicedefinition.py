@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import servicedefinition
 
@@ -17,9 +19,10 @@ def impl_servicedefinition_1(inst):
     assert inst.dataRequirement[1].type == "Condition"
     assert inst.dataRequirement[2].type == "MedicationStatement"
     assert inst.date == fhirtypes.DateTime.validate("2016-07-05")
-    assert (
-        inst.description
-        == "The InfoButton specification defines a mechanism for retrieving relevant clinical context based a particular set of search criteria.."
+    assert inst.description == (
+        "The InfoButton specification defines a mechanism for "
+        "retrieving relevant clinical context based a particular set "
+        "of search criteria.."
     )
     assert inst.id == "infobutton"
     assert inst.identifier[0].use == "official"
@@ -54,9 +57,10 @@ def test_servicedefinition_1(base_settings):
 
 def impl_servicedefinition_2(inst):
     assert inst.date == fhirtypes.DateTime.validate("2015-07-22")
-    assert (
-        inst.description
-        == "Guideline appropriate ordering is used to assess appropriateness of an order given a patient, a proposed order, and a set of clinical indications."
+    assert inst.description == (
+        "Guideline appropriate ordering is used to assess "
+        "appropriateness of an order given a patient, a proposed "
+        "order, and a set of clinical indications."
     )
     assert inst.id == "example"
     assert inst.identifier[0].use == "official"

@@ -24,7 +24,10 @@ class Flag(domainresource.DomainResource):
     author: fhirtypes.ReferenceType = Field(
         None,
         alias="author",
-        title="Type `Reference` referencing `Device, Organization, Patient, Practitioner, PractitionerRole` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Device, Organization, Patient, "
+            "Practitioner, PractitionerRole` (represented as `dict` in JSON)"
+        ),
         description="Flag creator",
     )
 
@@ -45,7 +48,10 @@ class Flag(domainresource.DomainResource):
     encounter: fhirtypes.ReferenceType = Field(
         None,
         alias="encounter",
-        title="Type `Reference` referencing `Encounter` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Encounter` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Alert relevant during encounter",
     )
 
@@ -73,6 +79,10 @@ class Flag(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         ...,
         alias="subject",
-        title="Type `Reference` referencing `Patient, Location, Group, Organization, Practitioner, PlanDefinition, Medication, Procedure` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Location, Group, Organization, "
+            "Practitioner, PlanDefinition, Medication, Procedure` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Who/What is flag about?",
     )

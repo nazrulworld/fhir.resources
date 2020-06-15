@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import list
 
@@ -244,9 +246,8 @@ def impl_list_6(inst):
     assert inst.entry[1].item.reference == "#fmh-2"
     assert inst.id == "f201"
     assert inst.mode == "snapshot"
-    assert (
-        inst.note[0].text
-        == "Both parents, both brothers and both children (twin) are still alive."
+    assert inst.note[0].text == (
+        "Both parents, both brothers and both children (twin) are " "still alive."
     )
     assert inst.status == "current"
     assert inst.subject.display == "Roel"
@@ -355,14 +356,14 @@ def test_list_8(base_settings):
 
 def impl_list_9(inst):
     assert inst.code.coding[0].code == "80738-8"
-    assert (
-        inst.code.coding[0].display
-        == "TPMT gene mutations found [Identifier] in Blood or Tissue by Sequencing Nominal"
+    assert inst.code.coding[0].display == (
+        "TPMT gene mutations found [Identifier] in Blood or Tissue by"
+        " Sequencing Nominal"
     )
     assert inst.code.coding[0].system == "http://loinc.org"
-    assert (
-        inst.code.text
-        == "TPMT gene mutations found [Identifier] in Blood or Tissue by Sequencing Nominal"
+    assert inst.code.text == (
+        "TPMT gene mutations found [Identifier] in Blood or Tissue by"
+        " Sequencing Nominal"
     )
     assert inst.contained[0].id == "1"
     assert inst.contained[1].id == "2"

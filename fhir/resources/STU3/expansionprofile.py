@@ -59,7 +59,10 @@ class ExpansionProfile(domainresource.DomainResource):
         None,
         alias="displayLanguage",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="Specify the language for the display element of codes in the value set expansion",
+        description=(
+            "Specify the language for the display element of codes in the value set"
+            " expansion"
+        ),
     )
 
     excludeNested: bool = Field(
@@ -73,14 +76,20 @@ class ExpansionProfile(domainresource.DomainResource):
         None,
         alias="excludeNotForUI",
         title="Type `bool`",
-        description="Include or exclude codes which cannot be rendered in user interfaces in the value set expansion",
+        description=(
+            "Include or exclude codes which cannot be rendered in user interfaces "
+            "in the value set expansion"
+        ),
     )
 
     excludePostCoordinated: bool = Field(
         None,
         alias="excludePostCoordinated",
         title="Type `bool`",
-        description="Include or exclude codes which are post coordinated expressions in the value set expansion",
+        description=(
+            "Include or exclude codes which are post coordinated expressions in the"
+            " value set expansion"
+        ),
     )
 
     excludedSystem: fhirtypes.ExpansionProfileExcludedSystemType = Field(
@@ -100,7 +109,10 @@ class ExpansionProfile(domainresource.DomainResource):
     fixedVersion: ListType[fhirtypes.ExpansionProfileFixedVersionType] = Field(
         None,
         alias="fixedVersion",
-        title="List of `ExpansionProfileFixedVersion` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ExpansionProfileFixedVersion` items (represented as `dict` in"
+            " JSON)"
+        ),
         description="Fix use of a code system to a particular version",
     )
 
@@ -136,7 +148,10 @@ class ExpansionProfile(domainresource.DomainResource):
         None,
         alias="limitedExpansion",
         title="Type `bool`",
-        description="Controls behaviour of the value set expand operation when value sets are too large to be completely expanded",
+        description=(
+            "Controls behaviour of the value set expand operation when value sets "
+            "are too large to be completely expanded"
+        ),
     )
 
     name: fhirtypes.String = Field(
@@ -193,14 +208,20 @@ class ExpansionProfileDesignation(backboneelement.BackboneElement):
     exclude: fhirtypes.ExpansionProfileDesignationExcludeType = Field(
         None,
         alias="exclude",
-        title="Type `ExpansionProfileDesignationExclude` (represented as `dict` in JSON)",
+        title=(
+            "Type `ExpansionProfileDesignationExclude` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Designations to be excluded",
     )
 
     include: fhirtypes.ExpansionProfileDesignationIncludeType = Field(
         None,
         alias="include",
-        title="Type `ExpansionProfileDesignationInclude` (represented as `dict` in JSON)",
+        title=(
+            "Type `ExpansionProfileDesignationInclude` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Designations to be included",
     )
 
@@ -216,7 +237,10 @@ class ExpansionProfileDesignationExclude(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="designation",
-        title="List of `ExpansionProfileDesignationExcludeDesignation` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ExpansionProfileDesignationExcludeDesignation` items "
+            "(represented as `dict` in JSON)"
+        ),
         description="The designation to be excluded",
     )
 
@@ -254,7 +278,10 @@ class ExpansionProfileDesignationInclude(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="designation",
-        title="List of `ExpansionProfileDesignationIncludeDesignation` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ExpansionProfileDesignationIncludeDesignation` items "
+            "(represented as `dict` in JSON)"
+        ),
         description="The designation to be included",
     )
 

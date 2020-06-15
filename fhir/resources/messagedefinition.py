@@ -27,14 +27,20 @@ class MessageDefinition(domainresource.DomainResource):
     allowedResponse: ListType[fhirtypes.MessageDefinitionAllowedResponseType] = Field(
         None,
         alias="allowedResponse",
-        title="List of `MessageDefinitionAllowedResponse` items (represented as `dict` in JSON)",
+        title=(
+            "List of `MessageDefinitionAllowedResponse` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Responses to this message",
     )
 
     base: fhirtypes.Canonical = Field(
         None,
         alias="base",
-        title="Type `Canonical` referencing `MessageDefinition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Canonical` referencing `MessageDefinition` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Definition this one is based on",
     )
 
@@ -108,7 +114,10 @@ class MessageDefinition(domainresource.DomainResource):
     graph: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="graph",
-        title="List of `Canonical` items referencing `GraphDefinition` (represented as `dict` in JSON)",
+        title=(
+            "List of `Canonical` items referencing `GraphDefinition` (represented "
+            "as `dict` in JSON)"
+        ),
         description="Canonical reference to a GraphDefinition",
     )
 
@@ -136,7 +145,10 @@ class MessageDefinition(domainresource.DomainResource):
     parent: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="parent",
-        title="List of `Canonical` items referencing `ActivityDefinition, PlanDefinition` (represented as `dict` in JSON)",
+        title=(
+            "List of `Canonical` items referencing `ActivityDefinition, "
+            "PlanDefinition` (represented as `dict` in JSON)"
+        ),
         description="Protocol/workflow this is part of",
     )
 
@@ -157,7 +169,10 @@ class MessageDefinition(domainresource.DomainResource):
     replaces: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="replaces",
-        title="List of `Canonical` items referencing `MessageDefinition` (represented as `dict` in JSON)",
+        title=(
+            "List of `Canonical` items referencing `MessageDefinition` (represented"
+            " as `dict` in JSON)"
+        ),
         description="Takes the place of",
     )
 
@@ -217,9 +232,7 @@ class MessageDefinition(domainresource.DomainResource):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "event": ["eventCoding", "eventUri",],
-        }
+        one_of_many_fields = {"event": ["eventCoding", "eventUri"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -253,7 +266,10 @@ class MessageDefinitionAllowedResponse(backboneelement.BackboneElement):
     message: fhirtypes.Canonical = Field(
         ...,
         alias="message",
-        title="Type `Canonical` referencing `MessageDefinition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Canonical` referencing `MessageDefinition` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Reference to allowed message definition response",
     )
 
@@ -298,6 +314,9 @@ class MessageDefinitionFocus(backboneelement.BackboneElement):
     profile: fhirtypes.Canonical = Field(
         None,
         alias="profile",
-        title="Type `Canonical` referencing `StructureDefinition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Canonical` referencing `StructureDefinition` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Profile that must be adhered to by focus",
     )

@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import allergyintolerance
 
@@ -13,9 +15,8 @@ from .. import allergyintolerance
 def impl_allergyintolerance_1(inst):
     assert inst.clinicalStatus.coding[0].code == "active"
     assert inst.clinicalStatus.coding[0].display == "Active"
-    assert (
-        inst.clinicalStatus.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical"
+    assert inst.clinicalStatus.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/allergyintolerance-" "clinical"
     )
     assert inst.code.coding[0].code == "716184000"
     assert inst.code.coding[0].display == "No Known Latex Allergy (situation)"
@@ -33,9 +34,8 @@ def impl_allergyintolerance_1(inst):
     assert inst.text.status == "generated"
     assert inst.verificationStatus.coding[0].code == "confirmed"
     assert inst.verificationStatus.coding[0].display == "Confirmed"
-    assert (
-        inst.verificationStatus.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification"
+    assert inst.verificationStatus.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/allergyintolerance-" "verification"
     )
 
 
@@ -64,9 +64,8 @@ def impl_allergyintolerance_2(inst):
     assert inst.category[0] == "food"
     assert inst.clinicalStatus.coding[0].code == "active"
     assert inst.clinicalStatus.coding[0].display == "Active"
-    assert (
-        inst.clinicalStatus.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical"
+    assert inst.clinicalStatus.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/allergyintolerance-" "clinical"
     )
     assert inst.code.coding[0].code == "227493005"
     assert inst.code.coding[0].display == "Cashew nuts"
@@ -83,17 +82,17 @@ def impl_allergyintolerance_2(inst):
     assert (
         inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     )
-    assert (
-        inst.note[0].text
-        == "The criticality is high becasue of the observed anaphylactic reaction when challenged with cashew extract."
+    assert inst.note[0].text == (
+        "The criticality is high becasue of the observed anaphylactic"
+        " reaction when challenged with cashew extract."
     )
     assert inst.onsetDateTime == fhirtypes.DateTime.validate(
         "2004-10-09T12:09:24+00:06"
     )
     assert inst.patient.reference == "Patient/example"
-    assert (
-        inst.reaction[0].description
-        == "Challenge Protocol. Severe reaction to subcutaneous cashew extract. Epinephrine administered"
+    assert inst.reaction[0].description == (
+        "Challenge Protocol. Severe reaction to subcutaneous cashew "
+        "extract. Epinephrine administered"
     )
     assert inst.reaction[0].exposureRoute.coding[0].code == "34206005"
     assert inst.reaction[0].exposureRoute.coding[0].display == "Subcutaneous route"
@@ -123,9 +122,9 @@ def impl_allergyintolerance_2(inst):
     assert (
         inst.reaction[1].manifestation[0].coding[0].system == "http://snomed.info/sct"
     )
-    assert (
-        inst.reaction[1].note[0].text
-        == "The patient reports that the onset of urticaria was within 15 minutes of eating cashews."
+    assert inst.reaction[1].note[0].text == (
+        "The patient reports that the onset of urticaria was within "
+        "15 minutes of eating cashews."
     )
     assert inst.reaction[1].onset == fhirtypes.DateTime.validate(
         "2004-06-12T11:15:33+10:00"
@@ -137,9 +136,8 @@ def impl_allergyintolerance_2(inst):
     assert inst.type == "allergy"
     assert inst.verificationStatus.coding[0].code == "confirmed"
     assert inst.verificationStatus.coding[0].display == "Confirmed"
-    assert (
-        inst.verificationStatus.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification"
+    assert inst.verificationStatus.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/allergyintolerance-" "verification"
     )
 
 
@@ -166,9 +164,8 @@ def test_allergyintolerance_2(base_settings):
 def impl_allergyintolerance_3(inst):
     assert inst.clinicalStatus.coding[0].code == "active"
     assert inst.clinicalStatus.coding[0].display == "Active"
-    assert (
-        inst.clinicalStatus.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical"
+    assert inst.clinicalStatus.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/allergyintolerance-" "clinical"
     )
     assert inst.code.coding[0].code == "716186003"
     assert inst.code.coding[0].display == "No Known Allergy (situation)"
@@ -186,9 +183,8 @@ def impl_allergyintolerance_3(inst):
     assert inst.text.status == "generated"
     assert inst.verificationStatus.coding[0].code == "confirmed"
     assert inst.verificationStatus.coding[0].display == "Confirmed"
-    assert (
-        inst.verificationStatus.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification"
+    assert inst.verificationStatus.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/allergyintolerance-" "verification"
     )
 
 
@@ -216,9 +212,8 @@ def impl_allergyintolerance_4(inst):
     assert inst.category[0] == "medication"
     assert inst.clinicalStatus.coding[0].code == "active"
     assert inst.clinicalStatus.coding[0].display == "Active"
-    assert (
-        inst.clinicalStatus.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical"
+    assert inst.clinicalStatus.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/allergyintolerance-" "clinical"
     )
     assert inst.code.coding[0].code == "7980"
     assert inst.code.coding[0].display == "Penicillin G"
@@ -241,9 +236,8 @@ def impl_allergyintolerance_4(inst):
     assert inst.text.status == "generated"
     assert inst.verificationStatus.coding[0].code == "unconfirmed"
     assert inst.verificationStatus.coding[0].display == "Unconfirmed"
-    assert (
-        inst.verificationStatus.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification"
+    assert inst.verificationStatus.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/allergyintolerance-" "verification"
     )
 
 
@@ -271,9 +265,8 @@ def impl_allergyintolerance_5(inst):
     assert inst.category[0] == "food"
     assert inst.clinicalStatus.coding[0].code == "active"
     assert inst.clinicalStatus.coding[0].display == "Active"
-    assert (
-        inst.clinicalStatus.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical"
+    assert inst.clinicalStatus.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/allergyintolerance-" "clinical"
     )
     assert inst.code.coding[0].code == "227037002"
     assert inst.code.coding[0].display == "Fish - dietary (substance)"
@@ -293,9 +286,8 @@ def impl_allergyintolerance_5(inst):
     assert inst.text.status == "additional"
     assert inst.verificationStatus.coding[0].code == "confirmed"
     assert inst.verificationStatus.coding[0].display == "Confirmed"
-    assert (
-        inst.verificationStatus.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification"
+    assert inst.verificationStatus.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/allergyintolerance-" "verification"
     )
 
 
@@ -324,9 +316,8 @@ def test_allergyintolerance_5(base_settings):
 def impl_allergyintolerance_6(inst):
     assert inst.clinicalStatus.coding[0].code == "active"
     assert inst.clinicalStatus.coding[0].display == "Active"
-    assert (
-        inst.clinicalStatus.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical"
+    assert inst.clinicalStatus.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/allergyintolerance-" "clinical"
     )
     assert inst.code.coding[0].code == "409137002"
     assert inst.code.coding[0].display == "No Known Drug Allergy (situation)"
@@ -344,9 +335,8 @@ def impl_allergyintolerance_6(inst):
     assert inst.text.status == "generated"
     assert inst.verificationStatus.coding[0].code == "confirmed"
     assert inst.verificationStatus.coding[0].display == "Confirmed"
-    assert (
-        inst.verificationStatus.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification"
+    assert inst.verificationStatus.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/allergyintolerance-" "verification"
     )
 
 

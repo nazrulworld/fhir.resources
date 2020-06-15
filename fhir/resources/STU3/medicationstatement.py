@@ -26,7 +26,7 @@ class MedicationStatement(domainresource.DomainResource):
     information may come from sources such as the patient's memory, from a
     prescription bottle,  or from a list of medications the patient, clinician
     or other party maintains
-    
+
     The primary difference between a medication statement and a medication
     administration is that the medication administration has complete
     administration information and is based on actual administration
@@ -47,7 +47,10 @@ class MedicationStatement(domainresource.DomainResource):
     basedOn: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="basedOn",
-        title="List of `Reference` items referencing `MedicationRequest, CarePlan, ProcedureRequest, ReferralRequest` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `MedicationRequest, CarePlan, "
+            "ProcedureRequest, ReferralRequest` (represented as `dict` in JSON)"
+        ),
         description="Fulfils plan, proposal or order",
     )
 
@@ -61,7 +64,10 @@ class MedicationStatement(domainresource.DomainResource):
     context: fhirtypes.ReferenceType = Field(
         None,
         alias="context",
-        title="Type `Reference` referencing `Encounter, EpisodeOfCare` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Encounter, EpisodeOfCare` (represented "
+            "as `dict` in JSON)"
+        ),
         description="Encounter / Episode associated with MedicationStatement",
     )
 
@@ -75,7 +81,10 @@ class MedicationStatement(domainresource.DomainResource):
     derivedFrom: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="derivedFrom",
-        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Resource` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Additional supporting information",
     )
 
@@ -114,8 +123,14 @@ class MedicationStatement(domainresource.DomainResource):
     informationSource: fhirtypes.ReferenceType = Field(
         None,
         alias="informationSource",
-        title="Type `Reference` referencing `Patient, Practitioner, RelatedPerson, Organization` (represented as `dict` in JSON)",
-        description="Person or organization that provided the information about the taking of this medication",
+        title=(
+            "Type `Reference` referencing `Patient, Practitioner, RelatedPerson, "
+            "Organization` (represented as `dict` in JSON)"
+        ),
+        description=(
+            "Person or organization that provided the information about the taking "
+            "of this medication"
+        ),
     )
 
     medicationCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -130,7 +145,10 @@ class MedicationStatement(domainresource.DomainResource):
     medicationReference: fhirtypes.ReferenceType = Field(
         None,
         alias="medicationReference",
-        title="Type `Reference` referencing `Medication` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Medication` (represented as `dict` in "
+            "JSON)"
+        ),
         description="What medication was taken",
         one_of_many="medication",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
@@ -146,7 +164,11 @@ class MedicationStatement(domainresource.DomainResource):
     partOf: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="partOf",
-        title="List of `Reference` items referencing `MedicationAdministration, MedicationDispense, MedicationStatement, Procedure, Observation` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `MedicationAdministration, "
+            "MedicationDispense, MedicationStatement, Procedure, Observation` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Part of referenced event",
     )
 
@@ -167,8 +189,14 @@ class MedicationStatement(domainresource.DomainResource):
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="reasonReference",
-        title="List of `Reference` items referencing `Condition, Observation` (represented as `dict` in JSON)",
-        description="Condition or observation that supports why the medication is being/was taken",
+        title=(
+            "List of `Reference` items referencing `Condition, Observation` "
+            "(represented as `dict` in JSON)"
+        ),
+        description=(
+            "Condition or observation that supports why the medication is being/was"
+            " taken"
+        ),
     )
 
     status: fhirtypes.Code = Field(
@@ -181,7 +209,10 @@ class MedicationStatement(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         ...,
         alias="subject",
-        title="Type `Reference` referencing `Patient, Group` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Group` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Who is/was taking  the medication",
     )
 
@@ -207,8 +238,8 @@ class MedicationStatement(domainresource.DomainResource):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "effective": ["effectiveDateTime", "effectivePeriod",],
-            "medication": ["medicationCodeableConcept", "medicationReference",],
+            "effective": ["effectiveDateTime", "effectivePeriod"],
+            "medication": ["medicationCodeableConcept", "medicationReference"],
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

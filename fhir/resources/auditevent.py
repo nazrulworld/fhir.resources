@@ -118,7 +118,9 @@ class AuditEventAgent(backboneelement.BackboneElement):
     location: fhirtypes.ReferenceType = Field(
         None,
         alias="location",
-        title="Type `Reference` referencing `Location` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Location` (represented as `dict` in " "JSON)"
+        ),
         description="Where",
     )
 
@@ -181,7 +183,11 @@ class AuditEventAgent(backboneelement.BackboneElement):
     who: fhirtypes.ReferenceType = Field(
         None,
         alias="who",
-        title="Type `Reference` referencing `PractitionerRole, Practitioner, Organization, Device, Patient, RelatedPerson` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `PractitionerRole, Practitioner, "
+            "Organization, Device, Patient, RelatedPerson` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Identifier of who",
     )
 
@@ -275,7 +281,9 @@ class AuditEventEntity(backboneelement.BackboneElement):
     what: fhirtypes.ReferenceType = Field(
         None,
         alias="what",
-        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        ),
         description="Specific instance of resource",
     )
 
@@ -326,9 +334,7 @@ class AuditEventEntityDetail(backboneelement.BackboneElement):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "value": ["valueBase64Binary", "valueString",],
-        }
+        one_of_many_fields = {"value": ["valueBase64Binary", "valueString"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -361,7 +367,11 @@ class AuditEventSource(backboneelement.BackboneElement):
     observer: fhirtypes.ReferenceType = Field(
         ...,
         alias="observer",
-        title="Type `Reference` referencing `PractitionerRole, Practitioner, Organization, Device, Patient, RelatedPerson` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `PractitionerRole, Practitioner, "
+            "Organization, Device, Patient, RelatedPerson` (represented as `dict` "
+            "in JSON)"
+        ),
         description="The identity of source detecting the event",
     )
 

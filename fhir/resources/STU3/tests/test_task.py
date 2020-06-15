@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import task
 
@@ -17,9 +19,9 @@ def impl_task_1(inst):
     assert inst.code.text == "Lipid Panel"
     assert inst.context.display == "Example In-Patient Encounter"
     assert inst.context.reference == "Encounter/example"
-    assert (
-        inst.description
-        == "Create order for getting specimen, Set up inhouse testing,  generate order for any sendouts and submit with specimen"
+    assert inst.description == (
+        "Create order for getting specimen, Set up inhouse testing,  "
+        "generate order for any sendouts and submit with specimen"
     )
     assert inst.executionPeriod.end == fhirtypes.DateTime.validate(
         "2016-10-31T18:45:05+10:00"
@@ -54,9 +56,10 @@ def impl_task_1(inst):
     )
     assert inst.performerType[0].text == "Performer"
     assert inst.priority == "routine"
-    assert (
-        inst.reason.text
-        == "The Task.reason should only be included if there is no Task.focus or if it differs from the reason indicated on the focus"
+    assert inst.reason.text == (
+        "The Task.reason should only be included if there is no "
+        "Task.focus or if it differs from the reason indicated on the"
+        " focus"
     )
     assert inst.requester.agent.display == "Dr Adam Careful"
     assert inst.requester.agent.reference == "Practitioner/example"
@@ -98,9 +101,9 @@ def impl_task_2(inst):
     assert inst.contained[0].id == "signature"
     assert inst.context.display == "Example In-Patient Encounter"
     assert inst.context.reference == "Encounter/example"
-    assert (
-        inst.description
-        == "Create order for getting specimen, Set up inhouse testing,  generate order for any sendouts and submit with specimen"
+    assert inst.description == (
+        "Create order for getting specimen, Set up inhouse testing,  "
+        "generate order for any sendouts and submit with specimen"
     )
     assert inst.executionPeriod.start == fhirtypes.DateTime.validate(
         "2016-10-31T08:25:05+10:00"
@@ -128,9 +131,10 @@ def impl_task_2(inst):
     )
     assert inst.performerType[0].text == "Performer"
     assert inst.priority == "routine"
-    assert (
-        inst.reason.text
-        == "The Task.reason should only be included if there is no Task.focus or if it differs from the reason indicated on the focus"
+    assert inst.reason.text == (
+        "The Task.reason should only be included if there is no "
+        "Task.focus or if it differs from the reason indicated on the"
+        " focus"
     )
     assert inst.relevantHistory[0].display == "Author's Signature"
     assert inst.relevantHistory[0].reference == "#signature"
@@ -273,9 +277,9 @@ def impl_task_5(inst):
     assert inst.code.text == "Lipid Panel"
     assert inst.context.display == "Example In-Patient Encounter"
     assert inst.context.reference == "Encounter/example"
-    assert (
-        inst.description
-        == "Create order for getting specimen, Set up inhouse testing,  generate order for any sendouts and submit with specimen"
+    assert inst.description == (
+        "Create order for getting specimen, Set up inhouse testing,  "
+        "generate order for any sendouts and submit with specimen"
     )
     assert inst.executionPeriod.start == fhirtypes.DateTime.validate(
         "2016-10-31T08:25:05+10:00"
@@ -305,9 +309,10 @@ def impl_task_5(inst):
     )
     assert inst.performerType[0].text == "Performer"
     assert inst.priority == "routine"
-    assert (
-        inst.reason.text
-        == "The Task.reason should only be included if there is no Task.focus or if it differs from the reason indicated on the focus"
+    assert inst.reason.text == (
+        "The Task.reason should only be included if there is no "
+        "Task.focus or if it differs from the reason indicated on the"
+        " focus"
     )
     assert inst.requester.agent.display == "Dr Adam Careful"
     assert inst.requester.agent.reference == "Practitioner/example"

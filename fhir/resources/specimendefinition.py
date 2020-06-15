@@ -59,7 +59,10 @@ class SpecimenDefinition(domainresource.DomainResource):
     typeTested: ListType[fhirtypes.SpecimenDefinitionTypeTestedType] = Field(
         None,
         alias="typeTested",
-        title="List of `SpecimenDefinitionTypeTested` items (represented as `dict` in JSON)",
+        title=(
+            "List of `SpecimenDefinitionTypeTested` items (represented as `dict` in"
+            " JSON)"
+        ),
         description="Specimen in container intended for testing by lab",
     )
 
@@ -74,14 +77,20 @@ class SpecimenDefinitionTypeTested(backboneelement.BackboneElement):
     container: fhirtypes.SpecimenDefinitionTypeTestedContainerType = Field(
         None,
         alias="container",
-        title="Type `SpecimenDefinitionTypeTestedContainer` (represented as `dict` in JSON)",
+        title=(
+            "Type `SpecimenDefinitionTypeTestedContainer` (represented as `dict` in"
+            " JSON)"
+        ),
         description="The specimen\u0027s container",
     )
 
     handling: ListType[fhirtypes.SpecimenDefinitionTypeTestedHandlingType] = Field(
         None,
         alias="handling",
-        title="List of `SpecimenDefinitionTypeTestedHandling` items (represented as `dict` in JSON)",
+        title=(
+            "List of `SpecimenDefinitionTypeTestedHandling` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Specimen handling before testing",
     )
 
@@ -139,7 +148,10 @@ class SpecimenDefinitionTypeTestedContainer(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="additive",
-        title="List of `SpecimenDefinitionTypeTestedContainerAdditive` items (represented as `dict` in JSON)",
+        title=(
+            "List of `SpecimenDefinitionTypeTestedContainerAdditive` items "
+            "(represented as `dict` in JSON)"
+        ),
         description="Additive associated with container",
     )
 
@@ -218,7 +230,7 @@ class SpecimenDefinitionTypeTestedContainer(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "minimumVolume": ["minimumVolumeQuantity", "minimumVolumeString",],
+            "minimumVolume": ["minimumVolumeQuantity", "minimumVolumeString"]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
@@ -262,7 +274,10 @@ class SpecimenDefinitionTypeTestedContainerAdditive(backboneelement.BackboneElem
     additiveReference: fhirtypes.ReferenceType = Field(
         None,
         alias="additiveReference",
-        title="Type `Reference` referencing `Substance` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Substance` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Additive associated with container",
         one_of_many="additive",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
@@ -283,7 +298,7 @@ class SpecimenDefinitionTypeTestedContainerAdditive(backboneelement.BackboneElem
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "additive": ["additiveCodeableConcept", "additiveReference",],
+            "additive": ["additiveCodeableConcept", "additiveReference"]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

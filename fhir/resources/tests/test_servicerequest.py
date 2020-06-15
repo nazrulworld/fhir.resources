@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import servicerequest
 
@@ -242,9 +244,9 @@ def impl_servicerequest_5(inst):
     assert inst.occurrenceTiming.repeat.frequency == 3
     assert float(inst.occurrenceTiming.repeat.period) == float(1)
     assert inst.occurrenceTiming.repeat.periodUnit == "wk"
-    assert (
-        inst.patientInstruction
-        == "Start with 30kg 10-15 repetitions for three sets and increase in increments of 5kg when you feel ready"
+    assert inst.patientInstruction == (
+        "Start with 30kg 10-15 repetitions for three sets and "
+        "increase in increments of 5kg when you feel ready"
     )
     assert inst.status == "active"
     assert inst.subject.reference == "Patient/example"
@@ -340,9 +342,11 @@ def impl_servicerequest_7(inst):
     )
     assert inst.orderDetail[0].coding[0].system == "http://snomed.info/sct"
     assert inst.orderDetail[0].text == "IPPB"
-    assert (
-        inst.orderDetail[1].text
-        == " Initial Settings : Sens: -1 cm H20 Pressure 15 cm H2O moderate flow:  Monitor VS every 15 minutes x 4 at the start of mechanical ventilation, then routine for unit OR every 5 hr"
+    assert inst.orderDetail[1].text == (
+        " Initial Settings : Sens: -1 cm H20 Pressure 15 cm H2O "
+        "moderate flow:  Monitor VS every 15 minutes x 4 at the start"
+        " of mechanical ventilation, then routine for unit OR every 5"
+        " hr"
     )
     assert inst.performer[0].display == "Dr Cecil Surgeon"
     assert inst.performer[0].reference == "Practitioner/example"

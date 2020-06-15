@@ -40,7 +40,10 @@ class Immunization(domainresource.DomainResource):
     encounter: fhirtypes.ReferenceType = Field(
         None,
         alias="encounter",
-        title="Type `Reference` referencing `Encounter` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Encounter` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Encounter administered as part of",
     )
 
@@ -68,7 +71,9 @@ class Immunization(domainresource.DomainResource):
     location: fhirtypes.ReferenceType = Field(
         None,
         alias="location",
-        title="Type `Reference` referencing `Location` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Location` (represented as `dict` in " "JSON)"
+        ),
         description="Where vaccination occurred",
     )
 
@@ -82,7 +87,10 @@ class Immunization(domainresource.DomainResource):
     manufacturer: fhirtypes.ReferenceType = Field(
         None,
         alias="manufacturer",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Vaccine manufacturer",
     )
 
@@ -110,7 +118,10 @@ class Immunization(domainresource.DomainResource):
     practitioner: ListType[fhirtypes.ImmunizationPractitionerType] = Field(
         None,
         alias="practitioner",
-        title="List of `ImmunizationPractitioner` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ImmunizationPractitioner` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Who performed event",
     )
 
@@ -161,7 +172,10 @@ class Immunization(domainresource.DomainResource):
     ] = Field(
         None,
         alias="vaccinationProtocol",
-        title="List of `ImmunizationVaccinationProtocol` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ImmunizationVaccinationProtocol` items (represented as `dict`"
+            " in JSON)"
+        ),
         description="What protocol was followed",
     )
 
@@ -205,7 +219,10 @@ class ImmunizationPractitioner(backboneelement.BackboneElement):
     actor: fhirtypes.ReferenceType = Field(
         ...,
         alias="actor",
-        title="Type `Reference` referencing `Practitioner` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Individual who was performing",
     )
 
@@ -235,7 +252,10 @@ class ImmunizationReaction(backboneelement.BackboneElement):
     detail: fhirtypes.ReferenceType = Field(
         None,
         alias="detail",
-        title="Type `Reference` referencing `Observation` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Observation` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Additional information on reaction",
     )
 
@@ -258,7 +278,10 @@ class ImmunizationVaccinationProtocol(backboneelement.BackboneElement):
     authority: fhirtypes.ReferenceType = Field(
         None,
         alias="authority",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Who is responsible for protocol",
     )
 

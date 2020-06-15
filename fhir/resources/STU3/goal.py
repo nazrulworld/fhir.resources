@@ -27,7 +27,11 @@ class Goal(domainresource.DomainResource):
     addresses: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="addresses",
-        title="List of `Reference` items referencing `Condition, Observation, MedicationStatement, NutritionOrder, ProcedureRequest, RiskAssessment` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Condition, Observation, "
+            "MedicationStatement, NutritionOrder, ProcedureRequest, RiskAssessment`"
+            " (represented as `dict` in JSON)"
+        ),
         description="Issues addressed by this goal",
     )
 
@@ -48,7 +52,10 @@ class Goal(domainresource.DomainResource):
     expressedBy: fhirtypes.ReferenceType = Field(
         None,
         alias="expressedBy",
-        title="Type `Reference` referencing `Patient, Practitioner, RelatedPerson` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Practitioner, RelatedPerson` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Who\u0027s responsible for creating Goal?",
     )
 
@@ -76,7 +83,10 @@ class Goal(domainresource.DomainResource):
     outcomeReference: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="outcomeReference",
-        title="List of `Reference` items referencing `Observation` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Observation` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Observation that resulted from goal",
     )
 
@@ -109,7 +119,11 @@ class Goal(domainresource.DomainResource):
         ...,
         alias="status",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="proposed | accepted | planned | in-progress | on-target | ahead-of-target | behind-target | sustaining | achieved | on-hold | cancelled | entered-in-error | rejected",
+        description=(
+            "proposed | accepted | planned | in-progress | on-target | ahead-of-"
+            "target | behind-target | sustaining | achieved | on-hold | cancelled |"
+            " entered-in-error | rejected"
+        ),
     )
 
     statusDate: fhirtypes.Date = Field(
@@ -129,7 +143,10 @@ class Goal(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         None,
         alias="subject",
-        title="Type `Reference` referencing `Patient, Group, Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Group, Organization` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Who this goal is intended for",
     )
 
@@ -154,9 +171,7 @@ class Goal(domainresource.DomainResource):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "start": ["startCodeableConcept", "startDate",],
-        }
+        one_of_many_fields = {"start": ["startCodeableConcept", "startDate"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -253,8 +268,8 @@ class GoalTarget(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "detail": ["detailCodeableConcept", "detailQuantity", "detailRange",],
-            "due": ["dueDate", "dueDuration",],
+            "detail": ["detailCodeableConcept", "detailQuantity", "detailRange"],
+            "due": ["dueDate", "dueDuration"],
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

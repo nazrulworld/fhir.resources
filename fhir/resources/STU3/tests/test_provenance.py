@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import provenance
 
@@ -25,7 +27,7 @@ def impl_provenance_1(inst):
     assert inst.reason[0].display == "treatment"
     assert inst.reason[0].system == "http://hl7.org/fhir/v3/ActReason"
     assert inst.recorded == fhirtypes.Instant.validate("2015-08-27T08:39:24+10:00")
-    # Don't know how to create unit test for "signature[0].blob", which is a Base64Binary
+    assert inst.signature[0].blob == bytes_validator("Li4u")
     assert inst.signature[0].contentType == "application/signature+xml"
     assert inst.signature[0].type[0].code == "1.2.840.10065.1.12.1.5"
     assert inst.signature[0].type[0].display == "Verification Signature"
@@ -35,9 +37,10 @@ def impl_provenance_1(inst):
     )
     assert inst.signature[0].whoReference.reference == "Practitioner/xcda-author"
     assert inst.target[0].reference == "DocumentReference/example"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">procedure record authored on 27-June 2015 by Harold Hippocrates, MD Content extracted from Referral received 26-June</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">procedure record'
+        " authored on 27-June 2015 by Harold Hippocrates, MD Content "
+        "extracted from Referral received 26-June</div>"
     )
     assert inst.text.status == "generated"
 
@@ -71,7 +74,7 @@ def impl_provenance_2(inst):
     assert inst.agent[0].whoReference.reference == "Patient/72"
     assert inst.id == "consent-signature"
     assert inst.recorded == fhirtypes.Instant.validate("2016-05-26T00:41:10-04:00")
-    # Don't know how to create unit test for "signature[0].blob", which is a Base64Binary
+    assert inst.signature[0].blob == bytes_validator("dGhpcyBibG9iIGlzIHNuaXBwZWQ=")
     assert inst.signature[0].contentType == "application/signature+xml"
     assert inst.signature[0].type[0].code == "1.2.840.10065.1.12.1.1"
     assert inst.signature[0].type[0].display == "Author's Signature"
@@ -118,15 +121,15 @@ def impl_provenance_3(inst):
         inst.entity[0].whatIdentifier.type.coding[0].system
         == "https://github.com/common-workflow-language/workflows"
     )
-    assert (
-        inst.entity[0].whatIdentifier.value
-        == "https://github.com/common-workflow-language/workflows/blob/master/workflows/lobSTR/lobSTR-workflow.cwl"
+    assert inst.entity[0].whatIdentifier.value == (
+        "https://github.com/common-workflow-"
+        "language/workflows/blob/master/workflows/lobSTR/lobSTR-"
+        "workflow.cwl"
     )
     assert inst.id == "example-cwl"
     assert inst.period.start == fhirtypes.DateTime.validate("2016-11-30")
-    assert (
-        inst.reason[0].display
-        == "profiling Short Tandem Repeats (STRs) from high throughput sequencing data."
+    assert inst.reason[0].display == (
+        "profiling Short Tandem Repeats (STRs) from high throughput " "sequencing data."
     )
     assert inst.recorded == fhirtypes.Instant.validate("2016-12-01T08:12:14+10:00")
     assert inst.target[0].reference == "Sequence/example-pgx-1"
@@ -167,9 +170,9 @@ def impl_provenance_4(inst):
         inst.entity[0].whatIdentifier.type.coding[0].system
         == "https://hive.biochemistry.gwu.edu"
     )
-    assert (
-        inst.entity[0].whatIdentifier.value
-        == "https://hive.biochemistry.gwu.edu/cgi-bin/prd/htscsrs/servlet.cgi?pageid=bcoexample_1"
+    assert inst.entity[0].whatIdentifier.value == (
+        "https://hive.biochemistry.gwu.edu/cgi-"
+        "bin/prd/htscsrs/servlet.cgi?pageid=bcoexample_1"
     )
     assert inst.id == "example-biocompute-object"
     assert inst.period.start == fhirtypes.DateTime.validate("2017-06-06")
@@ -230,9 +233,11 @@ def impl_provenance_5(inst):
     assert inst.reason[0].system == "http://snomed.info/sct"
     assert inst.recorded == fhirtypes.Instant.validate("2015-06-27T08:39:24+10:00")
     assert inst.target[0].reference == "Procedure/example/_history/1"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">procedure record authored on 27-June 2015 by Harold Hippocrates, MD Content extracted from XDS managed CDA Referral received 26-June</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">procedure record'
+        " authored on 27-June 2015 by Harold Hippocrates, MD Content "
+        "extracted from XDS managed CDA Referral received "
+        "26-June</div>"
     )
     assert inst.text.status == "generated"
 

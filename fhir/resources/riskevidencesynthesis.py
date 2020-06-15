@@ -39,7 +39,10 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
     certainty: ListType[fhirtypes.RiskEvidenceSynthesisCertaintyType] = Field(
         None,
         alias="certainty",
-        title="List of `RiskEvidenceSynthesisCertainty` items (represented as `dict` in JSON)",
+        title=(
+            "List of `RiskEvidenceSynthesisCertainty` items (represented as `dict` "
+            "in JSON)"
+        ),
         description="How certain is the risk",
     )
 
@@ -95,7 +98,10 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
     exposure: fhirtypes.ReferenceType = Field(
         None,
         alias="exposure",
-        title="Type `Reference` referencing `EvidenceVariable` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `EvidenceVariable` (represented as `dict`"
+            " in JSON)"
+        ),
         description="What exposure?",
     )
 
@@ -137,14 +143,20 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
     outcome: fhirtypes.ReferenceType = Field(
         ...,
         alias="outcome",
-        title="Type `Reference` referencing `EvidenceVariable` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `EvidenceVariable` (represented as `dict`"
+            " in JSON)"
+        ),
         description="What outcome?",
     )
 
     population: fhirtypes.ReferenceType = Field(
         ...,
         alias="population",
-        title="Type `Reference` referencing `EvidenceVariable` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `EvidenceVariable` (represented as `dict`"
+            " in JSON)"
+        ),
         description="What population?",
     )
 
@@ -172,7 +184,10 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
     riskEstimate: fhirtypes.RiskEvidenceSynthesisRiskEstimateType = Field(
         None,
         alias="riskEstimate",
-        title="Type `RiskEvidenceSynthesisRiskEstimate` (represented as `dict` in JSON)",
+        title=(
+            "Type `RiskEvidenceSynthesisRiskEstimate` (represented as `dict` in "
+            "JSON)"
+        ),
         description="What was the estimated risk",
     )
 
@@ -215,14 +230,20 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
         None,
         alias="topic",
         title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="The category of the EffectEvidenceSynthesis, such as Education, Treatment, Assessment, etc.",
+        description=(
+            "The category of the EffectEvidenceSynthesis, such as Education, "
+            "Treatment, Assessment, etc."
+        ),
     )
 
     url: fhirtypes.Uri = Field(
         None,
         alias="url",
         title="Type `Uri` (represented as `dict` in JSON)",
-        description="Canonical identifier for this risk evidence synthesis, represented as a URI (globally unique)",
+        description=(
+            "Canonical identifier for this risk evidence synthesis, represented as "
+            "a URI (globally unique)"
+        ),
     )
 
     useContext: ListType[fhirtypes.UsageContextType] = Field(
@@ -252,7 +273,10 @@ class RiskEvidenceSynthesisCertainty(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="certaintySubcomponent",
-        title="List of `RiskEvidenceSynthesisCertaintyCertaintySubcomponent` items (represented as `dict` in JSON)",
+        title=(
+            "List of `RiskEvidenceSynthesisCertaintyCertaintySubcomponent` items "
+            "(represented as `dict` in JSON)"
+        ),
         description="A component that contributes to the overall certainty",
     )
 
@@ -337,7 +361,10 @@ class RiskEvidenceSynthesisRiskEstimate(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="precisionEstimate",
-        title="List of `RiskEvidenceSynthesisRiskEstimatePrecisionEstimate` items (represented as `dict` in JSON)",
+        title=(
+            "List of `RiskEvidenceSynthesisRiskEstimatePrecisionEstimate` items "
+            "(represented as `dict` in JSON)"
+        ),
         description="How precise the estimate is",
     )
 

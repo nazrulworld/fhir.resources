@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import diagnosticreport
 
@@ -192,9 +194,8 @@ def impl_diagnosticreport_4(inst):
     assert inst.category.coding[1].code == "HM"
     assert inst.category.coding[1].system == "http://hl7.org/fhir/v2/0074"
     assert inst.code.coding[0].code == "58410-2"
-    assert (
-        inst.code.coding[0].display
-        == "Complete blood count (hemogram) panel - Blood by Automated count"
+    assert inst.code.coding[0].display == (
+        "Complete blood count (hemogram) panel - Blood by Automated " "count"
     )
     assert inst.code.coding[0].system == "http://loinc.org"
     assert inst.conclusion == "Core lab"
@@ -359,9 +360,9 @@ def impl_diagnosticreport_7(inst):
     assert inst.effectiveDateTime == fhirtypes.DateTime.validate(
         "2015-05-26T15:30:10+01:00"
     )
-    assert (
-        inst.extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/DiagnosticReport-geneticsFamilyMemberHistory"
+    assert inst.extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/DiagnosticReport-"
+        "geneticsFamilyMemberHistory"
     )
     assert inst.extension[0].valueReference.reference == "#f1-genetics"
     assert inst.id == "dg2"
@@ -455,9 +456,8 @@ def impl_diagnosticreport_9(inst):
     assert inst.category.coding[0].code == "HM"
     assert inst.category.coding[0].system == "http://hl7.org/fhir/v2/0074"
     assert inst.code.coding[0].code == "58410-2"
-    assert (
-        inst.code.coding[0].display
-        == "Complete blood count (hemogram) panel - Blood by Automated count"
+    assert inst.code.coding[0].display == (
+        "Complete blood count (hemogram) panel - Blood by Automated " "count"
     )
     assert inst.code.coding[0].system == "http://loinc.org"
     assert inst.code.coding[1].code == "CBC"

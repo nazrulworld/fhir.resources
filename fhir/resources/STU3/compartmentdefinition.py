@@ -87,7 +87,10 @@ class CompartmentDefinition(domainresource.DomainResource):
     resource: ListType[fhirtypes.CompartmentDefinitionResourceType] = Field(
         None,
         alias="resource",
-        title="List of `CompartmentDefinitionResource` items (represented as `dict` in JSON)",
+        title=(
+            "List of `CompartmentDefinitionResource` items (represented as `dict` "
+            "in JSON)"
+        ),
         description="How a resource is related to the compartment",
     )
 

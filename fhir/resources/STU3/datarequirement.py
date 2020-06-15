@@ -25,14 +25,20 @@ class DataRequirement(element.Element):
     codeFilter: ListType[fhirtypes.DataRequirementCodeFilterType] = Field(
         None,
         alias="codeFilter",
-        title="List of `DataRequirementCodeFilter` items (represented as `dict` in JSON)",
+        title=(
+            "List of `DataRequirementCodeFilter` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="What codes are expected",
     )
 
     dateFilter: ListType[fhirtypes.DataRequirementDateFilterType] = Field(
         None,
         alias="dateFilter",
-        title="List of `DataRequirementDateFilter` items (represented as `dict` in JSON)",
+        title=(
+            "List of `DataRequirementDateFilter` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="What dates/date ranges are expected",
     )
 
@@ -40,7 +46,10 @@ class DataRequirement(element.Element):
         None,
         alias="mustSupport",
         title="List of `String` items (represented as `dict` in JSON)",
-        description="Indicates that specific structure elements are referenced by the knowledge module",
+        description=(
+            "Indicates that specific structure elements are referenced by the "
+            "knowledge module"
+        ),
     )
 
     profile: ListType[fhirtypes.Uri] = Field(
@@ -97,7 +106,9 @@ class DataRequirementCodeFilter(element.Element):
     valueSetReference: fhirtypes.ReferenceType = Field(
         None,
         alias="valueSetReference",
-        title="Type `Reference` referencing `ValueSet` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `ValueSet` (represented as `dict` in " "JSON)"
+        ),
         description="Valueset for the filter",
         one_of_many="valueSet",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -126,9 +137,7 @@ class DataRequirementCodeFilter(element.Element):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "valueSet": ["valueSetReference", "valueSetString",],
-        }
+        one_of_many_fields = {"valueSet": ["valueSetReference", "valueSetString"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -208,7 +217,7 @@ class DataRequirementDateFilter(element.Element):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "value": ["valueDateTime", "valueDuration", "valuePeriod",],
+            "value": ["valueDateTime", "valueDuration", "valuePeriod"]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

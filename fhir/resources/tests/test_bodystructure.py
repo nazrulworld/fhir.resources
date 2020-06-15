@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import bodystructure
 
@@ -58,9 +60,8 @@ def impl_bodystructure_2(inst):
     )
     assert inst.identifier[0].value == "12345"
     assert inst.image[0].contentType == "application/dicom"
-    assert (
-        inst.image[0].url
-        == "http://imaging.acme.com/wado/server?requestType=WADO&amp;wado_details"
+    assert inst.image[0].url == (
+        "http://imaging.acme.com/wado/server?requestType=WADO&amp;wad" "o_details"
     )
     assert inst.location.coding[0].code == "78961009"
     assert inst.location.coding[0].display == "Splenic structure (body structure)"

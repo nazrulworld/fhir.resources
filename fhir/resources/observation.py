@@ -25,7 +25,11 @@ class Observation(domainresource.DomainResource):
     basedOn: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="basedOn",
-        title="List of `Reference` items referencing `CarePlan, DeviceRequest, ImmunizationRecommendation, MedicationRequest, NutritionOrder, ServiceRequest` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `CarePlan, DeviceRequest, "
+            "ImmunizationRecommendation, MedicationRequest, NutritionOrder, "
+            "ServiceRequest` (represented as `dict` in JSON)"
+        ),
         description="Fulfills plan, proposal or order",
     )
 
@@ -67,14 +71,21 @@ class Observation(domainresource.DomainResource):
     derivedFrom: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="derivedFrom",
-        title="List of `Reference` items referencing `DocumentReference, ImagingStudy, Media, QuestionnaireResponse, Observation, MolecularSequence` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `DocumentReference, "
+            "ImagingStudy, Media, QuestionnaireResponse, Observation, "
+            "MolecularSequence` (represented as `dict` in JSON)"
+        ),
         description="Related measurements the observation is made from",
     )
 
     device: fhirtypes.ReferenceType = Field(
         None,
         alias="device",
-        title="Type `Reference` referencing `Device, DeviceMetric` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Device, DeviceMetric` (represented as "
+            "`dict` in JSON)"
+        ),
         description="(Measurement) Device",
     )
 
@@ -117,21 +128,34 @@ class Observation(domainresource.DomainResource):
     encounter: fhirtypes.ReferenceType = Field(
         None,
         alias="encounter",
-        title="Type `Reference` referencing `Encounter` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Encounter` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Healthcare event during which this observation is made",
     )
 
     focus: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="focus",
-        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
-        description="What the observation is about, when it is not about the subject of record",
+        title=(
+            "List of `Reference` items referencing `Resource` (represented as "
+            "`dict` in JSON)"
+        ),
+        description=(
+            "What the observation is about, when it is not about the subject of "
+            "record"
+        ),
     )
 
     hasMember: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="hasMember",
-        title="List of `Reference` items referencing `Observation, QuestionnaireResponse, MolecularSequence` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Observation, "
+            "QuestionnaireResponse, MolecularSequence` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Related resource that belongs to the Observation group",
     )
 
@@ -173,28 +197,41 @@ class Observation(domainresource.DomainResource):
     partOf: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="partOf",
-        title="List of `Reference` items referencing `MedicationAdministration, MedicationDispense, MedicationStatement, Procedure, Immunization, ImagingStudy` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `MedicationAdministration, "
+            "MedicationDispense, MedicationStatement, Procedure, Immunization, "
+            "ImagingStudy` (represented as `dict` in JSON)"
+        ),
         description="Part of referenced event",
     )
 
     performer: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="performer",
-        title="List of `Reference` items referencing `Practitioner, PractitionerRole, Organization, CareTeam, Patient, RelatedPerson` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Practitioner, PractitionerRole,"
+            " Organization, CareTeam, Patient, RelatedPerson` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Who is responsible for the observation",
     )
 
     referenceRange: ListType[fhirtypes.ObservationReferenceRangeType] = Field(
         None,
         alias="referenceRange",
-        title="List of `ObservationReferenceRange` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ObservationReferenceRange` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Provides guide for interpretation",
     )
 
     specimen: fhirtypes.ReferenceType = Field(
         None,
         alias="specimen",
-        title="Type `Reference` referencing `Specimen` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Specimen` (represented as `dict` in " "JSON)"
+        ),
         description="Specimen used for this observation",
     )
 
@@ -208,7 +245,10 @@ class Observation(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         None,
         alias="subject",
-        title="Type `Reference` referencing `Patient, Group, Device, Location` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Group, Device, Location` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Who and/or what the observation is about",
     )
 
@@ -403,7 +443,10 @@ class ObservationComponent(backboneelement.BackboneElement):
     referenceRange: ListType[fhirtypes.ObservationReferenceRangeType] = Field(
         None,
         alias="referenceRange",
-        title="List of `ObservationReferenceRange` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ObservationReferenceRange` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Provides guide for interpretation of component result",
     )
 
@@ -533,7 +576,7 @@ class ObservationComponent(backboneelement.BackboneElement):
                 "valueSampledData",
                 "valueString",
                 "valueTime",
-            ],
+            ]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

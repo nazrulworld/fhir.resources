@@ -39,7 +39,10 @@ class EligibilityResponse(domainresource.DomainResource):
     error: ListType[fhirtypes.EligibilityResponseErrorType] = Field(
         None,
         alias="error",
-        title="List of `EligibilityResponseError` items (represented as `dict` in JSON)",
+        title=(
+            "List of `EligibilityResponseError` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Processing errors",
     )
 
@@ -67,14 +70,20 @@ class EligibilityResponse(domainresource.DomainResource):
     insurance: ListType[fhirtypes.EligibilityResponseInsuranceType] = Field(
         None,
         alias="insurance",
-        title="List of `EligibilityResponseInsurance` items (represented as `dict` in JSON)",
+        title=(
+            "List of `EligibilityResponseInsurance` items (represented as `dict` in"
+            " JSON)"
+        ),
         description="Details by insurance coverage",
     )
 
     insurer: fhirtypes.ReferenceType = Field(
         None,
         alias="insurer",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Insurer issuing the coverage",
     )
 
@@ -88,21 +97,30 @@ class EligibilityResponse(domainresource.DomainResource):
     request: fhirtypes.ReferenceType = Field(
         None,
         alias="request",
-        title="Type `Reference` referencing `EligibilityRequest` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `EligibilityRequest` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Eligibility reference",
     )
 
     requestOrganization: fhirtypes.ReferenceType = Field(
         None,
         alias="requestOrganization",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Responsible organization",
     )
 
     requestProvider: fhirtypes.ReferenceType = Field(
         None,
         alias="requestProvider",
-        title="Type `Reference` referencing `Practitioner` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Responsible practitioner",
     )
 
@@ -142,21 +160,28 @@ class EligibilityResponseInsurance(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="benefitBalance",
-        title="List of `EligibilityResponseInsuranceBenefitBalance` items (represented as `dict` in JSON)",
+        title=(
+            "List of `EligibilityResponseInsuranceBenefitBalance` items "
+            "(represented as `dict` in JSON)"
+        ),
         description="Benefits by Category",
     )
 
     contract: fhirtypes.ReferenceType = Field(
         None,
         alias="contract",
-        title="Type `Reference` referencing `Contract` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Contract` (represented as `dict` in " "JSON)"
+        ),
         description="Contract details",
     )
 
     coverage: fhirtypes.ReferenceType = Field(
         None,
         alias="coverage",
-        title="Type `Reference` referencing `Coverage` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Coverage` (represented as `dict` in " "JSON)"
+        ),
         description="Updated Coverage details",
     )
 
@@ -194,7 +219,10 @@ class EligibilityResponseInsuranceBenefitBalance(backboneelement.BackboneElement
     ] = Field(
         None,
         alias="financial",
-        title="List of `EligibilityResponseInsuranceBenefitBalanceFinancial` items (represented as `dict` in JSON)",
+        title=(
+            "List of `EligibilityResponseInsuranceBenefitBalanceFinancial` items "
+            "(represented as `dict` in JSON)"
+        ),
         description="Benefit Summary",
     )
 
@@ -312,8 +340,8 @@ class EligibilityResponseInsuranceBenefitBalanceFinancial(
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "allowed": ["allowedMoney", "allowedString", "allowedUnsignedInt",],
-            "used": ["usedMoney", "usedUnsignedInt",],
+            "allowed": ["allowedMoney", "allowedString", "allowedUnsignedInt"],
+            "used": ["usedMoney", "usedUnsignedInt"],
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

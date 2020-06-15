@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import specimendefinition
 
@@ -45,9 +47,8 @@ def impl_specimendefinition_1(inst):
     assert inst.typeTested[0].container.minimumVolumeQuantity.unit == "ml"
     assert float(inst.typeTested[0].container.minimumVolumeQuantity.value) == float(2)
     assert inst.typeTested[0].container.type.coding[0].code == "702281005"
-    assert (
-        inst.typeTested[0].container.type.coding[0].display
-        == "Evacuated blood collection tube, thrombin/clot activator/gel separator"
+    assert inst.typeTested[0].container.type.coding[0].display == (
+        "Evacuated blood collection tube, thrombin/clot activator/gel" " separator"
     )
     assert (
         inst.typeTested[0].container.type.coding[0].system == "http://snomed.info/sct"
@@ -125,9 +126,8 @@ def impl_specimendefinition_1(inst):
     assert inst.typeTested[1].container.minimumVolumeQuantity.unit == "ml"
     assert float(inst.typeTested[1].container.minimumVolumeQuantity.value) == float(2)
     assert inst.typeTested[1].container.type.coding[0].code == "767390000"
-    assert (
-        inst.typeTested[1].container.type.coding[0].display
-        == "Evacuated blood collection tube with heparin lithium and gel separator"
+    assert inst.typeTested[1].container.type.coding[0].display == (
+        "Evacuated blood collection tube with heparin lithium and gel" " separator"
     )
     assert (
         inst.typeTested[1].container.type.coding[0].system == "http://snomed.info/sct"

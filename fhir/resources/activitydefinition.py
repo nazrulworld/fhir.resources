@@ -97,7 +97,10 @@ class ActivityDefinition(domainresource.DomainResource):
     dynamicValue: ListType[fhirtypes.ActivityDefinitionDynamicValueType] = Field(
         None,
         alias="dynamicValue",
-        title="List of `ActivityDefinitionDynamicValue` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ActivityDefinitionDynamicValue` items (represented as `dict` "
+            "in JSON)"
+        ),
         description="Dynamic aspects of the definition",
     )
 
@@ -140,7 +143,10 @@ class ActivityDefinition(domainresource.DomainResource):
         None,
         alias="intent",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="proposal | plan | directive | order | original-order | reflex-order | filler-order | instance-order | option",
+        description=(
+            "proposal | plan | directive | order | original-order | reflex-order | "
+            "filler-order | instance-order | option"
+        ),
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -167,14 +173,19 @@ class ActivityDefinition(domainresource.DomainResource):
     library: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="library",
-        title="List of `Canonical` items referencing `Library` (represented as `dict` in JSON)",
+        title=(
+            "List of `Canonical` items referencing `Library` (represented as `dict`"
+            " in JSON)"
+        ),
         description="Logic used by the activity definition",
     )
 
     location: fhirtypes.ReferenceType = Field(
         None,
         alias="location",
-        title="Type `Reference` referencing `Location` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Location` (represented as `dict` in " "JSON)"
+        ),
         description="Where it should happen",
     )
 
@@ -188,21 +199,30 @@ class ActivityDefinition(domainresource.DomainResource):
     observationRequirement: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="observationRequirement",
-        title="List of `Reference` items referencing `ObservationDefinition` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `ObservationDefinition` "
+            "(represented as `dict` in JSON)"
+        ),
         description="What observations are required to perform this action",
     )
 
     observationResultRequirement: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="observationResultRequirement",
-        title="List of `Reference` items referencing `ObservationDefinition` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `ObservationDefinition` "
+            "(represented as `dict` in JSON)"
+        ),
         description="What observations must be produced by this action",
     )
 
     participant: ListType[fhirtypes.ActivityDefinitionParticipantType] = Field(
         None,
         alias="participant",
-        title="List of `ActivityDefinitionParticipant` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ActivityDefinitionParticipant` items (represented as `dict` "
+            "in JSON)"
+        ),
         description="Who should participate in the action",
     )
 
@@ -225,7 +245,10 @@ class ActivityDefinition(domainresource.DomainResource):
     productReference: fhirtypes.ReferenceType = Field(
         None,
         alias="productReference",
-        title="Type `Reference` referencing `Medication, Substance` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Medication, Substance` (represented as "
+            "`dict` in JSON)"
+        ),
         description="What\u0027s administered/supplied",
         one_of_many="product",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -234,7 +257,10 @@ class ActivityDefinition(domainresource.DomainResource):
     profile: fhirtypes.Canonical = Field(
         None,
         alias="profile",
-        title="Type `Canonical` referencing `StructureDefinition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Canonical` referencing `StructureDefinition` (represented as "
+            "`dict` in JSON)"
+        ),
         description="What profile the resource needs to conform to",
     )
 
@@ -276,7 +302,10 @@ class ActivityDefinition(domainresource.DomainResource):
     specimenRequirement: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="specimenRequirement",
-        title="List of `Reference` items referencing `SpecimenDefinition` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `SpecimenDefinition` "
+            "(represented as `dict` in JSON)"
+        ),
         description="What specimens are required to perform this action",
     )
 
@@ -383,7 +412,10 @@ class ActivityDefinition(domainresource.DomainResource):
     transform: fhirtypes.Canonical = Field(
         None,
         alias="transform",
-        title="Type `Canonical` referencing `StructureMap` (represented as `dict` in JSON)",
+        title=(
+            "Type `Canonical` referencing `StructureMap` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Transform to apply the template",
     )
 
@@ -391,7 +423,10 @@ class ActivityDefinition(domainresource.DomainResource):
         None,
         alias="url",
         title="Type `Uri` (represented as `dict` in JSON)",
-        description="Canonical identifier for this activity definition, represented as a URI (globally unique)",
+        description=(
+            "Canonical identifier for this activity definition, represented as a "
+            "URI (globally unique)"
+        ),
     )
 
     usage: fhirtypes.String = Field(
@@ -430,8 +465,8 @@ class ActivityDefinition(domainresource.DomainResource):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "product": ["productCodeableConcept", "productReference",],
-            "subject": ["subjectCodeableConcept", "subjectReference",],
+            "product": ["productCodeableConcept", "productReference"],
+            "subject": ["subjectCodeableConcept", "subjectReference"],
             "timing": [
                 "timingAge",
                 "timingDateTime",

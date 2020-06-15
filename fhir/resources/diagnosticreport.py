@@ -29,7 +29,11 @@ class DiagnosticReport(domainresource.DomainResource):
     basedOn: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="basedOn",
-        title="List of `Reference` items referencing `CarePlan, ImmunizationRecommendation, MedicationRequest, NutritionOrder, ServiceRequest` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `CarePlan, "
+            "ImmunizationRecommendation, MedicationRequest, NutritionOrder, "
+            "ServiceRequest` (represented as `dict` in JSON)"
+        ),
         description="What was requested",
     )
 
@@ -82,7 +86,10 @@ class DiagnosticReport(domainresource.DomainResource):
     encounter: fhirtypes.ReferenceType = Field(
         None,
         alias="encounter",
-        title="Type `Reference` referencing `Encounter` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Encounter` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Health care event when test ordered",
     )
 
@@ -96,8 +103,14 @@ class DiagnosticReport(domainresource.DomainResource):
     imagingStudy: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="imagingStudy",
-        title="List of `Reference` items referencing `ImagingStudy` (represented as `dict` in JSON)",
-        description="Reference to full details of imaging associated with the diagnostic report",
+        title=(
+            "List of `Reference` items referencing `ImagingStudy` (represented as "
+            "`dict` in JSON)"
+        ),
+        description=(
+            "Reference to full details of imaging associated with the diagnostic "
+            "report"
+        ),
     )
 
     issued: fhirtypes.Instant = Field(
@@ -117,7 +130,10 @@ class DiagnosticReport(domainresource.DomainResource):
     performer: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="performer",
-        title="List of `Reference` items referencing `Practitioner, PractitionerRole, Organization, CareTeam` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Practitioner, PractitionerRole,"
+            " Organization, CareTeam` (represented as `dict` in JSON)"
+        ),
         description="Responsible Diagnostic Service",
     )
 
@@ -131,21 +147,30 @@ class DiagnosticReport(domainresource.DomainResource):
     result: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="result",
-        title="List of `Reference` items referencing `Observation` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Observation` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Observations",
     )
 
     resultsInterpreter: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="resultsInterpreter",
-        title="List of `Reference` items referencing `Practitioner, PractitionerRole, Organization, CareTeam` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Practitioner, PractitionerRole,"
+            " Organization, CareTeam` (represented as `dict` in JSON)"
+        ),
         description="Primary result interpreter",
     )
 
     specimen: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="specimen",
-        title="List of `Reference` items referencing `Specimen` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Specimen` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Specimens this report is based on",
     )
 
@@ -159,7 +184,10 @@ class DiagnosticReport(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         None,
         alias="subject",
-        title="Type `Reference` referencing `Patient, Group, Device, Location` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Group, Device, Location` "
+            "(represented as `dict` in JSON)"
+        ),
         description="The subject of the report - usually, but not always, the patient",
     )
 
@@ -177,9 +205,7 @@ class DiagnosticReport(domainresource.DomainResource):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "effective": ["effectiveDateTime", "effectivePeriod",],
-        }
+        one_of_many_fields = {"effective": ["effectiveDateTime", "effectivePeriod"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (

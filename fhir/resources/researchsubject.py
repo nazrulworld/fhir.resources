@@ -67,12 +67,19 @@ class ResearchSubject(domainresource.DomainResource):
         ...,
         alias="status",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="candidate | eligible | follow-up | ineligible | not-registered | off-study | on-study | on-study-intervention | on-study-observation | pending-on-study | potential-candidate | screening | withdrawn",
+        description=(
+            "candidate | eligible | follow-up | ineligible | not-registered | off-"
+            "study | on-study | on-study-intervention | on-study-observation | "
+            "pending-on-study | potential-candidate | screening | withdrawn"
+        ),
     )
 
     study: fhirtypes.ReferenceType = Field(
         ...,
         alias="study",
-        title="Type `Reference` referencing `ResearchStudy` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `ResearchStudy` (represented as `dict` in"
+            " JSON)"
+        ),
         description="Study subject is part of",
     )

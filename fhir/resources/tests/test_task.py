@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import task
 
@@ -15,9 +17,9 @@ def impl_task_1(inst):
     assert inst.basedOn[0].display == "General Wellness Careplan"
     assert inst.businessStatus.text == "test completed and posted"
     assert inst.code.text == "Lipid Panel"
-    assert (
-        inst.description
-        == "Create order for getting specimen, Set up inhouse testing,  generate order for any sendouts and submit with specimen"
+    assert inst.description == (
+        "Create order for getting specimen, Set up inhouse testing,  "
+        "generate order for any sendouts and submit with specimen"
     )
     assert inst.encounter.display == "Example In-Patient Encounter"
     assert inst.encounter.reference == "Encounter/example"
@@ -59,9 +61,10 @@ def impl_task_1(inst):
     )
     assert inst.performerType[0].text == "Performer"
     assert inst.priority == "routine"
-    assert (
-        inst.reasonCode.text
-        == "The Task.reason should only be included if there is no Task.focus or if it differs from the reason indicated on the focus"
+    assert inst.reasonCode.text == (
+        "The Task.reason should only be included if there is no "
+        "Task.focus or if it differs from the reason indicated on the"
+        " focus"
     )
     assert inst.requester.display == "Dr Adam Careful"
     assert inst.requester.reference == "Practitioner/example"
@@ -159,9 +162,9 @@ def impl_task_3(inst):
     assert inst.businessStatus.text == "waiting for specimen"
     assert inst.code.text == "Lipid Panel"
     assert inst.contained[0].id == "signature"
-    assert (
-        inst.description
-        == "Create order for getting specimen, Set up inhouse testing,  generate order for any sendouts and submit with specimen"
+    assert inst.description == (
+        "Create order for getting specimen, Set up inhouse testing,  "
+        "generate order for any sendouts and submit with specimen"
     )
     assert inst.encounter.display == "Example In-Patient Encounter"
     assert inst.encounter.reference == "Encounter/example"
@@ -196,9 +199,10 @@ def impl_task_3(inst):
     )
     assert inst.performerType[0].text == "Performer"
     assert inst.priority == "routine"
-    assert (
-        inst.reasonCode.text
-        == "The Task.reason should only be included if there is no Task.focus or if it differs from the reason indicated on the focus"
+    assert inst.reasonCode.text == (
+        "The Task.reason should only be included if there is no "
+        "Task.focus or if it differs from the reason indicated on the"
+        " focus"
     )
     assert inst.relevantHistory[0].display == "Author's Signature"
     assert inst.relevantHistory[0].reference == "#signature"
@@ -588,9 +592,9 @@ def impl_task_10(inst):
     assert inst.basedOn[0].display == "General Wellness Careplan"
     assert inst.businessStatus.text == "specimen received, test in progress"
     assert inst.code.text == "Lipid Panel"
-    assert (
-        inst.description
-        == "Create order for getting specimen, Set up inhouse testing,  generate order for any sendouts and submit with specimen"
+    assert inst.description == (
+        "Create order for getting specimen, Set up inhouse testing,  "
+        "generate order for any sendouts and submit with specimen"
     )
     assert inst.encounter.display == "Example In-Patient Encounter"
     assert inst.encounter.reference == "Encounter/example"
@@ -627,9 +631,10 @@ def impl_task_10(inst):
     )
     assert inst.performerType[0].text == "Performer"
     assert inst.priority == "routine"
-    assert (
-        inst.reasonCode.text
-        == "The Task.reason should only be included if there is no Task.focus or if it differs from the reason indicated on the focus"
+    assert inst.reasonCode.text == (
+        "The Task.reason should only be included if there is no "
+        "Task.focus or if it differs from the reason indicated on the"
+        " focus"
     )
     assert inst.requester.display == "Dr Adam Careful"
     assert inst.requester.reference == "Practitioner/example"

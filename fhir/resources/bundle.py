@@ -66,7 +66,10 @@ class Bundle(resource.Resource):
         ...,
         alias="type",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="document | message | transaction | transaction-response | batch | batch-response | history | searchset | collection",
+        description=(
+            "document | message | transaction | transaction-response | batch | "
+            "batch-response | history | searchset | collection"
+        ),
     )
 
 
@@ -252,7 +255,10 @@ class BundleLink(backboneelement.BackboneElement):
         ...,
         alias="relation",
         title="Type `String` (represented as `dict` in JSON)",
-        description="See http://www.iana.org/assignments/link-relations/link-relations.xhtml#link-relations-1",
+        description=(
+            "See http://www.iana.org/assignments/link-relations/link-"
+            "relations.xhtml#link-relations-1"
+        ),
     )
 
     url: fhirtypes.Uri = Field(

@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import familymemberhistory
 
@@ -15,9 +17,8 @@ def impl_familymemberhistory_1(inst):
     assert inst.condition[0].code.coding[0].display == "Myocardial Infarction"
     assert inst.condition[0].code.coding[0].system == "http://snomed.info/sct"
     assert inst.condition[0].code.text == "Heart Attack"
-    assert (
-        inst.condition[0].note[0].text
-        == "Was fishing at the time. At least he went doing someting he loved."
+    assert inst.condition[0].note[0].text == (
+        "Was fishing at the time. At least he went doing someting he " "loved."
     )
     assert inst.condition[0].onsetAge.code == "a"
     assert inst.condition[0].onsetAge.system == "http://unitsofmeasure.org"
@@ -35,9 +36,9 @@ def impl_familymemberhistory_1(inst):
     assert inst.relationship.coding[0].display == "father"
     assert inst.relationship.coding[0].system == "http://hl7.org/fhir/v3/RoleCode"
     assert inst.status == "completed"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Father died of a heart attack aged 74</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Father died of a'
+        " heart attack aged 74</div>"
     )
     assert inst.text.status == "generated"
 
@@ -78,9 +79,9 @@ def impl_familymemberhistory_2(inst):
     assert inst.relationship.coding[0].display == "mother"
     assert inst.relationship.coding[0].system == "http://hl7.org/fhir/v3/RoleCode"
     assert inst.status == "completed"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Mother died of a stroke aged 56</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Mother died of a'
+        " stroke aged 56</div>"
     )
     assert inst.text.status == "generated"
 

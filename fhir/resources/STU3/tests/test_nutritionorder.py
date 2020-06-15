@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import nutritionorder
 
@@ -423,9 +425,9 @@ def impl_nutritionorder_6(inst):
         inst.enteralFormula.additiveType.coding[0].system
         == "http://hl7.org/fhir/entformula-additive"
     )
-    assert (
-        inst.enteralFormula.administrationInstruction
-        == "Add high calorie high carbohydrate additive to increase cal/oz from 24 cal/oz to 27 cal/oz."
+    assert inst.enteralFormula.administrationInstruction == (
+        "Add high calorie high carbohydrate additive to increase "
+        "cal/oz from 24 cal/oz to 27 cal/oz."
     )
     assert inst.enteralFormula.administration[0].quantity.code == "[foz_us]"
     assert (
@@ -504,9 +506,9 @@ def impl_nutritionorder_7(inst):
     assert inst.dateTime == fhirtypes.DateTime.validate("2014-09-17")
     assert inst.encounter.display == "Inpatient"
     assert inst.encounter.reference == "Encounter/example"
-    assert (
-        inst.enteralFormula.administrationInstruction
-        == "Hold feedings from 7 pm to 7 am. Add MCT oil to increase calories from 1.0 cal/mL to 1.5 cal/mL"
+    assert inst.enteralFormula.administrationInstruction == (
+        "Hold feedings from 7 pm to 7 am. Add MCT oil to increase "
+        "calories from 1.0 cal/mL to 1.5 cal/mL"
     )
     assert inst.enteralFormula.administration[0].rateQuantity.code == "mL/h"
     assert (

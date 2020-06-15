@@ -24,7 +24,11 @@ class Sequence(domainresource.DomainResource):
         ...,
         alias="coordinateSystem",
         title="Type `Integer` (represented as `dict` in JSON)",
-        description="Base number of coordinate system (0 for 0-based numbering or coordinates, inclusive start, exclusive end, 1 for 1-based numbering, inclusive start, inclusive end)",
+        description=(
+            "Base number of coordinate system (0 for 0-based numbering or "
+            "coordinates, inclusive start, exclusive end, 1 for 1-based numbering, "
+            "inclusive start, inclusive end)"
+        ),
     )
 
     device: fhirtypes.ReferenceType = Field(
@@ -58,14 +62,20 @@ class Sequence(domainresource.DomainResource):
     performer: fhirtypes.ReferenceType = Field(
         None,
         alias="performer",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Who should be responsible for test result",
     )
 
     pointer: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="pointer",
-        title="List of `Reference` items referencing `Sequence` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Sequence` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Pointer to next atomic sequence",
     )
 
@@ -87,7 +97,10 @@ class Sequence(domainresource.DomainResource):
         None,
         alias="readCoverage",
         title="Type `Integer` (represented as `dict` in JSON)",
-        description="Average number of reads representing a given nucleotide in the reconstructed sequence",
+        description=(
+            "Average number of reads representing a given nucleotide in the "
+            "reconstructed sequence"
+        ),
     )
 
     referenceSeq: fhirtypes.SequenceReferenceSeqType = Field(
@@ -101,13 +114,18 @@ class Sequence(domainresource.DomainResource):
         None,
         alias="repository",
         title="List of `SequenceRepository` items (represented as `dict` in JSON)",
-        description="External repository which contains detailed report related with observedSeq in this resource",
+        description=(
+            "External repository which contains detailed report related with "
+            "observedSeq in this resource"
+        ),
     )
 
     specimen: fhirtypes.ReferenceType = Field(
         None,
         alias="specimen",
-        title="Type `Reference` referencing `Specimen` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Specimen` (represented as `dict` in " "JSON)"
+        ),
         description="Specimen used for sequencing",
     )
 
@@ -153,7 +171,10 @@ class SequenceQuality(backboneelement.BackboneElement):
         None,
         alias="gtFP",
         title="Type `Decimal` (represented as `dict` in JSON)",
-        description="False positives where the non-REF alleles in the Truth and Query Call Sets match",
+        description=(
+            "False positives where the non-REF alleles in the Truth and Query Call "
+            "Sets match"
+        ),
     )
 
     method: fhirtypes.CodeableConceptType = Field(
@@ -253,7 +274,10 @@ class SequenceReferenceSeq(backboneelement.BackboneElement):
         None,
         alias="genomeBuild",
         title="Type `String` (represented as `dict` in JSON)",
-        description="The Genome Build used for reference, following GRCh build versions e.g. \u0027GRCh 37\u0027",
+        description=(
+            "The Genome Build used for reference, following GRCh build versions "
+            "e.g. \u0027GRCh 37\u0027"
+        ),
     )
 
     referenceSeqId: fhirtypes.CodeableConceptType = Field(
@@ -266,7 +290,9 @@ class SequenceReferenceSeq(backboneelement.BackboneElement):
     referenceSeqPointer: fhirtypes.ReferenceType = Field(
         None,
         alias="referenceSeqPointer",
-        title="Type `Reference` referencing `Sequence` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Sequence` (represented as `dict` in " "JSON)"
+        ),
         description="A Pointer to another Sequence entity as reference sequence",
     )
 
@@ -400,6 +426,9 @@ class SequenceVariant(backboneelement.BackboneElement):
     variantPointer: fhirtypes.ReferenceType = Field(
         None,
         alias="variantPointer",
-        title="Type `Reference` referencing `Observation` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Observation` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Pointer to observed variant information",
     )

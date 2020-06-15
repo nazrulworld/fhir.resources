@@ -88,14 +88,20 @@ class Evidence(domainresource.DomainResource):
     exposureBackground: fhirtypes.ReferenceType = Field(
         ...,
         alias="exposureBackground",
-        title="Type `Reference` referencing `EvidenceVariable` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `EvidenceVariable` (represented as `dict`"
+            " in JSON)"
+        ),
         description="What population?",
     )
 
     exposureVariant: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="exposureVariant",
-        title="List of `Reference` items referencing `EvidenceVariable` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `EvidenceVariable` (represented "
+            "as `dict` in JSON)"
+        ),
         description="What exposure?",
     )
 
@@ -137,7 +143,10 @@ class Evidence(domainresource.DomainResource):
     outcome: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="outcome",
-        title="List of `Reference` items referencing `EvidenceVariable` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `EvidenceVariable` (represented "
+            "as `dict` in JSON)"
+        ),
         description="What outcome?",
     )
 
@@ -194,14 +203,20 @@ class Evidence(domainresource.DomainResource):
         None,
         alias="topic",
         title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="The category of the Evidence, such as Education, Treatment, Assessment, etc.",
+        description=(
+            "The category of the Evidence, such as Education, Treatment, "
+            "Assessment, etc."
+        ),
     )
 
     url: fhirtypes.Uri = Field(
         None,
         alias="url",
         title="Type `Uri` (represented as `dict` in JSON)",
-        description="Canonical identifier for this evidence, represented as a URI (globally unique)",
+        description=(
+            "Canonical identifier for this evidence, represented as a URI (globally"
+            " unique)"
+        ),
     )
 
     useContext: ListType[fhirtypes.UsageContextType] = Field(

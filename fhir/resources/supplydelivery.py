@@ -24,14 +24,19 @@ class SupplyDelivery(domainresource.DomainResource):
     basedOn: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="basedOn",
-        title="List of `Reference` items referencing `SupplyRequest` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `SupplyRequest` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Fulfills plan, proposal or order",
     )
 
     destination: fhirtypes.ReferenceType = Field(
         None,
         alias="destination",
-        title="Type `Reference` referencing `Location` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Location` (represented as `dict` in " "JSON)"
+        ),
         description="Where the Supply was sent",
     )
 
@@ -72,7 +77,10 @@ class SupplyDelivery(domainresource.DomainResource):
     partOf: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="partOf",
-        title="List of `Reference` items referencing `SupplyDelivery, Contract` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `SupplyDelivery, Contract` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Part of referenced event",
     )
 
@@ -86,7 +94,10 @@ class SupplyDelivery(domainresource.DomainResource):
     receiver: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="receiver",
-        title="List of `Reference` items referencing `Practitioner, PractitionerRole` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Practitioner, PractitionerRole`"
+            " (represented as `dict` in JSON)"
+        ),
         description="Who collected the Supply",
     )
 
@@ -107,7 +118,10 @@ class SupplyDelivery(domainresource.DomainResource):
     supplier: fhirtypes.ReferenceType = Field(
         None,
         alias="supplier",
-        title="Type `Reference` referencing `Practitioner, PractitionerRole, Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, PractitionerRole, "
+            "Organization` (represented as `dict` in JSON)"
+        ),
         description="Dispenser",
     )
 
@@ -133,11 +147,7 @@ class SupplyDelivery(domainresource.DomainResource):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "occurrence": [
-                "occurrenceDateTime",
-                "occurrencePeriod",
-                "occurrenceTiming",
-            ],
+            "occurrence": ["occurrenceDateTime", "occurrencePeriod", "occurrenceTiming"]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
@@ -180,7 +190,10 @@ class SupplyDeliverySuppliedItem(backboneelement.BackboneElement):
     itemReference: fhirtypes.ReferenceType = Field(
         None,
         alias="itemReference",
-        title="Type `Reference` referencing `Medication, Substance, Device` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Medication, Substance, Device` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Medication, Substance, or Device supplied",
         one_of_many="item",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -207,9 +220,7 @@ class SupplyDeliverySuppliedItem(backboneelement.BackboneElement):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "item": ["itemCodeableConcept", "itemReference",],
-        }
+        one_of_many_fields = {"item": ["itemCodeableConcept", "itemReference"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (

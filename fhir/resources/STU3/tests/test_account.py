@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import account
 
@@ -30,9 +32,9 @@ def impl_account_1(inst):
     assert inst.status == "active"
     assert inst.subject.display == "Peter James Chalmers"
     assert inst.subject.reference == "Patient/example"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">HACC Funded Billing for Peter James Chalmers</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">HACC Funded '
+        "Billing for Peter James Chalmers</div>"
     )
     assert inst.text.status == "generated"
     assert inst.type.coding[0].code == "PBILLACCT"
@@ -88,9 +90,9 @@ def impl_account_2(inst):
     assert inst.status == "active"
     assert inst.subject.display == "Peter James Chalmers"
     assert inst.subject.reference == "Patient/example"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Inpatient Admission for Peter James Chalmers Account</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Inpatient '
+        "Admission for Peter James Chalmers Account</div>"
     )
     assert inst.text.status == "generated"
     assert inst.type.coding[0].code == "PBILLACCT"

@@ -60,7 +60,11 @@ class UsageContext(element.Element):
     valueReference: fhirtypes.ReferenceType = Field(
         None,
         alias="valueReference",
-        title="Type `Reference` referencing `PlanDefinition, ResearchStudy, InsurancePlan, HealthcareService, Group, Location, Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `PlanDefinition, ResearchStudy, "
+            "InsurancePlan, HealthcareService, Group, Location, Organization` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Value that defines the context",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
@@ -86,7 +90,7 @@ class UsageContext(element.Element):
                 "valueQuantity",
                 "valueRange",
                 "valueReference",
-            ],
+            ]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

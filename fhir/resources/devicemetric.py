@@ -24,8 +24,13 @@ class DeviceMetric(domainresource.DomainResource):
     calibration: ListType[fhirtypes.DeviceMetricCalibrationType] = Field(
         None,
         alias="calibration",
-        title="List of `DeviceMetricCalibration` items (represented as `dict` in JSON)",
-        description="Describes the calibrations that have been performed or that are required to be performed",
+        title=(
+            "List of `DeviceMetricCalibration` items (represented as `dict` in " "JSON)"
+        ),
+        description=(
+            "Describes the calibrations that have been performed or that are "
+            "required to be performed"
+        ),
     )
 
     category: fhirtypes.Code = Field(

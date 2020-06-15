@@ -37,14 +37,22 @@ class OrganizationAffiliation(domainresource.DomainResource):
     endpoint: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="endpoint",
-        title="List of `Reference` items referencing `Endpoint` (represented as `dict` in JSON)",
-        description="Technical endpoints providing access to services operated for this role",
+        title=(
+            "List of `Reference` items referencing `Endpoint` (represented as "
+            "`dict` in JSON)"
+        ),
+        description=(
+            "Technical endpoints providing access to services operated for this " "role"
+        ),
     )
 
     healthcareService: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="healthcareService",
-        title="List of `Reference` items referencing `HealthcareService` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `HealthcareService` (represented"
+            " as `dict` in JSON)"
+        ),
         description="Healthcare services provided through the role",
     )
 
@@ -58,48 +66,76 @@ class OrganizationAffiliation(domainresource.DomainResource):
     location: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="location",
-        title="List of `Reference` items referencing `Location` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Location` (represented as "
+            "`dict` in JSON)"
+        ),
         description="The location(s) at which the role occurs",
     )
 
     network: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="network",
-        title="List of `Reference` items referencing `Organization` (represented as `dict` in JSON)",
-        description="Health insurance provider network in which the participatingOrganization provides the role\u0027s services (if defined) at the indicated locations (if defined)",
+        title=(
+            "List of `Reference` items referencing `Organization` (represented as "
+            "`dict` in JSON)"
+        ),
+        description=(
+            "Health insurance provider network in which the "
+            "participatingOrganization provides the role\u0027s services (if defined) at"
+            " the indicated locations (if defined)"
+        ),
     )
 
     organization: fhirtypes.ReferenceType = Field(
         None,
         alias="organization",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Organization where the role is available",
     )
 
     participatingOrganization: fhirtypes.ReferenceType = Field(
         None,
         alias="participatingOrganization",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
-        description="Organization that provides/performs the role (e.g. providing services or is a member of)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
+        description=(
+            "Organization that provides/performs the role (e.g. providing services "
+            "or is a member of)"
+        ),
     )
 
     period: fhirtypes.PeriodType = Field(
         None,
         alias="period",
         title="Type `Period` (represented as `dict` in JSON)",
-        description="The period during which the participatingOrganization is affiliated with the primary organization",
+        description=(
+            "The period during which the participatingOrganization is affiliated "
+            "with the primary organization"
+        ),
     )
 
     specialty: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="specialty",
         title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Specific specialty of the participatingOrganization in the context of the role",
+        description=(
+            "Specific specialty of the participatingOrganization in the context of "
+            "the role"
+        ),
     )
 
     telecom: ListType[fhirtypes.ContactPointType] = Field(
         None,
         alias="telecom",
         title="List of `ContactPoint` items (represented as `dict` in JSON)",
-        description="Contact details at the participatingOrganization relevant to this Affiliation",
+        description=(
+            "Contact details at the participatingOrganization relevant to this "
+            "Affiliation"
+        ),
     )

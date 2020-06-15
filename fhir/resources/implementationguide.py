@@ -55,7 +55,10 @@ class ImplementationGuide(domainresource.DomainResource):
     dependsOn: ListType[fhirtypes.ImplementationGuideDependsOnType] = Field(
         None,
         alias="dependsOn",
-        title="List of `ImplementationGuideDependsOn` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ImplementationGuideDependsOn` items (represented as `dict` in"
+            " JSON)"
+        ),
         description="Another Implementation guide this depends on",
     )
 
@@ -83,7 +86,10 @@ class ImplementationGuide(domainresource.DomainResource):
     global_fhir: ListType[fhirtypes.ImplementationGuideGlobalType] = Field(
         None,
         alias="global",
-        title="List of `ImplementationGuideGlobal` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ImplementationGuideGlobal` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Profiles that apply globally",
     )
 
@@ -147,7 +153,10 @@ class ImplementationGuide(domainresource.DomainResource):
         ...,
         alias="url",
         title="Type `Uri` (represented as `dict` in JSON)",
-        description="Canonical identifier for this implementation guide, represented as a URI (globally unique)",
+        description=(
+            "Canonical identifier for this implementation guide, represented as a "
+            "URI (globally unique)"
+        ),
     )
 
     useContext: ListType[fhirtypes.UsageContextType] = Field(
@@ -176,35 +185,50 @@ class ImplementationGuideDefinition(backboneelement.BackboneElement):
     grouping: ListType[fhirtypes.ImplementationGuideDefinitionGroupingType] = Field(
         None,
         alias="grouping",
-        title="List of `ImplementationGuideDefinitionGrouping` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ImplementationGuideDefinitionGrouping` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Grouping used to present related resources in the IG",
     )
 
     page: fhirtypes.ImplementationGuideDefinitionPageType = Field(
         None,
         alias="page",
-        title="Type `ImplementationGuideDefinitionPage` (represented as `dict` in JSON)",
+        title=(
+            "Type `ImplementationGuideDefinitionPage` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Page/Section in the Guide",
     )
 
     parameter: ListType[fhirtypes.ImplementationGuideDefinitionParameterType] = Field(
         None,
         alias="parameter",
-        title="List of `ImplementationGuideDefinitionParameter` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ImplementationGuideDefinitionParameter` items (represented as"
+            " `dict` in JSON)"
+        ),
         description="Defines how IG is built by tools",
     )
 
     resource: ListType[fhirtypes.ImplementationGuideDefinitionResourceType] = Field(
         ...,
         alias="resource",
-        title="List of `ImplementationGuideDefinitionResource` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ImplementationGuideDefinitionResource` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Resource in the implementation guide",
     )
 
     template: ListType[fhirtypes.ImplementationGuideDefinitionTemplateType] = Field(
         None,
         alias="template",
-        title="List of `ImplementationGuideDefinitionTemplate` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ImplementationGuideDefinitionTemplate` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="A template for building resources",
     )
 
@@ -268,7 +292,10 @@ class ImplementationGuideDefinitionPage(backboneelement.BackboneElement):
     page: ListType[fhirtypes.ImplementationGuideDefinitionPageType] = Field(
         None,
         alias="page",
-        title="List of `ImplementationGuideDefinitionPage` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ImplementationGuideDefinitionPage` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Nested Pages / Sections",
     )
 
@@ -293,9 +320,7 @@ class ImplementationGuideDefinitionPage(backboneelement.BackboneElement):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "name": ["nameReference", "nameUrl",],
-        }
+        one_of_many_fields = {"name": ["nameReference", "nameUrl"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -328,7 +353,11 @@ class ImplementationGuideDefinitionParameter(backboneelement.BackboneElement):
         ...,
         alias="code",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="apply | path-resource | path-pages | path-tx-cache | expansion-parameter | rule-broken-links | generate-xml | generate-json | generate-turtle | html-template",
+        description=(
+            "apply | path-resource | path-pages | path-tx-cache | expansion-"
+            "parameter | rule-broken-links | generate-xml | generate-json | "
+            "generate-turtle | html-template"
+        ),
     )
 
     value: fhirtypes.String = Field(
@@ -368,7 +397,10 @@ class ImplementationGuideDefinitionResource(backboneelement.BackboneElement):
     exampleCanonical: fhirtypes.Canonical = Field(
         None,
         alias="exampleCanonical",
-        title="Type `Canonical` referencing `StructureDefinition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Canonical` referencing `StructureDefinition` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Is an example/What is this an example of?",
         one_of_many="example",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -398,7 +430,9 @@ class ImplementationGuideDefinitionResource(backboneelement.BackboneElement):
     reference: fhirtypes.ReferenceType = Field(
         ...,
         alias="reference",
-        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        ),
         description="Location of the resource",
     )
 
@@ -416,9 +450,7 @@ class ImplementationGuideDefinitionResource(backboneelement.BackboneElement):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "example": ["exampleBoolean", "exampleCanonical",],
-        }
+        one_of_many_fields = {"example": ["exampleBoolean", "exampleCanonical"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -488,7 +520,10 @@ class ImplementationGuideDependsOn(backboneelement.BackboneElement):
     uri: fhirtypes.Canonical = Field(
         ...,
         alias="uri",
-        title="Type `Canonical` referencing `ImplementationGuide` (represented as `dict` in JSON)",
+        title=(
+            "Type `Canonical` referencing `ImplementationGuide` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Identity of the IG that this depends on",
     )
 
@@ -511,7 +546,10 @@ class ImplementationGuideGlobal(backboneelement.BackboneElement):
     profile: fhirtypes.Canonical = Field(
         ...,
         alias="profile",
-        title="Type `Canonical` referencing `StructureDefinition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Canonical` referencing `StructureDefinition` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Profile that all resources must conform to",
     )
 
@@ -548,7 +586,10 @@ class ImplementationGuideManifest(backboneelement.BackboneElement):
     page: ListType[fhirtypes.ImplementationGuideManifestPageType] = Field(
         None,
         alias="page",
-        title="List of `ImplementationGuideManifestPage` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ImplementationGuideManifestPage` items (represented as `dict`"
+            " in JSON)"
+        ),
         description="HTML page within the parent IG",
     )
 
@@ -562,7 +603,10 @@ class ImplementationGuideManifest(backboneelement.BackboneElement):
     resource: ListType[fhirtypes.ImplementationGuideManifestResourceType] = Field(
         ...,
         alias="resource",
-        title="List of `ImplementationGuideManifestResource` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ImplementationGuideManifestResource` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Resource in the implementation guide",
     )
 
@@ -618,7 +662,10 @@ class ImplementationGuideManifestResource(backboneelement.BackboneElement):
     exampleCanonical: fhirtypes.Canonical = Field(
         None,
         alias="exampleCanonical",
-        title="Type `Canonical` referencing `StructureDefinition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Canonical` referencing `StructureDefinition` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Is an example/What is this an example of?",
         one_of_many="example",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -627,7 +674,9 @@ class ImplementationGuideManifestResource(backboneelement.BackboneElement):
     reference: fhirtypes.ReferenceType = Field(
         ...,
         alias="reference",
-        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        ),
         description="Location of the resource",
     )
 
@@ -652,9 +701,7 @@ class ImplementationGuideManifestResource(backboneelement.BackboneElement):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "example": ["exampleBoolean", "exampleCanonical",],
-        }
+        one_of_many_fields = {"example": ["exampleBoolean", "exampleCanonical"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (

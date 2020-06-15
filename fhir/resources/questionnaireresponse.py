@@ -26,7 +26,10 @@ class QuestionnaireResponse(domainresource.DomainResource):
     author: fhirtypes.ReferenceType = Field(
         None,
         alias="author",
-        title="Type `Reference` referencing `Device, Practitioner, PractitionerRole, Patient, RelatedPerson, Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Device, Practitioner, PractitionerRole, "
+            "Patient, RelatedPerson, Organization` (represented as `dict` in JSON)"
+        ),
         description="Person who received and recorded the answers",
     )
 
@@ -40,14 +43,20 @@ class QuestionnaireResponse(domainresource.DomainResource):
     basedOn: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="basedOn",
-        title="List of `Reference` items referencing `CarePlan, ServiceRequest` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `CarePlan, ServiceRequest` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Request fulfilled by this QuestionnaireResponse",
     )
 
     encounter: fhirtypes.ReferenceType = Field(
         None,
         alias="encounter",
-        title="Type `Reference` referencing `Encounter` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Encounter` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Encounter created as part of",
     )
 
@@ -61,28 +70,40 @@ class QuestionnaireResponse(domainresource.DomainResource):
     item: ListType[fhirtypes.QuestionnaireResponseItemType] = Field(
         None,
         alias="item",
-        title="List of `QuestionnaireResponseItem` items (represented as `dict` in JSON)",
+        title=(
+            "List of `QuestionnaireResponseItem` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Groups and questions",
     )
 
     partOf: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="partOf",
-        title="List of `Reference` items referencing `Observation, Procedure` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Observation, Procedure` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Part of this action",
     )
 
     questionnaire: fhirtypes.Canonical = Field(
         None,
         alias="questionnaire",
-        title="Type `Canonical` referencing `Questionnaire` (represented as `dict` in JSON)",
+        title=(
+            "Type `Canonical` referencing `Questionnaire` (represented as `dict` in"
+            " JSON)"
+        ),
         description="Form being answered",
     )
 
     source: fhirtypes.ReferenceType = Field(
         None,
         alias="source",
-        title="Type `Reference` referencing `Patient, Practitioner, PractitionerRole, RelatedPerson` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Practitioner, PractitionerRole,"
+            " RelatedPerson` (represented as `dict` in JSON)"
+        ),
         description="The person who answered the questions",
     )
 
@@ -96,7 +117,9 @@ class QuestionnaireResponse(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         None,
         alias="subject",
-        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        ),
         description="The subject of the questions",
     )
 
@@ -112,7 +135,10 @@ class QuestionnaireResponseItem(backboneelement.BackboneElement):
     answer: ListType[fhirtypes.QuestionnaireResponseItemAnswerType] = Field(
         None,
         alias="answer",
-        title="List of `QuestionnaireResponseItemAnswer` items (represented as `dict` in JSON)",
+        title=(
+            "List of `QuestionnaireResponseItemAnswer` items (represented as `dict`"
+            " in JSON)"
+        ),
         description="The response(s) to the question",
     )
 
@@ -126,7 +152,10 @@ class QuestionnaireResponseItem(backboneelement.BackboneElement):
     item: ListType[fhirtypes.QuestionnaireResponseItemType] = Field(
         None,
         alias="item",
-        title="List of `QuestionnaireResponseItem` items (represented as `dict` in JSON)",
+        title=(
+            "List of `QuestionnaireResponseItem` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Nested questionnaire response items",
     )
 
@@ -155,7 +184,10 @@ class QuestionnaireResponseItemAnswer(backboneelement.BackboneElement):
     item: ListType[fhirtypes.QuestionnaireResponseItemType] = Field(
         None,
         alias="item",
-        title="List of `QuestionnaireResponseItem` items (represented as `dict` in JSON)",
+        title=(
+            "List of `QuestionnaireResponseItem` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Nested groups and questions",
     )
 
@@ -234,7 +266,9 @@ class QuestionnaireResponseItemAnswer(backboneelement.BackboneElement):
     valueReference: fhirtypes.ReferenceType = Field(
         None,
         alias="valueReference",
-        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        ),
         description="Single-valued answer to the question",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -295,7 +329,7 @@ class QuestionnaireResponseItemAnswer(backboneelement.BackboneElement):
                 "valueString",
                 "valueTime",
                 "valueUri",
-            ],
+            ]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

@@ -24,7 +24,10 @@ class MedicinalProductPackaged(domainresource.DomainResource):
     ] = Field(
         None,
         alias="batchIdentifier",
-        title="List of `MedicinalProductPackagedBatchIdentifier` items (represented as `dict` in JSON)",
+        title=(
+            "List of `MedicinalProductPackagedBatchIdentifier` items (represented "
+            "as `dict` in JSON)"
+        ),
         description="Batch numbering",
     )
 
@@ -46,20 +49,29 @@ class MedicinalProductPackaged(domainresource.DomainResource):
         None,
         alias="legalStatusOfSupply",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The legal status of supply of the medicinal product as classified by the regulator",
+        description=(
+            "The legal status of supply of the medicinal product as classified by "
+            "the regulator"
+        ),
     )
 
     manufacturer: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="manufacturer",
-        title="List of `Reference` items referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Organization` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Manufacturer of this Package Item",
     )
 
     marketingAuthorization: fhirtypes.ReferenceType = Field(
         None,
         alias="marketingAuthorization",
-        title="Type `Reference` referencing `MedicinalProductAuthorization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `MedicinalProductAuthorization` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Manufacturer of this Package Item",
     )
 
@@ -73,14 +85,23 @@ class MedicinalProductPackaged(domainresource.DomainResource):
     packageItem: ListType[fhirtypes.MedicinalProductPackagedPackageItemType] = Field(
         ...,
         alias="packageItem",
-        title="List of `MedicinalProductPackagedPackageItem` items (represented as `dict` in JSON)",
-        description="A packaging item, as a contained for medicine, possibly with other packaging items within",
+        title=(
+            "List of `MedicinalProductPackagedPackageItem` items (represented as "
+            "`dict` in JSON)"
+        ),
+        description=(
+            "A packaging item, as a contained for medicine, possibly with other "
+            "packaging items within"
+        ),
     )
 
     subject: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="subject",
-        title="List of `Reference` items referencing `MedicinalProduct` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `MedicinalProduct` (represented "
+            "as `dict` in JSON)"
+        ),
         description="The product with this is a pack for",
     )
 
@@ -95,7 +116,10 @@ class MedicinalProductPackagedBatchIdentifier(backboneelement.BackboneElement):
         None,
         alias="immediatePackaging",
         title="Type `Identifier` (represented as `dict` in JSON)",
-        description="A number appearing on the immediate packaging (and not the outer packaging)",
+        description=(
+            "A number appearing on the immediate packaging (and not the outer "
+            "packaging)"
+        ),
     )
 
     outerPackaging: fhirtypes.IdentifierType = Field(
@@ -123,7 +147,10 @@ class MedicinalProductPackagedPackageItem(backboneelement.BackboneElement):
     device: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="device",
-        title="List of `Reference` items referencing `DeviceDefinition` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `DeviceDefinition` (represented "
+            "as `dict` in JSON)"
+        ),
         description="A device accompanying a medicinal product",
     )
 
@@ -137,14 +164,20 @@ class MedicinalProductPackagedPackageItem(backboneelement.BackboneElement):
     manufacturedItem: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="manufacturedItem",
-        title="List of `Reference` items referencing `MedicinalProductManufactured` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `MedicinalProductManufactured` "
+            "(represented as `dict` in JSON)"
+        ),
         description="The manufactured item as contained in the packaged medicinal product",
     )
 
     manufacturer: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="manufacturer",
-        title="List of `Reference` items referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Organization` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Manufacturer of this Package Item",
     )
 
@@ -165,7 +198,10 @@ class MedicinalProductPackagedPackageItem(backboneelement.BackboneElement):
     packageItem: ListType[fhirtypes.MedicinalProductPackagedPackageItemType] = Field(
         None,
         alias="packageItem",
-        title="List of `MedicinalProductPackagedPackageItem` items (represented as `dict` in JSON)",
+        title=(
+            "List of `MedicinalProductPackagedPackageItem` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Allows containers within containers",
     )
 
@@ -180,7 +216,10 @@ class MedicinalProductPackagedPackageItem(backboneelement.BackboneElement):
         ...,
         alias="quantity",
         title="Type `Quantity` (represented as `dict` in JSON)",
-        description="The quantity of this package in the medicinal product, at the current level of packaging. The outermost is always 1",
+        description=(
+            "The quantity of this package in the medicinal product, at the current "
+            "level of packaging. The outermost is always 1"
+        ),
     )
 
     shelfLifeStorage: ListType[fhirtypes.ProductShelfLifeType] = Field(

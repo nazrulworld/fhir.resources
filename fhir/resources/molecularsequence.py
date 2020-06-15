@@ -24,7 +24,11 @@ class MolecularSequence(domainresource.DomainResource):
         ...,
         alias="coordinateSystem",
         title="Type `Integer` (represented as `dict` in JSON)",
-        description="Base number of coordinate system (0 for 0-based numbering or coordinates, inclusive start, exclusive end, 1 for 1-based numbering, inclusive start, inclusive end)",
+        description=(
+            "Base number of coordinate system (0 for 0-based numbering or "
+            "coordinates, inclusive start, exclusive end, 1 for 1-based numbering, "
+            "inclusive start, inclusive end)"
+        ),
     )
 
     device: fhirtypes.ReferenceType = Field(
@@ -58,21 +62,30 @@ class MolecularSequence(domainresource.DomainResource):
     performer: fhirtypes.ReferenceType = Field(
         None,
         alias="performer",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Who should be responsible for test result",
     )
 
     pointer: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="pointer",
-        title="List of `Reference` items referencing `MolecularSequence` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `MolecularSequence` (represented"
+            " as `dict` in JSON)"
+        ),
         description="Pointer to next atomic sequence",
     )
 
     quality: ListType[fhirtypes.MolecularSequenceQualityType] = Field(
         None,
         alias="quality",
-        title="List of `MolecularSequenceQuality` items (represented as `dict` in JSON)",
+        title=(
+            "List of `MolecularSequenceQuality` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="An set of value as quality of sequence",
     )
 
@@ -87,7 +100,10 @@ class MolecularSequence(domainresource.DomainResource):
         None,
         alias="readCoverage",
         title="Type `Integer` (represented as `dict` in JSON)",
-        description="Average number of reads representing a given nucleotide in the reconstructed sequence",
+        description=(
+            "Average number of reads representing a given nucleotide in the "
+            "reconstructed sequence"
+        ),
     )
 
     referenceSeq: fhirtypes.MolecularSequenceReferenceSeqType = Field(
@@ -100,21 +116,32 @@ class MolecularSequence(domainresource.DomainResource):
     repository: ListType[fhirtypes.MolecularSequenceRepositoryType] = Field(
         None,
         alias="repository",
-        title="List of `MolecularSequenceRepository` items (represented as `dict` in JSON)",
-        description="External repository which contains detailed report related with observedSeq in this resource",
+        title=(
+            "List of `MolecularSequenceRepository` items (represented as `dict` in "
+            "JSON)"
+        ),
+        description=(
+            "External repository which contains detailed report related with "
+            "observedSeq in this resource"
+        ),
     )
 
     specimen: fhirtypes.ReferenceType = Field(
         None,
         alias="specimen",
-        title="Type `Reference` referencing `Specimen` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Specimen` (represented as `dict` in " "JSON)"
+        ),
         description="Specimen used for sequencing",
     )
 
     structureVariant: ListType[fhirtypes.MolecularSequenceStructureVariantType] = Field(
         None,
         alias="structureVariant",
-        title="List of `MolecularSequenceStructureVariant` items (represented as `dict` in JSON)",
+        title=(
+            "List of `MolecularSequenceStructureVariant` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Structural variant",
     )
 
@@ -128,7 +155,10 @@ class MolecularSequence(domainresource.DomainResource):
     variant: ListType[fhirtypes.MolecularSequenceVariantType] = Field(
         None,
         alias="variant",
-        title="List of `MolecularSequenceVariant` items (represented as `dict` in JSON)",
+        title=(
+            "List of `MolecularSequenceVariant` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Variant in sequence",
     )
 
@@ -160,7 +190,10 @@ class MolecularSequenceQuality(backboneelement.BackboneElement):
         None,
         alias="gtFP",
         title="Type `Decimal` (represented as `dict` in JSON)",
-        description="False positives where the non-REF alleles in the Truth and Query Call Sets match",
+        description=(
+            "False positives where the non-REF alleles in the Truth and Query Call "
+            "Sets match"
+        ),
     )
 
     method: fhirtypes.CodeableConceptType = Field(
@@ -325,7 +358,10 @@ class MolecularSequenceReferenceSeq(backboneelement.BackboneElement):
         None,
         alias="genomeBuild",
         title="Type `String` (represented as `dict` in JSON)",
-        description="The Genome Build used for reference, following GRCh build versions e.g. \u0027GRCh 37\u0027",
+        description=(
+            "The Genome Build used for reference, following GRCh build versions "
+            "e.g. \u0027GRCh 37\u0027"
+        ),
     )
 
     orientation: fhirtypes.Code = Field(
@@ -345,7 +381,10 @@ class MolecularSequenceReferenceSeq(backboneelement.BackboneElement):
     referenceSeqPointer: fhirtypes.ReferenceType = Field(
         None,
         alias="referenceSeqPointer",
-        title="Type `Reference` referencing `MolecularSequence` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `MolecularSequence` (represented as "
+            "`dict` in JSON)"
+        ),
         description="A pointer to another MolecularSequence entity as reference sequence",
     )
 
@@ -447,7 +486,10 @@ class MolecularSequenceStructureVariant(backboneelement.BackboneElement):
     inner: fhirtypes.MolecularSequenceStructureVariantInnerType = Field(
         None,
         alias="inner",
-        title="Type `MolecularSequenceStructureVariantInner` (represented as `dict` in JSON)",
+        title=(
+            "Type `MolecularSequenceStructureVariantInner` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Structural variant inner",
     )
 
@@ -461,7 +503,10 @@ class MolecularSequenceStructureVariant(backboneelement.BackboneElement):
     outer: fhirtypes.MolecularSequenceStructureVariantOuterType = Field(
         None,
         alias="outer",
-        title="Type `MolecularSequenceStructureVariantOuter` (represented as `dict` in JSON)",
+        title=(
+            "Type `MolecularSequenceStructureVariantOuter` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Structural variant outer",
     )
 
@@ -564,6 +609,9 @@ class MolecularSequenceVariant(backboneelement.BackboneElement):
     variantPointer: fhirtypes.ReferenceType = Field(
         None,
         alias="variantPointer",
-        title="Type `Reference` referencing `Observation` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Observation` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Pointer to observed variant information",
     )

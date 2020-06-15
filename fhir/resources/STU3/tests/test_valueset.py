@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import valueset
 
@@ -19,19 +21,16 @@ def impl_valueset_1(inst):
     assert inst.date == fhirtypes.DateTime.validate("2017-04-19T07:44:43+10:00")
     assert inst.description == "Current state of the encounter"
     assert inst.experimental is False
-    assert (
-        inst.extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-ballot-status"
+    assert inst.extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "ballot-status"
     )
     assert inst.extension[0].valueString == "Informative"
-    assert (
-        inst.extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    assert inst.extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
     )
     assert inst.extension[1].valueInteger == 2
-    assert (
-        inst.extension[2].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+    assert inst.extension[2].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
     )
     assert inst.extension[2].valueCode == "pa"
     assert inst.id == "encounter-status"
@@ -82,19 +81,16 @@ def impl_valueset_2(inst):
     assert inst.date == fhirtypes.DateTime.validate("2017-04-19T07:44:43+10:00")
     assert inst.description == "The current status of the test report."
     assert inst.experimental is False
-    assert (
-        inst.extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-ballot-status"
+    assert inst.extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "ballot-status"
     )
     assert inst.extension[0].valueString == "Informative"
-    assert (
-        inst.extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    assert inst.extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
     )
     assert inst.extension[1].valueInteger == 0
-    assert (
-        inst.extension[2].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+    assert inst.extension[2].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
     )
     assert inst.extension[2].valueCode == "fhir"
     assert inst.id == "report-status-codes"
@@ -145,19 +141,16 @@ def impl_valueset_3(inst):
     assert inst.date == fhirtypes.DateTime.validate("2017-04-19T07:44:43+10:00")
     assert inst.description == "The presentation types of notes."
     assert inst.experimental is False
-    assert (
-        inst.extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-ballot-status"
+    assert inst.extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "ballot-status"
     )
     assert inst.extension[0].valueString == "Informative"
-    assert (
-        inst.extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    assert inst.extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
     )
     assert inst.extension[1].valueInteger == 2
-    assert (
-        inst.extension[2].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+    assert inst.extension[2].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
     )
     assert inst.extension[2].valueCode == "fm"
     assert inst.id == "note-type"
@@ -207,19 +200,16 @@ def impl_valueset_4(inst):
     assert inst.date == fhirtypes.DateTime.validate("2017-04-19T07:44:43+10:00")
     assert inst.description == "This value set includes sequence quality method"
     assert inst.experimental is True
-    assert (
-        inst.extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-ballot-status"
+    assert inst.extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "ballot-status"
     )
     assert inst.extension[0].valueString == "Informative"
-    assert (
-        inst.extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    assert inst.extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
     )
     assert inst.extension[1].valueInteger == 1
-    assert (
-        inst.extension[2].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+    assert inst.extension[2].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
     )
     assert inst.extension[2].valueCode == "cg"
     assert inst.id == "sequence-quality-method"
@@ -271,19 +261,16 @@ def impl_valueset_5(inst):
     assert inst.date == fhirtypes.DateTime.validate("2017-04-19T07:44:43+10:00")
     assert inst.description == "How the issue affects the success of the action."
     assert inst.experimental is False
-    assert (
-        inst.extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-ballot-status"
+    assert inst.extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "ballot-status"
     )
     assert inst.extension[0].valueString == "Informative"
-    assert (
-        inst.extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    assert inst.extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
     )
     assert inst.extension[1].valueInteger == 5
-    assert (
-        inst.extension[2].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+    assert inst.extension[2].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
     )
     assert inst.extension[2].valueCode == "fhir"
     assert inst.id == "issue-severity"
@@ -333,19 +320,16 @@ def impl_valueset_6(inst):
     assert inst.date == fhirtypes.DateTime.validate("2017-04-19T07:44:43+10:00")
     assert inst.description == "This value set includes all Reference codes"
     assert inst.experimental is True
-    assert (
-        inst.extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-ballot-status"
+    assert inst.extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "ballot-status"
     )
     assert inst.extension[0].valueString == "Informative"
-    assert (
-        inst.extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    assert inst.extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
     )
     assert inst.extension[1].valueInteger == 1
-    assert (
-        inst.extension[2].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+    assert inst.extension[2].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
     )
     assert inst.extension[2].valueCode == "cg"
     assert inst.id == "sequence-referenceSeq"
@@ -396,19 +380,16 @@ def impl_valueset_7(inst):
     assert inst.date == fhirtypes.DateTime.validate("2017-04-19T07:44:43+10:00")
     assert inst.description == "This value set includes sample Process Outcome codes."
     assert inst.experimental is True
-    assert (
-        inst.extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-ballot-status"
+    assert inst.extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "ballot-status"
     )
     assert inst.extension[0].valueString == "Informative"
-    assert (
-        inst.extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    assert inst.extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
     )
     assert inst.extension[1].valueInteger == 1
-    assert (
-        inst.extension[2].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+    assert inst.extension[2].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
     )
     assert inst.extension[2].valueCode == "fm"
     assert inst.id == "process-outcome"
@@ -458,19 +439,16 @@ def impl_valueset_8(inst):
     assert inst.date == fhirtypes.DateTime.validate("2017-04-19T07:44:43+10:00")
     assert inst.description == "This value set includes sample Exception codes."
     assert inst.experimental is True
-    assert (
-        inst.extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-ballot-status"
+    assert inst.extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "ballot-status"
     )
     assert inst.extension[0].valueString == "Informative"
-    assert (
-        inst.extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    assert inst.extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
     )
     assert inst.extension[1].valueInteger == 1
-    assert (
-        inst.extension[2].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+    assert inst.extension[2].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
     )
     assert inst.extension[2].valueCode == "fm"
     assert inst.id == "claim-exception"
@@ -520,25 +498,24 @@ def impl_valueset_9(inst):
     assert inst.contact[0].telecom[1].system == "email"
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
     assert inst.date == fhirtypes.DateTime.validate("2017-02-19T18:00:00+01:00")
-    assert (
-        inst.description
-        == "This example FHIR value set is comprised of lifecycle event codes. The FHIR Actor value set is based on    DICOM Audit Message, ParticipantObjectDataLifeCycle;   ISO Standard, TS 21089-2017;  "
+    assert inst.description == (
+        "This example FHIR value set is comprised of lifecycle event "
+        "codes. The FHIR Actor value set is based on    DICOM Audit "
+        "Message, ParticipantObjectDataLifeCycle;   ISO Standard, TS "
+        "21089-2017;  "
     )
     assert inst.experimental is False
     assert inst.extensible is True
-    assert (
-        inst.extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+    assert inst.extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
     )
     assert inst.extension[0].valueCode == "sec"
-    assert (
-        inst.extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-ballot-status"
+    assert inst.extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "ballot-status"
     )
     assert inst.extension[1].valueString == "Trial Use"
-    assert (
-        inst.extension[2].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    assert inst.extension[2].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
     )
     assert inst.extension[2].valueInteger == 3
     assert inst.id == "object-lifecycle-events"
@@ -548,9 +525,9 @@ def impl_valueset_9(inst):
     assert inst.name == "ObjectLifecycleEvents"
     assert inst.publisher == "HL7 (FHIR Project)"
     assert inst.status == "draft"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml"> This value set includes codes from multiple codesets. </div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml"> This value set '
+        "includes codes from multiple codesets. </div>"
     )
     assert inst.text.status == "generated"
     assert inst.url == "http://hl7.org/fhir/ValueSet/object-lifecycle-events"
@@ -585,19 +562,16 @@ def impl_valueset_10(inst):
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert inst.date == fhirtypes.DateTime.validate("2017-04-19T07:44:43+10:00")
     assert inst.experimental is True
-    assert (
-        inst.extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-ballot-status"
+    assert inst.extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "ballot-status"
     )
     assert inst.extension[0].valueString == "Informative"
-    assert (
-        inst.extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    assert inst.extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
     )
     assert inst.extension[1].valueInteger == 1
-    assert (
-        inst.extension[2].url
-        == "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+    assert inst.extension[2].url == (
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
     )
     assert inst.extension[2].valueCode == "oo"
     assert inst.id == "entformula-additive"

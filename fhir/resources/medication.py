@@ -68,7 +68,10 @@ class Medication(domainresource.DomainResource):
     manufacturer: fhirtypes.ReferenceType = Field(
         None,
         alias="manufacturer",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Manufacturer of the item",
     )
 
@@ -128,7 +131,10 @@ class MedicationIngredient(backboneelement.BackboneElement):
     itemReference: fhirtypes.ReferenceType = Field(
         None,
         alias="itemReference",
-        title="Type `Reference` referencing `Substance, Medication` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Substance, Medication` (represented as "
+            "`dict` in JSON)"
+        ),
         description="The actual ingredient or content",
         one_of_many="item",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
@@ -155,9 +161,7 @@ class MedicationIngredient(backboneelement.BackboneElement):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "item": ["itemCodeableConcept", "itemReference",],
-        }
+        one_of_many_fields = {"item": ["itemCodeableConcept", "itemReference"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (

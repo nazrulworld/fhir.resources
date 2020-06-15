@@ -84,7 +84,10 @@ class ValueSet(domainresource.DomainResource):
         None,
         alias="immutable",
         title="Type `bool`",
-        description="Indicates whether or not any change to the content logical definition may occur",
+        description=(
+            "Indicates whether or not any change to the content logical definition "
+            "may occur"
+        ),
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -133,7 +136,10 @@ class ValueSet(domainresource.DomainResource):
         None,
         alias="url",
         title="Type `Uri` (represented as `dict` in JSON)",
-        description="Canonical identifier for this value set, represented as a URI (globally unique)",
+        description=(
+            "Canonical identifier for this value set, represented as a URI "
+            "(globally unique)"
+        ),
     )
 
     useContext: ListType[fhirtypes.UsageContextType] = Field(
@@ -198,14 +204,20 @@ class ValueSetComposeInclude(backboneelement.BackboneElement):
     concept: ListType[fhirtypes.ValueSetComposeIncludeConceptType] = Field(
         None,
         alias="concept",
-        title="List of `ValueSetComposeIncludeConcept` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ValueSetComposeIncludeConcept` items (represented as `dict` "
+            "in JSON)"
+        ),
         description="A concept defined in the system",
     )
 
     filter: ListType[fhirtypes.ValueSetComposeIncludeFilterType] = Field(
         None,
         alias="filter",
-        title="List of `ValueSetComposeIncludeFilter` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ValueSetComposeIncludeFilter` items (represented as `dict` in"
+            " JSON)"
+        ),
         description="Select codes/concepts by their properties (including relationships)",
     )
 
@@ -219,7 +231,10 @@ class ValueSetComposeInclude(backboneelement.BackboneElement):
     valueSet: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="valueSet",
-        title="List of `Canonical` items referencing `ValueSet` (represented as `dict` in JSON)",
+        title=(
+            "List of `Canonical` items referencing `ValueSet` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Select the contents included in this value set",
     )
 
@@ -250,7 +265,10 @@ class ValueSetComposeIncludeConcept(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="designation",
-        title="List of `ValueSetComposeIncludeConceptDesignation` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ValueSetComposeIncludeConceptDesignation` items (represented "
+            "as `dict` in JSON)"
+        ),
         description="Additional representations for this concept",
     )
 
@@ -306,7 +324,10 @@ class ValueSetComposeIncludeFilter(backboneelement.BackboneElement):
         ...,
         alias="op",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="= | is-a | descendent-of | is-not-a | regex | in | not-in | generalizes | exists",
+        description=(
+            "= | is-a | descendent-of | is-not-a | regex | in | not-in | "
+            "generalizes | exists"
+        ),
     )
 
     property: fhirtypes.Code = Field(
@@ -336,7 +357,10 @@ class ValueSetExpansion(backboneelement.BackboneElement):
     contains: ListType[fhirtypes.ValueSetExpansionContainsType] = Field(
         None,
         alias="contains",
-        title="List of `ValueSetExpansionContains` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ValueSetExpansionContains` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Codes in the value set",
     )
 
@@ -357,7 +381,10 @@ class ValueSetExpansion(backboneelement.BackboneElement):
     parameter: ListType[fhirtypes.ValueSetExpansionParameterType] = Field(
         None,
         alias="parameter",
-        title="List of `ValueSetExpansionParameter` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ValueSetExpansionParameter` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Parameter that controlled the expansion process",
     )
 
@@ -400,7 +427,10 @@ class ValueSetExpansionContains(backboneelement.BackboneElement):
     contains: ListType[fhirtypes.ValueSetExpansionContainsType] = Field(
         None,
         alias="contains",
-        title="List of `ValueSetExpansionContains` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ValueSetExpansionContains` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Codes contained under this entry",
     )
 
@@ -409,7 +439,10 @@ class ValueSetExpansionContains(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="designation",
-        title="List of `ValueSetComposeIncludeConceptDesignation` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ValueSetComposeIncludeConceptDesignation` items (represented "
+            "as `dict` in JSON)"
+        ),
         description="Additional representations for this item",
     )
 
@@ -544,7 +577,7 @@ class ValueSetExpansionParameter(backboneelement.BackboneElement):
                 "valueInteger",
                 "valueString",
                 "valueUri",
-            ],
+            ]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

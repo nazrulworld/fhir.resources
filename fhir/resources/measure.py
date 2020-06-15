@@ -164,7 +164,10 @@ class Measure(domainresource.DomainResource):
     library: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="library",
-        title="List of `Canonical` items referencing `Library` (represented as `dict` in JSON)",
+        title=(
+            "List of `Canonical` items referencing `Library` (represented as `dict`"
+            " in JSON)"
+        ),
         description="Logic used by the measure",
     )
 
@@ -242,7 +245,10 @@ class Measure(domainresource.DomainResource):
         None,
         alias="subjectCodeableConcept",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="E.g. Patient, Practitioner, RelatedPerson, Organization, Location, Device",
+        description=(
+            "E.g. Patient, Practitioner, RelatedPerson, Organization, Location, "
+            "Device"
+        ),
         one_of_many="subject",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
     )
@@ -251,7 +257,10 @@ class Measure(domainresource.DomainResource):
         None,
         alias="subjectReference",
         title="Type `Reference` referencing `Group` (represented as `dict` in JSON)",
-        description="E.g. Patient, Practitioner, RelatedPerson, Organization, Location, Device",
+        description=(
+            "E.g. Patient, Practitioner, RelatedPerson, Organization, Location, "
+            "Device"
+        ),
         one_of_many="subject",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
     )
@@ -266,7 +275,9 @@ class Measure(domainresource.DomainResource):
     supplementalData: ListType[fhirtypes.MeasureSupplementalDataType] = Field(
         None,
         alias="supplementalData",
-        title="List of `MeasureSupplementalData` items (represented as `dict` in JSON)",
+        title=(
+            "List of `MeasureSupplementalData` items (represented as `dict` in " "JSON)"
+        ),
         description="What other data should be reported with the measure",
     )
 
@@ -281,7 +292,10 @@ class Measure(domainresource.DomainResource):
         None,
         alias="topic",
         title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="The category of the measure, such as Education, Treatment, Assessment, etc.",
+        description=(
+            "The category of the measure, such as Education, Treatment, Assessment,"
+            " etc."
+        ),
     )
 
     type: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -295,7 +309,10 @@ class Measure(domainresource.DomainResource):
         None,
         alias="url",
         title="Type `Uri` (represented as `dict` in JSON)",
-        description="Canonical identifier for this measure, represented as a URI (globally unique)",
+        description=(
+            "Canonical identifier for this measure, represented as a URI (globally "
+            "unique)"
+        ),
     )
 
     usage: fhirtypes.String = Field(
@@ -333,9 +350,7 @@ class Measure(domainresource.DomainResource):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "subject": ["subjectCodeableConcept", "subjectReference",],
-        }
+        one_of_many_fields = {"subject": ["subjectCodeableConcept", "subjectReference"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -405,7 +420,11 @@ class MeasureGroupPopulation(backboneelement.BackboneElement):
         None,
         alias="code",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="initial-population | numerator | numerator-exclusion | denominator | denominator-exclusion | denominator-exception | measure-population | measure-population-exclusion | measure-observation",
+        description=(
+            "initial-population | numerator | numerator-exclusion | denominator | "
+            "denominator-exclusion | denominator-exception | measure-population | "
+            "measure-population-exclusion | measure-observation"
+        ),
     )
 
     criteria: fhirtypes.ExpressionType = Field(
@@ -442,7 +461,10 @@ class MeasureGroupStratifier(backboneelement.BackboneElement):
     component: ListType[fhirtypes.MeasureGroupStratifierComponentType] = Field(
         None,
         alias="component",
-        title="List of `MeasureGroupStratifierComponent` items (represented as `dict` in JSON)",
+        title=(
+            "List of `MeasureGroupStratifierComponent` items (represented as `dict`"
+            " in JSON)"
+        ),
         description="Stratifier criteria component for the measure",
     )
 

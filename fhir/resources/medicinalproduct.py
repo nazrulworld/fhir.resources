@@ -25,20 +25,29 @@ class MedicinalProduct(domainresource.DomainResource):
         None,
         alias="additionalMonitoringIndicator",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Whether the Medicinal Product is subject to additional monitoring for regulatory reasons",
+        description=(
+            "Whether the Medicinal Product is subject to additional monitoring for "
+            "regulatory reasons"
+        ),
     )
 
     attachedDocument: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="attachedDocument",
-        title="List of `Reference` items referencing `DocumentReference` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `DocumentReference` (represented"
+            " as `dict` in JSON)"
+        ),
         description="Supporting documentation, typically for regulatory submission",
     )
 
     clinicalTrial: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="clinicalTrial",
-        title="List of `Reference` items referencing `ResearchStudy` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `ResearchStudy` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Clinical trials or studies that this product is involved in",
     )
 
@@ -46,13 +55,19 @@ class MedicinalProduct(domainresource.DomainResource):
         None,
         alias="combinedPharmaceuticalDoseForm",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The dose form for a single part product, or combined form of a multiple part product",
+        description=(
+            "The dose form for a single part product, or combined form of a "
+            "multiple part product"
+        ),
     )
 
     contact: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="contact",
-        title="List of `Reference` items referencing `Organization, PractitionerRole` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Organization, PractitionerRole`"
+            " (represented as `dict` in JSON)"
+        ),
         description="A product specific contact, person (in a role), or an organization",
     )
 
@@ -60,7 +75,10 @@ class MedicinalProduct(domainresource.DomainResource):
         None,
         alias="crossReference",
         title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Reference to another product, e.g. for linking authorised to investigational product",
+        description=(
+            "Reference to another product, e.g. for linking authorised to "
+            "investigational product"
+        ),
     )
 
     domain: fhirtypes.CodingType = Field(
@@ -81,7 +99,10 @@ class MedicinalProduct(domainresource.DomainResource):
         None,
         alias="legalStatusOfSupply",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The legal status of supply of the medicinal product as classified by the regulator",
+        description=(
+            "The legal status of supply of the medicinal product as classified by "
+            "the regulator"
+        ),
     )
 
     manufacturingBusinessOperation: ListType[
@@ -89,22 +110,37 @@ class MedicinalProduct(domainresource.DomainResource):
     ] = Field(
         None,
         alias="manufacturingBusinessOperation",
-        title="List of `MedicinalProductManufacturingBusinessOperation` items (represented as `dict` in JSON)",
-        description="An operation applied to the product, for manufacturing or adminsitrative purpose",
+        title=(
+            "List of `MedicinalProductManufacturingBusinessOperation` items "
+            "(represented as `dict` in JSON)"
+        ),
+        description=(
+            "An operation applied to the product, for manufacturing or "
+            "adminsitrative purpose"
+        ),
     )
 
     marketingStatus: ListType[fhirtypes.MarketingStatusType] = Field(
         None,
         alias="marketingStatus",
         title="List of `MarketingStatus` items (represented as `dict` in JSON)",
-        description="Marketing status of the medicinal product, in contrast to marketing authorizaton",
+        description=(
+            "Marketing status of the medicinal product, in contrast to marketing "
+            "authorizaton"
+        ),
     )
 
     masterFile: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="masterFile",
-        title="List of `Reference` items referencing `DocumentReference` (represented as `dict` in JSON)",
-        description="A master file for to the medicinal product (e.g. Pharmacovigilance System Master File)",
+        title=(
+            "List of `Reference` items referencing `DocumentReference` (represented"
+            " as `dict` in JSON)"
+        ),
+        description=(
+            "A master file for to the medicinal product (e.g. Pharmacovigilance "
+            "System Master File)"
+        ),
     )
 
     name: ListType[fhirtypes.MedicinalProductNameType] = Field(
@@ -117,7 +153,10 @@ class MedicinalProduct(domainresource.DomainResource):
     packagedMedicinalProduct: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="packagedMedicinalProduct",
-        title="List of `Reference` items referencing `MedicinalProductPackaged` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `MedicinalProductPackaged` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Package representation for the product",
     )
 
@@ -131,7 +170,10 @@ class MedicinalProduct(domainresource.DomainResource):
     pharmaceuticalProduct: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="pharmaceuticalProduct",
-        title="List of `Reference` items referencing `MedicinalProductPharmaceutical` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `MedicinalProductPharmaceutical`"
+            " (represented as `dict` in JSON)"
+        ),
         description="Pharmaceutical aspects of product",
     )
 
@@ -147,15 +189,24 @@ class MedicinalProduct(domainresource.DomainResource):
     ] = Field(
         None,
         alias="specialDesignation",
-        title="List of `MedicinalProductSpecialDesignation` items (represented as `dict` in JSON)",
-        description="Indicates if the medicinal product has an orphan designation for the treatment of a rare disease",
+        title=(
+            "List of `MedicinalProductSpecialDesignation` items (represented as "
+            "`dict` in JSON)"
+        ),
+        description=(
+            "Indicates if the medicinal product has an orphan designation for the "
+            "treatment of a rare disease"
+        ),
     )
 
     specialMeasures: ListType[fhirtypes.String] = Field(
         None,
         alias="specialMeasures",
         title="List of `String` items (represented as `dict` in JSON)",
-        description="Whether the Medicinal Product is subject to special measures for regulatory reasons",
+        description=(
+            "Whether the Medicinal Product is subject to special measures for "
+            "regulatory reasons"
+        ),
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -197,7 +248,10 @@ class MedicinalProductManufacturingBusinessOperation(backboneelement.BackboneEle
     manufacturer: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="manufacturer",
-        title="List of `Reference` items referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Organization` (represented as "
+            "`dict` in JSON)"
+        ),
         description="The manufacturer or establishment associated with the process",
     )
 
@@ -211,7 +265,10 @@ class MedicinalProductManufacturingBusinessOperation(backboneelement.BackboneEle
     regulator: fhirtypes.ReferenceType = Field(
         None,
         alias="regulator",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="A regulator which oversees the operation",
     )
 
@@ -227,14 +284,20 @@ class MedicinalProductName(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="countryLanguage",
-        title="List of `MedicinalProductNameCountryLanguage` items (represented as `dict` in JSON)",
+        title=(
+            "List of `MedicinalProductNameCountryLanguage` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Country where the name applies",
     )
 
     namePart: ListType[fhirtypes.MedicinalProductNameNamePartType] = Field(
         None,
         alias="namePart",
-        title="List of `MedicinalProductNameNamePart` items (represented as `dict` in JSON)",
+        title=(
+            "List of `MedicinalProductNameNamePart` items (represented as `dict` in"
+            " JSON)"
+        ),
         description="Coding words or phrases of the name",
     )
 
@@ -328,7 +391,10 @@ class MedicinalProductSpecialDesignation(backboneelement.BackboneElement):
     indicationReference: fhirtypes.ReferenceType = Field(
         None,
         alias="indicationReference",
-        title="Type `Reference` referencing `MedicinalProductIndication` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `MedicinalProductIndication` (represented"
+            " as `dict` in JSON)"
+        ),
         description="Condition for which the medicinal use applies",
         one_of_many="indication",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -377,7 +443,7 @@ class MedicinalProductSpecialDesignation(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "indication": ["indicationCodeableConcept", "indicationReference",],
+            "indication": ["indicationCodeableConcept", "indicationReference"]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

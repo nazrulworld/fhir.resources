@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import healthcareservice
 
@@ -38,17 +40,17 @@ def impl_healthcareservice_1(inst):
     assert inst.category.coding[0].system == "http://hl7.org/fhir/service-category"
     assert inst.category.text == "Counselling"
     assert inst.characteristic[0].coding[0].display == "Wheelchair access"
-    assert (
-        inst.comment
-        == "Providing Specialist psychology services to the greater Den Burg area, many years of experience dealing with PTSD issues"
+    assert inst.comment == (
+        "Providing Specialist psychology services to the greater Den "
+        "Burg area, many years of experience dealing with PTSD issues"
     )
     assert inst.contained[0].id == "DenBurg"
     assert inst.coverageArea[0].display == "Greater Denburg area"
     assert inst.coverageArea[0].reference == "#DenBurg"
     assert inst.eligibility.coding[0].display == "DVA Required"
-    assert (
-        inst.eligibilityNote
-        == "Evidence of application for DVA status may be sufficient for commencing assessment"
+    assert inst.eligibilityNote == (
+        "Evidence of application for DVA status may be sufficient for"
+        " commencing assessment"
     )
     assert inst.endpoint[0].reference == "Endpoint/example"
     assert inst.id == "example"

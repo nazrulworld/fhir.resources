@@ -32,7 +32,10 @@ class DeviceComponent(domainresource.DomainResource):
         None,
         alias="languageCode",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Language code for the human-readable text strings produced by the device",
+        description=(
+            "Language code for the human-readable text strings produced by the "
+            "device"
+        ),
     )
 
     lastSystemChange: fhirtypes.Instant = Field(
@@ -46,14 +49,20 @@ class DeviceComponent(domainresource.DomainResource):
         None,
         alias="measurementPrinciple",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="other | chemical | electrical | impedance | nuclear | optical | thermal | biological | mechanical | acoustical | manual+",
+        description=(
+            "other | chemical | electrical | impedance | nuclear | optical | "
+            "thermal | biological | mechanical | acoustical | manual+"
+        ),
     )
 
     operationalStatus: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="operationalStatus",
         title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Current operational status of the component, for example On, Off or Standby",
+        description=(
+            "Current operational status of the component, for example On, Off or "
+            "Standby"
+        ),
     )
 
     parameterGroup: fhirtypes.CodeableConceptType = Field(
@@ -66,7 +75,10 @@ class DeviceComponent(domainresource.DomainResource):
     parent: fhirtypes.ReferenceType = Field(
         None,
         alias="parent",
-        title="Type `Reference` referencing `DeviceComponent` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `DeviceComponent` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Parent resource link",
     )
 
@@ -75,7 +87,10 @@ class DeviceComponent(domainresource.DomainResource):
     ] = Field(
         None,
         alias="productionSpecification",
-        title="List of `DeviceComponentProductionSpecification` items (represented as `dict` in JSON)",
+        title=(
+            "List of `DeviceComponentProductionSpecification` items (represented as"
+            " `dict` in JSON)"
+        ),
         description="Specification details such as Component Revisions, or Serial Numbers",
     )
 
@@ -120,5 +135,8 @@ class DeviceComponentProductionSpecification(backboneelement.BackboneElement):
         None,
         alias="specType",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Type or kind of production specification, for example serial number or software revision",
+        description=(
+            "Type or kind of production specification, for example serial number or"
+            " software revision"
+        ),
     )

@@ -25,7 +25,10 @@ class SubstanceReferenceInformation(domainresource.DomainResource):
     ] = Field(
         None,
         alias="classification",
-        title="List of `SubstanceReferenceInformationClassification` items (represented as `dict` in JSON)",
+        title=(
+            "List of `SubstanceReferenceInformationClassification` items "
+            "(represented as `dict` in JSON)"
+        ),
         description="Todo",
     )
 
@@ -39,7 +42,10 @@ class SubstanceReferenceInformation(domainresource.DomainResource):
     gene: ListType[fhirtypes.SubstanceReferenceInformationGeneType] = Field(
         None,
         alias="gene",
-        title="List of `SubstanceReferenceInformationGene` items (represented as `dict` in JSON)",
+        title=(
+            "List of `SubstanceReferenceInformationGene` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Todo",
     )
 
@@ -48,14 +54,20 @@ class SubstanceReferenceInformation(domainresource.DomainResource):
     ] = Field(
         None,
         alias="geneElement",
-        title="List of `SubstanceReferenceInformationGeneElement` items (represented as `dict` in JSON)",
+        title=(
+            "List of `SubstanceReferenceInformationGeneElement` items (represented "
+            "as `dict` in JSON)"
+        ),
         description="Todo",
     )
 
     target: ListType[fhirtypes.SubstanceReferenceInformationTargetType] = Field(
         None,
         alias="target",
-        title="List of `SubstanceReferenceInformationTarget` items (represented as `dict` in JSON)",
+        title=(
+            "List of `SubstanceReferenceInformationTarget` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Todo",
     )
 
@@ -83,7 +95,10 @@ class SubstanceReferenceInformationClassification(backboneelement.BackboneElemen
     source: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="source",
-        title="List of `Reference` items referencing `DocumentReference` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `DocumentReference` (represented"
+            " as `dict` in JSON)"
+        ),
         description="Todo",
     )
 
@@ -118,7 +133,10 @@ class SubstanceReferenceInformationGene(backboneelement.BackboneElement):
     source: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="source",
-        title="List of `Reference` items referencing `DocumentReference` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `DocumentReference` (represented"
+            " as `dict` in JSON)"
+        ),
         description="Todo",
     )
 
@@ -139,7 +157,10 @@ class SubstanceReferenceInformationGeneElement(backboneelement.BackboneElement):
     source: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="source",
-        title="List of `Reference` items referencing `DocumentReference` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `DocumentReference` (represented"
+            " as `dict` in JSON)"
+        ),
         description="Todo",
     )
 
@@ -215,7 +236,10 @@ class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
     source: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="source",
-        title="List of `Reference` items referencing `DocumentReference` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `DocumentReference` (represented"
+            " as `dict` in JSON)"
+        ),
         description="Todo",
     )
 
@@ -248,7 +272,7 @@ class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "amount": ["amountQuantity", "amountRange", "amountString",],
+            "amount": ["amountQuantity", "amountRange", "amountString"]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

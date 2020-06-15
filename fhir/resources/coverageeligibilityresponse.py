@@ -39,7 +39,10 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
     error: ListType[fhirtypes.CoverageEligibilityResponseErrorType] = Field(
         None,
         alias="error",
-        title="List of `CoverageEligibilityResponseError` items (represented as `dict` in JSON)",
+        title=(
+            "List of `CoverageEligibilityResponseError` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Processing errors",
     )
 
@@ -60,14 +63,20 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
     insurance: ListType[fhirtypes.CoverageEligibilityResponseInsuranceType] = Field(
         None,
         alias="insurance",
-        title="List of `CoverageEligibilityResponseInsurance` items (represented as `dict` in JSON)",
+        title=(
+            "List of `CoverageEligibilityResponseInsurance` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Patient insurance information",
     )
 
     insurer: fhirtypes.ReferenceType = Field(
         ...,
         alias="insurer",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Coverage issuer",
     )
 
@@ -102,14 +111,20 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
     request: fhirtypes.ReferenceType = Field(
         ...,
         alias="request",
-        title="Type `Reference` referencing `CoverageEligibilityRequest` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `CoverageEligibilityRequest` (represented"
+            " as `dict` in JSON)"
+        ),
         description="Eligibility request reference",
     )
 
     requestor: fhirtypes.ReferenceType = Field(
         None,
         alias="requestor",
-        title="Type `Reference` referencing `Practitioner, PractitionerRole, Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, PractitionerRole, "
+            "Organization` (represented as `dict` in JSON)"
+        ),
         description="Party responsible for the request",
     )
 
@@ -152,9 +167,7 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "serviced": ["servicedDate", "servicedPeriod",],
-        }
+        one_of_many_fields = {"serviced": ["servicedDate", "servicedPeriod"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -210,7 +223,9 @@ class CoverageEligibilityResponseInsurance(backboneelement.BackboneElement):
     coverage: fhirtypes.ReferenceType = Field(
         ...,
         alias="coverage",
-        title="Type `Reference` referencing `Coverage` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Coverage` (represented as `dict` in " "JSON)"
+        ),
         description="Insurance information",
     )
 
@@ -224,7 +239,10 @@ class CoverageEligibilityResponseInsurance(backboneelement.BackboneElement):
     item: ListType[fhirtypes.CoverageEligibilityResponseInsuranceItemType] = Field(
         None,
         alias="item",
-        title="List of `CoverageEligibilityResponseInsuranceItem` items (represented as `dict` in JSON)",
+        title=(
+            "List of `CoverageEligibilityResponseInsuranceItem` items (represented "
+            "as `dict` in JSON)"
+        ),
         description="Benefits and authorization details",
     )
 
@@ -263,7 +281,10 @@ class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="benefit",
-        title="List of `CoverageEligibilityResponseInsuranceItemBenefit` items (represented as `dict` in JSON)",
+        title=(
+            "List of `CoverageEligibilityResponseInsuranceItemBenefit` items "
+            "(represented as `dict` in JSON)"
+        ),
         description="Benefit Summary",
     )
 
@@ -319,7 +340,10 @@ class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
     provider: fhirtypes.ReferenceType = Field(
         None,
         alias="provider",
-        title="Type `Reference` referencing `Practitioner, PractitionerRole` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, PractitionerRole` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Performing practitioner",
     )
 
@@ -421,8 +445,8 @@ class CoverageEligibilityResponseInsuranceItemBenefit(backboneelement.BackboneEl
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "allowed": ["allowedMoney", "allowedString", "allowedUnsignedInt",],
-            "used": ["usedMoney", "usedString", "usedUnsignedInt",],
+            "allowed": ["allowedMoney", "allowedString", "allowedUnsignedInt"],
+            "used": ["usedMoney", "usedString", "usedUnsignedInt"],
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

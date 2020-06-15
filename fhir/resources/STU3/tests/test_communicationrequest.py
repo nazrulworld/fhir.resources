@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import communicationrequest
 
@@ -15,9 +17,9 @@ def impl_communicationrequest_1(inst):
     assert inst.id == "example"
     assert inst.status == "active"
     assert inst.subject.reference == "Patient/example"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">To be filled out at a later time</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">To be filled out'
+        " at a later time</div>"
     )
     assert inst.text.status == "generated"
 
@@ -62,9 +64,9 @@ def impl_communicationrequest_2(inst):
     assert inst.occurrenceDateTime == fhirtypes.DateTime.validate(
         "2016-06-10T11:01:10-08:00"
     )
-    assert (
-        inst.payload[0].contentString
-        == "Please provide the accident report and any associated pictures to support your Claim# DEF5647."
+    assert inst.payload[0].contentString == (
+        "Please provide the accident report and any associated "
+        "pictures to support your Claim# DEF5647."
     )
     assert inst.priority == "routine"
     assert inst.recipient[0].reference == "#provider"
@@ -72,9 +74,8 @@ def impl_communicationrequest_2(inst):
     assert inst.requester.agent.reference == "#requester"
     assert inst.sender.reference == "#payor"
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Request for Accident Report</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Request for ' "Accident Report</div>"
     )
     assert inst.text.status == "generated"
 

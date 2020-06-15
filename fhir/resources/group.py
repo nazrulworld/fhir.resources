@@ -32,7 +32,7 @@ class Group(domainresource.DomainResource):
     )
 
     actual: bool = Field(
-        ..., alias="actual", title="Type `bool`", description="Descriptive or actual",
+        ..., alias="actual", title="Type `bool`", description="Descriptive or actual"
     )
 
     characteristic: ListType[fhirtypes.GroupCharacteristicType] = Field(
@@ -59,7 +59,10 @@ class Group(domainresource.DomainResource):
     managingEntity: fhirtypes.ReferenceType = Field(
         None,
         alias="managingEntity",
-        title="Type `Reference` referencing `Organization, RelatedPerson, Practitioner, PractitionerRole` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization, RelatedPerson, "
+            "Practitioner, PractitionerRole` (represented as `dict` in JSON)"
+        ),
         description="Entity that is the custodian of the Group\u0027s definition",
     )
 
@@ -187,7 +190,7 @@ class GroupCharacteristic(backboneelement.BackboneElement):
                 "valueQuantity",
                 "valueRange",
                 "valueReference",
-            ],
+            ]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
@@ -221,7 +224,10 @@ class GroupMember(backboneelement.BackboneElement):
     entity: fhirtypes.ReferenceType = Field(
         ...,
         alias="entity",
-        title="Type `Reference` referencing `Patient, Practitioner, PractitionerRole, Device, Medication, Substance, Group` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Practitioner, PractitionerRole,"
+            " Device, Medication, Substance, Group` (represented as `dict` in JSON)"
+        ),
         description="Reference to the group member",
     )
 

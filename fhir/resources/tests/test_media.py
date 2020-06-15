@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import media
 
@@ -76,9 +78,8 @@ def impl_media_2(inst):
     assert inst.identifier[0].system == "urn:dicom:uid"
     assert inst.identifier[0].type.text == "InstanceUID"
     assert inst.identifier[0].use == "official"
-    assert (
-        inst.identifier[0].value
-        == "urn:oid:1.2.840.11361907579238403408700.3.1.04.19970327150033"
+    assert inst.identifier[0].value == (
+        "urn:oid:1.2.840.11361907579238403408700.3.1.04.1997032715003" "3"
     )
     assert inst.identifier[1].system == "http://acme-imaging.com/accession/2012"
     assert inst.identifier[1].type.text == "accessionNo"
@@ -165,9 +166,9 @@ def impl_media_3(inst):
     assert inst.modality.coding[0].system == "http://snomed.info/sct"
     assert inst.status == "completed"
     assert inst.subject.reference == "Patient/example"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Xray of left hand for Patient Henry Levin (MRN 12345) 2016-03-15</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Xray of left '
+        "hand for Patient Henry Levin (MRN 12345) 2016-03-15</div>"
     )
     assert inst.text.status == "generated"
     assert inst.width == 640
@@ -195,7 +196,9 @@ def test_media_3(base_settings):
 
 def impl_media_4(inst):
     assert inst.content.contentType == "audio/mpeg"
-    # Don't know how to create unit test for "content.data", which is a Base64Binary
+    assert inst.content.data == bytes_validator(
+        "dG9vIGJpZyB0b28gaW5jbHVkZSB0aGUgd2hvbGU="
+    )
     assert inst.content.id == "a1"
     assert float(inst.duration) == float(65)
     assert inst.id == "sound"
@@ -207,9 +210,10 @@ def impl_media_4(inst):
     assert inst.operator.reference == "Practitioner/xcda-author"
     assert inst.status == "completed"
     assert inst.subject.reference == "Patient/xcda"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Sound recording of speech example for Patient Henry Levin (MRN 12345):<br/><img src="#11" alt="diagram"/></div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Sound recording '
+        "of speech example for Patient Henry Levin (MRN "
+        '12345):<br/><img src="#11" alt="diagram"/></div>'
     )
     assert inst.text.status == "generated"
 

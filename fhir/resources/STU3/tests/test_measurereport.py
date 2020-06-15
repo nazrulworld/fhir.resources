@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import measurereport
 
@@ -281,9 +283,8 @@ def impl_measurereport_2(inst):
         == "denominator-exclusion"
     )
     assert inst.group[0].stratifier[0].stratum[0].population[3].count == 50
-    assert (
-        inst.group[0].stratifier[0].stratum[0].population[3].patients.reference
-        == "List/CMS146-stratifier-ages-up-to-9-true-denominator-exclusions"
+    assert inst.group[0].stratifier[0].stratum[0].population[3].patients.reference == (
+        "List/CMS146-stratifier-ages-up-to-9-true-denominator-" "exclusions"
     )
     assert inst.group[0].stratifier[0].stratum[0].value == "true"
     assert (
@@ -318,9 +319,8 @@ def impl_measurereport_2(inst):
         == "denominator-exclusion"
     )
     assert inst.group[0].stratifier[0].stratum[1].population[3].count == 50
-    assert (
-        inst.group[0].stratifier[0].stratum[1].population[3].patients.reference
-        == "List/CMS146-stratifier-ages-up-to-9-false-denominator-exclusions"
+    assert inst.group[0].stratifier[0].stratum[1].population[3].patients.reference == (
+        "List/CMS146-stratifier-ages-up-to-9-false-denominator-" "exclusions"
     )
     assert inst.group[0].stratifier[0].stratum[1].value == "false"
     assert inst.group[0].stratifier[1].identifier.value == "stratifier-ages-10-plus"
@@ -356,9 +356,8 @@ def impl_measurereport_2(inst):
         == "denominator-exclusion"
     )
     assert inst.group[0].stratifier[1].stratum[0].population[3].count == 50
-    assert (
-        inst.group[0].stratifier[1].stratum[0].population[3].patients.reference
-        == "List/CMS146-stratifier-ages-10-plus-true-denominator-exclusions"
+    assert inst.group[0].stratifier[1].stratum[0].population[3].patients.reference == (
+        "List/CMS146-stratifier-ages-10-plus-true-denominator-" "exclusions"
     )
     assert inst.group[0].stratifier[1].stratum[0].value == "true"
     assert (
@@ -393,9 +392,8 @@ def impl_measurereport_2(inst):
         == "denominator-exclusion"
     )
     assert inst.group[0].stratifier[1].stratum[1].population[3].count == 50
-    assert (
-        inst.group[0].stratifier[1].stratum[1].population[3].patients.reference
-        == "List/CMS146-stratifier-ages-10-plus-false-denominator-exclusions"
+    assert inst.group[0].stratifier[1].stratum[1].population[3].patients.reference == (
+        "List/CMS146-stratifier-ages-10-plus-false-denominator-" "exclusions"
     )
     assert inst.group[0].stratifier[1].stratum[1].value == "false"
     assert inst.group[0].stratifier[2].identifier.value == "stratifier-gender"

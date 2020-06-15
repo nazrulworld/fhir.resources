@@ -74,7 +74,10 @@ class NamingSystem(domainresource.DomainResource):
     replacedBy: fhirtypes.ReferenceType = Field(
         None,
         alias="replacedBy",
-        title="Type `Reference` referencing `NamingSystem` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `NamingSystem` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Use this instead",
     )
 

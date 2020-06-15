@@ -25,6 +25,7 @@ development_requirements = [
     "certifi",
     "flake8",
     "flake8-isort",
+    "flake8-bugbear",
     "isort",
     "black",
     "mypy",

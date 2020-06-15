@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import contract
 
@@ -33,9 +35,8 @@ def impl_contract_1(inst):
     )
     assert inst.subject[0].display == "P. van de Heuvel"
     assert inst.subject[0].reference == "Patient/f001"
-    assert (
-        inst.term[0].text
-        == "Withhold this order and any results or related objects from any provider."
+    assert inst.term[0].text == (
+        "Withhold this order and any results or related objects from " "any provider."
     )
     assert inst.term[0].topic[0].display == "Good Health Clinic"
     assert inst.term[0].topic[0].reference == "Organization/2.16.840.1.113883.19.5"
@@ -145,9 +146,9 @@ def impl_contract_2(inst):
     assert inst.signer[0].type.code == "SELF"
     assert inst.signer[0].type.system == "http://org.mdhhs.fhir.consent-signer-type"
     assert inst.subType[0].coding[0].code == "MDHHS-5515"
-    assert (
-        inst.subType[0].coding[0].display
-        == "Michigan MDHHS-5515 Consent to Share Behavioral Health Information for Care Coordination Purposes"
+    assert inst.subType[0].coding[0].display == (
+        "Michigan MDHHS-5515 Consent to Share Behavioral Health "
+        "Information for Care Coordination Purposes"
     )
     assert (
         inst.subType[0].coding[0].system == "http://hl7.org/fhir/consentcategorycodes"
@@ -278,9 +279,9 @@ def impl_contract_4(inst):
     )
     assert inst.subject[0].display == "P. van de Heuvel"
     assert inst.subject[0].reference == "Patient/f001"
-    assert (
-        inst.term[0].text
-        == "Withhold this order and any results or related objects from specified nurse provider."
+    assert inst.term[0].text == (
+        "Withhold this order and any results or related objects from "
+        "specified nurse provider."
     )
     assert inst.term[0].topic[0].display == "Fictive Nurse"
     assert inst.term[0].topic[0].reference == "Practitioner/f204"
@@ -382,9 +383,9 @@ def impl_contract_6(inst):
     assert inst.id == "C-123"
     assert inst.identifier.system == "http://happyvalley.com/contract"
     assert inst.identifier.value == "12347"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the contract</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the contract</div>"
     )
     assert inst.text.status == "generated"
 
@@ -432,15 +433,14 @@ def impl_contract_7(inst):
     )
     assert inst.subject[0].display == "P. van de Heuvel"
     assert inst.subject[0].reference == "Patient/f001"
-    assert (
-        inst.term[0].text
-        == "Withhold this order and any results or related objects from any provider."
+    assert inst.term[0].text == (
+        "Withhold this order and any results or related objects from " "any provider."
     )
     assert inst.term[0].topic[0].reference == "ProcedureRequest/example-lipid"
     assert inst.term[0].type.coding[0].code == "withhold-identified-object-and-related"
-    assert (
-        inst.term[0].type.coding[0].display
-        == "Withhold the identified object and any other resources that are related to this object."
+    assert inst.term[0].type.coding[0].display == (
+        "Withhold the identified object and any other resources that "
+        "are related to this object."
     )
     assert (
         inst.term[0].type.coding[0].system

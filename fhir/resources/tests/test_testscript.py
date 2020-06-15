@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import testscript
 
@@ -42,9 +44,10 @@ def impl_testscript_1(inst):
     assert inst.metadata.capability[1].origin[0] == 1
     assert inst.metadata.capability[1].required is True
     assert inst.metadata.capability[1].validated is False
-    assert (
-        inst.metadata.link[0].description
-        == "Demographics and other administrative information about an individual or animal receiving care or other health-related services."
+    assert inst.metadata.link[0].description == (
+        "Demographics and other administrative information about an "
+        "individual or animal receiving care or other health-related "
+        "services."
     )
     assert inst.metadata.link[0].url == "http://hl7.org/fhir/patient.html"
     assert inst.name == "testscript-example-multisystem"
@@ -55,9 +58,9 @@ def impl_testscript_1(inst):
     assert inst.status == "draft"
     assert inst.test[0].action[0].operation.accept == "xml"
     assert inst.test[0].action[0].operation.contentType == "xml"
-    assert (
-        inst.test[0].action[0].operation.description
-        == "Read a Patient from the first destination test system and perform basic validation."
+    assert inst.test[0].action[0].operation.description == (
+        "Read a Patient from the first destination test system and "
+        "perform basic validation."
     )
     assert inst.test[0].action[0].operation.destination == 1
     assert inst.test[0].action[0].operation.encodeRequestUrl is True
@@ -66,13 +69,12 @@ def impl_testscript_1(inst):
     assert inst.test[0].action[0].operation.requestId == "request-read-patient-01"
     assert inst.test[0].action[0].operation.resource == "Patient"
     assert inst.test[0].action[0].operation.type.code == "read"
-    assert (
-        inst.test[0].action[0].operation.type.system
-        == "http://terminology.hl7.org/CodeSystem/testscript-operation-codes"
+    assert inst.test[0].action[0].operation.type.system == (
+        "http://terminology.hl7.org/CodeSystem/testscript-operation-" "codes"
     )
-    assert (
-        inst.test[0].action[1].assert_fhir.description
-        == "Confirm that the request method GET was sent by the client system under test."
+    assert inst.test[0].action[1].assert_fhir.description == (
+        "Confirm that the request method GET was sent by the client "
+        "system under test."
     )
     assert inst.test[0].action[1].assert_fhir.requestMethod == "get"
     assert inst.test[0].action[1].assert_fhir.warningOnly is False
@@ -106,17 +108,18 @@ def impl_testscript_1(inst):
     assert inst.test[0].action[5].assert_fhir.direction == "response"
     assert inst.test[0].action[5].assert_fhir.resource == "Patient"
     assert inst.test[0].action[5].assert_fhir.warningOnly is False
-    assert (
-        inst.test[0].description
-        == "Read a Patient from the first destination test system using the user defined dynamic variable ${Dest1PatientResourceId}. Perform basic validation."
+    assert inst.test[0].description == (
+        "Read a Patient from the first destination test system using "
+        "the user defined dynamic variable ${Dest1PatientResourceId}."
+        " Perform basic validation."
     )
     assert inst.test[0].id == "01-ReadPatient-Destination1"
     assert inst.test[0].name == "ReadPatient-Destination1"
     assert inst.test[1].action[0].operation.accept == "xml"
     assert inst.test[1].action[0].operation.contentType == "xml"
-    assert (
-        inst.test[1].action[0].operation.description
-        == "Read a Patient from the second destination test system and perform basic validation."
+    assert inst.test[1].action[0].operation.description == (
+        "Read a Patient from the second destination test system and "
+        "perform basic validation."
     )
     assert inst.test[1].action[0].operation.destination == 2
     assert inst.test[1].action[0].operation.encodeRequestUrl is True
@@ -126,9 +129,8 @@ def impl_testscript_1(inst):
     assert inst.test[1].action[0].operation.requestHeader[0].value == "utf-8"
     assert inst.test[1].action[0].operation.resource == "Patient"
     assert inst.test[1].action[0].operation.type.code == "read"
-    assert (
-        inst.test[1].action[0].operation.type.system
-        == "http://terminology.hl7.org/CodeSystem/testscript-operation-codes"
+    assert inst.test[1].action[0].operation.type.system == (
+        "http://terminology.hl7.org/CodeSystem/testscript-operation-" "codes"
     )
     assert (
         inst.test[1].action[1].assert_fhir.description
@@ -160,15 +162,18 @@ def impl_testscript_1(inst):
     assert inst.test[1].action[4].assert_fhir.direction == "response"
     assert inst.test[1].action[4].assert_fhir.resource == "Patient"
     assert inst.test[1].action[4].assert_fhir.warningOnly is False
-    assert (
-        inst.test[1].description
-        == "Read a Patient from the second destination test system using the user defined dynamic variable ${Dest2PatientResourceId}. Perform basic validation."
+    assert inst.test[1].description == (
+        "Read a Patient from the second destination test system using"
+        " the user defined dynamic variable "
+        "${Dest2PatientResourceId}. Perform basic validation."
     )
     assert inst.test[1].id == "02-ReadPatient-Destination2"
     assert inst.test[1].name == "ReadPatient-Destination2"
     assert inst.text.status == "generated"
     assert inst.title == "Multisystem Test Script"
-    assert inst.url == "http://hl7.org/fhir/TestScript/testscript-example-multisystem"
+    assert inst.url == (
+        "http://hl7.org/fhir/TestScript/testscript-example-" "multisystem"
+    )
     assert inst.variable[0].defaultValue == "example"
     assert inst.variable[0].name == "Dest1PatientResourceId"
     assert inst.variable[1].defaultValue == "example"
@@ -234,36 +239,35 @@ def impl_testscript_2(inst):
     )
     assert inst.metadata.capability[0].required is True
     assert inst.metadata.capability[0].validated is False
-    assert (
-        inst.metadata.link[0].description
-        == "Demographics and other administrative information about an individual or animal receiving care or other health-related services."
+    assert inst.metadata.link[0].description == (
+        "Demographics and other administrative information about an "
+        "individual or animal receiving care or other health-related "
+        "services."
     )
     assert inst.metadata.link[0].url == "http://hl7.org/fhir/patient.html"
     assert inst.name == "TestScript Example History"
     assert inst.profile[0].id == "bundle-profile"
     assert inst.profile[0].reference == "http://hl7.org/fhir/StructureDefinition/Bundle"
     assert inst.publisher == "HL7"
-    assert (
-        inst.purpose
-        == "Patient (Conditional) Create, Update, Delete and History (Instance) Operations"
+    assert inst.purpose == (
+        "Patient (Conditional) Create, Update, Delete and History "
+        "(Instance) Operations"
     )
     assert inst.setup.action[0].operation.accept == "json"
-    assert (
-        inst.setup.action[0].operation.description
-        == "Execute a delete operation to insure the patient does not exist on the server."
+    assert inst.setup.action[0].operation.description == (
+        "Execute a delete operation to insure the patient does not "
+        "exist on the server."
     )
     assert inst.setup.action[0].operation.encodeRequestUrl is True
     assert inst.setup.action[0].operation.label == "SetupDeletePatient"
     assert inst.setup.action[0].operation.params == "/${createResourceId}"
     assert inst.setup.action[0].operation.resource == "Patient"
     assert inst.setup.action[0].operation.type.code == "delete"
-    assert (
-        inst.setup.action[0].operation.type.system
-        == "http://terminology.hl7.org/CodeSystem/testscript-operation-codes"
+    assert inst.setup.action[0].operation.type.system == (
+        "http://terminology.hl7.org/CodeSystem/testscript-operation-" "codes"
     )
-    assert (
-        inst.setup.action[1].assert_fhir.description
-        == "Confirm that the returned HTTP status is 200(OK) or 204(No Content)."
+    assert inst.setup.action[1].assert_fhir.description == (
+        "Confirm that the returned HTTP status is 200(OK) or 204(No " "Content)."
     )
     assert inst.setup.action[1].assert_fhir.direction == "response"
     assert inst.setup.action[1].assert_fhir.operator == "in"
@@ -271,9 +275,9 @@ def impl_testscript_2(inst):
     assert inst.setup.action[1].assert_fhir.warningOnly is False
     assert inst.setup.action[2].operation.accept == "json"
     assert inst.setup.action[2].operation.contentType == "json"
-    assert (
-        inst.setup.action[2].operation.description
-        == "Create patient resource on test server using the contents of fixture-patient-create"
+    assert inst.setup.action[2].operation.description == (
+        "Create patient resource on test server using the contents of"
+        " fixture-patient-create"
     )
     assert inst.setup.action[2].operation.encodeRequestUrl is True
     assert inst.setup.action[2].operation.label == "SetupCreatePatient"
@@ -281,9 +285,8 @@ def impl_testscript_2(inst):
     assert inst.setup.action[2].operation.resource == "Patient"
     assert inst.setup.action[2].operation.sourceId == "fixture-patient-create"
     assert inst.setup.action[2].operation.type.code == "update"
-    assert (
-        inst.setup.action[2].operation.type.system
-        == "http://terminology.hl7.org/CodeSystem/testscript-operation-codes"
+    assert inst.setup.action[2].operation.type.system == (
+        "http://terminology.hl7.org/CodeSystem/testscript-operation-" "codes"
     )
     assert (
         inst.setup.action[3].assert_fhir.description
@@ -294,9 +297,9 @@ def impl_testscript_2(inst):
     assert inst.setup.action[3].assert_fhir.warningOnly is False
     assert inst.setup.action[4].operation.accept == "json"
     assert inst.setup.action[4].operation.contentType == "json"
-    assert (
-        inst.setup.action[4].operation.description
-        == "Update patient resource on test server using the contents of fixture-patient-update"
+    assert inst.setup.action[4].operation.description == (
+        "Update patient resource on test server using the contents of"
+        " fixture-patient-update"
     )
     assert inst.setup.action[4].operation.encodeRequestUrl is True
     assert inst.setup.action[4].operation.label == "SetupUpdatePatient"
@@ -304,9 +307,8 @@ def impl_testscript_2(inst):
     assert inst.setup.action[4].operation.resource == "Patient"
     assert inst.setup.action[4].operation.sourceId == "fixture-patient-update"
     assert inst.setup.action[4].operation.type.code == "update"
-    assert (
-        inst.setup.action[4].operation.type.system
-        == "http://terminology.hl7.org/CodeSystem/testscript-operation-codes"
+    assert inst.setup.action[4].operation.type.system == (
+        "http://terminology.hl7.org/CodeSystem/testscript-operation-" "codes"
     )
     assert (
         inst.setup.action[5].assert_fhir.description
@@ -318,17 +320,16 @@ def impl_testscript_2(inst):
     assert inst.status == "draft"
     assert inst.test[0].action[0].operation.accept == "json"
     assert inst.test[0].action[0].operation.contentType == "json"
-    assert (
-        inst.test[0].action[0].operation.description
-        == "Get the Patient history on the test server using the id from fixture-patient-create."
+    assert inst.test[0].action[0].operation.description == (
+        "Get the Patient history on the test server using the id from"
+        " fixture-patient-create."
     )
     assert inst.test[0].action[0].operation.encodeRequestUrl is True
     assert inst.test[0].action[0].operation.resource == "Patient"
     assert inst.test[0].action[0].operation.targetId == "fixture-patient-create"
     assert inst.test[0].action[0].operation.type.code == "history"
-    assert (
-        inst.test[0].action[0].operation.type.system
-        == "http://terminology.hl7.org/CodeSystem/testscript-operation-codes"
+    assert inst.test[0].action[0].operation.type.system == (
+        "http://terminology.hl7.org/CodeSystem/testscript-operation-" "codes"
     )
     assert (
         inst.test[0].action[1].assert_fhir.description
@@ -343,9 +344,8 @@ def impl_testscript_2(inst):
     )
     assert inst.test[0].action[2].assert_fhir.resource == "Bundle"
     assert inst.test[0].action[2].assert_fhir.warningOnly is False
-    assert (
-        inst.test[0].action[3].assert_fhir.description
-        == "Confirm that the returned Bundle conforms to the base FHIR specification."
+    assert inst.test[0].action[3].assert_fhir.description == (
+        "Confirm that the returned Bundle conforms to the base FHIR " "specification."
     )
     assert inst.test[0].action[3].assert_fhir.validateProfileId == "bundle-profile"
     assert inst.test[0].action[3].assert_fhir.warningOnly is False
@@ -398,9 +398,10 @@ def impl_testscript_3(inst):
     assert inst.contact[0].telecom[0].value == "support@HL7.org"
     assert inst.copyright == "© HL7.org 2011+"
     assert inst.date == fhirtypes.DateTime.validate("2017-01-18")
-    assert (
-        inst.description
-        == "TestScript example resource with setup to delete if present and create a new instance of a Patient; and single test definition to update that Patient with various asserts."
+    assert inst.description == (
+        "TestScript example resource with setup to delete if present "
+        "and create a new instance of a Patient; and single test "
+        "definition to update that Patient with various asserts."
     )
     assert inst.experimental is True
     assert inst.fixture[0].autocreate is False
@@ -428,9 +429,10 @@ def impl_testscript_3(inst):
     assert inst.metadata.capability[0].link[1] == "http://hl7.org/fhir/http.html#delete"
     assert inst.metadata.capability[0].required is True
     assert inst.metadata.capability[0].validated is False
-    assert (
-        inst.metadata.link[0].description
-        == "Demographics and other administrative information about an individual or animal receiving care or other health-related services."
+    assert inst.metadata.link[0].description == (
+        "Demographics and other administrative information about an "
+        "individual or animal receiving care or other health-related "
+        "services."
     )
     assert inst.metadata.link[0].url == "http://hl7.org/fhir/patient.html"
     assert inst.name == "TestScript Example Update"
@@ -441,22 +443,20 @@ def impl_testscript_3(inst):
     assert inst.publisher == "HL7"
     assert inst.purpose == "Patient (Conditional) Create, Update, Delete Operations"
     assert inst.setup.action[0].operation.accept == "xml"
-    assert (
-        inst.setup.action[0].operation.description
-        == "Execute a delete operation to insure the patient does not exist on the server."
+    assert inst.setup.action[0].operation.description == (
+        "Execute a delete operation to insure the patient does not "
+        "exist on the server."
     )
     assert inst.setup.action[0].operation.encodeRequestUrl is True
     assert inst.setup.action[0].operation.label == "SetupDeletePatient"
     assert inst.setup.action[0].operation.params == "/${createResourceId}"
     assert inst.setup.action[0].operation.resource == "Patient"
     assert inst.setup.action[0].operation.type.code == "delete"
-    assert (
-        inst.setup.action[0].operation.type.system
-        == "http://terminology.hl7.org/CodeSystem/testscript-operation-codes"
+    assert inst.setup.action[0].operation.type.system == (
+        "http://terminology.hl7.org/CodeSystem/testscript-operation-" "codes"
     )
-    assert (
-        inst.setup.action[1].assert_fhir.description
-        == "Confirm that the returned HTTP status is 200(OK) or 204(No Content)."
+    assert inst.setup.action[1].assert_fhir.description == (
+        "Confirm that the returned HTTP status is 200(OK) or 204(No " "Content)."
     )
     assert inst.setup.action[1].assert_fhir.direction == "response"
     assert inst.setup.action[1].assert_fhir.operator == "in"
@@ -464,9 +464,9 @@ def impl_testscript_3(inst):
     assert inst.setup.action[1].assert_fhir.warningOnly is False
     assert inst.setup.action[2].operation.accept == "xml"
     assert inst.setup.action[2].operation.contentType == "xml"
-    assert (
-        inst.setup.action[2].operation.description
-        == "Create patient resource on test server using the contents of fixture-patient-create"
+    assert inst.setup.action[2].operation.description == (
+        "Create patient resource on test server using the contents of"
+        " fixture-patient-create"
     )
     assert inst.setup.action[2].operation.encodeRequestUrl is True
     assert inst.setup.action[2].operation.label == "SetupCreatePatient"
@@ -474,9 +474,8 @@ def impl_testscript_3(inst):
     assert inst.setup.action[2].operation.resource == "Patient"
     assert inst.setup.action[2].operation.sourceId == "fixture-patient-create"
     assert inst.setup.action[2].operation.type.code == "update"
-    assert (
-        inst.setup.action[2].operation.type.system
-        == "http://terminology.hl7.org/CodeSystem/testscript-operation-codes"
+    assert inst.setup.action[2].operation.type.system == (
+        "http://terminology.hl7.org/CodeSystem/testscript-operation-" "codes"
     )
     assert (
         inst.setup.action[3].assert_fhir.description
@@ -488,9 +487,9 @@ def impl_testscript_3(inst):
     assert inst.status == "draft"
     assert inst.test[0].action[0].operation.accept == "xml"
     assert inst.test[0].action[0].operation.contentType == "xml"
-    assert (
-        inst.test[0].action[0].operation.description
-        == "Update patient resource on test server using the contents of fixture-patient-update"
+    assert inst.test[0].action[0].operation.description == (
+        "Update patient resource on test server using the contents of"
+        " fixture-patient-update"
     )
     assert inst.test[0].action[0].operation.encodeRequestUrl is True
     assert inst.test[0].action[0].operation.label == "SetupUpdatePatient"
@@ -498,9 +497,8 @@ def impl_testscript_3(inst):
     assert inst.test[0].action[0].operation.resource == "Patient"
     assert inst.test[0].action[0].operation.sourceId == "fixture-patient-update"
     assert inst.test[0].action[0].operation.type.code == "update"
-    assert (
-        inst.test[0].action[0].operation.type.system
-        == "http://terminology.hl7.org/CodeSystem/testscript-operation-codes"
+    assert inst.test[0].action[0].operation.type.system == (
+        "http://terminology.hl7.org/CodeSystem/testscript-operation-" "codes"
     )
     assert (
         inst.test[0].action[1].assert_fhir.description
@@ -514,9 +512,10 @@ def impl_testscript_3(inst):
         == "Confirm that the returned format is XML."
     )
     assert inst.test[0].action[2].assert_fhir.warningOnly is False
-    assert (
-        inst.test[0].action[3].assert_fhir.description
-        == "Confirm that the returned HTTP Header Last-Modified is present. Warning only as the server might not support versioning."
+    assert inst.test[0].action[3].assert_fhir.description == (
+        "Confirm that the returned HTTP Header Last-Modified is "
+        "present. Warning only as the server might not support "
+        "versioning."
     )
     assert inst.test[0].action[3].assert_fhir.headerField == "Last-Modified"
     assert inst.test[0].action[3].assert_fhir.operator == "notEmpty"
@@ -559,9 +558,10 @@ def impl_testscript_4(inst):
     assert inst.contact[0].telecom[0].value == "support@HL7.org"
     assert inst.copyright == "© HL7.org 2011+"
     assert inst.date == fhirtypes.DateTime.validate("2017-01-18")
-    assert (
-        inst.description
-        == "TestScript example resource with simple Patient search test. The read tests will utilize user defined dynamic variables that will hold the Patient search parameter values."
+    assert inst.description == (
+        "TestScript example resource with simple Patient search test."
+        " The read tests will utilize user defined dynamic variables "
+        "that will hold the Patient search parameter values."
     )
     assert inst.experimental is True
     assert inst.fixture[0].autocreate is False
@@ -580,9 +580,10 @@ def impl_testscript_4(inst):
     assert inst.metadata.capability[0].link[0] == "http://hl7.org/fhir/http.html#search"
     assert inst.metadata.capability[0].required is True
     assert inst.metadata.capability[0].validated is False
-    assert (
-        inst.metadata.link[0].description
-        == "Demographics and other administrative information about an individual or animal receiving care or other health-related services."
+    assert inst.metadata.link[0].description == (
+        "Demographics and other administrative information about an "
+        "individual or animal receiving care or other health-related "
+        "services."
     )
     assert inst.metadata.link[0].url == "http://hl7.org/fhir/patient.html"
     assert inst.name == "TestScript Example Search"
@@ -602,13 +603,11 @@ def impl_testscript_4(inst):
     )
     assert inst.setup.action[0].operation.resource == "Patient"
     assert inst.setup.action[0].operation.type.code == "search"
-    assert (
-        inst.setup.action[0].operation.type.system
-        == "http://terminology.hl7.org/CodeSystem/testscript-operation-codes"
+    assert inst.setup.action[0].operation.type.system == (
+        "http://terminology.hl7.org/CodeSystem/testscript-operation-" "codes"
     )
-    assert (
-        inst.setup.action[1].assert_fhir.description
-        == "Confirm that the request url contains the family search parameter."
+    assert inst.setup.action[1].assert_fhir.description == (
+        "Confirm that the request url contains the family search " "parameter."
     )
     assert inst.setup.action[1].assert_fhir.direction == "request"
     assert inst.setup.action[1].assert_fhir.operator == "contains"
@@ -627,27 +626,24 @@ def impl_testscript_4(inst):
     )
     assert inst.setup.action[3].assert_fhir.resource == "Bundle"
     assert inst.setup.action[3].assert_fhir.warningOnly is False
-    assert (
-        inst.setup.action[4].assert_fhir.description
-        == "Confirm that the returned Bundle correctly defines the navigation links."
+    assert inst.setup.action[4].assert_fhir.description == (
+        "Confirm that the returned Bundle correctly defines the " "navigation links."
     )
     assert inst.setup.action[4].assert_fhir.navigationLinks is True
     assert inst.setup.action[4].assert_fhir.warningOnly is False
     assert inst.status == "draft"
     assert inst.test[0].action[0].operation.accept == "xml"
     assert inst.test[0].action[0].operation.contentType == "xml"
-    assert (
-        inst.test[0].action[0].operation.description
-        == "Create a Patient resource and capture the returned HTTP Header Location."
+    assert inst.test[0].action[0].operation.description == (
+        "Create a Patient resource and capture the returned HTTP " "Header Location."
     )
     assert inst.test[0].action[0].operation.encodeRequestUrl is True
     assert inst.test[0].action[0].operation.resource == "Patient"
     assert inst.test[0].action[0].operation.responseId == "PatientCreateResponse"
     assert inst.test[0].action[0].operation.sourceId == "fixture-patient-create"
     assert inst.test[0].action[0].operation.type.code == "create"
-    assert (
-        inst.test[0].action[0].operation.type.system
-        == "http://terminology.hl7.org/CodeSystem/testscript-operation-codes"
+    assert inst.test[0].action[0].operation.type.system == (
+        "http://terminology.hl7.org/CodeSystem/testscript-operation-" "codes"
     )
     assert (
         inst.test[0].action[1].assert_fhir.description
@@ -664,15 +660,13 @@ def impl_testscript_4(inst):
     assert inst.test[0].action[2].assert_fhir.operator == "notEmpty"
     assert inst.test[0].action[2].assert_fhir.warningOnly is False
     assert inst.test[0].action[3].operation.accept == "xml"
-    assert (
-        inst.test[0].action[3].operation.description
-        == "Read the created Patient using the captured Location URL value."
+    assert inst.test[0].action[3].operation.description == (
+        "Read the created Patient using the captured Location URL " "value."
     )
     assert inst.test[0].action[3].operation.encodeRequestUrl is True
     assert inst.test[0].action[3].operation.type.code == "read"
-    assert (
-        inst.test[0].action[3].operation.type.system
-        == "http://terminology.hl7.org/CodeSystem/testscript-operation-codes"
+    assert inst.test[0].action[3].operation.type.system == (
+        "http://terminology.hl7.org/CodeSystem/testscript-operation-" "codes"
     )
     assert inst.test[0].action[3].operation.url == "${PatientCreateLocation}"
     assert (
@@ -687,9 +681,10 @@ def impl_testscript_4(inst):
     )
     assert inst.test[0].action[5].assert_fhir.resource == "Patient"
     assert inst.test[0].action[5].assert_fhir.warningOnly is False
-    assert (
-        inst.test[0].description
-        == "Create a Patient resource and capture the returned HTTP Header Location. Then search for (read) that Patient using the Location URL value and validate the response."
+    assert inst.test[0].description == (
+        "Create a Patient resource and capture the returned HTTP "
+        "Header Location. Then search for (read) that Patient using "
+        "the Location URL value and validate the response."
     )
     assert inst.test[0].id == "01-PatientCreateSearch"
     assert inst.test[0].name == "Patient Create Search"
@@ -699,15 +694,13 @@ def impl_testscript_4(inst):
         == "Search for Patient resources on the destination test system."
     )
     assert inst.test[1].action[0].operation.encodeRequestUrl is True
-    assert (
-        inst.test[1].action[0].operation.params
-        == "?family=${PatientSearchFamilyName}&given=${PatientSearchGivenName}"
+    assert inst.test[1].action[0].operation.params == (
+        "?family=${PatientSearchFamilyName}&given=${PatientSearchGive" "nName}"
     )
     assert inst.test[1].action[0].operation.resource == "Patient"
     assert inst.test[1].action[0].operation.type.code == "search"
-    assert (
-        inst.test[1].action[0].operation.type.system
-        == "http://terminology.hl7.org/CodeSystem/testscript-operation-codes"
+    assert inst.test[1].action[0].operation.type.system == (
+        "http://terminology.hl7.org/CodeSystem/testscript-operation-" "codes"
     )
     assert (
         inst.test[1].action[1].assert_fhir.description
@@ -727,9 +720,8 @@ def impl_testscript_4(inst):
     )
     assert inst.test[1].action[3].assert_fhir.resource == "Bundle"
     assert inst.test[1].action[3].assert_fhir.warningOnly is False
-    assert (
-        inst.test[1].action[4].assert_fhir.description
-        == "Confirm that the returned Bundle conforms to the base FHIR specification."
+    assert inst.test[1].action[4].assert_fhir.description == (
+        "Confirm that the returned Bundle conforms to the base FHIR " "specification."
     )
     assert inst.test[1].action[4].assert_fhir.validateProfileId == "bundle-profile"
     assert inst.test[1].action[4].assert_fhir.warningOnly is False
@@ -741,18 +733,19 @@ def impl_testscript_4(inst):
     assert inst.test[1].action[5].assert_fhir.path == "fhir:Bundle/fhir:type/@value"
     assert inst.test[1].action[5].assert_fhir.value == "searchset"
     assert inst.test[1].action[5].assert_fhir.warningOnly is False
-    assert (
-        inst.test[1].action[6].assert_fhir.description
-        == "Confirm that the returned Bundle total is greater than or equal to the number of returned entries."
+    assert inst.test[1].action[6].assert_fhir.description == (
+        "Confirm that the returned Bundle total is greater than or "
+        "equal to the number of returned entries."
     )
     assert (
         inst.test[1].action[6].assert_fhir.expression
         == "Bundle.total.toInteger() >= entry.count()"
     )
     assert inst.test[1].action[6].assert_fhir.warningOnly is False
-    assert (
-        inst.test[1].description
-        == "Search for Patient resources using the user defined dynamic variables ${PatientSearchFamilyName} and ${PatientSearchGivenName} and validate response."
+    assert inst.test[1].description == (
+        "Search for Patient resources using the user defined dynamic "
+        "variables ${PatientSearchFamilyName} and "
+        "${PatientSearchGivenName} and validate response."
     )
     assert inst.test[1].id == "02-PatientSearchDynamic"
     assert inst.test[1].name == "Patient Search Dynamic"
@@ -761,15 +754,13 @@ def impl_testscript_4(inst):
     assert inst.variable[0].headerField == "Location"
     assert inst.variable[0].name == "PatientCreateLocation"
     assert inst.variable[0].sourceId == "PatientCreateResponse"
-    assert (
-        inst.variable[1].description
-        == "Enter patient search criteria for a known family name on the target system"
+    assert inst.variable[1].description == (
+        "Enter patient search criteria for a known family name on the" " target system"
     )
     assert inst.variable[1].hint == "[Family name]"
     assert inst.variable[1].name == "PatientSearchFamilyName"
-    assert (
-        inst.variable[2].description
-        == "Enter patient search criteria for a known given name on the target system"
+    assert inst.variable[2].description == (
+        "Enter patient search criteria for a known given name on the " "target system"
     )
     assert inst.variable[2].hint == "[Given name]"
     assert inst.variable[2].name == "PatientSearchGivenName"
@@ -809,9 +800,10 @@ def impl_testscript_5(inst):
     assert inst.contact[0].telecom[0].value == "support@HL7.org"
     assert inst.copyright == "© HL7.org 2011+"
     assert inst.date == fhirtypes.DateTime.validate("2017-01-18")
-    assert (
-        inst.description
-        == "TestScript example resource with setup to delete if present and create a new instance of a Patient; and single test definition to read the created Patient with various asserts."
+    assert inst.description == (
+        "TestScript example resource with setup to delete if present "
+        "and create a new instance of a Patient; and single test "
+        "definition to read the created Patient with various asserts."
     )
     assert inst.experimental is True
     assert inst.fixture[0].autocreate is False
@@ -840,9 +832,10 @@ def impl_testscript_5(inst):
     assert inst.metadata.capability[0].link[2] == "http://hl7.org/fhir/http.html#update"
     assert inst.metadata.capability[0].required is True
     assert inst.metadata.capability[0].validated is False
-    assert (
-        inst.metadata.link[0].description
-        == "Demographics and other administrative information about an individual or animal receiving care or other health-related services."
+    assert inst.metadata.link[0].description == (
+        "Demographics and other administrative information about an "
+        "individual or animal receiving care or other health-related "
+        "services."
     )
     assert inst.metadata.link[0].url == "http://hl7.org/fhir/patient.html"
     assert inst.name == "TestScript Example"
@@ -851,27 +844,24 @@ def impl_testscript_5(inst):
         inst.profile[0].reference == "http://hl7.org/fhir/StructureDefinition/Patient"
     )
     assert inst.publisher == "HL7"
-    assert (
-        inst.purpose
-        == "Patient Conditional Create (Update), Read and Delete Operations"
+    assert inst.purpose == (
+        "Patient Conditional Create (Update), Read and Delete " "Operations"
     )
     assert inst.setup.action[0].operation.accept == "json"
-    assert (
-        inst.setup.action[0].operation.description
-        == "Execute a delete operation to insure the patient does not exist on the server."
+    assert inst.setup.action[0].operation.description == (
+        "Execute a delete operation to insure the patient does not "
+        "exist on the server."
     )
     assert inst.setup.action[0].operation.encodeRequestUrl is True
     assert inst.setup.action[0].operation.label == "SetupDeletePatient"
     assert inst.setup.action[0].operation.params == "/${createResourceId}"
     assert inst.setup.action[0].operation.resource == "Patient"
     assert inst.setup.action[0].operation.type.code == "delete"
-    assert (
-        inst.setup.action[0].operation.type.system
-        == "http://terminology.hl7.org/CodeSystem/testscript-operation-codes"
+    assert inst.setup.action[0].operation.type.system == (
+        "http://terminology.hl7.org/CodeSystem/testscript-operation-" "codes"
     )
-    assert (
-        inst.setup.action[1].assert_fhir.description
-        == "Confirm that the returned HTTP status is 200(OK) or 204(No Content)."
+    assert inst.setup.action[1].assert_fhir.description == (
+        "Confirm that the returned HTTP status is 200(OK) or 204(No " "Content)."
     )
     assert inst.setup.action[1].assert_fhir.direction == "response"
     assert inst.setup.action[1].assert_fhir.operator == "in"
@@ -879,9 +869,9 @@ def impl_testscript_5(inst):
     assert inst.setup.action[1].assert_fhir.warningOnly is False
     assert inst.setup.action[2].operation.accept == "json"
     assert inst.setup.action[2].operation.contentType == "json"
-    assert (
-        inst.setup.action[2].operation.description
-        == "Create patient resource on test server using the contents of fixture-patient-create"
+    assert inst.setup.action[2].operation.description == (
+        "Create patient resource on test server using the contents of"
+        " fixture-patient-create"
     )
     assert inst.setup.action[2].operation.encodeRequestUrl is True
     assert inst.setup.action[2].operation.label == "SetupCreatePatient"
@@ -889,9 +879,8 @@ def impl_testscript_5(inst):
     assert inst.setup.action[2].operation.resource == "Patient"
     assert inst.setup.action[2].operation.sourceId == "fixture-patient-create"
     assert inst.setup.action[2].operation.type.code == "update"
-    assert (
-        inst.setup.action[2].operation.type.system
-        == "http://terminology.hl7.org/CodeSystem/testscript-operation-codes"
+    assert inst.setup.action[2].operation.type.system == (
+        "http://terminology.hl7.org/CodeSystem/testscript-operation-" "codes"
     )
     assert (
         inst.setup.action[3].assert_fhir.description
@@ -900,17 +889,16 @@ def impl_testscript_5(inst):
     assert inst.setup.action[3].assert_fhir.direction == "response"
     assert inst.setup.action[3].assert_fhir.responseCode == "201"
     assert inst.setup.action[3].assert_fhir.warningOnly is False
-    assert (
-        inst.setup.action[4].operation.description
-        == "Read the created patient resource on the test server using the id from fixture-patient-create. Verify contents."
+    assert inst.setup.action[4].operation.description == (
+        "Read the created patient resource on the test server using "
+        "the id from fixture-patient-create. Verify contents."
     )
     assert inst.setup.action[4].operation.encodeRequestUrl is True
     assert inst.setup.action[4].operation.resource == "Patient"
     assert inst.setup.action[4].operation.targetId == "fixture-patient-create"
     assert inst.setup.action[4].operation.type.code == "read"
-    assert (
-        inst.setup.action[4].operation.type.system
-        == "http://terminology.hl7.org/CodeSystem/testscript-operation-codes"
+    assert inst.setup.action[4].operation.type.system == (
+        "http://terminology.hl7.org/CodeSystem/testscript-operation-" "codes"
     )
     assert (
         inst.setup.action[5].assert_fhir.description
@@ -926,37 +914,38 @@ def impl_testscript_5(inst):
     assert (
         inst.setup.action[6].assert_fhir.compareToSourceId == "fixture-patient-create"
     )
-    assert (
-        inst.setup.action[6].assert_fhir.description
-        == "Confirm that the returned Patient contains the expected family name 'Chalmers'. Uses explicit compareToSourceId reference to fixture-patient-create used to create the Patient."
+    assert inst.setup.action[6].assert_fhir.description == (
+        "Confirm that the returned Patient contains the expected "
+        "family name 'Chalmers'. Uses explicit compareToSourceId "
+        "reference to fixture-patient-create used to create the "
+        "Patient."
     )
     assert inst.setup.action[6].assert_fhir.operator == "equals"
     assert inst.setup.action[6].assert_fhir.warningOnly is False
     assert inst.status == "draft"
-    assert (
-        inst.teardown.action[0].operation.description
-        == "Delete the patient resource on the test server using the id from fixture-patient-create."
+    assert inst.teardown.action[0].operation.description == (
+        "Delete the patient resource on the test server using the id "
+        "from fixture-patient-create."
     )
     assert inst.teardown.action[0].operation.encodeRequestUrl is True
     assert inst.teardown.action[0].operation.resource == "Patient"
     assert inst.teardown.action[0].operation.targetId == "fixture-patient-create"
     assert inst.teardown.action[0].operation.type.code == "delete"
-    assert (
-        inst.teardown.action[0].operation.type.system
-        == "http://terminology.hl7.org/CodeSystem/testscript-operation-codes"
+    assert inst.teardown.action[0].operation.type.system == (
+        "http://terminology.hl7.org/CodeSystem/testscript-operation-" "codes"
     )
-    assert (
-        inst.test[0].action[0].operation.description
-        == "Read the patient resource on the test server using the id from fixture-patient-create. Prevent URL encoding of the request."
+    assert inst.test[0].action[0].operation.description == (
+        "Read the patient resource on the test server using the id "
+        "from fixture-patient-create. Prevent URL encoding of the "
+        "request."
     )
     assert inst.test[0].action[0].operation.encodeRequestUrl is False
     assert inst.test[0].action[0].operation.resource == "Patient"
     assert inst.test[0].action[0].operation.responseId == "fixture-patient-read"
     assert inst.test[0].action[0].operation.targetId == "fixture-patient-create"
     assert inst.test[0].action[0].operation.type.code == "read"
-    assert (
-        inst.test[0].action[0].operation.type.system
-        == "http://terminology.hl7.org/CodeSystem/testscript-operation-codes"
+    assert inst.test[0].action[0].operation.type.system == (
+        "http://terminology.hl7.org/CodeSystem/testscript-operation-" "codes"
     )
     assert (
         inst.test[0].action[1].assert_fhir.description
@@ -966,9 +955,10 @@ def impl_testscript_5(inst):
     assert inst.test[0].action[1].assert_fhir.label == "01-ReadPatientOK"
     assert inst.test[0].action[1].assert_fhir.response == "okay"
     assert inst.test[0].action[1].assert_fhir.warningOnly is False
-    assert (
-        inst.test[0].action[2].assert_fhir.description
-        == "Confirm that the returned HTTP Header Last-Modified is present. Warning only as the server might not support versioning."
+    assert inst.test[0].action[2].assert_fhir.description == (
+        "Confirm that the returned HTTP Header Last-Modified is "
+        "present. Warning only as the server might not support "
+        "versioning."
     )
     assert inst.test[0].action[2].assert_fhir.direction == "response"
     assert inst.test[0].action[2].assert_fhir.headerField == "Last-Modified"
@@ -980,15 +970,15 @@ def impl_testscript_5(inst):
     )
     assert inst.test[0].action[3].assert_fhir.resource == "Patient"
     assert inst.test[0].action[3].assert_fhir.warningOnly is False
-    assert (
-        inst.test[0].action[4].assert_fhir.description
-        == "Confirm that the returned Patient conforms to the base FHIR specification."
+    assert inst.test[0].action[4].assert_fhir.description == (
+        "Confirm that the returned Patient conforms to the base FHIR " "specification."
     )
     assert inst.test[0].action[4].assert_fhir.validateProfileId == "patient-profile"
     assert inst.test[0].action[4].assert_fhir.warningOnly is False
-    assert (
-        inst.test[0].action[5].assert_fhir.description
-        == "Confirm that the returned Patient contains the expected family name 'Chalmers'. Uses explicit sourceId reference to read responseId fixture."
+    assert inst.test[0].action[5].assert_fhir.description == (
+        "Confirm that the returned Patient contains the expected "
+        "family name 'Chalmers'. Uses explicit sourceId reference to "
+        "read responseId fixture."
     )
     assert inst.test[0].action[5].assert_fhir.operator == "equals"
     assert (
@@ -998,9 +988,10 @@ def impl_testscript_5(inst):
     assert inst.test[0].action[5].assert_fhir.sourceId == "fixture-patient-read"
     assert inst.test[0].action[5].assert_fhir.value == "Chalmers"
     assert inst.test[0].action[5].assert_fhir.warningOnly is False
-    assert (
-        inst.test[0].action[6].assert_fhir.description
-        == "Confirm that the returned Patient contains the expected given name 'Peter'. Uses explicit sourceId reference to read responseId fixture."
+    assert inst.test[0].action[6].assert_fhir.description == (
+        "Confirm that the returned Patient contains the expected "
+        "given name 'Peter'. Uses explicit sourceId reference to read"
+        " responseId fixture."
     )
     assert inst.test[0].action[6].assert_fhir.operator == "equals"
     assert (
@@ -1036,9 +1027,10 @@ def impl_testscript_5(inst):
     )
     assert inst.test[0].action[8].assert_fhir.sourceId == "fixture-patient-read"
     assert inst.test[0].action[8].assert_fhir.warningOnly is False
-    assert (
-        inst.test[0].action[9].assert_fhir.description
-        == "Confirm that the returned resource contains the expected retained elements and values. Warning only to provide users with reviewable results."
+    assert inst.test[0].action[9].assert_fhir.description == (
+        "Confirm that the returned resource contains the expected "
+        "retained elements and values. Warning only to provide users "
+        "with reviewable results."
     )
     assert inst.test[0].action[9].assert_fhir.minimumId == "fixture-patient-minimum"
     assert inst.test[0].action[9].assert_fhir.warningOnly is True
@@ -1090,9 +1082,11 @@ def impl_testscript_6(inst):
     assert inst.contact[0].telecom[0].value == "support@HL7.org"
     assert inst.copyright == "© HL7.org 2011+"
     assert inst.date == fhirtypes.DateTime.validate("2017-01-18")
-    assert (
-        inst.description
-        == "TestScript example resource with ported Sprinkler basic read tests R001, R002, R003, R004. The read tests will utilize user defined dynamic variables that will hold the Patient resource id values."
+    assert inst.description == (
+        "TestScript example resource with ported Sprinkler basic read"
+        " tests R001, R002, R003, R004. The read tests will utilize "
+        "user defined dynamic variables that will hold the Patient "
+        "resource id values."
     )
     assert inst.experimental is True
     assert inst.id == "testscript-example-readtest"
@@ -1106,9 +1100,10 @@ def impl_testscript_6(inst):
     assert inst.metadata.capability[0].link[0] == "http://hl7.org/fhir/http.html#read"
     assert inst.metadata.capability[0].required is True
     assert inst.metadata.capability[0].validated is False
-    assert (
-        inst.metadata.link[0].description
-        == "Demographics and other administrative information about an individual or animal receiving care or other health-related services."
+    assert inst.metadata.link[0].description == (
+        "Demographics and other administrative information about an "
+        "individual or animal receiving care or other health-related "
+        "services."
     )
     assert inst.metadata.link[0].url == "http://hl7.org/fhir/patient.html"
     assert inst.name == "TestScript Example Read Test"
@@ -1120,17 +1115,17 @@ def impl_testscript_6(inst):
     assert inst.purpose == "Patient Read Operation"
     assert inst.status == "draft"
     assert inst.test[0].action[0].operation.accept == "xml"
-    assert (
-        inst.test[0].action[0].operation.description
-        == "Read the known Patient resource on the destination test system using the user defined dynamic variable ${KnownPatientResourceId}."
+    assert inst.test[0].action[0].operation.description == (
+        "Read the known Patient resource on the destination test "
+        "system using the user defined dynamic variable "
+        "${KnownPatientResourceId}."
     )
     assert inst.test[0].action[0].operation.encodeRequestUrl is True
     assert inst.test[0].action[0].operation.params == "/${KnownPatientResourceId}"
     assert inst.test[0].action[0].operation.resource == "Patient"
     assert inst.test[0].action[0].operation.type.code == "read"
-    assert (
-        inst.test[0].action[0].operation.type.system
-        == "http://terminology.hl7.org/CodeSystem/testscript-operation-codes"
+    assert inst.test[0].action[0].operation.type.system == (
+        "http://terminology.hl7.org/CodeSystem/testscript-operation-" "codes"
     )
     assert (
         inst.test[0].action[1].assert_fhir.description
@@ -1144,9 +1139,10 @@ def impl_testscript_6(inst):
         == "Confirm that the returned format is XML."
     )
     assert inst.test[0].action[2].assert_fhir.warningOnly is False
-    assert (
-        inst.test[0].action[3].assert_fhir.description
-        == "Confirm that the returned HTTP Header Last-Modified is present. Warning only as the server might not support versioning."
+    assert inst.test[0].action[3].assert_fhir.description == (
+        "Confirm that the returned HTTP Header Last-Modified is "
+        "present. Warning only as the server might not support "
+        "versioning."
     )
     assert inst.test[0].action[3].assert_fhir.headerField == "Last-Modified"
     assert inst.test[0].action[3].assert_fhir.operator == "notEmpty"
@@ -1157,9 +1153,8 @@ def impl_testscript_6(inst):
     )
     assert inst.test[0].action[4].assert_fhir.resource == "Patient"
     assert inst.test[0].action[4].assert_fhir.warningOnly is False
-    assert (
-        inst.test[0].action[5].assert_fhir.description
-        == "Confirm that the returned Patient conforms to the base FHIR specification."
+    assert inst.test[0].action[5].assert_fhir.description == (
+        "Confirm that the returned Patient conforms to the base FHIR " "specification."
     )
     assert inst.test[0].action[5].assert_fhir.validateProfileId == "patient-profile"
     assert inst.test[0].action[5].assert_fhir.warningOnly is False
@@ -1171,9 +1166,8 @@ def impl_testscript_6(inst):
     assert inst.test[1].action[0].operation.params == "/1"
     assert inst.test[1].action[0].operation.resource == "Patient"
     assert inst.test[1].action[0].operation.type.code == "read"
-    assert (
-        inst.test[1].action[0].operation.type.system
-        == "http://terminology.hl7.org/CodeSystem/testscript-operation-codes"
+    assert inst.test[1].action[0].operation.type.system == (
+        "http://terminology.hl7.org/CodeSystem/testscript-operation-" "codes"
     )
     assert (
         inst.test[1].action[1].assert_fhir.description
@@ -1188,17 +1182,17 @@ def impl_testscript_6(inst):
     assert inst.test[1].id == "R002"
     assert inst.test[1].name == "Sprinkler Read Test R002"
     assert inst.test[2].action[0].operation.accept == "xml"
-    assert (
-        inst.test[2].action[0].operation.description
-        == "Attempt to read the non-existing Patient resource on the destination test system using the user defined dynamic variable ${NonExistsPatientResourceId}."
+    assert inst.test[2].action[0].operation.description == (
+        "Attempt to read the non-existing Patient resource on the "
+        "destination test system using the user defined dynamic "
+        "variable ${NonExistsPatientResourceId}."
     )
     assert inst.test[2].action[0].operation.encodeRequestUrl is True
     assert inst.test[2].action[0].operation.params == "/${NonExistsPatientResourceId}"
     assert inst.test[2].action[0].operation.resource == "Patient"
     assert inst.test[2].action[0].operation.type.code == "read"
-    assert (
-        inst.test[2].action[0].operation.type.system
-        == "http://terminology.hl7.org/CodeSystem/testscript-operation-codes"
+    assert inst.test[2].action[0].operation.type.system == (
+        "http://terminology.hl7.org/CodeSystem/testscript-operation-" "codes"
     )
     assert (
         inst.test[2].action[1].assert_fhir.description
@@ -1213,17 +1207,16 @@ def impl_testscript_6(inst):
     assert inst.test[2].id == "R003"
     assert inst.test[2].name == "Sprinkler Read Test R003"
     assert inst.test[3].action[0].operation.accept == "xml"
-    assert (
-        inst.test[3].action[0].operation.description
-        == "Attempt to read a Patient resource on the destination test system using known bad formatted resource id."
+    assert inst.test[3].action[0].operation.description == (
+        "Attempt to read a Patient resource on the destination test "
+        "system using known bad formatted resource id."
     )
     assert inst.test[3].action[0].operation.encodeRequestUrl is True
     assert inst.test[3].action[0].operation.params == "/ID-may-not-contain-CAPITALS"
     assert inst.test[3].action[0].operation.resource == "Patient"
     assert inst.test[3].action[0].operation.type.code == "read"
-    assert (
-        inst.test[3].action[0].operation.type.system
-        == "http://terminology.hl7.org/CodeSystem/testscript-operation-codes"
+    assert inst.test[3].action[0].operation.type.system == (
+        "http://terminology.hl7.org/CodeSystem/testscript-operation-" "codes"
     )
     assert (
         inst.test[3].action[1].assert_fhir.description
@@ -1231,9 +1224,9 @@ def impl_testscript_6(inst):
     )
     assert inst.test[3].action[1].assert_fhir.response == "bad"
     assert inst.test[3].action[1].assert_fhir.warningOnly is False
-    assert (
-        inst.test[3].description
-        == "Read a Patient using a known bad formatted resource id and validate response."
+    assert inst.test[3].description == (
+        "Read a Patient using a known bad formatted resource id and "
+        "validate response."
     )
     assert inst.test[3].id == "R004"
     assert inst.test[3].name == "Sprinkler Read Test R004"

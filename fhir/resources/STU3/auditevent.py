@@ -110,7 +110,9 @@ class AuditEventAgent(backboneelement.BackboneElement):
     location: fhirtypes.ReferenceType = Field(
         None,
         alias="location",
-        title="Type `Reference` referencing `Location` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Location` (represented as `dict` in " "JSON)"
+        ),
         description="Where",
     )
 
@@ -152,7 +154,10 @@ class AuditEventAgent(backboneelement.BackboneElement):
     reference: fhirtypes.ReferenceType = Field(
         None,
         alias="reference",
-        title="Type `Reference` referencing `Practitioner, Organization, Device, Patient, RelatedPerson` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, Organization, Device, "
+            "Patient, RelatedPerson` (represented as `dict` in JSON)"
+        ),
         description="Direct reference to resource",
     )
 
@@ -253,7 +258,9 @@ class AuditEventEntity(backboneelement.BackboneElement):
     reference: fhirtypes.ReferenceType = Field(
         None,
         alias="reference",
-        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        ),
         description="Specific instance of resource",
     )
 

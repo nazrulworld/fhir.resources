@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import eligibilityrequest
 
@@ -39,9 +41,9 @@ def impl_eligibilityrequest_1(inst):
     assert inst.provider.identifier.value == "18"
     assert inst.servicedDate == fhirtypes.Date.validate("2014-09-17")
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the EligibilityRequest</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the EligibilityRequest</div>"
     )
     assert inst.text.status == "generated"
 
@@ -77,9 +79,9 @@ def impl_eligibilityrequest_2(inst):
     assert inst.patient.reference == "Patient/pat1"
     assert inst.priority.coding[0].code == "normal"
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the EligibilityRequest</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the EligibilityRequest</div>"
     )
     assert inst.text.status == "generated"
 

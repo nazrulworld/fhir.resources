@@ -75,6 +75,9 @@ class ResearchSubject(domainresource.DomainResource):
     study: fhirtypes.ReferenceType = Field(
         ...,
         alias="study",
-        title="Type `Reference` referencing `ResearchStudy` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `ResearchStudy` (represented as `dict` in"
+            " JSON)"
+        ),
         description="Study subject is part of",
     )

@@ -25,7 +25,10 @@ class ImmunizationRecommendation(domainresource.DomainResource):
     authority: fhirtypes.ReferenceType = Field(
         None,
         alias="authority",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Who is responsible for protocol",
     )
 
@@ -55,7 +58,10 @@ class ImmunizationRecommendation(domainresource.DomainResource):
     ] = Field(
         ...,
         alias="recommendation",
-        title="List of `ImmunizationRecommendationRecommendation` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ImmunizationRecommendationRecommendation` items (represented "
+            "as `dict` in JSON)"
+        ),
         description="Vaccine administration recommendations",
     )
 
@@ -78,7 +84,10 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="dateCriterion",
-        title="List of `ImmunizationRecommendationRecommendationDateCriterion` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ImmunizationRecommendationRecommendationDateCriterion` items "
+            "(represented as `dict` in JSON)"
+        ),
         description="Dates governing proposed immunization",
     )
 
@@ -149,14 +158,20 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
     supportingImmunization: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="supportingImmunization",
-        title="List of `Reference` items referencing `Immunization, ImmunizationEvaluation` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Immunization, "
+            "ImmunizationEvaluation` (represented as `dict` in JSON)"
+        ),
         description="Past immunizations supporting recommendation",
     )
 
     supportingPatientInformation: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="supportingPatientInformation",
-        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Resource` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Patient observations supporting recommendation",
     )
 
@@ -189,8 +204,8 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "doseNumber": ["doseNumberPositiveInt", "doseNumberString",],
-            "seriesDoses": ["seriesDosesPositiveInt", "seriesDosesString",],
+            "doseNumber": ["doseNumberPositiveInt", "doseNumberString"],
+            "seriesDoses": ["seriesDosesPositiveInt", "seriesDosesString"],
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

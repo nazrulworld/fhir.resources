@@ -28,28 +28,40 @@ class MessageHeader(domainresource.DomainResource):
     author: fhirtypes.ReferenceType = Field(
         None,
         alias="author",
-        title="Type `Reference` referencing `Practitioner, PractitionerRole` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, PractitionerRole` "
+            "(represented as `dict` in JSON)"
+        ),
         description="The source of the decision",
     )
 
     definition: fhirtypes.Canonical = Field(
         None,
         alias="definition",
-        title="Type `Canonical` referencing `MessageDefinition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Canonical` referencing `MessageDefinition` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Link to the definition for this message",
     )
 
     destination: ListType[fhirtypes.MessageHeaderDestinationType] = Field(
         None,
         alias="destination",
-        title="List of `MessageHeaderDestination` items (represented as `dict` in JSON)",
+        title=(
+            "List of `MessageHeaderDestination` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Message destination application(s)",
     )
 
     enterer: fhirtypes.ReferenceType = Field(
         None,
         alias="enterer",
-        title="Type `Reference` referencing `Practitioner, PractitionerRole` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, PractitionerRole` "
+            "(represented as `dict` in JSON)"
+        ),
         description="The source of the data entry",
     )
 
@@ -74,7 +86,10 @@ class MessageHeader(domainresource.DomainResource):
     focus: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="focus",
-        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Resource` (represented as "
+            "`dict` in JSON)"
+        ),
         description="The actual content of the message",
     )
 
@@ -95,14 +110,20 @@ class MessageHeader(domainresource.DomainResource):
     responsible: fhirtypes.ReferenceType = Field(
         None,
         alias="responsible",
-        title="Type `Reference` referencing `Practitioner, PractitionerRole, Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, PractitionerRole, "
+            "Organization` (represented as `dict` in JSON)"
+        ),
         description="Final responsibility for event",
     )
 
     sender: fhirtypes.ReferenceType = Field(
         None,
         alias="sender",
-        title="Type `Reference` referencing `Practitioner, PractitionerRole, Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, PractitionerRole, "
+            "Organization` (represented as `dict` in JSON)"
+        ),
         description="Real world sender of the message",
     )
 
@@ -127,9 +148,7 @@ class MessageHeader(domainresource.DomainResource):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "event": ["eventCoding", "eventUri",],
-        }
+        one_of_many_fields = {"event": ["eventCoding", "eventUri"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -176,7 +195,10 @@ class MessageHeaderDestination(backboneelement.BackboneElement):
     receiver: fhirtypes.ReferenceType = Field(
         None,
         alias="receiver",
-        title="Type `Reference` referencing `Practitioner, PractitionerRole, Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, PractitionerRole, "
+            "Organization` (represented as `dict` in JSON)"
+        ),
         description='Intended "real-world" recipient for the data',
     )
 
@@ -206,7 +228,10 @@ class MessageHeaderResponse(backboneelement.BackboneElement):
     details: fhirtypes.ReferenceType = Field(
         None,
         alias="details",
-        title="Type `Reference` referencing `OperationOutcome` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `OperationOutcome` (represented as `dict`"
+            " in JSON)"
+        ),
         description="Specific list of hints/warnings/errors",
     )
 

@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import riskassessment
 
@@ -249,9 +251,9 @@ def impl_riskassessment_4(inst):
     assert float(inst.prediction[0].whenRange.low.value) == float(54)
     assert inst.status == "final"
     assert inst.subject.reference == "Patient/example"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Risk assessment for reference only</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Risk assessment '
+        "for reference only</div>"
     )
     assert inst.text.status == "generated"
 
@@ -290,9 +292,8 @@ def impl_riskassessment_5(inst):
     assert (
         inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     )
-    assert (
-        inst.note[0].text
-        == "This risk assessment is based on BRCA1 and BRCA2 genetic mutation test"
+    assert inst.note[0].text == (
+        "This risk assessment is based on BRCA1 and BRCA2 genetic " "mutation test"
     )
     assert inst.performer.reference == "Practitioner/example"
     assert inst.prediction[0].outcome.text == "Unknown risk of developing breast cancer"

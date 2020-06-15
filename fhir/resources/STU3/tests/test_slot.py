@@ -6,14 +6,16 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import slot
 
 
 def impl_slot_1(inst):
-    assert (
-        inst.comment
-        == "Assessments should be performed before requesting appointments in this slot."
+    assert inst.comment == (
+        "Assessments should be performed before requesting "
+        "appointments in this slot."
     )
     assert inst.end == fhirtypes.Instant.validate("2013-12-25T09:15:00Z")
     assert inst.id == "1"
@@ -55,9 +57,9 @@ def impl_slot_2(inst):
         == "A previously unscheduled walk-in visit"
     )
     assert inst.appointmentType.coding[0].system == "http://hl7.org/fhir/v2/0276"
-    assert (
-        inst.comment
-        == "Assessments should be performed before requesting appointments in this slot."
+    assert inst.comment == (
+        "Assessments should be performed before requesting "
+        "appointments in this slot."
     )
     assert inst.end == fhirtypes.Instant.validate("2013-12-25T09:30:00Z")
     assert inst.id == "example"

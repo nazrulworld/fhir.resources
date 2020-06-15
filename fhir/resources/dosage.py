@@ -26,7 +26,10 @@ class Dosage(backboneelement.BackboneElement):
         None,
         alias="additionalInstruction",
         title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description='Supplemental instruction or warnings to the patient - e.g. "with meals", "may cause drowsiness"',
+        description=(
+            'Supplemental instruction or warnings to the patient - e.g. "with '
+            'meals", "may cause drowsiness"'
+        ),
     )
 
     asNeededBoolean: bool = Field(
@@ -139,7 +142,7 @@ class Dosage(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "asNeeded": ["asNeededBoolean", "asNeededCodeableConcept",],
+            "asNeeded": ["asNeededBoolean", "asNeededCodeableConcept"]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
@@ -237,8 +240,8 @@ class DosageDoseAndRate(element.Element):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "dose": ["doseQuantity", "doseRange",],
-            "rate": ["rateQuantity", "rateRange", "rateRatio",],
+            "dose": ["doseQuantity", "doseRange"],
+            "rate": ["rateQuantity", "rateRange", "rateRatio"],
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

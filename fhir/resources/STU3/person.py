@@ -66,7 +66,10 @@ class Person(domainresource.DomainResource):
     managingOrganization: fhirtypes.ReferenceType = Field(
         None,
         alias="managingOrganization",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="The organization that is the custodian of the person record",
     )
 
@@ -108,6 +111,9 @@ class PersonLink(backboneelement.BackboneElement):
     target: fhirtypes.ReferenceType = Field(
         ...,
         alias="target",
-        title="Type `Reference` referencing `Patient, Practitioner, RelatedPerson, Person` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Practitioner, RelatedPerson, "
+            "Person` (represented as `dict` in JSON)"
+        ),
         description="The resource to which this actual person is associated",
     )

@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import explanationofbenefit
 
@@ -116,9 +118,9 @@ def impl_explanationofbenefit_1(inst):
     )
     assert inst.provider.reference == "Practitioner/1"
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the ExplanationOfBenefit</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the ExplanationOfBenefit</div>"
     )
     assert inst.text.status == "generated"
     assert inst.total[0].amount.currency == "USD"
@@ -223,9 +225,8 @@ def impl_explanationofbenefit_2(inst):
         == "http://terminology.hl7.org/CodeSystem/ex-claimsubtype"
     )
     assert inst.supportingInfo[0].category.coding[0].code == "employmentimpacted"
-    assert (
-        inst.supportingInfo[0].category.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/claiminformationcategory"
+    assert inst.supportingInfo[0].category.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/claiminformationcatego" "ry"
     )
     assert inst.supportingInfo[0].sequence == 1
     assert inst.supportingInfo[0].timingPeriod.end == fhirtypes.DateTime.validate(
@@ -235,9 +236,8 @@ def impl_explanationofbenefit_2(inst):
         "2014-02-14T09:23:00+10:00"
     )
     assert inst.supportingInfo[1].category.coding[0].code == "hospitalized"
-    assert (
-        inst.supportingInfo[1].category.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/claiminformationcategory"
+    assert inst.supportingInfo[1].category.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/claiminformationcatego" "ry"
     )
     assert inst.supportingInfo[1].sequence == 2
     assert inst.supportingInfo[1].timingPeriod.end == fhirtypes.DateTime.validate(

@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import paymentreconciliation
 
@@ -59,9 +61,9 @@ def impl_paymentreconciliation_1(inst):
     assert inst.outcome.coding[0].system == "http://hl7.org/fhir/remittance-outcome"
     assert inst.period.end == fhirtypes.DateTime.validate("2014-08-31")
     assert inst.period.start == fhirtypes.DateTime.validate("2014-08-16")
-    assert (
-        inst.processNote[0].text
-        == "Due to the year end holiday the cutoff for submissions for December will be the 28th."
+    assert inst.processNote[0].text == (
+        "Due to the year end holiday the cutoff for submissions for "
+        "December will be the 28th."
     )
     assert inst.processNote[0].type.coding[0].code == "display"
     assert inst.processNote[0].type.coding[0].system == "http://hl7.org/fhir/note-type"
@@ -72,9 +74,9 @@ def impl_paymentreconciliation_1(inst):
     assert inst.requestOrganization.reference == "Organization/1"
     assert inst.requestProvider.reference == "Practitioner/example"
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the PaymentReconciliation</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the PaymentReconciliation</div>"
     )
     assert inst.text.status == "generated"
     assert inst.total.code == "USD"

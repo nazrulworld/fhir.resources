@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import visionprescription
 
@@ -35,9 +37,8 @@ def impl_visionprescription_1(inst):
     )
     assert float(inst.lensSpecification[0].power) == float(-2.75)
     assert inst.lensSpecification[0].product.coding[0].code == "contact"
-    assert (
-        inst.lensSpecification[0].product.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/ex-visionprescriptionproduct"
+    assert inst.lensSpecification[0].product.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/ex-" "visionprescriptionproduct"
     )
     assert float(inst.lensSpecification[1].add) == float(1.75)
     assert inst.lensSpecification[1].axis == 160
@@ -57,9 +58,8 @@ def impl_visionprescription_1(inst):
     )
     assert float(inst.lensSpecification[1].power) == float(-2.75)
     assert inst.lensSpecification[1].product.coding[0].code == "contact"
-    assert (
-        inst.lensSpecification[1].product.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/ex-visionprescriptionproduct"
+    assert inst.lensSpecification[1].product.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/ex-" "visionprescriptionproduct"
     )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
@@ -69,9 +69,9 @@ def impl_visionprescription_1(inst):
     assert inst.patient.reference == "Patient/example"
     assert inst.prescriber.reference == "Practitioner/example"
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Sample Contract Lens prescription</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Sample Contract '
+        "Lens prescription</div>"
     )
     assert inst.text.status == "generated"
 
@@ -107,9 +107,8 @@ def impl_visionprescription_2(inst):
     assert float(inst.lensSpecification[0].prism[0].amount) == float(0.5)
     assert inst.lensSpecification[0].prism[0].base == "down"
     assert inst.lensSpecification[0].product.coding[0].code == "lens"
-    assert (
-        inst.lensSpecification[0].product.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/ex-visionprescriptionproduct"
+    assert inst.lensSpecification[0].product.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/ex-" "visionprescriptionproduct"
     )
     assert float(inst.lensSpecification[0].sphere) == float(-2.0)
     assert float(inst.lensSpecification[1].add) == float(2.0)
@@ -119,9 +118,8 @@ def impl_visionprescription_2(inst):
     assert float(inst.lensSpecification[1].prism[0].amount) == float(0.5)
     assert inst.lensSpecification[1].prism[0].base == "up"
     assert inst.lensSpecification[1].product.coding[0].code == "lens"
-    assert (
-        inst.lensSpecification[1].product.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/ex-visionprescriptionproduct"
+    assert inst.lensSpecification[1].product.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/ex-" "visionprescriptionproduct"
     )
     assert float(inst.lensSpecification[1].sphere) == float(-1.0)
     assert inst.meta.tag[0].code == "HTEST"

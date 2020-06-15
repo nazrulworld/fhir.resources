@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import imagingstudy
 
@@ -17,9 +19,8 @@ def impl_imagingstudy_1(inst):
     assert inst.id == "example-xr"
     assert inst.identifier[0].system == "urn:dicom:uid"
     assert inst.identifier[0].use == "official"
-    assert (
-        inst.identifier[0].value
-        == "urn:oid:2.16.124.113543.6003.1154777499.30246.19789.3503430046"
+    assert inst.identifier[0].value == (
+        "urn:oid:2.16.124.113543.6003.1154777499.30246.19789.35034300" "46"
     )
     assert inst.identifier[1].assigner.reference == "Organization/dicom-organization"
     assert inst.identifier[1].type.coding[0].code == "ACSN"
@@ -104,9 +105,10 @@ def impl_imagingstudy_1(inst):
     assert inst.started == fhirtypes.DateTime.validate("2017-01-01T11:01:20+03:00")
     assert inst.status == "available"
     assert inst.subject.reference == "Patient/dicom"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">XR Wrist 3+ Views. John Smith (MRN: 09236). Accession: W12342398. Performed: 2017-01-01. 1 series, 2 images.</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">XR Wrist 3+ '
+        "Views. John Smith (MRN: 09236). Accession: W12342398. "
+        "Performed: 2017-01-01. 1 series, 2 images.</div>"
     )
     assert inst.text.status == "generated"
 
@@ -134,9 +136,8 @@ def test_imagingstudy_1(base_settings):
 def impl_imagingstudy_2(inst):
     assert inst.id == "example"
     assert inst.identifier[0].system == "urn:dicom:uid"
-    assert (
-        inst.identifier[0].value
-        == "urn:oid:2.16.124.113543.6003.1154777499.30246.19789.3503430045"
+    assert inst.identifier[0].value == (
+        "urn:oid:2.16.124.113543.6003.1154777499.30246.19789.35034300" "45"
     )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
@@ -170,9 +171,10 @@ def impl_imagingstudy_2(inst):
     assert inst.started == fhirtypes.DateTime.validate("2011-01-01T11:01:20+03:00")
     assert inst.status == "available"
     assert inst.subject.reference == "Patient/dicom"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">CT Chest.  John Smith (MRN: 09236). Accession: W12342398. Performed: 2011-01-01. 3 series, 12 images.</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">CT Chest.  John '
+        "Smith (MRN: 09236). Accession: W12342398. Performed: "
+        "2011-01-01. 3 series, 12 images.</div>"
     )
     assert inst.text.status == "generated"
 

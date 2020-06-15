@@ -74,7 +74,10 @@ class GraphDefinition(domainresource.DomainResource):
     profile: fhirtypes.Canonical = Field(
         None,
         alias="profile",
-        title="Type `Canonical` referencing `StructureDefinition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Canonical` referencing `StructureDefinition` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Profile on base resource",
     )
 
@@ -110,7 +113,10 @@ class GraphDefinition(domainresource.DomainResource):
         None,
         alias="url",
         title="Type `Uri` (represented as `dict` in JSON)",
-        description="Canonical identifier for this graph definition, represented as a URI (globally unique)",
+        description=(
+            "Canonical identifier for this graph definition, represented as a URI "
+            "(globally unique)"
+        ),
     )
 
     useContext: ListType[fhirtypes.UsageContextType] = Field(
@@ -172,7 +178,10 @@ class GraphDefinitionLink(backboneelement.BackboneElement):
     target: ListType[fhirtypes.GraphDefinitionLinkTargetType] = Field(
         None,
         alias="target",
-        title="List of `GraphDefinitionLinkTarget` items (represented as `dict` in JSON)",
+        title=(
+            "List of `GraphDefinitionLinkTarget` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Potential target for the link",
     )
 
@@ -186,7 +195,10 @@ class GraphDefinitionLinkTarget(backboneelement.BackboneElement):
     compartment: ListType[fhirtypes.GraphDefinitionLinkTargetCompartmentType] = Field(
         None,
         alias="compartment",
-        title="List of `GraphDefinitionLinkTargetCompartment` items (represented as `dict` in JSON)",
+        title=(
+            "List of `GraphDefinitionLinkTargetCompartment` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Compartment Consistency Rules",
     )
 
@@ -207,7 +219,10 @@ class GraphDefinitionLinkTarget(backboneelement.BackboneElement):
     profile: fhirtypes.Canonical = Field(
         None,
         alias="profile",
-        title="Type `Canonical` referencing `StructureDefinition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Canonical` referencing `StructureDefinition` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Profile for the target resource",
     )
 

@@ -41,7 +41,10 @@ class Organization(domainresource.DomainResource):
         None,
         alias="alias",
         title="List of `String` items (represented as `dict` in JSON)",
-        description="A list of alternate names that the organization is known as, or was known as in the past",
+        description=(
+            "A list of alternate names that the organization is known as, or was "
+            "known as in the past"
+        ),
     )
 
     contact: ListType[fhirtypes.OrganizationContactType] = Field(
@@ -54,8 +57,14 @@ class Organization(domainresource.DomainResource):
     endpoint: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="endpoint",
-        title="List of `Reference` items referencing `Endpoint` (represented as `dict` in JSON)",
-        description="Technical endpoints providing access to services operated for the organization",
+        title=(
+            "List of `Reference` items referencing `Endpoint` (represented as "
+            "`dict` in JSON)"
+        ),
+        description=(
+            "Technical endpoints providing access to services operated for the "
+            "organization"
+        ),
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -75,7 +84,10 @@ class Organization(domainresource.DomainResource):
     partOf: fhirtypes.ReferenceType = Field(
         None,
         alias="partOf",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="The organization of which this organization forms a part",
     )
 

@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import medicinalproductauthorization
 
@@ -71,9 +73,8 @@ def impl_medicinalproductauthorization_1(inst):
         inst.procedure.application[0].type.coding[0].code
         == "GroupTypeIAVariationNotification"
     )
-    assert (
-        inst.procedure.application[0].type.coding[0].system
-        == "http://ema.europa.eu/example/marketingAuthorisationApplicationType"
+    assert inst.procedure.application[0].type.coding[0].system == (
+        "http://ema.europa.eu/example/marketingAuthorisationApplicati" "onType"
     )
     assert inst.procedure.datePeriod.end == fhirtypes.DateTime.validate(
         "2015-08-21T11:15:33+10:00"
@@ -87,9 +88,8 @@ def impl_medicinalproductauthorization_1(inst):
     )
     assert inst.procedure.identifier.value == "EMEA/H/C/009999/IA/0099/G"
     assert inst.procedure.type.coding[0].code == "VariationTypeIA"
-    assert (
-        inst.procedure.type.coding[0].system
-        == "http://ema.europa.eu/example/marketingAuthorisationProcedureType"
+    assert inst.procedure.type.coding[0].system == (
+        "http://ema.europa.eu/example/marketingAuthorisationProcedure" "Type"
     )
     assert inst.regulator.reference == "Organization/example"
     assert inst.status.coding[0].code == "active"

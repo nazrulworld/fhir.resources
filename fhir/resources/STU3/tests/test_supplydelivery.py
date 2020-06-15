@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import supplydelivery
 
@@ -60,9 +62,8 @@ def impl_supplydelivery_2(inst):
     assert inst.receiver[0].display == "Nurse Smith"
     assert inst.status == "in-progress"
     assert inst.supplier.display == "ACME distribution"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">[Put rendering here]</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">[Put rendering ' "here]</div>"
     )
     assert inst.text.status == "generated"
 

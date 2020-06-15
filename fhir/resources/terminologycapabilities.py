@@ -27,7 +27,10 @@ class TerminologyCapabilities(domainresource.DomainResource):
         None,
         alias="closure",
         title="Type `TerminologyCapabilitiesClosure` (represented as `dict` in JSON)",
-        description="Information about the [ConceptMap/$closure](conceptmap-operation-closure.html) operation",
+        description=(
+            "Information about the [ConceptMap/$closure](conceptmap-operation-"
+            "closure.html) operation"
+        ),
     )
 
     codeSearch: fhirtypes.Code = Field(
@@ -40,7 +43,10 @@ class TerminologyCapabilities(domainresource.DomainResource):
     codeSystem: ListType[fhirtypes.TerminologyCapabilitiesCodeSystemType] = Field(
         None,
         alias="codeSystem",
-        title="List of `TerminologyCapabilitiesCodeSystem` items (represented as `dict` in JSON)",
+        title=(
+            "List of `TerminologyCapabilitiesCodeSystem` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="A code system supported by the server",
     )
 
@@ -75,8 +81,13 @@ class TerminologyCapabilities(domainresource.DomainResource):
     expansion: fhirtypes.TerminologyCapabilitiesExpansionType = Field(
         None,
         alias="expansion",
-        title="Type `TerminologyCapabilitiesExpansion` (represented as `dict` in JSON)",
-        description="Information about the [ValueSet/$expand](valueset-operation-expand.html) operation",
+        title=(
+            "Type `TerminologyCapabilitiesExpansion` (represented as `dict` in " "JSON)"
+        ),
+        description=(
+            "Information about the [ValueSet/$expand](valueset-operation-"
+            "expand.html) operation"
+        ),
     )
 
     experimental: bool = Field(
@@ -89,7 +100,10 @@ class TerminologyCapabilities(domainresource.DomainResource):
     implementation: fhirtypes.TerminologyCapabilitiesImplementationType = Field(
         None,
         alias="implementation",
-        title="Type `TerminologyCapabilitiesImplementation` (represented as `dict` in JSON)",
+        title=(
+            "Type `TerminologyCapabilitiesImplementation` (represented as `dict` in"
+            " JSON)"
+        ),
         description="If this describes a specific instance",
     )
 
@@ -159,15 +173,24 @@ class TerminologyCapabilities(domainresource.DomainResource):
     translation: fhirtypes.TerminologyCapabilitiesTranslationType = Field(
         None,
         alias="translation",
-        title="Type `TerminologyCapabilitiesTranslation` (represented as `dict` in JSON)",
-        description="Information about the [ConceptMap/$translate](conceptmap-operation-translate.html) operation",
+        title=(
+            "Type `TerminologyCapabilitiesTranslation` (represented as `dict` in "
+            "JSON)"
+        ),
+        description=(
+            "Information about the [ConceptMap/$translate](conceptmap-operation-"
+            "translate.html) operation"
+        ),
     )
 
     url: fhirtypes.Uri = Field(
         None,
         alias="url",
         title="Type `Uri` (represented as `dict` in JSON)",
-        description="Canonical identifier for this terminology capabilities, represented as a URI (globally unique)",
+        description=(
+            "Canonical identifier for this terminology capabilities, represented as"
+            " a URI (globally unique)"
+        ),
     )
 
     useContext: ListType[fhirtypes.UsageContextType] = Field(
@@ -180,8 +203,14 @@ class TerminologyCapabilities(domainresource.DomainResource):
     validateCode: fhirtypes.TerminologyCapabilitiesValidateCodeType = Field(
         None,
         alias="validateCode",
-        title="Type `TerminologyCapabilitiesValidateCode` (represented as `dict` in JSON)",
-        description="Information about the [ValueSet/$validate-code](valueset-operation-validate-code.html) operation",
+        title=(
+            "Type `TerminologyCapabilitiesValidateCode` (represented as `dict` in "
+            "JSON)"
+        ),
+        description=(
+            "Information about the [ValueSet/$validate-code](valueset-operation-"
+            "validate-code.html) operation"
+        ),
     )
 
     version: fhirtypes.String = Field(
@@ -227,14 +256,20 @@ class TerminologyCapabilitiesCodeSystem(backboneelement.BackboneElement):
     uri: fhirtypes.Canonical = Field(
         None,
         alias="uri",
-        title="Type `Canonical` referencing `CodeSystem` (represented as `dict` in JSON)",
+        title=(
+            "Type `Canonical` referencing `CodeSystem` (represented as `dict` in "
+            "JSON)"
+        ),
         description="URI for the Code System",
     )
 
     version: ListType[fhirtypes.TerminologyCapabilitiesCodeSystemVersionType] = Field(
         None,
         alias="version",
-        title="List of `TerminologyCapabilitiesCodeSystemVersion` items (represented as `dict` in JSON)",
+        title=(
+            "List of `TerminologyCapabilitiesCodeSystemVersion` items (represented "
+            "as `dict` in JSON)"
+        ),
         description="Version of Code System supported",
     )
 
@@ -265,7 +300,10 @@ class TerminologyCapabilitiesCodeSystemVersion(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="filter",
-        title="List of `TerminologyCapabilitiesCodeSystemVersionFilter` items (represented as `dict` in JSON)",
+        title=(
+            "List of `TerminologyCapabilitiesCodeSystemVersionFilter` items "
+            "(represented as `dict` in JSON)"
+        ),
         description="Filter Properties supported",
     )
 
@@ -345,7 +383,10 @@ class TerminologyCapabilitiesExpansion(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="parameter",
-        title="List of `TerminologyCapabilitiesExpansionParameter` items (represented as `dict` in JSON)",
+        title=(
+            "List of `TerminologyCapabilitiesExpansionParameter` items (represented"
+            " as `dict` in JSON)"
+        ),
         description="Supported expansion parameter",
     )
 

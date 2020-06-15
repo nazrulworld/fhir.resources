@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import clinicalimpression
 
@@ -13,9 +15,9 @@ from .. import clinicalimpression
 def impl_clinicalimpression_1(inst):
     assert inst.assessor.reference == "Practitioner/example"
     assert inst.date == fhirtypes.DateTime.validate("2014-12-06T22:33:00+11:00")
-    assert (
-        inst.description
-        == "This 26 yo male patient is brought into ER by ambulance after being involved in a motor vehicle accident"
+    assert inst.description == (
+        "This 26 yo male patient is brought into ER by ambulance "
+        "after being involved in a motor vehicle accident"
     )
     assert inst.effectivePeriod.end == fhirtypes.DateTime.validate(
         "2014-12-06T22:33:00+11:00"
@@ -47,9 +49,9 @@ def impl_clinicalimpression_1(inst):
     assert inst.problem[0].display == "MVA"
     assert inst.status == "completed"
     assert inst.subject.reference == "Patient/example"
-    assert (
-        inst.summary
-        == "provisional diagnoses of laceration of head and traumatic brain injury (TBI)"
+    assert inst.summary == (
+        "provisional diagnoses of laceration of head and traumatic "
+        "brain injury (TBI)"
     )
     assert inst.text.status == "generated"
 

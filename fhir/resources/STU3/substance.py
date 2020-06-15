@@ -96,7 +96,10 @@ class SubstanceIngredient(backboneelement.BackboneElement):
     substanceReference: fhirtypes.ReferenceType = Field(
         None,
         alias="substanceReference",
-        title="Type `Reference` referencing `Substance` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Substance` (represented as `dict` in "
+            "JSON)"
+        ),
         description="A component of the substance",
         one_of_many="substance",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
@@ -117,7 +120,7 @@ class SubstanceIngredient(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "substance": ["substanceCodeableConcept", "substanceReference",],
+            "substance": ["substanceCodeableConcept", "substanceReference"]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

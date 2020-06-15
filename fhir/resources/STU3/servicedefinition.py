@@ -116,7 +116,10 @@ class ServiceDefinition(domainresource.DomainResource):
     operationDefinition: fhirtypes.ReferenceType = Field(
         None,
         alias="operationDefinition",
-        title="Type `Reference` referencing `OperationDefinition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `OperationDefinition` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Operation to invoke",
     )
 

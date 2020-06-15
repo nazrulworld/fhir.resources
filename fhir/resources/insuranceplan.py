@@ -22,7 +22,10 @@ class InsurancePlan(domainresource.DomainResource):
     administeredBy: fhirtypes.ReferenceType = Field(
         None,
         alias="administeredBy",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Product administrator",
     )
 
@@ -50,14 +53,20 @@ class InsurancePlan(domainresource.DomainResource):
     coverageArea: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="coverageArea",
-        title="List of `Reference` items referencing `Location` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Location` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Where product applies",
     )
 
     endpoint: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="endpoint",
-        title="List of `Reference` items referencing `Endpoint` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Endpoint` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Technical endpoint",
     )
 
@@ -78,14 +87,20 @@ class InsurancePlan(domainresource.DomainResource):
     network: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="network",
-        title="List of `Reference` items referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Organization` (represented as "
+            "`dict` in JSON)"
+        ),
         description="What networks are Included",
     )
 
     ownedBy: fhirtypes.ReferenceType = Field(
         None,
         alias="ownedBy",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Plan issuer",
     )
 
@@ -164,14 +179,20 @@ class InsurancePlanCoverage(backboneelement.BackboneElement):
     benefit: ListType[fhirtypes.InsurancePlanCoverageBenefitType] = Field(
         ...,
         alias="benefit",
-        title="List of `InsurancePlanCoverageBenefit` items (represented as `dict` in JSON)",
+        title=(
+            "List of `InsurancePlanCoverageBenefit` items (represented as `dict` in"
+            " JSON)"
+        ),
         description="List of benefits",
     )
 
     network: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="network",
-        title="List of `Reference` items referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Organization` (represented as "
+            "`dict` in JSON)"
+        ),
         description="What networks provide coverage",
     )
 
@@ -193,7 +214,10 @@ class InsurancePlanCoverageBenefit(backboneelement.BackboneElement):
     limit: ListType[fhirtypes.InsurancePlanCoverageBenefitLimitType] = Field(
         None,
         alias="limit",
-        title="List of `InsurancePlanCoverageBenefitLimit` items (represented as `dict` in JSON)",
+        title=(
+            "List of `InsurancePlanCoverageBenefitLimit` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Benefit limits",
     )
 
@@ -244,14 +268,20 @@ class InsurancePlanPlan(backboneelement.BackboneElement):
     coverageArea: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="coverageArea",
-        title="List of `Reference` items referencing `Location` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Location` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Where product applies",
     )
 
     generalCost: ListType[fhirtypes.InsurancePlanPlanGeneralCostType] = Field(
         None,
         alias="generalCost",
-        title="List of `InsurancePlanPlanGeneralCost` items (represented as `dict` in JSON)",
+        title=(
+            "List of `InsurancePlanPlanGeneralCost` items (represented as `dict` in"
+            " JSON)"
+        ),
         description="Overall costs",
     )
 
@@ -265,14 +295,20 @@ class InsurancePlanPlan(backboneelement.BackboneElement):
     network: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="network",
-        title="List of `Reference` items referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Organization` (represented as "
+            "`dict` in JSON)"
+        ),
         description="What networks provide coverage",
     )
 
     specificCost: ListType[fhirtypes.InsurancePlanPlanSpecificCostType] = Field(
         None,
         alias="specificCost",
-        title="List of `InsurancePlanPlanSpecificCost` items (represented as `dict` in JSON)",
+        title=(
+            "List of `InsurancePlanPlanSpecificCost` items (represented as `dict` "
+            "in JSON)"
+        ),
         description="Specific costs",
     )
 
@@ -330,7 +366,10 @@ class InsurancePlanPlanSpecificCost(backboneelement.BackboneElement):
     benefit: ListType[fhirtypes.InsurancePlanPlanSpecificCostBenefitType] = Field(
         None,
         alias="benefit",
-        title="List of `InsurancePlanPlanSpecificCostBenefit` items (represented as `dict` in JSON)",
+        title=(
+            "List of `InsurancePlanPlanSpecificCostBenefit` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Benefits list",
     )
 
@@ -352,7 +391,10 @@ class InsurancePlanPlanSpecificCostBenefit(backboneelement.BackboneElement):
     cost: ListType[fhirtypes.InsurancePlanPlanSpecificCostBenefitCostType] = Field(
         None,
         alias="cost",
-        title="List of `InsurancePlanPlanSpecificCostBenefitCost` items (represented as `dict` in JSON)",
+        title=(
+            "List of `InsurancePlanPlanSpecificCostBenefitCost` items (represented "
+            "as `dict` in JSON)"
+        ),
         description="List of the costs",
     )
 

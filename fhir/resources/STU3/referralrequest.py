@@ -33,21 +33,30 @@ class ReferralRequest(domainresource.DomainResource):
     basedOn: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="basedOn",
-        title="List of `Reference` items referencing `ReferralRequest, CarePlan, ProcedureRequest` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `ReferralRequest, CarePlan, "
+            "ProcedureRequest` (represented as `dict` in JSON)"
+        ),
         description="Request fulfilled by this request",
     )
 
     context: fhirtypes.ReferenceType = Field(
         None,
         alias="context",
-        title="Type `Reference` referencing `Encounter, EpisodeOfCare` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Encounter, EpisodeOfCare` (represented "
+            "as `dict` in JSON)"
+        ),
         description="Originating encounter",
     )
 
     definition: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="definition",
-        title="List of `Reference` items referencing `ActivityDefinition, PlanDefinition` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `ActivityDefinition, "
+            "PlanDefinition` (represented as `dict` in JSON)"
+        ),
         description="Instantiates protocol or definition",
     )
 
@@ -121,28 +130,40 @@ class ReferralRequest(domainresource.DomainResource):
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="reasonReference",
-        title="List of `Reference` items referencing `Condition, Observation` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Condition, Observation` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Why is service needed?",
     )
 
     recipient: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="recipient",
-        title="List of `Reference` items referencing `Practitioner, Organization, HealthcareService` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Practitioner, Organization, "
+            "HealthcareService` (represented as `dict` in JSON)"
+        ),
         description="Receiver of referral / transfer of care request",
     )
 
     relevantHistory: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="relevantHistory",
-        title="List of `Reference` items referencing `Provenance` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Provenance` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Key events in history of request",
     )
 
     replaces: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="replaces",
-        title="List of `Reference` items referencing `ReferralRequest` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `ReferralRequest` (represented "
+            "as `dict` in JSON)"
+        ),
         description="Request(s) replaced by this request",
     )
 
@@ -171,20 +192,29 @@ class ReferralRequest(domainresource.DomainResource):
         ...,
         alias="status",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="draft | active | suspended | cancelled | completed | entered-in-error | unknown",
+        description=(
+            "draft | active | suspended | cancelled | completed | entered-in-error "
+            "| unknown"
+        ),
     )
 
     subject: fhirtypes.ReferenceType = Field(
         ...,
         alias="subject",
-        title="Type `Reference` referencing `Patient, Group` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Group` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Patient referred to care or transfer",
     )
 
     supportingInfo: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="supportingInfo",
-        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Resource` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Additonal information to support referral or transfer of care request",
     )
 
@@ -209,9 +239,7 @@ class ReferralRequest(domainresource.DomainResource):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "occurrence": ["occurrenceDateTime", "occurrencePeriod",],
-        }
+        one_of_many_fields = {"occurrence": ["occurrenceDateTime", "occurrencePeriod"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -245,13 +273,19 @@ class ReferralRequestRequester(backboneelement.BackboneElement):
     agent: fhirtypes.ReferenceType = Field(
         ...,
         alias="agent",
-        title="Type `Reference` referencing `Practitioner, Organization, Patient, RelatedPerson, Device` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, Organization, Patient, "
+            "RelatedPerson, Device` (represented as `dict` in JSON)"
+        ),
         description="Individual making the request",
     )
 
     onBehalfOf: fhirtypes.ReferenceType = Field(
         None,
         alias="onBehalfOf",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Organization agent is acting for",
     )

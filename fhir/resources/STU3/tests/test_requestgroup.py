@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import requestgroup
 
@@ -146,9 +148,9 @@ def impl_requestgroup_1(inst):
     assert inst.priority == "routine"
     assert inst.status == "draft"
     assert inst.subject.reference == "Patient/example"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Administer gemcitabine and carboplatin.</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Administer '
+        "gemcitabine and carboplatin.</div>"
     )
     assert inst.text.status == "generated"
 
@@ -198,9 +200,8 @@ def impl_requestgroup_2(inst):
     assert inst.action[0].precheckBehavior == "yes"
     assert inst.action[0].requiredBehavior == "must"
     assert inst.action[0].selectionBehavior == "all"
-    assert (
-        inst.action[0].textEquivalent
-        == "Administer medication 1, followed an hour later by medication 2"
+    assert inst.action[0].textEquivalent == (
+        "Administer medication 1, followed an hour later by " "medication 2"
     )
     assert inst.action[0].timingDateTime == fhirtypes.DateTime.validate(
         "2017-03-06T19:00:00Z"
@@ -221,9 +222,10 @@ def impl_requestgroup_2(inst):
     assert inst.reasonCodeableConcept.text == "Treatment"
     assert inst.status == "draft"
     assert inst.subject.reference == "Patient/example"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Example RequestGroup illustrating related actions to administer medications in sequence with time delay.</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Example '
+        "RequestGroup illustrating related actions to administer "
+        "medications in sequence with time delay.</div>"
     )
     assert inst.text.status == "generated"
 

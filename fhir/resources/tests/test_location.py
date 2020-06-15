@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import location
 
@@ -20,9 +22,8 @@ def impl_location_1(inst):
     assert (
         inst.alias[1] == "Burgers University Medical Center, South Wing, second floor"
     )
-    assert (
-        inst.description
-        == "Second floor of the Old South Wing, formerly in use by Psychiatry"
+    assert inst.description == (
+        "Second floor of the Old South Wing, formerly in use by " "Psychiatry"
     )
     assert inst.endpoint[0].reference == "Endpoint/example"
     assert inst.id == "1"
@@ -56,9 +57,9 @@ def impl_location_1(inst):
     assert inst.telecom[3].system == "url"
     assert inst.telecom[3].use == "work"
     assert inst.telecom[3].value == "http://sampleorg.com/southwing"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Burgers UMC, South Wing, second floor</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Burgers UMC, '
+        "South Wing, second floor</div>"
     )
     assert inst.text.status == "generated"
 
@@ -86,9 +87,8 @@ def test_location_1(base_settings):
 def impl_location_2(inst):
     assert inst.alias[0] == "South Wing OR 5"
     assert inst.alias[1] == "Main Wing OR 2"
-    assert (
-        inst.description
-        == "Old South Wing, Neuro Radiology Operation Room 1 on second floor"
+    assert inst.description == (
+        "Old South Wing, Neuro Radiology Operation Room 1 on second " "floor"
     )
     assert inst.id == "2"
     assert inst.identifier[0].value == "B1-S.F2.1.00"
@@ -115,9 +115,10 @@ def impl_location_2(inst):
     assert inst.status == "suspended"
     assert inst.telecom[0].system == "phone"
     assert inst.telecom[0].value == "2329"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Burgers UMC, South Wing, second floor, Neuro Radiology Operation Room 1</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Burgers UMC, '
+        "South Wing, second floor, Neuro Radiology Operation Room "
+        "1</div>"
     )
     assert inst.text.status == "generated"
     assert inst.type[0].coding[0].code == "RNEU"
@@ -169,8 +170,8 @@ def impl_location_3(inst):
     assert inst.telecom[0].system == "phone"
     assert inst.telecom[0].use == "mobile"
     assert inst.telecom[0].value == "2329"
-    assert (
-        inst.text.div == '<div xmlns="http://www.w3.org/1999/xhtml">Mobile Clinic</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Mobile ' "Clinic</div>"
     )
     assert inst.text.status == "generated"
     assert inst.type[0].coding[0].code == "AMB"
@@ -202,9 +203,9 @@ def test_location_3(base_settings):
 
 
 def impl_location_4(inst):
-    assert (
-        inst.description
-        == "All Pharmacies in the United Kingdom covered by the National Pharmacy Association"
+    assert inst.description == (
+        "All Pharmacies in the United Kingdom covered by the National"
+        " Pharmacy Association"
     )
     assert inst.id == "ukp"
     assert inst.meta.tag[0].code == "HTEST"
@@ -221,8 +222,8 @@ def impl_location_4(inst):
         == "http://terminology.hl7.org/CodeSystem/location-physical-type"
     )
     assert inst.status == "active"
-    assert (
-        inst.text.div == '<div xmlns="http://www.w3.org/1999/xhtml">UK Pharmacies</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">UK ' "Pharmacies</div>"
     )
     assert inst.text.status == "generated"
     assert inst.type[0].coding[0].code == "PHARM"
@@ -271,9 +272,8 @@ def impl_location_5(inst):
         == "http://terminology.hl7.org/CodeSystem/location-physical-type"
     )
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Patient\'s Home</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Patient\'s ' "Home</div>"
     )
     assert inst.text.status == "generated"
     assert inst.type[0].coding[0].code == "PTRES"

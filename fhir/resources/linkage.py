@@ -31,7 +31,10 @@ class Linkage(domainresource.DomainResource):
     author: fhirtypes.ReferenceType = Field(
         None,
         alias="author",
-        title="Type `Reference` referencing `Practitioner, PractitionerRole, Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, PractitionerRole, "
+            "Organization` (represented as `dict` in JSON)"
+        ),
         description="Who is responsible for linkages",
     )
 
@@ -55,7 +58,9 @@ class LinkageItem(backboneelement.BackboneElement):
     resource: fhirtypes.ReferenceType = Field(
         ...,
         alias="resource",
-        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        ),
         description="Resource being linked",
     )
 

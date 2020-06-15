@@ -26,14 +26,20 @@ class MessageDefinition(domainresource.DomainResource):
     allowedResponse: ListType[fhirtypes.MessageDefinitionAllowedResponseType] = Field(
         None,
         alias="allowedResponse",
-        title="List of `MessageDefinitionAllowedResponse` items (represented as `dict` in JSON)",
+        title=(
+            "List of `MessageDefinitionAllowedResponse` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Responses to this message",
     )
 
     base: fhirtypes.ReferenceType = Field(
         None,
         alias="base",
-        title="Type `Reference` referencing `MessageDefinition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `MessageDefinition` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Definition this one is based on",
     )
 
@@ -117,7 +123,10 @@ class MessageDefinition(domainresource.DomainResource):
     parent: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="parent",
-        title="List of `Reference` items referencing `ActivityDefinition, PlanDefinition` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `ActivityDefinition, "
+            "PlanDefinition` (represented as `dict` in JSON)"
+        ),
         description="Protocol/workflow this is part of",
     )
 
@@ -138,7 +147,10 @@ class MessageDefinition(domainresource.DomainResource):
     replaces: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="replaces",
-        title="List of `Reference` items referencing `MessageDefinition` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `MessageDefinition` (represented"
+            " as `dict` in JSON)"
+        ),
         description="Takes the place of",
     )
 
@@ -196,7 +208,10 @@ class MessageDefinitionAllowedResponse(backboneelement.BackboneElement):
     message: fhirtypes.ReferenceType = Field(
         ...,
         alias="message",
-        title="Type `Reference` referencing `MessageDefinition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `MessageDefinition` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Reference to allowed message definition response",
     )
 
@@ -241,6 +256,9 @@ class MessageDefinitionFocus(backboneelement.BackboneElement):
     profile: fhirtypes.ReferenceType = Field(
         None,
         alias="profile",
-        title="Type `Reference` referencing `StructureDefinition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `StructureDefinition` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Profile that must be adhered to by focus",
     )

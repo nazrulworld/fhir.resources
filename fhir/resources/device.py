@@ -32,7 +32,10 @@ class Device(domainresource.DomainResource):
     definition: fhirtypes.ReferenceType = Field(
         None,
         alias="definition",
-        title="Type `Reference` referencing `DeviceDefinition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `DeviceDefinition` (represented as `dict`"
+            " in JSON)"
+        ),
         description="The reference to the definition for the device",
     )
 
@@ -67,7 +70,9 @@ class Device(domainresource.DomainResource):
     location: fhirtypes.ReferenceType = Field(
         None,
         alias="location",
-        title="Type `Reference` referencing `Location` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Location` (represented as `dict` in " "JSON)"
+        ),
         description="Where the device is found",
     )
 
@@ -109,7 +114,10 @@ class Device(domainresource.DomainResource):
     owner: fhirtypes.ReferenceType = Field(
         None,
         alias="owner",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Organization responsible for device",
     )
 
@@ -138,7 +146,10 @@ class Device(domainresource.DomainResource):
         None,
         alias="property",
         title="List of `DeviceProperty` items (represented as `dict` in JSON)",
-        description="The actual configuration settings of a device as it actually operates, e.g., regulation status, time properties",
+        description=(
+            "The actual configuration settings of a device as it actually operates,"
+            " e.g., regulation status, time properties"
+        ),
     )
 
     safety: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -159,7 +170,11 @@ class Device(domainresource.DomainResource):
         None,
         alias="specialization",
         title="List of `DeviceSpecialization` items (represented as `dict` in JSON)",
-        description="The capabilities supported on a  device, the standards to which the device conforms for a particular purpose, and used for the communication",
+        description=(
+            "The capabilities supported on a  device, the standards to which the "
+            "device conforms for a particular purpose, and used for the "
+            "communication"
+        ),
     )
 
     status: fhirtypes.Code = Field(
@@ -173,7 +188,10 @@ class Device(domainresource.DomainResource):
         None,
         alias="statusReason",
         title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="online | paused | standby | offline | not-ready | transduc-discon | hw-discon | off",
+        description=(
+            "online | paused | standby | offline | not-ready | transduc-discon | "
+            "hw-discon | off"
+        ),
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -201,7 +219,10 @@ class Device(domainresource.DomainResource):
         None,
         alias="version",
         title="List of `DeviceVersion` items (represented as `dict` in JSON)",
-        description="The actual design of the device or software version running on the device",
+        description=(
+            "The actual design of the device or software version running on the "
+            "device"
+        ),
     )
 
 
@@ -226,7 +247,10 @@ class DeviceDeviceName(backboneelement.BackboneElement):
         ...,
         alias="type",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="udi-label-name | user-friendly-name | patient-reported-name | manufacturer-name | model-name | other",
+        description=(
+            "udi-label-name | user-friendly-name | patient-reported-name | "
+            "manufacturer-name | model-name | other"
+        ),
     )
 
 
@@ -241,7 +265,10 @@ class DeviceProperty(backboneelement.BackboneElement):
         ...,
         alias="type",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Code that specifies the property DeviceDefinitionPropetyCode (Extensible)",
+        description=(
+            "Code that specifies the property DeviceDefinitionPropetyCode "
+            "(Extensible)"
+        ),
     )
 
     valueCode: ListType[fhirtypes.CodeableConceptType] = Field(

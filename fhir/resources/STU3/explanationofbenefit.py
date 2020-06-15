@@ -33,14 +33,20 @@ class ExplanationOfBenefit(domainresource.DomainResource):
     addItem: ListType[fhirtypes.ExplanationOfBenefitAddItemType] = Field(
         None,
         alias="addItem",
-        title="List of `ExplanationOfBenefitAddItem` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ExplanationOfBenefitAddItem` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Insurer added line items",
     )
 
     benefitBalance: ListType[fhirtypes.ExplanationOfBenefitBenefitBalanceType] = Field(
         None,
         alias="benefitBalance",
-        title="List of `ExplanationOfBenefitBenefitBalance` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ExplanationOfBenefitBenefitBalance` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Balance by Benefit Category",
     )
 
@@ -54,7 +60,10 @@ class ExplanationOfBenefit(domainresource.DomainResource):
     careTeam: ListType[fhirtypes.ExplanationOfBenefitCareTeamType] = Field(
         None,
         alias="careTeam",
-        title="List of `ExplanationOfBenefitCareTeam` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ExplanationOfBenefitCareTeam` items (represented as `dict` in"
+            " JSON)"
+        ),
         description="Care Team members",
     )
 
@@ -68,7 +77,10 @@ class ExplanationOfBenefit(domainresource.DomainResource):
     claimResponse: fhirtypes.ReferenceType = Field(
         None,
         alias="claimResponse",
-        title="Type `Reference` referencing `ClaimResponse` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `ClaimResponse` (represented as `dict` in"
+            " JSON)"
+        ),
         description="Claim response reference",
     )
 
@@ -82,7 +94,10 @@ class ExplanationOfBenefit(domainresource.DomainResource):
     diagnosis: ListType[fhirtypes.ExplanationOfBenefitDiagnosisType] = Field(
         None,
         alias="diagnosis",
-        title="List of `ExplanationOfBenefitDiagnosis` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ExplanationOfBenefitDiagnosis` items (represented as `dict` "
+            "in JSON)"
+        ),
         description="List of Diagnosis",
     )
 
@@ -103,14 +118,19 @@ class ExplanationOfBenefit(domainresource.DomainResource):
     enterer: fhirtypes.ReferenceType = Field(
         None,
         alias="enterer",
-        title="Type `Reference` referencing `Practitioner` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Author",
     )
 
     facility: fhirtypes.ReferenceType = Field(
         None,
         alias="facility",
-        title="Type `Reference` referencing `Location` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Location` (represented as `dict` in " "JSON)"
+        ),
         description="Servicing Facility",
     )
 
@@ -138,8 +158,14 @@ class ExplanationOfBenefit(domainresource.DomainResource):
     information: ListType[fhirtypes.ExplanationOfBenefitInformationType] = Field(
         None,
         alias="information",
-        title="List of `ExplanationOfBenefitInformation` items (represented as `dict` in JSON)",
-        description="Exceptions, special considerations, the condition, situation, prior or concurrent issues",
+        title=(
+            "List of `ExplanationOfBenefitInformation` items (represented as `dict`"
+            " in JSON)"
+        ),
+        description=(
+            "Exceptions, special considerations, the condition, situation, prior or"
+            " concurrent issues"
+        ),
     )
 
     insurance: fhirtypes.ExplanationOfBenefitInsuranceType = Field(
@@ -152,28 +178,40 @@ class ExplanationOfBenefit(domainresource.DomainResource):
     insurer: fhirtypes.ReferenceType = Field(
         None,
         alias="insurer",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Insurer responsible for the EOB",
     )
 
     item: ListType[fhirtypes.ExplanationOfBenefitItemType] = Field(
         None,
         alias="item",
-        title="List of `ExplanationOfBenefitItem` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ExplanationOfBenefitItem` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Goods and Services",
     )
 
     organization: fhirtypes.ReferenceType = Field(
         None,
         alias="organization",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Responsible organization for the claim",
     )
 
     originalPrescription: fhirtypes.ReferenceType = Field(
         None,
         alias="originalPrescription",
-        title="Type `Reference` referencing `MedicationRequest` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `MedicationRequest` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Original prescription if superceded by fulfiller",
     )
 
@@ -215,42 +253,60 @@ class ExplanationOfBenefit(domainresource.DomainResource):
     prescription: fhirtypes.ReferenceType = Field(
         None,
         alias="prescription",
-        title="Type `Reference` referencing `MedicationRequest, VisionPrescription` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `MedicationRequest, VisionPrescription` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Prescription authorizing services or products",
     )
 
     procedure: ListType[fhirtypes.ExplanationOfBenefitProcedureType] = Field(
         None,
         alias="procedure",
-        title="List of `ExplanationOfBenefitProcedure` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ExplanationOfBenefitProcedure` items (represented as `dict` "
+            "in JSON)"
+        ),
         description="Procedures performed",
     )
 
     processNote: ListType[fhirtypes.ExplanationOfBenefitProcessNoteType] = Field(
         None,
         alias="processNote",
-        title="List of `ExplanationOfBenefitProcessNote` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ExplanationOfBenefitProcessNote` items (represented as `dict`"
+            " in JSON)"
+        ),
         description="Processing notes",
     )
 
     provider: fhirtypes.ReferenceType = Field(
         None,
         alias="provider",
-        title="Type `Reference` referencing `Practitioner` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Responsible provider for the claim",
     )
 
     referral: fhirtypes.ReferenceType = Field(
         None,
         alias="referral",
-        title="Type `Reference` referencing `ReferralRequest` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `ReferralRequest` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Treatment Referral",
     )
 
     related: ListType[fhirtypes.ExplanationOfBenefitRelatedType] = Field(
         None,
         alias="related",
-        title="List of `ExplanationOfBenefitRelated` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ExplanationOfBenefitRelated` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Related Claims which may be revelant to processing this claim",
     )
 
@@ -323,7 +379,9 @@ class ExplanationOfBenefitAccident(backboneelement.BackboneElement):
     locationReference: fhirtypes.ReferenceType = Field(
         None,
         alias="locationReference",
-        title="Type `Reference` referencing `Location` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Location` (represented as `dict` in " "JSON)"
+        ),
         description="Accident Place",
         one_of_many="location",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -350,9 +408,7 @@ class ExplanationOfBenefitAccident(backboneelement.BackboneElement):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "location": ["locationAddress", "locationReference",],
-        }
+        one_of_many_fields = {"location": ["locationAddress", "locationReference"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -385,7 +441,10 @@ class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
     adjudication: ListType[fhirtypes.ExplanationOfBenefitItemAdjudicationType] = Field(
         None,
         alias="adjudication",
-        title="List of `ExplanationOfBenefitItemAdjudication` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ExplanationOfBenefitItemAdjudication` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Added items adjudication",
     )
 
@@ -399,7 +458,10 @@ class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
     detail: ListType[fhirtypes.ExplanationOfBenefitAddItemDetailType] = Field(
         None,
         alias="detail",
-        title="List of `ExplanationOfBenefitAddItemDetail` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ExplanationOfBenefitAddItemDetail` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Added items details",
     )
 
@@ -456,7 +518,10 @@ class ExplanationOfBenefitAddItemDetail(backboneelement.BackboneElement):
     adjudication: ListType[fhirtypes.ExplanationOfBenefitItemAdjudicationType] = Field(
         None,
         alias="adjudication",
-        title="List of `ExplanationOfBenefitItemAdjudication` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ExplanationOfBenefitItemAdjudication` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Added items detail adjudication",
     )
 
@@ -535,7 +600,10 @@ class ExplanationOfBenefitBenefitBalance(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="financial",
-        title="List of `ExplanationOfBenefitBenefitBalanceFinancial` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ExplanationOfBenefitBenefitBalanceFinancial` items "
+            "(represented as `dict` in JSON)"
+        ),
         description="Benefit Summary",
     )
 
@@ -649,8 +717,8 @@ class ExplanationOfBenefitBenefitBalanceFinancial(backboneelement.BackboneElemen
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "allowed": ["allowedMoney", "allowedString", "allowedUnsignedInt",],
-            "used": ["usedMoney", "usedUnsignedInt",],
+            "allowed": ["allowedMoney", "allowedString", "allowedUnsignedInt"],
+            "used": ["usedMoney", "usedUnsignedInt"],
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
@@ -685,7 +753,10 @@ class ExplanationOfBenefitCareTeam(backboneelement.BackboneElement):
     provider: fhirtypes.ReferenceType = Field(
         ...,
         alias="provider",
-        title="Type `Reference` referencing `Practitioner, Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, Organization` (represented"
+            " as `dict` in JSON)"
+        ),
         description="Member of the Care Team",
     )
 
@@ -737,7 +808,10 @@ class ExplanationOfBenefitDiagnosis(backboneelement.BackboneElement):
     diagnosisReference: fhirtypes.ReferenceType = Field(
         None,
         alias="diagnosisReference",
-        title="Type `Reference` referencing `Condition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Condition` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Patient\u0027s diagnosis",
         one_of_many="diagnosis",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
@@ -779,7 +853,7 @@ class ExplanationOfBenefitDiagnosis(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "diagnosis": ["diagnosisCodeableConcept", "diagnosisReference",],
+            "diagnosis": ["diagnosisCodeableConcept", "diagnosisReference"]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
@@ -880,7 +954,9 @@ class ExplanationOfBenefitInformation(backboneelement.BackboneElement):
     valueReference: fhirtypes.ReferenceType = Field(
         None,
         alias="valueReference",
-        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        ),
         description="Additional Data or supporting information",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -910,7 +986,7 @@ class ExplanationOfBenefitInformation(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "timing": ["timingDate", "timingPeriod",],
+            "timing": ["timingDate", "timingPeriod"],
             "value": [
                 "valueAttachment",
                 "valueQuantity",
@@ -950,7 +1026,9 @@ class ExplanationOfBenefitInsurance(backboneelement.BackboneElement):
     coverage: fhirtypes.ReferenceType = Field(
         None,
         alias="coverage",
-        title="Type `Reference` referencing `Coverage` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Coverage` (represented as `dict` in " "JSON)"
+        ),
         description="Insurance information",
     )
 
@@ -972,7 +1050,10 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
     adjudication: ListType[fhirtypes.ExplanationOfBenefitItemAdjudicationType] = Field(
         None,
         alias="adjudication",
-        title="List of `ExplanationOfBenefitItemAdjudication` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ExplanationOfBenefitItemAdjudication` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Adjudication details",
     )
 
@@ -1000,7 +1081,10 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
     detail: ListType[fhirtypes.ExplanationOfBenefitItemDetailType] = Field(
         None,
         alias="detail",
-        title="List of `ExplanationOfBenefitItemDetail` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ExplanationOfBenefitItemDetail` items (represented as `dict` "
+            "in JSON)"
+        ),
         description="Additional items",
     )
 
@@ -1014,7 +1098,10 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
     encounter: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="encounter",
-        title="List of `Reference` items referencing `Encounter` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Encounter` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Encounters related to this billed item",
     )
 
@@ -1053,7 +1140,9 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
     locationReference: fhirtypes.ReferenceType = Field(
         None,
         alias="locationReference",
-        title="Type `Reference` referencing `Location` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Location` (represented as `dict` in " "JSON)"
+        ),
         description="Place of service",
         one_of_many="location",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -1150,7 +1239,10 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
     udi: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="udi",
-        title="List of `Reference` items referencing `Device` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Device` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Unique Device Identifier",
     )
 
@@ -1181,7 +1273,7 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
                 "locationCodeableConcept",
                 "locationReference",
             ],
-            "serviced": ["servicedDate", "servicedPeriod",],
+            "serviced": ["servicedDate", "servicedPeriod"],
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
@@ -1251,7 +1343,10 @@ class ExplanationOfBenefitItemDetail(backboneelement.BackboneElement):
     adjudication: ListType[fhirtypes.ExplanationOfBenefitItemAdjudicationType] = Field(
         None,
         alias="adjudication",
-        title="List of `ExplanationOfBenefitItemAdjudication` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ExplanationOfBenefitItemAdjudication` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Detail level adjudication details",
     )
 
@@ -1328,7 +1423,10 @@ class ExplanationOfBenefitItemDetail(backboneelement.BackboneElement):
     subDetail: ListType[fhirtypes.ExplanationOfBenefitItemDetailSubDetailType] = Field(
         None,
         alias="subDetail",
-        title="List of `ExplanationOfBenefitItemDetailSubDetail` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ExplanationOfBenefitItemDetailSubDetail` items (represented "
+            "as `dict` in JSON)"
+        ),
         description="Additional items",
     )
 
@@ -1342,7 +1440,10 @@ class ExplanationOfBenefitItemDetail(backboneelement.BackboneElement):
     udi: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="udi",
-        title="List of `Reference` items referencing `Device` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Device` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Unique Device Identifier",
     )
 
@@ -1364,7 +1465,10 @@ class ExplanationOfBenefitItemDetailSubDetail(backboneelement.BackboneElement):
     adjudication: ListType[fhirtypes.ExplanationOfBenefitItemAdjudicationType] = Field(
         None,
         alias="adjudication",
-        title="List of `ExplanationOfBenefitItemAdjudication` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ExplanationOfBenefitItemAdjudication` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Language if different from the resource",
     )
 
@@ -1448,7 +1552,10 @@ class ExplanationOfBenefitItemDetailSubDetail(backboneelement.BackboneElement):
     udi: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="udi",
-        title="List of `Reference` items referencing `Device` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Device` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Unique Device Identifier",
     )
 
@@ -1470,7 +1577,10 @@ class ExplanationOfBenefitPayee(backboneelement.BackboneElement):
     party: fhirtypes.ReferenceType = Field(
         None,
         alias="party",
-        title="Type `Reference` referencing `Practitioner, Organization, Patient, RelatedPerson` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, Organization, Patient, "
+            "RelatedPerson` (represented as `dict` in JSON)"
+        ),
         description="Party to receive the payable",
     )
 
@@ -1565,7 +1675,10 @@ class ExplanationOfBenefitProcedure(backboneelement.BackboneElement):
     procedureReference: fhirtypes.ReferenceType = Field(
         None,
         alias="procedureReference",
-        title="Type `Reference` referencing `Procedure` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Procedure` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Patient\u0027s list of procedures performed",
         one_of_many="procedure",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
@@ -1593,7 +1706,7 @@ class ExplanationOfBenefitProcedure(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "procedure": ["procedureCodeableConcept", "procedureReference",],
+            "procedure": ["procedureCodeableConcept", "procedureReference"]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

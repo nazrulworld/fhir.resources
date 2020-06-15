@@ -50,7 +50,9 @@ class Device(domainresource.DomainResource):
     location: fhirtypes.ReferenceType = Field(
         None,
         alias="location",
-        title="Type `Reference` referencing `Location` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Location` (represented as `dict` in " "JSON)"
+        ),
         description="Where the resource is found",
     )
 
@@ -92,7 +94,10 @@ class Device(domainresource.DomainResource):
     owner: fhirtypes.ReferenceType = Field(
         None,
         alias="owner",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Organization responsible for device",
     )
 

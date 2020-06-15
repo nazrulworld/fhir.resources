@@ -47,7 +47,10 @@ class Patient(domainresource.DomainResource):
         None,
         alias="communication",
         title="List of `PatientCommunication` items (represented as `dict` in JSON)",
-        description="A language which may be used to communicate with the patient about his or her health",
+        description=(
+            "A language which may be used to communicate with the patient about his"
+            " or her health"
+        ),
     )
 
     contact: ListType[fhirtypes.PatientContactType] = Field(
@@ -85,7 +88,10 @@ class Patient(domainresource.DomainResource):
     generalPractitioner: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="generalPractitioner",
-        title="List of `Reference` items referencing `Organization, Practitioner, PractitionerRole` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Organization, Practitioner, "
+            "PractitionerRole` (represented as `dict` in JSON)"
+        ),
         description="Patient\u0027s nominated primary care provider",
     )
 
@@ -106,7 +112,10 @@ class Patient(domainresource.DomainResource):
     managingOrganization: fhirtypes.ReferenceType = Field(
         None,
         alias="managingOrganization",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Organization that is the custodian of the patient record",
     )
 
@@ -171,8 +180,8 @@ class Patient(domainresource.DomainResource):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "deceased": ["deceasedBoolean", "deceasedDateTime",],
-            "multipleBirth": ["multipleBirthBoolean", "multipleBirthInteger",],
+            "deceased": ["deceasedBoolean", "deceasedDateTime"],
+            "multipleBirth": ["multipleBirthBoolean", "multipleBirthInteger"],
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
@@ -207,7 +216,10 @@ class PatientCommunication(backboneelement.BackboneElement):
         ...,
         alias="language",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The language which can be used to communicate with the patient about his or her health",
+        description=(
+            "The language which can be used to communicate with the patient about "
+            "his or her health"
+        ),
     )
 
     preferred: bool = Field(
@@ -248,7 +260,10 @@ class PatientContact(backboneelement.BackboneElement):
     organization: fhirtypes.ReferenceType = Field(
         None,
         alias="organization",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Organization that is associated with the contact",
     )
 
@@ -256,7 +271,10 @@ class PatientContact(backboneelement.BackboneElement):
         None,
         alias="period",
         title="Type `Period` (represented as `dict` in JSON)",
-        description="The period during which this contact person or organization is valid to be contacted relating to this patient",
+        description=(
+            "The period during which this contact person or organization is valid "
+            "to be contacted relating to this patient"
+        ),
     )
 
     relationship: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -284,7 +302,10 @@ class PatientLink(backboneelement.BackboneElement):
     other: fhirtypes.ReferenceType = Field(
         ...,
         alias="other",
-        title="Type `Reference` referencing `Patient, RelatedPerson` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, RelatedPerson` (represented as "
+            "`dict` in JSON)"
+        ),
         description="The other patient or related person resource that the link refers to",
     )
 

@@ -6,15 +6,17 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import practitionerrole
 
 
 def impl_practitionerrole_1(inst):
     assert inst.active is True
-    assert (
-        inst.availabilityExceptions
-        == "Adam is generally unavailable on public holidays and during the Christmas/New Year break"
+    assert inst.availabilityExceptions == (
+        "Adam is generally unavailable on public holidays and during "
+        "the Christmas/New Year break"
     )
     assert inst.availableTime[0].availableEndTime == fhirtypes.Time.validate("16:30:00")
     assert inst.availableTime[0].availableStartTime == fhirtypes.Time.validate(

@@ -28,14 +28,22 @@ class EpisodeOfCare(domainresource.DomainResource):
     account: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="account",
-        title="List of `Reference` items referencing `Account` (represented as `dict` in JSON)",
-        description="The set of accounts that may be used for billing for this EpisodeOfCare",
+        title=(
+            "List of `Reference` items referencing `Account` (represented as `dict`"
+            " in JSON)"
+        ),
+        description=(
+            "The set of accounts that may be used for billing for this " "EpisodeOfCare"
+        ),
     )
 
     careManager: fhirtypes.ReferenceType = Field(
         None,
         alias="careManager",
-        title="Type `Reference` referencing `Practitioner, PractitionerRole` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, PractitionerRole` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Care manager/care coordinator for the patient",
     )
 
@@ -56,7 +64,10 @@ class EpisodeOfCare(domainresource.DomainResource):
     managingOrganization: fhirtypes.ReferenceType = Field(
         None,
         alias="managingOrganization",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Organization that assumes care",
     )
 
@@ -77,7 +88,10 @@ class EpisodeOfCare(domainresource.DomainResource):
     referralRequest: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="referralRequest",
-        title="List of `Reference` items referencing `ServiceRequest` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `ServiceRequest` (represented as"
+            " `dict` in JSON)"
+        ),
         description="Originating Referral Request(s)",
     )
 
@@ -85,20 +99,32 @@ class EpisodeOfCare(domainresource.DomainResource):
         ...,
         alias="status",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="planned | waitlist | active | onhold | finished | cancelled | entered-in-error",
+        description=(
+            "planned | waitlist | active | onhold | finished | cancelled | entered-"
+            "in-error"
+        ),
     )
 
     statusHistory: ListType[fhirtypes.EpisodeOfCareStatusHistoryType] = Field(
         None,
         alias="statusHistory",
-        title="List of `EpisodeOfCareStatusHistory` items (represented as `dict` in JSON)",
-        description="Past list of status codes (the current status may be included to cover the start date of the status)",
+        title=(
+            "List of `EpisodeOfCareStatusHistory` items (represented as `dict` in "
+            "JSON)"
+        ),
+        description=(
+            "Past list of status codes (the current status may be included to cover"
+            " the start date of the status)"
+        ),
     )
 
     team: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="team",
-        title="List of `Reference` items referencing `CareTeam` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `CareTeam` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Other practitioners facilitating this episode of care",
     )
 
@@ -119,7 +145,10 @@ class EpisodeOfCareDiagnosis(backboneelement.BackboneElement):
     condition: fhirtypes.ReferenceType = Field(
         ...,
         alias="condition",
-        title="Type `Reference` referencing `Condition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Condition` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Conditions/problems/diagnoses this episode of care is for",
     )
 
@@ -134,7 +163,10 @@ class EpisodeOfCareDiagnosis(backboneelement.BackboneElement):
         None,
         alias="role",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Role that this diagnosis has within the episode of care (e.g. admission, billing, discharge \u2026)",
+        description=(
+            "Role that this diagnosis has within the episode of care (e.g. "
+            "admission, billing, discharge \u2026)"
+        ),
     )
 
 
@@ -158,5 +190,8 @@ class EpisodeOfCareStatusHistory(backboneelement.BackboneElement):
         ...,
         alias="status",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="planned | waitlist | active | onhold | finished | cancelled | entered-in-error",
+        description=(
+            "planned | waitlist | active | onhold | finished | cancelled | entered-"
+            "in-error"
+        ),
     )

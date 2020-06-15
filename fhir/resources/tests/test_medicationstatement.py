@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import medicationstatement
 
@@ -28,9 +30,9 @@ def impl_medicationstatement_1(inst):
     assert (
         inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     )
-    assert (
-        inst.note[0].text
-        == "Patient indicated that they thought it was Amoxicillin they were taking but it was really Erythromycin"
+    assert inst.note[0].text == (
+        "Patient indicated that they thought it was Amoxicillin they "
+        "were taking but it was really Erythromycin"
     )
     assert inst.status == "entered-in-error"
     assert inst.subject.display == "Donald Duck"
@@ -163,9 +165,9 @@ def impl_medicationstatement_3(inst):
     assert (
         inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     )
-    assert (
-        inst.note[0].text
-        == "Patient cannot remember the name of the tablet, but takes it every day in the morning for water retention"
+    assert inst.note[0].text == (
+        "Patient cannot remember the name of the tablet, but takes it"
+        " every day in the morning for water retention"
     )
     assert inst.reasonReference[0].reference == "Observation/blood-pressure"
     assert inst.status == "active"
@@ -244,9 +246,8 @@ def test_medicationstatement_4(base_settings):
 def impl_medicationstatement_5(inst):
     assert inst.category.coding[0].code == "inpatient"
     assert inst.category.coding[0].display == "Inpatient"
-    assert (
-        inst.category.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/medication-statement-category"
+    assert inst.category.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/medication-statement-" "category"
     )
     assert inst.contained[0].id == "med0309"
     assert inst.dateAsserted == fhirtypes.DateTime.validate("2015-02-22T11:15:33+10:00")
@@ -282,9 +283,8 @@ def impl_medicationstatement_5(inst):
     assert inst.dosage[0].route.coding[0].display == "Oral Route"
     assert inst.dosage[0].route.coding[0].system == "http://snomed.info/sct"
     assert inst.dosage[0].sequence == 1
-    assert (
-        inst.dosage[0].text
-        == "1-2 tablets once daily at bedtime as needed for restless legs"
+    assert inst.dosage[0].text == (
+        "1-2 tablets once daily at bedtime as needed for restless " "legs"
     )
     assert inst.dosage[0].timing.repeat.frequency == 1
     assert float(inst.dosage[0].timing.repeat.period) == float(1)
@@ -345,9 +345,9 @@ def impl_medicationstatement_6(inst):
     assert (
         inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     )
-    assert (
-        inst.note[0].text
-        == "patient plans to start using for seasonal allergies in the Spring when pollen is in the air"
+    assert inst.note[0].text == (
+        "patient plans to start using for seasonal allergies in the "
+        "Spring when pollen is in the air"
     )
     assert inst.status == "active"
     assert inst.subject.display == "Donald Duck"

@@ -33,14 +33,20 @@ class GuidanceResponse(domainresource.DomainResource):
     encounter: fhirtypes.ReferenceType = Field(
         None,
         alias="encounter",
-        title="Type `Reference` referencing `Encounter` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Encounter` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Encounter during which the response was returned",
     )
 
     evaluationMessage: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="evaluationMessage",
-        title="List of `Reference` items referencing `OperationOutcome` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `OperationOutcome` (represented "
+            "as `dict` in JSON)"
+        ),
         description="Messages resulting from the evaluation of the artifact or artifacts",
     )
 
@@ -95,7 +101,10 @@ class GuidanceResponse(domainresource.DomainResource):
     outputParameters: fhirtypes.ReferenceType = Field(
         None,
         alias="outputParameters",
-        title="Type `Reference` referencing `Parameters` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Parameters` (represented as `dict` in "
+            "JSON)"
+        ),
         description="The output parameters of the evaluation, if any",
     )
 
@@ -116,7 +125,10 @@ class GuidanceResponse(domainresource.DomainResource):
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="reasonReference",
-        title="List of `Reference` items referencing `Condition, Observation, DiagnosticReport, DocumentReference` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Condition, Observation, "
+            "DiagnosticReport, DocumentReference` (represented as `dict` in JSON)"
+        ),
         description="Why guidance is needed",
     )
 
@@ -130,7 +142,10 @@ class GuidanceResponse(domainresource.DomainResource):
     result: fhirtypes.ReferenceType = Field(
         None,
         alias="result",
-        title="Type `Reference` referencing `CarePlan, RequestGroup` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `CarePlan, RequestGroup` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Proposed actions, if any",
     )
 
@@ -138,13 +153,19 @@ class GuidanceResponse(domainresource.DomainResource):
         ...,
         alias="status",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="success | data-requested | data-required | in-progress | failure | entered-in-error",
+        description=(
+            "success | data-requested | data-required | in-progress | failure | "
+            "entered-in-error"
+        ),
     )
 
     subject: fhirtypes.ReferenceType = Field(
         None,
         alias="subject",
-        title="Type `Reference` referencing `Patient, Group` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Group` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Patient the request was performed for",
     )
 
@@ -163,7 +184,7 @@ class GuidanceResponse(domainresource.DomainResource):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "module": ["moduleCanonical", "moduleCodeableConcept", "moduleUri",],
+            "module": ["moduleCanonical", "moduleCodeableConcept", "moduleUri"]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

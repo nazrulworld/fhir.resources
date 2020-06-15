@@ -53,7 +53,10 @@ class Invoice(domainresource.DomainResource):
     issuer: fhirtypes.ReferenceType = Field(
         None,
         alias="issuer",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Issuing Organization of Invoice",
     )
 
@@ -88,7 +91,10 @@ class Invoice(domainresource.DomainResource):
     recipient: fhirtypes.ReferenceType = Field(
         None,
         alias="recipient",
-        title="Type `Reference` referencing `Organization, Patient, RelatedPerson` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization, Patient, RelatedPerson` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Recipient of this invoice",
     )
 
@@ -102,7 +108,10 @@ class Invoice(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         None,
         alias="subject",
-        title="Type `Reference` referencing `Patient, Group` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Group` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Recipient(s) of goods and services",
     )
 
@@ -123,7 +132,10 @@ class Invoice(domainresource.DomainResource):
     totalPriceComponent: ListType[fhirtypes.InvoiceLineItemPriceComponentType] = Field(
         None,
         alias="totalPriceComponent",
-        title="List of `InvoiceLineItemPriceComponent` items (represented as `dict` in JSON)",
+        title=(
+            "List of `InvoiceLineItemPriceComponent` items (represented as `dict` "
+            "in JSON)"
+        ),
         description="Components of Invoice total",
     )
 
@@ -148,7 +160,10 @@ class InvoiceLineItem(backboneelement.BackboneElement):
         None,
         alias="chargeItemCodeableConcept",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Reference to ChargeItem containing details of this line item or an inline billing code",
+        description=(
+            "Reference to ChargeItem containing details of this line item or an "
+            "inline billing code"
+        ),
         one_of_many="chargeItem",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
     )
@@ -156,8 +171,14 @@ class InvoiceLineItem(backboneelement.BackboneElement):
     chargeItemReference: fhirtypes.ReferenceType = Field(
         None,
         alias="chargeItemReference",
-        title="Type `Reference` referencing `ChargeItem` (represented as `dict` in JSON)",
-        description="Reference to ChargeItem containing details of this line item or an inline billing code",
+        title=(
+            "Type `Reference` referencing `ChargeItem` (represented as `dict` in "
+            "JSON)"
+        ),
+        description=(
+            "Reference to ChargeItem containing details of this line item or an "
+            "inline billing code"
+        ),
         one_of_many="chargeItem",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
     )
@@ -165,7 +186,10 @@ class InvoiceLineItem(backboneelement.BackboneElement):
     priceComponent: ListType[fhirtypes.InvoiceLineItemPriceComponentType] = Field(
         None,
         alias="priceComponent",
-        title="List of `InvoiceLineItemPriceComponent` items (represented as `dict` in JSON)",
+        title=(
+            "List of `InvoiceLineItemPriceComponent` items (represented as `dict` "
+            "in JSON)"
+        ),
         description="Components of total line item price",
     )
 
@@ -191,7 +215,7 @@ class InvoiceLineItem(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "chargeItem": ["chargeItemCodeableConcept", "chargeItemReference",],
+            "chargeItem": ["chargeItemCodeableConcept", "chargeItemReference"]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
@@ -266,7 +290,11 @@ class InvoiceParticipant(backboneelement.BackboneElement):
     actor: fhirtypes.ReferenceType = Field(
         ...,
         alias="actor",
-        title="Type `Reference` referencing `Practitioner, Organization, Patient, PractitionerRole, Device, RelatedPerson` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, Organization, Patient, "
+            "PractitionerRole, Device, RelatedPerson` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Individual who was involved",
     )
 

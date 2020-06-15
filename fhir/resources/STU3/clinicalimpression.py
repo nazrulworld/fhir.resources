@@ -31,14 +31,21 @@ class ClinicalImpression(domainresource.DomainResource):
     action: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="action",
-        title="List of `Reference` items referencing `ReferralRequest, ProcedureRequest, Procedure, MedicationRequest, Appointment` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `ReferralRequest, "
+            "ProcedureRequest, Procedure, MedicationRequest, Appointment` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Action taken as part of assessment procedure",
     )
 
     assessor: fhirtypes.ReferenceType = Field(
         None,
         alias="assessor",
-        title="Type `Reference` referencing `Practitioner` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner` (represented as `dict` in "
+            "JSON)"
+        ),
         description="The clinician performing the assessment",
     )
 
@@ -52,7 +59,10 @@ class ClinicalImpression(domainresource.DomainResource):
     context: fhirtypes.ReferenceType = Field(
         None,
         alias="context",
-        title="Type `Reference` referencing `Encounter, EpisodeOfCare` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Encounter, EpisodeOfCare` (represented "
+            "as `dict` in JSON)"
+        ),
         description="Encounter or Episode created from",
     )
 
@@ -91,7 +101,10 @@ class ClinicalImpression(domainresource.DomainResource):
     finding: ListType[fhirtypes.ClinicalImpressionFindingType] = Field(
         None,
         alias="finding",
-        title="List of `ClinicalImpressionFinding` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ClinicalImpressionFinding` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Possible or likely findings and diagnoses",
     )
 
@@ -105,7 +118,10 @@ class ClinicalImpression(domainresource.DomainResource):
     investigation: ListType[fhirtypes.ClinicalImpressionInvestigationType] = Field(
         None,
         alias="investigation",
-        title="List of `ClinicalImpressionInvestigation` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ClinicalImpressionInvestigation` items (represented as `dict`"
+            " in JSON)"
+        ),
         description="One or more sets of investigations (signs, symptions, etc.)",
     )
 
@@ -119,14 +135,20 @@ class ClinicalImpression(domainresource.DomainResource):
     previous: fhirtypes.ReferenceType = Field(
         None,
         alias="previous",
-        title="Type `Reference` referencing `ClinicalImpression` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `ClinicalImpression` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Reference to last assessment",
     )
 
     problem: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="problem",
-        title="List of `Reference` items referencing `Condition, AllergyIntolerance` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Condition, AllergyIntolerance` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Relevant impressions of patient state",
     )
 
@@ -140,7 +162,10 @@ class ClinicalImpression(domainresource.DomainResource):
     prognosisReference: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="prognosisReference",
-        title="List of `Reference` items referencing `RiskAssessment` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `RiskAssessment` (represented as"
+            " `dict` in JSON)"
+        ),
         description="RiskAssessment expressing likely outcome",
     )
 
@@ -161,7 +186,10 @@ class ClinicalImpression(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         ...,
         alias="subject",
-        title="Type `Reference` referencing `Patient, Group` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Group` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Patient or group assessed",
     )
 
@@ -186,9 +214,7 @@ class ClinicalImpression(domainresource.DomainResource):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "effective": ["effectiveDateTime", "effectivePeriod",],
-        }
+        one_of_many_fields = {"effective": ["effectiveDateTime", "effectivePeriod"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -238,7 +264,10 @@ class ClinicalImpressionFinding(backboneelement.BackboneElement):
     itemReference: fhirtypes.ReferenceType = Field(
         None,
         alias="itemReference",
-        title="Type `Reference` referencing `Condition, Observation` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Condition, Observation` (represented as "
+            "`dict` in JSON)"
+        ),
         description="What was found",
         one_of_many="item",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
@@ -258,9 +287,7 @@ class ClinicalImpressionFinding(backboneelement.BackboneElement):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "item": ["itemCodeableConcept", "itemReference",],
-        }
+        one_of_many_fields = {"item": ["itemCodeableConcept", "itemReference"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -304,6 +331,10 @@ class ClinicalImpressionInvestigation(backboneelement.BackboneElement):
     item: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="item",
-        title="List of `Reference` items referencing `Observation, QuestionnaireResponse, FamilyMemberHistory, DiagnosticReport, RiskAssessment, ImagingStudy` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Observation, "
+            "QuestionnaireResponse, FamilyMemberHistory, DiagnosticReport, "
+            "RiskAssessment, ImagingStudy` (represented as `dict` in JSON)"
+        ),
         description="Record of a specific investigation",
     )

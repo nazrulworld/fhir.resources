@@ -24,7 +24,10 @@ class Annotation(element.Element):
     authorReference: fhirtypes.ReferenceType = Field(
         None,
         alias="authorReference",
-        title="Type `Reference` referencing `Practitioner, Patient, RelatedPerson` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, Patient, RelatedPerson` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Individual responsible for the annotation",
         one_of_many="author",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -67,9 +70,7 @@ class Annotation(element.Element):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "author": ["authorReference", "authorString",],
-        }
+        one_of_many_fields = {"author": ["authorReference", "authorString"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (

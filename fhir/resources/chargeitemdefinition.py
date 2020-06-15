@@ -28,7 +28,10 @@ class ChargeItemDefinition(domainresource.DomainResource):
     applicability: ListType[fhirtypes.ChargeItemDefinitionApplicabilityType] = Field(
         None,
         alias="applicability",
-        title="List of `ChargeItemDefinitionApplicability` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ChargeItemDefinitionApplicability` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Whether or not the billing code is applicable",
     )
 
@@ -105,7 +108,10 @@ class ChargeItemDefinition(domainresource.DomainResource):
     instance: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="instance",
-        title="List of `Reference` items referencing `Medication, Substance, Device` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Medication, Substance, Device` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Instances this definition applies to",
     )
 
@@ -126,14 +132,23 @@ class ChargeItemDefinition(domainresource.DomainResource):
     partOf: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="partOf",
-        title="List of `Canonical` items referencing `ChargeItemDefinition` (represented as `dict` in JSON)",
-        description="A larger definition of which this particular definition is a component or step",
+        title=(
+            "List of `Canonical` items referencing `ChargeItemDefinition` "
+            "(represented as `dict` in JSON)"
+        ),
+        description=(
+            "A larger definition of which this particular definition is a component"
+            " or step"
+        ),
     )
 
     propertyGroup: ListType[fhirtypes.ChargeItemDefinitionPropertyGroupType] = Field(
         None,
         alias="propertyGroup",
-        title="List of `ChargeItemDefinitionPropertyGroup` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ChargeItemDefinitionPropertyGroup` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Group of properties which are applicable under the same conditions",
     )
 
@@ -147,8 +162,14 @@ class ChargeItemDefinition(domainresource.DomainResource):
     replaces: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="replaces",
-        title="List of `Canonical` items referencing `ChargeItemDefinition` (represented as `dict` in JSON)",
-        description="Completed or terminated request(s) whose function is taken by this new request",
+        title=(
+            "List of `Canonical` items referencing `ChargeItemDefinition` "
+            "(represented as `dict` in JSON)"
+        ),
+        description=(
+            "Completed or terminated request(s) whose function is taken by this new"
+            " request"
+        ),
     )
 
     status: fhirtypes.Code = Field(
@@ -169,7 +190,10 @@ class ChargeItemDefinition(domainresource.DomainResource):
         ...,
         alias="url",
         title="Type `Uri` (represented as `dict` in JSON)",
-        description="Canonical identifier for this charge item definition, represented as a URI (globally unique)",
+        description=(
+            "Canonical identifier for this charge item definition, represented as a"
+            " URI (globally unique)"
+        ),
     )
 
     useContext: ListType[fhirtypes.UsageContextType] = Field(
@@ -228,7 +252,10 @@ class ChargeItemDefinitionPropertyGroup(backboneelement.BackboneElement):
     applicability: ListType[fhirtypes.ChargeItemDefinitionApplicabilityType] = Field(
         None,
         alias="applicability",
-        title="List of `ChargeItemDefinitionApplicability` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ChargeItemDefinitionApplicability` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Conditions under which the priceComponent is applicable",
     )
 
@@ -237,7 +264,10 @@ class ChargeItemDefinitionPropertyGroup(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="priceComponent",
-        title="List of `ChargeItemDefinitionPropertyGroupPriceComponent` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ChargeItemDefinitionPropertyGroupPriceComponent` items "
+            "(represented as `dict` in JSON)"
+        ),
         description="Components of total line item price",
     )
 

@@ -103,7 +103,9 @@ class ConceptMap(domainresource.DomainResource):
     sourceReference: fhirtypes.ReferenceType = Field(
         None,
         alias="sourceReference",
-        title="Type `Reference` referencing `ValueSet` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `ValueSet` (represented as `dict` in " "JSON)"
+        ),
         description="Identifies the source of the concepts which are being mapped",
         one_of_many="source",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -128,7 +130,9 @@ class ConceptMap(domainresource.DomainResource):
     targetReference: fhirtypes.ReferenceType = Field(
         None,
         alias="targetReference",
-        title="Type `Reference` referencing `ValueSet` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `ValueSet` (represented as `dict` in " "JSON)"
+        ),
         description="Provides context to the mappings",
         one_of_many="target",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -186,8 +190,8 @@ class ConceptMap(domainresource.DomainResource):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "source": ["sourceReference", "sourceUri",],
-            "target": ["targetReference", "targetUri",],
+            "source": ["sourceReference", "sourceUri"],
+            "target": ["targetReference", "targetUri"],
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
@@ -286,7 +290,10 @@ class ConceptMapGroupElement(backboneelement.BackboneElement):
     target: ListType[fhirtypes.ConceptMapGroupElementTargetType] = Field(
         None,
         alias="target",
-        title="List of `ConceptMapGroupElementTarget` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ConceptMapGroupElementTarget` items (represented as `dict` in"
+            " JSON)"
+        ),
         description="Concept in target system for element",
     )
 
@@ -315,7 +322,10 @@ class ConceptMapGroupElementTarget(backboneelement.BackboneElement):
     dependsOn: ListType[fhirtypes.ConceptMapGroupElementTargetDependsOnType] = Field(
         None,
         alias="dependsOn",
-        title="List of `ConceptMapGroupElementTargetDependsOn` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ConceptMapGroupElementTargetDependsOn` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Other elements required for this mapping (from context)",
     )
 
@@ -330,13 +340,19 @@ class ConceptMapGroupElementTarget(backboneelement.BackboneElement):
         None,
         alias="equivalence",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="relatedto | equivalent | equal | wider | subsumes | narrower | specializes | inexact | unmatched | disjoint",
+        description=(
+            "relatedto | equivalent | equal | wider | subsumes | narrower | "
+            "specializes | inexact | unmatched | disjoint"
+        ),
     )
 
     product: ListType[fhirtypes.ConceptMapGroupElementTargetDependsOnType] = Field(
         None,
         alias="product",
-        title="List of `ConceptMapGroupElementTargetDependsOn` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ConceptMapGroupElementTargetDependsOn` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Other concepts that this mapping also produces",
     )
 

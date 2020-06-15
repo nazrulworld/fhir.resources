@@ -36,7 +36,10 @@ class MedicinalProductIngredient(domainresource.DomainResource):
     manufacturer: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="manufacturer",
-        title="List of `Reference` items referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Organization` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Manufacturer of this Ingredient",
     )
 
@@ -52,14 +55,20 @@ class MedicinalProductIngredient(domainresource.DomainResource):
     ] = Field(
         None,
         alias="specifiedSubstance",
-        title="List of `MedicinalProductIngredientSpecifiedSubstance` items (represented as `dict` in JSON)",
+        title=(
+            "List of `MedicinalProductIngredientSpecifiedSubstance` items "
+            "(represented as `dict` in JSON)"
+        ),
         description="A specified substance that comprises this ingredient",
     )
 
     substance: fhirtypes.MedicinalProductIngredientSubstanceType = Field(
         None,
         alias="substance",
-        title="Type `MedicinalProductIngredientSubstance` (represented as `dict` in JSON)",
+        title=(
+            "Type `MedicinalProductIngredientSubstance` (represented as `dict` in "
+            "JSON)"
+        ),
         description="The ingredient substance",
     )
 
@@ -96,8 +105,14 @@ class MedicinalProductIngredientSpecifiedSubstance(backboneelement.BackboneEleme
     ] = Field(
         None,
         alias="strength",
-        title="List of `MedicinalProductIngredientSpecifiedSubstanceStrength` items (represented as `dict` in JSON)",
-        description="Quantity of the substance or specified substance present in the manufactured item or pharmaceutical product",
+        title=(
+            "List of `MedicinalProductIngredientSpecifiedSubstanceStrength` items "
+            "(represented as `dict` in JSON)"
+        ),
+        description=(
+            "Quantity of the substance or specified substance present in the "
+            "manufactured item or pharmaceutical product"
+        ),
     )
 
 
@@ -123,7 +138,11 @@ class MedicinalProductIngredientSpecifiedSubstanceStrength(
         None,
         alias="concentrationLowLimit",
         title="Type `Ratio` (represented as `dict` in JSON)",
-        description="A lower limit for the strength per unitary volume (or mass), for when there is a range. The concentration attribute then becomes the upper limit",
+        description=(
+            "A lower limit for the strength per unitary volume (or mass), for when "
+            "there is a range. The concentration attribute then becomes the upper "
+            "limit"
+        ),
     )
 
     country: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -144,14 +163,22 @@ class MedicinalProductIngredientSpecifiedSubstanceStrength(
         ...,
         alias="presentation",
         title="Type `Ratio` (represented as `dict` in JSON)",
-        description="The quantity of substance in the unit of presentation, or in the volume (or mass) of the single pharmaceutical product or manufactured item",
+        description=(
+            "The quantity of substance in the unit of presentation, or in the "
+            "volume (or mass) of the single pharmaceutical product or manufactured "
+            "item"
+        ),
     )
 
     presentationLowLimit: fhirtypes.RatioType = Field(
         None,
         alias="presentationLowLimit",
         title="Type `Ratio` (represented as `dict` in JSON)",
-        description="A lower limit for the quantity of substance in the unit of presentation. For use when there is a range of strengths, this is the lower limit, with the presentation attribute becoming the upper limit",
+        description=(
+            "A lower limit for the quantity of substance in the unit of "
+            "presentation. For use when there is a range of strengths, this is the "
+            "lower limit, with the presentation attribute becoming the upper limit"
+        ),
     )
 
     referenceStrength: ListType[
@@ -159,7 +186,10 @@ class MedicinalProductIngredientSpecifiedSubstanceStrength(
     ] = Field(
         None,
         alias="referenceStrength",
-        title="List of `MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength` items (represented as `dict` in JSON)",
+        title=(
+            "List of `MedicinalProductIngredientSpecifiedSubstanceStrengthReference"
+            "Strength` items (represented as `dict` in JSON)"
+        ),
         description="Strength expressed in terms of a reference substance",
     )
 
@@ -229,6 +259,12 @@ class MedicinalProductIngredientSubstance(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="strength",
-        title="List of `MedicinalProductIngredientSpecifiedSubstanceStrength` items (represented as `dict` in JSON)",
-        description="Quantity of the substance or specified substance present in the manufactured item or pharmaceutical product",
+        title=(
+            "List of `MedicinalProductIngredientSpecifiedSubstanceStrength` items "
+            "(represented as `dict` in JSON)"
+        ),
+        description=(
+            "Quantity of the substance or specified substance present in the "
+            "manufactured item or pharmaceutical product"
+        ),
     )

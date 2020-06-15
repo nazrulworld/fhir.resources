@@ -42,14 +42,20 @@ class ImagingStudy(domainresource.DomainResource):
     basedOn: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="basedOn",
-        title="List of `Reference` items referencing `ReferralRequest, CarePlan, ProcedureRequest` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `ReferralRequest, CarePlan, "
+            "ProcedureRequest` (represented as `dict` in JSON)"
+        ),
         description="Request fulfilled",
     )
 
     context: fhirtypes.ReferenceType = Field(
         None,
         alias="context",
-        title="Type `Reference` referencing `Encounter, EpisodeOfCare` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Encounter, EpisodeOfCare` (represented "
+            "as `dict` in JSON)"
+        ),
         description="Originating context",
     )
 
@@ -63,7 +69,10 @@ class ImagingStudy(domainresource.DomainResource):
     endpoint: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="endpoint",
-        title="List of `Reference` items referencing `Endpoint` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Endpoint` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Study access endpoint",
     )
 
@@ -77,7 +86,10 @@ class ImagingStudy(domainresource.DomainResource):
     interpreter: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="interpreter",
-        title="List of `Reference` items referencing `Practitioner` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Practitioner` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Who interpreted images",
     )
 
@@ -119,7 +131,10 @@ class ImagingStudy(domainresource.DomainResource):
     procedureReference: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="procedureReference",
-        title="List of `Reference` items referencing `Procedure` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Procedure` (represented as "
+            "`dict` in JSON)"
+        ),
         description="The performed Procedure reference",
     )
 
@@ -133,7 +148,10 @@ class ImagingStudy(domainresource.DomainResource):
     referrer: fhirtypes.ReferenceType = Field(
         None,
         alias="referrer",
-        title="Type `Reference` referencing `Practitioner` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Referring physician",
     )
 
@@ -190,14 +208,20 @@ class ImagingStudySeries(backboneelement.BackboneElement):
     endpoint: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="endpoint",
-        title="List of `Reference` items referencing `Endpoint` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Endpoint` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Series access endpoint",
     )
 
     instance: ListType[fhirtypes.ImagingStudySeriesInstanceType] = Field(
         None,
         alias="instance",
-        title="List of `ImagingStudySeriesInstance` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ImagingStudySeriesInstance` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="A single SOP instance from the series",
     )
 
@@ -232,7 +256,10 @@ class ImagingStudySeries(backboneelement.BackboneElement):
     performer: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="performer",
-        title="List of `Reference` items referencing `Practitioner` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Practitioner` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Who performed the series",
     )
 

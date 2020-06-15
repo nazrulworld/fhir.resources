@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import contract
 
@@ -38,9 +40,8 @@ def impl_contract_1(inst):
     )
     assert inst.subject[0].display == "P. van de Heuvel"
     assert inst.subject[0].reference == "Patient/f001"
-    assert (
-        inst.term[0].offer.text
-        == "Withhold this order and any results or related objects from any provider."
+    assert inst.term[0].offer.text == (
+        "Withhold this order and any results or related objects from " "any provider."
     )
     assert inst.term[0].offer.topic.display == "Good Health Clinic"
     assert inst.term[0].offer.topic.reference == "Organization/2.16.840.1.113883.19.5"
@@ -169,9 +170,8 @@ def impl_contract_3(inst):
         "2013-11-01T21:18:27-04:00"
     )
     assert inst.contentDerivative.coding[0].code == "registration"
-    assert (
-        inst.contentDerivative.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/contract-content-derivative"
+    assert inst.contentDerivative.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/contract-content-" "derivative"
     )
     assert inst.id == "C-2121"
     assert inst.issued == fhirtypes.DateTime.validate("2013-11-01T21:18:27-04:00")
@@ -403,9 +403,8 @@ def impl_contract_5(inst):
     )
     assert inst.signer[0].signature[0].who.reference == "Patient/f001"
     assert inst.signer[0].type.code == "COVPTY"
-    assert (
-        inst.signer[0].type.system
-        == "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
+    assert inst.signer[0].type.system == (
+        "http://terminology.hl7.org/CodeSystem/contractsignertypecode" "s"
     )
     assert inst.subType[0].coding[0].code == "Opt-In"
     assert inst.subType[0].coding[0].display == "Default Authorization with exceptions."
@@ -415,9 +414,9 @@ def impl_contract_5(inst):
     )
     assert inst.subject[0].display == "P. van de Heuvel"
     assert inst.subject[0].reference == "Patient/f001"
-    assert (
-        inst.term[0].offer.text
-        == "Withhold this order and any results or related objects from specified nurse provider."
+    assert inst.term[0].offer.text == (
+        "Withhold this order and any results or related objects from "
+        "specified nurse provider."
     )
     assert inst.term[0].offer.topic.display == "Fictive Nurse"
     assert inst.term[0].offer.topic.reference == "Practitioner/f204"
@@ -562,9 +561,9 @@ def impl_contract_7(inst):
     assert inst.term[0].asset[0].valuedItem[0].unitPrice.currency == "CAD"
     assert float(inst.term[0].asset[0].valuedItem[0].unitPrice.value) == float(200.0)
     assert inst.term[0].offer.text == "Can't refuse"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the contract</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the contract</div>"
     )
     assert inst.text.status == "generated"
 
@@ -625,15 +624,14 @@ def impl_contract_8(inst):
     assert inst.term[0].issued == fhirtypes.DateTime.validate(
         "2015-11-01T11:15:33+10:00"
     )
-    assert (
-        inst.term[0].offer.text
-        == "Withhold this order and any results or related objects from any provider."
+    assert inst.term[0].offer.text == (
+        "Withhold this order and any results or related objects from " "any provider."
     )
     assert inst.term[0].offer.topic.reference == "ServiceRequest/lipid"
     assert inst.term[0].type.coding[0].code == "withhold-identified-object-and-related"
-    assert (
-        inst.term[0].type.coding[0].display
-        == "Withhold the identified object and any other resources that are related to this object."
+    assert inst.term[0].type.coding[0].display == (
+        "Withhold the identified object and any other resources that "
+        "are related to this object."
     )
     assert (
         inst.term[0].type.coding[0].system

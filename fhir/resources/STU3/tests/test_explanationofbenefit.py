@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import explanationofbenefit
 
@@ -57,9 +59,9 @@ def impl_explanationofbenefit_1(inst):
     assert inst.payee.type.coding[0].system == "http://hl7.org/fhir/payeetype"
     assert inst.provider.reference == "Practitioner/1"
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the ExplanationOfBenefit</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the ExplanationOfBenefit</div>"
     )
     assert inst.text.status == "generated"
     assert inst.totalBenefit.code == "USD"

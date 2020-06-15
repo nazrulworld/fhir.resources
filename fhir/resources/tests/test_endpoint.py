@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import endpoint
 
@@ -13,9 +15,8 @@ from .. import endpoint
 def impl_endpoint_1(inst):
     assert inst.address == "https://pacs.hospital.org/IHEInvokeImageDisplay"
     assert inst.connectionType.code == "ihe-iid"
-    assert (
-        inst.connectionType.system
-        == "http://terminology.hl7.org/CodeSystem/endpoint-connection-type"
+    assert inst.connectionType.system == (
+        "http://terminology.hl7.org/CodeSystem/endpoint-connection-" "type"
     )
     assert inst.id == "example-iid"
     assert inst.meta.tag[0].code == "HTEST"
@@ -91,9 +92,8 @@ def test_endpoint_2(base_settings):
 def impl_endpoint_3(inst):
     assert inst.address == "https://pacs.hospital.org/wado-rs"
     assert inst.connectionType.code == "dicom-wado-rs"
-    assert (
-        inst.connectionType.system
-        == "http://terminology.hl7.org/CodeSystem/endpoint-connection-type"
+    assert inst.connectionType.system == (
+        "http://terminology.hl7.org/CodeSystem/endpoint-connection-" "type"
     )
     assert inst.id == "example-wadors"
     assert inst.meta.tag[0].code == "HTEST"
@@ -131,9 +131,8 @@ def test_endpoint_3(base_settings):
 def impl_endpoint_4(inst):
     assert inst.address == "http://fhir3.healthintersections.com.au/open/CarePlan"
     assert inst.connectionType.code == "hl7-fhir-rest"
-    assert (
-        inst.connectionType.system
-        == "http://terminology.hl7.org/CodeSystem/endpoint-connection-type"
+    assert inst.connectionType.system == (
+        "http://terminology.hl7.org/CodeSystem/endpoint-connection-" "type"
     )
     assert inst.contact[0].system == "email"
     assert inst.contact[0].use == "work"

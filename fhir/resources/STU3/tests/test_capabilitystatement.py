@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import capabilitystatement
 
@@ -16,9 +18,8 @@ def impl_capabilitystatement_1(inst):
     assert inst.contact[0].telecom[0].system == "email"
     assert inst.contact[0].telecom[0].value == "wile@acme.org"
     assert inst.date == fhirtypes.DateTime.validate("2012-01-04")
-    assert (
-        inst.description
-        == "Sample capability statement showing new MessageDefinition structure"
+    assert inst.description == (
+        "Sample capability statement showing new MessageDefinition " "structure"
     )
     assert inst.experimental is True
     assert inst.fhirVersion == "3.0.1"
@@ -78,18 +79,19 @@ def impl_capabilitystatement_2(inst):
     assert inst.contact[0].telecom[0].value == "wile@acme.org"
     assert inst.copyright == "Copyright © Acme Healthcare and GoodCorp EHR Systems"
     assert inst.date == fhirtypes.DateTime.validate("2012-01-04")
-    assert (
-        inst.description
-        == "This is the FHIR capability statement for the main EHR at ACME for the private interface - it does not describe the public interface"
+    assert inst.description == (
+        "This is the FHIR capability statement for the main EHR at "
+        "ACME for the private interface - it does not describe the "
+        "public interface"
     )
     assert (
         inst.document[0].documentation
         == "Basic rules for all documents in the EHR system"
     )
     assert inst.document[0].mode == "consumer"
-    assert (
-        inst.document[0].profile.reference
-        == "http://fhir.hl7.org/base/Profilebc054d23-75e1-4dc6-aca5-838b6b1ac81d/_history/b5fdd9fc-b021-4ea1-911a-721a60663796"
+    assert inst.document[0].profile.reference == (
+        "http://fhir.hl7.org/base/Profilebc054d23-75e1-4dc6-aca5-838b"
+        "6b1ac81d/_history/b5fdd9fc-b021-4ea1-911a-721a60663796"
     )
     assert inst.experimental is True
     assert inst.fhirVersion == "1.0.0"
@@ -119,9 +121,9 @@ def impl_capabilitystatement_2(inst):
     assert (
         inst.messaging[0].event[0].code.system == "http://hl7.org/fhir/message-events"
     )
-    assert (
-        inst.messaging[0].event[0].documentation
-        == "Notification of an update to a patient resource. changing the links is not supported"
+    assert inst.messaging[0].event[0].documentation == (
+        "Notification of an update to a patient resource. changing "
+        "the links is not supported"
     )
     assert inst.messaging[0].event[0].focus == "Patient"
     assert inst.messaging[0].event[0].mode == "receiver"
@@ -134,14 +136,13 @@ def impl_capabilitystatement_2(inst):
     assert inst.name == "ACME-EHR"
     assert inst.patchFormat[0] == "application/xml-patch+xml"
     assert inst.patchFormat[1] == "application/json-patch+json"
-    assert (
-        inst.profile[0].reference
-        == "http://hl7.org/fhir/us/core/StructureDefinition/familymemberhistory-genetic"
+    assert inst.profile[0].reference == (
+        "http://hl7.org/fhir/us/core/StructureDefinition/familymember" "history-genetic"
     )
     assert inst.publisher == "ACME Corporation"
-    assert (
-        inst.purpose
-        == "Main EHR capability statement, published for contracting and operational support"
+    assert inst.purpose == (
+        "Main EHR capability statement, published for contracting and"
+        " operational support"
     )
     assert (
         inst.rest[0].compartment[0]
@@ -169,9 +170,9 @@ def impl_capabilitystatement_2(inst):
     assert inst.rest[0].resource[0].interaction[3].code == "history-instance"
     assert inst.rest[0].resource[0].interaction[4].code == "create"
     assert inst.rest[0].resource[0].interaction[5].code == "history-type"
-    assert (
-        inst.rest[0].resource[0].profile.reference
-        == "http://fhir.hl7.org/base/StructureDefinition/7896271d-57f6-4231-89dc-dcc91eab2416"
+    assert inst.rest[0].resource[0].profile.reference == (
+        "http://fhir.hl7.org/base/StructureDefinition/7896271d-57f6-4"
+        "231-89dc-dcc91eab2416"
     )
     assert inst.rest[0].resource[0].readHistory is True
     assert inst.rest[0].resource[0].searchInclude[0] == "Organization"
@@ -185,9 +186,8 @@ def impl_capabilitystatement_2(inst):
     )
     assert inst.rest[0].resource[0].searchParam[0].name == "identifier"
     assert inst.rest[0].resource[0].searchParam[0].type == "token"
-    assert (
-        inst.rest[0].resource[0].searchParam[1].definition
-        == "http://hl7.org/fhir/SearchParameter/Patient-general-practitioner"
+    assert inst.rest[0].resource[0].searchParam[1].definition == (
+        "http://hl7.org/fhir/SearchParameter/Patient-general-" "practitioner"
     )
     assert inst.rest[0].resource[0].searchParam[1].name == "general-practitioner"
     assert inst.rest[0].resource[0].searchParam[1].type == "reference"
@@ -195,7 +195,9 @@ def impl_capabilitystatement_2(inst):
     assert inst.rest[0].resource[0].type == "Patient"
     assert inst.rest[0].resource[0].updateCreate is False
     assert inst.rest[0].resource[0].versioning == "versioned-update"
-    # Don't know how to create unit test for "rest[0].security.certificate[0].blob", which is a Base64Binary
+    assert inst.rest[0].security.certificate[0].blob == bytes_validator(
+        "IHRoaXMgYmxvYiBpcyBub3QgdmFsaWQ="
+    )
     assert inst.rest[0].security.certificate[0].type == "application/jwt"
     assert inst.rest[0].security.cors is True
     assert inst.rest[0].security.description == "See Smart on FHIR documentation"
@@ -247,9 +249,10 @@ def impl_capabilitystatement_3(inst):
     assert inst.contact[0].telecom[0].system == "other"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert inst.date == fhirtypes.DateTime.validate("2016-09-16")
-    assert (
-        inst.description
-        == "Basic conformance statement for a Measure Processor Service. A server can support more functionality    than defined here, but this is the minimum amount"
+    assert inst.description == (
+        "Basic conformance statement for a Measure Processor Service."
+        " A server can support more functionality    than defined "
+        "here, but this is the minimum amount"
     )
     assert inst.fhirVersion == "3.0.1"
     assert inst.format[0] == "json"
@@ -271,14 +274,13 @@ def impl_capabilitystatement_3(inst):
     )
     assert inst.rest[0].operation[1].name == "data-requirements"
     assert inst.rest[0].resource[0].interaction[0].code == "read"
-    assert (
-        inst.rest[0].resource[0].interaction[0].documentation
-        == "Read allows clients to get the logical definitions of the measures"
+    assert inst.rest[0].resource[0].interaction[0].documentation == (
+        "Read allows clients to get the logical definitions of the " "measures"
     )
     assert inst.rest[0].resource[0].interaction[1].code == "search-type"
-    assert (
-        inst.rest[0].resource[0].interaction[1].documentation
-        == "Search allows clients to filter measures based on a provided search parameter"
+    assert inst.rest[0].resource[0].interaction[1].documentation == (
+        "Search allows clients to filter measures based on a provided"
+        " search parameter"
     )
     assert inst.rest[0].resource[0].profile.reference == "StructureDefinition/Measure"
     assert (
@@ -341,13 +343,14 @@ def impl_capabilitystatement_4(inst):
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert inst.date == fhirtypes.DateTime.validate("2015-07-05")
-    assert (
-        inst.description
-        == "Basic capability statement for a Terminology Server. A server can support more fucntionality than defined here, but this is the minimum amount"
+    assert inst.description == (
+        "Basic capability statement for a Terminology Server. A "
+        "server can support more fucntionality than defined here, but"
+        " this is the minimum amount"
     )
-    assert (
-        inst.extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/capabilitystatement-supported-system"
+    assert inst.extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/capabilitystatement-"
+        "supported-system"
     )
     assert inst.extension[0].valueUri == "http://loinc.org"
     assert inst.fhirVersion == "3.0.1"
@@ -385,9 +388,8 @@ def impl_capabilitystatement_4(inst):
     )
     assert inst.rest[0].operation[4].name == "closure"
     assert inst.rest[0].resource[0].interaction[0].code == "read"
-    assert (
-        inst.rest[0].resource[0].interaction[0].documentation
-        == "Read allows clients to get the logical definitions of the value sets"
+    assert inst.rest[0].resource[0].interaction[0].documentation == (
+        "Read allows clients to get the logical definitions of the " "value sets"
     )
     assert inst.rest[0].resource[0].interaction[1].code == "search-type"
     assert (
@@ -433,9 +435,8 @@ def impl_capabilitystatement_4(inst):
     assert inst.rest[0].resource[0].searchParam[5].type == "token"
     assert inst.rest[0].resource[0].type == "ValueSet"
     assert inst.rest[0].resource[1].interaction[0].code == "read"
-    assert (
-        inst.rest[0].resource[1].interaction[0].documentation
-        == "Read allows clients to get the logical definitions of the concept maps"
+    assert inst.rest[0].resource[1].interaction[0].documentation == (
+        "Read allows clients to get the logical definitions of the " "concept maps"
     )
     assert inst.rest[0].resource[1].interaction[1].code == "search-type"
     assert (
@@ -545,9 +546,10 @@ def impl_capabilitystatement_5(inst):
     )
     assert inst.rest[0].resource[0].type == "CapabilityStatement"
     assert inst.rest[0].security.cors is True
-    assert (
-        inst.rest[0].security.description
-        == "This is the Capability Statement to declare that the server supports SMART-on-FHIR. See the SMART-on-FHIR docs for the extension that would go with such a server"
+    assert inst.rest[0].security.description == (
+        "This is the Capability Statement to declare that the server "
+        "supports SMART-on-FHIR. See the SMART-on-FHIR docs for the "
+        "extension that would go with such a server"
     )
     assert inst.rest[0].security.service[0].coding[0].code == "SMART-on-FHIR"
     assert inst.rest[0].security.service[0].coding[0].display == "SMART-on-FHIR"
@@ -588,9 +590,8 @@ def impl_capabilitystatement_6(inst):
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert inst.date == fhirtypes.DateTime.validate("2013-06-18")
-    assert (
-        inst.description
-        == "Prototype Capability Statement for September 2013 Connectathon"
+    assert inst.description == (
+        "Prototype Capability Statement for September 2013 " "Connectathon"
     )
     assert inst.fhirVersion == "1.0.0"
     assert inst.format[0] == "json"
@@ -599,23 +600,24 @@ def impl_capabilitystatement_6(inst):
     assert inst.kind == "capability"
     assert inst.name == "PHR Template"
     assert inst.publisher == "FHIR Project"
-    assert (
-        inst.rest[0].documentation
-        == "Protoype server Capability Statement for September 2013 Connectathon"
+    assert inst.rest[0].documentation == (
+        "Protoype server Capability Statement for September 2013 " "Connectathon"
     )
     assert inst.rest[0].mode == "server"
     assert inst.rest[0].resource[0].interaction[0].code == "read"
     assert inst.rest[0].resource[0].interaction[1].code == "search-type"
-    assert (
-        inst.rest[0].resource[0].interaction[1].documentation
-        == "When a client searches patients with no search criteria, they get a list of all patients they have access too. Servers may elect to offer additional search parameters, but this is not required"
+    assert inst.rest[0].resource[0].interaction[1].documentation == (
+        "When a client searches patients with no search criteria, "
+        "they get a list of all patients they have access too. "
+        "Servers may elect to offer additional search parameters, but"
+        " this is not required"
     )
     assert inst.rest[0].resource[0].type == "Patient"
     assert inst.rest[0].resource[1].interaction[0].code == "read"
     assert inst.rest[0].resource[1].interaction[1].code == "search-type"
-    assert (
-        inst.rest[0].resource[1].searchParam[0].documentation
-        == "_id parameter always supported. For the connectathon, servers may elect which search parameters are supported"
+    assert inst.rest[0].resource[1].searchParam[0].documentation == (
+        "_id parameter always supported. For the connectathon, "
+        "servers may elect which search parameters are supported"
     )
     assert inst.rest[0].resource[1].searchParam[0].name == "_id"
     assert inst.rest[0].resource[1].searchParam[0].type == "token"
@@ -678,9 +680,10 @@ def impl_capabilitystatement_7(inst):
     assert inst.contact[0].telecom[0].system == "other"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert inst.date == fhirtypes.DateTime.validate("2017-02-25")
-    assert (
-        inst.description
-        == "Basic conformance statement for a Knowledge Repository Service. A server can support more functionality    than defined here, but this is the minimum amount"
+    assert inst.description == (
+        "Basic conformance statement for a Knowledge Repository "
+        "Service. A server can support more functionality    than "
+        "defined here, but this is the minimum amount"
     )
     assert inst.fhirVersion == "3.0.1"
     assert inst.format[0] == "json"
@@ -697,14 +700,13 @@ def impl_capabilitystatement_7(inst):
     )
     assert inst.rest[0].operation[0].name == "data-requirements"
     assert inst.rest[0].resource[0].interaction[0].code == "read"
-    assert (
-        inst.rest[0].resource[0].interaction[0].documentation
-        == "Read allows clients to get the logical definitions of the libraries"
+    assert inst.rest[0].resource[0].interaction[0].documentation == (
+        "Read allows clients to get the logical definitions of the " "libraries"
     )
     assert inst.rest[0].resource[0].interaction[1].code == "search-type"
-    assert (
-        inst.rest[0].resource[0].interaction[1].documentation
-        == "Search allows clients to filter libraries based on a provided search parameter"
+    assert inst.rest[0].resource[0].interaction[1].documentation == (
+        "Search allows clients to filter libraries based on a "
+        "provided search parameter"
     )
     assert inst.rest[0].resource[0].profile.reference == "StructureDefinition/Library"
     assert (
@@ -769,28 +771,25 @@ def impl_capabilitystatement_7(inst):
     assert inst.rest[0].resource[0].searchParam[9].type == "reference"
     assert inst.rest[0].resource[0].type == "Library"
     assert inst.rest[0].resource[1].interaction[0].code == "read"
-    assert (
-        inst.rest[0].resource[1].interaction[0].documentation
-        == "Read allows clients to get the logical definitions of the plan definitions"
+    assert inst.rest[0].resource[1].interaction[0].documentation == (
+        "Read allows clients to get the logical definitions of the " "plan definitions"
     )
     assert inst.rest[0].resource[1].interaction[1].code == "search-type"
-    assert (
-        inst.rest[0].resource[1].interaction[1].documentation
-        == "Search allows clients to filter plan definitions based on a provided search parameter"
+    assert inst.rest[0].resource[1].interaction[1].documentation == (
+        "Search allows clients to filter plan definitions based on a "
+        "provided search parameter"
     )
     assert (
         inst.rest[0].resource[1].profile.reference
         == "StructureDefinition/PlanDefinition"
     )
-    assert (
-        inst.rest[0].resource[1].searchParam[0].definition
-        == "http://hl7.org/fhir/SearchParameter/PlanDefinition-description"
+    assert inst.rest[0].resource[1].searchParam[0].definition == (
+        "http://hl7.org/fhir/SearchParameter/PlanDefinition-" "description"
     )
     assert inst.rest[0].resource[1].searchParam[0].name == "description"
     assert inst.rest[0].resource[1].searchParam[0].type == "string"
-    assert (
-        inst.rest[0].resource[1].searchParam[1].definition
-        == "http://hl7.org/fhir/SearchParameter/PlanDefinition-identifier"
+    assert inst.rest[0].resource[1].searchParam[1].definition == (
+        "http://hl7.org/fhir/SearchParameter/PlanDefinition-" "identifier"
     )
     assert inst.rest[0].resource[1].searchParam[1].name == "identifier"
     assert inst.rest[0].resource[1].searchParam[1].type == "token"
@@ -818,60 +817,53 @@ def impl_capabilitystatement_7(inst):
     )
     assert inst.rest[0].resource[1].searchParam[5].name == "version"
     assert inst.rest[0].resource[1].searchParam[5].type == "string"
-    assert (
-        inst.rest[0].resource[1].searchParam[6].definition
-        == "http://hl7.org/fhir/SearchParameter/PlanDefinition-composed-of"
+    assert inst.rest[0].resource[1].searchParam[6].definition == (
+        "http://hl7.org/fhir/SearchParameter/PlanDefinition-composed-" "of"
     )
     assert inst.rest[0].resource[1].searchParam[6].name == "composed-of"
     assert inst.rest[0].resource[1].searchParam[6].type == "reference"
-    assert (
-        inst.rest[0].resource[1].searchParam[7].definition
-        == "http://hl7.org/fhir/SearchParameter/PlanDefinition-depends-on"
+    assert inst.rest[0].resource[1].searchParam[7].definition == (
+        "http://hl7.org/fhir/SearchParameter/PlanDefinition-depends-" "on"
     )
     assert inst.rest[0].resource[1].searchParam[7].name == "depends-on"
     assert inst.rest[0].resource[1].searchParam[7].type == "reference"
-    assert (
-        inst.rest[0].resource[1].searchParam[8].definition
-        == "http://hl7.org/fhir/SearchParameter/PlanDefinition-derived-from"
+    assert inst.rest[0].resource[1].searchParam[8].definition == (
+        "http://hl7.org/fhir/SearchParameter/PlanDefinition-derived-" "from"
     )
     assert inst.rest[0].resource[1].searchParam[8].name == "derived-from"
     assert inst.rest[0].resource[1].searchParam[8].type == "reference"
-    assert (
-        inst.rest[0].resource[1].searchParam[9].definition
-        == "http://hl7.org/fhir/SearchParameter/PlanDefinition-predecessor"
+    assert inst.rest[0].resource[1].searchParam[9].definition == (
+        "http://hl7.org/fhir/SearchParameter/PlanDefinition-" "predecessor"
     )
     assert inst.rest[0].resource[1].searchParam[9].name == "predecessor"
     assert inst.rest[0].resource[1].searchParam[9].type == "reference"
     assert inst.rest[0].resource[1].type == "PlanDefinition"
     assert inst.rest[0].resource[2].interaction[0].code == "read"
-    assert (
-        inst.rest[0].resource[2].interaction[0].documentation
-        == "Read allows clients to get the logical definitions of the activity definitions"
+    assert inst.rest[0].resource[2].interaction[0].documentation == (
+        "Read allows clients to get the logical definitions of the "
+        "activity definitions"
     )
     assert inst.rest[0].resource[2].interaction[1].code == "search-type"
-    assert (
-        inst.rest[0].resource[2].interaction[1].documentation
-        == "Search allows clients to filter activity definitions based on a provided search parameter"
+    assert inst.rest[0].resource[2].interaction[1].documentation == (
+        "Search allows clients to filter activity definitions based "
+        "on a provided search parameter"
     )
     assert (
         inst.rest[0].resource[2].profile.reference
         == "StructureDefinition/ActivityDefinition"
     )
-    assert (
-        inst.rest[0].resource[2].searchParam[0].definition
-        == "http://hl7.org/fhir/SearchParameter/ActivityDefinition-description"
+    assert inst.rest[0].resource[2].searchParam[0].definition == (
+        "http://hl7.org/fhir/SearchParameter/ActivityDefinition-" "description"
     )
     assert inst.rest[0].resource[2].searchParam[0].name == "description"
     assert inst.rest[0].resource[2].searchParam[0].type == "string"
-    assert (
-        inst.rest[0].resource[2].searchParam[1].definition
-        == "http://hl7.org/fhir/SearchParameter/ActivityDefinition-identifier"
+    assert inst.rest[0].resource[2].searchParam[1].definition == (
+        "http://hl7.org/fhir/SearchParameter/ActivityDefinition-" "identifier"
     )
     assert inst.rest[0].resource[2].searchParam[1].name == "identifier"
     assert inst.rest[0].resource[2].searchParam[1].type == "token"
-    assert (
-        inst.rest[0].resource[2].searchParam[2].definition
-        == "http://hl7.org/fhir/SearchParameter/ActivityDefinition-status"
+    assert inst.rest[0].resource[2].searchParam[2].definition == (
+        "http://hl7.org/fhir/SearchParameter/ActivityDefinition-" "status"
     )
     assert inst.rest[0].resource[2].searchParam[2].name == "status"
     assert inst.rest[0].resource[2].searchParam[2].type == "token"
@@ -887,46 +879,40 @@ def impl_capabilitystatement_7(inst):
     )
     assert inst.rest[0].resource[2].searchParam[4].name == "topic"
     assert inst.rest[0].resource[2].searchParam[4].type == "token"
-    assert (
-        inst.rest[0].resource[2].searchParam[5].definition
-        == "http://hl7.org/fhir/SearchParameter/ActivityDefinition-version"
+    assert inst.rest[0].resource[2].searchParam[5].definition == (
+        "http://hl7.org/fhir/SearchParameter/ActivityDefinition-" "version"
     )
     assert inst.rest[0].resource[2].searchParam[5].name == "version"
     assert inst.rest[0].resource[2].searchParam[5].type == "string"
-    assert (
-        inst.rest[0].resource[2].searchParam[6].definition
-        == "http://hl7.org/fhir/SearchParameter/ActivityDefinition-composed-of"
+    assert inst.rest[0].resource[2].searchParam[6].definition == (
+        "http://hl7.org/fhir/SearchParameter/ActivityDefinition-" "composed-of"
     )
     assert inst.rest[0].resource[2].searchParam[6].name == "composed-of"
     assert inst.rest[0].resource[2].searchParam[6].type == "reference"
-    assert (
-        inst.rest[0].resource[2].searchParam[7].definition
-        == "http://hl7.org/fhir/SearchParameter/ActivityDefinition-depends-on"
+    assert inst.rest[0].resource[2].searchParam[7].definition == (
+        "http://hl7.org/fhir/SearchParameter/ActivityDefinition-" "depends-on"
     )
     assert inst.rest[0].resource[2].searchParam[7].name == "depends-on"
     assert inst.rest[0].resource[2].searchParam[7].type == "reference"
-    assert (
-        inst.rest[0].resource[2].searchParam[8].definition
-        == "http://hl7.org/fhir/SearchParameter/ActivityDefinition-derived-from"
+    assert inst.rest[0].resource[2].searchParam[8].definition == (
+        "http://hl7.org/fhir/SearchParameter/ActivityDefinition-" "derived-from"
     )
     assert inst.rest[0].resource[2].searchParam[8].name == "derived-from"
     assert inst.rest[0].resource[2].searchParam[8].type == "reference"
-    assert (
-        inst.rest[0].resource[2].searchParam[9].definition
-        == "http://hl7.org/fhir/SearchParameter/ActivityDefinition-predecessor"
+    assert inst.rest[0].resource[2].searchParam[9].definition == (
+        "http://hl7.org/fhir/SearchParameter/ActivityDefinition-" "predecessor"
     )
     assert inst.rest[0].resource[2].searchParam[9].name == "predecessor"
     assert inst.rest[0].resource[2].searchParam[9].type == "reference"
     assert inst.rest[0].resource[2].type == "ActivityDefinition"
     assert inst.rest[0].resource[3].interaction[0].code == "read"
-    assert (
-        inst.rest[0].resource[3].interaction[0].documentation
-        == "Read allows clients to get the logical definitions of the measures"
+    assert inst.rest[0].resource[3].interaction[0].documentation == (
+        "Read allows clients to get the logical definitions of the " "measures"
     )
     assert inst.rest[0].resource[3].interaction[1].code == "search-type"
-    assert (
-        inst.rest[0].resource[3].interaction[1].documentation
-        == "Search allows clients to filter measures based on a provided search parameter"
+    assert inst.rest[0].resource[3].interaction[1].documentation == (
+        "Search allows clients to filter measures based on a provided"
+        " search parameter"
     )
     assert inst.rest[0].resource[3].profile.reference == "StructureDefinition/Measure"
     assert (
@@ -991,14 +977,13 @@ def impl_capabilitystatement_7(inst):
     assert inst.rest[0].resource[3].searchParam[9].type == "reference"
     assert inst.rest[0].resource[3].type == "Measure"
     assert inst.rest[0].resource[4].interaction[0].code == "read"
-    assert (
-        inst.rest[0].resource[4].interaction[0].documentation
-        == "Read allows clients to get the logical definitions of the measures"
+    assert inst.rest[0].resource[4].interaction[0].documentation == (
+        "Read allows clients to get the logical definitions of the " "measures"
     )
     assert inst.rest[0].resource[4].interaction[1].code == "search-type"
-    assert (
-        inst.rest[0].resource[4].interaction[1].documentation
-        == "Search allows clients to filter measures based on a provided search parameter"
+    assert inst.rest[0].resource[4].interaction[1].documentation == (
+        "Search allows clients to filter measures based on a provided"
+        " search parameter"
     )
     assert (
         inst.rest[0].resource[4].profile.reference
@@ -1103,24 +1088,20 @@ def impl_capabilitystatement_8(inst):
     assert inst.publisher == "FHIR Project Team"
     assert inst.rest[0].documentation == "All the functionality defined in FHIR"
     assert inst.rest[0].interaction[0].code == "transaction"
-    assert (
-        inst.rest[0].interaction[0].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].interaction[0].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].interaction[1].code == "batch"
-    assert (
-        inst.rest[0].interaction[1].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].interaction[1].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].interaction[2].code == "history-system"
-    assert (
-        inst.rest[0].interaction[2].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].interaction[2].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].interaction[3].code == "search-system"
-    assert (
-        inst.rest[0].interaction[3].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].interaction[3].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].mode == "server"
     assert (
@@ -1143,29 +1124,25 @@ def impl_capabilitystatement_8(inst):
         == "http://hl7.org/fhir/OperationDefinition/resource-meta-delete"
     )
     assert inst.rest[0].operation[3].name == "meta-delete"
-    assert (
-        inst.rest[0].operation[4].definition.reference
-        == "http://hl7.org/fhir/OperationDefinition/activitydefinition-apply"
+    assert inst.rest[0].operation[4].definition.reference == (
+        "http://hl7.org/fhir/OperationDefinition/activitydefinition-" "apply"
     )
     assert inst.rest[0].operation[4].name == "apply"
-    assert (
-        inst.rest[0].operation[5].definition.reference
-        == "http://hl7.org/fhir/OperationDefinition/activitydefinition-data-requirements"
+    assert inst.rest[0].operation[5].definition.reference == (
+        "http://hl7.org/fhir/OperationDefinition/activitydefinition-"
+        "data-requirements"
     )
     assert inst.rest[0].operation[5].name == "data-requirements"
-    assert (
-        inst.rest[0].operation[6].definition.reference
-        == "http://hl7.org/fhir/OperationDefinition/capabilitystatement-subset"
+    assert inst.rest[0].operation[6].definition.reference == (
+        "http://hl7.org/fhir/OperationDefinition/capabilitystatement-" "subset"
     )
     assert inst.rest[0].operation[6].name == "subset"
-    assert (
-        inst.rest[0].operation[7].definition.reference
-        == "http://hl7.org/fhir/OperationDefinition/capabilitystatement-implements"
+    assert inst.rest[0].operation[7].definition.reference == (
+        "http://hl7.org/fhir/OperationDefinition/capabilitystatement-" "implements"
     )
     assert inst.rest[0].operation[7].name == "implements"
-    assert (
-        inst.rest[0].operation[8].definition.reference
-        == "http://hl7.org/fhir/OperationDefinition/capabilitystatement-conforms"
+    assert inst.rest[0].operation[8].definition.reference == (
+        "http://hl7.org/fhir/OperationDefinition/capabilitystatement-" "conforms"
     )
     assert inst.rest[0].operation[8].name == "conforms"
     assert (
@@ -1177,44 +1154,36 @@ def impl_capabilitystatement_8(inst):
     assert inst.rest[0].resource[0].conditionalDelete == "multiple"
     assert inst.rest[0].resource[0].conditionalUpdate is True
     assert inst.rest[0].resource[0].interaction[0].code == "read"
-    assert (
-        inst.rest[0].resource[0].interaction[0].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[0].interaction[0].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[0].interaction[1].code == "vread"
-    assert (
-        inst.rest[0].resource[0].interaction[1].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[0].interaction[1].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[0].interaction[2].code == "update"
-    assert (
-        inst.rest[0].resource[0].interaction[2].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[0].interaction[2].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[0].interaction[3].code == "delete"
-    assert (
-        inst.rest[0].resource[0].interaction[3].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[0].interaction[3].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[0].interaction[4].code == "history-instance"
-    assert (
-        inst.rest[0].resource[0].interaction[4].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[0].interaction[4].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[0].interaction[5].code == "history-type"
-    assert (
-        inst.rest[0].resource[0].interaction[5].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[0].interaction[5].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[0].interaction[6].code == "create"
-    assert (
-        inst.rest[0].resource[0].interaction[6].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[0].interaction[6].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[0].interaction[7].code == "search-type"
-    assert (
-        inst.rest[0].resource[0].interaction[7].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[0].interaction[7].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert (
         inst.rest[0].resource[0].profile.reference
@@ -1313,44 +1282,36 @@ def impl_capabilitystatement_8(inst):
     assert inst.rest[0].resource[1].conditionalDelete == "multiple"
     assert inst.rest[0].resource[1].conditionalUpdate is True
     assert inst.rest[0].resource[1].interaction[0].code == "read"
-    assert (
-        inst.rest[0].resource[1].interaction[0].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[1].interaction[0].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[1].interaction[1].code == "vread"
-    assert (
-        inst.rest[0].resource[1].interaction[1].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[1].interaction[1].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[1].interaction[2].code == "update"
-    assert (
-        inst.rest[0].resource[1].interaction[2].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[1].interaction[2].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[1].interaction[3].code == "delete"
-    assert (
-        inst.rest[0].resource[1].interaction[3].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[1].interaction[3].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[1].interaction[4].code == "history-instance"
-    assert (
-        inst.rest[0].resource[1].interaction[4].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[1].interaction[4].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[1].interaction[5].code == "history-type"
-    assert (
-        inst.rest[0].resource[1].interaction[5].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[1].interaction[5].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[1].interaction[6].code == "create"
-    assert (
-        inst.rest[0].resource[1].interaction[6].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[1].interaction[6].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[1].interaction[7].code == "search-type"
-    assert (
-        inst.rest[0].resource[1].interaction[7].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[1].interaction[7].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert (
         inst.rest[0].resource[1].profile.reference
@@ -1375,9 +1336,8 @@ def impl_capabilitystatement_8(inst):
     )
     assert inst.rest[0].resource[1].searchParam[0].name == "date"
     assert inst.rest[0].resource[1].searchParam[0].type == "date"
-    assert (
-        inst.rest[0].resource[1].searchParam[1].definition
-        == "http://hl7.org/fhir/SearchParameter/ActivityDefinition-identifier"
+    assert inst.rest[0].resource[1].searchParam[1].definition == (
+        "http://hl7.org/fhir/SearchParameter/ActivityDefinition-" "identifier"
     )
     assert (
         inst.rest[0].resource[1].searchParam[1].documentation
@@ -1385,9 +1345,8 @@ def impl_capabilitystatement_8(inst):
     )
     assert inst.rest[0].resource[1].searchParam[1].name == "identifier"
     assert inst.rest[0].resource[1].searchParam[1].type == "token"
-    assert (
-        inst.rest[0].resource[1].searchParam[2].definition
-        == "http://hl7.org/fhir/SearchParameter/ActivityDefinition-successor"
+    assert inst.rest[0].resource[1].searchParam[2].definition == (
+        "http://hl7.org/fhir/SearchParameter/ActivityDefinition-" "successor"
     )
     assert (
         inst.rest[0].resource[1].searchParam[2].documentation
@@ -1395,9 +1354,8 @@ def impl_capabilitystatement_8(inst):
     )
     assert inst.rest[0].resource[1].searchParam[2].name == "successor"
     assert inst.rest[0].resource[1].searchParam[2].type == "reference"
-    assert (
-        inst.rest[0].resource[1].searchParam[3].definition
-        == "http://hl7.org/fhir/SearchParameter/ActivityDefinition-jurisdiction"
+    assert inst.rest[0].resource[1].searchParam[3].definition == (
+        "http://hl7.org/fhir/SearchParameter/ActivityDefinition-" "jurisdiction"
     )
     assert (
         inst.rest[0].resource[1].searchParam[3].documentation
@@ -1405,9 +1363,8 @@ def impl_capabilitystatement_8(inst):
     )
     assert inst.rest[0].resource[1].searchParam[3].name == "jurisdiction"
     assert inst.rest[0].resource[1].searchParam[3].type == "token"
-    assert (
-        inst.rest[0].resource[1].searchParam[4].definition
-        == "http://hl7.org/fhir/SearchParameter/ActivityDefinition-description"
+    assert inst.rest[0].resource[1].searchParam[4].definition == (
+        "http://hl7.org/fhir/SearchParameter/ActivityDefinition-" "description"
     )
     assert (
         inst.rest[0].resource[1].searchParam[4].documentation
@@ -1415,9 +1372,8 @@ def impl_capabilitystatement_8(inst):
     )
     assert inst.rest[0].resource[1].searchParam[4].name == "description"
     assert inst.rest[0].resource[1].searchParam[4].type == "string"
-    assert (
-        inst.rest[0].resource[1].searchParam[5].definition
-        == "http://hl7.org/fhir/SearchParameter/ActivityDefinition-derived-from"
+    assert inst.rest[0].resource[1].searchParam[5].definition == (
+        "http://hl7.org/fhir/SearchParameter/ActivityDefinition-" "derived-from"
     )
     assert (
         inst.rest[0].resource[1].searchParam[5].documentation
@@ -1425,9 +1381,8 @@ def impl_capabilitystatement_8(inst):
     )
     assert inst.rest[0].resource[1].searchParam[5].name == "derived-from"
     assert inst.rest[0].resource[1].searchParam[5].type == "reference"
-    assert (
-        inst.rest[0].resource[1].searchParam[6].definition
-        == "http://hl7.org/fhir/SearchParameter/ActivityDefinition-predecessor"
+    assert inst.rest[0].resource[1].searchParam[6].definition == (
+        "http://hl7.org/fhir/SearchParameter/ActivityDefinition-" "predecessor"
     )
     assert (
         inst.rest[0].resource[1].searchParam[6].documentation
@@ -1445,9 +1400,8 @@ def impl_capabilitystatement_8(inst):
     )
     assert inst.rest[0].resource[1].searchParam[7].name == "title"
     assert inst.rest[0].resource[1].searchParam[7].type == "string"
-    assert (
-        inst.rest[0].resource[1].searchParam[8].definition
-        == "http://hl7.org/fhir/SearchParameter/ActivityDefinition-composed-of"
+    assert inst.rest[0].resource[1].searchParam[8].definition == (
+        "http://hl7.org/fhir/SearchParameter/ActivityDefinition-" "composed-of"
     )
     assert (
         inst.rest[0].resource[1].searchParam[8].documentation
@@ -1455,9 +1409,8 @@ def impl_capabilitystatement_8(inst):
     )
     assert inst.rest[0].resource[1].searchParam[8].name == "composed-of"
     assert inst.rest[0].resource[1].searchParam[8].type == "reference"
-    assert (
-        inst.rest[0].resource[1].searchParam[9].definition
-        == "http://hl7.org/fhir/SearchParameter/ActivityDefinition-version"
+    assert inst.rest[0].resource[1].searchParam[9].definition == (
+        "http://hl7.org/fhir/SearchParameter/ActivityDefinition-" "version"
     )
     assert (
         inst.rest[0].resource[1].searchParam[9].documentation
@@ -1475,44 +1428,36 @@ def impl_capabilitystatement_8(inst):
     assert inst.rest[0].resource[2].conditionalDelete == "multiple"
     assert inst.rest[0].resource[2].conditionalUpdate is True
     assert inst.rest[0].resource[2].interaction[0].code == "read"
-    assert (
-        inst.rest[0].resource[2].interaction[0].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[2].interaction[0].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[2].interaction[1].code == "vread"
-    assert (
-        inst.rest[0].resource[2].interaction[1].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[2].interaction[1].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[2].interaction[2].code == "update"
-    assert (
-        inst.rest[0].resource[2].interaction[2].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[2].interaction[2].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[2].interaction[3].code == "delete"
-    assert (
-        inst.rest[0].resource[2].interaction[3].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[2].interaction[3].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[2].interaction[4].code == "history-instance"
-    assert (
-        inst.rest[0].resource[2].interaction[4].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[2].interaction[4].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[2].interaction[5].code == "history-type"
-    assert (
-        inst.rest[0].resource[2].interaction[5].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[2].interaction[5].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[2].interaction[6].code == "create"
-    assert (
-        inst.rest[0].resource[2].interaction[6].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[2].interaction[6].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[2].interaction[7].code == "search-type"
-    assert (
-        inst.rest[0].resource[2].interaction[7].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[2].interaction[7].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert (
         inst.rest[0].resource[2].profile.reference
@@ -1621,44 +1566,36 @@ def impl_capabilitystatement_8(inst):
     assert inst.rest[0].resource[3].conditionalDelete == "multiple"
     assert inst.rest[0].resource[3].conditionalUpdate is True
     assert inst.rest[0].resource[3].interaction[0].code == "read"
-    assert (
-        inst.rest[0].resource[3].interaction[0].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[3].interaction[0].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[3].interaction[1].code == "vread"
-    assert (
-        inst.rest[0].resource[3].interaction[1].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[3].interaction[1].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[3].interaction[2].code == "update"
-    assert (
-        inst.rest[0].resource[3].interaction[2].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[3].interaction[2].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[3].interaction[3].code == "delete"
-    assert (
-        inst.rest[0].resource[3].interaction[3].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[3].interaction[3].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[3].interaction[4].code == "history-instance"
-    assert (
-        inst.rest[0].resource[3].interaction[4].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[3].interaction[4].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[3].interaction[5].code == "history-type"
-    assert (
-        inst.rest[0].resource[3].interaction[5].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[3].interaction[5].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[3].interaction[6].code == "create"
-    assert (
-        inst.rest[0].resource[3].interaction[6].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[3].interaction[6].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[3].interaction[7].code == "search-type"
-    assert (
-        inst.rest[0].resource[3].interaction[7].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[3].interaction[7].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert (
         inst.rest[0].resource[3].profile.reference
@@ -1669,9 +1606,8 @@ def impl_capabilitystatement_8(inst):
     assert inst.rest[0].resource[3].searchInclude[0] == "AllergyIntolerance.recorder"
     assert inst.rest[0].resource[3].searchInclude[1] == "AllergyIntolerance.asserter"
     assert inst.rest[0].resource[3].searchInclude[2] == "AllergyIntolerance.patient"
-    assert (
-        inst.rest[0].resource[3].searchParam[0].definition
-        == "http://hl7.org/fhir/SearchParameter/AllergyIntolerance-severity"
+    assert inst.rest[0].resource[3].searchParam[0].definition == (
+        "http://hl7.org/fhir/SearchParameter/AllergyIntolerance-" "severity"
     )
     assert (
         inst.rest[0].resource[3].searchParam[0].documentation
@@ -1699,9 +1635,8 @@ def impl_capabilitystatement_8(inst):
     )
     assert inst.rest[0].resource[3].searchParam[2].name == "identifier"
     assert inst.rest[0].resource[3].searchParam[2].type == "token"
-    assert (
-        inst.rest[0].resource[3].searchParam[3].definition
-        == "http://hl7.org/fhir/SearchParameter/AllergyIntolerance-manifestation"
+    assert inst.rest[0].resource[3].searchParam[3].definition == (
+        "http://hl7.org/fhir/SearchParameter/AllergyIntolerance-" "manifestation"
     )
     assert (
         inst.rest[0].resource[3].searchParam[3].documentation
@@ -1709,9 +1644,8 @@ def impl_capabilitystatement_8(inst):
     )
     assert inst.rest[0].resource[3].searchParam[3].name == "manifestation"
     assert inst.rest[0].resource[3].searchParam[3].type == "token"
-    assert (
-        inst.rest[0].resource[3].searchParam[4].definition
-        == "http://hl7.org/fhir/SearchParameter/AllergyIntolerance-recorder"
+    assert inst.rest[0].resource[3].searchParam[4].definition == (
+        "http://hl7.org/fhir/SearchParameter/AllergyIntolerance-" "recorder"
     )
     assert (
         inst.rest[0].resource[3].searchParam[4].documentation
@@ -1729,9 +1663,8 @@ def impl_capabilitystatement_8(inst):
     )
     assert inst.rest[0].resource[3].searchParam[5].name == "code"
     assert inst.rest[0].resource[3].searchParam[5].type == "token"
-    assert (
-        inst.rest[0].resource[3].searchParam[6].definition
-        == "http://hl7.org/fhir/SearchParameter/AllergyIntolerance-verification-status"
+    assert inst.rest[0].resource[3].searchParam[6].definition == (
+        "http://hl7.org/fhir/SearchParameter/AllergyIntolerance-" "verification-status"
     )
     assert (
         inst.rest[0].resource[3].searchParam[6].documentation
@@ -1739,9 +1672,8 @@ def impl_capabilitystatement_8(inst):
     )
     assert inst.rest[0].resource[3].searchParam[6].name == "verification-status"
     assert inst.rest[0].resource[3].searchParam[6].type == "token"
-    assert (
-        inst.rest[0].resource[3].searchParam[7].definition
-        == "http://hl7.org/fhir/SearchParameter/AllergyIntolerance-criticality"
+    assert inst.rest[0].resource[3].searchParam[7].definition == (
+        "http://hl7.org/fhir/SearchParameter/AllergyIntolerance-" "criticality"
     )
     assert (
         inst.rest[0].resource[3].searchParam[7].documentation
@@ -1749,9 +1681,8 @@ def impl_capabilitystatement_8(inst):
     )
     assert inst.rest[0].resource[3].searchParam[7].name == "criticality"
     assert inst.rest[0].resource[3].searchParam[7].type == "token"
-    assert (
-        inst.rest[0].resource[3].searchParam[8].definition
-        == "http://hl7.org/fhir/SearchParameter/AllergyIntolerance-clinical-status"
+    assert inst.rest[0].resource[3].searchParam[8].definition == (
+        "http://hl7.org/fhir/SearchParameter/AllergyIntolerance-" "clinical-status"
     )
     assert (
         inst.rest[0].resource[3].searchParam[8].documentation
@@ -1779,44 +1710,36 @@ def impl_capabilitystatement_8(inst):
     assert inst.rest[0].resource[4].conditionalDelete == "multiple"
     assert inst.rest[0].resource[4].conditionalUpdate is True
     assert inst.rest[0].resource[4].interaction[0].code == "read"
-    assert (
-        inst.rest[0].resource[4].interaction[0].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[4].interaction[0].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[4].interaction[1].code == "vread"
-    assert (
-        inst.rest[0].resource[4].interaction[1].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[4].interaction[1].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[4].interaction[2].code == "update"
-    assert (
-        inst.rest[0].resource[4].interaction[2].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[4].interaction[2].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[4].interaction[3].code == "delete"
-    assert (
-        inst.rest[0].resource[4].interaction[3].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[4].interaction[3].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[4].interaction[4].code == "history-instance"
-    assert (
-        inst.rest[0].resource[4].interaction[4].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[4].interaction[4].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[4].interaction[5].code == "history-type"
-    assert (
-        inst.rest[0].resource[4].interaction[5].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[4].interaction[5].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[4].interaction[6].code == "create"
-    assert (
-        inst.rest[0].resource[4].interaction[6].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[4].interaction[6].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[4].interaction[7].code == "search-type"
-    assert (
-        inst.rest[0].resource[4].interaction[7].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[4].interaction[7].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert (
         inst.rest[0].resource[4].profile.reference
@@ -1863,19 +1786,16 @@ def impl_capabilitystatement_8(inst):
         inst.rest[0].resource[4].searchParam[3].definition
         == "http://hl7.org/fhir/SearchParameter/Appointment-practitioner"
     )
-    assert (
-        inst.rest[0].resource[4].searchParam[3].documentation
-        == "One of the individuals of the appointment is this practitioner"
+    assert inst.rest[0].resource[4].searchParam[3].documentation == (
+        "One of the individuals of the appointment is this " "practitioner"
     )
     assert inst.rest[0].resource[4].searchParam[3].name == "practitioner"
     assert inst.rest[0].resource[4].searchParam[3].type == "reference"
-    assert (
-        inst.rest[0].resource[4].searchParam[4].definition
-        == "http://hl7.org/fhir/SearchParameter/Appointment-incomingreferral"
+    assert inst.rest[0].resource[4].searchParam[4].definition == (
+        "http://hl7.org/fhir/SearchParameter/Appointment-" "incomingreferral"
     )
-    assert (
-        inst.rest[0].resource[4].searchParam[4].documentation
-        == "The ReferralRequest provided as information to allocate to the Encounter"
+    assert inst.rest[0].resource[4].searchParam[4].documentation == (
+        "The ReferralRequest provided as information to allocate to " "the Encounter"
     )
     assert inst.rest[0].resource[4].searchParam[4].name == "incomingreferral"
     assert inst.rest[0].resource[4].searchParam[4].type == "reference"
@@ -1883,9 +1803,10 @@ def impl_capabilitystatement_8(inst):
         inst.rest[0].resource[4].searchParam[5].definition
         == "http://hl7.org/fhir/SearchParameter/Appointment-part-status"
     )
-    assert (
-        inst.rest[0].resource[4].searchParam[5].documentation
-        == "The Participation status of the subject, or other participant on the appointment. Can be used to locate participants that have not responded to meeting requests."
+    assert inst.rest[0].resource[4].searchParam[5].documentation == (
+        "The Participation status of the subject, or other "
+        "participant on the appointment. Can be used to locate "
+        "participants that have not responded to meeting requests."
     )
     assert inst.rest[0].resource[4].searchParam[5].name == "part-status"
     assert inst.rest[0].resource[4].searchParam[5].type == "token"
@@ -1899,13 +1820,12 @@ def impl_capabilitystatement_8(inst):
     )
     assert inst.rest[0].resource[4].searchParam[6].name == "patient"
     assert inst.rest[0].resource[4].searchParam[6].type == "reference"
-    assert (
-        inst.rest[0].resource[4].searchParam[7].definition
-        == "http://hl7.org/fhir/SearchParameter/Appointment-appointment-type"
+    assert inst.rest[0].resource[4].searchParam[7].definition == (
+        "http://hl7.org/fhir/SearchParameter/Appointment-appointment-" "type"
     )
-    assert (
-        inst.rest[0].resource[4].searchParam[7].documentation
-        == "The style of appointment or patient that has been booked in the slot (not service type)"
+    assert inst.rest[0].resource[4].searchParam[7].documentation == (
+        "The style of appointment or patient that has been booked in "
+        "the slot (not service type)"
     )
     assert inst.rest[0].resource[4].searchParam[7].name == "appointment-type"
     assert inst.rest[0].resource[4].searchParam[7].type == "token"
@@ -1913,9 +1833,8 @@ def impl_capabilitystatement_8(inst):
         inst.rest[0].resource[4].searchParam[8].definition
         == "http://hl7.org/fhir/SearchParameter/Appointment-service-type"
     )
-    assert (
-        inst.rest[0].resource[4].searchParam[8].documentation
-        == "The specific service that is to be performed during this appointment"
+    assert inst.rest[0].resource[4].searchParam[8].documentation == (
+        "The specific service that is to be performed during this " "appointment"
     )
     assert inst.rest[0].resource[4].searchParam[8].name == "service-type"
     assert inst.rest[0].resource[4].searchParam[8].type == "token"
@@ -1923,9 +1842,8 @@ def impl_capabilitystatement_8(inst):
         inst.rest[0].resource[4].searchParam[9].definition
         == "http://hl7.org/fhir/SearchParameter/Appointment-location"
     )
-    assert (
-        inst.rest[0].resource[4].searchParam[9].documentation
-        == "This location is listed in the participants of the appointment"
+    assert inst.rest[0].resource[4].searchParam[9].documentation == (
+        "This location is listed in the participants of the " "appointment"
     )
     assert inst.rest[0].resource[4].searchParam[9].name == "location"
     assert inst.rest[0].resource[4].searchParam[9].type == "reference"
@@ -1941,44 +1859,36 @@ def impl_capabilitystatement_8(inst):
     assert inst.rest[0].resource[5].conditionalDelete == "multiple"
     assert inst.rest[0].resource[5].conditionalUpdate is True
     assert inst.rest[0].resource[5].interaction[0].code == "read"
-    assert (
-        inst.rest[0].resource[5].interaction[0].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[5].interaction[0].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[5].interaction[1].code == "vread"
-    assert (
-        inst.rest[0].resource[5].interaction[1].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[5].interaction[1].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[5].interaction[2].code == "update"
-    assert (
-        inst.rest[0].resource[5].interaction[2].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[5].interaction[2].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[5].interaction[3].code == "delete"
-    assert (
-        inst.rest[0].resource[5].interaction[3].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[5].interaction[3].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[5].interaction[4].code == "history-instance"
-    assert (
-        inst.rest[0].resource[5].interaction[4].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[5].interaction[4].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[5].interaction[5].code == "history-type"
-    assert (
-        inst.rest[0].resource[5].interaction[5].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[5].interaction[5].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[5].interaction[6].code == "create"
-    assert (
-        inst.rest[0].resource[5].interaction[6].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[5].interaction[6].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[5].interaction[7].code == "search-type"
-    assert (
-        inst.rest[0].resource[5].interaction[7].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[5].interaction[7].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert (
         inst.rest[0].resource[5].profile.reference
@@ -1995,19 +1905,17 @@ def impl_capabilitystatement_8(inst):
         inst.rest[0].resource[5].searchInclude[3] == "AppointmentResponse.appointment"
     )
     assert inst.rest[0].resource[5].searchInclude[4] == "AppointmentResponse.location"
-    assert (
-        inst.rest[0].resource[5].searchParam[0].definition
-        == "http://hl7.org/fhir/SearchParameter/AppointmentResponse-actor"
+    assert inst.rest[0].resource[5].searchParam[0].definition == (
+        "http://hl7.org/fhir/SearchParameter/AppointmentResponse-" "actor"
     )
-    assert (
-        inst.rest[0].resource[5].searchParam[0].documentation
-        == "The Person, Location/HealthcareService or Device that this appointment response replies for"
+    assert inst.rest[0].resource[5].searchParam[0].documentation == (
+        "The Person, Location/HealthcareService or Device that this "
+        "appointment response replies for"
     )
     assert inst.rest[0].resource[5].searchParam[0].name == "actor"
     assert inst.rest[0].resource[5].searchParam[0].type == "reference"
-    assert (
-        inst.rest[0].resource[5].searchParam[1].definition
-        == "http://hl7.org/fhir/SearchParameter/AppointmentResponse-identifier"
+    assert inst.rest[0].resource[5].searchParam[1].definition == (
+        "http://hl7.org/fhir/SearchParameter/AppointmentResponse-" "identifier"
     )
     assert (
         inst.rest[0].resource[5].searchParam[1].documentation
@@ -2015,9 +1923,8 @@ def impl_capabilitystatement_8(inst):
     )
     assert inst.rest[0].resource[5].searchParam[1].name == "identifier"
     assert inst.rest[0].resource[5].searchParam[1].type == "token"
-    assert (
-        inst.rest[0].resource[5].searchParam[2].definition
-        == "http://hl7.org/fhir/SearchParameter/AppointmentResponse-practitioner"
+    assert inst.rest[0].resource[5].searchParam[2].definition == (
+        "http://hl7.org/fhir/SearchParameter/AppointmentResponse-" "practitioner"
     )
     assert (
         inst.rest[0].resource[5].searchParam[2].documentation
@@ -2025,9 +1932,8 @@ def impl_capabilitystatement_8(inst):
     )
     assert inst.rest[0].resource[5].searchParam[2].name == "practitioner"
     assert inst.rest[0].resource[5].searchParam[2].type == "reference"
-    assert (
-        inst.rest[0].resource[5].searchParam[3].definition
-        == "http://hl7.org/fhir/SearchParameter/AppointmentResponse-part-status"
+    assert inst.rest[0].resource[5].searchParam[3].definition == (
+        "http://hl7.org/fhir/SearchParameter/AppointmentResponse-" "part-status"
     )
     assert (
         inst.rest[0].resource[5].searchParam[3].documentation
@@ -2035,9 +1941,8 @@ def impl_capabilitystatement_8(inst):
     )
     assert inst.rest[0].resource[5].searchParam[3].name == "part-status"
     assert inst.rest[0].resource[5].searchParam[3].type == "token"
-    assert (
-        inst.rest[0].resource[5].searchParam[4].definition
-        == "http://hl7.org/fhir/SearchParameter/AppointmentResponse-patient"
+    assert inst.rest[0].resource[5].searchParam[4].definition == (
+        "http://hl7.org/fhir/SearchParameter/AppointmentResponse-" "patient"
     )
     assert (
         inst.rest[0].resource[5].searchParam[4].documentation
@@ -2045,9 +1950,8 @@ def impl_capabilitystatement_8(inst):
     )
     assert inst.rest[0].resource[5].searchParam[4].name == "patient"
     assert inst.rest[0].resource[5].searchParam[4].type == "reference"
-    assert (
-        inst.rest[0].resource[5].searchParam[5].definition
-        == "http://hl7.org/fhir/SearchParameter/AppointmentResponse-appointment"
+    assert inst.rest[0].resource[5].searchParam[5].definition == (
+        "http://hl7.org/fhir/SearchParameter/AppointmentResponse-" "appointment"
     )
     assert (
         inst.rest[0].resource[5].searchParam[5].documentation
@@ -2055,9 +1959,8 @@ def impl_capabilitystatement_8(inst):
     )
     assert inst.rest[0].resource[5].searchParam[5].name == "appointment"
     assert inst.rest[0].resource[5].searchParam[5].type == "reference"
-    assert (
-        inst.rest[0].resource[5].searchParam[6].definition
-        == "http://hl7.org/fhir/SearchParameter/AppointmentResponse-location"
+    assert inst.rest[0].resource[5].searchParam[6].definition == (
+        "http://hl7.org/fhir/SearchParameter/AppointmentResponse-" "location"
     )
     assert (
         inst.rest[0].resource[5].searchParam[6].documentation
@@ -2070,44 +1973,36 @@ def impl_capabilitystatement_8(inst):
     assert inst.rest[0].resource[6].conditionalDelete == "multiple"
     assert inst.rest[0].resource[6].conditionalUpdate is True
     assert inst.rest[0].resource[6].interaction[0].code == "read"
-    assert (
-        inst.rest[0].resource[6].interaction[0].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[6].interaction[0].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[6].interaction[1].code == "vread"
-    assert (
-        inst.rest[0].resource[6].interaction[1].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[6].interaction[1].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[6].interaction[2].code == "update"
-    assert (
-        inst.rest[0].resource[6].interaction[2].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[6].interaction[2].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[6].interaction[3].code == "delete"
-    assert (
-        inst.rest[0].resource[6].interaction[3].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[6].interaction[3].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[6].interaction[4].code == "history-instance"
-    assert (
-        inst.rest[0].resource[6].interaction[4].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[6].interaction[4].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[6].interaction[5].code == "history-type"
-    assert (
-        inst.rest[0].resource[6].interaction[5].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[6].interaction[5].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[6].interaction[6].code == "create"
-    assert (
-        inst.rest[0].resource[6].interaction[6].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[6].interaction[6].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[6].interaction[7].code == "search-type"
-    assert (
-        inst.rest[0].resource[6].interaction[7].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[6].interaction[7].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert (
         inst.rest[0].resource[6].profile.reference
@@ -2223,44 +2118,36 @@ def impl_capabilitystatement_8(inst):
     assert inst.rest[0].resource[7].conditionalDelete == "multiple"
     assert inst.rest[0].resource[7].conditionalUpdate is True
     assert inst.rest[0].resource[7].interaction[0].code == "read"
-    assert (
-        inst.rest[0].resource[7].interaction[0].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[7].interaction[0].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[7].interaction[1].code == "vread"
-    assert (
-        inst.rest[0].resource[7].interaction[1].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[7].interaction[1].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[7].interaction[2].code == "update"
-    assert (
-        inst.rest[0].resource[7].interaction[2].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[7].interaction[2].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[7].interaction[3].code == "delete"
-    assert (
-        inst.rest[0].resource[7].interaction[3].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[7].interaction[3].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[7].interaction[4].code == "history-instance"
-    assert (
-        inst.rest[0].resource[7].interaction[4].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[7].interaction[4].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[7].interaction[5].code == "history-type"
-    assert (
-        inst.rest[0].resource[7].interaction[5].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[7].interaction[5].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[7].interaction[6].code == "create"
-    assert (
-        inst.rest[0].resource[7].interaction[6].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[7].interaction[6].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[7].interaction[7].code == "search-type"
-    assert (
-        inst.rest[0].resource[7].interaction[7].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[7].interaction[7].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert (
         inst.rest[0].resource[7].profile.reference
@@ -2326,44 +2213,36 @@ def impl_capabilitystatement_8(inst):
     assert inst.rest[0].resource[8].conditionalDelete == "multiple"
     assert inst.rest[0].resource[8].conditionalUpdate is True
     assert inst.rest[0].resource[8].interaction[0].code == "read"
-    assert (
-        inst.rest[0].resource[8].interaction[0].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[8].interaction[0].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[8].interaction[1].code == "vread"
-    assert (
-        inst.rest[0].resource[8].interaction[1].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[8].interaction[1].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[8].interaction[2].code == "update"
-    assert (
-        inst.rest[0].resource[8].interaction[2].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[8].interaction[2].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[8].interaction[3].code == "delete"
-    assert (
-        inst.rest[0].resource[8].interaction[3].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[8].interaction[3].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[8].interaction[4].code == "history-instance"
-    assert (
-        inst.rest[0].resource[8].interaction[4].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[8].interaction[4].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[8].interaction[5].code == "history-type"
-    assert (
-        inst.rest[0].resource[8].interaction[5].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[8].interaction[5].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[8].interaction[6].code == "create"
-    assert (
-        inst.rest[0].resource[8].interaction[6].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[8].interaction[6].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[8].interaction[7].code == "search-type"
-    assert (
-        inst.rest[0].resource[8].interaction[7].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[8].interaction[7].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert (
         inst.rest[0].resource[8].profile.reference
@@ -2386,44 +2265,36 @@ def impl_capabilitystatement_8(inst):
     assert inst.rest[0].resource[9].conditionalDelete == "multiple"
     assert inst.rest[0].resource[9].conditionalUpdate is True
     assert inst.rest[0].resource[9].interaction[0].code == "read"
-    assert (
-        inst.rest[0].resource[9].interaction[0].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[9].interaction[0].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[9].interaction[1].code == "vread"
-    assert (
-        inst.rest[0].resource[9].interaction[1].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[9].interaction[1].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[9].interaction[2].code == "update"
-    assert (
-        inst.rest[0].resource[9].interaction[2].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[9].interaction[2].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[9].interaction[3].code == "delete"
-    assert (
-        inst.rest[0].resource[9].interaction[3].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[9].interaction[3].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[9].interaction[4].code == "history-instance"
-    assert (
-        inst.rest[0].resource[9].interaction[4].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[9].interaction[4].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[9].interaction[5].code == "history-type"
-    assert (
-        inst.rest[0].resource[9].interaction[5].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[9].interaction[5].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[9].interaction[6].code == "create"
-    assert (
-        inst.rest[0].resource[9].interaction[6].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[9].interaction[6].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert inst.rest[0].resource[9].interaction[7].code == "search-type"
-    assert (
-        inst.rest[0].resource[9].interaction[7].documentation
-        == "Implemented per the specification (or Insert other doco here)"
+    assert inst.rest[0].resource[9].interaction[7].documentation == (
+        "Implemented per the specification (or Insert other doco " "here)"
     )
     assert (
         inst.rest[0].resource[9].profile.reference
@@ -2477,9 +2348,8 @@ def impl_capabilitystatement_8(inst):
         inst.rest[0].searchParam[1].definition
         == "http://hl7.org/fhir/SearchParameter/Resource-query"
     )
-    assert (
-        inst.rest[0].searchParam[1].documentation
-        == "A custom search profile that describes a specific defined query operation"
+    assert inst.rest[0].searchParam[1].documentation == (
+        "A custom search profile that describes a specific defined " "query operation"
     )
     assert inst.rest[0].searchParam[1].name == "_query"
     assert inst.rest[0].searchParam[1].type == "token"
@@ -2538,9 +2408,10 @@ def impl_capabilitystatement_8(inst):
     assert inst.rest[0].searchParam[7].name == "_content"
     assert inst.rest[0].searchParam[7].type == "string"
     assert inst.rest[0].security.cors is True
-    assert (
-        inst.rest[0].security.description
-        == "This is the Capability Statement to declare that the server supports SMART-on-FHIR. See the SMART-on-FHIR docs for the extension that would go with such a server"
+    assert inst.rest[0].security.description == (
+        "This is the Capability Statement to declare that the server "
+        "supports SMART-on-FHIR. See the SMART-on-FHIR docs for the "
+        "extension that would go with such a server"
     )
     assert inst.rest[0].security.service[0].coding[0].code == "SMART-on-FHIR"
     assert inst.rest[0].security.service[0].coding[0].display == "SMART-on-FHIR"

@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import medicinalproductinteraction
 
@@ -27,9 +29,10 @@ def impl_medicinalproductinteraction_1(inst):
         inst.interactant[1].itemCodeableConcept.coding[0].system
         == "http://ema.europa.eu/example/interactant"
     )
-    assert (
-        inst.management.text
-        == "Coadministration not recommended in patients receiving concomitant systemic treatment strong inhibitors of both CYP3A4 and P-gp"
+    assert inst.management.text == (
+        "Coadministration not recommended in patients receiving "
+        "concomitant systemic treatment strong inhibitors of both "
+        "CYP3A4 and P-gp"
     )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"

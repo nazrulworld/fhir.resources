@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import detectedissue
 
@@ -18,9 +20,8 @@ def impl_detectedissue_1(inst):
         inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     )
     assert inst.status == "final"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">[Put rendering here]</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">[Put rendering ' "here]</div>"
     )
     assert inst.text.status == "generated"
 
@@ -65,9 +66,9 @@ def impl_detectedissue_2(inst):
         == "Chest CT - ordered May 8, 2013 by Dr. Adam Careful"
     )
     assert inst.implicated[0].reference == "ServiceRequest/di"
-    assert (
-        inst.implicated[1].display
-        == "Image 1 from Series 3: CT Images on Patient MINT (MINT1234) taken at 1-Jan 2011 01:20 AM"
+    assert inst.implicated[1].display == (
+        "Image 1 from Series 3: CT Images on Patient MINT (MINT1234) "
+        "taken at 1-Jan 2011 01:20 AM"
     )
     assert inst.implicated[1].reference == "ImagingStudy/example"
     assert inst.meta.tag[0].code == "HTEST"
@@ -76,9 +77,9 @@ def impl_detectedissue_2(inst):
         inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     )
     assert inst.patient.reference == "Patient/dicom"
-    assert (
-        inst.reference
-        == "http://www.tmhp.com/RadiologyClinicalDecisionSupport/2011/CHEST%20IMAGING%20GUIDELINES%202011.pdf"
+    assert inst.reference == (
+        "http://www.tmhp.com/RadiologyClinicalDecisionSupport/2011/CH"
+        "EST%20IMAGING%20GUIDELINES%202011.pdf"
     )
     assert inst.status == "final"
     assert inst.text.status == "generated"
@@ -133,9 +134,10 @@ def impl_detectedissue_3(inst):
         inst.mitigation[0].action.coding[0].system
         == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     )
-    assert (
-        inst.mitigation[0].action.text
-        == "Asked patient to discontinue regular use of Tylenol and to consult with clinician if they need to resume to allow appropriate INR monitoring"
+    assert inst.mitigation[0].action.text == (
+        "Asked patient to discontinue regular use of Tylenol and to "
+        "consult with clinician if they need to resume to allow "
+        "appropriate INR monitoring"
     )
     assert inst.mitigation[0].author.display == "Dr. Adam Careful"
     assert inst.mitigation[0].author.reference == "Practitioner/example"
@@ -175,9 +177,8 @@ def impl_detectedissue_4(inst):
         inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     )
     assert inst.status == "final"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">[Put rendering here]</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">[Put rendering ' "here]</div>"
     )
     assert inst.text.status == "generated"
 

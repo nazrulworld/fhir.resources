@@ -23,14 +23,20 @@ class AppointmentResponse(domainresource.DomainResource):
     actor: fhirtypes.ReferenceType = Field(
         None,
         alias="actor",
-        title="Type `Reference` referencing `Patient, Practitioner, RelatedPerson, Device, HealthcareService, Location` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Practitioner, RelatedPerson, "
+            "Device, HealthcareService, Location` (represented as `dict` in JSON)"
+        ),
         description="Person, Location/HealthcareService or Device",
     )
 
     appointment: fhirtypes.ReferenceType = Field(
         ...,
         alias="appointment",
-        title="Type `Reference` referencing `Appointment` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Appointment` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Appointment this response relates to",
     )
 
@@ -59,7 +65,10 @@ class AppointmentResponse(domainresource.DomainResource):
         ...,
         alias="participantStatus",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="accepted | declined | tentative | in-process | completed | needs-action | entered-in-error",
+        description=(
+            "accepted | declined | tentative | in-process | completed | needs-"
+            "action | entered-in-error"
+        ),
     )
 
     participantType: ListType[fhirtypes.CodeableConceptType] = Field(

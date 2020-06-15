@@ -43,7 +43,9 @@ class RelatedArtifact(element.Element):
     resource: fhirtypes.ReferenceType = Field(
         None,
         alias="resource",
-        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        ),
         description="What resource is being referenced",
     )
 
@@ -51,7 +53,10 @@ class RelatedArtifact(element.Element):
         ...,
         alias="type",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="documentation | justification | citation | predecessor | successor | derived-from | depends-on | composed-of",
+        description=(
+            "documentation | justification | citation | predecessor | successor | "
+            "derived-from | depends-on | composed-of"
+        ),
     )
 
     url: fhirtypes.Uri = Field(

@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import terminologycapabilities
 
@@ -16,9 +18,10 @@ def impl_terminologycapabilities_1(inst):
     assert inst.contact[0].telecom[0].system == "email"
     assert inst.contact[0].telecom[0].value == "wile@acme.org"
     assert inst.date == fhirtypes.DateTime.validate("2012-01-04")
-    assert (
-        inst.description
-        == "This is the FHIR capability statement for the main EHR at ACME for the private interface - it does not describe the public interface"
+    assert inst.description == (
+        "This is the FHIR capability statement for the main EHR at "
+        "ACME for the private interface - it does not describe the "
+        "public interface"
     )
     assert inst.experimental is True
     assert inst.id == "example"

@@ -172,7 +172,10 @@ class GraphDefinitionLink(backboneelement.BackboneElement):
     target: ListType[fhirtypes.GraphDefinitionLinkTargetType] = Field(
         ...,
         alias="target",
-        title="List of `GraphDefinitionLinkTarget` items (represented as `dict` in JSON)",
+        title=(
+            "List of `GraphDefinitionLinkTarget` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Potential target for the link",
     )
 
@@ -186,7 +189,10 @@ class GraphDefinitionLinkTarget(backboneelement.BackboneElement):
     compartment: ListType[fhirtypes.GraphDefinitionLinkTargetCompartmentType] = Field(
         None,
         alias="compartment",
-        title="List of `GraphDefinitionLinkTargetCompartment` items (represented as `dict` in JSON)",
+        title=(
+            "List of `GraphDefinitionLinkTargetCompartment` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Compartment Consistency Rules",
     )
 

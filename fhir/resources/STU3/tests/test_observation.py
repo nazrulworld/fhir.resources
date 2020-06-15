@@ -6,25 +6,27 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import observation
 
 
 def impl_observation_1(inst):
     assert inst.code.coding[0].code == "55233-1"
-    assert (
-        inst.code.coding[0].display
-        == "Genetic analysis master panel-- This is the parent OBR for the panel holding all of the associated observations that can be reported with a molecular genetics analysis result."
+    assert inst.code.coding[0].display == (
+        "Genetic analysis master panel-- This is the parent OBR for "
+        "the panel holding all of the associated observations that "
+        "can be reported with a molecular genetics analysis result."
     )
     assert inst.code.coding[0].system == "http://loinc.org"
-    assert (
-        inst.extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/observation-geneticsDNASequenceVariantName"
+    assert inst.extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/observation-"
+        "geneticsDNASequenceVariantName"
     )
     assert inst.extension[0].valueCodeableConcept.text == "NG_007726.3:g.146252T>G"
-    assert (
-        inst.extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/observation-geneticsGene"
+    assert inst.extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/observation-" "geneticsGene"
     )
     assert inst.extension[1].valueCodeableConcept.coding[0].code == "3236"
     assert inst.extension[1].valueCodeableConcept.coding[0].display == "EGFR"
@@ -32,14 +34,13 @@ def impl_observation_1(inst):
         inst.extension[1].valueCodeableConcept.coding[0].system
         == "http://www.genenames.org"
     )
-    assert (
-        inst.extension[2].url
-        == "http://hl7.org/fhir/StructureDefinition/observation-geneticsDNARegionName"
+    assert inst.extension[2].url == (
+        "http://hl7.org/fhir/StructureDefinition/observation-" "geneticsDNARegionName"
     )
     assert inst.extension[2].valueString == "Exon 21"
-    assert (
-        inst.extension[3].url
-        == "http://hl7.org/fhir/StructureDefinition/observation-geneticsGenomicSourceClass"
+    assert inst.extension[3].url == (
+        "http://hl7.org/fhir/StructureDefinition/observation-"
+        "geneticsGenomicSourceClass"
     )
     assert inst.extension[3].valueCodeableConcept.coding[0].code == "LA6684-0"
     assert inst.extension[3].valueCodeableConcept.coding[0].display == "somatic"
@@ -221,14 +222,14 @@ def test_observation_4(base_settings):
 
 def impl_observation_5(inst):
     assert inst.code.coding[0].code == "55233-1"
-    assert (
-        inst.code.coding[0].display
-        == "Genetic analysis master panel-- This is the parent OBR for the panel holding all of the associated observations that can be reported with a molecular genetics analysis result."
+    assert inst.code.coding[0].display == (
+        "Genetic analysis master panel-- This is the parent OBR for "
+        "the panel holding all of the associated observations that "
+        "can be reported with a molecular genetics analysis result."
     )
     assert inst.code.coding[0].system == "http://loinc.org"
-    assert (
-        inst.extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/observation-geneticsGene"
+    assert inst.extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/observation-" "geneticsGene"
     )
     assert inst.extension[0].valueCodeableConcept.coding[0].code == "2623"
     assert inst.extension[0].valueCodeableConcept.coding[0].display == "CYP2C9"
@@ -236,14 +237,12 @@ def impl_observation_5(inst):
         inst.extension[0].valueCodeableConcept.coding[0].system
         == "http://www.genenames.org"
     )
-    assert (
-        inst.extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/observation-geneticsSequence"
+    assert inst.extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/observation-" "geneticsSequence"
     )
     assert inst.extension[1].valueReference.reference == "Sequence/example-sequence1"
-    assert (
-        inst.extension[2].url
-        == "http://hl7.org/fhir/StructureDefinition/observation-geneticsSequence"
+    assert inst.extension[2].url == (
+        "http://hl7.org/fhir/StructureDefinition/observation-" "geneticsSequence"
     )
     assert inst.extension[2].valueReference.reference == "Sequence/example-sequence2"
     assert inst.id == "example-haplotype2"

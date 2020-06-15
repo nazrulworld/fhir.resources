@@ -30,7 +30,10 @@ class ChargeItem(domainresource.DomainResource):
     account: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="account",
-        title="List of `Reference` items referencing `Account` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Account` (represented as `dict`"
+            " in JSON)"
+        ),
         description="Account to place this charge",
     )
 
@@ -51,21 +54,30 @@ class ChargeItem(domainresource.DomainResource):
     context: fhirtypes.ReferenceType = Field(
         None,
         alias="context",
-        title="Type `Reference` referencing `Encounter, EpisodeOfCare` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Encounter, EpisodeOfCare` (represented "
+            "as `dict` in JSON)"
+        ),
         description="Encounter / Episode associated with event",
     )
 
     costCenter: fhirtypes.ReferenceType = Field(
         None,
         alias="costCenter",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Organization that has ownership of the (potential, future) revenue",
     )
 
     definitionCanonical: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="definitionCanonical",
-        title="List of `Canonical` items referencing `ChargeItemDefinition` (represented as `dict` in JSON)",
+        title=(
+            "List of `Canonical` items referencing `ChargeItemDefinition` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Resource defining the code of this ChargeItem",
     )
 
@@ -86,7 +98,11 @@ class ChargeItem(domainresource.DomainResource):
     enterer: fhirtypes.ReferenceType = Field(
         None,
         alias="enterer",
-        title="Type `Reference` referencing `Practitioner, PractitionerRole, Organization, Patient, Device, RelatedPerson` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, PractitionerRole, "
+            "Organization, Patient, Device, RelatedPerson` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Individual who was entering",
     )
 
@@ -148,7 +164,10 @@ class ChargeItem(domainresource.DomainResource):
     partOf: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="partOf",
-        title="List of `Reference` items referencing `ChargeItem` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `ChargeItem` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Part of referenced ChargeItem",
     )
 
@@ -162,7 +181,10 @@ class ChargeItem(domainresource.DomainResource):
     performingOrganization: fhirtypes.ReferenceType = Field(
         None,
         alias="performingOrganization",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Organization providing the charged service",
     )
 
@@ -185,7 +207,10 @@ class ChargeItem(domainresource.DomainResource):
     productReference: fhirtypes.ReferenceType = Field(
         None,
         alias="productReference",
-        title="Type `Reference` referencing `Device, Medication, Substance` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Device, Medication, Substance` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Product charged",
         one_of_many="product",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -208,14 +233,22 @@ class ChargeItem(domainresource.DomainResource):
     requestingOrganization: fhirtypes.ReferenceType = Field(
         None,
         alias="requestingOrganization",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Organization requesting the charged service",
     )
 
     service: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="service",
-        title="List of `Reference` items referencing `DiagnosticReport, ImagingStudy, Immunization, MedicationAdministration, MedicationDispense, Observation, Procedure, SupplyDelivery` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `DiagnosticReport, ImagingStudy,"
+            " Immunization, MedicationAdministration, MedicationDispense, "
+            "Observation, Procedure, SupplyDelivery` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Which rendered service is being charged?",
     )
 
@@ -223,20 +256,29 @@ class ChargeItem(domainresource.DomainResource):
         ...,
         alias="status",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="planned | billable | not-billable | aborted | billed | entered-in-error | unknown",
+        description=(
+            "planned | billable | not-billable | aborted | billed | entered-in-"
+            "error | unknown"
+        ),
     )
 
     subject: fhirtypes.ReferenceType = Field(
         ...,
         alias="subject",
-        title="Type `Reference` referencing `Patient, Group` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Group` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Individual service was done for/to",
     )
 
     supportingInformation: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="supportingInformation",
-        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Resource` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Further information supporting this charge",
     )
 
@@ -260,7 +302,7 @@ class ChargeItem(domainresource.DomainResource):
                 "occurrencePeriod",
                 "occurrenceTiming",
             ],
-            "product": ["productCodeableConcept", "productReference",],
+            "product": ["productCodeableConcept", "productReference"],
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
@@ -294,7 +336,11 @@ class ChargeItemPerformer(backboneelement.BackboneElement):
     actor: fhirtypes.ReferenceType = Field(
         ...,
         alias="actor",
-        title="Type `Reference` referencing `Practitioner, PractitionerRole, Organization, CareTeam, Patient, Device, RelatedPerson` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, PractitionerRole, "
+            "Organization, CareTeam, Patient, Device, RelatedPerson` (represented "
+            "as `dict` in JSON)"
+        ),
         description="Individual who was performing",
     )
 

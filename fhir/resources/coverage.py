@@ -39,14 +39,20 @@ class Coverage(domainresource.DomainResource):
     contract: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="contract",
-        title="List of `Reference` items referencing `Contract` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Contract` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Contract details",
     )
 
     costToBeneficiary: ListType[fhirtypes.CoverageCostToBeneficiaryType] = Field(
         None,
         alias="costToBeneficiary",
-        title="List of `CoverageCostToBeneficiary` items (represented as `dict` in JSON)",
+        title=(
+            "List of `CoverageCostToBeneficiary` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Patient payments for services/products",
     )
 
@@ -81,7 +87,10 @@ class Coverage(domainresource.DomainResource):
     payor: ListType[fhirtypes.ReferenceType] = Field(
         ...,
         alias="payor",
-        title="List of `Reference` items referencing `Organization, Patient, RelatedPerson` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Organization, Patient, "
+            "RelatedPerson` (represented as `dict` in JSON)"
+        ),
         description="Issuer of the policy",
     )
 
@@ -95,7 +104,10 @@ class Coverage(domainresource.DomainResource):
     policyHolder: fhirtypes.ReferenceType = Field(
         None,
         alias="policyHolder",
-        title="Type `Reference` referencing `Patient, RelatedPerson, Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, RelatedPerson, Organization` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Owner of the policy",
     )
 
@@ -123,7 +135,10 @@ class Coverage(domainresource.DomainResource):
     subscriber: fhirtypes.ReferenceType = Field(
         None,
         alias="subscriber",
-        title="Type `Reference` referencing `Patient, RelatedPerson` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, RelatedPerson` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Subscriber to the policy",
     )
 
@@ -183,7 +198,10 @@ class CoverageCostToBeneficiary(backboneelement.BackboneElement):
     exception: ListType[fhirtypes.CoverageCostToBeneficiaryExceptionType] = Field(
         None,
         alias="exception",
-        title="List of `CoverageCostToBeneficiaryException` items (represented as `dict` in JSON)",
+        title=(
+            "List of `CoverageCostToBeneficiaryException` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Exceptions for patient payments",
     )
 
@@ -226,9 +244,7 @@ class CoverageCostToBeneficiary(backboneelement.BackboneElement):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "value": ["valueMoney", "valueQuantity",],
-        }
+        one_of_many_fields = {"value": ["valueMoney", "valueQuantity"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (

@@ -45,7 +45,10 @@ class TestReport(domainresource.DomainResource):
         None,
         alias="participant",
         title="List of `TestReportParticipant` items (represented as `dict` in JSON)",
-        description="A participant in the test execution, either the execution engine, a client, or a server",
+        description=(
+            "A participant in the test execution, either the execution engine, a "
+            "client, or a server"
+        ),
     )
 
     result: fhirtypes.Code = Field(
@@ -59,14 +62,20 @@ class TestReport(domainresource.DomainResource):
         None,
         alias="score",
         title="Type `Decimal` (represented as `dict` in JSON)",
-        description="The final score (percentage of tests passed) resulting from the execution of the TestScript",
+        description=(
+            "The final score (percentage of tests passed) resulting from the "
+            "execution of the TestScript"
+        ),
     )
 
     setup: fhirtypes.TestReportSetupType = Field(
         None,
         alias="setup",
         title="Type `TestReportSetup` (represented as `dict` in JSON)",
-        description="The results of the series of required setup operations before the tests were executed",
+        description=(
+            "The results of the series of required setup operations before the "
+            "tests were executed"
+        ),
     )
 
     status: fhirtypes.Code = Field(
@@ -93,8 +102,14 @@ class TestReport(domainresource.DomainResource):
     testScript: fhirtypes.ReferenceType = Field(
         ...,
         alias="testScript",
-        title="Type `Reference` referencing `TestScript` (represented as `dict` in JSON)",
-        description="Reference to the  version-specific TestScript that was executed to produce this TestReport",
+        title=(
+            "Type `Reference` referencing `TestScript` (represented as `dict` in "
+            "JSON)"
+        ),
+        description=(
+            "Reference to the  version-specific TestScript that was executed to "
+            "produce this TestReport"
+        ),
     )
 
     tester: fhirtypes.String = Field(
@@ -240,7 +255,10 @@ class TestReportTeardown(backboneelement.BackboneElement):
     action: ListType[fhirtypes.TestReportTeardownActionType] = Field(
         ...,
         alias="action",
-        title="List of `TestReportTeardownAction` items (represented as `dict` in JSON)",
+        title=(
+            "List of `TestReportTeardownAction` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="One or more teardown operations performed",
     )
 

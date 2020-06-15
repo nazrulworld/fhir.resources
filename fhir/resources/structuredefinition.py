@@ -32,7 +32,10 @@ class StructureDefinition(domainresource.DomainResource):
     baseDefinition: fhirtypes.Canonical = Field(
         None,
         alias="baseDefinition",
-        title="Type `Canonical` referencing `StructureDefinition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Canonical` referencing `StructureDefinition` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Definition that this type is constrained/specialized from",
     )
 
@@ -46,7 +49,10 @@ class StructureDefinition(domainresource.DomainResource):
     context: ListType[fhirtypes.StructureDefinitionContextType] = Field(
         None,
         alias="context",
-        title="List of `StructureDefinitionContext` items (represented as `dict` in JSON)",
+        title=(
+            "List of `StructureDefinitionContext` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="If an extension, where it can be used in instances",
     )
 
@@ -137,7 +143,10 @@ class StructureDefinition(domainresource.DomainResource):
     mapping: ListType[fhirtypes.StructureDefinitionMappingType] = Field(
         None,
         alias="mapping",
-        title="List of `StructureDefinitionMapping` items (represented as `dict` in JSON)",
+        title=(
+            "List of `StructureDefinitionMapping` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="External specification that the content is mapped to",
     )
 
@@ -194,7 +203,10 @@ class StructureDefinition(domainresource.DomainResource):
         ...,
         alias="url",
         title="Type `Uri` (represented as `dict` in JSON)",
-        description="Canonical identifier for this structure definition, represented as a URI (globally unique)",
+        description=(
+            "Canonical identifier for this structure definition, represented as a "
+            "URI (globally unique)"
+        ),
     )
 
     useContext: ListType[fhirtypes.UsageContextType] = Field(

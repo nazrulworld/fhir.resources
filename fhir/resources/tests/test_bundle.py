@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import bundle
 
@@ -15,9 +17,9 @@ def impl_bundle_1(inst):
     assert inst.entry[0].search.mode == "outcome"
     assert inst.id == "bundle-search-warning"
     assert inst.link[0].relation == "self"
-    assert (
-        inst.link[0].url
-        == "https://example.org/fhir/Observation?patient.identifier=http://example.com/fhir/identifier/mrn|123456"
+    assert inst.link[0].url == (
+        "https://example.org/fhir/Observation?patient.identifier=http"
+        "://example.com/fhir/identifier/mrn|123456"
     )
     assert inst.meta.lastUpdated == fhirtypes.Instant.validate(
         "2017-03-14T08:23:30+11:00"
@@ -159,9 +161,8 @@ def impl_bundle_4(inst):
     assert inst.entry[3].resource.meta.lastUpdated == fhirtypes.Instant.validate(
         "2013-07-01T13:11:33Z"
     )
-    assert (
-        inst.entry[4].fullUrl
-        == "http://localhost:9556/svc/fhir/Binary/1e404af3-077f-4bee-b7a6-a9be97e1ce32"
+    assert inst.entry[4].fullUrl == (
+        "http://localhost:9556/svc/fhir/Binary/1e404af3-077f-4bee-b7a" "6-a9be97e1ce32"
     )
     assert inst.entry[4].request.method == "POST"
     assert inst.entry[4].request.url == "Binary"
@@ -385,9 +386,8 @@ def impl_bundle_8(inst):
         == "http://hl7.org/fhir/ConceptMap/cm-administrative-gender-v3"
     )
     assert inst.entry[7].resource.id == "cm-administrative-gender-v3"
-    assert (
-        inst.entry[8].fullUrl
-        == "http://hl7.org/fhir/ConceptMap/cm-document-reference-status-v3"
+    assert inst.entry[8].fullUrl == (
+        "http://hl7.org/fhir/ConceptMap/cm-document-reference-" "status-v3"
     )
     assert inst.entry[8].resource.id == "cm-document-reference-status-v3"
     assert inst.entry[9].fullUrl == "http://hl7.org/fhir/ConceptMap/cm-address-use-v2"

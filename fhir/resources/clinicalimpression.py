@@ -31,7 +31,10 @@ class ClinicalImpression(domainresource.DomainResource):
     assessor: fhirtypes.ReferenceType = Field(
         None,
         alias="assessor",
-        title="Type `Reference` referencing `Practitioner, PractitionerRole` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, PractitionerRole` "
+            "(represented as `dict` in JSON)"
+        ),
         description="The clinician performing the assessment",
     )
 
@@ -77,14 +80,20 @@ class ClinicalImpression(domainresource.DomainResource):
     encounter: fhirtypes.ReferenceType = Field(
         None,
         alias="encounter",
-        title="Type `Reference` referencing `Encounter` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Encounter` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Encounter created as part of",
     )
 
     finding: ListType[fhirtypes.ClinicalImpressionFindingType] = Field(
         None,
         alias="finding",
-        title="List of `ClinicalImpressionFinding` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ClinicalImpressionFinding` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Possible or likely findings and diagnoses",
     )
 
@@ -98,7 +107,10 @@ class ClinicalImpression(domainresource.DomainResource):
     investigation: ListType[fhirtypes.ClinicalImpressionInvestigationType] = Field(
         None,
         alias="investigation",
-        title="List of `ClinicalImpressionInvestigation` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ClinicalImpressionInvestigation` items (represented as `dict`"
+            " in JSON)"
+        ),
         description="One or more sets of investigations (signs, symptoms, etc.)",
     )
 
@@ -112,14 +124,20 @@ class ClinicalImpression(domainresource.DomainResource):
     previous: fhirtypes.ReferenceType = Field(
         None,
         alias="previous",
-        title="Type `Reference` referencing `ClinicalImpression` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `ClinicalImpression` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Reference to last assessment",
     )
 
     problem: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="problem",
-        title="List of `Reference` items referencing `Condition, AllergyIntolerance` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Condition, AllergyIntolerance` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Relevant impressions of patient state",
     )
 
@@ -133,7 +151,10 @@ class ClinicalImpression(domainresource.DomainResource):
     prognosisReference: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="prognosisReference",
-        title="List of `Reference` items referencing `RiskAssessment` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `RiskAssessment` (represented as"
+            " `dict` in JSON)"
+        ),
         description="RiskAssessment expressing likely outcome",
     )
 
@@ -161,7 +182,10 @@ class ClinicalImpression(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         ...,
         alias="subject",
-        title="Type `Reference` referencing `Patient, Group` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Group` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Patient or group assessed",
     )
 
@@ -175,7 +199,10 @@ class ClinicalImpression(domainresource.DomainResource):
     supportingInfo: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="supportingInfo",
-        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Resource` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Information supporting the clinical impression",
     )
 
@@ -193,9 +220,7 @@ class ClinicalImpression(domainresource.DomainResource):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "effective": ["effectiveDateTime", "effectivePeriod",],
-        }
+        one_of_many_fields = {"effective": ["effectiveDateTime", "effectivePeriod"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -243,7 +268,10 @@ class ClinicalImpressionFinding(backboneelement.BackboneElement):
     itemReference: fhirtypes.ReferenceType = Field(
         None,
         alias="itemReference",
-        title="Type `Reference` referencing `Condition, Observation, Media` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Condition, Observation, Media` "
+            "(represented as `dict` in JSON)"
+        ),
         description="What was found",
     )
 
@@ -269,6 +297,10 @@ class ClinicalImpressionInvestigation(backboneelement.BackboneElement):
     item: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="item",
-        title="List of `Reference` items referencing `Observation, QuestionnaireResponse, FamilyMemberHistory, DiagnosticReport, RiskAssessment, ImagingStudy, Media` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Observation, "
+            "QuestionnaireResponse, FamilyMemberHistory, DiagnosticReport, "
+            "RiskAssessment, ImagingStudy, Media` (represented as `dict` in JSON)"
+        ),
         description="Record of a specific investigation",
     )

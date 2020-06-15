@@ -32,7 +32,10 @@ class CareTeam(domainresource.DomainResource):
     encounter: fhirtypes.ReferenceType = Field(
         None,
         alias="encounter",
-        title="Type `Reference` referencing `Encounter` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Encounter` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Encounter created as part of",
     )
 
@@ -46,7 +49,10 @@ class CareTeam(domainresource.DomainResource):
     managingOrganization: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="managingOrganization",
-        title="List of `Reference` items referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Organization` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Organization responsible for the care team",
     )
 
@@ -88,7 +94,10 @@ class CareTeam(domainresource.DomainResource):
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="reasonReference",
-        title="List of `Reference` items referencing `Condition` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Condition` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Why the care team exists",
     )
 
@@ -102,7 +111,10 @@ class CareTeam(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         None,
         alias="subject",
-        title="Type `Reference` referencing `Patient, Group` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Group` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Who care team is for",
     )
 
@@ -125,14 +137,21 @@ class CareTeamParticipant(backboneelement.BackboneElement):
     member: fhirtypes.ReferenceType = Field(
         None,
         alias="member",
-        title="Type `Reference` referencing `Practitioner, PractitionerRole, RelatedPerson, Patient, Organization, CareTeam` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, PractitionerRole, "
+            "RelatedPerson, Patient, Organization, CareTeam` (represented as `dict`"
+            " in JSON)"
+        ),
         description="Who is involved",
     )
 
     onBehalfOf: fhirtypes.ReferenceType = Field(
         None,
         alias="onBehalfOf",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Organization of the practitioner",
     )
 

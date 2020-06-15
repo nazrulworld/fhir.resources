@@ -56,7 +56,10 @@ class ResearchStudy(domainresource.DomainResource):
     enrollment: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="enrollment",
-        title="List of `Reference` items referencing `Group` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Group` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Inclusion \u0026 exclusion criteria",
     )
 
@@ -98,7 +101,10 @@ class ResearchStudy(domainresource.DomainResource):
     partOf: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="partOf",
-        title="List of `Reference` items referencing `ResearchStudy` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `ResearchStudy` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Part of larger study",
     )
 
@@ -112,14 +118,20 @@ class ResearchStudy(domainresource.DomainResource):
     principalInvestigator: fhirtypes.ReferenceType = Field(
         None,
         alias="principalInvestigator",
-        title="Type `Reference` referencing `Practitioner` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner` (represented as `dict` in "
+            "JSON)"
+        ),
         description="The individual responsible for the study",
     )
 
     protocol: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="protocol",
-        title="List of `Reference` items referencing `PlanDefinition` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `PlanDefinition` (represented as"
+            " `dict` in JSON)"
+        ),
         description="Steps followed in executing study",
     )
 
@@ -140,14 +152,20 @@ class ResearchStudy(domainresource.DomainResource):
     site: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="site",
-        title="List of `Reference` items referencing `Location` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Location` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Location involved in study execution",
     )
 
     sponsor: fhirtypes.ReferenceType = Field(
         None,
         alias="sponsor",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Organization responsible for the study",
     )
 
@@ -155,7 +173,10 @@ class ResearchStudy(domainresource.DomainResource):
         ...,
         alias="status",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="draft | in-progress | suspended | stopped | completed | entered-in-error",
+        description=(
+            "draft | in-progress | suspended | stopped | completed | entered-in-"
+            "error"
+        ),
     )
 
     title: fhirtypes.String = Field(

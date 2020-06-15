@@ -38,7 +38,10 @@ class VisionPrescription(domainresource.DomainResource):
     encounter: fhirtypes.ReferenceType = Field(
         None,
         alias="encounter",
-        title="Type `Reference` referencing `Encounter` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Encounter` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Created during encounter / admission / stay",
     )
 
@@ -54,7 +57,10 @@ class VisionPrescription(domainresource.DomainResource):
     ] = Field(
         ...,
         alias="lensSpecification",
-        title="List of `VisionPrescriptionLensSpecification` items (represented as `dict` in JSON)",
+        title=(
+            "List of `VisionPrescriptionLensSpecification` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Vision lens authorization",
     )
 
@@ -68,7 +74,10 @@ class VisionPrescription(domainresource.DomainResource):
     prescriber: fhirtypes.ReferenceType = Field(
         ...,
         alias="prescriber",
-        title="Type `Reference` referencing `Practitioner, PractitionerRole` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, PractitionerRole` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Who authorized the vision prescription",
     )
 
@@ -168,7 +177,10 @@ class VisionPrescriptionLensSpecification(backboneelement.BackboneElement):
     prism: ListType[fhirtypes.VisionPrescriptionLensSpecificationPrismType] = Field(
         None,
         alias="prism",
-        title="List of `VisionPrescriptionLensSpecificationPrism` items (represented as `dict` in JSON)",
+        title=(
+            "List of `VisionPrescriptionLensSpecificationPrism` items (represented "
+            "as `dict` in JSON)"
+        ),
         description="Eye alignment compensation",
     )
 

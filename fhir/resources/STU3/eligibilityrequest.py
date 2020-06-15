@@ -48,7 +48,9 @@ class EligibilityRequest(domainresource.DomainResource):
     coverage: fhirtypes.ReferenceType = Field(
         None,
         alias="coverage",
-        title="Type `Reference` referencing `Coverage` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Coverage` (represented as `dict` in " "JSON)"
+        ),
         description="Insurance or medical plan",
     )
 
@@ -62,14 +64,19 @@ class EligibilityRequest(domainresource.DomainResource):
     enterer: fhirtypes.ReferenceType = Field(
         None,
         alias="enterer",
-        title="Type `Reference` referencing `Practitioner` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Author",
     )
 
     facility: fhirtypes.ReferenceType = Field(
         None,
         alias="facility",
-        title="Type `Reference` referencing `Location` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Location` (represented as `dict` in " "JSON)"
+        ),
         description="Servicing Facility",
     )
 
@@ -83,14 +90,20 @@ class EligibilityRequest(domainresource.DomainResource):
     insurer: fhirtypes.ReferenceType = Field(
         None,
         alias="insurer",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Target",
     )
 
     organization: fhirtypes.ReferenceType = Field(
         None,
         alias="organization",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Responsible organization",
     )
 
@@ -111,7 +124,10 @@ class EligibilityRequest(domainresource.DomainResource):
     provider: fhirtypes.ReferenceType = Field(
         None,
         alias="provider",
-        title="Type `Reference` referencing `Practitioner` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Responsible practitioner",
     )
 
@@ -154,9 +170,7 @@ class EligibilityRequest(domainresource.DomainResource):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "serviced": ["servicedDate", "servicedPeriod",],
-        }
+        one_of_many_fields = {"serviced": ["servicedDate", "servicedPeriod"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (

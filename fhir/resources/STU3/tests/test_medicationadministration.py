@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import medicationadministration
 
@@ -78,15 +80,14 @@ def impl_medicationadministration_2(inst):
     assert inst.id == "medadminexample03"
     assert inst.medicationReference.reference == "#med0303"
     assert inst.notGiven is True
-    assert (
-        inst.note[0].text
-        == "Patient started Bupropion this morning - will administer in a reduced dose tomorrow"
+    assert inst.note[0].text == (
+        "Patient started Bupropion this morning - will administer in "
+        "a reduced dose tomorrow"
     )
     assert inst.prescription.reference == "MedicationRequest/medrx0317"
     assert inst.reasonNotGiven[0].coding[0].code == "373147003"
-    assert (
-        inst.reasonNotGiven[0].coding[0].display
-        == "Administration of medication not done due to a contraindication (situation)"
+    assert inst.reasonNotGiven[0].coding[0].display == (
+        "Administration of medication not done due to a " "contraindication (situation)"
     )
     assert inst.reasonNotGiven[0].coding[0].system == "http://snomed.info/sct"
     assert inst.status == "on-hold"
@@ -140,9 +141,8 @@ def impl_medicationadministration_3(inst):
     assert inst.dosage.route.coding[0].code == "255560000"
     assert inst.dosage.route.coding[0].display == "Intravenous"
     assert inst.dosage.route.coding[0].system == "http://snomed.info/sct"
-    assert (
-        inst.dosage.text
-        == "0.05 - 0.1mg/kg IV over 2-5 minutes every 15 minutes as needed"
+    assert inst.dosage.text == (
+        "0.05 - 0.1mg/kg IV over 2-5 minutes every 15 minutes as " "needed"
     )
     assert inst.effectivePeriod.end == fhirtypes.DateTime.validate(
         "2015-01-15T14:30:00+01:00"
@@ -190,9 +190,9 @@ def impl_medicationadministration_4(inst):
     assert inst.dosage.route.coding[0].code == "26643006"
     assert inst.dosage.route.coding[0].display == "Oral Route"
     assert inst.dosage.route.coding[0].system == "http://snomed.info/sct"
-    assert (
-        inst.dosage.text
-        == "0.25mg PO every 6-12 hours as needed for menses from Jan 15-20, 2015.  Do not exceed more than 4mg per day"
+    assert inst.dosage.text == (
+        "0.25mg PO every 6-12 hours as needed for menses from Jan "
+        "15-20, 2015.  Do not exceed more than 4mg per day"
     )
     assert inst.effectivePeriod.end == fhirtypes.DateTime.validate(
         "2015-01-16T02:03:00+01:00"
@@ -243,9 +243,11 @@ def impl_medicationadministration_5(inst):
     assert inst.dosage.route.coding[0].code == "26643006"
     assert inst.dosage.route.coding[0].display == "Oral route (qualifier value)"
     assert inst.dosage.route.coding[0].system == "http://snomed.info/sct"
-    assert (
-        inst.dosage.text
-        == "6 mg PO daily for remission induction; adjust dosage to white blood cell (WBC) count.  With hold treatment if WBC is less than 15,000/µL; resume when WBC is greater than 50,000/µL"
+    assert inst.dosage.text == (
+        "6 mg PO daily for remission induction; adjust dosage to "
+        "white blood cell (WBC) count.  With hold treatment if WBC is"
+        " less than 15,000/µL; resume when WBC is greater than "
+        "50,000/µL"
     )
     assert inst.effectivePeriod.end == fhirtypes.DateTime.validate(
         "2015-01-16T02:03:00+01:00"
@@ -413,9 +415,9 @@ def impl_medicationadministration_8(inst):
     assert inst.dosage.site.coding[0].code == "34402009"
     assert inst.dosage.site.coding[0].display == "Rectum structure"
     assert inst.dosage.site.coding[0].system == "http://snomed.info/sct"
-    assert (
-        inst.dosage.text
-        == "Insert one suppository rectally twice daily as needed for fever to a maximim of 3 per day"
+    assert inst.dosage.text == (
+        "Insert one suppository rectally twice daily as needed for "
+        "fever to a maximim of 3 per day"
     )
     assert inst.effectivePeriod.end == fhirtypes.DateTime.validate(
         "2015-01-16T02:03:00+01:00"
@@ -535,9 +537,11 @@ def impl_medicationadministration_10(inst):
     assert inst.dosage.route.coding[0].code == "47625008"
     assert inst.dosage.route.coding[0].display == "Intravenous route (qualifier value)"
     assert inst.dosage.route.coding[0].system == "http://snomed.info/sct"
-    assert (
-        inst.dosage.text
-        == "Rapid daily-dose escalation, until tolerated, from 3 mg/d, and then 10 mg/d, to the recommended maintenance dose of 30 mg IV over 120 min, 3 times per wk on alternate days for up to 12 wk"
+    assert inst.dosage.text == (
+        "Rapid daily-dose escalation, until tolerated, from 3 mg/d, "
+        "and then 10 mg/d, to the recommended maintenance dose of 30 "
+        "mg IV over 120 min, 3 times per wk on alternate days for up "
+        "to 12 wk"
     )
     assert inst.effectivePeriod.end == fhirtypes.DateTime.validate(
         "2015-01-15T14:30:00+01:00"

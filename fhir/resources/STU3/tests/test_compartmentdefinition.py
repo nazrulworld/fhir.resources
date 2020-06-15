@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import compartmentdefinition
 
@@ -16,9 +18,10 @@ def impl_compartmentdefinition_1(inst):
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert inst.date == fhirtypes.DateTime.validate("2017-02-24")
-    assert (
-        inst.description
-        == "The set of resources associated with a particular Device (example with Communication and CommunicationRequest resourses only)."
+    assert inst.description == (
+        "The set of resources associated with a particular Device "
+        "(example with Communication and CommunicationRequest "
+        "resourses only)."
     )
     assert inst.experimental is True
     assert inst.id == "example"
@@ -27,9 +30,9 @@ def impl_compartmentdefinition_1(inst):
     assert inst.jurisdiction[0].coding[0].system == "urn:iso:std:iso:3166"
     assert inst.name == "EXAMPLE"
     assert inst.publisher == "Health Level Seven International (FHIR Infrastructure)"
-    assert (
-        inst.purpose
-        == "Provides an example of a FHIR compartment definition based on the Device resource type."
+    assert inst.purpose == (
+        "Provides an example of a FHIR compartment definition based "
+        "on the Device resource type."
     )
     assert inst.resource[0].code == "Communication"
     assert (
@@ -296,9 +299,11 @@ def impl_compartmentdefinition_6(inst):
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert inst.date == fhirtypes.DateTime.validate("2017-04-19T07:44:43+10:00")
-    assert (
-        inst.description
-        == "There is an instance of the practitioner compartment for each Device resource, and the identity of the compartment is the same as the Device. The set of resources associated with a particular device"
+    assert inst.description == (
+        "There is an instance of the practitioner compartment for "
+        "each Device resource, and the identity of the compartment is"
+        " the same as the Device. The set of resources associated "
+        "with a particular device"
     )
     assert inst.experimental is True
     assert inst.id == "device"

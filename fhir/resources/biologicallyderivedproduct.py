@@ -26,7 +26,10 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
     collection: fhirtypes.BiologicallyDerivedProductCollectionType = Field(
         None,
         alias="collection",
-        title="Type `BiologicallyDerivedProductCollection` (represented as `dict` in JSON)",
+        title=(
+            "Type `BiologicallyDerivedProductCollection` (represented as `dict` in "
+            "JSON)"
+        ),
         description="How this product was collected",
     )
 
@@ -40,21 +43,30 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
     manipulation: fhirtypes.BiologicallyDerivedProductManipulationType = Field(
         None,
         alias="manipulation",
-        title="Type `BiologicallyDerivedProductManipulation` (represented as `dict` in JSON)",
+        title=(
+            "Type `BiologicallyDerivedProductManipulation` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Any manipulation of product post-collection",
     )
 
     parent: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="parent",
-        title="List of `Reference` items referencing `BiologicallyDerivedProduct` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `BiologicallyDerivedProduct` "
+            "(represented as `dict` in JSON)"
+        ),
         description="BiologicallyDerivedProduct parent",
     )
 
     processing: ListType[fhirtypes.BiologicallyDerivedProductProcessingType] = Field(
         None,
         alias="processing",
-        title="List of `BiologicallyDerivedProductProcessing` items (represented as `dict` in JSON)",
+        title=(
+            "List of `BiologicallyDerivedProductProcessing` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Any processing of the product during collection",
     )
 
@@ -82,7 +94,10 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
     request: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="request",
-        title="List of `Reference` items referencing `ServiceRequest` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `ServiceRequest` (represented as"
+            " `dict` in JSON)"
+        ),
         description="Procedure request",
     )
 
@@ -96,7 +111,10 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
     storage: ListType[fhirtypes.BiologicallyDerivedProductStorageType] = Field(
         None,
         alias="storage",
-        title="List of `BiologicallyDerivedProductStorage` items (represented as `dict` in JSON)",
+        title=(
+            "List of `BiologicallyDerivedProductStorage` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Product storage",
     )
 
@@ -128,14 +146,20 @@ class BiologicallyDerivedProductCollection(backboneelement.BackboneElement):
     collector: fhirtypes.ReferenceType = Field(
         None,
         alias="collector",
-        title="Type `Reference` referencing `Practitioner, PractitionerRole` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, PractitionerRole` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Individual performing collection",
     )
 
     source: fhirtypes.ReferenceType = Field(
         None,
         alias="source",
-        title="Type `Reference` referencing `Patient, Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Organization` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Who is product from",
     )
 
@@ -153,9 +177,7 @@ class BiologicallyDerivedProductCollection(backboneelement.BackboneElement):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "collected": ["collectedDateTime", "collectedPeriod",],
-        }
+        one_of_many_fields = {"collected": ["collectedDateTime", "collectedPeriod"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -226,9 +248,7 @@ class BiologicallyDerivedProductManipulation(backboneelement.BackboneElement):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "time": ["timeDateTime", "timePeriod",],
-        }
+        one_of_many_fields = {"time": ["timeDateTime", "timePeriod"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -263,7 +283,10 @@ class BiologicallyDerivedProductProcessing(backboneelement.BackboneElement):
     additive: fhirtypes.ReferenceType = Field(
         None,
         alias="additive",
-        title="Type `Reference` referencing `Substance` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Substance` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Substance added during processing",
     )
 
@@ -313,9 +336,7 @@ class BiologicallyDerivedProductProcessing(backboneelement.BackboneElement):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "time": ["timeDateTime", "timePeriod",],
-        }
+        one_of_many_fields = {"time": ["timeDateTime", "timePeriod"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (

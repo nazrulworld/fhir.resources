@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import patient
 
@@ -207,9 +209,8 @@ def impl_patient_4(inst):
     assert inst.contact[0].telecom[0].system == "phone"
     assert inst.contact[0].telecom[0].use == "mobile"
     assert inst.contact[0].telecom[0].value == "+31201234567"
-    assert (
-        inst.extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/patient-mothersMaidenName"
+    assert inst.extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/patient-" "mothersMaidenName"
     )
     assert inst.extension[0].valueString == "Organa"
     assert inst.gender == "female"
@@ -309,9 +310,8 @@ def test_patient_5(base_settings):
 
 def impl_patient_6(inst):
     assert inst.birthDate == fhirtypes.Date.validate("2017-09-05")
-    assert (
-        inst.extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/patient-mothersMaidenName"
+    assert inst.extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/patient-" "mothersMaidenName"
     )
     assert inst.extension[0].valueString == "Everywoman"
     assert inst.gender == "male"
@@ -365,9 +365,8 @@ def impl_patient_7(inst):
     assert inst.contact[0].telecom[0].system == "phone"
     assert inst.contact[0].telecom[0].use == "mobile"
     assert inst.contact[0].telecom[0].value == "+31201234567"
-    assert (
-        inst.extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/patient-mothersMaidenName"
+    assert inst.extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/patient-" "mothersMaidenName"
     )
     assert inst.extension[0].valueString == "Organa"
     assert inst.gender == "male"

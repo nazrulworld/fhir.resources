@@ -6,15 +6,17 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import processresponse
 
 
 def impl_processresponse_1(inst):
     assert inst.created == fhirtypes.DateTime.validate("2014-08-16")
-    assert (
-        inst.disposition
-        == "Adjudication processing completed, ClaimResponse and EOB ready for retrieval."
+    assert inst.disposition == (
+        "Adjudication processing completed, ClaimResponse and EOB "
+        "ready for retrieval."
     )
     assert inst.id == "SR2500"
     assert (
@@ -27,9 +29,9 @@ def impl_processresponse_1(inst):
     assert inst.request.reference == "http://happyvalley.com/fhir/claim/12345"
     assert inst.requestOrganization.reference == "Organization/1"
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the ProcessResponse</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the ProcessResponse</div>"
     )
     assert inst.text.status == "generated"
 
@@ -69,9 +71,8 @@ def impl_processresponse_2(inst):
     assert inst.organization.reference == "Organization/2"
     assert inst.outcome.coding[0].code == "error"
     assert inst.outcome.coding[0].system == "http://hl7.org/fhir/processoutcomecodes"
-    assert (
-        inst.processNote[0].text
-        == "Please check the submitted payor identification and local claim number."
+    assert inst.processNote[0].text == (
+        "Please check the submitted payor identification and local " "claim number."
     )
     assert inst.processNote[0].type.coding[0].code == "print"
     assert inst.processNote[0].type.coding[0].system == "http://hl7.org/fhir/note-type"
@@ -80,9 +81,9 @@ def impl_processresponse_2(inst):
     assert inst.requestProvider.identifier.system == "http://npid.org/providerid"
     assert inst.requestProvider.identifier.value == "AZ43258"
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the ProcessResponse</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the ProcessResponse</div>"
     )
     assert inst.text.status == "generated"
 
@@ -123,9 +124,10 @@ def impl_processresponse_3(inst):
     assert inst.request.reference == "http://happyvalley.com/fhir/claim/12345"
     assert inst.requestOrganization.reference == "Organization/1"
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A ProcessResponse indicating pended status with a request for additional information.</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A '
+        "ProcessResponse indicating pended status with a request for "
+        "additional information.</div>"
     )
     assert inst.text.status == "generated"
 

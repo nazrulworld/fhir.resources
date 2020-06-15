@@ -455,7 +455,7 @@ class ParametersParameter(backboneelement.BackboneElement):
                 "valueTiming",
                 "valueUnsignedInt",
                 "valueUri",
-            ],
+            ]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

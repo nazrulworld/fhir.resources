@@ -52,7 +52,10 @@ class SearchParameter(domainresource.DomainResource):
     component: ListType[fhirtypes.SearchParameterComponentType] = Field(
         None,
         alias="component",
-        title="List of `SearchParameterComponent` items (represented as `dict` in JSON)",
+        title=(
+            "List of `SearchParameterComponent` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="For Composite resources to define the parts",
     )
 
@@ -109,7 +112,10 @@ class SearchParameter(domainresource.DomainResource):
         None,
         alias="modifier",
         title="List of `Code` items (represented as `dict` in JSON)",
-        description="missing | exact | contains | not | text | in | not-in | below | above | type",
+        description=(
+            "missing | exact | contains | not | text | in | not-in | below | above "
+            "| type"
+        ),
     )
 
     name: fhirtypes.String = Field(
@@ -151,7 +157,9 @@ class SearchParameter(domainresource.DomainResource):
         ...,
         alias="type",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="number | date | string | token | reference | composite | quantity | uri",
+        description=(
+            "number | date | string | token | reference | composite | quantity | " "uri"
+        ),
     )
 
     url: fhirtypes.Uri = Field(
@@ -200,7 +208,10 @@ class SearchParameterComponent(backboneelement.BackboneElement):
     definition: fhirtypes.ReferenceType = Field(
         ...,
         alias="definition",
-        title="Type `Reference` referencing `SearchParameter` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `SearchParameter` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Defines how the part works",
     )
 

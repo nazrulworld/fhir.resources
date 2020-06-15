@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import documentreference
 
@@ -25,13 +27,14 @@ def impl_documentreference_1(inst):
     assert inst.content[0].attachment.creation == fhirtypes.DateTime.validate(
         "2005-12-24T09:35:00+11:00"
     )
-    # Don't know how to create unit test for "content[0].attachment.hash", which is a Base64Binary
+    assert inst.content[0].attachment.hash == bytes_validator(
+        "2jmj7l5rSw0yVb/vlWAYkK/YBwk="
+    )
     assert inst.content[0].attachment.language == "en-US"
     assert inst.content[0].attachment.size == 3654
     assert inst.content[0].attachment.title == "Physical"
-    assert (
-        inst.content[0].attachment.url
-        == "http://example.org/xds/mhd/Binary/07a6483f-732b-461e-86b6-edb665c45510"
+    assert inst.content[0].attachment.url == (
+        "http://example.org/xds/mhd/Binary/07a6483f-732b-461e-86b6-ed" "b665c45510"
     )
     assert inst.content[0].format.code == "urn:ihe:pcc:handp:2008"
     assert inst.content[0].format.display == "History and Physical Specification"
@@ -45,9 +48,8 @@ def impl_documentreference_1(inst):
     )
     assert inst.context.facilityType.coding[0].code == "Outpatient"
     assert inst.context.facilityType.coding[0].display == "Outpatient"
-    assert (
-        inst.context.facilityType.coding[0].system
-        == "http://www.ihe.net/xds/connectathon/healthcareFacilityTypeCodes"
+    assert inst.context.facilityType.coding[0].system == (
+        "http://www.ihe.net/xds/connectathon/healthcareFacilityTypeCo" "des"
     )
     assert inst.context.period.end == fhirtypes.DateTime.validate(
         "2004-12-23T08:01:00+11:00"

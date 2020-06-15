@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import provenance
 
@@ -18,9 +20,8 @@ def impl_provenance_1(inst):
         == "http://terminology.hl7.org/CodeSystem/v3-DocumentCompletion"
     )
     assert inst.agent[0].type.coding[0].code == "VERF"
-    assert (
-        inst.agent[0].type.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
+    assert inst.agent[0].type.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/contractsignertypecode" "s"
     )
     assert inst.agent[0].who.identifier.system == "urn:ietf:rfc:3986"
     assert inst.agent[0].who.identifier.value == "mailto:hhd@ssa.gov"
@@ -37,7 +38,7 @@ def impl_provenance_1(inst):
         == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     )
     assert inst.recorded == fhirtypes.Instant.validate("2015-08-27T08:39:24+10:00")
-    # Don't know how to create unit test for "signature[0].data", which is a Base64Binary
+    assert inst.signature[0].data == bytes_validator("Li4u")
     assert inst.signature[0].sigFormat == "application/signature+xml"
     assert inst.signature[0].targetFormat == "application/fhir+xml"
     assert inst.signature[0].type[0].code == "1.2.840.10065.1.12.1.5"
@@ -48,9 +49,10 @@ def impl_provenance_1(inst):
     )
     assert inst.signature[0].who.reference == "Practitioner/xcda-author"
     assert inst.target[0].reference == "DocumentReference/example"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">procedure record authored on 27-June 2015 by Harold Hippocrates, MD Content extracted from Referral received 26-June</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">procedure record'
+        " authored on 27-June 2015 by Harold Hippocrates, MD Content "
+        "extracted from Referral received 26-June</div>"
     )
     assert inst.text.status == "generated"
 
@@ -89,7 +91,7 @@ def impl_provenance_2(inst):
         inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     )
     assert inst.recorded == fhirtypes.Instant.validate("2016-05-26T00:41:10-04:00")
-    # Don't know how to create unit test for "signature[0].data", which is a Base64Binary
+    assert inst.signature[0].data == bytes_validator("dGhpcyBibG9iIGlzIHNuaXBwZWQ=")
     assert inst.signature[0].sigFormat == "application/signature+xml"
     assert inst.signature[0].targetFormat == "application/fhir+xml"
     assert inst.signature[0].type[0].code == "1.2.840.10065.1.12.1.1"
@@ -137,9 +139,10 @@ def impl_provenance_3(inst):
         inst.entity[0].what.identifier.type.coding[0].system
         == "https://github.com/common-workflow-language/workflows"
     )
-    assert (
-        inst.entity[0].what.identifier.value
-        == "https://github.com/common-workflow-language/workflows/blob/master/workflows/lobSTR/lobSTR-workflow.cwl"
+    assert inst.entity[0].what.identifier.value == (
+        "https://github.com/common-workflow-"
+        "language/workflows/blob/master/workflows/lobSTR/lobSTR-"
+        "workflow.cwl"
     )
     assert inst.id == "example-cwl"
     assert inst.meta.tag[0].code == "HTEST"
@@ -150,9 +153,8 @@ def impl_provenance_3(inst):
     assert inst.occurredPeriod.start == fhirtypes.DateTime.validate(
         "2016-11-30T11:15:33+10:00"
     )
-    assert (
-        inst.reason[0].text
-        == "profiling Short Tandem Repeats (STRs) from high throughput sequencing data."
+    assert inst.reason[0].text == (
+        "profiling Short Tandem Repeats (STRs) from high throughput " "sequencing data."
     )
     assert inst.recorded == fhirtypes.Instant.validate("2016-12-01T08:12:14+10:00")
     assert inst.target[0].reference == "MolecularSequence/example-pgx-1"
@@ -193,9 +195,9 @@ def impl_provenance_4(inst):
         inst.entity[0].what.identifier.type.coding[0].system
         == "https://hive.biochemistry.gwu.edu"
     )
-    assert (
-        inst.entity[0].what.identifier.value
-        == "https://hive.biochemistry.gwu.edu/cgi-bin/prd/htscsrs/servlet.cgi?pageid=bcoexample_1"
+    assert inst.entity[0].what.identifier.value == (
+        "https://hive.biochemistry.gwu.edu/cgi-"
+        "bin/prd/htscsrs/servlet.cgi?pageid=bcoexample_1"
     )
     assert inst.id == "example-biocompute-object"
     assert inst.meta.tag[0].code == "HTEST"

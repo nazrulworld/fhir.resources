@@ -25,7 +25,10 @@ class Basic(domainresource.DomainResource):
     author: fhirtypes.ReferenceType = Field(
         None,
         alias="author",
-        title="Type `Reference` referencing `Practitioner, PractitionerRole, Patient, RelatedPerson, Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, PractitionerRole, Patient,"
+            " RelatedPerson, Organization` (represented as `dict` in JSON)"
+        ),
         description="Who created",
     )
 
@@ -53,6 +56,8 @@ class Basic(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         None,
         alias="subject",
-        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        ),
         description="Identifies the focus of this resource",
     )

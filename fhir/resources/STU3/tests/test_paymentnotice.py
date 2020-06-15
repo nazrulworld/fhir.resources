@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import paymentnotice
 
@@ -28,9 +30,9 @@ def impl_paymentnotice_1(inst):
     assert inst.statusDate == fhirtypes.Date.validate("2014-08-15")
     assert inst.target.identifier.system == "http://regulators.gov"
     assert inst.target.identifier.value == "AB123"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the PaymentNotice</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the PaymentNotice</div>"
     )
     assert inst.text.status == "generated"
 

@@ -50,7 +50,10 @@ class ServiceRequest(domainresource.DomainResource):
     basedOn: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="basedOn",
-        title="List of `Reference` items referencing `CarePlan, ServiceRequest, MedicationRequest` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `CarePlan, ServiceRequest, "
+            "MedicationRequest` (represented as `dict` in JSON)"
+        ),
         description="What request fulfills",
     )
 
@@ -85,7 +88,10 @@ class ServiceRequest(domainresource.DomainResource):
     encounter: fhirtypes.ReferenceType = Field(
         None,
         alias="encounter",
-        title="Type `Reference` referencing `Encounter` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Encounter` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Encounter in which the request was created",
     )
 
@@ -99,7 +105,10 @@ class ServiceRequest(domainresource.DomainResource):
     instantiatesCanonical: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="instantiatesCanonical",
-        title="List of `Canonical` items referencing `ActivityDefinition, PlanDefinition` (represented as `dict` in JSON)",
+        title=(
+            "List of `Canonical` items referencing `ActivityDefinition, "
+            "PlanDefinition` (represented as `dict` in JSON)"
+        ),
         description="Instantiates FHIR protocol or definition",
     )
 
@@ -113,7 +122,10 @@ class ServiceRequest(domainresource.DomainResource):
     insurance: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="insurance",
-        title="List of `Reference` items referencing `Coverage, ClaimResponse` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Coverage, ClaimResponse` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Associated insurance coverage",
     )
 
@@ -121,7 +133,10 @@ class ServiceRequest(domainresource.DomainResource):
         ...,
         alias="intent",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="proposal | plan | directive | order | original-order | reflex-order | filler-order | instance-order | option",
+        description=(
+            "proposal | plan | directive | order | original-order | reflex-order | "
+            "filler-order | instance-order | option"
+        ),
     )
 
     locationCode: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -134,7 +149,10 @@ class ServiceRequest(domainresource.DomainResource):
     locationReference: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="locationReference",
-        title="List of `Reference` items referencing `Location` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Location` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Requested location",
     )
 
@@ -189,7 +207,11 @@ class ServiceRequest(domainresource.DomainResource):
     performer: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="performer",
-        title="List of `Reference` items referencing `Practitioner, PractitionerRole, Organization, CareTeam, HealthcareService, Patient, Device, RelatedPerson` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Practitioner, PractitionerRole,"
+            " Organization, CareTeam, HealthcareService, Patient, Device, "
+            "RelatedPerson` (represented as `dict` in JSON)"
+        ),
         description="Requested performer",
     )
 
@@ -244,28 +266,41 @@ class ServiceRequest(domainresource.DomainResource):
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="reasonReference",
-        title="List of `Reference` items referencing `Condition, Observation, DiagnosticReport, DocumentReference` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Condition, Observation, "
+            "DiagnosticReport, DocumentReference` (represented as `dict` in JSON)"
+        ),
         description="Explanation/Justification for service or service",
     )
 
     relevantHistory: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="relevantHistory",
-        title="List of `Reference` items referencing `Provenance` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Provenance` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Request provenance",
     )
 
     replaces: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="replaces",
-        title="List of `Reference` items referencing `ServiceRequest` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `ServiceRequest` (represented as"
+            " `dict` in JSON)"
+        ),
         description="What request replaces",
     )
 
     requester: fhirtypes.ReferenceType = Field(
         None,
         alias="requester",
-        title="Type `Reference` referencing `Practitioner, PractitionerRole, Organization, Patient, RelatedPerson, Device` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, PractitionerRole, "
+            "Organization, Patient, RelatedPerson, Device` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Who/what is requesting service",
     )
 
@@ -279,7 +314,10 @@ class ServiceRequest(domainresource.DomainResource):
     specimen: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="specimen",
-        title="List of `Reference` items referencing `Specimen` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Specimen` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Procedure Samples",
     )
 
@@ -287,20 +325,29 @@ class ServiceRequest(domainresource.DomainResource):
         ...,
         alias="status",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="draft | active | on-hold | revoked | completed | entered-in-error | unknown",
+        description=(
+            "draft | active | on-hold | revoked | completed | entered-in-error | "
+            "unknown"
+        ),
     )
 
     subject: fhirtypes.ReferenceType = Field(
         ...,
         alias="subject",
-        title="Type `Reference` referencing `Patient, Group, Location, Device` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Group, Location, Device` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Individual or Entity the service is ordered for",
     )
 
     supportingInfo: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="supportingInfo",
-        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Resource` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Additional clinical information",
     )
 
@@ -319,13 +366,13 @@ class ServiceRequest(domainresource.DomainResource):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "asNeeded": ["asNeededBoolean", "asNeededCodeableConcept",],
+            "asNeeded": ["asNeededBoolean", "asNeededCodeableConcept"],
             "occurrence": [
                 "occurrenceDateTime",
                 "occurrencePeriod",
                 "occurrenceTiming",
             ],
-            "quantity": ["quantityQuantity", "quantityRange", "quantityRatio",],
+            "quantity": ["quantityQuantity", "quantityRange", "quantityRatio"],
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

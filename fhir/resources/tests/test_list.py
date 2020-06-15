@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import list
 
@@ -277,9 +279,8 @@ def impl_list_6(inst):
         inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     )
     assert inst.mode == "snapshot"
-    assert (
-        inst.note[0].text
-        == "Both parents, both brothers and both children (twin) are still alive."
+    assert inst.note[0].text == (
+        "Both parents, both brothers and both children (twin) are " "still alive."
     )
     assert inst.status == "current"
     assert inst.subject.display == "Roel"
@@ -400,14 +401,14 @@ def test_list_8(base_settings):
 
 def impl_list_9(inst):
     assert inst.code.coding[0].code == "80738-8"
-    assert (
-        inst.code.coding[0].display
-        == "TPMT gene mutations found [Identifier] in Blood or Tissue by Sequencing Nominal"
+    assert inst.code.coding[0].display == (
+        "TPMT gene mutations found [Identifier] in Blood or Tissue by"
+        " Sequencing Nominal"
     )
     assert inst.code.coding[0].system == "http://loinc.org"
-    assert (
-        inst.code.text
-        == "TPMT gene mutations found [Identifier] in Blood or Tissue by Sequencing Nominal"
+    assert inst.code.text == (
+        "TPMT gene mutations found [Identifier] in Blood or Tissue by"
+        " Sequencing Nominal"
     )
     assert inst.contained[0].id == "1"
     assert inst.contained[1].id == "2"

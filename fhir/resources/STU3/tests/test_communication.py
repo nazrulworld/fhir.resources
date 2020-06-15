@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import communication
 
@@ -20,13 +22,13 @@ def impl_communication_1(inst):
     assert inst.payload[0].contentAttachment.creation == fhirtypes.DateTime.validate(
         "2010-02-01T11:50:23-05:00"
     )
-    # Don't know how to create unit test for "payload[0].contentAttachment.data", which is a Base64Binary
+    assert inst.payload[0].contentAttachment.data == bytes_validator("SGVsbG8=")
     assert inst.payload[0].contentAttachment.title == "accident notes 20100201.pdf"
     assert inst.payload[1].contentAttachment.contentType == "application/pdf"
     assert inst.payload[1].contentAttachment.creation == fhirtypes.DateTime.validate(
         "2010-02-01T10:57:34+01:00"
     )
-    # Don't know how to create unit test for "payload[1].contentAttachment.hash", which is a Base64Binary
+    assert inst.payload[1].contentAttachment.hash == bytes_validator("SGVsbG8gdGhlcmU=")
     assert inst.payload[1].contentAttachment.size == 104274
     assert (
         inst.payload[1].contentAttachment.url == "http://happyvalley.com/docs/AB12345"
@@ -40,9 +42,9 @@ def impl_communication_1(inst):
     assert inst.sent == fhirtypes.DateTime.validate("2016-06-12T18:01:10-08:00")
     assert inst.status == "completed"
     assert inst.subject.reference == "Patient/1"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Attachment which is unsolicited</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Attachment which'
+        " is unsolicited</div>"
     )
     assert inst.text.status == "generated"
     assert inst.topic[0].identifier.system == "http://happyvalley.com/claim"
@@ -90,13 +92,13 @@ def impl_communication_2(inst):
     assert inst.payload[0].contentAttachment.creation == fhirtypes.DateTime.validate(
         "2010-02-01T11:50:23-05:00"
     )
-    # Don't know how to create unit test for "payload[0].contentAttachment.data", which is a Base64Binary
+    assert inst.payload[0].contentAttachment.data == bytes_validator("SGVsbG8=")
     assert inst.payload[0].contentAttachment.title == "accident notes 20100201.pdf"
     assert inst.payload[1].contentAttachment.contentType == "application/pdf"
     assert inst.payload[1].contentAttachment.creation == fhirtypes.DateTime.validate(
         "2010-02-01T10:57:34+01:00"
     )
-    # Don't know how to create unit test for "payload[1].contentAttachment.hash", which is a Base64Binary
+    assert inst.payload[1].contentAttachment.hash == bytes_validator("SGVsbG8gdGhlcmU=")
     assert inst.payload[1].contentAttachment.size == 104274
     assert (
         inst.payload[1].contentAttachment.url == "http://happyvalley.com/docs/AB12345"
@@ -106,9 +108,9 @@ def impl_communication_2(inst):
     assert inst.sent == fhirtypes.DateTime.validate("2016-06-12T18:01:10-08:00")
     assert inst.status == "completed"
     assert inst.subject.reference == "Patient/1"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Attachment in response to a Request</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Attachment in '
+        "response to a Request</div>"
     )
     assert inst.text.status == "generated"
 
@@ -151,9 +153,9 @@ def impl_communication_3(inst):
     assert inst.medium[0].coding[0].system == "http://hl7.org/fhir/v3/ParticipationMode"
     assert inst.medium[0].text == "written"
     assert inst.partOf[0].display == "Serum Potassium Observation"
-    assert (
-        inst.payload[0].contentString
-        == "Patient 1 has a very high serum potassium value (7.2 mmol/L on 2014-Dec-12 at 5:55 pm)"
+    assert inst.payload[0].contentString == (
+        "Patient 1 has a very high serum potassium value (7.2 mmol/L "
+        "on 2014-Dec-12 at 5:55 pm)"
     )
     assert inst.payload[1].contentReference.display == "Serum Potassium Observation"
     assert inst.received == fhirtypes.DateTime.validate("2014-12-12T18:01:11-08:00")
@@ -162,9 +164,9 @@ def impl_communication_3(inst):
     assert inst.sent == fhirtypes.DateTime.validate("2014-12-12T18:01:10-08:00")
     assert inst.status == "completed"
     assert inst.subject.reference == "Patient/example"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Patient has very high serum potassium</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Patient has very'
+        " high serum potassium</div>"
     )
     assert inst.text.status == "generated"
 

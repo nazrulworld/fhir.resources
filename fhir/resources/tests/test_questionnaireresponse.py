@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import questionnaireresponse
 
@@ -157,9 +159,8 @@ def impl_questionnaireresponse_2(inst):
         == "http://loinc.org/fhir/DataElement/54135-9"
     )
     assert inst.item[1].item[0].item[5].linkId == "1.1.6"
-    assert (
-        inst.item[1].item[0].item[5].text
-        == "Are your parents related to each other in any way other than marriage?"
+    assert inst.item[1].item[0].item[5].text == (
+        "Are your parents related to each other in any way other than" " marriage?"
     )
     assert (
         inst.item[1]

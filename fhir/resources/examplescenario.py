@@ -64,7 +64,9 @@ class ExampleScenario(domainresource.DomainResource):
     instance: ListType[fhirtypes.ExampleScenarioInstanceType] = Field(
         None,
         alias="instance",
-        title="List of `ExampleScenarioInstance` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ExampleScenarioInstance` items (represented as `dict` in " "JSON)"
+        ),
         description="Each resource and each version that is present in the workflow",
     )
 
@@ -114,7 +116,10 @@ class ExampleScenario(domainresource.DomainResource):
         None,
         alias="url",
         title="Type `Uri` (represented as `dict` in JSON)",
-        description="Canonical identifier for this example scenario, represented as a URI (globally unique)",
+        description=(
+            "Canonical identifier for this example scenario, represented as a URI "
+            "(globally unique)"
+        ),
     )
 
     useContext: ListType[fhirtypes.UsageContextType] = Field(
@@ -134,7 +139,10 @@ class ExampleScenario(domainresource.DomainResource):
     workflow: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="workflow",
-        title="List of `Canonical` items referencing `ExampleScenario` (represented as `dict` in JSON)",
+        title=(
+            "List of `Canonical` items referencing `ExampleScenario` (represented "
+            "as `dict` in JSON)"
+        ),
         description="Another nested workflow",
     )
 
@@ -185,7 +193,10 @@ class ExampleScenarioInstance(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="containedInstance",
-        title="List of `ExampleScenarioInstanceContainedInstance` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ExampleScenarioInstanceContainedInstance` items (represented "
+            "as `dict` in JSON)"
+        ),
         description="Resources contained in the instance",
     )
 
@@ -220,7 +231,10 @@ class ExampleScenarioInstance(backboneelement.BackboneElement):
     version: ListType[fhirtypes.ExampleScenarioInstanceVersionType] = Field(
         None,
         alias="version",
-        title="List of `ExampleScenarioInstanceVersion` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ExampleScenarioInstanceVersion` items (represented as `dict` "
+            "in JSON)"
+        ),
         description="A specific version of the resource",
     )
 
@@ -299,7 +313,10 @@ class ExampleScenarioProcess(backboneelement.BackboneElement):
     step: ListType[fhirtypes.ExampleScenarioProcessStepType] = Field(
         None,
         alias="step",
-        title="List of `ExampleScenarioProcessStep` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ExampleScenarioProcessStep` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Each step of the process",
     )
 
@@ -320,14 +337,20 @@ class ExampleScenarioProcessStep(backboneelement.BackboneElement):
     alternative: ListType[fhirtypes.ExampleScenarioProcessStepAlternativeType] = Field(
         None,
         alias="alternative",
-        title="List of `ExampleScenarioProcessStepAlternative` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ExampleScenarioProcessStepAlternative` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Alternate non-typical step action",
     )
 
     operation: fhirtypes.ExampleScenarioProcessStepOperationType = Field(
         None,
         alias="operation",
-        title="Type `ExampleScenarioProcessStepOperation` (represented as `dict` in JSON)",
+        title=(
+            "Type `ExampleScenarioProcessStepOperation` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Each interaction or action",
     )
 
@@ -364,7 +387,10 @@ class ExampleScenarioProcessStepAlternative(backboneelement.BackboneElement):
     step: ListType[fhirtypes.ExampleScenarioProcessStepType] = Field(
         None,
         alias="step",
-        title="List of `ExampleScenarioProcessStep` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ExampleScenarioProcessStep` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="What happens in each alternative option",
     )
 
@@ -434,14 +460,20 @@ class ExampleScenarioProcessStepOperation(backboneelement.BackboneElement):
     request: fhirtypes.ExampleScenarioInstanceContainedInstanceType = Field(
         None,
         alias="request",
-        title="Type `ExampleScenarioInstanceContainedInstance` (represented as `dict` in JSON)",
+        title=(
+            "Type `ExampleScenarioInstanceContainedInstance` (represented as `dict`"
+            " in JSON)"
+        ),
         description="Each resource instance used by the initiator",
     )
 
     response: fhirtypes.ExampleScenarioInstanceContainedInstanceType = Field(
         None,
         alias="response",
-        title="Type `ExampleScenarioInstanceContainedInstance` (represented as `dict` in JSON)",
+        title=(
+            "Type `ExampleScenarioInstanceContainedInstance` (represented as `dict`"
+            " in JSON)"
+        ),
         description="Each resource instance used by the responder",
     )
 

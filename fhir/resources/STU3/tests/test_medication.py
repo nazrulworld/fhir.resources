@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import medication
 
@@ -170,9 +172,8 @@ def impl_medication_4(inst):
     assert inst.code.coding[0].system == "http://hl7.org/fhir/sid/ndc"
     assert inst.contained[0].id == "org3"
     assert inst.form.coding[0].code == "421637006"
-    assert (
-        inst.form.coding[0].display
-        == "Lyophilized powder for injectable solution (qualifier value) "
+    assert inst.form.coding[0].display == (
+        "Lyophilized powder for injectable solution (qualifier value)" " "
     )
     assert inst.form.coding[0].system == "http://snomed.info/sct"
     assert inst.id == "med0306"
@@ -344,9 +345,9 @@ def test_medication_6(base_settings):
 def impl_medication_7(inst):
     assert inst.code.text == "Amoxicillin 250mg/5ml Suspension"
     assert inst.id == "medicationexample1"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Amoxicillin 250mg/5ml Suspension</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Amoxicillin '
+        "250mg/5ml Suspension</div>"
     )
     assert inst.text.status == "generated"
 

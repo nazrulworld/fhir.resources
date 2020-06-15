@@ -24,8 +24,13 @@ class ObservationDefinition(domainresource.DomainResource):
     abnormalCodedValueSet: fhirtypes.ReferenceType = Field(
         None,
         alias="abnormalCodedValueSet",
-        title="Type `Reference` referencing `ValueSet` (represented as `dict` in JSON)",
-        description="Value set of abnormal coded values for the observations conforming to this ObservationDefinition",
+        title=(
+            "Type `Reference` referencing `ValueSet` (represented as `dict` in " "JSON)"
+        ),
+        description=(
+            "Value set of abnormal coded values for the observations conforming to "
+            "this ObservationDefinition"
+        ),
     )
 
     category: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -45,8 +50,13 @@ class ObservationDefinition(domainresource.DomainResource):
     criticalCodedValueSet: fhirtypes.ReferenceType = Field(
         None,
         alias="criticalCodedValueSet",
-        title="Type `Reference` referencing `ValueSet` (represented as `dict` in JSON)",
-        description="Value set of critical coded values for the observations conforming to this ObservationDefinition",
+        title=(
+            "Type `Reference` referencing `ValueSet` (represented as `dict` in " "JSON)"
+        ),
+        description=(
+            "Value set of critical coded values for the observations conforming to "
+            "this ObservationDefinition"
+        ),
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -73,15 +83,23 @@ class ObservationDefinition(domainresource.DomainResource):
     normalCodedValueSet: fhirtypes.ReferenceType = Field(
         None,
         alias="normalCodedValueSet",
-        title="Type `Reference` referencing `ValueSet` (represented as `dict` in JSON)",
-        description="Value set of normal coded values for the observations conforming to this ObservationDefinition",
+        title=(
+            "Type `Reference` referencing `ValueSet` (represented as `dict` in " "JSON)"
+        ),
+        description=(
+            "Value set of normal coded values for the observations conforming to "
+            "this ObservationDefinition"
+        ),
     )
 
     permittedDataType: ListType[fhirtypes.Code] = Field(
         None,
         alias="permittedDataType",
         title="List of `Code` items (represented as `dict` in JSON)",
-        description="Quantity | CodeableConcept | string | boolean | integer | Range | Ratio | SampledData | time | dateTime | Period",
+        description=(
+            "Quantity | CodeableConcept | string | boolean | integer | Range | "
+            "Ratio | SampledData | time | dateTime | Period"
+        ),
     )
 
     preferredReportName: fhirtypes.String = Field(
@@ -96,22 +114,33 @@ class ObservationDefinition(domainresource.DomainResource):
     ] = Field(
         None,
         alias="qualifiedInterval",
-        title="List of `ObservationDefinitionQualifiedInterval` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ObservationDefinitionQualifiedInterval` items (represented as"
+            " `dict` in JSON)"
+        ),
         description="Qualified range for continuous and ordinal observation results",
     )
 
     quantitativeDetails: fhirtypes.ObservationDefinitionQuantitativeDetailsType = Field(
         None,
         alias="quantitativeDetails",
-        title="Type `ObservationDefinitionQuantitativeDetails` (represented as `dict` in JSON)",
+        title=(
+            "Type `ObservationDefinitionQuantitativeDetails` (represented as `dict`"
+            " in JSON)"
+        ),
         description="Characteristics of quantitative results",
     )
 
     validCodedValueSet: fhirtypes.ReferenceType = Field(
         None,
         alias="validCodedValueSet",
-        title="Type `Reference` referencing `ValueSet` (represented as `dict` in JSON)",
-        description="Value set of valid coded values for the observations conforming to this ObservationDefinition",
+        title=(
+            "Type `Reference` referencing `ValueSet` (represented as `dict` in " "JSON)"
+        ),
+        description=(
+            "Value set of valid coded values for the observations conforming to "
+            "this ObservationDefinition"
+        ),
     )
 
 

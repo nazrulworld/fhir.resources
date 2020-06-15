@@ -28,7 +28,11 @@ class ImagingStudy(domainresource.DomainResource):
     basedOn: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="basedOn",
-        title="List of `Reference` items referencing `CarePlan, ServiceRequest, Appointment, AppointmentResponse, Task` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `CarePlan, ServiceRequest, "
+            "Appointment, AppointmentResponse, Task` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Request fulfilled",
     )
 
@@ -42,14 +46,20 @@ class ImagingStudy(domainresource.DomainResource):
     encounter: fhirtypes.ReferenceType = Field(
         None,
         alias="encounter",
-        title="Type `Reference` referencing `Encounter` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Encounter` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Encounter with which this imaging study is associated",
     )
 
     endpoint: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="endpoint",
-        title="List of `Reference` items referencing `Endpoint` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Endpoint` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Study access endpoint",
     )
 
@@ -63,14 +73,19 @@ class ImagingStudy(domainresource.DomainResource):
     interpreter: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="interpreter",
-        title="List of `Reference` items referencing `Practitioner, PractitionerRole` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Practitioner, PractitionerRole`"
+            " (represented as `dict` in JSON)"
+        ),
         description="Who interpreted images",
     )
 
     location: fhirtypes.ReferenceType = Field(
         None,
         alias="location",
-        title="Type `Reference` referencing `Location` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Location` (represented as `dict` in " "JSON)"
+        ),
         description="Where ImagingStudy occurred",
     )
 
@@ -112,7 +127,10 @@ class ImagingStudy(domainresource.DomainResource):
     procedureReference: fhirtypes.ReferenceType = Field(
         None,
         alias="procedureReference",
-        title="Type `Reference` referencing `Procedure` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Procedure` (represented as `dict` in "
+            "JSON)"
+        ),
         description="The performed Procedure reference",
     )
 
@@ -126,14 +144,20 @@ class ImagingStudy(domainresource.DomainResource):
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="reasonReference",
-        title="List of `Reference` items referencing `Condition, Observation, Media, DiagnosticReport, DocumentReference` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Condition, Observation, Media, "
+            "DiagnosticReport, DocumentReference` (represented as `dict` in JSON)"
+        ),
         description="Why was study performed",
     )
 
     referrer: fhirtypes.ReferenceType = Field(
         None,
         alias="referrer",
-        title="Type `Reference` referencing `Practitioner, PractitionerRole` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, PractitionerRole` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Referring physician",
     )
 
@@ -161,7 +185,10 @@ class ImagingStudy(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         ...,
         alias="subject",
-        title="Type `Reference` referencing `Patient, Device, Group` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Device, Group` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Who or what is the subject of the study",
     )
 
@@ -190,14 +217,20 @@ class ImagingStudySeries(backboneelement.BackboneElement):
     endpoint: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="endpoint",
-        title="List of `Reference` items referencing `Endpoint` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Endpoint` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Series access endpoint",
     )
 
     instance: ListType[fhirtypes.ImagingStudySeriesInstanceType] = Field(
         None,
         alias="instance",
-        title="List of `ImagingStudySeriesInstance` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ImagingStudySeriesInstance` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="A single SOP instance from the series",
     )
 
@@ -232,14 +265,20 @@ class ImagingStudySeries(backboneelement.BackboneElement):
     performer: ListType[fhirtypes.ImagingStudySeriesPerformerType] = Field(
         None,
         alias="performer",
-        title="List of `ImagingStudySeriesPerformer` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ImagingStudySeriesPerformer` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Who performed the series",
     )
 
     specimen: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="specimen",
-        title="List of `Reference` items referencing `Specimen` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Specimen` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Specimen imaged",
     )
 
@@ -305,7 +344,11 @@ class ImagingStudySeriesPerformer(backboneelement.BackboneElement):
     actor: fhirtypes.ReferenceType = Field(
         ...,
         alias="actor",
-        title="Type `Reference` referencing `Practitioner, PractitionerRole, Organization, CareTeam, Patient, Device, RelatedPerson` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, PractitionerRole, "
+            "Organization, CareTeam, Patient, Device, RelatedPerson` (represented "
+            "as `dict` in JSON)"
+        ),
         description="Who performed the series",
     )
 

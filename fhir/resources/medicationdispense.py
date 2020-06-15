@@ -28,7 +28,10 @@ class MedicationDispense(domainresource.DomainResource):
     authorizingPrescription: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="authorizingPrescription",
-        title="List of `Reference` items referencing `MedicationRequest` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `MedicationRequest` (represented"
+            " as `dict` in JSON)"
+        ),
         description="Medication order that authorizes the dispense",
     )
 
@@ -42,7 +45,10 @@ class MedicationDispense(domainresource.DomainResource):
     context: fhirtypes.ReferenceType = Field(
         None,
         alias="context",
-        title="Type `Reference` referencing `Encounter, EpisodeOfCare` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Encounter, EpisodeOfCare` (represented "
+            "as `dict` in JSON)"
+        ),
         description="Encounter / Episode associated with event",
     )
 
@@ -56,14 +62,19 @@ class MedicationDispense(domainresource.DomainResource):
     destination: fhirtypes.ReferenceType = Field(
         None,
         alias="destination",
-        title="Type `Reference` referencing `Location` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Location` (represented as `dict` in " "JSON)"
+        ),
         description="Where the medication was sent",
     )
 
     detectedIssue: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="detectedIssue",
-        title="List of `Reference` items referencing `DetectedIssue` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `DetectedIssue` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Clinical issue with action",
     )
 
@@ -71,13 +82,19 @@ class MedicationDispense(domainresource.DomainResource):
         None,
         alias="dosageInstruction",
         title="List of `Dosage` items (represented as `dict` in JSON)",
-        description="How the medication is to be used by the patient or administered by the caregiver",
+        description=(
+            "How the medication is to be used by the patient or administered by the"
+            " caregiver"
+        ),
     )
 
     eventHistory: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="eventHistory",
-        title="List of `Reference` items referencing `Provenance` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Provenance` (represented as "
+            "`dict` in JSON)"
+        ),
         description="A list of relevant lifecycle events",
     )
 
@@ -91,7 +108,9 @@ class MedicationDispense(domainresource.DomainResource):
     location: fhirtypes.ReferenceType = Field(
         None,
         alias="location",
-        title="Type `Reference` referencing `Location` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Location` (represented as `dict` in " "JSON)"
+        ),
         description="Where the dispense occurred",
     )
 
@@ -107,7 +126,10 @@ class MedicationDispense(domainresource.DomainResource):
     medicationReference: fhirtypes.ReferenceType = Field(
         None,
         alias="medicationReference",
-        title="Type `Reference` referencing `Medication` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Medication` (represented as `dict` in "
+            "JSON)"
+        ),
         description="What medication was supplied",
         one_of_many="medication",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
@@ -123,14 +145,20 @@ class MedicationDispense(domainresource.DomainResource):
     partOf: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="partOf",
-        title="List of `Reference` items referencing `Procedure` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Procedure` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Event that dispense is part of",
     )
 
     performer: ListType[fhirtypes.MedicationDispensePerformerType] = Field(
         None,
         alias="performer",
-        title="List of `MedicationDispensePerformer` items (represented as `dict` in JSON)",
+        title=(
+            "List of `MedicationDispensePerformer` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Who performed event",
     )
 
@@ -144,7 +172,10 @@ class MedicationDispense(domainresource.DomainResource):
     receiver: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="receiver",
-        title="List of `Reference` items referencing `Patient, Practitioner` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Patient, Practitioner` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Who collected the medication",
     )
 
@@ -152,7 +183,10 @@ class MedicationDispense(domainresource.DomainResource):
         ...,
         alias="status",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="preparation | in-progress | cancelled | on-hold | completed | entered-in-error | stopped | declined | unknown",
+        description=(
+            "preparation | in-progress | cancelled | on-hold | completed | entered-"
+            "in-error | stopped | declined | unknown"
+        ),
     )
 
     statusReasonCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -167,7 +201,10 @@ class MedicationDispense(domainresource.DomainResource):
     statusReasonReference: fhirtypes.ReferenceType = Field(
         None,
         alias="statusReasonReference",
-        title="Type `Reference` referencing `DetectedIssue` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `DetectedIssue` (represented as `dict` in"
+            " JSON)"
+        ),
         description="Why a dispense was not performed",
         one_of_many="statusReason",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -176,7 +213,10 @@ class MedicationDispense(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         None,
         alias="subject",
-        title="Type `Reference` referencing `Patient, Group` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Group` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Who the dispense is for",
     )
 
@@ -190,7 +230,10 @@ class MedicationDispense(domainresource.DomainResource):
     supportingInformation: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="supportingInformation",
-        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Resource` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Information that supports the dispensing of the medication",
     )
 
@@ -230,8 +273,8 @@ class MedicationDispense(domainresource.DomainResource):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "medication": ["medicationCodeableConcept", "medicationReference",],
-            "statusReason": ["statusReasonCodeableConcept", "statusReasonReference",],
+            "medication": ["medicationCodeableConcept", "medicationReference"],
+            "statusReason": ["statusReasonCodeableConcept", "statusReasonReference"],
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
@@ -265,7 +308,11 @@ class MedicationDispensePerformer(backboneelement.BackboneElement):
     actor: fhirtypes.ReferenceType = Field(
         ...,
         alias="actor",
-        title="Type `Reference` referencing `Practitioner, PractitionerRole, Organization, Patient, Device, RelatedPerson` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, PractitionerRole, "
+            "Organization, Patient, Device, RelatedPerson` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Individual who was performing",
     )
 
@@ -298,7 +345,10 @@ class MedicationDispenseSubstitution(backboneelement.BackboneElement):
     responsibleParty: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="responsibleParty",
-        title="List of `Reference` items referencing `Practitioner, PractitionerRole` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Practitioner, PractitionerRole`"
+            " (represented as `dict` in JSON)"
+        ),
         description="Who is responsible for the substitution",
     )
 
@@ -306,7 +356,10 @@ class MedicationDispenseSubstitution(backboneelement.BackboneElement):
         None,
         alias="type",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Code signifying whether a different drug was dispensed from what was prescribed",
+        description=(
+            "Code signifying whether a different drug was dispensed from what was "
+            "prescribed"
+        ),
     )
 
     wasSubstituted: bool = Field(

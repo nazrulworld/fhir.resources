@@ -25,14 +25,20 @@ class DataRequirement(element.Element):
     codeFilter: ListType[fhirtypes.DataRequirementCodeFilterType] = Field(
         None,
         alias="codeFilter",
-        title="List of `DataRequirementCodeFilter` items (represented as `dict` in JSON)",
+        title=(
+            "List of `DataRequirementCodeFilter` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="What codes are expected",
     )
 
     dateFilter: ListType[fhirtypes.DataRequirementDateFilterType] = Field(
         None,
         alias="dateFilter",
-        title="List of `DataRequirementDateFilter` items (represented as `dict` in JSON)",
+        title=(
+            "List of `DataRequirementDateFilter` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="What dates/date ranges are expected",
     )
 
@@ -47,13 +53,19 @@ class DataRequirement(element.Element):
         None,
         alias="mustSupport",
         title="List of `String` items (represented as `dict` in JSON)",
-        description="Indicates specific structure elements that are referenced by the knowledge module",
+        description=(
+            "Indicates specific structure elements that are referenced by the "
+            "knowledge module"
+        ),
     )
 
     profile: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="profile",
-        title="List of `Canonical` items referencing `StructureDefinition` (represented as `dict` in JSON)",
+        title=(
+            "List of `Canonical` items referencing `StructureDefinition` "
+            "(represented as `dict` in JSON)"
+        ),
         description="The profile of the required data",
     )
 
@@ -68,7 +80,10 @@ class DataRequirement(element.Element):
         None,
         alias="subjectCodeableConcept",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="E.g. Patient, Practitioner, RelatedPerson, Organization, Location, Device",
+        description=(
+            "E.g. Patient, Practitioner, RelatedPerson, Organization, Location, "
+            "Device"
+        ),
         one_of_many="subject",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
     )
@@ -77,7 +92,10 @@ class DataRequirement(element.Element):
         None,
         alias="subjectReference",
         title="Type `Reference` referencing `Group` (represented as `dict` in JSON)",
-        description="E.g. Patient, Practitioner, RelatedPerson, Organization, Location, Device",
+        description=(
+            "E.g. Patient, Practitioner, RelatedPerson, Organization, Location, "
+            "Device"
+        ),
         one_of_many="subject",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
     )
@@ -103,9 +121,7 @@ class DataRequirement(element.Element):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "subject": ["subjectCodeableConcept", "subjectReference",],
-        }
+        one_of_many_fields = {"subject": ["subjectCodeableConcept", "subjectReference"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -162,7 +178,9 @@ class DataRequirementCodeFilter(element.Element):
     valueSet: fhirtypes.Canonical = Field(
         None,
         alias="valueSet",
-        title="Type `Canonical` referencing `ValueSet` (represented as `dict` in JSON)",
+        title=(
+            "Type `Canonical` referencing `ValueSet` (represented as `dict` in " "JSON)"
+        ),
         description="Valueset for the filter",
     )
 
@@ -232,7 +250,7 @@ class DataRequirementDateFilter(element.Element):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "value": ["valueDateTime", "valueDuration", "valuePeriod",],
+            "value": ["valueDateTime", "valueDuration", "valuePeriod"]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

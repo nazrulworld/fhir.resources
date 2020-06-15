@@ -25,8 +25,14 @@ class NutritionOrder(domainresource.DomainResource):
     allergyIntolerance: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="allergyIntolerance",
-        title="List of `Reference` items referencing `AllergyIntolerance` (represented as `dict` in JSON)",
-        description="List of the patient\u0027s food and nutrition-related allergies and intolerances",
+        title=(
+            "List of `Reference` items referencing `AllergyIntolerance` "
+            "(represented as `dict` in JSON)"
+        ),
+        description=(
+            "List of the patient\u0027s food and nutrition-related allergies and "
+            "intolerances"
+        ),
     )
 
     dateTime: fhirtypes.DateTime = Field(
@@ -39,7 +45,10 @@ class NutritionOrder(domainresource.DomainResource):
     encounter: fhirtypes.ReferenceType = Field(
         None,
         alias="encounter",
-        title="Type `Reference` referencing `Encounter` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Encounter` (represented as `dict` in "
+            "JSON)"
+        ),
         description="The encounter associated with this nutrition order",
     )
 
@@ -54,7 +63,9 @@ class NutritionOrder(domainresource.DomainResource):
         None,
         alias="excludeFoodModifier",
         title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Order-specific modifier about the type of food that should not be given",
+        description=(
+            "Order-specific modifier about the type of food that should not be " "given"
+        ),
     )
 
     foodPreferenceModifier: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -81,7 +92,10 @@ class NutritionOrder(domainresource.DomainResource):
     orderer: fhirtypes.ReferenceType = Field(
         None,
         alias="orderer",
-        title="Type `Reference` referencing `Practitioner` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Who ordered the diet, formula or nutritional supplement",
     )
 
@@ -96,13 +110,19 @@ class NutritionOrder(domainresource.DomainResource):
         None,
         alias="status",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="proposed | draft | planned | requested | active | on-hold | completed | cancelled | entered-in-error",
+        description=(
+            "proposed | draft | planned | requested | active | on-hold | completed "
+            "| cancelled | entered-in-error"
+        ),
     )
 
     supplement: ListType[fhirtypes.NutritionOrderSupplementType] = Field(
         None,
         alias="supplement",
-        title="List of `NutritionOrderSupplement` items (represented as `dict` in JSON)",
+        title=(
+            "List of `NutritionOrderSupplement` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Supplement components",
     )
 
@@ -134,7 +154,10 @@ class NutritionOrderEnteralFormula(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="administration",
-        title="List of `NutritionOrderEnteralFormulaAdministration` items (represented as `dict` in JSON)",
+        title=(
+            "List of `NutritionOrderEnteralFormulaAdministration` items "
+            "(represented as `dict` in JSON)"
+        ),
         description="Formula feeding instruction as structured data",
     )
 
@@ -237,9 +260,7 @@ class NutritionOrderEnteralFormulaAdministration(backboneelement.BackboneElement
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "rate": ["rateQuantity", "rateRatio",],
-        }
+        one_of_many_fields = {"rate": ["rateQuantity", "rateRatio"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -286,7 +307,10 @@ class NutritionOrderOralDiet(backboneelement.BackboneElement):
     nutrient: ListType[fhirtypes.NutritionOrderOralDietNutrientType] = Field(
         None,
         alias="nutrient",
-        title="List of `NutritionOrderOralDietNutrient` items (represented as `dict` in JSON)",
+        title=(
+            "List of `NutritionOrderOralDietNutrient` items (represented as `dict` "
+            "in JSON)"
+        ),
         description="Required  nutrient modifications",
     )
 
@@ -300,7 +324,10 @@ class NutritionOrderOralDiet(backboneelement.BackboneElement):
     texture: ListType[fhirtypes.NutritionOrderOralDietTextureType] = Field(
         None,
         alias="texture",
-        title="List of `NutritionOrderOralDietTexture` items (represented as `dict` in JSON)",
+        title=(
+            "List of `NutritionOrderOralDietTexture` items (represented as `dict` "
+            "in JSON)"
+        ),
         description="Required  texture modifications",
     )
 
@@ -308,7 +335,10 @@ class NutritionOrderOralDiet(backboneelement.BackboneElement):
         None,
         alias="type",
         title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Type of oral diet or diet restrictions that describe what can be consumed orally",
+        description=(
+            "Type of oral diet or diet restrictions that describe what can be "
+            "consumed orally"
+        ),
     )
 
 
@@ -347,7 +377,10 @@ class NutritionOrderOralDietTexture(backboneelement.BackboneElement):
         None,
         alias="foodType",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Concepts that are used to identify an entity that is ingested for nutritional purposes",
+        description=(
+            "Concepts that are used to identify an entity that is ingested for "
+            "nutritional purposes"
+        ),
     )
 
     modifier: fhirtypes.CodeableConceptType = Field(

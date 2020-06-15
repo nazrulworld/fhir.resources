@@ -33,7 +33,10 @@ class MedicinalProductInteraction(domainresource.DomainResource):
         None,
         alias="effect",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description='The effect of the interaction, for example "reduced gastric absorption of primary medication"',
+        description=(
+            'The effect of the interaction, for example "reduced gastric absorption'
+            ' of primary medication"'
+        ),
     )
 
     incidence: fhirtypes.CodeableConceptType = Field(
@@ -46,7 +49,10 @@ class MedicinalProductInteraction(domainresource.DomainResource):
     interactant: ListType[fhirtypes.MedicinalProductInteractionInteractantType] = Field(
         None,
         alias="interactant",
-        title="List of `MedicinalProductInteractionInteractant` items (represented as `dict` in JSON)",
+        title=(
+            "List of `MedicinalProductInteractionInteractant` items (represented as"
+            " `dict` in JSON)"
+        ),
         description="The specific medication, food or laboratory test that interacts",
     )
 
@@ -60,7 +66,10 @@ class MedicinalProductInteraction(domainresource.DomainResource):
     subject: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="subject",
-        title="List of `Reference` items referencing `MedicinalProduct, Medication, Substance` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `MedicinalProduct, Medication, "
+            "Substance` (represented as `dict` in JSON)"
+        ),
         description="The medication for which this is a described interaction",
     )
 
@@ -68,7 +77,10 @@ class MedicinalProductInteraction(domainresource.DomainResource):
         None,
         alias="type",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The type of the interaction e.g. drug-drug interaction, drug-food interaction, drug-lab test interaction",
+        description=(
+            "The type of the interaction e.g. drug-drug interaction, drug-food "
+            "interaction, drug-lab test interaction"
+        ),
     )
 
 
@@ -90,7 +102,10 @@ class MedicinalProductInteractionInteractant(backboneelement.BackboneElement):
     itemReference: fhirtypes.ReferenceType = Field(
         None,
         alias="itemReference",
-        title="Type `Reference` referencing `MedicinalProduct, Medication, Substance, ObservationDefinition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `MedicinalProduct, Medication, Substance,"
+            " ObservationDefinition` (represented as `dict` in JSON)"
+        ),
         description="The specific medication, food or laboratory test that interacts",
         one_of_many="item",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
@@ -110,9 +125,7 @@ class MedicinalProductInteractionInteractant(backboneelement.BackboneElement):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "item": ["itemCodeableConcept", "itemReference",],
-        }
+        one_of_many_fields = {"item": ["itemCodeableConcept", "itemReference"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (

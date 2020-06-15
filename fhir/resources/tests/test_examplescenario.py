@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import examplescenario
 
@@ -16,9 +18,9 @@ def impl_examplescenario_1(inst):
     assert inst.actor[0].name == "Nurse"
     assert inst.actor[0].type == "person"
     assert inst.actor[1].actorId == "MAP"
-    assert (
-        inst.actor[1].description
-        == "The entity that receives the Administration Requests to show the nurse to perform them"
+    assert inst.actor[1].description == (
+        "The entity that receives the Administration Requests to show"
+        " the nurse to perform them"
     )
     assert inst.actor[1].name == "Nurse's Tablet"
     assert inst.actor[1].type == "entity"
@@ -27,16 +29,17 @@ def impl_examplescenario_1(inst):
     assert inst.actor[2].name == "MAR / Scheduler"
     assert inst.actor[2].type == "entity"
     assert inst.actor[3].actorId == "MAC"
-    assert (
-        inst.actor[3].description
-        == "The entity that receives the Medication Administration reports"
+    assert inst.actor[3].description == (
+        "The entity that receives the Medication Administration " "reports"
     )
     assert inst.actor[3].name == "MAR / EHR"
     assert inst.actor[3].type == "entity"
     assert inst.id == "example"
-    assert (
-        inst.instance[0].description
-        == 'The initial prescription which describes "medication X, 3 times per day" - the exact scheduling is not   in the initial prescription (it is left for the care teams to decide on the schedule).'
+    assert inst.instance[0].description == (
+        'The initial prescription which describes "medication X, 3 '
+        'times per day" - the exact scheduling is not   in the '
+        "initial prescription (it is left for the care teams to "
+        "decide on the schedule)."
     )
     assert inst.instance[0].name == "Initial Prescription"
     assert inst.instance[0].resourceId == "iherx001"
@@ -92,26 +95,25 @@ def impl_examplescenario_1(inst):
     assert (
         inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     )
-    assert (
-        inst.process[0].postConditions
-        == "Medication administration Reports are submitted, EHR is updated."
+    assert inst.process[0].postConditions == (
+        "Medication administration Reports are submitted, EHR is " "updated."
     )
-    assert (
-        inst.process[0].preConditions
-        == "Medication administration requests are in the EHR / MAR, scheduled for each individual intake."
+    assert inst.process[0].preConditions == (
+        "Medication administration requests are in the EHR / MAR, "
+        "scheduled for each individual intake."
     )
     assert inst.process[0].step[0].operation.initiator == "Nurse"
     assert inst.process[0].step[0].operation.name == "1. Get today's schedule"
     assert inst.process[0].step[0].operation.number == "1"
     assert inst.process[0].step[0].operation.receiver == "MAP"
-    assert (
-        inst.process[0].step[1].process[0].description
-        == "Query for medication administration orders,\\n- For today's shifts\\n- For today's patients"
+    assert inst.process[0].step[1].process[0].description == (
+        "Query for medication administration orders,\\n- For today's "
+        "shifts\\n- For today's patients"
     )
     assert inst.process[0].step[1].process[0].step[0].operation.initiator == "MAP"
-    assert (
-        inst.process[0].step[1].process[0].step[0].operation.name
-        == "2.Query for medication administration orders,\\n- For today's shifts\\n- For today's patients"
+    assert inst.process[0].step[1].process[0].step[0].operation.name == (
+        "2.Query for medication administration orders,\\n- For "
+        "today's shifts\\n- For today's patients"
     )
     assert inst.process[0].step[1].process[0].step[0].operation.number == "2"
     assert inst.process[0].step[1].process[0].step[0].operation.receiver == "OP"

@@ -50,7 +50,10 @@ class SubstancePolymer(domainresource.DomainResource):
     monomerSet: ListType[fhirtypes.SubstancePolymerMonomerSetType] = Field(
         None,
         alias="monomerSet",
-        title="List of `SubstancePolymerMonomerSet` items (represented as `dict` in JSON)",
+        title=(
+            "List of `SubstancePolymerMonomerSet` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Todo",
     )
 
@@ -80,7 +83,10 @@ class SubstancePolymerMonomerSet(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="startingMaterial",
-        title="List of `SubstancePolymerMonomerSetStartingMaterial` items (represented as `dict` in JSON)",
+        title=(
+            "List of `SubstancePolymerMonomerSetStartingMaterial` items "
+            "(represented as `dict` in JSON)"
+        ),
         description="Todo",
     )
 
@@ -99,7 +105,7 @@ class SubstancePolymerMonomerSetStartingMaterial(backboneelement.BackboneElement
     )
 
     isDefining: bool = Field(
-        None, alias="isDefining", title="Type `bool`", description="Todo",
+        None, alias="isDefining", title="Type `bool`", description="Todo"
     )
 
     material: fhirtypes.CodeableConceptType = Field(
@@ -140,7 +146,10 @@ class SubstancePolymerRepeat(backboneelement.BackboneElement):
     repeatUnit: ListType[fhirtypes.SubstancePolymerRepeatRepeatUnitType] = Field(
         None,
         alias="repeatUnit",
-        title="List of `SubstancePolymerRepeatRepeatUnit` items (represented as `dict` in JSON)",
+        title=(
+            "List of `SubstancePolymerRepeatRepeatUnit` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Todo",
     )
 
@@ -170,7 +179,10 @@ class SubstancePolymerRepeatRepeatUnit(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="degreeOfPolymerisation",
-        title="List of `SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation` items (represented as `dict` in JSON)",
+        title=(
+            "List of `SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation` items"
+            " (represented as `dict` in JSON)"
+        ),
         description="Todo",
     )
 
@@ -193,7 +205,10 @@ class SubstancePolymerRepeatRepeatUnit(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="structuralRepresentation",
-        title="List of `SubstancePolymerRepeatRepeatUnitStructuralRepresentation` items (represented as `dict` in JSON)",
+        title=(
+            "List of `SubstancePolymerRepeatRepeatUnitStructuralRepresentation` "
+            "items (represented as `dict` in JSON)"
+        ),
         description="Todo",
     )
 

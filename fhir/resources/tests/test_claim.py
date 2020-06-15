@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import claim
 
@@ -42,9 +44,8 @@ def impl_claim_1(inst):
     assert inst.diagnosis[0].diagnosisCodeableConcept.coding[0].code == "654456"
     assert inst.diagnosis[0].packageCode.coding[0].code == "400"
     assert inst.diagnosis[0].packageCode.coding[0].display == "Head trauma - concussion"
-    assert (
-        inst.diagnosis[0].packageCode.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/ex-diagnosisrelatedgroup"
+    assert inst.diagnosis[0].packageCode.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/ex-" "diagnosisrelatedgroup"
     )
     assert inst.diagnosis[0].sequence == 1
     assert inst.diagnosis[0].type[0].coding[0].code == "admitting"
@@ -92,9 +93,8 @@ def impl_claim_1(inst):
     assert inst.provider.identifier.value == "NJ12345"
     assert inst.status == "active"
     assert inst.supportingInfo[0].category.coding[0].code == "employmentimpacted"
-    assert (
-        inst.supportingInfo[0].category.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/claiminformationcategory"
+    assert inst.supportingInfo[0].category.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/claiminformationcatego" "ry"
     )
     assert inst.supportingInfo[0].sequence == 1
     assert inst.supportingInfo[0].timingPeriod.end == fhirtypes.DateTime.validate(
@@ -104,9 +104,8 @@ def impl_claim_1(inst):
         "2014-08-16T12:09:24+00:06"
     )
     assert inst.supportingInfo[1].category.coding[0].code == "hospitalized"
-    assert (
-        inst.supportingInfo[1].category.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/claiminformationcategory"
+    assert inst.supportingInfo[1].category.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/claiminformationcatego" "ry"
     )
     assert inst.supportingInfo[1].sequence == 2
     assert inst.supportingInfo[1].timingPeriod.end == fhirtypes.DateTime.validate(
@@ -115,9 +114,9 @@ def impl_claim_1(inst):
     assert inst.supportingInfo[1].timingPeriod.start == fhirtypes.DateTime.validate(
         "2014-08-15T12:09:24+00:06"
     )
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Claim</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the Claim</div>"
     )
     assert inst.text.status == "generated"
     assert inst.total.currency == "USD"
@@ -186,9 +185,9 @@ def impl_claim_2(inst):
     assert inst.priority.coding[0].code == "normal"
     assert inst.provider.reference == "Organization/1"
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Claim</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the Claim</div>"
     )
     assert inst.text.status == "generated"
     assert inst.type.coding[0].code == "professional"
@@ -251,9 +250,9 @@ def impl_claim_3(inst):
     assert inst.priority.coding[0].code == "normal"
     assert inst.provider.reference == "Organization/1"
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Oral Health Claim</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the Oral Health Claim</div>"
     )
     assert inst.text.status == "generated"
     assert inst.type.coding[0].code == "oral"
@@ -318,9 +317,9 @@ def impl_claim_4(inst):
     assert inst.priority.coding[0].code == "normal"
     assert inst.provider.reference == "Organization/1"
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Vision Claim</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the Vision Claim</div>"
     )
     assert inst.text.status == "generated"
     assert inst.type.coding[0].code == "vision"
@@ -610,9 +609,9 @@ def impl_claim_5(inst):
     assert inst.priority.coding[0].code == "normal"
     assert inst.provider.reference == "Organization/1"
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Vision Claim for Glasses</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the Vision Claim for Glasses</div>"
     )
     assert inst.text.status == "generated"
     assert inst.type.coding[0].code == "vision"
@@ -703,9 +702,9 @@ def impl_claim_6(inst):
         inst.subType.coding[0].system
         == "http://terminology.hl7.org/CodeSystem/ex-claimsubtype"
     )
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Claim</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the Claim</div>"
     )
     assert inst.text.status == "generated"
     assert inst.total.currency == "USD"
@@ -773,9 +772,9 @@ def impl_claim_7(inst):
     assert inst.priority.coding[0].code == "normal"
     assert inst.provider.reference == "#org-org"
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Oral Health Claim</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the Oral Health Claim</div>"
     )
     assert inst.text.status == "generated"
     assert inst.type.coding[0].code == "oral"
@@ -902,9 +901,9 @@ def impl_claim_8(inst):
     )
     assert inst.supportingInfo[2].sequence == 3
     assert float(inst.supportingInfo[2].valueQuantity.value) == float(90)
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Pharmacy Claim</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the Pharmacy Claim</div>"
     )
     assert inst.text.status == "generated"
     assert inst.total.currency == "USD"
@@ -1084,9 +1083,9 @@ def impl_claim_9(inst):
     assert inst.priority.coding[0].code == "normal"
     assert inst.provider.reference == "Organization/1"
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Oral Health Claim</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the Oral Health Claim</div>"
     )
     assert inst.text.status == "generated"
     assert inst.type.coding[0].code == "oral"
@@ -1143,9 +1142,8 @@ def impl_claim_10(inst):
     )
     assert inst.diagnosis[1].sequence == 2
     assert inst.diagnosis[2].diagnosisCodeableConcept.coding[0].code == "M53.88"
-    assert (
-        inst.diagnosis[2].diagnosisCodeableConcept.coding[0].display
-        == "Other specified dorsopathies, sacral and sacrococcygeal region"
+    assert inst.diagnosis[2].diagnosisCodeableConcept.coding[0].display == (
+        "Other specified dorsopathies, sacral and sacrococcygeal " "region"
     )
     assert (
         inst.diagnosis[2].diagnosisCodeableConcept.coding[0].system
@@ -1153,9 +1151,8 @@ def impl_claim_10(inst):
     )
     assert inst.diagnosis[2].sequence == 3
     assert inst.diagnosis[3].diagnosisCodeableConcept.coding[0].code == "M47.816"
-    assert (
-        inst.diagnosis[3].diagnosisCodeableConcept.coding[0].display
-        == "Spondylosis without myelopathy or radiculopathy, lumbar region"
+    assert inst.diagnosis[3].diagnosisCodeableConcept.coding[0].display == (
+        "Spondylosis without myelopathy or radiculopathy, lumbar " "region"
     )
     assert (
         inst.diagnosis[3].diagnosisCodeableConcept.coding[0].system
@@ -1184,9 +1181,9 @@ def impl_claim_10(inst):
         inst.item[0].locationCodeableConcept.coding[0].display
         == "Ambulatory Surgical Center"
     )
-    assert (
-        inst.item[0].locationCodeableConcept.coding[0].system
-        == "https://www.cms.gov/medicare/coding/place-of-service-codes/place_of_service_code_set.html"
+    assert inst.item[0].locationCodeableConcept.coding[0].system == (
+        "https://www.cms.gov/medicare/coding/place-of-service-"
+        "codes/place_of_service_code_set.html"
     )
     assert inst.item[0].net.currency == "USD"
     assert float(inst.item[0].net.value) == float(12500.0)
@@ -1221,9 +1218,8 @@ def impl_claim_10(inst):
     assert inst.subType.coding[0].code == "831"
     assert inst.subType.coding[0].system == "https://www.cms.gov/codes/billtype"
     assert inst.supportingInfo[0].category.coding[0].code == "hospitalized"
-    assert (
-        inst.supportingInfo[0].category.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/claiminformationcategory"
+    assert inst.supportingInfo[0].category.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/claiminformationcatego" "ry"
     )
     assert inst.supportingInfo[0].sequence == 1
     assert inst.supportingInfo[0].timingPeriod.end == fhirtypes.DateTime.validate(
@@ -1233,23 +1229,22 @@ def impl_claim_10(inst):
         "2015-10-01T00:00:00-07:00"
     )
     assert inst.supportingInfo[1].category.coding[0].code == "discharge"
-    assert (
-        inst.supportingInfo[1].category.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/claiminformationcategory"
+    assert inst.supportingInfo[1].category.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/claiminformationcatego" "ry"
     )
     assert inst.supportingInfo[1].code.coding[0].code == "01"
     assert (
         inst.supportingInfo[1].code.coding[0].display
         == "Discharge to Home or Self Care"
     )
-    assert (
-        inst.supportingInfo[1].code.coding[0].system
-        == "https://www.cms.gov/Outreach-and-Education/Medicare-Learning-Network-MLN/MLNMattersArticles/downloads/SE0801.pdf"
+    assert inst.supportingInfo[1].code.coding[0].system == (
+        "https://www.cms.gov/Outreach-and-Education/Medicare-"
+        "Learning-Network-MLN/MLNMattersArticles/downloads/SE0801.pdf"
     )
     assert inst.supportingInfo[1].sequence == 2
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of a CMS 1500 Claim</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of a CMS 1500 Claim</div>"
     )
     assert inst.text.status == "generated"
     assert inst.total.currency == "USD"

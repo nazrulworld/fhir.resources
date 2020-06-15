@@ -48,7 +48,10 @@ class Consent(domainresource.DomainResource):
     consentingParty: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="consentingParty",
-        title="List of `Reference` items referencing `Organization, Patient, Practitioner, RelatedPerson` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Organization, Patient, "
+            "Practitioner, RelatedPerson` (represented as `dict` in JSON)"
+        ),
         description="Who is agreeing to the policy and exceptions",
     )
 
@@ -90,7 +93,10 @@ class Consent(domainresource.DomainResource):
     organization: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="organization",
-        title="List of `Reference` items referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Organization` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Custodian of the consent",
     )
 
@@ -157,7 +163,10 @@ class Consent(domainresource.DomainResource):
     sourceReference: fhirtypes.ReferenceType = Field(
         None,
         alias="sourceReference",
-        title="Type `Reference` referencing `Consent, DocumentReference, Contract, QuestionnaireResponse` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Consent, DocumentReference, Contract, "
+            "QuestionnaireResponse` (represented as `dict` in JSON)"
+        ),
         description="Source from which this consent is taken",
         one_of_many="source",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -185,7 +194,7 @@ class Consent(domainresource.DomainResource):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "source": ["sourceAttachment", "sourceIdentifier", "sourceReference",],
+            "source": ["sourceAttachment", "sourceIdentifier", "sourceReference"]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
@@ -220,7 +229,10 @@ class ConsentActor(backboneelement.BackboneElement):
     reference: fhirtypes.ReferenceType = Field(
         ...,
         alias="reference",
-        title="Type `Reference` referencing `Device, Group, CareTeam, Organization, Patient, Practitioner, RelatedPerson` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Device, Group, CareTeam, Organization, "
+            "Patient, Practitioner, RelatedPerson` (represented as `dict` in JSON)"
+        ),
         description="Resource for the actor (or group, by role)",
     )
 
@@ -250,7 +262,9 @@ class ConsentData(backboneelement.BackboneElement):
     reference: fhirtypes.ReferenceType = Field(
         ...,
         alias="reference",
-        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        ),
         description="The actual data reference",
     )
 
@@ -345,7 +359,10 @@ class ConsentExceptActor(backboneelement.BackboneElement):
     reference: fhirtypes.ReferenceType = Field(
         ...,
         alias="reference",
-        title="Type `Reference` referencing `Device, Group, CareTeam, Organization, Patient, Practitioner, RelatedPerson` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Device, Group, CareTeam, Organization, "
+            "Patient, Practitioner, RelatedPerson` (represented as `dict` in JSON)"
+        ),
         description="Resource for the actor (or group, by role)",
     )
 
@@ -375,7 +392,9 @@ class ConsentExceptData(backboneelement.BackboneElement):
     reference: fhirtypes.ReferenceType = Field(
         ...,
         alias="reference",
-        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        ),
         description="The actual data reference",
     )
 

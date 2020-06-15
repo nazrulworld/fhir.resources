@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import procedurerequest
 
@@ -74,9 +76,8 @@ def impl_procedurerequest_2(inst):
     assert inst.code.coding[0].system == "http://snomed.info/sct"
     assert inst.id == "benchpress"
     assert inst.intent == "plan"
-    assert (
-        inst.note[0].text
-        == "Start with 30kg and increase in increments of 5kg when you feel ready"
+    assert inst.note[0].text == (
+        "Start with 30kg and increase in increments of 5kg when you " "feel ready"
     )
     assert inst.occurrenceTiming.repeat.count == 20
     assert inst.occurrenceTiming.repeat.countMax == 30

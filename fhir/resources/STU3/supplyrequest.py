@@ -39,14 +39,20 @@ class SupplyRequest(domainresource.DomainResource):
     deliverFrom: fhirtypes.ReferenceType = Field(
         None,
         alias="deliverFrom",
-        title="Type `Reference` referencing `Organization, Location` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization, Location` (represented as "
+            "`dict` in JSON)"
+        ),
         description="The origin of the supply",
     )
 
     deliverTo: fhirtypes.ReferenceType = Field(
         None,
         alias="deliverTo",
-        title="Type `Reference` referencing `Organization, Location, Patient` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization, Location, Patient` "
+            "(represented as `dict` in JSON)"
+        ),
         description="The destination of the supply",
     )
 
@@ -110,7 +116,9 @@ class SupplyRequest(domainresource.DomainResource):
     reasonReference: fhirtypes.ReferenceType = Field(
         None,
         alias="reasonReference",
-        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        ),
         description="Why the supply item was requested",
         one_of_many="reason",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -133,7 +141,10 @@ class SupplyRequest(domainresource.DomainResource):
     supplier: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="supplier",
-        title="List of `Reference` items referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Organization` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Who is intended to fulfill the request",
     )
 
@@ -157,7 +168,7 @@ class SupplyRequest(domainresource.DomainResource):
                 "occurrencePeriod",
                 "occurrenceTiming",
             ],
-            "reason": ["reasonCodeableConcept", "reasonReference",],
+            "reason": ["reasonCodeableConcept", "reasonReference"],
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
@@ -199,7 +210,10 @@ class SupplyRequestOrderedItem(backboneelement.BackboneElement):
     itemReference: fhirtypes.ReferenceType = Field(
         None,
         alias="itemReference",
-        title="Type `Reference` referencing `Medication, Substance, Device` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Medication, Substance, Device` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Medication, Substance, or Device requested to be supplied",
         one_of_many="item",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -226,9 +240,7 @@ class SupplyRequestOrderedItem(backboneelement.BackboneElement):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "item": ["itemCodeableConcept", "itemReference",],
-        }
+        one_of_many_fields = {"item": ["itemCodeableConcept", "itemReference"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -262,13 +274,19 @@ class SupplyRequestRequester(backboneelement.BackboneElement):
     agent: fhirtypes.ReferenceType = Field(
         ...,
         alias="agent",
-        title="Type `Reference` referencing `Practitioner, Organization, Patient, RelatedPerson, Device` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, Organization, Patient, "
+            "RelatedPerson, Device` (represented as `dict` in JSON)"
+        ),
         description="Individual making the request",
     )
 
     onBehalfOf: fhirtypes.ReferenceType = Field(
         None,
         alias="onBehalfOf",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Organization agent is acting for",
     )

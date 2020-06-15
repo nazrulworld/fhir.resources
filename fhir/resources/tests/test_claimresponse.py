@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import claimresponse
 
@@ -57,9 +59,9 @@ def impl_claimresponse_1(inst):
         == "http://example.org/fhir/oralservicecodes"
     )
     assert inst.created == fhirtypes.DateTime.validate("2014-08-16T12:09:24+00:06")
-    assert (
-        inst.disposition
-        == "The enclosed services are authorized for your provision within 30 days of this notice."
+    assert inst.disposition == (
+        "The enclosed services are authorized for your provision "
+        "within 30 days of this notice."
     )
     assert inst.id == "UR3503"
     assert (
@@ -88,16 +90,17 @@ def impl_claimresponse_1(inst):
     assert inst.processNote[0].language.coding[0].code == "en-CA"
     assert inst.processNote[0].language.coding[0].system == "urn:ietf:bcp:47"
     assert inst.processNote[0].number == 101
-    assert (
-        inst.processNote[0].text
-        == "Please submit a Pre-Authorization request if a more extensive examination or urgent services are required."
+    assert inst.processNote[0].text == (
+        "Please submit a Pre-Authorization request if a more "
+        "extensive examination or urgent services are required."
     )
     assert inst.processNote[0].type == "print"
     assert inst.requestor.reference == "Organization/1"
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A sample unsolicited pre-authorization response which authorizes basic dental services to be performed for a patient.</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A sample '
+        "unsolicited pre-authorization response which authorizes "
+        "basic dental services to be performed for a patient.</div>"
     )
     assert inst.text.status == "generated"
     assert inst.total[0].amount.currency == "USD"
@@ -299,9 +302,10 @@ def impl_claimresponse_2(inst):
     assert inst.request.identifier.value == "12346"
     assert inst.requestor.reference == "Organization/1"
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the ClaimResponse to Claim Oral Average with additional items</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the ClaimResponse to Claim Oral Average with "
+        "additional items</div>"
     )
     assert inst.text.status == "generated"
     assert inst.total[0].amount.currency == "USD"
@@ -399,9 +403,9 @@ def impl_claimresponse_3(inst):
         inst.subType.coding[0].system
         == "http://terminology.hl7.org/CodeSystem/ex-claimsubtype"
     )
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the ClaimResponse</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the ClaimResponse</div>"
     )
     assert inst.text.status == "generated"
     assert inst.total[0].amount.currency == "USD"
@@ -585,9 +589,8 @@ def impl_claimresponse_4(inst):
     assert float(inst.payment.adjustment.value) == float(75.0)
     assert inst.payment.adjustmentReason.coding[0].code == "a002"
     assert inst.payment.adjustmentReason.coding[0].display == "Prior Overpayment"
-    assert (
-        inst.payment.adjustmentReason.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/payment-adjustment-reason"
+    assert inst.payment.adjustmentReason.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/payment-adjustment-" "reason"
     )
     assert inst.payment.amount.currency == "USD"
     assert float(inst.payment.amount.value) == float(107.0)
@@ -611,9 +614,9 @@ def impl_claimresponse_4(inst):
     assert inst.request.identifier.value == "6612346"
     assert inst.requestor.reference == "Organization/1"
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the ClaimResponse</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the ClaimResponse</div>"
     )
     assert inst.text.status == "generated"
     assert inst.total[0].amount.currency == "USD"
@@ -687,9 +690,10 @@ def impl_claimresponse_5(inst):
     assert inst.request.reference == "Claim/100156"
     assert inst.requestor.reference == "Practitioner/1"
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the ClaimResponse that demonstrates returning errors</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the ClaimResponse that demonstrates returning "
+        "errors</div>"
     )
     assert inst.text.status == "generated"
     assert inst.type.coding[0].code == "oral"

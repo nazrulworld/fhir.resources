@@ -174,7 +174,9 @@ class Library(domainresource.DomainResource):
         ...,
         alias="type",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="logic-library | model-definition | asset-collection | module-definition",
+        description=(
+            "logic-library | model-definition | asset-collection | module-" "definition"
+        ),
     )
 
     url: fhirtypes.Uri = Field(

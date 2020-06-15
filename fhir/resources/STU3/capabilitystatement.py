@@ -60,7 +60,10 @@ class CapabilityStatement(domainresource.DomainResource):
     document: ListType[fhirtypes.CapabilityStatementDocumentType] = Field(
         None,
         alias="document",
-        title="List of `CapabilityStatementDocument` items (represented as `dict` in JSON)",
+        title=(
+            "List of `CapabilityStatementDocument` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Document definition",
     )
 
@@ -88,7 +91,10 @@ class CapabilityStatement(domainresource.DomainResource):
     implementation: fhirtypes.CapabilityStatementImplementationType = Field(
         None,
         alias="implementation",
-        title="Type `CapabilityStatementImplementation` (represented as `dict` in JSON)",
+        title=(
+            "Type `CapabilityStatementImplementation` (represented as `dict` in "
+            "JSON)"
+        ),
         description="If this describes a specific instance",
     )
 
@@ -123,7 +129,10 @@ class CapabilityStatement(domainresource.DomainResource):
     messaging: ListType[fhirtypes.CapabilityStatementMessagingType] = Field(
         None,
         alias="messaging",
-        title="List of `CapabilityStatementMessaging` items (represented as `dict` in JSON)",
+        title=(
+            "List of `CapabilityStatementMessaging` items (represented as `dict` in"
+            " JSON)"
+        ),
         description="If messaging is supported",
     )
 
@@ -144,7 +153,10 @@ class CapabilityStatement(domainresource.DomainResource):
     profile: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="profile",
-        title="List of `Reference` items referencing `StructureDefinition` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `StructureDefinition` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Profiles for use cases supported",
     )
 
@@ -165,7 +177,9 @@ class CapabilityStatement(domainresource.DomainResource):
     rest: ListType[fhirtypes.CapabilityStatementRestType] = Field(
         None,
         alias="rest",
-        title="List of `CapabilityStatementRest` items (represented as `dict` in JSON)",
+        title=(
+            "List of `CapabilityStatementRest` items (represented as `dict` in " "JSON)"
+        ),
         description="If the endpoint is a RESTful one",
     )
 
@@ -236,7 +250,10 @@ class CapabilityStatementDocument(backboneelement.BackboneElement):
     profile: fhirtypes.ReferenceType = Field(
         ...,
         alias="profile",
-        title="Type `Reference` referencing `StructureDefinition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `StructureDefinition` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Constraint on a resource used in the document",
     )
 
@@ -282,14 +299,20 @@ class CapabilityStatementMessaging(backboneelement.BackboneElement):
     endpoint: ListType[fhirtypes.CapabilityStatementMessagingEndpointType] = Field(
         None,
         alias="endpoint",
-        title="List of `CapabilityStatementMessagingEndpoint` items (represented as `dict` in JSON)",
+        title=(
+            "List of `CapabilityStatementMessagingEndpoint` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Where messages should be sent",
     )
 
     event: ListType[fhirtypes.CapabilityStatementMessagingEventType] = Field(
         None,
         alias="event",
-        title="List of `CapabilityStatementMessagingEvent` items (represented as `dict` in JSON)",
+        title=(
+            "List of `CapabilityStatementMessagingEvent` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Declare support for this event",
     )
 
@@ -305,7 +328,10 @@ class CapabilityStatementMessaging(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="supportedMessage",
-        title="List of `CapabilityStatementMessagingSupportedMessage` items (represented as `dict` in JSON)",
+        title=(
+            "List of `CapabilityStatementMessagingSupportedMessage` items "
+            "(represented as `dict` in JSON)"
+        ),
         description="Messages supported by this system",
     )
 
@@ -378,14 +404,20 @@ class CapabilityStatementMessagingEvent(backboneelement.BackboneElement):
     request: fhirtypes.ReferenceType = Field(
         ...,
         alias="request",
-        title="Type `Reference` referencing `StructureDefinition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `StructureDefinition` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Profile that describes the request",
     )
 
     response: fhirtypes.ReferenceType = Field(
         ...,
         alias="response",
-        title="Type `Reference` referencing `StructureDefinition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `StructureDefinition` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Profile that describes the response",
     )
 
@@ -401,7 +433,10 @@ class CapabilityStatementMessagingSupportedMessage(backboneelement.BackboneEleme
     definition: fhirtypes.ReferenceType = Field(
         ...,
         alias="definition",
-        title="Type `Reference` referencing `MessageDefinition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `MessageDefinition` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Message supported by this system",
     )
 
@@ -437,7 +472,10 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
     interaction: ListType[fhirtypes.CapabilityStatementRestInteractionType] = Field(
         None,
         alias="interaction",
-        title="List of `CapabilityStatementRestInteraction` items (represented as `dict` in JSON)",
+        title=(
+            "List of `CapabilityStatementRestInteraction` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="What operations are supported?",
     )
 
@@ -451,14 +489,20 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
     operation: ListType[fhirtypes.CapabilityStatementRestOperationType] = Field(
         None,
         alias="operation",
-        title="List of `CapabilityStatementRestOperation` items (represented as `dict` in JSON)",
+        title=(
+            "List of `CapabilityStatementRestOperation` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Definition of an operation or a custom query",
     )
 
     resource: ListType[fhirtypes.CapabilityStatementRestResourceType] = Field(
         None,
         alias="resource",
-        title="List of `CapabilityStatementRestResource` items (represented as `dict` in JSON)",
+        title=(
+            "List of `CapabilityStatementRestResource` items (represented as `dict`"
+            " in JSON)"
+        ),
         description="Resource served on the REST interface",
     )
 
@@ -467,7 +511,10 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="searchParam",
-        title="List of `CapabilityStatementRestResourceSearchParam` items (represented as `dict` in JSON)",
+        title=(
+            "List of `CapabilityStatementRestResourceSearchParam` items "
+            "(represented as `dict` in JSON)"
+        ),
         description="Search parameters for searching all resources",
     )
 
@@ -512,7 +559,10 @@ class CapabilityStatementRestOperation(backboneelement.BackboneElement):
     definition: fhirtypes.ReferenceType = Field(
         ...,
         alias="definition",
-        title="Type `Reference` referencing `OperationDefinition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `OperationDefinition` (represented as "
+            "`dict` in JSON)"
+        ),
         description="The defined operation/query",
     )
 
@@ -543,7 +593,9 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
         None,
         alias="conditionalDelete",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="not-supported | single | multiple - how conditional delete is supported",
+        description=(
+            "not-supported | single | multiple - how conditional delete is " "supported"
+        ),
     )
 
     conditionalRead: fhirtypes.Code = Field(
@@ -572,14 +624,20 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
     ] = Field(
         ...,
         alias="interaction",
-        title="List of `CapabilityStatementRestResourceInteraction` items (represented as `dict` in JSON)",
+        title=(
+            "List of `CapabilityStatementRestResourceInteraction` items "
+            "(represented as `dict` in JSON)"
+        ),
         description="What operations are supported?",
     )
 
     profile: fhirtypes.ReferenceType = Field(
         None,
         alias="profile",
-        title="Type `Reference` referencing `StructureDefinition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `StructureDefinition` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Base System profile for all uses of resource",
     )
 
@@ -609,7 +667,10 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="searchParam",
-        title="List of `CapabilityStatementRestResourceSearchParam` items (represented as `dict` in JSON)",
+        title=(
+            "List of `CapabilityStatementRestResourceSearchParam` items "
+            "(represented as `dict` in JSON)"
+        ),
         description="Search parameters supported by implementation",
     )
 
@@ -653,7 +714,10 @@ class CapabilityStatementRestResourceInteraction(backboneelement.BackboneElement
         ...,
         alias="code",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="read | vread | update | patch | delete | history-instance | history-type | create | search-type",
+        description=(
+            "read | vread | update | patch | delete | history-instance | history-"
+            "type | create | search-type"
+        ),
     )
 
     documentation: fhirtypes.String = Field(
@@ -698,7 +762,9 @@ class CapabilityStatementRestResourceSearchParam(backboneelement.BackboneElement
         ...,
         alias="type",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="number | date | string | token | reference | composite | quantity | uri",
+        description=(
+            "number | date | string | token | reference | composite | quantity | " "uri"
+        ),
     )
 
 
@@ -715,7 +781,10 @@ class CapabilityStatementRestSecurity(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="certificate",
-        title="List of `CapabilityStatementRestSecurityCertificate` items (represented as `dict` in JSON)",
+        title=(
+            "List of `CapabilityStatementRestSecurityCertificate` items "
+            "(represented as `dict` in JSON)"
+        ),
         description="Certificates associated with security profiles",
     )
 

@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import coverageeligibilityresponse
 
@@ -30,14 +32,13 @@ def impl_coverageeligibilityresponse_1(inst):
     assert inst.outcome == "complete"
     assert inst.patient.reference == "Patient/pat1"
     assert inst.purpose[0] == "validation"
-    assert (
-        inst.request.reference
-        == "http://www.BenefitsInc.com/fhir/coverageeligibilityrequest/225476332402"
+    assert inst.request.reference == (
+        "http://www.BenefitsInc.com/fhir/coverageeligibilityrequest/2" "25476332402"
     )
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the CoverageEligibilityResponse.</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the CoverageEligibilityResponse.</div>"
     )
     assert inst.text.status == "generated"
 
@@ -66,9 +67,9 @@ def test_coverageeligibilityresponse_1(base_settings):
 
 def impl_coverageeligibilityresponse_2(inst):
     assert inst.created == fhirtypes.DateTime.validate("2014-09-16T11:15:33+10:00")
-    assert (
-        inst.disposition
-        == "Eligibiliy request could not be processed, please address errors before submitting."
+    assert inst.disposition == (
+        "Eligibiliy request could not be processed, please address "
+        "errors before submitting."
     )
     assert inst.error[0].code.coding[0].code == "a001"
     assert (
@@ -92,16 +93,15 @@ def impl_coverageeligibilityresponse_2(inst):
     assert inst.outcome == "error"
     assert inst.patient.reference == "Patient/f201"
     assert inst.purpose[0] == "validation"
-    assert (
-        inst.request.reference
-        == "http://www.BenefitsInc.com/fhir/coverageeligibilityresponse/225476332406"
+    assert inst.request.reference == (
+        "http://www.BenefitsInc.com/fhir/coverageeligibilityresponse/" "225476332406"
     )
     assert inst.requestor.identifier.system == "http://national.org/clinic"
     assert inst.requestor.identifier.value == "OR1234"
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the CoverageEligibilityResponse.</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the CoverageEligibilityResponse.</div>"
     )
     assert inst.text.status == "generated"
 
@@ -235,9 +235,8 @@ def impl_coverageeligibilityresponse_3(inst):
         inst.insurance[0].item[3].category.coding[0].system
         == "http://terminology.hl7.org/CodeSystem/ex-benefitcategory"
     )
-    assert (
-        inst.insurance[0].item[3].description
-        == "Vision products and services such as exams, glasses and contact lenses."
+    assert inst.insurance[0].item[3].description == (
+        "Vision products and services such as exams, glasses and " "contact lenses."
     )
     assert inst.insurance[0].item[3].excluded is True
     assert inst.insurance[0].item[3].name == "Vision"
@@ -251,16 +250,15 @@ def impl_coverageeligibilityresponse_3(inst):
     assert inst.patient.reference == "Patient/f201"
     assert inst.purpose[0] == "validation"
     assert inst.purpose[1] == "benefits"
-    assert (
-        inst.request.reference
-        == "http://www.BenefitsInc.com/fhir/coverageeligibilityrequest/225476332405"
+    assert inst.request.reference == (
+        "http://www.BenefitsInc.com/fhir/coverageeligibilityrequest/2" "25476332405"
     )
     assert inst.requestor.identifier.system == "http://national.org/clinic"
     assert inst.requestor.identifier.value == "OR1234"
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the CoverageEligibilityResponse.</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the CoverageEligibilityResponse.</div>"
     )
     assert inst.text.status == "generated"
 
@@ -446,15 +444,14 @@ def impl_coverageeligibilityresponse_4(inst):
     assert inst.patient.reference == "Patient/pat1"
     assert inst.purpose[0] == "validation"
     assert inst.purpose[1] == "benefits"
-    assert (
-        inst.request.reference
-        == "http://www.BenefitsInc.com/fhir/coverageeligibilityresponse/225476332402"
+    assert inst.request.reference == (
+        "http://www.BenefitsInc.com/fhir/coverageeligibilityresponse/" "225476332402"
     )
     assert inst.servicedDate == fhirtypes.Date.validate("2014-09-17")
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the CoverageEligibilityResponse.</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the CoverageEligibilityResponse.</div>"
     )
     assert inst.text.status == "generated"
 

@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import claim
 
@@ -87,9 +89,9 @@ def impl_claim_1(inst):
     assert inst.provider.identifier.system == "http://npid.org/providerid"
     assert inst.provider.identifier.value == "NJ12345"
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Claim</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the Claim</div>"
     )
     assert inst.text.status == "generated"
     assert inst.total.code == "USD"
@@ -153,9 +155,9 @@ def impl_claim_2(inst):
     assert inst.payee.type.coding[0].code == "provider"
     assert inst.priority.coding[0].code == "normal"
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Claim</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the Claim</div>"
     )
     assert inst.text.status == "generated"
     assert inst.type.coding[0].code == "professional"
@@ -211,9 +213,9 @@ def impl_claim_3(inst):
     assert inst.payee.type.coding[0].code == "provider"
     assert inst.priority.coding[0].code == "normal"
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Oral Health Claim</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the Oral Health Claim</div>"
     )
     assert inst.text.status == "generated"
     assert inst.type.coding[0].code == "oral"
@@ -272,9 +274,9 @@ def impl_claim_4(inst):
     assert inst.payee.type.coding[0].code == "provider"
     assert inst.priority.coding[0].code == "normal"
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Vision Claim</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the Vision Claim</div>"
     )
     assert inst.text.status == "generated"
     assert inst.type.coding[0].code == "vision"
@@ -567,9 +569,9 @@ def impl_claim_5(inst):
     assert inst.prescription.reference == "http://www.optdocs.com/prescription/12345"
     assert inst.priority.coding[0].code == "normal"
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Vision Claim for Glasses</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the Vision Claim for Glasses</div>"
     )
     assert inst.text.status == "generated"
     assert inst.type.coding[0].code == "vision"
@@ -640,9 +642,9 @@ def impl_claim_6(inst):
     assert inst.status == "active"
     assert inst.subType[0].coding[0].code == "emergency"
     assert inst.subType[0].coding[0].system == "http://hl7.org/fhir/ex-claimsubtype"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Claim</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the Claim</div>"
     )
     assert inst.text.status == "generated"
     assert inst.total.code == "USD"
@@ -706,9 +708,9 @@ def impl_claim_7(inst):
     assert inst.payee.type.coding[0].code == "provider"
     assert inst.priority.coding[0].code == "normal"
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Oral Health Claim</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the Oral Health Claim</div>"
     )
     assert inst.text.status == "generated"
     assert inst.type.coding[0].code == "oral"
@@ -827,9 +829,9 @@ def impl_claim_8(inst):
     )
     assert inst.priority.coding[0].code == "stat"
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Pharmacy Claim</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the Pharmacy Claim</div>"
     )
     assert inst.text.status == "generated"
     assert inst.total.code == "USD"
@@ -1021,9 +1023,9 @@ def impl_claim_9(inst):
     assert inst.payee.type.coding[0].code == "provider"
     assert inst.priority.coding[0].code == "normal"
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Oral Health Claim</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the Oral Health Claim</div>"
     )
     assert inst.text.status == "generated"
     assert inst.type.coding[0].code == "oral"
@@ -1175,9 +1177,9 @@ def impl_claim_10(inst):
     assert inst.payee.type.coding[0].code == "provider"
     assert inst.priority.coding[0].code == "normal"
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Oral Health Claim</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the Oral Health Claim</div>"
     )
     assert inst.text.status == "generated"
     assert inst.type.coding[0].code == "oral"

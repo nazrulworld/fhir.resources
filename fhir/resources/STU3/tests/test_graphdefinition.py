@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import graphdefinition
 
@@ -14,9 +16,9 @@ def impl_graphdefinition_1(inst):
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert inst.date == fhirtypes.DateTime.validate("2015-08-04")
-    assert (
-        inst.description
-        == "Specify to include list references when generating a document using the $document operation"
+    assert inst.description == (
+        "Specify to include list references when generating a "
+        "document using the $document operation"
     )
     assert inst.id == "example"
     assert inst.link[0].description == "Link to List"

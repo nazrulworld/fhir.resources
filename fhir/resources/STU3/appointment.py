@@ -25,7 +25,10 @@ class Appointment(domainresource.DomainResource):
         None,
         alias="appointmentType",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The style of appointment or patient that has been booked in the slot (not service type)",
+        description=(
+            "The style of appointment or patient that has been booked in the slot "
+            "(not service type)"
+        ),
     )
 
     comment: fhirtypes.String = Field(
@@ -66,14 +69,23 @@ class Appointment(domainresource.DomainResource):
     incomingReferral: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="incomingReferral",
-        title="List of `Reference` items referencing `ReferralRequest` (represented as `dict` in JSON)",
-        description="The ReferralRequest provided as information to allocate to the Encounter",
+        title=(
+            "List of `Reference` items referencing `ReferralRequest` (represented "
+            "as `dict` in JSON)"
+        ),
+        description=(
+            "The ReferralRequest provided as information to allocate to the "
+            "Encounter"
+        ),
     )
 
     indication: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="indication",
-        title="List of `Reference` items referencing `Condition, Procedure` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Condition, Procedure` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Reason the appointment is to takes place (resource)",
     )
 
@@ -109,14 +121,20 @@ class Appointment(domainresource.DomainResource):
         None,
         alias="requestedPeriod",
         title="List of `Period` items (represented as `dict` in JSON)",
-        description="Potential date/time interval(s) requested to allocate the appointment within",
+        description=(
+            "Potential date/time interval(s) requested to allocate the appointment "
+            "within"
+        ),
     )
 
     serviceCategory: fhirtypes.CodeableConceptType = Field(
         None,
         alias="serviceCategory",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="A broad categorisation of the service that is to be performed during this appointment",
+        description=(
+            "A broad categorisation of the service that is to be performed during "
+            "this appointment"
+        ),
     )
 
     serviceType: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -129,7 +147,10 @@ class Appointment(domainresource.DomainResource):
     slot: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="slot",
-        title="List of `Reference` items referencing `Slot` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Slot` (represented as `dict` in"
+            " JSON)"
+        ),
         description="The slots that this appointment is filling",
     )
 
@@ -137,7 +158,10 @@ class Appointment(domainresource.DomainResource):
         None,
         alias="specialty",
         title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="The specialty of a practitioner that would be required to perform the service requested in this appointment",
+        description=(
+            "The specialty of a practitioner that would be required to perform the "
+            "service requested in this appointment"
+        ),
     )
 
     start: fhirtypes.Instant = Field(
@@ -151,13 +175,19 @@ class Appointment(domainresource.DomainResource):
         ...,
         alias="status",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="proposed | pending | booked | arrived | fulfilled | cancelled | noshow | entered-in-error",
+        description=(
+            "proposed | pending | booked | arrived | fulfilled | cancelled | noshow"
+            " | entered-in-error"
+        ),
     )
 
     supportingInformation: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="supportingInformation",
-        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Resource` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Additional information to support the appointment",
     )
 
@@ -172,7 +202,10 @@ class AppointmentParticipant(backboneelement.BackboneElement):
     actor: fhirtypes.ReferenceType = Field(
         None,
         alias="actor",
-        title="Type `Reference` referencing `Patient, Practitioner, RelatedPerson, Device, HealthcareService, Location` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Practitioner, RelatedPerson, "
+            "Device, HealthcareService, Location` (represented as `dict` in JSON)"
+        ),
         description="Person, Location/HealthcareService or Device",
     )
 

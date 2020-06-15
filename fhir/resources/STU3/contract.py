@@ -53,7 +53,10 @@ class Contract(domainresource.DomainResource):
     authority: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="authority",
-        title="List of `Reference` items referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Organization` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Authority under which this Contract has standing",
     )
 
@@ -69,7 +72,10 @@ class Contract(domainresource.DomainResource):
     bindingReference: fhirtypes.ReferenceType = Field(
         None,
         alias="bindingReference",
-        title="Type `Reference` referencing `Composition, DocumentReference, QuestionnaireResponse` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Composition, DocumentReference, "
+            "QuestionnaireResponse` (represented as `dict` in JSON)"
+        ),
         description="Binding Contract",
         one_of_many="binding",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -92,7 +98,10 @@ class Contract(domainresource.DomainResource):
     domain: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="domain",
-        title="List of `Reference` items referencing `Location` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Location` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Domain in which this Contract applies",
     )
 
@@ -149,7 +158,11 @@ class Contract(domainresource.DomainResource):
         None,
         alias="status",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="amended | appended | cancelled | disputed | entered-in-error | executable | executed | negotiable | offered | policy | rejected | renewed | revoked | resolved | terminated",
+        description=(
+            "amended | appended | cancelled | disputed | entered-in-error | "
+            "executable | executed | negotiable | offered | policy | rejected | "
+            "renewed | revoked | resolved | terminated"
+        ),
     )
 
     subType: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -162,7 +175,10 @@ class Contract(domainresource.DomainResource):
     subject: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="subject",
-        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Resource` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Contract Target Entity",
     )
 
@@ -176,7 +192,10 @@ class Contract(domainresource.DomainResource):
     topic: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="topic",
-        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Resource` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Context of the Contract",
     )
 
@@ -208,9 +227,7 @@ class Contract(domainresource.DomainResource):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "binding": ["bindingAttachment", "bindingReference",],
-        }
+        one_of_many_fields = {"binding": ["bindingAttachment", "bindingReference"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -244,7 +261,11 @@ class ContractAgent(backboneelement.BackboneElement):
     actor: fhirtypes.ReferenceType = Field(
         ...,
         alias="actor",
-        title="Type `Reference` referencing `Contract, Device, Group, Location, Organization, Patient, Practitioner, RelatedPerson, Substance` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Contract, Device, Group, Location, "
+            "Organization, Patient, Practitioner, RelatedPerson, Substance` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Contract Agent Type",
     )
 
@@ -281,7 +302,10 @@ class ContractFriendly(backboneelement.BackboneElement):
     contentReference: fhirtypes.ReferenceType = Field(
         None,
         alias="contentReference",
-        title="Type `Reference` referencing `Composition, DocumentReference, QuestionnaireResponse` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Composition, DocumentReference, "
+            "QuestionnaireResponse` (represented as `dict` in JSON)"
+        ),
         description="Easily comprehended representation of this Contract",
         one_of_many="content",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
@@ -301,9 +325,7 @@ class ContractFriendly(backboneelement.BackboneElement):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "content": ["contentAttachment", "contentReference",],
-        }
+        one_of_many_fields = {"content": ["contentAttachment", "contentReference"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -345,7 +367,10 @@ class ContractLegal(backboneelement.BackboneElement):
     contentReference: fhirtypes.ReferenceType = Field(
         None,
         alias="contentReference",
-        title="Type `Reference` referencing `Composition, DocumentReference, QuestionnaireResponse` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Composition, DocumentReference, "
+            "QuestionnaireResponse` (represented as `dict` in JSON)"
+        ),
         description="Contract Legal Text",
         one_of_many="content",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
@@ -365,9 +390,7 @@ class ContractLegal(backboneelement.BackboneElement):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "content": ["contentAttachment", "contentReference",],
-        }
+        one_of_many_fields = {"content": ["contentAttachment", "contentReference"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -409,7 +432,10 @@ class ContractRule(backboneelement.BackboneElement):
     contentReference: fhirtypes.ReferenceType = Field(
         None,
         alias="contentReference",
-        title="Type `Reference` referencing `DocumentReference` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `DocumentReference` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Computable Contract Rules",
         one_of_many="content",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
@@ -429,9 +455,7 @@ class ContractRule(backboneelement.BackboneElement):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "content": ["contentAttachment", "contentReference",],
-        }
+        one_of_many_fields = {"content": ["contentAttachment", "contentReference"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -467,7 +491,10 @@ class ContractSigner(backboneelement.BackboneElement):
     party: fhirtypes.ReferenceType = Field(
         ...,
         alias="party",
-        title="Type `Reference` referencing `Organization, Patient, Practitioner, RelatedPerson` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization, Patient, Practitioner, "
+            "RelatedPerson` (represented as `dict` in JSON)"
+        ),
         description="Contract Signatory Party",
     )
 
@@ -567,7 +594,10 @@ class ContractTerm(backboneelement.BackboneElement):
     topic: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="topic",
-        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Resource` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Context of the Contract term",
     )
 
@@ -597,7 +627,11 @@ class ContractTermAgent(backboneelement.BackboneElement):
     actor: fhirtypes.ReferenceType = Field(
         ...,
         alias="actor",
-        title="Type `Reference` referencing `Contract, Device, Group, Location, Organization, Patient, Practitioner, RelatedPerson, Substance` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Contract, Device, Group, Location, "
+            "Organization, Patient, Practitioner, RelatedPerson, Substance` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Contract Term Agent Subject",
     )
 
@@ -635,7 +669,9 @@ class ContractTermValuedItem(backboneelement.BackboneElement):
     entityReference: fhirtypes.ReferenceType = Field(
         None,
         alias="entityReference",
-        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        ),
         description="Contract Term Valued Item Type",
         one_of_many="entity",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -697,9 +733,7 @@ class ContractTermValuedItem(backboneelement.BackboneElement):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "entity": ["entityCodeableConcept", "entityReference",],
-        }
+        one_of_many_fields = {"entity": ["entityCodeableConcept", "entityReference"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -747,7 +781,9 @@ class ContractValuedItem(backboneelement.BackboneElement):
     entityReference: fhirtypes.ReferenceType = Field(
         None,
         alias="entityReference",
-        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        ),
         description="Contract Valued Item Type",
         one_of_many="entity",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -809,9 +845,7 @@ class ContractValuedItem(backboneelement.BackboneElement):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "entity": ["entityCodeableConcept", "entityReference",],
-        }
+        one_of_many_fields = {"entity": ["entityCodeableConcept", "entityReference"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (

@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import documentmanifest
 
@@ -59,13 +61,13 @@ def impl_documentmanifest_2(inst):
     assert inst.content[0].pAttachment.creation == fhirtypes.DateTime.validate(
         "2010-02-01T11:50:23-05:00"
     )
-    # Don't know how to create unit test for "content[0].pAttachment.data", which is a Base64Binary
+    assert inst.content[0].pAttachment.data == bytes_validator("SGVsbG8=")
     assert inst.content[0].pAttachment.title == "accident notes 20100201.pdf"
     assert inst.content[1].pAttachment.contentType == "application/pdf"
     assert inst.content[1].pAttachment.creation == fhirtypes.DateTime.validate(
         "2010-02-01T10:57:34+01:00"
     )
-    # Don't know how to create unit test for "content[1].pAttachment.hash", which is a Base64Binary
+    assert inst.content[1].pAttachment.hash == bytes_validator("SGVsbG8gdGhlcmU=")
     assert inst.content[1].pAttachment.size == 104274
     assert inst.content[1].pAttachment.url == "http://happyvalley.com/docs/AB12345"
     assert inst.created == fhirtypes.DateTime.validate("2014-09-21T11:50:23-05:00")
@@ -81,9 +83,9 @@ def impl_documentmanifest_2(inst):
     )
     assert inst.related[1].identifier.value == "R3500"
     assert inst.status == "current"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A Financial Management Attachment example</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A Financial '
+        "Management Attachment example</div>"
     )
     assert inst.text.status == "generated"
 

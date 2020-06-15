@@ -27,14 +27,21 @@ class DocumentReference(domainresource.DomainResource):
     authenticator: fhirtypes.ReferenceType = Field(
         None,
         alias="authenticator",
-        title="Type `Reference` referencing `Practitioner, PractitionerRole, Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, PractitionerRole, "
+            "Organization` (represented as `dict` in JSON)"
+        ),
         description="Who/what authenticated the document",
     )
 
     author: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="author",
-        title="List of `Reference` items referencing `Practitioner, PractitionerRole, Organization, Device, Patient, RelatedPerson` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Practitioner, PractitionerRole,"
+            " Organization, Device, Patient, RelatedPerson` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Who and/or what authored the document",
     )
 
@@ -48,7 +55,10 @@ class DocumentReference(domainresource.DomainResource):
     content: ListType[fhirtypes.DocumentReferenceContentType] = Field(
         ...,
         alias="content",
-        title="List of `DocumentReferenceContent` items (represented as `dict` in JSON)",
+        title=(
+            "List of `DocumentReferenceContent` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Document referenced",
     )
 
@@ -62,7 +72,10 @@ class DocumentReference(domainresource.DomainResource):
     custodian: fhirtypes.ReferenceType = Field(
         None,
         alias="custodian",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Organization which maintains the document",
     )
 
@@ -104,7 +117,10 @@ class DocumentReference(domainresource.DomainResource):
     relatesTo: ListType[fhirtypes.DocumentReferenceRelatesToType] = Field(
         None,
         alias="relatesTo",
-        title="List of `DocumentReferenceRelatesTo` items (represented as `dict` in JSON)",
+        title=(
+            "List of `DocumentReferenceRelatesTo` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Relationships to other documents",
     )
 
@@ -125,7 +141,10 @@ class DocumentReference(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         None,
         alias="subject",
-        title="Type `Reference` referencing `Patient, Practitioner, Group, Device` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Practitioner, Group, Device` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Who/what is the subject of the document",
     )
 
@@ -170,7 +189,10 @@ class DocumentReferenceContext(backboneelement.BackboneElement):
     encounter: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="encounter",
-        title="List of `Reference` items referencing `Encounter, EpisodeOfCare` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Encounter, EpisodeOfCare` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Context of the document  content",
     )
 
@@ -199,13 +221,19 @@ class DocumentReferenceContext(backboneelement.BackboneElement):
         None,
         alias="practiceSetting",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Additional details about where the content was created (e.g. clinical specialty)",
+        description=(
+            "Additional details about where the content was created (e.g. clinical "
+            "specialty)"
+        ),
     )
 
     related: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="related",
-        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Resource` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Related identifiers or resources",
     )
 
@@ -235,6 +263,9 @@ class DocumentReferenceRelatesTo(backboneelement.BackboneElement):
     target: fhirtypes.ReferenceType = Field(
         ...,
         alias="target",
-        title="Type `Reference` referencing `DocumentReference` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `DocumentReference` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Target of the relationship",
     )

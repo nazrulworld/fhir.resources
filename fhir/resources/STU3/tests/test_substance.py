@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import substance
 
@@ -62,9 +64,8 @@ def impl_substance_2(inst):
     assert inst.category[0].coding[0].display == "Drug or Medicament"
     assert inst.category[0].coding[0].system == "http://hl7.org.fhir/substance-category"
     assert inst.code.coding[0].code == "392259005"
-    assert (
-        inst.code.coding[0].display
-        == "Amoxicillin + clavulanate potassium 875mg/125mg tablet (product)"
+    assert inst.code.coding[0].display == (
+        "Amoxicillin + clavulanate potassium 875mg/125mg tablet " "(product)"
     )
     assert inst.code.coding[0].system == "http://snomed.info/sct"
     assert inst.contained[0].id == "ingr1"

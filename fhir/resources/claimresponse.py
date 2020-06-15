@@ -32,14 +32,20 @@ class ClaimResponse(domainresource.DomainResource):
     adjudication: ListType[fhirtypes.ClaimResponseItemAdjudicationType] = Field(
         None,
         alias="adjudication",
-        title="List of `ClaimResponseItemAdjudication` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ClaimResponseItemAdjudication` items (represented as `dict` "
+            "in JSON)"
+        ),
         description="Header-level adjudication",
     )
 
     communicationRequest: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="communicationRequest",
-        title="List of `Reference` items referencing `CommunicationRequest` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `CommunicationRequest` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Request for additional information",
     )
 
@@ -102,7 +108,10 @@ class ClaimResponse(domainresource.DomainResource):
     insurer: fhirtypes.ReferenceType = Field(
         ...,
         alias="insurer",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Party responsible for reimbursement",
     )
 
@@ -158,7 +167,10 @@ class ClaimResponse(domainresource.DomainResource):
     processNote: ListType[fhirtypes.ClaimResponseProcessNoteType] = Field(
         None,
         alias="processNote",
-        title="List of `ClaimResponseProcessNote` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ClaimResponseProcessNote` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Note concerning adjudication",
     )
 
@@ -172,7 +184,10 @@ class ClaimResponse(domainresource.DomainResource):
     requestor: fhirtypes.ReferenceType = Field(
         None,
         alias="requestor",
-        title="Type `Reference` referencing `Practitioner, PractitionerRole, Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, PractitionerRole, "
+            "Organization` (represented as `dict` in JSON)"
+        ),
         description="Party responsible for the claim",
     )
 
@@ -223,7 +238,10 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
     adjudication: ListType[fhirtypes.ClaimResponseItemAdjudicationType] = Field(
         ...,
         alias="adjudication",
-        title="List of `ClaimResponseItemAdjudication` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ClaimResponseItemAdjudication` items (represented as `dict` "
+            "in JSON)"
+        ),
         description="Added items adjudication",
     )
 
@@ -237,7 +255,10 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
     detail: ListType[fhirtypes.ClaimResponseAddItemDetailType] = Field(
         None,
         alias="detail",
-        title="List of `ClaimResponseAddItemDetail` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ClaimResponseAddItemDetail` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Insurer added line details",
     )
 
@@ -283,7 +304,9 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
     locationReference: fhirtypes.ReferenceType = Field(
         None,
         alias="locationReference",
-        title="Type `Reference` referencing `Location` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Location` (represented as `dict` in " "JSON)"
+        ),
         description="Place of service or where product was supplied",
         one_of_many="location",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -327,7 +350,10 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
     provider: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="provider",
-        title="List of `Reference` items referencing `Practitioner, PractitionerRole, Organization` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Practitioner, PractitionerRole,"
+            " Organization` (represented as `dict` in JSON)"
+        ),
         description="Authorized providers",
     )
 
@@ -397,7 +423,7 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
                 "locationCodeableConcept",
                 "locationReference",
             ],
-            "serviced": ["servicedDate", "servicedPeriod",],
+            "serviced": ["servicedDate", "servicedPeriod"],
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
@@ -431,7 +457,10 @@ class ClaimResponseAddItemDetail(backboneelement.BackboneElement):
     adjudication: ListType[fhirtypes.ClaimResponseItemAdjudicationType] = Field(
         ...,
         alias="adjudication",
-        title="List of `ClaimResponseItemAdjudication` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ClaimResponseItemAdjudication` items (represented as `dict` "
+            "in JSON)"
+        ),
         description="Added items detail adjudication",
     )
 
@@ -480,7 +509,10 @@ class ClaimResponseAddItemDetail(backboneelement.BackboneElement):
     subDetail: ListType[fhirtypes.ClaimResponseAddItemDetailSubDetailType] = Field(
         None,
         alias="subDetail",
-        title="List of `ClaimResponseAddItemDetailSubDetail` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ClaimResponseAddItemDetailSubDetail` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Insurer added line items",
     )
 
@@ -502,7 +534,10 @@ class ClaimResponseAddItemDetailSubDetail(backboneelement.BackboneElement):
     adjudication: ListType[fhirtypes.ClaimResponseItemAdjudicationType] = Field(
         ...,
         alias="adjudication",
-        title="List of `ClaimResponseItemAdjudication` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ClaimResponseItemAdjudication` items (represented as `dict` "
+            "in JSON)"
+        ),
         description="Added items detail adjudication",
     )
 
@@ -610,14 +645,19 @@ class ClaimResponseInsurance(backboneelement.BackboneElement):
     claimResponse: fhirtypes.ReferenceType = Field(
         None,
         alias="claimResponse",
-        title="Type `Reference` referencing `ClaimResponse` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `ClaimResponse` (represented as `dict` in"
+            " JSON)"
+        ),
         description="Adjudication results",
     )
 
     coverage: fhirtypes.ReferenceType = Field(
         ...,
         alias="coverage",
-        title="Type `Reference` referencing `Coverage` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Coverage` (represented as `dict` in " "JSON)"
+        ),
         description="Insurance information",
     )
 
@@ -647,14 +687,19 @@ class ClaimResponseItem(backboneelement.BackboneElement):
     adjudication: ListType[fhirtypes.ClaimResponseItemAdjudicationType] = Field(
         ...,
         alias="adjudication",
-        title="List of `ClaimResponseItemAdjudication` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ClaimResponseItemAdjudication` items (represented as `dict` "
+            "in JSON)"
+        ),
         description="Adjudication details",
     )
 
     detail: ListType[fhirtypes.ClaimResponseItemDetailType] = Field(
         None,
         alias="detail",
-        title="List of `ClaimResponseItemDetail` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ClaimResponseItemDetail` items (represented as `dict` in " "JSON)"
+        ),
         description="Adjudication for claim details",
     )
 
@@ -722,7 +767,10 @@ class ClaimResponseItemDetail(backboneelement.BackboneElement):
     adjudication: ListType[fhirtypes.ClaimResponseItemAdjudicationType] = Field(
         ...,
         alias="adjudication",
-        title="List of `ClaimResponseItemAdjudication` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ClaimResponseItemAdjudication` items (represented as `dict` "
+            "in JSON)"
+        ),
         description="Detail level adjudication details",
     )
 
@@ -743,7 +791,10 @@ class ClaimResponseItemDetail(backboneelement.BackboneElement):
     subDetail: ListType[fhirtypes.ClaimResponseItemDetailSubDetailType] = Field(
         None,
         alias="subDetail",
-        title="List of `ClaimResponseItemDetailSubDetail` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ClaimResponseItemDetailSubDetail` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Adjudication for claim sub-details",
     )
 
@@ -758,7 +809,10 @@ class ClaimResponseItemDetailSubDetail(backboneelement.BackboneElement):
     adjudication: ListType[fhirtypes.ClaimResponseItemAdjudicationType] = Field(
         None,
         alias="adjudication",
-        title="List of `ClaimResponseItemAdjudication` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ClaimResponseItemAdjudication` items (represented as `dict` "
+            "in JSON)"
+        ),
         description="Subdetail level adjudication details",
     )
 

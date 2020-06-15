@@ -82,7 +82,8 @@ class Code(ConstrainedStr):
 
 class Id(ConstrainedStr):
     """Any combination of upper- or lower-case ASCII letters
-    ('A'..'Z', and 'a'..'z', numerals ('0'..'9'), '-' and '.', with a length limit of 64 characters.
+    ('A'..'Z', and 'a'..'z', numerals ('0'..'9'), '-' and '.',
+    with a length limit of 64 characters.
     (This might be an integer, an un-prefixed OID, UUID or any other identifier
     pattern that meets these constraints.)
     """
@@ -127,10 +128,12 @@ class PositiveInt(ConstrainedInt):
 
 class Uri(ConstrainedStr):
     """A Uniform Resource Identifier Reference (RFC 3986 ).
-    Note: URIs are case sensitive. For UUID (urn:uuid:53fefa32-fcbb-4ff8-8a92-55ee120877b7)
+    Note: URIs are case sensitive.
+    For UUID (urn:uuid:53fefa32-fcbb-4ff8-8a92-55ee120877b7)
     use all lowercase	xs:anyURI	A JSON string - a URI
     Regex: \\S* (This regex is very permissive, but URIs must be valid.
-    Implementers are welcome to use more specific regex statements for a URI in specific contexts)
+    Implementers are welcome to use more specific regex statements
+     for a URI in specific contexts)
     URIs can be absolute or relative, and may have an optional fragment identifier
     This data type can be bound to a ValueSet"""
 
@@ -2065,7 +2068,7 @@ class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesType(
 class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriodType(
     AbstractType
 ):
-    __resource_type__ = "MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod"
+    __resource_type__ = "MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod"  # noqa: B950
 
 
 class MedicinalProductSpecialDesignationType(AbstractType):
@@ -3093,8 +3096,6 @@ class VisionPrescriptionLensSpecificationPrismType(AbstractType):
 
 
 __all__ = [
-    "get_validator_for_fhir_type",
-    "add_validator_for_fhir_type",
     "ElementType",
     "ResourceType",
     "AccountType",

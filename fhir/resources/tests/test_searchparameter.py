@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import searchparameter
 
@@ -19,14 +21,13 @@ def impl_searchparameter_1(inst):
     assert inst.name == "workflow"
     assert inst.status == "draft"
     assert inst.type == "token"
-    assert (
-        inst.url
-        == "http://hl7.org/fhir/SearchParameter/valueset-extensions-ValueSet-workflow"
+    assert inst.url == (
+        "http://hl7.org/fhir/SearchParameter/valueset-extensions-" "ValueSet-workflow"
     )
     assert inst.version == "4.0.1"
-    assert (
-        inst.xpath
-        == "f:ValueSet/f:extension[@url='http://hl7.org/fhir/StructureDefinition/valueset-workflowStatus'] | /f:#workflowStatus"
+    assert inst.xpath == (
+        "f:ValueSet/f:extension[@url='http://hl7.org/fhir/StructureDe"
+        "finition/valueset-workflowStatus'] | /f:#workflowStatus"
     )
     assert inst.xpathUsage == "normal"
 
@@ -63,14 +64,13 @@ def impl_searchparameter_2(inst):
     assert inst.name == "author"
     assert inst.status == "draft"
     assert inst.type == "string"
-    assert (
-        inst.url
-        == "http://hl7.org/fhir/SearchParameter/codesystem-extensions-CodeSystem-author"
+    assert inst.url == (
+        "http://hl7.org/fhir/SearchParameter/codesystem-extensions-" "CodeSystem-author"
     )
     assert inst.version == "4.0.1"
-    assert (
-        inst.xpath
-        == "f:CodeSystem/f:extension[@url='http://hl7.org/fhir/StructureDefinition/codesystem-author'] | /f:#author"
+    assert inst.xpath == (
+        "f:CodeSystem/f:extension[@url='http://hl7.org/fhir/Structure"
+        "Definition/codesystem-author'] | /f:#author"
     )
     assert inst.xpathUsage == "normal"
 
@@ -103,14 +103,14 @@ def impl_searchparameter_3(inst):
     assert inst.code == "part-agree"
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
-    assert (
-        inst.description
-        == "Search by url for a participation agreement, which is stored in a DocumentReference"
+    assert inst.description == (
+        "Search by url for a participation agreement, which is stored"
+        " in a DocumentReference"
     )
     assert inst.experimental is True
-    assert (
-        inst.expression
-        == "DocumentReference.extension('http://example.org/fhir/StructureDefinition/participation-agreement')"
+    assert inst.expression == (
+        "DocumentReference.extension('http://example.org/fhir/Structu"
+        "reDefinition/participation-agreement')"
     )
     assert inst.id == "example-extension"
     assert inst.name == "Example Search Parameter on an extension"
@@ -120,9 +120,9 @@ def impl_searchparameter_3(inst):
     assert inst.text.status == "generated"
     assert inst.type == "reference"
     assert inst.url == "http://hl7.org/fhir/SearchParameter/example-extension"
-    assert (
-        inst.xpath
-        == "f:DocumentReference/f:extension[@url='http://example.org/fhir/StructureDefinition/participation-agreement']"
+    assert inst.xpath == (
+        "f:DocumentReference/f:extension[@url='http://example.org/fhi"
+        "r/StructureDefinition/participation-agreement']"
     )
     assert inst.xpathUsage == "normal"
 
@@ -152,24 +152,25 @@ def test_searchparameter_3(base_settings):
 def impl_searchparameter_4(inst):
     assert inst.base[0] == "QuestionnaireResponse"
     assert inst.code == "item-subject"
-    assert (
-        inst.description
-        == "Allows searching for QuestionnaireResponses by item value where the item has isSubject=true"
+    assert inst.description == (
+        "Allows searching for QuestionnaireResponses by item value "
+        "where the item has isSubject=true"
     )
     assert inst.experimental is True
-    assert (
-        inst.expression
-        == "QuestionnaireResponse.item.where(hasExtension('http://hl7.org/fhir/StructureDefinition/questionnaireresponse-isSubject')).answer.value.ofType(Reference)"
+    assert inst.expression == (
+        "QuestionnaireResponse.item.where(hasExtension('http://hl7.or"
+        "g/fhir/StructureDefinition/questionnaireresponse-"
+        "isSubject')).answer.value.ofType(Reference)"
     )
-    assert (
-        inst.id == "questionnaireresponse-extensions-QuestionnaireResponse-item-subject"
+    assert inst.id == (
+        "questionnaireresponse-extensions-QuestionnaireResponse-item-" "subject"
     )
     assert inst.name == "item-subject"
     assert inst.status == "draft"
     assert inst.type == "reference"
-    assert (
-        inst.url
-        == "http://hl7.org/fhir/SearchParameter/questionnaireresponse-extensions-QuestionnaireResponse-item-subject"
+    assert inst.url == (
+        "http://hl7.org/fhir/SearchParameter/questionnaireresponse-"
+        "extensions-QuestionnaireResponse-item-subject"
     )
     assert inst.version == "4.0.1"
     assert inst.xpathUsage == "normal"
@@ -205,17 +206,18 @@ def impl_searchparameter_5(inst):
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert inst.date == fhirtypes.DateTime.validate("2018-07-26")
-    assert (
-        inst.description
-        == "This is the formal declaration for the _filter parameter, documented at [http://hl7.org/fhir/search_filter.html](http://hl7.org/fhir/search_filter.html)"
+    assert inst.description == (
+        "This is the formal declaration for the _filter parameter, "
+        "documented at [http://hl7.org/fhir/search_filter.html](http:"
+        "//hl7.org/fhir/search_filter.html)"
     )
     assert inst.experimental is False
     assert inst.id == "filter"
     assert inst.name == "FilterSearchParameter"
     assert inst.publisher == "Health Level Seven International (FHIR Infrastructure)"
-    assert (
-        inst.purpose
-        == "Support combination searches when the simple name=value basis of search cannot express what is required"
+    assert inst.purpose == (
+        "Support combination searches when the simple name=value "
+        "basis of search cannot express what is required"
     )
     assert inst.status == "draft"
     assert inst.text.status == "generated"
@@ -296,17 +298,17 @@ def impl_searchparameter_7(inst):
     assert inst.code == "assessed-condition"
     assert inst.description == "Condition assessed by genetic test"
     assert inst.experimental is True
-    assert (
-        inst.expression
-        == "DiagnosticReport.extension('http://hl7.org/fhir/StructureDefinition/DiagnosticReport-geneticsAssessedCondition')"
+    assert inst.expression == (
+        "DiagnosticReport.extension('http://hl7.org/fhir/StructureDef"
+        "inition/DiagnosticReport-geneticsAssessedCondition')"
     )
     assert inst.id == "diagnosticreport-genetic-DiagnosticReport-assessed-condition"
     assert inst.name == "assessed-condition"
     assert inst.status == "draft"
     assert inst.type == "reference"
-    assert (
-        inst.url
-        == "http://hl7.org/fhir/SearchParameter/diagnosticreport-genetic-DiagnosticReport-assessed-condition"
+    assert inst.url == (
+        "http://hl7.org/fhir/SearchParameter/diagnosticreport-"
+        "genetic-DiagnosticReport-assessed-condition"
     )
     assert inst.version == "4.0.1"
     assert inst.xpathUsage == "normal"
@@ -340,16 +342,16 @@ def impl_searchparameter_8(inst):
     assert inst.code == "din"
     assert inst.description == "The donation identification number (DIN)"
     assert inst.experimental is True
-    assert (
-        inst.expression
-        == "Device.extension('http://hl7.org/fhir/SearchParameter/device-extensions-Device-din')"
+    assert inst.expression == (
+        "Device.extension('http://hl7.org/fhir/SearchParameter/device"
+        "-extensions-Device-din')"
     )
     assert inst.id == "device-extensions-Device-din"
     assert inst.name == "din"
     assert inst.status == "draft"
     assert inst.type == "token"
-    assert (
-        inst.url == "http://hl7.org/fhir/SearchParameter/device-extensions-Device-din"
+    assert inst.url == (
+        "http://hl7.org/fhir/SearchParameter/device-extensions-" "Device-din"
     )
     assert inst.version == "4.0.1"
     assert inst.xpathUsage == "normal"
@@ -380,17 +382,17 @@ def impl_searchparameter_9(inst):
     assert inst.code == "gene-identifier"
     assert inst.description == "HGNC gene symbol and identifier"
     assert inst.experimental is True
-    assert (
-        inst.expression
-        == "Observation.extension('http://hl7.org/fhir/StructureDefinition/observation-geneticsGene')"
+    assert inst.expression == (
+        "Observation.extension('http://hl7.org/fhir/StructureDefiniti"
+        "on/observation-geneticsGene')"
     )
     assert inst.id == "observation-genetic-Observation-gene-identifier"
     assert inst.name == "gene-identifier"
     assert inst.status == "draft"
     assert inst.type == "token"
-    assert (
-        inst.url
-        == "http://hl7.org/fhir/SearchParameter/observation-genetic-Observation-gene-identifier"
+    assert inst.url == (
+        "http://hl7.org/fhir/SearchParameter/observation-genetic-"
+        "Observation-gene-identifier"
     )
     assert inst.version == "4.0.1"
     assert inst.xpathUsage == "normal"
@@ -429,14 +431,14 @@ def impl_searchparameter_10(inst):
     assert inst.name == "workflow"
     assert inst.status == "draft"
     assert inst.type == "token"
-    assert (
-        inst.url
-        == "http://hl7.org/fhir/SearchParameter/codesystem-extensions-CodeSystem-workflow"
+    assert inst.url == (
+        "http://hl7.org/fhir/SearchParameter/codesystem-extensions-"
+        "CodeSystem-workflow"
     )
     assert inst.version == "4.0.1"
-    assert (
-        inst.xpath
-        == "f:CodeSystem/f:extension[@url='http://hl7.org/fhir/StructureDefinition/codesystem-workflowStatus'] | /f:#workflowStatus"
+    assert inst.xpath == (
+        "f:CodeSystem/f:extension[@url='http://hl7.org/fhir/Structure"
+        "Definition/codesystem-workflowStatus'] | /f:#workflowStatus"
     )
     assert inst.xpathUsage == "normal"
 

@@ -39,14 +39,20 @@ class SupplyRequest(domainresource.DomainResource):
     deliverFrom: fhirtypes.ReferenceType = Field(
         None,
         alias="deliverFrom",
-        title="Type `Reference` referencing `Organization, Location` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization, Location` (represented as "
+            "`dict` in JSON)"
+        ),
         description="The origin of the supply",
     )
 
     deliverTo: fhirtypes.ReferenceType = Field(
         None,
         alias="deliverTo",
-        title="Type `Reference` referencing `Organization, Location, Patient` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization, Location, Patient` "
+            "(represented as `dict` in JSON)"
+        ),
         description="The destination of the supply",
     )
 
@@ -69,7 +75,10 @@ class SupplyRequest(domainresource.DomainResource):
     itemReference: fhirtypes.ReferenceType = Field(
         None,
         alias="itemReference",
-        title="Type `Reference` referencing `Medication, Substance, Device` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Medication, Substance, Device` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Medication, Substance, or Device requested to be supplied",
         one_of_many="item",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
@@ -133,14 +142,21 @@ class SupplyRequest(domainresource.DomainResource):
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="reasonReference",
-        title="List of `Reference` items referencing `Condition, Observation, DiagnosticReport, DocumentReference` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Condition, Observation, "
+            "DiagnosticReport, DocumentReference` (represented as `dict` in JSON)"
+        ),
         description="The reason why the supply item was requested",
     )
 
     requester: fhirtypes.ReferenceType = Field(
         None,
         alias="requester",
-        title="Type `Reference` referencing `Practitioner, PractitionerRole, Organization, Patient, RelatedPerson, Device` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, PractitionerRole, "
+            "Organization, Patient, RelatedPerson, Device` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Individual making the request",
     )
 
@@ -154,7 +170,10 @@ class SupplyRequest(domainresource.DomainResource):
     supplier: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="supplier",
-        title="List of `Reference` items referencing `Organization, HealthcareService` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Organization, "
+            "HealthcareService` (represented as `dict` in JSON)"
+        ),
         description="Who is intended to fulfill the request",
     )
 
@@ -173,7 +192,7 @@ class SupplyRequest(domainresource.DomainResource):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "item": ["itemCodeableConcept", "itemReference",],
+            "item": ["itemCodeableConcept", "itemReference"],
             "occurrence": [
                 "occurrenceDateTime",
                 "occurrencePeriod",
@@ -273,7 +292,7 @@ class SupplyRequestParameter(backboneelement.BackboneElement):
                 "valueCodeableConcept",
                 "valueQuantity",
                 "valueRange",
-            ],
+            ]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

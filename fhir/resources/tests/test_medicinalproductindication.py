@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import medicinalproductindication
 
@@ -20,9 +22,8 @@ def impl_medicinalproductindication_1(inst):
         inst.diseaseSymptomProcedure.coding[0].code
         == "Venousthromboembolismprophylaxis"
     )
-    assert (
-        inst.diseaseSymptomProcedure.coding[0].system
-        == "http://ema.europa.eu/example/indicationasdisease-symptom-procedure"
+    assert inst.diseaseSymptomProcedure.coding[0].system == (
+        "http://ema.europa.eu/example/indicationasdisease-symptom-" "procedure"
     )
     assert inst.id == "example"
     assert inst.intendedEffect.coding[0].code == "PRYLX"

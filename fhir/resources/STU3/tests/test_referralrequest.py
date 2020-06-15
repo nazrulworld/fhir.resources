@@ -6,24 +6,26 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import referralrequest
 
 
 def impl_referralrequest_1(inst):
     assert inst.authoredOn == fhirtypes.DateTime.validate("2014-02-14")
-    assert (
-        inst.basedOn[0].display
-        == "ProcedureRequest for Myringotomy and insertion of tympanic ventilation tube"
+    assert inst.basedOn[0].display == (
+        "ProcedureRequest for Myringotomy and insertion of tympanic " "ventilation tube"
     )
     assert inst.context.display == "Beverly Waver's encounter on 2014-02-14"
     assert (
         inst.definition[0].display
         == "Protocol for insertion of tympanic ventilation tube"
     )
-    assert (
-        inst.description
-        == "In the past 2 years Beverly has had 6 instances of r) sided Otitis media. She is     falling behind her peers at school, and displaying some learning difficulties."
+    assert inst.description == (
+        "In the past 2 years Beverly has had 6 instances of r) sided "
+        "Otitis media. She is     falling behind her peers at school,"
+        " and displaying some learning difficulties."
     )
     assert inst.groupIdentifier.value == "1234"
     assert inst.id == "example"
@@ -63,9 +65,10 @@ def impl_referralrequest_1(inst):
         inst.subject.reference
         == "https://fhir.orionhealth.com/blaze/fhir/Patient/77662"
     )
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Referral to Dr Dave for Beverly weaver to have grommets inserted in her r) ear</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Referral to Dr '
+        "Dave for Beverly weaver to have grommets inserted in her r) "
+        "ear</div>"
     )
     assert inst.text.status == "generated"
     assert inst.type.coding[0].code == "103696004"

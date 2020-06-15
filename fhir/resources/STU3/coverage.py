@@ -31,7 +31,10 @@ class Coverage(domainresource.DomainResource):
     contract: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="contract",
-        title="List of `Reference` items referencing `Contract` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Contract` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Contract details",
     )
 
@@ -73,7 +76,10 @@ class Coverage(domainresource.DomainResource):
     payor: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="payor",
-        title="List of `Reference` items referencing `Organization, Patient, RelatedPerson` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Organization, Patient, "
+            "RelatedPerson` (represented as `dict` in JSON)"
+        ),
         description="Identifier for the plan or agreement issuer",
     )
 
@@ -87,7 +93,10 @@ class Coverage(domainresource.DomainResource):
     policyHolder: fhirtypes.ReferenceType = Field(
         None,
         alias="policyHolder",
-        title="Type `Reference` referencing `Patient, RelatedPerson, Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, RelatedPerson, Organization` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Owner of the policy",
     )
 
@@ -115,7 +124,10 @@ class Coverage(domainresource.DomainResource):
     subscriber: fhirtypes.ReferenceType = Field(
         None,
         alias="subscriber",
-        title="Type `Reference` referencing `Patient, RelatedPerson` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, RelatedPerson` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Subscriber to the policy",
     )
 

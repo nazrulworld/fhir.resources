@@ -40,7 +40,11 @@ class Composition(domainresource.DomainResource):
     author: ListType[fhirtypes.ReferenceType] = Field(
         ...,
         alias="author",
-        title="List of `Reference` items referencing `Practitioner, PractitionerRole, Device, Patient, RelatedPerson, Organization` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Practitioner, PractitionerRole,"
+            " Device, Patient, RelatedPerson, Organization` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Who and/or what authored the composition",
     )
 
@@ -61,7 +65,10 @@ class Composition(domainresource.DomainResource):
     custodian: fhirtypes.ReferenceType = Field(
         None,
         alias="custodian",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Organization which maintains the composition",
     )
 
@@ -75,7 +82,10 @@ class Composition(domainresource.DomainResource):
     encounter: fhirtypes.ReferenceType = Field(
         None,
         alias="encounter",
-        title="Type `Reference` referencing `Encounter` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Encounter` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Context of the Composition",
     )
 
@@ -117,7 +127,9 @@ class Composition(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         None,
         alias="subject",
-        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        ),
         description="Who and/or what the composition is about",
     )
 
@@ -153,7 +165,10 @@ class CompositionAttester(backboneelement.BackboneElement):
     party: fhirtypes.ReferenceType = Field(
         None,
         alias="party",
-        title="Type `Reference` referencing `Patient, RelatedPerson, Practitioner, PractitionerRole, Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, RelatedPerson, Practitioner, "
+            "PractitionerRole, Organization` (represented as `dict` in JSON)"
+        ),
         description="Who attested the composition",
     )
 
@@ -183,7 +198,10 @@ class CompositionEvent(backboneelement.BackboneElement):
     detail: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="detail",
-        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Resource` (represented as "
+            "`dict` in JSON)"
+        ),
         description="The event(s) being documented",
     )
 
@@ -222,7 +240,10 @@ class CompositionRelatesTo(backboneelement.BackboneElement):
     targetReference: fhirtypes.ReferenceType = Field(
         None,
         alias="targetReference",
-        title="Type `Reference` referencing `Composition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Composition` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Target of the relationship",
         one_of_many="target",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
@@ -242,9 +263,7 @@ class CompositionRelatesTo(backboneelement.BackboneElement):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "target": ["targetIdentifier", "targetReference",],
-        }
+        one_of_many_fields = {"target": ["targetIdentifier", "targetReference"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -277,7 +296,11 @@ class CompositionSection(backboneelement.BackboneElement):
     author: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="author",
-        title="List of `Reference` items referencing `Practitioner, PractitionerRole, Device, Patient, RelatedPerson, Organization` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Practitioner, PractitionerRole,"
+            " Device, Patient, RelatedPerson, Organization` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Who and/or what authored the section",
     )
 
@@ -298,15 +321,23 @@ class CompositionSection(backboneelement.BackboneElement):
     entry: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="entry",
-        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Resource` (represented as "
+            "`dict` in JSON)"
+        ),
         description="A reference to data that supports this section",
     )
 
     focus: fhirtypes.ReferenceType = Field(
         None,
         alias="focus",
-        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
-        description="Who/what the section is about, when it is not about the subject of composition",
+        title=(
+            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        ),
+        description=(
+            "Who/what the section is about, when it is not about the subject of "
+            "composition"
+        ),
     )
 
     mode: fhirtypes.Code = Field(

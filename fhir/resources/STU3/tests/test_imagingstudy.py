@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import imagingstudy
 
@@ -51,16 +53,14 @@ def impl_imagingstudy_1(inst):
     assert inst.series[0].instance[0].number == 1
     assert inst.series[0].instance[0].sopClass == "urn:oid:1.2.840.10008.5.1.4.1.1.2"
     assert inst.series[0].instance[0].title == "PA VIEW"
-    assert (
-        inst.series[0].instance[0].uid
-        == "urn:oid:2.16.124.113543.6003.1154777499.30246.19789.3503430045.1.1"
+    assert inst.series[0].instance[0].uid == (
+        "urn:oid:2.16.124.113543.6003.1154777499.30246.19789.35034300" "45.1.1"
     )
     assert inst.series[0].instance[1].number == 2
     assert inst.series[0].instance[1].sopClass == "urn:oid:1.2.840.10008.5.1.4.1.1.2"
     assert inst.series[0].instance[1].title == "LL VIEW"
-    assert (
-        inst.series[0].instance[1].uid
-        == "urn:oid:2.16.124.113543.6003.1154777499.30246.19789.3503430045.1.2"
+    assert inst.series[0].instance[1].uid == (
+        "urn:oid:2.16.124.113543.6003.1154777499.30246.19789.35034300" "45.1.2"
     )
     assert inst.series[0].laterality.code == "419161000"
     assert inst.series[0].laterality.display == "Unilateral left"
@@ -75,17 +75,19 @@ def impl_imagingstudy_1(inst):
     assert inst.series[0].started == fhirtypes.DateTime.validate(
         "2011-01-01T11:01:20+03:00"
     )
-    assert (
-        inst.series[0].uid
-        == "urn:oid:2.16.124.113543.6003.1154777499.30246.19789.3503430045.1"
+    assert inst.series[0].uid == (
+        "urn:oid:2.16.124.113543.6003.1154777499.30246.19789.35034300" "45.1"
     )
     assert inst.started == fhirtypes.DateTime.validate("2017-01-01T11:01:20+03:00")
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">XR Wrist 3+ Views. John Smith (MRN: 09236). Accession: W12342398. Performed: 2017-01-01. 1 series, 2 images.</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">XR Wrist 3+ '
+        "Views. John Smith (MRN: 09236). Accession: W12342398. "
+        "Performed: 2017-01-01. 1 series, 2 images.</div>"
     )
     assert inst.text.status == "generated"
-    assert inst.uid == "urn:oid:2.16.124.113543.6003.1154777499.30246.19789.3503430046"
+    assert inst.uid == (
+        "urn:oid:2.16.124.113543.6003.1154777499.30246.19789.35034300" "46"
+    )
 
 
 def test_imagingstudy_1(base_settings):
@@ -119,9 +121,8 @@ def impl_imagingstudy_2(inst):
     assert inst.series[0].description == "CT Surview 180"
     assert inst.series[0].instance[0].number == 1
     assert inst.series[0].instance[0].sopClass == "urn:oid:1.2.840.10008.5.1.4.1.1.2"
-    assert (
-        inst.series[0].instance[0].uid
-        == "urn:oid:2.16.124.113543.6003.189642796.63084.16748.2599092903"
+    assert inst.series[0].instance[0].uid == (
+        "urn:oid:2.16.124.113543.6003.189642796.63084.16748.259909290" "3"
     )
     assert inst.series[0].modality.code == "CT"
     assert (
@@ -129,17 +130,19 @@ def impl_imagingstudy_2(inst):
     )
     assert inst.series[0].number == 3
     assert inst.series[0].numberOfInstances == 1
-    assert (
-        inst.series[0].uid
-        == "urn:oid:2.16.124.113543.6003.2588828330.45298.17418.2723805630"
+    assert inst.series[0].uid == (
+        "urn:oid:2.16.124.113543.6003.2588828330.45298.17418.27238056" "30"
     )
     assert inst.started == fhirtypes.DateTime.validate("2011-01-01T11:01:20+03:00")
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">CT Chest.  John Smith (MRN: 09236). Accession: W12342398. Performed: 2011-01-01. 3 series, 12 images.</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">CT Chest.  John '
+        "Smith (MRN: 09236). Accession: W12342398. Performed: "
+        "2011-01-01. 3 series, 12 images.</div>"
     )
     assert inst.text.status == "generated"
-    assert inst.uid == "urn:oid:2.16.124.113543.6003.1154777499.30246.19789.3503430045"
+    assert inst.uid == (
+        "urn:oid:2.16.124.113543.6003.1154777499.30246.19789.35034300" "45"
+    )
 
 
 def test_imagingstudy_2(base_settings):

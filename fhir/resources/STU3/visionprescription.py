@@ -32,14 +32,20 @@ class VisionPrescription(domainresource.DomainResource):
     dispense: ListType[fhirtypes.VisionPrescriptionDispenseType] = Field(
         None,
         alias="dispense",
-        title="List of `VisionPrescriptionDispense` items (represented as `dict` in JSON)",
+        title=(
+            "List of `VisionPrescriptionDispense` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Vision supply authorization",
     )
 
     encounter: fhirtypes.ReferenceType = Field(
         None,
         alias="encounter",
-        title="Type `Reference` referencing `Encounter` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Encounter` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Created during encounter / admission / stay",
     )
 
@@ -60,7 +66,10 @@ class VisionPrescription(domainresource.DomainResource):
     prescriber: fhirtypes.ReferenceType = Field(
         None,
         alias="prescriber",
-        title="Type `Reference` referencing `Practitioner` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Who authorizes the vision product",
     )
 
@@ -76,7 +85,10 @@ class VisionPrescription(domainresource.DomainResource):
     reasonReference: fhirtypes.ReferenceType = Field(
         None,
         alias="reasonReference",
-        title="Type `Reference` referencing `Condition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Condition` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Reason or indication for writing the prescription",
         one_of_many="reason",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -103,9 +115,7 @@ class VisionPrescription(domainresource.DomainResource):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "reason": ["reasonCodeableConcept", "reasonReference",],
-        }
+        one_of_many_fields = {"reason": ["reasonCodeableConcept", "reasonReference"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (

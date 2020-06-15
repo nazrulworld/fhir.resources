@@ -54,7 +54,9 @@ class Provenance(domainresource.DomainResource):
     location: fhirtypes.ReferenceType = Field(
         None,
         alias="location",
-        title="Type `Reference` referencing `Location` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Location` (represented as `dict` in " "JSON)"
+        ),
         description="Where the activity occurred, if relevant",
     )
 
@@ -96,7 +98,10 @@ class Provenance(domainresource.DomainResource):
     target: ListType[fhirtypes.ReferenceType] = Field(
         ...,
         alias="target",
-        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Resource` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Target Reference(s) (usually version specific)",
     )
 
@@ -112,7 +117,10 @@ class ProvenanceAgent(backboneelement.BackboneElement):
     onBehalfOfReference: fhirtypes.ReferenceType = Field(
         None,
         alias="onBehalfOfReference",
-        title="Type `Reference` referencing `Practitioner, RelatedPerson, Patient, Device, Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, RelatedPerson, Patient, "
+            "Device, Organization` (represented as `dict` in JSON)"
+        ),
         description="Who the agent is representing",
         one_of_many="onBehalfOf",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -144,7 +152,10 @@ class ProvenanceAgent(backboneelement.BackboneElement):
     whoReference: fhirtypes.ReferenceType = Field(
         None,
         alias="whoReference",
-        title="Type `Reference` referencing `Practitioner, RelatedPerson, Patient, Device, Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, RelatedPerson, Patient, "
+            "Device, Organization` (represented as `dict` in JSON)"
+        ),
         description="Who participated",
         one_of_many="who",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
@@ -174,8 +185,8 @@ class ProvenanceAgent(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "onBehalfOf": ["onBehalfOfReference", "onBehalfOfUri",],
-            "who": ["whoReference", "whoUri",],
+            "onBehalfOf": ["onBehalfOfReference", "onBehalfOfUri"],
+            "who": ["whoReference", "whoUri"],
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
@@ -231,7 +242,9 @@ class ProvenanceEntity(backboneelement.BackboneElement):
     whatReference: fhirtypes.ReferenceType = Field(
         None,
         alias="whatReference",
-        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        ),
         description="Identity of entity",
         one_of_many="what",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
@@ -260,9 +273,7 @@ class ProvenanceEntity(backboneelement.BackboneElement):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "what": ["whatIdentifier", "whatReference", "whatUri",],
-        }
+        one_of_many_fields = {"what": ["whatIdentifier", "whatReference", "whatUri"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (

@@ -25,7 +25,10 @@ class DeviceDefinition(domainresource.DomainResource):
     capability: ListType[fhirtypes.DeviceDefinitionCapabilityType] = Field(
         None,
         alias="capability",
-        title="List of `DeviceDefinitionCapability` items (represented as `dict` in JSON)",
+        title=(
+            "List of `DeviceDefinitionCapability` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Device capabilities",
     )
 
@@ -39,7 +42,10 @@ class DeviceDefinition(domainresource.DomainResource):
     deviceName: ListType[fhirtypes.DeviceDefinitionDeviceNameType] = Field(
         None,
         alias="deviceName",
-        title="List of `DeviceDefinitionDeviceName` items (represented as `dict` in JSON)",
+        title=(
+            "List of `DeviceDefinitionDeviceName` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="A name given to the device to identify it",
     )
 
@@ -54,13 +60,19 @@ class DeviceDefinition(domainresource.DomainResource):
         None,
         alias="languageCode",
         title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Language code for the human-readable text strings produced by the device (all supported)",
+        description=(
+            "Language code for the human-readable text strings produced by the "
+            "device (all supported)"
+        ),
     )
 
     manufacturerReference: fhirtypes.ReferenceType = Field(
         None,
         alias="manufacturerReference",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Name of device manufacturer",
         one_of_many="manufacturer",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -78,7 +90,10 @@ class DeviceDefinition(domainresource.DomainResource):
     material: ListType[fhirtypes.DeviceDefinitionMaterialType] = Field(
         None,
         alias="material",
-        title="List of `DeviceDefinitionMaterial` items (represented as `dict` in JSON)",
+        title=(
+            "List of `DeviceDefinitionMaterial` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="A substance used to create the material(s) of which the device is made",
     )
 
@@ -106,14 +121,20 @@ class DeviceDefinition(domainresource.DomainResource):
     owner: fhirtypes.ReferenceType = Field(
         None,
         alias="owner",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Organization responsible for device",
     )
 
     parentDevice: fhirtypes.ReferenceType = Field(
         None,
         alias="parentDevice",
-        title="Type `Reference` referencing `DeviceDefinition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `DeviceDefinition` (represented as `dict`"
+            " in JSON)"
+        ),
         description="The parent device it can be part of",
     )
 
@@ -127,15 +148,25 @@ class DeviceDefinition(domainresource.DomainResource):
     property: ListType[fhirtypes.DeviceDefinitionPropertyType] = Field(
         None,
         alias="property",
-        title="List of `DeviceDefinitionProperty` items (represented as `dict` in JSON)",
-        description="The actual configuration settings of a device as it actually operates, e.g., regulation status, time properties",
+        title=(
+            "List of `DeviceDefinitionProperty` items (represented as `dict` in "
+            "JSON)"
+        ),
+        description=(
+            "The actual configuration settings of a device as it actually operates,"
+            " e.g., regulation status, time properties"
+        ),
     )
 
     quantity: fhirtypes.QuantityType = Field(
         None,
         alias="quantity",
         title="Type `Quantity` (represented as `dict` in JSON)",
-        description="The quantity of the device present in the packaging (e.g. the number of devices present in a pack, or the number of devices in the same package of the medicinal product)",
+        description=(
+            "The quantity of the device present in the packaging (e.g. the number "
+            "of devices present in a pack, or the number of devices in the same "
+            "package of the medicinal product)"
+        ),
     )
 
     safety: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -155,8 +186,15 @@ class DeviceDefinition(domainresource.DomainResource):
     specialization: ListType[fhirtypes.DeviceDefinitionSpecializationType] = Field(
         None,
         alias="specialization",
-        title="List of `DeviceDefinitionSpecialization` items (represented as `dict` in JSON)",
-        description="The capabilities supported on a  device, the standards to which the device conforms for a particular purpose, and used for the communication",
+        title=(
+            "List of `DeviceDefinitionSpecialization` items (represented as `dict` "
+            "in JSON)"
+        ),
+        description=(
+            "The capabilities supported on a  device, the standards to which the "
+            "device conforms for a particular purpose, and used for the "
+            "communication"
+        ),
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -171,7 +209,10 @@ class DeviceDefinition(domainresource.DomainResource):
     ] = Field(
         None,
         alias="udiDeviceIdentifier",
-        title="List of `DeviceDefinitionUdiDeviceIdentifier` items (represented as `dict` in JSON)",
+        title=(
+            "List of `DeviceDefinitionUdiDeviceIdentifier` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Unique Device Identifier (UDI) Barcode string",
     )
 
@@ -204,7 +245,7 @@ class DeviceDefinition(domainresource.DomainResource):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "manufacturer": ["manufacturerReference", "manufacturerString",],
+            "manufacturer": ["manufacturerReference", "manufacturerString"]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
@@ -266,7 +307,10 @@ class DeviceDefinitionDeviceName(backboneelement.BackboneElement):
         ...,
         alias="type",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="udi-label-name | user-friendly-name | patient-reported-name | manufacturer-name | model-name | other",
+        description=(
+            "udi-label-name | user-friendly-name | patient-reported-name | "
+            "manufacturer-name | model-name | other"
+        ),
     )
 
 
@@ -309,7 +353,10 @@ class DeviceDefinitionProperty(backboneelement.BackboneElement):
         ...,
         alias="type",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Code that specifies the property DeviceDefinitionPropetyCode (Extensible)",
+        description=(
+            "Code that specifies the property DeviceDefinitionPropetyCode "
+            "(Extensible)"
+        ),
     )
 
     valueCode: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -363,7 +410,11 @@ class DeviceDefinitionUdiDeviceIdentifier(backboneelement.BackboneElement):
         ...,
         alias="deviceIdentifier",
         title="Type `String` (represented as `dict` in JSON)",
-        description="The identifier that is to be associated with every Device that references this DeviceDefintiion for the issuer and jurisdication porvided in the DeviceDefinition.udiDeviceIdentifier",
+        description=(
+            "The identifier that is to be associated with every Device that "
+            "references this DeviceDefintiion for the issuer and jurisdication "
+            "porvided in the DeviceDefinition.udiDeviceIdentifier"
+        ),
     )
 
     issuer: fhirtypes.Uri = Field(

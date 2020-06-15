@@ -28,13 +28,20 @@ class Goal(domainresource.DomainResource):
         None,
         alias="achievementStatus",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="in-progress | improving | worsening | no-change | achieved | sustaining | not-achieved | no-progress | not-attainable",
+        description=(
+            "in-progress | improving | worsening | no-change | achieved | "
+            "sustaining | not-achieved | no-progress | not-attainable"
+        ),
     )
 
     addresses: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="addresses",
-        title="List of `Reference` items referencing `Condition, Observation, MedicationStatement, NutritionOrder, ServiceRequest, RiskAssessment` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Condition, Observation, "
+            "MedicationStatement, NutritionOrder, ServiceRequest, RiskAssessment` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Issues addressed by this goal",
     )
 
@@ -55,7 +62,10 @@ class Goal(domainresource.DomainResource):
     expressedBy: fhirtypes.ReferenceType = Field(
         None,
         alias="expressedBy",
-        title="Type `Reference` referencing `Patient, Practitioner, PractitionerRole, RelatedPerson` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Practitioner, PractitionerRole,"
+            " RelatedPerson` (represented as `dict` in JSON)"
+        ),
         description="Who\u0027s responsible for creating Goal?",
     )
 
@@ -70,7 +80,10 @@ class Goal(domainresource.DomainResource):
         ...,
         alias="lifecycleStatus",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="proposed | planned | accepted | active | on-hold | completed | cancelled | entered-in-error | rejected",
+        description=(
+            "proposed | planned | accepted | active | on-hold | completed | "
+            "cancelled | entered-in-error | rejected"
+        ),
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
@@ -90,7 +103,10 @@ class Goal(domainresource.DomainResource):
     outcomeReference: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="outcomeReference",
-        title="List of `Reference` items referencing `Observation` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Observation` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Observation that resulted from goal",
     )
 
@@ -136,7 +152,10 @@ class Goal(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         ...,
         alias="subject",
-        title="Type `Reference` referencing `Patient, Group, Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Group, Organization` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Who this goal is intended for",
     )
 
@@ -161,9 +180,7 @@ class Goal(domainresource.DomainResource):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "start": ["startCodeableConcept", "startDate",],
-        }
+        one_of_many_fields = {"start": ["startCodeableConcept", "startDate"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -305,7 +322,7 @@ class GoalTarget(backboneelement.BackboneElement):
                 "detailRatio",
                 "detailString",
             ],
-            "due": ["dueDate", "dueDuration",],
+            "due": ["dueDate", "dueDuration"],
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

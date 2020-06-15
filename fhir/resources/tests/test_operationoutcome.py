@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import operationoutcome
 
@@ -60,9 +62,8 @@ def impl_operationoutcome_2(inst):
         inst.issue[0].details.coding[0].system
         == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     )
-    assert (
-        inst.issue[0].details.text
-        == "Additional information may be available using the Break-The-Glass Protocol"
+    assert inst.issue[0].details.text == (
+        "Additional information may be available using the Break-The-" "Glass Protocol"
     )
     assert inst.issue[0].severity == "information"
     assert inst.meta.tag[0].code == "HTEST"
@@ -99,9 +100,9 @@ def test_operationoutcome_2(base_settings):
 def impl_operationoutcome_3(inst):
     assert inst.id == "searchfail"
     assert inst.issue[0].code == "code-invalid"
-    assert (
-        inst.issue[0].details.text
-        == 'The "name" parameter has the modifier "exact" which is not supported by this server'
+    assert inst.issue[0].details.text == (
+        'The "name" parameter has the modifier "exact" which is '
+        "not supported by this server"
     )
     assert inst.issue[0].location[0] == "http.name:exact"
     assert inst.issue[0].severity == "fatal"

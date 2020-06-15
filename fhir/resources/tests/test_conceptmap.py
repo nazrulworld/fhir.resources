@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import conceptmap
 
@@ -16,9 +18,8 @@ def impl_conceptmap_1(inst):
     assert inst.contact[0].telecom[1].system == "email"
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
     assert inst.date == fhirtypes.DateTime.validate("2019-11-01T09:29:23+11:00")
-    assert (
-        inst.description
-        == 'Canonical Mapping for "The lifecycle status of an artifact."'
+    assert inst.description == (
+        'Canonical Mapping for "The lifecycle status of an ' 'artifact."'
     )
     assert inst.group[0].element[0].code == "entered-in-error"
     assert inst.group[0].element[0].target[0].code == "error"
@@ -131,9 +132,8 @@ def impl_conceptmap_3(inst):
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert inst.date == fhirtypes.DateTime.validate("2019-11-01T09:29:23+11:00")
-    assert (
-        inst.description
-        == 'Canonical Mapping for "This value set includes Status codes."'
+    assert inst.description == (
+        'Canonical Mapping for "This value set includes Status ' 'codes."'
     )
     assert inst.group[0].element[0].code == "entered-in-error"
     assert inst.group[0].element[0].target[0].code == "error"
@@ -239,9 +239,10 @@ def impl_conceptmap_5(inst):
     assert inst.contact[0].telecom[1].system == "email"
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
     assert inst.date == fhirtypes.DateTime.validate("2019-11-01T09:29:23+11:00")
-    assert (
-        inst.description
-        == 'Canonical Mapping for "Indicates whether this flag is active and needs to be displayed to a user, or whether it is no longer needed or was entered in error."'
+    assert inst.description == (
+        'Canonical Mapping for "Indicates whether this flag is '
+        "active and needs to be displayed to a user, or whether it is"
+        ' no longer needed or was entered in error."'
     )
     assert inst.group[0].element[0].code == "entered-in-error"
     assert inst.group[0].element[0].target[0].code == "error"
@@ -292,9 +293,8 @@ def impl_conceptmap_6(inst):
     assert inst.contact[0].telecom[1].system == "email"
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
     assert inst.date == fhirtypes.DateTime.validate("2019-11-01T09:29:23+11:00")
-    assert (
-        inst.description
-        == 'Canonical Mapping for "The availability status of the device."'
+    assert inst.description == (
+        'Canonical Mapping for "The availability status of the ' 'device."'
     )
     assert inst.group[0].element[0].code == "entered-in-error"
     assert inst.group[0].element[0].target[0].code == "error"
@@ -399,9 +399,9 @@ def impl_conceptmap_8(inst):
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert inst.date == fhirtypes.DateTime.validate("2019-11-01T09:29:23+11:00")
-    assert (
-        inst.description
-        == 'Canonical Mapping for "Preferred value set for AllergyIntolerance Clinical Status."'
+    assert inst.description == (
+        'Canonical Mapping for "Preferred value set for '
+        'AllergyIntolerance Clinical Status."'
     )
     assert inst.group[0].element[0].code == "active"
     assert inst.group[0].element[0].target[0].code == "active"
@@ -412,9 +412,8 @@ def impl_conceptmap_8(inst):
     assert inst.group[0].element[2].code == "resolved"
     assert inst.group[0].element[2].target[0].code == "resolved"
     assert inst.group[0].element[2].target[0].equivalence == "equivalent"
-    assert (
-        inst.group[0].source
-        == "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical"
+    assert inst.group[0].source == (
+        "http://terminology.hl7.org/CodeSystem/allergyintolerance-" "clinical"
     )
     assert inst.group[0].target == "http://hl7.org/fhir/resource-status"
     assert inst.id == "sc-allergyintolerance-clinical"
@@ -427,10 +426,12 @@ def impl_conceptmap_8(inst):
     assert inst.status == "draft"
     assert inst.targetCanonical == "http://hl7.org/fhir/ValueSet/resource-status"
     assert inst.text.status == "generated"
-    assert (
-        inst.title == 'Canonical Mapping for "AllergyIntolerance Clinical Status Codes"'
+    assert inst.title == (
+        'Canonical Mapping for "AllergyIntolerance Clinical Status ' 'Codes"'
     )
-    assert inst.url == "http://hl7.org/fhir/ConceptMap/sc-allergyintolerance-clinical"
+    assert inst.url == (
+        "http://hl7.org/fhir/ConceptMap/sc-allergyintolerance-" "clinical"
+    )
     assert inst.version == "4.0.1"
 
 
@@ -511,9 +512,8 @@ def impl_conceptmap_10(inst):
     assert inst.contact[0].telecom[1].system == "email"
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
     assert inst.date == fhirtypes.DateTime.validate("2019-11-01T09:29:23+11:00")
-    assert (
-        inst.description
-        == 'Canonical Mapping for "Indicates whether the location is still in use."'
+    assert inst.description == (
+        'Canonical Mapping for "Indicates whether the location is ' 'still in use."'
     )
     assert inst.group[0].element[0].code == "active"
     assert inst.group[0].element[0].target[0].code == "active"

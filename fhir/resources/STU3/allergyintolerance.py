@@ -32,7 +32,10 @@ class AllergyIntolerance(domainresource.DomainResource):
     asserter: fhirtypes.ReferenceType = Field(
         None,
         alias="asserter",
-        title="Type `Reference` referencing `Patient, RelatedPerson, Practitioner` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, RelatedPerson, Practitioner` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Source of the information about the allergy",
     )
 
@@ -140,14 +143,20 @@ class AllergyIntolerance(domainresource.DomainResource):
     reaction: ListType[fhirtypes.AllergyIntoleranceReactionType] = Field(
         None,
         alias="reaction",
-        title="List of `AllergyIntoleranceReaction` items (represented as `dict` in JSON)",
+        title=(
+            "List of `AllergyIntoleranceReaction` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Adverse Reaction Events linked to exposure to substance",
     )
 
     recorder: fhirtypes.ReferenceType = Field(
         None,
         alias="recorder",
-        title="Type `Reference` referencing `Practitioner, Patient` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, Patient` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Who recorded the sensitivity",
     )
 
@@ -186,7 +195,7 @@ class AllergyIntolerance(domainresource.DomainResource):
                 "onsetPeriod",
                 "onsetRange",
                 "onsetString",
-            ],
+            ]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
@@ -264,5 +273,8 @@ class AllergyIntoleranceReaction(backboneelement.BackboneElement):
         None,
         alias="substance",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Specific substance or pharmaceutical product considered to be responsible for event",
+        description=(
+            "Specific substance or pharmaceutical product considered to be "
+            "responsible for event"
+        ),
     )

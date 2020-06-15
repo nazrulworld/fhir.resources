@@ -45,14 +45,20 @@ class PaymentNotice(domainresource.DomainResource):
     payee: fhirtypes.ReferenceType = Field(
         None,
         alias="payee",
-        title="Type `Reference` referencing `Practitioner, PractitionerRole, Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, PractitionerRole, "
+            "Organization` (represented as `dict` in JSON)"
+        ),
         description="Party being paid",
     )
 
     payment: fhirtypes.ReferenceType = Field(
         ...,
         alias="payment",
-        title="Type `Reference` referencing `PaymentReconciliation` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `PaymentReconciliation` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Payment reference",
     )
 
@@ -73,28 +79,38 @@ class PaymentNotice(domainresource.DomainResource):
     provider: fhirtypes.ReferenceType = Field(
         None,
         alias="provider",
-        title="Type `Reference` referencing `Practitioner, PractitionerRole, Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, PractitionerRole, "
+            "Organization` (represented as `dict` in JSON)"
+        ),
         description="Responsible practitioner",
     )
 
     recipient: fhirtypes.ReferenceType = Field(
         ...,
         alias="recipient",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Party being notified",
     )
 
     request: fhirtypes.ReferenceType = Field(
         None,
         alias="request",
-        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        ),
         description="Request reference",
     )
 
     response: fhirtypes.ReferenceType = Field(
         None,
         alias="response",
-        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        ),
         description="Response reference",
     )
 

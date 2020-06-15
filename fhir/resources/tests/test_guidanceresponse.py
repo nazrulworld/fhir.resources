@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import guidanceresponse
 
@@ -21,9 +23,8 @@ def impl_guidanceresponse_1(inst):
     assert (
         inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     )
-    assert (
-        inst.moduleUri
-        == "http://someguidelineprovider.org/radiology-appropriateness-guidelines.html"
+    assert inst.moduleUri == (
+        "http://someguidelineprovider.org/radiology-appropriateness-" "guidelines.html"
     )
     assert inst.occurrenceDateTime == fhirtypes.DateTime.validate(
         "2017-03-10T16:02:00Z"

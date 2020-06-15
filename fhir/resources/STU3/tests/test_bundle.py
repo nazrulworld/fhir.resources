@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import bundle
 
@@ -75,9 +77,8 @@ def impl_bundle_2(inst):
     assert inst.entry[3].resource.meta.lastUpdated == fhirtypes.Instant.validate(
         "2013-07-01T13:11:33Z"
     )
-    assert (
-        inst.entry[4].fullUrl
-        == "http://localhost:9556/svc/fhir/Binary/1e404af3-077f-4bee-b7a6-a9be97e1ce32"
+    assert inst.entry[4].fullUrl == (
+        "http://localhost:9556/svc/fhir/Binary/1e404af3-077f-4bee-b7a" "6-a9be97e1ce32"
     )
     assert inst.entry[4].request.method == "POST"
     assert inst.entry[4].request.url == "Binary"
@@ -263,24 +264,20 @@ def impl_bundle_6(inst):
         inst.entry[2].fullUrl == "http://hl7.org/fhir/StructureDefinition/valueset-map"
     )
     assert inst.entry[2].resource.id == "valueset-map"
-    assert (
-        inst.entry[3].fullUrl
-        == "http://hl7.org/fhir/StructureDefinition/observation-time-offset"
+    assert inst.entry[3].fullUrl == (
+        "http://hl7.org/fhir/StructureDefinition/observation-time-" "offset"
     )
     assert inst.entry[3].resource.id == "observation-time-offset"
-    assert (
-        inst.entry[4].fullUrl
-        == "http://hl7.org/fhir/StructureDefinition/observation-geneticsInterpretation"
+    assert inst.entry[4].fullUrl == (
+        "http://hl7.org/fhir/StructureDefinition/observation-" "geneticsInterpretation"
     )
     assert inst.entry[4].resource.id == "observation-geneticsInterpretation"
-    assert (
-        inst.entry[5].fullUrl
-        == "http://hl7.org/fhir/StructureDefinition/11179-de-administrative-status"
+    assert inst.entry[5].fullUrl == (
+        "http://hl7.org/fhir/StructureDefinition/11179-de-" "administrative-status"
     )
     assert inst.entry[5].resource.id == "11179-de-administrative-status"
-    assert (
-        inst.entry[6].fullUrl
-        == "http://hl7.org/fhir/StructureDefinition/patient-cadavericDonor"
+    assert inst.entry[6].fullUrl == (
+        "http://hl7.org/fhir/StructureDefinition/patient-" "cadavericDonor"
     )
     assert inst.entry[6].resource.id == "patient-cadavericDonor"
     assert (
@@ -293,9 +290,8 @@ def impl_bundle_6(inst):
         == "http://hl7.org/fhir/StructureDefinition/valueset-definition"
     )
     assert inst.entry[8].resource.id == "valueset-definition"
-    assert (
-        inst.entry[9].fullUrl
-        == "http://hl7.org/fhir/StructureDefinition/procedurerequest-reasonRejected"
+    assert inst.entry[9].fullUrl == (
+        "http://hl7.org/fhir/StructureDefinition/procedurerequest-" "reasonRejected"
     )
     assert inst.entry[9].resource.id == "procedurerequest-reasonRejected"
     assert inst.id == "extensions"
@@ -326,9 +322,8 @@ def test_bundle_6(base_settings):
 
 
 def impl_bundle_7(inst):
-    assert (
-        inst.entry[0].fullUrl
-        == "http://hl7.org/fhir/ConceptMap/cm-observation-relationshiptypes-v3"
+    assert inst.entry[0].fullUrl == (
+        "http://hl7.org/fhir/ConceptMap/cm-observation-" "relationshiptypes-v3"
     )
     assert inst.entry[0].resource.id == "cm-observation-relationshiptypes-v3"
     assert inst.entry[1].fullUrl == "http://hl7.org/fhir/ConceptMap/cm-address-use-v3"
@@ -350,9 +345,8 @@ def impl_bundle_7(inst):
     assert inst.entry[4].resource.id == "cm-administrative-gender-v2"
     assert inst.entry[5].fullUrl == "http://hl7.org/fhir/ConceptMap/cm-address-type-v3"
     assert inst.entry[5].resource.id == "cm-address-type-v3"
-    assert (
-        inst.entry[6].fullUrl
-        == "http://hl7.org/fhir/ConceptMap/cm-medication-request-status-v3"
+    assert inst.entry[6].fullUrl == (
+        "http://hl7.org/fhir/ConceptMap/cm-medication-request-" "status-v3"
     )
     assert inst.entry[6].resource.id == "cm-medication-request-status-v3"
     assert (
@@ -531,9 +525,8 @@ def impl_bundle_9(inst):
         inst.entry[4].resource.meta.profile[0]
         == "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
     )
-    assert (
-        inst.entry[5].fullUrl
-        == "http://hl7.org/fhir/ValueSet/v3-ConfidentialityClassification"
+    assert inst.entry[5].fullUrl == (
+        "http://hl7.org/fhir/ValueSet/v3-ConfidentialityClassificatio" "n"
     )
     assert inst.entry[5].resource.id == "v3-ConfidentialityClassification"
     assert inst.entry[5].resource.meta.lastUpdated == fhirtypes.Instant.validate(
@@ -543,9 +536,8 @@ def impl_bundle_9(inst):
         inst.entry[5].resource.meta.profile[0]
         == "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
     )
-    assert (
-        inst.entry[6].fullUrl
-        == "http://hl7.org/fhir/ValueSet/v3-ServiceDeliveryLocationRoleType"
+    assert inst.entry[6].fullUrl == (
+        "http://hl7.org/fhir/ValueSet/v3-ServiceDeliveryLocationRoleT" "ype"
     )
     assert inst.entry[6].resource.id == "v3-ServiceDeliveryLocationRoleType"
     assert inst.entry[6].resource.meta.lastUpdated == fhirtypes.Instant.validate(

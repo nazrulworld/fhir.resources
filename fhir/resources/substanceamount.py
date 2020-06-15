@@ -29,7 +29,12 @@ class SubstanceAmount(backboneelement.BackboneElement):
         None,
         alias="amountQuantity",
         title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Used to capture quantitative values for a variety of elements. If only limits are given, the arithmetic mean would be the average. If only a single definite value for a given element is given, it would be captured in this field",
+        description=(
+            "Used to capture quantitative values for a variety of elements. If only"
+            " limits are given, the arithmetic mean would be the average. If only a"
+            " single definite value for a given element is given, it would be "
+            "captured in this field"
+        ),
         one_of_many="amount",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
     )
@@ -38,7 +43,12 @@ class SubstanceAmount(backboneelement.BackboneElement):
         None,
         alias="amountRange",
         title="Type `Range` (represented as `dict` in JSON)",
-        description="Used to capture quantitative values for a variety of elements. If only limits are given, the arithmetic mean would be the average. If only a single definite value for a given element is given, it would be captured in this field",
+        description=(
+            "Used to capture quantitative values for a variety of elements. If only"
+            " limits are given, the arithmetic mean would be the average. If only a"
+            " single definite value for a given element is given, it would be "
+            "captured in this field"
+        ),
         one_of_many="amount",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
     )
@@ -47,7 +57,12 @@ class SubstanceAmount(backboneelement.BackboneElement):
         None,
         alias="amountString",
         title="Type `String` (represented as `dict` in JSON)",
-        description="Used to capture quantitative values for a variety of elements. If only limits are given, the arithmetic mean would be the average. If only a single definite value for a given element is given, it would be captured in this field",
+        description=(
+            "Used to capture quantitative values for a variety of elements. If only"
+            " limits are given, the arithmetic mean would be the average. If only a"
+            " single definite value for a given element is given, it would be "
+            "captured in this field"
+        ),
         one_of_many="amount",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
     )
@@ -63,7 +78,15 @@ class SubstanceAmount(backboneelement.BackboneElement):
         None,
         alias="amountType",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Most elements that require a quantitative value will also have a field called amount type. Amount type should always be specified because the actual value of the amount is often dependent on it. EXAMPLE: In capturing the actual relative amounts of substances or molecular fragments it is essential to indicate whether the amount refers to a mole ratio or weight ratio. For any given element an effort should be made to use same the amount type for all related definitional elements",
+        description=(
+            "Most elements that require a quantitative value will also have a field"
+            " called amount type. Amount type should always be specified because "
+            "the actual value of the amount is often dependent on it. EXAMPLE: In "
+            "capturing the actual relative amounts of substances or molecular "
+            "fragments it is essential to indicate whether the amount refers to a "
+            "mole ratio or weight ratio. For any given element an effort should be "
+            "made to use same the amount type for all related definitional elements"
+        ),
     )
 
     referenceRange: fhirtypes.SubstanceAmountReferenceRangeType = Field(
@@ -88,7 +111,7 @@ class SubstanceAmount(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "amount": ["amountQuantity", "amountRange", "amountString",],
+            "amount": ["amountQuantity", "amountRange", "amountString"]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

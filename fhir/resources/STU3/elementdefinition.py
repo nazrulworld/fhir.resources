@@ -67,7 +67,10 @@ class ElementDefinition(element.Element):
     constraint: ListType[fhirtypes.ElementDefinitionConstraintType] = Field(
         None,
         alias="constraint",
-        title="List of `ElementDefinitionConstraint` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ElementDefinitionConstraint` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Condition that must evaluate to true",
     )
 
@@ -430,7 +433,10 @@ class ElementDefinition(element.Element):
     example: ListType[fhirtypes.ElementDefinitionExampleType] = Field(
         None,
         alias="example",
-        title="List of `ElementDefinitionExample` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ElementDefinitionExample` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Example value (as defined for type)",
     )
 
@@ -800,7 +806,10 @@ class ElementDefinition(element.Element):
     mapping: ListType[fhirtypes.ElementDefinitionMappingType] = Field(
         None,
         alias="mapping",
-        title="List of `ElementDefinitionMapping` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ElementDefinitionMapping` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Map element to another set of definitions",
     )
 
@@ -1638,7 +1647,9 @@ class ElementDefinitionBinding(element.Element):
     valueSetReference: fhirtypes.ReferenceType = Field(
         None,
         alias="valueSetReference",
-        title="Type `Reference` referencing `ValueSet` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `ValueSet` (represented as `dict` in " "JSON)"
+        ),
         description="Source of value set",
         one_of_many="valueSet",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -1667,9 +1678,7 @@ class ElementDefinitionBinding(element.Element):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "valueSet": ["valueSetReference", "valueSetUri",],
-        }
+        one_of_many_fields = {"valueSet": ["valueSetReference", "valueSetUri"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -2161,7 +2170,7 @@ class ElementDefinitionExample(element.Element):
                 "valueTiming",
                 "valueUnsignedInt",
                 "valueUri",
-            ],
+            ]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
@@ -2247,7 +2256,10 @@ class ElementDefinitionSlicing(element.Element):
     ] = Field(
         None,
         alias="discriminator",
-        title="List of `ElementDefinitionSlicingDiscriminator` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ElementDefinitionSlicingDiscriminator` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Element values that are used to distinguish the slices",
     )
 

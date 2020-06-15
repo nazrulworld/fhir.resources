@@ -32,7 +32,10 @@ class MeasureReport(domainresource.DomainResource):
     evaluatedResource: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="evaluatedResource",
-        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Resource` (represented as "
+            "`dict` in JSON)"
+        ),
         description="What data was used to calculate the measure score",
     )
 
@@ -74,7 +77,10 @@ class MeasureReport(domainresource.DomainResource):
     reporter: fhirtypes.ReferenceType = Field(
         None,
         alias="reporter",
-        title="Type `Reference` referencing `Practitioner, PractitionerRole, Location, Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, PractitionerRole, "
+            "Location, Organization` (represented as `dict` in JSON)"
+        ),
         description="Who is reporting the data",
     )
 
@@ -88,7 +94,11 @@ class MeasureReport(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         None,
         alias="subject",
-        title="Type `Reference` referencing `Patient, Practitioner, PractitionerRole, Location, Device, RelatedPerson, Group` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Practitioner, PractitionerRole,"
+            " Location, Device, RelatedPerson, Group` (represented as `dict` in "
+            "JSON)"
+        ),
         description="What individual(s) the report is for",
     )
 
@@ -125,14 +135,20 @@ class MeasureReportGroup(backboneelement.BackboneElement):
     population: ListType[fhirtypes.MeasureReportGroupPopulationType] = Field(
         None,
         alias="population",
-        title="List of `MeasureReportGroupPopulation` items (represented as `dict` in JSON)",
+        title=(
+            "List of `MeasureReportGroupPopulation` items (represented as `dict` in"
+            " JSON)"
+        ),
         description="The populations in the group",
     )
 
     stratifier: ListType[fhirtypes.MeasureReportGroupStratifierType] = Field(
         None,
         alias="stratifier",
-        title="List of `MeasureReportGroupStratifier` items (represented as `dict` in JSON)",
+        title=(
+            "List of `MeasureReportGroupStratifier` items (represented as `dict` in"
+            " JSON)"
+        ),
         description="Stratification results",
     )
 
@@ -149,7 +165,11 @@ class MeasureReportGroupPopulation(backboneelement.BackboneElement):
         None,
         alias="code",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="initial-population | numerator | numerator-exclusion | denominator | denominator-exclusion | denominator-exception | measure-population | measure-population-exclusion | measure-observation",
+        description=(
+            "initial-population | numerator | numerator-exclusion | denominator | "
+            "denominator-exclusion | denominator-exception | measure-population | "
+            "measure-population-exclusion | measure-observation"
+        ),
     )
 
     count: fhirtypes.Integer = Field(
@@ -185,8 +205,14 @@ class MeasureReportGroupStratifier(backboneelement.BackboneElement):
     stratum: ListType[fhirtypes.MeasureReportGroupStratifierStratumType] = Field(
         None,
         alias="stratum",
-        title="List of `MeasureReportGroupStratifierStratum` items (represented as `dict` in JSON)",
-        description="Stratum results, one for each unique value, or set of values, in the stratifier, or stratifier components",
+        title=(
+            "List of `MeasureReportGroupStratifierStratum` items (represented as "
+            "`dict` in JSON)"
+        ),
+        description=(
+            "Stratum results, one for each unique value, or set of values, in the "
+            "stratifier, or stratifier components"
+        ),
     )
 
 
@@ -205,7 +231,10 @@ class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="component",
-        title="List of `MeasureReportGroupStratifierStratumComponent` items (represented as `dict` in JSON)",
+        title=(
+            "List of `MeasureReportGroupStratifierStratumComponent` items "
+            "(represented as `dict` in JSON)"
+        ),
         description="Stratifier component values",
     )
 
@@ -221,7 +250,10 @@ class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="population",
-        title="List of `MeasureReportGroupStratifierStratumPopulation` items (represented as `dict` in JSON)",
+        title=(
+            "List of `MeasureReportGroupStratifierStratumPopulation` items "
+            "(represented as `dict` in JSON)"
+        ),
         description="Population results in this stratum",
     )
 
@@ -267,7 +299,11 @@ class MeasureReportGroupStratifierStratumPopulation(backboneelement.BackboneElem
         None,
         alias="code",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="initial-population | numerator | numerator-exclusion | denominator | denominator-exclusion | denominator-exception | measure-population | measure-population-exclusion | measure-observation",
+        description=(
+            "initial-population | numerator | numerator-exclusion | denominator | "
+            "denominator-exclusion | denominator-exception | measure-population | "
+            "measure-population-exclusion | measure-observation"
+        ),
     )
 
     count: fhirtypes.Integer = Field(

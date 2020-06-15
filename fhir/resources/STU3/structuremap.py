@@ -245,7 +245,10 @@ class StructureMapGroupRule(backboneelement.BackboneElement):
     dependent: ListType[fhirtypes.StructureMapGroupRuleDependentType] = Field(
         None,
         alias="dependent",
-        title="List of `StructureMapGroupRuleDependent` items (represented as `dict` in JSON)",
+        title=(
+            "List of `StructureMapGroupRuleDependent` items (represented as `dict` "
+            "in JSON)"
+        ),
         description="Which other rules to apply in the context of this rule",
     )
 
@@ -273,14 +276,20 @@ class StructureMapGroupRule(backboneelement.BackboneElement):
     source: ListType[fhirtypes.StructureMapGroupRuleSourceType] = Field(
         ...,
         alias="source",
-        title="List of `StructureMapGroupRuleSource` items (represented as `dict` in JSON)",
+        title=(
+            "List of `StructureMapGroupRuleSource` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Source inputs to the mapping",
     )
 
     target: ListType[fhirtypes.StructureMapGroupRuleTargetType] = Field(
         None,
         alias="target",
-        title="List of `StructureMapGroupRuleTarget` items (represented as `dict` in JSON)",
+        title=(
+            "List of `StructureMapGroupRuleTarget` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Content to create because of this mapping rule",
     )
 
@@ -316,7 +325,10 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         None,
         alias="check",
         title="Type `String` (represented as `dict` in JSON)",
-        description="FHIRPath expression  - must be true or the mapping engine throws an error instead of completing",
+        description=(
+            "FHIRPath expression  - must be true or the mapping engine throws an "
+            "error instead of completing"
+        ),
     )
 
     condition: fhirtypes.String = Field(
@@ -771,7 +783,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
                 "defaultValueTiming",
                 "defaultValueUnsignedInt",
                 "defaultValueUri",
-            ],
+            ]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
@@ -839,7 +851,10 @@ class StructureMapGroupRuleTarget(backboneelement.BackboneElement):
     parameter: ListType[fhirtypes.StructureMapGroupRuleTargetParameterType] = Field(
         None,
         alias="parameter",
-        title="List of `StructureMapGroupRuleTargetParameter` items (represented as `dict` in JSON)",
+        title=(
+            "List of `StructureMapGroupRuleTargetParameter` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Parameters to the transform",
     )
 
@@ -930,7 +945,7 @@ class StructureMapGroupRuleTargetParameter(backboneelement.BackboneElement):
                 "valueId",
                 "valueInteger",
                 "valueString",
-            ],
+            ]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

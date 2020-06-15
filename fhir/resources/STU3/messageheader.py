@@ -27,21 +27,30 @@ class MessageHeader(domainresource.DomainResource):
     author: fhirtypes.ReferenceType = Field(
         None,
         alias="author",
-        title="Type `Reference` referencing `Practitioner` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner` (represented as `dict` in "
+            "JSON)"
+        ),
         description="The source of the decision",
     )
 
     destination: ListType[fhirtypes.MessageHeaderDestinationType] = Field(
         None,
         alias="destination",
-        title="List of `MessageHeaderDestination` items (represented as `dict` in JSON)",
+        title=(
+            "List of `MessageHeaderDestination` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Message destination application(s)",
     )
 
     enterer: fhirtypes.ReferenceType = Field(
         None,
         alias="enterer",
-        title="Type `Reference` referencing `Practitioner` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner` (represented as `dict` in "
+            "JSON)"
+        ),
         description="The source of the data entry",
     )
 
@@ -55,7 +64,10 @@ class MessageHeader(domainresource.DomainResource):
     focus: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="focus",
-        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Resource` (represented as "
+            "`dict` in JSON)"
+        ),
         description="The actual content of the message",
     )
 
@@ -69,7 +81,10 @@ class MessageHeader(domainresource.DomainResource):
     receiver: fhirtypes.ReferenceType = Field(
         None,
         alias="receiver",
-        title="Type `Reference` referencing `Practitioner, Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, Organization` (represented"
+            " as `dict` in JSON)"
+        ),
         description='Intended "real-world" recipient for the data',
     )
 
@@ -83,14 +98,20 @@ class MessageHeader(domainresource.DomainResource):
     responsible: fhirtypes.ReferenceType = Field(
         None,
         alias="responsible",
-        title="Type `Reference` referencing `Practitioner, Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, Organization` (represented"
+            " as `dict` in JSON)"
+        ),
         description="Final responsibility for event",
     )
 
     sender: fhirtypes.ReferenceType = Field(
         None,
         alias="sender",
-        title="Type `Reference` referencing `Practitioner, Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, Organization` (represented"
+            " as `dict` in JSON)"
+        ),
         description="Real world sender of the message",
     )
 
@@ -156,7 +177,10 @@ class MessageHeaderResponse(backboneelement.BackboneElement):
     details: fhirtypes.ReferenceType = Field(
         None,
         alias="details",
-        title="Type `Reference` referencing `OperationOutcome` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `OperationOutcome` (represented as `dict`"
+            " in JSON)"
+        ),
         description="Specific list of hints/warnings/errors",
     )
 

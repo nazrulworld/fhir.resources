@@ -88,7 +88,10 @@ class MetadataResource(domainresource.DomainResource):
         None,
         alias="url",
         title="Type `Uri` (represented as `dict` in JSON)",
-        description="Canonical identifier for this metadata resource, represented as a URI (globally unique)",
+        description=(
+            "Canonical identifier for this metadata resource, represented as a URI "
+            "(globally unique)"
+        ),
     )
 
     useContext: ListType[fhirtypes.UsageContextType] = Field(

@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import plandefinition
 
@@ -154,9 +156,8 @@ def impl_plandefinition_1(inst):
         inst.relatedArtifact[0].display == "NCCN Guidelines for Kidney Cancer. V.2.2016"
     )
     assert inst.relatedArtifact[0].type == "derived-from"
-    assert (
-        inst.relatedArtifact[0].url
-        == "http://www.example.org/professionals/physician_gls/PDF/kidney.pdf"
+    assert inst.relatedArtifact[0].url == (
+        "http://www.example.org/professionals/physician_gls/PDF/kidne" "y.pdf"
     )
     assert (
         inst.relatedArtifact[1].citation
@@ -239,9 +240,8 @@ def impl_plandefinition_1(inst):
         == "http://hl7.org/fhir/StructureDefinition/usagecontext-group"
     )
     assert inst.useContext[5].extension[0].valueString == "B"
-    assert (
-        inst.useContext[5].valueCodeableConcept.text
-        == "Kidney Cancer – Collecting Duct/Medullary Subtypes - Metastatic"
+    assert inst.useContext[5].valueCodeableConcept.text == (
+        "Kidney Cancer – Collecting Duct/Medullary Subtypes - " "Metastatic"
     )
     assert inst.version == "1"
 
@@ -299,9 +299,8 @@ def impl_plandefinition_2(inst):
         inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     )
     assert inst.status == "draft"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">[Put rendering here]</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">[Put rendering ' "here]</div>"
     )
     assert inst.text.status == "generated"
     assert inst.title == "This example illustrates relationships between actions."
@@ -336,9 +335,9 @@ def impl_plandefinition_3(inst):
     )
     assert inst.action[0].action[0].dynamicValue[0].expression.language == "text/cql"
     assert inst.action[0].action[0].dynamicValue[0].path == "/"
-    assert (
-        inst.action[0].action[0].textEquivalent
-        == "A Breastfeeding Readiness Assessment is recommended, please authorize or reject the order."
+    assert inst.action[0].action[0].textEquivalent == (
+        "A Breastfeeding Readiness Assessment is recommended, please "
+        "authorize or reject the order."
     )
     assert inst.action[0].action[0].title == "Notify the provider to sign the order."
     assert inst.action[0].action[0].type.coding[0].code == "create"
@@ -348,9 +347,8 @@ def impl_plandefinition_3(inst):
     )
     assert inst.action[0].condition[0].expression.language == "text/cql"
     assert inst.action[0].condition[0].kind == "applicability"
-    assert (
-        inst.action[0].title
-        == "Mother should be administered a breastfeeding readiness assessment."
+    assert inst.action[0].title == (
+        "Mother should be administered a breastfeeding readiness " "assessment."
     )
     assert inst.action[0].trigger[0].name == "Admission"
     assert inst.action[0].trigger[0].type == "named-event"
@@ -409,9 +407,9 @@ def impl_plandefinition_4(inst):
     )
     assert inst.action[0].action[0].dynamicValue[0].expression.language == "text/cql"
     assert inst.action[0].action[0].dynamicValue[0].path == "/"
-    assert (
-        inst.action[0].action[0].textEquivalent
-        == "A Breastfeeding Readiness Assessment is recommended, please administer the assessment."
+    assert inst.action[0].action[0].textEquivalent == (
+        "A Breastfeeding Readiness Assessment is recommended, please "
+        "administer the assessment."
     )
     assert (
         inst.action[0].action[0].title
@@ -424,9 +422,9 @@ def impl_plandefinition_4(inst):
     )
     assert inst.action[0].action[1].dynamicValue[0].expression.language == "text/cql"
     assert inst.action[0].action[1].dynamicValue[0].path == "/"
-    assert (
-        inst.action[0].action[1].textEquivalent
-        == "A Breastfeeding Readiness Assessment is recommended, please administer the assessment."
+    assert inst.action[0].action[1].textEquivalent == (
+        "A Breastfeeding Readiness Assessment is recommended, please "
+        "administer the assessment."
     )
     assert (
         inst.action[0].action[1].title
@@ -439,9 +437,8 @@ def impl_plandefinition_4(inst):
     )
     assert inst.action[0].condition[0].expression.language == "text/cql"
     assert inst.action[0].condition[0].kind == "applicability"
-    assert (
-        inst.action[0].title
-        == "Mother should be administered a breastfeeding readiness assessment."
+    assert inst.action[0].title == (
+        "Mother should be administered a breastfeeding readiness " "assessment."
     )
     assert inst.action[0].trigger[0].name == "Admission"
     assert inst.action[0].trigger[0].type == "named-event"
@@ -507,9 +504,9 @@ def impl_plandefinition_5(inst):
         == "text/cql"
     )
     assert inst.action[0].action[0].action[0].dynamicValue[0].path == "timing.event"
-    assert (
-        inst.action[0].action[0].action[0].dynamicValue[1].expression.expression
-        == "Code '261QM0850X' from CardiologyChestPainLogic.\"NUCC Provider Taxonomy\" display 'Adult Mental Health'"
+    assert inst.action[0].action[0].action[0].dynamicValue[1].expression.expression == (
+        "Code '261QM0850X' from CardiologyChestPainLogic.\"NUCC "
+        "Provider Taxonomy\" display 'Adult Mental Health'"
     )
     assert (
         inst.action[0].action[0].action[0].dynamicValue[1].expression.language
@@ -803,16 +800,16 @@ def impl_plandefinition_5(inst):
         inst.action[0].action[1].action[2].action[0].dynamicValue[2].path
         == "prescriber"
     )
-    assert (
-        inst.action[0].action[1].action[2].action[0].textEquivalent
-        == "nitroglycerin 0.4 mg tablet sub-lingual every 5 minutes as needed for chest pain; maximum 3 tablets"
+    assert inst.action[0].action[1].action[2].action[0].textEquivalent == (
+        "nitroglycerin 0.4 mg tablet sub-lingual every 5 minutes as "
+        "needed for chest pain; maximum 3 tablets"
     )
     assert inst.action[0].action[1].action[2].groupingBehavior == "logical-group"
     assert inst.action[0].action[1].action[2].selectionBehavior == "at-most-one"
     assert inst.action[0].action[1].action[2].title == "Nitroglycerin"
-    assert (
-        inst.action[0].action[1].description
-        == "Consider the following medications for stable patients to be initiated prior to the cardiology consultation."
+    assert inst.action[0].action[1].description == (
+        "Consider the following medications for stable patients to be"
+        " initiated prior to the cardiology consultation."
     )
     assert inst.action[0].action[1].title == "Medications"
     assert inst.author[0].name == "Bruce Bray MD"
@@ -828,18 +825,17 @@ def impl_plandefinition_5(inst):
     assert inst.contained[7].id == "metoprololTartrate50Substance"
     assert inst.contained[8].id == "nitroglycerinPrescription"
     assert inst.contained[9].id == "nitroglycerinMedication"
-    assert (
-        inst.copyright
-        == "© Copyright Cognitive Medical Systems, Inc. 9444 Waples Street Suite 300 San Diego, CA 92121"
+    assert inst.copyright == (
+        "© Copyright Cognitive Medical Systems, Inc. 9444 Waples "
+        "Street Suite 300 San Diego, CA 92121"
     )
     assert inst.date == fhirtypes.DateTime.validate("2017-08-29T11:15:33+10:00")
     assert inst.id == "example-cardiology-os"
     assert inst.identifier[0].system == "urn:va.gov:kbs:knart:artifact:r1"
     assert inst.identifier[0].use == "official"
     assert inst.identifier[0].value == "bb7ccea6-9744-4743-854a-bcffd87191f6"
-    assert (
-        inst.identifier[1].system
-        == "urn:va.gov:kbs:contract:VA118-16-D-1008:to:VA-118-16-F-1008-0007"
+    assert inst.identifier[1].system == (
+        "urn:va.gov:kbs:contract:VA118-16-D-1008:to:VA-118-16-F-1008-" "0007"
     )
     assert inst.identifier[1].value == "CLIN0004AG"
     assert inst.identifier[2].system == "urn:cognitivemedicine.com:lab:jira"
@@ -847,29 +843,31 @@ def impl_plandefinition_5(inst):
     assert inst.library[0] == "#cardiology-chestPain-logic"
     assert inst.name == "ChestPainCoronaryArteryDiseaseOrderSetKNART"
     assert inst.publisher == "Department of Veterans Affairs"
-    assert (
-        inst.relatedArtifact[0].display
-        == "Cardiology: Chest Pain (CP) / Coronary Artery Disease (CAD) Clinical Content White Paper"
+    assert inst.relatedArtifact[0].display == (
+        "Cardiology: Chest Pain (CP) / Coronary Artery Disease (CAD) "
+        "Clinical Content White Paper"
     )
     assert inst.relatedArtifact[0].type == "derived-from"
     assert inst.relatedArtifact[0].url == "http://example.com/"
-    assert (
-        inst.relatedArtifact[1].display
-        == "Outcome CVD (coronary death, myocardial infarction, coronary insufficiency, angina, ischemic stroke, hemorrhagic stroke, transient ischemic attack, peripheral artery disease, heart failure)"
+    assert inst.relatedArtifact[1].display == (
+        "Outcome CVD (coronary death, myocardial infarction, coronary"
+        " insufficiency, angina, ischemic stroke, hemorrhagic stroke,"
+        " transient ischemic attack, peripheral artery disease, heart"
+        " failure)"
     )
     assert inst.relatedArtifact[1].type == "justification"
-    assert (
-        inst.relatedArtifact[1].url
-        == "https://www.framinghamheartstudy.org/risk-functions/cardiovascular-disease/10-year-risk.php"
+    assert inst.relatedArtifact[1].url == (
+        "https://www.framinghamheartstudy.org/risk-"
+        "functions/cardiovascular-disease/10-year-risk.php"
     )
-    assert (
-        inst.relatedArtifact[2].display
-        == "General cardiovascular risk profile for use in primary care: the Framingham Heart Study"
+    assert inst.relatedArtifact[2].display == (
+        "General cardiovascular risk profile for use in primary care:"
+        " the Framingham Heart Study"
     )
     assert inst.relatedArtifact[2].type == "justification"
-    assert (
-        inst.relatedArtifact[2].url
-        == "https://www.framinghamheartstudy.org/risk-functions/cardiovascular-disease/10-year-risk.php"
+    assert inst.relatedArtifact[2].url == (
+        "https://www.framinghamheartstudy.org/risk-"
+        "functions/cardiovascular-disease/10-year-risk.php"
     )
     assert inst.relatedArtifact[3].type == "justification"
     assert inst.relatedArtifact[3].url == "https://example.org/"
@@ -880,49 +878,48 @@ def impl_plandefinition_5(inst):
         == "LABEL: ASPIRIN 81 MG- aspirin tablet, coated"
     )
     assert inst.relatedArtifact[5].type == "justification"
-    assert (
-        inst.relatedArtifact[5].url
-        == "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=b4064039-2345-4227-b83d-54dc13a838d3"
+    assert inst.relatedArtifact[5].url == (
+        "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=b40"
+        "64039-2345-4227-b83d-54dc13a838d3"
     )
-    assert (
-        inst.relatedArtifact[6].display
-        == "LABEL: CLOPIDOGREL- clopidogrel bisulfate tablet, film coated"
+    assert inst.relatedArtifact[6].display == (
+        "LABEL: CLOPIDOGREL- clopidogrel bisulfate tablet, film " "coated"
     )
     assert inst.relatedArtifact[6].type == "justification"
-    assert (
-        inst.relatedArtifact[6].url
-        == "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=7fe85155-bc00-406b-b097-e8aece187a8a"
+    assert inst.relatedArtifact[6].url == (
+        "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=7fe"
+        "85155-bc00-406b-b097-e8aece187a8a"
     )
     assert (
         inst.relatedArtifact[7].display
         == "LABEL: LIPITOR- atorvastatin calcium tablet, film coated"
     )
     assert inst.relatedArtifact[7].type == "justification"
-    assert (
-        inst.relatedArtifact[7].url
-        == "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=7fe85155-bc00-406b-b097-e8aece187a8a"
+    assert inst.relatedArtifact[7].url == (
+        "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=7fe"
+        "85155-bc00-406b-b097-e8aece187a8a"
     )
-    assert (
-        inst.relatedArtifact[8].display
-        == "LABEL: METOPROLOL SUCCINATE EXTENDED-RELEASE - metoprolol succinate tablet, film coated, extended release"
+    assert inst.relatedArtifact[8].display == (
+        "LABEL: METOPROLOL SUCCINATE EXTENDED-RELEASE - metoprolol "
+        "succinate tablet, film coated, extended release"
     )
     assert inst.relatedArtifact[8].type == "justification"
-    assert (
-        inst.relatedArtifact[8].url
-        == "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=2d948600-35d8-4490-983b-918bdce488c8"
+    assert inst.relatedArtifact[8].url == (
+        "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=2d9"
+        "48600-35d8-4490-983b-918bdce488c8"
     )
     assert (
         inst.relatedArtifact[9].display == "LABEL: NITROGLYCERIN- nitroglycerin tablet"
     )
     assert inst.relatedArtifact[9].type == "justification"
-    assert (
-        inst.relatedArtifact[9].url
-        == "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=67bf2a15-b115-47ac-ae28-ce2dafd6b5c9"
+    assert inst.relatedArtifact[9].url == (
+        "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=67b"
+        "f2a15-b115-47ac-ae28-ce2dafd6b5c9"
     )
     assert inst.status == "active"
     assert inst.text.status == "generated"
-    assert (
-        inst.title == "Chest Pain (CP) - Coronary Artery Disease (CAD) Order Set KNART"
+    assert inst.title == (
+        "Chest Pain (CP) - Coronary Artery Disease (CAD) Order Set " "KNART"
     )
     assert inst.type.coding[0].code == "order-set"
     assert inst.type.coding[0].display == "Order Set"
@@ -972,9 +969,10 @@ def test_plandefinition_5(base_settings):
 
 def impl_plandefinition_6(inst):
     assert inst.action[0].cardinalityBehavior == "single"
-    assert (
-        inst.action[0].condition[0].expression.expression
-        == "exists ([Condition: Obesity]) or not exists ([Observation: BMI] O where O.effectiveDateTime 2 years or less before Today())"
+    assert inst.action[0].condition[0].expression.expression == (
+        "exists ([Condition: Obesity]) or not exists ([Observation: "
+        "BMI] O where O.effectiveDateTime 2 years or less before "
+        "Today())"
     )
     assert inst.action[0].condition[0].expression.language == "text/cql"
     assert inst.action[0].condition[0].kind == "applicability"
@@ -1000,9 +998,10 @@ def impl_plandefinition_6(inst):
     assert inst.goal[0].description.text == "Reduce BMI to below 25"
     assert inst.goal[0].documentation[0].display == "Evaluation and Treatment Strategy"
     assert inst.goal[0].documentation[0].type == "justification"
-    assert (
-        inst.goal[0].documentation[0].url
-        == "https://www.nhlbi.nih.gov/health-pro/guidelines/current/obesity-guidelines/e_textbook/txgd/42.htm"
+    assert inst.goal[0].documentation[0].url == (
+        "https://www.nhlbi.nih.gov/health-"
+        "pro/guidelines/current/obesity-"
+        "guidelines/e_textbook/txgd/42.htm"
     )
     assert inst.goal[0].id == "reduce-bmi-ratio"
     assert inst.goal[0].priority.text == "medium-priority"
@@ -1025,17 +1024,18 @@ def impl_plandefinition_6(inst):
     assert (
         inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     )
-    assert (
-        inst.purpose
-        == "Example of A medical algorithm for assessment and treatment of overweight and obesity"
+    assert inst.purpose == (
+        "Example of A medical algorithm for assessment and treatment "
+        "of overweight and obesity"
     )
     assert (
         inst.relatedArtifact[0].display == "Overweight and Obesity Treatment Guidelines"
     )
     assert inst.relatedArtifact[0].type == "derived-from"
-    assert (
-        inst.relatedArtifact[0].url
-        == "http://www.nhlbi.nih.gov/health-pro/guidelines/current/obesity-guidelines/e_textbook/txgd/algorthm/algorthm.htm"
+    assert inst.relatedArtifact[0].url == (
+        "http://www.nhlbi.nih.gov/health-"
+        "pro/guidelines/current/obesity-"
+        "guidelines/e_textbook/txgd/algorthm/algorthm.htm"
     )
     assert inst.status == "draft"
     assert inst.text.status == "generated"
@@ -1089,9 +1089,9 @@ def impl_plandefinition_7(inst):
         == "text/cql"
     )
     assert inst.action[0].action[0].action[0].dynamicValue[0].path == "timing.event"
-    assert (
-        inst.action[0].action[0].action[0].dynamicValue[1].expression.expression
-        == "Code '261QM0850X' from SuicideRiskLogic.\"NUCC Provider Taxonomy\" display 'Adult Mental Health'"
+    assert inst.action[0].action[0].action[0].dynamicValue[1].expression.expression == (
+        "Code '261QM0850X' from SuicideRiskLogic.\"NUCC Provider "
+        "Taxonomy\" display 'Adult Mental Health'"
     )
     assert (
         inst.action[0].action[0].action[0].dynamicValue[1].expression.language
@@ -1145,9 +1145,9 @@ def impl_plandefinition_7(inst):
         == "text/cql"
     )
     assert inst.action[0].action[0].action[0].dynamicValue[6].path == "reasonReference"
-    assert (
-        inst.action[0].action[0].action[0].textEquivalent
-        == "Refer to outpatient mental health program for evaluation and treatment of mental health conditions now"
+    assert inst.action[0].action[0].action[0].textEquivalent == (
+        "Refer to outpatient mental health program for evaluation and"
+        " treatment of mental health conditions now"
     )
     assert inst.action[0].action[0].groupingBehavior == "logical-group"
     assert inst.action[0].action[0].selectionBehavior == "any"
@@ -1276,25 +1276,25 @@ def impl_plandefinition_7(inst):
         inst.action[0].action[1].action[0].action[0].action[0].dynamicValue[4].path
         == "reasonReference"
     )
-    assert (
-        inst.action[0].action[1].action[0].action[0].action[0].textEquivalent
-        == "citalopram 20 mg tablet 1 tablet oral 1 time daily now (30 table; 3 refills)"
+    assert inst.action[0].action[1].action[0].action[0].action[0].textEquivalent == (
+        "citalopram 20 mg tablet 1 tablet oral 1 time daily now (30 "
+        "table; 3 refills)"
     )
-    assert (
-        inst.action[0].action[1].action[0].action[0].action[1].textEquivalent
-        == "escitalopram 10 mg tablet 1 tablet oral 1 time daily now (30 tablet; 3 refills)"
+    assert inst.action[0].action[1].action[0].action[0].action[1].textEquivalent == (
+        "escitalopram 10 mg tablet 1 tablet oral 1 time daily now (30"
+        " tablet; 3 refills)"
     )
-    assert (
-        inst.action[0].action[1].action[0].action[0].action[2].textEquivalent
-        == "fluoxetine 20 mg capsule 1 capsule oral 1 time daily now (30 tablet; 3 refills)"
+    assert inst.action[0].action[1].action[0].action[0].action[2].textEquivalent == (
+        "fluoxetine 20 mg capsule 1 capsule oral 1 time daily now (30"
+        " tablet; 3 refills)"
     )
-    assert (
-        inst.action[0].action[1].action[0].action[0].action[3].textEquivalent
-        == "paroxetine 20 mg tablet 1 tablet oral 1 time daily now (30 tablet; 3 refills)"
+    assert inst.action[0].action[1].action[0].action[0].action[3].textEquivalent == (
+        "paroxetine 20 mg tablet 1 tablet oral 1 time daily now (30 "
+        "tablet; 3 refills)"
     )
-    assert (
-        inst.action[0].action[1].action[0].action[0].action[4].textEquivalent
-        == "sertraline 50 mg tablet 1 tablet oral 1 time daily now (30 tablet; 3 refills)"
+    assert inst.action[0].action[1].action[0].action[0].action[4].textEquivalent == (
+        "sertraline 50 mg tablet 1 tablet oral 1 time daily now (30 "
+        "tablet; 3 refills)"
     )
     assert (
         inst.action[0]
@@ -1305,13 +1305,17 @@ def impl_plandefinition_7(inst):
         .document.contentType
         == "text/html"
     )
-    assert (
-        inst.action[0].action[1].action[0].action[0].documentation[0].document.title
-        == "National Library of Medicine. DailyMed website. CITALOPRAM- citalopram hydrobromide tablet, film coated."
+    assert inst.action[0].action[1].action[0].action[0].documentation[
+        0
+    ].document.title == (
+        "National Library of Medicine. DailyMed website. CITALOPRAM- "
+        "citalopram hydrobromide tablet, film coated."
     )
-    assert (
-        inst.action[0].action[1].action[0].action[0].documentation[0].document.url
-        == "http://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6daeb45c-451d-b135-bf8f-2d6dff4b6b01"
+    assert inst.action[0].action[1].action[0].action[0].documentation[
+        0
+    ].document.url == (
+        "http://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6dae"
+        "b45c-451d-b135-bf8f-2d6dff4b6b01"
     )
     assert (
         inst.action[0].action[1].action[0].action[0].documentation[0].type == "citation"
@@ -1322,30 +1326,29 @@ def impl_plandefinition_7(inst):
     assert (
         inst.action[0].action[1].action[0].action[0].selectionBehavior == "at-most-one"
     )
-    assert (
-        inst.action[0].action[1].action[0].action[0].title
-        == "Selective Serotonin Reuptake Inhibitors (Choose a mazimum of one or document reasons for exception)"
+    assert inst.action[0].action[1].action[0].action[0].title == (
+        "Selective Serotonin Reuptake Inhibitors (Choose a mazimum of"
+        " one or document reasons for exception)"
     )
-    assert (
-        inst.action[0].action[1].action[0].action[1].textEquivalent
-        == "Dopamine Norepinephrine Reuptake Inhibitors (Choose a maximum of one or document reasons for exception)"
+    assert inst.action[0].action[1].action[0].action[1].textEquivalent == (
+        "Dopamine Norepinephrine Reuptake Inhibitors (Choose a "
+        "maximum of one or document reasons for exception)"
     )
-    assert (
-        inst.action[0].action[1].action[0].action[2].textEquivalent
-        == "Serotonin Norepinephrine Reuptake Inhibitors (Choose a maximum of one or doument reasons for exception)"
+    assert inst.action[0].action[1].action[0].action[2].textEquivalent == (
+        "Serotonin Norepinephrine Reuptake Inhibitors (Choose a "
+        "maximum of one or doument reasons for exception)"
     )
-    assert (
-        inst.action[0].action[1].action[0].action[3].textEquivalent
-        == "Norepinephrine-Serotonin Modulators (Choose a maximum of one or document reasons for exception)"
+    assert inst.action[0].action[1].action[0].action[3].textEquivalent == (
+        "Norepinephrine-Serotonin Modulators (Choose a maximum of one"
+        " or document reasons for exception)"
     )
     assert (
         inst.action[0].action[1].action[0].documentation[0].document.contentType
         == "text/html"
     )
-    assert (
-        inst.action[0].action[1].action[0].documentation[0].document.extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/cqf-qualityOfEvidence"
-    )
+    assert inst.action[0].action[1].action[0].documentation[0].document.extension[
+        0
+    ].url == ("http://hl7.org/fhir/StructureDefinition/cqf-" "qualityOfEvidence")
     assert (
         inst.action[0]
         .action[1]
@@ -1375,13 +1378,13 @@ def impl_plandefinition_7(inst):
         .valueCodeableConcept.text
         == "High Quality"
     )
-    assert (
-        inst.action[0].action[1].action[0].documentation[0].document.title
-        == "Practice Guideline for the Treatment of Patients with Major Depressive Disorder"
+    assert inst.action[0].action[1].action[0].documentation[0].document.title == (
+        "Practice Guideline for the Treatment of Patients with Major "
+        "Depressive Disorder"
     )
-    assert (
-        inst.action[0].action[1].action[0].documentation[0].document.url
-        == "http://psychiatryonline.org/pb/assets/raw/sitewide/practice_guidelines/guidelines/mdd.pdf"
+    assert inst.action[0].action[1].action[0].documentation[0].document.url == (
+        "http://psychiatryonline.org/pb/assets/raw/sitewide/practice_"
+        "guidelines/guidelines/mdd.pdf"
     )
     assert inst.action[0].action[1].action[0].documentation[0].type == "citation"
     assert inst.action[0].action[1].action[0].groupingBehavior == "logical-group"
@@ -1409,14 +1412,12 @@ def impl_plandefinition_7(inst):
     assert inst.contained[1].id == "citalopramPrescription"
     assert inst.contained[2].id == "citalopramMedication"
     assert inst.contained[3].id == "citalopramSubstance"
-    assert (
-        inst.copyright
-        == "© Copyright 2016 Motive Medical Intelligence. All rights reserved."
+    assert inst.copyright == (
+        "© Copyright 2016 Motive Medical Intelligence. All rights " "reserved."
     )
     assert inst.date == fhirtypes.DateTime.validate("2015-08-15T11:15:33+10:00")
-    assert (
-        inst.description
-        == "Orders to be applied to a patient characterized as low suicide risk."
+    assert inst.description == (
+        "Orders to be applied to a patient characterized as low " "suicide risk."
     )
     assert inst.effectivePeriod.end == fhirtypes.DateTime.validate(
         "2017-12-31T11:15:33+10:00"
@@ -1435,18 +1436,19 @@ def impl_plandefinition_7(inst):
     assert inst.library[0] == "Library/suiciderisk-orderset-logic"
     assert inst.name == "LowSuicideRiskOrderSet"
     assert inst.publisher == "Motive Medical Intelligence"
-    assert (
-        inst.purpose
-        == "This order set helps ensure consistent application of appropriate orders for the care of low suicide risk patients."
+    assert inst.purpose == (
+        "This order set helps ensure consistent application of "
+        "appropriate orders for the care of low suicide risk "
+        "patients."
     )
-    assert (
-        inst.relatedArtifact[0].display
-        == "Practice Guideline for the Treatment of Patients with Major Depressive Disorder"
+    assert inst.relatedArtifact[0].display == (
+        "Practice Guideline for the Treatment of Patients with Major "
+        "Depressive Disorder"
     )
     assert inst.relatedArtifact[0].type == "derived-from"
-    assert (
-        inst.relatedArtifact[0].url
-        == "http://psychiatryonline.org/pb/assets/raw/sitewide/practice_guidelines/guidelines/mdd.pdf"
+    assert inst.relatedArtifact[0].url == (
+        "http://psychiatryonline.org/pb/assets/raw/sitewide/practice_"
+        "guidelines/guidelines/mdd.pdf"
     )
     assert (
         inst.relatedArtifact[1].resource
@@ -1461,13 +1463,13 @@ def impl_plandefinition_7(inst):
     assert inst.text.status == "generated"
     assert inst.title == "Low Suicide Risk Order Set"
     assert inst.topic[0].text == "Suicide risk assessment"
-    assert (
-        inst.url
-        == "http://motivemi.com/artifacts/PlanDefinition/low-suicide-risk-order-set"
+    assert inst.url == (
+        "http://motivemi.com/artifacts/PlanDefinition/low-suicide-" "risk-order-set"
     )
-    assert (
-        inst.usage
-        == "This order set should be applied after assessing a patient for suicide risk, when the findings of that assessment indicate the patient has low suicide risk."
+    assert inst.usage == (
+        "This order set should be applied after assessing a patient "
+        "for suicide risk, when the findings of that assessment "
+        "indicate the patient has low suicide risk."
     )
     assert inst.useContext[0].code.code == "age"
     assert (
@@ -1585,21 +1587,20 @@ def test_plandefinition_7(base_settings):
 
 def impl_plandefinition_8(inst):
     assert inst.action[0].action[0].description == "Will offer Naloxone instead"
-    assert (
-        inst.action[0].action[1].description
-        == "Risk of overdose carefully considered and outweighed by benefit; snooze 3 mo"
+    assert inst.action[0].action[1].description == (
+        "Risk of overdose carefully considered and outweighed by "
+        "benefit; snooze 3 mo"
     )
     assert inst.action[0].action[2].description == "N/A - see comment; snooze 3 mo"
     assert inst.action[0].condition[0].expression.expression == "Inclusion Criteria"
     assert inst.action[0].condition[0].expression.language == "text/cql"
     assert inst.action[0].condition[0].kind == "applicability"
-    assert (
-        inst.action[0].description
-        == "Checking if the trigger prescription meets the inclusion criteria for recommendation #8 workflow."
+    assert inst.action[0].description == (
+        "Checking if the trigger prescription meets the inclusion "
+        "criteria for recommendation #8 workflow."
     )
-    assert (
-        inst.action[0].documentation[0].document.extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/cqf-strengthOfRecommendation"
+    assert inst.action[0].documentation[0].document.extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/cqf-" "strengthOfRecommendation"
     )
     assert (
         inst.action[0]
@@ -1617,17 +1618,13 @@ def impl_plandefinition_8(inst):
         .display
         == "Strong"
     )
-    assert (
-        inst.action[0]
-        .documentation[0]
-        .document.extension[0]
-        .valueCodeableConcept.coding[0]
-        .system
-        == "http://terminology.hl7.org/CodeSystem/recommendation-strength"
+    assert inst.action[0].documentation[0].document.extension[
+        0
+    ].valueCodeableConcept.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/recommendation-" "strength"
     )
-    assert (
-        inst.action[0].documentation[0].document.extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/cqf-qualityOfEvidence"
+    assert inst.action[0].documentation[0].document.extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/cqf-" "qualityOfEvidence"
     )
     assert (
         inst.action[0]
@@ -1665,9 +1662,8 @@ def impl_plandefinition_8(inst):
     assert inst.action[0].dynamicValue[2].path == "action.extension"
     assert inst.action[0].groupingBehavior == "visual-group"
     assert inst.action[0].selectionBehavior == "exactly-one"
-    assert (
-        inst.action[0].title
-        == "Existing patient exhibits risk factors for opioid-related harms."
+    assert inst.action[0].title == (
+        "Existing patient exhibits risk factors for opioid-related " "harms."
     )
     assert inst.action[0].trigger[0].name == "medication-prescribe"
     assert inst.action[0].trigger[0].type == "named-event"
@@ -1691,15 +1687,15 @@ def impl_plandefinition_8(inst):
         == "CDC guideline for prescribing opioids for chronic pain"
     )
     assert inst.relatedArtifact[0].type == "documentation"
-    assert (
-        inst.relatedArtifact[0].url
-        == "https://guidelines.gov/summaries/summary/50153/cdc-guideline-for-prescribing-opioids-for-chronic-pain---united-states-2016#420"
+    assert inst.relatedArtifact[0].url == (
+        "https://guidelines.gov/summaries/summary/50153/cdc-"
+        "guideline-for-prescribing-opioids-for-chronic-pain---united-"
+        "states-2016#420"
     )
     assert inst.relatedArtifact[1].display == "MME Conversion Tables"
     assert inst.relatedArtifact[1].type == "documentation"
-    assert (
-        inst.relatedArtifact[1].url
-        == "https://www.cdc.gov/drugoverdose/pdf/calculating_total_daily_dose-a.pdf"
+    assert inst.relatedArtifact[1].url == (
+        "https://www.cdc.gov/drugoverdose/pdf/calculating_total_daily" "_dose-a.pdf"
     )
     assert inst.status == "draft"
     assert inst.text.status == "generated"
@@ -1711,10 +1707,13 @@ def impl_plandefinition_8(inst):
         inst.type.coding[0].system
         == "http://terminology.hl7.org/CodeSystem/plan-definition-type"
     )
-    assert inst.url == "http://hl7.org/fhir/ig/opioid-cds/PlanDefinition/opioidcds-08"
-    assert (
-        inst.usage
-        == "Before starting and periodically during continuation of opioid therapy, clinicians should evaluate risk factors for opioid-related harms."
+    assert inst.url == (
+        "http://hl7.org/fhir/ig/opioid-" "cds/PlanDefinition/opioidcds-08"
+    )
+    assert inst.usage == (
+        "Before starting and periodically during continuation of "
+        "opioid therapy, clinicians should evaluate risk factors for "
+        "opioid-related harms."
     )
     assert inst.useContext[0].code.code == "focus"
     assert inst.useContext[0].code.display == "Clinical Focus"
@@ -1787,9 +1786,8 @@ def impl_plandefinition_9(inst):
     )
     assert inst.action[0].condition[0].expression.language == "text/cql"
     assert inst.action[0].condition[0].kind == "applicability"
-    assert (
-        inst.action[0].title
-        == "Mother should be referred to a lactation specialist for consultation."
+    assert inst.action[0].title == (
+        "Mother should be referred to a lactation specialist for " "consultation."
     )
     assert inst.action[0].trigger[0].name == "Admission"
     assert inst.action[0].trigger[0].type == "named-event"
@@ -1800,9 +1798,10 @@ def impl_plandefinition_9(inst):
     assert inst.action[0].trigger[3].name == "Transfer to Post-Partum"
     assert inst.action[0].trigger[3].type == "named-event"
     assert inst.date == fhirtypes.DateTime.validate("2015-03-08T11:15:33+10:00")
-    assert (
-        inst.description
-        == "Exclusive breastfeeding intervention intended to improve outcomes for exclusive breastmilk feeding of newborns by creating a lactation consult for the mother if appropriate."
+    assert inst.description == (
+        "Exclusive breastfeeding intervention intended to improve "
+        "outcomes for exclusive breastmilk feeding of newborns by "
+        "creating a lactation consult for the mother if appropriate."
     )
     assert inst.id == "exclusive-breastfeeding-intervention-04"
     assert inst.identifier[0].use == "official"
@@ -1847,25 +1846,25 @@ def test_plandefinition_9(base_settings):
 
 def impl_plandefinition_10(inst):
     assert inst.action[0].action[0].description == "Will precribe immediate release"
-    assert (
-        inst.action[0].action[1].description
-        == "Risk of overdose carefully considered and outweighed by benefit; snooze 3 mo"
+    assert inst.action[0].action[1].description == (
+        "Risk of overdose carefully considered and outweighed by "
+        "benefit; snooze 3 mo"
     )
     assert inst.action[0].action[2].description == "N/A - see comment; snooze 3 mo"
-    assert (
-        inst.action[0].condition[0].expression.description
-        == "Check whether the opioid prescription for the existing patient is extended-release without any opioids-with-abuse-potential prescribed in the past 90 days."
+    assert inst.action[0].condition[0].expression.description == (
+        "Check whether the opioid prescription for the existing "
+        "patient is extended-release without any opioids-with-abuse-"
+        "potential prescribed in the past 90 days."
     )
     assert inst.action[0].condition[0].expression.expression == "Inclusion Criteria"
     assert inst.action[0].condition[0].expression.language == "text/cql"
     assert inst.action[0].condition[0].kind == "applicability"
-    assert (
-        inst.action[0].description
-        == "Checking if the trigger prescription meets the inclusion criteria for recommendation #4 workflow."
+    assert inst.action[0].description == (
+        "Checking if the trigger prescription meets the inclusion "
+        "criteria for recommendation #4 workflow."
     )
-    assert (
-        inst.action[0].documentation[0].document.extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/cqf-strengthOfRecommendation"
+    assert inst.action[0].documentation[0].document.extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/cqf-" "strengthOfRecommendation"
     )
     assert (
         inst.action[0]
@@ -1883,17 +1882,13 @@ def impl_plandefinition_10(inst):
         .display
         == "Strong"
     )
-    assert (
-        inst.action[0]
-        .documentation[0]
-        .document.extension[0]
-        .valueCodeableConcept.coding[0]
-        .system
-        == "http://terminology.hl7.org/CodeSystem/recommendation-strength"
+    assert inst.action[0].documentation[0].document.extension[
+        0
+    ].valueCodeableConcept.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/recommendation-" "strength"
     )
-    assert (
-        inst.action[0].documentation[0].document.extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/cqf-qualityOfEvidence"
+    assert inst.action[0].documentation[0].document.extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/cqf-" "qualityOfEvidence"
     )
     assert (
         inst.action[0]
@@ -1940,9 +1935,10 @@ def impl_plandefinition_10(inst):
     assert inst.author[3].name == "Robert McClure, MD, MPH"
     assert inst.copyright == "© CDC 2016+."
     assert inst.date == fhirtypes.DateTime.validate("2018-03-19T11:15:33+10:00")
-    assert (
-        inst.description
-        == "When starting opioid therapy for chronic pain, clinicians should prescribe immediate-release opioids instead of extended-release/long-acting (ER/LA) opioids."
+    assert inst.description == (
+        "When starting opioid therapy for chronic pain, clinicians "
+        "should prescribe immediate-release opioids instead of "
+        "extended-release/long-acting (ER/LA) opioids."
     )
     assert inst.id == "opioidcds-04"
     assert inst.identifier[0].use == "official"
@@ -1958,15 +1954,15 @@ def impl_plandefinition_10(inst):
         == "CDC guideline for prescribing opioids for chronic pain"
     )
     assert inst.relatedArtifact[0].type == "documentation"
-    assert (
-        inst.relatedArtifact[0].url
-        == "https://guidelines.gov/summaries/summary/50153/cdc-guideline-for-prescribing-opioids-for-chronic-pain---united-states-2016#420"
+    assert inst.relatedArtifact[0].url == (
+        "https://guidelines.gov/summaries/summary/50153/cdc-"
+        "guideline-for-prescribing-opioids-for-chronic-pain---united-"
+        "states-2016#420"
     )
     assert inst.relatedArtifact[1].display == "MME Conversion Tables"
     assert inst.relatedArtifact[1].type == "documentation"
-    assert (
-        inst.relatedArtifact[1].url
-        == "https://www.cdc.gov/drugoverdose/pdf/calculating_total_daily_dose-a.pdf"
+    assert inst.relatedArtifact[1].url == (
+        "https://www.cdc.gov/drugoverdose/pdf/calculating_total_daily" "_dose-a.pdf"
     )
     assert inst.status == "draft"
     assert inst.text.status == "generated"
@@ -1978,10 +1974,14 @@ def impl_plandefinition_10(inst):
         inst.type.coding[0].system
         == "http://terminology.hl7.org/CodeSystem/plan-definition-type"
     )
-    assert inst.url == "http://hl7.org/fhir/ig/opioid-cds/PlanDefinition/opioidcds-04"
-    assert (
-        inst.usage
-        == "Providers should use caution when prescribing extended-release/long-acting (ER/LA) opioids as they carry a higher risk and negligible benefit compared to immediate-release opioids."
+    assert inst.url == (
+        "http://hl7.org/fhir/ig/opioid-" "cds/PlanDefinition/opioidcds-04"
+    )
+    assert inst.usage == (
+        "Providers should use caution when prescribing extended-"
+        "release/long-acting (ER/LA) opioids as they carry a higher "
+        "risk and negligible benefit compared to immediate-release "
+        "opioids."
     )
     assert inst.useContext[0].code.code == "focus"
     assert inst.useContext[0].code.display == "Clinical Focus"

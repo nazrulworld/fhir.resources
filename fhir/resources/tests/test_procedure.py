@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import procedure
 
@@ -26,9 +28,9 @@ def impl_procedure_1(inst):
     assert (
         inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     )
-    assert (
-        inst.note[0].text
-        == "Eerste neo-adjuvante TPF-kuur bij groot proces in sphenoid met intracraniale uitbreiding."
+    assert inst.note[0].text == (
+        "Eerste neo-adjuvante TPF-kuur bij groot proces in sphenoid "
+        "met intracraniale uitbreiding."
     )
     assert inst.performedPeriod.end == fhirtypes.DateTime.validate(
         "2013-01-28T14:27:00+01:00"
@@ -77,9 +79,8 @@ def impl_procedure_2(inst):
     assert inst.code.text == "Ambulation"
     assert inst.id == "ambulation"
     assert inst.identifier[0].value == "12345"
-    assert (
-        inst.instantiatesUri[0]
-        == "http://example.org/protocol-for-hypertension-during-pregnancy"
+    assert inst.instantiatesUri[0] == (
+        "http://example.org/protocol-for-hypertension-during-" "pregnancy"
     )
     assert (
         inst.location.display
@@ -103,9 +104,9 @@ def impl_procedure_2(inst):
     assert inst.statusReason.coding[0].system == "http://snomed.info/sct"
     assert inst.statusReason.text == "Pre-eclampsia"
     assert inst.subject.reference == "Patient/example"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Ambulation procedure was not done</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Ambulation '
+        "procedure was not done</div>"
     )
     assert inst.text.status == "generated"
 
@@ -150,9 +151,8 @@ def impl_procedure_3(inst):
     assert (
         inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     )
-    assert (
-        inst.note[0].text
-        == "Routine Appendectomy. Appendix was inflamed and in retro-caecal position"
+    assert inst.note[0].text == (
+        "Routine Appendectomy. Appendix was inflamed and in retro-" "caecal position"
     )
     assert inst.performedDateTime == fhirtypes.DateTime.validate(
         "2015-04-05T11:15:33+10:00"
@@ -208,9 +208,9 @@ def impl_procedure_4(inst):
     assert inst.performer[0].actor.reference == "Practitioner/example"
     assert inst.status == "completed"
     assert inst.subject.reference == "Patient/example"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Biopsy of colon, which was part of colonoscopy</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Biopsy of colon,'
+        " which was part of colonoscopy</div>"
     )
     assert inst.text.status == "generated"
 
@@ -327,9 +327,10 @@ def impl_procedure_6(inst):
     assert inst.reasonCode[0].text == "early detection of breast mass"
     assert inst.status == "completed"
     assert inst.subject.display == "Jane Doe"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Health education - breast examination for early detection of breast mass</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Health education'
+        " - breast examination for early detection of breast "
+        "mass</div>"
     )
     assert inst.text.status == "generated"
 
@@ -376,9 +377,9 @@ def impl_procedure_7(inst):
     assert inst.performer[0].actor.reference == "Practitioner/example"
     assert inst.status == "completed"
     assert inst.subject.reference == "Patient/example"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Colonoscopy with complication</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Colonoscopy with'
+        " complication</div>"
     )
     assert inst.text.status == "generated"
     assert inst.usedReference[0].display == "Colonoscope device"
@@ -441,9 +442,10 @@ def impl_procedure_8(inst):
     )
     assert inst.status == "completed"
     assert inst.subject.reference == "Patient/example"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Assessment of passive range of motion for both knees on Sept 27, 2016 due to osteoarthritis</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Assessment of '
+        "passive range of motion for both knees on Sept 27, 2016 due "
+        "to osteoarthritis</div>"
     )
     assert inst.text.status == "generated"
 
@@ -546,26 +548,24 @@ def impl_procedure_10(inst):
     assert (
         inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     )
-    assert (
-        inst.note[0].text
-        == "Routine Appendectomy. Appendix was inflamed and in retro-caecal position"
+    assert inst.note[0].text == (
+        "Routine Appendectomy. Appendix was inflamed and in retro-" "caecal position"
     )
     assert inst.performedDateTime == fhirtypes.DateTime.validate(
         "2013-04-05T11:15:33+10:00"
     )
     assert inst.performer[0].actor.display == "Dr Cecil Surgeon"
     assert inst.performer[0].actor.reference == "Practitioner/example"
-    assert (
-        inst.reasonCode[0].text
-        == "Generalized abdominal pain 24 hours. Localized in RIF with rebound and guarding"
+    assert inst.reasonCode[0].text == (
+        "Generalized abdominal pain 24 hours. Localized in RIF with "
+        "rebound and guarding"
     )
     assert inst.recorder.display == "Dr Cecil Surgeon"
     assert inst.recorder.reference == "Practitioner/example"
     assert inst.status == "completed"
     assert inst.subject.reference == "Patient/example"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Routine Appendectomy</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Routine ' "Appendectomy</div>"
     )
     assert inst.text.status == "generated"
 

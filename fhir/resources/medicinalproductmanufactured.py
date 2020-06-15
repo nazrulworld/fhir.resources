@@ -22,7 +22,10 @@ class MedicinalProductManufactured(domainresource.DomainResource):
     ingredient: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="ingredient",
-        title="List of `Reference` items referencing `MedicinalProductIngredient` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `MedicinalProductIngredient` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Ingredient",
     )
 
@@ -30,14 +33,23 @@ class MedicinalProductManufactured(domainresource.DomainResource):
         ...,
         alias="manufacturedDoseForm",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Dose form as manufactured and before any transformation into the pharmaceutical product",
+        description=(
+            "Dose form as manufactured and before any transformation into the "
+            "pharmaceutical product"
+        ),
     )
 
     manufacturer: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="manufacturer",
-        title="List of `Reference` items referencing `Organization` (represented as `dict` in JSON)",
-        description='Manufacturer of the item (Note that this should be named "manufacturer" but it currently causes technical issues)',
+        title=(
+            "List of `Reference` items referencing `Organization` (represented as "
+            "`dict` in JSON)"
+        ),
+        description=(
+            "Manufacturer of the item (Note that this should be named "
+            '"manufacturer" but it currently causes technical issues)'
+        ),
     )
 
     otherCharacteristics: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -65,5 +77,8 @@ class MedicinalProductManufactured(domainresource.DomainResource):
         None,
         alias="unitOfPresentation",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The \u201creal world\u201d units in which the quantity of the manufactured item is described",
+        description=(
+            "The \u201creal world\u201d units in which the quantity of the manufactured item "
+            "is described"
+        ),
     )

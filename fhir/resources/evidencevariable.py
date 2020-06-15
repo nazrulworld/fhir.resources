@@ -39,7 +39,10 @@ class EvidenceVariable(domainresource.DomainResource):
     characteristic: ListType[fhirtypes.EvidenceVariableCharacteristicType] = Field(
         ...,
         alias="characteristic",
-        title="List of `EvidenceVariableCharacteristic` items (represented as `dict` in JSON)",
+        title=(
+            "List of `EvidenceVariableCharacteristic` items (represented as `dict` "
+            "in JSON)"
+        ),
         description="What defines the members of the evidence element",
     )
 
@@ -180,7 +183,10 @@ class EvidenceVariable(domainresource.DomainResource):
         None,
         alias="topic",
         title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="The category of the EvidenceVariable, such as Education, Treatment, Assessment, etc.",
+        description=(
+            "The category of the EvidenceVariable, such as Education, Treatment, "
+            "Assessment, etc."
+        ),
     )
 
     type: fhirtypes.Code = Field(
@@ -194,7 +200,10 @@ class EvidenceVariable(domainresource.DomainResource):
         None,
         alias="url",
         title="Type `Uri` (represented as `dict` in JSON)",
-        description="Canonical identifier for this evidence variable, represented as a URI (globally unique)",
+        description=(
+            "Canonical identifier for this evidence variable, represented as a URI "
+            "(globally unique)"
+        ),
     )
 
     useContext: ListType[fhirtypes.UsageContextType] = Field(
@@ -223,7 +232,10 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
     definitionCanonical: fhirtypes.Canonical = Field(
         None,
         alias="definitionCanonical",
-        title="Type `Canonical` referencing `ActivityDefinition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Canonical` referencing `ActivityDefinition` (represented as "
+            "`dict` in JSON)"
+        ),
         description="What code or expression defines members?",
         one_of_many="definition",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
@@ -292,7 +304,10 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
         None,
         alias="groupMeasure",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="mean | median | mean-of-mean | mean-of-median | median-of-mean | median-of-median",
+        description=(
+            "mean | median | mean-of-mean | mean-of-median | median-of-mean | "
+            "median-of-median"
+        ),
     )
 
     participantEffectiveDateTime: fhirtypes.DateTime = Field(

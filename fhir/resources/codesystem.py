@@ -160,7 +160,10 @@ class CodeSystem(domainresource.DomainResource):
     supplements: fhirtypes.Canonical = Field(
         None,
         alias="supplements",
-        title="Type `Canonical` referencing `CodeSystem` (represented as `dict` in JSON)",
+        title=(
+            "Type `Canonical` referencing `CodeSystem` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Canonical URL of Code System this adds designations and properties to",
     )
 
@@ -175,7 +178,10 @@ class CodeSystem(domainresource.DomainResource):
         None,
         alias="url",
         title="Type `Uri` (represented as `dict` in JSON)",
-        description="Canonical identifier for this code system, represented as a URI (globally unique) (Coding.system)",
+        description=(
+            "Canonical identifier for this code system, represented as a URI "
+            "(globally unique) (Coding.system)"
+        ),
     )
 
     useContext: ListType[fhirtypes.UsageContextType] = Field(
@@ -188,7 +194,9 @@ class CodeSystem(domainresource.DomainResource):
     valueSet: fhirtypes.Canonical = Field(
         None,
         alias="valueSet",
-        title="Type `Canonical` referencing `ValueSet` (represented as `dict` in JSON)",
+        title=(
+            "Type `Canonical` referencing `ValueSet` (represented as `dict` in " "JSON)"
+        ),
         description="Canonical reference to the value set with entire code system",
     )
 
@@ -240,7 +248,10 @@ class CodeSystemConcept(backboneelement.BackboneElement):
     designation: ListType[fhirtypes.CodeSystemConceptDesignationType] = Field(
         None,
         alias="designation",
-        title="List of `CodeSystemConceptDesignation` items (represented as `dict` in JSON)",
+        title=(
+            "List of `CodeSystemConceptDesignation` items (represented as `dict` in"
+            " JSON)"
+        ),
         description="Additional representations for the concept",
     )
 
@@ -254,7 +265,10 @@ class CodeSystemConcept(backboneelement.BackboneElement):
     property: ListType[fhirtypes.CodeSystemConceptPropertyType] = Field(
         None,
         alias="property",
-        title="List of `CodeSystemConceptProperty` items (represented as `dict` in JSON)",
+        title=(
+            "List of `CodeSystemConceptProperty` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Property value for the concept",
     )
 
@@ -389,7 +403,7 @@ class CodeSystemConceptProperty(backboneelement.BackboneElement):
                 "valueDecimal",
                 "valueInteger",
                 "valueString",
-            ],
+            ]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
@@ -439,7 +453,10 @@ class CodeSystemFilter(backboneelement.BackboneElement):
         ...,
         alias="operator",
         title="List of `Code` items (represented as `dict` in JSON)",
-        description="= | is-a | descendent-of | is-not-a | regex | in | not-in | generalizes | exists",
+        description=(
+            "= | is-a | descendent-of | is-not-a | regex | in | not-in | "
+            "generalizes | exists"
+        ),
     )
 
     value: fhirtypes.String = Field(
@@ -462,7 +479,10 @@ class CodeSystemProperty(backboneelement.BackboneElement):
         ...,
         alias="code",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="Identifies the property on the concepts, and when referred to in operations",
+        description=(
+            "Identifies the property on the concepts, and when referred to in "
+            "operations"
+        ),
     )
 
     description: fhirtypes.String = Field(

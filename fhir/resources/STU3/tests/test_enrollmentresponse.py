@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import enrollmentresponse
 
@@ -27,9 +29,9 @@ def impl_enrollmentresponse_1(inst):
         == "http://www.BenefitsInc.com/fhir/eligibility/225476332402"
     )
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the EnrollmentResponse</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the EnrollmentResponse</div>"
     )
     assert inst.text.status == "generated"
 

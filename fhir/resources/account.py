@@ -26,7 +26,10 @@ class Account(domainresource.DomainResource):
         None,
         alias="coverage",
         title="List of `AccountCoverage` items (represented as `dict` in JSON)",
-        description="The party(s) that are responsible for covering the payment of this account, and what order should they be applied to the account",
+        description=(
+            "The party(s) that are responsible for covering the payment of this "
+            "account, and what order should they be applied to the account"
+        ),
     )
 
     description: fhirtypes.String = Field(
@@ -60,7 +63,10 @@ class Account(domainresource.DomainResource):
     owner: fhirtypes.ReferenceType = Field(
         None,
         alias="owner",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Entity managing the Account",
     )
 
@@ -88,7 +94,11 @@ class Account(domainresource.DomainResource):
     subject: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="subject",
-        title="List of `Reference` items referencing `Patient, Device, Practitioner, PractitionerRole, Location, HealthcareService, Organization` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Patient, Device, Practitioner, "
+            "PractitionerRole, Location, HealthcareService, Organization` "
+            "(represented as `dict` in JSON)"
+        ),
         description="The entity that caused the expenses",
     )
 
@@ -110,8 +120,13 @@ class AccountCoverage(backboneelement.BackboneElement):
     coverage: fhirtypes.ReferenceType = Field(
         ...,
         alias="coverage",
-        title="Type `Reference` referencing `Coverage` (represented as `dict` in JSON)",
-        description="The party(s), such as insurances, that may contribute to the payment of this account",
+        title=(
+            "Type `Reference` referencing `Coverage` (represented as `dict` in " "JSON)"
+        ),
+        description=(
+            "The party(s), such as insurances, that may contribute to the payment "
+            "of this account"
+        ),
     )
 
     priority: fhirtypes.PositiveInt = Field(
@@ -140,7 +155,10 @@ class AccountGuarantor(backboneelement.BackboneElement):
     party: fhirtypes.ReferenceType = Field(
         ...,
         alias="party",
-        title="Type `Reference` referencing `Patient, RelatedPerson, Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, RelatedPerson, Organization` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Responsible entity",
     )
 

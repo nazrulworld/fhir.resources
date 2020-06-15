@@ -80,5 +80,5 @@ generate-resources:
 	cd script && python generate.py
 
 style-all:
-	isort -rc fhir/resources
+	isort --multi-line=3 --trailing-comma --force-grid-wrap=0 --use-parentheses --line-width=88  -rc fhir/resources
 	black fhir/resources

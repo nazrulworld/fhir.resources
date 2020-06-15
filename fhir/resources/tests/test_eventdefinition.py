@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import eventdefinition
 
@@ -20,13 +22,14 @@ def impl_eventdefinition_1(inst):
     assert inst.purpose == "Monitor all admissions to Emergency"
     assert inst.status == "draft"
     assert inst.text.status == "generated"
-    assert (
-        inst.trigger[0].condition.description
-        == "Encounter Location = emergency (active/completed encounters, current or previous)"
+    assert inst.trigger[0].condition.description == (
+        "Encounter Location = emergency (active/completed encounters,"
+        " current or previous)"
     )
-    assert (
-        inst.trigger[0].condition.expression
-        == "(this | %previous).location.where(location = 'Location/emergency' and status in {'active', 'completed'}).exists()"
+    assert inst.trigger[0].condition.expression == (
+        "(this | %previous).location.where(location = "
+        "'Location/emergency' and status in {'active', "
+        "'completed'}).exists()"
     )
     assert inst.trigger[0].condition.language == "text/fhirpath"
     assert inst.trigger[0].data[0].type == "Encounter"

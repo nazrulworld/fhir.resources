@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import encounter
 
@@ -37,9 +39,9 @@ def impl_encounter_1(inst):
     assert inst.period.start == fhirtypes.DateTime.validate("2015-01-17T16:00:00+10:00")
     assert inst.status == "finished"
     assert inst.subject.reference == "Patient/example"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Encounter with patient @example who is at home</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Encounter with '
+        "patient @example who is at home</div>"
     )
     assert inst.text.status == "generated"
 
@@ -75,9 +77,9 @@ def impl_encounter_2(inst):
     assert inst.priority.coding[0].code == "17621005"
     assert inst.priority.coding[0].display == "Normal"
     assert inst.priority.coding[0].system == "http://snomed.info/sct"
-    assert (
-        inst.reason[0].text
-        == "The patient had fever peaks over the last couple of days. He is worried about these peaks."
+    assert inst.reason[0].text == (
+        "The patient had fever peaks over the last couple of days. He"
+        " is worried about these peaks."
     )
     assert inst.serviceProvider.reference == "Organization/f201"
     assert inst.status == "finished"
@@ -154,9 +156,8 @@ def impl_encounter_3(inst):
     assert inst.reason[0].coding[0].code == "18099001"
     assert inst.reason[0].coding[0].display == "Retropharyngeal abscess"
     assert inst.reason[0].coding[0].system == "http://snomed.info/sct"
-    assert (
-        inst.reason[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/encounter-primaryDiagnosis"
+    assert inst.reason[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/encounter-" "primaryDiagnosis"
     )
     assert inst.reason[0].extension[0].valuePositiveInt == 1
     assert inst.serviceProvider.reference == "Organization/f001"
@@ -198,9 +199,9 @@ def impl_encounter_4(inst):
     assert inst.id == "example"
     assert inst.status == "in-progress"
     assert inst.subject.reference == "Patient/example"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Encounter with patient @example</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Encounter with '
+        "patient @example</div>"
     )
     assert inst.text.status == "generated"
 
@@ -367,9 +368,9 @@ def impl_encounter_6(inst):
     assert inst.priority.coding[0].code == "394849002"
     assert inst.priority.coding[0].display == "High priority"
     assert inst.priority.coding[0].system == "http://snomed.info/sct"
-    assert (
-        inst.reason[0].text
-        == "The patient seems to suffer from bilateral pneumonia and renal insufficiency, most likely due to chemotherapy."
+    assert inst.reason[0].text == (
+        "The patient seems to suffer from bilateral pneumonia and "
+        "renal insufficiency, most likely due to chemotherapy."
     )
     assert inst.serviceProvider.reference == "Organization/2"
     assert inst.status == "finished"
@@ -453,9 +454,8 @@ def impl_encounter_8(inst):
     assert inst.class_fhir.code == "AMB"
     assert inst.class_fhir.display == "ambulatory"
     assert inst.class_fhir.system == "http://hl7.org/fhir/v3/ActCode"
-    assert (
-        inst.diagnosis[0].condition.display
-        == "Complications from Roel's TPF chemotherapy on January 28th, 2013"
+    assert inst.diagnosis[0].condition.display == (
+        "Complications from Roel's TPF chemotherapy on January 28th, " "2013"
     )
     assert inst.diagnosis[0].rank == 1
     assert inst.diagnosis[0].role.coding[0].code == "AD"
@@ -474,9 +474,8 @@ def impl_encounter_8(inst):
     assert inst.priority.coding[0].code == "103391001"
     assert inst.priority.coding[0].display == "Urgent"
     assert inst.priority.coding[0].system == "http://snomed.info/sct"
-    assert (
-        inst.reason[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/encounter-primaryDiagnosis"
+    assert inst.reason[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/encounter-" "primaryDiagnosis"
     )
     assert inst.reason[0].extension[0].valuePositiveInt == 2
     assert inst.reason[0].text == "The patient is treated for a tumor."
@@ -613,9 +612,9 @@ def impl_encounter_9(inst):
     )
     assert inst.statusHistory[4].status == "in-progress"
     assert inst.subject.reference == "Patient/example"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Emergency visit that escalated into inpatient patient @example</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Emergency visit '
+        "that escalated into inpatient patient @example</div>"
     )
     assert inst.text.status == "generated"
 

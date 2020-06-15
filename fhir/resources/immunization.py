@@ -39,7 +39,10 @@ class Immunization(domainresource.DomainResource):
     encounter: fhirtypes.ReferenceType = Field(
         None,
         alias="encounter",
-        title="Type `Reference` referencing `Encounter` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Encounter` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Encounter immunization was part of",
     )
 
@@ -65,13 +68,15 @@ class Immunization(domainresource.DomainResource):
     )
 
     isSubpotent: bool = Field(
-        None, alias="isSubpotent", title="Type `bool`", description="Dose potency",
+        None, alias="isSubpotent", title="Type `bool`", description="Dose potency"
     )
 
     location: fhirtypes.ReferenceType = Field(
         None,
         alias="location",
-        title="Type `Reference` referencing `Location` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Location` (represented as `dict` in " "JSON)"
+        ),
         description="Where immunization occurred",
     )
 
@@ -85,7 +90,10 @@ class Immunization(domainresource.DomainResource):
     manufacturer: fhirtypes.ReferenceType = Field(
         None,
         alias="manufacturer",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Vaccine manufacturer",
     )
 
@@ -145,7 +153,10 @@ class Immunization(domainresource.DomainResource):
     protocolApplied: ListType[fhirtypes.ImmunizationProtocolAppliedType] = Field(
         None,
         alias="protocolApplied",
-        title="List of `ImmunizationProtocolApplied` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ImmunizationProtocolApplied` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Protocol followed by the provider",
     )
 
@@ -166,7 +177,10 @@ class Immunization(domainresource.DomainResource):
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="reasonReference",
-        title="List of `Reference` items referencing `Condition, Observation, DiagnosticReport` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Condition, Observation, "
+            "DiagnosticReport` (represented as `dict` in JSON)"
+        ),
         description="Why immunization occurred",
     )
 
@@ -240,9 +254,7 @@ class Immunization(domainresource.DomainResource):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "occurrence": ["occurrenceDateTime", "occurrenceString",],
-        }
+        one_of_many_fields = {"occurrence": ["occurrenceDateTime", "occurrenceString"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -312,7 +324,10 @@ class ImmunizationPerformer(backboneelement.BackboneElement):
     actor: fhirtypes.ReferenceType = Field(
         ...,
         alias="actor",
-        title="Type `Reference` referencing `Practitioner, PractitionerRole, Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, PractitionerRole, "
+            "Organization` (represented as `dict` in JSON)"
+        ),
         description="Individual or organization who was performing",
     )
 
@@ -335,7 +350,10 @@ class ImmunizationProtocolApplied(backboneelement.BackboneElement):
     authority: fhirtypes.ReferenceType = Field(
         None,
         alias="authority",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Who is responsible for publishing the recommendations",
     )
 
@@ -404,8 +422,8 @@ class ImmunizationProtocolApplied(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "doseNumber": ["doseNumberPositiveInt", "doseNumberString",],
-            "seriesDoses": ["seriesDosesPositiveInt", "seriesDosesString",],
+            "doseNumber": ["doseNumberPositiveInt", "doseNumberString"],
+            "seriesDoses": ["seriesDosesPositiveInt", "seriesDosesString"],
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
@@ -447,7 +465,10 @@ class ImmunizationReaction(backboneelement.BackboneElement):
     detail: fhirtypes.ReferenceType = Field(
         None,
         alias="detail",
-        title="Type `Reference` referencing `Observation` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Observation` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Additional information on reaction",
     )
 

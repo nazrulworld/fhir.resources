@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import library
 
@@ -189,9 +191,8 @@ def impl_library_4(inst):
     )
     assert inst.dataRequirement[7].type == "MedicationStatement"
     assert inst.date == fhirtypes.DateTime.validate("2015-07-22")
-    assert (
-        inst.description
-        == "Logic for CMS 146: Appropriate Testing for Children with Pharyngitis"
+    assert inst.description == (
+        "Logic for CMS 146: Appropriate Testing for Children with " "Pharyngitis"
     )
     assert inst.id == "library-cms146-example"
     assert inst.identifier[0].use == "official"
@@ -235,9 +236,9 @@ def impl_library_5(inst):
     assert inst.dataRequirement[0].codeFilter[0].valueSetString == "Single Live Birth"
     assert inst.dataRequirement[0].type == "Condition"
     assert inst.date == fhirtypes.DateTime.validate("2016-03-08")
-    assert (
-        inst.description
-        == "Quality measure logic for measuring outcomes for exclusive breastmilk feeding of newborns"
+    assert inst.description == (
+        "Quality measure logic for measuring outcomes for exclusive "
+        "breastmilk feeding of newborns"
     )
     assert inst.experimental is True
     assert inst.id == "library-exclusive-breastfeeding-cqm-logic"
@@ -297,9 +298,8 @@ def impl_library_6(inst):
     assert inst.contributor[0].contact[0].telecom[1].value == "info@motivemi.com"
     assert inst.contributor[0].name == "Motive Medical Intelligence"
     assert inst.contributor[0].type == "author"
-    assert (
-        inst.copyright
-        == "© Copyright 2016 Motive Medical Intelligence. All rights reserved."
+    assert inst.copyright == (
+        "© Copyright 2016 Motive Medical Intelligence. All rights " "reserved."
     )
     assert inst.dataRequirement[0].codeFilter[0].path == "code"
     assert (
@@ -336,14 +336,14 @@ def impl_library_6(inst):
     assert inst.parameter[2].type == "Practitioner"
     assert inst.parameter[2].use == "in"
     assert inst.publisher == "Motive Medical Intelligence"
-    assert (
-        inst.relatedArtifact[0].display
-        == "Practice Guideline for the Treatment of Patients with Major Depressive Disorder"
+    assert inst.relatedArtifact[0].display == (
+        "Practice Guideline for the Treatment of Patients with Major "
+        "Depressive Disorder"
     )
     assert inst.relatedArtifact[0].type == "citation"
-    assert (
-        inst.relatedArtifact[0].url
-        == "http://psychiatryonline.org/pb/assets/raw/sitewide/practice_guidelines/guidelines/mdd.pdf"
+    assert inst.relatedArtifact[0].url == (
+        "http://psychiatryonline.org/pb/assets/raw/sitewide/practice_"
+        "guidelines/guidelines/mdd.pdf"
     )
     assert (
         inst.relatedArtifact[1].resource.reference
@@ -366,8 +366,8 @@ def impl_library_6(inst):
     assert inst.title == "Suicide Risk Order Set Logic"
     assert inst.topic[0].text == "Suicide Risk Order Set Logic"
     assert inst.type.coding[0].code == "logic-library"
-    assert (
-        inst.url == "http://motivemi.com/artifacts/Library/suiciderisk-orderset-logic"
+    assert inst.url == (
+        "http://motivemi.com/artifacts/Library/suiciderisk-orderset-" "logic"
     )
     assert inst.useContext[0].code.code == "age"
     assert inst.useContext[0].code.system == "http://hl7.org/fhir/usage-context-type"
@@ -507,9 +507,8 @@ def test_library_7(base_settings):
 
 def impl_library_8(inst):
     assert inst.date == fhirtypes.DateTime.validate("2017-03-10")
-    assert (
-        inst.description
-        == "Artifacts required for implementation of Zika Virus Management"
+    assert inst.description == (
+        "Artifacts required for implementation of Zika Virus " "Management"
     )
     assert inst.id == "composition-example"
     assert inst.identifier[0].system == "http://example.org"
@@ -546,9 +545,8 @@ def impl_library_8(inst):
     )
     assert inst.relatedArtifact[5].type == "composed-of"
     assert inst.relatedArtifact[6].type == "derived-from"
-    assert (
-        inst.relatedArtifact[6].url
-        == "https://www.cdc.gov/mmwr/volumes/65/wr/mm6539e1.htm?s_cid=mm6539e1_w"
+    assert inst.relatedArtifact[6].url == (
+        "https://www.cdc.gov/mmwr/volumes/65/wr/mm6539e1.htm?s_cid=mm" "6539e1_w"
     )
     assert inst.status == "draft"
     assert inst.text.status == "generated"
@@ -585,9 +583,9 @@ def impl_library_9(inst):
     assert inst.dataRequirement[0].codeFilter[0].valueSetString == "Single Live Birth"
     assert inst.dataRequirement[0].type == "Condition"
     assert inst.date == fhirtypes.DateTime.validate("2016-03-08")
-    assert (
-        inst.description
-        == "Decision support logic for improving outcomes for exclusive breastmilk feeding of newborns"
+    assert inst.description == (
+        "Decision support logic for improving outcomes for exclusive "
+        "breastmilk feeding of newborns"
     )
     assert inst.experimental is True
     assert inst.id == "library-exclusive-breastfeeding-cds-logic"

@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import searchparameter
 
@@ -19,13 +21,12 @@ def impl_searchparameter_1(inst):
     assert inst.name == "workflow"
     assert inst.status == "draft"
     assert inst.type == "token"
-    assert (
-        inst.url
-        == "http://hl7.org/fhir/SearchParameter/valueset-extensions-ValueSet-workflow"
+    assert inst.url == (
+        "http://hl7.org/fhir/SearchParameter/valueset-extensions-" "ValueSet-workflow"
     )
-    assert (
-        inst.xpath
-        == "f:ValueSet/f:extension[@url='http://hl7.org/fhir/StructureDefinition/valueset-workflowStatus'] | /f:#workflowStatus"
+    assert inst.xpath == (
+        "f:ValueSet/f:extension[@url='http://hl7.org/fhir/StructureDe"
+        "finition/valueset-workflowStatus'] | /f:#workflowStatus"
     )
     assert inst.xpathUsage == "normal"
 
@@ -62,13 +63,12 @@ def impl_searchparameter_2(inst):
     assert inst.name == "author"
     assert inst.status == "draft"
     assert inst.type == "string"
-    assert (
-        inst.url
-        == "http://hl7.org/fhir/SearchParameter/codesystem-extensions-CodeSystem-author"
+    assert inst.url == (
+        "http://hl7.org/fhir/SearchParameter/codesystem-extensions-" "CodeSystem-author"
     )
-    assert (
-        inst.xpath
-        == "f:CodeSystem/f:extension[@url='http://hl7.org/fhir/StructureDefinition/codesystem-author'] | /f:#author"
+    assert inst.xpath == (
+        "f:CodeSystem/f:extension[@url='http://hl7.org/fhir/Structure"
+        "Definition/codesystem-author'] | /f:#author"
     )
     assert inst.xpathUsage == "normal"
 
@@ -101,14 +101,14 @@ def impl_searchparameter_3(inst):
     assert inst.code == "part-agree"
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
-    assert (
-        inst.description
-        == "Search by url for a participation agreement, which is stored in a DocumentReference"
+    assert inst.description == (
+        "Search by url for a participation agreement, which is stored"
+        " in a DocumentReference"
     )
     assert inst.experimental is True
-    assert (
-        inst.expression
-        == "DocumentReference.extension('http://example.org/fhir/StructureDefinition/participation-agreement')"
+    assert inst.expression == (
+        "DocumentReference.extension('http://example.org/fhir/Structu"
+        "reDefinition/participation-agreement')"
     )
     assert inst.id == "example-extension"
     assert inst.name == "Example Search Parameter on an extension"
@@ -118,9 +118,9 @@ def impl_searchparameter_3(inst):
     assert inst.text.status == "generated"
     assert inst.type == "reference"
     assert inst.url == "http://hl7.org/fhir/SearchParameter/example-extension"
-    assert (
-        inst.xpath
-        == "f:DocumentReference/f:extension[@url='http://example.org/fhir/StructureDefinition/participation-agreement']"
+    assert inst.xpath == (
+        "f:DocumentReference/f:extension[@url='http://example.org/fhi"
+        "r/StructureDefinition/participation-agreement']"
     )
     assert inst.xpathUsage == "normal"
 
@@ -156,13 +156,13 @@ def impl_searchparameter_4(inst):
     assert inst.name == "part-of"
     assert inst.status == "draft"
     assert inst.type == "reference"
-    assert (
-        inst.url
-        == "http://hl7.org/fhir/SearchParameter/condition-extensions-Condition-part-of"
+    assert inst.url == (
+        "http://hl7.org/fhir/SearchParameter/condition-extensions-" "Condition-part-of"
     )
-    assert (
-        inst.xpath
-        == "f:Condition/f:extension[@url='http://hl7.org/fhir/StructureDefinition/condition-partOf'] | f:Condition/f:extension[@url='http://hl7.org/fhir/StructureDefinition/condition-partOf']"
+    assert inst.xpath == (
+        "f:Condition/f:extension[@url='http://hl7.org/fhir/StructureD"
+        "efinition/condition-partOf'] | f:Condition/f:extension[@url="
+        "'http://hl7.org/fhir/StructureDefinition/condition-partOf']"
     )
     assert inst.xpathUsage == "normal"
 
@@ -199,13 +199,15 @@ def impl_searchparameter_5(inst):
     assert inst.name == "definition"
     assert inst.status == "draft"
     assert inst.type == "reference"
-    assert (
-        inst.url
-        == "http://hl7.org/fhir/SearchParameter/condition-extensions-Condition-definition"
+    assert inst.url == (
+        "http://hl7.org/fhir/SearchParameter/condition-extensions-"
+        "Condition-definition"
     )
-    assert (
-        inst.xpath
-        == "f:Condition/f:extension[@url='http://hl7.org/fhir/StructureDefinition/condition-definition'] | f:Condition/f:extension[@url='http://hl7.org/fhir/StructureDefinition/condition-definition']"
+    assert inst.xpath == (
+        "f:Condition/f:extension[@url='http://hl7.org/fhir/StructureD"
+        "efinition/condition-definition'] | f:Condition/f:extension[@"
+        "url='http://hl7.org/fhir/StructureDefinition/condition-"
+        "definition']"
     )
     assert inst.xpathUsage == "normal"
 
@@ -289,13 +291,13 @@ def impl_searchparameter_7(inst):
     assert inst.name == "alias"
     assert inst.status == "draft"
     assert inst.type == "string"
-    assert (
-        inst.url
-        == "http://hl7.org/fhir/SearchParameter/organization-extensions-Organization-alias"
+    assert inst.url == (
+        "http://hl7.org/fhir/SearchParameter/organization-extensions-"
+        "Organization-alias"
     )
-    assert (
-        inst.xpath
-        == "f:Organization/f:extension[@url='http://hl7.org/fhir/StructureDefinition/organization-alias'] | /f:#alias"
+    assert inst.xpath == (
+        "f:Organization/f:extension[@url='http://hl7.org/fhir/Structu"
+        "reDefinition/organization-alias'] | /f:#alias"
     )
     assert inst.xpathUsage == "normal"
 
@@ -332,9 +334,9 @@ def impl_searchparameter_8(inst):
     assert inst.name == "objectClass"
     assert inst.status == "draft"
     assert inst.type == "token"
-    assert (
-        inst.url
-        == "http://hl7.org/fhir/SearchParameter/elementdefinition-11179-DataElement-objectClass"
+    assert inst.url == (
+        "http://hl7.org/fhir/SearchParameter/elementdefinition-11179-"
+        "DataElement-objectClass"
     )
     assert inst.xpathUsage == "normal"
 
@@ -371,9 +373,9 @@ def impl_searchparameter_9(inst):
     assert inst.name == "assessed-condition"
     assert inst.status == "draft"
     assert inst.type == "reference"
-    assert (
-        inst.url
-        == "http://hl7.org/fhir/SearchParameter/diagnosticreport-genetic-DiagnosticReport-assessed-condition"
+    assert inst.url == (
+        "http://hl7.org/fhir/SearchParameter/diagnosticreport-"
+        "genetic-DiagnosticReport-assessed-condition"
     )
     assert inst.xpathUsage == "normal"
 
@@ -410,8 +412,8 @@ def impl_searchparameter_10(inst):
     assert inst.name == "din"
     assert inst.status == "draft"
     assert inst.type == "token"
-    assert (
-        inst.url == "http://hl7.org/fhir/SearchParameter/device-extensions-Device-din"
+    assert inst.url == (
+        "http://hl7.org/fhir/SearchParameter/device-extensions-" "Device-din"
     )
     assert inst.xpathUsage == "normal"
 

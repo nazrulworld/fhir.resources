@@ -41,7 +41,10 @@ class ResearchElementDefinition(domainresource.DomainResource):
     ] = Field(
         ...,
         alias="characteristic",
-        title="List of `ResearchElementDefinitionCharacteristic` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ResearchElementDefinitionCharacteristic` items (represented "
+            "as `dict` in JSON)"
+        ),
         description="What defines the members of the research element",
     )
 
@@ -132,7 +135,10 @@ class ResearchElementDefinition(domainresource.DomainResource):
     library: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="library",
-        title="List of `Canonical` items referencing `Library` (represented as `dict` in JSON)",
+        title=(
+            "List of `Canonical` items referencing `Library` (represented as `dict`"
+            " in JSON)"
+        ),
         description="Logic used by the ResearchElementDefinition",
     )
 
@@ -189,7 +195,10 @@ class ResearchElementDefinition(domainresource.DomainResource):
         None,
         alias="subjectCodeableConcept",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="E.g. Patient, Practitioner, RelatedPerson, Organization, Location, Device",
+        description=(
+            "E.g. Patient, Practitioner, RelatedPerson, Organization, Location, "
+            "Device"
+        ),
         one_of_many="subject",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
     )
@@ -198,7 +207,10 @@ class ResearchElementDefinition(domainresource.DomainResource):
         None,
         alias="subjectReference",
         title="Type `Reference` referencing `Group` (represented as `dict` in JSON)",
-        description="E.g. Patient, Practitioner, RelatedPerson, Organization, Location, Device",
+        description=(
+            "E.g. Patient, Practitioner, RelatedPerson, Organization, Location, "
+            "Device"
+        ),
         one_of_many="subject",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
     )
@@ -221,7 +233,10 @@ class ResearchElementDefinition(domainresource.DomainResource):
         None,
         alias="topic",
         title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="The category of the ResearchElementDefinition, such as Education, Treatment, Assessment, etc.",
+        description=(
+            "The category of the ResearchElementDefinition, such as Education, "
+            "Treatment, Assessment, etc."
+        ),
     )
 
     type: fhirtypes.Code = Field(
@@ -235,7 +250,10 @@ class ResearchElementDefinition(domainresource.DomainResource):
         None,
         alias="url",
         title="Type `Uri` (represented as `dict` in JSON)",
-        description="Canonical identifier for this research element definition, represented as a URI (globally unique)",
+        description=(
+            "Canonical identifier for this research element definition, represented"
+            " as a URI (globally unique)"
+        ),
     )
 
     usage: fhirtypes.String = Field(
@@ -280,9 +298,7 @@ class ResearchElementDefinition(domainresource.DomainResource):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "subject": ["subjectCodeableConcept", "subjectReference",],
-        }
+        one_of_many_fields = {"subject": ["subjectCodeableConcept", "subjectReference"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -316,7 +332,9 @@ class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
     definitionCanonical: fhirtypes.Canonical = Field(
         None,
         alias="definitionCanonical",
-        title="Type `Canonical` referencing `ValueSet` (represented as `dict` in JSON)",
+        title=(
+            "Type `Canonical` referencing `ValueSet` (represented as `dict` in " "JSON)"
+        ),
         description="What code or expression defines members?",
         one_of_many="definition",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
@@ -385,7 +403,10 @@ class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
         None,
         alias="participantEffectiveGroupMeasure",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="mean | median | mean-of-mean | mean-of-median | median-of-mean | median-of-median",
+        description=(
+            "mean | median | mean-of-mean | mean-of-median | median-of-mean | "
+            "median-of-median"
+        ),
     )
 
     participantEffectivePeriod: fhirtypes.PeriodType = Field(
@@ -442,7 +463,10 @@ class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
         None,
         alias="studyEffectiveGroupMeasure",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="mean | median | mean-of-mean | mean-of-median | median-of-mean | median-of-median",
+        description=(
+            "mean | median | mean-of-mean | mean-of-median | median-of-mean | "
+            "median-of-median"
+        ),
     )
 
     studyEffectivePeriod: fhirtypes.PeriodType = Field(

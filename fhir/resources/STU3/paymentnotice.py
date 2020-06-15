@@ -38,7 +38,10 @@ class PaymentNotice(domainresource.DomainResource):
     organization: fhirtypes.ReferenceType = Field(
         None,
         alias="organization",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Responsible organization",
     )
 
@@ -52,21 +55,28 @@ class PaymentNotice(domainresource.DomainResource):
     provider: fhirtypes.ReferenceType = Field(
         None,
         alias="provider",
-        title="Type `Reference` referencing `Practitioner` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Responsible practitioner",
     )
 
     request: fhirtypes.ReferenceType = Field(
         None,
         alias="request",
-        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        ),
         description="Request reference",
     )
 
     response: fhirtypes.ReferenceType = Field(
         None,
         alias="response",
-        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        ),
         description="Response reference",
     )
 
@@ -87,6 +97,9 @@ class PaymentNotice(domainresource.DomainResource):
     target: fhirtypes.ReferenceType = Field(
         None,
         alias="target",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Insurer or Regulatory body",
     )

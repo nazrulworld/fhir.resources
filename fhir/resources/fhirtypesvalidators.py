@@ -5199,7 +5199,7 @@ __all__ = [
     "medicinalproductpharmaceuticalcharacteristics_validator",
     "medicinalproductpharmaceuticalrouteofadministration_validator",
     "medicinalproductpharmaceuticalrouteofadministrationtargetspecies_validator",
-    "medicinalproductpharmaceuticalrouteofadministrationtargetspecieswithdrawalperiod_validator",
+    "medicinalproductpharmaceuticalrouteofadministrationtargetspecieswithdrawalperiod_validator",  # noqa: B950
     "medicinalproductspecialdesignation_validator",
     "medicinalproductundesirableeffect_validator",
     "messagedefinition_validator",

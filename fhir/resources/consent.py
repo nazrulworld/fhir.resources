@@ -48,7 +48,10 @@ class Consent(domainresource.DomainResource):
     organization: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="organization",
-        title="List of `Reference` items referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Organization` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Custodian of the consent",
     )
 
@@ -62,7 +65,11 @@ class Consent(domainresource.DomainResource):
     performer: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="performer",
-        title="List of `Reference` items referencing `Organization, Patient, Practitioner, RelatedPerson, PractitionerRole` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Organization, Patient, "
+            "Practitioner, RelatedPerson, PractitionerRole` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Who is agreeing to the policy and rules",
     )
 
@@ -106,7 +113,10 @@ class Consent(domainresource.DomainResource):
     sourceReference: fhirtypes.ReferenceType = Field(
         None,
         alias="sourceReference",
-        title="Type `Reference` referencing `Consent, DocumentReference, Contract, QuestionnaireResponse` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Consent, DocumentReference, Contract, "
+            "QuestionnaireResponse` (represented as `dict` in JSON)"
+        ),
         description="Source from which this consent is taken",
         one_of_many="source",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -140,9 +150,7 @@ class Consent(domainresource.DomainResource):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "source": ["sourceAttachment", "sourceReference",],
-        }
+        one_of_many_fields = {"source": ["sourceAttachment", "sourceReference"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -286,7 +294,11 @@ class ConsentProvisionActor(backboneelement.BackboneElement):
     reference: fhirtypes.ReferenceType = Field(
         ...,
         alias="reference",
-        title="Type `Reference` referencing `Device, Group, CareTeam, Organization, Patient, Practitioner, RelatedPerson, PractitionerRole` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Device, Group, CareTeam, Organization, "
+            "Patient, Practitioner, RelatedPerson, PractitionerRole` (represented "
+            "as `dict` in JSON)"
+        ),
         description="Resource for the actor (or group, by role)",
     )
 
@@ -315,7 +327,9 @@ class ConsentProvisionData(backboneelement.BackboneElement):
     reference: fhirtypes.ReferenceType = Field(
         ...,
         alias="reference",
-        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        ),
         description="The actual data reference",
     )
 
@@ -336,12 +350,15 @@ class ConsentVerification(backboneelement.BackboneElement):
     )
 
     verified: bool = Field(
-        ..., alias="verified", title="Type `bool`", description="Has been verified",
+        ..., alias="verified", title="Type `bool`", description="Has been verified"
     )
 
     verifiedWith: fhirtypes.ReferenceType = Field(
         None,
         alias="verifiedWith",
-        title="Type `Reference` referencing `Patient, RelatedPerson` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, RelatedPerson` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Person who verified",
     )

@@ -36,14 +36,24 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
         None,
         alias="countryOfOrigin",
         title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="The country where the plant material is harvested or the countries where the plasma is sourced from as laid down in accordance with the Plasma Master File. For \u201cPlasma-derived substances\u201d the attribute country of origin provides information about the countries used for the manufacturing of the Cryopoor plama or Crioprecipitate",
+        description=(
+            "The country where the plant material is harvested or the countries "
+            "where the plasma is sourced from as laid down in accordance with the "
+            "Plasma Master File. For \u201cPlasma-derived substances\u201d the attribute "
+            "country of origin provides information about the countries used for "
+            "the manufacturing of the Cryopoor plama or Crioprecipitate"
+        ),
     )
 
     developmentStage: fhirtypes.CodeableConceptType = Field(
         None,
         alias="developmentStage",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Stage of life for animals, plants, insects and microorganisms. This information shall be provided only when the substance is significantly different in these stages (e.g. foetal bovine serum)",
+        description=(
+            "Stage of life for animals, plants, insects and microorganisms. This "
+            "information shall be provided only when the substance is significantly"
+            " different in these stages (e.g. foetal bovine serum)"
+        ),
     )
 
     fractionDescription: ListType[
@@ -51,43 +61,74 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
     ] = Field(
         None,
         alias="fractionDescription",
-        title="List of `SubstanceSourceMaterialFractionDescription` items (represented as `dict` in JSON)",
-        description="Many complex materials are fractions of parts of plants, animals, or minerals. Fraction elements are often necessary to define both Substances and Specified Group 1 Substances. For substances derived from Plants, fraction information will be captured at the Substance information level ( . Oils, Juices and Exudates). Additional information for Extracts, such as extraction solvent composition, will be captured at the Specified Substance Group 1 information level. For plasma-derived products fraction information will be captured at the Substance and the Specified Substance Group 1 levels",
+        title=(
+            "List of `SubstanceSourceMaterialFractionDescription` items "
+            "(represented as `dict` in JSON)"
+        ),
+        description=(
+            "Many complex materials are fractions of parts of plants, animals, or "
+            "minerals. Fraction elements are often necessary to define both "
+            "Substances and Specified Group 1 Substances. For substances derived "
+            "from Plants, fraction information will be captured at the Substance "
+            "information level ( . Oils, Juices and Exudates). Additional "
+            "information for Extracts, such as extraction solvent composition, will"
+            " be captured at the Specified Substance Group 1 information level. For"
+            " plasma-derived products fraction information will be captured at the "
+            "Substance and the Specified Substance Group 1 levels"
+        ),
     )
 
     geographicalLocation: ListType[fhirtypes.String] = Field(
         None,
         alias="geographicalLocation",
         title="List of `String` items (represented as `dict` in JSON)",
-        description="The place/region where the plant is harvested or the places/regions where the animal source material has its habitat",
+        description=(
+            "The place/region where the plant is harvested or the places/regions "
+            "where the animal source material has its habitat"
+        ),
     )
 
     organism: fhirtypes.SubstanceSourceMaterialOrganismType = Field(
         None,
         alias="organism",
         title="Type `SubstanceSourceMaterialOrganism` (represented as `dict` in JSON)",
-        description="This subclause describes the organism which the substance is derived from. For vaccines, the parent organism shall be specified based on these subclause elements. As an example, full taxonomy will be described for the Substance Name: ., Leaf",
+        description=(
+            "This subclause describes the organism which the substance is derived "
+            "from. For vaccines, the parent organism shall be specified based on "
+            "these subclause elements. As an example, full taxonomy will be "
+            "described for the Substance Name: ., Leaf"
+        ),
     )
 
     organismId: fhirtypes.IdentifierType = Field(
         None,
         alias="organismId",
         title="Type `Identifier` (represented as `dict` in JSON)",
-        description="The unique identifier associated with the source material parent organism shall be specified",
+        description=(
+            "The unique identifier associated with the source material parent "
+            "organism shall be specified"
+        ),
     )
 
     organismName: fhirtypes.String = Field(
         None,
         alias="organismName",
         title="Type `String` (represented as `dict` in JSON)",
-        description="The organism accepted Scientific name shall be provided based on the organism taxonomy",
+        description=(
+            "The organism accepted Scientific name shall be provided based on the "
+            "organism taxonomy"
+        ),
     )
 
     parentSubstanceId: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="parentSubstanceId",
         title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="The parent of the herbal drug Ginkgo biloba, Leaf is the substance ID of the substance (fresh) of Ginkgo biloba L. or Ginkgo biloba L. (Whole plant)",
+        description=(
+            "The parent of the herbal drug Ginkgo biloba, Leaf is the substance ID "
+            "of the substance (fresh) of Ginkgo biloba L. or Ginkgo biloba L. "
+            "(Whole plant)"
+        ),
     )
 
     parentSubstanceName: ListType[fhirtypes.String] = Field(
@@ -102,7 +143,10 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
     ] = Field(
         None,
         alias="partDescription",
-        title="List of `SubstanceSourceMaterialPartDescription` items (represented as `dict` in JSON)",
+        title=(
+            "List of `SubstanceSourceMaterialPartDescription` items (represented as"
+            " `dict` in JSON)"
+        ),
         description="To do",
     )
 
@@ -110,7 +154,10 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
         None,
         alias="sourceMaterialClass",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="General high level classification of the source material specific to the origin of the material",
+        description=(
+            "General high level classification of the source material specific to "
+            "the origin of the material"
+        ),
     )
 
     sourceMaterialState: fhirtypes.CodeableConceptType = Field(
@@ -124,7 +171,11 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
         None,
         alias="sourceMaterialType",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The type of the source material shall be specified based on a controlled vocabulary. For vaccines, this subclause refers to the class of infectious agent",
+        description=(
+            "The type of the source material shall be specified based on a "
+            "controlled vocabulary. For vaccines, this subclause refers to the "
+            "class of infectious agent"
+        ),
     )
 
 
@@ -146,14 +197,21 @@ class SubstanceSourceMaterialFractionDescription(backboneelement.BackboneElement
         None,
         alias="fraction",
         title="Type `String` (represented as `dict` in JSON)",
-        description="This element is capturing information about the fraction of a plant part, or human plasma for fractionation",
+        description=(
+            "This element is capturing information about the fraction of a plant "
+            "part, or human plasma for fractionation"
+        ),
     )
 
     materialType: fhirtypes.CodeableConceptType = Field(
         None,
         alias="materialType",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The specific type of the material constituting the component. For Herbal preparations the particulars of the extracts (liquid/dry) is described in Specified Substance Group 1",
+        description=(
+            "The specific type of the material constituting the component. For "
+            "Herbal preparations the particulars of the extracts (liquid/dry) is "
+            "described in Specified Substance Group 1"
+        ),
     )
 
 
@@ -169,7 +227,10 @@ class SubstanceSourceMaterialOrganism(backboneelement.BackboneElement):
     author: ListType[fhirtypes.SubstanceSourceMaterialOrganismAuthorType] = Field(
         None,
         alias="author",
-        title="List of `SubstanceSourceMaterialOrganismAuthor` items (represented as `dict` in JSON)",
+        title=(
+            "List of `SubstanceSourceMaterialOrganismAuthor` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="4.9.13.6.1 Author type (Conditional)",
     )
 
@@ -184,13 +245,20 @@ class SubstanceSourceMaterialOrganism(backboneelement.BackboneElement):
         None,
         alias="genus",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The genus of an organism shall be specified; refers to the Latin epithet of the genus element of the plant/animal scientific name; it is present in names for genera, species and infraspecies",
+        description=(
+            "The genus of an organism shall be specified; refers to the Latin "
+            "epithet of the genus element of the plant/animal scientific name; it "
+            "is present in names for genera, species and infraspecies"
+        ),
     )
 
     hybrid: fhirtypes.SubstanceSourceMaterialOrganismHybridType = Field(
         None,
         alias="hybrid",
-        title="Type `SubstanceSourceMaterialOrganismHybrid` (represented as `dict` in JSON)",
+        title=(
+            "Type `SubstanceSourceMaterialOrganismHybrid` (represented as `dict` in"
+            " JSON)"
+        ),
         description="4.9.13.8.1 Hybrid species maternal organism ID (Optional)",
     )
 
@@ -198,7 +266,12 @@ class SubstanceSourceMaterialOrganism(backboneelement.BackboneElement):
         None,
         alias="intraspecificDescription",
         title="Type `String` (represented as `dict` in JSON)",
-        description="The intraspecific description of an organism shall be specified based on a controlled vocabulary. For Influenza Vaccine, the intraspecific description shall contain the syntax of the antigen in line with the WHO convention",
+        description=(
+            "The intraspecific description of an organism shall be specified based "
+            "on a controlled vocabulary. For Influenza Vaccine, the intraspecific "
+            "description shall contain the syntax of the antigen in line with the "
+            "WHO convention"
+        ),
     )
 
     intraspecificType: fhirtypes.CodeableConceptType = Field(
@@ -211,7 +284,10 @@ class SubstanceSourceMaterialOrganism(backboneelement.BackboneElement):
     organismGeneral: fhirtypes.SubstanceSourceMaterialOrganismOrganismGeneralType = Field(
         None,
         alias="organismGeneral",
-        title="Type `SubstanceSourceMaterialOrganismOrganismGeneral` (represented as `dict` in JSON)",
+        title=(
+            "Type `SubstanceSourceMaterialOrganismOrganismGeneral` (represented as "
+            "`dict` in JSON)"
+        ),
         description="4.9.13.7.1 Kingdom (Conditional)",
     )
 
@@ -219,7 +295,11 @@ class SubstanceSourceMaterialOrganism(backboneelement.BackboneElement):
         None,
         alias="species",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The species of an organism shall be specified; refers to the Latin epithet of the species of the plant/animal; it is present in names for species and infraspecies",
+        description=(
+            "The species of an organism shall be specified; refers to the Latin "
+            "epithet of the species of the plant/animal; it is present in names for"
+            " species and infraspecies"
+        ),
     )
 
 
@@ -233,14 +313,25 @@ class SubstanceSourceMaterialOrganismAuthor(backboneelement.BackboneElement):
         None,
         alias="authorDescription",
         title="Type `String` (represented as `dict` in JSON)",
-        description="The author of an organism species shall be specified. The author year of an organism shall also be specified when applicable; refers to the year in which the first author(s) published the infraspecific plant/animal name (of any rank)",
+        description=(
+            "The author of an organism species shall be specified. The author year "
+            "of an organism shall also be specified when applicable; refers to the "
+            "year in which the first author(s) published the infraspecific "
+            "plant/animal name (of any rank)"
+        ),
     )
 
     authorType: fhirtypes.CodeableConceptType = Field(
         None,
         alias="authorType",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The type of author of an organism species shall be specified. The parenthetical author of an organism species refers to the first author who published the plant/animal name (of any rank). The primary author of an organism species refers to the first author(s), who validly published the plant/animal name",
+        description=(
+            "The type of author of an organism species shall be specified. The "
+            "parenthetical author of an organism species refers to the first author"
+            " who published the plant/animal name (of any rank). The primary author"
+            " of an organism species refers to the first author(s), who validly "
+            "published the plant/animal name"
+        ),
     )
 
 
@@ -261,28 +352,44 @@ class SubstanceSourceMaterialOrganismHybrid(backboneelement.BackboneElement):
         None,
         alias="maternalOrganismId",
         title="Type `String` (represented as `dict` in JSON)",
-        description="The identifier of the maternal species constituting the hybrid organism shall be specified based on a controlled vocabulary. For plants, the parents aren\u2019t always known, and it is unlikely that it will be known which is maternal and which is paternal",
+        description=(
+            "The identifier of the maternal species constituting the hybrid "
+            "organism shall be specified based on a controlled vocabulary. For "
+            "plants, the parents aren\u2019t always known, and it is unlikely that it "
+            "will be known which is maternal and which is paternal"
+        ),
     )
 
     maternalOrganismName: fhirtypes.String = Field(
         None,
         alias="maternalOrganismName",
         title="Type `String` (represented as `dict` in JSON)",
-        description="The name of the maternal species constituting the hybrid organism shall be specified. For plants, the parents aren\u2019t always known, and it is unlikely that it will be known which is maternal and which is paternal",
+        description=(
+            "The name of the maternal species constituting the hybrid organism "
+            "shall be specified. For plants, the parents aren\u2019t always known, and "
+            "it is unlikely that it will be known which is maternal and which is "
+            "paternal"
+        ),
     )
 
     paternalOrganismId: fhirtypes.String = Field(
         None,
         alias="paternalOrganismId",
         title="Type `String` (represented as `dict` in JSON)",
-        description="The identifier of the paternal species constituting the hybrid organism shall be specified based on a controlled vocabulary",
+        description=(
+            "The identifier of the paternal species constituting the hybrid "
+            "organism shall be specified based on a controlled vocabulary"
+        ),
     )
 
     paternalOrganismName: fhirtypes.String = Field(
         None,
         alias="paternalOrganismName",
         title="Type `String` (represented as `dict` in JSON)",
-        description="The name of the paternal species constituting the hybrid organism shall be specified",
+        description=(
+            "The name of the paternal species constituting the hybrid organism "
+            "shall be specified"
+        ),
     )
 
 
@@ -338,5 +445,9 @@ class SubstanceSourceMaterialPartDescription(backboneelement.BackboneElement):
         None,
         alias="partLocation",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The detailed anatomic location when the part can be extracted from different anatomical locations of the organism. Multiple alternative locations may apply",
+        description=(
+            "The detailed anatomic location when the part can be extracted from "
+            "different anatomical locations of the organism. Multiple alternative "
+            "locations may apply"
+        ),
     )

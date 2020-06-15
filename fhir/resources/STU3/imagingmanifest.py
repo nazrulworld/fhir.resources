@@ -24,7 +24,10 @@ class ImagingManifest(domainresource.DomainResource):
     author: fhirtypes.ReferenceType = Field(
         None,
         alias="author",
-        title="Type `Reference` referencing `Practitioner, Device, Organization, Patient, RelatedPerson` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, Device, Organization, "
+            "Patient, RelatedPerson` (represented as `dict` in JSON)"
+        ),
         description="Author (human or machine)",
     )
 
@@ -75,21 +78,30 @@ class ImagingManifestStudy(backboneelement.BackboneElement):
     endpoint: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="endpoint",
-        title="List of `Reference` items referencing `Endpoint` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Endpoint` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Study access service endpoint",
     )
 
     imagingStudy: fhirtypes.ReferenceType = Field(
         None,
         alias="imagingStudy",
-        title="Type `Reference` referencing `ImagingStudy` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `ImagingStudy` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Reference to ImagingStudy",
     )
 
     series: ListType[fhirtypes.ImagingManifestStudySeriesType] = Field(
         ...,
         alias="series",
-        title="List of `ImagingManifestStudySeries` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ImagingManifestStudySeries` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Series identity of the selected instances",
     )
 
@@ -112,14 +124,20 @@ class ImagingManifestStudySeries(backboneelement.BackboneElement):
     endpoint: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="endpoint",
-        title="List of `Reference` items referencing `Endpoint` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Endpoint` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Series access endpoint",
     )
 
     instance: ListType[fhirtypes.ImagingManifestStudySeriesInstanceType] = Field(
         ...,
         alias="instance",
-        title="List of `ImagingManifestStudySeriesInstance` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ImagingManifestStudySeriesInstance` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="The selected instance",
     )
 

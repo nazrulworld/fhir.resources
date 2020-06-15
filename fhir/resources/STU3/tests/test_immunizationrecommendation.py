@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import immunizationrecommendation
 
@@ -23,9 +25,8 @@ def impl_immunizationrecommendation_1(inst):
         inst.recommendation[0].dateCriterion[0].code.coding[0].display
         == "Earliest Date"
     )
-    assert (
-        inst.recommendation[0].dateCriterion[0].code.coding[0].system
-        == "http://hl7.org/fhir/immunization-recommendation-date-criterion"
+    assert inst.recommendation[0].dateCriterion[0].code.coding[0].system == (
+        "http://hl7.org/fhir/immunization-recommendation-date-" "criterion"
     )
     assert inst.recommendation[0].dateCriterion[0].value == fhirtypes.DateTime.validate(
         "2015-12-01T00:00:00-05:00"
@@ -34,9 +35,8 @@ def impl_immunizationrecommendation_1(inst):
     assert (
         inst.recommendation[0].dateCriterion[1].code.coding[0].display == "Recommended"
     )
-    assert (
-        inst.recommendation[0].dateCriterion[1].code.coding[0].system
-        == "http://hl7.org/fhir/immunization-recommendation-date-criterion"
+    assert inst.recommendation[0].dateCriterion[1].code.coding[0].system == (
+        "http://hl7.org/fhir/immunization-recommendation-date-" "criterion"
     )
     assert inst.recommendation[0].dateCriterion[1].value == fhirtypes.DateTime.validate(
         "2015-12-01T00:00:00-05:00"
@@ -46,9 +46,8 @@ def impl_immunizationrecommendation_1(inst):
         inst.recommendation[0].dateCriterion[2].code.coding[0].display
         == "Past Due Date"
     )
-    assert (
-        inst.recommendation[0].dateCriterion[2].code.coding[0].system
-        == "http://hl7.org/fhir/immunization-recommendation-date-criterion"
+    assert inst.recommendation[0].dateCriterion[2].code.coding[0].system == (
+        "http://hl7.org/fhir/immunization-recommendation-date-" "criterion"
     )
     assert inst.recommendation[0].dateCriterion[2].value == fhirtypes.DateTime.validate(
         "2016-12-28T00:00:00-05:00"
@@ -72,9 +71,8 @@ def impl_immunizationrecommendation_1(inst):
     assert (
         inst.recommendation[0].vaccineCode.coding[0].system == "http://snomed.info/sct"
     )
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Authored by Joginder Madra</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Authored by ' "Joginder Madra</div>"
     )
     assert inst.text.status == "generated"
 
@@ -114,9 +112,8 @@ def impl_immunizationrecommendation_2(inst):
         inst.recommendation[0].dateCriterion[0].code.coding[0].display
         == "Earliest Date"
     )
-    assert (
-        inst.recommendation[0].dateCriterion[0].code.coding[0].system
-        == "http://hl7.org/fhir/immunization-recommendation-date-criterion"
+    assert inst.recommendation[0].dateCriterion[0].code.coding[0].system == (
+        "http://hl7.org/fhir/immunization-recommendation-date-" "criterion"
     )
     assert inst.recommendation[0].dateCriterion[0].value == fhirtypes.DateTime.validate(
         "2015-12-01T00:00:00-05:00"
@@ -125,9 +122,8 @@ def impl_immunizationrecommendation_2(inst):
     assert (
         inst.recommendation[0].dateCriterion[1].code.coding[0].display == "Recommended"
     )
-    assert (
-        inst.recommendation[0].dateCriterion[1].code.coding[0].system
-        == "http://hl7.org/fhir/immunization-recommendation-date-criterion"
+    assert inst.recommendation[0].dateCriterion[1].code.coding[0].system == (
+        "http://hl7.org/fhir/immunization-recommendation-date-" "criterion"
     )
     assert inst.recommendation[0].dateCriterion[1].value == fhirtypes.DateTime.validate(
         "2015-12-01T00:00:00-05:00"
@@ -137,9 +133,8 @@ def impl_immunizationrecommendation_2(inst):
         inst.recommendation[0].dateCriterion[2].code.coding[0].display
         == "Past Due Date"
     )
-    assert (
-        inst.recommendation[0].dateCriterion[2].code.coding[0].system
-        == "http://hl7.org/fhir/immunization-recommendation-date-criterion"
+    assert inst.recommendation[0].dateCriterion[2].code.coding[0].system == (
+        "http://hl7.org/fhir/immunization-recommendation-date-" "criterion"
     )
     assert inst.recommendation[0].dateCriterion[2].value == fhirtypes.DateTime.validate(
         "2016-12-28T00:00:00-05:00"
@@ -163,9 +158,8 @@ def impl_immunizationrecommendation_2(inst):
         inst.recommendation[0].targetDisease.coding[0].system
         == "http://snomed.info/sct"
     )
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Authored by Joginder Madra</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Authored by ' "Joginder Madra</div>"
     )
     assert inst.text.status == "generated"
 

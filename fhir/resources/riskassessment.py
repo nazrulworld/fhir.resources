@@ -25,14 +25,19 @@ class RiskAssessment(domainresource.DomainResource):
     basedOn: fhirtypes.ReferenceType = Field(
         None,
         alias="basedOn",
-        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        ),
         description="Request fulfilled by this assessment",
     )
 
     basis: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="basis",
-        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Resource` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Information used in assessment",
     )
 
@@ -46,14 +51,20 @@ class RiskAssessment(domainresource.DomainResource):
     condition: fhirtypes.ReferenceType = Field(
         None,
         alias="condition",
-        title="Type `Reference` referencing `Condition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Condition` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Condition assessed",
     )
 
     encounter: fhirtypes.ReferenceType = Field(
         None,
         alias="encounter",
-        title="Type `Reference` referencing `Encounter` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Encounter` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Where was assessment performed?",
     )
 
@@ -106,21 +117,29 @@ class RiskAssessment(domainresource.DomainResource):
     parent: fhirtypes.ReferenceType = Field(
         None,
         alias="parent",
-        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        ),
         description="Part of this occurrence",
     )
 
     performer: fhirtypes.ReferenceType = Field(
         None,
         alias="performer",
-        title="Type `Reference` referencing `Practitioner, PractitionerRole, Device` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, PractitionerRole, Device` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Who did assessment?",
     )
 
     prediction: ListType[fhirtypes.RiskAssessmentPredictionType] = Field(
         None,
         alias="prediction",
-        title="List of `RiskAssessmentPrediction` items (represented as `dict` in JSON)",
+        title=(
+            "List of `RiskAssessmentPrediction` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Outcome predicted",
     )
 
@@ -134,7 +153,10 @@ class RiskAssessment(domainresource.DomainResource):
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="reasonReference",
-        title="List of `Reference` items referencing `Condition, Observation, DiagnosticReport, DocumentReference` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Condition, Observation, "
+            "DiagnosticReport, DocumentReference` (represented as `dict` in JSON)"
+        ),
         description="Why the assessment was necessary?",
     )
 
@@ -148,7 +170,10 @@ class RiskAssessment(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         ...,
         alias="subject",
-        title="Type `Reference` referencing `Patient, Group` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Group` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Who/what does assessment apply to?",
     )
 
@@ -166,9 +191,7 @@ class RiskAssessment(domainresource.DomainResource):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "occurrence": ["occurrenceDateTime", "occurrencePeriod",],
-        }
+        one_of_many_fields = {"occurrence": ["occurrenceDateTime", "occurrencePeriod"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -277,8 +300,8 @@ class RiskAssessmentPrediction(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "probability": ["probabilityDecimal", "probabilityRange",],
-            "when": ["whenPeriod", "whenRange",],
+            "probability": ["probabilityDecimal", "probabilityRange"],
+            "when": ["whenPeriod", "whenRange"],
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

@@ -31,7 +31,10 @@ class PaymentReconciliation(domainresource.DomainResource):
     detail: ListType[fhirtypes.PaymentReconciliationDetailType] = Field(
         None,
         alias="detail",
-        title="List of `PaymentReconciliationDetail` items (represented as `dict` in JSON)",
+        title=(
+            "List of `PaymentReconciliationDetail` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="List of settlements",
     )
 
@@ -59,7 +62,10 @@ class PaymentReconciliation(domainresource.DomainResource):
     organization: fhirtypes.ReferenceType = Field(
         None,
         alias="organization",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Insurer",
     )
 
@@ -80,28 +86,40 @@ class PaymentReconciliation(domainresource.DomainResource):
     processNote: ListType[fhirtypes.PaymentReconciliationProcessNoteType] = Field(
         None,
         alias="processNote",
-        title="List of `PaymentReconciliationProcessNote` items (represented as `dict` in JSON)",
+        title=(
+            "List of `PaymentReconciliationProcessNote` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Processing comments",
     )
 
     request: fhirtypes.ReferenceType = Field(
         None,
         alias="request",
-        title="Type `Reference` referencing `ProcessRequest` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `ProcessRequest` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Claim reference",
     )
 
     requestOrganization: fhirtypes.ReferenceType = Field(
         None,
         alias="requestOrganization",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Responsible organization",
     )
 
     requestProvider: fhirtypes.ReferenceType = Field(
         None,
         alias="requestProvider",
-        title="Type `Reference` referencing `Practitioner` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Responsible practitioner",
     )
 
@@ -144,28 +162,38 @@ class PaymentReconciliationDetail(backboneelement.BackboneElement):
     payee: fhirtypes.ReferenceType = Field(
         None,
         alias="payee",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Organization which is receiving the payment",
     )
 
     request: fhirtypes.ReferenceType = Field(
         None,
         alias="request",
-        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        ),
         description="Claim",
     )
 
     response: fhirtypes.ReferenceType = Field(
         None,
         alias="response",
-        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        ),
         description="Claim Response",
     )
 
     submitter: fhirtypes.ReferenceType = Field(
         None,
         alias="submitter",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Organization which submitted the claim",
     )
 

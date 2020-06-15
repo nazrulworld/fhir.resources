@@ -144,7 +144,10 @@ class StructureDefinition(domainresource.DomainResource):
     mapping: ListType[fhirtypes.StructureDefinitionMappingType] = Field(
         None,
         alias="mapping",
-        title="List of `StructureDefinitionMapping` items (represented as `dict` in JSON)",
+        title=(
+            "List of `StructureDefinitionMapping` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="External specification that the content is mapped to",
     )
 

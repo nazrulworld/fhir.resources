@@ -32,7 +32,10 @@ class RequestGroup(domainresource.DomainResource):
     author: fhirtypes.ReferenceType = Field(
         None,
         alias="author",
-        title="Type `Reference` referencing `Device, Practitioner, PractitionerRole` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Device, Practitioner, PractitionerRole` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Device or practitioner that authored the request group",
     )
 
@@ -46,7 +49,10 @@ class RequestGroup(domainresource.DomainResource):
     basedOn: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="basedOn",
-        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Resource` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Fulfills plan, proposal, or order",
     )
 
@@ -60,7 +66,10 @@ class RequestGroup(domainresource.DomainResource):
     encounter: fhirtypes.ReferenceType = Field(
         None,
         alias="encounter",
-        title="Type `Reference` referencing `Encounter` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Encounter` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Created as part of",
     )
 
@@ -96,7 +105,10 @@ class RequestGroup(domainresource.DomainResource):
         ...,
         alias="intent",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="proposal | plan | directive | order | original-order | reflex-order | filler-order | instance-order | option",
+        description=(
+            "proposal | plan | directive | order | original-order | reflex-order | "
+            "filler-order | instance-order | option"
+        ),
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
@@ -123,14 +135,20 @@ class RequestGroup(domainresource.DomainResource):
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="reasonReference",
-        title="List of `Reference` items referencing `Condition, Observation, DiagnosticReport, DocumentReference` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Condition, Observation, "
+            "DiagnosticReport, DocumentReference` (represented as `dict` in JSON)"
+        ),
         description="Why the request group is needed",
     )
 
     replaces: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="replaces",
-        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Resource` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Request(s) replaced by this request",
     )
 
@@ -138,13 +156,19 @@ class RequestGroup(domainresource.DomainResource):
         ...,
         alias="status",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="draft | active | on-hold | revoked | completed | entered-in-error | unknown",
+        description=(
+            "draft | active | on-hold | revoked | completed | entered-in-error | "
+            "unknown"
+        ),
     )
 
     subject: fhirtypes.ReferenceType = Field(
         None,
         alias="subject",
-        title="Type `Reference` referencing `Patient, Group` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Group` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Who the request group is about",
     )
 
@@ -180,7 +204,10 @@ class RequestGroupAction(backboneelement.BackboneElement):
     condition: ListType[fhirtypes.RequestGroupActionConditionType] = Field(
         None,
         alias="condition",
-        title="List of `RequestGroupActionCondition` items (represented as `dict` in JSON)",
+        title=(
+            "List of `RequestGroupActionCondition` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Whether or not the action is applicable",
     )
 
@@ -208,7 +235,11 @@ class RequestGroupAction(backboneelement.BackboneElement):
     participant: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="participant",
-        title="List of `Reference` items referencing `Patient, Practitioner, PractitionerRole, RelatedPerson, Device` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Patient, Practitioner, "
+            "PractitionerRole, RelatedPerson, Device` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Who should perform the action",
     )
 
@@ -236,7 +267,10 @@ class RequestGroupAction(backboneelement.BackboneElement):
     relatedAction: ListType[fhirtypes.RequestGroupActionRelatedActionType] = Field(
         None,
         alias="relatedAction",
-        title="List of `RequestGroupActionRelatedAction` items (represented as `dict` in JSON)",
+        title=(
+            "List of `RequestGroupActionRelatedAction` items (represented as `dict`"
+            " in JSON)"
+        ),
         description="Relationship to another action",
     )
 
@@ -250,7 +284,9 @@ class RequestGroupAction(backboneelement.BackboneElement):
     resource: fhirtypes.ReferenceType = Field(
         None,
         alias="resource",
-        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        ),
         description="The target of the action",
     )
 
@@ -265,7 +301,10 @@ class RequestGroupAction(backboneelement.BackboneElement):
         None,
         alias="textEquivalent",
         title="Type `String` (represented as `dict` in JSON)",
-        description="Static text equivalent of the action, used if the dynamic aspects cannot be interpreted by the receiving system",
+        description=(
+            "Static text equivalent of the action, used if the dynamic aspects "
+            "cannot be interpreted by the receiving system"
+        ),
     )
 
     timingAge: fhirtypes.AgeType = Field(
@@ -358,7 +397,7 @@ class RequestGroupAction(backboneelement.BackboneElement):
                 "timingPeriod",
                 "timingRange",
                 "timingTiming",
-            ],
+            ]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
@@ -442,7 +481,10 @@ class RequestGroupActionRelatedAction(backboneelement.BackboneElement):
         ...,
         alias="relationship",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="before-start | before | before-end | concurrent-with-start | concurrent | concurrent-with-end | after-start | after | after-end",
+        description=(
+            "before-start | before | before-end | concurrent-with-start | "
+            "concurrent | concurrent-with-end | after-start | after | after-end"
+        ),
     )
 
     @root_validator(pre=True)
@@ -459,9 +501,7 @@ class RequestGroupActionRelatedAction(backboneelement.BackboneElement):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "offset": ["offsetDuration", "offsetRange",],
-        }
+        one_of_many_fields = {"offset": ["offsetDuration", "offsetRange"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (

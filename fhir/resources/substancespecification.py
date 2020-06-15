@@ -24,7 +24,10 @@ class SubstanceSpecification(domainresource.DomainResource):
     code: ListType[fhirtypes.SubstanceSpecificationCodeType] = Field(
         None,
         alias="code",
-        title="List of `SubstanceSpecificationCode` items (represented as `dict` in JSON)",
+        title=(
+            "List of `SubstanceSpecificationCode` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Codes associated with the substance",
     )
 
@@ -59,7 +62,10 @@ class SubstanceSpecification(domainresource.DomainResource):
     moiety: ListType[fhirtypes.SubstanceSpecificationMoietyType] = Field(
         None,
         alias="moiety",
-        title="List of `SubstanceSpecificationMoiety` items (represented as `dict` in JSON)",
+        title=(
+            "List of `SubstanceSpecificationMoiety` items (represented as `dict` in"
+            " JSON)"
+        ),
         description="Moiety, for structural modifications",
     )
 
@@ -68,70 +74,109 @@ class SubstanceSpecification(domainresource.DomainResource):
     ] = Field(
         None,
         alias="molecularWeight",
-        title="List of `SubstanceSpecificationStructureIsotopeMolecularWeight` items (represented as `dict` in JSON)",
-        description="The molecular weight or weight range (for proteins, polymers or nucleic acids)",
+        title=(
+            "List of `SubstanceSpecificationStructureIsotopeMolecularWeight` items "
+            "(represented as `dict` in JSON)"
+        ),
+        description=(
+            "The molecular weight or weight range (for proteins, polymers or "
+            "nucleic acids)"
+        ),
     )
 
     name: ListType[fhirtypes.SubstanceSpecificationNameType] = Field(
         None,
         alias="name",
-        title="List of `SubstanceSpecificationName` items (represented as `dict` in JSON)",
+        title=(
+            "List of `SubstanceSpecificationName` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Names applicable to this substance",
     )
 
     nucleicAcid: fhirtypes.ReferenceType = Field(
         None,
         alias="nucleicAcid",
-        title="Type `Reference` referencing `SubstanceNucleicAcid` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `SubstanceNucleicAcid` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Data items specific to nucleic acids",
     )
 
     polymer: fhirtypes.ReferenceType = Field(
         None,
         alias="polymer",
-        title="Type `Reference` referencing `SubstancePolymer` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `SubstancePolymer` (represented as `dict`"
+            " in JSON)"
+        ),
         description="Data items specific to polymers",
     )
 
     property: ListType[fhirtypes.SubstanceSpecificationPropertyType] = Field(
         None,
         alias="property",
-        title="List of `SubstanceSpecificationProperty` items (represented as `dict` in JSON)",
-        description="General specifications for this substance, including how it is related to other substances",
+        title=(
+            "List of `SubstanceSpecificationProperty` items (represented as `dict` "
+            "in JSON)"
+        ),
+        description=(
+            "General specifications for this substance, including how it is related"
+            " to other substances"
+        ),
     )
 
     protein: fhirtypes.ReferenceType = Field(
         None,
         alias="protein",
-        title="Type `Reference` referencing `SubstanceProtein` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `SubstanceProtein` (represented as `dict`"
+            " in JSON)"
+        ),
         description="Data items specific to proteins",
     )
 
     referenceInformation: fhirtypes.ReferenceType = Field(
         None,
         alias="referenceInformation",
-        title="Type `Reference` referencing `SubstanceReferenceInformation` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `SubstanceReferenceInformation` "
+            "(represented as `dict` in JSON)"
+        ),
         description="General information detailing this substance",
     )
 
     relationship: ListType[fhirtypes.SubstanceSpecificationRelationshipType] = Field(
         None,
         alias="relationship",
-        title="List of `SubstanceSpecificationRelationship` items (represented as `dict` in JSON)",
-        description="A link between this substance and another, with details of the relationship",
+        title=(
+            "List of `SubstanceSpecificationRelationship` items (represented as "
+            "`dict` in JSON)"
+        ),
+        description=(
+            "A link between this substance and another, with details of the "
+            "relationship"
+        ),
     )
 
     source: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="source",
-        title="List of `Reference` items referencing `DocumentReference` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `DocumentReference` (represented"
+            " as `dict` in JSON)"
+        ),
         description="Supporting literature",
     )
 
     sourceMaterial: fhirtypes.ReferenceType = Field(
         None,
         alias="sourceMaterial",
-        title="Type `Reference` referencing `SubstanceSourceMaterial` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `SubstanceSourceMaterial` (represented as"
+            " `dict` in JSON)"
+        ),
         description="Material or taxonomic/anatomical source for the substance",
     )
 
@@ -180,7 +225,10 @@ class SubstanceSpecificationCode(backboneelement.BackboneElement):
     source: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="source",
-        title="List of `Reference` items referencing `DocumentReference` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `DocumentReference` (represented"
+            " as `dict` in JSON)"
+        ),
         description="Supporting literature",
     )
 
@@ -195,7 +243,10 @@ class SubstanceSpecificationCode(backboneelement.BackboneElement):
         None,
         alias="statusDate",
         title="Type `DateTime` (represented as `dict` in JSON)",
-        description="The date at which the code status is changed as part of the terminology maintenance",
+        description=(
+            "The date at which the code status is changed as part of the "
+            "terminology maintenance"
+        ),
     )
 
 
@@ -279,9 +330,7 @@ class SubstanceSpecificationMoiety(backboneelement.BackboneElement):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "amount": ["amountQuantity", "amountString",],
-        }
+        one_of_many_fields = {"amount": ["amountQuantity", "amountString"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -314,7 +363,10 @@ class SubstanceSpecificationName(backboneelement.BackboneElement):
         None,
         alias="domain",
         title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="The use context of this name for example if there is a different name a drug active ingredient as opposed to a food colour additive",
+        description=(
+            "The use context of this name for example if there is a different name "
+            "a drug active ingredient as opposed to a food colour additive"
+        ),
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -341,7 +393,10 @@ class SubstanceSpecificationName(backboneelement.BackboneElement):
     official: ListType[fhirtypes.SubstanceSpecificationNameOfficialType] = Field(
         None,
         alias="official",
-        title="List of `SubstanceSpecificationNameOfficial` items (represented as `dict` in JSON)",
+        title=(
+            "List of `SubstanceSpecificationNameOfficial` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Details of the official nature of this name",
     )
 
@@ -355,7 +410,10 @@ class SubstanceSpecificationName(backboneelement.BackboneElement):
     source: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="source",
-        title="List of `Reference` items referencing `DocumentReference` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `DocumentReference` (represented"
+            " as `dict` in JSON)"
+        ),
         description="Supporting literature",
     )
 
@@ -369,14 +427,20 @@ class SubstanceSpecificationName(backboneelement.BackboneElement):
     synonym: ListType[fhirtypes.SubstanceSpecificationNameType] = Field(
         None,
         alias="synonym",
-        title="List of `SubstanceSpecificationName` items (represented as `dict` in JSON)",
+        title=(
+            "List of `SubstanceSpecificationName` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="A synonym of this name",
     )
 
     translation: ListType[fhirtypes.SubstanceSpecificationNameType] = Field(
         None,
         alias="translation",
-        title="List of `SubstanceSpecificationName` items (represented as `dict` in JSON)",
+        title=(
+            "List of `SubstanceSpecificationName` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="A translation for this name",
     )
 
@@ -459,7 +523,10 @@ class SubstanceSpecificationProperty(backboneelement.BackboneElement):
         None,
         alias="definingSubstanceCodeableConcept",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="A substance upon which a defining property depends (e.g. for solubility: in water, in alcohol)",
+        description=(
+            "A substance upon which a defining property depends (e.g. for "
+            "solubility: in water, in alcohol)"
+        ),
         one_of_many="definingSubstance",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
     )
@@ -467,8 +534,14 @@ class SubstanceSpecificationProperty(backboneelement.BackboneElement):
     definingSubstanceReference: fhirtypes.ReferenceType = Field(
         None,
         alias="definingSubstanceReference",
-        title="Type `Reference` referencing `SubstanceSpecification, Substance` (represented as `dict` in JSON)",
-        description="A substance upon which a defining property depends (e.g. for solubility: in water, in alcohol)",
+        title=(
+            "Type `Reference` referencing `SubstanceSpecification, Substance` "
+            "(represented as `dict` in JSON)"
+        ),
+        description=(
+            "A substance upon which a defining property depends (e.g. for "
+            "solubility: in water, in alcohol)"
+        ),
         one_of_many="definingSubstance",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
     )
@@ -477,7 +550,10 @@ class SubstanceSpecificationProperty(backboneelement.BackboneElement):
         None,
         alias="parameters",
         title="Type `String` (represented as `dict` in JSON)",
-        description="Parameters that were used in the measurement of a property (e.g. for viscosity: measured at 20C with a pH of 7.1)",
+        description=(
+            "Parameters that were used in the measurement of a property (e.g. for "
+            "viscosity: measured at 20C with a pH of 7.1)"
+        ),
     )
 
     @root_validator(pre=True)
@@ -495,7 +571,7 @@ class SubstanceSpecificationProperty(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "amount": ["amountQuantity", "amountString",],
+            "amount": ["amountQuantity", "amountString"],
             "definingSubstance": [
                 "definingSubstanceCodeableConcept",
                 "definingSubstanceReference",
@@ -533,7 +609,11 @@ class SubstanceSpecificationRelationship(backboneelement.BackboneElement):
         None,
         alias="amountQuantity",
         title="Type `Quantity` (represented as `dict` in JSON)",
-        description="A numeric factor for the relationship, for instance to express that the salt of a substance has some percentage of the active substance in relation to some other",
+        description=(
+            "A numeric factor for the relationship, for instance to express that "
+            "the salt of a substance has some percentage of the active substance in"
+            " relation to some other"
+        ),
         one_of_many="amount",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
     )
@@ -542,7 +622,11 @@ class SubstanceSpecificationRelationship(backboneelement.BackboneElement):
         None,
         alias="amountRange",
         title="Type `Range` (represented as `dict` in JSON)",
-        description="A numeric factor for the relationship, for instance to express that the salt of a substance has some percentage of the active substance in relation to some other",
+        description=(
+            "A numeric factor for the relationship, for instance to express that "
+            "the salt of a substance has some percentage of the active substance in"
+            " relation to some other"
+        ),
         one_of_many="amount",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
     )
@@ -551,7 +635,11 @@ class SubstanceSpecificationRelationship(backboneelement.BackboneElement):
         None,
         alias="amountRatio",
         title="Type `Ratio` (represented as `dict` in JSON)",
-        description="A numeric factor for the relationship, for instance to express that the salt of a substance has some percentage of the active substance in relation to some other",
+        description=(
+            "A numeric factor for the relationship, for instance to express that "
+            "the salt of a substance has some percentage of the active substance in"
+            " relation to some other"
+        ),
         one_of_many="amount",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
     )
@@ -567,7 +655,11 @@ class SubstanceSpecificationRelationship(backboneelement.BackboneElement):
         None,
         alias="amountString",
         title="Type `String` (represented as `dict` in JSON)",
-        description="A numeric factor for the relationship, for instance to express that the salt of a substance has some percentage of the active substance in relation to some other",
+        description=(
+            "A numeric factor for the relationship, for instance to express that "
+            "the salt of a substance has some percentage of the active substance in"
+            " relation to some other"
+        ),
         one_of_many="amount",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
     )
@@ -576,14 +668,21 @@ class SubstanceSpecificationRelationship(backboneelement.BackboneElement):
         None,
         alias="amountType",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description='An operator for the amount, for example "average", "approximately", "less than"',
+        description=(
+            'An operator for the amount, for example "average", "approximately", '
+            '"less than"'
+        ),
     )
 
     isDefining: bool = Field(
         None,
         alias="isDefining",
         title="Type `bool`",
-        description="For example where an enzyme strongly bonds with a particular substance, this is a defining relationship for that enzyme, out of several possible substance relationships",
+        description=(
+            "For example where an enzyme strongly bonds with a particular "
+            "substance, this is a defining relationship for that enzyme, out of "
+            "several possible substance relationships"
+        ),
     )
 
     relationship: fhirtypes.CodeableConceptType = Field(
@@ -596,7 +695,10 @@ class SubstanceSpecificationRelationship(backboneelement.BackboneElement):
     source: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="source",
-        title="List of `Reference` items referencing `DocumentReference` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `DocumentReference` (represented"
+            " as `dict` in JSON)"
+        ),
         description="Supporting literature",
     )
 
@@ -604,7 +706,10 @@ class SubstanceSpecificationRelationship(backboneelement.BackboneElement):
         None,
         alias="substanceCodeableConcept",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="A pointer to another substance, as a resource or just a representational code",
+        description=(
+            "A pointer to another substance, as a resource or just a "
+            "representational code"
+        ),
         one_of_many="substance",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
     )
@@ -612,8 +717,14 @@ class SubstanceSpecificationRelationship(backboneelement.BackboneElement):
     substanceReference: fhirtypes.ReferenceType = Field(
         None,
         alias="substanceReference",
-        title="Type `Reference` referencing `SubstanceSpecification` (represented as `dict` in JSON)",
-        description="A pointer to another substance, as a resource or just a representational code",
+        title=(
+            "Type `Reference` referencing `SubstanceSpecification` (represented as "
+            "`dict` in JSON)"
+        ),
+        description=(
+            "A pointer to another substance, as a resource or just a "
+            "representational code"
+        ),
         one_of_many="substance",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
     )
@@ -633,8 +744,8 @@ class SubstanceSpecificationRelationship(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "amount": ["amountQuantity", "amountRange", "amountRatio", "amountString",],
-            "substance": ["substanceCodeableConcept", "substanceReference",],
+            "amount": ["amountQuantity", "amountRange", "amountRatio", "amountString"],
+            "substance": ["substanceCodeableConcept", "substanceReference"],
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
@@ -667,8 +778,14 @@ class SubstanceSpecificationStructure(backboneelement.BackboneElement):
     isotope: ListType[fhirtypes.SubstanceSpecificationStructureIsotopeType] = Field(
         None,
         alias="isotope",
-        title="List of `SubstanceSpecificationStructureIsotope` items (represented as `dict` in JSON)",
-        description="Applicable for single substances that contain a radionuclide or a non-natural isotopic ratio",
+        title=(
+            "List of `SubstanceSpecificationStructureIsotope` items (represented as"
+            " `dict` in JSON)"
+        ),
+        description=(
+            "Applicable for single substances that contain a radionuclide or a non-"
+            "natural isotopic ratio"
+        ),
     )
 
     molecularFormula: fhirtypes.String = Field(
@@ -682,14 +799,23 @@ class SubstanceSpecificationStructure(backboneelement.BackboneElement):
         None,
         alias="molecularFormulaByMoiety",
         title="Type `String` (represented as `dict` in JSON)",
-        description="Specified per moiety according to the Hill system, i.e. first C, then H, then alphabetical, each moiety separated by a dot",
+        description=(
+            "Specified per moiety according to the Hill system, i.e. first C, then "
+            "H, then alphabetical, each moiety separated by a dot"
+        ),
     )
 
-    molecularWeight: fhirtypes.SubstanceSpecificationStructureIsotopeMolecularWeightType = Field(
+    molecularWeight: fhirtypes.SubstanceSpecificationStructureIsotopeMolecularWeightType = Field(  # noqa: B950
         None,
         alias="molecularWeight",
-        title="Type `SubstanceSpecificationStructureIsotopeMolecularWeight` (represented as `dict` in JSON)",
-        description="The molecular weight or weight range (for proteins, polymers or nucleic acids)",
+        title=(
+            "Type `SubstanceSpecificationStructureIsotopeMolecularWeight` "
+            "(represented as `dict` in JSON)"
+        ),
+        description=(
+            "The molecular weight or weight range (for proteins, polymers or "
+            "nucleic acids)"
+        ),
     )
 
     opticalActivity: fhirtypes.CodeableConceptType = Field(
@@ -704,14 +830,20 @@ class SubstanceSpecificationStructure(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="representation",
-        title="List of `SubstanceSpecificationStructureRepresentation` items (represented as `dict` in JSON)",
+        title=(
+            "List of `SubstanceSpecificationStructureRepresentation` items "
+            "(represented as `dict` in JSON)"
+        ),
         description="Molecular structural representation",
     )
 
     source: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="source",
-        title="List of `Reference` items referencing `DocumentReference` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `DocumentReference` (represented"
+            " as `dict` in JSON)"
+        ),
         description="Supporting literature",
     )
 
@@ -744,11 +876,17 @@ class SubstanceSpecificationStructureIsotope(backboneelement.BackboneElement):
         description="Substance identifier for each non-natural or radioisotope",
     )
 
-    molecularWeight: fhirtypes.SubstanceSpecificationStructureIsotopeMolecularWeightType = Field(
+    molecularWeight: fhirtypes.SubstanceSpecificationStructureIsotopeMolecularWeightType = Field(  # noqa: B950
         None,
         alias="molecularWeight",
-        title="Type `SubstanceSpecificationStructureIsotopeMolecularWeight` (represented as `dict` in JSON)",
-        description="The molecular weight or weight range (for proteins, polymers or nucleic acids)",
+        title=(
+            "Type `SubstanceSpecificationStructureIsotopeMolecularWeight` "
+            "(represented as `dict` in JSON)"
+        ),
+        description=(
+            "The molecular weight or weight range (for proteins, polymers or "
+            "nucleic acids)"
+        ),
     )
 
     name: fhirtypes.CodeableConceptType = Field(
@@ -781,7 +919,12 @@ class SubstanceSpecificationStructureIsotopeMolecularWeight(
         None,
         alias="amount",
         title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Used to capture quantitative values for a variety of elements. If only limits are given, the arithmetic mean would be the average. If only a single definite value for a given element is given, it would be captured in this field",
+        description=(
+            "Used to capture quantitative values for a variety of elements. If only"
+            " limits are given, the arithmetic mean would be the average. If only a"
+            " single definite value for a given element is given, it would be "
+            "captured in this field"
+        ),
     )
 
     method: fhirtypes.CodeableConceptType = Field(
@@ -795,7 +938,10 @@ class SubstanceSpecificationStructureIsotopeMolecularWeight(
         None,
         alias="type",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Type of molecular weight such as exact, average (also known as. number average), weight average",
+        description=(
+            "Type of molecular weight such as exact, average (also known as. number"
+            " average), weight average"
+        ),
     )
 
 
@@ -816,7 +962,10 @@ class SubstanceSpecificationStructureRepresentation(backboneelement.BackboneElem
         None,
         alias="representation",
         title="Type `String` (represented as `dict` in JSON)",
-        description="The structural representation as text string in a format e.g. InChI, SMILES, MOLFILE, CDX",
+        description=(
+            "The structural representation as text string in a format e.g. InChI, "
+            "SMILES, MOLFILE, CDX"
+        ),
     )
 
     type: fhirtypes.CodeableConceptType = Field(

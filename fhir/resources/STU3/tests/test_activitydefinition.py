@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import activitydefinition
 
@@ -30,9 +32,9 @@ def impl_activitydefinition_1(inst):
     assert inst.relatedArtifact[1].type == "depends-on"
     assert inst.status == "draft"
     assert inst.text.status == "generated"
-    assert (
-        inst.url
-        == "http://example.org/ActivityDefinition/administer-zika-virus-exposure-assessment"
+    assert inst.url == (
+        "http://example.org/ActivityDefinition/administer-zika-virus-"
+        "exposure-assessment"
     )
 
 
@@ -74,20 +76,19 @@ def impl_activitydefinition_2(inst):
     assert (
         inst.relatedArtifact[0].url == "http://www.cdc.gov/zika/prevention/index.html"
     )
-    assert (
-        inst.relatedArtifact[1].display
-        == "Advice for patients about which mosquito repellents are effective and safe to use in pregnancy. [DEET, IF3535 and Picardin are safe during]"
+    assert inst.relatedArtifact[1].display == (
+        "Advice for patients about which mosquito repellents are "
+        "effective and safe to use in pregnancy. [DEET, IF3535 and "
+        "Picardin are safe during]"
     )
     assert inst.relatedArtifact[1].type == "documentation"
-    assert (
-        inst.relatedArtifact[1].url
-        == "https://www.epa.gov/insect-repellents/find-insect-repellent-right-you"
+    assert inst.relatedArtifact[1].url == (
+        "https://www.epa.gov/insect-repellents/find-insect-repellent-" "right-you"
     )
     assert inst.status == "draft"
     assert inst.text.status == "generated"
-    assert (
-        inst.url
-        == "http://example.org/ActivityDefinition/provide-mosquito-prevention-advice"
+    assert inst.url == (
+        "http://example.org/ActivityDefinition/provide-mosquito-" "prevention-advice"
     )
 
 
@@ -133,14 +134,13 @@ def impl_activitydefinition_3(inst):
     assert inst.contributor[0].contact[0].telecom[1].value == "info@motivemi.com"
     assert inst.contributor[0].name == "Motive Medical Intelligence"
     assert inst.contributor[0].type == "author"
-    assert (
-        inst.copyright
-        == "© Copyright 2016 Motive Medical Intelligence. All rights reserved."
+    assert inst.copyright == (
+        "© Copyright 2016 Motive Medical Intelligence. All rights " "reserved."
     )
     assert inst.date == fhirtypes.DateTime.validate("2017-03-03T14:06:00Z")
-    assert (
-        inst.description
-        == "refer to primary care mental-health integrated care program for evaluation and treatment of mental health conditions now"
+    assert inst.description == (
+        "refer to primary care mental-health integrated care program "
+        "for evaluation and treatment of mental health conditions now"
     )
     assert inst.effectivePeriod.end == fhirtypes.DateTime.validate("2017-12-31")
     assert inst.effectivePeriod.start == fhirtypes.DateTime.validate("2016-01-01")
@@ -156,14 +156,14 @@ def impl_activitydefinition_3(inst):
     assert inst.name == "ReferralPrimaryCareMentalHealth"
     assert inst.participant[0].type == "practitioner"
     assert inst.publisher == "Motive Medical Intelligence"
-    assert (
-        inst.relatedArtifact[0].display
-        == "Practice Guideline for the Treatment of Patients with Major Depressive Disorder"
+    assert inst.relatedArtifact[0].display == (
+        "Practice Guideline for the Treatment of Patients with Major "
+        "Depressive Disorder"
     )
     assert inst.relatedArtifact[0].type == "citation"
-    assert (
-        inst.relatedArtifact[0].url
-        == "http://psychiatryonline.org/pb/assets/raw/sitewide/practice_guidelines/guidelines/mdd.pdf"
+    assert inst.relatedArtifact[0].url == (
+        "http://psychiatryonline.org/pb/assets/raw/sitewide/practice_"
+        "guidelines/guidelines/mdd.pdf"
     )
     assert (
         inst.relatedArtifact[1].resource.reference
@@ -174,9 +174,9 @@ def impl_activitydefinition_3(inst):
     assert inst.text.status == "generated"
     assert inst.title == "Referral to Primary Care Mental Health"
     assert inst.topic[0].text == "Mental Health Referral"
-    assert (
-        inst.url
-        == "http://motivemi.com/artifacts/ActivityDefinition/referralPrimaryCareMentalHealth"
+    assert inst.url == (
+        "http://motivemi.com/artifacts/ActivityDefinition/referralPri"
+        "maryCareMentalHealth"
     )
     assert inst.useContext[0].code.code == "age"
     assert inst.useContext[0].code.system == "http://hl7.org/fhir/usage-context-type"
@@ -282,9 +282,9 @@ def impl_activitydefinition_4(inst):
     assert inst.kind == "ProcedureRequest"
     assert inst.library[0].reference == "Library/zika-virus-intervention-logic"
     assert inst.participant[0].type == "practitioner"
-    assert (
-        inst.relatedArtifact[0].display
-        == "Explanation of diagnostic tests for Zika virus and which to use based on the patient’s clinical and exposure history."
+    assert inst.relatedArtifact[0].display == (
+        "Explanation of diagnostic tests for Zika virus and which to "
+        "use based on the patient’s clinical and exposure history."
     )
     assert inst.relatedArtifact[0].type == "documentation"
     assert (
@@ -298,8 +298,8 @@ def impl_activitydefinition_4(inst):
     assert inst.relatedArtifact[1].type == "derived-from"
     assert inst.status == "draft"
     assert inst.text.status == "generated"
-    assert (
-        inst.url == "http://example.org/ActivityDefinition/serum-zika-dengue-virus-igm"
+    assert inst.url == (
+        "http://example.org/ActivityDefinition/serum-zika-dengue-" "virus-igm"
     )
 
 
@@ -411,14 +411,12 @@ def impl_activitydefinition_6(inst):
     assert inst.contributor[0].contact[0].telecom[1].value == "info@motivemi.com"
     assert inst.contributor[0].name == "Motive Medical Intelligence"
     assert inst.contributor[0].type == "author"
-    assert (
-        inst.copyright
-        == "© Copyright 2016 Motive Medical Intelligence. All rights reserved."
+    assert inst.copyright == (
+        "© Copyright 2016 Motive Medical Intelligence. All rights " "reserved."
     )
     assert inst.date == fhirtypes.DateTime.validate("2015-08-15")
-    assert (
-        inst.description
-        == "Citalopram 20 mg tablet 1 tablet oral 1 time daily now (30 table; 3 refills"
+    assert inst.description == (
+        "Citalopram 20 mg tablet 1 tablet oral 1 time daily now (30 " "table; 3 refills"
     )
     assert inst.dosage[0].doseQuantity.unit == "{tbl}"
     assert float(inst.dosage[0].doseQuantity.value) == float(1)
@@ -457,18 +455,18 @@ def impl_activitydefinition_6(inst):
     assert inst.name == "CitalopramPrescription"
     assert inst.productReference.reference == "#citalopramMedication"
     assert inst.publisher == "Motive Medical Intelligence"
-    assert (
-        inst.purpose
-        == "Defines a guideline supported prescription for the treatment of depressive disorders"
+    assert inst.purpose == (
+        "Defines a guideline supported prescription for the treatment"
+        " of depressive disorders"
     )
-    assert (
-        inst.relatedArtifact[0].display
-        == "Practice Guideline for the Treatment of Patients with Major Depressive Disorder"
+    assert inst.relatedArtifact[0].display == (
+        "Practice Guideline for the Treatment of Patients with Major "
+        "Depressive Disorder"
     )
     assert inst.relatedArtifact[0].type == "citation"
-    assert (
-        inst.relatedArtifact[0].url
-        == "http://psychiatryonline.org/pb/assets/raw/sitewide/practice_guidelines/guidelines/mdd.pdf"
+    assert inst.relatedArtifact[0].url == (
+        "http://psychiatryonline.org/pb/assets/raw/sitewide/practice_"
+        "guidelines/guidelines/mdd.pdf"
     )
     assert inst.relatedArtifact[1].resource.reference == "#citalopramMedication"
     assert inst.relatedArtifact[1].type == "composed-of"
@@ -476,13 +474,11 @@ def impl_activitydefinition_6(inst):
     assert inst.text.status == "generated"
     assert inst.title == "Citalopram Prescription"
     assert inst.topic[0].text == "Mental Health Treatment"
-    assert (
-        inst.url
-        == "http://motivemi.com/artifacts/ActivityDefinition/citalopramPrescription"
+    assert inst.url == (
+        "http://motivemi.com/artifacts/ActivityDefinition/citalopramP" "rescription"
     )
-    assert (
-        inst.usage
-        == "This activity definition is used as part of various suicide risk order sets"
+    assert inst.usage == (
+        "This activity definition is used as part of various suicide " "risk order sets"
     )
     assert inst.useContext[0].code.code == "age"
     assert inst.useContext[0].code.system == "http://hl7.org/fhir/usage-context-type"
@@ -600,14 +596,13 @@ def impl_activitydefinition_7(inst):
     assert inst.contributor[0].contact[0].telecom[1].value == "info@motivemi.com"
     assert inst.contributor[0].name == "Motive Medical Intelligence"
     assert inst.contributor[0].type == "author"
-    assert (
-        inst.copyright
-        == "© Copyright 2016 Motive Medical Intelligence. All rights reserved."
+    assert inst.copyright == (
+        "© Copyright 2016 Motive Medical Intelligence. All rights " "reserved."
     )
     assert inst.date == fhirtypes.DateTime.validate("2017-03-03T14:06:00Z")
-    assert (
-        inst.description
-        == "refer to primary care mental-health integrated care program for evaluation and treatment of mental health conditions now"
+    assert inst.description == (
+        "refer to primary care mental-health integrated care program "
+        "for evaluation and treatment of mental health conditions now"
     )
     assert inst.effectivePeriod.end == fhirtypes.DateTime.validate("2017-12-31")
     assert inst.effectivePeriod.start == fhirtypes.DateTime.validate("2017-03-01")
@@ -623,14 +618,14 @@ def impl_activitydefinition_7(inst):
     assert inst.name == "ReferralPrimaryCareMentalHealth"
     assert inst.participant[0].type == "practitioner"
     assert inst.publisher == "Motive Medical Intelligence"
-    assert (
-        inst.relatedArtifact[0].display
-        == "Practice Guideline for the Treatment of Patients with Major Depressive Disorder"
+    assert inst.relatedArtifact[0].display == (
+        "Practice Guideline for the Treatment of Patients with Major "
+        "Depressive Disorder"
     )
     assert inst.relatedArtifact[0].type == "citation"
-    assert (
-        inst.relatedArtifact[0].url
-        == "http://psychiatryonline.org/pb/assets/raw/sitewide/practice_guidelines/guidelines/mdd.pdf"
+    assert inst.relatedArtifact[0].url == (
+        "http://psychiatryonline.org/pb/assets/raw/sitewide/practice_"
+        "guidelines/guidelines/mdd.pdf"
     )
     assert (
         inst.relatedArtifact[1].resource.reference
@@ -641,9 +636,9 @@ def impl_activitydefinition_7(inst):
     assert inst.text.status == "generated"
     assert inst.title == "Referral to Primary Care Mental Health"
     assert inst.topic[0].text == "Mental Health Referral"
-    assert (
-        inst.url
-        == "http://motivemi.com/artifacts/ActivityDefinition/referralPrimaryCareMentalHealth"
+    assert inst.url == (
+        "http://motivemi.com/artifacts/ActivityDefinition/referralPri"
+        "maryCareMentalHealth"
     )
     assert inst.useContext[0].code.code == "age"
     assert inst.useContext[0].code.system == "http://hl7.org/fhir/usage-context-type"
@@ -745,9 +740,9 @@ def impl_activitydefinition_8(inst):
     assert inst.id == "serum-dengue-virus-igm"
     assert inst.kind == "ProcedureRequest"
     assert inst.participant[0].type == "practitioner"
-    assert (
-        inst.relatedArtifact[0].display
-        == "Explanation of diagnostic tests for Dengue virus and which to use based on the patient’s clinical and exposure history."
+    assert inst.relatedArtifact[0].display == (
+        "Explanation of diagnostic tests for Dengue virus and which "
+        "to use based on the patient’s clinical and exposure history."
     )
     assert inst.relatedArtifact[0].type == "documentation"
     assert inst.status == "draft"
@@ -784,9 +779,8 @@ def impl_activitydefinition_9(inst):
     assert inst.description == "10 Blood collect tubes blue cap"
     assert inst.id == "blood-tubes-supply"
     assert inst.kind == "SupplyRequest"
-    assert (
-        inst.purpose
-        == "Describes a request for 10 Blood collection tubes with blue caps."
+    assert inst.purpose == (
+        "Describes a request for 10 Blood collection tubes with blue " "caps."
     )
     assert float(inst.quantity.value) == float(10)
     assert inst.status == "draft"

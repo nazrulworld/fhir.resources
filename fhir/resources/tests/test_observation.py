@@ -6,20 +6,22 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import observation
 
 
 def impl_observation_1(inst):
     assert inst.code.coding[0].code == "55233-1"
-    assert (
-        inst.code.coding[0].display
-        == "Genetic analysis master panel-- This is the parent OBR for the panel holding all of the associated observations that can be reported with a molecular genetics analysis result."
+    assert inst.code.coding[0].display == (
+        "Genetic analysis master panel-- This is the parent OBR for "
+        "the panel holding all of the associated observations that "
+        "can be reported with a molecular genetics analysis result."
     )
     assert inst.code.coding[0].system == "http://loinc.org"
-    assert (
-        inst.extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/observation-geneticsGene"
+    assert inst.extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/observation-" "geneticsGene"
     )
     assert inst.extension[0].valueCodeableConcept.coding[0].code == "3236"
     assert inst.extension[0].valueCodeableConcept.coding[0].display == "EGFR"
@@ -27,14 +29,13 @@ def impl_observation_1(inst):
         inst.extension[0].valueCodeableConcept.coding[0].system
         == "http://www.genenames.org"
     )
-    assert (
-        inst.extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/observation-geneticsDNARegionName"
+    assert inst.extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/observation-" "geneticsDNARegionName"
     )
     assert inst.extension[1].valueString == "Exon 21"
-    assert (
-        inst.extension[2].url
-        == "http://hl7.org/fhir/StructureDefinition/observation-geneticsGenomicSourceClass"
+    assert inst.extension[2].url == (
+        "http://hl7.org/fhir/StructureDefinition/observation-"
+        "geneticsGenomicSourceClass"
     )
     assert inst.extension[2].valueCodeableConcept.coding[0].code == "LA6684-0"
     assert inst.extension[2].valueCodeableConcept.coding[0].display == "somatic"
@@ -242,16 +243,16 @@ def test_observation_4(base_settings):
 
 def impl_observation_5(inst):
     assert inst.code.coding[0].code == "55233-1"
-    assert (
-        inst.code.coding[0].display
-        == "Genetic analysis master panel-- This is the parent OBR for the panel holding all of the associated observations that can be reported with a molecular genetics analysis result."
+    assert inst.code.coding[0].display == (
+        "Genetic analysis master panel-- This is the parent OBR for "
+        "the panel holding all of the associated observations that "
+        "can be reported with a molecular genetics analysis result."
     )
     assert inst.code.coding[0].system == "http://loinc.org"
     assert inst.derivedFrom[0].reference == "MolecularSequence/example-pgx-1"
     assert inst.derivedFrom[1].reference == "MolecularSequence/example-pgx-2"
-    assert (
-        inst.extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/observation-geneticsGene"
+    assert inst.extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/observation-" "geneticsGene"
     )
     assert inst.extension[0].valueCodeableConcept.coding[0].code == "2623"
     assert inst.extension[0].valueCodeableConcept.coding[0].display == "CYP2C9"
@@ -351,14 +352,13 @@ def test_observation_6(base_settings):
 
 def impl_observation_7(inst):
     assert inst.code.coding[0].code == "59041-4"
-    assert (
-        inst.code.coding[0].display
-        == "BRCA1+BRCA2 gene mutations tested for in Blood or Tissue by Molecular genetics method Nominal"
+    assert inst.code.coding[0].display == (
+        "BRCA1+BRCA2 gene mutations tested for in Blood or Tissue by "
+        "Molecular genetics method Nominal"
     )
     assert inst.code.coding[0].system == "http://loinc.org"
-    assert (
-        inst.extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/observation-geneticsGene"
+    assert inst.extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/observation-" "geneticsGene"
     )
     assert inst.extension[0].valueCodeableConcept.coding[0].code == "KX470182.1"
     assert inst.extension[0].valueCodeableConcept.coding[0].display == "BRCA"
@@ -366,9 +366,8 @@ def impl_observation_7(inst):
         inst.extension[0].valueCodeableConcept.coding[0].system
         == "https://www.ncbi.nlm.nih.gov/nuccore"
     )
-    assert (
-        inst.extension[1].url
-        == "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+    assert inst.extension[1].url == (
+        "http://hl7.org/fhir/us/core/StructureDefinition/us-core-" "ethnicity"
     )
     assert inst.extension[1].valueCodeableConcept.coding[0].code == "413581001"
     assert (

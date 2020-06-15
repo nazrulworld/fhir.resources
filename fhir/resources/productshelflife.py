@@ -31,19 +31,36 @@ class ProductShelfLife(backboneelement.BackboneElement):
         ...,
         alias="period",
         title="Type `Quantity` (represented as `dict` in JSON)",
-        description="The shelf life time period can be specified using a numerical value for the period of time and its unit of time measurement The unit of measurement shall be specified in accordance with ISO 11240 and the resulting terminology The symbol and the symbol identifier shall be used",
+        description=(
+            "The shelf life time period can be specified using a numerical value "
+            "for the period of time and its unit of time measurement The unit of "
+            "measurement shall be specified in accordance with ISO 11240 and the "
+            "resulting terminology The symbol and the symbol identifier shall be "
+            "used"
+        ),
     )
 
     specialPrecautionsForStorage: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="specialPrecautionsForStorage",
         title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Special precautions for storage, if any, can be specified using an appropriate controlled vocabulary The controlled term and the controlled term identifier shall be specified",
+        description=(
+            "Special precautions for storage, if any, can be specified using an "
+            "appropriate controlled vocabulary The controlled term and the "
+            "controlled term identifier shall be specified"
+        ),
     )
 
     type: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="type",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="This describes the shelf life, taking into account various scenarios such as shelf life of the packaged Medicinal Product itself, shelf life after transformation where necessary and shelf life after the first opening of a bottle, etc. The shelf life type shall be specified using an appropriate controlled vocabulary The controlled term and the controlled term identifier shall be specified",
+        description=(
+            "This describes the shelf life, taking into account various scenarios "
+            "such as shelf life of the packaged Medicinal Product itself, shelf "
+            "life after transformation where necessary and shelf life after the "
+            "first opening of a bottle, etc. The shelf life type shall be specified"
+            " using an appropriate controlled vocabulary The controlled term and "
+            "the controlled term identifier shall be specified"
+        ),
     )

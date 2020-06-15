@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import medicationdispense
 
@@ -36,9 +38,8 @@ def impl_medicationdispense_1(inst):
     assert inst.dosageInstruction[0].route.coding[0].display == "Intravenous"
     assert inst.dosageInstruction[0].route.coding[0].system == "http://snomed.info/sct"
     assert inst.dosageInstruction[0].sequence == 1
-    assert (
-        inst.dosageInstruction[0].text
-        == "1.8 mg/kg IV infusion over 30 minutes every 3 weeks for 16 cycles"
+    assert inst.dosageInstruction[0].text == (
+        "1.8 mg/kg IV infusion over 30 minutes every 3 weeks for 16 " "cycles"
     )
     assert inst.dosageInstruction[0].timing.repeat.count == 16
     assert inst.dosageInstruction[0].timing.repeat.frequency == 1
@@ -190,9 +191,9 @@ def impl_medicationdispense_3(inst):
     assert (
         inst.dosageInstruction[0].additionalInstruction[0].coding[0].code == "418914006"
     )
-    assert (
-        inst.dosageInstruction[0].additionalInstruction[0].coding[0].display
-        == "Warning. May cause drowsiness. If affected do not drive or operate machinery. Avoid alcoholic drink (qualifier value)"
+    assert inst.dosageInstruction[0].additionalInstruction[0].coding[0].display == (
+        "Warning. May cause drowsiness. If affected do not drive or "
+        "operate machinery. Avoid alcoholic drink (qualifier value)"
     )
     assert (
         inst.dosageInstruction[0].additionalInstruction[0].coding[0].system
@@ -495,9 +496,8 @@ def impl_medicationdispense_6(inst):
     assert inst.dosageInstruction[0].timing.repeat.periodUnit == "d"
     assert inst.id == "meddisp0327"
     assert inst.medicationCodeableConcept.coding[0].code == "746763"
-    assert (
-        inst.medicationCodeableConcept.coding[0].display
-        == "Proventil 0.09mg/actuat (Albuterol sulfate 0.108mg/actuat from mouthpiece)"
+    assert inst.medicationCodeableConcept.coding[0].display == (
+        "Proventil 0.09mg/actuat (Albuterol sulfate 0.108mg/actuat " "from mouthpiece)"
     )
     assert (
         inst.medicationCodeableConcept.coding[0].system
@@ -614,9 +614,9 @@ def impl_medicationdispense_8(inst):
     assert inst.daysSupply.system == "http://unitsofmeasure.org"
     assert inst.daysSupply.unit == "Day"
     assert float(inst.daysSupply.value) == float(1)
-    assert (
-        inst.dosageInstruction[0].additionalInstruction[0].text
-        == "Take along with one 2mg Coumadin tablet for a total daily dose of 7mg as prescribed by physician"
+    assert inst.dosageInstruction[0].additionalInstruction[0].text == (
+        "Take along with one 2mg Coumadin tablet for a total daily "
+        "dose of 7mg as prescribed by physician"
     )
     assert inst.dosageInstruction[0].doseAndRate[0].doseQuantity.code == "mg"
     assert (
@@ -694,9 +694,8 @@ def impl_medicationdispense_9(inst):
     assert (
         inst.dosageInstruction[0].additionalInstruction[0].coding[0].code == "418637003"
     )
-    assert (
-        inst.dosageInstruction[0].additionalInstruction[0].coding[0].display
-        == "Do not take with any other paracetamol products (qualifier value)"
+    assert inst.dosageInstruction[0].additionalInstruction[0].coding[0].display == (
+        "Do not take with any other paracetamol products (qualifier " "value)"
     )
     assert (
         inst.dosageInstruction[0].additionalInstruction[0].coding[0].system
@@ -745,9 +744,9 @@ def impl_medicationdispense_9(inst):
         720
     )
     assert inst.dosageInstruction[0].sequence == 1
-    assert (
-        inst.dosageInstruction[0].text
-        == "Insert two suppositories (240mg) rectally twice daily as needed for fever to a maximim of 6 per day"
+    assert inst.dosageInstruction[0].text == (
+        "Insert two suppositories (240mg) rectally twice daily as "
+        "needed for fever to a maximim of 6 per day"
     )
     assert inst.dosageInstruction[0].timing.repeat.frequency == 2
     assert float(inst.dosageInstruction[0].timing.repeat.period) == float(1)

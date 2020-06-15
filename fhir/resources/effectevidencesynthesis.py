@@ -39,7 +39,10 @@ class EffectEvidenceSynthesis(domainresource.DomainResource):
     certainty: ListType[fhirtypes.EffectEvidenceSynthesisCertaintyType] = Field(
         None,
         alias="certainty",
-        title="List of `EffectEvidenceSynthesisCertainty` items (represented as `dict` in JSON)",
+        title=(
+            "List of `EffectEvidenceSynthesisCertainty` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="How certain is the effect",
     )
 
@@ -83,7 +86,10 @@ class EffectEvidenceSynthesis(domainresource.DomainResource):
     ] = Field(
         None,
         alias="effectEstimate",
-        title="List of `EffectEvidenceSynthesisEffectEstimate` items (represented as `dict` in JSON)",
+        title=(
+            "List of `EffectEvidenceSynthesisEffectEstimate` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="What was the estimated effect",
     )
 
@@ -104,14 +110,20 @@ class EffectEvidenceSynthesis(domainresource.DomainResource):
     exposure: fhirtypes.ReferenceType = Field(
         ...,
         alias="exposure",
-        title="Type `Reference` referencing `EvidenceVariable` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `EvidenceVariable` (represented as `dict`"
+            " in JSON)"
+        ),
         description="What exposure?",
     )
 
     exposureAlternative: fhirtypes.ReferenceType = Field(
         ...,
         alias="exposureAlternative",
-        title="Type `Reference` referencing `EvidenceVariable` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `EvidenceVariable` (represented as `dict`"
+            " in JSON)"
+        ),
         description="What comparison exposure?",
     )
 
@@ -153,14 +165,20 @@ class EffectEvidenceSynthesis(domainresource.DomainResource):
     outcome: fhirtypes.ReferenceType = Field(
         ...,
         alias="outcome",
-        title="Type `Reference` referencing `EvidenceVariable` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `EvidenceVariable` (represented as `dict`"
+            " in JSON)"
+        ),
         description="What outcome?",
     )
 
     population: fhirtypes.ReferenceType = Field(
         ...,
         alias="population",
-        title="Type `Reference` referencing `EvidenceVariable` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `EvidenceVariable` (represented as `dict`"
+            " in JSON)"
+        ),
         description="What population?",
     )
 
@@ -183,7 +201,10 @@ class EffectEvidenceSynthesis(domainresource.DomainResource):
     ] = Field(
         None,
         alias="resultsByExposure",
-        title="List of `EffectEvidenceSynthesisResultsByExposure` items (represented as `dict` in JSON)",
+        title=(
+            "List of `EffectEvidenceSynthesisResultsByExposure` items (represented "
+            "as `dict` in JSON)"
+        ),
         description="What was the result per exposure?",
     )
 
@@ -197,7 +218,10 @@ class EffectEvidenceSynthesis(domainresource.DomainResource):
     sampleSize: fhirtypes.EffectEvidenceSynthesisSampleSizeType = Field(
         None,
         alias="sampleSize",
-        title="Type `EffectEvidenceSynthesisSampleSize` (represented as `dict` in JSON)",
+        title=(
+            "Type `EffectEvidenceSynthesisSampleSize` (represented as `dict` in "
+            "JSON)"
+        ),
         description="What sample size was involved?",
     )
 
@@ -233,14 +257,20 @@ class EffectEvidenceSynthesis(domainresource.DomainResource):
         None,
         alias="topic",
         title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="The category of the EffectEvidenceSynthesis, such as Education, Treatment, Assessment, etc.",
+        description=(
+            "The category of the EffectEvidenceSynthesis, such as Education, "
+            "Treatment, Assessment, etc."
+        ),
     )
 
     url: fhirtypes.Uri = Field(
         None,
         alias="url",
         title="Type `Uri` (represented as `dict` in JSON)",
-        description="Canonical identifier for this effect evidence synthesis, represented as a URI (globally unique)",
+        description=(
+            "Canonical identifier for this effect evidence synthesis, represented "
+            "as a URI (globally unique)"
+        ),
     )
 
     useContext: ListType[fhirtypes.UsageContextType] = Field(
@@ -270,7 +300,10 @@ class EffectEvidenceSynthesisCertainty(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="certaintySubcomponent",
-        title="List of `EffectEvidenceSynthesisCertaintyCertaintySubcomponent` items (represented as `dict` in JSON)",
+        title=(
+            "List of `EffectEvidenceSynthesisCertaintyCertaintySubcomponent` items "
+            "(represented as `dict` in JSON)"
+        ),
         description="A component that contributes to the overall certainty",
     )
 
@@ -341,7 +374,10 @@ class EffectEvidenceSynthesisEffectEstimate(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="precisionEstimate",
-        title="List of `EffectEvidenceSynthesisEffectEstimatePrecisionEstimate` items (represented as `dict` in JSON)",
+        title=(
+            "List of `EffectEvidenceSynthesisEffectEstimatePrecisionEstimate` items"
+            " (represented as `dict` in JSON)"
+        ),
         description="How precise the estimate is",
     )
 
@@ -439,7 +475,10 @@ class EffectEvidenceSynthesisResultsByExposure(backboneelement.BackboneElement):
     riskEvidenceSynthesis: fhirtypes.ReferenceType = Field(
         ...,
         alias="riskEvidenceSynthesis",
-        title="Type `Reference` referencing `RiskEvidenceSynthesis` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `RiskEvidenceSynthesis` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Risk evidence synthesis",
     )
 

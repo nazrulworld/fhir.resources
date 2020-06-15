@@ -48,8 +48,14 @@ class MedicinalProductContraindication(domainresource.DomainResource):
     ] = Field(
         None,
         alias="otherTherapy",
-        title="List of `MedicinalProductContraindicationOtherTherapy` items (represented as `dict` in JSON)",
-        description="Information about the use of the medicinal product in relation to other therapies described as part of the indication",
+        title=(
+            "List of `MedicinalProductContraindicationOtherTherapy` items "
+            "(represented as `dict` in JSON)"
+        ),
+        description=(
+            "Information about the use of the medicinal product in relation to "
+            "other therapies described as part of the indication"
+        ),
     )
 
     population: ListType[fhirtypes.PopulationType] = Field(
@@ -62,15 +68,24 @@ class MedicinalProductContraindication(domainresource.DomainResource):
     subject: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="subject",
-        title="List of `Reference` items referencing `MedicinalProduct, Medication` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `MedicinalProduct, Medication` "
+            "(represented as `dict` in JSON)"
+        ),
         description="The medication for which this is an indication",
     )
 
     therapeuticIndication: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="therapeuticIndication",
-        title="List of `Reference` items referencing `MedicinalProductIndication` (represented as `dict` in JSON)",
-        description="Information about the use of the medicinal product in relation to other therapies as part of the indication",
+        title=(
+            "List of `Reference` items referencing `MedicinalProductIndication` "
+            "(represented as `dict` in JSON)"
+        ),
+        description=(
+            "Information about the use of the medicinal product in relation to "
+            "other therapies as part of the indication"
+        ),
     )
 
 
@@ -85,7 +100,11 @@ class MedicinalProductContraindicationOtherTherapy(backboneelement.BackboneEleme
         None,
         alias="medicationCodeableConcept",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Reference to a specific medication (active substance, medicinal product or class of products) as part of an indication or contraindication",
+        description=(
+            "Reference to a specific medication (active substance, medicinal "
+            "product or class of products) as part of an indication or "
+            "contraindication"
+        ),
         one_of_many="medication",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
     )
@@ -93,8 +112,15 @@ class MedicinalProductContraindicationOtherTherapy(backboneelement.BackboneEleme
     medicationReference: fhirtypes.ReferenceType = Field(
         None,
         alias="medicationReference",
-        title="Type `Reference` referencing `MedicinalProduct, Medication, Substance, SubstanceSpecification` (represented as `dict` in JSON)",
-        description="Reference to a specific medication (active substance, medicinal product or class of products) as part of an indication or contraindication",
+        title=(
+            "Type `Reference` referencing `MedicinalProduct, Medication, Substance,"
+            " SubstanceSpecification` (represented as `dict` in JSON)"
+        ),
+        description=(
+            "Reference to a specific medication (active substance, medicinal "
+            "product or class of products) as part of an indication or "
+            "contraindication"
+        ),
         one_of_many="medication",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
     )
@@ -103,7 +129,10 @@ class MedicinalProductContraindicationOtherTherapy(backboneelement.BackboneEleme
         ...,
         alias="therapyRelationshipType",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The type of relationship between the medicinal product indication or contraindication and another therapy",
+        description=(
+            "The type of relationship between the medicinal product indication or "
+            "contraindication and another therapy"
+        ),
     )
 
     @root_validator(pre=True)
@@ -121,7 +150,7 @@ class MedicinalProductContraindicationOtherTherapy(backboneelement.BackboneEleme
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "medication": ["medicationCodeableConcept", "medicationReference",],
+            "medication": ["medicationCodeableConcept", "medicationReference"]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

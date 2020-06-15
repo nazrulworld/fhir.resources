@@ -47,8 +47,14 @@ class RelatedPerson(domainresource.DomainResource):
     communication: ListType[fhirtypes.RelatedPersonCommunicationType] = Field(
         None,
         alias="communication",
-        title="List of `RelatedPersonCommunication` items (represented as `dict` in JSON)",
-        description="A language which may be used to communicate with about the patient\u0027s health",
+        title=(
+            "List of `RelatedPersonCommunication` items (represented as `dict` in "
+            "JSON)"
+        ),
+        description=(
+            "A language which may be used to communicate with about the patient\u0027s "
+            "health"
+        ),
     )
 
     gender: fhirtypes.Code = Field(
@@ -118,7 +124,10 @@ class RelatedPersonCommunication(backboneelement.BackboneElement):
         ...,
         alias="language",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The language which can be used to communicate with the patient about his or her health",
+        description=(
+            "The language which can be used to communicate with the patient about "
+            "his or her health"
+        ),
     )
 
     preferred: bool = Field(

@@ -43,7 +43,10 @@ class HealthcareService(domainresource.DomainResource):
     availableTime: ListType[fhirtypes.HealthcareServiceAvailableTimeType] = Field(
         None,
         alias="availableTime",
-        title="List of `HealthcareServiceAvailableTime` items (represented as `dict` in JSON)",
+        title=(
+            "List of `HealthcareServiceAvailableTime` items (represented as `dict` "
+            "in JSON)"
+        ),
         description="Times the Service Site is available",
     )
 
@@ -65,7 +68,9 @@ class HealthcareService(domainresource.DomainResource):
         None,
         alias="comment",
         title="Type `String` (represented as `dict` in JSON)",
-        description="Additional description and/or any specific issues not covered elsewhere",
+        description=(
+            "Additional description and/or any specific issues not covered " "elsewhere"
+        ),
     )
 
     communication: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -78,29 +83,44 @@ class HealthcareService(domainresource.DomainResource):
     coverageArea: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="coverageArea",
-        title="List of `Reference` items referencing `Location` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Location` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Location(s) service is intended for/available to",
     )
 
     eligibility: ListType[fhirtypes.HealthcareServiceEligibilityType] = Field(
         None,
         alias="eligibility",
-        title="List of `HealthcareServiceEligibility` items (represented as `dict` in JSON)",
+        title=(
+            "List of `HealthcareServiceEligibility` items (represented as `dict` in"
+            " JSON)"
+        ),
         description="Specific eligibility requirements required to use the service",
     )
 
     endpoint: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="endpoint",
-        title="List of `Reference` items referencing `Endpoint` (represented as `dict` in JSON)",
-        description="Technical endpoints providing access to electronic services operated for the healthcare service",
+        title=(
+            "List of `Reference` items referencing `Endpoint` (represented as "
+            "`dict` in JSON)"
+        ),
+        description=(
+            "Technical endpoints providing access to electronic services operated "
+            "for the healthcare service"
+        ),
     )
 
     extraDetails: fhirtypes.Markdown = Field(
         None,
         alias="extraDetails",
         title="Type `Markdown` (represented as `dict` in JSON)",
-        description="Extra details about the service that can\u0027t be placed in the other fields",
+        description=(
+            "Extra details about the service that can\u0027t be placed in the other "
+            "fields"
+        ),
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -113,7 +133,10 @@ class HealthcareService(domainresource.DomainResource):
     location: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="location",
-        title="List of `Reference` items referencing `Location` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Location` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Location(s) where service may be provided",
     )
 
@@ -127,7 +150,10 @@ class HealthcareService(domainresource.DomainResource):
     notAvailable: ListType[fhirtypes.HealthcareServiceNotAvailableType] = Field(
         None,
         alias="notAvailable",
-        title="List of `HealthcareServiceNotAvailable` items (represented as `dict` in JSON)",
+        title=(
+            "List of `HealthcareServiceNotAvailable` items (represented as `dict` "
+            "in JSON)"
+        ),
         description="Not available during this time due to provided reason",
     )
 
@@ -148,7 +174,10 @@ class HealthcareService(domainresource.DomainResource):
     providedBy: fhirtypes.ReferenceType = Field(
         None,
         alias="providedBy",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Organization that provides this service",
     )
 

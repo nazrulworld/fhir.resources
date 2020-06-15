@@ -25,7 +25,10 @@ class MedicinalProductIndication(domainresource.DomainResource):
         None,
         alias="comorbidity",
         title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Comorbidity (concurrent condition) or co-infection as part of the indication",
+        description=(
+            "Comorbidity (concurrent condition) or co-infection as part of the "
+            "indication"
+        ),
     )
 
     diseaseStatus: fhirtypes.CodeableConceptType = Field(
@@ -61,8 +64,14 @@ class MedicinalProductIndication(domainresource.DomainResource):
     ] = Field(
         None,
         alias="otherTherapy",
-        title="List of `MedicinalProductIndicationOtherTherapy` items (represented as `dict` in JSON)",
-        description="Information about the use of the medicinal product in relation to other therapies described as part of the indication",
+        title=(
+            "List of `MedicinalProductIndicationOtherTherapy` items (represented as"
+            " `dict` in JSON)"
+        ),
+        description=(
+            "Information about the use of the medicinal product in relation to "
+            "other therapies described as part of the indication"
+        ),
     )
 
     population: ListType[fhirtypes.PopulationType] = Field(
@@ -75,14 +84,20 @@ class MedicinalProductIndication(domainresource.DomainResource):
     subject: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="subject",
-        title="List of `Reference` items referencing `MedicinalProduct, Medication` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `MedicinalProduct, Medication` "
+            "(represented as `dict` in JSON)"
+        ),
         description="The medication for which this is an indication",
     )
 
     undesirableEffect: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="undesirableEffect",
-        title="List of `Reference` items referencing `MedicinalProductUndesirableEffect` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing "
+            "`MedicinalProductUndesirableEffect` (represented as `dict` in JSON)"
+        ),
         description="Describe the undesirable effects of the medicinal product",
     )
 
@@ -98,7 +113,11 @@ class MedicinalProductIndicationOtherTherapy(backboneelement.BackboneElement):
         None,
         alias="medicationCodeableConcept",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Reference to a specific medication (active substance, medicinal product or class of products) as part of an indication or contraindication",
+        description=(
+            "Reference to a specific medication (active substance, medicinal "
+            "product or class of products) as part of an indication or "
+            "contraindication"
+        ),
         one_of_many="medication",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
     )
@@ -106,8 +125,15 @@ class MedicinalProductIndicationOtherTherapy(backboneelement.BackboneElement):
     medicationReference: fhirtypes.ReferenceType = Field(
         None,
         alias="medicationReference",
-        title="Type `Reference` referencing `MedicinalProduct, Medication, Substance, SubstanceSpecification` (represented as `dict` in JSON)",
-        description="Reference to a specific medication (active substance, medicinal product or class of products) as part of an indication or contraindication",
+        title=(
+            "Type `Reference` referencing `MedicinalProduct, Medication, Substance,"
+            " SubstanceSpecification` (represented as `dict` in JSON)"
+        ),
+        description=(
+            "Reference to a specific medication (active substance, medicinal "
+            "product or class of products) as part of an indication or "
+            "contraindication"
+        ),
         one_of_many="medication",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
     )
@@ -116,7 +142,10 @@ class MedicinalProductIndicationOtherTherapy(backboneelement.BackboneElement):
         ...,
         alias="therapyRelationshipType",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The type of relationship between the medicinal product indication or contraindication and another therapy",
+        description=(
+            "The type of relationship between the medicinal product indication or "
+            "contraindication and another therapy"
+        ),
     )
 
     @root_validator(pre=True)
@@ -134,7 +163,7 @@ class MedicinalProductIndicationOtherTherapy(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "medication": ["medicationCodeableConcept", "medicationReference",],
+            "medication": ["medicationCodeableConcept", "medicationReference"]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

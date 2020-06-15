@@ -30,7 +30,10 @@ class Task(domainresource.DomainResource):
     basedOn: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="basedOn",
-        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Resource` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Request fulfilled by this task",
     )
 
@@ -58,7 +61,10 @@ class Task(domainresource.DomainResource):
     encounter: fhirtypes.ReferenceType = Field(
         None,
         alias="encounter",
-        title="Type `Reference` referencing `Encounter` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Encounter` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Healthcare event during which this task originated",
     )
 
@@ -72,14 +78,18 @@ class Task(domainresource.DomainResource):
     focus: fhirtypes.ReferenceType = Field(
         None,
         alias="focus",
-        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        ),
         description="What task is acting on",
     )
 
     for_fhir: fhirtypes.ReferenceType = Field(
         None,
         alias="for",
-        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        ),
         description="Beneficiary of the Task",
     )
 
@@ -107,7 +117,10 @@ class Task(domainresource.DomainResource):
     instantiatesCanonical: fhirtypes.Canonical = Field(
         None,
         alias="instantiatesCanonical",
-        title="Type `Canonical` referencing `ActivityDefinition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Canonical` referencing `ActivityDefinition` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Formal definition of task",
     )
 
@@ -121,7 +134,10 @@ class Task(domainresource.DomainResource):
     insurance: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="insurance",
-        title="List of `Reference` items referencing `Coverage, ClaimResponse` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Coverage, ClaimResponse` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Associated insurance coverage",
     )
 
@@ -129,7 +145,10 @@ class Task(domainresource.DomainResource):
         ...,
         alias="intent",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="unknown | proposal | plan | order | original-order | reflex-order | filler-order | instance-order | option",
+        description=(
+            "unknown | proposal | plan | order | original-order | reflex-order | "
+            "filler-order | instance-order | option"
+        ),
     )
 
     lastModified: fhirtypes.DateTime = Field(
@@ -142,7 +161,9 @@ class Task(domainresource.DomainResource):
     location: fhirtypes.ReferenceType = Field(
         None,
         alias="location",
-        title="Type `Reference` referencing `Location` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Location` (represented as `dict` in " "JSON)"
+        ),
         description="Where task occurs",
     )
 
@@ -163,14 +184,21 @@ class Task(domainresource.DomainResource):
     owner: fhirtypes.ReferenceType = Field(
         None,
         alias="owner",
-        title="Type `Reference` referencing `Practitioner, PractitionerRole, Organization, CareTeam, HealthcareService, Patient, Device, RelatedPerson` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, PractitionerRole, "
+            "Organization, CareTeam, HealthcareService, Patient, Device, "
+            "RelatedPerson` (represented as `dict` in JSON)"
+        ),
         description="Responsible individual",
     )
 
     partOf: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="partOf",
-        title="List of `Reference` items referencing `Task` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Task` (represented as `dict` in"
+            " JSON)"
+        ),
         description="Composite task",
     )
 
@@ -198,21 +226,30 @@ class Task(domainresource.DomainResource):
     reasonReference: fhirtypes.ReferenceType = Field(
         None,
         alias="reasonReference",
-        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        ),
         description="Why task is needed",
     )
 
     relevantHistory: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="relevantHistory",
-        title="List of `Reference` items referencing `Provenance` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Provenance` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Key events in history of the Task",
     )
 
     requester: fhirtypes.ReferenceType = Field(
         None,
         alias="requester",
-        title="Type `Reference` referencing `Device, Organization, Patient, Practitioner, PractitionerRole, RelatedPerson` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Device, Organization, Patient, "
+            "Practitioner, PractitionerRole, RelatedPerson` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Who is asking for task to be done",
     )
 
@@ -768,7 +805,7 @@ class TaskInput(backboneelement.BackboneElement):
                 "valueUrl",
                 "valueUsageContext",
                 "valueUuid",
-            ],
+            ]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
@@ -1322,7 +1359,7 @@ class TaskOutput(backboneelement.BackboneElement):
                 "valueUrl",
                 "valueUsageContext",
                 "valueUuid",
-            ],
+            ]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
@@ -1365,7 +1402,11 @@ class TaskRestriction(backboneelement.BackboneElement):
     recipient: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="recipient",
-        title="List of `Reference` items referencing `Patient, Practitioner, PractitionerRole, RelatedPerson, Group, Organization` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Patient, Practitioner, "
+            "PractitionerRole, RelatedPerson, Group, Organization` (represented as "
+            "`dict` in JSON)"
+        ),
         description="For whom is fulfillment sought?",
     )
 

@@ -33,7 +33,10 @@ class Practitioner(domainresource.DomainResource):
         None,
         alias="address",
         title="List of `Address` items (represented as `dict` in JSON)",
-        description="Address(es) of the practitioner that are not role specific (typically home address)",
+        description=(
+            "Address(es) of the practitioner that are not role specific (typically "
+            "home address)"
+        ),
     )
 
     birthDate: fhirtypes.Date = Field(
@@ -81,8 +84,14 @@ class Practitioner(domainresource.DomainResource):
     qualification: ListType[fhirtypes.PractitionerQualificationType] = Field(
         None,
         alias="qualification",
-        title="List of `PractitionerQualification` items (represented as `dict` in JSON)",
-        description="Certification, licenses, or training pertaining to the provision of care",
+        title=(
+            "List of `PractitionerQualification` items (represented as `dict` in "
+            "JSON)"
+        ),
+        description=(
+            "Certification, licenses, or training pertaining to the provision of "
+            "care"
+        ),
     )
 
     telecom: ListType[fhirtypes.ContactPointType] = Field(
@@ -120,7 +129,10 @@ class PractitionerQualification(backboneelement.BackboneElement):
     issuer: fhirtypes.ReferenceType = Field(
         None,
         alias="issuer",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Organization that regulates and issues the qualification",
     )
 

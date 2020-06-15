@@ -25,21 +25,30 @@ class Encounter(domainresource.DomainResource):
     account: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="account",
-        title="List of `Reference` items referencing `Account` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Account` (represented as `dict`"
+            " in JSON)"
+        ),
         description="The set of accounts that may be used for billing for this Encounter",
     )
 
     appointment: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="appointment",
-        title="List of `Reference` items referencing `Appointment` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Appointment` (represented as "
+            "`dict` in JSON)"
+        ),
         description="The appointment that scheduled this encounter",
     )
 
     basedOn: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="basedOn",
-        title="List of `Reference` items referencing `ServiceRequest` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `ServiceRequest` (represented as"
+            " `dict` in JSON)"
+        ),
         description="The ServiceRequest that initiated this encounter",
     )
 
@@ -67,7 +76,10 @@ class Encounter(domainresource.DomainResource):
     episodeOfCare: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="episodeOfCare",
-        title="List of `Reference` items referencing `EpisodeOfCare` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `EpisodeOfCare` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Episode(s) of care that this encounter should be recorded against",
     )
 
@@ -102,7 +114,10 @@ class Encounter(domainresource.DomainResource):
     partOf: fhirtypes.ReferenceType = Field(
         None,
         alias="partOf",
-        title="Type `Reference` referencing `Encounter` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Encounter` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Another Encounter this encounter is part of",
     )
 
@@ -137,14 +152,21 @@ class Encounter(domainresource.DomainResource):
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="reasonReference",
-        title="List of `Reference` items referencing `Condition, Procedure, Observation, ImmunizationRecommendation` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Condition, Procedure, "
+            "Observation, ImmunizationRecommendation` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Reason the encounter takes place (reference)",
     )
 
     serviceProvider: fhirtypes.ReferenceType = Field(
         None,
         alias="serviceProvider",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="The organization (facility) responsible for this encounter",
     )
 
@@ -159,7 +181,10 @@ class Encounter(domainresource.DomainResource):
         ...,
         alias="status",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="planned | arrived | triaged | in-progress | onleave | finished | cancelled +",
+        description=(
+            "planned | arrived | triaged | in-progress | onleave | finished | "
+            "cancelled +"
+        ),
     )
 
     statusHistory: ListType[fhirtypes.EncounterStatusHistoryType] = Field(
@@ -172,7 +197,10 @@ class Encounter(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         None,
         alias="subject",
-        title="Type `Reference` referencing `Patient, Group` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Group` (represented as `dict` "
+            "in JSON)"
+        ),
         description="The patient or group present at the encounter",
     )
 
@@ -221,7 +249,10 @@ class EncounterDiagnosis(backboneelement.BackboneElement):
     condition: fhirtypes.ReferenceType = Field(
         ...,
         alias="condition",
-        title="Type `Reference` referencing `Condition, Procedure` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Condition, Procedure` (represented as "
+            "`dict` in JSON)"
+        ),
         description="The diagnosis or procedure relevant to the encounter",
     )
 
@@ -236,7 +267,10 @@ class EncounterDiagnosis(backboneelement.BackboneElement):
         None,
         alias="use",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Role that this diagnosis has within the encounter (e.g. admission, billing, discharge \u2026)",
+        description=(
+            "Role that this diagnosis has within the encounter (e.g. admission, "
+            "billing, discharge \u2026)"
+        ),
     )
 
 
@@ -256,7 +290,10 @@ class EncounterHospitalization(backboneelement.BackboneElement):
     destination: fhirtypes.ReferenceType = Field(
         None,
         alias="destination",
-        title="Type `Reference` referencing `Location, Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Location, Organization` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Location/organization to which the patient is discharged",
     )
 
@@ -277,7 +314,10 @@ class EncounterHospitalization(backboneelement.BackboneElement):
     origin: fhirtypes.ReferenceType = Field(
         None,
         alias="origin",
-        title="Type `Reference` referencing `Location, Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Location, Organization` (represented as "
+            "`dict` in JSON)"
+        ),
         description="The location/organization from which the patient came before admission",
     )
 
@@ -292,7 +332,10 @@ class EncounterHospitalization(backboneelement.BackboneElement):
         None,
         alias="reAdmission",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The type of hospital re-admission that has occurred (if any). If the value is absent, then this is not identified as a readmission",
+        description=(
+            "The type of hospital re-admission that has occurred (if any). If the "
+            "value is absent, then this is not identified as a readmission"
+        ),
     )
 
     specialArrangement: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -320,7 +363,9 @@ class EncounterLocation(backboneelement.BackboneElement):
     location: fhirtypes.ReferenceType = Field(
         ...,
         alias="location",
-        title="Type `Reference` referencing `Location` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Location` (represented as `dict` in " "JSON)"
+        ),
         description="Location the encounter takes place",
     )
 
@@ -335,7 +380,10 @@ class EncounterLocation(backboneelement.BackboneElement):
         None,
         alias="physicalType",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The physical type of the location (usually the level in the location hierachy - bed room ward etc.)",
+        description=(
+            "The physical type of the location (usually the level in the location "
+            "hierachy - bed room ward etc.)"
+        ),
     )
 
     status: fhirtypes.Code = Field(
@@ -356,7 +404,10 @@ class EncounterParticipant(backboneelement.BackboneElement):
     individual: fhirtypes.ReferenceType = Field(
         None,
         alias="individual",
-        title="Type `Reference` referencing `Practitioner, PractitionerRole, RelatedPerson` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, PractitionerRole, "
+            "RelatedPerson` (represented as `dict` in JSON)"
+        ),
         description="Persons involved in the encounter other than the patient",
     )
 
@@ -395,5 +446,8 @@ class EncounterStatusHistory(backboneelement.BackboneElement):
         ...,
         alias="status",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="planned | arrived | triaged | in-progress | onleave | finished | cancelled +",
+        description=(
+            "planned | arrived | triaged | in-progress | onleave | finished | "
+            "cancelled +"
+        ),
     )

@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import organizationaffiliation
 
@@ -135,14 +137,12 @@ def impl_organizationaffiliation_3(inst):
     assert inst.code[0].coding[0].userSelected is True
     assert inst.code[0].text == "Provider of rehabilitation services"
     assert inst.healthcareService[0].display == "Inpatient rehabilitation services"
-    assert (
-        inst.healthcareService[0].reference
-        == "http://hl7.org/fhir/ig/vhdir/HealthcareService/independencerehab1"
+    assert inst.healthcareService[0].reference == (
+        "http://hl7.org/fhir/ig/vhdir/HealthcareService/independencer" "ehab1"
     )
     assert inst.healthcareService[1].display == "Outpatient rehabilitation services"
-    assert (
-        inst.healthcareService[1].reference
-        == "http://hl7.org/fhir/ig/vhdir/HealthcareService/independencerehab2"
+    assert inst.healthcareService[1].reference == (
+        "http://hl7.org/fhir/ig/vhdir/HealthcareService/independencer" "ehab2"
     )
     assert inst.id == "orgrole1"
     assert inst.identifier[0].assigner.display == "Founding Fathers Memorial Hospital"

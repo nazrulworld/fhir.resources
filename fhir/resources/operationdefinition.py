@@ -31,7 +31,10 @@ class OperationDefinition(domainresource.DomainResource):
     base: fhirtypes.Canonical = Field(
         None,
         alias="base",
-        title="Type `Canonical` referencing `OperationDefinition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Canonical` referencing `OperationDefinition` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Marks this as a profile of the base",
     )
 
@@ -80,15 +83,15 @@ class OperationDefinition(domainresource.DomainResource):
     inputProfile: fhirtypes.Canonical = Field(
         None,
         alias="inputProfile",
-        title="Type `Canonical` referencing `StructureDefinition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Canonical` referencing `StructureDefinition` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Validation information for in parameters",
     )
 
     instance: bool = Field(
-        ...,
-        alias="instance",
-        title="Type `bool`",
-        description="Invoke on an instance?",
+        ..., alias="instance", title="Type `bool`", description="Invoke on an instance?"
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -115,21 +118,30 @@ class OperationDefinition(domainresource.DomainResource):
     outputProfile: fhirtypes.Canonical = Field(
         None,
         alias="outputProfile",
-        title="Type `Canonical` referencing `StructureDefinition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Canonical` referencing `StructureDefinition` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Validation information for out parameters",
     )
 
     overload: ListType[fhirtypes.OperationDefinitionOverloadType] = Field(
         None,
         alias="overload",
-        title="List of `OperationDefinitionOverload` items (represented as `dict` in JSON)",
+        title=(
+            "List of `OperationDefinitionOverload` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Define overloaded variants for when  generating code",
     )
 
     parameter: ListType[fhirtypes.OperationDefinitionParameterType] = Field(
         None,
         alias="parameter",
-        title="List of `OperationDefinitionParameter` items (represented as `dict` in JSON)",
+        title=(
+            "List of `OperationDefinitionParameter` items (represented as `dict` in"
+            " JSON)"
+        ),
         description="Parameters for the operation/query",
     )
 
@@ -176,14 +188,17 @@ class OperationDefinition(domainresource.DomainResource):
     )
 
     type: bool = Field(
-        ..., alias="type", title="Type `bool`", description="Invoke at the type level?",
+        ..., alias="type", title="Type `bool`", description="Invoke at the type level?"
     )
 
     url: fhirtypes.Uri = Field(
         None,
         alias="url",
         title="Type `Uri` (represented as `dict` in JSON)",
-        description="Canonical identifier for this operation definition, represented as a URI (globally unique)",
+        description=(
+            "Canonical identifier for this operation definition, represented as a "
+            "URI (globally unique)"
+        ),
     )
 
     useContext: ListType[fhirtypes.UsageContextType] = Field(
@@ -235,7 +250,10 @@ class OperationDefinitionParameter(backboneelement.BackboneElement):
     binding: fhirtypes.OperationDefinitionParameterBindingType = Field(
         None,
         alias="binding",
-        title="Type `OperationDefinitionParameterBinding` (represented as `dict` in JSON)",
+        title=(
+            "Type `OperationDefinitionParameterBinding` (represented as `dict` in "
+            "JSON)"
+        ),
         description="ValueSet details if this is coded",
     )
 
@@ -270,7 +288,10 @@ class OperationDefinitionParameter(backboneelement.BackboneElement):
     part: ListType[fhirtypes.OperationDefinitionParameterType] = Field(
         None,
         alias="part",
-        title="List of `OperationDefinitionParameter` items (represented as `dict` in JSON)",
+        title=(
+            "List of `OperationDefinitionParameter` items (represented as `dict` in"
+            " JSON)"
+        ),
         description="Parts of a nested Parameter",
     )
 
@@ -279,7 +300,10 @@ class OperationDefinitionParameter(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="referencedFrom",
-        title="List of `OperationDefinitionParameterReferencedFrom` items (represented as `dict` in JSON)",
+        title=(
+            "List of `OperationDefinitionParameterReferencedFrom` items "
+            "(represented as `dict` in JSON)"
+        ),
         description="References to this parameter",
     )
 
@@ -287,13 +311,19 @@ class OperationDefinitionParameter(backboneelement.BackboneElement):
         None,
         alias="searchType",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="number | date | string | token | reference | composite | quantity | uri | special",
+        description=(
+            "number | date | string | token | reference | composite | quantity | "
+            "uri | special"
+        ),
     )
 
     targetProfile: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="targetProfile",
-        title="List of `Canonical` items referencing `StructureDefinition` (represented as `dict` in JSON)",
+        title=(
+            "List of `Canonical` items referencing `StructureDefinition` "
+            "(represented as `dict` in JSON)"
+        ),
         description="If type is Reference | canonical, allowed targets",
     )
 
@@ -330,7 +360,9 @@ class OperationDefinitionParameterBinding(backboneelement.BackboneElement):
     valueSet: fhirtypes.Canonical = Field(
         ...,
         alias="valueSet",
-        title="Type `Canonical` referencing `ValueSet` (represented as `dict` in JSON)",
+        title=(
+            "Type `Canonical` referencing `ValueSet` (represented as `dict` in " "JSON)"
+        ),
         description="Source of value set",
     )
 

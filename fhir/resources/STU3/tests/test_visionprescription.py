@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import visionprescription
 
@@ -66,9 +68,9 @@ def impl_visionprescription_1(inst):
         == "http://samplevisionreasoncodes.com"
     )
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Sample Contract Lens prescription</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Sample Contract '
+        "Lens prescription</div>"
     )
     assert inst.text.status == "generated"
 

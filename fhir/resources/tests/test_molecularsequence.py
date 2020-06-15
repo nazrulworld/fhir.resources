@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import molecularsequence
 
@@ -366,9 +368,9 @@ def impl_molecularsequence_7(inst):
     assert inst.referenceSeq.windowStart == 22125500
     assert inst.repository[0].name == "GA4GH API"
     assert inst.repository[0].type == "openapi"
-    assert (
-        inst.repository[0].url
-        == "http://grch37.rest.ensembl.org/ga4gh/variants/3:rs1333049?content-type=application/json"
+    assert inst.repository[0].url == (
+        "http://grch37.rest.ensembl.org/ga4gh/variants/3:rs1333049?co"
+        "ntent-type=application/json"
     )
     assert inst.repository[0].variantsetId == "3:rs1333049"
     assert inst.text.status == "generated"
@@ -440,9 +442,8 @@ def impl_molecularsequence_8(inst):
     assert inst.referenceSeq.windowStart == 10453
     assert inst.repository[0].name == "FDA"
     assert inst.repository[0].type == "login"
-    assert (
-        inst.repository[0].url
-        == "https://precision.fda.gov/files/file-Bx37ZK009P4bX5g3qjkFZV38"
+    assert inst.repository[0].url == (
+        "https://precision.fda.gov/files/file-" "Bx37ZK009P4bX5g3qjkFZV38"
     )
     assert inst.repository[0].variantsetId == "file-Bx37ZK009P4bX5g3qjkFZV38"
     assert inst.text.status == "generated"

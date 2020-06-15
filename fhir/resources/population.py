@@ -50,7 +50,10 @@ class Population(backboneelement.BackboneElement):
         None,
         alias="physiologicalCondition",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The existing physiological conditions of the specific population to which this applies",
+        description=(
+            "The existing physiological conditions of the specific population to "
+            "which this applies"
+        ),
     )
 
     race: fhirtypes.CodeableConceptType = Field(
@@ -74,9 +77,7 @@ class Population(backboneelement.BackboneElement):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "age": ["ageCodeableConcept", "ageRange",],
-        }
+        one_of_many_fields = {"age": ["ageCodeableConcept", "ageRange"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (

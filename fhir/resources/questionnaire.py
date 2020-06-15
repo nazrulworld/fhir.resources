@@ -62,7 +62,10 @@ class Questionnaire(domainresource.DomainResource):
     derivedFrom: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="derivedFrom",
-        title="List of `Canonical` items referencing `Questionnaire` (represented as `dict` in JSON)",
+        title=(
+            "List of `Canonical` items referencing `Questionnaire` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Instantiates protocol or definition",
     )
 
@@ -161,7 +164,10 @@ class Questionnaire(domainresource.DomainResource):
         None,
         alias="url",
         title="Type `Uri` (represented as `dict` in JSON)",
-        description="Canonical identifier for this questionnaire, represented as a URI (globally unique)",
+        description=(
+            "Canonical identifier for this questionnaire, represented as a URI "
+            "(globally unique)"
+        ),
     )
 
     useContext: ListType[fhirtypes.UsageContextType] = Field(
@@ -190,14 +196,19 @@ class QuestionnaireItem(backboneelement.BackboneElement):
     answerOption: ListType[fhirtypes.QuestionnaireItemAnswerOptionType] = Field(
         None,
         alias="answerOption",
-        title="List of `QuestionnaireItemAnswerOption` items (represented as `dict` in JSON)",
+        title=(
+            "List of `QuestionnaireItemAnswerOption` items (represented as `dict` "
+            "in JSON)"
+        ),
         description="Permitted answer",
     )
 
     answerValueSet: fhirtypes.Canonical = Field(
         None,
         alias="answerValueSet",
-        title="Type `Canonical` referencing `ValueSet` (represented as `dict` in JSON)",
+        title=(
+            "Type `Canonical` referencing `ValueSet` (represented as `dict` in " "JSON)"
+        ),
         description="Valueset containing permitted answers",
     )
 
@@ -225,14 +236,20 @@ class QuestionnaireItem(backboneelement.BackboneElement):
     enableWhen: ListType[fhirtypes.QuestionnaireItemEnableWhenType] = Field(
         None,
         alias="enableWhen",
-        title="List of `QuestionnaireItemEnableWhen` items (represented as `dict` in JSON)",
+        title=(
+            "List of `QuestionnaireItemEnableWhen` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Only allow data when",
     )
 
     initial: ListType[fhirtypes.QuestionnaireItemInitialType] = Field(
         None,
         alias="initial",
-        title="List of `QuestionnaireItemInitial` items (represented as `dict` in JSON)",
+        title=(
+            "List of `QuestionnaireItemInitial` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Initial value(s) when item is first rendered",
     )
 
@@ -344,7 +361,9 @@ class QuestionnaireItemAnswerOption(backboneelement.BackboneElement):
     valueReference: fhirtypes.ReferenceType = Field(
         None,
         alias="valueReference",
-        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        ),
         description="Answer value",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
@@ -390,7 +409,7 @@ class QuestionnaireItemAnswerOption(backboneelement.BackboneElement):
                 "valueReference",
                 "valueString",
                 "valueTime",
-            ],
+            ]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
@@ -489,7 +508,9 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
     answerReference: fhirtypes.ReferenceType = Field(
         None,
         alias="answerReference",
-        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        ),
         description="Value for question comparison based on operator",
         one_of_many="answer",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
@@ -553,7 +574,7 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
                 "answerReference",
                 "answerString",
                 "answerTime",
-            ],
+            ]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
@@ -660,7 +681,9 @@ class QuestionnaireItemInitial(backboneelement.BackboneElement):
     valueReference: fhirtypes.ReferenceType = Field(
         None,
         alias="valueReference",
-        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        ),
         description="Actual value for initializing the question",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
@@ -721,7 +744,7 @@ class QuestionnaireItemInitial(backboneelement.BackboneElement):
                 "valueString",
                 "valueTime",
                 "valueUri",
-            ],
+            ]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

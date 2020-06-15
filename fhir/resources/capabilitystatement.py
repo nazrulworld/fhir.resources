@@ -54,7 +54,10 @@ class CapabilityStatement(domainresource.DomainResource):
     document: ListType[fhirtypes.CapabilityStatementDocumentType] = Field(
         None,
         alias="document",
-        title="List of `CapabilityStatementDocument` items (represented as `dict` in JSON)",
+        title=(
+            "List of `CapabilityStatementDocument` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Document definition",
     )
 
@@ -82,28 +85,40 @@ class CapabilityStatement(domainresource.DomainResource):
     implementation: fhirtypes.CapabilityStatementImplementationType = Field(
         None,
         alias="implementation",
-        title="Type `CapabilityStatementImplementation` (represented as `dict` in JSON)",
+        title=(
+            "Type `CapabilityStatementImplementation` (represented as `dict` in "
+            "JSON)"
+        ),
         description="If this describes a specific instance",
     )
 
     implementationGuide: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="implementationGuide",
-        title="List of `Canonical` items referencing `ImplementationGuide` (represented as `dict` in JSON)",
+        title=(
+            "List of `Canonical` items referencing `ImplementationGuide` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Implementation guides supported",
     )
 
     imports: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="imports",
-        title="List of `Canonical` items referencing `CapabilityStatement` (represented as `dict` in JSON)",
+        title=(
+            "List of `Canonical` items referencing `CapabilityStatement` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Canonical URL of another capability statement this adds to",
     )
 
     instantiates: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="instantiates",
-        title="List of `Canonical` items referencing `CapabilityStatement` (represented as `dict` in JSON)",
+        title=(
+            "List of `Canonical` items referencing `CapabilityStatement` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Canonical URL of another capability statement this implements",
     )
 
@@ -124,7 +139,10 @@ class CapabilityStatement(domainresource.DomainResource):
     messaging: ListType[fhirtypes.CapabilityStatementMessagingType] = Field(
         None,
         alias="messaging",
-        title="List of `CapabilityStatementMessaging` items (represented as `dict` in JSON)",
+        title=(
+            "List of `CapabilityStatementMessaging` items (represented as `dict` in"
+            " JSON)"
+        ),
         description="If messaging is supported",
     )
 
@@ -159,7 +177,9 @@ class CapabilityStatement(domainresource.DomainResource):
     rest: ListType[fhirtypes.CapabilityStatementRestType] = Field(
         None,
         alias="rest",
-        title="List of `CapabilityStatementRest` items (represented as `dict` in JSON)",
+        title=(
+            "List of `CapabilityStatementRest` items (represented as `dict` in " "JSON)"
+        ),
         description="If the endpoint is a RESTful one",
     )
 
@@ -188,7 +208,10 @@ class CapabilityStatement(domainresource.DomainResource):
         None,
         alias="url",
         title="Type `Uri` (represented as `dict` in JSON)",
-        description="Canonical identifier for this capability statement, represented as a URI (globally unique)",
+        description=(
+            "Canonical identifier for this capability statement, represented as a "
+            "URI (globally unique)"
+        ),
     )
 
     useContext: ListType[fhirtypes.UsageContextType] = Field(
@@ -230,7 +253,10 @@ class CapabilityStatementDocument(backboneelement.BackboneElement):
     profile: fhirtypes.Canonical = Field(
         ...,
         alias="profile",
-        title="Type `Canonical` referencing `StructureDefinition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Canonical` referencing `StructureDefinition` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Constraint on the resources used in the document",
     )
 
@@ -247,7 +273,10 @@ class CapabilityStatementImplementation(backboneelement.BackboneElement):
     custodian: fhirtypes.ReferenceType = Field(
         None,
         alias="custodian",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Organization that manages the data",
     )
 
@@ -283,7 +312,10 @@ class CapabilityStatementMessaging(backboneelement.BackboneElement):
     endpoint: ListType[fhirtypes.CapabilityStatementMessagingEndpointType] = Field(
         None,
         alias="endpoint",
-        title="List of `CapabilityStatementMessagingEndpoint` items (represented as `dict` in JSON)",
+        title=(
+            "List of `CapabilityStatementMessagingEndpoint` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Where messages should be sent",
     )
 
@@ -299,7 +331,10 @@ class CapabilityStatementMessaging(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="supportedMessage",
-        title="List of `CapabilityStatementMessagingSupportedMessage` items (represented as `dict` in JSON)",
+        title=(
+            "List of `CapabilityStatementMessagingSupportedMessage` items "
+            "(represented as `dict` in JSON)"
+        ),
         description="Messages supported by this system",
     )
 
@@ -338,7 +373,10 @@ class CapabilityStatementMessagingSupportedMessage(backboneelement.BackboneEleme
     definition: fhirtypes.Canonical = Field(
         ...,
         alias="definition",
-        title="Type `Canonical` referencing `MessageDefinition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Canonical` referencing `MessageDefinition` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Message supported by this system",
     )
 
@@ -360,7 +398,10 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
     compartment: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="compartment",
-        title="List of `Canonical` items referencing `CompartmentDefinition` (represented as `dict` in JSON)",
+        title=(
+            "List of `Canonical` items referencing `CompartmentDefinition` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Compartments served/used by system",
     )
 
@@ -374,7 +415,10 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
     interaction: ListType[fhirtypes.CapabilityStatementRestInteractionType] = Field(
         None,
         alias="interaction",
-        title="List of `CapabilityStatementRestInteraction` items (represented as `dict` in JSON)",
+        title=(
+            "List of `CapabilityStatementRestInteraction` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="What operations are supported?",
     )
 
@@ -388,14 +432,20 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
     operation: ListType[fhirtypes.CapabilityStatementRestResourceOperationType] = Field(
         None,
         alias="operation",
-        title="List of `CapabilityStatementRestResourceOperation` items (represented as `dict` in JSON)",
+        title=(
+            "List of `CapabilityStatementRestResourceOperation` items (represented "
+            "as `dict` in JSON)"
+        ),
         description="Definition of a system level operation",
     )
 
     resource: ListType[fhirtypes.CapabilityStatementRestResourceType] = Field(
         None,
         alias="resource",
-        title="List of `CapabilityStatementRestResource` items (represented as `dict` in JSON)",
+        title=(
+            "List of `CapabilityStatementRestResource` items (represented as `dict`"
+            " in JSON)"
+        ),
         description="Resource served on the REST interface",
     )
 
@@ -404,7 +454,10 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="searchParam",
-        title="List of `CapabilityStatementRestResourceSearchParam` items (represented as `dict` in JSON)",
+        title=(
+            "List of `CapabilityStatementRestResourceSearchParam` items "
+            "(represented as `dict` in JSON)"
+        ),
         description="Search parameters for searching all resources",
     )
 
@@ -457,7 +510,9 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
         None,
         alias="conditionalDelete",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="not-supported | single | multiple - how conditional delete is supported",
+        description=(
+            "not-supported | single | multiple - how conditional delete is " "supported"
+        ),
     )
 
     conditionalRead: fhirtypes.Code = Field(
@@ -486,21 +541,30 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="interaction",
-        title="List of `CapabilityStatementRestResourceInteraction` items (represented as `dict` in JSON)",
+        title=(
+            "List of `CapabilityStatementRestResourceInteraction` items "
+            "(represented as `dict` in JSON)"
+        ),
         description="What operations are supported?",
     )
 
     operation: ListType[fhirtypes.CapabilityStatementRestResourceOperationType] = Field(
         None,
         alias="operation",
-        title="List of `CapabilityStatementRestResourceOperation` items (represented as `dict` in JSON)",
+        title=(
+            "List of `CapabilityStatementRestResourceOperation` items (represented "
+            "as `dict` in JSON)"
+        ),
         description="Definition of a resource operation",
     )
 
     profile: fhirtypes.Canonical = Field(
         None,
         alias="profile",
-        title="Type `Canonical` referencing `StructureDefinition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Canonical` referencing `StructureDefinition` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Base System profile for all uses of resource",
     )
 
@@ -530,7 +594,10 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="searchParam",
-        title="List of `CapabilityStatementRestResourceSearchParam` items (represented as `dict` in JSON)",
+        title=(
+            "List of `CapabilityStatementRestResourceSearchParam` items "
+            "(represented as `dict` in JSON)"
+        ),
         description="Search parameters supported by implementation",
     )
 
@@ -544,7 +611,10 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
     supportedProfile: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="supportedProfile",
-        title="List of `Canonical` items referencing `StructureDefinition` (represented as `dict` in JSON)",
+        title=(
+            "List of `Canonical` items referencing `StructureDefinition` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Profiles for use cases supported",
     )
 
@@ -581,7 +651,10 @@ class CapabilityStatementRestResourceInteraction(backboneelement.BackboneElement
         ...,
         alias="code",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="read | vread | update | patch | delete | history-instance | history-type | create | search-type",
+        description=(
+            "read | vread | update | patch | delete | history-instance | history-"
+            "type | create | search-type"
+        ),
     )
 
     documentation: fhirtypes.Markdown = Field(
@@ -604,7 +677,10 @@ class CapabilityStatementRestResourceOperation(backboneelement.BackboneElement):
     definition: fhirtypes.Canonical = Field(
         ...,
         alias="definition",
-        title="Type `Canonical` referencing `OperationDefinition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Canonical` referencing `OperationDefinition` (represented as "
+            "`dict` in JSON)"
+        ),
         description="The defined operation/query",
     )
 
@@ -635,7 +711,10 @@ class CapabilityStatementRestResourceSearchParam(backboneelement.BackboneElement
     definition: fhirtypes.Canonical = Field(
         None,
         alias="definition",
-        title="Type `Canonical` referencing `SearchParameter` (represented as `dict` in JSON)",
+        title=(
+            "Type `Canonical` referencing `SearchParameter` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Source of definition for parameter",
     )
 
@@ -657,7 +736,10 @@ class CapabilityStatementRestResourceSearchParam(backboneelement.BackboneElement
         ...,
         alias="type",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="number | date | string | token | reference | composite | quantity | uri | special",
+        description=(
+            "number | date | string | token | reference | composite | quantity | "
+            "uri | special"
+        ),
     )
 
 

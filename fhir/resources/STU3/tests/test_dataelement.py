@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import dataelement
 
@@ -16,17 +18,15 @@ def impl_dataelement_1(inst):
     assert inst.contained[2].id == "2179414-cm"
     assert inst.date == fhirtypes.DateTime.validate("2016-01-01")
     assert inst.element[0].binding.strength == "required"
-    assert (
-        inst.element[0].binding.valueSetReference.extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/11179-permitted-value-valueset"
+    assert inst.element[0].binding.valueSetReference.extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/11179-permitted-" "value-valueset"
     )
     assert (
         inst.element[0].binding.valueSetReference.extension[0].valueReference.reference
         == "#2179414-permitted"
     )
-    assert (
-        inst.element[0].binding.valueSetReference.extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/11179-permitted-value-conceptmap"
+    assert inst.element[0].binding.valueSetReference.extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/11179-permitted-" "value-conceptmap"
     )
     assert (
         inst.element[0].binding.valueSetReference.extension[1].valueReference.reference
@@ -42,9 +42,8 @@ def impl_dataelement_1(inst):
         == "http://hl7.org/fhir/StructureDefinition/minLength"
     )
     assert inst.element[0].extension[0].valueInteger == 1
-    assert (
-        inst.element[0].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/elementdefinition-question"
+    assert inst.element[0].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/elementdefinition-" "question"
     )
     assert inst.element[0].extension[1].valueString == "Gender"
     assert inst.element[0].mapping[0].identity == "fhir"
@@ -90,19 +89,19 @@ def test_dataelement_1(base_settings):
 
 def impl_dataelement_2(inst):
     assert inst.element[0].alias[0] == "Protime, PT"
-    assert (
-        inst.element[0].comment
-        == "Used to screen the integrity of the extrinsic and common pathways of coagulation and to monitor warfarin anticoagulation. "
+    assert inst.element[0].comment == (
+        "Used to screen the integrity of the extrinsic and common "
+        "pathways of coagulation and to monitor warfarin "
+        "anticoagulation. "
     )
-    assert (
-        inst.element[0].definition
-        == "The PT test evaluates the extrinsic and common pathways of the coagulation cascade."
+    assert inst.element[0].definition == (
+        "The PT test evaluates the extrinsic and common pathways of "
+        "the coagulation cascade."
     )
     assert inst.element[0].example[0].label == "Simple"
     assert float(inst.element[0].example[0].valueDecimal) == float(10.0)
-    assert (
-        inst.element[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/elementdefinition-allowedUnits"
+    assert inst.element[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/elementdefinition-" "allowedUnits"
     )
     assert inst.element[0].extension[0].valueCodeableConcept.coding[0].code == "s"
     assert (
@@ -120,9 +119,9 @@ def impl_dataelement_2(inst):
     assert inst.element[0].mapping[0].identity == "loinc"
     assert inst.element[0].mapping[0].map == "5964-2"
     assert inst.element[0].path == "prothrombin"
-    assert (
-        inst.element[0].requirements
-        == "This test is orderable. A plasma specimen in a 3.2% sodium citrate blue top tube is required."
+    assert inst.element[0].requirements == (
+        "This test is orderable. A plasma specimen in a 3.2% sodium "
+        "citrate blue top tube is required."
     )
     assert inst.element[0].type[0].code == "decimal"
     assert inst.id == "prothrombin"

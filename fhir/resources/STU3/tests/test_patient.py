@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import patient
 
@@ -293,9 +295,8 @@ def impl_patient_7(inst):
     assert inst.identifier[0].value == "AB60001"
     assert inst.name[0].family == "BROOKS"
     assert inst.name[0].given[0] == "ALBERT"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Albert Brooks, Id: AB60001</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Albert Brooks, ' "Id: AB60001</div>"
     )
     assert inst.text.status == "generated"
 

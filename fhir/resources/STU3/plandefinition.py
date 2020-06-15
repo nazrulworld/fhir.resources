@@ -119,7 +119,10 @@ class PlanDefinition(domainresource.DomainResource):
     library: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="library",
-        title="List of `Reference` items referencing `Library` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Library` (represented as `dict`"
+            " in JSON)"
+        ),
         description="Logic used by the plan definition",
     )
 
@@ -239,14 +242,20 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
     condition: ListType[fhirtypes.PlanDefinitionActionConditionType] = Field(
         None,
         alias="condition",
-        title="List of `PlanDefinitionActionCondition` items (represented as `dict` in JSON)",
+        title=(
+            "List of `PlanDefinitionActionCondition` items (represented as `dict` "
+            "in JSON)"
+        ),
         description="Whether or not the action is applicable",
     )
 
     definition: fhirtypes.ReferenceType = Field(
         None,
         alias="definition",
-        title="Type `Reference` referencing `ActivityDefinition, PlanDefinition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `ActivityDefinition, PlanDefinition` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Description of the activity to be performed",
     )
 
@@ -267,7 +276,10 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
     dynamicValue: ListType[fhirtypes.PlanDefinitionActionDynamicValueType] = Field(
         None,
         alias="dynamicValue",
-        title="List of `PlanDefinitionActionDynamicValue` items (represented as `dict` in JSON)",
+        title=(
+            "List of `PlanDefinitionActionDynamicValue` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Dynamic aspects of the definition",
     )
 
@@ -309,7 +321,10 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
     participant: ListType[fhirtypes.PlanDefinitionActionParticipantType] = Field(
         None,
         alias="participant",
-        title="List of `PlanDefinitionActionParticipant` items (represented as `dict` in JSON)",
+        title=(
+            "List of `PlanDefinitionActionParticipant` items (represented as `dict`"
+            " in JSON)"
+        ),
         description="Who should participate in the action",
     )
 
@@ -330,7 +345,10 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
     relatedAction: ListType[fhirtypes.PlanDefinitionActionRelatedActionType] = Field(
         None,
         alias="relatedAction",
-        title="List of `PlanDefinitionActionRelatedAction` items (represented as `dict` in JSON)",
+        title=(
+            "List of `PlanDefinitionActionRelatedAction` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Relationship to another action",
     )
 
@@ -352,7 +370,10 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         None,
         alias="textEquivalent",
         title="Type `String` (represented as `dict` in JSON)",
-        description="Static text equivalent of the action, used if the dynamic aspects cannot be interpreted by the receiving system",
+        description=(
+            "Static text equivalent of the action, used if the dynamic aspects "
+            "cannot be interpreted by the receiving system"
+        ),
     )
 
     timingDateTime: fhirtypes.DateTime = Field(
@@ -410,7 +431,10 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
     transform: fhirtypes.ReferenceType = Field(
         None,
         alias="transform",
-        title="Type `Reference` referencing `StructureMap` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `StructureMap` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Transform to apply the template",
     )
 
@@ -449,7 +473,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
                 "timingPeriod",
                 "timingRange",
                 "timingTiming",
-            ],
+            ]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
@@ -609,7 +633,10 @@ class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
         ...,
         alias="relationship",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="before-start | before | before-end | concurrent-with-start | concurrent | concurrent-with-end | after-start | after | after-end",
+        description=(
+            "before-start | before | before-end | concurrent-with-start | "
+            "concurrent | concurrent-with-end | after-start | after | after-end"
+        ),
     )
 
     @root_validator(pre=True)
@@ -626,9 +653,7 @@ class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "offset": ["offsetDuration", "offsetRange",],
-        }
+        one_of_many_fields = {"offset": ["offsetDuration", "offsetRange"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -706,7 +731,10 @@ class PlanDefinitionGoal(backboneelement.BackboneElement):
     target: ListType[fhirtypes.PlanDefinitionGoalTargetType] = Field(
         None,
         alias="target",
-        title="List of `PlanDefinitionGoalTarget` items (represented as `dict` in JSON)",
+        title=(
+            "List of `PlanDefinitionGoalTarget` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Target outcome for the goal",
     )
 
@@ -774,7 +802,7 @@ class PlanDefinitionGoalTarget(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "detail": ["detailCodeableConcept", "detailQuantity", "detailRange",],
+            "detail": ["detailCodeableConcept", "detailQuantity", "detailRange"]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

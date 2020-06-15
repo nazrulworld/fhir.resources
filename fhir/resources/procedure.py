@@ -26,14 +26,20 @@ class Procedure(domainresource.DomainResource):
     asserter: fhirtypes.ReferenceType = Field(
         None,
         alias="asserter",
-        title="Type `Reference` referencing `Patient, RelatedPerson, Practitioner, PractitionerRole` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, RelatedPerson, Practitioner, "
+            "PractitionerRole` (represented as `dict` in JSON)"
+        ),
         description="Person who asserts this procedure",
     )
 
     basedOn: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="basedOn",
-        title="List of `Reference` items referencing `CarePlan, ServiceRequest` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `CarePlan, ServiceRequest` "
+            "(represented as `dict` in JSON)"
+        ),
         description="A request for this procedure",
     )
 
@@ -68,14 +74,20 @@ class Procedure(domainresource.DomainResource):
     complicationDetail: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="complicationDetail",
-        title="List of `Reference` items referencing `Condition` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Condition` (represented as "
+            "`dict` in JSON)"
+        ),
         description="A condition that is a result of the procedure",
     )
 
     encounter: fhirtypes.ReferenceType = Field(
         None,
         alias="encounter",
-        title="Type `Reference` referencing `Encounter` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Encounter` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Encounter created as part of",
     )
 
@@ -103,7 +115,11 @@ class Procedure(domainresource.DomainResource):
     instantiatesCanonical: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="instantiatesCanonical",
-        title="List of `Canonical` items referencing `PlanDefinition, ActivityDefinition, Measure, OperationDefinition, Questionnaire` (represented as `dict` in JSON)",
+        title=(
+            "List of `Canonical` items referencing `PlanDefinition, "
+            "ActivityDefinition, Measure, OperationDefinition, Questionnaire` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Instantiates FHIR protocol or definition",
     )
 
@@ -117,7 +133,9 @@ class Procedure(domainresource.DomainResource):
     location: fhirtypes.ReferenceType = Field(
         None,
         alias="location",
-        title="Type `Reference` referencing `Location` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Location` (represented as `dict` in " "JSON)"
+        ),
         description="Where the procedure happened",
     )
 
@@ -138,7 +156,10 @@ class Procedure(domainresource.DomainResource):
     partOf: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="partOf",
-        title="List of `Reference` items referencing `Procedure, Observation, MedicationAdministration` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Procedure, Observation, "
+            "MedicationAdministration` (represented as `dict` in JSON)"
+        ),
         description="Part of referenced event",
     )
 
@@ -204,21 +225,31 @@ class Procedure(domainresource.DomainResource):
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="reasonReference",
-        title="List of `Reference` items referencing `Condition, Observation, Procedure, DiagnosticReport, DocumentReference` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Condition, Observation, "
+            "Procedure, DiagnosticReport, DocumentReference` (represented as `dict`"
+            " in JSON)"
+        ),
         description="The justification that the procedure was performed",
     )
 
     recorder: fhirtypes.ReferenceType = Field(
         None,
         alias="recorder",
-        title="Type `Reference` referencing `Patient, RelatedPerson, Practitioner, PractitionerRole` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, RelatedPerson, Practitioner, "
+            "PractitionerRole` (represented as `dict` in JSON)"
+        ),
         description="Who recorded the procedure",
     )
 
     report: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="report",
-        title="List of `Reference` items referencing `DiagnosticReport, DocumentReference, Composition` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `DiagnosticReport, "
+            "DocumentReference, Composition` (represented as `dict` in JSON)"
+        ),
         description="Any report resulting from the procedure",
     )
 
@@ -226,7 +257,10 @@ class Procedure(domainresource.DomainResource):
         ...,
         alias="status",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="preparation | in-progress | not-done | on-hold | stopped | completed | entered-in-error | unknown",
+        description=(
+            "preparation | in-progress | not-done | on-hold | stopped | completed |"
+            " entered-in-error | unknown"
+        ),
     )
 
     statusReason: fhirtypes.CodeableConceptType = Field(
@@ -239,7 +273,10 @@ class Procedure(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         ...,
         alias="subject",
-        title="Type `Reference` referencing `Patient, Group` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Group` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Who the procedure was performed on",
     )
 
@@ -253,7 +290,10 @@ class Procedure(domainresource.DomainResource):
     usedReference: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="usedReference",
-        title="List of `Reference` items referencing `Device, Medication, Substance` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Device, Medication, Substance` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Items used during procedure",
     )
 
@@ -278,7 +318,7 @@ class Procedure(domainresource.DomainResource):
                 "performedPeriod",
                 "performedRange",
                 "performedString",
-            ],
+            ]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
@@ -336,7 +376,11 @@ class ProcedurePerformer(backboneelement.BackboneElement):
     actor: fhirtypes.ReferenceType = Field(
         ...,
         alias="actor",
-        title="Type `Reference` referencing `Practitioner, PractitionerRole, Organization, Patient, RelatedPerson, Device` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, PractitionerRole, "
+            "Organization, Patient, RelatedPerson, Device` (represented as `dict` "
+            "in JSON)"
+        ),
         description="The reference to the practitioner",
     )
 
@@ -350,6 +394,9 @@ class ProcedurePerformer(backboneelement.BackboneElement):
     onBehalfOf: fhirtypes.ReferenceType = Field(
         None,
         alias="onBehalfOf",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Organization the device or practitioner was acting for",
     )

@@ -32,14 +32,20 @@ class MedicinalProductPharmaceutical(domainresource.DomainResource):
     ] = Field(
         None,
         alias="characteristics",
-        title="List of `MedicinalProductPharmaceuticalCharacteristics` items (represented as `dict` in JSON)",
+        title=(
+            "List of `MedicinalProductPharmaceuticalCharacteristics` items "
+            "(represented as `dict` in JSON)"
+        ),
         description="Characteristics e.g. a products onset of action",
     )
 
     device: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="device",
-        title="List of `Reference` items referencing `DeviceDefinition` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `DeviceDefinition` (represented "
+            "as `dict` in JSON)"
+        ),
         description="Accompanying device",
     )
 
@@ -53,7 +59,10 @@ class MedicinalProductPharmaceutical(domainresource.DomainResource):
     ingredient: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="ingredient",
-        title="List of `Reference` items referencing `MedicinalProductIngredient` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `MedicinalProductIngredient` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Ingredient",
     )
 
@@ -62,8 +71,14 @@ class MedicinalProductPharmaceutical(domainresource.DomainResource):
     ] = Field(
         ...,
         alias="routeOfAdministration",
-        title="List of `MedicinalProductPharmaceuticalRouteOfAdministration` items (represented as `dict` in JSON)",
-        description="The path by which the pharmaceutical product is taken into or makes contact with the body",
+        title=(
+            "List of `MedicinalProductPharmaceuticalRouteOfAdministration` items "
+            "(represented as `dict` in JSON)"
+        ),
+        description=(
+            "The path by which the pharmaceutical product is taken into or makes "
+            "contact with the body"
+        ),
     )
 
     unitOfPresentation: fhirtypes.CodeableConceptType = Field(
@@ -117,35 +132,54 @@ class MedicinalProductPharmaceuticalRouteOfAdministration(
         None,
         alias="firstDose",
         title="Type `Quantity` (represented as `dict` in JSON)",
-        description="The first dose (dose quantity) administered in humans can be specified, for a product under investigation, using a numerical value and its unit of measurement",
+        description=(
+            "The first dose (dose quantity) administered in humans can be "
+            "specified, for a product under investigation, using a numerical value "
+            "and its unit of measurement"
+        ),
     )
 
     maxDosePerDay: fhirtypes.QuantityType = Field(
         None,
         alias="maxDosePerDay",
         title="Type `Quantity` (represented as `dict` in JSON)",
-        description="The maximum dose per day (maximum dose quantity to be administered in any one 24-h period) that can be administered as per the protocol referenced in the clinical trial authorisation",
+        description=(
+            "The maximum dose per day (maximum dose quantity to be administered in "
+            "any one 24-h period) that can be administered as per the protocol "
+            "referenced in the clinical trial authorisation"
+        ),
     )
 
     maxDosePerTreatmentPeriod: fhirtypes.RatioType = Field(
         None,
         alias="maxDosePerTreatmentPeriod",
         title="Type `Ratio` (represented as `dict` in JSON)",
-        description="The maximum dose per treatment period that can be administered as per the protocol referenced in the clinical trial authorisation",
+        description=(
+            "The maximum dose per treatment period that can be administered as per "
+            "the protocol referenced in the clinical trial authorisation"
+        ),
     )
 
     maxSingleDose: fhirtypes.QuantityType = Field(
         None,
         alias="maxSingleDose",
         title="Type `Quantity` (represented as `dict` in JSON)",
-        description="The maximum single dose that can be administered as per the protocol of a clinical trial can be specified using a numerical value and its unit of measurement",
+        description=(
+            "The maximum single dose that can be administered as per the protocol "
+            "of a clinical trial can be specified using a numerical value and its "
+            "unit of measurement"
+        ),
     )
 
     maxTreatmentPeriod: fhirtypes.DurationType = Field(
         None,
         alias="maxTreatmentPeriod",
         title="Type `Duration` (represented as `dict` in JSON)",
-        description="The maximum treatment period during which an Investigational Medicinal Product can be administered as per the protocol referenced in the clinical trial authorisation",
+        description=(
+            "The maximum treatment period during which an Investigational Medicinal"
+            " Product can be administered as per the protocol referenced in the "
+            "clinical trial authorisation"
+        ),
     )
 
     targetSpecies: ListType[
@@ -153,7 +187,11 @@ class MedicinalProductPharmaceuticalRouteOfAdministration(
     ] = Field(
         None,
         alias="targetSpecies",
-        title="List of `MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies` items (represented as `dict` in JSON)",
+        title=(
+            "List of "
+            "`MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies` "
+            "items (represented as `dict` in JSON)"
+        ),
         description="A species for which this route applies",
     )
 
@@ -176,12 +214,18 @@ class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies(
     )
 
     withdrawalPeriod: ListType[
-        fhirtypes.MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriodType
+        fhirtypes.MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriodType  # noqa: B950
     ] = Field(
         None,
         alias="withdrawalPeriod",
-        title="List of `MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod` items (represented as `dict` in JSON)",
-        description="A species specific time during which consumption of animal product is not appropriate",
+        title=(
+            "List of `MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpec"
+            "iesWithdrawalPeriod` items (represented as `dict` in JSON)"
+        ),
+        description=(
+            "A species specific time during which consumption of animal product is "
+            "not appropriate"
+        ),
     )
 
 
@@ -208,7 +252,10 @@ class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawal
         ...,
         alias="tissue",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Coded expression for the type of tissue for which the withdrawal period applues, e.g. meat, milk",
+        description=(
+            "Coded expression for the type of tissue for which the withdrawal "
+            "period applues, e.g. meat, milk"
+        ),
     )
 
     value: fhirtypes.QuantityType = Field(

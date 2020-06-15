@@ -23,14 +23,20 @@ class Slot(domainresource.DomainResource):
         None,
         alias="appointmentType",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The style of appointment or patient that may be booked in the slot (not service type)",
+        description=(
+            "The style of appointment or patient that may be booked in the slot "
+            "(not service type)"
+        ),
     )
 
     comment: fhirtypes.String = Field(
         None,
         alias="comment",
         title="Type `String` (represented as `dict` in JSON)",
-        description="Comments on the slot to describe any extended information. Such as custom constraints on the slot",
+        description=(
+            "Comments on the slot to describe any extended information. Such as "
+            "custom constraints on the slot"
+        ),
     )
 
     end: fhirtypes.Instant = Field(
@@ -51,35 +57,54 @@ class Slot(domainresource.DomainResource):
         None,
         alias="overbooked",
         title="Type `bool`",
-        description="This slot has already been overbooked, appointments are unlikely to be accepted for this time",
+        description=(
+            "This slot has already been overbooked, appointments are unlikely to be"
+            " accepted for this time"
+        ),
     )
 
     schedule: fhirtypes.ReferenceType = Field(
         ...,
         alias="schedule",
-        title="Type `Reference` referencing `Schedule` (represented as `dict` in JSON)",
-        description="The schedule resource that this slot defines an interval of status information",
+        title=(
+            "Type `Reference` referencing `Schedule` (represented as `dict` in " "JSON)"
+        ),
+        description=(
+            "The schedule resource that this slot defines an interval of status "
+            "information"
+        ),
     )
 
     serviceCategory: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="serviceCategory",
         title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="A broad categorization of the service that is to be performed during this appointment",
+        description=(
+            "A broad categorization of the service that is to be performed during "
+            "this appointment"
+        ),
     )
 
     serviceType: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="serviceType",
         title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="The type of appointments that can be booked into this slot (ideally this would be an identifiable service - which is at a location, rather than the location itself). If provided then this overrides the value provided on the availability resource",
+        description=(
+            "The type of appointments that can be booked into this slot (ideally "
+            "this would be an identifiable service - which is at a location, rather"
+            " than the location itself). If provided then this overrides the value "
+            "provided on the availability resource"
+        ),
     )
 
     specialty: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="specialty",
         title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="The specialty of a practitioner that would be required to perform the service requested in this appointment",
+        description=(
+            "The specialty of a practitioner that would be required to perform the "
+            "service requested in this appointment"
+        ),
     )
 
     start: fhirtypes.Instant = Field(

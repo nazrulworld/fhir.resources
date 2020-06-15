@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import detectedissue
 
@@ -13,9 +15,8 @@ from .. import detectedissue
 def impl_detectedissue_1(inst):
     assert inst.id == "allergy"
     assert inst.status == "final"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">[Put rendering here]</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">[Put rendering ' "here]</div>"
     )
     assert inst.text.status == "generated"
 
@@ -56,15 +57,15 @@ def impl_detectedissue_2(inst):
         == "Chest CT - ordered May 8, 2013 by Dr. Adam Careful"
     )
     assert inst.implicated[0].reference == "ProcedureRequest/di"
-    assert (
-        inst.implicated[1].display
-        == "Image 1 from Series 3: CT Images on Patient MINT (MINT1234) taken at 1-Jan 2011 01:20 AM"
+    assert inst.implicated[1].display == (
+        "Image 1 from Series 3: CT Images on Patient MINT (MINT1234) "
+        "taken at 1-Jan 2011 01:20 AM"
     )
     assert inst.implicated[1].reference == "ImagingStudy/example"
     assert inst.patient.reference == "Patient/dicom"
-    assert (
-        inst.reference
-        == "http://www.tmhp.com/RadiologyClinicalDecisionSupport/2011/CHEST%20IMAGING%20GUIDELINES%202011.pdf"
+    assert inst.reference == (
+        "http://www.tmhp.com/RadiologyClinicalDecisionSupport/2011/CH"
+        "EST%20IMAGING%20GUIDELINES%202011.pdf"
     )
     assert inst.status == "final"
     assert inst.text.status == "generated"
@@ -109,9 +110,10 @@ def impl_detectedissue_3(inst):
     assert (
         inst.mitigation[0].action.coding[0].system == "http://hl7.org/fhir/v3/ActCode"
     )
-    assert (
-        inst.mitigation[0].action.text
-        == "Asked patient to discontinue regular use of Tylenol and to consult with clinician if they need to resume to allow appropriate INR monitoring"
+    assert inst.mitigation[0].action.text == (
+        "Asked patient to discontinue regular use of Tylenol and to "
+        "consult with clinician if they need to resume to allow "
+        "appropriate INR monitoring"
     )
     assert inst.mitigation[0].author.display == "Dr. Adam Careful"
     assert inst.mitigation[0].author.reference == "Practitioner/example"
@@ -144,9 +146,8 @@ def test_detectedissue_3(base_settings):
 def impl_detectedissue_4(inst):
     assert inst.id == "lab"
     assert inst.status == "final"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">[Put rendering here]</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">[Put rendering ' "here]</div>"
     )
     assert inst.text.status == "generated"
 

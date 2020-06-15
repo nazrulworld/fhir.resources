@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import messageheader
 
@@ -33,9 +35,8 @@ def impl_messageheader_1(inst):
         inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     )
     assert inst.reason.coding[0].code == "admit"
-    assert (
-        inst.reason.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/message-reasons-encounter"
+    assert inst.reason.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/message-reasons-" "encounter"
     )
     assert inst.response.code == "ok"
     assert inst.response.identifier == "5015fe84-8e76-4526-89d8-44b322e8d4fb"

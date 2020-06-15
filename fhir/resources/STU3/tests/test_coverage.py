@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import coverage
 
@@ -32,9 +34,9 @@ def impl_coverage_1(inst):
     assert inst.status == "active"
     assert inst.subscriber.reference == "Patient/5"
     assert inst.subscriberId == "AB9876"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the coverage</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the coverage</div>"
     )
     assert inst.text.status == "generated"
     assert inst.type.coding[0].code == "EHCPOL"
@@ -72,9 +74,9 @@ def impl_coverage_2(inst):
     assert inst.relationship.coding[0].code == "self"
     assert inst.status == "active"
     assert inst.subscriber.reference == "Patient/5"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of a Self Pay Agreement.</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of a Self Pay Agreement.</div>"
     )
     assert inst.text.status == "generated"
     assert inst.type.coding[0].code == "pay"
@@ -113,9 +115,9 @@ def impl_coverage_3(inst):
     assert inst.relationship.coding[0].code == "self"
     assert inst.status == "active"
     assert inst.subscriber.reference == "Patient/5"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the European Health Insurance Card</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the European Health Insurance Card</div>"
     )
     assert inst.text.status == "generated"
     assert inst.type.coding[0].code == "EHCPOL"
@@ -174,9 +176,9 @@ def impl_coverage_4(inst):
     assert inst.sequence == "9"
     assert inst.status == "active"
     assert inst.subscriber.reference == "Patient/4"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the coverage</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the coverage</div>"
     )
     assert inst.text.status == "generated"
     assert inst.type.coding[0].code == "EHCPOL"

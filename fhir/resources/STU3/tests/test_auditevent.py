@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import auditevent
 
@@ -27,7 +29,12 @@ def impl_auditevent_1(inst):
         == "http://dicom.nema.org/resources/ontology/DCM"
     )
     assert inst.agent[1].userId.value == "2.16.840.1.113883.4.2|2.16.840.1.113883.4.2"
-    # Don't know how to create unit test for "entity[0].query", which is a Base64Binary
+    assert inst.entity[0].query == bytes_validator(
+        (
+            "aHR0cDovL2ZoaXItZGV2LmhlYWx0aGludGVyc2VjdGlvbnMuY29tLmF1L29w"
+            "ZW4vRW5jb3VudGVyP3BhcnRpY2lwYW50PTEz"
+        )
+    )
     assert inst.entity[0].role.code == "24"
     assert inst.entity[0].role.display == "Query"
     assert inst.entity[0].role.system == "http://hl7.org/fhir/object-role"
@@ -359,7 +366,9 @@ def impl_auditevent_6(inst):
     assert inst.entity[0].type.display == "Person"
     assert inst.entity[0].type.system == "http://hl7.org/fhir/object-type"
     assert inst.entity[1].detail[0].type == "MSH-10"
-    # Don't know how to create unit test for "entity[1].detail[0].value", which is a Base64Binary
+    assert inst.entity[1].detail[0].value == bytes_validator(
+        "MS4yLjg0MC4xMTQzNTAuMS4xMy4wLjEuNy4xLjE="
+    )
     assert inst.entity[1].role.code == "24"
     assert inst.entity[1].role.display == "Query"
     assert inst.entity[1].role.system == "http://hl7.org/fhir/object-role"
@@ -447,9 +456,10 @@ def impl_auditevent_7(inst):
     assert inst.subtype[0].code == "110120"
     assert inst.subtype[0].display == "Application Start"
     assert inst.subtype[0].system == "http://dicom.nema.org/resources/ontology/DCM"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Application Start for under service login &quot;Grahame&quot; (id: Grahame\'s Test HL7Connect)</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Application '
+        "Start for under service login &quot;Grahame&quot; (id: "
+        "Grahame's Test HL7Connect)</div>"
     )
     assert inst.text.status == "generated"
     assert inst.type.code == "110100"
@@ -563,9 +573,10 @@ def impl_auditevent_8(inst):
     assert inst.source.type[0].system == "http://hl7.org/fhir/security-source-type"
     assert inst.subtype[0].code == "Disclosure"
     assert inst.subtype[0].display == "HIPAA disclosure"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Disclosure by some idiot, for marketing reasons, to places unknown, of a Poor Sap, data about Everthing important.</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Disclosure by '
+        "some idiot, for marketing reasons, to places unknown, of a "
+        "Poor Sap, data about Everthing important.</div>"
     )
     assert inst.text.status == "generated"
     assert inst.type.code == "110106"

@@ -32,7 +32,10 @@ class RequestGroup(domainresource.DomainResource):
     author: fhirtypes.ReferenceType = Field(
         None,
         alias="author",
-        title="Type `Reference` referencing `Device, Practitioner` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Device, Practitioner` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Device or practitioner that authored the request group",
     )
 
@@ -46,21 +49,30 @@ class RequestGroup(domainresource.DomainResource):
     basedOn: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="basedOn",
-        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Resource` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Fulfills plan, proposal, or order",
     )
 
     context: fhirtypes.ReferenceType = Field(
         None,
         alias="context",
-        title="Type `Reference` referencing `Encounter, EpisodeOfCare` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Encounter, EpisodeOfCare` (represented "
+            "as `dict` in JSON)"
+        ),
         description="Encounter or Episode for the request group",
     )
 
     definition: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="definition",
-        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Resource` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Instantiates protocol or definition",
     )
 
@@ -111,7 +123,9 @@ class RequestGroup(domainresource.DomainResource):
     reasonReference: fhirtypes.ReferenceType = Field(
         None,
         alias="reasonReference",
-        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        ),
         description="Reason for the request group",
         one_of_many="reason",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -120,7 +134,10 @@ class RequestGroup(domainresource.DomainResource):
     replaces: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="replaces",
-        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Resource` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Request(s) replaced by this request",
     )
 
@@ -128,13 +145,19 @@ class RequestGroup(domainresource.DomainResource):
         ...,
         alias="status",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="draft | active | suspended | cancelled | completed | entered-in-error | unknown",
+        description=(
+            "draft | active | suspended | cancelled | completed | entered-in-error "
+            "| unknown"
+        ),
     )
 
     subject: fhirtypes.ReferenceType = Field(
         None,
         alias="subject",
-        title="Type `Reference` referencing `Patient, Group` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Group` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Who the request group is about",
     )
 
@@ -152,9 +175,7 @@ class RequestGroup(domainresource.DomainResource):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "reason": ["reasonCodeableConcept", "reasonReference",],
-        }
+        one_of_many_fields = {"reason": ["reasonCodeableConcept", "reasonReference"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -208,7 +229,10 @@ class RequestGroupAction(backboneelement.BackboneElement):
     condition: ListType[fhirtypes.RequestGroupActionConditionType] = Field(
         None,
         alias="condition",
-        title="List of `RequestGroupActionCondition` items (represented as `dict` in JSON)",
+        title=(
+            "List of `RequestGroupActionCondition` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Whether or not the action is applicable",
     )
 
@@ -243,7 +267,10 @@ class RequestGroupAction(backboneelement.BackboneElement):
     participant: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="participant",
-        title="List of `Reference` items referencing `Patient, Person, Practitioner, RelatedPerson` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Patient, Person, Practitioner, "
+            "RelatedPerson` (represented as `dict` in JSON)"
+        ),
         description="Who should perform the action",
     )
 
@@ -257,7 +284,10 @@ class RequestGroupAction(backboneelement.BackboneElement):
     relatedAction: ListType[fhirtypes.RequestGroupActionRelatedActionType] = Field(
         None,
         alias="relatedAction",
-        title="List of `RequestGroupActionRelatedAction` items (represented as `dict` in JSON)",
+        title=(
+            "List of `RequestGroupActionRelatedAction` items (represented as `dict`"
+            " in JSON)"
+        ),
         description="Relationship to another action",
     )
 
@@ -271,7 +301,9 @@ class RequestGroupAction(backboneelement.BackboneElement):
     resource: fhirtypes.ReferenceType = Field(
         None,
         alias="resource",
-        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        ),
         description="The target of the action",
     )
 
@@ -286,7 +318,10 @@ class RequestGroupAction(backboneelement.BackboneElement):
         None,
         alias="textEquivalent",
         title="Type `String` (represented as `dict` in JSON)",
-        description="Static text equivalent of the action, used if the dynamic aspects cannot be interpreted by the receiving system",
+        description=(
+            "Static text equivalent of the action, used if the dynamic aspects "
+            "cannot be interpreted by the receiving system"
+        ),
     )
 
     timingDateTime: fhirtypes.DateTime = Field(
@@ -369,7 +404,7 @@ class RequestGroupAction(backboneelement.BackboneElement):
                 "timingPeriod",
                 "timingRange",
                 "timingTiming",
-            ],
+            ]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
@@ -467,7 +502,10 @@ class RequestGroupActionRelatedAction(backboneelement.BackboneElement):
         ...,
         alias="relationship",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="before-start | before | before-end | concurrent-with-start | concurrent | concurrent-with-end | after-start | after | after-end",
+        description=(
+            "before-start | before | before-end | concurrent-with-start | "
+            "concurrent | concurrent-with-end | after-start | after | after-end"
+        ),
     )
 
     @root_validator(pre=True)
@@ -484,9 +522,7 @@ class RequestGroupActionRelatedAction(backboneelement.BackboneElement):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "offset": ["offsetDuration", "offsetRange",],
-        }
+        one_of_many_fields = {"offset": ["offsetDuration", "offsetRange"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (

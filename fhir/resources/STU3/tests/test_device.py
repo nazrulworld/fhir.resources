@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import device
 
@@ -59,9 +61,9 @@ def impl_device_2(inst):
     assert inst.patient.reference == "Patient/example"
     assert inst.status == "inactive"
     assert inst.text.status == "generated"
-    assert (
-        inst.udi.carrierHRF
-        == "+H123PARTNO1234567890120/$$420020216LOT123456789012345/SXYZ456789012345678/16D20130202C"
+    assert inst.udi.carrierHRF == (
+        "+H123PARTNO1234567890120/$$420020216LOT123456789012345/SXYZ4"
+        "56789012345678/16D20130202C"
     )
     assert inst.udi.entryType == "manual"
     assert inst.udi.issuer == "http://hl7.org/fhir/NamingSystem/hibcc"
@@ -348,7 +350,12 @@ def impl_device_9(inst):
     assert inst.type.coding[0].display == "Coated femoral stem prosthesis, modular"
     assert inst.type.coding[0].system == "http://snomed.info/sct"
     assert inst.type.text == "Coated femoral stem prosthesis, modular"
-    # Don't know how to create unit test for "udi.carrierAIDC", which is a Base64Binary
+    assert inst.udi.carrierAIDC == bytes_validator(
+        (
+            "XWQyMDExMDg1NzY3NDAwMjAxNzE3MTQxMTIwMTBOWUZVTDAx4oaUMjExOTI4"
+            "MzfihpQ3MTNBMUIyQzNENEU1RjZH"
+        )
+    )
     assert (
         inst.udi.carrierHRF
         == "{01}00844588003288{17}141120{10}7654321D{21}10987654d321"

@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import questionnaire
 
@@ -17,9 +19,8 @@ def impl_questionnaire_1(inst):
     assert inst.identifier[0].system == "urn:ietf:rfc:3986"
     assert inst.item[0].item[0].linkId == "display.ID"
     assert inst.item[0].item[0].type == "display"
-    assert (
-        inst.item[0].item[1].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[1].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[1].extension[0].valueCodeableConcept.coding[0].code
@@ -34,24 +35,21 @@ def impl_questionnaire_1(inst):
         == "http://hl7.org/fhir/questionnaire-item-control"
     )
     assert inst.item[0].item[1].linkId == "display.ID"
-    assert (
-        inst.item[0].item[1].text
-        == "Demographics and administrative information about a person independent of a specific health-related context."
+    assert inst.item[0].item[1].text == (
+        "Demographics and administrative information about a person "
+        "independent of a specific health-related context."
     )
     assert inst.item[0].item[1].type == "display"
-    assert (
-        inst.item[0].item[2].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[2].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[2].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[2].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[2].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[2].extension[1].valueString == "string"
-    assert (
-        inst.item[0].item[2].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[2].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -76,14 +74,12 @@ def impl_questionnaire_1(inst):
     assert inst.item[0].item[2].repeats is True
     assert inst.item[0].item[2].required is False
     assert inst.item[0].item[2].type == "group"
-    assert (
-        inst.item[0].item[3].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[3].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[3].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[3].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[3].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -98,9 +94,11 @@ def impl_questionnaire_1(inst):
         == "http://hl7.org/fhir/questionnaire-item-control"
     )
     assert inst.item[0].item[3].item[0].linkId == "display.ID"
-    assert (
-        inst.item[0].item[3].item[0].text
-        == "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource."
+    assert inst.item[0].item[3].item[0].text == (
+        "The metadata about the resource. This is content that is "
+        "maintained by the infrastructure. Changes to the content may"
+        " not always be associated with version changes to the "
+        "resource."
     )
     assert inst.item[0].item[3].item[0].type == "display"
     assert inst.item[0].item[3].linkId == "Person.meta"
@@ -108,19 +106,16 @@ def impl_questionnaire_1(inst):
     assert inst.item[0].item[3].required is False
     assert inst.item[0].item[3].text == "Metadata about the resource"
     assert inst.item[0].item[3].type == "group"
-    assert (
-        inst.item[0].item[4].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[4].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[4].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[4].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[4].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[4].extension[1].valueString == "uri"
-    assert (
-        inst.item[0].item[4].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[4].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -148,19 +143,16 @@ def impl_questionnaire_1(inst):
     assert inst.item[0].item[4].repeats is True
     assert inst.item[0].item[4].required is False
     assert inst.item[0].item[4].type == "group"
-    assert (
-        inst.item[0].item[5].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[5].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[5].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[5].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[5].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[5].extension[1].valueString == "code"
-    assert (
-        inst.item[0].item[5].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[5].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -185,14 +177,12 @@ def impl_questionnaire_1(inst):
     assert inst.item[0].item[5].repeats is True
     assert inst.item[0].item[5].required is False
     assert inst.item[0].item[5].type == "group"
-    assert (
-        inst.item[0].item[6].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[6].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[6].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[6].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[6].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -216,9 +206,8 @@ def impl_questionnaire_1(inst):
         == "Text summary of the resource, for human interpretation"
     )
     assert inst.item[0].item[6].type == "group"
-    assert (
-        inst.item[0].item[7].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[7].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -239,9 +228,8 @@ def impl_questionnaire_1(inst):
     assert inst.item[0].item[7].required is False
     assert inst.item[0].item[7].text == "Contained, inline Resources"
     assert inst.item[0].item[7].type == "group"
-    assert (
-        inst.item[0].item[8].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[8].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -262,9 +250,8 @@ def impl_questionnaire_1(inst):
     assert inst.item[0].item[8].required is False
     assert inst.item[0].item[8].text == "Additional Content defined by implementations"
     assert inst.item[0].item[8].type == "group"
-    assert (
-        inst.item[0].item[9].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[9].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -326,9 +313,8 @@ def impl_questionnaire_2(inst):
     assert inst.identifier[0].system == "urn:ietf:rfc:3986"
     assert inst.item[0].item[0].linkId == "display.ID"
     assert inst.item[0].item[0].type == "display"
-    assert (
-        inst.item[0].item[1].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[1].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[1].extension[0].valueCodeableConcept.coding[0].code
@@ -344,19 +330,16 @@ def impl_questionnaire_2(inst):
     )
     assert inst.item[0].item[1].linkId == "display.ID"
     assert inst.item[0].item[1].type == "display"
-    assert (
-        inst.item[0].item[2].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[2].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[2].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[2].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[2].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[2].extension[1].valueString == "string"
-    assert (
-        inst.item[0].item[2].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[2].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -381,14 +364,12 @@ def impl_questionnaire_2(inst):
     assert inst.item[0].item[2].repeats is True
     assert inst.item[0].item[2].required is False
     assert inst.item[0].item[2].type == "group"
-    assert (
-        inst.item[0].item[3].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[3].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[3].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[3].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[3].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -403,9 +384,11 @@ def impl_questionnaire_2(inst):
         == "http://hl7.org/fhir/questionnaire-item-control"
     )
     assert inst.item[0].item[3].item[0].linkId == "display.ID"
-    assert (
-        inst.item[0].item[3].item[0].text
-        == "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource."
+    assert inst.item[0].item[3].item[0].text == (
+        "The metadata about the resource. This is content that is "
+        "maintained by the infrastructure. Changes to the content may"
+        " not always be associated with version changes to the "
+        "resource."
     )
     assert inst.item[0].item[3].item[0].type == "display"
     assert inst.item[0].item[3].linkId == "DiagnosticReport.meta"
@@ -413,19 +396,16 @@ def impl_questionnaire_2(inst):
     assert inst.item[0].item[3].required is False
     assert inst.item[0].item[3].text == "Metadata about the resource"
     assert inst.item[0].item[3].type == "group"
-    assert (
-        inst.item[0].item[4].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[4].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[4].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[4].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[4].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[4].extension[1].valueString == "uri"
-    assert (
-        inst.item[0].item[4].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[4].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -453,19 +433,16 @@ def impl_questionnaire_2(inst):
     assert inst.item[0].item[4].repeats is True
     assert inst.item[0].item[4].required is False
     assert inst.item[0].item[4].type == "group"
-    assert (
-        inst.item[0].item[5].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[5].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[5].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[5].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[5].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[5].extension[1].valueString == "code"
-    assert (
-        inst.item[0].item[5].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[5].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -490,14 +467,12 @@ def impl_questionnaire_2(inst):
     assert inst.item[0].item[5].repeats is True
     assert inst.item[0].item[5].required is False
     assert inst.item[0].item[5].type == "group"
-    assert (
-        inst.item[0].item[6].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[6].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[6].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[6].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[6].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -521,9 +496,8 @@ def impl_questionnaire_2(inst):
         == "Text summary of the resource, for human interpretation"
     )
     assert inst.item[0].item[6].type == "group"
-    assert (
-        inst.item[0].item[7].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[7].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -544,9 +518,8 @@ def impl_questionnaire_2(inst):
     assert inst.item[0].item[7].required is False
     assert inst.item[0].item[7].text == "Contained, inline Resources"
     assert inst.item[0].item[7].type == "group"
-    assert (
-        inst.item[0].item[8].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[8].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -568,9 +541,8 @@ def impl_questionnaire_2(inst):
     assert inst.item[0].item[8].required is False
     assert inst.item[0].item[8].text == "Extension"
     assert inst.item[0].item[8].type == "group"
-    assert (
-        inst.item[0].item[9].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[9].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -594,9 +566,10 @@ def impl_questionnaire_2(inst):
     assert inst.item[0].linkId == "DiagnosticReport"
     assert inst.item[0].repeats is True
     assert inst.item[0].required is False
-    assert (
-        inst.item[0].text
-        == "A Diagnostic report - a combination of request information, atomic results, images, interpretation, as well as formatted reports"
+    assert inst.item[0].text == (
+        "A Diagnostic report - a combination of request information, "
+        "atomic results, images, interpretation, as well as formatted"
+        " reports"
     )
     assert inst.item[0].type == "group"
     assert inst.publisher == "Health Level Seven International (Clinical Genomics)"
@@ -629,9 +602,8 @@ def impl_questionnaire_3(inst):
     assert inst.identifier[0].system == "urn:ietf:rfc:3986"
     assert inst.item[0].item[0].linkId == "display.ID"
     assert inst.item[0].item[0].type == "display"
-    assert (
-        inst.item[0].item[1].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[1].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[1].extension[0].valueCodeableConcept.coding[0].code
@@ -646,24 +618,21 @@ def impl_questionnaire_3(inst):
         == "http://hl7.org/fhir/questionnaire-item-control"
     )
     assert inst.item[0].item[1].linkId == "display.ID"
-    assert (
-        inst.item[0].item[1].text
-        == "A collection of error, warning or information messages that result from a system action."
+    assert inst.item[0].item[1].text == (
+        "A collection of error, warning or information messages that "
+        "result from a system action."
     )
     assert inst.item[0].item[1].type == "display"
-    assert (
-        inst.item[0].item[2].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[2].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[2].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[2].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[2].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[2].extension[1].valueString == "string"
-    assert (
-        inst.item[0].item[2].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[2].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -688,14 +657,12 @@ def impl_questionnaire_3(inst):
     assert inst.item[0].item[2].repeats is True
     assert inst.item[0].item[2].required is False
     assert inst.item[0].item[2].type == "group"
-    assert (
-        inst.item[0].item[3].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[3].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[3].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[3].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[3].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -710,9 +677,11 @@ def impl_questionnaire_3(inst):
         == "http://hl7.org/fhir/questionnaire-item-control"
     )
     assert inst.item[0].item[3].item[0].linkId == "display.ID"
-    assert (
-        inst.item[0].item[3].item[0].text
-        == "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource."
+    assert inst.item[0].item[3].item[0].text == (
+        "The metadata about the resource. This is content that is "
+        "maintained by the infrastructure. Changes to the content may"
+        " not always be associated with version changes to the "
+        "resource."
     )
     assert inst.item[0].item[3].item[0].type == "display"
     assert inst.item[0].item[3].linkId == "OperationOutcome.meta"
@@ -720,19 +689,16 @@ def impl_questionnaire_3(inst):
     assert inst.item[0].item[3].required is False
     assert inst.item[0].item[3].text == "Metadata about the resource"
     assert inst.item[0].item[3].type == "group"
-    assert (
-        inst.item[0].item[4].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[4].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[4].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[4].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[4].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[4].extension[1].valueString == "uri"
-    assert (
-        inst.item[0].item[4].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[4].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -760,19 +726,16 @@ def impl_questionnaire_3(inst):
     assert inst.item[0].item[4].repeats is True
     assert inst.item[0].item[4].required is False
     assert inst.item[0].item[4].type == "group"
-    assert (
-        inst.item[0].item[5].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[5].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[5].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[5].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[5].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[5].extension[1].valueString == "code"
-    assert (
-        inst.item[0].item[5].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[5].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -797,14 +760,12 @@ def impl_questionnaire_3(inst):
     assert inst.item[0].item[5].repeats is True
     assert inst.item[0].item[5].required is False
     assert inst.item[0].item[5].type == "group"
-    assert (
-        inst.item[0].item[6].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[6].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[6].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[6].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[6].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -828,9 +789,8 @@ def impl_questionnaire_3(inst):
         == "Text summary of the resource, for human interpretation"
     )
     assert inst.item[0].item[6].type == "group"
-    assert (
-        inst.item[0].item[7].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[7].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -851,9 +811,8 @@ def impl_questionnaire_3(inst):
     assert inst.item[0].item[7].required is False
     assert inst.item[0].item[7].text == "Contained, inline Resources"
     assert inst.item[0].item[7].type == "group"
-    assert (
-        inst.item[0].item[8].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[8].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -874,9 +833,8 @@ def impl_questionnaire_3(inst):
     assert inst.item[0].item[8].required is False
     assert inst.item[0].item[8].text == "Additional Content defined by implementations"
     assert inst.item[0].item[8].type == "group"
-    assert (
-        inst.item[0].item[9].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[9].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -934,9 +892,8 @@ def impl_questionnaire_4(inst):
     assert inst.date == fhirtypes.DateTime.validate("2017-04-19T07:44:43+10:00")
     assert inst.id == "qs1"
     assert inst.identifier[0].system == "urn:ietf:rfc:3986"
-    assert (
-        inst.item[0].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -951,24 +908,22 @@ def impl_questionnaire_4(inst):
         == "http://hl7.org/fhir/questionnaire-item-control"
     )
     assert inst.item[0].item[0].linkId == "display.ID"
-    assert (
-        inst.item[0].item[0].text
-        == "This resource allows for the definition of some activity to be performed, independent of a particular patient, practitioner, or other performance context."
+    assert inst.item[0].item[0].text == (
+        "This resource allows for the definition of some activity to "
+        "be performed, independent of a particular patient, "
+        "practitioner, or other performance context."
     )
     assert inst.item[0].item[0].type == "display"
-    assert (
-        inst.item[0].item[1].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[1].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[1].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[1].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[1].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[1].extension[1].valueString == "string"
-    assert (
-        inst.item[0].item[1].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[1].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[1].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -993,14 +948,12 @@ def impl_questionnaire_4(inst):
     assert inst.item[0].item[1].repeats is True
     assert inst.item[0].item[1].required is False
     assert inst.item[0].item[1].type == "group"
-    assert (
-        inst.item[0].item[2].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[2].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[2].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[2].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[2].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -1015,9 +968,11 @@ def impl_questionnaire_4(inst):
         == "http://hl7.org/fhir/questionnaire-item-control"
     )
     assert inst.item[0].item[2].item[0].linkId == "display.ID"
-    assert (
-        inst.item[0].item[2].item[0].text
-        == "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource."
+    assert inst.item[0].item[2].item[0].text == (
+        "The metadata about the resource. This is content that is "
+        "maintained by the infrastructure. Changes to the content may"
+        " not always be associated with version changes to the "
+        "resource."
     )
     assert inst.item[0].item[2].item[0].type == "display"
     assert inst.item[0].item[2].linkId == "ActivityDefinition.meta"
@@ -1025,19 +980,16 @@ def impl_questionnaire_4(inst):
     assert inst.item[0].item[2].required is False
     assert inst.item[0].item[2].text == "Metadata about the resource"
     assert inst.item[0].item[2].type == "group"
-    assert (
-        inst.item[0].item[3].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[3].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[3].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[3].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[3].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[3].extension[1].valueString == "uri"
-    assert (
-        inst.item[0].item[3].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[3].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -1067,19 +1019,16 @@ def impl_questionnaire_4(inst):
     assert inst.item[0].item[3].repeats is True
     assert inst.item[0].item[3].required is False
     assert inst.item[0].item[3].type == "group"
-    assert (
-        inst.item[0].item[4].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[4].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[4].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[4].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[4].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[4].extension[1].valueString == "code"
-    assert (
-        inst.item[0].item[4].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[4].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -1104,14 +1053,12 @@ def impl_questionnaire_4(inst):
     assert inst.item[0].item[4].repeats is True
     assert inst.item[0].item[4].required is False
     assert inst.item[0].item[4].type == "group"
-    assert (
-        inst.item[0].item[5].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[5].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[5].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[5].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[5].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -1135,9 +1082,8 @@ def impl_questionnaire_4(inst):
         == "Text summary of the resource, for human interpretation"
     )
     assert inst.item[0].item[5].type == "group"
-    assert (
-        inst.item[0].item[6].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[6].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -1158,9 +1104,8 @@ def impl_questionnaire_4(inst):
     assert inst.item[0].item[6].required is False
     assert inst.item[0].item[6].text == "Contained, inline Resources"
     assert inst.item[0].item[6].type == "group"
-    assert (
-        inst.item[0].item[7].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[7].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -1181,9 +1126,8 @@ def impl_questionnaire_4(inst):
     assert inst.item[0].item[7].required is False
     assert inst.item[0].item[7].text == "Additional Content defined by implementations"
     assert inst.item[0].item[7].type == "group"
-    assert (
-        inst.item[0].item[8].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[8].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -1204,19 +1148,16 @@ def impl_questionnaire_4(inst):
     assert inst.item[0].item[8].required is False
     assert inst.item[0].item[8].text == "Extensions that cannot be ignored"
     assert inst.item[0].item[8].type == "group"
-    assert (
-        inst.item[0].item[9].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[9].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[9].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[9].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[9].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[9].extension[1].valueString == "uri"
-    assert (
-        inst.item[0].item[9].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[9].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -1235,9 +1176,8 @@ def impl_questionnaire_4(inst):
     assert inst.item[0].item[9].item[1].linkId == "ActivityDefinition.url.value"
     assert inst.item[0].item[9].item[1].repeats is False
     assert inst.item[0].item[9].item[1].required is False
-    assert (
-        inst.item[0].item[9].item[1].text
-        == "Logical URI to reference this activity definition (globally unique)"
+    assert inst.item[0].item[9].item[1].text == (
+        "Logical URI to reference this activity definition (globally " "unique)"
     )
     assert inst.item[0].item[9].item[1].type == "string"
     assert inst.item[0].item[9].linkId == "ActivityDefinition.url"
@@ -1247,9 +1187,9 @@ def impl_questionnaire_4(inst):
     assert inst.item[0].linkId == "ActivityDefinition"
     assert inst.item[0].repeats is True
     assert inst.item[0].required is False
-    assert (
-        inst.item[0].text
-        == "The definition of a specific activity to be taken, independent of any particular patient or context"
+    assert inst.item[0].text == (
+        "The definition of a specific activity to be taken, "
+        "independent of any particular patient or context"
     )
     assert inst.item[0].type == "group"
     assert (
@@ -1284,25 +1224,23 @@ def impl_questionnaire_5(inst):
     assert inst.date == fhirtypes.DateTime.validate("2017-04-19T07:44:43+10:00")
     assert inst.id == "qs1"
     assert inst.identifier[0].system == "urn:ietf:rfc:3986"
-    assert (
-        inst.item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"
+    assert inst.item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "minOccurs"
     )
     assert inst.item[0].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].extension[1].valueInteger == 1
     assert inst.item[0].item[0].linkId == "display.ID"
-    assert (
-        inst.item[0].item[0].text
-        == "In FHIR, search is not performed directly on a resource (by XML or JSON path), but on a named parameter that maps into the resource content."
+    assert inst.item[0].item[0].text == (
+        "In FHIR, search is not performed directly on a resource (by "
+        "XML or JSON path), but on a named parameter that maps into "
+        "the resource content."
     )
     assert inst.item[0].item[0].type == "display"
-    assert (
-        inst.item[0].item[1].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[1].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[1].extension[0].valueCodeableConcept.coding[0].code
@@ -1317,24 +1255,21 @@ def impl_questionnaire_5(inst):
         == "http://hl7.org/fhir/questionnaire-item-control"
     )
     assert inst.item[0].item[1].linkId == "display.ID"
-    assert (
-        inst.item[0].item[1].text
-        == "A search parameter that defines a named search item that can be used to search/filter on a resource."
+    assert inst.item[0].item[1].text == (
+        "A search parameter that defines a named search item that can"
+        " be used to search/filter on a resource."
     )
     assert inst.item[0].item[1].type == "display"
-    assert (
-        inst.item[0].item[2].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[2].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[2].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[2].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[2].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[2].extension[1].valueString == "string"
-    assert (
-        inst.item[0].item[2].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[2].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -1359,14 +1294,12 @@ def impl_questionnaire_5(inst):
     assert inst.item[0].item[2].repeats is True
     assert inst.item[0].item[2].required is False
     assert inst.item[0].item[2].type == "group"
-    assert (
-        inst.item[0].item[3].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[3].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[3].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[3].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[3].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -1381,9 +1314,11 @@ def impl_questionnaire_5(inst):
         == "http://hl7.org/fhir/questionnaire-item-control"
     )
     assert inst.item[0].item[3].item[0].linkId == "display.ID"
-    assert (
-        inst.item[0].item[3].item[0].text
-        == "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource."
+    assert inst.item[0].item[3].item[0].text == (
+        "The metadata about the resource. This is content that is "
+        "maintained by the infrastructure. Changes to the content may"
+        " not always be associated with version changes to the "
+        "resource."
     )
     assert inst.item[0].item[3].item[0].type == "display"
     assert inst.item[0].item[3].linkId == "SearchParameter.meta"
@@ -1391,19 +1326,16 @@ def impl_questionnaire_5(inst):
     assert inst.item[0].item[3].required is False
     assert inst.item[0].item[3].text == "Metadata about the resource"
     assert inst.item[0].item[3].type == "group"
-    assert (
-        inst.item[0].item[4].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[4].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[4].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[4].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[4].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[4].extension[1].valueString == "uri"
-    assert (
-        inst.item[0].item[4].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[4].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -1431,19 +1363,16 @@ def impl_questionnaire_5(inst):
     assert inst.item[0].item[4].repeats is True
     assert inst.item[0].item[4].required is False
     assert inst.item[0].item[4].type == "group"
-    assert (
-        inst.item[0].item[5].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[5].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[5].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[5].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[5].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[5].extension[1].valueString == "code"
-    assert (
-        inst.item[0].item[5].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[5].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -1468,14 +1397,12 @@ def impl_questionnaire_5(inst):
     assert inst.item[0].item[5].repeats is True
     assert inst.item[0].item[5].required is False
     assert inst.item[0].item[5].type == "group"
-    assert (
-        inst.item[0].item[6].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[6].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[6].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[6].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[6].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -1499,9 +1426,8 @@ def impl_questionnaire_5(inst):
         == "Text summary of the resource, for human interpretation"
     )
     assert inst.item[0].item[6].type == "group"
-    assert (
-        inst.item[0].item[7].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[7].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -1522,9 +1448,8 @@ def impl_questionnaire_5(inst):
     assert inst.item[0].item[7].required is False
     assert inst.item[0].item[7].text == "Contained, inline Resources"
     assert inst.item[0].item[7].type == "group"
-    assert (
-        inst.item[0].item[8].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[8].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -1545,9 +1470,8 @@ def impl_questionnaire_5(inst):
     assert inst.item[0].item[8].required is False
     assert inst.item[0].item[8].text == "Additional Content defined by implementations"
     assert inst.item[0].item[8].type == "group"
-    assert (
-        inst.item[0].item[9].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[9].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -1611,9 +1535,8 @@ def impl_questionnaire_6(inst):
     assert inst.date == fhirtypes.DateTime.validate("2017-04-19T07:44:43+10:00")
     assert inst.id == "qs1"
     assert inst.identifier[0].system == "urn:ietf:rfc:3986"
-    assert (
-        inst.item[0].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -1628,24 +1551,23 @@ def impl_questionnaire_6(inst):
         == "http://hl7.org/fhir/questionnaire-item-control"
     )
     assert inst.item[0].item[0].linkId == "display.ID"
-    assert (
-        inst.item[0].item[0].text
-        == "This resource provides: the claim details; adjudication details from the processing of a Claim; and optionally account balance information, for informing the subscriber of the benefits provided."
+    assert inst.item[0].item[0].text == (
+        "This resource provides: the claim details; adjudication "
+        "details from the processing of a Claim; and optionally "
+        "account balance information, for informing the subscriber of"
+        " the benefits provided."
     )
     assert inst.item[0].item[0].type == "display"
-    assert (
-        inst.item[0].item[1].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[1].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[1].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[1].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[1].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[1].extension[1].valueString == "string"
-    assert (
-        inst.item[0].item[1].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[1].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[1].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -1670,14 +1592,12 @@ def impl_questionnaire_6(inst):
     assert inst.item[0].item[1].repeats is True
     assert inst.item[0].item[1].required is False
     assert inst.item[0].item[1].type == "group"
-    assert (
-        inst.item[0].item[2].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[2].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[2].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[2].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[2].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -1692,9 +1612,11 @@ def impl_questionnaire_6(inst):
         == "http://hl7.org/fhir/questionnaire-item-control"
     )
     assert inst.item[0].item[2].item[0].linkId == "display.ID"
-    assert (
-        inst.item[0].item[2].item[0].text
-        == "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource."
+    assert inst.item[0].item[2].item[0].text == (
+        "The metadata about the resource. This is content that is "
+        "maintained by the infrastructure. Changes to the content may"
+        " not always be associated with version changes to the "
+        "resource."
     )
     assert inst.item[0].item[2].item[0].type == "display"
     assert inst.item[0].item[2].linkId == "ExplanationOfBenefit.meta"
@@ -1702,19 +1624,16 @@ def impl_questionnaire_6(inst):
     assert inst.item[0].item[2].required is False
     assert inst.item[0].item[2].text == "Metadata about the resource"
     assert inst.item[0].item[2].type == "group"
-    assert (
-        inst.item[0].item[3].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[3].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[3].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[3].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[3].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[3].extension[1].valueString == "uri"
-    assert (
-        inst.item[0].item[3].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[3].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -1745,19 +1664,16 @@ def impl_questionnaire_6(inst):
     assert inst.item[0].item[3].repeats is True
     assert inst.item[0].item[3].required is False
     assert inst.item[0].item[3].type == "group"
-    assert (
-        inst.item[0].item[4].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[4].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[4].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[4].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[4].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[4].extension[1].valueString == "code"
-    assert (
-        inst.item[0].item[4].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[4].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -1782,14 +1698,12 @@ def impl_questionnaire_6(inst):
     assert inst.item[0].item[4].repeats is True
     assert inst.item[0].item[4].required is False
     assert inst.item[0].item[4].type == "group"
-    assert (
-        inst.item[0].item[5].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[5].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[5].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[5].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[5].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -1813,9 +1727,8 @@ def impl_questionnaire_6(inst):
         == "Text summary of the resource, for human interpretation"
     )
     assert inst.item[0].item[5].type == "group"
-    assert (
-        inst.item[0].item[6].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[6].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -1836,9 +1749,8 @@ def impl_questionnaire_6(inst):
     assert inst.item[0].item[6].required is False
     assert inst.item[0].item[6].text == "Contained, inline Resources"
     assert inst.item[0].item[6].type == "group"
-    assert (
-        inst.item[0].item[7].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[7].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -1859,9 +1771,8 @@ def impl_questionnaire_6(inst):
     assert inst.item[0].item[7].required is False
     assert inst.item[0].item[7].text == "Additional Content defined by implementations"
     assert inst.item[0].item[7].type == "group"
-    assert (
-        inst.item[0].item[8].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[8].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -1882,14 +1793,12 @@ def impl_questionnaire_6(inst):
     assert inst.item[0].item[8].required is False
     assert inst.item[0].item[8].text == "Extensions that cannot be ignored"
     assert inst.item[0].item[8].type == "group"
-    assert (
-        inst.item[0].item[9].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[9].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[9].extension[0].valueString == "Identifier"
-    assert (
-        inst.item[0].item[9].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[9].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -1976,9 +1885,8 @@ def impl_questionnaire_7(inst):
     assert inst.date == fhirtypes.DateTime.validate("2017-04-19T07:44:43+10:00")
     assert inst.id == "qs1"
     assert inst.identifier[0].system == "urn:ietf:rfc:3986"
-    assert (
-        inst.item[0].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -1994,19 +1902,16 @@ def impl_questionnaire_7(inst):
     )
     assert inst.item[0].item[0].linkId == "display.ID"
     assert inst.item[0].item[0].type == "display"
-    assert (
-        inst.item[0].item[1].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[1].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[1].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[1].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[1].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[1].extension[1].valueString == "string"
-    assert (
-        inst.item[0].item[1].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[1].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[1].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -2031,14 +1936,12 @@ def impl_questionnaire_7(inst):
     assert inst.item[0].item[1].repeats is True
     assert inst.item[0].item[1].required is False
     assert inst.item[0].item[1].type == "group"
-    assert (
-        inst.item[0].item[2].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[2].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[2].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[2].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[2].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -2053,9 +1956,11 @@ def impl_questionnaire_7(inst):
         == "http://hl7.org/fhir/questionnaire-item-control"
     )
     assert inst.item[0].item[2].item[0].linkId == "display.ID"
-    assert (
-        inst.item[0].item[2].item[0].text
-        == "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource."
+    assert inst.item[0].item[2].item[0].text == (
+        "The metadata about the resource. This is content that is "
+        "maintained by the infrastructure. Changes to the content may"
+        " not always be associated with version changes to the "
+        "resource."
     )
     assert inst.item[0].item[2].item[0].type == "display"
     assert inst.item[0].item[2].linkId == "CarePlan.meta"
@@ -2063,19 +1968,16 @@ def impl_questionnaire_7(inst):
     assert inst.item[0].item[2].required is False
     assert inst.item[0].item[2].text == "Metadata about the resource"
     assert inst.item[0].item[2].type == "group"
-    assert (
-        inst.item[0].item[3].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[3].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[3].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[3].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[3].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[3].extension[1].valueString == "uri"
-    assert (
-        inst.item[0].item[3].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[3].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -2103,19 +2005,16 @@ def impl_questionnaire_7(inst):
     assert inst.item[0].item[3].repeats is True
     assert inst.item[0].item[3].required is False
     assert inst.item[0].item[3].type == "group"
-    assert (
-        inst.item[0].item[4].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[4].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[4].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[4].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[4].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[4].extension[1].valueString == "code"
-    assert (
-        inst.item[0].item[4].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[4].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -2140,14 +2039,12 @@ def impl_questionnaire_7(inst):
     assert inst.item[0].item[4].repeats is True
     assert inst.item[0].item[4].required is False
     assert inst.item[0].item[4].type == "group"
-    assert (
-        inst.item[0].item[5].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[5].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[5].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[5].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[5].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -2171,9 +2068,8 @@ def impl_questionnaire_7(inst):
         == "Text summary of the resource, for human interpretation"
     )
     assert inst.item[0].item[5].type == "group"
-    assert (
-        inst.item[0].item[6].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[6].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -2194,9 +2090,8 @@ def impl_questionnaire_7(inst):
     assert inst.item[0].item[6].required is False
     assert inst.item[0].item[6].text == "Contained, inline Resources"
     assert inst.item[0].item[6].type == "group"
-    assert (
-        inst.item[0].item[7].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[7].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -2217,9 +2112,8 @@ def impl_questionnaire_7(inst):
     assert inst.item[0].item[7].required is False
     assert inst.item[0].item[7].text == "Additional Content defined by implementations"
     assert inst.item[0].item[7].type == "group"
-    assert (
-        inst.item[0].item[8].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[8].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -2240,14 +2134,12 @@ def impl_questionnaire_7(inst):
     assert inst.item[0].item[8].required is False
     assert inst.item[0].item[8].text == "Extensions that cannot be ignored"
     assert inst.item[0].item[8].type == "group"
-    assert (
-        inst.item[0].item[9].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[9].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[9].extension[0].valueString == "Identifier"
-    assert (
-        inst.item[0].item[9].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[9].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -2317,9 +2209,8 @@ def impl_questionnaire_8(inst):
     assert inst.date == fhirtypes.DateTime.validate("2017-04-19T07:44:43+10:00")
     assert inst.id == "qs1"
     assert inst.identifier[0].system == "urn:ietf:rfc:3986"
-    assert (
-        inst.item[0].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -2334,24 +2225,21 @@ def impl_questionnaire_8(inst):
         == "http://hl7.org/fhir/questionnaire-item-control"
     )
     assert inst.item[0].item[0].linkId == "display.ID"
-    assert (
-        inst.item[0].item[0].text
-        == "A code system resource specifies a set of codes drawn from one or more code systems."
+    assert inst.item[0].item[0].text == (
+        "A code system resource specifies a set of codes drawn from "
+        "one or more code systems."
     )
     assert inst.item[0].item[0].type == "display"
-    assert (
-        inst.item[0].item[1].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[1].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[1].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[1].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[1].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[1].extension[1].valueString == "string"
-    assert (
-        inst.item[0].item[1].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[1].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[1].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -2376,14 +2264,12 @@ def impl_questionnaire_8(inst):
     assert inst.item[0].item[1].repeats is True
     assert inst.item[0].item[1].required is False
     assert inst.item[0].item[1].type == "group"
-    assert (
-        inst.item[0].item[2].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[2].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[2].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[2].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[2].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -2398,9 +2284,11 @@ def impl_questionnaire_8(inst):
         == "http://hl7.org/fhir/questionnaire-item-control"
     )
     assert inst.item[0].item[2].item[0].linkId == "display.ID"
-    assert (
-        inst.item[0].item[2].item[0].text
-        == "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource."
+    assert inst.item[0].item[2].item[0].text == (
+        "The metadata about the resource. This is content that is "
+        "maintained by the infrastructure. Changes to the content may"
+        " not always be associated with version changes to the "
+        "resource."
     )
     assert inst.item[0].item[2].item[0].type == "display"
     assert inst.item[0].item[2].linkId == "CodeSystem.meta"
@@ -2408,19 +2296,16 @@ def impl_questionnaire_8(inst):
     assert inst.item[0].item[2].required is False
     assert inst.item[0].item[2].text == "Metadata about the resource"
     assert inst.item[0].item[2].type == "group"
-    assert (
-        inst.item[0].item[3].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[3].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[3].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[3].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[3].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[3].extension[1].valueString == "uri"
-    assert (
-        inst.item[0].item[3].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[3].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -2448,19 +2333,16 @@ def impl_questionnaire_8(inst):
     assert inst.item[0].item[3].repeats is True
     assert inst.item[0].item[3].required is False
     assert inst.item[0].item[3].type == "group"
-    assert (
-        inst.item[0].item[4].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[4].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[4].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[4].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[4].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[4].extension[1].valueString == "code"
-    assert (
-        inst.item[0].item[4].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[4].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -2485,14 +2367,12 @@ def impl_questionnaire_8(inst):
     assert inst.item[0].item[4].repeats is True
     assert inst.item[0].item[4].required is False
     assert inst.item[0].item[4].type == "group"
-    assert (
-        inst.item[0].item[5].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[5].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[5].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[5].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[5].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -2516,9 +2396,8 @@ def impl_questionnaire_8(inst):
         == "Text summary of the resource, for human interpretation"
     )
     assert inst.item[0].item[5].type == "group"
-    assert (
-        inst.item[0].item[6].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[6].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -2539,9 +2418,8 @@ def impl_questionnaire_8(inst):
     assert inst.item[0].item[6].required is False
     assert inst.item[0].item[6].text == "Contained, inline Resources"
     assert inst.item[0].item[6].type == "group"
-    assert (
-        inst.item[0].item[7].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[7].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -2562,9 +2440,8 @@ def impl_questionnaire_8(inst):
     assert inst.item[0].item[7].required is False
     assert inst.item[0].item[7].text == "Additional Content defined by implementations"
     assert inst.item[0].item[7].type == "group"
-    assert (
-        inst.item[0].item[8].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[8].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -2585,19 +2462,16 @@ def impl_questionnaire_8(inst):
     assert inst.item[0].item[8].required is False
     assert inst.item[0].item[8].text == "Extensions that cannot be ignored"
     assert inst.item[0].item[8].type == "group"
-    assert (
-        inst.item[0].item[9].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[9].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[9].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[9].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[9].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[9].extension[1].valueString == "uri"
-    assert (
-        inst.item[0].item[9].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[9].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -2616,9 +2490,8 @@ def impl_questionnaire_8(inst):
     assert inst.item[0].item[9].item[1].linkId == "CodeSystem.url.value"
     assert inst.item[0].item[9].item[1].repeats is False
     assert inst.item[0].item[9].item[1].required is False
-    assert (
-        inst.item[0].item[9].item[1].text
-        == "Logical URI to reference this code system (globally unique) (Coding.system)"
+    assert inst.item[0].item[9].item[1].text == (
+        "Logical URI to reference this code system (globally unique) " "(Coding.system)"
     )
     assert inst.item[0].item[9].item[1].type == "string"
     assert inst.item[0].item[9].linkId == "CodeSystem.url"
@@ -2658,9 +2531,8 @@ def impl_questionnaire_9(inst):
     assert inst.date == fhirtypes.DateTime.validate("2017-04-19T07:44:43+10:00")
     assert inst.id == "qs1"
     assert inst.identifier[0].system == "urn:ietf:rfc:3986"
-    assert (
-        inst.item[0].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -2676,19 +2548,16 @@ def impl_questionnaire_9(inst):
     )
     assert inst.item[0].item[0].linkId == "display.ID"
     assert inst.item[0].item[0].type == "display"
-    assert (
-        inst.item[0].item[1].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[1].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[1].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[1].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[1].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[1].extension[1].valueString == "string"
-    assert (
-        inst.item[0].item[1].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[1].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[1].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -2713,14 +2582,12 @@ def impl_questionnaire_9(inst):
     assert inst.item[0].item[1].repeats is True
     assert inst.item[0].item[1].required is False
     assert inst.item[0].item[1].type == "group"
-    assert (
-        inst.item[0].item[2].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[2].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[2].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[2].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[2].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -2735,9 +2602,11 @@ def impl_questionnaire_9(inst):
         == "http://hl7.org/fhir/questionnaire-item-control"
     )
     assert inst.item[0].item[2].item[0].linkId == "display.ID"
-    assert (
-        inst.item[0].item[2].item[0].text
-        == "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource."
+    assert inst.item[0].item[2].item[0].text == (
+        "The metadata about the resource. This is content that is "
+        "maintained by the infrastructure. Changes to the content may"
+        " not always be associated with version changes to the "
+        "resource."
     )
     assert inst.item[0].item[2].item[0].type == "display"
     assert inst.item[0].item[2].linkId == "Library.meta"
@@ -2745,19 +2614,16 @@ def impl_questionnaire_9(inst):
     assert inst.item[0].item[2].required is False
     assert inst.item[0].item[2].text == "Metadata about the resource"
     assert inst.item[0].item[2].type == "group"
-    assert (
-        inst.item[0].item[3].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[3].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[3].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[3].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[3].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[3].extension[1].valueString == "uri"
-    assert (
-        inst.item[0].item[3].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[3].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -2785,19 +2651,16 @@ def impl_questionnaire_9(inst):
     assert inst.item[0].item[3].repeats is True
     assert inst.item[0].item[3].required is False
     assert inst.item[0].item[3].type == "group"
-    assert (
-        inst.item[0].item[4].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[4].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[4].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[4].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[4].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[4].extension[1].valueString == "code"
-    assert (
-        inst.item[0].item[4].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[4].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -2822,14 +2685,12 @@ def impl_questionnaire_9(inst):
     assert inst.item[0].item[4].repeats is True
     assert inst.item[0].item[4].required is False
     assert inst.item[0].item[4].type == "group"
-    assert (
-        inst.item[0].item[5].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[5].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[5].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[5].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[5].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -2853,9 +2714,8 @@ def impl_questionnaire_9(inst):
         == "Text summary of the resource, for human interpretation"
     )
     assert inst.item[0].item[5].type == "group"
-    assert (
-        inst.item[0].item[6].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[6].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -2876,9 +2736,8 @@ def impl_questionnaire_9(inst):
     assert inst.item[0].item[6].required is False
     assert inst.item[0].item[6].text == "Contained, inline Resources"
     assert inst.item[0].item[6].type == "group"
-    assert (
-        inst.item[0].item[7].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[7].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -2899,9 +2758,8 @@ def impl_questionnaire_9(inst):
     assert inst.item[0].item[7].required is False
     assert inst.item[0].item[7].text == "Additional Content defined by implementations"
     assert inst.item[0].item[7].type == "group"
-    assert (
-        inst.item[0].item[8].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[8].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -2922,19 +2780,16 @@ def impl_questionnaire_9(inst):
     assert inst.item[0].item[8].required is False
     assert inst.item[0].item[8].text == "Extensions that cannot be ignored"
     assert inst.item[0].item[8].type == "group"
-    assert (
-        inst.item[0].item[9].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[9].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[9].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[9].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[9].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[9].extension[1].valueString == "uri"
-    assert (
-        inst.item[0].item[9].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[9].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -3004,9 +2859,8 @@ def impl_questionnaire_10(inst):
     assert inst.date == fhirtypes.DateTime.validate("2015-02-28T00:00:00+11:00")
     assert inst.id == "qs1"
     assert inst.identifier[0].system == "urn:ietf:rfc:3986"
-    assert (
-        inst.item[0].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -3021,24 +2875,21 @@ def impl_questionnaire_10(inst):
         == "http://hl7.org/fhir/questionnaire-item-control"
     )
     assert inst.item[0].item[0].linkId == "display.ID"
-    assert (
-        inst.item[0].item[0].text
-        == "Captures constraints on each element within the resource, profile, or extension."
+    assert inst.item[0].item[0].text == (
+        "Captures constraints on each element within the resource, "
+        "profile, or extension."
     )
     assert inst.item[0].item[0].type == "display"
-    assert (
-        inst.item[0].item[1].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[1].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[1].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[1].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[1].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[1].extension[1].valueString == "string"
-    assert (
-        inst.item[0].item[1].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[1].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[1].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -3053,9 +2904,10 @@ def impl_questionnaire_10(inst):
         == "http://hl7.org/fhir/questionnaire-item-control"
     )
     assert inst.item[0].item[1].item[0].linkId == "display.ID"
-    assert (
-        inst.item[0].item[1].item[0].text
-        == "unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
+    assert inst.item[0].item[1].item[0].text == (
+        "unique id for the element within a resource (for internal "
+        "references). This may be any string value that does not "
+        "contain spaces."
     )
     assert inst.item[0].item[1].item[0].type == "display"
     assert inst.item[0].item[1].item[1].linkId == "ElementDefinition.id.value"
@@ -3067,9 +2919,8 @@ def impl_questionnaire_10(inst):
     assert inst.item[0].item[1].repeats is True
     assert inst.item[0].item[1].required is False
     assert inst.item[0].item[1].type == "group"
-    assert (
-        inst.item[0].item[2].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[2].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -3090,24 +2941,20 @@ def impl_questionnaire_10(inst):
     assert inst.item[0].item[2].required is False
     assert inst.item[0].item[2].text == "Additional Content defined by implementations"
     assert inst.item[0].item[2].type == "group"
-    assert (
-        inst.item[0].item[3].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"
+    assert inst.item[0].item[3].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "minOccurs"
     )
     assert inst.item[0].item[3].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[3].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[3].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[3].extension[1].valueInteger == 1
-    assert (
-        inst.item[0].item[3].extension[2].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[3].extension[2].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[3].extension[2].valueString == "string"
-    assert (
-        inst.item[0].item[3].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[3].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -3122,9 +2969,10 @@ def impl_questionnaire_10(inst):
         == "http://hl7.org/fhir/questionnaire-item-control"
     )
     assert inst.item[0].item[3].item[0].linkId == "display.ID"
-    assert (
-        inst.item[0].item[3].item[0].text
-        == 'The path identifies the element and is expressed as a "."-separated list of ancestor elements, beginning with the name of the resource or extension.'
+    assert inst.item[0].item[3].item[0].text == (
+        "The path identifies the element and is expressed as a "
+        '"."-separated list of ancestor elements, beginning with '
+        "the name of the resource or extension."
     )
     assert inst.item[0].item[3].item[0].type == "display"
     assert inst.item[0].item[3].item[1].linkId == "ElementDefinition.path.value"
@@ -3139,19 +2987,16 @@ def impl_questionnaire_10(inst):
     assert inst.item[0].item[3].repeats is True
     assert inst.item[0].item[3].required is True
     assert inst.item[0].item[3].type == "group"
-    assert (
-        inst.item[0].item[4].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[4].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[4].extension[0].valueInteger == 0
-    assert (
-        inst.item[0].item[4].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[4].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[4].extension[1].valueString == "code"
-    assert (
-        inst.item[0].item[4].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[4].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -3178,19 +3023,16 @@ def impl_questionnaire_10(inst):
     assert inst.item[0].item[4].repeats is True
     assert inst.item[0].item[4].required is False
     assert inst.item[0].item[4].type == "group"
-    assert (
-        inst.item[0].item[5].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[5].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[5].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[5].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[5].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[5].extension[1].valueString == "string"
-    assert (
-        inst.item[0].item[5].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[5].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -3218,19 +3060,16 @@ def impl_questionnaire_10(inst):
     assert inst.item[0].item[5].repeats is True
     assert inst.item[0].item[5].required is False
     assert inst.item[0].item[5].type == "group"
-    assert (
-        inst.item[0].item[6].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[6].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[6].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[6].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[6].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[6].extension[1].valueString == "string"
-    assert (
-        inst.item[0].item[6].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[6].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -3258,14 +3097,12 @@ def impl_questionnaire_10(inst):
     assert inst.item[0].item[6].repeats is True
     assert inst.item[0].item[6].required is False
     assert inst.item[0].item[6].type == "group"
-    assert (
-        inst.item[0].item[7].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[7].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[7].extension[0].valueString == "Coding"
-    assert (
-        inst.item[0].item[7].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[7].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].code
@@ -3290,16 +3127,14 @@ def impl_questionnaire_10(inst):
     assert inst.item[0].item[7].repeats is True
     assert inst.item[0].item[7].required is False
     assert inst.item[0].item[7].type == "group"
-    assert (
-        inst.item[0].item[8].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[8].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[8].extension[0].valueInteger == 0
     assert inst.item[0].item[8].item[0].linkId == "display.ID"
     assert inst.item[0].item[8].item[0].type == "display"
-    assert (
-        inst.item[0].item[8].item[1].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[8].item[1].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[8].item[1].extension[0].valueCodeableConcept.coding[0].code
@@ -3315,19 +3150,16 @@ def impl_questionnaire_10(inst):
     )
     assert inst.item[0].item[8].item[1].linkId == "display.ID"
     assert inst.item[0].item[8].item[1].type == "display"
-    assert (
-        inst.item[0].item[8].item[2].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[8].item[2].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[8].item[2].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[8].item[2].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[8].item[2].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[8].item[2].extension[1].valueString == "string"
-    assert (
-        inst.item[0].item[8].item[2].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[8].item[2].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0]
@@ -3360,9 +3192,10 @@ def impl_questionnaire_10(inst):
         == "http://hl7.org/fhir/questionnaire-item-control"
     )
     assert inst.item[0].item[8].item[2].item[0].linkId == "display.ID"
-    assert (
-        inst.item[0].item[8].item[2].item[0].text
-        == "unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
+    assert inst.item[0].item[8].item[2].item[0].text == (
+        "unique id for the element within a resource (for internal "
+        "references). This may be any string value that does not "
+        "contain spaces."
     )
     assert inst.item[0].item[8].item[2].item[0].type == "display"
     assert (
@@ -3377,9 +3210,8 @@ def impl_questionnaire_10(inst):
     assert inst.item[0].item[8].item[2].repeats is True
     assert inst.item[0].item[8].item[2].required is False
     assert inst.item[0].item[8].item[2].type == "group"
-    assert (
-        inst.item[0].item[8].item[3].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[8].item[3].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0]
@@ -3423,9 +3255,8 @@ def impl_questionnaire_10(inst):
     assert inst.item[0].item[8].item[3].type == "group"
     assert inst.item[0].item[8].item[4].item[0].linkId == "display.ID"
     assert inst.item[0].item[8].item[4].item[0].type == "display"
-    assert (
-        inst.item[0].item[8].item[4].item[1].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[8].item[4].item[1].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0]
@@ -3459,19 +3290,16 @@ def impl_questionnaire_10(inst):
     )
     assert inst.item[0].item[8].item[4].item[1].linkId == "display.ID"
     assert inst.item[0].item[8].item[4].item[1].type == "display"
-    assert (
-        inst.item[0].item[8].item[4].item[2].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[8].item[4].item[2].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[8].item[4].item[2].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[8].item[4].item[2].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[8].item[4].item[2].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[8].item[4].item[2].extension[1].valueString == "string"
-    assert (
-        inst.item[0].item[8].item[4].item[2].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[8].item[4].item[2].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0]
@@ -3507,9 +3335,10 @@ def impl_questionnaire_10(inst):
         == "http://hl7.org/fhir/questionnaire-item-control"
     )
     assert inst.item[0].item[8].item[4].item[2].item[0].linkId == "display.ID"
-    assert (
-        inst.item[0].item[8].item[4].item[2].item[0].text
-        == "unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
+    assert inst.item[0].item[8].item[4].item[2].item[0].text == (
+        "unique id for the element within a resource (for internal "
+        "references). This may be any string value that does not "
+        "contain spaces."
     )
     assert inst.item[0].item[8].item[4].item[2].item[0].type == "display"
     assert (
@@ -3530,9 +3359,8 @@ def impl_questionnaire_10(inst):
     assert inst.item[0].item[8].item[4].item[2].repeats is True
     assert inst.item[0].item[8].item[4].item[2].required is False
     assert inst.item[0].item[8].item[4].item[2].type == "group"
-    assert (
-        inst.item[0].item[8].item[4].item[3].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[8].item[4].item[3].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0]
@@ -3580,24 +3408,20 @@ def impl_questionnaire_10(inst):
         == "Additional Content defined by implementations"
     )
     assert inst.item[0].item[8].item[4].item[3].type == "group"
-    assert (
-        inst.item[0].item[8].item[4].item[4].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"
+    assert inst.item[0].item[8].item[4].item[4].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "minOccurs"
     )
     assert inst.item[0].item[8].item[4].item[4].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[8].item[4].item[4].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[8].item[4].item[4].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[8].item[4].item[4].extension[1].valueInteger == 1
-    assert (
-        inst.item[0].item[8].item[4].item[4].extension[2].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[8].item[4].item[4].extension[2].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[8].item[4].item[4].extension[2].valueString == "code"
-    assert (
-        inst.item[0].item[8].item[4].item[4].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[8].item[4].item[4].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0]
@@ -3633,9 +3457,8 @@ def impl_questionnaire_10(inst):
         == "http://hl7.org/fhir/questionnaire-item-control"
     )
     assert inst.item[0].item[8].item[4].item[4].item[0].linkId == "display.ID"
-    assert (
-        inst.item[0].item[8].item[4].item[4].item[0].text
-        == "How the element value is interpreted when discrimination is evaluated."
+    assert inst.item[0].item[8].item[4].item[4].item[0].text == (
+        "How the element value is interpreted when discrimination is " "evaluated."
     )
     assert inst.item[0].item[8].item[4].item[4].item[0].type == "display"
     assert (
@@ -3653,24 +3476,20 @@ def impl_questionnaire_10(inst):
     assert inst.item[0].item[8].item[4].item[4].repeats is True
     assert inst.item[0].item[8].item[4].item[4].required is True
     assert inst.item[0].item[8].item[4].item[4].type == "group"
-    assert (
-        inst.item[0].item[8].item[4].item[5].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"
+    assert inst.item[0].item[8].item[4].item[5].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "minOccurs"
     )
     assert inst.item[0].item[8].item[4].item[5].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[8].item[4].item[5].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[8].item[4].item[5].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[8].item[4].item[5].extension[1].valueInteger == 1
-    assert (
-        inst.item[0].item[8].item[4].item[5].extension[2].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[8].item[4].item[5].extension[2].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[8].item[4].item[5].extension[2].valueString == "string"
-    assert (
-        inst.item[0].item[8].item[4].item[5].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[8].item[4].item[5].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0]
@@ -3732,19 +3551,16 @@ def impl_questionnaire_10(inst):
         == "Element values that are used to distinguish the slices"
     )
     assert inst.item[0].item[8].item[4].type == "group"
-    assert (
-        inst.item[0].item[8].item[5].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[8].item[5].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[8].item[5].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[8].item[5].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[8].item[5].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[8].item[5].extension[1].valueString == "string"
-    assert (
-        inst.item[0].item[8].item[5].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[8].item[5].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0]
@@ -3795,19 +3611,16 @@ def impl_questionnaire_10(inst):
     assert inst.item[0].item[8].item[5].repeats is True
     assert inst.item[0].item[8].item[5].required is False
     assert inst.item[0].item[8].item[5].type == "group"
-    assert (
-        inst.item[0].item[8].item[6].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[8].item[6].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[8].item[6].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[8].item[6].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[8].item[6].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[8].item[6].extension[1].valueString == "boolean"
-    assert (
-        inst.item[0].item[8].item[6].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[8].item[6].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0]
@@ -3856,24 +3669,20 @@ def impl_questionnaire_10(inst):
     assert inst.item[0].item[8].item[6].repeats is True
     assert inst.item[0].item[8].item[6].required is False
     assert inst.item[0].item[8].item[6].type == "group"
-    assert (
-        inst.item[0].item[8].item[7].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"
+    assert inst.item[0].item[8].item[7].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "minOccurs"
     )
     assert inst.item[0].item[8].item[7].extension[0].valueInteger == 1
-    assert (
-        inst.item[0].item[8].item[7].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[8].item[7].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[8].item[7].extension[1].valueInteger == 1
-    assert (
-        inst.item[0].item[8].item[7].extension[2].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[8].item[7].extension[2].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[8].item[7].extension[2].valueString == "code"
-    assert (
-        inst.item[0].item[8].item[7].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[8].item[7].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0]
@@ -3924,19 +3733,16 @@ def impl_questionnaire_10(inst):
     assert inst.item[0].item[8].required is False
     assert inst.item[0].item[8].text == "This element is sliced - slices follow"
     assert inst.item[0].item[8].type == "group"
-    assert (
-        inst.item[0].item[9].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+    assert inst.item[0].item[9].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "maxOccurs"
     )
     assert inst.item[0].item[9].extension[0].valueInteger == 0
-    assert (
-        inst.item[0].item[9].extension[1].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+    assert inst.item[0].item[9].extension[1].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "fhirType"
     )
     assert inst.item[0].item[9].extension[1].valueString == "string"
-    assert (
-        inst.item[0].item[9].item[0].extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+    assert inst.item[0].item[9].item[0].extension[0].url == (
+        "http://hl7.org/fhir/StructureDefinition/questionnaire-" "itemControl"
     )
     assert (
         inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].code

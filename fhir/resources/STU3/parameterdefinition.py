@@ -52,7 +52,10 @@ class ParameterDefinition(element.Element):
     profile: fhirtypes.ReferenceType = Field(
         None,
         alias="profile",
-        title="Type `Reference` referencing `StructureDefinition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `StructureDefinition` (represented as "
+            "`dict` in JSON)"
+        ),
         description="What profile the value is expected to be",
     )
 

@@ -45,7 +45,10 @@ class VerificationResult(domainresource.DomainResource):
         None,
         alias="lastPerformed",
         title="Type `DateTime` (represented as `dict` in JSON)",
-        description="The date/time validation was last completed (including failed validations)",
+        description=(
+            "The date/time validation was last completed (including failed "
+            "validations)"
+        ),
     )
 
     need: fhirtypes.CodeableConceptType = Field(
@@ -65,7 +68,10 @@ class VerificationResult(domainresource.DomainResource):
     primarySource: ListType[fhirtypes.VerificationResultPrimarySourceType] = Field(
         None,
         alias="primarySource",
-        title="List of `VerificationResultPrimarySource` items (represented as `dict` in JSON)",
+        title=(
+            "List of `VerificationResultPrimarySource` items (represented as `dict`"
+            " in JSON)"
+        ),
         description="Information about the primary source(s) involved in validation",
     )
 
@@ -73,7 +79,9 @@ class VerificationResult(domainresource.DomainResource):
         ...,
         alias="status",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="attested | validated | in-process | req-revalid | val-fail | reval-fail",
+        description=(
+            "attested | validated | in-process | req-revalid | val-fail | reval-" "fail"
+        ),
     )
 
     statusDate: fhirtypes.DateTime = Field(
@@ -86,7 +94,10 @@ class VerificationResult(domainresource.DomainResource):
     target: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="target",
-        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Resource` (represented as "
+            "`dict` in JSON)"
+        ),
         description="A resource that was validated",
     )
 
@@ -101,7 +112,10 @@ class VerificationResult(domainresource.DomainResource):
         None,
         alias="validationProcess",
         title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="The primary process by which the target is validated (edit check; value set; primary source; multiple sources; standalone; in context)",
+        description=(
+            "The primary process by which the target is validated (edit check; "
+            "value set; primary source; multiple sources; standalone; in context)"
+        ),
     )
 
     validationType: fhirtypes.CodeableConceptType = Field(
@@ -114,7 +128,10 @@ class VerificationResult(domainresource.DomainResource):
     validator: ListType[fhirtypes.VerificationResultValidatorType] = Field(
         None,
         alias="validator",
-        title="List of `VerificationResultValidator` items (represented as `dict` in JSON)",
+        title=(
+            "List of `VerificationResultValidator` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Information about the entity validating information",
     )
 
@@ -142,15 +159,24 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
     onBehalfOf: fhirtypes.ReferenceType = Field(
         None,
         alias="onBehalfOf",
-        title="Type `Reference` referencing `Organization, Practitioner, PractitionerRole` (represented as `dict` in JSON)",
-        description="When the who is asserting on behalf of another (organization or individual)",
+        title=(
+            "Type `Reference` referencing `Organization, Practitioner, "
+            "PractitionerRole` (represented as `dict` in JSON)"
+        ),
+        description=(
+            "When the who is asserting on behalf of another (organization or "
+            "individual)"
+        ),
     )
 
     proxyIdentityCertificate: fhirtypes.String = Field(
         None,
         alias="proxyIdentityCertificate",
         title="Type `String` (represented as `dict` in JSON)",
-        description="A digital identity certificate associated with the proxy entity submitting attested information on behalf of the attestation source",
+        description=(
+            "A digital identity certificate associated with the proxy entity "
+            "submitting attested information on behalf of the attestation source"
+        ),
     )
 
     proxySignature: fhirtypes.SignatureType = Field(
@@ -177,7 +203,10 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
     who: fhirtypes.ReferenceType = Field(
         None,
         alias="who",
-        title="Type `Reference` referencing `Practitioner, PractitionerRole, Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, PractitionerRole, "
+            "Organization` (represented as `dict` in JSON)"
+        ),
         description="The individual or organization attesting to information",
     )
 
@@ -213,7 +242,11 @@ class VerificationResultPrimarySource(backboneelement.BackboneElement):
         None,
         alias="type",
         title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Type of primary source (License Board; Primary Education; Continuing Education; Postal Service; Relationship owner; Registration Authority; legal source; issuing source; authoritative source)",
+        description=(
+            "Type of primary source (License Board; Primary Education; Continuing "
+            "Education; Postal Service; Relationship owner; Registration Authority;"
+            " legal source; issuing source; authoritative source)"
+        ),
     )
 
     validationDate: fhirtypes.DateTime = Field(
@@ -233,7 +266,10 @@ class VerificationResultPrimarySource(backboneelement.BackboneElement):
     who: fhirtypes.ReferenceType = Field(
         None,
         alias="who",
-        title="Type `Reference` referencing `Organization, Practitioner, PractitionerRole` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization, Practitioner, "
+            "PractitionerRole` (represented as `dict` in JSON)"
+        ),
         description="Reference to the primary source",
     )
 
@@ -261,6 +297,9 @@ class VerificationResultValidator(backboneelement.BackboneElement):
     organization: fhirtypes.ReferenceType = Field(
         ...,
         alias="organization",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Reference to the organization validating information",
     )

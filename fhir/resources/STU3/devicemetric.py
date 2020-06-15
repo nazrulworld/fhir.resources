@@ -24,8 +24,13 @@ class DeviceMetric(domainresource.DomainResource):
     calibration: ListType[fhirtypes.DeviceMetricCalibrationType] = Field(
         None,
         alias="calibration",
-        title="List of `DeviceMetricCalibration` items (represented as `dict` in JSON)",
-        description="Describes the calibrations that have been performed or that are required to be performed",
+        title=(
+            "List of `DeviceMetricCalibration` items (represented as `dict` in " "JSON)"
+        ),
+        description=(
+            "Describes the calibrations that have been performed or that are "
+            "required to be performed"
+        ),
     )
 
     category: fhirtypes.Code = Field(
@@ -66,7 +71,10 @@ class DeviceMetric(domainresource.DomainResource):
     parent: fhirtypes.ReferenceType = Field(
         None,
         alias="parent",
-        title="Type `Reference` referencing `DeviceComponent` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `DeviceComponent` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Describes the link to the parent DeviceComponent",
     )
 

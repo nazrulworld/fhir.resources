@@ -25,7 +25,10 @@ class DeviceUseStatement(domainresource.DomainResource):
     basedOn: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="basedOn",
-        title="List of `Reference` items referencing `ServiceRequest` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `ServiceRequest` (represented as"
+            " `dict` in JSON)"
+        ),
         description="Fulfills plan, proposal or order",
     )
 
@@ -39,7 +42,11 @@ class DeviceUseStatement(domainresource.DomainResource):
     derivedFrom: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="derivedFrom",
-        title="List of `Reference` items referencing `ServiceRequest, Procedure, Claim, Observation, QuestionnaireResponse, DocumentReference` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `ServiceRequest, Procedure, "
+            "Claim, Observation, QuestionnaireResponse, DocumentReference` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Supporting information",
     )
 
@@ -74,7 +81,11 @@ class DeviceUseStatement(domainresource.DomainResource):
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="reasonReference",
-        title="List of `Reference` items referencing `Condition, Observation, DiagnosticReport, DocumentReference, Media` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Condition, Observation, "
+            "DiagnosticReport, DocumentReference, Media` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Why was DeviceUseStatement performed?",
     )
 
@@ -88,7 +99,10 @@ class DeviceUseStatement(domainresource.DomainResource):
     source: fhirtypes.ReferenceType = Field(
         None,
         alias="source",
-        title="Type `Reference` referencing `Patient, Practitioner, PractitionerRole, RelatedPerson` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Practitioner, PractitionerRole,"
+            " RelatedPerson` (represented as `dict` in JSON)"
+        ),
         description="Who made the statement",
     )
 
@@ -102,7 +116,10 @@ class DeviceUseStatement(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         ...,
         alias="subject",
-        title="Type `Reference` referencing `Patient, Group` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Group` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Patient using device",
     )
 
@@ -148,7 +165,7 @@ class DeviceUseStatement(domainresource.DomainResource):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "timing": ["timingDateTime", "timingPeriod", "timingTiming",],
+            "timing": ["timingDateTime", "timingPeriod", "timingTiming"]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

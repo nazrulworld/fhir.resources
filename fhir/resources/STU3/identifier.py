@@ -21,7 +21,10 @@ class Identifier(element.Element):
     assigner: fhirtypes.ReferenceType = Field(
         None,
         alias="assigner",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Organization that issued id (may be just text)",
     )
 

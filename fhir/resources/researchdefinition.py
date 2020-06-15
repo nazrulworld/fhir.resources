@@ -104,14 +104,20 @@ class ResearchDefinition(domainresource.DomainResource):
     exposure: fhirtypes.ReferenceType = Field(
         None,
         alias="exposure",
-        title="Type `Reference` referencing `ResearchElementDefinition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `ResearchElementDefinition` (represented "
+            "as `dict` in JSON)"
+        ),
         description="What exposure?",
     )
 
     exposureAlternative: fhirtypes.ReferenceType = Field(
         None,
         alias="exposureAlternative",
-        title="Type `Reference` referencing `ResearchElementDefinition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `ResearchElementDefinition` (represented "
+            "as `dict` in JSON)"
+        ),
         description="What alternative exposure state?",
     )
 
@@ -139,7 +145,10 @@ class ResearchDefinition(domainresource.DomainResource):
     library: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="library",
-        title="List of `Canonical` items referencing `Library` (represented as `dict` in JSON)",
+        title=(
+            "List of `Canonical` items referencing `Library` (represented as `dict`"
+            " in JSON)"
+        ),
         description="Logic used by the ResearchDefinition",
     )
 
@@ -153,14 +162,20 @@ class ResearchDefinition(domainresource.DomainResource):
     outcome: fhirtypes.ReferenceType = Field(
         None,
         alias="outcome",
-        title="Type `Reference` referencing `ResearchElementDefinition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `ResearchElementDefinition` (represented "
+            "as `dict` in JSON)"
+        ),
         description="What outcome?",
     )
 
     population: fhirtypes.ReferenceType = Field(
         ...,
         alias="population",
-        title="Type `Reference` referencing `ResearchElementDefinition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `ResearchElementDefinition` (represented "
+            "as `dict` in JSON)"
+        ),
         description="What population?",
     )
 
@@ -210,7 +225,10 @@ class ResearchDefinition(domainresource.DomainResource):
         None,
         alias="subjectCodeableConcept",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="E.g. Patient, Practitioner, RelatedPerson, Organization, Location, Device",
+        description=(
+            "E.g. Patient, Practitioner, RelatedPerson, Organization, Location, "
+            "Device"
+        ),
         one_of_many="subject",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
     )
@@ -219,7 +237,10 @@ class ResearchDefinition(domainresource.DomainResource):
         None,
         alias="subjectReference",
         title="Type `Reference` referencing `Group` (represented as `dict` in JSON)",
-        description="E.g. Patient, Practitioner, RelatedPerson, Organization, Location, Device",
+        description=(
+            "E.g. Patient, Practitioner, RelatedPerson, Organization, Location, "
+            "Device"
+        ),
         one_of_many="subject",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
     )
@@ -242,14 +263,20 @@ class ResearchDefinition(domainresource.DomainResource):
         None,
         alias="topic",
         title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="The category of the ResearchDefinition, such as Education, Treatment, Assessment, etc.",
+        description=(
+            "The category of the ResearchDefinition, such as Education, Treatment, "
+            "Assessment, etc."
+        ),
     )
 
     url: fhirtypes.Uri = Field(
         None,
         alias="url",
         title="Type `Uri` (represented as `dict` in JSON)",
-        description="Canonical identifier for this research definition, represented as a URI (globally unique)",
+        description=(
+            "Canonical identifier for this research definition, represented as a "
+            "URI (globally unique)"
+        ),
     )
 
     usage: fhirtypes.String = Field(
@@ -287,9 +314,7 @@ class ResearchDefinition(domainresource.DomainResource):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "subject": ["subjectCodeableConcept", "subjectReference",],
-        }
+        one_of_many_fields = {"subject": ["subjectCodeableConcept", "subjectReference"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (

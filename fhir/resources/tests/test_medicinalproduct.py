@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import medicinalproduct
 
@@ -15,9 +17,10 @@ def impl_medicinalproduct_1(inst):
     assert inst.id == "example"
     assert inst.identifier[0].system == "http://ema.europa.eu/example/MPID"
     assert inst.identifier[0].value == "{mpid}"
-    assert (
-        inst.manufacturingBusinessOperation[0].authorisationReferenceNumber.system
-        == "http://ema.europa.eu/example/manufacturingAuthorisationReferenceNumber"
+    assert inst.manufacturingBusinessOperation[
+        0
+    ].authorisationReferenceNumber.system == (
+        "http://ema.europa.eu/example/manufacturingAuthorisationRefer" "enceNumber"
     )
     assert (
         inst.manufacturingBusinessOperation[0].authorisationReferenceNumber.value
@@ -70,13 +73,12 @@ def impl_medicinalproduct_1(inst):
     assert inst.name[0].namePart[2].part == "film-coated tablets"
     assert inst.name[0].namePart[2].type.code == "FRM"
     assert inst.name[0].productName == "Equilidem 2.5 mg film-coated tablets"
-    assert (
-        inst.productClassification[0].coding[0].code
-        == "WHOAnatomicalTherapeuticChemicalATCClassificationSystem|B01AF02"
+    assert inst.productClassification[0].coding[0].code == (
+        "WHOAnatomicalTherapeuticChemicalATCClassificationSystem|B01A" "F02"
     )
-    assert (
-        inst.productClassification[0].coding[0].system
-        == "http://ema.europa.eu/example/WHOAnatomicalTherapeuticChemicalATCClassificationSystem"
+    assert inst.productClassification[0].coding[0].system == (
+        "http://ema.europa.eu/example/WHOAnatomicalTherapeuticChemica"
+        "lATCClassificationSystem"
     )
     assert inst.text.status == "generated"
 

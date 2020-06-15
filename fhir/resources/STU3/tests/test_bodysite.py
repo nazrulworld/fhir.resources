@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import bodysite
 
@@ -53,9 +55,8 @@ def impl_bodysite_2(inst):
     assert inst.identifier[0].system == "http://goodhealth.org/bodysite/identifiers"
     assert inst.identifier[0].value == "12345"
     assert inst.image[0].contentType == "application/dicom"
-    assert (
-        inst.image[0].url
-        == "http://imaging.acme.com/wado/server?requestType=WADO&amp;wado_details"
+    assert inst.image[0].url == (
+        "http://imaging.acme.com/wado/server?requestType=WADO&amp;wad" "o_details"
     )
     assert inst.patient.reference == "Patient/example"
     assert inst.qualifier[0].coding[0].code == "78961009"

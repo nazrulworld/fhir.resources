@@ -34,7 +34,11 @@ class Signature(element.Element):
     onBehalfOf: fhirtypes.ReferenceType = Field(
         None,
         alias="onBehalfOf",
-        title="Type `Reference` referencing `Practitioner, PractitionerRole, RelatedPerson, Patient, Device, Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, PractitionerRole, "
+            "RelatedPerson, Patient, Device, Organization` (represented as `dict` "
+            "in JSON)"
+        ),
         description="The party represented",
     )
 
@@ -69,6 +73,10 @@ class Signature(element.Element):
     who: fhirtypes.ReferenceType = Field(
         ...,
         alias="who",
-        title="Type `Reference` referencing `Practitioner, PractitionerRole, RelatedPerson, Patient, Device, Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, PractitionerRole, "
+            "RelatedPerson, Patient, Device, Organization` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Who signed",
     )

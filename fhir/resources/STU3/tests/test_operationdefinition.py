@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import operationdefinition
 
@@ -17,9 +19,10 @@ def impl_operationdefinition_1(inst):
     assert inst.contact[0].telecom[1].system == "email"
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
     assert inst.date == fhirtypes.DateTime.validate("2017-04-19T07:44:43+10:00")
-    assert (
-        inst.description
-        == "The data-requirements operation aggregates and returns the parameters and data requirements for the measure and all its dependencies as a single module definition"
+    assert inst.description == (
+        "The data-requirements operation aggregates and returns the "
+        "parameters and data requirements for the measure and all its"
+        " dependencies as a single module definition"
     )
     assert inst.id == "Measure-data-requirements"
     assert inst.instance is True
@@ -30,18 +33,21 @@ def impl_operationdefinition_1(inst):
     assert inst.parameter[0].name == "periodStart"
     assert inst.parameter[0].type == "date"
     assert inst.parameter[0].use == "in"
-    assert (
-        inst.parameter[1].documentation
-        == "The end of the measurement period. The period will end at the end of the period implied by the supplied timestamp. E.g. a value of 2014 would set the period end to be 2014-12-31T23:59:59 inclusive"
+    assert inst.parameter[1].documentation == (
+        "The end of the measurement period. The period will end at "
+        "the end of the period implied by the supplied timestamp. "
+        "E.g. a value of 2014 would set the period end to be "
+        "2014-12-31T23:59:59 inclusive"
     )
     assert inst.parameter[1].max == "1"
     assert inst.parameter[1].min == 1
     assert inst.parameter[1].name == "periodEnd"
     assert inst.parameter[1].type == "date"
     assert inst.parameter[1].use == "in"
-    assert (
-        inst.parameter[2].documentation
-        == "The result of the requirements gathering is a module-definition Library that describes the aggregate parameters, data requirements, and dependencies of the measure"
+    assert inst.parameter[2].documentation == (
+        "The result of the requirements gathering is a module-"
+        "definition Library that describes the aggregate parameters, "
+        "data requirements, and dependencies of the measure"
     )
     assert inst.parameter[2].max == "1"
     assert inst.parameter[2].min == 1
@@ -54,8 +60,8 @@ def impl_operationdefinition_1(inst):
     assert inst.system is False
     assert inst.text.status == "generated"
     assert inst.type is False
-    assert (
-        inst.url == "http://hl7.org/fhir/OperationDefinition/Measure-data-requirements"
+    assert inst.url == (
+        "http://hl7.org/fhir/OperationDefinition/Measure-data-" "requirements"
     )
 
 
@@ -92,9 +98,9 @@ def impl_operationdefinition_2(inst):
     assert inst.instance is True
     assert inst.kind == "operation"
     assert inst.name == "Concept Translation"
-    assert (
-        inst.parameter[0].documentation
-        == "The code that is to be translated. If a code is provided, a system must be provided"
+    assert inst.parameter[0].documentation == (
+        "The code that is to be translated. If a code is provided, a "
+        "system must be provided"
     )
     assert inst.parameter[0].max == "1"
     assert inst.parameter[0].min == 0
@@ -110,9 +116,8 @@ def impl_operationdefinition_2(inst):
     assert inst.parameter[1].name == "system"
     assert inst.parameter[1].type == "uri"
     assert inst.parameter[1].use == "in"
-    assert (
-        inst.parameter[2].documentation
-        == "The version of the system, if one was provided in the source data"
+    assert inst.parameter[2].documentation == (
+        "The version of the system, if one was provided in the source" " data"
     )
     assert inst.parameter[2].max == "1"
     assert inst.parameter[2].min == 0
@@ -130,9 +135,10 @@ def impl_operationdefinition_2(inst):
     assert inst.parameter[4].name == "coding"
     assert inst.parameter[4].type == "Coding"
     assert inst.parameter[4].use == "in"
-    assert (
-        inst.parameter[5].documentation
-        == "A full codeableConcept to validate. The server can translate any of the coding values (e.g. existing translations) as it chooses"
+    assert inst.parameter[5].documentation == (
+        "A full codeableConcept to validate. The server can translate"
+        " any of the coding values (e.g. existing translations) as it"
+        " chooses"
     )
     assert inst.parameter[5].max == "1"
     assert inst.parameter[5].min == 0
@@ -169,9 +175,10 @@ def impl_operationdefinition_2(inst):
     assert inst.parameter[8].part[1].type == "CodeableConcept"
     assert inst.parameter[8].part[1].use == "in"
     assert inst.parameter[8].use == "in"
-    assert (
-        inst.parameter[9].documentation
-        == "if this is true, then the operation should return all the codes that might be mapped to this code. This parameter reverses the meaning of the source and target parameters"
+    assert inst.parameter[9].documentation == (
+        "if this is true, then the operation should return all the "
+        "codes that might be mapped to this code. This parameter "
+        "reverses the meaning of the source and target parameters"
     )
     assert inst.parameter[9].max == "1"
     assert inst.parameter[9].min == 0
@@ -220,18 +227,20 @@ def impl_operationdefinition_3(inst):
     assert inst.instance is True
     assert inst.kind == "operation"
     assert inst.name == "Value Set Expansion"
-    assert (
-        inst.parameter[0].documentation
-        == "A canonical url for a value set. The server must know the value set (e.g. it is defined explicitly in the server's value sets, or it is defined implicitly by some code system known to the server"
+    assert inst.parameter[0].documentation == (
+        "A canonical url for a value set. The server must know the "
+        "value set (e.g. it is defined explicitly in the server's "
+        "value sets, or it is defined implicitly by some code system "
+        "known to the server"
     )
     assert inst.parameter[0].max == "1"
     assert inst.parameter[0].min == 0
     assert inst.parameter[0].name == "url"
     assert inst.parameter[0].type == "uri"
     assert inst.parameter[0].use == "in"
-    assert (
-        inst.parameter[1].documentation
-        == "The value set is provided directly as part of the request. Servers may choose not to accept value sets in this fashion"
+    assert inst.parameter[1].documentation == (
+        "The value set is provided directly as part of the request. "
+        "Servers may choose not to accept value sets in this fashion"
     )
     assert inst.parameter[1].max == "1"
     assert inst.parameter[1].min == 0
@@ -258,9 +267,10 @@ def impl_operationdefinition_3(inst):
     assert inst.parameter[5].name == "date"
     assert inst.parameter[5].type == "dateTime"
     assert inst.parameter[5].use == "in"
-    assert (
-        inst.parameter[6].documentation
-        == "Paging support - where to start if a subset is desired (default = 0). Offset is number of records (not number of pages)"
+    assert inst.parameter[6].documentation == (
+        "Paging support - where to start if a subset is desired "
+        "(default = 0). Offset is number of records (not number of "
+        "pages)"
     )
     assert inst.parameter[6].max == "1"
     assert inst.parameter[6].min == 0
@@ -272,18 +282,20 @@ def impl_operationdefinition_3(inst):
     assert inst.parameter[7].name == "count"
     assert inst.parameter[7].type == "integer"
     assert inst.parameter[7].use == "in"
-    assert (
-        inst.parameter[8].documentation
-        == "Controls whether concept designations are to be included or excluded in value set expansions. Overrides the value in the expansion profile if there is one"
+    assert inst.parameter[8].documentation == (
+        "Controls whether concept designations are to be included or "
+        "excluded in value set expansions. Overrides the value in the"
+        " expansion profile if there is one"
     )
     assert inst.parameter[8].max == "1"
     assert inst.parameter[8].min == 0
     assert inst.parameter[8].name == "includeDesignations"
     assert inst.parameter[8].type == "boolean"
     assert inst.parameter[8].use == "in"
-    assert (
-        inst.parameter[9].documentation
-        == "Controls whether the value set definition is included or excluded in value set expansions. Overrides the value in the expansion profile if there is one"
+    assert inst.parameter[9].documentation == (
+        "Controls whether the value set definition is included or "
+        "excluded in value set expansions. Overrides the value in the"
+        " expansion profile if there is one"
     )
     assert inst.parameter[9].max == "1"
     assert inst.parameter[9].min == 0
@@ -330,18 +342,21 @@ def impl_operationdefinition_4(inst):
     assert inst.instance is True
     assert inst.kind == "operation"
     assert inst.name == "Populate Questionnaire"
-    assert (
-        inst.parameter[0].documentation
-        == "A logical questionnaire identifier (i.e. ''Questionnaire.identifier''). The server must know the questionnaire or be able to retrieve it from other known repositories."
+    assert inst.parameter[0].documentation == (
+        "A logical questionnaire identifier (i.e. "
+        "''Questionnaire.identifier''). The server must know the "
+        "questionnaire or be able to retrieve it from other known "
+        "repositories."
     )
     assert inst.parameter[0].max == "1"
     assert inst.parameter[0].min == 0
     assert inst.parameter[0].name == "identifier"
     assert inst.parameter[0].type == "uri"
     assert inst.parameter[0].use == "in"
-    assert (
-        inst.parameter[1].documentation
-        == "The [Questionnaire](questionnaire.html) is provided directly as part of the request. Servers may choose not to accept questionnaires in this fashion"
+    assert inst.parameter[1].documentation == (
+        "The [Questionnaire](questionnaire.html) is provided directly"
+        " as part of the request. Servers may choose not to accept "
+        "questionnaires in this fashion"
     )
     assert inst.parameter[1].max == "1"
     assert inst.parameter[1].min == 0
@@ -367,18 +382,20 @@ def impl_operationdefinition_4(inst):
     assert inst.parameter[4].name == "content"
     assert inst.parameter[4].type == "Reference"
     assert inst.parameter[4].use == "in"
-    assert (
-        inst.parameter[5].documentation
-        == "If specified and set to 'true' (and the server is capable), the server should use what resources and other knowledge it has about the referenced subject when pre-populating answers to questions."
+    assert inst.parameter[5].documentation == (
+        "If specified and set to 'true' (and the server is capable), "
+        "the server should use what resources and other knowledge it "
+        "has about the referenced subject when pre-populating answers"
+        " to questions."
     )
     assert inst.parameter[5].max == "1"
     assert inst.parameter[5].min == 0
     assert inst.parameter[5].name == "local"
     assert inst.parameter[5].type == "boolean"
     assert inst.parameter[5].use == "in"
-    assert (
-        inst.parameter[6].documentation
-        == "The partially (or fully)-populated set of answers for the specified Questionnaire"
+    assert inst.parameter[6].documentation == (
+        "The partially (or fully)-populated set of answers for the "
+        "specified Questionnaire"
     )
     assert inst.parameter[6].max == "1"
     assert inst.parameter[6].min == 1
@@ -396,7 +413,9 @@ def impl_operationdefinition_4(inst):
     assert inst.system is False
     assert inst.text.status == "generated"
     assert inst.type is True
-    assert inst.url == "http://hl7.org/fhir/OperationDefinition/Questionnaire-populate"
+    assert inst.url == (
+        "http://hl7.org/fhir/OperationDefinition/Questionnaire-" "populate"
+    )
 
 
 def test_operationdefinition_4(base_settings):
@@ -527,9 +546,9 @@ def impl_operationdefinition_7(inst):
     assert inst.contact[0].telecom[1].system == "email"
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
     assert inst.date == fhirtypes.DateTime.validate("2017-04-19T07:44:43+10:00")
-    assert (
-        inst.description
-        == "The evaluate operation requests clinical decision support guidance based on a specific decision support module"
+    assert inst.description == (
+        "The evaluate operation requests clinical decision support "
+        "guidance based on a specific decision support module"
     )
     assert inst.id == "ServiceDefinition-evaluate"
     assert inst.instance is True
@@ -549,18 +568,21 @@ def impl_operationdefinition_7(inst):
     assert inst.parameter[1].name == "evaluateAtDateTime"
     assert inst.parameter[1].type == "dateTime"
     assert inst.parameter[1].use == "in"
-    assert (
-        inst.parameter[2].documentation
-        == "The input parameters for a request, if any. These parameters are defined by the module that is the target of the evaluation, and typically supply patient-independent information to the module."
+    assert inst.parameter[2].documentation == (
+        "The input parameters for a request, if any. These parameters"
+        " are defined by the module that is the target of the "
+        "evaluation, and typically supply patient-independent "
+        "information to the module."
     )
     assert inst.parameter[2].max == "1"
     assert inst.parameter[2].min == 0
     assert inst.parameter[2].name == "inputParameters"
     assert inst.parameter[2].type == "Parameters"
     assert inst.parameter[2].use == "in"
-    assert (
-        inst.parameter[3].documentation
-        == "The input data for the request. These data are defined by the data requirements of the module and typically provide patient-dependent information."
+    assert inst.parameter[3].documentation == (
+        "The input data for the request. These data are defined by "
+        "the data requirements of the module and typically provide "
+        "patient-dependent information."
     )
     assert inst.parameter[3].max == "*"
     assert inst.parameter[3].min == 0
@@ -603,9 +625,10 @@ def impl_operationdefinition_7(inst):
     assert inst.parameter[7].name == "initiatingPerson"
     assert inst.parameter[7].type == "Reference"
     assert inst.parameter[7].use == "in"
-    assert (
-        inst.parameter[8].documentation
-        == "The type of user initiating the request, e.g. patient, healthcare provider, or specific type of healthcare provider (physician, nurse, etc.)."
+    assert inst.parameter[8].documentation == (
+        "The type of user initiating the request, e.g. patient, "
+        "healthcare provider, or specific type of healthcare provider"
+        " (physician, nurse, etc.)."
     )
     assert inst.parameter[8].max == "1"
     assert inst.parameter[8].min == 0
@@ -627,8 +650,8 @@ def impl_operationdefinition_7(inst):
     assert inst.system is False
     assert inst.text.status == "generated"
     assert inst.type is False
-    assert (
-        inst.url == "http://hl7.org/fhir/OperationDefinition/ServiceDefinition-evaluate"
+    assert inst.url == (
+        "http://hl7.org/fhir/OperationDefinition/ServiceDefinition-" "evaluate"
     )
 
 
@@ -707,9 +730,10 @@ def impl_operationdefinition_9(inst):
     assert inst.contact[0].telecom[1].system == "email"
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
     assert inst.date == fhirtypes.DateTime.validate("2017-04-19T07:44:43+10:00")
-    assert (
-        inst.description
-        == "The data-requirements operation aggregates and returns the parameters and data requirements for the service module and all its dependencies as a single module definition library."
+    assert inst.description == (
+        "The data-requirements operation aggregates and returns the "
+        "parameters and data requirements for the service module and "
+        "all its dependencies as a single module definition library."
     )
     assert inst.id == "ServiceDefinition-data-requirements"
     assert inst.instance is True
@@ -720,9 +744,10 @@ def impl_operationdefinition_9(inst):
     assert inst.parameter[0].name == "evaluateAtDateTime"
     assert inst.parameter[0].type == "dateTime"
     assert inst.parameter[0].use == "in"
-    assert (
-        inst.parameter[1].documentation
-        == "The result of the requirements gathering is a module-definition Library that describes the aggregate parameters, data requirements, and dependencies of the service."
+    assert inst.parameter[1].documentation == (
+        "The result of the requirements gathering is a module-"
+        "definition Library that describes the aggregate parameters, "
+        "data requirements, and dependencies of the service."
     )
     assert inst.parameter[1].max == "1"
     assert inst.parameter[1].min == 1
@@ -735,9 +760,8 @@ def impl_operationdefinition_9(inst):
     assert inst.system is False
     assert inst.text.status == "generated"
     assert inst.type is False
-    assert (
-        inst.url
-        == "http://hl7.org/fhir/OperationDefinition/ServiceDefinition-data-requirements"
+    assert inst.url == (
+        "http://hl7.org/fhir/OperationDefinition/ServiceDefinition-" "data-requirements"
     )
 
 
@@ -771,9 +795,9 @@ def impl_operationdefinition_10(inst):
     assert inst.contact[0].telecom[1].system == "email"
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
     assert inst.date == fhirtypes.DateTime.validate("2017-04-19T07:44:43+10:00")
-    assert (
-        inst.description
-        == "The evaluate-measure operation is used to invoke an eMeasure and obtain the results"
+    assert inst.description == (
+        "The evaluate-measure operation is used to invoke an eMeasure"
+        " and obtain the results"
     )
     assert inst.id == "Measure-evaluate-measure"
     assert inst.instance is True
@@ -784,18 +808,21 @@ def impl_operationdefinition_10(inst):
     assert inst.parameter[0].name == "periodStart"
     assert inst.parameter[0].type == "date"
     assert inst.parameter[0].use == "in"
-    assert (
-        inst.parameter[1].documentation
-        == "The end of the measurement period. The period will end at the end of the period implied by the supplied timestamp. E.g. a value of 2014 would set the period end to be 2014-12-31T23:59:59 inclusive"
+    assert inst.parameter[1].documentation == (
+        "The end of the measurement period. The period will end at "
+        "the end of the period implied by the supplied timestamp. "
+        "E.g. a value of 2014 would set the period end to be "
+        "2014-12-31T23:59:59 inclusive"
     )
     assert inst.parameter[1].max == "1"
     assert inst.parameter[1].min == 1
     assert inst.parameter[1].name == "periodEnd"
     assert inst.parameter[1].type == "date"
     assert inst.parameter[1].use == "in"
-    assert (
-        inst.parameter[2].documentation
-        == "The measure to evaluate. This parameter is only required when the operation is invoked on the resource type, it is not used when invoking the operation on a Measure instance"
+    assert inst.parameter[2].documentation == (
+        "The measure to evaluate. This parameter is only required "
+        "when the operation is invoked on the resource type, it is "
+        "not used when invoking the operation on a Measure instance"
     )
     assert inst.parameter[2].max == "1"
     assert inst.parameter[2].min == 0
@@ -806,18 +833,22 @@ def impl_operationdefinition_10(inst):
     )
     assert inst.parameter[2].type == "Reference"
     assert inst.parameter[2].use == "in"
-    assert (
-        inst.parameter[3].documentation
-        == "The type of measure report, patient, patient-list, or population. If not specified, a default value of patient will be used if the patient parameter is supplied, otherwise, population will be used"
+    assert inst.parameter[3].documentation == (
+        "The type of measure report, patient, patient-list, or "
+        "population. If not specified, a default value of patient "
+        "will be used if the patient parameter is supplied, "
+        "otherwise, population will be used"
     )
     assert inst.parameter[3].max == "1"
     assert inst.parameter[3].min == 0
     assert inst.parameter[3].name == "reportType"
     assert inst.parameter[3].type == "code"
     assert inst.parameter[3].use == "in"
-    assert (
-        inst.parameter[4].documentation
-        == "Patient to evaluate against. If not specified, the measure will be evaluated for all patients that meet the requirements of the measure. If specified, only the referenced patient will be evaluated"
+    assert inst.parameter[4].documentation == (
+        "Patient to evaluate against. If not specified, the measure "
+        "will be evaluated for all patients that meet the "
+        "requirements of the measure. If specified, only the "
+        "referenced patient will be evaluated"
     )
     assert inst.parameter[4].max == "1"
     assert inst.parameter[4].min == 0
@@ -828,9 +859,10 @@ def impl_operationdefinition_10(inst):
     )
     assert inst.parameter[4].type == "Reference"
     assert inst.parameter[4].use == "in"
-    assert (
-        inst.parameter[5].documentation
-        == "Practitioner to evaluate. If specified, the measure will be evaluated only for patients whose primary practitioner is the identified practitioner"
+    assert inst.parameter[5].documentation == (
+        "Practitioner to evaluate. If specified, the measure will be "
+        "evaluated only for patients whose primary practitioner is "
+        "the identified practitioner"
     )
     assert inst.parameter[5].max == "1"
     assert inst.parameter[5].min == 0
@@ -846,9 +878,10 @@ def impl_operationdefinition_10(inst):
     assert inst.parameter[6].name == "lastReceivedOn"
     assert inst.parameter[6].type == "dateTime"
     assert inst.parameter[6].use == "in"
-    assert (
-        inst.parameter[7].documentation
-        == "The results of the measure calculation. See the MeasureReport resource for a complete description of the output of this operation"
+    assert inst.parameter[7].documentation == (
+        "The results of the measure calculation. See the "
+        "MeasureReport resource for a complete description of the "
+        "output of this operation"
     )
     assert inst.parameter[7].max == "1"
     assert inst.parameter[7].min == 1
@@ -861,8 +894,8 @@ def impl_operationdefinition_10(inst):
     assert inst.system is False
     assert inst.text.status == "generated"
     assert inst.type is True
-    assert (
-        inst.url == "http://hl7.org/fhir/OperationDefinition/Measure-evaluate-measure"
+    assert inst.url == (
+        "http://hl7.org/fhir/OperationDefinition/Measure-evaluate-" "measure"
     )
 
 

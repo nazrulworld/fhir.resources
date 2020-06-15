@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import medicationrequest
 
@@ -212,9 +214,8 @@ def impl_medicationrequest_3(inst):
     assert inst.dosageInstruction[0].route.coding[0].display == "Oral Route"
     assert inst.dosageInstruction[0].route.coding[0].system == "http://snomed.info/sct"
     assert inst.dosageInstruction[0].sequence == 1
-    assert (
-        inst.dosageInstruction[0].text
-        == "Take 1-2 tablets once daily at bedtime as needed for restless legs"
+    assert inst.dosageInstruction[0].text == (
+        "Take 1-2 tablets once daily at bedtime as needed for " "restless legs"
     )
     assert inst.dosageInstruction[0].timing.repeat.frequency == 1
     assert float(inst.dosageInstruction[0].timing.repeat.period) == float(1)
@@ -268,9 +269,11 @@ def impl_medicationrequest_4(inst):
     )
     assert inst.dosageInstruction[0].route.coding[0].system == "http://snomed.info/sct"
     assert inst.dosageInstruction[0].sequence == 1
-    assert (
-        inst.dosageInstruction[0].text
-        == "6 mg PO daily for remission induction; adjust dosage to white blood cell (WBC) count.  With hold treatment if WBC is less than 15,000/µL; resume when WBC is greater than 50,000/µL"
+    assert inst.dosageInstruction[0].text == (
+        "6 mg PO daily for remission induction; adjust dosage to "
+        "white blood cell (WBC) count.  With hold treatment if WBC is"
+        " less than 15,000/µL; resume when WBC is greater than "
+        "50,000/µL"
     )
     assert inst.dosageInstruction[0].timing.repeat.frequency == 1
     assert float(inst.dosageInstruction[0].timing.repeat.period) == float(1)
@@ -342,9 +345,9 @@ def impl_medicationrequest_5(inst):
     assert (
         inst.dosageInstruction[0].additionalInstruction[0].coding[0].code == "418914006"
     )
-    assert (
-        inst.dosageInstruction[0].additionalInstruction[0].coding[0].display
-        == "Warning. May cause drowsiness. If affected do not drive or operate machinery. Avoid alcoholic drink (qualifier value)"
+    assert inst.dosageInstruction[0].additionalInstruction[0].coding[0].display == (
+        "Warning. May cause drowsiness. If affected do not drive or "
+        "operate machinery. Avoid alcoholic drink (qualifier value)"
     )
     assert (
         inst.dosageInstruction[0].additionalInstruction[0].coding[0].system
@@ -591,9 +594,8 @@ def impl_medicationrequest_8(inst):
     assert inst.dosageInstruction[0].route.coding[0].display == "Intravenous"
     assert inst.dosageInstruction[0].route.coding[0].system == "http://snomed.info/sct"
     assert inst.dosageInstruction[0].sequence == 1
-    assert (
-        inst.dosageInstruction[0].text
-        == "1.8 mg/kg IV infusion over 30 minutes every 3 weeks for 16 cycles"
+    assert inst.dosageInstruction[0].text == (
+        "1.8 mg/kg IV infusion over 30 minutes every 3 weeks for 16 " "cycles"
     )
     assert inst.dosageInstruction[0].timing.repeat.count == 16
     assert inst.dosageInstruction[0].timing.repeat.frequency == 1

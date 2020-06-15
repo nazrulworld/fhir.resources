@@ -205,7 +205,10 @@ class EventDefinition(domainresource.DomainResource):
         None,
         alias="url",
         title="Type `Uri` (represented as `dict` in JSON)",
-        description="Canonical identifier for this event definition, represented as a URI (globally unique)",
+        description=(
+            "Canonical identifier for this event definition, represented as a URI "
+            "(globally unique)"
+        ),
     )
 
     usage: fhirtypes.String = Field(
@@ -243,9 +246,7 @@ class EventDefinition(domainresource.DomainResource):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "subject": ["subjectCodeableConcept", "subjectReference",],
-        }
+        one_of_many_fields = {"subject": ["subjectCodeableConcept", "subjectReference"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (

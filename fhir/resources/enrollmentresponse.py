@@ -45,7 +45,10 @@ class EnrollmentResponse(domainresource.DomainResource):
     organization: fhirtypes.ReferenceType = Field(
         None,
         alias="organization",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Insurer",
     )
 
@@ -59,14 +62,20 @@ class EnrollmentResponse(domainresource.DomainResource):
     request: fhirtypes.ReferenceType = Field(
         None,
         alias="request",
-        title="Type `Reference` referencing `EnrollmentRequest` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `EnrollmentRequest` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Claim reference",
     )
 
     requestProvider: fhirtypes.ReferenceType = Field(
         None,
         alias="requestProvider",
-        title="Type `Reference` referencing `Practitioner, PractitionerRole, Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, PractitionerRole, "
+            "Organization` (represented as `dict` in JSON)"
+        ),
         description="Responsible practitioner",
     )
 

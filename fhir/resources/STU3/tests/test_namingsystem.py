@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import namingsystem
 
@@ -18,9 +20,8 @@ def impl_namingsystem_1(inst):
         == "http://hl7-australia.wikispaces.com/FHIR+Australia"
     )
     assert inst.date == fhirtypes.DateTime.validate("2015-08-31")
-    assert (
-        inst.description
-        == "Australian HI Identifier as established by relevant regulations etc"
+    assert inst.description == (
+        "Australian HI Identifier as established by relevant " "regulations etc"
     )
     assert inst.id == "example-id"
     assert inst.jurisdiction[0].coding[0].code == "AU"
@@ -67,9 +68,9 @@ def test_namingsystem_1(base_settings):
 
 def impl_namingsystem_2(inst):
     assert inst.date == fhirtypes.DateTime.validate("2005-01-25")
-    assert (
-        inst.description
-        == "This was a wrong registration for the spanish editions of SNOMED CT. Do not use"
+    assert inst.description == (
+        "This was a wrong registration for the spanish editions of "
+        "SNOMED CT. Do not use"
     )
     assert inst.id == "example-replaced"
     assert inst.kind == "codesystem"

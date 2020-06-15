@@ -129,7 +129,10 @@ class Measure(domainresource.DomainResource):
         None,
         alias="improvementNotation",
         title="Type `String` (represented as `dict` in JSON)",
-        description="Improvement notation for the measure, e.g. higher score indicates better quality",
+        description=(
+            "Improvement notation for the measure, e.g. higher score indicates "
+            "better quality"
+        ),
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -149,7 +152,10 @@ class Measure(domainresource.DomainResource):
     library: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="library",
-        title="List of `Reference` items referencing `Library` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Library` (represented as `dict`"
+            " in JSON)"
+        ),
         description="Logic used by the measure",
     )
 
@@ -226,7 +232,9 @@ class Measure(domainresource.DomainResource):
     supplementalData: ListType[fhirtypes.MeasureSupplementalDataType] = Field(
         None,
         alias="supplementalData",
-        title="List of `MeasureSupplementalData` items (represented as `dict` in JSON)",
+        title=(
+            "List of `MeasureSupplementalData` items (represented as `dict` in " "JSON)"
+        ),
         description="What other data should be reported with the measure",
     )
 
@@ -334,14 +342,21 @@ class MeasureGroupPopulation(backboneelement.BackboneElement):
         None,
         alias="code",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="initial-population | numerator | numerator-exclusion | denominator | denominator-exclusion | denominator-exception | measure-population | measure-population-exclusion | measure-observation",
+        description=(
+            "initial-population | numerator | numerator-exclusion | denominator | "
+            "denominator-exclusion | denominator-exception | measure-population | "
+            "measure-population-exclusion | measure-observation"
+        ),
     )
 
     criteria: fhirtypes.String = Field(
         ...,
         alias="criteria",
         title="Type `String` (represented as `dict` in JSON)",
-        description="The name of a valid referenced CQL expression (may be namespaced) that defines this population criteria",
+        description=(
+            "The name of a valid referenced CQL expression (may be namespaced) that"
+            " defines this population criteria"
+        ),
     )
 
     description: fhirtypes.String = Field(
@@ -386,7 +401,10 @@ class MeasureGroupStratifier(backboneelement.BackboneElement):
         None,
         alias="identifier",
         title="Type `Identifier` (represented as `dict` in JSON)",
-        description="The identifier for the stratifier used to coordinate the reported data back to this stratifier",
+        description=(
+            "The identifier for the stratifier used to coordinate the reported data"
+            " back to this stratifier"
+        ),
     )
 
     path: fhirtypes.String = Field(

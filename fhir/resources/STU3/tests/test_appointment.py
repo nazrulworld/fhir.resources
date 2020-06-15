@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import appointment
 
@@ -16,9 +18,9 @@ def impl_appointment_1(inst):
     assert (
         inst.appointmentType.coding[0].system == "http://example.org/appointment-type"
     )
-    assert (
-        inst.comment
-        == "Further expand on the results of the MRI and determine the next actions that may be appropriate."
+    assert inst.comment == (
+        "Further expand on the results of the MRI and determine the "
+        "next actions that may be appropriate."
     )
     assert inst.created == fhirtypes.DateTime.validate("2013-10-10")
     assert inst.description == "Discussion on the results of your recent MRI"
@@ -57,9 +59,9 @@ def impl_appointment_1(inst):
     assert inst.specialty[0].coding[0].system == "http://example.org/specialty"
     assert inst.start == fhirtypes.Instant.validate("2013-12-10T09:00:00Z")
     assert inst.status == "booked"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Brian MRI results discussion</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Brian MRI '
+        "results discussion</div>"
     )
     assert inst.text.status == "generated"
 
@@ -90,9 +92,9 @@ def impl_appointment_2(inst):
     assert (
         inst.appointmentType.coding[0].system == "http://example.org/appointment-type"
     )
-    assert (
-        inst.comment
-        == "Further expand on the results of the MRI and determine the next actions that may be appropriate."
+    assert inst.comment == (
+        "Further expand on the results of the MRI and determine the "
+        "next actions that may be appropriate."
     )
     assert inst.created == fhirtypes.DateTime.validate("2015-12-02")
     assert inst.description == "Discussion on the results of your recent MRI"
@@ -133,9 +135,9 @@ def impl_appointment_2(inst):
     assert inst.specialty[0].coding[0].display == "General Practice"
     assert inst.specialty[0].coding[0].system == "http://example.org/specialty"
     assert inst.status == "proposed"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Brian MRI results discussion</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Brian MRI '
+        "results discussion</div>"
     )
     assert inst.text.status == "generated"
 
@@ -166,9 +168,8 @@ def impl_appointment_3(inst):
     assert (
         inst.appointmentType.coding[0].system == "http://example.org/appointment-type"
     )
-    assert (
-        inst.comment
-        == "Clarify the results of the MRI to ensure context of test was correct"
+    assert inst.comment == (
+        "Clarify the results of the MRI to ensure context of test was" " correct"
     )
     assert inst.description == "Discussion about Peter Chalmers MRI results"
     assert inst.end == fhirtypes.Instant.validate("2013-12-09T11:00:00Z")
@@ -202,9 +203,9 @@ def impl_appointment_3(inst):
     assert inst.start == fhirtypes.Instant.validate("2013-12-09T09:00:00Z")
     assert inst.status == "booked"
     assert inst.supportingInformation[0].reference == "DiagnosticReport/ultrasound"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Brian MRI results discussion</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Brian MRI '
+        "results discussion</div>"
     )
     assert inst.text.status == "generated"
 

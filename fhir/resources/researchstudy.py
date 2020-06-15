@@ -63,7 +63,10 @@ class ResearchStudy(domainresource.DomainResource):
     enrollment: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="enrollment",
-        title="List of `Reference` items referencing `Group` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Group` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Inclusion \u0026 exclusion criteria",
     )
 
@@ -112,7 +115,10 @@ class ResearchStudy(domainresource.DomainResource):
     partOf: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="partOf",
-        title="List of `Reference` items referencing `ResearchStudy` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `ResearchStudy` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Part of larger study",
     )
 
@@ -127,27 +133,39 @@ class ResearchStudy(domainresource.DomainResource):
         None,
         alias="phase",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="n-a | early-phase-1 | phase-1 | phase-1-phase-2 | phase-2 | phase-2-phase-3 | phase-3 | phase-4",
+        description=(
+            "n-a | early-phase-1 | phase-1 | phase-1-phase-2 | phase-2 | "
+            "phase-2-phase-3 | phase-3 | phase-4"
+        ),
     )
 
     primaryPurposeType: fhirtypes.CodeableConceptType = Field(
         None,
         alias="primaryPurposeType",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="treatment | prevention | diagnostic | supportive-care | screening | health-services-research | basic-science | device-feasibility",
+        description=(
+            "treatment | prevention | diagnostic | supportive-care | screening | "
+            "health-services-research | basic-science | device-feasibility"
+        ),
     )
 
     principalInvestigator: fhirtypes.ReferenceType = Field(
         None,
         alias="principalInvestigator",
-        title="Type `Reference` referencing `Practitioner, PractitionerRole` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, PractitionerRole` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Researcher who oversees multiple aspects of the study",
     )
 
     protocol: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="protocol",
-        title="List of `Reference` items referencing `PlanDefinition` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `PlanDefinition` (represented as"
+            " `dict` in JSON)"
+        ),
         description="Steps followed in executing study",
     )
 
@@ -155,7 +173,10 @@ class ResearchStudy(domainresource.DomainResource):
         None,
         alias="reasonStopped",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="accrual-goal-met | closed-due-to-toxicity | closed-due-to-lack-of-study-progress | temporarily-closed-per-study-design",
+        description=(
+            "accrual-goal-met | closed-due-to-toxicity | closed-due-to-lack-of-"
+            "study-progress | temporarily-closed-per-study-design"
+        ),
     )
 
     relatedArtifact: ListType[fhirtypes.RelatedArtifactType] = Field(
@@ -168,14 +189,20 @@ class ResearchStudy(domainresource.DomainResource):
     site: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="site",
-        title="List of `Reference` items referencing `Location` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Location` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Facility where study activities are conducted",
     )
 
     sponsor: fhirtypes.ReferenceType = Field(
         None,
         alias="sponsor",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Organization that initiates and is legally responsible for the study",
     )
 
@@ -183,7 +210,12 @@ class ResearchStudy(domainresource.DomainResource):
         ...,
         alias="status",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="active | administratively-completed | approved | closed-to-accrual | closed-to-accrual-and-intervention | completed | disapproved | in-review | temporarily-closed-to-accrual | temporarily-closed-to-accrual-and-intervention | withdrawn",
+        description=(
+            "active | administratively-completed | approved | closed-to-accrual | "
+            "closed-to-accrual-and-intervention | completed | disapproved | in-"
+            "review | temporarily-closed-to-accrual | temporarily-closed-to-"
+            "accrual-and-intervention | withdrawn"
+        ),
     )
 
     title: fhirtypes.String = Field(

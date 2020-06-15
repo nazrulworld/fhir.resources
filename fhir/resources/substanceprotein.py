@@ -30,28 +30,56 @@ class SubstanceProtein(domainresource.DomainResource):
         None,
         alias="disulfideLinkage",
         title="List of `String` items (represented as `dict` in JSON)",
-        description="The disulphide bond between two cysteine residues either on the same subunit or on two different subunits shall be described. The position of the disulfide bonds in the SubstanceProtein shall be listed in increasing order of subunit number and position within subunit followed by the abbreviation of the amino acids involved. The disulfide linkage positions shall actually contain the amino acid Cysteine at the respective positions",
+        description=(
+            "The disulphide bond between two cysteine residues either on the same "
+            "subunit or on two different subunits shall be described. The position "
+            "of the disulfide bonds in the SubstanceProtein shall be listed in "
+            "increasing order of subunit number and position within subunit "
+            "followed by the abbreviation of the amino acids involved. The "
+            "disulfide linkage positions shall actually contain the amino acid "
+            "Cysteine at the respective positions"
+        ),
     )
 
     numberOfSubunits: fhirtypes.Integer = Field(
         None,
         alias="numberOfSubunits",
         title="Type `Integer` (represented as `dict` in JSON)",
-        description="Number of linear sequences of amino acids linked through peptide bonds. The number of subunits constituting the SubstanceProtein shall be described. It is possible that the number of subunits can be variable",
+        description=(
+            "Number of linear sequences of amino acids linked through peptide "
+            "bonds. The number of subunits constituting the SubstanceProtein shall "
+            "be described. It is possible that the number of subunits can be "
+            "variable"
+        ),
     )
 
     sequenceType: fhirtypes.CodeableConceptType = Field(
         None,
         alias="sequenceType",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The SubstanceProtein descriptive elements will only be used when a complete or partial amino acid sequence is available or derivable from a nucleic acid sequence",
+        description=(
+            "The SubstanceProtein descriptive elements will only be used when a "
+            "complete or partial amino acid sequence is available or derivable from"
+            " a nucleic acid sequence"
+        ),
     )
 
     subunit: ListType[fhirtypes.SubstanceProteinSubunitType] = Field(
         None,
         alias="subunit",
-        title="List of `SubstanceProteinSubunit` items (represented as `dict` in JSON)",
-        description="This subclause refers to the description of each subunit constituting the SubstanceProtein. A subunit is a linear sequence of amino acids linked through peptide bonds. The Subunit information shall be provided when the finished SubstanceProtein is a complex of multiple sequences; subunits are not used to delineate domains within a single sequence. Subunits are listed in order of decreasing length; sequences of the same length will be ordered by decreasing molecular weight; subunits that have identical sequences will be repeated multiple times",
+        title=(
+            "List of `SubstanceProteinSubunit` items (represented as `dict` in " "JSON)"
+        ),
+        description=(
+            "This subclause refers to the description of each subunit constituting "
+            "the SubstanceProtein. A subunit is a linear sequence of amino acids "
+            "linked through peptide bonds. The Subunit information shall be "
+            "provided when the finished SubstanceProtein is a complex of multiple "
+            "sequences; subunits are not used to delineate domains within a single "
+            "sequence. Subunits are listed in order of decreasing length; sequences"
+            " of the same length will be ordered by decreasing molecular weight; "
+            "subunits that have identical sequences will be repeated multiple times"
+        ),
     )
 
 
@@ -79,7 +107,10 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
         None,
         alias="cTerminalModificationId",
         title="Type `Identifier` (represented as `dict` in JSON)",
-        description="Unique identifier for molecular fragment modification based on the ISO 11238 Substance ID",
+        description=(
+            "Unique identifier for molecular fragment modification based on the ISO"
+            " 11238 Substance ID"
+        ),
     )
 
     length: fhirtypes.Integer = Field(
@@ -93,33 +124,62 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
         None,
         alias="nTerminalModification",
         title="Type `String` (represented as `dict` in JSON)",
-        description="The name of the fragment modified at the N-terminal of the SubstanceProtein shall be specified",
+        description=(
+            "The name of the fragment modified at the N-terminal of the "
+            "SubstanceProtein shall be specified"
+        ),
     )
 
     nTerminalModificationId: fhirtypes.IdentifierType = Field(
         None,
         alias="nTerminalModificationId",
         title="Type `Identifier` (represented as `dict` in JSON)",
-        description="Unique identifier for molecular fragment modification based on the ISO 11238 Substance ID",
+        description=(
+            "Unique identifier for molecular fragment modification based on the ISO"
+            " 11238 Substance ID"
+        ),
     )
 
     sequence: fhirtypes.String = Field(
         None,
         alias="sequence",
         title="Type `String` (represented as `dict` in JSON)",
-        description="The sequence information shall be provided enumerating the amino acids from N- to C-terminal end using standard single-letter amino acid codes. Uppercase shall be used for L-amino acids and lowercase for D-amino acids. Transcribed SubstanceProteins will always be described using the translated sequence; for synthetic peptide containing amino acids that are not represented with a single letter code an X should be used within the sequence. The modified amino acids will be distinguished by their position in the sequence",
+        description=(
+            "The sequence information shall be provided enumerating the amino acids"
+            " from N- to C-terminal end using standard single-letter amino acid "
+            "codes. Uppercase shall be used for L-amino acids and lowercase for "
+            "D-amino acids. Transcribed SubstanceProteins will always be described "
+            "using the translated sequence; for synthetic peptide containing amino "
+            "acids that are not represented with a single letter code an X should "
+            "be used within the sequence. The modified amino acids will be "
+            "distinguished by their position in the sequence"
+        ),
     )
 
     sequenceAttachment: fhirtypes.AttachmentType = Field(
         None,
         alias="sequenceAttachment",
         title="Type `Attachment` (represented as `dict` in JSON)",
-        description="The sequence information shall be provided enumerating the amino acids from N- to C-terminal end using standard single-letter amino acid codes. Uppercase shall be used for L-amino acids and lowercase for D-amino acids. Transcribed SubstanceProteins will always be described using the translated sequence; for synthetic peptide containing amino acids that are not represented with a single letter code an X should be used within the sequence. The modified amino acids will be distinguished by their position in the sequence",
+        description=(
+            "The sequence information shall be provided enumerating the amino acids"
+            " from N- to C-terminal end using standard single-letter amino acid "
+            "codes. Uppercase shall be used for L-amino acids and lowercase for "
+            "D-amino acids. Transcribed SubstanceProteins will always be described "
+            "using the translated sequence; for synthetic peptide containing amino "
+            "acids that are not represented with a single letter code an X should "
+            "be used within the sequence. The modified amino acids will be "
+            "distinguished by their position in the sequence"
+        ),
     )
 
     subunit: fhirtypes.Integer = Field(
         None,
         alias="subunit",
         title="Type `Integer` (represented as `dict` in JSON)",
-        description="Index of primary sequences of amino acids linked through peptide bonds in order of decreasing length. Sequences of the same length will be ordered by molecular weight. Subunits that have identical sequences will be repeated and have sequential subscripts",
+        description=(
+            "Index of primary sequences of amino acids linked through peptide bonds"
+            " in order of decreasing length. Sequences of the same length will be "
+            "ordered by molecular weight. Subunits that have identical sequences "
+            "will be repeated and have sequential subscripts"
+        ),
     )

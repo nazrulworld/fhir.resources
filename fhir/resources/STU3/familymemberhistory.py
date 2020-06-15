@@ -79,7 +79,10 @@ class FamilyMemberHistory(domainresource.DomainResource):
     condition: ListType[fhirtypes.FamilyMemberHistoryConditionType] = Field(
         None,
         alias="condition",
-        title="List of `FamilyMemberHistoryCondition` items (represented as `dict` in JSON)",
+        title=(
+            "List of `FamilyMemberHistoryCondition` items (represented as `dict` in"
+            " JSON)"
+        ),
         description="Condition that the related person had",
     )
 
@@ -138,15 +141,15 @@ class FamilyMemberHistory(domainresource.DomainResource):
     definition: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="definition",
-        title="List of `Reference` items referencing `PlanDefinition, Questionnaire` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `PlanDefinition, Questionnaire` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Instantiates protocol or definition",
     )
 
     estimatedAge: bool = Field(
-        None,
-        alias="estimatedAge",
-        title="Type `bool`",
-        description="Age is estimated?",
+        None, alias="estimatedAge", title="Type `bool`", description="Age is estimated?"
     )
 
     gender: fhirtypes.Code = Field(
@@ -208,7 +211,11 @@ class FamilyMemberHistory(domainresource.DomainResource):
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="reasonReference",
-        title="List of `Reference` items referencing `Condition, Observation, AllergyIntolerance, QuestionnaireResponse` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Condition, Observation, "
+            "AllergyIntolerance, QuestionnaireResponse` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Why was family member history performed?",
     )
 
@@ -241,8 +248,8 @@ class FamilyMemberHistory(domainresource.DomainResource):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "age": ["ageAge", "ageRange", "ageString",],
-            "born": ["bornDate", "bornPeriod", "bornString",],
+            "age": ["ageAge", "ageRange", "ageString"],
+            "born": ["bornDate", "bornPeriod", "bornString"],
             "deceased": [
                 "deceasedAge",
                 "deceasedBoolean",
@@ -355,7 +362,7 @@ class FamilyMemberHistoryCondition(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "onset": ["onsetAge", "onsetPeriod", "onsetRange", "onsetString",],
+            "onset": ["onsetAge", "onsetPeriod", "onsetRange", "onsetString"]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

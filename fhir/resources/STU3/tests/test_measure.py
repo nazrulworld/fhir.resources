@@ -6,15 +6,17 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import measure
 
 
 def impl_measure_1(inst):
     assert inst.date == fhirtypes.DateTime.validate("2015-03-08")
-    assert (
-        inst.description
-        == "Exclusive breastfeeding measure of outcomes for exclusive breastmilk feeding of newborns."
+    assert inst.description == (
+        "Exclusive breastfeeding measure of outcomes for exclusive "
+        "breastmilk feeding of newborns."
     )
     assert inst.group[0].identifier.value == "Population Group 1"
     assert inst.group[0].population[0].code.coding[0].code == "initial-population"
@@ -61,12 +63,13 @@ def impl_measure_1(inst):
     assert (
         inst.library[0].reference == "Library/library-exclusive-breastfeeding-cqm-logic"
     )
-    assert (
-        inst.purpose == "Measure of newborns who were fed breast milk only since birth"
+    assert inst.purpose == (
+        "Measure of newborns who were fed breast milk only since " "birth"
     )
-    assert (
-        inst.relatedArtifact[0].citation
-        == "American Academy of Pediatrics. (2005). Section on Breastfeeding. Policy Statement:Breastfeeding and the Use of Human Milk. Pediatrics.115:496-506."
+    assert inst.relatedArtifact[0].citation == (
+        "American Academy of Pediatrics. (2005). Section on "
+        "Breastfeeding. Policy Statement:Breastfeeding and the Use of"
+        " Human Milk. Pediatrics.115:496-506."
     )
     assert inst.relatedArtifact[0].type == "documentation"
     assert inst.relatedArtifact[1].type == "documentation"
@@ -74,14 +77,17 @@ def impl_measure_1(inst):
     assert inst.relatedArtifact[3].type == "documentation"
     assert inst.relatedArtifact[4].type == "documentation"
     assert inst.relatedArtifact[5].type == "documentation"
-    assert (
-        inst.relatedArtifact[6].citation
-        == "Kramer, M.S. & Kakuma, R. (2002).Optimal duration of exclusive breastfeeding. [107 refs] Cochrane Database of Systematic Reviews. (1):CD003517."
+    assert inst.relatedArtifact[6].citation == (
+        "Kramer, M.S. & Kakuma, R. (2002).Optimal duration of "
+        "exclusive breastfeeding. [107 refs] Cochrane Database of "
+        "Systematic Reviews. (1):CD003517."
     )
     assert inst.relatedArtifact[6].type == "documentation"
-    assert (
-        inst.relatedArtifact[7].citation
-        == "Petrova, A., Hegyi, T., & Mehta, R. (2007). Maternal race/ethnicity and one-month exclusive breastfeeding in association with the in-hospital feeding modality. Breastfeeding Medicine. 2(2):92-8."
+    assert inst.relatedArtifact[7].citation == (
+        "Petrova, A., Hegyi, T., & Mehta, R. (2007). Maternal "
+        "race/ethnicity and one-month exclusive breastfeeding in "
+        "association with the in-hospital feeding modality. "
+        "Breastfeeding Medicine. 2(2):92-8."
     )
     assert inst.relatedArtifact[7].type == "documentation"
     assert inst.relatedArtifact[8].type == "documentation"
@@ -154,9 +160,9 @@ def test_measure_2(base_settings):
 
 def impl_measure_3(inst):
     assert inst.date == fhirtypes.DateTime.validate("2014-03-08")
-    assert (
-        inst.description
-        == "Exclusive breastfeeding measure of outcomes for exclusive breastmilk feeding of newborns."
+    assert inst.description == (
+        "Exclusive breastfeeding measure of outcomes for exclusive "
+        "breastmilk feeding of newborns."
     )
     assert inst.group[0].identifier.value == "Population Group 1"
     assert inst.group[0].population[0].code.coding[0].code == "initial-population"
@@ -203,12 +209,13 @@ def impl_measure_3(inst):
     assert (
         inst.library[0].reference == "Library/library-exclusive-breastfeeding-cqm-logic"
     )
-    assert (
-        inst.purpose == "Measure of newborns who were fed breast milk only since birth"
+    assert inst.purpose == (
+        "Measure of newborns who were fed breast milk only since " "birth"
     )
-    assert (
-        inst.relatedArtifact[0].citation
-        == "American Academy of Pediatrics. (2005). Section on Breastfeeding. Policy Statement:Breastfeeding and the Use of Human Milk. Pediatrics.115:496-506."
+    assert inst.relatedArtifact[0].citation == (
+        "American Academy of Pediatrics. (2005). Section on "
+        "Breastfeeding. Policy Statement:Breastfeeding and the Use of"
+        " Human Milk. Pediatrics.115:496-506."
     )
     assert inst.relatedArtifact[0].type == "documentation"
     assert inst.relatedArtifact[1].type == "documentation"
@@ -216,14 +223,17 @@ def impl_measure_3(inst):
     assert inst.relatedArtifact[3].type == "documentation"
     assert inst.relatedArtifact[4].type == "documentation"
     assert inst.relatedArtifact[5].type == "documentation"
-    assert (
-        inst.relatedArtifact[6].citation
-        == "Kramer, M.S. & Kakuma, R. (2002).Optimal duration of exclusive breastfeeding. [107 refs] Cochrane Database of Systematic Reviews. (1):CD003517."
+    assert inst.relatedArtifact[6].citation == (
+        "Kramer, M.S. & Kakuma, R. (2002).Optimal duration of "
+        "exclusive breastfeeding. [107 refs] Cochrane Database of "
+        "Systematic Reviews. (1):CD003517."
     )
     assert inst.relatedArtifact[6].type == "documentation"
-    assert (
-        inst.relatedArtifact[7].citation
-        == "Petrova, A., Hegyi, T., & Mehta, R. (2007). Maternal race/ethnicity and one-month exclusive breastfeeding in association with the in-hospital feeding modality. Breastfeeding Medicine. 2(2):92-8."
+    assert inst.relatedArtifact[7].citation == (
+        "Petrova, A., Hegyi, T., & Mehta, R. (2007). Maternal "
+        "race/ethnicity and one-month exclusive breastfeeding in "
+        "association with the in-hospital feeding modality. "
+        "Breastfeeding Medicine. 2(2):92-8."
     )
     assert inst.relatedArtifact[7].type == "documentation"
     assert inst.relatedArtifact[8].type == "documentation"
@@ -264,9 +274,10 @@ def impl_measure_4(inst):
     assert inst.contributor[0].name == "National Committee for Quality Assurance"
     assert inst.contributor[0].type == "author"
     assert inst.date == fhirtypes.DateTime.validate("2017-03-10")
-    assert (
-        inst.description
-        == "Percentage of children 3-18 years of age who were diagnosed with pharyngitis, ordered an antibiotic and received a group A streptococcus (strep) test for the episode."
+    assert inst.description == (
+        "Percentage of children 3-18 years of age who were diagnosed "
+        "with pharyngitis, ordered an antibiotic and received a group"
+        " A streptococcus (strep) test for the episode."
     )
     assert inst.effectivePeriod.end == fhirtypes.DateTime.validate("2017-12-31")
     assert inst.effectivePeriod.start == fhirtypes.DateTime.validate("2017-01-01")
@@ -295,9 +306,11 @@ def impl_measure_4(inst):
     assert inst.group[0].stratifier[1].identifier.value == "stratifier-ages-10-plus"
     assert inst.group[0].stratifier[2].identifier.value == "stratifier-ages-up-to-9"
     assert inst.group[0].stratifier[2].path == "Patient.gender"
-    assert (
-        inst.guidance
-        == "This is an episode of care measure that examines all eligible episodes for the patient during the measurement period. If the patient has more than one episode, include all episodes in the measure"
+    assert inst.guidance == (
+        "This is an episode of care measure that examines all "
+        "eligible episodes for the patient during the measurement "
+        "period. If the patient has more than one episode, include "
+        "all episodes in the measure"
     )
     assert inst.id == "measure-cms146-example"
     assert (
@@ -319,18 +332,21 @@ def impl_measure_4(inst):
     assert inst.library[0].reference == "Library/library-cms146-example"
     assert inst.name == "CMS146"
     assert inst.publisher == "National Committee for Quality Assurance"
-    assert (
-        inst.purpose
-        == "Measure of children with a group A streptococcus test in the 7-day period from 3 days prior through 3 days after the diagnosis of pharyngitis"
+    assert inst.purpose == (
+        "Measure of children with a group A streptococcus test in the"
+        " 7-day period from 3 days prior through 3 days after the "
+        "diagnosis of pharyngitis"
     )
-    assert (
-        inst.relatedArtifact[0].citation
-        == 'Linder, J.A., D.W. Bates, G.M. Lee, J.A. Finkelstein. 2005. "Antibiotic treatment of children with sore throat." JAMA 294(18):2315-2322. '
+    assert inst.relatedArtifact[0].citation == (
+        "Linder, J.A., D.W. Bates, G.M. Lee, J.A. Finkelstein. 2005. "
+        '"Antibiotic treatment of children with sore throat." JAMA '
+        "294(18):2315-2322. "
     )
     assert inst.relatedArtifact[0].type == "documentation"
-    assert (
-        inst.relatedArtifact[1].citation
-        == 'Infectious Diseases Society of America. 2012. "Clinical Practice Guideline for the Diagnosis and Management of Group A Streptococcal Pharyngitis: 2012 Update." '
+    assert inst.relatedArtifact[1].citation == (
+        'Infectious Diseases Society of America. 2012. "Clinical '
+        "Practice Guideline for the Diagnosis and Management of Group"
+        ' A Streptococcal Pharyngitis: 2012 Update." '
     )
     assert inst.relatedArtifact[1].type == "documentation"
     assert inst.relatedArtifact[2].type == "documentation"

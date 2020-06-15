@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import chargeitem
 
@@ -13,14 +15,12 @@ from .. import chargeitem
 def impl_chargeitem_1(inst):
     assert inst.account[0].reference == "Account/example"
     assert inst.code.coding[0].code == "01510"
-    assert (
-        inst.code.coding[0].display
-        == "Zusatzpauschale für Beobachtung nach diagnostischer Koronarangiografie"
+    assert inst.code.coding[0].display == (
+        "Zusatzpauschale für Beobachtung nach diagnostischer " "Koronarangiografie"
     )
     assert inst.context.reference == "Encounter/example"
-    assert (
-        inst.definitionUri[0]
-        == "http://www.kbv.de/tools/ebm/html/01520_2904360860826220813632.html"
+    assert inst.definitionUri[0] == (
+        "http://www.kbv.de/tools/ebm/html/01520_290436086082622081363" "2.html"
     )
     assert inst.enteredDate == fhirtypes.DateTime.validate("2017-01-25T23:55:04+01:00")
     assert inst.enterer.reference == "Practitioner/example"
@@ -42,9 +42,8 @@ def impl_chargeitem_1(inst):
     assert inst.occurrencePeriod.start == fhirtypes.DateTime.validate(
         "2017-01-25T08:00:00+01:00"
     )
-    assert (
-        inst.overrideReason
-        == "Patient is Cardiologist's golf buddy, so he gets a 20% discount!"
+    assert inst.overrideReason == (
+        "Patient is Cardiologist's golf buddy, so he gets a 20% " "discount!"
     )
     assert inst.performer[0].actor.reference == "Practitioner/example"
     assert inst.performer[0].function.coding[0].code == "17561000"
@@ -73,9 +72,10 @@ def impl_chargeitem_1(inst):
     assert inst.service[0].reference == "Procedure/example"
     assert inst.status == "billable"
     assert inst.subject.reference == "Patient/example"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Example of ChargeItem Usage in Context of the German EBM Billing code system</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Example of '
+        "ChargeItem Usage in Context of the German EBM Billing code "
+        "system</div>"
     )
     assert inst.text.status == "generated"
 

@@ -61,8 +61,14 @@ class Endpoint(domainresource.DomainResource):
     managingOrganization: fhirtypes.ReferenceType = Field(
         None,
         alias="managingOrganization",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
-        description="Organization that manages this endpoint (may not be the organization that exposes the endpoint)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
+        description=(
+            "Organization that manages this endpoint (may not be the organization "
+            "that exposes the endpoint)"
+        ),
     )
 
     name: fhirtypes.String = Field(
@@ -76,14 +82,20 @@ class Endpoint(domainresource.DomainResource):
         None,
         alias="payloadMimeType",
         title="List of `Code` items (represented as `dict` in JSON)",
-        description="Mimetype to send. If not specified, the content could be anything (including no payload, if the connectionType defined this)",
+        description=(
+            "Mimetype to send. If not specified, the content could be anything "
+            "(including no payload, if the connectionType defined this)"
+        ),
     )
 
     payloadType: ListType[fhirtypes.CodeableConceptType] = Field(
         ...,
         alias="payloadType",
         title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="The type of content that may be used at this endpoint (e.g. XDS Discharge summaries)",
+        description=(
+            "The type of content that may be used at this endpoint (e.g. XDS "
+            "Discharge summaries)"
+        ),
     )
 
     period: fhirtypes.PeriodType = Field(

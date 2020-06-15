@@ -26,7 +26,10 @@ class DetectedIssue(domainresource.DomainResource):
     author: fhirtypes.ReferenceType = Field(
         None,
         alias="author",
-        title="Type `Reference` referencing `Practitioner, Device` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, Device` (represented as "
+            "`dict` in JSON)"
+        ),
         description="The provider or device that identified the issue",
     )
 
@@ -61,14 +64,19 @@ class DetectedIssue(domainresource.DomainResource):
     implicated: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="implicated",
-        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Resource` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Problem resource",
     )
 
     mitigation: ListType[fhirtypes.DetectedIssueMitigationType] = Field(
         None,
         alias="mitigation",
-        title="List of `DetectedIssueMitigation` items (represented as `dict` in JSON)",
+        title=(
+            "List of `DetectedIssueMitigation` items (represented as `dict` in " "JSON)"
+        ),
         description="Step taken to address",
     )
 
@@ -121,7 +129,10 @@ class DetectedIssueMitigation(backboneelement.BackboneElement):
     author: fhirtypes.ReferenceType = Field(
         None,
         alias="author",
-        title="Type `Reference` referencing `Practitioner` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Who is committing?",
     )
 

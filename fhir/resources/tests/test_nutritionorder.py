@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import nutritionorder
 
@@ -144,9 +146,8 @@ def impl_nutritionorder_2(inst):
         inst.enteralFormula.routeofAdministration.coding[0].display
         == "Instillation, gastrostomy tube"
     )
-    assert (
-        inst.enteralFormula.routeofAdministration.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration"
+    assert inst.enteralFormula.routeofAdministration.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministrati" "on"
     )
     assert inst.excludeFoodModifier[0].coding[0].code == "227493005"
     assert inst.excludeFoodModifier[0].coding[0].display == "Cashew Nut"
@@ -467,9 +468,9 @@ def impl_nutritionorder_6(inst):
         inst.enteralFormula.additiveType.coding[0].system
         == "http://terminology.hl7.org/CodeSystem/entformula-additive"
     )
-    assert (
-        inst.enteralFormula.administrationInstruction
-        == "Add high calorie high carbohydrate additive to increase cal/oz from 24 cal/oz to 27 cal/oz."
+    assert inst.enteralFormula.administrationInstruction == (
+        "Add high calorie high carbohydrate additive to increase "
+        "cal/oz from 24 cal/oz to 27 cal/oz."
     )
     assert inst.enteralFormula.administration[0].quantity.code == "[foz_us]"
     assert (
@@ -508,9 +509,8 @@ def impl_nutritionorder_6(inst):
     assert (
         inst.enteralFormula.routeofAdministration.coding[0].display == "Swallow, oral"
     )
-    assert (
-        inst.enteralFormula.routeofAdministration.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration"
+    assert inst.enteralFormula.routeofAdministration.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministrati" "on"
     )
     assert inst.enteralFormula.routeofAdministration.coding[0].userSelected is True
     assert inst.id == "infantenteral"
@@ -556,9 +556,9 @@ def impl_nutritionorder_7(inst):
     assert inst.dateTime == fhirtypes.DateTime.validate("2014-09-17T11:15:33+10:00")
     assert inst.encounter.display == "Inpatient"
     assert inst.encounter.reference == "Encounter/example"
-    assert (
-        inst.enteralFormula.administrationInstruction
-        == "Hold feedings from 7 pm to 7 am. Add MCT oil to increase calories from 1.0 cal/mL to 1.5 cal/mL"
+    assert inst.enteralFormula.administrationInstruction == (
+        "Hold feedings from 7 pm to 7 am. Add MCT oil to increase "
+        "calories from 1.0 cal/mL to 1.5 cal/mL"
     )
     assert inst.enteralFormula.administration[0].rateQuantity.code == "mL/h"
     assert (
@@ -618,9 +618,8 @@ def impl_nutritionorder_7(inst):
         inst.enteralFormula.routeofAdministration.coding[0].display
         == "Instillation, nasogastric tube"
     )
-    assert (
-        inst.enteralFormula.routeofAdministration.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration"
+    assert inst.enteralFormula.routeofAdministration.coding[0].system == (
+        "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministrati" "on"
     )
     assert inst.id == "enteralcontinuous"
     assert inst.identifier[0].system == "http://www.acme.org/nutritionorders"

@@ -37,6 +37,11 @@ class Binary(resource.Resource):
     securityContext: fhirtypes.ReferenceType = Field(
         None,
         alias="securityContext",
-        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
-        description="Identifies another resource to use as proxy when enforcing access control",
+        title=(
+            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        ),
+        description=(
+            "Identifies another resource to use as proxy when enforcing access "
+            "control"
+        ),
     )

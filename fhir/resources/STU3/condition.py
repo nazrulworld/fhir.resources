@@ -86,7 +86,10 @@ class Condition(domainresource.DomainResource):
     asserter: fhirtypes.ReferenceType = Field(
         None,
         alias="asserter",
-        title="Type `Reference` referencing `Practitioner, Patient, RelatedPerson` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, Patient, RelatedPerson` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Person who asserts this condition",
     )
 
@@ -121,7 +124,10 @@ class Condition(domainresource.DomainResource):
     context: fhirtypes.ReferenceType = Field(
         None,
         alias="context",
-        title="Type `Reference` referencing `Encounter, EpisodeOfCare` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Encounter, EpisodeOfCare` (represented "
+            "as `dict` in JSON)"
+        ),
         description="Encounter or episode when condition first asserted",
     )
 
@@ -208,7 +214,10 @@ class Condition(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         ...,
         alias="subject",
-        title="Type `Reference` referencing `Patient, Group` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Group` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Who has the condition?",
     )
 
@@ -216,7 +225,10 @@ class Condition(domainresource.DomainResource):
         None,
         alias="verificationStatus",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="provisional | differential | confirmed | refuted | entered-in-error | unknown",
+        description=(
+            "provisional | differential | confirmed | refuted | entered-in-error | "
+            "unknown"
+        ),
     )
 
     @root_validator(pre=True)
@@ -290,7 +302,10 @@ class ConditionEvidence(backboneelement.BackboneElement):
     detail: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="detail",
-        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Resource` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Supporting information found elsewhere",
     )
 
@@ -306,7 +321,10 @@ class ConditionStage(backboneelement.BackboneElement):
     assessment: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="assessment",
-        title="List of `Reference` items referencing `ClinicalImpression, DiagnosticReport, Observation` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `ClinicalImpression, "
+            "DiagnosticReport, Observation` (represented as `dict` in JSON)"
+        ),
         description="Formal record of assessment",
     )
 

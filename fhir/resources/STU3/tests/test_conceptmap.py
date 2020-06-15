@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import conceptmap
 
@@ -161,7 +163,9 @@ def impl_conceptmap_3(inst):
     assert inst.status == "draft"
     assert inst.targetReference.reference == "http://hl7.org/fhir/ValueSet/v3-ActStatus"
     assert inst.text.status == "generated"
-    assert inst.url == "http://hl7.org/fhir/ConceptMap/cm-medication-request-status-v3"
+    assert inst.url == (
+        "http://hl7.org/fhir/ConceptMap/cm-medication-request-" "status-v3"
+    )
 
 
 def test_conceptmap_3(base_settings):
@@ -225,8 +229,8 @@ def impl_conceptmap_4(inst):
         == "http://hl7.org/fhir/ValueSet/v3-ActRelationshipType"
     )
     assert inst.text.status == "generated"
-    assert (
-        inst.url == "http://hl7.org/fhir/ConceptMap/cm-observation-relationshiptypes-v3"
+    assert inst.url == (
+        "http://hl7.org/fhir/ConceptMap/cm-observation-" "relationshiptypes-v3"
     )
 
 
@@ -531,9 +535,8 @@ def impl_conceptmap_10(inst):
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert inst.copyright == "Creative Commons 0"
     assert inst.date == fhirtypes.DateTime.validate("2012-06-13")
-    assert (
-        inst.description
-        == "A mapping between the FHIR and HL7 v3 AddressUse Code systems"
+    assert inst.description == (
+        "A mapping between the FHIR and HL7 v3 AddressUse Code " "systems"
     )
     assert inst.experimental is True
     assert inst.group[0].element[0].code == "home"
@@ -551,9 +554,10 @@ def impl_conceptmap_10(inst):
     assert inst.group[0].element[3].code == "old"
     assert inst.group[0].element[3].display == "old"
     assert inst.group[0].element[3].target[0].code == "BAD"
-    assert (
-        inst.group[0].element[3].target[0].comment
-        == "In the HL7 v3 AD, old is handled by the usablePeriod element, but you have to provide a time, there's no simple equivalent of flagging an address as old"
+    assert inst.group[0].element[3].target[0].comment == (
+        "In the HL7 v3 AD, old is handled by the usablePeriod "
+        "element, but you have to provide a time, there's no simple "
+        "equivalent of flagging an address as old"
     )
     assert inst.group[0].element[3].target[0].display == "bad address"
     assert inst.group[0].element[3].target[0].equivalence == "disjoint"

@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import processrequest
 
@@ -20,9 +22,9 @@ def impl_processrequest_1(inst):
     assert inst.identifier[0].value == "113"
     assert inst.organization.reference == "Organization/1"
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Poll ProcessRequest</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the Poll ProcessRequest</div>"
     )
     assert inst.text.status == "generated"
 
@@ -60,9 +62,9 @@ def impl_processrequest_2(inst):
     assert inst.identifier[0].value == "115"
     assert inst.include[0] == "ExplanationOfBenefit"
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Poll ProcessRequest</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the Poll ProcessRequest</div>"
     )
     assert inst.text.status == "generated"
 
@@ -102,9 +104,9 @@ def impl_processrequest_3(inst):
     assert inst.status == "active"
     assert inst.target.identifier.system == "http://ninsurers.org/payorid"
     assert inst.target.identifier.value == "WI12345"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Poll ProcessRequest</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the Poll ProcessRequest</div>"
     )
     assert inst.text.status == "generated"
 
@@ -140,9 +142,9 @@ def impl_processrequest_4(inst):
     assert inst.include[0] == "PaymentReconciliation"
     assert inst.organization.reference == "Organization/1"
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Poll ProcessRequest</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the Poll ProcessRequest</div>"
     )
     assert inst.text.status == "generated"
 
@@ -181,9 +183,9 @@ def impl_processrequest_5(inst):
     assert inst.period.end == fhirtypes.DateTime.validate("2014-08-20")
     assert inst.period.start == fhirtypes.DateTime.validate("2014-08-10")
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Poll ProcessRequest</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the Poll ProcessRequest</div>"
     )
     assert inst.text.status == "generated"
 
@@ -218,9 +220,9 @@ def impl_processrequest_6(inst):
     assert inst.identifier[0].value == "110"
     assert inst.organization.reference == "Organization/1"
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Poll ProcessRequest</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the Poll ProcessRequest</div>"
     )
     assert inst.text.status == "generated"
 
@@ -255,9 +257,9 @@ def impl_processrequest_7(inst):
     assert inst.organization.reference == "Organization/1"
     assert inst.request.reference == "http://BenefitsInc.com/fhir/claim/12345"
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Reversal ProcessRequest</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the Reversal ProcessRequest</div>"
     )
     assert inst.text.status == "generated"
 
@@ -295,9 +297,9 @@ def impl_processrequest_8(inst):
     assert inst.reference == "ABC12345G"
     assert inst.request.reference == "http://BenefitsInc.com/fhir/claim/12345"
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the ReProcess ProcessRequest resource.</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the ReProcess ProcessRequest resource.</div>"
     )
     assert inst.text.status == "generated"
 
@@ -334,9 +336,9 @@ def impl_processrequest_9(inst):
     assert inst.request.reference == "http://happyvalley.com/claim/12345"
     assert inst.response.reference == "http://BenefitsInc.com/fhir/claimresponse/3500"
     assert inst.status == "active"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Status ProcessRequest</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
+        " rendering of the Status ProcessRequest</div>"
     )
     assert inst.text.status == "generated"
 

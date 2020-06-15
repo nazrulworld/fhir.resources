@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import basic
 
@@ -104,9 +106,9 @@ def impl_basic_3(inst):
         == "http://terminology.hl7.org/CodeSystem/basic-resource-type"
     )
     assert inst.created == fhirtypes.Date.validate("2013-05-14")
-    assert (
-        inst.extension[0].url
-        == "http://example.org/do-not-use/fhir-extensions/referral#requestingPractitioner"
+    assert inst.extension[0].url == (
+        "http://example.org/do-not-use/fhir-"
+        "extensions/referral#requestingPractitioner"
     )
     assert inst.extension[0].valueReference.display == "Dokter Bronsig"
     assert inst.extension[0].valueReference.reference == "Practitioner/f201"
@@ -114,13 +116,12 @@ def impl_basic_3(inst):
         inst.extension[1].url
         == "http://example.org/do-not-use/fhir-extensions/referral#notes"
     )
-    assert (
-        inst.extension[1].valueString
-        == "The patient had fever peaks over the last couple of days. He is worried about these peaks."
+    assert inst.extension[1].valueString == (
+        "The patient had fever peaks over the last couple of days. He"
+        " is worried about these peaks."
     )
-    assert (
-        inst.extension[2].url
-        == "http://example.org/do-not-use/fhir-extensions/referral#fulfillingEncounter"
+    assert inst.extension[2].url == (
+        "http://example.org/do-not-use/fhir-" "extensions/referral#fulfillingEncounter"
     )
     assert inst.extension[2].valueReference.reference == "Encounter/f201"
     assert inst.id == "referral"
@@ -131,9 +132,8 @@ def impl_basic_3(inst):
     assert (
         inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     )
-    assert (
-        inst.modifierExtension[0].url
-        == "http://example.org/do-not-use/fhir-extensions/referral#referredForService"
+    assert inst.modifierExtension[0].url == (
+        "http://example.org/do-not-use/fhir-" "extensions/referral#referredForService"
     )
     assert inst.modifierExtension[0].valueCodeableConcept.coding[0].code == "11429006"
     assert (
@@ -144,9 +144,8 @@ def impl_basic_3(inst):
         inst.modifierExtension[0].valueCodeableConcept.coding[0].system
         == "http://snomed.info/sct"
     )
-    assert (
-        inst.modifierExtension[1].url
-        == "http://example.org/do-not-use/fhir-extensions/referral#targetDate"
+    assert inst.modifierExtension[1].url == (
+        "http://example.org/do-not-use/fhir-" "extensions/referral#targetDate"
     )
     assert inst.modifierExtension[1].valuePeriod.end == fhirtypes.DateTime.validate(
         "2013-04-15T11:15:33+10:00"
@@ -154,9 +153,8 @@ def impl_basic_3(inst):
     assert inst.modifierExtension[1].valuePeriod.start == fhirtypes.DateTime.validate(
         "2013-04-01T11:15:33+10:00"
     )
-    assert (
-        inst.modifierExtension[2].url
-        == "http://example.org/do-not-use/fhir-extensions/referral#status"
+    assert inst.modifierExtension[2].url == (
+        "http://example.org/do-not-use/fhir-" "extensions/referral#status"
     )
     assert inst.modifierExtension[2].valueCode == "complete"
     assert inst.subject.display == "Roel"

@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import condition
 
@@ -123,9 +125,9 @@ def impl_condition_3(inst):
     assert inst.id == "stroke"
     assert inst.onsetDateTime == fhirtypes.DateTime.validate("2010-07-18")
     assert inst.subject.reference == "Patient/example"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Ischemic stroke, July 18, 2010</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Ischemic stroke,'
+        " July 18, 2010</div>"
     )
     assert inst.text.status == "generated"
     assert inst.verificationStatus == "confirmed"
@@ -161,9 +163,9 @@ def impl_condition_4(inst):
     assert inst.code.coding[0].system == "http://snomed.info/sct"
     assert inst.id == "family-history"
     assert inst.subject.reference == "Patient/example"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Family history of cancer of colon</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Family history '
+        "of cancer of colon</div>"
     )
     assert inst.text.status == "generated"
 
@@ -347,9 +349,9 @@ def impl_condition_8(inst):
     assert inst.severity.coding[0].display == "Mild"
     assert inst.severity.coding[0].system == "http://snomed.info/sct"
     assert inst.subject.reference == "Patient/example"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Mild Asthma (Date: 12-Nov 2012)</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Mild Asthma '
+        "(Date: 12-Nov 2012)</div>"
     )
     assert inst.text.status == "generated"
     assert inst.verificationStatus == "confirmed"

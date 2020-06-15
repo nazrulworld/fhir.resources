@@ -39,7 +39,10 @@ class CatalogEntry(domainresource.DomainResource):
         None,
         alias="additionalIdentifier",
         title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Any additional identifier(s) for the catalog item, in the same granularity or concept",
+        description=(
+            "Any additional identifier(s) for the catalog item, in the same "
+            "granularity or concept"
+        ),
     )
 
     classification: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -73,14 +76,22 @@ class CatalogEntry(domainresource.DomainResource):
     referencedItem: fhirtypes.ReferenceType = Field(
         ...,
         alias="referencedItem",
-        title="Type `Reference` referencing `Medication, Device, Organization, Practitioner, PractitionerRole, HealthcareService, ActivityDefinition, PlanDefinition, SpecimenDefinition, ObservationDefinition, Binary` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Medication, Device, Organization, "
+            "Practitioner, PractitionerRole, HealthcareService, ActivityDefinition,"
+            " PlanDefinition, SpecimenDefinition, ObservationDefinition, Binary` "
+            "(represented as `dict` in JSON)"
+        ),
         description="The item that is being defined",
     )
 
     relatedEntry: ListType[fhirtypes.CatalogEntryRelatedEntryType] = Field(
         None,
         alias="relatedEntry",
-        title="List of `CatalogEntryRelatedEntry` items (represented as `dict` in JSON)",
+        title=(
+            "List of `CatalogEntryRelatedEntry` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="An item that this catalog entry is related to",
     )
 
@@ -124,7 +135,10 @@ class CatalogEntryRelatedEntry(backboneelement.BackboneElement):
     item: fhirtypes.ReferenceType = Field(
         ...,
         alias="item",
-        title="Type `Reference` referencing `CatalogEntry` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `CatalogEntry` (represented as `dict` in "
+            "JSON)"
+        ),
         description="The reference to the related item",
     )
 

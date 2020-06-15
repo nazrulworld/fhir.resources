@@ -6,6 +6,8 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import diagnosticreport
 
@@ -183,14 +185,12 @@ def impl_diagnosticreport_4(inst):
     )
     assert inst.category[0].text == "Pathology"
     assert inst.code.coding[0].code == "4503"
-    assert (
-        inst.code.coding[0].display
-        == "Biopsy without Microscopic Description (1 Site/Lesion)-Standard"
+    assert inst.code.coding[0].display == (
+        "Biopsy without Microscopic Description (1 " "Site/Lesion)-Standard"
     )
     assert inst.code.coding[0].system == "https://www.acmeonline.com"
-    assert (
-        inst.code.text
-        == "Biopsy without Microscopic Description (1 Site/Lesion)-Standard"
+    assert inst.code.text == (
+        "Biopsy without Microscopic Description (1 " "Site/Lesion)-Standard"
     )
     assert inst.effectiveDateTime == fhirtypes.DateTime.validate(
         "2017-03-02T09:23:00+10:00"
@@ -207,9 +207,9 @@ def impl_diagnosticreport_4(inst):
     assert inst.performer[0].display == "Acme Animal Labs"
     assert inst.presentedForm[0].contentType == "application/pdf"
     assert inst.presentedForm[0].language == "en"
-    assert (
-        inst.presentedForm[0].title
-        == "LAB ID: P73456090 MAX JONES Biopsy without Microscopic Description (1 Site/Lesion)-Standard"
+    assert inst.presentedForm[0].title == (
+        "LAB ID: P73456090 MAX JONES Biopsy without Microscopic "
+        "Description (1 Site/Lesion)-Standard"
     )
     assert inst.status == "final"
     assert inst.subject.display == "Max Jones"
@@ -260,8 +260,10 @@ def impl_diagnosticreport_5(inst):
     assert inst.presentedForm[0].creation == fhirtypes.DateTime.validate(
         "2016-10-20T20:00:00+11:00"
     )
-    # Don't know how to create unit test for "presentedForm[0].data", which is a Base64Binary
-    # Don't know how to create unit test for "presentedForm[0].hash", which is a Base64Binary
+    assert inst.presentedForm[0].data == bytes_validator("cGRmSW5CYXNlNjRCaW5hcnk=")
+    assert inst.presentedForm[0].hash == bytes_validator(
+        "571ef9c5655840f324e679072ed62b1b95eef8a0"
+    )
     assert inst.presentedForm[0].language == "en"
     assert inst.presentedForm[0].title == "Pharmacogenetics Report"
     assert inst.result[0].reference == "Observation/example-phenotype"

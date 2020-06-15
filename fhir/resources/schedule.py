@@ -30,7 +30,11 @@ class Schedule(domainresource.DomainResource):
     actor: ListType[fhirtypes.ReferenceType] = Field(
         ...,
         alias="actor",
-        title="List of `Reference` items referencing `Patient, Practitioner, PractitionerRole, RelatedPerson, Device, HealthcareService, Location` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Patient, Practitioner, "
+            "PractitionerRole, RelatedPerson, Device, HealthcareService, Location` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Resource(s) that availability information is being provided for",
     )
 

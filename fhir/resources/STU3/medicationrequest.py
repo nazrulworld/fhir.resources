@@ -36,7 +36,10 @@ class MedicationRequest(domainresource.DomainResource):
     basedOn: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="basedOn",
-        title="List of `Reference` items referencing `CarePlan, MedicationRequest, ProcedureRequest, ReferralRequest` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `CarePlan, MedicationRequest, "
+            "ProcedureRequest, ReferralRequest` (represented as `dict` in JSON)"
+        ),
         description="What request fulfills",
     )
 
@@ -50,28 +53,39 @@ class MedicationRequest(domainresource.DomainResource):
     context: fhirtypes.ReferenceType = Field(
         None,
         alias="context",
-        title="Type `Reference` referencing `Encounter, EpisodeOfCare` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Encounter, EpisodeOfCare` (represented "
+            "as `dict` in JSON)"
+        ),
         description="Created during encounter/admission/stay",
     )
 
     definition: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="definition",
-        title="List of `Reference` items referencing `ActivityDefinition, PlanDefinition` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `ActivityDefinition, "
+            "PlanDefinition` (represented as `dict` in JSON)"
+        ),
         description="Protocol or definition",
     )
 
     detectedIssue: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="detectedIssue",
-        title="List of `Reference` items referencing `DetectedIssue` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `DetectedIssue` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Clinical Issue with action",
     )
 
     dispenseRequest: fhirtypes.MedicationRequestDispenseRequestType = Field(
         None,
         alias="dispenseRequest",
-        title="Type `MedicationRequestDispenseRequest` (represented as `dict` in JSON)",
+        title=(
+            "Type `MedicationRequestDispenseRequest` (represented as `dict` in " "JSON)"
+        ),
         description="Medication supply authorization",
     )
 
@@ -85,7 +99,10 @@ class MedicationRequest(domainresource.DomainResource):
     eventHistory: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="eventHistory",
-        title="List of `Reference` items referencing `Provenance` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Provenance` (represented as "
+            "`dict` in JSON)"
+        ),
         description="A list of events of interest in the lifecycle",
     )
 
@@ -122,7 +139,10 @@ class MedicationRequest(domainresource.DomainResource):
     medicationReference: fhirtypes.ReferenceType = Field(
         None,
         alias="medicationReference",
-        title="Type `Reference` referencing `Medication` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Medication` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Medication to be taken",
         one_of_many="medication",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
@@ -138,7 +158,10 @@ class MedicationRequest(domainresource.DomainResource):
     priorPrescription: fhirtypes.ReferenceType = Field(
         None,
         alias="priorPrescription",
-        title="Type `Reference` referencing `MedicationRequest` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `MedicationRequest` (represented as "
+            "`dict` in JSON)"
+        ),
         description="An order/prescription that is being replaced",
     )
 
@@ -159,14 +182,23 @@ class MedicationRequest(domainresource.DomainResource):
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="reasonReference",
-        title="List of `Reference` items referencing `Condition, Observation` (represented as `dict` in JSON)",
-        description="Condition or Observation that supports why the prescription is being written",
+        title=(
+            "List of `Reference` items referencing `Condition, Observation` "
+            "(represented as `dict` in JSON)"
+        ),
+        description=(
+            "Condition or Observation that supports why the prescription is being "
+            "written"
+        ),
     )
 
     recorder: fhirtypes.ReferenceType = Field(
         None,
         alias="recorder",
-        title="Type `Reference` referencing `Practitioner` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Person who entered the request",
     )
 
@@ -181,13 +213,19 @@ class MedicationRequest(domainresource.DomainResource):
         None,
         alias="status",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="active | on-hold | cancelled | completed | entered-in-error | stopped | draft | unknown",
+        description=(
+            "active | on-hold | cancelled | completed | entered-in-error | stopped "
+            "| draft | unknown"
+        ),
     )
 
     subject: fhirtypes.ReferenceType = Field(
         ...,
         alias="subject",
-        title="Type `Reference` referencing `Patient, Group` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Group` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Who or group medication request is for",
     )
 
@@ -201,7 +239,10 @@ class MedicationRequest(domainresource.DomainResource):
     supportingInformation: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="supportingInformation",
-        title="List of `Reference` items referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Resource` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Information to support ordering of the medication",
     )
 
@@ -220,7 +261,7 @@ class MedicationRequest(domainresource.DomainResource):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "medication": ["medicationCodeableConcept", "medicationReference",],
+            "medication": ["medicationCodeableConcept", "medicationReference"]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
@@ -273,7 +314,10 @@ class MedicationRequestDispenseRequest(backboneelement.BackboneElement):
     performer: fhirtypes.ReferenceType = Field(
         None,
         alias="performer",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Intended dispenser",
     )
 
@@ -303,14 +347,20 @@ class MedicationRequestRequester(backboneelement.BackboneElement):
     agent: fhirtypes.ReferenceType = Field(
         ...,
         alias="agent",
-        title="Type `Reference` referencing `Practitioner, Organization, Patient, RelatedPerson, Device` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, Organization, Patient, "
+            "RelatedPerson, Device` (represented as `dict` in JSON)"
+        ),
         description="Who ordered the initial medication(s)",
     )
 
     onBehalfOf: fhirtypes.ReferenceType = Field(
         None,
         alias="onBehalfOf",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Organization agent is acting for",
     )
 

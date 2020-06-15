@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import careplan
 
@@ -368,9 +370,9 @@ def impl_careplan_7(inst):
         inst.activity[0].detail.category.coding[0].system
         == "http://hl7.org/fhir/care-plan-activity-category"
     )
-    assert (
-        inst.activity[0].detail.description
-        == "Eve will review photos of high and low density foods and share with her parents"
+    assert inst.activity[0].detail.description == (
+        "Eve will review photos of high and low density foods and "
+        "share with her parents"
     )
     assert (
         inst.activity[0].detail.extension[0].url
@@ -396,9 +398,8 @@ def impl_careplan_7(inst):
         inst.activity[1].detail.category.coding[0].system
         == "http://hl7.org/fhir/care-plan-activity-category"
     )
-    assert (
-        inst.activity[1].detail.description
-        == "Eve will ask her dad to asist her to put the head of her bed on blocks"
+    assert inst.activity[1].detail.description == (
+        "Eve will ask her dad to asist her to put the head of her bed" " on blocks"
     )
     assert (
         inst.activity[1].detail.extension[0].url
@@ -447,9 +448,9 @@ def impl_careplan_7(inst):
         inst.activity[3].detail.category.coding[0].system
         == "http://hl7.org/fhir/care-plan-activity-category"
     )
-    assert (
-        inst.activity[3].detail.description
-        == "Eve will walk her friend's dog up and down a big hill 15-30 minutes 3 days a week"
+    assert inst.activity[3].detail.description == (
+        "Eve will walk her friend's dog up and down a big hill 15-30 "
+        "minutes 3 days a week"
     )
     assert (
         inst.activity[3].detail.extension[0].url
@@ -500,9 +501,8 @@ def impl_careplan_7(inst):
     assert inst.activity[4].progress[0].time == fhirtypes.DateTime.validate(
         "2012-08-13"
     )
-    assert (
-        inst.activity[4].progress[1].text
-        == "Eve did not walk to her parents the last week, but has plans to start again"
+    assert inst.activity[4].progress[1].text == (
+        "Eve did not walk to her parents the last week, but has plans" " to start again"
     )
     assert inst.activity[4].progress[1].time == fhirtypes.DateTime.validate(
         "2012-09-10"
@@ -512,9 +512,8 @@ def impl_careplan_7(inst):
         inst.activity[5].detail.category.coding[0].system
         == "http://hl7.org/fhir/care-plan-activity-category"
     )
-    assert (
-        inst.activity[5].detail.description
-        == "Eve will us a calendar to check off after medications are taken"
+    assert inst.activity[5].detail.description == (
+        "Eve will us a calendar to check off after medications are " "taken"
     )
     assert (
         inst.activity[5].detail.extension[0].url
@@ -551,16 +550,18 @@ def impl_careplan_7(inst):
         "2012-07-23"
     )
     assert inst.activity[6].detail.status == "in-progress"
-    assert (
-        inst.activity[6].progress[0].text
-        == "After restarting the vinegar soaks the psoriasis is improved and Eve plans to treat the remainder with light treatments.  She plans to start this week."
+    assert inst.activity[6].progress[0].text == (
+        "After restarting the vinegar soaks the psoriasis is improved"
+        " and Eve plans to treat the remainder with light treatments."
+        "  She plans to start this week."
     )
     assert inst.activity[6].progress[0].time == fhirtypes.DateTime.validate(
         "2012-08-13"
     )
-    assert (
-        inst.activity[6].progress[1].text
-        == "Since her skin is improved Eve has not been using the light treatment as often, maybe once a week.  She would like to increase to 3 times a week again"
+    assert inst.activity[6].progress[1].text == (
+        "Since her skin is improved Eve has not been using the light "
+        "treatment as often, maybe once a week.  She would like to "
+        "increase to 3 times a week again"
     )
     assert inst.activity[6].progress[1].time == fhirtypes.DateTime.validate(
         "2012-08-27"
@@ -570,9 +571,9 @@ def impl_careplan_7(inst):
         inst.activity[7].detail.category.coding[0].system
         == "http://hl7.org/fhir/care-plan-activity-category"
     )
-    assert (
-        inst.activity[7].detail.description
-        == "Eve will use a calendar of a chart to help her remember when to take her medications"
+    assert inst.activity[7].detail.description == (
+        "Eve will use a calendar of a chart to help her remember when"
+        " to take her medications"
     )
     assert (
         inst.activity[7].detail.extension[0].url
@@ -587,9 +588,9 @@ def impl_careplan_7(inst):
         "2012-07-10"
     )
     assert inst.activity[7].detail.status == "in-progress"
-    assert (
-        inst.activity[7].progress[0].text
-        == "Eve created a chart as a reminer to take the medications that do not fit in her pill box"
+    assert inst.activity[7].progress[0].text == (
+        "Eve created a chart as a reminer to take the medications "
+        "that do not fit in her pill box"
     )
     assert inst.activity[7].progress[0].time == fhirtypes.DateTime.validate(
         "2012-07-23"
@@ -599,9 +600,9 @@ def impl_careplan_7(inst):
         inst.activity[8].detail.category.coding[0].system
         == "http://hl7.org/fhir/care-plan-activity-category"
     )
-    assert (
-        inst.activity[8].detail.description
-        == "Eve will start using stretch bands and one step 2 days a week Mon/Wed 6-7am and maybe Friday afternoon"
+    assert inst.activity[8].detail.description == (
+        "Eve will start using stretch bands and one step 2 days a "
+        "week Mon/Wed 6-7am and maybe Friday afternoon"
     )
     assert (
         inst.activity[8].detail.extension[0].url
@@ -632,9 +633,9 @@ def impl_careplan_7(inst):
         inst.activity[9].detail.category.coding[0].system
         == "http://hl7.org/fhir/care-plan-activity-category"
     )
-    assert (
-        inst.activity[9].detail.description
-        == "Eve will match a printed medication worksheet with the medication bottles at home"
+    assert inst.activity[9].detail.description == (
+        "Eve will match a printed medication worksheet with the "
+        "medication bottles at home"
     )
     assert (
         inst.activity[9].detail.extension[0].url
@@ -670,9 +671,9 @@ def impl_careplan_7(inst):
     assert inst.goal[4].reference == "#g5"
     assert inst.id == "integrate"
     assert inst.intent == "plan"
-    assert (
-        inst.note[0].text
-        == "Patient family is not ready to commit to goal setting at this time.  Goal setting will be addressed in the future"
+    assert inst.note[0].text == (
+        "Patient family is not ready to commit to goal setting at "
+        "this time.  Goal setting will be addressed in the future"
     )
     assert inst.status == "active"
     assert inst.subject.display == "Eve Everywoman"
@@ -827,9 +828,10 @@ def impl_careplan_10(inst):
         inst.activity[1].detail.code.coding[0].system == "http://example.org/mySystem"
     )
     assert inst.activity[1].detail.code.text == "First Antenatal encounter"
-    assert (
-        inst.activity[1].detail.description
-        == "The first antenatal encounter. This is where a detailed physical examination is performed.             and the pregnanacy discussed with the mother-to-be."
+    assert inst.activity[1].detail.description == (
+        "The first antenatal encounter. This is where a detailed "
+        "physical examination is performed.             and the "
+        "pregnanacy discussed with the mother-to-be."
     )
     assert inst.activity[1].detail.performer[0].display == "Mavis Midwife"
     assert inst.activity[1].detail.performer[0].reference == "#pr1"
@@ -845,9 +847,8 @@ def impl_careplan_10(inst):
         "2013-02-14"
     )
     assert inst.activity[1].detail.status == "scheduled"
-    assert (
-        inst.activity[1].extension[0].url
-        == "http://example.org/fhir/StructureDefinition/careplan#andetails"
+    assert inst.activity[1].extension[0].url == (
+        "http://example.org/fhir/StructureDefinition/careplan#andetai" "ls"
     )
     assert (
         inst.activity[1].extension[0].valueUri
@@ -863,9 +864,9 @@ def impl_careplan_10(inst):
         inst.activity[2].detail.code.coding[0].system == "http://example.org/mySystem"
     )
     assert inst.activity[2].detail.code.text == "Follow-up Antenatal encounter"
-    assert (
-        inst.activity[2].detail.description
-        == "The second antenatal encounter. Discuss any issues that arose from the first antenatal encounter"
+    assert inst.activity[2].detail.description == (
+        "The second antenatal encounter. Discuss any issues that "
+        "arose from the first antenatal encounter"
     )
     assert inst.activity[2].detail.performer[0].display == "Mavis Midwife"
     assert inst.activity[2].detail.performer[0].reference == "#pr1"

@@ -67,7 +67,10 @@ class ElementDefinition(backboneelement.BackboneElement):
     constraint: ListType[fhirtypes.ElementDefinitionConstraintType] = Field(
         None,
         alias="constraint",
-        title="List of `ElementDefinitionConstraint` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ElementDefinitionConstraint` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Condition that must evaluate to true",
     )
 
@@ -538,7 +541,10 @@ class ElementDefinition(backboneelement.BackboneElement):
     example: ListType[fhirtypes.ElementDefinitionExampleType] = Field(
         None,
         alias="example",
-        title="List of `ElementDefinitionExample` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ElementDefinitionExample` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Example value (as defined for type)",
     )
 
@@ -1023,7 +1029,10 @@ class ElementDefinition(backboneelement.BackboneElement):
     mapping: ListType[fhirtypes.ElementDefinitionMappingType] = Field(
         None,
         alias="mapping",
-        title="List of `ElementDefinitionMapping` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ElementDefinitionMapping` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Map element to another set of definitions",
     )
 
@@ -1713,7 +1722,10 @@ class ElementDefinition(backboneelement.BackboneElement):
         None,
         alias="sliceIsConstraining",
         title="Type `bool`",
-        description="If this slice definition constrains an inherited slice definition (or not)",
+        description=(
+            "If this slice definition constrains an inherited slice definition (or "
+            "not)"
+        ),
     )
 
     sliceName: fhirtypes.String = Field(
@@ -2014,7 +2026,9 @@ class ElementDefinitionBinding(element.Element):
     valueSet: fhirtypes.Canonical = Field(
         None,
         alias="valueSet",
-        title="Type `Canonical` referencing `ValueSet` (represented as `dict` in JSON)",
+        title=(
+            "Type `Canonical` referencing `ValueSet` (represented as `dict` in " "JSON)"
+        ),
         description="Source of value set",
     )
 
@@ -2065,7 +2079,10 @@ class ElementDefinitionConstraint(element.Element):
     source: fhirtypes.Canonical = Field(
         None,
         alias="source",
-        title="Type `Canonical` referencing `StructureDefinition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Canonical` referencing `StructureDefinition` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Reference to original source of constraint",
     )
 
@@ -2608,7 +2625,7 @@ class ElementDefinitionExample(element.Element):
                 "valueUrl",
                 "valueUsageContext",
                 "valueUuid",
-            ],
+            ]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
@@ -2694,7 +2711,10 @@ class ElementDefinitionSlicing(element.Element):
     ] = Field(
         None,
         alias="discriminator",
-        title="List of `ElementDefinitionSlicingDiscriminator` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ElementDefinitionSlicingDiscriminator` items (represented as "
+            "`dict` in JSON)"
+        ),
         description="Element values that are used to distinguish the slices",
     )
 
@@ -2764,15 +2784,24 @@ class ElementDefinitionType(element.Element):
     profile: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="profile",
-        title="List of `Canonical` items referencing `StructureDefinition, ImplementationGuide` (represented as `dict` in JSON)",
+        title=(
+            "List of `Canonical` items referencing `StructureDefinition, "
+            "ImplementationGuide` (represented as `dict` in JSON)"
+        ),
         description="Profiles (StructureDefinition or IG) - one must apply",
     )
 
     targetProfile: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="targetProfile",
-        title="List of `Canonical` items referencing `StructureDefinition, ImplementationGuide` (represented as `dict` in JSON)",
-        description="Profile (StructureDefinition or IG) on the Reference/canonical target - one must apply",
+        title=(
+            "List of `Canonical` items referencing `StructureDefinition, "
+            "ImplementationGuide` (represented as `dict` in JSON)"
+        ),
+        description=(
+            "Profile (StructureDefinition or IG) on the Reference/canonical target "
+            "- one must apply"
+        ),
     )
 
     versioning: fhirtypes.Code = Field(

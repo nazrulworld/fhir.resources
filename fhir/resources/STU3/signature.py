@@ -41,7 +41,10 @@ class Signature(element.Element):
     onBehalfOfReference: fhirtypes.ReferenceType = Field(
         None,
         alias="onBehalfOfReference",
-        title="Type `Reference` referencing `Practitioner, RelatedPerson, Patient, Device, Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, RelatedPerson, Patient, "
+            "Device, Organization` (represented as `dict` in JSON)"
+        ),
         description="The party represented",
         one_of_many="onBehalfOf",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -73,7 +76,10 @@ class Signature(element.Element):
     whoReference: fhirtypes.ReferenceType = Field(
         None,
         alias="whoReference",
-        title="Type `Reference` referencing `Practitioner, RelatedPerson, Patient, Device, Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, RelatedPerson, Patient, "
+            "Device, Organization` (represented as `dict` in JSON)"
+        ),
         description="Who signed",
         one_of_many="who",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
@@ -103,8 +109,8 @@ class Signature(element.Element):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "onBehalfOf": ["onBehalfOfReference", "onBehalfOfUri",],
-            "who": ["whoReference", "whoUri",],
+            "onBehalfOf": ["onBehalfOfReference", "onBehalfOfUri"],
+            "who": ["whoReference", "whoUri"],
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

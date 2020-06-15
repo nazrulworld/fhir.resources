@@ -102,7 +102,10 @@ class DataElement(domainresource.DomainResource):
         None,
         alias="stringency",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="comparable | fully-specified | equivalent | convertable | scaleable | flexible",
+        description=(
+            "comparable | fully-specified | equivalent | convertable | scaleable | "
+            "flexible"
+        ),
     )
 
     title: fhirtypes.String = Field(

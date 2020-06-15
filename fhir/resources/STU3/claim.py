@@ -68,14 +68,19 @@ class Claim(domainresource.DomainResource):
     enterer: fhirtypes.ReferenceType = Field(
         None,
         alias="enterer",
-        title="Type `Reference` referencing `Practitioner` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Author",
     )
 
     facility: fhirtypes.ReferenceType = Field(
         None,
         alias="facility",
-        title="Type `Reference` referencing `Location` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Location` (represented as `dict` in " "JSON)"
+        ),
         description="Servicing Facility",
     )
 
@@ -104,7 +109,10 @@ class Claim(domainresource.DomainResource):
         None,
         alias="information",
         title="List of `ClaimInformation` items (represented as `dict` in JSON)",
-        description="Exceptions, special considerations, the condition, situation, prior or concurrent issues",
+        description=(
+            "Exceptions, special considerations, the condition, situation, prior or"
+            " concurrent issues"
+        ),
     )
 
     insurance: ListType[fhirtypes.ClaimInsuranceType] = Field(
@@ -117,7 +125,10 @@ class Claim(domainresource.DomainResource):
     insurer: fhirtypes.ReferenceType = Field(
         None,
         alias="insurer",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Target",
     )
 
@@ -131,14 +142,20 @@ class Claim(domainresource.DomainResource):
     organization: fhirtypes.ReferenceType = Field(
         None,
         alias="organization",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Responsible organization",
     )
 
     originalPrescription: fhirtypes.ReferenceType = Field(
         None,
         alias="originalPrescription",
-        title="Type `Reference` referencing `MedicationRequest` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `MedicationRequest` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Original prescription if superceded by fulfiller",
     )
 
@@ -159,7 +176,10 @@ class Claim(domainresource.DomainResource):
     prescription: fhirtypes.ReferenceType = Field(
         None,
         alias="prescription",
-        title="Type `Reference` referencing `MedicationRequest, VisionPrescription` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `MedicationRequest, VisionPrescription` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Prescription authorizing services or products",
     )
 
@@ -180,14 +200,20 @@ class Claim(domainresource.DomainResource):
     provider: fhirtypes.ReferenceType = Field(
         None,
         alias="provider",
-        title="Type `Reference` referencing `Practitioner` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Responsible provider",
     )
 
     referral: fhirtypes.ReferenceType = Field(
         None,
         alias="referral",
-        title="Type `Reference` referencing `ReferralRequest` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `ReferralRequest` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Treatment Referral",
     )
 
@@ -245,7 +271,7 @@ class ClaimAccident(backboneelement.BackboneElement):
         ...,
         alias="date",
         title="Type `Date` (represented as `dict` in JSON)",
-        description="When the accident occurred\nsee information codes\nsee information codes",
+        description="When the accident occurred see information codes see information codes",
     )
 
     locationAddress: fhirtypes.AddressType = Field(
@@ -260,7 +286,9 @@ class ClaimAccident(backboneelement.BackboneElement):
     locationReference: fhirtypes.ReferenceType = Field(
         None,
         alias="locationReference",
-        title="Type `Reference` referencing `Location` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Location` (represented as `dict` in " "JSON)"
+        ),
         description="Accident Place",
         one_of_many="location",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -287,9 +315,7 @@ class ClaimAccident(backboneelement.BackboneElement):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "location": ["locationAddress", "locationReference",],
-        }
+        one_of_many_fields = {"location": ["locationAddress", "locationReference"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -323,7 +349,10 @@ class ClaimCareTeam(backboneelement.BackboneElement):
     provider: fhirtypes.ReferenceType = Field(
         ...,
         alias="provider",
-        title="Type `Reference` referencing `Practitioner, Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, Organization` (represented"
+            " as `dict` in JSON)"
+        ),
         description="Provider individual or organization",
     )
 
@@ -335,7 +364,7 @@ class ClaimCareTeam(backboneelement.BackboneElement):
     )
 
     responsible: bool = Field(
-        None, alias="responsible", title="Type `bool`", description="Billing provider",
+        None, alias="responsible", title="Type `bool`", description="Billing provider"
     )
 
     role: fhirtypes.CodeableConceptType = Field(
@@ -372,7 +401,10 @@ class ClaimDiagnosis(backboneelement.BackboneElement):
     diagnosisReference: fhirtypes.ReferenceType = Field(
         None,
         alias="diagnosisReference",
-        title="Type `Reference` referencing `Condition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Condition` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Patient\u0027s diagnosis",
         one_of_many="diagnosis",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
@@ -414,7 +446,7 @@ class ClaimDiagnosis(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "diagnosis": ["diagnosisCodeableConcept", "diagnosisReference",],
+            "diagnosis": ["diagnosisCodeableConcept", "diagnosisReference"]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
@@ -515,7 +547,9 @@ class ClaimInformation(backboneelement.BackboneElement):
     valueReference: fhirtypes.ReferenceType = Field(
         None,
         alias="valueReference",
-        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        ),
         description="Additional Data or supporting information",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -545,7 +579,7 @@ class ClaimInformation(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "timing": ["timingDate", "timingPeriod",],
+            "timing": ["timingDate", "timingPeriod"],
             "value": [
                 "valueAttachment",
                 "valueQuantity",
@@ -592,19 +626,24 @@ class ClaimInsurance(backboneelement.BackboneElement):
     claimResponse: fhirtypes.ReferenceType = Field(
         None,
         alias="claimResponse",
-        title="Type `Reference` referencing `ClaimResponse` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `ClaimResponse` (represented as `dict` in"
+            " JSON)"
+        ),
         description="Adjudication results",
     )
 
     coverage: fhirtypes.ReferenceType = Field(
         ...,
         alias="coverage",
-        title="Type `Reference` referencing `Coverage` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Coverage` (represented as `dict` in " "JSON)"
+        ),
         description="Insurance information",
     )
 
     focal: bool = Field(
-        ..., alias="focal", title="Type `bool`", description="Is the focal Coverage",
+        ..., alias="focal", title="Type `bool`", description="Is the focal Coverage"
     )
 
     preAuthRef: ListType[fhirtypes.String] = Field(
@@ -667,7 +706,10 @@ class ClaimItem(backboneelement.BackboneElement):
     encounter: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="encounter",
-        title="List of `Reference` items referencing `Encounter` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Encounter` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Encounters related to this billed item",
     )
 
@@ -706,7 +748,9 @@ class ClaimItem(backboneelement.BackboneElement):
     locationReference: fhirtypes.ReferenceType = Field(
         None,
         alias="locationReference",
-        title="Type `Reference` referencing `Location` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Location` (represented as `dict` in " "JSON)"
+        ),
         description="Place of service",
         one_of_many="location",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -796,7 +840,10 @@ class ClaimItem(backboneelement.BackboneElement):
     udi: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="udi",
-        title="List of `Reference` items referencing `Device` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Device` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Unique Device Identifier",
     )
 
@@ -827,7 +874,7 @@ class ClaimItem(backboneelement.BackboneElement):
                 "locationCodeableConcept",
                 "locationReference",
             ],
-            "serviced": ["servicedDate", "servicedPeriod",],
+            "serviced": ["servicedDate", "servicedPeriod"],
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
@@ -924,14 +971,20 @@ class ClaimItemDetail(backboneelement.BackboneElement):
     subDetail: ListType[fhirtypes.ClaimItemDetailSubDetailType] = Field(
         None,
         alias="subDetail",
-        title="List of `ClaimItemDetailSubDetail` items (represented as `dict` in JSON)",
+        title=(
+            "List of `ClaimItemDetailSubDetail` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Additional items",
     )
 
     udi: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="udi",
-        title="List of `Reference` items referencing `Device` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Device` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Unique Device Identifier",
     )
 
@@ -1016,7 +1069,10 @@ class ClaimItemDetailSubDetail(backboneelement.BackboneElement):
     udi: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="udi",
-        title="List of `Reference` items referencing `Device` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Device` (represented as `dict` "
+            "in JSON)"
+        ),
         description="Unique Device Identifier",
     )
 
@@ -1038,7 +1094,10 @@ class ClaimPayee(backboneelement.BackboneElement):
     party: fhirtypes.ReferenceType = Field(
         None,
         alias="party",
-        title="Type `Reference` referencing `Practitioner, Organization, Patient, RelatedPerson` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, Organization, Patient, "
+            "RelatedPerson` (represented as `dict` in JSON)"
+        ),
         description="Party to receive the payable",
     )
 
@@ -1083,7 +1142,10 @@ class ClaimProcedure(backboneelement.BackboneElement):
     procedureReference: fhirtypes.ReferenceType = Field(
         None,
         alias="procedureReference",
-        title="Type `Reference` referencing `Procedure` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Procedure` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Patient\u0027s list of procedures performed",
         one_of_many="procedure",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
@@ -1111,7 +1173,7 @@ class ClaimProcedure(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "procedure": ["procedureCodeableConcept", "procedureReference",],
+            "procedure": ["procedureCodeableConcept", "procedureReference"]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

@@ -26,7 +26,10 @@ class ImmunizationEvaluation(domainresource.DomainResource):
     authority: fhirtypes.ReferenceType = Field(
         None,
         alias="authority",
-        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Organization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Who is responsible for publishing the recommendations",
     )
 
@@ -86,7 +89,10 @@ class ImmunizationEvaluation(domainresource.DomainResource):
     immunizationEvent: fhirtypes.ReferenceType = Field(
         ...,
         alias="immunizationEvent",
-        title="Type `Reference` referencing `Immunization` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Immunization` (represented as `dict` in "
+            "JSON)"
+        ),
         description="Immunization being evaluated",
     )
 
@@ -151,8 +157,8 @@ class ImmunizationEvaluation(domainresource.DomainResource):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "doseNumber": ["doseNumberPositiveInt", "doseNumberString",],
-            "seriesDoses": ["seriesDosesPositiveInt", "seriesDosesString",],
+            "doseNumber": ["doseNumberPositiveInt", "doseNumberString"],
+            "seriesDoses": ["seriesDosesPositiveInt", "seriesDosesString"],
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

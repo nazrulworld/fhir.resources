@@ -28,7 +28,13 @@ class AdverseEvent(domainresource.DomainResource):
         None,
         alias="category",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="AE | PAE \rAn adverse event is an event that caused harm to a patient,  an adverse reaction is a something that is a subject-specific event that is a result of an exposure to a medication, food, device or environmental substance, a potential adverse event is something that occurred and that could have caused harm to a patient but did not",
+        description=(
+            "AE | PAE  An adverse event is an event that caused harm to a patient,"
+            "  an adverse reaction is a something that is a subject-specific event "
+            "that is a result of an exposure to a medication, food, device or "
+            "environmental substance, a potential adverse event is something that "
+            "occurred and that could have caused harm to a patient but did not"
+        ),
     )
 
     date: fhirtypes.DateTime = Field(
@@ -48,7 +54,10 @@ class AdverseEvent(domainresource.DomainResource):
     eventParticipant: fhirtypes.ReferenceType = Field(
         None,
         alias="eventParticipant",
-        title="Type `Reference` referencing `Practitioner, Device` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, Device` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Who  was involved in the adverse event or the potential adverse event",
     )
 
@@ -62,7 +71,9 @@ class AdverseEvent(domainresource.DomainResource):
     location: fhirtypes.ReferenceType = Field(
         None,
         alias="location",
-        title="Type `Reference` referencing `Location` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Location` (represented as `dict` in " "JSON)"
+        ),
         description="Location where adverse event occurred",
     )
 
@@ -70,27 +81,39 @@ class AdverseEvent(domainresource.DomainResource):
         None,
         alias="outcome",
         title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="resolved | recovering | ongoing | resolvedWithSequelae | fatal | unknown",
+        description=(
+            "resolved | recovering | ongoing | resolvedWithSequelae | fatal | "
+            "unknown"
+        ),
     )
 
     reaction: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="reaction",
-        title="List of `Reference` items referencing `Condition` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Condition` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Adverse Reaction Events linked to exposure to substance",
     )
 
     recorder: fhirtypes.ReferenceType = Field(
         None,
         alias="recorder",
-        title="Type `Reference` referencing `Patient, Practitioner, RelatedPerson` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, Practitioner, RelatedPerson` "
+            "(represented as `dict` in JSON)"
+        ),
         description="Who recorded the adverse event",
     )
 
     referenceDocument: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="referenceDocument",
-        title="List of `Reference` items referencing `DocumentReference` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `DocumentReference` (represented"
+            " as `dict` in JSON)"
+        ),
         description="AdverseEvent.referenceDocument",
     )
 
@@ -104,28 +127,41 @@ class AdverseEvent(domainresource.DomainResource):
     study: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="study",
-        title="List of `Reference` items referencing `ResearchStudy` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `ResearchStudy` (represented as "
+            "`dict` in JSON)"
+        ),
         description="AdverseEvent.study",
     )
 
     subject: fhirtypes.ReferenceType = Field(
         None,
         alias="subject",
-        title="Type `Reference` referencing `Patient, ResearchSubject, Medication, Device` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Patient, ResearchSubject, Medication, "
+            "Device` (represented as `dict` in JSON)"
+        ),
         description="Subject or group impacted by event",
     )
 
     subjectMedicalHistory: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="subjectMedicalHistory",
-        title="List of `Reference` items referencing `Condition, Observation, AllergyIntolerance, FamilyMemberHistory, Immunization, Procedure` (represented as `dict` in JSON)",
+        title=(
+            "List of `Reference` items referencing `Condition, Observation, "
+            "AllergyIntolerance, FamilyMemberHistory, Immunization, Procedure` "
+            "(represented as `dict` in JSON)"
+        ),
         description="AdverseEvent.subjectMedicalHistory",
     )
 
     suspectEntity: ListType[fhirtypes.AdverseEventSuspectEntityType] = Field(
         None,
         alias="suspectEntity",
-        title="List of `AdverseEventSuspectEntity` items (represented as `dict` in JSON)",
+        title=(
+            "List of `AdverseEventSuspectEntity` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="The suspected agent causing the adverse event",
     )
 
@@ -161,7 +197,10 @@ class AdverseEventSuspectEntity(backboneelement.BackboneElement):
     causalityAuthor: fhirtypes.ReferenceType = Field(
         None,
         alias="causalityAuthor",
-        title="Type `Reference` referencing `Practitioner, PractitionerRole` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Practitioner, PractitionerRole` "
+            "(represented as `dict` in JSON)"
+        ),
         description="AdverseEvent.suspectEntity.causalityAuthor",
     )
 
@@ -189,6 +228,10 @@ class AdverseEventSuspectEntity(backboneelement.BackboneElement):
     instance: fhirtypes.ReferenceType = Field(
         ...,
         alias="instance",
-        title="Type `Reference` referencing `Substance, Medication, MedicationAdministration, MedicationStatement, Device` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Substance, Medication, "
+            "MedicationAdministration, MedicationStatement, Device` (represented as"
+            " `dict` in JSON)"
+        ),
         description="Refers to the specific entity that caused the adverse event",
     )

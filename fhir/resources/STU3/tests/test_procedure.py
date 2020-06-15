@@ -6,6 +6,8 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import procedure
 
@@ -20,9 +22,9 @@ def impl_procedure_1(inst):
     assert inst.context.display == "Roel's encounter on January 28th, 2013"
     assert inst.context.reference == "Encounter/f202"
     assert inst.id == "f201"
-    assert (
-        inst.note[0].text
-        == "Eerste neo-adjuvante TPF-kuur bij groot proces in sphenoid met intracraniale uitbreiding."
+    assert inst.note[0].text == (
+        "Eerste neo-adjuvante TPF-kuur bij groot proces in sphenoid "
+        "met intracraniale uitbreiding."
     )
     assert inst.performedPeriod.end == fhirtypes.DateTime.validate(
         "2013-01-28T14:27:00+01:00"
@@ -90,9 +92,9 @@ def impl_procedure_2(inst):
     assert inst.reasonReference[0].reference == "Observation/blood-pressure"
     assert inst.status == "suspended"
     assert inst.subject.reference == "Patient/example"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Ambulation procedure was not done</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Ambulation '
+        "procedure was not done</div>"
     )
     assert inst.text.status == "generated"
 
@@ -132,9 +134,8 @@ def impl_procedure_3(inst):
     assert inst.focalDevice[0].manipulated.reference == "Device/example-pacemaker"
     assert inst.followUp[0].text == "ROS 5 days  - 2013-04-10"
     assert inst.id == "example-implant"
-    assert (
-        inst.note[0].text
-        == "Routine Appendectomy. Appendix was inflamed and in retro-caecal position"
+    assert inst.note[0].text == (
+        "Routine Appendectomy. Appendix was inflamed and in retro-" "caecal position"
     )
     assert inst.performedDateTime == fhirtypes.DateTime.validate("2015-04-05")
     assert inst.performer[0].actor.display == "Dr Cecil Surgeon"
@@ -184,9 +185,9 @@ def impl_procedure_4(inst):
     assert inst.performer[0].actor.reference == "Practitioner/example"
     assert inst.status == "completed"
     assert inst.subject.reference == "Patient/example"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Biopsy of colon, which was part of colonoscopy</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Biopsy of colon,'
+        " which was part of colonoscopy</div>"
     )
     assert inst.text.status == "generated"
 
@@ -291,9 +292,10 @@ def impl_procedure_6(inst):
     assert inst.reasonCode[0].text == "early detection of breast mass"
     assert inst.status == "completed"
     assert inst.subject.display == "Jane Doe"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Health education - breast examination for early detection of breast mass</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Health education'
+        " - breast examination for early detection of breast "
+        "mass</div>"
     )
     assert inst.text.status == "generated"
 
@@ -336,9 +338,9 @@ def impl_procedure_7(inst):
     assert inst.performer[0].actor.reference == "Practitioner/example"
     assert inst.status == "completed"
     assert inst.subject.reference == "Patient/example"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Colonoscopy with complication</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Colonoscopy with'
+        " complication</div>"
     )
     assert inst.text.status == "generated"
     assert inst.usedReference[0].display == "Colonoscope device"
@@ -394,9 +396,10 @@ def impl_procedure_8(inst):
     )
     assert inst.status == "completed"
     assert inst.subject.reference == "Patient/example"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Assessment of passive range of motion for both knees on Sept 27, 2016 due to osteoarthritis</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Assessment of '
+        "passive range of motion for both knees on Sept 27, 2016 due "
+        "to osteoarthritis</div>"
     )
     assert inst.text.status == "generated"
 
@@ -487,22 +490,20 @@ def impl_procedure_10(inst):
     assert inst.code.text == "Appendectomy"
     assert inst.followUp[0].text == "ROS 5 days  - 2013-04-10"
     assert inst.id == "example"
-    assert (
-        inst.note[0].text
-        == "Routine Appendectomy. Appendix was inflamed and in retro-caecal position"
+    assert inst.note[0].text == (
+        "Routine Appendectomy. Appendix was inflamed and in retro-" "caecal position"
     )
     assert inst.performedDateTime == fhirtypes.DateTime.validate("2013-04-05")
     assert inst.performer[0].actor.display == "Dr Cecil Surgeon"
     assert inst.performer[0].actor.reference == "Practitioner/example"
-    assert (
-        inst.reasonCode[0].text
-        == "Generalized abdominal pain 24 hours. Localized in RIF with rebound and guarding"
+    assert inst.reasonCode[0].text == (
+        "Generalized abdominal pain 24 hours. Localized in RIF with "
+        "rebound and guarding"
     )
     assert inst.status == "completed"
     assert inst.subject.reference == "Patient/example"
-    assert (
-        inst.text.div
-        == '<div xmlns="http://www.w3.org/1999/xhtml">Routine Appendectomy</div>'
+    assert inst.text.div == (
+        '<div xmlns="http://www.w3.org/1999/xhtml">Routine ' "Appendectomy</div>"
     )
     assert inst.text.status == "generated"
 

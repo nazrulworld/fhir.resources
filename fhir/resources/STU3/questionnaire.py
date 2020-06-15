@@ -197,7 +197,10 @@ class QuestionnaireItem(backboneelement.BackboneElement):
     enableWhen: ListType[fhirtypes.QuestionnaireItemEnableWhenType] = Field(
         None,
         alias="enableWhen",
-        title="List of `QuestionnaireItemEnableWhen` items (represented as `dict` in JSON)",
+        title=(
+            "List of `QuestionnaireItemEnableWhen` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Only allow data when",
     )
 
@@ -276,7 +279,9 @@ class QuestionnaireItem(backboneelement.BackboneElement):
     initialReference: fhirtypes.ReferenceType = Field(
         None,
         alias="initialReference",
-        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        ),
         description="Default value when item is first rendered",
         one_of_many="initial",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -333,14 +338,18 @@ class QuestionnaireItem(backboneelement.BackboneElement):
     option: ListType[fhirtypes.QuestionnaireItemOptionType] = Field(
         None,
         alias="option",
-        title="List of `QuestionnaireItemOption` items (represented as `dict` in JSON)",
+        title=(
+            "List of `QuestionnaireItemOption` items (represented as `dict` in " "JSON)"
+        ),
         description="Permitted answer",
     )
 
     options: fhirtypes.ReferenceType = Field(
         None,
         alias="options",
-        title="Type `Reference` referencing `ValueSet` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `ValueSet` (represented as `dict` in " "JSON)"
+        ),
         description="Valueset containing permitted answers",
     )
 
@@ -414,7 +423,7 @@ class QuestionnaireItem(backboneelement.BackboneElement):
                 "initialString",
                 "initialTime",
                 "initialUri",
-            ],
+            ]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
@@ -522,7 +531,9 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
     answerReference: fhirtypes.ReferenceType = Field(
         None,
         alias="answerReference",
-        title="Type `Reference` referencing `Resource` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        ),
         description="Value question must have",
         one_of_many="answer",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -597,7 +608,7 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
                 "answerString",
                 "answerTime",
                 "answerUri",
-            ],
+            ]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
@@ -694,7 +705,7 @@ class QuestionnaireItemOption(backboneelement.BackboneElement):
                 "valueInteger",
                 "valueString",
                 "valueTime",
-            ],
+            ]
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

@@ -25,7 +25,10 @@ class OperationDefinition(domainresource.DomainResource):
     base: fhirtypes.ReferenceType = Field(
         None,
         alias="base",
-        title="Type `Reference` referencing `OperationDefinition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `OperationDefinition` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Marks this as a profile of the base",
     )
 
@@ -79,10 +82,7 @@ class OperationDefinition(domainresource.DomainResource):
     )
 
     instance: bool = Field(
-        ...,
-        alias="instance",
-        title="Type `bool`",
-        description="Invoke on an instance?",
+        ..., alias="instance", title="Type `bool`", description="Invoke on an instance?"
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -109,14 +109,20 @@ class OperationDefinition(domainresource.DomainResource):
     overload: ListType[fhirtypes.OperationDefinitionOverloadType] = Field(
         None,
         alias="overload",
-        title="List of `OperationDefinitionOverload` items (represented as `dict` in JSON)",
+        title=(
+            "List of `OperationDefinitionOverload` items (represented as `dict` in "
+            "JSON)"
+        ),
         description="Define overloaded variants for when  generating code",
     )
 
     parameter: ListType[fhirtypes.OperationDefinitionParameterType] = Field(
         None,
         alias="parameter",
-        title="List of `OperationDefinitionParameter` items (represented as `dict` in JSON)",
+        title=(
+            "List of `OperationDefinitionParameter` items (represented as `dict` in"
+            " JSON)"
+        ),
         description="Parameters for the operation/query",
     )
 
@@ -156,7 +162,7 @@ class OperationDefinition(domainresource.DomainResource):
     )
 
     type: bool = Field(
-        ..., alias="type", title="Type `bool`", description="Invole at the type level?",
+        ..., alias="type", title="Type `bool`", description="Invole at the type level?"
     )
 
     url: fhirtypes.Uri = Field(
@@ -215,7 +221,10 @@ class OperationDefinitionParameter(backboneelement.BackboneElement):
     binding: fhirtypes.OperationDefinitionParameterBindingType = Field(
         None,
         alias="binding",
-        title="Type `OperationDefinitionParameterBinding` (represented as `dict` in JSON)",
+        title=(
+            "Type `OperationDefinitionParameterBinding` (represented as `dict` in "
+            "JSON)"
+        ),
         description="ValueSet details if this is coded",
     )
 
@@ -250,14 +259,20 @@ class OperationDefinitionParameter(backboneelement.BackboneElement):
     part: ListType[fhirtypes.OperationDefinitionParameterType] = Field(
         None,
         alias="part",
-        title="List of `OperationDefinitionParameter` items (represented as `dict` in JSON)",
+        title=(
+            "List of `OperationDefinitionParameter` items (represented as `dict` in"
+            " JSON)"
+        ),
         description="Parts of a nested Parameter",
     )
 
     profile: fhirtypes.ReferenceType = Field(
         None,
         alias="profile",
-        title="Type `Reference` referencing `StructureDefinition` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `StructureDefinition` (represented as "
+            "`dict` in JSON)"
+        ),
         description="Profile on the type",
     )
 
@@ -265,7 +280,9 @@ class OperationDefinitionParameter(backboneelement.BackboneElement):
         None,
         alias="searchType",
         title="Type `Code` (represented as `dict` in JSON)",
-        description="number | date | string | token | reference | composite | quantity | uri",
+        description=(
+            "number | date | string | token | reference | composite | quantity | " "uri"
+        ),
     )
 
     type: fhirtypes.Code = Field(
@@ -301,7 +318,9 @@ class OperationDefinitionParameterBinding(backboneelement.BackboneElement):
     valueSetReference: fhirtypes.ReferenceType = Field(
         None,
         alias="valueSetReference",
-        title="Type `Reference` referencing `ValueSet` (represented as `dict` in JSON)",
+        title=(
+            "Type `Reference` referencing `ValueSet` (represented as `dict` in " "JSON)"
+        ),
         description="Source of value set",
         one_of_many="valueSet",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
@@ -330,9 +349,7 @@ class OperationDefinitionParameterBinding(backboneelement.BackboneElement):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-            "valueSet": ["valueSetReference", "valueSetUri",],
-        }
+        one_of_many_fields = {"valueSet": ["valueSetReference", "valueSetUri"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (

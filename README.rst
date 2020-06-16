@@ -26,11 +26,11 @@ FHIR® Resources (R4, STU3)
 
 
 Powered by pydantic_, all `FHIR Resources <https://www.hl7.org/fhir/resourcelist.html>`_ are available as python class with built-in
-data validation, with mini validation framework included.
+data validation, faster in performance. Written in modern python.
 
-* Provides ``Resource Factory`` class (see example 4) to create resource object in more convenient way.
-* Previous version of FHIR® Resources are available.
-* Fully support for `fhirclient <https://pypi.org/project/fhirclient/>`_ as models.
+* Easy to construct, easy to extended validation, easy to export.
+* By inheriting behaviour from pydantic_, compatible with `ORM <https://en.wikipedia.org/wiki/Object-relational_mapping>`_.
+* Previous release of FHIR® Resources are available.
 * Free software: BSD license
 
 
@@ -44,47 +44,109 @@ FHIR® (Release R4, version 4.0.1) is available as default. Also previous versio
 
 * ``STU3`` (3.0.2)
 
-* ``DSTU2`` (1.0.2)
 
 Installation
 ------------
 
 Just a simple ``pip install fhir.resources`` or ``easy_install fhir.resources`` is enough. But if you want development
-version, just clone from https://github.com/nazrulworld/fhir.resources and ``python setup.py install``.
+version, just clone from https://github.com/nazrulworld/fhir.resources and ``pip install -e .[all]``.
 
 
-**Example: 1**: Resource object created from json string::
+Usages
+------
 
+**Example: 1**: Construct Resource Model object::
 
     >>> from fhir.resources.organization import Organization
     >>> from fhir.resources.address import Address
-    >>> json_dict = {"resourceType": "Organization",
-    ...     "id": "mmanu",
+    >>> data = {
+    ...     "id": "f001",
     ...     "active": True,
     ...     "name": "Acme Corporation",
     ...     "address": [{"country": "Swizterland"}]
     ... }
-    >>> org = Organization(json_dict)
+    >>> org = Organization(**data)
+    >>> org.resource_type == "Organization"
+    True
     >>> isinstance(org.address[0], Address)
     >>> True
     >>> org.address[0].country == "Swizterland"
     True
-    >>> org.as_json()['active'] is True
+    >>> org.dict()['active'] is True
+    True
+
+**Example: 2**: Resource object created from json string::
+
+    >>> from fhir.resources.organization import Organization
+    >>> from fhir.resources.address import Address
+    >>> json_str = '''{"resourceType": "Organization",
+    ...     "id": "f001",
+    ...     "active": True,
+    ...     "name": "Acme Corporation",
+    ...     "address": [{"country": "Swizterland"}]
+    ... }'''
+    >>> org = Organization.parse_raw(json_str)
+    >>> isinstance(org.address[0], Address)
+    >>> True
+    >>> org.address[0].country == "Swizterland"
+    True
+    >>> org.dict()['active'] is True
     True
 
 
-**Example: 2**: Construct resource object in python way::
+**Example: 3**: Resource object created from json object(py dict)::
+
+    >>> from fhir.resources.patient import Patient
+    >>> from fhir.resources.humanname import HumanName
+    >>> from datetime import date
+    >>> json_obj = {"resourceType": "Patient",
+    ...     "id": "p001",
+    ...     "active": True,
+    ...     "name": [
+    ...         {"text": "Adam Smith"}
+    ...      ],
+    ...     "birthDate": "1985-06-12"
+    ... }
+    >>> pat = Patient.parse_obj(json_obj)
+    >>> isinstance(pat.name[0], HumanName)
+    >>> True
+    >>> org.birthDate == date(year=1985, month=6, day=12)
+    True
+    >>> org.active is True
+    True
 
 
-    >>> org = Organization()
-    >>> org.id = "mmanu"
+**Example: 4**: Construct Resource object from json file::
+
+    >>> from fhir.resources.patient import Patient
+    >>> import os
+    >>> import pathlib
+    >>> filename = pathlib.Path("foo/bar.json")
+    >>> pat = Patient.parse_file(filename)
+    >>> pat.resource_type == "Patient"
+    True
+
+
+**Example: 5**: Construct resource object in python way::
+
+    >>> from fhir.resources.organization import Organization
+    >>> from fhir.resources.address import Address
+    >>> json_obj = {"resourceType": "Organization",
+    ...     "id": "f001",
+    ...     "active": True,
+    ...     "name": "Acme Corporation",
+    ...     "address": [{"country": "Swizterland"}]
+    ... }
+
+    >>> org = Organization.construct()
+    >>> org.id = "f001"
     >>> org.active = True
     >>> org.name = "Acme Corporation"
     >>> org.address = list()
-    >>> address = Address()
+    >>> address = Address.construct()
     >>> address.country = "Swizterland"
     >>> org.address.append(address)
-    >>> org.as_json() == json_dict
+    >>> org.dict() == json_obj
     True
 
 

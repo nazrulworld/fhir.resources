@@ -1,6 +1,7 @@
 graft fhir
+prune fhir/resources/tests
+prune fhir/resources/STU3/tests
 prune script
-prune tests
 prune .github
 prune fhir-parser
 include AUTHORS.rst
@@ -9,12 +10,11 @@ include HISTORY.rst
 include LICENSE
 include README.rst
 
-exclude Pipfile*
 exclude tox.ini
 exclude Makefile
 exclude .editorconfig
 exclude .gitmodules
-exclude requirements_dev.txt pyproject.toml Dockerfile docker-compose.yml
+exclude pyproject.toml .flake8 .isort.cfg
 
 recursive-include tests *
 recursive-exclude * __pycache__

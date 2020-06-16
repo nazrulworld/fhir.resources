@@ -15,7 +15,11 @@ requirements = ["pydantic[email]"]
 
 setup_requirements = ["pytest-runner"]
 
-test_requirements = ["coverage", "pytest", "pytest-cov"]
+test_requirements = [
+    "coverage",
+    "pytest>5.4;python_version<='3.6'",
+    "pytest-cov>2.10;python_version<='3.6'",
+]
 
 development_requirements = [
     "Jinja2==2.11.1",
@@ -29,7 +33,7 @@ development_requirements = [
     "isort",
     "black",
     "mypy",
-    "zest-releaser[recommended]"
+    "zest-releaser[recommended]",
 ]
 
 setup(
@@ -53,7 +57,7 @@ setup(
         "Intended Audience :: Information Technology",
         "Intended Audience :: Science/Research",
         "Operating System :: OS Independent",
-        "Typing :: Typed"
+        "Typing :: Typed",
     ],
     description="FHIR Resources as Model Class",
     install_requires=requirements,
@@ -69,10 +73,10 @@ setup(
     tests_require=test_requirements,
     extras_require={
         "test": (test_requirements + setup_requirements),
-        "all": (test_requirements + setup_requirements + development_requirements)
+        "all": (test_requirements + setup_requirements + development_requirements),
     },
     url="https://github.com/nazrulworld/fhir.resources",
     version="6.0.0.dev0",
     zip_safe=False,
-    python_requires='>=3.6',
+    python_requires=">=3.6",
 )

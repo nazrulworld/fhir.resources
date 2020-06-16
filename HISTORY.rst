@@ -5,7 +5,17 @@ History
 6.0.0 (unreleased)
 ------------------
 
-- Nothing changed yet.
+Revolutionary evolution has been made, now fully rewritten with modern python, underlying APIs (almost all) have been changed.
+Please have look at readme section, for howto.
+
+Improvements
+
+- not yet
+
+Breaking
+
+- Drop support for python 2.7.
+
 
 
 5.1.0 (2020-04-11)

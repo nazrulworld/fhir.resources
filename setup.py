@@ -17,8 +17,8 @@ setup_requirements = ["pytest-runner"]
 
 test_requirements = [
     "coverage",
-    "pytest>5.4;python_version<='3.6'",
-    "pytest-cov>2.10;python_version<='3.6'",
+    "pytest>5.4.0;python_version<='3.6'",
+    "pytest-cov>2.10.0;python_version<='3.6'",
 ]
 
 development_requirements = [

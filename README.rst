@@ -150,32 +150,29 @@ Usages
     True
 
 
-**Example: 3**: Auto validation while providing wrong datatype::
+**Example: 4**: Using Resource Factory Function::
 
-    >>> from fhir.resources.fhirabstractbase import FHIRValidationError
-    >>> try:
-    ...     org = Organization({"id": "fmk", "address": ["i am wrong type"]})
-    ...     raise AssertionError("Code should not come here")
-    ... except FHIRValidationError:
-    ...     pass
-
-
-**Example: 4**: Using Resource Factory::
-
-    This package provides a convenient factory to create FHIR® resource, you never need to import manually each resource class.
-
-    >>> from fhir.resources.fhirelementfactory import FHIRElementFactory
+    >>> from fhir.resources import construct_fhir_element
     >>> json_dict = {"resourceType": "Organization",
     ...     "id": "mmanu",
     ...     "active": True,
     ...     "name": "Acme Corporation",
     ...     "address": [{"country": "Swizterland"}]
     ... }
-    >>> org = FHIRElementFactory.instantiate('Organization', json_dict)
+    >>> org = construct_fhir_element('Organization', json_dict)
     >>> org.address[0].country == "Swizterland"
     True
-    >>> org.as_json()['active'] is True
+    >>> org.dict()['active'] is True
     True
+
+
+**Example: 5**: Auto validation while providing wrong datatype::
+
+    >>> try:
+    ...     org = Organization({"id": "fmk", "address": ["i am wrong type"]})
+    ...     raise AssertionError("Code should not come here")
+    ... except ValueError:
+    ...     pass
 
 Release and Version Policy
 --------------------------

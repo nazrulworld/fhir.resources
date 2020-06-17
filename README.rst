@@ -1,6 +1,6 @@
-==========================
-FHIR® Resources (R4, STU3)
-==========================
+=================================
+FHIR® Resources (R4, STU3, DSTU2)
+=================================
 
 
 .. image:: https://img.shields.io/pypi/v/fhir.resources.svg
@@ -43,6 +43,7 @@ FHIR® (Release R4, version 4.0.1) is available as default. Also previous versio
 **Available Previous Versions**:
 
 * ``STU3`` (3.0.2)
+* ``DSTU2`` (1.0.2)
 
 
 Installation

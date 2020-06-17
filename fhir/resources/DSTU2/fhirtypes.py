@@ -466,6 +466,66 @@ class DurationType(AbstractType):
     __resource_type__ = "Duration"
 
 
+class AgeType(AbstractType):
+    __resource_type__ = "Age"
+
+
+class CountType(AbstractType):
+    __resource_type__ = "Count"
+
+
+class MoneyType(AbstractType):
+    __resource_type__ = "Money"
+
+
+class DistanceType(AbstractType):
+    __resource_type__ = "Distance"
+
+
+class SampledDataType(AbstractType):
+    __resource_type__ = "SampledData"
+
+
+class AnnotationType(AbstractType):
+    __resource_type__ = "Annotation"
+
+
+class MediaType(AbstractType):
+    __resource_type__ = "Media"
+
+
+class BasicType(AbstractType):
+    __resource_type__ = "Basic"
+
+
+class BinaryType(AbstractType):
+    __resource_type__ = "Binary"
+
+
+class BodySiteType(AbstractType):
+    __resource_type__ = "BodySite"
+
+
+class FlagType(AbstractType):
+    __resource_type__ = "Flag"
+
+
+class LocationType(AbstractType):
+    __resource_type__ = "Location"
+
+
+class LocationPositionType(AbstractType):
+    __resource_type__ = "LocationPosition"
+
+
+class SlotType(AbstractType):
+    __resource_type__ = "Slot"
+
+
+class ScheduleType(AbstractType):
+    __resource_type__ = "Schedule"
+
+
 __all__ = [
     "ElementType",
     "ResourceType",
@@ -490,4 +550,19 @@ __all__ = [
     "TimingType",
     "TimingRepeatType",
     "DurationType",
+    "AgeType",
+    "CountType",
+    "MoneyType",
+    "DistanceType",
+    "SampledDataType",
+    "AnnotationType",
+    "MediaType",
+    "BasicType",
+    "BinaryType",
+    "BodySiteType",
+    "FlagType",
+    "LocationType",
+    "LocationPositionType",
+    "SlotType",
+    "ScheduleType",
 ]

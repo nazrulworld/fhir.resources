@@ -35,6 +35,21 @@ MODEL_CLASSES = {
     "Timing": (None, ".timing"),
     "TimingRepeat": (None, ".timing"),
     "Duration": (None, ".duration"),
+    "Age": (None, ".age"),
+    "Count": (None, ".count"),
+    "Money": (None, ".money"),
+    "Distance": (None, ".distance"),
+    "SampledData": (None, ".sampleddata"),
+    "Annotation": (None, ".annotation"),
+    "Media": (None, ".media"),
+    "Basic": (None, ".basic"),
+    "Binary": (None, ".binary"),
+    "BodySite": (None, ".bodysite"),
+    "Flag": (None, ".flag"),
+    "Location": (None, ".location"),
+    "LocationPosition": (None, ".location"),
+    "Slot": (None, ".slot"),
+    "Schedule": (None, ".schedule"),
 }
 
 
@@ -173,6 +188,66 @@ def duration_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
     return fhir_model_validator("Duration", v)
 
 
+def age_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("Age", v)
+
+
+def count_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("Count", v)
+
+
+def money_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("Money", v)
+
+
+def distance_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("Distance", v)
+
+
+def sampleddata_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("SampledData", v)
+
+
+def annotation_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("Annotation", v)
+
+
+def media_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("Media", v)
+
+
+def basic_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("Basic", v)
+
+
+def binary_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("Binary", v)
+
+
+def bodysite_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("BodySite", v)
+
+
+def flag_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("Flag", v)
+
+
+def location_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("Location", v)
+
+
+def locationposition_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("LocationPosition", v)
+
+
+def slot_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("Slot", v)
+
+
+def schedule_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("Slot", v)
+
+
 __all__ = [
     "element_validator",
     "resource_validator",
@@ -197,4 +272,19 @@ __all__ = [
     "timing_validator",
     "timingrepeat_validator",
     "duration_validator",
+    "age_validator",
+    "count_validator",
+    "money_validator",
+    "distance_validator",
+    "sampleddata_validator",
+    "annotation_validator",
+    "media_validator",
+    "basic_validator",
+    "binary_validator",
+    "bodysite_validator",
+    "flag_validator",
+    "location_validator",
+    "locationposition_validator",
+    "slot_validator",
+    "schedule_validator",
 ]

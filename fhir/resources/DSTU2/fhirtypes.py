@@ -525,14 +525,57 @@ class SlotType(AbstractType):
 class ScheduleType(AbstractType):
     __resource_type__ = "Schedule"
 
+
 class AccountType(AbstractType):
     __resource_type__ = "Account"
+
 
 class AllergyIntoleranceType(AbstractType):
     __resource_type__ = "AllergyIntolerance"
 
+
 class AllergyIntoleranceReactionType(AbstractType):
     __resource_type__ = "AllergyIntoleranceReaction"
+
+
+class AppointmentType(AbstractType):
+    __resource_type__ = "Appointment"
+
+
+class AppointmentParticipantType(AbstractType):
+    __resource_type__ = "AppointmentParticipant"
+
+
+class AppointmentResponseType(AbstractType):
+    __resource_type__ = "AppointmentResponse"
+
+
+class AuditEventType(AbstractType):
+    __resource_type__ = "AuditEvent"
+
+
+class AuditEventEventType(AbstractType):
+    __resource_type__ = "AuditEventEvent"
+
+
+class AuditEventObjectType(AbstractType):
+    __resource_type__ = "AuditEventObject"
+
+
+class AuditEventObjectDetailType(AbstractType):
+    __resource_type__ = "AuditEventObjectDetail"
+
+
+class AuditEventParticipantType(AbstractType):
+    __resource_type__ = "AuditEventParticipant"
+
+
+class AuditEventParticipantNetworkType(AbstractType):
+    __resource_type__ = "AuditEventParticipantNetwork"
+
+
+class AuditEventSourceType(AbstractType):
+    __resource_type__ = "AuditEventSource"
 
 
 __all__ = [
@@ -577,4 +620,14 @@ __all__ = [
     "AccountType",
     "AllergyIntoleranceType",
     "AllergyIntoleranceReactionType",
+    "AppointmentType",
+    "AppointmentParticipantType",
+    "AppointmentResponseType",
+    "AuditEventType",
+    "AuditEventEventType",
+    "AuditEventObjectType",
+    "AuditEventObjectDetailType",
+    "AuditEventParticipantType",
+    "AuditEventParticipantNetworkType",
+    "AuditEventSourceType",
 ]

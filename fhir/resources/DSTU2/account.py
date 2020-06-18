@@ -5,10 +5,12 @@ Release: DSTU2
 Version: 1.0.2
 Revision: 7202
 """
+from typing import List as ListType
+
+from pydantic import Field
+
 from . import fhirtypes
 from .domainresource import DomainResource
-from pydantic import Field
-from typing import List as ListType
 
 
 class Account(DomainResource):

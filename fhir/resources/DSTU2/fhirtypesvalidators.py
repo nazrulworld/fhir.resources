@@ -53,6 +53,16 @@ MODEL_CLASSES = {
     "Account": (None, ".account"),
     "AllergyIntolerance": (None, ".allergyintolerance"),
     "AllergyIntoleranceReaction": (None, ".allergyintolerance"),
+    "Appointment": (None, ".appointment"),
+    "AppointmentParticipant": (None, ".appointment"),
+    "AppointmentResponse": (None, ".appointmentresponse"),
+    "AuditEvent": (None, ".auditevent"),
+    "AuditEventEvent": (None, ".auditevent"),
+    "AuditEventObject": (None, ".auditevent"),
+    "AuditEventObjectDetail": (None, ".auditevent"),
+    "AuditEventParticipant": (None, ".auditevent"),
+    "AuditEventParticipantNetwork": (None, ".auditevent"),
+    "AuditEventSource": (None, ".auditevent"),
 }
 
 
@@ -250,14 +260,61 @@ def slot_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
 def schedule_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
     return fhir_model_validator("Slot", v)
 
+
 def account_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
     return fhir_model_validator("Account", v)
+
 
 def allergyintolerance_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
     return fhir_model_validator("AllergyIntolerance", v)
 
-def allergyintolerancereaction_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+
+def allergyintolerancereaction_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
     return fhir_model_validator("AllergyIntoleranceReaction", v)
+
+
+def appointment_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("Appointment", v)
+
+
+def appointmentparticipant_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("AppointmentParticipant", v)
+
+
+def appointmentresponse_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("AppointmentResponse", v)
+
+
+def auditevent_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("AuditEvent", v)
+
+
+def auditeventevent_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("AuditEventEvent", v)
+
+
+def auditeventobject_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("AuditEventObject", v)
+
+
+def auditeventobjectdetail_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("AuditEventObjectDetail", v)
+
+
+def auditeventparticipant_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("AuditEventParticipant", v)
+
+
+def auditeventparticipantnetwork_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("AuditEventParticipantNetwork", v)
+
+
+def auditeventsource_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("AuditEventSource", v)
 
 
 __all__ = [
@@ -302,4 +359,12 @@ __all__ = [
     "account_validator",
     "allergyintolerance_validator",
     "allergyintolerancereaction_validator",
+    "appointment_validator",
+    "appointmentparticipant_validator",
+    "appointmentresponse_validator",
+    "auditevent_validator",
+    "auditeventevent_validator",
+    "auditeventobjectdetail_validator",
+    "auditeventparticipantnetwork_validator",
+    "auditeventsource_validator",
 ]

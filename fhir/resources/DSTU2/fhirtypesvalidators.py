@@ -50,6 +50,9 @@ MODEL_CLASSES = {
     "LocationPosition": (None, ".location"),
     "Slot": (None, ".slot"),
     "Schedule": (None, ".schedule"),
+    "Account": (None, ".account"),
+    "AllergyIntolerance": (None, ".allergyintolerance"),
+    "AllergyIntoleranceReaction": (None, ".allergyintolerance"),
 }
 
 
@@ -247,6 +250,15 @@ def slot_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
 def schedule_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
     return fhir_model_validator("Slot", v)
 
+def account_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("Account", v)
+
+def allergyintolerance_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("AllergyIntolerance", v)
+
+def allergyintolerancereaction_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("AllergyIntoleranceReaction", v)
+
 
 __all__ = [
     "element_validator",
@@ -287,4 +299,7 @@ __all__ = [
     "locationposition_validator",
     "slot_validator",
     "schedule_validator",
+    "account_validator",
+    "allergyintolerance_validator",
+    "allergyintolerancereaction_validator",
 ]

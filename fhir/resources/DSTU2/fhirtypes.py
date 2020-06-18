@@ -525,6 +525,15 @@ class SlotType(AbstractType):
 class ScheduleType(AbstractType):
     __resource_type__ = "Schedule"
 
+class AccountType(AbstractType):
+    __resource_type__ = "Account"
+
+class AllergyIntoleranceType(AbstractType):
+    __resource_type__ = "AllergyIntolerance"
+
+class AllergyIntoleranceReactionType(AbstractType):
+    __resource_type__ = "AllergyIntoleranceReaction"
+
 
 __all__ = [
     "ElementType",
@@ -565,4 +574,7 @@ __all__ = [
     "LocationPositionType",
     "SlotType",
     "ScheduleType",
+    "AccountType",
+    "AllergyIntoleranceType",
+    "AllergyIntoleranceReactionType",
 ]

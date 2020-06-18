@@ -3,15 +3,17 @@
 import abc
 import inspect
 import logging
+from copy import deepcopy
 from functools import lru_cache
-from typing import TYPE_CHECKING, Any, Callable, Optional, Union
+from typing import TYPE_CHECKING, Any, Callable, Optional, Type, Union
 
 from pydantic import BaseModel, Extra
 from pydantic.error_wrappers import ErrorWrapper, ValidationError
 from pydantic.errors import ConfigError, PydanticValueError
 
 if TYPE_CHECKING:
-    from pydantic.typing import AbstractSetIntStr, MappingIntStrAny, DictStrAny
+    from pydantic.typing import AbstractSetIntStr, MappingIntStrAny, DictStrAny, SetStr
+    from pydantic.main import Model
 
 __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
 
@@ -187,6 +189,20 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
             encoder=encoder,
             **dumps_kwargs,
         )
+
+    @classmethod
+    def construct(
+        cls: Type["Model"], _fields_set: Optional["SetStr"] = None, **values: Any
+    ) -> "Model":
+        """Restricted version of ``construct``method.
+        Every data must go through validation process.
+        Any value is ignored by intention."""
+        m = cls.__new__(cls)
+        object.__setattr__(m, "__dict__", {**deepcopy(cls.__field_defaults__)})
+        if _fields_set is None:
+            _fields_set = set()
+        object.__setattr__(m, "__fields_set__", _fields_set)
+        return m
 
     class Config:
         allow_population_by_field_name = True

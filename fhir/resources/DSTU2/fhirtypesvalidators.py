@@ -63,6 +63,12 @@ MODEL_CLASSES = {
     "AuditEventParticipant": (None, ".auditevent"),
     "AuditEventParticipantNetwork": (None, ".auditevent"),
     "AuditEventSource": (None, ".auditevent"),
+    "Bundle": (None, ".bundle"),
+    "BundleEntry": (None, ".bundle"),
+    "BundleEntryRequest": (None, ".bundle"),
+    "BundleEntryResponse": (None, ".bundle"),
+    "BundleEntrySearch": (None, ".bundle"),
+    "BundleLink": (None, ".bundle"),
 }
 
 
@@ -317,6 +323,30 @@ def auditeventsource_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]
     return fhir_model_validator("AuditEventSource", v)
 
 
+def bundle_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("Bundle", v)
+
+
+def bundleentry_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("BundleEntry", v)
+
+
+def bundleentryrequest_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("BundleEntryRequest", v)
+
+
+def bundleentryresponse_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("BundleEntryResponse", v)
+
+
+def bundleentrysearch_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("BundleEntrySearch", v)
+
+
+def bundlelink_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("BundleLink", v)
+
+
 __all__ = [
     "element_validator",
     "resource_validator",
@@ -367,4 +397,10 @@ __all__ = [
     "auditeventobjectdetail_validator",
     "auditeventparticipantnetwork_validator",
     "auditeventsource_validator",
+    "bundle_validator",
+    "bundleentry_validator",
+    "bundleentryrequest_validator",
+    "bundleentryresponse_validator",
+    "bundleentrysearch_validator",
+    "bundlelink_validator",
 ]

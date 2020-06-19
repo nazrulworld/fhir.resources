@@ -578,6 +578,30 @@ class AuditEventSourceType(AbstractType):
     __resource_type__ = "AuditEventSource"
 
 
+class BundleType(AbstractType):
+    __resource_type__ = "Bundle"
+
+
+class BundleEntryType(AbstractType):
+    __resource_type__ = "BundleEntry"
+
+
+class BundleEntryRequestType(AbstractType):
+    __resource_type__ = "BundleEntryRequest"
+
+
+class BundleEntryResponseType(AbstractType):
+    __resource_type__ = "BundleEntryResponse"
+
+
+class BundleEntrySearchType(AbstractType):
+    __resource_type__ = "BundleEntrySearch"
+
+
+class BundleLinkType(AbstractType):
+    __resource_type__ = "BundleLink"
+
+
 __all__ = [
     "ElementType",
     "ResourceType",
@@ -630,4 +654,10 @@ __all__ = [
     "AuditEventParticipantType",
     "AuditEventParticipantNetworkType",
     "AuditEventSourceType",
+    "BundleType",
+    "BundleEntryType",
+    "BundleEntryRequestType",
+    "BundleEntryResponseType",
+    "BundleEntrySearchType",
+    "BundleLinkType",
 ]

@@ -69,6 +69,11 @@ MODEL_CLASSES = {
     "BundleEntryResponse": (None, ".bundle"),
     "BundleEntrySearch": (None, ".bundle"),
     "BundleLink": (None, ".bundle"),
+    "CarePlan": (None, ".careplan"),
+    "CarePlanActivity": (None, ".careplan"),
+    "CarePlanActivityDetail": (None, ".careplan"),
+    "CarePlanParticipant": (None, ".careplan"),
+    "CarePlanRelatedPlan": (None, ".careplan"),
 }
 
 
@@ -347,6 +352,26 @@ def bundlelink_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
     return fhir_model_validator("BundleLink", v)
 
 
+def careplan_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("CarePlan", v)
+
+
+def careplanactivity_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("CarePlanActivity", v)
+
+
+def careplanactivitydetail_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("CarePlanActivityDetail", v)
+
+
+def careplanparticipant_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("CarePlanParticipant", v)
+
+
+def careplanrelatedplan_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("CarePlanRelatedPlan", v)
+
+
 __all__ = [
     "element_validator",
     "resource_validator",
@@ -403,4 +428,10 @@ __all__ = [
     "bundleentryresponse_validator",
     "bundleentrysearch_validator",
     "bundlelink_validator",
+    "careplan_validator",
+    "careplanactivity_validator",
+    "careplanactivity_validator",
+    "careplanactivitydetail_validator",
+    "careplanparticipant_validator",
+    "careplanrelatedplan_validator",
 ]

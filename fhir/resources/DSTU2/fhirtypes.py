@@ -602,6 +602,26 @@ class BundleLinkType(AbstractType):
     __resource_type__ = "BundleLink"
 
 
+class CarePlanType(AbstractType):
+    __resource_type__ = "CarePlan"
+
+
+class CarePlanActivityType(AbstractType):
+    __resource_type__ = "CarePlanActivity"
+
+
+class CarePlanActivityDetailType(AbstractType):
+    __resource_type__ = "CarePlanActivityDetail"
+
+
+class CarePlanParticipantType(AbstractType):
+    __resource_type__ = "CarePlanParticipant"
+
+
+class CarePlanRelatedPlanType(AbstractType):
+    __resource_type__ = "CarePlanRelatedPlan"
+
+
 __all__ = [
     "ElementType",
     "ResourceType",
@@ -660,4 +680,9 @@ __all__ = [
     "BundleEntryResponseType",
     "BundleEntrySearchType",
     "BundleLinkType",
+    "CarePlanType",
+    "CarePlanActivityType",
+    "CarePlanActivityDetailType",
+    "CarePlanParticipantType",
+    "CarePlanRelatedPlanType",
 ]

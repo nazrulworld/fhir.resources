@@ -658,6 +658,62 @@ class ClaimPayeeType(AbstractType):
     __resource_type__ = "ClaimPayee"
 
 
+class ClaimResponseType(AbstractType):
+    __resource_type__ = "ClaimResponse"
+
+
+class ClaimResponseAddItemType(AbstractType):
+    __resource_type__ = "ClaimResponseAddItem"
+
+
+class ClaimResponseAddItemAdjudicationType(AbstractType):
+    __resource_type__ = "ClaimResponseAddItemAdjudicationType"
+
+
+class ClaimResponseAddItemDetailType(AbstractType):
+    __resource_type__ = "ClaimResponseAddItemDetail"
+
+
+class ClaimResponseAddItemDetailAdjudicationType(AbstractType):
+    __resource_type__ = "ClaimResponseAddItemDetailAdjudication"
+
+
+class ClaimResponseCoverageType(AbstractType):
+    __resource_type__ = "ClaimResponseCoverage"
+
+
+class ClaimResponseErrorType(AbstractType):
+    __resource_type__ = "ClaimResponseError"
+
+
+class ClaimResponseItemType(AbstractType):
+    __resource_type__ = "ClaimResponseItem"
+
+
+class ClaimResponseItemAdjudicationType(AbstractType):
+    __resource_type__ = "ClaimResponseItemAdjudication"
+
+
+class ClaimResponseItemDetailType(AbstractType):
+    __resource_type__ = "ClaimResponseItemDetail"
+
+
+class ClaimResponseItemDetailAdjudicationType(AbstractType):
+    __resource_type__ = "ClaimResponseItemDetailAdjudication"
+
+
+class ClaimResponseItemDetailSubDetailType(AbstractType):
+    __resource_type__ = "ClaimResponseItemDetailSubDetail"
+
+
+class ClaimResponseItemDetailSubDetailAdjudicationType(AbstractType):
+    __resource_type__ = "ClaimResponseItemDetailSubDetailAdjudication"
+
+
+class ClaimResponseNoteType(AbstractType):
+    __resource_type__ = "ClaimResponseNote"
+
+
 __all__ = [
     "ElementType",
     "ResourceType",
@@ -730,4 +786,18 @@ __all__ = [
     "ClaimItemProsthesisType",
     "ClaimMissingTeethType",
     "ClaimPayeeType",
+    "ClaimResponseType",
+    "ClaimResponseAddItemType",
+    "ClaimResponseAddItemAdjudicationType",
+    "ClaimResponseAddItemDetailType",
+    "ClaimResponseAddItemDetailAdjudicationType",
+    "ClaimResponseCoverageType",
+    "ClaimResponseErrorType",
+    "ClaimResponseItemType",
+    "ClaimResponseItemAdjudicationType",
+    "ClaimResponseItemDetailType",
+    "ClaimResponseItemDetailAdjudicationType",
+    "ClaimResponseItemDetailSubDetailType",
+    "ClaimResponseItemDetailSubDetailAdjudicationType",
+    "ClaimResponseNoteType",
 ]

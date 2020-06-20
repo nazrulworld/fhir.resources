@@ -83,6 +83,19 @@ MODEL_CLASSES = {
     "ClaimItemProsthesis": (None, ".claim"),
     "ClaimMissingTeeth": (None, ".claim"),
     "ClaimPayee": (None, ".claim"),
+    "ClaimResponse": (None, ".claimresponse"),
+    "ClaimResponseAddItem": (None, ".claimresponse"),
+    "ClaimResponseAddItemAdjudication": (None, ".claimresponse"),
+    "ClaimResponseAddItemDetail": (None, ".claimresponse"),
+    "ClaimResponseAddItemDetailAdjudication": (None, ".claimresponse"),
+    "ClaimResponseCoverage": (None, ".claimresponse"),
+    "ClaimResponseItem": (None, ".claimresponse"),
+    "ClaimResponseItemAdjudication": (None, ".claimresponse"),
+    "ClaimResponseItemDetail": (None, ".claimresponse"),
+    "ClaimResponseItemDetailAdjudication": (None, ".claimresponse"),
+    "ClaimResponseItemDetailSubDetail": (None, ".claimresponse"),
+    "ClaimResponseItemDetailSubDetailAdjudication": (None, ".claimresponse"),
+    "ClaimResponseNote": (None, ".claimresponse"),
 }
 
 
@@ -419,6 +432,78 @@ def claimpayee_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
     return fhir_model_validator("ClaimPayee", v)
 
 
+def claimresponse_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ClaimResponse", v)
+
+
+def claimresponseadditem_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ClaimResponseAddItem", v)
+
+
+def claimresponseadditemadjudication_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ClaimResponseAddItemAdjudication", v)
+
+
+def claimresponseadditemdetail_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ClaimResponseAddItemDetail", v)
+
+
+def claimresponseadditemdetailadjudication_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ClaimResponseAddItemDetailAdjudication", v)
+
+
+def claimresponsecoverage_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ClaimResponseCoverage", v)
+
+
+def claimresponseerror_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ClaimResponseError", v)
+
+
+def claimresponseitem_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ClaimResponseItem", v)
+
+
+def claimresponseitemadjudication_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ClaimResponseItemAdjudication", v)
+
+
+def claimresponseitemdetail_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ClaimResponseItemDetail", v)
+
+
+def claimresponseitemdetailadjudication_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ClaimResponseItemDetailAdjudication", v)
+
+
+def claimresponseitemdetailsubdetail_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ClaimResponseItemDetailSubDetail", v)
+
+
+def claimresponseitemdetailsubdetailadjudication_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ClaimResponseItemDetailSubDetailAdjudication", v)
+
+
+def claimresponsenote_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ClaimResponseNote", v)
+
+
 __all__ = [
     "element_validator",
     "resource_validator",
@@ -490,4 +575,17 @@ __all__ = [
     "claimitemprosthesis_validator",
     "claimmissingteeth_validator",
     "claimpayee_validator",
+    "claimresponse_validator",
+    "claimresponseadditem_validator",
+    "claimresponseadditemadjudication_validator",
+    "claimresponseadditemdetail_validator",
+    "claimresponseadditemdetailadjudication_validator",
+    "claimresponseerror_validator",
+    "claimresponseitem_validator",
+    "claimresponseitemadjudication_validator",
+    "claimresponseitemdetail_validator",
+    "claimresponseitemdetailadjudication_validator",
+    "claimresponseitemdetailsubdetail_validator",
+    "claimresponseitemdetailsubdetailadjudication_validator",
+    "claimresponsenote_validator",
 ]

@@ -74,6 +74,15 @@ MODEL_CLASSES = {
     "CarePlanActivityDetail": (None, ".careplan"),
     "CarePlanParticipant": (None, ".careplan"),
     "CarePlanRelatedPlan": (None, ".careplan"),
+    "Claim": (None, ".claim"),
+    "ClaimCoverage": (None, ".claim"),
+    "ClaimDiagnosis": (None, ".claim"),
+    "ClaimItem": (None, ".claim"),
+    "ClaimItemDetail": (None, ".claim"),
+    "ClaimItemDetailSubDetail": (None, ".claim"),
+    "ClaimItemProsthesis": (None, ".claim"),
+    "ClaimMissingTeeth": (None, ".claim"),
+    "ClaimPayee": (None, ".claim"),
 }
 
 
@@ -372,6 +381,44 @@ def careplanrelatedplan_validator(v: Union[StrBytes, dict, Path, FHIRAbstractMod
     return fhir_model_validator("CarePlanRelatedPlan", v)
 
 
+def claim_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("Claim", v)
+
+
+def claimcoverage_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ClaimCoverage", v)
+
+
+def claimdiagnosis_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ClaimDiagnosis", v)
+
+
+def claimitem_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ClaimItem", v)
+
+
+def claimitemdetail_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ClaimItemDetail", v)
+
+
+def claimitemdetailsubdetail_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ClaimItemDetailSubDetail", v)
+
+
+def claimitemprosthesis_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ClaimItemProsthesis", v)
+
+
+def claimmissingteeth_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ClaimMissingTeeth", v)
+
+
+def claimpayee_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ClaimPayee", v)
+
+
 __all__ = [
     "element_validator",
     "resource_validator",
@@ -434,4 +481,13 @@ __all__ = [
     "careplanactivitydetail_validator",
     "careplanparticipant_validator",
     "careplanrelatedplan_validator",
+    "claim_validator",
+    "claimcoverage_validator",
+    "claimdiagnosis_validator",
+    "claimitem_validator",
+    "claimitemdetail_validator",
+    "claimitemdetailsubdetail_validator",
+    "claimitemprosthesis_validator",
+    "claimmissingteeth_validator",
+    "claimpayee_validator",
 ]

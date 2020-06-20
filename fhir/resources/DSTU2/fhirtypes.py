@@ -622,6 +622,42 @@ class CarePlanRelatedPlanType(AbstractType):
     __resource_type__ = "CarePlanRelatedPlan"
 
 
+class ClaimType(AbstractType):
+    __resource_type__ = "Claim"
+
+
+class ClaimCoverageType(AbstractType):
+    __resource_type__ = "ClaimCoverage"
+
+
+class ClaimDiagnosisType(AbstractType):
+    __resource_type__ = "ClaimDiagnosis"
+
+
+class ClaimItemType(AbstractType):
+    __resource_type__ = "ClaimItem"
+
+
+class ClaimItemDetailType(AbstractType):
+    __resource_type__ = "ClaimItemDetail"
+
+
+class ClaimItemDetailSubDetailType(AbstractType):
+    __resource_type__ = "ClaimItemDetailSubDetail"
+
+
+class ClaimItemProsthesisType(AbstractType):
+    __resource_type__ = "ClaimItemProsthesis"
+
+
+class ClaimMissingTeethType(AbstractType):
+    __resource_type__ = "ClaimMissingTeeth"
+
+
+class ClaimPayeeType(AbstractType):
+    __resource_type__ = "ClaimPayee"
+
+
 __all__ = [
     "ElementType",
     "ResourceType",
@@ -685,4 +721,13 @@ __all__ = [
     "CarePlanActivityDetailType",
     "CarePlanParticipantType",
     "CarePlanRelatedPlanType",
+    "ClaimType",
+    "ClaimCoverageType",
+    "ClaimDiagnosisType",
+    "ClaimItemType",
+    "ClaimItemDetailType",
+    "ClaimItemDetailSubDetailType",
+    "ClaimItemProsthesisType",
+    "ClaimMissingTeethType",
+    "ClaimPayeeType",
 ]

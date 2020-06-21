@@ -96,6 +96,14 @@ MODEL_CLASSES = {
     "ClaimResponseItemDetailSubDetail": (None, ".claimresponse"),
     "ClaimResponseItemDetailSubDetailAdjudication": (None, ".claimresponse"),
     "ClaimResponseNote": (None, ".claimresponse"),
+    "ClinicalImpression": (None, ".clinicalimpression"),
+    "ClinicalImpressionFinding": (None, ".clinicalimpression"),
+    "ClinicalImpressionInvestigations": (None, ".clinicalimpression"),
+    "ClinicalImpressionRuledOut": (None, ".clinicalimpression"),
+    "Communication": (None, ".communication"),
+    "CommunicationPayload": (None, ".communication"),
+    "CommunicationRequest": (None, ".communicationrequest"),
+    "CommunicationRequestPayload": (None, ".communicationrequest"),
 }
 
 
@@ -504,6 +512,46 @@ def claimresponsenote_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel
     return fhir_model_validator("ClaimResponseNote", v)
 
 
+def clinicalimpression_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ClinicalImpression", v)
+
+
+def clinicalimpressionfinding_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ClinicalImpressionFinding", v)
+
+
+def clinicalimpressioninvestigations_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ClinicalImpressionInvestigations", v)
+
+
+def clinicalimpressionruledout_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ClinicalImpressionRuledOut", v)
+
+
+def communication_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("Communication", v)
+
+
+def communicationpayload_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("CommunicationPayload", v)
+
+
+def communicationrequest_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("CommunicationRequest", v)
+
+
+def communicationrequestpayload_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("CommunicationRequestPayload", v)
+
+
 __all__ = [
     "element_validator",
     "resource_validator",
@@ -588,4 +636,12 @@ __all__ = [
     "claimresponseitemdetailsubdetail_validator",
     "claimresponseitemdetailsubdetailadjudication_validator",
     "claimresponsenote_validator",
+    "clinicalimpression_validator",
+    "clinicalimpressionfinding_validator",
+    "clinicalimpressioninvestigations_validator",
+    "clinicalimpressionruledout_validator",
+    "communication_validator",
+    "communicationpayload_validator",
+    "communicationrequest_validator",
+    "communicationrequestpayload_validator",
 ]

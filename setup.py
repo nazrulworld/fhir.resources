@@ -68,6 +68,7 @@ setup(
     name="fhir.resources",
     namespace_packages=["fhir"],
     packages=find_packages(exclude=["ez_setup"]),
+    package_data={"fhir.resources": ["py.typed"]},
     setup_requires=setup_requirements,
     test_suite="tests",
     tests_require=test_requirements,

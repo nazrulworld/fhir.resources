@@ -714,6 +714,38 @@ class ClaimResponseNoteType(AbstractType):
     __resource_type__ = "ClaimResponseNote"
 
 
+class ClinicalImpressionType(AbstractType):
+    __resource_type__ = "ClinicalImpression"
+
+
+class ClinicalImpressionFindingType(AbstractType):
+    __resource_type__ = "ClinicalImpressionFinding"
+
+
+class ClinicalImpressionInvestigationsType(AbstractType):
+    __resource_type__ = "ClinicalImpressionInvestigations"
+
+
+class ClinicalImpressionRuledOutType(AbstractType):
+    __resource_type__ = "ClinicalImpressionRuledOut"
+
+
+class CommunicationType(AbstractType):
+    __resource_type__ = "Communication"
+
+
+class CommunicationPayloadType(AbstractType):
+    __resource_type__ = "CommunicationPayload"
+
+
+class CommunicationRequestType(AbstractType):
+    __resource_type__ = "CommunicationRequest"
+
+
+class CommunicationRequestPayloadType(AbstractType):
+    __resource_type__ = "CommunicationRequestPayload"
+
+
 __all__ = [
     "ElementType",
     "ResourceType",
@@ -800,4 +832,12 @@ __all__ = [
     "ClaimResponseItemDetailSubDetailType",
     "ClaimResponseItemDetailSubDetailAdjudicationType",
     "ClaimResponseNoteType",
+    "ClinicalImpressionType",
+    "ClinicalImpressionFindingType",
+    "ClinicalImpressionInvestigationsType",
+    "ClinicalImpressionRuledOutType",
+    "CommunicationType",
+    "CommunicationPayloadType",
+    "CommunicationRequestType",
+    "CommunicationRequestPayloadType",
 ]

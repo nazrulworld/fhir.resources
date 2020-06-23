@@ -13,7 +13,7 @@ import pytest  # type: ignore
 EXAMPLE_RESOURCES_URL = (
     "https://github.com/nazrulworld/hl7-archives/raw/"
     "0.1.0/FHIR/STU3/"
-    "3.0.2-examples-json.zip"
+    "3.0.1-examples-json.zip"
 )
 ROOT_PATH = dirname(dirname(dirname(dirname(dirname(os.path.abspath(__file__))))))
 CACHE_PATH = os.path.join(ROOT_PATH, ".cache", "STU3")
